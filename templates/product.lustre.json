@@ -99,7 +99,13 @@
         "custom_liquid_FiimVn": {
           "type": "custom_liquid",
           "settings": {
-            "custom_liquid": "{% if product.collections.size > 0 %}\n  <div class=\"product-collections\">\n    <h3>Acest product face parte din colectiile:</h3>\n    <ul>\n      {% for collection in product.collections %}\n        <li>\n          <a href=\"{{ collection.url }}\">{{ collection.title }}</a>\n        </li>\n      {% endfor %}\n    </ul>\n  </div>\n{% endif %}"
+            "custom_liquid": "<p>Culori: {{ product.metafields.custom.product_colors }}</p>\n\n<p>Recomandare: {{ product.metafields.custom.room_recommandation.value.title }}</p>"
+          }
+        },
+        "custom_liquid_8NdCix": {
+          "type": "custom_liquid",
+          "settings": {
+            "custom_liquid": "{% comment %} \nDisplay all metafields for the product's category \n{% endcomment %}\n{% if product.category.metafields != blank %}\n  <div class=\"category-metafields-table\">\n    <h3>Category Specifications</h3>\n    <table>\n      <thead>\n        <tr>\n          <th>Product Definition</th>\n          <th>Value</th>\n        </tr>\n      </thead>\n      <tbody>\n        {% for namespace in product.category.metafields %}\n          {% for metafield in product.category.metafields[namespace] %}\n            {% if metafield.value != blank %}\n              <tr>\n                <td>{{ metafield.key | replace: '_', ' ' | capitalize }}</td>\n                <td>{{ metafield.value }}</td>\n              </tr>\n            {% endif %}\n          {% endfor %}\n        {% endfor %}\n      </tbody>\n    </table>\n  </div>\n{% else %}\n  <p>No category metafields available for this product.</p>\n{% endif %}"
           }
         },
         "text_8bAzhx": {
@@ -131,6 +137,7 @@
         "collapsible-row-2",
         "collapsible-row-3",
         "custom_liquid_FiimVn",
+        "custom_liquid_8NdCix",
         "text_8bAzhx",
         "share"
       ],
