@@ -11,9 +11,9 @@
   "current": {
     "logo": "shopify://shop_images/logo.webp",
     "logo_width": 150,
-    "type_header_font": "assistant_n4",
+    "type_header_font": "roboto_n4",
     "heading_scale": 100,
-    "type_body_font": "assistant_n4",
+    "type_body_font": "roboto_condensed_n4",
     "body_scale": 100,
     "page_width": 1200,
     "spacing_sections": 0,
@@ -136,6 +136,13 @@
       }
     },
     "content_for_index": [],
+    "blocks": {
+      "pagefly-page-builder": {
+        "type": "shopify://apps/pagefly-page-builder/blocks/app-embed/83e179f7-59a0-4589-8c66-c0dddf959200",
+        "disabled": false,
+        "settings": {}
+      }
+    },
     "color_schemes": {
       "scheme-1": {
         "settings": {
@@ -191,13 +198,6 @@
           "secondary_button_label": "#ffffff",
           "shadow": "#121212"
         }
-      }
-    },
-    "blocks": {
-      "pagefly-page-builder": {
-        "type": "shopify://apps/pagefly-page-builder/blocks/app-embed/83e179f7-59a0-4589-8c66-c0dddf959200",
-        "disabled": false,
-        "settings": {}
       }
     }
   },
