@@ -1,6 +1,13 @@
 {% comment %} This is a Shopify section version of your footer. 1. Replace asset URLs as needed. 2. Ensure your menus
 (linklists) match the names used below. 3. Add more settings in schema if needed. {% endcomment %}
 
+{% comment %}theme-check-disable UndefinedObject{% endcomment %}
+{{ 'section-footer.css' | asset_url | stylesheet_tag }}
+{{ 'component-newsletter.css' | asset_url | stylesheet_tag }}
+{{ 'component-list-menu.css' | asset_url | stylesheet_tag }}
+{{ 'component-list-payment.css' | asset_url | stylesheet_tag }}
+{{ 'component-list-social.css' | asset_url | stylesheet_tag }}
+
 <style>
 .footer {
     font-family: Roboto, sans-serif;

@@ -1,0 +1,217 @@
+<style>
+    .header__inline-menu {
+  position: relative;
+  width: 100%;
+}
+
+.mega-menu-parent {
+  position: relative;
+}
+
+.mega-menu__container {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: 100%;
+  background: var(--color-background, #fff);
+  display: none;
+  padding: 1rem 0;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+
+/* Hover on parent list item shows menu */
+.mega-menu-parent:hover .mega-menu__container {
+  display: block;
+}
+
+/* Inner layout */
+.mega-menu__inner {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  width: 100%;
+  max-width: var(--page-width, 1200px);
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+.mega-menu__left-column {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  width: 20%; /* Left column takes about 20% */
+}
+
+.mega-menu__left-item {
+  position: relative;
+  margin-bottom: 0.5rem;
+}
+
+.mega-menu__left-item .mega-menu__icon {
+  width: 30px;
+  height: 30px;
+  object-fit: cover;
+  margin-right: 0.5rem;
+  vertical-align: middle;
+}
+
+.mega-menu__link--level-2 {
+  display: flex;
+  align-items: center;
+}
+
+/* Right column: Initially hidden, show on hover over left item */
+.mega-menu__right-column {
+  position: absolute;
+  top: 0;
+  left: 100%; /* Push it to the right of the left column */
+  background: var(--color-background, #fff);
+  width: 80%; /* Takes up the rest of the space */
+  padding: 1rem;
+  display: none;
+}
+
+/* Hover on left item shows right column */
+.mega-menu__left-item:hover .mega-menu__right-column {
+  display: block;
+}
+
+/* Mega menu grid (2 columns x 4 rows = 8 items) */
+.mega-menu__grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-gap: 1rem;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.mega-menu__grid-item {
+  text-align: center;
+}
+
+.mega-menu__grid-image {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+  aspect-ratio: 1/1; /* Ensures a square shape for modern browsers */
+}
+
+.mega-menu__grid-text {
+  display: block;
+  margin-top: 0.5rem;
+  font-size: 0.9rem;
+  color: var(--color-text, #333);
+}
+
+/* Adjust responsive styles for smaller screens */
+@media (max-width: 768px) {
+  .mega-menu__inner {
+    flex-direction: column;
+  }
+  .mega-menu__left-column,
+  .mega-menu__right-column {
+    position: static;
+    width: 100%;
+  }
+  .mega-menu__right-column {
+    display: block;
+    margin-top: 1rem;
+  }
+}
+
+</style>
+
+<nav class="header__inline-menu">
+  <ul class="list-menu list-menu--inline" role="list">
+    {%- for link in section.settings.menu.links -%}
+      {%- if link.links != blank -%}
+        <li class="mega-menu-parent">
+          <a 
+            href="{{ link.url }}" 
+            class="header__menu-item list-menu__item link focus-inset mega-menu-toggle"
+          >
+            <span
+              {%- if link.child_active -%}
+                class="header__active-menu-item"
+              {%- endif -%}
+            >{{- link.title | escape -}}</span>
+          </a>
+
+          <!-- Mega Menu Container -->
+          <div class="mega-menu__container">
+            <div class="mega-menu__inner">
+              <!-- Left column: Direct children -->
+              <ul class="mega-menu__left-column" role="list">
+                {%- for childlink in link.links -%}
+                  <li class="mega-menu__left-item">
+                    <a 
+                      href="{{ childlink.url }}" 
+                      class="mega-menu__link mega-menu__link--level-2 link"
+                    >
+                      {%- if childlink.object and childlink.object.image -%}
+                        <img 
+                          src="{{ childlink.object.image.src | img_url: '50x50' }}" 
+                          alt="{{ childlink.title | escape }}" 
+                          class="mega-menu__icon"
+                        >
+                      {%- else -%}
+                        <!-- Optional placeholder icon -->
+                      {%- endif -%}
+                      {{ childlink.title | escape }}
+                    </a>
+                    
+                    {%- if childlink.links != blank -%}
+                      <!-- Right column: grandchildren (shown on hover) -->
+                      <div class="mega-menu__right-column">
+                        <ul class="mega-menu__grid" role="list">
+                          {%- for grandchildlink in childlink.links limit:8 -%}
+                            <li class="mega-menu__grid-item">
+                              <a href="{{ grandchildlink.url }}" class="mega-menu__link link">
+                                {%- if grandchildlink.object and grandchildlink.object.image -%}
+                                  <img 
+                                    src="{{ grandchildlink.object.image.src | img_url: '200x200' }}" 
+                                    alt="{{ grandchildlink.title | escape }}" 
+                                    class="mega-menu__grid-image"
+                                  >
+                                {%- else -%}
+                                  <!-- optional placeholder image -->
+                                  <div class="mega-menu__grid-placeholder"></div>
+                                {%- endif -%}
+                                <span class="mega-menu__grid-text">{{ grandchildlink.title | escape }}</span>
+                              </a>
+                            </li>
+                          {%- endfor -%}
+                        </ul>
+                      </div>
+                    {%- endif -%}
+                  </li>
+                {%- endfor -%}
+              </ul>
+            </div>
+          </div>
+        </li>
+      {%- else -%}
+        <!-- Regular top-level menu item without children -->
+        <li>
+          <a
+            id="HeaderMenu-{{ link.handle }}"
+            href="{{ link.url }}"
+            class="header__menu-item list-menu__item link link--text focus-inset"
+            {% if link.current %}
+              aria-current="page"
+            {% endif %}
+          >
+            <span
+              {%- if link.current %}
+                class="header__active-menu-item"
+              {% endif %}
+            >
+              {{- link.title | escape -}}
+            </span>
+          </a>
+        </li>
+      {%- endif -%}
+    {%- endfor -%}
+  </ul>
+</nav>
