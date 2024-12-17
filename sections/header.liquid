@@ -164,6 +164,8 @@
       if section.settings.menu != blank
         if section.settings.menu_type_desktop == 'dropdown'
           render 'header-dropdown-menu'
+        elsif section.settings.menu_type_desktop == 'aless_mega'
+          render 'aless-mega-menu'
         elsif section.settings.menu_type_desktop != 'drawer'
           render 'header-mega-menu'
         endif
@@ -490,6 +492,10 @@
         {
           "value": "drawer",
           "label": "t:sections.header.settings.menu_type_desktop.options__3.label"
+        },
+        {
+          "value": "aless_mega",
+          "label": "t:sections.header.settings.menu_type_desktop.options__4.label"
         }
       ],
       "default": "dropdown",
