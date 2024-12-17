@@ -11,6 +11,9 @@
   "sections": {
     "pagefly-home": {
       "type": "pagefly-home",
+      "custom_css": [
+        ".full-width-banner {width: 100vw; /* Ocupă 100% din lățimea viewport-ului */ margin: 0; /* Elimină marginile */ padding: 0; /* Elimină padding-ul */ display: block; /* Asigură comportament corect */}"
+      ],
       "settings": {}
     }
   },
