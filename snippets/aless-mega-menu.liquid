@@ -1,47 +1,154 @@
+{% comment %}
+  This snippet creates a full-width mega menu:
+  - Left column: top-level sub-links with images.
+  - Right column: dynamic content that changes based on hovered left column item.
+
+  Requirements:
+  - Include this snippet in your header and pass a menu object as 'menu'.
+  - menu.links should have a structure: Top Link -> Children -> Grandchildren
+  - Links should point to collections if you want to display collection images.
+
+  Example usage in header.liquid:
+  {% render 'header-new-mega-menu', menu: section.settings.menu %}
+
+{% endcomment %}
+
+{% assign top_menu = section.settings.menu.links %}
+{% if top_menu.size > 0 %}
+<nav class="header__inline-menu">
+  <ul class="list-menu list-menu--inline" role="list">
+    {% for link in top_menu %}
+      {% if link.links != blank %}
+        <li class="mega-menu-parent">
+          <a href="{{ link.url }}" class="header__menu-item list-menu__item link focus-inset">
+            <span>{{ link.title | escape }}</span>
+          </a>
+
+          <div class="mega-menu__container">
+            <div class="mega-menu__inner">
+              <!-- Left column: Display child links -->
+              <ul class="mega-menu__left-column" role="list">
+                {% for childlink in link.links %}
+                  <li class="mega-menu__left-item" data-target="{{ childlink.handle }}">
+                    <a href="{{ childlink.url }}" class="mega-menu__link mega-menu__link--level-2 link">
+                      {% if childlink.object and childlink.object.image %}
+                        <img src="{{ childlink.object.image.src | img_url: '50x50' }}" alt="{{ childlink.title | escape }}" class="mega-menu__icon">
+                      {% endif %}
+                      {{ childlink.title | escape }}
+                    </a>
+                  </li>
+                {% endfor %}
+              </ul>
+
+              <!-- Right column: Display grandchildren -->
+              <div class="mega-menu__right-column">
+                {% for childlink in link.links %}
+                  <div class="mega-menu__right-content" data-content="{{ childlink.handle }}">
+                    <ul class="mega-menu__grid" role="list">
+                      {% for grandchildlink in childlink.links %}
+                        <li class="mega-menu__grid-item">
+                          <a href="{{ grandchildlink.url }}" class="mega-menu__link link">
+                            {% if grandchildlink.object and grandchildlink.object.image %}
+                              <img 
+                                src="{{ grandchildlink.object.image.src | img_url: '200x200' }}" 
+                                alt="{{ grandchildlink.title | escape }}" 
+                                class="mega-menu__grid-image"
+                              >
+                            {% endif %}
+                            <span class="mega-menu__grid-text">{{ grandchildlink.title | escape }}</span>
+                          </a>
+                        </li>
+                      {% endfor %}
+                    </ul>
+                  </div>
+                {% endfor %}
+              </div>
+            </div>
+          </div>
+        </li>
+      {% else %}
+        <li>
+          <a
+            href="{{ link.url }}"
+            class="header__menu-item list-menu__item link link--text focus-inset"
+            {% if link.current %}aria-current="page"{% endif %}
+          >
+            <span {% if link.current %}class="header__active-menu-item"{% endif %}>{{ link.title | escape }}</span>
+          </a>
+        </li>
+      {% endif %}
+    {% endfor %}
+  </ul>
+</nav>
+{% endif %}
+
 <style>
-/* Ensures the header navigation is on top and spans full width */
+/* Basic Reset and Variables */
+:root {
+  --page-width: 1200px;
+  --color-text: #333;
+}
+
+body, html {
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden; /* Prevent horizontal scroll due to full-width menu */
+}
+
 .header__inline-menu {
   position: relative;
   width: 100%;
   z-index: 99999 !important;
 }
 
-/* Parent menu item */
+.list-menu {
+  list-style: none;
+  display: flex;
+  gap: 1rem;
+  margin: 0;
+  padding: 1rem;
+}
+
+.list-menu__item {
+  text-decoration: none;
+  color: var(--color-text);
+}
+
 .mega-menu-parent {
   position: relative;
 }
 
-/* Mega menu container: full width of viewport, anchored at top below the parent */
 .mega-menu__container {
   position: absolute;
   top: 100%;
   left: 0;
-  width: 100vw; 
+  width: 100vw;
   background-color: #fff;
   z-index: 9999;
-  margin-left: calc(-50vw + 50%); /* Adjusts if parent container is centered */
   display: none;
-  padding-left: calc(50%); /* Shifts content inside the mega menu */
   box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+  max-width: var(--page-width);
+  margin: 0 auto;
+  padding: 1rem;
+  box-sizing: border-box;
 }
 
-/* Hovering over the parent reveals the mega menu */
+/* Show menu on hover of the parent */
 .mega-menu-parent:hover .mega-menu__container {
   display: block;
 }
 
-/* Inner layout: confines content to a max width, center it, and add padding */
 .mega-menu__inner {
   display: flex;
   flex-direction: row;
   justify-content: flex-start;
   width: 100%;
-  max-width: var(--page-width, 1200px);
-  padding: 0 1rem;
+  max-width: var(--page-width);
   margin: 0 auto;
+  padding: 1rem;
+  box-sizing: border-box;
 }
 
-/* Left column: holds the first level of submenu items */
 .mega-menu__left-column {
   list-style: none;
   margin: 0;
@@ -49,15 +156,14 @@
   width: 20%;
 }
 
-/* Individual left column items */
 .mega-menu__left-item {
-  position: relative;
   margin-bottom: 0.5rem;
+  cursor: pointer;
 }
 
 .mega-menu__icon {
-  width: 30px;
-  height: 30px;
+  width: 75px;
+  height: 75px;
   object-fit: cover;
   margin-right: 0.5rem;
   vertical-align: middle;
@@ -66,26 +172,25 @@
 .mega-menu__link--level-2 {
   display: flex;
   align-items: center;
+  text-decoration: none;
+  color: var(--color-text);
 }
 
-/* Right column: initially hidden. Shows upon hovering left column items */
 .mega-menu__right-column {
-  position: absolute;
-  top: 0;
-  left: 100%;
-  width: 50vw;
-  padding: 1rem;
-  display: none;
-  background-color: #fff;
-  box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+  flex: 1;
+  padding: 0 1rem;
+  box-sizing: border-box;
+  position: relative;
 }
 
-/* Hovering a left item shows the right column */
-.mega-menu__left-item:hover .mega-menu__right-column {
-  display: block;
+.mega-menu__right-content {
+  display: none; /* hidden by default */
 }
 
-/* Mega menu grid for sub-children: 2 columns by up to 4 rows */
+.mega-menu__right-content.active {
+  display: block; /* show active content */
+}
+
 .mega-menu__grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
@@ -103,14 +208,14 @@
   width: 100%;
   height: auto;
   object-fit: cover;
-  aspect-ratio: 1/1; /* Modern browsers only. For older browsers, use a fixed height or ratio trick */
+  aspect-ratio: 1/1;
 }
 
 .mega-menu__grid-text {
   display: block;
   margin-top: 0.5rem;
   font-size: 0.9rem;
-  color: var(--color-text, #333);
+  color: var(--color-text);
 }
 
 /* Responsive Adjustments for Smaller Screens */
@@ -121,116 +226,42 @@
 
   .mega-menu__left-column,
   .mega-menu__right-column {
-    position: static;
     width: 100%;
   }
 
   .mega-menu__right-column {
-    display: block;
     margin-top: 1rem;
-    left: 0; /* Align with mobile screens more naturally */
-    width: 100%; /* Full width in mobile */
-    box-shadow: none; /* Optional: remove shadow on mobile */
-  }
-
-  .mega-menu__container {
-    margin-left: 0;
-    padding-left: 0;
   }
 }
-
 </style>
 
-<nav class="header__inline-menu">
-  <ul class="list-menu list-menu--inline" role="list">
-    {%- for link in section.settings.menu.links -%}
-      {%- if link.links != blank -%}
-        <li class="mega-menu-parent">
-          <a 
-            href="{{ link.url }}" 
-            class="header__menu-item list-menu__item link focus-inset mega-menu-toggle"
-          >
-            <span
-              {%- if link.child_active -%}
-                class="header__active-menu-item"
-              {%- endif -%}
-            >{{- link.title | escape -}}</span>
-          </a>
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const leftItems = document.querySelectorAll('.mega-menu__left-item');
+  const rightContents = document.querySelectorAll('.mega-menu__right-content');
 
-          <!-- Mega Menu Container -->
-          <div class="mega-menu__container">
-            <div class="mega-menu__inner">
-              <!-- Left column: Direct children -->
-              <ul class="mega-menu__left-column" role="list">
-                {%- for childlink in link.links -%}
-                  <li class="mega-menu__left-item">
-                    <a 
-                      href="{{ childlink.url }}" 
-                      class="mega-menu__link mega-menu__link--level-2 link"
-                    >
-                      {%- if childlink.object and childlink.object.image -%}
-                        <img 
-                          src="{{ childlink.object.image.src | img_url: '50x50' }}" 
-                          alt="{{ childlink.title | escape }}" 
-                          class="mega-menu__icon"
-                        >
-                      {%- else -%}
-                        <!-- Optional placeholder icon -->
-                      {%- endif -%}
-                      {{ childlink.title | escape }}
-                    </a>
-                    
-                    {%- if childlink.links != blank -%}
-                      <!-- Right column: grandchildren (shown on hover) -->
-                      <div class="mega-menu__right-column">
-                        <ul class="mega-menu__grid" role="list">
-                          {%- for grandchildlink in childlink.links limit:8 -%}
-                            <li class="mega-menu__grid-item">
-                              <a href="{{ grandchildlink.url }}" class="mega-menu__link link">
-                                {%- if grandchildlink.object and grandchildlink.object.image -%}
-                                  <img 
-                                    src="{{ grandchildlink.object.image.src | img_url: '200x200' }}" 
-                                    alt="{{ grandchildlink.title | escape }}" 
-                                    class="mega-menu__grid-image"
-                                  >
-                                {%- else -%}
-                                  <!-- optional placeholder image -->
-                                  <div class="mega-menu__grid-placeholder"></div>
-                                {%- endif -%}
-                                <span class="mega-menu__grid-text">{{ grandchildlink.title | escape }}</span>
-                              </a>
-                            </li>
-                          {%- endfor -%}
-                        </ul>
-                      </div>
-                    {%- endif -%}
-                  </li>
-                {%- endfor -%}
-              </ul>
-            </div>
-          </div>
-        </li>
-      {%- else -%}
-        <!-- Regular top-level menu item without children -->
-        <li>
-          <a
-            id="HeaderMenu-{{ link.handle }}"
-            href="{{ link.url }}"
-            class="header__menu-item list-menu__item link link--text focus-inset"
-            {% if link.current %}
-              aria-current="page"
-            {% endif %}
-          >
-            <span
-              {%- if link.current %}
-                class="header__active-menu-item"
-              {% endif %}
-            >
-              {{- link.title | escape -}}
-            </span>
-          </a>
-        </li>
-      {%- endif -%}
-    {%- endfor -%}
-  </ul>
-</nav>
+  leftItems.forEach(item => {
+    item.addEventListener('mouseenter', () => {
+      const target = item.getAttribute('data-target');
+      
+      // Hide all right content
+      rightContents.forEach(content => {
+        content.classList.remove('active');
+      });
+
+      // Show the matched content
+      const activeContent = document.querySelector(`.mega-menu__right-content[data-content="${target}"]`);
+      if (activeContent) {
+        activeContent.classList.add('active');
+      }
+    });
+  });
+
+  // Optional: On mouse leave of parent, hide the menu
+  document.querySelectorAll('.mega-menu-parent').forEach(parent => {
+    parent.addEventListener('mouseleave', () => {
+      rightContents.forEach(content => content.classList.remove('active'));
+    });
+  });
+});
+</script>
