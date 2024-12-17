@@ -28,30 +28,17 @@
 }
 </style>
 
-{% schema %}
-{
-  "name": "Product Specifications",
-  "settings": [],
-  "presets": [
-    {
-      "name": "Product Specifications Table",
-      "category": "Product",
-      "settings": []
-    }
-  ]
-}
-{% endschema %}
-
-
 {% if product.metafields.custom.specifications %}
+  {% assign specifications = product.metafields.custom.specifications.value %}
+  
   <div class="product-specifications">
     <h3>Product Specifications</h3>
     <table>
       <tbody>
-        {% for spec in product.metafields.custom.specifications.value %}
+        {% for spec in specifications %}
           <tr>
-            <td>{{ spec.key | capitalize }}</td>
-            <td>{{ spec.value }}</td>
+            <td>{{ spec[0] | capitalize }}</td>
+            <td>{{ spec[1] }}</td>
           </tr>
         {% endfor %}
       </tbody>

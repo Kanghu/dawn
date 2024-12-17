@@ -1,0 +1,63 @@
+{% comment %}
+Display category metafields for the current product
+{% endcomment %}
+
+<p>Product Category: {{ product.category.metafields }}</p>
+<p>Product Category: {{ product.category}}</p>
+{% if product.category != blank and product.category.metafields %}
+  <div class="category-metafields-table">
+    <h3>Category Specifications</h3>
+    <table>
+      <thead>
+        <tr>
+          <th>Definition</th>
+          <th>Value</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for namespace in product.category.metafields %}
+          {% for metafield in product.category.metafields[namespace] %}
+            {% if metafield.value != blank %}
+              <tr>
+                <td>{{ metafield.key | replace: '_', ' ' | capitalize }}</td>
+                <td>
+                  {% if metafield.value.size > 1 %}
+                    {{ metafield.value | join: ', ' }}
+                  {% else %}
+                    {{ metafield.value }}
+                  {% endif %}
+                </td>
+              </tr>
+            {% endif %}
+          {% endfor %}
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+{% else %}
+  <p>No category metafields available for this product.</p>
+{% endif %}
+
+
+{% schema %}
+{
+  "name": "Category Specifications",
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Section Heading",
+      "default": "Category Specifications"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Category Specifications Table",
+      "category": "Product",
+      "settings": {
+        "heading": "Category Specifications"
+      }
+    }
+  ]
+}
+{% endschema %}
