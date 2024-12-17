@@ -1,0 +1,60 @@
+<style>
+.product-specifications {
+    margin-top: 20px;
+}
+
+.product-specifications h3 {
+    font-size: 20px;
+    margin-bottom: 10px;
+}
+
+.product-specifications table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.product-specifications table td {
+    padding: 8px 12px;
+    border: 1px solid #ddd;
+}
+
+.product-specifications table tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+.product-specifications table td:first-child {
+    font-weight: bold;
+    color: #333;
+}
+</style>
+
+{% schema %}
+{
+  "name": "Product Specifications",
+  "settings": [],
+  "presets": [
+    {
+      "name": "Product Specifications Table",
+      "category": "Product",
+      "settings": []
+    }
+  ]
+}
+{% endschema %}
+
+
+{% if product.metafields.custom.specifications %}
+  <div class="product-specifications">
+    <h3>Product Specifications</h3>
+    <table>
+      <tbody>
+        {% for spec in product.metafields.custom.specifications.value %}
+          <tr>
+            <td>{{ spec.key | capitalize }}</td>
+            <td>{{ spec.value }}</td>
+          </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+{% endif %}
