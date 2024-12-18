@@ -57,60 +57,202 @@
         class="card__inner {% if settings.card_style == 'standard' %}color-{{ settings.card_color_scheme }} gradient{% endif %}{% if card_product.featured_media or settings.card_style == 'standard' %} ratio{% endif %}"
         style="--ratio-percent: {{ 1 | divided_by: ratio | times: 100 }}%;"
       >
-        <modal-opener data-modal="#QuickAdd-{{ card_product.id }}">
+       <style>
+.quick-add__submit-text-cust, .quick-add-cart-button-cust {
+position: absolute;
+bottom: -5%;
+z-index: 20 !important;
+visibility: hidden;
+min-width: 45%;
+display: flex;
+justify-content: center;
+align-items: center;
+text-align: center;
+background: rgba(0, 0, 0, 1);
+height: 34px;
+border-radius: 17px;
+border: none;
+color: #fff;
+font-weight: 700;
+padding: 0 10px;
+cursor: pointer;
+opacity: 1;
+transition: background 0.3s ease-in-out;
+}
+
+.quick-add__submit-text-cust:hover, .quick-add-cart-button-cust:hover {
+opacity: 0.8;
+transform: translate3d(0, -2px, 0);
+}
+
+.quick-add__submit-text-cust span, .quick-add-cart-button-cust span {
+flex: 1;
+text-align: center;
+font-size: 12px;
+}
+
+@media (max-width: 767px) {
+.quick-add__submit-text-cust, .quick-add-cart-button-cust {
+visibility: visible;
+justify-content: center;
+border-radius: 50%;
+min-width: 36px;
+height: 36px;
+width: 36px;
+opacity: 0.8;
+}
+
+.quick-add__submit-text-cust span, .quick-add-cart-button-cust span {
+display: none;
+}
+
+.quick-add__submit-text-cust svg, .quick-add-cart-button-cust svg {
+margin: auto;
+}
+}
+
+.quick-add__submit-text-cust {
+left: 7px;
+}
+
+.quick-add-cart-button-cust {
+right: 7px;
+}
+
+.card-wrapper:hover .quick-add__submit-text-cust, .card-wrapper:hover .quick-add-cart-button-cust {
+visibility: visible;
+}
+
+#svg {
+margin: auto;
+}
+
+#lid-cust {
+animation: none;
+}
+
+#eye-cust {
+animation: none;
+}
+
+.quick-add__submit-text-cust:hover #lid-cust {
+animation: blink 0.4s 2;
+}
+
+.quick-add__submit-text-cust:hover #eye-cust {
+animation: squeeze 0.4s 2;
+}
+
+@keyframes blink {
+60% {
+transform: none;
+animation-timing-function: ease-in;
+}
+
+73% {
+transform: translateY(15px) scaleY(0);
+}
+
+100% {
+animation-timing-function: ease-out;
+}
+}
+
+@keyframes squeeze {
+60% {
+transform: none;
+animation-timing-function: ease-in;
+}
+
+73% {
+transform: translateY(3px) scaleY(0.8);
+}
+
+100% {
+animation-timing-function: ease-out;
+}
+}
+
+line.ver2-cust, line.hor2-cust {
+-webkit-transform-origin: 50px 50px;
+-moz-transform-origin: 50px 50px;
+-o-transform-origin: 50px 50px;
+-ms-transform-origin: 50px 50px;
+transform-origin: 50px 50px;
+-webkit-transform: rotate(0deg);
+-moz-transform: rotate(0deg);
+-o-transform: rotate(0deg);
+-ms-transform: rotate(0deg);
+transform: rotate(0deg);
+-webkit-transition: all 700ms ease;
+-moz-transition: all 700ms ease;
+-ms-transition: all 700ms ease;
+-o-transition: all 700ms ease;
+transition: all 700ms ease;
+}
+
+.quick-add-cart-button-cust:hover line.ver2-cust {
+-webkit-transform: rotate(360deg);
+-moz-transform: rotate(360deg);
+-o-transform: rotate(360deg);
+-ms-transform: rotate(360deg);
+transform: rotate(360deg);
+stroke: #fff;
+}
+
+.quick-add-cart-button-cust:hover line.hor2-cust {
+-webkit-transform: rotate(360deg);
+-moz-transform: rotate(360deg);
+-o-transform: rotate(360deg);
+-ms-transform: rotate(360deg);
+transform: rotate(360deg);
+stroke: #fff;
+}
+
+/* Hide if card-wrapper width is less than 200px */
+@media (max-height: 200px) {
+.quick-add__submit-text-cust,
+.quick-add-cart-button-cust {
+display: none;
+}
+}
+</style>
+
+
+<modal-opener data-modal="#QuickAdd-{{ card_product.id }}">
 <button
 id="{{ product_form_id }}-submit"
 type="submit"
 name="add"
-class="quick-add__submit-image"
+class="quick-add__submit-text-cust"
 aria-haspopup="dialog"
 aria-labelledby="{{ product_form_id }}-submit title-{{ section_id }}-{{ card_product.id }}"
 data-product-url="{{ card_product.url }}"
->{%- render 'loading-spinner' -%}
-<img
-src="https://cdn.shopify.com/s/files/1/0643/7670/1168/files/qw.png?v=1699974610"
-alt="{{ 'products.product.add_to_cart' | t }}"
 >
-
+<svg id="quick-add__submit-text-cust" width="20" height="20" viewBox="0 0 30 30" version="1.1" xmlns:xlink="http://www.w3.org/1999/xlink"
+xmlns="http://www.w3.org/2000/svg">
+<defs>
+<path d="M0,15.089434 C0,16.3335929 5.13666091,24.1788679 14.9348958,24.1788679 C24.7325019,24.1788679 29.8697917,16.3335929 29.8697917,15.089434 C29.8697917,13.8456167 24.7325019,6 14.9348958,6 C5.13666091,6 0,13.8456167 0,15.089434 Z" id="outline"></path>
+<mask id="mask">
+<rect width="100%" height="100%" fill="white"></rect>
+<use xlink:href="#outline" id="lid-cust" fill="black"/>
+</mask>
+</defs>
+<g id="eye-cust">
+<path d="M0,15.089434 C0,16.3335929 5.13666091,24.1788679 14.9348958,24.1788679 C24.7325019,24.1788679 29.8697917,16.3335929 29.8697917,15.089434
+C29.8697917,13.8456167 24.7325019,6 14.9348958,6 C5.13666091,6 0,13.8456167 0,15.089434 Z M14.9348958,22.081464 C11.2690863,22.081464 8.29688487,18.9510766
+8.29688487,15.089434 C8.29688487,11.2277914 11.2690863,8.09740397 14.9348958,8.09740397 C18.6007053,8.09740397 21.5725924,11.2277914 21.5725924,15.089434
+C21.5725924,18.9510766 18.6007053,22.081464 14.9348958,22.081464 L14.9348958,22.081464 Z M18.2535869,15.089434 C18.2535869,17.0200844 16.7673289,18.5857907
+14.9348958,18.5857907 C13.1018339,18.5857907 11.6162048,17.0200844 11.6162048,15.089434 C11.6162048,13.1587835 13.1018339,11.593419 14.9348958,11.593419
+C15.9253152,11.593419 14.3271242,14.3639878 14.9348958,15.089434 C15.451486,15.7055336 18.2535869,14.2027016 18.2535869,15.089434 L18.2535869,15.089434 Z" fill="#FFFFFF"></path>
+<use xlink:href="#outline" mask="url(#mask)" fill="#FFFFFF"/>
+</g>
+</svg>
+<span>Quick View</span>
+{%- render 'loading-spinner' -%}
 </button>
 </modal-opener>
-<style>
-.quick-add__submit-image {
-position: absolute;
-bottom: -10%;
-left: 50%;
-transform: translate(-50%, -50%);
-z-index: 20 !important;
-display: block;
-background: none;
-height: 40px; /* Adjust the size as needed */
-text-align: center; /* Center the icon */
-line-height: 40px; /* Center the icon */
-border-radius: 100px;
-border: none;
-visibility: hidden;
-}
 
-.quick-add__submit-image img {
-width: 60%;
-height: auto;
-opacity: 0.7;
-transition: opacity 0.3s ease-in-out;
-border-radius: 100px;
-box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
-}
-
-.quick-add__submit-image:hover img {
-opacity: 1; /* Adjust the opacity as needed */
-cursor: pointer;
-box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
-border-radius: 100px;
-}
-
-.card-wrapper:hover .quick-add__submit-image {
-visibility: visible;
-}
-</style>
 <quick-add-modal id="QuickAdd-{{ card_product.id }}" class="quick-add-modal">
 <div
 role="dialog"
@@ -130,7 +272,56 @@ aria-label="{{ 'accessibility.close' | t }}"
 <div id="QuickAddInfo-{{ card_product.id }}" class="quick-add-modal__content-info"></div>
 </div>
 </quick-add-modal>
-        
+
+<product-form data-section-id="{{ section.id }}">
+{%- form 'product',
+card_product,
+id: product_form_id,
+class: 'form',
+novalidate: 'novalidate',
+data-type: 'add-to-cart-form'
+-%}
+<input
+type="hidden"
+name="id"
+value="{{ card_product.selected_or_first_available_variant.id }}"
+class="product-variant-id"
+{% if card_product.selected_or_first_available_variant.available == false %}
+disabled
+{% endif %}
+>
+<button
+id="{{ product_form_id }}-submit"
+type="submit"
+name="add"
+class="quick-add-cart-button-cust"
+aria-haspopup="dialog"
+aria-labelledby="{{ product_form_id }}-submit title-{{ section_id }}-{{ card_product.id }}"
+aria-live="polite"
+data-sold-out-message="true"
+{% if card_product.selected_or_first_available_variant.available == false %}
+disabled
+{% endif %}
+>
+<svg version="1.1" id="quick-add-cart-button-cust" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+width="20px" height="20px" viewBox="0 0 100 100" enable-background="new 0 0 100 100" xml:space="preserve">
+<line class="ver2-cust" fill="none" stroke="#FFFFFF" stroke-width="12" stroke-miterlimit="10" x1="50" y1="20" x2="50" y2="80"/>
+<line class="hor2-cust" fill="none" stroke="#FFFFFF" stroke-width="12" stroke-miterlimit="10" x1="80" y1="50" x2="20" y2="50"/>
+</svg>
+<span>
+{%- if card_product.selected_or_first_available_variant.available -%}
+Add to Cart
+{%- else -%}
+Sold Out
+{%- endif -%}
+</span>
+<span class="sold-out-message hidden">
+{{ 'products.product.sold_out' | t }}
+</span>
+{%- render 'loading-spinner' -%}
+</button>
+{%- endform -%}
+</product-form>
         {%- if card_product.featured_media -%}
           <div class="card__media{% if image_shape and image_shape != 'default' %} shape--{{ image_shape }} color-{{ settings.card_color_scheme }} gradient{% endif %}">
             <div class="media media--transparent media--hover-effect">
