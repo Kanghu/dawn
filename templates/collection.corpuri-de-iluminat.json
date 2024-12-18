@@ -1,0 +1,108 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "collection_list_CdQzrB": {
+      "type": "collection-list",
+      "blocks": {
+        "featured_collection_RMR9aN": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "oglinzi-baie-basic"
+          }
+        },
+        "featured_collection_BrU3qN": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "oglinzi-led-dezaburire"
+          }
+        },
+        "featured_collection_qdfCqr": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "oglinzi-led-premium"
+          }
+        }
+      },
+      "block_order": [
+        "featured_collection_RMR9aN",
+        "featured_collection_BrU3qN",
+        "featured_collection_qdfCqr"
+      ],
+      "settings": {
+        "title": "",
+        "heading_size": "h1",
+        "image_ratio": "portrait",
+        "columns_desktop": 3,
+        "color_scheme": "",
+        "show_view_all": false,
+        "columns_mobile": "1",
+        "swipe_on_mobile": false,
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    },
+    "custom_liquid_rwP4q4": {
+      "type": "custom-liquid",
+      "settings": {
+        "custom_liquid": "<div class=\"two-columns\">\n  <div class=\"column video-column\">\n    <video autoplay muted loop playsinline>\n      <source src=\"https://cdn.shopify.com/videos/c/o/v/20a1c379a4b14b8aa5777d21733b299c.mp4\" type=\"video/mp4\">\n      Your browser does not support the video tag.\n    </video>\n  </div>\n  <div class=\"column text-column\">\n    <h2>De ce Oglinzi LED Marcello?</h2>\n    <ul>\n      <li>Rama calitativă</li>\n      <li>Senzor de mișcare</li>\n      <li>3 culori de lumină</li>\n      <li>Procesare cu argint fără cupru</li>\n    </ul>\n  </div>\n</div>\n\n<style>\n.two-columns {\n  display: flex;\n  gap: 20px; /* Spațiu între coloane */\n  align-items: center;\n  justify-content: center;\n  padding: 0 60px; /* Padding doar pe stânga și dreapta */\n  max-width: 1200px; /* Lățimea maximă a secțiunii */\n  margin: 0 auto; /* Centrare orizontală */\n  background-color: #ffffff; /* O culoare deschisă de fundal (opțional) */\n  border-radius: 10px; /* Colțuri rotunjite */\n}\n\n\n.column {\n  flex: 1; /* Coloanele împart lățimea */\n}\n\n.video-column video {\n  width: 100%;\n  height: auto;\n  border-radius: 10px; /* Optional: rotunjire colțuri */\n}\n\n.text-column {\n  font-family: Arial, sans-serif;\n  font-size: 16px;\n  line-height: 1.5;\n  color: #333;\n}\n\n.text-column h2 {\n  margin-bottom: 10px;\n}\n\n.text-column ul {\n  list-style-type: none;\n  padding: 0;\n}\n\n.text-column li {\n  margin-bottom: 5px;\n  position: relative;\n  padding-left: 20px;\n}\n\n.text-column li::before {\n  content: \"•\";\n  position: absolute;\n  left: 0;\n  color: #000;\n  font-size: 18px;\n}\n</style>",
+        "color_scheme": "",
+        "padding_top": 40,
+        "padding_bottom": 52
+      }
+    },
+    "custom_liquid_rRUmGz": {
+      "type": "custom-liquid",
+      "settings": {
+        "custom_liquid": "<div style=\"width: 100%; margin: 0 auto; text-align: center;\">\n  <img \n    src=\"https://cdn.shopify.com/s/files/1/0782/5175/3739/files/banner-oglinzi-premium-1711376207.png?v=1734052592\" \n    alt=\"Banner Oglinzi Premium\" \n    style=\"width: 100%; height: auto; display: block;\">\n</div>",
+        "color_scheme": "",
+        "padding_top": 0,
+        "padding_bottom": 0
+      }
+    },
+    "banner": {
+      "type": "main-collection-banner",
+      "disabled": true,
+      "settings": {
+        "show_collection_description": true,
+        "show_collection_image": false,
+        "color_scheme": "scheme-1"
+      }
+    },
+    "product-grid": {
+      "type": "main-collection-product-grid",
+      "custom_css": [],
+      "settings": {
+        "products_per_page": 16,
+        "columns_desktop": 4,
+        "color_scheme": "",
+        "image_ratio": "square",
+        "image_shape": "default",
+        "show_secondary_image": false,
+        "show_vendor": false,
+        "show_rating": false,
+        "quick_add": "standard",
+        "enable_filtering": true,
+        "filter_type": "vertical",
+        "enable_sorting": true,
+        "columns_mobile": "2",
+        "padding_top": 60,
+        "padding_bottom": 0
+      }
+    }
+  },
+  "order": [
+    "collection_list_CdQzrB",
+    "custom_liquid_rwP4q4",
+    "custom_liquid_rRUmGz",
+    "banner",
+    "product-grid"
+  ]
+}
