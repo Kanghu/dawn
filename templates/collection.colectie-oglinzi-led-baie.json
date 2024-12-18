@@ -9,6 +9,55 @@
  */
 {
   "sections": {
+    "collection_list_CdQzrB": {
+      "type": "collection-list",
+      "blocks": {
+        "featured_collection_RMR9aN": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "oglinzi-baie-basic"
+          }
+        },
+        "featured_collection_BrU3qN": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "oglinzi-led-dezaburire"
+          }
+        },
+        "featured_collection_qdfCqr": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "oglinzi-led-premium"
+          }
+        }
+      },
+      "block_order": [
+        "featured_collection_RMR9aN",
+        "featured_collection_BrU3qN",
+        "featured_collection_qdfCqr"
+      ],
+      "settings": {
+        "title": "",
+        "heading_size": "h1",
+        "image_ratio": "portrait",
+        "columns_desktop": 3,
+        "color_scheme": "",
+        "show_view_all": false,
+        "columns_mobile": "1",
+        "swipe_on_mobile": false,
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    },
+    "custom_liquid_rRUmGz": {
+      "type": "custom-liquid",
+      "settings": {
+        "custom_liquid": "<div style=\"width: 100%; margin: 0 auto; text-align: center;\">\n  <img \n    src=\"https://cdn.shopify.com/s/files/1/0782/5175/3739/files/banner-oglinzi-premium-1711376207.png?v=1734052592\" \n    alt=\"Banner Oglinzi Premium\" \n    style=\"width: 100%; height: auto; display: block;\">\n</div>",
+        "color_scheme": "",
+        "padding_top": 0,
+        "padding_bottom": 0
+      }
+    },
     "banner": {
       "type": "main-collection-banner",
       "settings": {
@@ -36,50 +85,11 @@
         "padding_top": 36,
         "padding_bottom": 36
       }
-    },
-    "collection_list_CdQzrB": {
-      "type": "collection-list",
-      "blocks": {
-        "featured_collection_RMR9aN": {
-          "type": "featured_collection",
-          "settings": {
-            "collection": ""
-          }
-        },
-        "featured_collection_BrU3qN": {
-          "type": "featured_collection",
-          "settings": {
-            "collection": ""
-          }
-        },
-        "featured_collection_qdfCqr": {
-          "type": "featured_collection",
-          "settings": {
-            "collection": ""
-          }
-        }
-      },
-      "block_order": [
-        "featured_collection_RMR9aN",
-        "featured_collection_BrU3qN",
-        "featured_collection_qdfCqr"
-      ],
-      "settings": {
-        "title": "Collections",
-        "heading_size": "h1",
-        "image_ratio": "square",
-        "columns_desktop": 3,
-        "color_scheme": "",
-        "show_view_all": false,
-        "columns_mobile": "1",
-        "swipe_on_mobile": false,
-        "padding_top": 36,
-        "padding_bottom": 36
-      }
     }
   },
   "order": [
     "collection_list_CdQzrB",
+    "custom_liquid_rRUmGz",
     "banner",
     "product-grid"
   ]
