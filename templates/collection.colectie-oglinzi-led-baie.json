@@ -61,7 +61,7 @@
     "custom_liquid_rRUmGz": {
       "type": "custom-liquid",
       "settings": {
-        "custom_liquid": "<div style=\"width: 100%; margin: 0 auto; text-align: center;\">\n  <img \n    src=\"https://cdn.shopify.com/s/files/1/0782/5175/3739/files/banner-oglinzi-premium-1711376207.png?v=1734052592\" \n    alt=\"Banner Oglinzi Premium\" \n    style=\"width: 100%; height: auto; display: block;\">\n</div>",
+        "custom_liquid": "<div class=\"banner-container\" style=\"width: 100%; margin: 0 auto; text-align: center;\">\n  <img \n    src=\"https://cdn.shopify.com/s/files/1/0782/5175/3739/files/banner-oglinzi-premium-1711376207.png?v=1734052592\" \n    alt=\"Banner Oglinzi Premium\" \n    style=\"width: 100%; height: auto; display: block;\">\n</div>\n\n<style>\n/* Ascunde banner-ul pe mobil */\n@media (max-width: 768px) {\n  .banner-container {\n    display: none; /* Ascunde banner-ul */\n  }\n}\n</style>",
         "color_scheme": "",
         "padding_top": 0,
         "padding_bottom": 0
