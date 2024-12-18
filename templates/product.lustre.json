@@ -157,6 +157,21 @@
         "padding_bottom": 12
       }
     },
+    "aless_long_description_rW4bpM": {
+      "type": "aless-long-description",
+      "settings": {
+        "title": "Descriere Lustra LED cu Telecomanda Betty 43W 4 Cercuri Lumina Rece/Calda/Neutra Dimabila Alb",
+        "main_banner": "shopify://shop_images/banner_lumina_rece_calda_neutra_lustra_led.webp",
+        "introduction_text": "<p>Activitățile de zi cu zi și starea generală sunt influențate de ce fel de sisteme de iluminat utilizăm și de calitatea acestora. Lustra cu telecomandă Betty este soluția ideală pentru nevoile dumneavoastră, oferind un tavan luminat, care creează o atmosferă feerică în orice moment al zilei.</p>",
+        "warranty_image": "shopify://shop_images/banner_general_lustre_led.webp",
+        "warranty_text": "<p>Lustra LED Betty oferă o durată de viață impresionantă, de până la 25.000 de ore, și este construită din materiale rezistente, precum metalul și acrilul. Aceasta dispune de 4 surse de lumină LED conectate la o tensiune de 220V, care oferă un flux luminos de 4800lm și o putere de 60W, asigurând o eficiență energetică superioară.</p>",
+        "video_1": "",
+        "video_2": "",
+        "lighting_modes": "<p>Pe lângă aspectul elegant și tehnologia LED, lustra Betty se remarcă prin eficiența de lungă durată. Cele 4 surse LED asigură o iluminare uniformă, care poate varia între 6000k (lumina caldă), 4000k (lumina neutră) și 3000k (lumina rece), în funcție de preferințele dumneavoastră.</p>",
+        "remote_control_text": "<p>Controlul intensității luminii este incredibil de simplu cu ajutorul telecomenzii. Dintr-o singură apăsare de buton, puteți regla lumina pentru a se potrivi perfect cu starea și activitatea dumneavoastră, menținând în același timp confortul ocular.</p>",
+        "night_mode_text": "<p>Lustra LED Betty dispune și de un mod de iluminare nocturnă, perfect pentru a crea o atmosferă plăcută și confortabilă în timpul nopții. Cu acest mod, puteți economisi energie și să oferiți un ambient discret și relaxant pentru un somn odihnitor sau o lumină de veghe în timpul serilor liniștite.</p>"
+      }
+    },
     "image-with-text": {
       "type": "image-with-text",
       "blocks": {
@@ -269,13 +284,93 @@
       "settings": {
         "include_margins": true
       }
+    },
+    "collapsible_content_mDwNh8": {
+      "type": "collapsible-content",
+      "blocks": {
+        "collapsible_row_wVgwjb": {
+          "type": "collapsible_row",
+          "settings": {
+            "heading": "Collapsible row",
+            "icon": "check_mark",
+            "row_content": "",
+            "page": ""
+          }
+        },
+        "collapsible_row_mVwLTb": {
+          "type": "collapsible_row",
+          "settings": {
+            "heading": "Collapsible row",
+            "icon": "check_mark",
+            "row_content": "",
+            "page": ""
+          }
+        },
+        "collapsible_row_QhDt7x": {
+          "type": "collapsible_row",
+          "settings": {
+            "heading": "Collapsible row",
+            "icon": "check_mark",
+            "row_content": "",
+            "page": ""
+          }
+        },
+        "collapsible_row_G3UTC9": {
+          "type": "collapsible_row",
+          "settings": {
+            "heading": "Collapsible row",
+            "icon": "check_mark",
+            "row_content": "",
+            "page": ""
+          }
+        }
+      },
+      "block_order": [
+        "collapsible_row_wVgwjb",
+        "collapsible_row_mVwLTb",
+        "collapsible_row_QhDt7x",
+        "collapsible_row_G3UTC9"
+      ],
+      "settings": {
+        "caption": "",
+        "heading": "Collapsible content",
+        "heading_size": "h1",
+        "heading_alignment": "center",
+        "layout": "none",
+        "color_scheme": "",
+        "container_color_scheme": "",
+        "open_first_collapsible_row": false,
+        "image_ratio": "adapt",
+        "desktop_layout": "image_second",
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    },
+    "image_banner_ingm3p": {
+      "type": "image-banner",
+      "settings": {
+        "image": "shopify://shop_images/banner_general_lustre_led.webp",
+        "image_overlay_opacity": 0,
+        "image_height": "adapt",
+        "desktop_content_position": "middle-center",
+        "show_text_box": true,
+        "desktop_content_alignment": "center",
+        "color_scheme": "",
+        "image_behavior": "none",
+        "mobile_content_alignment": "center",
+        "stack_images_on_mobile": true,
+        "show_text_below": true
+      }
     }
   },
   "order": [
     "main",
+    "aless_long_description_rW4bpM",
     "image-with-text",
     "multicolumn",
     "related-products",
-    "17344485676cd9137d"
+    "17344485676cd9137d",
+    "collapsible_content_mDwNh8",
+    "image_banner_ingm3p"
   ]
 }

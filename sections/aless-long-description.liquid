@@ -1,0 +1,151 @@
+{% schema %}
+{
+  "name": "Aless Long Description",
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Main Title",
+      "default": "Descriere Lustra LED cu Telecomanda Betty 43W 4 Cercuri Lumina Rece/Calda/Neutra Dimabila Alb"
+    },
+    {
+      "type": "image_picker",
+      "id": "main_banner",
+      "label": "Main Banner Image"
+    },
+    {
+      "type": "richtext",
+      "id": "introduction_text",
+      "label": "Introduction Text",
+      "default": "<p>Activitățile de zi cu zi și starea generală sunt influențate de ce fel de sisteme de iluminat utilizăm și de calitatea acestora. Lustra cu telecomandă Betty este soluția ideală pentru nevoile dumneavoastră, oferind un tavan luminat, care creează o atmosferă feerică în orice moment al zilei.</p>"
+    },
+    {
+      "type": "image_picker",
+      "id": "warranty_image",
+      "label": "Warranty Image"
+    },
+    {
+      "type": "richtext",
+      "id": "warranty_text",
+      "label": "Warranty Description",
+      "default": "<p>Lustra LED Betty oferă o durată de viață impresionantă, de până la 25.000 de ore, și este construită din materiale rezistente, precum metalul și acrilul. Aceasta dispune de 4 surse de lumină LED conectate la o tensiune de 220V, care oferă un flux luminos de 4800lm și o putere de 60W, asigurând o eficiență energetică superioară.</p>"
+    },
+    {
+      "type": "video_url",
+      "id": "video_1",
+      "label": "First Video URL",
+      "accept": ["youtube"]
+    },
+    {
+      "type": "video_url",
+      "id": "video_2",
+      "label": "Second Video URL",
+      "accept": ["youtube"]
+    },
+    {
+      "type": "richtext",
+      "id": "lighting_modes",
+      "label": "Lighting Modes Description",
+      "default": "<p>Pe lângă aspectul elegant și tehnologia LED, lustra Betty se remarcă prin eficiența de lungă durată. Cele 4 surse LED asigură o iluminare uniformă, care poate varia între 6000k (lumina caldă), 4000k (lumina neutră) și 3000k (lumina rece), în funcție de preferințele dumneavoastră.</p>"
+    },
+    {
+      "type": "image_picker",
+      "id": "remote_control_image",
+      "label": "Remote Control Image"
+    },
+    {
+      "type": "richtext",
+      "id": "remote_control_text",
+      "label": "Remote Control Description",
+      "default": "<p>Controlul intensității luminii este incredibil de simplu cu ajutorul telecomenzii. Dintr-o singură apăsare de buton, puteți regla lumina pentru a se potrivi perfect cu starea și activitatea dumneavoastră, menținând în același timp confortul ocular.</p>"
+    },
+    {
+      "type": "image_picker",
+      "id": "night_mode_image",
+      "label": "Night Mode Image"
+    },
+    {
+      "type": "richtext",
+      "id": "night_mode_text",
+      "label": "Night Mode Description",
+      "default": "<p>Lustra LED Betty dispune și de un mod de iluminare nocturnă, perfect pentru a crea o atmosferă plăcută și confortabilă în timpul nopții. Cu acest mod, puteți economisi energie și să oferiți un ambient discret și relaxant pentru un somn odihnitor sau o lumină de veghe în timpul serilor liniștite.</p>"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Lustra LED Presentation",
+      "category": "Product"
+    }
+  ]
+}
+{% endschema %}
+
+<div class="lustra-led-section" style="padding: 2rem;">
+  <h2>{{ section.settings.title }}</h2>
+  
+  <!-- Main Banner -->
+    {% if section.settings.main_banner %}
+    <div class="containerimg-mobile">
+        {{ section.settings.main_banner | image_url: width: 800
+                | image_tag: sizes: sizes, widths: widths, fetchpriority: fetch_priority }}
+    </div>
+    {% else %}
+    <p>No main banner uploaded.</p>
+    {% endif %}
+
+  
+  <!-- Introduction Text -->
+  <div class="paragrafe-text">
+    {{ section.settings.introduction_text }}
+  </div>
+
+  <!-- Warranty Section -->
+  {% if section.settings.warranty_image %}
+    <div class="containerimg-mobile">
+      <img src="{{ section.settings.warranty_image | file_url }}" alt="Warranty Image">
+    </div>
+  {% endif %}
+  <div class="paragrafe-text">
+    {{ section.settings.warranty_text }}
+  </div>
+
+  <!-- Videos -->
+  <h3>Vezi video demonstrativ</h3>
+  <div class="row center w-100">
+    {% if section.settings.video_1 %}
+      <div class="col-12 col-md-6" style="width: 100%; height: auto;">
+        <iframe src="{{ section.settings.video_1 }}" style="width: 100%; height: 315px; border: 0;" title="Video 1"></iframe>
+      </div>
+    {% endif %}
+    {% if section.settings.video_2 %}
+      <div class="col-12 col-md-6" style="width: 100%; height: auto;">
+        <iframe src="{{ section.settings.video_2 }}" style="width: 100%; height: 315px; border: 0;" title="Video 2"></iframe>
+      </div>
+    {% endif %}
+  </div>
+
+  <!-- Lighting Modes -->
+  <div class="paragrafe-text">
+    {{ section.settings.lighting_modes }}
+  </div>
+
+  <!-- Remote Control -->
+  {% if section.settings.remote_control_image %}
+    <div class="containerimg-mobile">
+      <img src="{{ section.settings.remote_control_image | file_url }}" alt="Remote Control Image">
+    </div>
+  {% endif %}
+  <div class="paragrafe-text">
+    {{ section.settings.remote_control_text }}
+  </div>
+
+  <!-- Night Mode -->
+  {% if section.settings.night_mode_image %}
+    <div class="containerimg-mobile">
+      <img src="{{ section.settings.night_mode_image | file_url }}" alt="Night Mode Image">
+    </div>
+  {% endif %}
+  <div class="paragrafe-text">
+    {{ section.settings.night_mode_text }}
+  </div>
+</div>
