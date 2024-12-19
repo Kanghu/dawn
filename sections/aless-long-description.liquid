@@ -80,9 +80,11 @@
 }
 {% endschema %}
 
-<div class="lustra-led-section" style="padding: 2rem;">
+<div class="lustra-led-section page-width" style="padding: 2rem;">
   <h2>{{ section.settings.title }}</h2>
   
+  <div class="collapsible-content">
+      <div class="collapsible-preview">
   <!-- Main Banner -->
     {% if section.settings.main_banner %}
     <div class="containerimg-mobile">
@@ -98,7 +100,9 @@
   <div class="paragrafe-text">
     {{ section.settings.introduction_text }}
   </div>
+  </div>
 
+  <div class="collapsible-hidden">
   <!-- Warranty Section -->
   {% if section.settings.warranty_image %}
     <div class="containerimg-mobile">
@@ -148,4 +152,58 @@
   <div class="paragrafe-text">
     {{ section.settings.night_mode_text }}
   </div>
+  </div>
 </div>
+   <button class="collapsible-toggle">View more</button>
+</div>
+
+<style>
+    /* Collapsible Section Styles */
+.collapsible-content {
+  position: relative;
+}
+
+.collapsible-preview {
+  /* Initially displayed content */
+}
+
+.collapsible-hidden {
+  display: none;
+  margin-top: 1rem;
+}
+
+.collapsible-hidden.visible {
+  display: block;
+}
+
+.collapsible-toggle {
+  display: inline-block;
+  margin-top: 1rem;
+  padding: 0.5rem 1rem;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  text-align: center;
+}
+
+.collapsible-toggle:hover {
+  background-color: #0056b3;
+}
+
+</style>
+
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+  const toggleButton = document.querySelector('.collapsible-toggle');
+  const hiddenContent = document.querySelector('.collapsible-hidden');
+
+  if (toggleButton && hiddenContent) {
+    toggleButton.addEventListener('click', function () {
+      hiddenContent.classList.toggle('visible');
+      toggleButton.textContent = hiddenContent.classList.contains('visible') ? 'View less' : 'View more';
+    });
+  }
+});
+</script>

@@ -1,47 +1,44 @@
 {% comment %}
-Display category metafields for the current product
+Display all custom metafields for the current product
 {% endcomment %}
 
-<p>Product Category: {{ product.category.metafields }}</p>
-<p>Product Category: {{ product.category}}</p>
-{% if product.category != blank and product.category.metafields %}
-  <div class="category-metafields-table">
-    <h3>Category Specifications</h3>
+{% if product.metafields.custom != blank %}
+  <div class="product-custom-metafields page-width">
+    <h3>Specificatii cheie</h3>
     <table>
       <thead>
         <tr>
-          <th>Definition</th>
+          <th>Key</th>
           <th>Value</th>
         </tr>
       </thead>
       <tbody>
-        {% for namespace in product.category.metafields %}
-          {% for metafield in product.category.metafields[namespace] %}
-            {% if metafield.value != blank %}
-              <tr>
-                <td>{{ metafield.key | replace: '_', ' ' | capitalize }}</td>
-                <td>
-                  {% if metafield.value.size > 1 %}
-                    {{ metafield.value | join: ', ' }}
-                  {% else %}
-                    {{ metafield.value }}
-                  {% endif %}
-                </td>
-              </tr>
-            {% endif %}
-          {% endfor %}
+        {% for key in product.metafields.custom %}
+          <tr>
+            <td>{{ key[0] | replace: '_', ' ' | capitalize }}</td>
+            <td>
+              {% assign value = key[1].value %}
+              {% if value == blank %}
+                N/A
+              {% elsif value.size > 1 %}
+                {{ value | join: ', ' }}
+              {% else %}
+                {{ value }}
+              {% endif %}
+            </td>
+          </tr>
         {% endfor %}
       </tbody>
     </table>
   </div>
 {% else %}
-  <p>No category metafields available for this product.</p>
+  <p>No custom metafields available for this product.</p>
 {% endif %}
 
 
 {% schema %}
 {
-  "name": "Category Specifications",
+  "name": "Specifications",
   "settings": [
     {
       "type": "text",
