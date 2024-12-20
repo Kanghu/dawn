@@ -1,25 +1,22 @@
-{{ 'component-card.css' | asset_url | stylesheet_tag }}
-{{ 'component-price.css' | asset_url | stylesheet_tag }}
-{{ 'section-related-products.css' | asset_url | stylesheet_tag }}
-
-{% if section.settings.image_shape == 'blob' %}
-  {{ 'mask-blobs.css' | asset_url | stylesheet_tag }}
-{% endif %}
-
 {%- style -%}
-  .section-{{ section.id }}-padding {
+  .section-{{ section.id }} {
     padding-top: {{ section.settings.padding_top | times: 0.75 | round: 0 }}px;
     padding-bottom: {{ section.settings.padding_bottom | times: 0.75 | round: 0 }}px;
   }
 
   @media screen and (min-width: 750px) {
-    .section-{{ section.id }}-padding {
+    .section-{{ section.id }} {
       padding-top: {{ section.settings.padding_top }}px;
       padding-bottom: {{ section.settings.padding_bottom }}px;
     }
   }
 
-  /* Slider styles for mobile */
+  .related-products__heading {
+    margin-bottom: 2rem;
+    text-align: center;
+  }
+
+  /* Mobile Slider */
   .related-products__slider {
     display: flex;
     gap: 1rem;
@@ -30,87 +27,121 @@
     padding: 1rem;
   }
 
-  .related-products__slider::-webkit-scrollbar {
-    display: none;
-  }
-
   .related-products__slider-item {
     scroll-snap-align: start;
-    flex: 0 0 calc((100% - 3rem)/2); /* Two columns visible on mobile */
-    max-width: calc((100% - 3rem)/2);
+    flex: 0 0 calc((100% - 3rem) / 2); /* Two items per row on mobile */
+    max-width: calc((100% - 3rem) / 2);
   }
 
   @media screen and (min-width: 750px) {
-    /* Grid layout on desktop */
-    .related-products__grid {
+    .related-products__slider {
       display: grid;
       grid-template-columns: repeat({{ section.settings.columns_desktop }}, 1fr);
       gap: 1rem;
+      margin: 0;
+      padding: 0;
     }
 
-    .related-products__slider, .related-products__slider-item {
-      display: unset;
-      overflow: unset;
-      scroll-snap-type: none;
-      flex: unset;
+    .related-products__slider-item {
+      flex: none;
       max-width: unset;
     }
   }
-
 {%- endstyle -%}
 
-<div class="color-{{ section.settings.color_scheme }} gradient section-{{ section.id }}-padding">
-  {% if section.blocks.size > 0 %}
-    {% if section.settings.heading != blank %}
-      <h2 class="related-products__heading inline-richtext {{ section.settings.heading_size }}">
-        {{ section.settings.heading }}
-      </h2>
-    {% endif %}
-
-    <ul
-      class="related-products__grid related-products__slider"
-      role="list"
-    >
-      {% assign skip_card_product_styles = false %}
-
-      {% for block in section.blocks %}
-        {% if block.type == 'product' and block.settings.product %}
-          {% assign product_item = all_products[block.settings.product] %}
-          {% if product_item %}
-            <li class="grid__item related-products__slider-item">
-              {% render 'card-product',
-                card_product: product_item,
-                media_aspect_ratio: section.settings.image_ratio,
-                image_shape: section.settings.image_shape,
-                show_secondary_image: section.settings.show_secondary_image,
-                show_vendor: section.settings.show_vendor,
-                show_rating: section.settings.show_rating,
-                skip_styles: skip_card_product_styles
-              %}
-            </li>
-            {% assign skip_card_product_styles = true %}
-          {% endif %}
-        {% endif %}
-      {% endfor %}
-    </ul>
+<div class="section-{{ section.id }} gradient color-{{ section.settings.color_scheme }}">
+  {% if section.settings.heading != blank %}
+    <h2 class="related-products__heading {{ section.settings.heading_size }}">
+      {{ section.settings.heading }}
+    </h2>
   {% endif %}
 
-  {% if section.settings.image_shape == 'arch' %}
-    {{ 'mask-arch.svg' | inline_asset_content }}
+  {% assign metafield_product_handle = section.settings.dynamic_product_metafield %}
+  {% if metafield_product_handle %}
+    {% assign product_item = all_products[metafield_product_handle] %}
+    {% if product_item %}
+      <!-- Display product from the dynamic product metafield -->
+      <div class="related-products__slider">
+        <div class="related-products__slider-item">
+          {% render 'card-product',
+            card_product: product_item,
+            media_aspect_ratio: section.settings.image_ratio,
+            image_shape: section.settings.image_shape,
+            show_secondary_image: section.settings.show_secondary_image,
+            show_vendor: section.settings.show_vendor,
+            show_rating: section.settings.show_rating
+          %}
+        </div>
+      </div>
+    {% else %}
+      <!-- If metafield product is not valid, fallback to blocks -->
+      {% if section.blocks.size > 0 %}
+        <div class="related-products__slider">
+          {% assign skip_card_product_styles = false %}
+          {% for block in section.blocks %}
+            {% if block.type == 'product' and block.settings.product %}
+              {% assign product_item = all_products[block.settings.product] %}
+              {% if product_item %}
+                <div class="related-products__slider-item">
+                  {% render 'card-product',
+                    card_product: product_item,
+                    media_aspect_ratio: section.settings.image_ratio,
+                    image_shape: section.settings.image_shape,
+                    show_secondary_image: section.settings.show_secondary_image,
+                    show_vendor: section.settings.show_vendor,
+                    show_rating: section.settings.show_rating,
+                    skip_styles: skip_card_product_styles
+                  %}
+                </div>
+                {% assign skip_card_product_styles = true %}
+              {% endif %}
+            {% endif %}
+          {% endfor %}
+        </div>
+      {% else %}
+        <p style="text-align: center; padding: 2rem;">
+          No products selected. Add product blocks in the editor or link a product metafield.
+        </p>
+      {% endif %}
+    {% endif %}
+  {% else %}
+    <!-- If no dynamic metafield product is provided, show block products -->
+    {% if section.blocks.size > 0 %}
+      <div class="related-products__slider">
+        {% assign skip_card_product_styles = false %}
+        {% for block in section.blocks %}
+          {% if block.type == 'product' and block.settings.product %}
+            {% assign product_item = all_products[block.settings.product] %}
+            {% if product_item %}
+              <div class="related-products__slider-item">
+                {% render 'card-product',
+                  card_product: product_item,
+                  media_aspect_ratio: section.settings.image_ratio,
+                  image_shape: section.settings.image_shape,
+                  show_secondary_image: section.settings.show_secondary_image,
+                  show_vendor: section.settings.show_vendor,
+                  show_rating: section.settings.show_rating,
+                  skip_styles: skip_card_product_styles
+                %}
+              </div>
+              {% assign skip_card_product_styles = true %}
+            {% endif %}
+          {% endif %}
+        {% endfor %}
+      </div>
+    {% else %}
+      <p style="text-align: center; padding: 2rem;">
+        No products selected. Add product blocks or link a product metafield.
+      </p>
+    {% endif %}
   {% endif %}
 </div>
 
-
 {% schema %}
 {
-  "name": "ALC Related Products",
+  "name": "Custom Related Products",
   "tag": "section",
-  "class": "section",
   "settings": [
-    {
-      "type": "paragraph",
-      "content": "Select products manually or using product metafields. This section allows dynamic sources for product picks."
-    },
     {
       "type": "inline_richtext",
       "id": "heading",
@@ -120,15 +151,13 @@
     {
       "type": "select",
       "id": "heading_size",
+      "label": "Heading Size",
+      "default": "h2",
       "options": [
-        { "value": "h2", "label": "H2" },
         { "value": "h1", "label": "H1" },
-        { "value": "h0", "label": "Large" },
-        { "value": "hxl", "label": "Extra Large" },
-        { "value": "hxxl", "label": "Extra Extra Large" }
-      ],
-      "default": "h1",
-      "label": "Heading size"
+        { "value": "h2", "label": "H2" },
+        { "value": "h3", "label": "H3" }
+      ]
     },
     {
       "type": "range",
@@ -137,94 +166,65 @@
       "max": 6,
       "step": 1,
       "default": 4,
-      "label": "Columns on desktop"
+      "label": "Columns on Desktop"
     },
     {
       "type": "color_scheme",
       "id": "color_scheme",
-      "label": "Color scheme",
-      "info": "Background, text, and links.",
+      "label": "Color Scheme",
       "default": "scheme-1"
-    },
-    {
-      "type": "header",
-      "content": "Image Settings"
     },
     {
       "type": "select",
       "id": "image_ratio",
+      "label": "Image Ratio",
+      "default": "adapt",
       "options": [
-        { "value": "adapt", "label": "Adapt to image" },
+        { "value": "adapt", "label": "Adapt" },
         { "value": "portrait", "label": "Portrait" },
         { "value": "square", "label": "Square" }
-      ],
-      "default": "adapt",
-      "label": "Image ratio"
-    },
-    {
-      "type": "select",
-      "id": "image_shape",
-      "options": [
-        { "value": "default", "label": "Default" },
-        { "value": "arch", "label": "Arch" },
-        { "value": "blob", "label": "Blob" },
-        { "value": "chevronleft", "label": "Chevron Left" },
-        { "value": "chevronright", "label": "Chevron Right" },
-        { "value": "diamond", "label": "Diamond" },
-        { "value": "parallelogram", "label": "Parallelogram" },
-        { "value": "round", "label": "Round" }
-      ],
-      "default": "default",
-      "label": "Image shape"
+      ]
     },
     {
       "type": "checkbox",
       "id": "show_secondary_image",
       "default": false,
-      "label": "Show secondary image on hover"
+      "label": "Show Secondary Image on Hover"
     },
     {
       "type": "checkbox",
       "id": "show_vendor",
       "default": false,
-      "label": "Show product vendor"
+      "label": "Show Product Vendor"
     },
     {
       "type": "checkbox",
       "id": "show_rating",
       "default": false,
-      "label": "Show product rating"
+      "label": "Show Product Rating"
     },
     {
-      "type": "header",
-      "content": "Mobile Settings"
-    },
-    {
-      "type": "paragraph",
-      "content": "On mobile, products display as a horizontal scroll (slider) showing 2 items at a time."
-    },
-    {
-      "type": "header",
-      "content": "Padding"
+      "type": "product",
+      "id": "dynamic_product_metafield",
+      "label": "Product (from metafield)",
+      "info": "Optionally, dynamically link this setting to a product metafield to display that product."
     },
     {
       "type": "range",
       "id": "padding_top",
+      "label": "Padding Top",
       "min": 0,
       "max": 100,
       "step": 4,
-      "unit": "px",
-      "label": "Padding top",
       "default": 36
     },
     {
       "type": "range",
       "id": "padding_bottom",
+      "label": "Padding Bottom",
       "min": 0,
       "max": 100,
       "step": 4,
-      "unit": "px",
-      "label": "Padding bottom",
       "default": 36
     }
   ],
@@ -236,28 +236,16 @@
         {
           "type": "product",
           "id": "product",
-          "label": "Product",
-          "info": "Choose a product. Supports dynamic sources to reference product metafields."
+          "label": "Product"
         }
       ]
     }
   ],
-  "max_blocks": 10,
-  "default": {
-    "blocks": [
-      {
-        "type": "product",
-        "settings": {
-          "product": ""
-        }
-      },
-      {
-        "type": "product",
-        "settings": {
-          "product": ""
-        }
-      }
-    ]
-  }
+  "presets": [
+    {
+      "name": "Custom Related Products",
+      "category": "Products"
+    }
+  ]
 }
 {% endschema %}
