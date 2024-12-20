@@ -311,10 +311,26 @@
       "settings": {
         "include_margins": true
       }
+    },
+    "17347064802c9f17aa": {
+      "type": "apps",
+      "blocks": {
+        "vitals_product_reviews_XaVEAf": {
+          "type": "shopify://apps/vitals/blocks/product-reviews/aeb48102-2a5a-4f39-bdbd-d8d49f4e20b8",
+          "settings": {}
+        }
+      },
+      "block_order": [
+        "vitals_product_reviews_XaVEAf"
+      ],
+      "settings": {
+        "include_margins": true
+      }
     }
   },
   "order": [
     "main",
+    "17347064802c9f17aa",
     "related-products",
     "alc_collapsible_content_qgxhx4",
     "image-with-text",
