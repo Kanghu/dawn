@@ -23,10 +23,6 @@
           "type": "title",
           "settings": {}
         },
-        "judge_me_reviews_preview_badge_Re8FJc": {
-          "type": "shopify://apps/judge-me-reviews/blocks/preview_badge/61ccd3b1-a9f2-4160-9fe9-4fec8413e5d8",
-          "settings": {}
-        },
         "caption": {
           "type": "text",
           "settings": {
@@ -102,7 +98,6 @@
       "block_order": [
         "vendor",
         "title",
-        "judge_me_reviews_preview_badge_Re8FJc",
         "caption",
         "price",
         "variant_picker",
@@ -337,15 +332,6 @@
     },
     "17344485676cd9137d": {
       "type": "apps",
-      "blocks": {
-        "judge_me_reviews_review_widget_pnichp": {
-          "type": "shopify://apps/judge-me-reviews/blocks/review_widget/61ccd3b1-a9f2-4160-9fe9-4fec8413e5d8",
-          "settings": {}
-        }
-      },
-      "block_order": [
-        "judge_me_reviews_review_widget_pnichp"
-      ],
       "settings": {
         "include_margins": true
       }
@@ -365,10 +351,26 @@
         "stack_images_on_mobile": true,
         "show_text_below": true
       }
+    },
+    "17347064802c9f17aa": {
+      "type": "apps",
+      "blocks": {
+        "vitals_product_reviews_XaVEAf": {
+          "type": "shopify://apps/vitals/blocks/product-reviews/aeb48102-2a5a-4f39-bdbd-d8d49f4e20b8",
+          "settings": {}
+        }
+      },
+      "block_order": [
+        "vitals_product_reviews_XaVEAf"
+      ],
+      "settings": {
+        "include_margins": true
+      }
     }
   },
   "order": [
     "main",
+    "17347064802c9f17aa",
     "related-products",
     "collapsible_content_mDwNh8",
     "aless_long_description_rW4bpM",
