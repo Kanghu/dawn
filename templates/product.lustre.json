@@ -23,10 +23,6 @@
           "type": "title",
           "settings": {}
         },
-        "judge_me_reviews_preview_badge_Re8FJc": {
-          "type": "shopify://apps/judge-me-reviews/blocks/preview_badge/61ccd3b1-a9f2-4160-9fe9-4fec8413e5d8",
-          "settings": {}
-        },
         "caption": {
           "type": "text",
           "settings": {
@@ -84,25 +80,11 @@
           "settings": {
             "share_label": "Share"
           }
-        },
-        "complementary_dKYBTF": {
-          "type": "complementary",
-          "settings": {
-            "block_heading": "Pairs well with",
-            "make_collapsible_row": false,
-            "icon": "price_tag",
-            "product_list_limit": 10,
-            "products_per_page": 3,
-            "pagination_style": "counter",
-            "image_ratio": "square",
-            "enable_quick_add": false
-          }
         }
       },
       "block_order": [
         "vendor",
         "title",
-        "judge_me_reviews_preview_badge_Re8FJc",
         "caption",
         "price",
         "variant_picker",
@@ -112,8 +94,7 @@
         "custom_liquid_Kin3xB",
         "custom_liquid_GaJ8NC",
         "text_8bAzhx",
-        "share",
-        "complementary_dKYBTF"
+        "share"
       ],
       "custom_css": [
         "h1,.h1 {font-size: calc(var(--font-heading-scale) * 2rem);}",
@@ -153,71 +134,52 @@
         "padding_bottom": 28
       }
     },
-    "collapsible_content_mDwNh8": {
-      "type": "collapsible-content",
+    "alc_collapsible_content_qgxhx4": {
+      "type": "alc-collapsible-content",
       "blocks": {
-        "collapsible_row_jF8MYj": {
+        "collapsible_row_aiagCC": {
           "type": "collapsible_row",
           "settings": {
-            "heading": "Collapsible row",
+            "heading": "Descriere",
             "icon": "check_mark",
             "row_content": "",
+            "row_liquid": "<h2>{{ 'Descriere Lustra LED cu Telecomanda Betty 43W 4 Cercuri Lumina Rece/Calda/Neutra Dimabila Alb' | escape }}</h2>\n<div class=\"containerimg-mobile\">\n    <img alt=\"Lustra LED Banner\" class=\"img2\" src=\"{{ 'https://www.alessandrodesign.ro/upload/userfiles/images/documentations/banners/banner_lumina_rece_calda_neutra_lustra_led.webp' | asset_url }}\" />\n</div>\n<div class=\"paragrafe-text\">\n    <p><span style=\"font-size:16px\">{{ 'Activitățile de zi cu zi și starea generală sunt influențate de ce fel de sisteme de iluminat utilizăm și de calitatea acestora. Lustra cu telecomandă Betty este soluția ideală pentru nevoile dumneavoastră, oferind un tavan luminat, care creează o atmosferă feerică în orice moment al zilei.' | escape }}</span></p>\n    <p><span style=\"font-size:16px\">{{ 'Cu această lustra LED, descoperi luxul iluminatului modern, unde tehnologia se întâlnește cu eleganța. Funcții precum dimabilitatea și temperatura reglabilă a luminii fac din acest corp de iluminat o adevărată operă de artă, perfectă pentru orice moment și încăpere din casa dumneavoastră.' | escape }}</span></p>\n</div>\n<h3>{{ 'Imagini cu garanția' | escape }}</h3>\n<div class=\"containerimg-mobile\">\n    <img alt=\"Garanția Lustrelor LED\" class=\"img2\" src=\"{{ 'https://www.alessandrodesign.ro/upload/userfiles/images/documentations/banners/banner_general_lustre_led.webp' | asset_url }}\" />\n</div>\n<div class=\"paragrafe-text\">\n    <p><span style=\"font-size:16px\">{{ 'Lustra LED Betty oferă o durată de viață impresionantă, de până la 25.000 de ore, și este construită din materiale rezistente, precum metalul și acrilul. Aceasta dispune de 4 surse de lumină LED conectate la o tensiune de 220V, care oferă un flux luminos de 4800lm și o putere de 60W, asigurând o eficiență energetică superioară.' | escape }}</span></p>\n    <p><span style=\"font-size:16px\">{{ 'Designul modern cu cercuri minimaliste și funcția dimabilă, controlată atât din telecomandă cât și din întrerupător, permit ajustarea intensității luminii în funcție de preferințele dumneavoastră, contribuind la un consum redus de energie și la o iluminare eficientă și confortabilă.' | escape }}</span></p>\n</div>\n<h3>{{ 'Video demonstrativ' | escape }}</h3>\n<div class=\"row center w-100\">\n    <div class=\"col-12 col-md-6\" style=\"width: 100%; height: auto;\">\n        <iframe src=\"https://www.youtube.com/embed/swW59QgqgQw\" style=\"width: 100%; height: 315px; border: 0;\" title=\"{{ 'Video demonstratie Lustra LED cu Telecomanda Betty 43W 4 Cercuri Lumina Rece/Calda/Neutra Dimabila Alb' | escape }}\"></iframe>\n    </div>\n    <div class=\"col-12 col-md-6\" style=\"width: 100%; height: auto;\">\n        <iframe src=\"https://www.youtube.com/embed/F-IOcmWq2PE\" style=\"width: 100%; height: 315px; border: 0;\" title=\"{{ 'Video montaj Lustra LED cu Telecomanda Betty 43W 4 Cercuri Lumina Rece/Calda/Neutra Dimabila Alb' | escape }}\"></iframe>\n    </div>\n</div>\n<div class=\"paragrafe-text\">\n    <p><span style=\"font-size:16px\">{{ 'Pe lângă aspectul elegant și tehnologia LED, lustra Betty se remarcă prin eficiența de lungă durată. Cele 4 surse LED asigură o iluminare uniformă, care poate varia între 6000k (lumina caldă), 4000k (lumina neutră) și 3000k (lumina rece), în funcție de preferințele dumneavoastră. Aceasta face ca Betty să fie perfectă pentru orice tip de încăpere, indiferent dacă doriți o atmosferă caldă și relaxantă sau o lumină rece și clară pentru activități precise.' | escape }}</span></p>\n</div>\n<h3>{{ 'Telecomandă' | escape }}</h3>\n<div class=\"containerimg-mobile\">\n    <img alt=\"Lustra LED cu Control prin Telecomanda\" class=\"img2\" src=\"{{ 'https://www.alessandrodesign.ro/upload/userfiles/images/documentations/banners/banner_telecomanda_lustra_led.webp' | asset_url }}\" />\n</div>\n<div class=\"paragrafe-text\">\n    <p><span style=\"font-size:16px\">{{ 'Controlul intensității luminii este incredibil de simplu cu ajutorul telecomenzii. Dintr-o singură apăsare de buton, puteți regla lumina pentru a se potrivi perfect cu starea și activitatea dumneavoastră, menținând în același timp confortul ocular. Această funcție dimabilă face ca lustra Betty să fie alegerea ideală pentru orice încăpere modernă.' | escape }}</span></p>\n    <p><span style=\"font-size:16px\">{{ 'În plus, designul modern cu influențe minimaliste este potrivit pentru orice spațiu, fie că este vorba despre living, dormitor sau hol. Lustra se integrează perfect în decorul încăperii, fără a încărca atmosfera, oferind un aer proaspăt și elegant.' | escape }}</span></p>\n</div>\n<h3>{{ 'Mod noapte' | escape }}</h3>\n<div class=\"containerimg-mobile\">\n    <img alt=\"Mod Noapte Lustra LED\" class=\"img2\" src=\"{{ 'https://www.alessandrodesign.ro/upload/userfiles/images/documentations/banners/banner_mod_noapte_lustra_led.webp' | asset_url }}\" />\n</div>\n<div class=\"paragrafe-text\">\n    <p><span style=\"font-size:16px\">{{ 'Lustra LED Betty dispune și de un mod de iluminare nocturnă, perfect pentru a crea o atmosferă plăcută și confortabilă în timpul nopții. Cu acest mod, puteți economisi energie și să oferiți un ambient discret și relaxant pentru un somn odihnitor sau o lumină de veghe în timpul serilor liniștite.' | escape }}</span></p>\n</div>\n<div class=\"paragrafe-text\">\n    <p><span style=\"font-size:16px\">{{ 'În concluzie, Lustra LED Betty este soluția perfectă pentru un iluminat de calitate, accesibil, și eficient energetic. Datorită designului său elegant, funcțiilor versatile și tehnologiei LED moderne, lustra poate transforma orice încăpere din casa dumneavoastră într-un spațiu de poveste. Alessandro Design vă oferă produse de calitate superioară, care îmbină eleganța cu performanța la un preț accesibil.' | escape }}</span></p>\n</div>",
             "page": ""
           }
         },
-        "collapsible_row_txTgk6": {
+        "collapsible_metafields_xfKYrj": {
+          "type": "collapsible_metafields",
+          "settings": {
+            "heading": "Specificatii",
+            "icon": "clipboard"
+          }
+        },
+        "collapsible_row_HjAwTd": {
           "type": "collapsible_row",
           "settings": {
-            "heading": "Collapsible row",
-            "icon": "check_mark",
+            "heading": "Review-uri",
+            "icon": "heart",
             "row_content": "",
+            "row_liquid": "",
             "page": ""
           }
         },
-        "collapsible_row_wVgwjb": {
+        "collapsible_row_N6VrLH": {
           "type": "collapsible_row",
           "settings": {
-            "heading": "Collapsible row",
-            "icon": "check_mark",
+            "heading": "Intrebari frecvente",
+            "icon": "chat_bubble",
             "row_content": "",
-            "page": ""
-          }
-        },
-        "collapsible_row_mVwLTb": {
-          "type": "collapsible_row",
-          "settings": {
-            "heading": "Collapsible row",
-            "icon": "check_mark",
-            "row_content": "",
-            "page": ""
-          }
-        },
-        "collapsible_row_QhDt7x": {
-          "type": "collapsible_row",
-          "settings": {
-            "heading": "Collapsible row",
-            "icon": "check_mark",
-            "row_content": "",
-            "page": ""
-          }
-        },
-        "collapsible_row_G3UTC9": {
-          "type": "collapsible_row",
-          "settings": {
-            "heading": "Collapsible row",
-            "icon": "check_mark",
-            "row_content": "",
+            "row_liquid": "",
             "page": ""
           }
         }
       },
       "block_order": [
-        "collapsible_row_jF8MYj",
-        "collapsible_row_txTgk6",
-        "collapsible_row_wVgwjb",
-        "collapsible_row_mVwLTb",
-        "collapsible_row_QhDt7x",
-        "collapsible_row_G3UTC9"
+        "collapsible_row_aiagCC",
+        "collapsible_metafields_xfKYrj",
+        "collapsible_row_HjAwTd",
+        "collapsible_row_N6VrLH"
       ],
       "settings": {
         "caption": "",
@@ -232,27 +194,6 @@
         "desktop_layout": "image_second",
         "padding_top": 36,
         "padding_bottom": 36
-      }
-    },
-    "aless_long_description_rW4bpM": {
-      "type": "aless-long-description",
-      "settings": {
-        "title": "Descriere Lustra LED cu Telecomanda Betty 43W 4 Cercuri Lumina Rece/Calda/Neutra Dimabila Alb",
-        "main_banner": "shopify://shop_images/banner_lumina_rece_calda_neutra_lustra_led.webp",
-        "introduction_text": "<p>Activitățile de zi cu zi și starea generală sunt influențate de ce fel de sisteme de iluminat utilizăm și de calitatea acestora. Lustra cu telecomandă Betty este soluția ideală pentru nevoile dumneavoastră, oferind un tavan luminat, care creează o atmosferă feerică în orice moment al zilei.</p>",
-        "warranty_image": "shopify://shop_images/banner_general_lustre_led.webp",
-        "warranty_text": "<p>Lustra LED Betty oferă o durată de viață impresionantă, de până la 25.000 de ore, și este construită din materiale rezistente, precum metalul și acrilul. Aceasta dispune de 4 surse de lumină LED conectate la o tensiune de 220V, care oferă un flux luminos de 4800lm și o putere de 60W, asigurând o eficiență energetică superioară.</p>",
-        "video_1": "",
-        "video_2": "",
-        "lighting_modes": "<p>Pe lângă aspectul elegant și tehnologia LED, lustra Betty se remarcă prin eficiența de lungă durată. Cele 4 surse LED asigură o iluminare uniformă, care poate varia între 6000k (lumina caldă), 4000k (lumina neutră) și 3000k (lumina rece), în funcție de preferințele dumneavoastră.</p>",
-        "remote_control_text": "<p>Controlul intensității luminii este incredibil de simplu cu ajutorul telecomenzii. Dintr-o singură apăsare de buton, puteți regla lumina pentru a se potrivi perfect cu starea și activitatea dumneavoastră, menținând în același timp confortul ocular.</p>",
-        "night_mode_text": "<p>Lustra LED Betty dispune și de un mod de iluminare nocturnă, perfect pentru a crea o atmosferă plăcută și confortabilă în timpul nopții. Cu acest mod, puteți economisi energie și să oferiți un ambient discret și relaxant pentru un somn odihnitor sau o lumină de veghe în timpul serilor liniștite.</p>"
-      }
-    },
-    "product_category_specifications_kUEjhH": {
-      "type": "product-category-specifications",
-      "settings": {
-        "heading": "Category Specifications"
       }
     },
     "image-with-text": {
@@ -337,45 +278,49 @@
     },
     "17344485676cd9137d": {
       "type": "apps",
+      "settings": {
+        "include_margins": true
+      }
+    },
+    "1734705383ce5c5048": {
+      "type": "apps",
       "blocks": {
-        "judge_me_reviews_review_widget_pnichp": {
-          "type": "shopify://apps/judge-me-reviews/blocks/review_widget/61ccd3b1-a9f2-4160-9fe9-4fec8413e5d8",
+        "vitals_product_reviews_XXiFQy": {
+          "type": "shopify://apps/vitals/blocks/product-reviews/aeb48102-2a5a-4f39-bdbd-d8d49f4e20b8",
           "settings": {}
         }
       },
       "block_order": [
-        "judge_me_reviews_review_widget_pnichp"
+        "vitals_product_reviews_XXiFQy"
       ],
       "settings": {
         "include_margins": true
       }
     },
-    "image_banner_ingm3p": {
-      "type": "image-banner",
+    "1734705789523688e8": {
+      "type": "apps",
+      "blocks": {
+        "vitals_reviews_carousel_MighRK": {
+          "type": "shopify://apps/vitals/blocks/reviews-carousel/aeb48102-2a5a-4f39-bdbd-d8d49f4e20b8",
+          "settings": {}
+        }
+      },
+      "block_order": [
+        "vitals_reviews_carousel_MighRK"
+      ],
       "settings": {
-        "image": "shopify://shop_images/banner_general_lustre_led.webp",
-        "image_overlay_opacity": 0,
-        "image_height": "adapt",
-        "desktop_content_position": "middle-center",
-        "show_text_box": true,
-        "desktop_content_alignment": "center",
-        "color_scheme": "",
-        "image_behavior": "none",
-        "mobile_content_alignment": "center",
-        "stack_images_on_mobile": true,
-        "show_text_below": true
+        "include_margins": true
       }
     }
   },
   "order": [
     "main",
     "related-products",
-    "collapsible_content_mDwNh8",
-    "aless_long_description_rW4bpM",
-    "product_category_specifications_kUEjhH",
+    "alc_collapsible_content_qgxhx4",
     "image-with-text",
     "multicolumn",
     "17344485676cd9137d",
-    "image_banner_ingm3p"
+    "1734705383ce5c5048",
+    "1734705789523688e8"
   ]
 }
