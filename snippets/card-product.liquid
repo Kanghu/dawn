@@ -287,6 +287,19 @@ Sold Out
 </span>
 {%- render 'loading-spinner' -%}
 </button>
+
+  <button
+    type="button"
+    class="quick-view-button-cust"
+    aria-haspopup="dialog"
+    aria-controls="QuickAdd-{{ card_product.id }}"
+    onclick="openQuickView('{{ card_product.id }}')"
+  >
+    <svg width="20" height="20" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 30 30">
+      <circle cx="15" cy="15" r="10" fill="#000"></circle>
+    </svg>
+    <span>Quick View</span>
+  </button>
 {%- endform -%}
 </product-form>
         {%- if card_product.featured_media -%}
