@@ -20,6 +20,9 @@
   justify-content: center;
   align-items: center;
 }
+quick-add-modal visible {
+    z-index: 999999;
+}
 
 .quick-add-modal.visible {
   display: flex;
