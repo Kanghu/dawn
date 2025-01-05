@@ -675,24 +675,28 @@ class BulkModal extends HTMLElement {
 
 customElements.define('bulk-modal', BulkModal);
 
-class ModalOpener extends HTMLElement {
-  constructor() {
-    super();
+document.addEventListener('DOMContentLoaded', () => {
+  class ModalOpener extends HTMLElement {
+    constructor() {
+      super();
 
-    const button = this.querySelector('button');
+      const button = this.querySelector('button');
 
-    if (!button) return;
-    // button.addEventListener('click', () => {
-    //   const modal = document.querySelector(this.getAttribute('data-modal'));
-    //   console.log(modal);
-    //   if (modal) {
-    //     console.log(modal);
-    //         modal.classList.add('visible'); 
-    //   }
-    // });
+      if (!button) return;
+
+      button.addEventListener('click', () => {
+        const modal = document.querySelector(this.getAttribute('data-modal'));
+        console.log('Modal element:', modal);
+        if (modal) {
+          modal.classList.add('visible');
+          console.log('Modal opened:', modal);
+        }
+      });
+    }
   }
-}
-customElements.define('modal-opener', ModalOpener);
+
+  customElements.define('modal-opener', ModalOpener);
+});
 
 class DeferredMedia extends HTMLElement {
   constructor() {
