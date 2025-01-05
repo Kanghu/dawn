@@ -683,7 +683,7 @@ class ModalOpener extends HTMLElement {
 
     if (!button) return;
     button.addEventListener('click', () => {
-const modal = document.querySelector('#QuickAdd-123'); // Test manual
+      const modal = document.querySelector(this.getAttribute('data-modal'));
       console.log(modal);
       if (modal) {
         console.log(modal);
