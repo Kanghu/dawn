@@ -144,10 +144,6 @@ class CartItems extends HTMLElement {
   }
 
 
-
-// Definește elementul personalizat pentru butonul de Quick View
-customElements.define('quick-view-button', QuickViewButton);
-
   updateQuantity(line, quantity, name, variantId) {
     this.enableLoading(line);
 
