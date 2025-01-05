@@ -3181,6 +3181,14 @@ details-disclosure > details {
   transition: text-decoration-thickness var(--duration-short) ease;
 }
 
+.quick-add-modal {
+   display: none;
+}
+
+.quick-add-modal.visible {
+   display: block;
+}
+
 .rte a:hover {
   color: rgb(var(--color-link));
   text-decoration-thickness: 0.2rem;
