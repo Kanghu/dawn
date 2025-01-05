@@ -21,6 +21,10 @@
   align-items: center;
 }
 
+.quick-add-modal.visible .quick-add-modal__content-info {
+  position: relative; /* Pentru a activa z-index */
+  z-index: 99999; /* Mai mare decât z-index-ul general */
+}
 
 .quick-add-modal.visible {
   display: flex;
