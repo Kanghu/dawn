@@ -3205,7 +3205,7 @@ details-disclosure > details {
   transition: text-decoration-thickness var(--duration-short) ease;
 }
 
-.quick-add-modal {
+ /* .quick-add-modal {
   display: none; /* Ascunde modalul inițial */
   position: fixed;
   top: 0;
@@ -3216,7 +3216,7 @@ details-disclosure > details {
   z-index: 1000; /* Asigură-te că modalul este deasupra altor elemente */
   justify-content: center;
   align-items: center;
-}
+} */
 
 /* .quick-add-modal.visible {
   display: flex; /* Face modalul vizibil când are clasa 'visible' */
