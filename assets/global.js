@@ -1246,7 +1246,7 @@ class BulkAdd extends HTMLElement {
     } else if (inputValue > parseInt(event.target.max)) {
       this.setValidity(event, index, window.quickOrderListStrings.max_error.replace('[max]', event.target.max));
     } else if (inputValue % parseInt(event.target.step) != 0) {
-      this.setValidity(event, index, window.quickOrderListStrings.step_error.replace('[step]', event.target.step));
+      this.setValidity(event, index, window`.quic`kOrderListStrings.step_error.replace('[step]', event.target.step));
     } else {
       event.target.setCustomValidity('');
       event.target.reportValidity();
