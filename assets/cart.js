@@ -85,6 +85,28 @@ class CartItems extends HTMLElement {
   onChange(event) {
     this.validateQuantity(event);
   }
+  document.addEventListener('DOMContentLoaded', () => {
+  const modalOpeners = document.querySelectorAll('[data-modal]');
+  modalOpeners.forEach((opener) => {
+    opener.addEventListener('click', (event) => {
+      const modalId = opener.getAttribute('data-modal');
+      const modal = document.querySelector(modalId);
+      if (modal) {
+        modal.classList.add('visible');
+      }
+    });
+  });
+
+  const modalClosers = document.querySelectorAll('.quick-add-modal__toggle');
+  modalClosers.forEach((closer) => {
+    closer.addEventListener('click', (event) => {
+      const modal = closer.closest('.quick-add-modal');
+      if (modal) {
+        modal.classList.remove('visible');
+      }
+    });
+  });
+});
 
   onCartUpdate() {
     if (this.tagName === 'CART-DRAWER-ITEMS') {
