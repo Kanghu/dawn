@@ -682,16 +682,26 @@ class ModalOpener extends HTMLElement {
     const button = this.querySelector('button');
 
     if (!button) return;
+
     button.addEventListener('click', () => {
       const modal = document.querySelector(this.getAttribute('data-modal'));
       console.log(modal);
+
       if (modal) {
-        console.log(modal);
-            modal.classList.add('visible'); 
+        // Adaugă clasa `visible` la modal
+        modal.classList.add('visible');
+
+        // Găsește div-ul `quick-add-modal__content-info` din interiorul modalului
+        const contentInfo = modal.querySelector('.quick-add-modal__content-info');
+        if (contentInfo) {
+          // Adaugă clasa `visible` la acest div
+          contentInfo.classList.add('visible');
+        }
       }
     });
   }
 }
+
 customElements.define('modal-opener', ModalOpener);
 
 class DeferredMedia extends HTMLElement {
