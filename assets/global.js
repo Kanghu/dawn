@@ -680,6 +680,7 @@ class ModalOpener extends HTMLElement {
     super();
 
     const button = this.querySelector('button');
+      console.log(button);
 
     if (!button) return;
     button.addEventListener('click', () => {
