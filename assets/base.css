@@ -3205,46 +3205,6 @@ details-disclosure > details {
   transition: text-decoration-thickness var(--duration-short) ease;
 }
 
- /* .quick-add-modal {
-  display: none; /* Ascunde modalul inițial */
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0, 0, 0, 0.5); /* Fundal semi-transparent */
-  z-index: 1000; /* Asigură-te că modalul este deasupra altor elemente */
-  justify-content: center;
-  align-items: center;
-} */
-
-/* .quick-add-modal.visible {
-  display: flex; /* Face modalul vizibil când are clasa 'visible' */
-} */
-/* 
-.quick-add-modal__content {
-  background: #fff;
-  padding: 20px;
-  max-width: 600px;
-  width: 100%;
-  border-radius: 8px;
-  position: relative;
-}
-
-.quick-add-modal__toggle {
-  position: absolute;
-  top: 10px;
-  right: 10px;
-  background: transparent;
-  border: none;
-  font-size: 24px;
-  cursor: pointer;
-}
-
-.quick-add-modal img {
-  max-width: 100%;
-  height: auto;
-} */
 
 .rte a:hover {
   color: rgb(var(--color-link));
