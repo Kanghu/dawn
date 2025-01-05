@@ -683,16 +683,12 @@ class ModalOpener extends HTMLElement {
 
     if (!button) return;
     button.addEventListener('click', () => {
-      const modal = document.querySelector('.quick-add-modal');
-      const contentInfo = document.querySelector('.quick-add-modal__content-info');
-
-     if (modal && contentInfo) {
-  if (modal.classList.contains('visible')) {
-    contentInfo.style.zIndex = '99999'; // Setează z-index dinamic
-  } else {
-    contentInfo.style.zIndex = ''; // Resetează dacă modalul nu este vizibil
-  }
-}
+      const modal = document.querySelector(this.getAttribute('data-modal'));
+      console.log(modal);
+      if (modal) {
+        console.log(modal);
+            modal.classList.add('visible'); 
+      }
     });
   }
 }
