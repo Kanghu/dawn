@@ -143,6 +143,44 @@ class CartItems extends HTMLElement {
     ];
   }
 
+  class QuickViewButton extends HTMLElement {
+  constructor() {
+    super();
+
+    // Selectează butonul de quick view din element
+    const button = this.querySelector('button');
+
+    // Dacă butonul nu există, ieși din constructor
+    if (!button) {
+      console.warn('Quick View Button not found inside QuickViewButton component.');
+      return;
+    }
+
+    // Adaugă un eveniment de click pe buton
+    button.addEventListener('click', (event) => {
+      event.preventDefault();
+
+      // Găsește modalul asociat folosind atributul data-modal
+      const modalSelector = this.getAttribute('data-modal');
+      const modal = document.querySelector(modalSelector);
+
+      console.log('Modal selector:', modalSelector);
+      console.log('Modal element:', modal);
+
+      // Dacă modalul există, adaugă clasa 'visible' pentru a-l afișa
+      if (modal) {
+        modal.classList.add('visible');
+        console.log('Quick View modal opened:', modal);
+      } else {
+        console.warn('No modal found for selector:', modalSelector);
+      }
+    });
+  }
+}
+
+// Definește elementul personalizat pentru butonul de Quick View
+customElements.define('quick-view-button', QuickViewButton);
+
   updateQuantity(line, quantity, name, variantId) {
     this.enableLoading(line);
 
