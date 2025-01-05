@@ -91,6 +91,7 @@ class CartItems extends HTMLElement {
     opener.addEventListener('click', (event) => {
       const modalId = opener.getAttribute('data-modal');
       const modal = document.querySelector(modalId);
+      console.log(modal);
       if (modal) {
         modal.classList.add('visible');
       }
