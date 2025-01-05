@@ -680,17 +680,16 @@ class ModalOpener extends HTMLElement {
     super();
 
     const button = this.querySelector('button');
-      console.log(button);
 
     if (!button) return;
-    button.addEventListener('click', () => {
-      const modal = document.querySelector(this.getAttribute('data-modal'));
-      console.log(modal);
-      if (modal) {
-        console.log(modal);
-            modal.classList.add('visible'); 
-      }
-    });
+    // button.addEventListener('click', () => {
+    //   const modal = document.querySelector(this.getAttribute('data-modal'));
+    //   console.log(modal);
+    //   if (modal) {
+    //     console.log(modal);
+    //         modal.classList.add('visible'); 
+    //   }
+    // });
   }
 }
 customElements.define('modal-opener', ModalOpener);
