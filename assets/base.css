@@ -20,13 +20,10 @@
   justify-content: center;
   align-items: center;
 }
+
 .quick-add-modal.visible .quick-add-modal__content-info {
-  position: relative; /* Asigură poziționarea în contextul părintelui */
-  z-index: 99999; /* Asigură afișarea deasupra altor elemente */
-  background-color: white; /* Fundal pentru a evidenția conținutul */
-  padding: 20px; /* Spațiere interioară */
-  border-radius: 8px; /* Colțuri rotunjite */
-  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.25); /* Adaugă o umbră */
+  position: relative; /* Pentru a activa z-index */
+  z-index: 99999; /* Mai mare decât z-index-ul general */
 }
 
 .quick-add-modal.visible {
