@@ -220,13 +220,15 @@ display: none;
 
 
 <modal-opener data-modal="#QuickAdd-{{ card_product.id }}">
- <button
-    type="button"
-    class="quick-view-button-cust"
-    aria-haspopup="dialog"
-    aria-controls="QuickAdd-{{ card_product.id }}"
-    onclick="openQuickView('{{ card_product.id }}')"
-  >
+<button
+id="{{ product_form_id }}-submit"
+type="submit"
+name="add"
+class="quick-add__submit-text-cust"
+aria-haspopup="dialog"
+aria-labelledby="{{ product_form_id }}-submit title-{{ section_id }}-{{ card_product.id }}"
+data-product-url="{{ card_product.url }}"
+>
 <svg id="quick-add__submit-text-cust" width="20" height="20" viewBox="0 0 30 30" version="1.1" xmlns:xlink="http://www.w3.org/1999/xlink"
 xmlns="http://www.w3.org/2000/svg">
 <defs>
