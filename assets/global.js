@@ -679,36 +679,16 @@ class ModalOpener extends HTMLElement {
   constructor() {
     super();
 
-    const quickViewButton = document.getElementById('quickViewButton');
-const quickAddModal = document.getElementById('QuickAdd-8951579869451');
-const closeButton = document.getElementById('ModalClose-8951579869451');
+     const button = this.querySelector('button');
 
-    quickViewButton.addEventListener('click', function() {
-  quickAddModal.classList.add('visible'); // Adaugă clasa 'visible' pentru a arăta modalul
-});
-
-// Funcție pentru a închide modalul
-closeButton.addEventListener('click', function() {
-  quickAddModal.classList.remove('visible'); // Elimină clasa 'visible' pentru a ascunde modalul
-});
-
-// Închidere modal atunci când se face clic pe fundal
-quickAddModal.addEventListener('click', function(e) {
-  if (e.target === quickAddModal) {
-    quickAddModal.classList.remove('visible'); // Închide modalul dacă se face clic pe fundal
-  }
-});
-
-    //  const button = this.querySelector('button');
-
-    // if (!button) return;
-    // button.addEventListener('click', () => {
-    //   const modal = document.querySelector(this.getAttribute('data-modal'));
-    //     console.log(quickViewButton,quickAddModal,closeButton);
-    //   if (modal) {
-    //         modal.classList.add('visible'); 
-    //   }
-    // });
+    if (!button) return;
+    button.addEventListener('click', () => {
+      const modal = document.querySelector(this.getAttribute('data-modal'));
+        console.log(quickViewButton,quickAddModal,closeButton);
+      if (modal) {
+            modal.classList.add('visible'); 
+      }
+    });
 
     
   }
