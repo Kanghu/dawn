@@ -680,16 +680,28 @@ document.addEventListener('DOMContentLoaded', () => {
     constructor() {
       super();
 
-      const button = this.querySelector('button');
+      console.log('ModalOpener initialized.');
 
-      if (!button) return;
+      const button = this.querySelector('button');
+      console.log('Button found:', button);
+
+      if (!button) {
+        console.warn('No button found in modal-opener.');
+        return;
+      }
 
       button.addEventListener('click', () => {
-        const modal = document.querySelector(this.getAttribute('data-modal'));
+        const modalSelector = this.getAttribute('data-modal');
+        console.log('Modal selector:', modalSelector);
+
+        const modal = document.querySelector(modalSelector);
         console.log('Modal element:', modal);
+
         if (modal) {
           modal.classList.add('visible');
           console.log('Modal opened:', modal);
+        } else {
+          console.warn('No modal found for selector:', modalSelector);
         }
       });
     }
