@@ -30,6 +30,10 @@
             "text_style": "subtitle"
           }
         },
+        "related_variants_T9dRaW": {
+          "type": "related_variants",
+          "settings": {}
+        },
         "price": {
           "type": "price",
           "settings": {}
@@ -86,6 +90,7 @@
         "vendor",
         "title",
         "caption",
+        "related_variants_T9dRaW",
         "price",
         "variant_picker",
         "quantity_selector",
@@ -114,6 +119,21 @@
         "enable_video_looping": false,
         "padding_top": 36,
         "padding_bottom": 12
+      }
+    },
+    "17347064802c9f17aa": {
+      "type": "apps",
+      "blocks": {
+        "vitals_product_reviews_XaVEAf": {
+          "type": "shopify://apps/vitals/blocks/product-reviews/aeb48102-2a5a-4f39-bdbd-d8d49f4e20b8",
+          "settings": {}
+        }
+      },
+      "block_order": [
+        "vitals_product_reviews_XaVEAf"
+      ],
+      "settings": {
+        "include_margins": true
       }
     },
     "related-products": {
@@ -307,21 +327,6 @@
       },
       "block_order": [
         "vitals_reviews_carousel_MighRK"
-      ],
-      "settings": {
-        "include_margins": true
-      }
-    },
-    "17347064802c9f17aa": {
-      "type": "apps",
-      "blocks": {
-        "vitals_product_reviews_XaVEAf": {
-          "type": "shopify://apps/vitals/blocks/product-reviews/aeb48102-2a5a-4f39-bdbd-d8d49f4e20b8",
-          "settings": {}
-        }
-      },
-      "block_order": [
-        "vitals_product_reviews_XaVEAf"
       ],
       "settings": {
         "include_margins": true
