@@ -84,6 +84,19 @@
           "settings": {
             "share_label": "Share"
           }
+        },
+        "complementary_jKHL39": {
+          "type": "complementary",
+          "settings": {
+            "block_heading": "Pairs well with",
+            "make_collapsible_row": false,
+            "icon": "price_tag",
+            "product_list_limit": 10,
+            "products_per_page": 3,
+            "pagination_style": "counter",
+            "image_ratio": "square",
+            "enable_quick_add": false
+          }
         }
       },
       "block_order": [
@@ -99,7 +112,8 @@
         "custom_liquid_Kin3xB",
         "custom_liquid_GaJ8NC",
         "text_8bAzhx",
-        "share"
+        "share",
+        "complementary_jKHL39"
       ],
       "custom_css": [
         "h1,.h1 {font-size: calc(var(--font-heading-scale) * 2rem);}",
