@@ -1,0 +1,59 @@
+{% comment %}
+  We assume:
+  - product.metafields.custom.product_related_variants is a list of metaobject references.
+  - Each metaobject reference (related_variant) exposes:
+       related_variant.product_variant.product
+       related_variant.product_variant.tag
+  - We'll display the "tag" as the "variant name."
+{% endcomment %}
+
+{% assign related_variants = product.metafields.custom.product_related_variants.value %}
+
+
+{% assign metaobject_references = product.metafields.custom.product_related_variants.value %}
+{% for metaobject_reference in metaobject_references %}
+    {% assign metaobject = metaobject_reference | metaobject %}
+
+    <!-- Ensure the metaobject is resolved successfully -->
+    {% if metaobject %}
+        {{ metaobject | json}}
+        {{ metaobject.tag}}
+        <p>
+        Product: {{ metaobject.fields.product_variant.value.title }} <br />
+        Tag: {{ metaobject.fields.tag.value }}
+        </p>
+    {% else %}
+        <p>Unable to resolve metaobject.</p>
+    {% endif %}
+{% endfor %}
+
+
+{{ product.metafields.custom.product_related_variants | inspect }}
+
+
+{% if related_variants %}
+  <div class="ProductForm__Option">
+
+    {% for metaobject_item in related_variants %}
+      {% assign meta_variant = metaobject_item.fields.product_variant %}
+      {% assign metaobject = metaobject_item | metaobject %}
+
+      <p>Var</p>
+      
+      <label class="RadioLabel" for="related-variant-{{ forloop.index0 }}">
+        <input
+          type="radio"
+          name="related_variant_selection"
+          id="related-variant-{{ forloop.index0 }}"
+          value="{{ meta_variant.id }}"
+          data-product-handle="{{ meta_variant.product.handle }}"
+          data-product-id="{{ meta_variant.product.id }}"
+        >
+        <span class="RadioLabel__Title">
+          {{ metaobject.tag }} <!-- or metaobject_item.fields.tag if the field is named "tag" -->
+        </span>
+      </label>
+    {% endfor %}
+
+  </div>
+{% endif %}

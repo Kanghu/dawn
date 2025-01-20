@@ -463,6 +463,8 @@
 
               {%- when 'variant_picker' -%}
                 {% render 'product-variant-picker', product: product, block: block, product_form_id: product_form_id %}
+              {% when 'related_variants' %}
+                {% render 'als-product-variant-picker', product: product %}
               {%- when 'buy_buttons' -%}
                 {%- render 'buy-buttons',
                   block: block,
@@ -892,6 +894,18 @@
           ],
           "default": "circle"
         }
+      ]
+    },
+    {
+      "type": "related_variants",
+      "name": "Related variants",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "header",
+          "content": "Related Variants Display"
+        }
+        // If you want any custom settings (e.g., show/hide labels) add them here
       ]
     },
     {
