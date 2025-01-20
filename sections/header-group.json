@@ -14,23 +14,55 @@
     "announcement-bar": {
       "type": "announcement-bar",
       "blocks": {
+        "announcement_VnLUgG": {
+          "type": "announcement",
+          "settings": {
+            "text": "Oglinzi LED Premium - OFERTE",
+            "link": "shopify://collections/oglinzi-led-premium"
+          }
+        },
         "announcement-bar-0": {
           "type": "announcement",
           "settings": {
-            "text": "Welcome to our store",
-            "link": ""
+            "text": "Candelabr & Cristal - OFERTE",
+            "link": "shopify://collections/candelabre-cristale"
+          }
+        },
+        "announcement_mKNLeT": {
+          "type": "announcement",
+          "settings": {
+            "text": "Baterii Sanitare - OFERTE",
+            "link": "shopify://collections/baterii-sanitare"
+          }
+        },
+        "announcement_pjA9RY": {
+          "type": "announcement",
+          "settings": {
+            "text": "Casa si Gradina - OFERTE",
+            "link": "shopify://collections/casa-gradina"
+          }
+        },
+        "announcement_B7gC3k": {
+          "type": "announcement",
+          "settings": {
+            "text": "Coloane de Dus - OFERTE",
+            "link": "shopify://collections/baterii-coloane-de-dus"
           }
         }
       },
       "block_order": [
-        "announcement-bar-0"
+        "announcement_VnLUgG",
+        "announcement-bar-0",
+        "announcement_mKNLeT",
+        "announcement_pjA9RY",
+        "announcement_B7gC3k"
       ],
       "settings": {
         "color_scheme": "",
         "show_line_separator": true,
         "show_social": false,
-        "auto_rotate": false,
-        "change_slides_speed": 5,
+        "auto_rotate": true,
+        "change_slides_speed": 3,
         "enable_country_selector": false,
         "enable_language_selector": false
       }
