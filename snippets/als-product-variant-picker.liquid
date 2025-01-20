@@ -7,53 +7,89 @@
   - We'll display the "tag" as the "variant name."
 {% endcomment %}
 
+<style>
+.ProductForm__Option {
+  display: flex;
+  gap: 10px; /* Spacing between buttons */
+  flex-wrap: wrap; /* Allow buttons to wrap on smaller screens */
+}
+
+.VariantButton {
+  background-color: #f8f8f8; /* Neutral background */
+  border: 1px solid #ccc; /* Light border */
+  padding: 10px 20px; /* Button padding */
+  font-size: 16px; /* Font size */
+  cursor: pointer;
+  border-radius: 5px; /* Rounded corners */
+  transition: background-color 0.2s, border-color 0.2s; /* Smooth hover effect */
+}
+
+.VariantButton:hover {
+  background-color: #e0e0e0; /* Hover background */
+  border-color: #999; /* Darker border on hover */
+}
+
+.VariantButton--active {
+  background-color: #0053ba; /* Active state background */
+  color: #fff; /* Active state text color */
+  border-color: #0053ba; /* Match background */
+}
+
+.VariantButton:disabled {
+  background-color: #ddd; /* Disabled state background */
+  cursor: not-allowed; /* Indicate unclickable */
+}
+
+</style>
+
 {% assign related_variants = product.metafields.custom.product_related_variants.value %}
-
-
-{% assign metaobject_references = product.metafields.custom.product_related_variants.value %}
-{% for metaobject_reference in metaobject_references %}
-    {% assign metaobject = metaobject_reference | metaobject %}
-
-    <!-- Ensure the metaobject is resolved successfully -->
-    {% if metaobject %}
-        {{ metaobject | json}}
-        {{ metaobject.tag}}
-        <p>
-        Product: {{ metaobject.fields.product_variant.value.title }} <br />
-        Tag: {{ metaobject.fields.tag.value }}
-        </p>
-    {% else %}
-        <p>Unable to resolve metaobject.</p>
-    {% endif %}
-{% endfor %}
-
-
-{{ product.metafields.custom.product_related_variants | inspect }}
-
 
 {% if related_variants %}
   <div class="ProductForm__Option">
 
-    {% for metaobject_item in related_variants %}
-      {% assign meta_variant = metaobject_item.fields.product_variant %}
-      {% assign metaobject = metaobject_item | metaobject %}
-
-      <p>Var</p>
-      
-      <label class="RadioLabel" for="related-variant-{{ forloop.index0 }}">
-        <input
-          type="radio"
-          name="related_variant_selection"
-          id="related-variant-{{ forloop.index0 }}"
-          value="{{ meta_variant.id }}"
-          data-product-handle="{{ meta_variant.product.handle }}"
-          data-product-id="{{ meta_variant.product.id }}"
-        >
-        <span class="RadioLabel__Title">
-          {{ metaobject.tag }} <!-- or metaobject_item.fields.tag if the field is named "tag" -->
+    <!-- 1) CURRENT PRODUCT BUTTON -->
+    <button
+        type="button"
+        class="VariantButton VariantButton--active" 
+        disabled
+        aria-pressed="true"
+    >
+        <span class="VariantButton__Title">
+        {{ product.metafields.custom.product_variant_tag.value }}
         </span>
-      </label>
+    </button>
+
+      <!-- 2) RELATED VARIANTS BUTTONS -->
+    {% for metaobject_item in related_variants %}
+      {% assign metaobject = metaobject_item | metaobject %}
+      {% assign metaobject_product = metaobject.product | metaobject %}
+
+        <button
+        type="button"
+        class="VariantButton {% if is_current_product %}VariantButton--active{% endif %}"
+        data-product-handle="{{ metaobject_product.value.handle }}"
+        data-product-id="{{ metaobject_product.value.id }}"
+        {% unless is_current_product %}
+            onclick="window.location.href='/products/{{ metaobject_product.value.handle }}';"
+        {% endunless %}
+        aria-pressed="{{ is_current_product }}"
+        >
+            <span class="VariantButton__Title">
+                {{ metaobject.tag}}
+            </span>
+        </button>
     {% endfor %}
 
   </div>
 {% endif %}
+
+<script>
+  document.querySelectorAll('input[name="related_variant_selection"]').forEach(function(radio) {
+    radio.addEventListener('change', function(event) {
+      var productHandle = event.target.dataset.productHandle;
+
+      // Redirect to the product page with that variant pre-selected
+      window.location.href = '/products/' + productHandle;
+    });
+  });
+</script>
