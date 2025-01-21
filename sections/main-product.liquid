@@ -109,6 +109,7 @@
                 <div id="price-{{ section.id }}" role="status" {{ block.shopify_attributes }}>
                   {%- render 'price',
                     product: product,
+                    target: product,
                     use_variant: true,
                     show_badges: true,
                     price_class: 'price--large'
