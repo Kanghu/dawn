@@ -79,17 +79,11 @@
             "text_style": "body"
           }
         },
-        "share": {
-          "type": "share",
-          "settings": {
-            "share_label": "Share"
-          }
-        },
         "complementary_jKHL39": {
           "type": "complementary",
           "settings": {
-            "block_heading": "Pairs well with",
-            "make_collapsible_row": false,
+            "block_heading": "Accesorii recomandate",
+            "make_collapsible_row": true,
             "icon": "price_tag",
             "product_list_limit": 10,
             "products_per_page": 3,
@@ -112,7 +106,6 @@
         "custom_liquid_Kin3xB",
         "custom_liquid_GaJ8NC",
         "text_8bAzhx",
-        "share",
         "complementary_jKHL39"
       ],
       "custom_css": [
@@ -125,7 +118,7 @@
         "media_size": "medium",
         "constrain_to_viewport": true,
         "media_fit": "contain",
-        "gallery_layout": "thumbnail_slider",
+        "gallery_layout": "thumbnail",
         "media_position": "left",
         "image_zoom": "lightbox",
         "mobile_thumbnails": "show",
@@ -183,10 +176,6 @@
             "page": ""
           }
         },
-        "vitals_reviews": {
-          "type": "shopify://apps/vitals/blocks/product-reviews/aeb48102-2a5a-4f39-bdbd-d8d49f4e20b8",
-          "settings": {}
-        },
         "collapsible_row_N6VrLH": {
           "type": "collapsible_row",
           "settings": {
@@ -201,7 +190,6 @@
       "block_order": [
         "collapsible_row_aiagCC",
         "collapsible_metafields_xfKYrj",
-        "vitals_reviews",
         "collapsible_row_HjAwTd",
         "collapsible_row_N6VrLH"
       ],
@@ -218,6 +206,21 @@
         "desktop_layout": "image_second",
         "padding_top": 36,
         "padding_bottom": 36
+      }
+    },
+    "17347064802c9f17aa": {
+      "type": "apps",
+      "blocks": {
+        "vitals_product_reviews_XaVEAf": {
+          "type": "shopify://apps/vitals/blocks/product-reviews/aeb48102-2a5a-4f39-bdbd-d8d49f4e20b8",
+          "settings": {}
+        }
+      },
+      "block_order": [
+        "vitals_product_reviews_XaVEAf"
+      ],
+      "settings": {
+        "include_margins": true
       }
     },
     "image-with-text": {
@@ -341,6 +344,7 @@
     "main",
     "related-products",
     "alc_collapsible_content_qgxhx4",
+    "17347064802c9f17aa",
     "image-with-text",
     "multicolumn",
     "17344485676cd9137d",
