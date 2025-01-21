@@ -9,6 +9,12 @@
  */
 {
   "sections": {
+    "alc_breadcrumbs_A9LqKm": {
+      "type": "alc-breadcrumbs",
+      "settings": {
+        "separator_symbol": "qweqw"
+      }
+    },
     "main": {
       "type": "main-product",
       "blocks": {
@@ -34,9 +40,15 @@
           "type": "related_variants",
           "settings": {}
         },
-        "price": {
-          "type": "price",
-          "settings": {}
+        "alc_price_8PqTaF": {
+          "type": "alc_price",
+          "settings": {
+            "price_layout": "side_by_side",
+            "bold_current_price": true,
+            "normal_price_color": "#000000",
+            "compare_price_color": "#999999",
+            "sale_badge_text": "BLACK"
+          }
         },
         "variant_picker": {
           "type": "variant_picker",
@@ -45,14 +57,10 @@
             "swatch_shape": "circle"
           }
         },
-        "quantity_selector": {
-          "type": "quantity_selector",
-          "settings": {}
-        },
         "buy_buttons": {
           "type": "buy_buttons",
           "settings": {
-            "show_dynamic_checkout": true,
+            "show_dynamic_checkout": false,
             "show_gift_card_recipient": true
           }
         },
@@ -98,9 +106,8 @@
         "title",
         "caption",
         "related_variants_T9dRaW",
-        "price",
+        "alc_price_8PqTaF",
         "variant_picker",
-        "quantity_selector",
         "buy_buttons",
         "description",
         "custom_liquid_Kin3xB",
@@ -341,6 +348,7 @@
     }
   },
   "order": [
+    "alc_breadcrumbs_A9LqKm",
     "main",
     "related-products",
     "alc_collapsible_content_qgxhx4",

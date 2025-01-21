@@ -1,0 +1,220 @@
+{% comment %}
+  Renders a list of product's price (regular, sale)
+
+  New/Updated Accepts:
+  - product: {Object} Product Liquid object (optional)
+  - placeholder: {Boolean} Renders a placeholder price (optional)
+  - use_variant: {Boolean} Renders selected or first variant price instead of overall product pricing (optional)
+  - show_badges: {Boolean} Renders 'Sale' and 'Sold Out' tags if the product matches the condition (optional)
+  - price_class: {String} Adds a price class to the price element (optional)
+  - show_compare_at_price: {Boolean} Renders the compare at price if the product matches the condition (optional)
+
+  Added/Enhanced:
+  - price_layout: {String} "side_by_side" (default) or "stacked"
+  - bold_current_price: {Boolean} Makes the current price bold if true
+  - normal_price_color: {Color} CSS color for the normal price text
+  - compare_price_color: {Color} CSS color for the compare-at price text
+  - sale_badge_text: {String} Replaces default "Sale" text
+  - Show difference between compare_at_price and price on sale badge
+{% endcomment %}
+
+{%- liquid
+  if use_variant
+    assign target = product.selected_or_first_available_variant
+  elsif placeholder
+    assign target = null
+  else
+    assign target = product
+  endif
+
+  assign compare_at_price = target.compare_at_price
+  assign price = target.price | default: 1999
+  assign price_min = product.price_min
+  assign price_max = product.price_max
+  assign available = target.available | default: false
+
+  assign money_price = price | money
+  assign money_price_min = price_min | money
+  assign money_price_max = price_max | money
+
+  if settings.currency_code_enabled
+    assign money_price = price | money_with_currency
+    assign money_price_min = price_min | money_with_currency
+    assign money_price_max = price_max | money_with_currency
+  endif
+
+  if target == product and product.price_varies
+    assign money_price = 'products.product.price.from_price_html' | t: price: money_price
+  endif
+-%}
+
+{%- unless target == null and placeholder == null -%}
+  {%- comment -%}
+    Compute the numeric difference when on sale (compare_at_price > price).
+    We'll display this on the sale badge if show_badges is true.
+  {%- endcomment -%}
+  {% assign show_sale_badge = false %}
+  {% assign price_diff = 0 %}
+  {% if compare_at_price > price %}
+    {% assign show_sale_badge = true %}
+    {% assign price_diff = compare_at_price | minus: price %}
+  {% endif %}
+
+  <div
+    class="
+      price
+      {%- if price_class %} {{ price_class }}{% endif -%}
+      {%- if available == false %} price--sold-out{% endif -%}
+      {%- if compare_at_price > price and product.quantity_price_breaks_configured? != true %} price--on-sale{% endif -%}
+      {%- if compare_at_price > price and product.quantity_price_breaks_configured? %} volume-pricing--sale-badge{% endif -%}
+      {%- if product.price_varies == false and product.compare_at_price_varies %} price--no-compare{% endif -%}
+      {%- if show_badges %} price--show-badge{% endif -%}
+      {%- comment -%}
+        Add a class if user chooses the stacked layout.
+      {%- endcomment -%}
+      {%- if section.settings.price_layout == 'stacked' %} price--stacked{% endif -%}
+    "
+  >
+    <div class="price__container">
+      {%- comment -%}
+        If stacked layout is chosen, you can style with .price--stacked .price__regular / .price__sale in CSS
+      {%- endcomment -%}
+
+      {%- comment -%}
+        price__regular
+      {%- endcomment -%}
+      <div
+        class="price__regular"
+        style="color: {{ section.settings.normal_price_color }};"
+      >
+        {%- if product.quantity_price_breaks_configured? -%}
+          {%- if show_compare_at_price and compare_at_price -%}
+            {%- unless product.price_varies == false and product.compare_at_price_varies %}
+              <span class="visually-hidden visually-hidden--inline">
+                {{- 'products.product.price.regular_price' | t -}}
+              </span>
+              <span>
+                <s
+                  class="price-item price-item--regular variant-item__old-price"
+                  style="color: {{ section.settings.compare_price_color }};"
+                >
+                  {% if settings.currency_code_enabled %}
+                    {{ compare_at_price | money_with_currency }}
+                  {% else %}
+                    {{ compare_at_price | money }}
+                  {% endif %}
+                </s>
+              </span>
+            {%- endunless -%}
+          {%- endif -%}
+          <span class="visually-hidden visually-hidden--inline">
+            {{ 'products.product.price.regular_price' | t }}
+          </span>
+          <span class="price-item price-item--regular">
+            {{-
+              'products.product.volume_pricing.price_range'
+              | t: minimum: money_price_min, maximum: money_price_max
+            -}}
+          </span>
+        {%- else -%}
+          <span class="visually-hidden visually-hidden--inline">
+            {{ 'products.product.price.regular_price' | t }}
+          </span>
+
+          {%- comment -%}
+            If bold_current_price is true, wrap in <strong> or add a .bold class
+          {%- endcomment -%}
+          {% if section.settings.bold_current_price == true %}
+            <strong class="price-item price-item--regular">
+              {{ money_price }}
+            </strong>
+          {% else %}
+            <span class="price-item price-item--regular">
+              {{ money_price }}
+            </span>
+          {% endif %}
+        {%- endif -%}
+      </div>
+
+      {%- comment -%}
+        price__sale
+      {%- endcomment -%}
+      <div
+        class="price__sale"
+        {%- if compare_at_price > price -%}
+          style="color: {{ section.settings.normal_price_color }};"
+        {%- endif -%}
+      >
+        {%- unless product.price_varies == false and product.compare_at_price_varies %}
+          <span class="visually-hidden visually-hidden--inline">
+            {{ 'products.product.price.regular_price' | t }}
+          </span>
+          <span>
+            <s
+              class="price-item price-item--regular"
+              style="color: {{ section.settings.compare_price_color }};"
+            >
+              {% if settings.currency_code_enabled %}
+                {{ compare_at_price | money_with_currency }}
+              {% else %}
+                {{ compare_at_price | money }}
+              {% endif %}
+            </s>
+          </span>
+        {%- endunless -%}
+        <span class="visually-hidden visually-hidden--inline">
+          {{ 'products.product.price.sale_price' | t }}
+        </span>
+
+        {%- comment -%}
+          Apply bold if requested
+        {%- endcomment -%}
+        {% if section.settings.bold_current_price == true %}
+          <strong class="price-item price-item--sale price-item--last">
+            {{ money_price }}
+          </strong>
+        {% else %}
+          <span class="price-item price-item--sale price-item--last">
+            {{ money_price }}
+          </span>
+        {% endif %}
+      </div>
+
+      <small class="unit-price caption{% if product.selected_or_first_available_variant.unit_price_measurement == nil %} hidden{% endif %}">
+        <span class="visually-hidden">{{ 'products.product.price.unit_price' | t }}</span>
+        <span class="price-item price-item--last">
+          <span>{{- product.selected_or_first_available_variant.unit_price | money -}}</span>
+          <span aria-hidden="true">/</span>
+          <span class="visually-hidden">&nbsp;{{ 'accessibility.unit_price_separator' | t }}&nbsp;</span>
+          <span>
+            {%- if product.selected_or_first_available_variant.unit_price_measurement.reference_value != 1 -%}
+              {{- product.selected_or_first_available_variant.unit_price_measurement.reference_value -}}
+            {%- endif -%}
+            {{ product.selected_or_first_available_variant.unit_price_measurement.reference_unit }}
+          </span>
+        </span>
+      </small>
+    </div>
+
+    {%- if show_badges -%}
+      {%- comment -%}
+        When on sale, show the difference on the badge:
+        E.g. "Sale -$10.00" or "My Custom Sale Text: $10.00"
+      {%- endcomment -%}
+      {% if show_sale_badge %}
+        <span class="badge price__badge-sale color-{{ settings.sale_badge_color_scheme }}">
+          {% assign custom_sale_text = section.settings.sale_badge_text | default: 'Sale' %}
+          {% assign diff_money = price_diff | money %}
+          {% if settings.currency_code_enabled %}
+            {% assign diff_money = price_diff | money_with_currency %}
+          {% endif %}
+
+          {{ custom_sale_text }} - {{ diff_money }}
+        </span>
+      {% endif %}
+      <span class="badge price__badge-sold-out color-{{ settings.sold_out_badge_color_scheme }}">
+        {{ 'products.product.sold_out' | t }}
+      </span>
+    {%- endif -%}
+  </div>
+{% endunless %}

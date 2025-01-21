@@ -466,6 +466,14 @@
                 {% render 'product-variant-picker', product: product, block: block, product_form_id: product_form_id %}
               {% when 'related_variants' %}
                 {% render 'als-product-variant-picker', product: product %}
+              {% when 'alc_price' %}
+                  {%- render 'price',
+                    product: product,
+                    target: product,
+                    use_variant: true,
+                    show_badges: true,
+                    price_class: 'price--large'
+                  -%}
               {%- when 'buy_buttons' -%}
                 {%- render 'buy-buttons',
                   block: block,
@@ -907,6 +915,46 @@
           "content": "Related Variants Display"
         }
         // If you want any custom settings (e.g., show/hide labels) add them here
+      ]
+    },
+    {
+      "name": "ALC - Price",
+      "type": "alc_price",
+      "settings": [
+        {
+          "type": "radio",
+          "id": "price_layout",
+          "label": "Price layout",
+          "options": [
+            { "value": "side_by_side", "label": "Side by Side" },
+            { "value": "stacked", "label": "Stacked" }
+          ],
+          "default": "side_by_side"
+        },
+        {
+          "type": "checkbox",
+          "id": "bold_current_price",
+          "label": "Bold current price",
+          "default": false
+        },
+        {
+          "type": "color",
+          "id": "normal_price_color",
+          "label": "Normal price color",
+          "default": "#000000"
+        },
+        {
+          "type": "color",
+          "id": "compare_price_color",
+          "label": "Compare-at price color",
+          "default": "#999999"
+        },
+        {
+          "type": "text",
+          "id": "sale_badge_text",
+          "label": "Sale badge text",
+          "default": "Sale"
+        }
       ]
     },
     {
