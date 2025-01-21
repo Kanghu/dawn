@@ -135,21 +135,6 @@
         "padding_bottom": 12
       }
     },
-    "17347064802c9f17aa": {
-      "type": "apps",
-      "blocks": {
-        "vitals_product_reviews_XaVEAf": {
-          "type": "shopify://apps/vitals/blocks/product-reviews/aeb48102-2a5a-4f39-bdbd-d8d49f4e20b8",
-          "settings": {}
-        }
-      },
-      "block_order": [
-        "vitals_product_reviews_XaVEAf"
-      ],
-      "settings": {
-        "include_margins": true
-      }
-    },
     "related-products": {
       "type": "related-products",
       "settings": {
@@ -198,6 +183,10 @@
             "page": ""
           }
         },
+        "vitals_reviews": {
+          "type": "shopify://apps/vitals/blocks/product-reviews/aeb48102-2a5a-4f39-bdbd-d8d49f4e20b8",
+          "settings": {}
+        },
         "collapsible_row_N6VrLH": {
           "type": "collapsible_row",
           "settings": {
@@ -212,6 +201,7 @@
       "block_order": [
         "collapsible_row_aiagCC",
         "collapsible_metafields_xfKYrj",
+        "vitals_reviews",
         "collapsible_row_HjAwTd",
         "collapsible_row_N6VrLH"
       ],

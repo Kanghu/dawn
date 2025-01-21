@@ -146,6 +146,11 @@
                   </div>
                 </details>
               </div>
+
+              {% else %}
+                <div class="vitals-reviews-block">
+                  {{ block | block_tag }}
+                </div>
             {% endif %}
             {%- endfor -%}
           </div>
@@ -741,6 +746,10 @@
           "label": "t:sections.collapsible_content.blocks.collapsible_row.settings.page.label"
         }
       ]
+    },
+    {
+      "type": "vitals_reviews",
+      "name": "Vitals Reviews"
     }
   ],
   "presets": [
