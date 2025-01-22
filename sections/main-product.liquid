@@ -467,12 +467,13 @@
               {% when 'related_variants' %}
                 {% render 'als-product-variant-picker', product: product %}
               {% when 'alc_price' %}
-                  {%- render 'price',
+                  {%- render 'alc-price',
                     product: product,
                     target: product,
                     use_variant: true,
                     show_badges: true,
-                    price_class: 'price--large'
+                    price_class: 'price--large',
+                    block: block
                   -%}
               {%- when 'buy_buttons' -%}
                 {%- render 'buy-buttons',
@@ -947,6 +948,30 @@
           "type": "color",
           "id": "compare_price_color",
           "label": "Compare-at price color",
+          "default": "#999999"
+        },
+        {
+          "type": "color",
+          "id": "difference_price_color",
+          "label": "Difference price background color",
+          "default": "#999999"
+        },
+        {
+          "type": "color",
+          "id": "badge_sale_color",
+          "label": "Badge sale background color",
+          "default": "#999999"
+        },
+        {
+          "type": "color",
+          "id": "difference_price_text_color",
+          "label": "Difference price text color",
+          "default": "#999999"
+        },
+        {
+          "type": "color",
+          "id": "badge_sale_text_color",
+          "label": "Badge sale text color",
           "default": "#999999"
         },
         {

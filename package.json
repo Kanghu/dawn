@@ -1,0 +1,13 @@
+{
+  "dependencies": {
+    "tailwindcss": "^3.4.17"
+  },
+  "devDependencies": {
+    "concurrently": "^9.1.2"
+  },
+  "scripts": {
+    "dev": "concurrently  -c \"auto\" \"npm:dev:*\"",
+    "dev:tailwind": "npx tailwindcss -i ./style.css -o ./assets/style.css --watch",
+    "dev:shopify": "shopify theme dev"
+  }
+}

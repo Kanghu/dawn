@@ -1,84 +1,90 @@
-{% comment %} This is a Shopify section version of your footer. 1. Replace asset URLs as needed. 2. Ensure your menus
-(linklists) match the names used below. 3. Add more settings in schema if needed. {% endcomment %}
-
-{% comment %}theme-check-disable UndefinedObject{% endcomment %}
-{{ 'section-footer.css' | asset_url | stylesheet_tag }}
-{{ 'component-newsletter.css' | asset_url | stylesheet_tag }}
-{{ 'component-list-menu.css' | asset_url | stylesheet_tag }}
-{{ 'component-list-payment.css' | asset_url | stylesheet_tag }}
-{{ 'component-list-social.css' | asset_url | stylesheet_tag }}
+{% comment %}
+  TailwindCSS version of your footer. 
+  - Replaces Bootstrap-like classes (`row`, `col-lg-3`, etc.) with Tailwind utilities.
+  - Removes most inline styles in favor of Tailwind classes.
+  - Keep or adjust any custom classes (e.g., `.widget`) if you still need them for your store’s additional logic.
+{% endcomment %}
 
 <style>
-.footer {
-    font-family: Roboto, sans-serif;
-    font-size: 1.3rem;
-    background: #222;
-    color: rgb(252, 252, 252);
-}
-
-.footer-middle .widget-title {
-    padding: 0.6rem 0;
-    margin-bottom: .9rem;
-    font-family: 'Roboto', sans-serif;
-    font-size: 1.6rem;
-    font-weight: 100;
-    letter-spacing: 0;
-    text-transform: uppercase;
-    color: #ffffff;
-}
-
-.footer-middle {
-    padding: 4.2rem 0 1.8rem;
-    border-bottom: 1px solid #333;
-}
-
-.footer h4, h5 {
-  color:rgb(252, 252, 252);
-}
+  h4 {
+    color: white !important;
+  }
 </style>
 
-<footer class="footer" data-section-id="{{ section.id }}" data-section-type="footer">
-  <div class="container">
-    <div class="footer-middle">
-      <div class="row">
+<footer 
+  class="bg-black text-white text-sm font-roboto" 
+  data-section-id="{{ section.id }}" 
+  data-section-type="footer"
+>
+  <!-- Outer container for consistent max-width -->
+  <div class="max-w-screen-xl mx-auto px-4 py-4">
+    
+    <!-- Footer middle -->
+    <div class="footer-middle py-10 border-b border-gray-700">
+      <!-- "Row" equivalent -->
+      <div class="flex flex-wrap -mx-2">
+        
         <!-- Company Info & Logo -->
-        <div class="col-lg-3 footer-logo">
-          <div class="row">
-            <div class="col-lg-12 col-md-12 pb-10 mb-10">
-              <a href="{{ shop.url }}" class="logo-footer">
-                <img src="{{ 'logo-footer.webp' | file_url }}" alt="logo-footer" width="154" height="43" />
-              </a>
+        <div class="w-full lg:w-3/12 px-2 mb-6 footer-logo">
+          <div class="mb-4 flex content-center">
+            <a href="{{ shop.url }}" class="logo-footer inline-block">
+              <!-- If you want to use a setting-based image: 
+                   <img 
+                     src="{{ section.settings.footer_logo | img_url: 'x200' }}"
+                     alt="logo-footer"
+                     class="h-auto w-auto"
+                   /> 
+              -->
+              <img 
+                src="{{ 'logo-footer.webp' | file_url }}" 
+                alt="logo-footer" 
+                class="max-h-12 object-contain" 
+              />
+            </a>
+          </div>
+          <div class="space-y-1 text-sm text-gray-300 text-center">
+            <div>
+              &copy; 2020-{{ "now" | date : "%Y" }} S.C. ATLANTIC LOGISTIC CONCEPT S.R.L.
             </div>
-            <div>Copyright 2020-{{ "now" | date : "%Y" }} S.C. ATLANTIC LOGISTIC CONCEPT S.R.L.</div>
             <div>CUI 43286659 Reg Com J23/5258/04.11.2020</div>
           </div>
         </div>
+        <!-- End Company Info & Logo -->
 
-        <!-- Footer Navigation -->
-        <div class="col-sm-12 col-lg-9">
-          <div class="row footer-widgets">
+        <!-- Footer Navigation / Right 9 columns -->
+        <div class="w-full lg:w-9/12 px-2">
+          <div class="flex flex-wrap -mx-2 footer-widgets">
+            
             <!-- Section 1 (Despre noi) -->
-            <div class="col-lg-2 col-md-6">
-              <div class="widget ml-lg-4">
-                <h4 class="widget-title">Despre noi</h4>
-                <ul class="widget-body">
+            <div class="w-1/2 sm:w-1/3 md:w-1/4 lg:w-2/12 px-2 mb-6">
+              <div class="widget">
+                <h4 class="widget-title mb-2 text-base font-light uppercase">
+                  Despre noi
+                </h4>
+                <ul class="space-y-1">
                   {% for link in linklists.footer-about.links %}
                   <li>
-                    <a href="{{ link.url }}">{{ link.title }}</a>
+                    <a href="{{ link.url }}" class="hover:text-gray-400">
+                      {{ link.title }}
+                    </a>
                   </li>
                   {% endfor %}
                 </ul>
               </div>
             </div>
-
+            
             <!-- Section 2 (Utile) -->
-            <div class="col-lg-2 col-md-6">
-              <div class="widget ml-lg-4">
-                <h4 class="widget-title">Utile</h4>
-                <ul class="widget-body">
+            <div class="w-1/2 sm:w-1/3 md:w-1/4 lg:w-2/12 px-2 mb-6">
+              <div class="widget">
+                <h4 class="widget-title mb-2 text-base font-light uppercase">
+                  Utile
+                </h4>
+                <ul class="space-y-1">
                   {% for link in linklists.footer-utile.links %}
                   <li>
-                    <a href="{{ link.url }}">{{ link.title }}</a>
+                    <a href="{{ link.url }}" class="hover:text-gray-400">
+                      {{ link.title }}
+                    </a>
                   </li>
                   {% endfor %}
                 </ul>
@@ -86,13 +92,17 @@
             </div>
 
             <!-- Section 3 (Business) -->
-            <div class="col-lg-2 col-md-6">
+            <div class="w-1/2 sm:w-1/3 md:w-1/4 lg:w-2/12 px-2 mb-6">
               <div class="widget widget-info">
-                <h4 class="widget-title">Business</h4>
-                <ul class="widget-body">
+                <h4 class="widget-title mb-2 text-base font-light uppercase">
+                  Business
+                </h4>
+                <ul class="space-y-1">
                   {% for link in linklists.footer-business.links %}
                   <li>
-                    <a href="{{ link.url }}">{{ link.title }}</a>
+                    <a href="{{ link.url }}" class="hover:text-gray-400">
+                      {{ link.title }}
+                    </a>
                   </li>
                   {% endfor %}
                 </ul>
@@ -100,13 +110,17 @@
             </div>
 
             <!-- Section 4 (Termeni) -->
-            <div class="col-lg-2 col-md-6">
+            <div class="w-1/2 sm:w-1/3 md:w-1/4 lg:w-2/12 px-2 mb-6">
               <div class="widget widget-info">
-                <h4 class="widget-title">Termeni</h4>
-                <ul class="widget-body">
+                <h4 class="widget-title mb-2 text-base font-light uppercase">
+                  Termeni
+                </h4>
+                <ul class="space-y-1">
                   {% for link in linklists.footer-termeni.links %}
                   <li>
-                    <a href="{{ link.url }}">{{ link.title }}</a>
+                    <a href="{{ link.url }}" class="hover:text-gray-400">
+                      {{ link.title }}
+                    </a>
                   </li>
                   {% endfor %}
                 </ul>
@@ -114,113 +128,161 @@
             </div>
 
             <!-- Section 5 (Contact) -->
-            <div class="col-lg-2 col-md-6">
+            <div class="w-1/2 sm:w-1/3 md:w-1/4 lg:w-2/12 px-2 mb-6">
               <div class="widget widget-info">
-                <h4 class="widget-title">Contact</h4>
-                <ul class="widget-body">
-                  <li class="d-flex align-items-center">
+                <h4 class="widget-title mb-2 text-base font-light uppercase">
+                  Contact
+                </h4>
+                <ul class="space-y-1 text-sm">
+                  <li class="flex items-center space-x-1">
                     <!-- phone icon -->
-                    <svg width="18px" height="18px" class="mr-1" ...>...</svg>
-                    <a href="tel:021 555 7252">021 555 7252</a>
+                    <svg width="18" height="18" class="inline-block" ...>...</svg>
+                    <a href="tel:021 555 7252" class="hover:text-gray-400">
+                      021 555 7252
+                    </a>
                   </li>
-                  <li class="d-flex align-items-center">
+                  <li class="flex items-center space-x-1">
                     <!-- whatsapp icon -->
-                    <svg width="24px" height="24px" class="mr-1" ...>...</svg>
-                    <a href="https://api.whatsapp.com/send?phone=40723029676&amp;text=Salut" target="_blank"
-                      >0723029676</a
+                    <svg width="24" height="24" class="inline-block" ...>...</svg>
+                    <a 
+                      href="https://api.whatsapp.com/send?phone=40723029676&amp;text=Salut"
+                      target="_blank"
+                      class="hover:text-gray-400"
                     >
+                      0723029676
+                    </a>
                   </li>
-                  <li class="d-flex align-items-center">
+                  <li class="flex items-center space-x-1 break-all">
                     <!-- email icon -->
-                    <svg width="20px" height="20px" class="mr-1" ...>...</svg>
-                    <a href="mailto:contact@alessandrodesign.ro" style="word-wrap: break-word"
-                      >contact@alessandrodesign.ro</a
+                    <svg width="20" height="20" class="inline-block" ...>...</svg>
+                    <a
+                      href="mailto:contact@alessandrodesign.ro"
+                      class="hover:text-gray-400"
                     >
+                      contact@alessandrodesign.ro
+                    </a>
                   </li>
                 </ul>
               </div>
             </div>
 
             <!-- Section 6 (Program) -->
-            <div class="col-lg-2 col-md-6">
-              <h4 class="widget-title">&nbsp;</h4>
-              <div class="widget widget-info">
-                <ul class="widget-body">
-                  <li class="d-flex align-items-center">
+            <div class="w-1/2 sm:w-1/3 md:w-1/4 lg:w-2/12 px-2 mb-6">
+              <h4 class="widget-title mb-2 text-base font-light uppercase">&nbsp;</h4>
+              <div class="widget widget-info text-sm">
+                <ul class="space-y-1">
+                  <li class="flex items-center space-x-1">
                     <!-- schedule icon -->
-                    <svg width="20px" height="20px" class="mr-1" ...>...</svg>
-                    <div>Program Relatii Clienti: L-V: 10-18</div>
+                    <svg width="20" height="20" class="inline-block" ...>...</svg>
+                    <span>
+                      Program Relatii Clienti: L-V: 10-18
+                    </span>
                   </li>
-                  <li class="d-flex align-items-center">
+                  <li class="flex items-center space-x-1">
                     <!-- location icon -->
-                    <svg width="24px" height="24px" class="mr-1" ...>...</svg>
-                    <div>Showroom Voluntari: L-V: 9-18; S: 9-15; Showroom Vulcanescu: L-V: 10-19; S: 10-16;</div>
+                    <svg width="24" height="24" class="inline-block" ...>...</svg>
+                    <span>
+                      Showroom Voluntari: L-V: 9-18; S: 9-15; 
+                      <br />
+                      Showroom Vulcanescu: L-V: 10-19; S: 10-16;
+                    </span>
                   </li>
                 </ul>
               </div>
             </div>
-          </div>
-        </div>
 
-        <div class="col-sm-12 mobile-company-info text-center">
-          <div>Copyright 2020-{{ "now" | date : "%Y" }} S.C. ATLANTIC LOGISTIC CONCEPT S.R.L.</div>
-          <div>CUI 43286659 Reg Com J23/5258/04.11.2020</div>
-        </div>
-      </div>
-    </div>
-
-    <div class="footer-bottom justify-content-center" style="position: relative">
-      <div class="footer-center">
-        <div class="row">
-          <div class="col-lg-3">
-            <div class="d-flex justify-content-center netopia-payments">
-              <img
-                title="NETOPIA Payments"
-                src="{{ 'np-pay-horizontal.svg' | asset_url }}"
-                style="width: 100%; height: 100%; max-width: 280px; cursor: pointer"
-              />
-            </div>
-          </div>
-          <div class="col-lg-9">
-            <div class="d-flex justify-content-center">
-              <a href="https://anpc.ro/ce-este-sal/" rel="nofollow" target="_blank" class="mr-10">
-                <img src="{{ 'anpc-sal.webp' | asset_url }}" alt="anpc" style="max-height: 60px" />
-              </a>
-              <a
-                href="https://ec.europa.eu/consumers/odr/main/index.cfm?event=main.home2.show&amp;lng=RO"
-                rel="nofollow"
-                target="_blank"
-              >
-                <img src="{{ 'anpc-sol.webp' | asset_url }}" alt="anpc" style="max-height: 60px" />
-              </a>
+            <!-- Mobile-Only Company Info (if needed) -->
+            <div class="w-full block lg:hidden text-center mt-4">
+              <p class="text-xs text-gray-300">
+                &copy; 2020-{{ "now" | date : "%Y" }} S.C. ATLANTIC LOGISTIC CONCEPT S.R.L.
+                <br />
+                CUI 43286659 Reg Com J23/5258/04.11.2020
+              </p>
             </div>
           </div>
         </div>
-        <p class="copyright text-center mt-2">
-          Developed with ♡ by <a href="https://atlanticlogisticconcept.ro" title="ALC">ALC</a>
-        </p>
       </div>
-      <div class="social-links">
-        <a
+    </div> 
+    <!-- End footer-middle -->
+
+    <!-- Footer bottom -->
+    <div class="footer-bottom flex flex-wrap items-center justify-center py-4 relative">
+      <div class="footer-center w-full lg:w-3/4 mb-4 lg:mb-0 flex flex-col lg:flex-row items-center lg:justify-between space-y-4 lg:space-y-0">
+        <!-- Netopia Payments -->
+        <div class="netopia-payments flex justify-center">
+          <img 
+            title="NETOPIA Payments"
+            src="{{ 'np-pay-horizontal.svg' | asset_url }}"
+            alt="Netopia"
+            class="max-w-xs cursor-pointer h-auto"
+          />
+        </div>
+        
+        <!-- ANPC icons -->
+        <div class="flex items-center justify-center space-x-4">
+          <a href="https://anpc.ro/ce-este-sal/" rel="nofollow" target="_blank">
+            <img 
+              src="{{ 'anpc-sal.webp' | asset_url }}" 
+              alt="anpc" 
+              class="max-h-12"
+            />
+          </a>
+          <a 
+            href="https://ec.europa.eu/consumers/odr/main/index.cfm?event=main.home2.show&amp;lng=RO"
+            rel="nofollow"
+            target="_blank"
+          >
+            <img 
+              src="{{ 'anpc-sol.webp' | asset_url }}" 
+              alt="anpc" 
+              class="max-h-12"
+            />
+          </a>
+        </div>
+      </div>
+
+      <!-- Copyright + Developer -->
+      <div class="w-full mt-4 text-center text-xs text-gray-400">
+        Developed with ♡ by 
+        <a href="https://atlanticlogisticconcept.ro" title="ALC" class="hover:underline">
+          ALC
+        </a>
+      </div>
+
+      <!-- Social links (absolute or manually positioned) -->
+      <div class="social-links flex space-x-4 mt-4 lg:mt-0 lg:absolute right-4">
+        <a 
           href="https://www.facebook.com/alessandrodesign.ro"
           target="_blank"
-          class="social-link social-facebook fab fa-facebook-f"
+          class="social-link social-facebook fab fa-facebook-f hover:text-gray-400"
         ></a>
-        <a
+        <a 
           href="https://www.instagram.com/alessandrodesign.ro/"
           target="_blank"
-          class="social-link social-instagram fab fa-instagram"
+          class="social-link social-instagram fab fa-instagram hover:text-gray-400"
         ></a>
         <a
           href="https://www.youtube.com/channel/UCIhyazE1pBVcDZZlf-_JeSg"
           target="_blank"
-          class="social-link social-youtube fab fa-youtube"
+          class="social-link social-youtube fab fa-youtube hover:text-gray-400"
         ></a>
       </div>
     </div>
-    <!-- End FooterBottom -->
+    <!-- End Footer Bottom -->
   </div>
 </footer>
 
-{% schema %} { "name": "Footer", "settings": [ { "type": "image_picker", "id": "footer_logo", "label": "Footer logo" }
-/* Add more settings as needed */ ], "blocks": [], "default": {} } {% endschema %}
+{% schema %}
+{
+  "name": "Footer",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "footer_logo",
+      "label": "Footer logo"
+    }
+  ],
+  "blocks": [],
+  "default": {}
+}
+{% endschema %}

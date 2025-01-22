@@ -1,22 +1,28 @@
 {% comment %}
-  Renders a list of product's price (regular, sale)
+Renders a list of product's price (regular, sale)
 
-  New/Updated Accepts:
-  - product: {Object} Product Liquid object (optional)
-  - placeholder: {Boolean} Renders a placeholder price (optional)
-  - use_variant: {Boolean} Renders selected or first variant price instead of overall product pricing (optional)
-  - show_badges: {Boolean} Renders 'Sale' and 'Sold Out' tags if the product matches the condition (optional)
-  - price_class: {String} Adds a price class to the price element (optional)
-  - show_compare_at_price: {Boolean} Renders the compare at price if the product matches the condition (optional)
+New/Updated Accepts:
+- product: {Object} Product Liquid object (optional)
+- placeholder: {Boolean} Renders a placeholder price (optional)
+- use_variant: {Boolean} Renders selected or first variant price instead of overall product pricing (optional)
+- show_badges: {Boolean} Renders 'Sale' and 'Sold Out' tags if the product matches the condition (optional)
+- price_class: {String} Adds a price class to the price element (optional)
+- show_compare_at_price: {Boolean} Renders the compare at price if the product matches the condition (optional)
 
-  Added/Enhanced:
-  - price_layout: {String} "side_by_side" (default) or "stacked"
-  - bold_current_price: {Boolean} Makes the current price bold if true
-  - normal_price_color: {Color} CSS color for the normal price text
-  - compare_price_color: {Color} CSS color for the compare-at price text
-  - sale_badge_text: {String} Replaces default "Sale" text
-  - Show difference between compare_at_price and price on sale badge
+Added/Enhanced:
+- price_layout: {String} "side-by-side" (default) or "stacked"
+- bold_current_price: {Boolean} Makes the current price bold if true
+- normal_price_color: {Color} CSS color for the normal price text
+- compare_price_color: {Color} CSS color for the compare-at price text
+- sale_badge_text: {String} Replaces default "Sale" text
+- Show difference between compare_at_price and price on a separate badge  
 {% endcomment %}
+
+<style>
+    .price {
+        margin-bottom: 0;
+    }
+</style>
 
 {%- liquid
   if use_variant
@@ -50,8 +56,8 @@
 
 {%- unless target == null and placeholder == null -%}
   {%- comment -%}
-    Compute the numeric difference when on sale (compare_at_price > price).
-    We'll display this on the sale badge if show_badges is true.
+    Determine if there's a sale (compare_at_price > price) and compute the difference.
+    We'll display this difference as a separate badge if show_badges is true.
   {%- endcomment -%}
   {% assign show_sale_badge = false %}
   {% assign price_diff = 0 %}
@@ -60,43 +66,59 @@
     {% assign price_diff = compare_at_price | minus: price %}
   {% endif %}
 
+  {%- comment -%}
+    Prepare the "Sale" text and difference amount for badges.
+  {%- endcomment -%}
+  {% assign custom_sale_text = block.settings.sale_badge_text | default: 'Sale' %}
+  {% assign diff_money = '' %}
+  {% if show_sale_badge %}
+    {% assign diff_money = price_diff | money %}
+    {% if settings.currency_code_enabled %}
+      {% assign diff_money = price_diff | money_with_currency %}
+    {% endif %}
+  {% endif %}
+
+  {%- comment -%}
+    Dynamically apply Tailwind classes depending on layout choice:
+    - "side-by-side": display flex row
+    - "stacked": display flex column
+  {%- endcomment -%}
   <div
     class="
       price
+      {% if block.settings.price_layout == 'stacked' %}
+        flex flex-col items-start
+      {% else %}
+        flex flex-row items-baseline gap-2
+      {% endif %}
       {%- if price_class %} {{ price_class }}{% endif -%}
       {%- if available == false %} price--sold-out{% endif -%}
       {%- if compare_at_price > price and product.quantity_price_breaks_configured? != true %} price--on-sale{% endif -%}
       {%- if compare_at_price > price and product.quantity_price_breaks_configured? %} volume-pricing--sale-badge{% endif -%}
       {%- if product.price_varies == false and product.compare_at_price_varies %} price--no-compare{% endif -%}
       {%- if show_badges %} price--show-badge{% endif -%}
-      {%- comment -%}
-        Add a class if user chooses the stacked layout.
-      {%- endcomment -%}
-      {%- if section.settings.price_layout == 'stacked' %} price--stacked{% endif -%}
     "
   >
-    <div class="price__container">
+    <div class="price__container flex flex-col">
       {%- comment -%}
-        If stacked layout is chosen, you can style with .price--stacked .price__regular / .price__sale in CSS
-      {%- endcomment -%}
-
-      {%- comment -%}
-        price__regular
+        ======================
+        REGULAR PRICE SECTION
+        ======================
       {%- endcomment -%}
       <div
-        class="price__regular"
-        style="color: {{ section.settings.normal_price_color }};"
+        class="price__regular inline-block"
+        style="color: {{ block.settings.normal_price_color }};"
       >
         {%- if product.quantity_price_breaks_configured? -%}
           {%- if show_compare_at_price and compare_at_price -%}
             {%- unless product.price_varies == false and product.compare_at_price_varies %}
               <span class="visually-hidden visually-hidden--inline">
-                {{- 'products.product.price.regular_price' | t -}}
+                {{ 'products.product.price.regular_price' | t }}
               </span>
               <span>
                 <s
-                  class="price-item price-item--regular variant-item__old-price"
-                  style="color: {{ section.settings.compare_price_color }};"
+                  class="price-item price-item--regular variant-item__old-price line-through"
+                  style="color: {{ block.settings.compare_price_color }};"
                 >
                   {% if settings.currency_code_enabled %}
                     {{ compare_at_price | money_with_currency }}
@@ -121,10 +143,8 @@
             {{ 'products.product.price.regular_price' | t }}
           </span>
 
-          {%- comment -%}
-            If bold_current_price is true, wrap in <strong> or add a .bold class
-          {%- endcomment -%}
-          {% if section.settings.bold_current_price == true %}
+          {%- comment -%} If bold_current_price is true, wrap price in <strong> {%- endcomment -%}
+          {% if block.settings.bold_current_price == true %}
             <strong class="price-item price-item--regular">
               {{ money_price }}
             </strong>
@@ -137,50 +157,73 @@
       </div>
 
       {%- comment -%}
-        price__sale
+        ==================
+        SALE PRICE SECTION
+        ==================
       {%- endcomment -%}
       <div
-        class="price__sale"
+        class="price__sale inline-block mt-1"
         {%- if compare_at_price > price -%}
-          style="color: {{ section.settings.normal_price_color }};"
+          style="color: {{ block.settings.normal_price_color }};"
         {%- endif -%}
       >
         {%- unless product.price_varies == false and product.compare_at_price_varies %}
           <span class="visually-hidden visually-hidden--inline">
             {{ 'products.product.price.regular_price' | t }}
           </span>
-          <span>
-            <s
-              class="price-item price-item--regular"
-              style="color: {{ section.settings.compare_price_color }};"
-            >
-              {% if settings.currency_code_enabled %}
-                {{ compare_at_price | money_with_currency }}
-              {% else %}
-                {{ compare_at_price | money }}
-              {% endif %}
-            </s>
-          </span>
-        {%- endunless -%}
-        <span class="visually-hidden visually-hidden--inline">
-          {{ 'products.product.price.sale_price' | t }}
-        </span>
+          <span class="flex flex-col">
+            <span class="inline-flex items-center">
+                <s
+                class="price-item price-item--regular line-through"
+                style="color: {{ block.settings.compare_price_color }}; font-size: 1.5rem;"
+                >
+                {% if settings.currency_code_enabled %}
+                    {{ compare_at_price | money_with_currency }}
+                {% else %}
+                    {{ compare_at_price | money }}
+                {% endif %}
+                </s>
 
-        {%- comment -%}
-          Apply bold if requested
-        {%- endcomment -%}
-        {% if section.settings.bold_current_price == true %}
-          <strong class="price-item price-item--sale price-item--last">
-            {{ money_price }}
-          </strong>
-        {% else %}
-          <span class="price-item price-item--sale price-item--last">
-            {{ money_price }}
-          </span>
-        {% endif %}
+                {%- comment -%}
+                In STACKED layout, show the difference badge *immediately* next to compare price
+                {%- endcomment -%}
+                {% if block.settings.price_layout == 'stacked' and show_sale_badge %}
+                <span
+                    style="
+                    background-color: {{ block.settings.difference_price_color }};
+                    color: {{ block.settings.difference_price_text_color }};
+                    "
+                    class="
+                    badge
+                    price__badge-diff
+                    "
+                >
+                    - {{ diff_money }}
+                </span>
+                {% endif %}
+            </span>
+            {%- endunless -%}
+            <span class="visually-hidden visually-hidden--inline">
+            {{ 'products.product.price.sale_price' | t }}
+            </span>
+
+            {%- comment -%} Apply bold if requested {%- endcomment -%}
+            {% if block.settings.bold_current_price == true %}
+            <strong class="price-item price-item--sale price-item--last ml-1" style="font-size: 2rem;">
+                {{ money_price }}
+            </strong>
+            {% else %}
+            <span class="price-item price-item--sale price-item--last ml-1" style="font-size: 2rem;">
+                {{ money_price }}
+            </span>
+            {% endif %}
+        </span>
       </div>
 
-      <small class="unit-price caption{% if product.selected_or_first_available_variant.unit_price_measurement == nil %} hidden{% endif %}">
+      {%- comment -%}
+        Unit price
+      {%- endcomment -%}
+      <small class="unit-price caption inline-block mt-1 {% if product.selected_or_first_available_variant.unit_price_measurement == nil %}hidden{% endif %}">
         <span class="visually-hidden">{{ 'products.product.price.unit_price' | t }}</span>
         <span class="price-item price-item--last">
           <span>{{- product.selected_or_first_available_variant.unit_price | money -}}</span>
@@ -196,23 +239,40 @@
       </small>
     </div>
 
+    {%- comment -%}
+      BADGES (Sale + Sold Out)
+      In side-by-side layout, we display the difference badge near the "Sale" badge.
+    {%- endcomment -%}
     {%- if show_badges -%}
-      {%- comment -%}
-        When on sale, show the difference on the badge:
-        E.g. "Sale -$10.00" or "My Custom Sale Text: $10.00"
-      {%- endcomment -%}
       {% if show_sale_badge %}
-        <span class="badge price__badge-sale color-{{ settings.sale_badge_color_scheme }}">
-          {% assign custom_sale_text = section.settings.sale_badge_text | default: 'Sale' %}
-          {% assign diff_money = price_diff | money %}
-          {% if settings.currency_code_enabled %}
-            {% assign diff_money = price_diff | money_with_currency %}
-          {% endif %}
+        {% if block.settings.price_layout == 'side-by-side' %}
+          <span
+            class="
+              badge
+              price__badge-diff
+              color-{{ block.settings.difference_price_color }}
+              ml-2
+            "
+          >
+            Economisesti {{ diff_money }}
+          </span>
+        {% endif %}
 
-          {{ custom_sale_text }} - {{ diff_money }}
+        <span
+          style="
+          color: {{ block.settings.badge_sale_text_color }};
+          background-color: {{ block.settings.badge_sale_color }};
+          "
+          class="
+            badge
+            price__badge-sale
+          "
+        >
+          {{ custom_sale_text }}
         </span>
       {% endif %}
-      <span class="badge price__badge-sold-out color-{{ settings.sold_out_badge_color_scheme }}">
+
+      <span class="badge price__badge-sold-out color-{{ settings.sold_out_badge_color_scheme }} ml-2">
         {{ 'products.product.sold_out' | t }}
       </span>
     {%- endif -%}
