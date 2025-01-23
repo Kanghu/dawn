@@ -2,7 +2,11 @@
 module.exports = {
   content: ['./**/*.liquid'],
   theme: {
-    extend: {},
+    extend: {
+      colors: {
+        'als-gray': '#919296',
+      },
+    },
   },
   plugins: [],
 };
