@@ -11,7 +11,6 @@
   <link rel="stylesheet" href="{{ 'component-mega-menu.css' | asset_url }}" media="print" onload="this.media='all'">
 {%- endif -%}
 
-
 <style>
   header-drawer {
     justify-self: start;
@@ -122,7 +121,7 @@
   <header class="header header--{{ section.settings.logo_position }} header--mobile-{{ section.settings.mobile_logo_position }} page-width{% if section.settings.menu_type_desktop == 'drawer' %} drawer-menu{% endif %}{% if section.settings.menu != blank %} header--has-menu{% endif %}{% if has_app_block %} header--has-app{% endif %}{% if social_links %} header--has-social{% endif %}{% if shop.customer_accounts_enabled %} header--has-account{% endif %}{% if localization_forms %} header--has-localizations{% endif %}">
     {%- liquid
       if section.settings.menu != blank
-        render 'header-drawer'
+        render 'alc-header-drawer', all_blocks: section.blocks, menu_color_scheme: section.settings.menu_color_scheme
       endif
 
       if section.settings.logo_position == 'top-center' or section.settings.menu == blank
@@ -444,7 +443,7 @@
 {
   "name": "t:sections.header.name",
   "class": "section-header",
-  "max_blocks": 3,
+  "max_blocks": 10,
   "settings": [
     {
       "type": "select",
@@ -644,6 +643,23 @@
   "blocks": [
     {
       "type": "@app"
+    },
+    {
+      "type": "drawer_menu_item",
+      "name": "Drawer Menu Item",
+      "settings": [
+        {
+          "type": "text",
+          "id": "menu_label",
+          "label": "Menu Title",
+          "default": "Menu Item"
+        },
+        {
+          "type": "link_list",
+          "id": "menu_handle",
+          "label": "Menu"
+        }
+      ]
     }
   ]
 }
