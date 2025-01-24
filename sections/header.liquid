@@ -164,7 +164,7 @@
         if section.settings.menu_type_desktop == 'dropdown'
           render 'header-dropdown-menu'
         elsif section.settings.menu_type_desktop == 'aless_mega'
-          render 'aless-mega-menu'
+          render 'aless-mega-menu', all_blocks: section.blocks, menu_color_scheme: section.settings.menu_color_scheme
         elsif section.settings.menu_type_desktop != 'drawer'
           render 'header-mega-menu'
         endif
@@ -657,6 +657,11 @@
         {
           "type": "link_list",
           "id": "menu_handle",
+          "label": "Menu"
+        },
+        {
+          "type": "link_list",
+          "id": "offer_handle",
           "label": "Menu"
         }
       ]
