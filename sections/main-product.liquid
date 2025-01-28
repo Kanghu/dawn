@@ -89,6 +89,8 @@
             {%- case block.type -%}
               {%- when '@app' -%}
                 {% render block %}
+              {%- when 'alc_product_benefits' %}
+                {% render 'alc-product-benefits' %}
               {%- when 'text' -%}
                 <p
                   class="product__text inline-richtext{% if block.settings.text_style == 'uppercase' %} caption-with-letter-spacing{% elsif block.settings.text_style == 'subtitle' %} subtitle{% endif %}"
@@ -465,18 +467,26 @@
               {%- when 'variant_picker' -%}
                 {% render 'product-variant-picker', product: product, block: block, product_form_id: product_form_id %}
               {% when 'related_variants' %}
-                {% render 'als-product-variant-picker', product: product %}
+                {% render 'als-product-variant-picker', product: product, block: block %}
               {% when 'alc_price' %}
-                  {%- render 'alc-price',
-                    product: product,
-                    target: product,
-                    use_variant: true,
-                    show_badges: true,
-                    price_class: 'price--large',
-                    block: block
-                  -%}
+                {%- render 'alc-price',
+                  product: product,
+                  target: product,
+                  use_variant: true,
+                  show_badges: true,
+                  price_class: 'price--large',
+                  block: block
+                -%}
               {%- when 'buy_buttons' -%}
                 {%- render 'buy-buttons',
+                  block: block,
+                  product: product,
+                  product_form_id: product_form_id,
+                  section_id: section.id,
+                  show_pickup_availability: true
+                -%}
+              {%- when 'alc_buy_buttons' -%}
+                {%- render 'alc-buy-button',
                   block: block,
                   product: product,
                   product_form_id: product_form_id,
@@ -907,6 +917,7 @@
       ]
     },
     {
+      /* Custom block */
       "type": "related_variants",
       "name": "Related variants",
       "limit": 1,
@@ -914,9 +925,34 @@
         {
           "type": "header",
           "content": "Related Variants Display"
+        },
+        {
+          "type": "text",
+          "id": "custom_text",
+          "label": "Custom text above the picker",
+          "default": "Select a Variant"
+        },
+        {
+          "type": "select",
+          "id": "picker_style",
+          "label": "Picker Style",
+          "options": [
+            {
+              "value": "buttons",
+              "label": "Buttons"
+            },
+            {
+              "value": "dropdown",
+              "label": "Dropdown"
+            }
+          ],
+          "default": "buttons"
         }
-        // If you want any custom settings (e.g., show/hide labels) add them here
       ]
+    },
+    {
+      "name": "ALC - Product benefits",
+      "type": "alc_product_benefits"
     },
     {
       "name": "ALC - Price",
@@ -1000,6 +1036,32 @@
           "default": true,
           "label": "t:sections.main-product.blocks.buy_buttons.settings.show_gift_card_recipient.label",
           "info": "t:sections.main-product.blocks.buy_buttons.settings.show_gift_card_recipient.info"
+        }
+      ]
+    },
+    {
+      "type": "alc_buy_buttons",
+      "name": "ALC - Buy buttons",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "checkbox",
+          "id": "show_dynamic_checkout",
+          "default": true,
+          "label": "t:sections.main-product.blocks.buy_buttons.settings.show_dynamic_checkout.label",
+          "info": "t:sections.main-product.blocks.buy_buttons.settings.show_dynamic_checkout.info"
+        },
+        {
+          "type": "checkbox",
+          "id": "show_gift_card_recipient",
+          "default": true,
+          "label": "t:sections.main-product.blocks.buy_buttons.settings.show_gift_card_recipient.label",
+          "info": "t:sections.main-product.blocks.buy_buttons.settings.show_gift_card_recipient.info"
+        },
+        {
+          "type": "color",
+          "id": "button_color",
+          "label": "Button color"
         }
       ]
     },

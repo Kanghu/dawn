@@ -7,85 +7,233 @@
   - We'll display the "tag" as the "variant name."
 {% endcomment %}
 
+<!-- Swiper Styles -->
+<link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css">
+<!-- Swiper Script -->
+<script src="https://unpkg.com/swiper/swiper-bundle.min.js" defer></script>
+
 <style>
-.ProductForm__Option {
-  display: flex;
-  gap: 10px; /* Spacing between buttons */
-  flex-wrap: wrap; /* Allow buttons to wrap on smaller screens */
-}
+  .ProductForm__Option {
+    display: flex;
+    gap: 10px; /* Spacing between buttons */
+    flex-wrap: wrap; /* Allow buttons to wrap on smaller screens */
+  }
 
-.VariantButton {
-  background-color: #f8f8f8; /* Neutral background */
-  border: 1px solid #ccc; /* Light border */
-  padding: 10px 20px; /* Button padding */
-  font-size: 16px; /* Font size */
-  cursor: pointer;
-  border-radius: 5px; /* Rounded corners */
-  transition: background-color 0.2s, border-color 0.2s; /* Smooth hover effect */
-}
+  .VariantButton {
+    background-color: #f8f8f8; /* Neutral background */
+    border: 1px solid #ccc; /* Light border */
+    padding: 10px 20px; /* Button padding */
+    font-size: 16px; /* Font size */
+    cursor: pointer;
+    border-radius: 5px; /* Rounded corners */
+    transition: background-color 0.2s, border-color 0.2s; /* Smooth hover effect */
+  }
 
-.VariantButton:hover {
-  background-color: #e0e0e0; /* Hover background */
-  border-color: #999; /* Darker border on hover */
-}
+  .VariantButton:hover {
+    background-color: #e0e0e0; /* Hover background */
+    border-color: #999; /* Darker border on hover */
+  }
 
-.VariantButton--active {
-  background-color: #0053ba; /* Active state background */
-  color: #fff; /* Active state text color */
-  border-color: #0053ba; /* Match background */
-}
+  .VariantButton--active {
+    background-color: #0053ba; /* Active state background */
+    color: #fff; /* Active state text color */
+    border-color: #0053ba; /* Match background */
+  }
 
-.VariantButton:disabled {
-  background-color: #ddd; /* Disabled state background */
-  cursor: not-allowed; /* Indicate unclickable */
-}
+  .VariantButton:disabled {
+    background-color: #ddd; /* Disabled state background */
+    cursor: not-allowed; /* Indicate unclickable */
+  }
 
+  .ProductForm__VariantPickerText {
+    font-size: 16px;
+    margin-bottom: 10px;
+    color: #333;
+  }
+
+  .ProductForm__Option--Buttons {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+  }
+
+  .VariantDropdown {
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+  }
+
+  html,
+  body {
+    position: relative;
+    height: 100%;
+  }
+
+  body {
+    background: #eee;
+    font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
+    font-size: 14px;
+    color: #000;
+    margin: 0;
+    padding: 0;
+  }
+
+  .swiper {
+    width: 100%;
+    height: 100%;
+  }
+
+  .swiper-slide {
+    text-align: center;
+    font-size: 18px;
+    background: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .swiper-slide img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
 </style>
 
-{% assign related_variants = product.metafields.custom.product_related_variants.value %}
+<div class="ProductForm__VariantPicker">
+  {% assign related_variants = product.metafields.custom.variant_groups.value %}
 
-{% if related_variants %}
-  <div class="ProductForm__Option">
+  {% if related_variants %}
+    {% if block.settings.picker_style == 'buttons' %}
+      <!-- Button Picker -->
+      <div class="ProductForm__Option ProductForm__Option--Buttons gap-4">
+        <!-- Variant group iteration -->
+        {% for variant_group in related_variants %}
+          {% assign group_metaobj = variant_group | metaobject %}
+          {% assign group_group_metaobj = variant_group.group | metaobject %}
 
-    <!-- 1) CURRENT PRODUCT BUTTON -->
-    <button
-        type="button"
-        class="VariantButton VariantButton--active" 
-        disabled
-        aria-pressed="true"
-    >
-        <span class="VariantButton__Title">
-        {{ product.metafields.custom.product_variant_tag.value }}
-        </span>
-    </button>
+          <div class="w-full flex flex-col">
+            <!-- Display group info + tag (i.e. colors, sizes, etc.) -->
+            {% if block.settings.custom_text %}
+              <p class="ProductForm__VariantPickerText mb-0">
+                {{ block.settings.custom_text }}
+                {{ group_metaobj.tag_type }}
+              </p>
+            {% endif %}
 
-      <!-- 2) RELATED VARIANTS BUTTONS -->
-    {% for metaobject_item in related_variants %}
-      {% assign metaobject = metaobject_item | metaobject %}
-      {% assign metaobject_product = metaobject.product | metaobject %}
+            <!-- Swiper container -->
+            <div class="swiper" id="ProductVariantsSlider">
+              <div class="swiper-wrapper">
+                <!-- Variant group inner meta-object (list of product variant references) -->
+                {% for group_product in group_group_metaobj.value %}
+                  {% assign group_product_metaobj = group_product | metaobject %}
+                  {% assign product_handle = group_product_metaobj.product.value.handle %}
+                  {% assign product_title = group_product_metaobj.product.value.title %}
+                  {% assign product_featured_image = group_product_metaobj.product.value.featured_image %}
 
-        <button
-        type="button"
-        class="VariantButton {% if is_current_product %}VariantButton--active{% endif %}"
-        data-product-handle="{{ metaobject_product.value.handle }}"
-        data-product-id="{{ metaobject_product.value.id }}"
-        {% unless is_current_product %}
-            onclick="window.location.href='/products/{{ metaobject_product.value.handle }}';"
-        {% endunless %}
-        aria-pressed="{{ is_current_product }}"
+                  <!-- Each slide -->
+                  <div class="swiper-slide">
+                    <a
+                      href="/products/{{ product_handle }}"
+                      title="{{ product_title }}"
+                      class="w-full h-auto flex flex-col border bg-white shadow-md rounded-lg overflow-hidden hover:bg-black transition p-2 no-underline"
+                    >
+                      <!-- Variant image -->
+                      {% if product_featured_image %}
+                        <div>
+                          <img
+                            src="{{ product_featured_image | img_url: '400x400' }}"
+                            alt="{{ product_title }}"
+                          >
+                        </div>
+                      {% endif %}
+
+                      <!-- Variant info -->
+                      <div class="flex-grow px-1 pt-2">
+                        <p class="text-base text-gray-800 no-underline mb-0 p-1">
+                          {{ group_product_metaobj.tag }}
+                        </p>
+                      </div>
+                    </a>
+                  </div>
+                {% endfor %}
+              </div>
+            </div>
+          </div>
+        {% endfor %}
+      </div>
+    {% else %}
+      <!-- Dropdown Picker -->
+      <div class="ProductForm__Option ProductForm__Option--Dropdown">
+        <select
+          name="related_variant_selection"
+          class="VariantDropdown"
+          onchange="window.location.href='/products/' + this.value;"
         >
-            <span class="VariantButton__Title">
-                {{ metaobject.tag}}
-            </span>
-        </button>
-    {% endfor %}
+          <!-- Current Product -->
+          <option
+            value="{{ product.handle }}"
+            selected
+          >
+            {{ product.metafields.custom.product_variant_tag.value }}
+          </option>
 
-  </div>
-{% endif %}
+          <!-- Related Variants -->
+          {% for variant_group in related_variants %}
+            {% assign group_metaobj = variant_group | metaobject %}
+            {% assign group_group_metaobj = variant_group.group | metaobject %}
+            {% for group_product in group_group_metaobj.value %}
+              {% assign group_product_metaobj = group_product | metaobject %}
+              <option
+                value="{{ group_product_metaobj.product.value.handle }}"
+              >
+                {{ group_product_metaobj.tag }}
+              </option>
+            {% endfor %}
+          {% endfor %}
+        </select>
+      </div>
+    {% endif %}
+  {% endif %}
+</div>
 
 <script>
-  document.querySelectorAll('input[name="related_variant_selection"]').forEach(function(radio) {
-    radio.addEventListener('change', function(event) {
+  document.addEventListener('DOMContentLoaded', function () {
+    const swiper = new Swiper('.swiper', {
+      slidesPerView: 1, // Start with one slide per view for small screens
+      spaceBetween: 8, // Adjust spacing between slides
+      navigation: {
+        nextEl: '.swiper-button-next',
+        prevEl: '.swiper-button-prev',
+      },
+      pagination: {
+        el: '.swiper-pagination',
+        clickable: true,
+      },
+      breakpoints: {
+        320: {
+          slidesPerView: 4.5,
+        },
+        480: {
+          slidesPerView: 4.75,
+        },
+        640: {
+          slidesPerView: 5,
+        },
+        768: {
+          slidesPerView: 5.2,
+        },
+        1024: {
+          slidesPerView: 5.5,
+        },
+      },
+    });
+  });
+
+  document.querySelectorAll('input[name="related_variant_selection"]').forEach(function (radio) {
+    radio.addEventListener('change', function (event) {
       var productHandle = event.target.dataset.productHandle;
 
       // Redirect to the product page with that variant pre-selected
