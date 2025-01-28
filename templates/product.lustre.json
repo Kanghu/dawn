@@ -47,6 +47,10 @@
             "bold_current_price": true,
             "normal_price_color": "#000000",
             "compare_price_color": "#999999",
+            "difference_price_color": "#999999",
+            "badge_sale_color": "#999999",
+            "difference_price_text_color": "#999999",
+            "badge_sale_text_color": "#999999",
             "sale_badge_text": "BLACK"
           }
         },
@@ -55,6 +59,12 @@
           "settings": {
             "picker_type": "button",
             "swatch_shape": "circle"
+          }
+        },
+        "custom_liquid_GaJ8NC": {
+          "type": "custom_liquid",
+          "settings": {
+            "custom_liquid": "Lista Beneficii:\n<ul>\n<li>Garantie 24 luni</li>\n</ul>"
           }
         },
         "buy_buttons": {
@@ -72,12 +82,6 @@
           "type": "custom_liquid",
           "settings": {
             "custom_liquid": ""
-          }
-        },
-        "custom_liquid_GaJ8NC": {
-          "type": "custom_liquid",
-          "settings": {
-            "custom_liquid": "Lista Beneficii:\n<ul>\n<li>Garantie 24 luni</li>\n</ul>"
           }
         },
         "text_8bAzhx": {
@@ -108,10 +112,10 @@
         "related_variants_T9dRaW",
         "alc_price_8PqTaF",
         "variant_picker",
+        "custom_liquid_GaJ8NC",
         "buy_buttons",
         "description",
         "custom_liquid_Kin3xB",
-        "custom_liquid_GaJ8NC",
         "text_8bAzhx",
         "complementary_jKHL39"
       ],
