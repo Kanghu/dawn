@@ -119,26 +119,31 @@
                       aria-labelledby="Summary-{{ block.id }}-{{ section.id }}"
                     >
                       {% if product.metafields.custom != blank %}
-                        <div class="product-custom-metafields page-width">
-                          {% assign counter = 0 %}
-                          {% for key in product.metafields.custom %}
-                            {% assign is_odd = counter | modulo: 2 %}
-                            <div style="padding: 10px; {% if is_odd == 1 %}background: rgb(3,186,214);{% endif %}">
-                              {% assign value = key[1].value %}
-                              <strong>{{ key[0] | replace: '_', ' ' | capitalize }}</strong>:
-                              {% if value == blank %}
-                                N/A
-                              {% elsif value.size > 1 %}
-                                {{ value | join: ', ' }}
-                              {% else %}
-                                {{ value }}
-                              {% endif %}
-                            </div>
-                            {% unless forloop.last %}
-                              <hr style="border: 0; border-top: 1px solid #ccc; margin: 0;">
-                            {% endunless %}
-                            {% assign counter = counter | plus: 1 %}
-                          {% endfor %}
+                        <div class="product-custom-metafields">
+                          {% assign first_collection = product.collections | first %}
+                          {% if first_collection %}
+                            {% for spec_group in first_collection.metafields.custom.specification_groups.value %}
+                              {% assign spec_group_metaobj = spec_group | metaobject %}
+
+                              <div class="mb-16">
+                                <h4>{{ spec_group_metaobj.name }}:</h4>
+                                {% assign counter = 0 %}
+                                {% for spec in spec_group_metaobj.specifications.value %}
+                                  {% assign is_odd = counter | modulo: 2 %}
+                                  <div
+                                    style="{% if is_odd == 0 %}background: rgba(3,186,214,0.3);{% endif %}"
+                                    class="px-2 py-2"
+                                  >
+                                    {{ spec | replace: '_', ' ' | capitalize }}:
+                                    {{ product.metafields.custom[spec].value }}
+                                  </div>
+                                  {% assign counter = counter | plus: 1 %}
+                                {% endfor %}
+                              </div>
+                            {% endfor %}
+                          {% else %}
+                            No collection metafields available.
+                          {% endif %}
                         </div>
                       {% else %}
                         <p>No custom metafields available for this product.</p>
