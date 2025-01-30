@@ -20,6 +20,7 @@
       "blocks": {
         "vendor": {
           "type": "text",
+          "disabled": true,
           "settings": {
             "text": "{{ product.vendor }}",
             "text_style": "uppercase"
@@ -36,10 +37,6 @@
             "text_style": "subtitle"
           }
         },
-        "related_variants_T9dRaW": {
-          "type": "related_variants",
-          "settings": {}
-        },
         "alc_price_8PqTaF": {
           "type": "alc_price",
           "settings": {
@@ -54,6 +51,17 @@
             "sale_badge_text": "BLACK"
           }
         },
+        "alc_product_benefits_kj4nTE": {
+          "type": "alc_product_benefits",
+          "settings": {}
+        },
+        "related_variants_T9dRaW": {
+          "type": "related_variants",
+          "settings": {
+            "custom_text": "Select a Variant",
+            "picker_style": "buttons"
+          }
+        },
         "variant_picker": {
           "type": "variant_picker",
           "settings": {
@@ -61,17 +69,12 @@
             "swatch_shape": "circle"
           }
         },
-        "custom_liquid_GaJ8NC": {
-          "type": "custom_liquid",
-          "settings": {
-            "custom_liquid": "Lista Beneficii:\n<ul>\n<li>Garantie 24 luni</li>\n</ul>"
-          }
-        },
-        "buy_buttons": {
-          "type": "buy_buttons",
+        "alc_buy_buttons_kb47Ba": {
+          "type": "alc_buy_buttons",
           "settings": {
             "show_dynamic_checkout": false,
-            "show_gift_card_recipient": true
+            "show_gift_card_recipient": true,
+            "button_color": ""
           }
         },
         "description": {
@@ -109,11 +112,11 @@
         "vendor",
         "title",
         "caption",
-        "related_variants_T9dRaW",
         "alc_price_8PqTaF",
+        "alc_product_benefits_kj4nTE",
+        "related_variants_T9dRaW",
         "variant_picker",
-        "custom_liquid_GaJ8NC",
-        "buy_buttons",
+        "alc_buy_buttons_kb47Ba",
         "description",
         "custom_liquid_Kin3xB",
         "text_8bAzhx",
