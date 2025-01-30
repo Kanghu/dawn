@@ -70,14 +70,6 @@
     "header": {
       "type": "header",
       "blocks": {
-        "drawer_menu_item_ttQiRU": {
-          "type": "drawer_menu_item",
-          "settings": {
-            "menu_label": "Exploreaza",
-            "menu_handle": "meniu-exploreaza",
-            "offer_handle": ""
-          }
-        },
         "drawer_menu_item_eWNhzm": {
           "type": "drawer_menu_item",
           "settings": {
@@ -85,11 +77,28 @@
             "menu_handle": "main-menu",
             "offer_handle": ""
           }
+        },
+        "drawer_menu_item_APUfD6": {
+          "type": "drawer_menu_item",
+          "settings": {
+            "menu_label": "Oferte",
+            "menu_handle": "meniu-oferte",
+            "offer_handle": ""
+          }
+        },
+        "drawer_menu_item_ttQiRU": {
+          "type": "drawer_menu_item",
+          "settings": {
+            "menu_label": "Exploreaza",
+            "menu_handle": "meniu-exploreaza",
+            "offer_handle": ""
+          }
         }
       },
       "block_order": [
-        "drawer_menu_item_ttQiRU",
-        "drawer_menu_item_eWNhzm"
+        "drawer_menu_item_eWNhzm",
+        "drawer_menu_item_APUfD6",
+        "drawer_menu_item_ttQiRU"
       ],
       "settings": {
         "logo_position": "top-left",
