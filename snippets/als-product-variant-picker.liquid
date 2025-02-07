@@ -85,6 +85,37 @@
     height: 100%;
     object-fit: cover;
   }
+
+  /* Add new styles for current product variant */
+  .swiper-slide.current-product a {
+    border: 2px solid #181818 !important;
+    position: relative;
+  }
+
+  .swiper-slide.current-product a::before {
+    position: absolute;
+    top: 0;
+    left: 0;
+    background: rgba(65, 64, 66);
+    color: white;
+    padding: 2px 8px;
+    font-size: 12px;
+    border-bottom-right-radius: 4px;
+  }
+
+  /* Hover effect for variant options */
+  .swiper-slide:not(.current-product) a:hover {
+    border-color: #0053ba;
+    background-color: #f8f8f8;
+    transform: translateY(-3px);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  }
+
+  /* Ensure current product doesn't have hover effect */
+  .swiper-slide.current-product a:hover {
+    transform: none;
+    background-color: white;
+  }
 </style>
 
 <div class="ProductForm__VariantPicker">
@@ -111,38 +142,64 @@
             <!-- Swiper container -->
             <div class="swiper" id="ProductVariantsSlider">
               <div class="swiper-wrapper">
-                <!-- Variant group inner meta-object (list of product variant references) -->
+                <!-- Add current product first if it matches the variant group -->
                 {% for group_product in group_group_metaobj.value %}
                   {% assign group_product_metaobj = group_product | metaobject %}
-                  {% assign product_handle = group_product_metaobj.product.value.handle %}
-                  {% assign product_title = group_product_metaobj.product.value.title %}
-                  {% assign product_featured_image = group_product_metaobj.product.value.featured_image %}
-
-                  <!-- Each slide -->
-                  <div class="swiper-slide">
-                    <a
-                      href="/products/{{ product_handle }}"
-                      title="{{ product_title }}"
-                      class="w-full h-auto flex flex-col border bg-white shadow-md rounded-lg overflow-hidden hover:bg-black transition p-2 no-underline"
-                    >
-                      <!-- Variant image -->
-                      {% if product_featured_image %}
-                        <div>
-                          <img
-                            src="{{ product_featured_image | img_url: '400x400' }}"
-                            alt="{{ product_title }}"
-                          >
+                  {% if group_product_metaobj.product.value.handle == product.handle %}
+                    <div class="swiper-slide current-product">
+                      <a
+                        href="/products/{{ product.handle }}"
+                        title="{{ product.title }}"
+                        class="w-full h-auto flex flex-col border bg-white shadow-md rounded-lg overflow-hidden hover:bg-black transition p-2 no-underline"
+                      >
+                        {% if product.featured_image %}
+                          <div>
+                            <img
+                              class="rounded-sm"
+                              src="{{ product.featured_image | img_url: '400x400' }}"
+                              alt="{{ product.title }}"
+                            >
+                          </div>
+                        {% endif %}
+                        <div class="flex-grow px-1 pt-2">
+                          <p class="text-base text-gray-800 no-underline mb-0 p-1">
+                            {{ group_product_metaobj.tag }}
+                          </p>
                         </div>
-                      {% endif %}
+                      </a>
+                    </div>
+                  {% endif %}
+                {% endfor %}
 
-                      <!-- Variant info -->
-                      <div class="flex-grow px-1 pt-2">
-                        <p class="text-base text-gray-800 no-underline mb-0 p-1">
-                          {{ group_product_metaobj.tag }}
-                        </p>
-                      </div>
-                    </a>
-                  </div>
+                <!-- Then show all other variants except current product -->
+                {% for group_product in group_group_metaobj.value %}
+                  {% assign group_product_metaobj = group_product | metaobject %}
+                  {% unless group_product_metaobj.product.value.handle == product.handle %}
+                    <div class="swiper-slide">
+                      <a
+                        href="/products/{{ group_product_metaobj.product.value.handle }}"
+                        title="{{ group_product_metaobj.product.value.title }}"
+                        class="w-full h-auto flex flex-col border bg-white shadow-md rounded-lg overflow-hidden hover:bg-black transition p-2 no-underline"
+                      >
+                        <!-- Variant image -->
+                        {% if group_product_metaobj.product.value.featured_image %}
+                          <div>
+                            <img
+                              src="{{ group_product_metaobj.product.value.featured_image | img_url: '400x400' }}"
+                              alt="{{ group_product_metaobj.product.value.title }}"
+                            >
+                          </div>
+                        {% endif %}
+
+                        <!-- Variant info -->
+                        <div class="flex-grow px-1 pt-2">
+                          <p class="text-base text-gray-800 no-underline mb-0 p-1">
+                            {{ group_product_metaobj.tag }}
+                          </p>
+                        </div>
+                      </a>
+                    </div>
+                  {% endunless %}
                 {% endfor %}
               </div>
             </div>

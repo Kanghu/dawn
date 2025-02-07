@@ -138,8 +138,8 @@
   /* Basic Reset and Variables */
   :root {
     --page-width: 1200px;
-    --menu-primary-color: rgb(0, 0, 0);
-    --menu-secondary-color: rgb(3, 186, 214);
+    --menu-primary-color: rgba(3, 186, 214, 0.9);
+    --menu-secondary-color: rgba(31, 32, 35, 0.8);
     --menu-text-color: #ffffff;
     --submenu-bg-color: #ffffff;
     --submenu-text-color: #333333;
@@ -164,7 +164,6 @@
     margin-left: calc(-50vw + 50%);
     margin-right: calc(-50vw + 50%);
     width: 100vw;
-    z-index: 99999 !important;
     background: linear-gradient(90deg, var(--menu-primary-color) 66%, var(--menu-secondary-color) 100%);
     border-bottom: none !important;
   }

@@ -10,6 +10,22 @@
   Usage:
   {% render 'buy-buttons', block: block, product: product, product_form_id: product_form_id, section_id: section.id, show_pickup_availability: true %}
 {% endcomment %}
+
+<style>
+  .curved-button {
+    border-radius: 30px 5px 30px 5px !important; /* Creates an asymmetric curved shape */
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .curved-button:hover {
+    opacity: 0.8; /* Simple fade effect on hover */
+    transform: scale(1.02);
+    transition: all 0.1s ease;
+  }
+</style>
+
 <div {{ block.shopify_attributes }}>
   {%- if product != blank -%}
     {%- liquid
@@ -74,7 +90,7 @@
             id="ProductSubmitButton-{{ section_id }}"
             type="submit"
             name="add"
-            class="product-form__submit border-none button button--full-width {% if show_dynamic_checkout %}button--secondary{% else %}button--primary{% endif %}"
+            class="product-form__submit border-none button button--full-width {% if show_dynamic_checkout %}button--secondary{% else %}button--primary{% endif %} curved-button"
             {% if product.selected_or_first_available_variant.available == false
               or quantity_rule_soldout
               or product.selected_or_first_available_variant == null

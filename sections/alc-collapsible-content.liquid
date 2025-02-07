@@ -127,7 +127,7 @@
                               {% assign spec_group_metaobj = spec_group | metaobject %}
 
                               <div class="mb-16 w-100 md:w-50">
-                                <h4>{{ spec_group_metaobj.name }}:</h4>
+                                <h3 class="mt-4">{{ spec_group_metaobj.name }}:</h3>
                                 {% assign counter = 0 %}
                                 {% for spec in spec_group_metaobj.specifications.value %}
                                   {% assign is_odd = counter | modulo: 2 %}

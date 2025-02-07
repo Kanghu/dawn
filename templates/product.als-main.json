@@ -11,6 +11,7 @@
   "sections": {
     "alc_breadcrumbs_A9LqKm": {
       "type": "alc-breadcrumbs",
+      "custom_css": [],
       "settings": {
         "separator_symbol": "qweqw"
       }
@@ -18,6 +19,13 @@
     "main": {
       "type": "main-product",
       "blocks": {
+        "text_LNURty": {
+          "type": "text",
+          "settings": {
+            "text": "",
+            "text_style": "body"
+          }
+        },
         "vendor": {
           "type": "text",
           "disabled": true,
@@ -43,22 +51,31 @@
             "price_layout": "side_by_side",
             "bold_current_price": true,
             "normal_price_color": "#f01188",
-            "compare_price_color": "#919296",
-            "difference_price_color": "#999999",
-            "badge_sale_color": "#999999",
-            "difference_price_text_color": "#999999",
-            "badge_sale_text_color": "#999999",
-            "sale_badge_text": "BLACK"
+            "compare_price_color": "#414042",
+            "difference_price_color": "#03bad6",
+            "badge_sale_color": "#d52b36",
+            "difference_price_text_color": "#ffffff",
+            "badge_sale_text_color": "#ffffff",
+            "sale_badge_text": "VALENTINES SALE",
+            "difference_display_style": "text"
           }
         },
         "alc_product_benefits_kj4nTE": {
           "type": "alc_product_benefits",
           "settings": {}
         },
+        "alc_buy_buttons_kb47Ba": {
+          "type": "alc_buy_buttons",
+          "settings": {
+            "show_dynamic_checkout": false,
+            "show_gift_card_recipient": true,
+            "button_color": ""
+          }
+        },
         "related_variants_T9dRaW": {
           "type": "related_variants",
           "settings": {
-            "custom_text": "Select a Variant",
+            "custom_text": "Alege dintre",
             "picker_style": "buttons"
           }
         },
@@ -69,29 +86,10 @@
             "swatch_shape": "circle"
           }
         },
-        "alc_buy_buttons_kb47Ba": {
-          "type": "alc_buy_buttons",
-          "settings": {
-            "show_dynamic_checkout": false,
-            "show_gift_card_recipient": true,
-            "button_color": ""
-          }
-        },
-        "description": {
-          "type": "description",
-          "settings": {}
-        },
-        "custom_liquid_Kin3xB": {
+        "custom_liquid_EeQGgT": {
           "type": "custom_liquid",
           "settings": {
-            "custom_liquid": ""
-          }
-        },
-        "text_8bAzhx": {
-          "type": "text",
-          "settings": {
-            "text": "",
-            "text_style": "body"
+            "custom_liquid": "<span style=\"\n    font-family: Roboto, 'Segoe UI', Helvetica, Arial, sans-serif;\n    font-weight: 400; font-size:1.33rem;\"> \n{{ product.metafields.custom.long_description }}\n</span>"
           }
         },
         "complementary_jKHL39": {
@@ -109,27 +107,25 @@
         }
       },
       "block_order": [
+        "text_LNURty",
         "vendor",
         "title",
         "caption",
         "alc_price_8PqTaF",
         "alc_product_benefits_kj4nTE",
+        "alc_buy_buttons_kb47Ba",
         "related_variants_T9dRaW",
         "variant_picker",
-        "alc_buy_buttons_kb47Ba",
-        "description",
-        "custom_liquid_Kin3xB",
-        "text_8bAzhx",
+        "custom_liquid_EeQGgT",
         "complementary_jKHL39"
       ],
       "custom_css": [
-        "h1,.h1 {font-size: calc(var(--font-heading-scale) * 2rem);}",
-        "@media only screen and (min-width: 750px) {h1, .h1 {font-size: calc(var(--font-heading-scale) * 2.5rem); }}",
-        ",.product__title {font-family: \"roboto_n7\";}"
+        "h1,.h1 {font-size: calc(var(--font-heading-scale) * 1.85rem);}",
+        "@media only screen and (min-width: 750px) {h1, .h1 {font-size: calc(var(--font-heading-scale) * 2.25rem); }}"
       ],
       "settings": {
         "enable_sticky_info": true,
-        "color_scheme": "scheme-0cf971dd-f84f-49b6-9d09-0beea3aa7fe9",
+        "color_scheme": "scheme-15b3ebfc-72e7-42d0-af22-57c8d007abe9",
         "media_size": "medium",
         "constrain_to_viewport": true,
         "media_fit": "contain",
@@ -139,7 +135,7 @@
         "mobile_thumbnails": "show",
         "hide_variants": true,
         "enable_video_looping": false,
-        "padding_top": 36,
+        "padding_top": 12,
         "padding_bottom": 12
       }
     },
@@ -170,7 +166,7 @@
             "heading": "Descriere",
             "icon": "check_mark",
             "row_content": "",
-            "row_liquid": "{{ product.metafields.custom.long_description }}",
+            "row_liquid": "{{ product.description }}",
             "page": ""
           }
         },
