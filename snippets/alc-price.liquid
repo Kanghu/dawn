@@ -89,7 +89,7 @@
       {% if block.settings.price_layout == 'stacked' %}
         flex flex-col items-start
       {% else %}
-        flex flex-row items-baseline gap-2
+        flex flex-row items-baseline gap-2 justify-between
       {% endif %}
       {%- if price_class %} {{ price_class }}{% endif -%}
       {%- if available == false %} price--sold-out{% endif -%}
@@ -187,7 +187,10 @@
               {%- comment -%}
                 In STACKED layout, show the difference badge *immediately* next to compare price
               {%- endcomment -%}
-              {% if block.settings.price_layout == 'stacked' and show_sale_badge %}
+              {% if block.settings.price_layout == 'stacked'
+                and show_sale_badge
+                and block.settings.difference_display_style == 'badge'
+              %}
                 <span
                   style="
                     background-color: {{ block.settings.difference_price_color }};
@@ -196,6 +199,7 @@
                   class="
                     badge
                     price__badge-diff
+                    mb-0
                   "
                 >
                   - {{ diff_money }}
@@ -210,15 +214,19 @@
 
         {%- comment -%} Apply bold if requested {%- endcomment -%}
         {% if block.settings.bold_current_price == true %}
-          <strong class="price-item price-item--sale price-item--last ml-1" style="font-size: 2rem;">
+          <strong class="price-item price-item--sale price-item--last ml-1" style="font-size: 2.5rem;">
             {{ money_price }}
           </strong>
         {% else %}
-          <span class="price-item price-item--sale price-item--last ml-1" style="font-size: 2rem;">
+          <span class="price-item price-item--sale price-item--last ml-1" style="font-size: 2.5rem;">
             {{ money_price }}
           </span>
         {% endif %}
       </div>
+
+      {% if show_sale_badge and block.settings.difference_display_style == 'text' %}
+        <div class="price-difference-text text-lg" style="color: black;">Economisesti {{ diff_money }}</div>
+      {% endif %}
 
       {%- comment -%}
         Unit price
@@ -241,17 +249,15 @@
 
     {%- comment -%}
       BADGES (Sale + Sold Out)
-      In side-by-side layout, we display the difference badge near the "Sale" badge.
     {%- endcomment -%}
     {%- if show_badges -%}
       {% if show_sale_badge %}
-        {% if block.settings.price_layout == 'side-by-side' %}
+        {% if block.settings.difference_display_style == 'badge' and block.settings.price_layout == 'side-by-side' %}
           <span
-            class="
-              badge
-              price__badge-diff
-              color-{{ block.settings.difference_price_color }}
-              ml-2
+            class="badge price__badge-diff ml-2 text-sm"
+            style="
+              color: {{ block.settings.difference_price_text_color }};
+              background-color: {{ block.settings.difference_price_color }};
             "
           >
             Economisesti {{ diff_money }}
@@ -263,10 +269,7 @@
             color: {{ block.settings.badge_sale_text_color }};
             background-color: {{ block.settings.badge_sale_color }};
           "
-          class="
-            badge
-            price__badge-sale
-          "
+          class="badge price__badge-sale"
         >
           {{ custom_sale_text }}
         </span>
@@ -278,3 +281,5 @@
     {%- endif -%}
   </div>
 {% endunless %}
+
+<script src="{{ 'product-modal.js' | asset_url }}" defer="defer"></script>

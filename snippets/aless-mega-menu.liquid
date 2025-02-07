@@ -15,107 +15,122 @@
 {% assign top_menu = section.settings.menu.links %}
 {% if top_menu.size > 0 %}
   <nav class="header__inline-menu">
-    <ul class="list-menu list-menu--inline" role="list">
-      {% for block_item in all_blocks %}
-        {% if block_item.type == 'drawer_menu_item' %}
-          {% comment %}
-            1) Extract the block's label & menu handle
-          {% endcomment %}
-          {% assign menu_label = block_item.settings.menu_label %}
-          {% assign menu_handle = block_item.settings.menu_handle %}
-
-          {% assign mega_menu = linklists[menu_handle] %}
-
-          <li class="{% if mega_menu.links != blank %}mega-menu-parent{% endif %}">
+    <div class="page-width">
+      <ul class="list-menu list-menu--inline" role="list">
+        {% for block_item in all_blocks %}
+          {% if block_item.type == 'drawer_menu_item' %}
             {% comment %}
-              Display 1st level (block-type) menu items
+              1) Extract the block's label & menu handle
             {% endcomment %}
-            <a
-              href="{{ block_item.settings.menu_link }}"
-              class="header__menu-item list-menu__item link focus-inset"
-            >
-              <span>{{ menu_label }}</span>
-            </a>
+            {% assign menu_label = block_item.settings.menu_label %}
+            {% assign menu_handle = block_item.settings.menu_handle %}
 
-            {% if mega_menu and mega_menu.links.size > 0 %}
+            {% assign mega_menu = linklists[menu_handle] %}
+
+            <li class="{% if mega_menu.links != blank %}mega-menu-parent{% endif %}">
               {% comment %}
-                Generate mega-menu container for each 1st level menu item
+                Display 1st level (block-type) menu items
               {% endcomment %}
-              <div class="mega-menu__container">
-                <div class="mega-menu__inner">
-                  <!-- Left Column: 2nd-level links -->
-                  <ul class="mega-menu__left-column" role="list">
-                    {% for childlink in mega_menu.links %}
-                      <li class="mega-menu__left-item" data-target="{{ childlink.handle }}">
-                        <a
-                          href="{{ childlink.url }}"
-                          class="mega-menu__link mega-menu__link--level-2 link"
+              <a
+                href="{{ block_item.settings.menu_link }}"
+                class="header__menu-item list-menu__item"
+                style="font-weight: 400; letter-spacing: 0.08rem;"
+              >
+                <span>{{ menu_label }}</span>
+              </a>
+
+              {% if mega_menu and mega_menu.links.size > 0 %}
+                {% comment %}
+                  Generate mega-menu container for each 1st level menu item
+                {% endcomment %}
+                <div class="mega-menu__container">
+                  <div class="mega-menu__inner">
+                    <!-- Left Column: 2nd-level links -->
+                    <ul class="mega-menu__left-column" role="list">
+                      {% for childlink in mega_menu.links %}
+                        <li
+                          class="mega-menu__left-item{% if forloop.first %} active{% endif %}"
+                          data-target="{{ childlink.handle }}"
                         >
-                          {% if childlink.object and childlink.object.image %}
-                            <img
-                              src="{{ childlink.object.image.src | img_url: '250x250' }}"
-                              alt="{{ childlink.title | escape }}"
-                              class="mega-menu__icon"
-                            >
-                          {% endif %}
-                          {{ childlink.title | escape }}
-                        </a>
-                      </li>
-                    {% endfor %}
-                  </ul>
-
-                  <!-- Right Column: 3rd-level links -->
-                  <div class="mega-menu__right-column px-4 mx-16">
-                    {% for childlink in mega_menu.links %}
-                      <div
-                        class="mega-menu__right-content"
-                        data-content="{{ childlink.handle }}"
-                      >
-                        <ul class="mega-menu__grid" role="list">
-                          {% for grandchildlink in childlink.links %}
-                            <li class="mega-menu__grid-item w-1/3">
-                              <a
-                                href="{{ grandchildlink.url }}"
-                                class="mega-menu__link link"
-                              >
-                              </a>
-                              {% if grandchildlink.object and grandchildlink.object.image %}
+                          <a
+                            href="{{ childlink.url }}"
+                            class="mega-menu__link mega-menu__link--level-2"
+                          >
+                            {% if childlink.object and childlink.object.image %}
+                              <div class="mega-menu__icon-wrapper">
                                 <img
-                                  src="{{ grandchildlink.object.image.src | img_url: '200x200' }}"
-                                  alt="{{ grandchildlink.title | escape }}"
-                                  class="mega-menu__grid-image"
+                                  src="{{ childlink.object.image.src | img_url: '80x80', crop: 'center' }}"
+                                  alt="{{ childlink.title | escape }}"
+                                  class="mega-menu__icon"
+                                  width="80"
+                                  height="80"
+                                  loading="lazy"
                                 >
-                              {% endif %}
-                              <span class="mega-menu__grid-text underline">
-                                {{ grandchildlink.title | escape }}
-                              </span>
+                              </div>
+                            {% endif %}
+                            {{ childlink.title | escape }}
+                          </a>
+                        </li>
+                      {% endfor %}
+                    </ul>
 
-                              <!-- 4th level links -->
-                              <ul class="flex flex-col gap-1 px-0 py-0">
-                                {% for grandgrandchildlink in grandchildlink.links %}
-                                  <li class="my-0">
-                                    <a
-                                      href="{{ grandgrandchildlink.url }}"
-                                      class="text-lg text-gray-600 no-underline px-0 py-0"
-                                    >
-                                      {{ grandgrandchildlink.title | escape }}
-                                    </a>
-                                  </li>
-                                {% endfor %}
-                              </ul>
-                            </li>
-                          {% endfor %}
-                        </ul>
-                      </div>
-                    {% endfor %}
+                    <!-- Right Column: 3rd-level links -->
+                    <div class="mega-menu__right-column">
+                      {% for childlink in mega_menu.links %}
+                        <div
+                          class="mega-menu__right-content{% if forloop.first %} active{% endif %}"
+                          data-content="{{ childlink.handle }}"
+                        >
+                          <ul class="mega-menu__grid" role="list">
+                            {% for grandchildlink in childlink.links %}
+                              <li class="mega-menu__grid-item">
+                                {% if grandchildlink.object and grandchildlink.object.image %}
+                                  <img
+                                    src="{{ grandchildlink.object.image.src | img_url: '120x120', crop: 'center' }}"
+                                    alt="{{ grandchildlink.title | escape }}"
+                                    class="mega-menu__grid-image hover:scale-110 transition-transform duration-300"
+                                    width="120"
+                                    height="120"
+                                    loading="lazy"
+                                  >
+                                {% endif %}
+                                <a
+                                  href="{{ grandchildlink.url }}"
+                                  class="mega-menu__link px-0"
+                                >
+                                  <h4 class="px-0">
+                                    {{ grandchildlink.title | escape }}
+                                  </h4>
+                                </a>
+
+                                {% if grandchildlink.links.size > 0 %}
+                                  <ul class="mega-menu__sublinks mx-0 px-0">
+                                    {% for grandgrandchildlink in grandchildlink.links %}
+                                      <li class="my-[-8px] py-0">
+                                        <a
+                                          href="{{ grandgrandchildlink.url }}"
+                                          class="mega-menu__sublink text-xl no-underline text-black my-[-8px] py-0 font-light"
+                                        >
+                                          {{ grandgrandchildlink.title | escape }}
+                                        </a>
+                                      </li>
+                                    {% endfor %}
+                                  </ul>
+                                {% endif %}
+                              </li>
+                            {% endfor %}
+                          </ul>
+                        </div>
+                      {% endfor %}
+                    </div>
                   </div>
                 </div>
-              </div>
-            {% endif %}
-          </li>
-        {% endif %}
-      {% endfor %}
-    </ul>
+              {% endif %}
+            </li>
+          {% endif %}
+        {% endfor %}
+      </ul>
+    </div>
   </nav>
 {% endif %}
 
@@ -123,7 +138,17 @@
   /* Basic Reset and Variables */
   :root {
     --page-width: 1200px;
-    --color-text: #333;
+    --menu-primary-color: rgb(0, 0, 0);
+    --menu-secondary-color: rgb(3, 186, 214);
+    --menu-text-color: #ffffff;
+    --submenu-bg-color: #ffffff;
+    --submenu-text-color: #333333;
+  }
+
+  .header-wrapper,
+  .header-wrapper--border-bottom,
+  header {
+    border-bottom: none !important;
   }
 
   body,
@@ -136,125 +161,134 @@
   .header__inline-menu {
     position: relative;
     width: 100%;
+    margin-left: calc(-50vw + 50%);
+    margin-right: calc(-50vw + 50%);
+    width: 100vw;
     z-index: 99999 !important;
+    background: linear-gradient(90deg, var(--menu-primary-color) 66%, var(--menu-secondary-color) 100%);
+    border-bottom: none !important;
   }
 
   .list-menu {
     list-style: none;
     display: flex;
-    gap: 1rem;
-    margin: 0;
-    padding: 1rem;
+    padding: 0.75rem 0;
+    max-width: var(--page-width);
+    box-sizing: border-box;
   }
 
   .list-menu__item {
     text-decoration: none;
-    color: var(--color-text);
+    color: var(--menu-text-color);
+    font-weight: 500;
+    font-size: 1.25rem;
+    padding: 0.5rem 0;
+    transition: opacity 0.2s ease;
+  }
+
+  .list-menu__item:hover {
+    opacity: 0.8;
   }
 
   .mega-menu-parent {
     position: relative;
+    border-right: 1px solid #eee;
+    padding: 0 2rem;
+  }
+
+  .mega-menu-parent:first-child {
+    padding-left: 0;
   }
 
   .mega-menu__container {
     position: absolute;
     top: 100%;
     left: 0;
+    right: 0;
     width: 100vw;
-    background-color: #fff;
+    background-color: var(--submenu-bg-color);
     z-index: 9999;
     display: none;
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-    max-width: var(--page-width);
-    margin: 0 auto;
-    padding: 1rem;
+    padding: 2rem 0;
     box-sizing: border-box;
-  }
-
-  /* Show menu on hover of the parent */
-  .mega-menu-parent:hover .mega-menu__container {
-    display: block;
   }
 
   .mega-menu__inner {
     display: flex;
-    flex-direction: row;
-    justify-content: flex-start;
-    width: 100%;
+    gap: 2rem;
     max-width: var(--page-width);
-    margin: 0 auto;
-    padding: 1rem;
-    box-sizing: border-box;
   }
 
   .mega-menu__left-column {
-    list-style: none;
-    margin: 0;
+    width: 250px;
+    border-right: 1px solid #eee;
     padding: 0;
-    width: 20%;
-  }
-
-  .mega-menu__left-item {
-    margin-bottom: 0.5rem;
-    cursor: pointer;
-  }
-
-  .mega-menu__icon {
-    width: 100px;
-    height: 100px;
-    object-fit: cover;
-    margin-right: 0.5rem;
-    vertical-align: middle;
-    border-radius: 10px;
-  }
-
-  .mega-menu__link--level-2 {
-    display: flex;
-    align-items: center;
-    text-decoration: none;
-    color: var(--color-text);
+    margin: 0;
   }
 
   .mega-menu__right-column {
     flex: 1;
-    padding: 0 1rem;
-    box-sizing: border-box;
-    position: relative;
   }
 
-  .mega-menu__right-content {
-    display: none; /* hidden by default */
+  .mega-menu__left-item {
+    margin-bottom: 1rem;
   }
 
-  .mega-menu__right-content.active {
-    display: block; /* show active content */
+  .mega-menu__link {
+    color: var(--submenu-text-color);
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 0.5rem;
+    transition: background-color 0.2s ease;
+  }
+
+  .mega-menu__icon-wrapper {
+    overflow: hidden;
+    border-radius: 4px;
+  }
+
+  .mega-menu__icon {
+    width: 80px;
+    height: 80px;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+  }
+
+  .mega-menu__link:hover .mega-menu__icon {
+    transform: scale(1.1);
   }
 
   .mega-menu__grid {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    grid-gap: 1rem 1rem;
-    list-style: none;
-    margin: 0;
-    padding: 0;
+    gap: 2rem;
   }
 
   .mega-menu__grid-image {
-    width: 100px;
-    height: auto;
+    width: 120px;
+    height: 120px;
     object-fit: cover;
-    aspect-ratio: 1/1;
-    border-radius: 50px;
+    border-radius: 8px;
+    margin-bottom: 0.5rem;
   }
 
-  .mega-menu__grid-text {
+  /* Show menu on hover */
+  .mega-menu-parent:hover .mega-menu__container {
     display: block;
-    margin-top: 0.5rem;
-    font-size: 1.5rem;
-    color: var(--color-text);
   }
 
-  /* Responsive Adjustments for Smaller Screens */
+  .mega-menu__right-content {
+    display: none;
+  }
+
+  .mega-menu__right-content.active {
+    display: block;
+  }
+
+  /* Mobile adjustments */
   @media (max-width: 768px) {
     .mega-menu__inner {
       flex-direction: column;
@@ -265,8 +299,8 @@
       width: 100%;
     }
 
-    .mega-menu__right-column {
-      margin-top: 1rem;
+    .mega-menu__grid {
+      grid-template-columns: repeat(2, 1fr);
     }
   }
 </style>
