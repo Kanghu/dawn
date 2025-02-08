@@ -224,6 +224,52 @@
               display: none;
             }
           }
+
+          /* Price styles */
+          .price {
+            color: #f01188 !important;
+            font-family: 'Roboto', sans-serif !important;
+            font-weight: 700 !important;
+          }
+
+          .price__regular .price-item--regular,
+          .price__sale .price-item--sale {
+            color: #f01188 !important;
+            font-family: 'Roboto', sans-serif !important;
+            font-weight: 700 !important;
+          }
+
+          /* Product title styles */
+          .card__heading {
+            display: -webkit-box;
+            -webkit-line-clamp: 3;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            min-height: 4.5em; /* Approximately 3 lines of text */
+            margin-bottom: 0.5rem;
+            line-height: 1.5em; /* Ensure consistent line height */
+            max-height: 4.5em; /* Exactly 3 lines (1.5em * 3) */
+          }
+
+          .card__heading a {
+            display: -webkit-box;
+            -webkit-line-clamp: 3;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+            text-overflow: ellipsis;
+          }
+
+          /* Card information styles for consistent price positioning */
+          .card__information {
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+          }
+
+          .card-information {
+            margin-top: auto;
+          }
         </style>
         <!-- Modal Opener pentru Quick View -->
         <modal-opener data-modal="#QuickAdd-{{ card_product.id }}">
@@ -686,6 +732,15 @@
                     type="submit"
                     name="add"
                     class="quick-add__submit button button--full-width button--secondary{% if horizontal_quick_add %} card--horizontal__quick-add{% endif %}"
+                    style="
+                      border-radius: 15px 3px 15px 3px !important;
+                      transition: all 0.3s ease;
+                      position: relative;
+                      overflow: hidden;
+                      background: #03bad6;
+                      color: white;
+                      min-height: 3.5rem;
+                    "
                     aria-haspopup="dialog"
                     aria-labelledby="{{ product_form_id }}-submit title-{{ section_id }}-{{ card_product.id }}"
                     aria-live="polite"
@@ -694,7 +749,7 @@
                       disabled
                     {% endif %}
                   >
-                    <span>
+                    <span class="text-xl">
                       {%- if card_product.selected_or_first_available_variant.available -%}
                         {{ 'products.product.add_to_cart' | t }}
                       {%- else -%}
