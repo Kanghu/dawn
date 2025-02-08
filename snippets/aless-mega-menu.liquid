@@ -16,7 +16,7 @@
 {% if top_menu.size > 0 %}
   <nav class="header__inline-menu">
     <div class="page-width">
-      <ul class="list-menu list-menu--inline" role="list">
+      <ul class="aless-menu aless-menu--inline my-1" role="list">
         {% for block_item in all_blocks %}
           {% if block_item.type == 'drawer_menu_item' %}
             {% comment %}
@@ -33,7 +33,7 @@
               {% endcomment %}
               <a
                 href="{{ block_item.settings.menu_link }}"
-                class="header__menu-item list-menu__item"
+                class="header__menu-item aless-menu__item"
                 style="font-weight: 400; letter-spacing: 0.08rem;"
               >
                 <span>{{ menu_label }}</span>
@@ -49,12 +49,12 @@
                     <ul class="mega-menu__left-column" role="list">
                       {% for childlink in mega_menu.links %}
                         <li
-                          class="mega-menu__left-item{% if forloop.first %} active{% endif %}"
+                          class="mega-menu__left-item{% if forloop.first %} active{% endif %} px-4 py-2"
                           data-target="{{ childlink.handle }}"
                         >
                           <a
                             href="{{ childlink.url }}"
-                            class="mega-menu__link mega-menu__link--level-2"
+                            class="mega-menu__link mega-menu__link--level-2 "
                           >
                             {% if childlink.object and childlink.object.image %}
                               <div class="mega-menu__icon-wrapper">
@@ -98,7 +98,7 @@
                                   href="{{ grandchildlink.url }}"
                                   class="mega-menu__link px-0"
                                 >
-                                  <h4 class="px-0">
+                                  <h4 class="px-0 ">
                                     {{ grandchildlink.title | escape }}
                                   </h4>
                                 </a>
@@ -137,12 +137,12 @@
 <style>
   /* Basic Reset and Variables */
   :root {
-    --page-width: 1200px;
-    --menu-primary-color: rgba(3, 186, 214, 0.9);
-    --menu-secondary-color: rgba(31, 32, 35, 0.8);
-    --menu-text-color: #ffffff;
+    --menu-primary-color: rgba(20, 20, 23, 0.9);
+    --menu-secondary-color: rgba(3, 186, 214, 0.9);
+    --aless-menu-text-color: #ffffff;
     --submenu-bg-color: #ffffff;
     --submenu-text-color: #333333;
+    --menu-hover-color: rgba(3, 186, 214, 0.9); /* New variable for hover color */
   }
 
   .header-wrapper,
@@ -164,11 +164,11 @@
     margin-left: calc(-50vw + 50%);
     margin-right: calc(-50vw + 50%);
     width: 100vw;
-    background: linear-gradient(90deg, var(--menu-primary-color) 66%, var(--menu-secondary-color) 100%);
+    background: linear-gradient(90deg, var(--menu-primary-color) 63%, var(--menu-secondary-color) 100%);
     border-bottom: none !important;
   }
 
-  .list-menu {
+  .aless-menu {
     list-style: none;
     display: flex;
     padding: 0.75rem 0;
@@ -176,17 +176,27 @@
     box-sizing: border-box;
   }
 
-  .list-menu__item {
+  .aless-menu__item {
     text-decoration: none;
-    color: var(--menu-text-color);
+    color: var(--aless-menu-text-color);
     font-weight: 500;
     font-size: 1.25rem;
     padding: 0.5rem 0;
-    transition: opacity 0.2s ease;
+    transition: all 0.3s ease; /* Changed from opacity to all */
   }
 
-  .list-menu__item:hover {
-    opacity: 0.8;
+  .aless-menu__item:hover {
+    opacity: 0.9;
+    color: var(--menu-hover-color);
+    transform: scale(1.05);
+  }
+
+  .mega-menu__link:hover {
+    color: var(--menu-hover-color) !important;
+  }
+
+  .mega-menu__link--level-2:hover {
+    color: var(--submenu-text-color) !important;
   }
 
   .mega-menu-parent {
@@ -226,6 +236,10 @@
     margin: 0;
   }
 
+  .mega-menu__left-column li:hover {
+    background-color: rgba(64, 63, 65, 0.2) !important;
+  }
+
   .mega-menu__right-column {
     flex: 1;
   }
@@ -241,7 +255,12 @@
     align-items: center;
     gap: 1rem;
     padding: 0.5rem;
-    transition: background-color 0.2s ease;
+    transition: all 0.3s ease; /* Changed transition */
+  }
+
+  .mega-menu__link:hover {
+    transform: scale(1.02);
+    color: var(--menu-hover-color);
   }
 
   .mega-menu__icon-wrapper {
@@ -254,10 +273,6 @@
     height: 80px;
     object-fit: cover;
     transition: transform 0.3s ease;
-  }
-
-  .mega-menu__link:hover .mega-menu__icon {
-    transform: scale(1.1);
   }
 
   .mega-menu__grid {
@@ -301,6 +316,15 @@
     .mega-menu__grid {
       grid-template-columns: repeat(2, 1fr);
     }
+  }
+
+  .mega-menu__sublink {
+    transition: all 0.3s ease; /* Added transition */
+  }
+
+  .mega-menu__sublink:hover {
+    transform: scale(1.02);
+    color: var(--menu-hover-color) !important;
   }
 </style>
 

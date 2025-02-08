@@ -15,7 +15,7 @@
     "heading_scale": 100,
     "type_body_font": "roboto_n4",
     "body_scale": 100,
-    "page_width": 1200,
+    "page_width": 1300,
     "spacing_sections": 0,
     "spacing_grid_horizontal": 8,
     "spacing_grid_vertical": 8,
@@ -42,8 +42,8 @@
     "inputs_shadow_blur": 5,
     "card_style": "card",
     "card_image_padding": 0,
-    "card_text_alignment": "center",
-    "card_color_scheme": "scheme-2",
+    "card_text_alignment": "left",
+    "card_color_scheme": "scheme-298ca53f-8bf0-48f2-b169-96f1aaff9555",
     "card_border_thickness": 0,
     "card_border_opacity": 10,
     "card_corner_radius": 0,
@@ -213,11 +213,22 @@
         "settings": {
           "background": "#ffffff",
           "background_gradient": "",
-          "text": "#414042",
+          "text": "#000000",
           "button": "#03bad6",
           "button_label": "#ffffff",
           "secondary_button_label": "#121212",
           "shadow": "#919296"
+        }
+      },
+      "scheme-298ca53f-8bf0-48f2-b169-96f1aaff9555": {
+        "settings": {
+          "background": "#f6f6f6",
+          "background_gradient": "",
+          "text": "#121212",
+          "button": "#03bad6",
+          "button_label": "#ffffff",
+          "secondary_button_label": "#03bad6",
+          "shadow": "#121212"
         }
       }
     }
