@@ -58,6 +58,15 @@
         style="--ratio-percent: {{ 1 | divided_by: ratio | times: 100 }}%;"
       >
         <style>
+          .card-wrapper {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+          }
+
+          .card-wrapper:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 3px 15px rgba(0, 0, 0, 0.1);
+          }
+
           .quick-add__submit-text-cust,
           .quick-add-cart-button-cust {
             position: absolute;
@@ -269,6 +278,28 @@
 
           .card-information {
             margin-top: auto;
+          }
+
+          .quick-add__submit,
+          .quick-add-cart-button-cust {
+            transition: all 0.1s ease;
+          }
+
+          .quick-add__submit:hover,
+          .quick-add-cart-button-cust:hover {
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.15);
+            filter: brightness(0.9);
+          }
+
+          /* Ensure the hover effect works only when the button is not disabled */
+          .quick-add__submit:not([disabled]):hover,
+          .quick-add-cart-button-cust:not([disabled]):hover {
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.15);
+            filter: brightness(0.9);
+          }
+
+          .card--card .quick-add {
+            margin: 0 1rem 1rem;
           }
         </style>
         <!-- Modal Opener pentru Quick View -->
@@ -731,7 +762,7 @@
                     id="{{ product_form_id }}-submit"
                     type="submit"
                     name="add"
-                    class="quick-add__submit button button--full-width button--secondary{% if horizontal_quick_add %} card--horizontal__quick-add{% endif %}"
+                    class="quick-add__submit button button--full-width button--secondary{% if horizontal_quick_add %} card--horizontal__quick-add{% endif %} hover:bg-blue-700"
                     style="
                       border-radius: 15px 3px 15px 3px !important;
                       transition: all 0.3s ease;

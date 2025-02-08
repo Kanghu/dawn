@@ -125,9 +125,10 @@
 .card__content {
   display: grid;
   grid-template-rows: minmax(0, 1fr) max-content minmax(0, 1fr);
-  padding: 1rem;
+  padding: 0.5rem;
   width: 100%;
   flex-grow: 1;
+  border-radius: 0px 0px 5px 5px;
 }
 
 .card__content--auto-margins {
