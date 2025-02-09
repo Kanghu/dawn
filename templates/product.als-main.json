@@ -139,21 +139,8 @@
         "padding_bottom": 12
       }
     },
-    "alc_metafield_collection_slider": {
-      "type": "alc-metafield-collection-slider",
-      "settings": {
-        "title": "Vezi produse din gama {{ product.metafields.custom.collection | metafield_text }}",
-        "heading_size": "h2",
-        "show_secondary_image": true,
-        "show_vendor": false,
-        "show_rating": false,
-        "padding_top": 36,
-        "padding_bottom": 36
-      }
-    },
     "related-products": {
       "type": "related-products",
-      "disabled": true,
       "settings": {
         "heading": "Alte produse din gama",
         "heading_size": "h2",
@@ -200,14 +187,11 @@
             "page": ""
           }
         },
-        "collapsible_row_N6VrLH": {
-          "type": "collapsible_row",
+        "collapsible_qa_ecDGG4": {
+          "type": "collapsible_qa",
           "settings": {
-            "heading": "Intrebari frecvente",
-            "icon": "chat_bubble",
-            "row_content": "",
-            "row_liquid": "",
-            "page": ""
+            "heading": "Intrebari frecvente (FAQ)",
+            "icon": "chat_bubble"
           }
         }
       },
@@ -215,7 +199,7 @@
         "collapsible_row_aiagCC",
         "collapsible_metafields_xfKYrj",
         "collapsible_row_HjAwTd",
-        "collapsible_row_N6VrLH"
+        "collapsible_qa_ecDGG4"
       ],
       "settings": {
         "caption": "",
@@ -398,7 +382,6 @@
   "order": [
     "alc_breadcrumbs_A9LqKm",
     "main",
-    "alc_metafield_collection_slider",
     "related-products",
     "alc_collapsible_content_qgxhx4",
     "17347064802c9f17aa",
