@@ -109,7 +109,9 @@
                   <details id="Details-{{ block.id }}-{{ section.id }}">
                     <summary id="Summary-{{ block.id }}-{{ section.id }}">
                       {% render 'icon-accordion', icon: block.settings.icon %}
-                      <h3 class="accordion__title inline-richtext h4">{{ block.settings.heading }}</h3>
+                      <h3 class="accordion__title inline-richtext h4">
+                        {{ block.settings.heading }}
+                      </h3>
                       {{- 'icon-caret.svg' | inline_asset_content -}}
                     </summary>
                     <div
@@ -127,16 +129,24 @@
                               {% assign spec_group_metaobj = spec_group | metaobject %}
 
                               <div class="mb-16 w-100 md:w-50">
-                                <h3 class="mt-4">{{ spec_group_metaobj.name }}:</h3>
+                                <h3 class="mt-4" style="color: #EF1188">{{ spec_group_metaobj.name }}:</h3>
                                 {% assign counter = 0 %}
                                 {% for spec in spec_group_metaobj.specifications.value %}
                                   {% assign is_odd = counter | modulo: 2 %}
                                   <div
                                     style="{% if is_odd == 0 %}background: rgba(3,186,214,0.3);{% endif %}"
-                                    class="justify-between px-2 py-2"
+                                    class="justify-between px-3 py-3 text-2xl flex flex-row"
                                   >
-                                    <span class="spec-name">{{ spec | replace: '_', ' ' | capitalize }}:</span>
-                                    <span class="spec-value">{{ product.metafields.custom[spec].value }}</span>
+                                    <span class="spec-name w-2/3 font-normal">
+                                      {{- spec | replace: '_', ' ' | capitalize }}:</span
+                                    >
+                                    <span class="spec-value w-1/3 font-medium">
+                                      {%- if product.metafields.custom[spec].value.size > 0 -%}
+                                        {{- product.metafields.custom[spec].value | join: ', ' -}}
+                                      {%- else -%}
+                                        {{- product.metafields.custom[spec].value -}}
+                                      {%- endif -%}
+                                    </span>
                                   </div>
                                   {% assign counter = counter | plus: 1 %}
                                 {% endfor %}
@@ -152,7 +162,110 @@
                     </div>
                   </details>
                 </div>
+              {% elsif block.type == 'collapsible_qa' %}
+                <!-- Questions and Answers block -->
+                <div class="accordion" {{ block.shopify_attributes }}>
+                  <details id="Details-{{ block.id }}-{{ section.id }}">
+                    <summary id="Summary-{{ block.id }}-{{ section.id }}">
+                      {% render 'icon-accordion', icon: block.settings.icon %}
+                      <h3 class="accordion__title inline-richtext h4">
+                        {{ block.settings.heading }}
+                      </h3>
+                      {{- 'icon-caret.svg' | inline_asset_content -}}
+                    </summary>
+                    <div
+                      class="accordion__content rte"
+                      id="CollapsibleAccordion-{{ block.id }}-{{ section.id }}"
+                      role="region"
+                      aria-labelledby="Summary-{{ block.id }}-{{ section.id }}"
+                    >
+                      {% if product.metafields.custom.questions != blank %}
+                        <div class="qa-container space-y-6">
+                          {% for q in product.metafields.custom.questions.value %}
+                            <div class="qa-item bg-gray-50 rounded-lg p-6">
+                              <div class="question-header flex items-center gap-2 mb-3">
+                                <svg
+                                  class="w-6 h-6 text-pink-500"
+                                  fill="none"
+                                  stroke="currentColor"
+                                  viewBox="0 0 24 24"
+                                >
+                                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                                </svg>
+                                <p class="font-medium text-lg">{{ q.question }}</p>
+                              </div>
 
+                              <div class="asker-info text-sm text-gray-600 mb-4">
+                                {% if q.asker_name != blank %}
+                                  <span>Asked by {{ q.asker_name }}</span>
+                                {% endif %}
+                              </div>
+
+                              <div class="answer-container bg-white rounded p-4 shadow-sm">
+                                <div class="answer-header flex items-center gap-2 mb-2">
+                                  <svg
+                                    class="w-5 h-5 text-teal-500"
+                                    fill="none"
+                                    stroke="currentColor"
+                                    viewBox="0 0 24 24"
+                                  >
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                                  </svg>
+                                  <span class="font-medium">Answer:</span>
+                                </div>
+
+                                <div class="answer-content ml-7">
+                                  <p>{{ q.answer }}</p>
+                                  {% if q.responder_name != blank %}
+                                    <p class="text-sm text-gray-600 mt-2">- {{ q.responder_name }}</p>
+                                  {% endif %}
+                                </div>
+                              </div>
+                            </div>
+                          {% endfor %}
+                        </div>
+
+                        <style>
+                          .qa-container {
+                            font-family: var(--font-body-family);
+                          }
+
+                          .qa-item {
+                            border: 1px solid rgba(var(--color-foreground), 0.1);
+                          }
+
+                          .qa-item:hover {
+                            border-color: rgba(var(--color-foreground), 0.2);
+                          }
+
+                          .answer-container {
+                            border: 1px solid rgba(var(--color-foreground), 0.1);
+                          }
+
+                          .question-header svg {
+                            color: #f01188;
+                          }
+
+                          .answer-header svg {
+                            color: #03bad6;
+                          }
+
+                          @media screen and (max-width: 749px) {
+                            .qa-item {
+                              padding: 1rem;
+                            }
+
+                            .answer-container {
+                              padding: 0.75rem;
+                            }
+                          }
+                        </style>
+                      {% else %}
+                        <p>No questions available for this product.</p>
+                      {% endif %}
+                    </div>
+                  </details>
+                </div>
               {% else %}
                 <div class="vitals-reviews-block">
                   {{ block | block_tag }}
@@ -750,6 +863,34 @@
           "type": "page",
           "id": "page",
           "label": "t:sections.collapsible_content.blocks.collapsible_row.settings.page.label"
+        }
+      ]
+    },
+    {
+      "type": "collapsible_qa",
+      "name": "Q&A Section",
+      "settings": [
+        {
+          "type": "text",
+          "id": "heading",
+          "label": "Section Heading",
+          "default": "Questions & Answers"
+        },
+        {
+          "type": "select",
+          "id": "icon",
+          "options": [
+            {
+              "value": "chat_bubble",
+              "label": "Chat Bubble"
+            },
+            {
+              "value": "question_mark",
+              "label": "Question Mark"
+            }
+          ],
+          "default": "chat_bubble",
+          "label": "Icon"
         }
       ]
     },
