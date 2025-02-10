@@ -21,14 +21,14 @@
   }
 
   .section-{{ section.id }} .slider-buttons {
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    display: none;
   }
 
   @media screen and (min-width: 750px) {
     .section-{{ section.id }} .slider-buttons {
-      display: none;
+      display: flex;
+      align-items: center;
+      justify-content: center;
     }
   }
 
@@ -47,7 +47,7 @@
     }
 
     .section-{{ section.id }} .grid--peek .grid__item:first-of-type {
-      margin-left: 1.5rem;
+      margin-left: 0.2rem;
     }
   }
 
@@ -61,7 +61,7 @@
 <div class="color-{{ section.settings.color_scheme }} gradient">
   <div class="page-width section-{{ section.id }}-padding section-{{ section.id }}">
     {%- if section.settings.title != blank -%}
-      <h2 class="inline-richtext {{ section.settings.heading_size }} text-center mb-6">
+      <h2 class="inline-richtext {{ section.settings.heading_size }} mb-6">
         {{ section.settings.title }}
       </h2>
     {%- endif -%}
@@ -104,7 +104,7 @@
                 name="previous"
                 aria-label="{{ 'general.slider.previous_slide' | t }}"
               >
-                {% render 'icon-caret' %}
+                {{ 'icon-caret.svg' | inline_asset_content }}
               </button>
               <button
                 type="button"
@@ -112,7 +112,7 @@
                 name="next"
                 aria-label="{{ 'general.slider.next_slide' | t }}"
               >
-                {% render 'icon-caret' %}
+                {{ 'icon-caret.svg' | inline_asset_content }}
               </button>
             </div>
           {%- endif -%}
