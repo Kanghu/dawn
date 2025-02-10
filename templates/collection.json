@@ -25,6 +25,9 @@
     },
     "product-grid": {
       "type": "main-collection-product-grid",
+      "custom_css": [
+        ".rating-star {--color-rating-star: rgb(240, 16, 136); letter-spacing: 0.03em;}"
+      ],
       "settings": {
         "products_per_page": 24,
         "columns_desktop": 4,
