@@ -161,7 +161,7 @@
     "alc_metafield_collection_slider_NfJjNq": {
       "type": "alc-metafield-collection-slider",
       "settings": {
-        "title": "You may also like",
+        "title": "Vezi alte produse din gama {{ product.metafields.custom.collection | metafield_text }}",
         "heading_size": "h2",
         "products_to_show": 6,
         "columns_desktop": 6,
