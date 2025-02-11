@@ -268,10 +268,11 @@
           style="
             color: {{ block.settings.badge_sale_text_color }};
             background-color: {{ block.settings.badge_sale_color }};
+            border-radius: 5px;
           "
           class="badge price__badge-sale"
         >
-          {{ custom_sale_text }}
+          {{ product.metafields.custom.featured_campaign.value.title | upcase }}
         </span>
       {% endif %}
 

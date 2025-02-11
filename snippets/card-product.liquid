@@ -561,17 +561,17 @@
               {{ card_product.title | escape }}
             </a>
           </h3>
-          <div class="card-information">
+          <div class="card-information flex flex-col justify-between h-full">
             {%- if show_vendor -%}
               <span class="visually-hidden">{{ 'accessibility.vendor' | t }}</span>
               <div class="caption-with-letter-spacing light">{{ card_product.vendor }}</div>
             {%- endif -%}
 
-            {%- if block.settings.description != blank
-              or show_rating
-              and card_product.metafields.reviews.rating.value != blank
-            -%}
-              <div>
+            <div class="min-h-[24px]" style="display: block !important;">
+              {%- if block.settings.description != blank
+                or show_rating
+                and card_product.metafields.reviews.rating.value != blank
+              -%}
                 {%- if block.settings.description != blank -%}
                   <span class="caption-large light">{{ block.settings.description | escape }}</span>
                 {%- endif -%}
@@ -610,8 +610,8 @@
                     </span>
                   </p>
                 {%- endif -%}
-              </div>
-            {%- endif -%}
+              {%- endif -%}
+            </div>
 
             {% if card_product.available %}
               {% if card_product.variants.first.inventory_quantity > 15 %}

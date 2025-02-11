@@ -849,6 +849,10 @@ video {
   min-height: fit-content;
 }
 
+.min-h-\[24px\] {
+  min-height: 24px;
+}
+
 .w-1\/2 {
   width: 50%;
 }
@@ -1059,6 +1063,10 @@ video {
 
 .border-l {
   border-left-width: 1px;
+}
+
+.border-r {
+  border-right-width: 1px;
 }
 
 .border-none {
