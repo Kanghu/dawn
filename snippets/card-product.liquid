@@ -568,6 +568,7 @@
             {%- endif -%}
 
             <div class="min-h-[24px]" style="display: block !important;">
+              {{ stars }} ({{ totalReviews }})
               {%- if block.settings.description != blank
                 or show_rating
                 and card_product.metafields.reviews.rating.value != blank
