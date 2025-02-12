@@ -15,8 +15,8 @@
 
 {%- if paginate.parts.size > 0 -%}
   <div class="pagination-wrapper">
-    <nav class="pagination" role="navigation" aria-label="{{ 'general.pagination.label' | t }}">
-      <ul class="pagination__list list-unstyled" role="list">
+    <nav class="pagination flex-col" role="navigation" aria-label="{{ 'general.pagination.label' | t }}">
+      <ul class="pagination__list flex flex-row list-unstyled" role="list">
         {%- if paginate.previous -%}
           <li>
             <a
