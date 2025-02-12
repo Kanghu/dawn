@@ -305,6 +305,27 @@
             display: none;
             position: relative;
           }
+
+          .rating {
+            display: inline-flex;
+            align-items: center;
+            gap: 2px;
+          }
+
+          .star-icon {
+            display: inline-block;
+            line-height: 0;
+          }
+
+          .rating-text {
+            font-size: 12px;
+            color: #666;
+          }
+
+          .rating-count {
+            font-size: 12px;
+            color: #777777;
+          }
         </style>
         <!-- Modal Opener pentru Quick View -->
         <modal-opener data-modal="#QuickAdd-{{ card_product.id }}">
@@ -568,7 +589,6 @@
             {%- endif -%}
 
             <div class="min-h-[24px]" style="display: block !important;">
-              {{ stars }} ({{ totalReviews }})
               {%- if block.settings.description != blank
                 or show_rating
                 and card_product.metafields.reviews.rating.value != blank
@@ -577,39 +597,55 @@
                   <span class="caption-large light">{{ block.settings.description | escape }}</span>
                 {%- endif -%}
                 {%- if show_rating and card_product.metafields.reviews.rating.value != blank -%}
-                  {% liquid
-                    assign rating_decimal = 0
-                    assign decimal = card_product.metafields.reviews.rating.value.rating | modulo: 1
-                    if decimal >= 0.3 and decimal <= 0.7
-                      assign rating_decimal = 0.5
-                    elsif decimal > 0.7
-                      assign rating_decimal = 1
-                    endif
-                  %}
                   <div
-                    class="rating"
+                    class="d-flex flex-row align-items-center gap-2"
                     role="img"
                     aria-label="{{ 'accessibility.star_reviews_info' | t: rating_value: card_product.metafields.reviews.rating.value, rating_max: card_product.metafields.reviews.rating.value.scale_max }}"
                   >
-                    <span
-                      aria-hidden="true"
-                      class="rating-star"
-                      style="--rating: {{ card_product.metafields.reviews.rating.value.rating | floor }}; --rating-max: {{ card_product.metafields.reviews.rating.value.scale_max }}; --rating-decimal: {{ rating_decimal }};"
-                    ></span>
+                    {% assign rating = card_product.metafields.reviews.rating.value.rating | round: 1 %}
+                    {% assign rating_floor = rating | floor %}
+                    {% assign rating_decimal = rating | minus: rating_floor %}
+
+                    <div class="gap-0 d-flex flex-row align-items-center">
+                      {% for i in (1..5) %}
+                        {% assign i_plus_one = rating_floor | plus: 1 %}
+                        {% if i <= rating_floor %}
+                          <!-- Full Star -->
+                          <svg width="16" height="16" viewBox="0 0 24 24" fill="#FFD700">
+                            <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                          </svg>
+                        {% elsif i == i_plus_one and rating_decimal >= 0.3 and rating_decimal <= 0.7 %}
+                          <!-- Half Star -->
+                          <svg width="16" height="16" viewBox="0 0 24 24">
+                            <defs>
+                              <linearGradient id="half-{{ i }}">
+                                <stop offset="50%" stop-color="#FFD700"/>
+                                <stop offset="50%" stop-color="#D3D3D3"/>
+                              </linearGradient>
+                            </defs>
+                            <path fill="url(#half-{{ i }})" d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                          </svg>
+                        {% else %}
+                          <!-- Empty Star -->
+                          <svg width="16" height="16" viewBox="0 0 24 24" fill="#D3D3D3">
+                            <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                          </svg>
+                        {% endif %}
+                      {% endfor %}
+                    </div>
+                    <span aria-hidden="true" class="text-lg">
+                      {{- card_product.metafields.reviews.rating.value }}
+                    </span>
+                    <span class="d-flex align-items-center" style="color: rgb(65,64,66)">
+                      <span aria-hidden="true" class="text-lg"
+                        >({{ card_product.metafields.reviews.rating_count }})</span
+                      >
+                      <span class="visually-hidden">
+                        {{- card_product.metafields.reviews.rating_count }}
+                        {{ 'accessibility.total_reviews' | t -}}
+                      </span>
+                    </span>
                   </div>
-                  <p class="rating-text caption">
-                    <span aria-hidden="true">
-                      {{- card_product.metafields.reviews.rating.value }} /
-                      {{ card_product.metafields.reviews.rating.value.scale_max -}}
-                    </span>
-                  </p>
-                  <p class="rating-count caption">
-                    <span aria-hidden="true">({{ card_product.metafields.reviews.rating_count }})</span>
-                    <span class="visually-hidden">
-                      {{- card_product.metafields.reviews.rating_count }}
-                      {{ 'accessibility.total_reviews' | t -}}
-                    </span>
-                  </p>
                 {%- endif -%}
               {%- endif -%}
             </div>
