@@ -14,7 +14,7 @@
   <form action="{{ routes.search_url }}" method="get" role="search" class="w-full">
     <div class="relative flex items-center">    
       <input
-        class="w-full h-16 pl-10 pr-4 rounded-lg border border-gray-200 focus:outline-none focus:border-primary text-lg"
+        class="w-full h-16 pl-10 pr-10 rounded-lg border border-gray-200 focus:outline-none focus:border-primary text-lg"
                 style="border-color: rgb(65,64,66) !important;"
         id="{{ input_id }}"
         type="search"
@@ -42,7 +42,7 @@
       </div>
       <button
         type="reset"
-        class="absolute right-8 hidden items-center justify-center{% if search.terms != blank %} flex{% endif %}"
+        class="absolute right-16 hidden items-center justify-center{% if search.terms != blank %} flex{% endif %}"
         aria-label="{{ 'general.search.reset' | t }}"
       >
         <span class="w-4 h-4 text-gray-500">
@@ -62,7 +62,7 @@
 
     {%- if settings.predictive_search_enabled -%}
       <div
-        class="absolute w-full mt-2 z-10 bg-white shadow-lg rounded-lg"
+        class="predictive-search absolute w-full mt-2 z-10 bg-white shadow-lg rounded-lg"
         tabindex="-1"
         data-predictive-search
       >
