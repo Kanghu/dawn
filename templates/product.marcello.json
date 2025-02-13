@@ -148,87 +148,6 @@
         "padding_bottom": 12
       }
     },
-    "image_with_text_JBrtfy": {
-      "type": "image-with-text",
-      "blocks": {
-        "heading_TWfqwb": {
-          "type": "heading",
-          "settings": {
-            "heading": "Image with text",
-            "heading_size": "h1"
-          }
-        },
-        "text_ztDzk9": {
-          "type": "text",
-          "settings": {
-            "text": "<p>Pair text with an image to focus on your chosen product, collection, or blog post. Add details on availability, style, or even provide a review.</p>",
-            "text_style": "body"
-          }
-        }
-      },
-      "block_order": [
-        "heading_TWfqwb",
-        "text_ztDzk9"
-      ],
-      "settings": {
-        "image": "shopify://shop_images/SNZR.webp",
-        "height": "adapt",
-        "desktop_image_width": "large",
-        "layout": "image_first",
-        "desktop_content_position": "bottom",
-        "desktop_content_alignment": "center",
-        "content_layout": "no-overlap",
-        "section_color_scheme": "",
-        "color_scheme": "",
-        "image_behavior": "none",
-        "mobile_content_alignment": "center",
-        "padding_top": 36,
-        "padding_bottom": 36
-      }
-    },
-    "multicolumn": {
-      "type": "multicolumn",
-      "blocks": {
-        "column-0": {
-          "type": "column",
-          "settings": {
-            "title": "Free Shipping",
-            "text": "<p>Pair text with an image to focus on your chosen product, collection, or blog post. Add details on availability, style, or even provide a review.</p>",
-            "link_label": "",
-            "link": ""
-          }
-        },
-        "column-1": {
-          "type": "column",
-          "settings": {
-            "title": "Hassle-Free Exchanges",
-            "text": "<p>Pair text with an image to focus on your chosen product, collection, or blog post. Add details on availability, style, or even provide a review.</p>",
-            "link_label": "",
-            "link": ""
-          }
-        }
-      },
-      "block_order": [
-        "column-0",
-        "column-1"
-      ],
-      "settings": {
-        "title": "",
-        "heading_size": "h1",
-        "image_width": "full",
-        "image_ratio": "adapt",
-        "columns_desktop": 2,
-        "column_alignment": "left",
-        "background_style": "none",
-        "button_label": "",
-        "button_link": "",
-        "color_scheme": "scheme-1",
-        "columns_mobile": "1",
-        "swipe_on_mobile": false,
-        "padding_top": 36,
-        "padding_bottom": 36
-      }
-    },
     "related-products": {
       "type": "related-products",
       "settings": {
@@ -252,14 +171,52 @@
       "settings": {
         "include_margins": true
       }
+    },
+    "image_banner_7t49ki": {
+      "type": "image-banner",
+      "settings": {
+        "image": "shopify://shop_images/SNZR.webp",
+        "image_overlay_opacity": 0,
+        "image_height": "adapt",
+        "desktop_content_position": "middle-center",
+        "show_text_box": true,
+        "desktop_content_alignment": "center",
+        "color_scheme": "",
+        "image_behavior": "none",
+        "mobile_content_alignment": "center",
+        "stack_images_on_mobile": true,
+        "show_text_below": true
+      }
+    },
+    "rich_text_qeFyyf": {
+      "type": "rich-text",
+      "blocks": {
+        "text_KKWyyz": {
+          "type": "text",
+          "settings": {
+            "text": "<p><strong>Senzor de mișcare inovativ</strong></p><p>Lumina se aprinde simplu prin mișcarea mâinii în fața senzorului. Mai mult, aceasta poate fi reglată prin dimabilitate și schimbarea culorii luminii, totul prin mișcări succesive. O soluție practică și eficientă pentru baia dumneavoastră.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "text_KKWyyz"
+      ],
+      "settings": {
+        "desktop_content_position": "center",
+        "content_alignment": "center",
+        "color_scheme": "",
+        "full_width": true,
+        "padding_top": 40,
+        "padding_bottom": 52
+      }
     }
   },
   "order": [
     "main",
     "custom_liquid_CwNGJ6",
-    "image_with_text_JBrtfy",
-    "multicolumn",
     "related-products",
-    "17344485676cd9137d"
+    "17344485676cd9137d",
+    "image_banner_7t49ki",
+    "rich_text_qeFyyf"
   ]
 }
