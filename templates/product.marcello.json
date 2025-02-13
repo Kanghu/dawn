@@ -36,7 +36,10 @@
         },
         "related_variants_Yfikma": {
           "type": "related_variants",
-          "settings": {}
+          "settings": {
+            "custom_text": "Select a Variant",
+            "picker_style": "buttons"
+          }
         },
         "variant_picker": {
           "type": "variant_picker",
@@ -135,41 +138,13 @@
         "padding_bottom": 12
       }
     },
-    "image-with-text": {
-      "type": "image-with-text",
-      "blocks": {
-        "image-with-text-0": {
-          "type": "heading",
-          "settings": {
-            "heading": "Image with text",
-            "heading_size": "h1"
-          }
-        },
-        "image-with-text-1": {
-          "type": "text",
-          "settings": {
-            "text": "<p>Pair text with an image to focus on your chosen product, collection, or blog post. Add details on availability, style, or even provide a review.</p>",
-            "text_style": "body"
-          }
-        }
-      },
-      "block_order": [
-        "image-with-text-0",
-        "image-with-text-1"
-      ],
+    "custom_liquid_CwNGJ6": {
+      "type": "custom-liquid",
       "settings": {
-        "height": "small",
-        "desktop_image_width": "medium",
-        "layout": "text_first",
-        "desktop_content_position": "top",
-        "desktop_content_alignment": "left",
-        "content_layout": "no-overlap",
-        "section_color_scheme": "",
-        "color_scheme": "scheme-2",
-        "image_behavior": "none",
-        "mobile_content_alignment": "left",
-        "padding_top": 36,
-        "padding_bottom": 36
+        "custom_liquid": "<img src=\"https://cdn.shopify.com/s/files/1/0782/5175/3739/files/SNZR.webp?v=1739414244\" alt=\"SNZR Banner\">\n<p><strong>Senzor de mișcare inovativ:</strong> Lumina se aprinde simplu prin mișcarea mâinii în fața senzorului. Mai mult, aceasta poate fi reglată prin dimabilitate și schimbarea culorii luminii, totul prin mișcări succesive. O soluție practică și eficientă pentru baia dumneavoastră.</p>\n<br>\n<br>\n<img src=\"https://cdn.shopify.com/s/files/1/0782/5175/3739/files/DEZAB.webp?v=1739414244\" alt=\"DEZAB Banner\">\n<p><strong>Oglindă cu funcție de dezaburire activată prin buton:</strong> Asigură o vizibilitate constantă și elimină aburii din baie. Tehnologia inovativă previne acumularea de umiditate, păstrând suprafața limpede și clară. Ideală pentru băi moderne, oferă confortul de care aveți nevoie în fiecare zi.</p>\n<br><br>\n<img src=\"https://cdn.shopify.com/s/files/1/0782/5175/3739/files/CEAST.webp?v=1739414244\" alt=\"CEAST Banner\">\n<p><strong>Ceas digital și termometru:</strong> Ceasul digital integrat în oglindă se transformă într-un termometru digital după câteva secunde. Oferă informații precise despre timpul și temperatura din baia dumneavoastră, pentru un confort suplimentar.</p>\n<br> <br>\n<img src=\"https://cdn.shopify.com/s/files/1/0782/5175/3739/files/CLUMINA.webp?v=1739414244\" alt=\"CLUMINA Banner\">\n<p><strong>3 tipuri de iluminat pentru o atmosferă perfectă:</strong> Alegeți între lumina caldă (3000K), neutră (4000K) sau rece (6000K) pentru a crea ambianța dorită. Fiecare tip de iluminat este conceput pentru a se adapta nevoilor dumneavoastră, asigurându-vă o iluminare optimă în orice moment.</p><br><br>\n<img src=\"https://cdn.shopify.com/s/files/1/0782/5175/3739/files/CPVC.webp?v=1739414244\" alt=\"CPVC Banner\">\n<p><strong>Capac PVC protector:</strong> Protejează componentele interne ale oglinzii, inclusiv suportul metalic, asigurând o instalare sigură și fiabilă. Este un detaliu esențial pentru menținerea integrității produsului pe termen lung.</p>\n<br><br>\n<img src=\"https://cdn.shopify.com/s/files/1/0782/5175/3739/files/CUTIE.webp?v=1739414244\" alt=\"CUTIE Banner\">\n<p><strong>Protecție superioară în timpul transportului:</strong> Cutia din carton dur garantează o protecție maximă a oglinzii, cu puncte de susținere ce asigură siguranța produsului. Astfel, veți primi oglinda în stare perfectă, fără riscuri de deteriorare.</p>",
+        "color_scheme": "",
+        "padding_top": 12,
+        "padding_bottom": 12
       }
     },
     "multicolumn": {
@@ -242,7 +217,7 @@
   },
   "order": [
     "main",
-    "image-with-text",
+    "custom_liquid_CwNGJ6",
     "multicolumn",
     "related-products",
     "17344485676cd9137d"
