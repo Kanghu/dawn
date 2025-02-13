@@ -1,0 +1,161 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "main-product",
+      "blocks": {
+        "vendor": {
+          "type": "text",
+          "settings": {
+            "text": "{{ product.vendor }}",
+            "text_style": "uppercase"
+          }
+        },
+        "title": {
+          "type": "title",
+          "settings": {}
+        },
+        "caption": {
+          "type": "text",
+          "settings": {
+            "text": "{{ product.metafields.descriptors.subtitle.value }}",
+            "text_style": "subtitle"
+          }
+        },
+        "price": {
+          "type": "price",
+          "settings": {}
+        },
+        "related_variants_Yfikma": {
+          "type": "related_variants",
+          "settings": {
+            "custom_text": "Select a Variant",
+            "picker_style": "buttons"
+          }
+        },
+        "variant_picker": {
+          "type": "variant_picker",
+          "settings": {
+            "picker_type": "button",
+            "swatch_shape": "circle"
+          }
+        },
+        "quantity_selector": {
+          "type": "quantity_selector",
+          "settings": {}
+        },
+        "buy_buttons": {
+          "type": "buy_buttons",
+          "settings": {
+            "show_dynamic_checkout": false,
+            "show_gift_card_recipient": true
+          }
+        },
+        "description": {
+          "type": "description",
+          "settings": {}
+        },
+        "share": {
+          "type": "share",
+          "settings": {
+            "share_label": "Share"
+          }
+        }
+      },
+      "block_order": [
+        "vendor",
+        "title",
+        "caption",
+        "price",
+        "related_variants_Yfikma",
+        "variant_picker",
+        "quantity_selector",
+        "buy_buttons",
+        "description",
+        "share"
+      ],
+      "settings": {
+        "enable_sticky_info": true,
+        "color_scheme": "",
+        "media_size": "large",
+        "constrain_to_viewport": true,
+        "media_fit": "contain",
+        "gallery_layout": "stacked",
+        "media_position": "left",
+        "image_zoom": "lightbox",
+        "mobile_thumbnails": "hide",
+        "hide_variants": true,
+        "enable_video_looping": false,
+        "padding_top": 36,
+        "padding_bottom": 12
+      }
+    },
+    "custom_liquid_7dRM8D": {
+      "type": "custom-liquid",
+      "settings": {
+        "custom_liquid": "<div class=\"banner-containerm\" style=\"width: 100%; margin: 0 auto; text-align: center;\">\n  <img \n    src=\"https://cdn.shopify.com/s/files/1/0782/5175/3739/files/banner-oglinzi-premium-1711376207.png?v=1734052592\" \n    alt=\"Banner Oglinzi Premium\" \n    style=\"width: 100%; height: auto; display: block;\">\n</div>\n<br>",
+        "color_scheme": "",
+        "padding_top": 20,
+        "padding_bottom": 0
+      }
+    },
+    "custom_liquid_AaDydp": {
+      "type": "custom-liquid",
+      "settings": {
+        "custom_liquid": "<div class=\"two-columns\">\n  <div class=\"column video-column\">\n    <video autoplay muted loop playsinline>\n      <source src=\"https://cdn.shopify.com/videos/c/o/v/20a1c379a4b14b8aa5777d21733b299c.mp4\" type=\"video/mp4\">\n      Your browser does not support the video tag.\n    </video>\n  </div>\n  <div class=\"column text-column\">\n    <h2> <b>De ce Oglinzi LED Marcello?</h2> </B>\n<br>\n    <ul>\n  <ul style=\"list-style-type: none; padding: 0;\">\n  <li style=\"font-weight: bold; margin-bottom: 10px;\">\n    <span style=\"color: #4CAF50;\">✔</span> Dezaburire activată prin buton\n  </li>\n  \n  <li style=\"font-weight: bold; margin-bottom: 10px;\">\n    <span style=\"color: #4CAF50;\">✔</span> Senzor de mișcare pentru aprinderea luminii\n  </li>\n  \n  <li style=\"font-weight: bold; margin-bottom: 10px;\">\n    <span style=\"color: #4CAF50;\">✔</span> 3 tipuri de iluminat: caldă, neutră, rece\n  </li>\n  \n  <li style=\"font-weight: bold; margin-bottom: 10px;\">\n    <span style=\"color: #4CAF50;\">✔</span> Rama protectivă cu design modern\n  </li>\n  \n  <li style=\"font-weight: bold; margin-bottom: 10px;\">\n    <span style=\"color: #4CAF50;\">✔</span> Lupa cosmetică integrată pentru detalii precise\n  </li>\n  \n  <li style=\"font-weight: bold; margin-bottom: 10px;\">\n    <span style=\"color: #4CAF50;\">✔</span> Cutie durabilă cu protecție în timpul transportului\n  </li>\n  \n  <li style=\"font-weight: bold; margin-bottom: 10px;\">\n    <span style=\"color: #4CAF50;\">✔</span> Capac PVC protector pentru componente interne\n  </li>\n  \n  <li style=\"font-weight: bold; margin-bottom: 10px;\">\n    <span style=\"color: #4CAF50;\">✔</span> Ceas digital care se transformă în termometru\n  </li>\n</ul>\n\n<p style=\"font-size: 12px; color: #555; margin-top: 20px; text-align: center;\">\n  <em>*Opțiunile oglinzilor depind de modelul acestora. Nu toate oglinzile Marcello beneficiază de toate opțiunile descrise.</em>\n</p>\n\n</ul>\n\n</ul>\n\n    </ul>\n  </div>\n</div>\n\n<style>\n/* Stilurile pentru desktop */\n.two-columns {\n  display: flex;\n  gap: 20px; /* Spațiu între coloane */\n  align-items: center;\n  justify-content: center;\n  padding: 0 60px; /* Padding doar pe stânga și dreapta */\n  max-width: 1200px; /* Lățimea maximă a secțiunii */\n  margin: 0 auto; /* Centrare orizontală */\n  background-color: #ffffff; /* O culoare deschisă de fundal (opțional) */\n  border-radius: 10px; /* Colțuri rotunjite */\n}\n\n.column {\n  flex: 1; /* Coloanele împart lățimea */\n}\n\n.video-column video {\n  width: 100%;\n  height: auto;\n  border-radius: 10px; /* Optional: rotunjire colțuri */\n}\n\n/* Stilurile pentru mobil */\n@media (max-width: 768px) {\n  .two-columns {\n    flex-direction: column; /* Coloanele una sub alta */\n    gap: 0; /* Elimină spațiul dintre coloane */\n    padding: 0; /* Elimină padding-ul general */\n  }\n\n  .video-column video {\n    border-radius: 0; /* Elimină rotunjirea colțurilor la video */\n  }\n\n  .text-column {\n    padding: 20px; /* Adaugă padding doar la text */\n    text-align: center; /* Centrează textul pentru mobil */\n  }\n}\n</style>",
+        "color_scheme": "",
+        "padding_top": 40,
+        "padding_bottom": 52
+      }
+    },
+    "custom_liquid_fpKVG3": {
+      "type": "custom-liquid",
+      "settings": {
+        "custom_liquid": "<style>\n.banner-container {\n    display: flex; /* Folosește flexbox pentru aliniere */\n    flex-direction: column; /* Poziționează imaginea și textul pe verticală */\n    align-items: center; /* Centrează totul pe orizontală */\n    justify-content: center; /* Centrează pe verticală */\n    text-align: center; /* Centrează textul */\n    margin-bottom: 20px; /* Spațiu între bannere */\n    width: 100%; /* Asigură că containerul are lățimea completă */\n}\n\n.banner-container img {\n    max-width: 100%; /* Asigură că imaginea se redimensionează corect */\n    height: auto; /* Păstrează proporțiile imaginii */\n}\n\n.banner-container p {\n    max-width: 1176px; /* Limitează lățimea textului la lățimea imaginii */\n    box-sizing: border-box; /* Include padding-ul în lățimea elementului */\n    font-size: 14px; /* Mărimea textului */\n    padding: 10px; /* Spațiu între text și marginea containerului */\n    margin: 0;\n}\n\n    </style>\n\t\n\t <div class=\"banner-container\">\n        <img src=\"https://cdn.shopify.com/s/files/1/0782/5175/3739/files/SNZR.webp?v=1739414244\" alt=\"SNZR Banner\">\n        <p><strong>Senzor de mișcare inovativ:</strong> Lumina se aprinde simplu prin mișcarea mâinii în fața senzorului. Mai mult, aceasta poate fi reglată prin dimabilitate și schimbarea culorii luminii, totul prin mișcări succesive. O soluție practică și eficientă pentru baia dumneavoastră.</p>\n    </div>\n\t\n\t<div class=\"banner-container\">\n        <img src=\"https://cdn.shopify.com/s/files/1/0782/5175/3739/files/DEZAB.webp?v=1739414244\" alt=\"DEZAB Banner\">\n        <p><strong>Oglindă cu funcție de dezaburire activată prin buton:</strong> Asigură o vizibilitate constantă și elimină aburii din baie. Tehnologia inovativă previne acumularea de umiditate, păstrând suprafața limpede și clară. Ideală pentru băi moderne, oferă confortul de care aveți nevoie în fiecare zi.</p>\n    </div>\n\n   <div class=\"banner-container\">\n        <img src=\"https://cdn.shopify.com/s/files/1/0782/5175/3739/files/CEAST.webp?v=1739414244\" alt=\"CEAST Banner\">\n        <p><strong>Ceas digital și termometru:</strong> Ceasul digital integrat în oglindă se transformă într-un termometru digital după câteva secunde. Oferă informații precise despre timpul și temperatura din baia dumneavoastră, pentru un confort suplimentar.</p>\n    </div>\n\t\n    <div class=\"banner-container\">\n        <img src=\"https://cdn.shopify.com/s/files/1/0782/5175/3739/files/CLUMINA.webp?v=1739414244\" alt=\"CLUMINA Banner\">\n        <p><strong>3 tipuri de iluminat pentru o atmosferă perfectă:</strong> Alegeți între lumina caldă (3000K), neutră (4000K) sau rece (6000K) pentru a crea ambianța dorită. Fiecare tip de iluminat este conceput pentru a se adapta nevoilor dumneavoastră, asigurându-vă o iluminare optimă în orice moment.</p>\n    </div>\n\n <div class=\"banner-container\">\n        <img src=\"https://cdn.shopify.com/s/files/1/0782/5175/3739/files/CPVC.webp?v=1739414244\" alt=\"CPVC Banner\">\n        <p><strong>Capac PVC protector:</strong> Protejează componentele interne ale oglinzii, inclusiv suportul metalic, asigurând o instalare sigură și fiabilă. Este un detaliu esențial pentru menținerea integrității produsului pe termen lung.</p>\n    </div>\n\n\n    <div class=\"banner-container\">\n        <img src=\"https://cdn.shopify.com/s/files/1/0782/5175/3739/files/CUTIE.webp?v=1739414244\" alt=\"CUTIE Banner\">\n        <p><strong>Protecție superioară în timpul transportului:</strong> Cutia din carton dur garantează o protecție maximă a oglinzii, cu puncte de susținere ce asigură siguranța produsului. Astfel, veți primi oglinda în stare perfectă, fără riscuri de deteriorare.</p>\n    </div>",
+        "color_scheme": "",
+        "padding_top": 40,
+        "padding_bottom": 52
+      }
+    },
+    "related-products": {
+      "type": "related-products",
+      "settings": {
+        "heading": "You may also like",
+        "heading_size": "h2",
+        "products_to_show": 4,
+        "columns_desktop": 4,
+        "color_scheme": "scheme-1",
+        "image_ratio": "square",
+        "image_shape": "default",
+        "show_secondary_image": true,
+        "show_vendor": false,
+        "show_rating": false,
+        "columns_mobile": "2",
+        "padding_top": 36,
+        "padding_bottom": 28
+      }
+    },
+    "17344485676cd9137d": {
+      "type": "apps",
+      "settings": {
+        "include_margins": true
+      }
+    }
+  },
+  "order": [
+    "main",
+    "custom_liquid_7dRM8D",
+    "custom_liquid_AaDydp",
+    "custom_liquid_fpKVG3",
+    "related-products",
+    "17344485676cd9137d"
+  ]
+}
