@@ -327,155 +327,6 @@
             color: #777777;
           }
         </style>
-        <!-- Modal Opener pentru Quick View -->
-        <modal-opener data-modal="#QuickAdd-{{ card_product.id }}">
-          <button
-            id="quick-view-{{ card_product.id }}"
-            type="button"
-            class="quick-add__submit-text-cust"
-            aria-haspopup="dialog"
-            aria-labelledby="quick-view-{{ card_product.id }} title-{{ section_id }}-{{ card_product.id }}"
-            data-product-url="{{ card_product.url }}"
-          >
-            <svg
-              id="quick-add__submit-text-cust"
-              width="20"
-              height="20"
-              viewBox="0 0 30 30"
-              xmlns:xlink="http://www.w3.org/1999/xlink"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <defs>
-                <path d="M0,15.089434 C0,16.3335929 5.13666091,24.1788679 14.9348958,24.1788679 C24.7325019,24.1788679 29.8697917,16.3335929 29.8697917,15.089434 C29.8697917,13.8456167 24.7325019,6 14.9348958,6 C5.13666091,6 0,13.8456167 0,15.089434 Z" id="outline"></path>
-                <mask id="mask">
-                  <rect width="100%" height="100%" fill="white"></rect>
-                  <use xlink:href="#outline" id="lid-cust" fill="black"/>
-                </mask>
-              </defs>
-              <g id="eye-cust">
-                <path d="M0,15.089434 C0,16.3335929 5.13666091,24.1788679 14.9348958,24.1788679 C24.7325019,24.1788679 29.8697917,16.3335929 29.8697917,15.089434
-                C29.8697917,13.8456167 24.7325019,6 14.9348958,6 C5.13666091,6 0,13.8456167 0,15.089434 Z M14.9348958,22.081464 C11.2690863,22.081464 8.29688487,18.9510766
-                8.29688487,15.089434 C8.29688487,11.2277914 11.2690863,8.09740397 14.9348958,8.09740397 C18.6007053,8.09740397 21.5725924,11.2277914 21.5725924,15.089434
-                C21.5725924,18.9510766 18.6007053,22.081464 14.9348958,22.081464 L14.9348958,22.081464 Z M18.2535869,15.089434 C18.2535869,17.0200844 16.7673289,18.5857907
-                14.9348958,18.5857907 C13.1018339,18.5857907 11.6162048,17.0200844 11.6162048,15.089434 C11.6162048,13.1587835 13.1018339,11.593419 14.9348958,11.593419
-                C15.9253152,11.593419 14.3271242,14.3639878 14.9348958,15.089434 C15.451486,15.7055336 18.2535869,14.2027016 18.2535869,15.089434 L18.2535869,15.089434 Z" fill="#FFFFFF"></path>
-                <use xlink:href="#outline" mask="url(#mask)" fill="#FFFFFF"/>
-              </g>
-            </svg>
-            <span>Quick View</span>
-            {%- render 'loading-spinner' -%}
-          </button>
-        </modal-opener>
-
-        <!-- Modalul pentru Quick View -->
-        <quick-add-modal id="QuickAdd-{{ card_product.id }}" class="quick-add-modal">
-          <div
-            role="dialog"
-            aria-label="{{ 'products.product.choose_product_options' | t: product_name: card_product.title | escape }}"
-            aria-modal="true"
-            class="quick-add-modal__content global-settings-popup"
-            tabindex="-1"
-          >
-            <button
-              id="ModalClose-{{ card_product.id }}"
-              type="button"
-              class="quick-add-modal__toggle"
-              aria-label="{{ 'accessibility.close' | t }}"
-            >
-              Close
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512">
-                <!--!Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2025 Fonticons, Inc.--><path d="M376.6 84.5c11.3-13.6 9.5-33.8-4.1-45.1s-33.8-9.5-45.1 4.1L192 206 56.6 43.5C45.3 29.9 25.1 28.1 11.5 39.4S-3.9 70.9 7.4 84.5L150.3 256 7.4 427.5c-11.3 13.6-9.5 33.8 4.1 45.1s33.8 9.5 45.1-4.1L192 306 327.4 468.5c11.3 13.6 31.5 15.4 45.1 4.1s15.4-31.5 4.1-45.1L233.7 256 376.6 84.5z"/>
-              </svg>
-            </button>
-            <div id="QuickViewInfo-{{ card_product.id }}" class="quick-add-modal__content-info">
-              <!-- Conținutul modalului -->
-              <h2>{{ card_product.title }}</h2>
-              <p>{{ card_product.description }}</p>
-              <img src="{{ card_product.featured_media | img_url: 'large' }}" alt="{{ card_product.title }}">
-            </div>
-          </div>
-        </quick-add-modal>
-
-        <quick-add-modal id="QuickAdd-{{ card_product.id }}" class="quick-add-modal">
-          <div
-            role="dialog"
-            aria-label="{{ 'products.product.choose_product_options' | t: product_name: card_product.title | escape }}"
-            aria-modal="true"
-            class="quick-add-modal__content global-settings-popup"
-            tabindex="-1"
-          >
-            <button
-              id="ModalClose-{{ card_product.id }}"
-              type="button"
-              class="quick-add-modal__toggle"
-              aria-label="{{ 'accessibility.close' | t }}"
-            >
-              {% render 'icon-close' %}
-            </button>
-            <div id="QuickAddInfo-{{ card_product.id }}" class="quick-add-modal__content-info"></div>
-          </div>
-        </quick-add-modal>
-
-        <product-form data-section-id="{{ section.id }}">
-          {%- form 'product',
-            card_product,
-            id: product_form_id,
-            class: 'form',
-            novalidate: 'novalidate',
-            data-type: 'add-to-cart-form'
-          -%}
-            <input
-              type="hidden"
-              name="id"
-              value="{{ card_product.selected_or_first_available_variant.id }}"
-              class="product-variant-id"
-              {% if card_product.selected_or_first_available_variant.available == false %}
-                disabled
-              {% endif %}
-            >
-            <button
-              id="{{ product_form_id }}-submit"
-              type="submit"
-              name="add"
-              class="quick-add-cart-button-cust"
-              aria-haspopup="dialog"
-              aria-labelledby="{{ product_form_id }}-submit title-{{ section_id }}-{{ card_product.id }}"
-              aria-live="polite"
-              data-sold-out-message="true"
-              {% if card_product.selected_or_first_available_variant.available == false %}
-                disabled
-              {% endif %}
-            >
-              <svg
-                version="1.1"
-                id="quick-add-cart-button-cust"
-                xmlns="http://www.w3.org/2000/svg"
-                xmlns:xlink="http://www.w3.org/1999/xlink"
-                x="0px"
-                y="0px"
-                width="20px"
-                height="20px"
-                viewBox="0 0 100 100"
-                enable-background="new 0 0 100 100"
-                xml:space="preserve"
-              >
-                <line class="ver2-cust" fill="none" stroke="#FFFFFF" stroke-width="12" stroke-miterlimit="10" x1="50" y1="20" x2="50" y2="80"/>
-                <line class="hor2-cust" fill="none" stroke="#FFFFFF" stroke-width="12" stroke-miterlimit="10" x1="80" y1="50" x2="20" y2="50"/>
-              </svg>
-              <span>
-                {%- if card_product.selected_or_first_available_variant.available -%}
-                  Add to Cart
-                {%- else -%}
-                  Sold Out
-                {%- endif -%}
-              </span>
-              <span class="sold-out-message hidden">
-                {{ 'products.product.sold_out' | t }}
-              </span>
-              {%- render 'loading-spinner' -%}
-            </button>
-          {%- endform -%}
-        </product-form>
         {%- if card_product.featured_media -%}
           <div class="card__media h-auto {% if image_shape and image_shape != 'default' %} shape--{{ image_shape }} color-{{ settings.card_color_scheme }} gradient{% endif %}">
             <div class="media media--transparent media--hover-effect">
@@ -544,20 +395,16 @@
             </h3>
           </div>
           <div class="card__badge {{ settings.badge_position }}">
-            {%- if card_product.available == false -%}
-              <span
-                id="NoMediaStandardBadge-{{ section_id }}-{{ card_product.id }}"
-                class="badge badge--bottom-left color-{{ settings.sold_out_badge_color_scheme }}"
-              >
-                {{- 'products.product.sold_out' | t -}}
-              </span>
-            {%- elsif card_product.compare_at_price > card_product.price and card_product.available -%}
-              <span
-                id="NoMediaStandardBadge-{{ section_id }}-{{ card_product.id }}"
-                class="badge badge--bottom-left color-{{ settings.sale_badge_color_scheme }}"
-              >
-                {{- 'products.product.on_sale' | t -}}
-              </span>
+            {%- if card_product.compare_at_price > card_product.price and card_product.available -%}
+              {%- if card_product.metafields.custom.featured_campaign.value.title != blank -%}
+                <span
+                  id="NoMediaStandardBadge-{{ section_id }}-{{ card_product.id }}"
+                  class="badge badge--bottom-left text-base p-2 px-3"
+                  style="border-radius: 15px 3px 15px 3px; background-color: #F01088; color: #fff; letter-spacing: 0.025em;"
+                >
+                  {{ card_product.metafields.custom.featured_campaign.value.title }}
+                </span>
+              {%- endif -%}
             {%- endif -%}
           </div>
         </div>
