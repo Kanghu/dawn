@@ -174,10 +174,13 @@
     },
     "image_banner_7t49ki": {
       "type": "image-banner",
+      "custom_css": [
+        ".banner-container img {max-width: 100%; /* Asigură că imaginea se redimensionează corect */ height: auto; /* Păstrează proporțiile imaginii */ }"
+      ],
       "settings": {
         "image": "shopify://shop_images/SNZR.webp",
         "image_overlay_opacity": 0,
-        "image_height": "small",
+        "image_height": "adapt",
         "desktop_content_position": "middle-center",
         "show_text_box": true,
         "desktop_content_alignment": "center",
