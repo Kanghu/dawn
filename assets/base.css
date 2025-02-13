@@ -516,7 +516,7 @@ h6:empty {
   text-underline-offset: 0.3rem;
   color: rgb(var(--color-link));
   background-color: transparent;
-  font-size: 1.4rem;
+  font-size: 1.0rem;
   font-family: inherit;
 }
 
@@ -3619,4 +3619,8 @@ details-disclosure > details {
   100% {
     transform: translateX(100%) scaleX(0);
   }
+}
+
+.loading__spinner.hidden {
+  display: none !important;
 }
