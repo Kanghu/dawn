@@ -456,6 +456,10 @@ class MenuDrawer extends HTMLElement {
     const isOpen = detailsElement.hasAttribute('open');
     const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
 
+    console.log(detailsElement);
+    console.log(summaryElement);
+    console.log(isOpen);
+
     function addTrapFocus() {
       trapFocus(summaryElement.nextElementSibling, detailsElement.querySelector('button'));
       summaryElement.nextElementSibling.removeEventListener('transitionend', addTrapFocus);
