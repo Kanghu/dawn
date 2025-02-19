@@ -64,7 +64,7 @@
   {% if compare_at_price > price %}
     {% assign show_sale_badge = true %}
     {% assign price_diff = compare_at_price | minus: price %}
-  {% endif %}
+{% endif %}
 
   {%- comment -%}
     Prepare the "Sale" text and difference amount for badges.
@@ -83,8 +83,7 @@
     - "side-by-side": display flex row
     - "stacked": display flex column
   {%- endcomment -%}
-  <div
-    class="
+  <div class="
       price
       {% if block.settings.price_layout == 'stacked' %}
         flex flex-col items-start
@@ -97,18 +96,14 @@
       {%- if compare_at_price > price and product.quantity_price_breaks_configured? %} volume-pricing--sale-badge{% endif -%}
       {%- if product.price_varies == false and product.compare_at_price_varies %} price--no-compare{% endif -%}
       {%- if show_badges %} price--show-badge{% endif -%}
-    "
-  >
+    ">
     <div class="price__container flex flex-col">
       {%- comment -%}
         ======================
         REGULAR PRICE SECTION
         ======================
       {%- endcomment -%}
-      <div
-        class="price__regular inline-block"
-        style="color: {{ block.settings.normal_price_color }};"
-      >
+      <div class="price__regular inline-block" style="color: {{ block.settings.normal_price_color }};">
         {%- if product.quantity_price_breaks_configured? -%}
           {%- if show_compare_at_price and compare_at_price -%}
             {%- unless product.price_varies == false and product.compare_at_price_varies %}
@@ -116,10 +111,7 @@
                 {{ 'products.product.price.regular_price' | t }}
               </span>
               <span>
-                <s
-                  class="price-item price-item--regular variant-item__old-price line-through"
-                  style="color: {{ block.settings.compare_price_color }};"
-                >
+                <s class="price-item price-item--regular variant-item__old-price line-through" style="color: {{ block.settings.compare_price_color }};">
                   {% if settings.currency_code_enabled %}
                     {{ compare_at_price | money_with_currency }}
                   {% else %}
@@ -134,8 +126,7 @@
           </span>
           <span class="price-item price-item--regular">
             {{-
-              'products.product.volume_pricing.price_range'
-              | t: minimum: money_price_min, maximum: money_price_max
+              'products.product.volume_pricing.price_range' | t: minimum: money_price_min, maximum: money_price_max
             -}}
           </span>
         {%- else -%}
@@ -164,19 +155,15 @@
       <div
         class="price__sale inline-block mt-1"
         {%- if compare_at_price > price -%}
-          style="color: {{ block.settings.normal_price_color }};"
-        {%- endif -%}
-      >
+        style="color: {{ block.settings.normal_price_color }};"
+        {%- endif -%}>
         {%- unless product.price_varies == false and product.compare_at_price_varies %}
           <span class="visually-hidden visually-hidden--inline">
             {{ 'products.product.price.regular_price' | t }}
           </span>
           <span class="flex flex-col">
             <span class="inline-flex items-center">
-              <s
-                class="price-item price-item--regular line-through font-bold"
-                style="color: {{ block.settings.compare_price_color }}; font-size: 1.5rem;"
-              >
+              <s class="price-item price-item--regular line-through font-bold" style="color: {{ block.settings.compare_price_color }}; font-size: 1.5rem;">
                 {% if settings.currency_code_enabled %}
                   {{ compare_at_price | money_with_currency }}
                 {% else %}
@@ -187,21 +174,16 @@
               {%- comment -%}
                 In STACKED layout, show the difference badge *immediately* next to compare price
               {%- endcomment -%}
-              {% if block.settings.price_layout == 'stacked'
-                and show_sale_badge
-                and block.settings.difference_display_style == 'badge'
+              {% if block.settings.price_layout == 'stacked' and show_sale_badge and block.settings.difference_display_style == 'badge'
               %}
-                <span
-                  style="
+                <span style="
                     background-color: {{ block.settings.difference_price_color }};
                     color: {{ block.settings.difference_price_text_color }};
-                  "
-                  class="
+                  " class="
                     badge
                     price__badge-diff
                     mb-0
-                  "
-                >
+                  ">
                   - {{ diff_money }}
                 </span>
               {% endif %}
@@ -228,23 +210,6 @@
         <div class="price-difference-text text-lg" style="color: black;">Economisesti {{ diff_money }}</div>
       {% endif %}
 
-      {%- comment -%}
-        Unit price
-      {%- endcomment -%}
-      <small class="unit-price caption inline-block mt-1 {% if product.selected_or_first_available_variant.unit_price_measurement == nil %}hidden{% endif %}">
-        <span class="visually-hidden">{{ 'products.product.price.unit_price' | t }}</span>
-        <span class="price-item price-item--last">
-          <span>{{- product.selected_or_first_available_variant.unit_price | money -}}</span>
-          <span aria-hidden="true">/</span>
-          <span class="visually-hidden">&nbsp;{{ 'accessibility.unit_price_separator' | t }}&nbsp;</span>
-          <span>
-            {%- if product.selected_or_first_available_variant.unit_price_measurement.reference_value != 1 -%}
-              {{- product.selected_or_first_available_variant.unit_price_measurement.reference_value -}}
-            {%- endif -%}
-            {{ product.selected_or_first_available_variant.unit_price_measurement.reference_unit }}
-          </span>
-        </span>
-      </small>
     </div>
 
     {%- comment -%}
@@ -253,25 +218,19 @@
     {%- if show_badges -%}
       {% if show_sale_badge %}
         {% if block.settings.difference_display_style == 'badge' and block.settings.price_layout == 'side-by-side' %}
-          <span
-            class="badge price__badge-diff ml-2 text-sm"
-            style="
+          <span class="badge price__badge-diff ml-2 text-sm" style="
               color: {{ block.settings.difference_price_text_color }};
               background-color: {{ block.settings.difference_price_color }};
-            "
-          >
+            ">
             Economisesti {{ diff_money }}
           </span>
         {% endif %}
 
-        <span
-          style="
+        <span style="
             color: {{ block.settings.badge_sale_text_color }};
             background-color: {{ block.settings.badge_sale_color }};
             border-radius: 5px;
-          "
-          class="badge price__badge-sale"
-        >
+          " class="badge price__badge-sale">
           {{ product.metafields.custom.featured_campaign.value.title | upcase }}
         </span>
       {% endif %}

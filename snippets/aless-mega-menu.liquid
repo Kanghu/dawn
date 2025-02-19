@@ -35,7 +35,7 @@
                 style="font-weight: 400; letter-spacing: 0.08rem;">
                 <span>{{ menu_label }}</span>
               </a>
-              {% if block_item.settings.display_type == 'grid-2-2' %}
+              {% if block_item.settings.display_type == '3-level' %}
                 {% if mega_menu and mega_menu.links.size > 0 %}
                   {% comment %}
                     Generate mega-menu container for each 1st level menu item
@@ -106,7 +106,7 @@
                     </div>
                   </div>
                 {% endif %}
-              {% elsif block_item.settings.display_type == '3-level' %}
+              {% elsif block_item.settings.display_type == 'grid-2-2' %}
                 <div class="mega-menu__container">
                   <div class="mega-menu__inner">
                     <ul class="mega-menu__grid" role="list">

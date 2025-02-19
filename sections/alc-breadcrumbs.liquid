@@ -1,21 +1,21 @@
 {% schema %}
-{
-  "name": "Breadcrumbs",
-  "settings": [
-    {
-      "type": "text",
-      "id": "separator_symbol",
-      "label": "Separator Symbol",
-      "default": ">"
-    }
-  ],
-  "presets": [
-    {
-      "name": "Breadcrumbs",
-      "category": "Navigation"
-    }
-  ]
-}
+  {
+    "name": "Breadcrumbs",
+    "settings": [
+      {
+        "type": "text",
+        "id": "separator_symbol",
+        "label": "Separator Symbol",
+        "default": ">"
+      }
+    ],
+    "presets": [
+      {
+        "name": "Breadcrumbs",
+        "category": "Navigation"
+      }
+    ]
+  }
 {% endschema %}
 
 <style>
@@ -97,7 +97,10 @@
 {%- unless template == 'index' or template == 'cart' or template == 'list-collections' or template == '404' -%}
   {%- assign t = template | split: '.' | first -%}
 
-  <nav class="breadcrumbs mt-2" role="navigation" aria-label="breadcrumbs">
+  <nav
+    class="breadcrumbs mt-2"
+    role="navigation"
+    aria-label="breadcrumbs">
     <div class="page-width">
       <ol class="breadcrumbs__list">
         <li class="breadcrumbs__item">
@@ -106,31 +109,88 @@
         {%- case t -%}
           {%- when 'page' -%}
             <li class="breadcrumbs__item">
-              <a class="breadcrumbs__link" href="{{ page.url }}" aria-current="page">{{ page.title }}</a>
+              <a
+                class="breadcrumbs__link"
+                href="{{ page.url }}"
+                aria-current="page">{{ page.title }}</a>
             </li>
           {%- when 'product' -%}
-            {%- if collection.url -%}
-              <li class="breadcrumbs__item">
-                {{ collection.title | link_to: collection.url }}
-              </li>
+            {%- assign collections_size = product.collections | size -%}
+            {%- if collections_size > 1 -%}
+              {%- assign index = collections_size | minus: 2 -%}
+              {%- assign product_collection = product.collections[index] -%}
+            {%- else -%}
+              {%- assign product_collection = product.collections | last -%}
             {%- endif -%}
+            {%- assign current_collection = product_collection -%}
+            {%- assign collection_hierarchy = '' | split: ',' -%}
+
+            {%- # Build collection hierarchy array -%}
+            {%- for i in (1..100) -%}
+              {%- assign handle_array = current_collection | map: 'handle' | first | split: ',' -%}
+              {%- assign collection_hierarchy = collection_hierarchy | concat: handle_array -%}
+              {%- assign parent_collection = current_collection.metafields.custom.parent_collection.value -%}
+              {%- if parent_collection == blank -%}
+                {%- break -%}
+              {%- endif -%}
+              {%- assign current_collection = parent_collection -%}
+            {%- endfor -%}
+
+            {%- # Output collection hierarchy in reverse order -%}
+            {%- for hdl in collection_hierarchy reversed -%}
+              {%- assign col = collections[hdl] -%}
+
+              <li class="breadcrumbs__item">
+                <a
+                  class="breadcrumbs__link"
+                  href="{{ col.url }}"
+                  aria-current="page">{{ col.title }}</a>
+              </li>
+            {%- endfor -%}
             <li class="breadcrumbs__item">
-              <a class="breadcrumbs__link" href="{{ product.url }}" aria-current="page">{{ product.title }}</a>
+              {{ product.title }}
             </li>
           {%- when 'collection' and collection.handle -%}
+            {%- assign current_collection = collection -%}
+            {%- assign collection_hierarchy = '' | split: ',' -%}
+
+            {%- # Build collection hierarchy array -%}
+            {%- for i in (1..100) -%}
+              {%- assign handle_array = current_collection | map: 'handle' | first | split: ',' -%}
+              {%- assign collection_hierarchy = collection_hierarchy | concat: handle_array -%}
+              {%- assign parent_collection = current_collection.metafields.custom.parent_collection.value -%}
+              {%- if parent_collection == blank -%}
+                {%- break -%}
+              {%- endif -%}
+              {%- assign current_collection = parent_collection -%}
+            {%- endfor -%}
+
+            {%- # Output collection hierarchy in reverse order -%}
+            {%- for hdl in collection_hierarchy reversed -%}
+              {%- assign col = collections[hdl] -%}
+
+              <li class="breadcrumbs__item">
+                {%- if forloop.last and current_tags == blank -%}
+                  {{ col.title }}
+                {%- else -%}
+                  <a
+                    class="breadcrumbs__link"
+                    href="{{ col.url }}"
+                    aria-current="page">{{ col.title }}</a>
+                {%- endif -%}
+              </li>
+            {%- endfor -%}
+
+            {%- # Handle tags if present -%}
             {%- if current_tags -%}
               <li class="breadcrumbs__item">
-                {{ collection.title | link_to: collection.url }}
-              </li>
-              <li class="breadcrumbs__item">
                 {%- capture tag_url -%}{{ collection.url }}/{{ current_tags | join: "+"}}{%- endcapture -%}
-                <a class="breadcrumbs__link" href="{{ tag_url }}" aria-current="page">
+                <a
+                  class="no-underline text-black"
+                  href="{{ tag_url }}"
+                  aria-current="page">
                   {{- current_tags | join: ' + ' -}}
                 </a>
-              </li>
-            {%- else -%}
-              <li class="breadcrumbs__item">
-                <a class="breadcrumbs__link" href="{{ collection.url }}" aria-current="page">{{ collection.title }}</a>
               </li>
             {%- endif -%}
           {%- when 'blog' -%}
@@ -140,13 +200,19 @@
               </li>
               <li class="breadcrumbs__item">
                 {%- capture tag_url -%}{{blog.url}}/tagged/{{ current_tags | join: "+" }}{%- endcapture -%}
-                <a class="breadcrumbs__link" href="{{ tag_url }}" aria-current="page">
+                <a
+                  class="breadcrumbs__link"
+                  href="{{ tag_url }}"
+                  aria-current="page">
                   {{- current_tags | join: ' + ' -}}
                 </a>
               </li>
             {%- else -%}
               <li class="breadcrumbs__item">
-                <a class="breadcrumbs__link" href="{{ blog.url }}" aria-current="page">{{ blog.title }}</a>
+                <a
+                  class="breadcrumbs__link"
+                  href="{{ blog.url }}"
+                  aria-current="page">{{ blog.title }}</a>
               </li>
             {%- endif -%}
           {%- when 'article' -%}
@@ -154,11 +220,17 @@
               {{ blog.title | link_to: blog.url }}
             </li>
             <li class="breadcrumbs__item">
-              <a class="breadcrumbs__link" href="{{ article.url }}" aria-current="page">{{ article.title }}</a>
+              <a
+                class="breadcrumbs__link"
+                href="{{ article.url }}"
+                aria-current="page">{{ article.title }}</a>
             </li>
           {%- else -%}
             <li class="breadcrumbs__item">
-              <a class="breadcrumbs__link" href="{{ request.path }}" aria-current="page">{{ page_title }}</a>
+              <a
+                class="breadcrumbs__link"
+                href="{{ request.path }}"
+                aria-current="page">{{ page_title }}</a>
             </li>
         {%- endcase -%}
       </ol>
