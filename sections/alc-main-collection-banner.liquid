@@ -58,6 +58,13 @@
   </div>
 </div>
 
+<div class="flex flex-row page-width">
+  {%- if section.settings.show_collection_slider -%}
+    {% render 'alc-subcollection-slider'
+      , collection: collection %}
+  {%- endif -%}
+</div>
+
 {% schema %}
   {
     "name": "ALC - Collection Banner",
@@ -79,6 +86,13 @@
         "default": false,
         "label": "t:sections.main-collection-banner.settings.show_collection_image.label",
         "info": "t:sections.main-collection-banner.settings.show_collection_image.info"
+      },
+      {
+        "type": "checkbox",
+        "id": "show_collection_slider",
+        "default": false,
+        "label": "Show Collection Slider",
+        "info": "Show the collection slider"
       },
       {
         "type": "color_scheme",

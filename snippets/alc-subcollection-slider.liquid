@@ -1,0 +1,35 @@
+{{ 'component-card.css' | asset_url | stylesheet_tag }}
+{{ 'component-slider.css' | asset_url | stylesheet_tag }}
+
+{% assign subcollections = collection.metafields.custom.slider_subcollections.value %}
+
+{% if subcollections != blank %}
+  <div class="relative">
+    <div class="overflow-x-auto scrollbar-hide">
+      <div class="flex gap-4 md:grid md:grid-cols-6 md:gap-6">
+        {% for subcollection in subcollections %}
+          <div class="w-[40vw] flex-none md:w-full">
+            <a href="{{ subcollection.url }}" class="block group">
+              <div class="aspect-square overflow-hidden rounded-lg bg-white relative hover:scale-105">
+                {% if subcollection.image %}
+                  <img
+                    src="{{ subcollection.image | img_url: '400x400', crop: 'center' }}"
+                    alt="{{ subcollection.title }}"
+                    class="w-full h-full object-cover object-center transform transition-transform duration-300"
+                    width="400"
+                    height="400"
+                    loading="lazy">
+                {% else %}
+                  <div class="w-full h-full flex items-center justify-center bg-gray-100">
+                    {{ 'collection-1' | placeholder_svg_tag: 'w-20 h-20 opacity-20' }}
+                  </div>
+                {% endif %}
+                <h3 class="absolute bottom-12 left-0 right-0 p-3 mt-2 text-xl text-center">{{ subcollection.title }}</h3>
+              </div>
+            </a>
+          </div>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+{% endif %}

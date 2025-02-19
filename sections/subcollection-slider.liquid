@@ -1,0 +1,96 @@
+{{ 'component-card.css' | asset_url | stylesheet_tag }}
+{{ 'component-slider.css' | asset_url | stylesheet_tag }}
+
+{%- style -%}
+  .section-{{ section.id }}-padding {
+    padding-top: {{ section.settings.padding_top | times: 0.75 | round: 0 }}px;
+    padding-bottom: {{ section.settings.padding_bottom | times: 0.75 | round: 0 }}px;
+  }
+
+  @media screen and (min-width: 750px) {
+    .section-{{ section.id }}-padding {
+      padding-top: {{ section.settings.padding_top }}px;
+      padding-bottom: {{ section.settings.padding_bottom }}px;
+    }
+  }
+{%- endstyle -%}
+
+<div class="section-{{ section.id }}-padding">
+  <div class="page-width">
+    {% if section.settings.title != blank %}
+      <h2 class="text-2xl font-medium mb-6">{{ section.settings.title }}</h2>
+    {% endif %}
+
+    {% assign subcollections = product.metafields.custom.slider_subcollections.value %}
+
+    {% if subcollections != blank %}
+      <div class="relative">
+        <div class="overflow-x-auto scrollbar-hide">
+          <div class="flex gap-4 md:grid md:grid-cols-6 md:gap-6">
+            {% for subcollection in subcollections %}
+              <div class="w-[40vw] flex-none md:w-full">
+                <a href="{{ subcollection.url }}" class="block group">
+                  <div class="aspect-square overflow-hidden rounded-lg bg-gray-100">
+                    {% if subcollection.image %}
+                      <img
+                        src="{{ subcollection.image | img_url: '400x400', crop: 'center' }}"
+                        alt="{{ subcollection.title }}"
+                        class="w-full h-full object-cover object-center transform transition-transform duration-300 group-hover:scale-105"
+                        width="400"
+                        height="400"
+                        loading="lazy">
+                    {% else %}
+                      <div class="w-full h-full flex items-center justify-center bg-gray-100">
+                        {{ 'collection-1' | placeholder_svg_tag: 'w-20 h-20 opacity-20' }}
+                      </div>
+                    {% endif %}
+                  </div>
+                  <h3 class="mt-3 text-sm font-medium text-gray-900">{{ subcollection.title }}</h3>
+                </a>
+              </div>
+            {% endfor %}
+          </div>
+        </div>
+      </div>
+    {% endif %}
+  </div>
+</div>
+
+{% schema %}
+  {
+    "name": "Subcollection Slider",
+    "settings": [
+      {
+        "type": "text",
+        "id": "title",
+        "label": "Heading",
+        "default": "Subcollections"
+      },
+      {
+        "type": "range",
+        "id": "padding_top",
+        "min": 0,
+        "max": 100,
+        "step": 4,
+        "unit": "px",
+        "label": "t:sections.all.padding.padding_top",
+        "default": 36
+      },
+      {
+        "type": "range",
+        "id": "padding_bottom",
+        "min": 0,
+        "max": 100,
+        "step": 4,
+        "unit": "px",
+        "label": "t:sections.all.padding.padding_bottom",
+        "default": 36
+      }
+    ],
+    "presets": [
+      {
+        "name": "Subcollection Slider"
+      }
+    ]
+  }
+{% endschema %}
