@@ -228,7 +228,53 @@
                 , anchor: '' %}
             {%- endif -%}
 
-            <div class="mt-8 rte">{{ collection.description }}</div>
+            <h2 class="mt-8">Afla mai multe despre iluminatul cu lustre LED</h2>
+            <div class="mt-6 rte">{{ collection.description }}</div>
+
+            {% if collection.metafields.custom.useful_links != blank %}
+              <div class="mt-12">
+                <h3>Link-uri utile</h3>
+                <div class="flex flex-wrap gap-3 mt-4">
+                  {% for link in collection.metafields.custom.useful_links.value %}
+                    <a href="{{ link.url }}" class="inline-flex text-base no-underline text-black px-4 py-2 border border-gray-200 rounded-full bg-[#06BAD5] text-white hover:bg-[#058ea2] transition-colors">
+                      {{ link.text }}
+                    </a>
+                  {% endfor %}
+                </div>
+              </div>
+            {% endif %}
+
+
+            {% if collection.metafields.custom.faq != blank %}
+              <div class="mt-12 space-y-4">
+                <h3>Intrebari frecvente</h3>
+                {% for faq in collection.metafields.custom.faq.value %}
+                  <details class="group border border-gray-200 rounded-lg" style="border-color: #06BAD5 !important;">
+                    <summary class="flex items-center justify-between p-4 cursor-pointer">
+                      <h3 class="text-xl">{{ faq.question }}</h3>
+                      <span class="ml-6 flex-shrink-0">
+                        <svg
+                          class="w-5 h-5 transition-transform group-open:rotate-180"
+                          xmlns="http://www.w3.org/2000/svg"
+                          fill="none"
+                          viewBox="0 0 24 24"
+                          stroke="currentColor">
+                          <path
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                            stroke-width="2"
+                            d="M19 9l-7 7-7-7" />
+                        </svg>
+                      </span>
+                    </summary>
+                    <div class="px-4 pb-4">
+                      <p class="text-gray-600">{{ faq.answer }}</p>
+                    </div>
+                  </details>
+                {% endfor %}
+              </div>
+            {% endif %}
+
           </div>
         {%- endif -%}
       </div>
