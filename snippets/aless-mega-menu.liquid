@@ -45,7 +45,7 @@
                       <!-- Left Column: 2nd-level links -->
                       <ul class="mega-menu__left-column" role="list">
                         {% for childlink in mega_menu.links %}
-                          <li class="{% if forloop.first %} active{% endif %}" data-target="{{ childlink.handle }}">
+                          <li class="mega-menu__left-item {% if forloop.first %} active{% endif %}" data-target="{{ childlink.handle }}">
                             <a href="{{ childlink.url }}" class="mega-menu__link mega-menu__link--level-2 ">
                               {% if childlink.object and childlink.object.image %}
                                 <div class="mega-menu__icon-wrapper">
