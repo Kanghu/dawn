@@ -72,6 +72,7 @@
     {%- endif -%}
 
     {%- if product.metafields.custom.collection != blank -%}
+      TEST-2
       {%- liquid
         assign collection_first = product.metafields.custom.collection.value[0]
         assign collection = collections | where: 'title', collection_first | first
