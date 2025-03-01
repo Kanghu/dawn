@@ -115,10 +115,9 @@
                 aria-current="page">{{ page.title }}</a>
             </li>
           {%- when 'product' -%}
-            {%- assign collections_size = product.collections | size -%}
-            {%- if collections_size > 1 -%}
-              {%- assign index = collections_size | minus: 2 -%}
-              {%- assign product_collection = product.collections[index] -%}
+            {%- assign main_collection = product.metafields.custom.main_collection.value -%}
+            {%- if main_collection != blank -%}
+              {%- assign product_collection = main_collection -%}
             {%- else -%}
               {%- assign product_collection = product.collections | last -%}
             {%- endif -%}
@@ -190,7 +189,7 @@
                   href="{{ tag_url }}"
                   aria-current="page">
                   {{- current_tags | join: ' + ' -}}
-                </a> 
+                </a>
               </li>
             {%- endif -%}
           {%- when 'blog' -%}
