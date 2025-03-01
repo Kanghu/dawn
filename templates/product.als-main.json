@@ -19,19 +19,10 @@
     "main": {
       "type": "main-product",
       "blocks": {
-        "text_LNURty": {
-          "type": "text",
+        "custom_liquid_idALWp": {
+          "type": "custom_liquid",
           "settings": {
-            "text": "",
-            "text_style": "body"
-          }
-        },
-        "vendor": {
-          "type": "text",
-          "disabled": true,
-          "settings": {
-            "text": "{{ product.vendor }}",
-            "text_style": "uppercase"
+            "custom_liquid": "<span class=\"text-sm mb-0 pb-0\">Cod produs: \n {{product.selected_or_first_available_variant.sku}}\n</span>"
           }
         },
         "title": {
@@ -107,8 +98,7 @@
         }
       },
       "block_order": [
-        "text_LNURty",
-        "vendor",
+        "custom_liquid_idALWp",
         "title",
         "caption",
         "alc_price_8PqTaF",
