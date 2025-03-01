@@ -22,7 +22,7 @@
         "custom_liquid_idALWp": {
           "type": "custom_liquid",
           "settings": {
-            "custom_liquid": "<span class=\"text-base font-semibold mb-0 pb-0\">Cod produs: \n {{product.selected_or_first_available_variant.sku}}\n</span>"
+            "custom_liquid": "<span class=\"text-base \nfont-semibold\">Cod produs: \n {{product.selected_or_first_available_variant.sku}}\n</span>"
           }
         },
         "title": {
