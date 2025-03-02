@@ -43,6 +43,7 @@
   <div class="card-wrapper product-card-wrapper underline-links-hover">
     <div
       class="
+        p-2
         card card--{{ settings.card_style }}
         {% if card_product.featured_media %} card--media{% else %} card--text{% endif %}
         {% if settings.card_style == 'card' %} color-{{ settings.card_color_scheme }} gradient{% endif %}
@@ -249,16 +250,16 @@
           }
 
           /* Product title styles */
-          .card__heading {
+          .horizontal-card__heading {
             display: -webkit-box;
             -webkit-line-clamp: 3;
             -webkit-box-orient: vertical;
             overflow: hidden;
-            text-overflow: ellipsis;
-            min-height: 4.5em; /* Approximately 3 lines of text */
+            text-overflow: ellipsis; 
             margin-bottom: 0.5rem;
-            line-height: 1.5em; /* Ensure consistent line height */
-            max-height: 4.5em; /* Exactly 3 lines (1.5em * 3) */
+            line-height: 1em; 
+            height: 3em; 
+            width: 100%;
             letter-spacing: 0.025em;
           }
 
@@ -379,7 +380,7 @@
         <div class="card__content">
           <div class="card__information">
             <h3
-              class="card__heading"
+              class="horizontal-card__heading"
               {% if card_product.featured_media == null and settings.card_style == 'standard' %}
                 id="title-{{ section_id }}-{{ card_product.id }}"
               {% endif %}
@@ -414,7 +415,7 @@
       >
         <div class="card__information">
           <h3
-            class="card__heading{% if card_product.featured_media or settings.card_style == 'standard' %} h5{% endif %}"
+            class="horizontal-card__heading{% if card_product.featured_media or settings.card_style == 'standard' %} h5{% endif %}"
             {% if card_product.featured_media or settings.card_style == 'card' %}
               id="title-{{ section_id }}-{{ card_product.id }}"
             {% endif %}
@@ -428,60 +429,11 @@
               {{ card_product.title | escape }}
             </a>
           </h3>
-          <div class="card-information flex flex-col justify-between h-full">
+          <div class="card-information flex flex-col justify-between">
             {%- if show_vendor -%}
               <span class="visually-hidden">{{ 'accessibility.vendor' | t }}</span>
               <div class="caption-with-letter-spacing light">{{ card_product.vendor }}</div>
             {%- endif -%}
-
-            {% if card_product.available %}
-              {% if card_product.variants.first.inventory_quantity > 15 %}
-                <div class="flex flex-col items-start md:space-y-1 md:w-full text-lg" style="color: green">
-                  <div class="flex items-center text-green text-xl leading-tight -tracking-0.39">
-                    <svg
-                      class="inline-block mr-1"
-                      width="10px"
-                      height="10px"
-                      viewBox="0 0 20 20"
-                      xmlns="http://www.w3.org/2000/svg"
-                    >
-                      <path class="fill-current" d="m10 0 .1.1s1.2 3.6 3.7 6c2.5 2.6 6 3.8 6 3.8l.2.1-.1.1s-3.6 1.2-6.1 3.7c-2.5 2.5-3.7 6-3.7 6l-.1.2-.1-.1s-1.2-3.6-3.7-6C3.7 11.2.2 10 .2 10H0l.1-.1s3.6-1.2 6.1-3.7c2.5-2.5 3.7-6 3.7-6L10 0"></path>
-                    </svg>
-                    in stoc
-                  </div>
-                </div>
-              {% else %}
-                <div class="flex flex-col items-start md:space-y-1 md:w-full text-lg" style="color: #ff6b00">
-                  <div class="flex items-center text-xl leading-tight -tracking-0.39">
-                    <svg
-                      class="inline-block mr-1"
-                      width="10px"
-                      height="10px"
-                      viewBox="0 0 20 20"
-                      xmlns="http://www.w3.org/2000/svg"
-                    >
-                      <path class="fill-current" d="m10 0 .1.1s1.2 3.6 3.7 6c2.5 2.6 6 3.8 6 3.8l.2.1-.1.1s-3.6 1.2-6.1 3.7c-2.5 2.5-3.7 6-3.7 6l-.1.2-.1-.1s-1.2-3.6-3.7-6C3.7 11.2.2 10 .2 10H0l.1-.1s3.6-1.2 6.1-3.7c2.5-2.5 3.7-6 3.7-6L10 0"></path>
-                    </svg>
-                    <span> Doar {{ card_product.variants.first.inventory_quantity }} ramase in stoc </span>
-                  </div>
-                </div>
-              {% endif %}
-            {% else %}
-              <div class="flex flex-col items-start md:space-y-1 md:w-full text-lg" style="color:red">
-                <div class="flex items-center text-green text-xl leading-tight -tracking-0.39">
-                  <svg
-                    class="inline-block mr-1"
-                    width="10px"
-                    height="10px"
-                    viewBox="0 0 20 20"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <path class="fill-current" d="m10 0 .1.1s1.2 3.6 3.7 6c2.5 2.6 6 3.8 6 3.8l.2.1-.1.1s-3.6 1.2-6.1 3.7c-2.5 2.5-3.7 6-3.7 6l-.1.2-.1-.1s-1.2-3.6-3.7-6C3.7 11.2.2 10 .2 10H0l.1-.1s3.6-1.2 6.1-3.7c2.5-2.5 3.7-6 3.7-6L10 0"></path>
-                  </svg>
-                  stoc epuizat
-                </div>
-              </div>
-            {% endif %}
 
             {% render 'price', product: card_product, price_class: '', show_compare_at_price: true %}
             {%- if card_product.quantity_price_breaks_configured? -%}
@@ -569,7 +521,7 @@
         </div>
         {% assign product_form_id = 'quick-add-' | append: section_id | append: card_product.id %}
         {% if quick_add == 'standard' %}
-          <div class="quick-add no-js-hidden">
+          <div class="quick-add no-js-hidden" style="width: 18rem;">
             {%- liquid
               assign qty_rules = false
               if card_product.selected_or_first_available_variant.quantity_rule.min > 1 or card_product.selected_or_first_available_variant.quantity_rule.max != null or card_product.selected_or_first_available_variant.quantity_rule.increment > 1
@@ -650,7 +602,7 @@
                         background: #03bad6;
                       {% endif %}
                       color: white;
-                      min-height: 3.5rem;
+                      min-height: 1.75rem;
                       margin-left: var(--image-padding);
                       margin-right: var(--image-padding);
                       margin-top: 0.1rem;
@@ -904,7 +856,7 @@
       </div>
       <div class="card__content">
         <div class="card__information">
-          <h3 class="card__heading card__heading--placeholder{% if settings.card_style == 'standard' %} h5{% endif %}">
+          <h3 class="horizontal-card__heading card__heading--placeholder {% if settings.card_style == 'standard' %} h5{% endif %}">
             <a role="link" aria-disabled="true" class="full-unstyled-link">
               {{ 'onboarding.product_title' | t }}
             </a>
