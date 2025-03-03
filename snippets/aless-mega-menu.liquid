@@ -16,7 +16,7 @@
 {% if top_menu.size > 0 %}
   <nav class="header__inline-menu">
     <div class="page-width">
-      <ul class="aless-menu aless-menu--inline my-1" role="list">
+      <ul class="aless-menu aless-menu--inline pl-0 mb-0" role="list">
         {% for block_item in all_blocks %}
           {% if block_item.type == 'drawer_menu_item' %}
             {% comment %}
@@ -25,16 +25,13 @@
             {% assign menu_label = block_item.settings.menu_label %}
             {% assign menu_handle = block_item.settings.menu_handle %}
             {% assign mega_menu = linklists[menu_handle] %}
-              <li class="{% if mega_menu.links != blank %}mega-menu-parent{% endif %}">
+              <li class="{% if mega_menu.links != blank %}mega-menu-parent{% endif %} px-6 py-4 text-xl">
               {% comment %}
                 Display 1st level (block-type) menu items
               {% endcomment %}
-              <a
-                href="{{ block_item.settings.menu_link }}"
-                class="header__menu-item aless-menu__item"
-                style="font-weight: 400; letter-spacing: 0.08rem;">
-                <span>{{ menu_label }}</span>
-              </a>
+              <span class="header__menu-item aless-menu__item" style="font-weight: 400; letter-spacing: 0.08rem;">
+                {{ menu_label }}
+              </span>
               {% if block_item.settings.display_type == '3-level' %}
                 {% if mega_menu and mega_menu.links.size > 0 %}
                   {% comment %}
@@ -45,7 +42,78 @@
                       <!-- Left Column: 2nd-level links -->
                       <ul class="mega-menu__left-column" role="list">
                         {% for childlink in mega_menu.links %}
-                          <li class="mega-menu__left-item {% if forloop.first %} active{% endif %}" data-target="{{ childlink.handle }}">
+                          <li class="mega-menu__left-item overflow-hidden {% if forloop.first %} active{% endif %}" data-target="{{ childlink.handle }}">
+                            <a href="{{ childlink.url }}" class="mega-menu__link mega-menu__link--level-2 ">
+                              {% if childlink.object and childlink.object.image %}
+                                <div class="mega-menu__icon-wrapper">
+                                  <img
+                                    src="{{ childlink.object.image.src | img_url}}"
+                                    alt="{{ childlink.title | escape }}"
+                                    class=""
+                                    loading="lazy">
+                                </div>
+                              {% endif %}
+                              <h4>{{ childlink.title | escape }}</h4>
+                            </a>
+                          </li>
+                        {% endfor %}
+                      </ul>
+
+                      <!-- Right Column: 3rd-level links -->
+                      <div class="mega-menu__right-column">
+                        {% for childlink in mega_menu.links %}
+                          <div class="mega-menu__right-content{% if forloop.first %} active{% endif %}" data-content="{{ childlink.handle }}">
+                            <ul class="mega-menu__grid" role="list">
+                              {% for grandchildlink in childlink.links %}
+                                <li class="mega-menu__grid-item">
+                                  <div class="aspect-square bg-white relative transition-transform duration-100 hover:scale-104" style="width: 120px; height: 120px;">
+                                    <a href="{{ grandchildlink.url }}" class="mega-menu__link px-0">
+                                      {% if grandchildlink.object and grandchildlink.object.image %}
+                                        <img
+                                          src="{{ grandchildlink.object.image.src | img_url: '120x120', crop: 'center' }}"
+                                          alt="{{ grandchildlink.title | escape }}"
+                                          class="object-cover object-center"
+                                          width="120"
+                                          height="120"
+                                          loading="lazy">
+                                      {% endif %}
+                                      <h4 class="absolute top-28 left-0 right-0 text-xl font-semibold pt-4">
+                                        {{ grandchildlink.title | escape }}
+                                      </h4>
+                                    </a>
+                                  </div>
+
+                                  {% if grandchildlink.links.size > 0 %}
+                                    <ul class="mega-menu__sublinks mx-0 px-0 pt-2">
+                                      {% for grandgrandchildlink in grandchildlink.links %}
+                                        <li class="my-[-8px] py-2">
+                                          <a href="{{ grandgrandchildlink.url }}" class="mega-menu__sublink text-xl no-underline text-black my-[-8px] py-0 font-light">
+                                            {{ grandgrandchildlink.title | escape }}
+                                          </a>
+                                        </li>
+                                      {% endfor %}
+                                    </ul>
+                                  {% endif %}
+                                </li>
+                              {% endfor %}
+                            </ul>
+                          </div>
+                        {% endfor %}
+                      </div>
+                    </div>
+                  </div>
+                {% endif %}
+              {% elsif block_item.settings.display_type == '2-level' %}
+                {% if mega_menu and mega_menu.links.size > 0 %}
+                  {% comment %}
+                    Generate mega-menu container for each 1st level menu item
+                  {% endcomment %}
+                  <div class="mega-menu__container page-width">
+                    <div class="mega-menu__inner">
+                      <!-- Left Column: 2nd-level links -->
+                      <ul class="mega-menu__left-column" role="list">
+                        {% for childlink in mega_menu.links %}
+                          <li class="mega-menu__left-item overflow-hidden p-2 {% if forloop.first %} active{% endif %}" data-target="{{ childlink.handle }}">
                             <a href="{{ childlink.url }}" class="mega-menu__link mega-menu__link--level-2 ">
                               {% if childlink.object and childlink.object.image %}
                                 <div class="mega-menu__icon-wrapper">
@@ -61,46 +129,6 @@
                           </li>
                         {% endfor %}
                       </ul>
-
-                      <!-- Right Column: 3rd-level links -->
-                      <div class="mega-menu__right-column">
-                        {% for childlink in mega_menu.links %}
-                          <div class="mega-menu__right-content{% if forloop.first %} active{% endif %}" data-content="{{ childlink.handle }}">
-                            <ul class="mega-menu__grid" role="list">
-                              {% for grandchildlink in childlink.links %}
-                                <li class="mega-menu__grid-item">
-                                  {% if grandchildlink.object and grandchildlink.object.image %}
-                                    <img
-                                      src="{{ grandchildlink.object.image.src | img_url: '120x120', crop: 'center' }}"
-                                      alt="{{ grandchildlink.title | escape }}"
-                                      class="mega-menu__grid-image hover:scale-110 transition-transform duration-300"
-                                      width="120"
-                                      height="120"
-                                      loading="lazy">
-                                  {% endif %}
-                                  <a href="{{ grandchildlink.url }}" class="mega-menu__link px-0">
-                                    <h4 class="px-0 ">
-                                      {{ grandchildlink.title | escape }}
-                                    </h4>
-                                  </a>
-
-                                  {% if grandchildlink.links.size > 0 %}
-                                    <ul class="mega-menu__sublinks mx-0 px-0">
-                                      {% for grandgrandchildlink in grandchildlink.links %}
-                                        <li class="my-[-8px] py-0">
-                                          <a href="{{ grandgrandchildlink.url }}" class="mega-menu__sublink text-xl no-underline text-black my-[-8px] py-0 font-light">
-                                            {{ grandgrandchildlink.title | escape }}
-                                          </a>
-                                        </li>
-                                      {% endfor %}
-                                    </ul>
-                                  {% endif %}
-                                </li>
-                              {% endfor %}
-                            </ul>
-                          </div>
-                        {% endfor %}
-                      </div>
                     </div>
                   </div>
                 {% endif %}
@@ -208,7 +236,6 @@
   .aless-menu {
     list-style: none;
     display: flex;
-    padding: 0.75rem 0;
     max-width: var(--page-width);
     box-sizing: border-box;
   }
@@ -230,7 +257,7 @@
   }
 
   .mega-menu__link:hover {
-    color: var(--menu-hover-color) !important;
+    color: var(--submenu-text-color) !important;
   }
 
   .mega-menu__link--level-2:hover {
@@ -239,9 +266,8 @@
 
   .mega-menu-parent {
     border-right: 1px solid #eee;
-    padding: 0 2rem;
-    position: relative;
     z-index: 101;
+    cursor: pointer;
   }
 
   .mega-menu-parent:first-child {
@@ -293,7 +319,6 @@
     display: flex;
     align-items: center;
     gap: 1rem;
-    padding: 0.5rem;
     transition: all 0.3s ease;
     /* Changed transition */
   }
@@ -317,19 +342,14 @@
 
   .mega-menu__grid {
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 2rem;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2.5rem 1rem;
   }
 
   .mega-menu__grid-image {
     object-fit: cover;
     border-radius: 8px;
     margin-bottom: 0.5rem;
-  }
-
-  /* Show menu on hover */
-  .mega-menu-parent:hover .mega-menu__container {
-    display: block;
   }
 
   .mega-menu__right-content {
@@ -389,21 +409,47 @@
   document.addEventListener('DOMContentLoaded', () => {
     const leftItems = document.querySelectorAll('.mega-menu__left-item');
     const rightContents = document.querySelectorAll('.mega-menu__right-content');
+    const megaMenuContainers = document.querySelectorAll('.mega-menu__container');
     
     // Create overlay element
     const overlay = document.createElement('div');
     overlay.className = 'mega-menu-overlay';
     document.body.appendChild(overlay);
 
+    // Function to close menu
+    const closeMenu = () => {
+      overlay.style.display = 'none';
+      megaMenuContainers.forEach((container) => {
+        container.style.display = 'none';
+      });
+      rightContents.forEach((content) => {
+        content.classList.remove('active');
+      });
+    };
+
     // Show overlay when menu opens
     document.querySelectorAll('.mega-menu-parent').forEach((parent) => {
-      parent.addEventListener('mouseenter', () => {
+      parent.addEventListener('click', (e) => {
+        e.stopPropagation(); // Prevent click from bubbling to document
+        megaMenuContainers.forEach((container) => {
+          container.style.display = 'none';
+        });
+        parent.querySelector('.mega-menu__container').style.display = 'block';
         overlay.style.display = 'block';
       });
+    });
 
-      parent.addEventListener('mouseleave', () => {
-        overlay.style.display = 'none';
-        rightContents.forEach((content) => content.classList.remove('active'));
+    // Close menu when clicking outside
+    document.addEventListener('click', (e) => {
+      if (!e.target.closest('.mega-menu-parent')) {
+        closeMenu();
+      }
+    });
+
+    // Prevent clicks inside menu from closing it
+    megaMenuContainers.forEach((container) => {
+      container.addEventListener('click', (e) => {
+        e.stopPropagation();
       });
     });
 
