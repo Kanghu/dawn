@@ -9,6 +9,39 @@
  */
 {
   "sections": {
+    "alc_collection_list_NkAKPf": {
+      "type": "alc-collection-list",
+      "blocks": {
+        "featured_collection_7gFiNH": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "oglinzi-led-multifunctionale"
+          }
+        },
+        "featured_collection_iPtVGc": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "oglinzi-led-simple"
+          }
+        }
+      },
+      "block_order": [
+        "featured_collection_7gFiNH",
+        "featured_collection_iPtVGc"
+      ],
+      "settings": {
+        "title": "Collections",
+        "heading_size": "h1",
+        "image_ratio": "square",
+        "columns_desktop": 3,
+        "color_scheme": "",
+        "show_view_all": false,
+        "columns_mobile": "1",
+        "swipe_on_mobile": false,
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    },
     "custom_liquid_rRUmGz": {
       "type": "custom-liquid",
       "settings": {
@@ -50,6 +83,7 @@
     }
   },
   "order": [
+    "alc_collection_list_NkAKPf",
     "custom_liquid_rRUmGz",
     "banner",
     "product-grid"
