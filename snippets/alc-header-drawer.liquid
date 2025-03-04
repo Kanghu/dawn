@@ -3,23 +3,23 @@
   Renders a customized header drawer for all "drawer_menu_item" blocks.
 {% endcomment %}
 
-<header-drawer data-breakpoint="{% if menu_type_desktop == 'drawer' %}desktop{% else %}tablet{% endif %}">
-  <details id="Details-menu-drawer-container" class="menu-drawer-container">
+<header-drawer data-breakpoint="{% if menu_type_desktop == 'drawer' %}desktop{% else %}tablet{% endif %}" class="overflow-hidden">
+  <details
+    id="Details-menu-drawer-container"
+    class="menu-drawer-container"
+    onToggle="document.body.classList.toggle('overflow-hidden')">
     <!-- Drawer Toggle Button -->
-    <summary
-      class="header__icon header__icon--menu header__icon--summary link focus-inset"
-      aria-label="{{ 'sections.header.menu' | t }}"
-    >
+    <summary class="header__icon header__icon--menu header__icon--summary link focus-inset" aria-label="{{ 'sections.header.menu' | t }}">
       <span>
         {{ 'icon-hamburger.svg' | inline_asset_content }}
         {{ 'icon-close.svg' | inline_asset_content }}
       </span>
     </summary>
 
-    <div id="menu-drawer" class="gradient menu-drawer motion-reduce color-{{ menu_color_scheme }}">
-      <div class="menu-drawer__inner-container">
-        <div class="menu-drawer__navigation-container">
-          <nav class="menu-drawer__navigation">
+    <div id="menu-drawer" class="gradient menu-drawer motion-reduce color-{{ menu_color_scheme }} fixed h-screen max-h-screen overflow-hidden">
+      <div class="menu-drawer__inner-container h-full">
+        <div class="menu-drawer__navigation-container h-full">
+          <nav class="menu-drawer__navigation h-screen overflow-y-auto">
             <ul class="menu-drawer__menu has-submenu flex flex-col justify-center" role="list">
               {% for block_item in all_blocks %}
                 {% if block_item.type == 'drawer_menu_item' %}
@@ -32,22 +32,16 @@
 
                   <li>
                     <details id="Details-menu-drawer-{{ block_item.id }}">
-                      <summary
-                        class="menu-drawer__menu-item list-menu__item px-4 py-3 link link--text focus-inset"
-                      >
+                      <summary class="menu-drawer__menu-item list-menu__item px-4 py-3 link link--text focus-inset">
                         {{ label }}
                       </summary>
 
                       <div
                         id="drawer-submenu-{{ block_item.id }}"
                         class="menu-drawer__submenu has-submenu gradient motion-reduce"
-                        tabindex="-1"
-                      >
+                        tabindex="-1">
                         <div class="menu-drawer__inner-submenu">
-                          <button
-                            class="menu-drawer__close-button link link--text focus-inset"
-                            aria-expanded="true"
-                          >
+                          <button class="menu-drawer__close-button link link--text focus-inset" aria-expanded="true">
                             <span class="svg-wrapper">
                               {{ 'icon-arrow.svg' | inline_asset_content }}
                             </span>
@@ -59,23 +53,18 @@
                             <ul
                               class="menu-drawer__menu has-submenu grid grid-cols-2 justify-center"
                               role="list"
-                              tabindex="-1"
-                            >
+                              tabindex="-1">
                               {% for link in top_menu.links %}
                                 <li class="w-1/3">
                                   {% if link.links != blank %}
                                     <!-- This item has children → create nested <details> for the next level -->
                                     <details id="Details-menu-drawer-{{ link.handle }}">
-                                      <summary
-                                        id="HeaderDrawer-{{ link.handle }}"
-                                        class="menu-drawer__menu-item list-menu__item flex flex-col px-4 py-3 link link--text focus-inset"
-                                      >
+                                      <summary id="HeaderDrawer-{{ link.handle }}" class="menu-drawer__menu-item list-menu__item flex flex-col px-4 py-3 link link--text focus-inset">
                                         {% if link.object and link.object.image and link.object.image.src %}
                                           <img
                                             src="{{ link.object.image.src | img_url: '250x250' }}"
                                             alt="{{ link.title | escape }}"
-                                            class="w-96 rounded-sm"
-                                          >
+                                            class="w-96 rounded-sm">
                                         {% endif %}
                                         {{ link.title | escape }}
                                       </summary>
@@ -83,13 +72,9 @@
                                       <div
                                         id="link-{{ link.handle | escape }}"
                                         class="menu-drawer__submenu has-submenu gradient motion-reduce"
-                                        tabindex="-1"
-                                      >
+                                        tabindex="-1">
                                         <div class="menu-drawer__inner-submenu">
-                                          <button
-                                            class="menu-drawer__close-button link link--text focus-inset"
-                                            aria-expanded="true"
-                                          >
+                                          <button class="menu-drawer__close-button link link--text focus-inset" aria-expanded="true">
                                             <span class="svg-wrapper">
                                               {{ 'icon-arrow.svg' | inline_asset_content }}
                                             </span>
@@ -100,8 +85,7 @@
                                           <ul
                                             class="menu-drawer__menu grid grid-cols-2 justify-center"
                                             role="list"
-                                            tabindex="-1"
-                                          >
+                                            tabindex="-1">
                                             {% for childlink in link.links %}
                                               <li class="w-1/3">
                                                 {% if childlink.links == blank %}
@@ -109,47 +93,31 @@
                                                   <a
                                                     id="HeaderDrawer-{{ link.handle }}-{{ childlink.handle }}"
                                                     href="{{ childlink.url }}"
-                                                    class="menu-drawer__menu-item link link--text list-menu__item px-4 py-3 focus-inset"
-                                                  >
-                                                    {% if childlink.object
-                                                      and childlink.object.image
-                                                      and childlink.object.image.src
+                                                    class="menu-drawer__menu-item link link--text list-menu__item flex flex-col px-4 py-3 focus-inset">
+                                                    {% if childlink.object and childlink.object.image and childlink.object.image.src
                                                     %}
                                                       <img
                                                         src="{{ childlink.object.image.src | img_url: '250x250' }}"
                                                         alt="{{ childlink.title | escape }}"
-                                                        class="w-96 rounded-sm"
-                                                      >
+                                                        class="w-96 rounded-sm">
                                                     {% endif %}
                                                     {{ childlink.title | escape }}
                                                   </a>
                                                 {% else %}
                                                   <!-- Grandchildren → 3rd-level <details> -->
                                                   <details id="Details-menu-drawer-{{ link.handle }}-{{ childlink.handle }}">
-                                                    <summary
-                                                      id="HeaderDrawer-{{ link.handle }}-{{ childlink.handle }}"
-                                                      class="menu-drawer__menu-item link link--text list-menu__item flex flex-col px-4 py-3 gap-3 focus-inset"
-                                                    >
-                                                      {% if childlink.object
-                                                        and childlink.object.image
-                                                        and childlink.object.image.src
+                                                    <summary id="HeaderDrawer-{{ link.handle }}-{{ childlink.handle }}" class="menu-drawer__menu-item link link--text list-menu__item flex flex-col px-4 py-3 gap-3 focus-inset">
+                                                      {% if childlink.object and childlink.object.image and childlink.object.image.src
                                                       %}
                                                         <img
                                                           src="{{ childlink.object.image.src | img_url: '250x250' }}"
                                                           alt="{{ childlink.title | escape }}"
-                                                          class="w-96 rounded-sm"
-                                                        >
+                                                          class="w-96 rounded-sm">
                                                       {% endif %}
                                                       {{ childlink.title | escape }}
                                                     </summary>
-                                                    <div
-                                                      id="childlink-{{ childlink.handle | escape }}"
-                                                      class="menu-drawer__submenu has-submenu gradient motion-reduce"
-                                                    >
-                                                      <button
-                                                        class="menu-drawer__close-button link link--text focus-inset"
-                                                        aria-expanded="true"
-                                                      >
+                                                    <div id="childlink-{{ childlink.handle | escape }}" class="menu-drawer__submenu has-submenu gradient motion-reduce">
+                                                      <button class="menu-drawer__close-button link link--text focus-inset" aria-expanded="true">
                                                         <span class="svg-wrapper">
                                                           {{ 'icon-arrow.svg' | inline_asset_content }}
                                                         </span>
@@ -158,26 +126,37 @@
                                                       <ul
                                                         class="menu-drawer__menu grid grid-cols-2 justify-center"
                                                         role="list"
-                                                        tabindex="-1"
-                                                      >
+                                                        tabindex="-1">
                                                         {% for grandchildlink in childlink.links %}
                                                           <li class="w-1/3">
                                                             <a
                                                               id="HeaderDrawer-{{ link.handle }}-{{ childlink.handle }}-{{ grandchildlink.handle }}"
                                                               href="{{ grandchildlink.url }}"
-                                                              class="menu-drawer__menu-item link link--text list-menu__item px-4 py-3 focus-inset"
-                                                            >
+                                                              class="menu-drawer__menu-item link link--text list-menu__item px-4 py-3 focus-inset">
                                                               {{ grandchildlink.title | escape }}
                                                             </a>
                                                           </li>
                                                         {% endfor %}
                                                       </ul>
+
+
+                                                      <div class="px-4 py-3">
+                                                        <a href="{{ childlink.url }}" class="button button--primary w-full text-center h-12">
+                                                          Vezi toata categoria
+                                                        </a>
+                                                      </div>
                                                     </div>
                                                   </details>
                                                 {% endif %}
                                               </li>
                                             {% endfor %}
                                           </ul>
+
+                                          <div class="px-4 py-3">
+                                            <a href="{{ link.url }}" class="button button--primary w-full text-center h-12">
+                                              Vezi toata categoria
+                                            </a>
+                                          </div>
                                         </div>
                                       </div>
                                     </details>
@@ -186,14 +165,12 @@
                                     <a
                                       id="HeaderDrawer-{{ link.handle }}"
                                       href="{{ link.url }}"
-                                      class="menu-drawer__menu-item list-menu__item flex flex-col px-4 py-3 link link--text focus-inset"
-                                    >
+                                      class="menu-drawer__menu-item list-menu__item flex flex-col px-4 py-3 link link--text focus-inset">
                                       {% if link.object and link.object.image and link.object.image.src %}
                                         <img
                                           src="{{ link.object.image.src | img_url: '250x250' }}"
                                           alt="{{ link.title | escape }}"
-                                          class="w-96 rounded-sm"
-                                        >
+                                          class="w-96 rounded-sm">
                                       {% endif %}
                                       {{ link.title | escape }}
                                     </a>
@@ -203,7 +180,7 @@
                             </ul>
                           {% else %}
                             <!-- If no links in the chosen menu_handle -->
-                            <p class="px-4 py-3">No links in “{{ label }}” menu.</p>
+                            <p class="px-4 py-3">No links in "{{ label }}" menu.</p>
                           {% endif %}
                         </div>
                       </div>
@@ -212,6 +189,8 @@
                 {% endif %}
               {% endfor %}
             </ul>
+
+
           </nav>
 
           <!-- Utility Links, Localization, Social, etc. Remain the Same -->
