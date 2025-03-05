@@ -123,32 +123,42 @@
                       {% if product.metafields.custom != blank %}
                         <!-- Need to overwrite display: grid due to conflicting 'grid' class -->
                         <div class="py-2 grid grid-cols-1 md:grid-cols-2 gap-4" style="display: grid;">
-                          {% assign first_collection = product.collections | first %}
-                          {% if first_collection %}
-                            {% for spec_group in first_collection.metafields.custom.specification_groups.value %}
+                          {% assign collection_with_specs = nil %}
+                          {% for collection in product.collections %}
+                            {% if collection.metafields.custom.specification_groups != blank %}
+                              {% assign collection_with_specs = collection %}
+                              {% break %}
+                            {% endif %}
+                          {% endfor %}
+
+                          {% if collection_with_specs %}
+                            {% for spec_group in collection_with_specs.metafields.custom.specification_groups.value %}
                               {% assign spec_group_metaobj = spec_group | metaobject %}
 
                               <div class="mb-16 w-100 md:w-50">
                                 <h3 class="mt-4" style="color: #EF1188">{{ spec_group_metaobj.name }}:</h3>
                                 {% assign counter = 0 %}
                                 {% for spec in spec_group_metaobj.specifications.value %}
-                                  {% assign is_odd = counter | modulo: 2 %}
-                                  <div
-                                    style="{% if is_odd == 0 %}background: rgba(3,186,214,0.3);{% endif %}"
-                                    class="justify-between px-3 py-3 text-2xl flex flex-row"
-                                  >
-                                    <span class="spec-name w-2/3 font-normal">
-                                      {{- spec | replace: '_', ' ' | capitalize }}:</span
+                                  {% assign spec_value = product.metafields.custom[spec].value %}
+                                  {% if spec_value != blank %}
+                                    {% assign is_odd = counter | modulo: 2 %}
+                                    <div
+                                      style="{% if is_odd == 0 %}background: rgba(3,186,214,0.3);{% endif %}"
+                                      class="justify-between px-3 py-3 text-2xl flex flex-row"
                                     >
-                                    <span class="spec-value w-1/3 font-medium">
-                                      {%- if product.metafields.custom[spec].value.size > 0 -%}
-                                        {{- product.metafields.custom[spec].value | join: ', ' -}}
-                                      {%- else -%}
-                                        {{- product.metafields.custom[spec].value -}}
-                                      {%- endif -%}
-                                    </span>
-                                  </div>
-                                  {% assign counter = counter | plus: 1 %}
+                                      <span class="spec-name w-2/3 font-normal">
+                                        {{- spec | replace: '_', ' ' | capitalize }}:</span
+                                      >
+                                      <span class="spec-value w-1/3 font-medium">
+                                        {%- if spec_value.size > 0 -%}
+                                          {{- spec_value | join: ', ' -}}
+                                        {%- else -%}
+                                          {{- spec_value -}}
+                                        {%- endif -%}
+                                      </span>
+                                    </div>
+                                    {% assign counter = counter | plus: 1 %}
+                                  {% endif %}
                                 {% endfor %}
                               </div>
                             {% endfor %}
