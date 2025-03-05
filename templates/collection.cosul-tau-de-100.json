@@ -25,7 +25,7 @@
         "custom_liquid": "<div class=\"custom-banner desktop-banner\">\n  <img src=\"https://cdn.shopify.com/s/files/1/0782/5175/3739/files/BANNER_COLLECTION_27c032b7-43af-4123-846e-fe3b0b8dcd1c.png?v=1740826953\" \n       alt=\"Banner Desktop\" class=\"responsive-banner\">\n</div>\n\n<div class=\"custom-banner mobile-banner\">\n  <img src=\"https://cdn.shopify.com/s/files/1/0782/5175/3739/files/cosul_tau_100.png?v=1741069645\" \n       alt=\"Banner Mobile\" class=\"responsive-banner\">\n</div>\n\n<style>\n  .custom-banner {\n    text-align: center;\n    margin: 0 auto;\n    max-width: 1300px; /* Limitează lățimea bannerului */\n  }\n  \n  .responsive-banner {\n    width: 100%;\n    height: auto;\n    max-width: 1300px;\n    display: block;\n    margin: 0 auto;\n  }\n\n  /* Ascunde bannerul de mobil pe desktop */\n  .mobile-banner {\n    display: none;\n  }\n\n  /* Ascunde bannerul de desktop pe mobile */\n  @media (max-width: 768px) {\n    .desktop-banner {\n      display: none;\n    }\n    .mobile-banner {\n      display: block;\n    }\n  }\n</style>",
         "color_scheme": "",
         "padding_top": 0,
-        "padding_bottom": 0
+        "padding_bottom": 16
       }
     },
     "product-grid": {
