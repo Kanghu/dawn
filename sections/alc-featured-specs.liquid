@@ -3,9 +3,10 @@
     "name": "Featured Specs",
     "settings": [
       {
-        "type": "video",
+        "type": "url",
         "id": "video",
-        "label": "Feature Video"
+        "label": "Video URL",
+        "info": "Paste the full video URL from your Files section"
       },
       {
         "type": "text",
@@ -55,7 +56,7 @@
         muted
         loop
         playsinline>
-        <source src="{{ section.settings.video | file_url }}" type="video/mp4">
+        <source src="{{ section.settings.video }}" type="video/mp4">
         Your browser does not support the video tag.
       </video>
     {% endif %}
