@@ -661,6 +661,10 @@ video {
   top: 7rem;
 }
 
+.bottom-8 {
+  bottom: 2rem;
+}
+
 .isolate {
   isolation: isolate;
 }
@@ -946,6 +950,10 @@ video {
   width: 20%;
 }
 
+.w-16 {
+  width: 4rem;
+}
+
 .max-w-screen-xl {
   max-width: 1280px;
 }
@@ -992,6 +1000,10 @@ video {
 
 .grid-cols-2 {
   grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.grid-cols-6 {
+  grid-template-columns: repeat(6, minmax(0, 1fr));
 }
 
 .flex-row {
