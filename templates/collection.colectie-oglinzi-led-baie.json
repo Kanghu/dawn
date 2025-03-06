@@ -18,6 +18,26 @@
         "color_scheme": "scheme-15b3ebfc-72e7-42d0-af22-57c8d007abe9"
       }
     },
+    "alc_featured_specs_64abWB": {
+      "type": "alc-featured-specs",
+      "blocks": {
+        "feature_6WNPDR": {
+          "type": "feature",
+          "settings": {
+            "text": "Feature item"
+          }
+        }
+      },
+      "block_order": [
+        "feature_6WNPDR"
+      ],
+      "disabled": true,
+      "settings": {
+        "video": "shopify://files/videos/MARCELLO COLLECTION VIDEOS.mp4",
+        "heading": "De ce Oglinzi LED Marcello?",
+        "checkmark_color": "#4CAF50"
+      }
+    },
     "custom_liquid_rRUmGz": {
       "type": "custom-liquid",
       "settings": {
@@ -51,6 +71,7 @@
   },
   "order": [
     "banner",
+    "alc_featured_specs_64abWB",
     "custom_liquid_rRUmGz",
     "product-grid"
   ]
