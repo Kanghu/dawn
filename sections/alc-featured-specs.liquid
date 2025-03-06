@@ -48,52 +48,51 @@
   }
 {% endschema %}
 
-<div class="two-columns">
-  <div class="column video-column">
-    {% if section.settings.video != blank %}
-      <video
-        autoplay
-        muted
-        loop
-        playsinline>
-        <source src="{{ section.settings.video }}" type="video/mp4">
-        Your browser does not support the video tag.
-      </video>
-    {% endif %}
-  </div>
-  <div class="column text-column">
-    <h2>
-      <b>{{ section.settings.heading }}</b>
-    </h2>
-    <br>
-    <ul style="list-style-type: none; padding: 0;">
-      {% for block in section.blocks %}
-        {% if block.type == 'feature' %}
-          <li style="font-weight: bold; margin-bottom: 10px;">
-            <span style="color: {{ section.settings.checkmark_color }};">✔</span>
-            {{ block.settings.text }}
-          </li>
-        {% endif %}
-      {% endfor %}
-    </ul>
+<a href="/collections/marcello-funghi" class="no-underline text-black">
+  <div class="two-columns pb-6">
+    <div class="column video-column mobile-m-auto">
+      {% if section.settings.video != blank %}
+        <video
+          autoplay
+          muted
+          loop
+          playsinline
+          loading="lazy"
+          preload="none">
+          <source src="{{ section.settings.video }}" type="video/mp4">
+          Your browser does not support the video tag.
+        </video>
+      {% endif %}
+    </div>
+    <div class="column text-column">
+      <h2>
+        <b>{{ section.settings.heading }}</b>
+      </h2>
+      <br>
+      <ul style="list-style-type: none; padding: 0;">
+        {% for block in section.blocks %}
+          {% if block.type == 'feature' %}
+            <li style="font-weight: bold; margin-bottom: 10px;">
+              <span style="color: {{ section.settings.checkmark_color }};">✔</span>
+              {{ block.settings.text }}
+            </li>
+          {% endif %}
+        {% endfor %}
+      </ul>
 
-    {% if section.settings.disclaimer != blank %}
-      <p style="font-size: 12px; color: #555; margin-top: 20px; text-align: center;">
-        <em>{{ section.settings.disclaimer }}</em>
-      </p>
-    {% endif %}
+      {% if section.settings.disclaimer != blank %}
+        <p style="font-size: 12px; color: #555; margin-top: 20px; text-align: center;">
+          <em>{{ section.settings.disclaimer }}</em>
+        </p>
+      {% endif %}
+    </div>
   </div>
-</div>
-
+</a>
 <style>
   /* Stilurile pentru desktop */
   .two-columns {
     display: flex;
     gap: 20px;
-    /* Spațiu între coloane */
-    align-items: center;
-    justify-content: center;
-    padding: 0 60px;
     /* Padding doar pe stânga și dreapta */
     max-width: 1200px;
     /* Lățimea maximă a secțiunii */
@@ -105,13 +104,8 @@
     /* Colțuri rotunjite */
   }
 
-  .column {
-    flex: 1;
-    /* Coloanele împart lățimea */
-  }
-
   .video-column video {
-    width: 100%;
+    max-width: 32rem;
     height: auto;
     border-radius: 10px;
     /* Optional: rotunjire colțuri */
@@ -131,6 +125,10 @@
     .video-column video {
       border-radius: 0;
       /* Elimină rotunjirea colțurilor la video */
+    }
+
+    .mobile-m-auto {
+      margin: 0 auto;
     }
 
     .text-column {
