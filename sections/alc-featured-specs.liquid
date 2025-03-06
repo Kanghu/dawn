@@ -1,0 +1,144 @@
+{% schema %}
+  {
+    "name": "Featured Specs",
+    "settings": [
+      {
+        "type": "video",
+        "id": "video",
+        "label": "Feature Video"
+      },
+      {
+        "type": "text",
+        "id": "heading",
+        "label": "Heading",
+        "default": "De ce Oglinzi LED Marcello?"
+      },
+      {
+        "type": "color",
+        "id": "checkmark_color",
+        "label": "Checkmark Color",
+        "default": "#4CAF50"
+      }
+    ],
+    "blocks": [
+      {
+        "type": "feature",
+        "name": "Feature Item",
+        "settings": [
+          {
+            "type": "text",
+            "id": "text",
+            "label": "Feature Text",
+            "default": "Feature item"
+          }
+        ]
+      }
+    ],
+    "presets": [
+      {
+        "name": "Featured Specs",
+        "blocks": [
+          {
+            "type": "feature"
+          }
+        ]
+      }
+    ]
+  }
+{% endschema %}
+
+<div class="two-columns">
+  <div class="column video-column">
+    {% if section.settings.video != blank %}
+      <video
+        autoplay
+        muted
+        loop
+        playsinline>
+        <source src="{{ section.settings.video }}" type="video/mp4">
+        Your browser does not support the video tag.
+      </video>
+    {% endif %}
+  </div>
+  <div class="column text-column">
+    <h2>
+      <b>{{ section.settings.heading }}</b>
+    </h2>
+    <br>
+    <ul style="list-style-type: none; padding: 0;">
+      {% for block in section.blocks %}
+        {% if block.type == 'feature' %}
+          <li style="font-weight: bold; margin-bottom: 10px;">
+            <span style="color: {{ section.settings.checkmark_color }};">✔</span>
+            {{ block.settings.text }}
+          </li>
+        {% endif %}
+      {% endfor %}
+    </ul>
+
+    {% if section.settings.disclaimer != blank %}
+      <p style="font-size: 12px; color: #555; margin-top: 20px; text-align: center;">
+        <em>{{ section.settings.disclaimer }}</em>
+      </p>
+    {% endif %}
+  </div>
+</div>
+
+<style>
+  /* Stilurile pentru desktop */
+  .two-columns {
+    display: flex;
+    gap: 20px;
+    /* Spațiu între coloane */
+    align-items: center;
+    justify-content: center;
+    padding: 0 60px;
+    /* Padding doar pe stânga și dreapta */
+    max-width: 1200px;
+    /* Lățimea maximă a secțiunii */
+    margin: 0 auto;
+    /* Centrare orizontală */
+    background-color: #ffffff;
+    /* O culoare deschisă de fundal (opțional) */
+    border-radius: 10px;
+    /* Colțuri rotunjite */
+  }
+
+  .column {
+    flex: 1;
+    /* Coloanele împart lățimea */
+  }
+
+  .video-column video {
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+    /* Optional: rotunjire colțuri */
+  }
+
+  /* Stilurile pentru mobil */
+  @media (max-width: 768px) {
+    .two-columns {
+      flex-direction: column;
+      /* Coloanele una sub alta */
+      gap: 0;
+      /* Elimină spațiul dintre coloane */
+      padding: 0;
+      /* Elimină padding-ul general */
+    }
+
+    .video-column video {
+      border-radius: 0;
+      /* Elimină rotunjirea colțurilor la video */
+    }
+
+    .text-column {
+      padding: 20px;
+      /* Adaugă padding doar la text */
+      text-align: center;
+      /* Centrează textul pentru mobil */
+      display: none;
+      /* Ascunde textul pe mobile */
+    }
+  }
+</style>
