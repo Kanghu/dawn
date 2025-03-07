@@ -3,22 +3,90 @@
 
 {% assign subcollections = collection.metafields.custom.slider_subcollections.value %}
 
+<!-- Swiper Styles -->
+<link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css">
+<!-- Swiper Script -->
+<script src="https://unpkg.com/swiper/swiper-bundle.min.js" defer></script>
+
+<style>
+  .subcollection-swiper {
+    width: 100%;
+    margin: 0 auto;
+    opacity: 0;
+    /* Hide initially */
+    transition: opacity 0.3s ease;
+    /* Smooth fade-in */
+    min-height: 200px;
+    /* Reserve space to prevent layout shift */
+  }
+
+  /* Loading indicator while swiper initializes */
+  .swiper-container-loading {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 1;
+  }
+
+  .subcollection-swiper.swiper-initialized {
+    opacity: 1;
+    /* Show when initialized */
+  }
+
+  .subcollection-slide {
+    text-align: center;
+  }
+
+  .subcollection-item {
+    display: block;
+    transition: all 0.3s ease;
+  }
+
+  .subcollection-item:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  }
+
+  .subcollection-image-container {
+    aspect-ratio: 1 / 1;
+    overflow: hidden;
+    border-radius: 0.5rem;
+    background-color: white;
+    position: relative;
+  }
+
+  .subcollection-title {
+    position: absolute;
+    bottom: 3rem;
+    left: 0;
+    right: 0;
+    padding: 0.75rem;
+    margin-top: 0.5rem;
+    font-size: 1.25rem;
+    text-align: center;
+    background-color: rgba(255, 255, 255, 0.85);
+  }
+</style>
+
 {% if subcollections != blank %}
-  <div class="relative section-{{ section.id }}-padding">
-    <slider-component class="slider-mobile-gutter">
-      <ul
-        id="Slider-{{ section.id }}"
-        class="grid product-grid grid-cols-6 contains-card grid--peek slider slider--tablet"
-        role="list">
+  <div class="w-full section-{{ section.id }}-padding">
+    <div class="swiper-container-loading" id="swiper-loading-{{ section.id }}">
+      <div class="loading-spinner"></div>
+    </div>
+
+    <!-- Swiper Container -->
+    <div class="subcollection-swiper swiper">
+      <div class="swiper-wrapper">
         {% for subcollection in subcollections %}
-          <li id="Slide-{{ section.id }}-{{ forloop.index }}" class="grid__item slider__slide">
-            <a href="{{ subcollection.url }}" class="block group">
-              <div class="aspect-square overflow-hidden rounded-lg bg-white relative hover:scale-105">
+          <div class="swiper-slide subcollection-slide">
+            <a href="{{ subcollection.url }}" class="subcollection-item">
+              <div class="subcollection-image-container">
                 {% if subcollection.image %}
                   <img
                     src="{{ subcollection.image | img_url: '400x400', crop: 'center' }}"
                     alt="{{ subcollection.title }}"
-                    class="w-full h-full object-cover object-center transform transition-transform duration-300"
+                    class="w-full h-full object-cover object-center"
                     width="300"
                     height="300"
                     loading="lazy">
@@ -27,12 +95,59 @@
                     {{ 'collection-1' | placeholder_svg_tag: 'w-20 h-20 opacity-20' }}
                   </div>
                 {% endif %}
-                <h3 class="absolute bottom-12 left-0 right-0 p-3 mt-2 text-xl text-center">{{ subcollection.title }}</h3>
+                <h3 class="subcollection-title">{{ subcollection.title }}</h3>
               </div>
             </a>
-          </li>
+          </div>
         {% endfor %}
-      </ul>
-    </slider-component>
+      </div>
+
+      <!-- Add pagination -->
+      <div class="swiper-pagination"></div>
+
+      <!-- Add navigation arrows -->
+      <div class="swiper-button-next"></div>
+      <div class="swiper-button-prev"></div>
+    </div>
   </div>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      const subcollectionSwiper = new Swiper('.subcollection-swiper', {
+        slidesPerView: 1,
+        spaceBetween: 20,
+        loop: false,
+        pagination: {
+          el: '.swiper-pagination',
+          clickable: true,
+        },
+        navigation: {
+          nextEl: '.swiper-button-next',
+          prevEl: '.swiper-button-prev',
+        },
+        breakpoints: {
+          320: {
+            slidesPerView: 2,
+            spaceBetween: 10,
+          },
+          480: {
+            slidesPerView: 3,
+            spaceBetween: 15,
+          },
+          768: {
+            slidesPerView: 4,
+            spaceBetween: 20,
+          },
+          1024: {
+            slidesPerView: 5,
+            spaceBetween: 20,
+          },
+          1280: {
+            slidesPerView: 6,
+            spaceBetween: 20,
+          }
+        }
+      });
+    });
+  </script>
 {% endif %}
