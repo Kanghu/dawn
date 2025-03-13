@@ -49,118 +49,14 @@
                           </button>
 
                           {% if top_menu.links.size > 0 %}
-                            <!-- 2) Loop over the top-level links in this menu -->
-                            <ul
-                              class="menu-drawer__menu has-submenu grid grid-cols-2 justify-center"
-                              role="list"
-                              tabindex="-1">
-                              {% for link in top_menu.links %}
-                                <li class="w-1/3">
-                                  {% if link.links != blank %}
-                                    <!-- This item has children → create nested <details> for the next level -->
-                                    <details id="Details-menu-drawer-{{ link.handle }}">
-                                      <summary id="HeaderDrawer-{{ link.handle }}" class="menu-drawer__menu-item list-menu__item flex flex-col px-4 py-3 link link--text focus-inset">
-                                        {% if link.object and link.object.image and link.object.image.src %}
-                                          <img
-                                            src="{{ link.object.image.src | img_url: '250x250' }}"
-                                            alt="{{ link.title | escape }}"
-                                            class="w-96 rounded-sm">
-                                        {% endif %}
-                                        {{ link.title | escape }}
-                                      </summary>
-
-                                      <div
-                                        id="link-{{ link.handle | escape }}"
-                                        class="menu-drawer__submenu has-submenu gradient motion-reduce"
-                                        tabindex="-1">
-                                        <div class="menu-drawer__inner-submenu">
-                                          <button class="menu-drawer__close-button link link--text focus-inset" aria-expanded="true">
-                                            <span class="svg-wrapper">
-                                              {{ 'icon-arrow.svg' | inline_asset_content }}
-                                            </span>
-                                            {{ link.title | escape }}
-                                          </button>
-
-                                          <!-- 3) Second-level loop -->
-                                          <ul
-                                            class="menu-drawer__menu grid grid-cols-2 justify-center"
-                                            role="list"
-                                            tabindex="-1">
-                                            {% for childlink in link.links %}
-                                              <li class="w-1/3">
-                                                {% if childlink.links == blank %}
-                                                  <!-- Just a link -->
-                                                  <a
-                                                    id="HeaderDrawer-{{ link.handle }}-{{ childlink.handle }}"
-                                                    href="{{ childlink.url }}"
-                                                    class="menu-drawer__menu-item link link--text list-menu__item flex flex-col px-4 py-3 focus-inset">
-                                                    {% if childlink.object and childlink.object.image and childlink.object.image.src
-                                                    %}
-                                                      <img
-                                                        src="{{ childlink.object.image.src | img_url: '250x250' }}"
-                                                        alt="{{ childlink.title | escape }}"
-                                                        class="w-96 rounded-sm">
-                                                    {% endif %}
-                                                    {{ childlink.title | escape }}
-                                                  </a>
-                                                {% else %}
-                                                  <!-- Grandchildren → 3rd-level <details> -->
-                                                  <details id="Details-menu-drawer-{{ link.handle }}-{{ childlink.handle }}">
-                                                    <summary id="HeaderDrawer-{{ link.handle }}-{{ childlink.handle }}" class="menu-drawer__menu-item link link--text list-menu__item flex flex-col px-4 py-3 gap-3 focus-inset">
-                                                      {% if childlink.object and childlink.object.image and childlink.object.image.src
-                                                      %}
-                                                        <img
-                                                          src="{{ childlink.object.image.src | img_url: '250x250' }}"
-                                                          alt="{{ childlink.title | escape }}"
-                                                          class="w-96 rounded-sm">
-                                                      {% endif %}
-                                                      {{ childlink.title | escape }}
-                                                    </summary>
-                                                    <div id="childlink-{{ childlink.handle | escape }}" class="menu-drawer__submenu has-submenu gradient motion-reduce">
-                                                      <button class="menu-drawer__close-button link link--text focus-inset" aria-expanded="true">
-                                                        <span class="svg-wrapper">
-                                                          {{ 'icon-arrow.svg' | inline_asset_content }}
-                                                        </span>
-                                                        {{ childlink.title | escape }}
-                                                      </button>
-                                                      <ul
-                                                        class="menu-drawer__menu grid grid-cols-2 justify-center"
-                                                        role="list"
-                                                        tabindex="-1">
-                                                        {% for grandchildlink in childlink.links %}
-                                                          <li class="w-1/3">
-                                                            <a
-                                                              id="HeaderDrawer-{{ link.handle }}-{{ childlink.handle }}-{{ grandchildlink.handle }}"
-                                                              href="{{ grandchildlink.url }}"
-                                                              class="menu-drawer__menu-item link link--text list-menu__item px-4 py-3 focus-inset">
-                                                              {{ grandchildlink.title | escape }}
-                                                            </a>
-                                                          </li>
-                                                        {% endfor %}
-                                                      </ul>
-
-
-                                                      <div class="px-4 py-3">
-                                                        <a href="{{ childlink.url }}" class="button button--primary w-full text-center h-12">
-                                                          Vezi toata categoria
-                                                        </a>
-                                                      </div>
-                                                    </div>
-                                                  </details>
-                                                {% endif %}
-                                              </li>
-                                            {% endfor %}
-                                          </ul>
-
-                                          <div class="px-4 py-3">
-                                            <a href="{{ link.url }}" class="button button--primary w-full text-center h-12">
-                                              Vezi toata categoria
-                                            </a>
-                                          </div>
-                                        </div>
-                                      </div>
-                                    </details>
-                                  {% else %}
+                            {% if block_item.settings.display_type == 'grid-2-2' %}
+                              <ul
+                                class="menu-drawer__menu has-submenu flex flex-col"
+                                style="padding-left: 0px !important;"
+                                role="list"
+                                tabindex="-1">
+                                {% for link in top_menu.links %}
+                                  <li class="w-full">
                                     <!-- No children → top-level link -->
                                     <a
                                       id="HeaderDrawer-{{ link.handle }}"
@@ -168,19 +64,165 @@
                                       class="menu-drawer__menu-item list-menu__item flex flex-col px-4 py-3 link link--text focus-inset">
                                       {% if link.object and link.object.image and link.object.image.src %}
                                         <img
-                                          src="{{ link.object.image.src | img_url: '250x250' }}"
+                                          src="{{ link.object.image.src | img_url: '600x' }}"
                                           alt="{{ link.title | escape }}"
-                                          class="w-96 rounded-sm">
+                                          class="rounded-sm">
                                       {% endif %}
+                                    </a>
+                                  </li>
+                                {% endfor %}
+                              </ul>
+                            {% elsif block_item.settings.display_type == '2-level' %}
+                              <ul
+                                class="menu-drawer__menu has-submenu flex flex-col"
+                                role="list"
+                                tabindex="-1">
+                                {% for link in top_menu.links %}
+                                  <li class="w-full">
+                                    <!-- No children → top-level link -->
+                                    <a
+                                      id="HeaderDrawer-{{ link.handle }}"
+                                      href="{{ link.url }}"
+                                      class="menu-drawer__menu-item flex flex-col px-4 py-3 link link--text focus-inset">
                                       {{ link.title | escape }}
                                     </a>
-                                  {% endif %}
-                                </li>
-                              {% endfor %}
-                            </ul>
-                          {% else %}
-                            <!-- If no links in the chosen menu_handle -->
-                            <p class="px-4 py-3">No links in "{{ label }}" menu.</p>
+                                  </li>
+                                {% endfor %}
+                              </ul>
+                            {% else %}
+                              <!-- 2) Loop over the top-level links in this menu -->
+                              <ul
+                                class="menu-drawer__menu has-submenu grid grid-cols-2 justify-center"
+                                role="list"
+                                tabindex="-1">
+                                {% for link in top_menu.links %}
+                                  <li class="w-1/3">
+                                    {% if link.links != blank %}
+                                      <!-- This item has children → create nested <details> for the next level -->
+                                      <details id="Details-menu-drawer-{{ link.handle }}">
+                                        <summary id="HeaderDrawer-{{ link.handle }}" class="menu-drawer__menu-item list-menu__item flex flex-col px-4 py-3 link link--text focus-inset">
+                                          {% if link.object and link.object.image and link.object.image.src %}
+                                            <img
+                                              src="{{ link.object.image.src | img_url: '280x280' }}"
+                                              alt="{{ link.title | escape }}"
+                                              class="w-96 rounded-sm">
+                                          {% endif %}
+                                          {{ link.title | escape }}
+                                        </summary>
+
+                                        <div
+                                          id="link-{{ link.handle | escape }}"
+                                          class="menu-drawer__submenu has-submenu gradient motion-reduce"
+                                          tabindex="-1">
+                                          <div class="menu-drawer__inner-submenu">
+                                            <button class="menu-drawer__close-button link link--text focus-inset" aria-expanded="true">
+                                              <span class="svg-wrapper">
+                                                {{ 'icon-arrow.svg' | inline_asset_content }}
+                                              </span>
+                                              {{ link.title | escape }}
+                                            </button>
+
+                                            <!-- 3) Second-level loop -->
+                                            <ul
+                                              class="menu-drawer__menu grid grid-cols-2 justify-center"
+                                              role="list"
+                                              tabindex="-1">
+                                              {% for childlink in link.links %}
+                                                <li class="w-1/3">
+                                                  {% if childlink.links == blank %}
+                                                    <!-- Just a link -->
+                                                    <a
+                                                      id="HeaderDrawer-{{ link.handle }}-{{ childlink.handle }}"
+                                                      href="{{ childlink.url }}"
+                                                      class="menu-drawer__menu-item link link--text list-menu__item flex flex-col px-4 py-3 focus-inset">
+                                                      {% if childlink.object and childlink.object.image and childlink.object.image.src
+                                                      %}
+                                                        <img
+                                                          src="{{ childlink.object.image.src | img_url: '280x280' }}"
+                                                          alt="{{ childlink.title | escape }}"
+                                                          class="w-96 rounded-sm">
+                                                      {% endif %}
+                                                      {{ childlink.title | escape }}
+                                                    </a>
+                                                  {% else %}
+                                                    <!-- Grandchildren → 3rd-level <details> -->
+                                                    <details id="Details-menu-drawer-{{ link.handle }}-{{ childlink.handle }}">
+                                                      <summary id="HeaderDrawer-{{ link.handle }}-{{ childlink.handle }}" class="menu-drawer__menu-item link link--text list-menu__item flex flex-col px-4 py-3 gap-3 focus-inset">
+                                                        {% if childlink.object and childlink.object.image and childlink.object.image.src
+                                                        %}
+                                                          <img
+                                                            src="{{ childlink.object.image.src | img_url: '280x280' }}"
+                                                            alt="{{ childlink.title | escape }}"
+                                                            class="w-96 rounded-sm">
+                                                        {% endif %}
+                                                        {{ childlink.title | escape }}
+                                                      </summary>
+                                                      <div id="childlink-{{ childlink.handle | escape }}" class="menu-drawer__submenu has-submenu gradient motion-reduce">
+                                                        <button class="menu-drawer__close-button link link--text focus-inset" aria-expanded="true">
+                                                          <span class="svg-wrapper">
+                                                            {{ 'icon-arrow.svg' | inline_asset_content }}
+                                                          </span>
+                                                          {{ childlink.title | escape }}
+                                                        </button>
+                                                        <ul
+                                                          class="menu-drawer__menu grid grid-cols-2 justify-center"
+                                                          role="list"
+                                                          tabindex="-1">
+                                                          {% for grandchildlink in childlink.links %}
+                                                            <li class="w-1/3">
+                                                              <a
+                                                                id="HeaderDrawer-{{ link.handle }}-{{ childlink.handle }}-{{ grandchildlink.handle }}"
+                                                                href="{{ grandchildlink.url }}"
+                                                                class="menu-drawer__menu-item link link--text list-menu__item px-4 py-3 focus-inset">
+                                                                {{ grandchildlink.title | escape }}
+                                                              </a>
+                                                            </li>
+                                                          {% endfor %}
+                                                        </ul>
+
+
+                                                        <div class="px-4 py-3">
+                                                          <a href="{{ childlink.url }}" class="button button--primary w-full text-center h-12">
+                                                            Vezi toata categoria
+                                                          </a>
+                                                        </div>
+                                                      </div>
+                                                    </details>
+                                                  {% endif %}
+                                                </li>
+                                              {% endfor %}
+                                            </ul>
+
+                                            <div class="px-4 py-3">
+                                              <a href="{{ link.url }}" class="button button--primary w-full text-center h-12">
+                                                Vezi toata categoria
+                                              </a>
+                                            </div>
+                                          </div>
+                                        </div>
+                                      </details>
+                                    {% else %}
+                                      <!-- No children → top-level link -->
+                                      <a
+                                        id="HeaderDrawer-{{ link.handle }}"
+                                        href="{{ link.url }}"
+                                        class="menu-drawer__menu-item list-menu__item flex flex-col px-4 py-3 link link--text focus-inset">
+                                        {% if link.object and link.object.image and link.object.image.src %}
+                                          <img
+                                            src="{{ link.object.image.src | img_url: '250x250' }}"
+                                            alt="{{ link.title | escape }}"
+                                            class="w-96 rounded-sm">
+                                        {% endif %}
+                                        {{ link.title | escape }}
+                                      </a>
+                                    {% endif %}
+                                  </li>
+                                {% endfor %}
+                              </ul>
+                            {% else %}
+                              <!-- If no links in the chosen menu_handle -->
+                              <p class="px-4 py-3">No links in "{{ label }}" menu.</p>
+                            {% endif %}
                           {% endif %}
                         </div>
                       </div>
