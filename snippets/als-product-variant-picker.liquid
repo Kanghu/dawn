@@ -2,47 +2,58 @@
   We assume:
   - product.metafields.custom.product_related_variants is a list of metaobject references.
   - Each metaobject reference (related_variant) exposes:
-       related_variant.product_variant.product
-       related_variant.product_variant.tag
+  related_variant.product_variant.product
+  related_variant.product_variant.tag
   - We'll display the "tag" as the "variant name."
 {% endcomment %}
-
-<!-- Swiper Styles -->
-<link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css">
-<!-- Swiper Script -->
-<script src="https://unpkg.com/swiper/swiper-bundle.min.js" defer></script>
 
 <style>
   .ProductForm__Option {
     display: flex;
-    gap: 10px; /* Spacing between buttons */
-    flex-wrap: wrap; /* Allow buttons to wrap on smaller screens */
+    gap: 10px;
+    /* Spacing between buttons */
+    flex-wrap: wrap;
+    /* Allow buttons to wrap on smaller screens */
   }
 
   .VariantButton {
-    background-color: #f8f8f8; /* Neutral background */
-    border: 1px solid #ccc; /* Light border */
-    padding: 10px 20px; /* Button padding */
-    font-size: 16px; /* Font size */
+    background-color: #f8f8f8;
+    /* Neutral background */
+    border: 1px solid #ccc;
+    /* Light border */
+    padding: 10px 20px;
+    /* Button padding */
+    font-size: 16px;
+    /* Font size */
     cursor: pointer;
-    border-radius: 5px; /* Rounded corners */
-    transition: background-color 0.2s, border-color 0.2s; /* Smooth hover effect */
+    border-radius: 5px;
+    /* Rounded corners */
+    transition: background-color 0.2s
+    , border-color 0.2s;
+    /* Smooth hover effect */
   }
 
   .VariantButton:hover {
-    background-color: #e0e0e0; /* Hover background */
-    border-color: #999; /* Darker border on hover */
+    background-color: #e0e0e0;
+    /* Hover background */
+    border-color: #999;
+    /* Darker border on hover */
   }
 
   .VariantButton--active {
-    background-color: #0053ba; /* Active state background */
-    color: #fff; /* Active state text color */
-    border-color: #0053ba; /* Match background */
+    background-color: #0053ba;
+    /* Active state background */
+    color: #fff;
+    /* Active state text color */
+    border-color: #0053ba;
+    /* Match background */
   }
 
   .VariantButton:disabled {
-    background-color: #ddd; /* Disabled state background */
-    cursor: not-allowed; /* Indicate unclickable */
+    background-color: #ddd;
+    /* Disabled state background */
+    cursor: not-allowed;
+    /* Indicate unclickable */
   }
 
   .ProductForm__VariantPickerText {
@@ -130,7 +141,7 @@
           {% assign group_metaobj = variant_group | metaobject %}
           {% assign group_group_metaobj = variant_group.group | metaobject %}
 
-          <div class="w-full flex flex-col">
+            <div class="w-full flex flex-col">
             <!-- Display group info + tag (i.e. colors, sizes, etc.) -->
             {% if block.settings.custom_text %}
               <p class="ProductForm__VariantPickerText mb-0">
@@ -150,15 +161,13 @@
                       <a
                         href="/products/{{ product.handle }}"
                         title="{{ product.title }}"
-                        class="w-full h-auto flex flex-col border bg-white shadow-md rounded-lg overflow-hidden hover:bg-black transition p-2 no-underline"
-                      >
+                        class="w-full h-auto flex flex-col border bg-white shadow-md rounded-lg overflow-hidden hover:bg-black transition p-2 no-underline">
                         {% if product.featured_image %}
                           <div>
                             <img
                               class="rounded-sm"
                               src="{{ product.featured_image | img_url: '400x400' }}"
-                              alt="{{ product.title }}"
-                            >
+                              alt="{{ product.title }}">
                           </div>
                         {% endif %}
                         <div class="flex-grow px-1 pt-2">
@@ -179,15 +188,11 @@
                       <a
                         href="/products/{{ group_product_metaobj.product.value.handle }}"
                         title="{{ group_product_metaobj.product.value.title }}"
-                        class="w-full h-auto flex flex-col border bg-white shadow-md rounded-lg overflow-hidden hover:bg-black transition p-2 no-underline"
-                      >
+                        class="w-full h-auto flex flex-col border bg-white shadow-md rounded-lg overflow-hidden hover:bg-black transition p-2 no-underline">
                         <!-- Variant image -->
                         {% if group_product_metaobj.product.value.featured_image %}
                           <div>
-                            <img
-                              src="{{ group_product_metaobj.product.value.featured_image | img_url: '400x400' }}"
-                              alt="{{ group_product_metaobj.product.value.title }}"
-                            >
+                            <img src="{{ group_product_metaobj.product.value.featured_image | img_url: '400x400' }}" alt="{{ group_product_metaobj.product.value.title }}">
                           </div>
                         {% endif %}
 
@@ -212,13 +217,9 @@
         <select
           name="related_variant_selection"
           class="VariantDropdown"
-          onchange="window.location.href='/products/' + this.value;"
-        >
+          onchange="window.location.href='/products/' + this.value;">
           <!-- Current Product -->
-          <option
-            value="{{ product.handle }}"
-            selected
-          >
+          <option value="{{ product.handle }}" selected>
             {{ product.metafields.custom.product_variant_tag.value }}
           </option>
 
@@ -228,9 +229,7 @@
             {% assign group_group_metaobj = variant_group.group | metaobject %}
             {% for group_product in group_group_metaobj.value %}
               {% assign group_product_metaobj = group_product | metaobject %}
-              <option
-                value="{{ group_product_metaobj.product.value.handle }}"
-              >
+              <option value="{{ group_product_metaobj.product.value.handle }}">
                 {{ group_product_metaobj.tag }}
               </option>
             {% endfor %}
