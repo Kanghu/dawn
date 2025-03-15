@@ -665,16 +665,16 @@ video {
   z-index: 10;
 }
 
-.m-0 {
-  margin: 0px;
-}
-
 .m-2 {
   margin: 0.5rem;
 }
 
 .m-auto {
   margin: auto;
+}
+
+.m-0 {
+  margin: 0px;
 }
 
 .-mx-2 {
@@ -1030,10 +1030,6 @@ video {
   gap: 0px;
 }
 
-.gap-1 {
-  gap: 0.25rem;
-}
-
 .gap-2 {
   gap: 0.5rem;
 }
@@ -1044,6 +1040,10 @@ video {
 
 .gap-4 {
   gap: 1rem;
+}
+
+.gap-1 {
+  gap: 0.25rem;
 }
 
 .gap-x-3 {
@@ -1307,6 +1307,10 @@ video {
 
 .pt-4 {
   padding-top: 1rem;
+}
+
+.pl-2 {
+  padding-left: 0.5rem;
 }
 
 .text-center {
