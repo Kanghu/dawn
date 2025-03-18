@@ -312,7 +312,7 @@
                                 <dd>
                                   <s class="variant-item__old-price">
                                     {{ variant_price_compare | money_with_currency }}
-                                  </s>
+                                   } 
                                 </dd>
                               </dl>
                             {%- endif -%}
@@ -352,7 +352,7 @@
                                 <dd>
                                   <s class="variant-item__old-price">
                                     {{ variant_price_compare | money_with_currency }}
-                                  </s>
+                                   } 
                                 </dd>
                                 <dt class="visually-hidden">
                                   {{ 'products.product.price.sale_price' | t }}
@@ -2424,3 +2424,21 @@
   ]
 }
 {% endschema %}
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    // Connect all modal openers to their corresponding modals
+    const openers = document.querySelectorAll('modal-opener, .product__modal-opener');
+    
+    openers.forEach((opener) => {
+      opener.addEventListener('click', (e) => {
+        const modalId = opener.getAttribute('data-modal');
+        if (modalId) {
+          const modal = document.querySelector(modalId);
+          if (modal && typeof modal.show === 'function') {
+            modal.show(opener);
+          }
+        }
+      });
+    });
+  });
+</script>
