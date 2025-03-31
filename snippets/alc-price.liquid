@@ -226,13 +226,15 @@
           </span>
         {% endif %}
 
-        <span style="
+        {% if product.metafields.custom.featured_campaign.value %}
+          <span style="
             color: {{ block.settings.badge_sale_text_color }};
             background-color: {{ block.settings.badge_sale_color }};
             border-radius: 5px;
           " class="badge price__badge-sale">
-          {{ product.metafields.custom.featured_campaign.value.title | upcase }}
-        </span>
+            {{ product.metafields.custom.featured_campaign.value.title | upcase }}
+          </span>
+        {% endif %}
       {% endif %}
 
       <span class="badge price__badge-sold-out color-{{ settings.sold_out_badge_color_scheme }} ml-2">
