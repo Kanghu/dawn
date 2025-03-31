@@ -252,7 +252,15 @@ class FacetFiltersForm extends HTMLElement {
 
   createSearchParams(form) {
     const formData = new FormData(form);
-    return new URLSearchParams(formData).toString();
+    const params = new URLSearchParams();
+    // Iterate over each field and value in the form data
+    for (const [key, value] of formData.entries()) {
+      // Check if the value is non-empty (and optionally check for default values)
+      if (value && value.trim() !== '' && value !== 'manual') {
+        params.append(key, value);
+      }
+    }
+    return params.toString();
   }
 
   onSubmitForm(searchParams, event) {
@@ -278,7 +286,9 @@ class FacetFiltersForm extends HTMLElement {
           forms.push(this.createSearchParams(form));
         }
       });
-      this.onSubmitForm(forms.join('&'), event);
+      // Filter out empty strings before joining to avoid a trailing '&'
+      const joinedParams = forms.filter((param) => param !== '').join('&');
+      this.onSubmitForm(joinedParams, event);
     }
   }
 
