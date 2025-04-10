@@ -106,7 +106,8 @@
       <div class="price__regular inline-block" style="color: {{ block.settings.normal_price_color }};">
         {%- if product.quantity_price_breaks_configured? -%}
           {%- if show_compare_at_price and compare_at_price -%}
-            {%- unless product.price_varies == false and product.compare_at_price_varies %}
+            {%- if compare_at_price and compare_at_price > price and not (product.price_varies == false and product.compare_at_price_varies) %}
+
               <span class="visually-hidden visually-hidden--inline">
                 {{ 'products.product.price.regular_price' | t }}
               </span>
@@ -119,7 +120,7 @@
                   {% endif %}
                 </s>
               </span>
-            {%- endunless -%}
+            {%- endif -%}
           {%- endif -%}
           <span class="visually-hidden visually-hidden--inline">
             {{ 'products.product.price.regular_price' | t }}
