@@ -768,6 +768,39 @@
         "gift_card_resend_failure": {
           "few": "Probléma merült fel, amikor ajándékkártyák újbóli benyújtása volt. Próbálja újra, vagy vegye fel velünk a kapcsolatot."
         }
+      },
+      "order_payment_collection": {
+        "changes_summary": {
+          "added": {
+            "few": "Hozzáadva (ek): %{count}"
+          }
+        }
+      },
+      "open_graph_meta_tag": {
+        "title_with_products": {
+          "few": "Vétel %{product_name} És még %{count} áru"
+        }
+      },
+      "subscriptions": {
+        "recurring_totals_with_policies": {
+          "first_cycles": {
+            "few": "Az első %{count} A kifizetések %{total_price} minden"
+          }
+        },
+        "recurring_total_intervals": {
+          "day": {
+            "few": "%{count} napok"
+          },
+          "week": {
+            "few": "%{count} heti"
+          },
+          "month": {
+            "few": "%{count} hétfő"
+          },
+          "year": {
+            "few": "%{count} évek"
+          }
+        }
       }
     }
   }
