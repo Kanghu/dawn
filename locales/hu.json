@@ -730,6 +730,21 @@
         "order_edit_banner_items_added": {
           "few": "Hozzáadva (ek): %{count}"
         }
+      },
+      "shipping_errors": {
+        "shipping_method_not_available_generic": {
+          "few": "A kosár néhány cikke nem szállítható a megadott címre. Ellenőrizze a címet, hogy megbizonyosodjon arról, hogy helyes -e, és próbálkozzon újra, vagy válassza ki egy másik címet."
+        },
+        "shipping_method_not_available_updated": {
+          "few": "Egy vagy több cikket, amelyet hozzáadott, nem szállítják az Ön helyére. Távolítsa el őket a megrendelés teljesítéséhez, vagy vegye fel a kapcsolatot a boltba."
+        }
+      },
+      "processing": {
+        "wait": {
+          "medium": {
+            "few": "Megrendelése feldolgozás alatt áll. A becsült várakozási idő %{count} jegyzőkönyv."
+          }
+        }
       }
     }
   }
