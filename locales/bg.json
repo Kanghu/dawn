@@ -641,7 +641,16 @@
           },
           "prepaid_order_no_cycle": {
             "few": "%{shipping_price} Защото все още %{count} доставка (%{per_delivery_cost}), след това %{recurring_order_shipping_price}"
+          },
+          "prepaid_order_no_cycle_delivery_not_included": {
+            "few": "%{shipping_price} за %{count} доставки (%{per_delivery_cost}), след това %{recurring_order_shipping_price}"
           }
+        },
+        "shipping_method_first_shipment_group_title": {
+          "few": "Първи пратки"
+        },
+        "shipping_method_recurring_shipments_group_title": {
+          "few": "Повтарящи се пратки"
         }
       }
     }
