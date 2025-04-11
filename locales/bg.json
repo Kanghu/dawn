@@ -578,5 +578,72 @@
       "signup_form_success": "We will send you an email right before we open!",
       "password_link": "Enter using password"
     }
+  },
+  "shopify": {
+    "checkout": {
+      "shipping": {
+        "estimated_delivery_date": {
+          "few": "%{count} работни дни"
+        },
+        "other_method": {
+          "few": "%{count} Други методи са достъпни от началото на"
+        },
+        "subscription_delivery_description": {
+          "prepaid_delivery_frequency": {
+            "few": "за %{count} доставка"
+          },
+          "subscription_delivery_frequency": {
+            "day": {
+              "few": "на всеки %{count} дни"
+            },
+            "week": {
+              "few": "на всеки %{count} седмично"
+            },
+            "month": {
+              "few": "на всеки %{count} Понеделник"
+            },
+            "year": {
+              "few": "на всеки %{count} години"
+            }
+          },
+          "first_n_order_free": {
+            "few": "Първият %{count} Безплатни поръчки"
+          },
+          "free_for_first_n_order": {
+            "few": "За първия %{count} поръчки"
+          },
+          "free_shipping_cycles": {
+            "few": "Безплатна доставка за все още %{count} доставка"
+          },
+          "free_shipping_cycles_delivery_not_included": {
+            "few": "Безплатна доставка за %{count} доставка"
+          },
+          "first_n_order_free_with_cycle": {
+            "few": "Безплатна доставка за все още %{count} Тогава доставки %{recurring_order_shipping_price}"
+          },
+          "first_n_order_free_with_cycle_delivery_not_included": {
+            "few": "Безплатна доставка за %{count} Тогава доставки %{recurring_order_shipping_price}"
+          },
+          "max_cycles_base_shipping": {
+            "few": "Все пак %{count} доставки до цената на %{shipping_price} всеки"
+          },
+          "max_cycles_base_shipping_delivery_not_included": {
+            "few": "Все пак %{count} доставки до цената на %{shipping_price} всеки"
+          },
+          "prepaid_free_shipping_with_cycles": {
+            "few": "Безплатна доставка за първата %{cycle}, след това %{recurring_order_shipping_price}"
+          },
+          "prepaid_order_one_cycle": {
+            "few": "%{shipping_price} Защото все още %{count} доставки (%{per_delivery_cost})"
+          },
+          "prepaid_order_one_cycle_delivery_not_included": {
+            "few": "%{shipping_price} за %{count} доставки (%{per_delivery_cost})"
+          },
+          "prepaid_order_no_cycle": {
+            "few": "%{shipping_price} Защото все още %{count} доставка (%{per_delivery_cost}), след това %{recurring_order_shipping_price}"
+          }
+        }
+      }
+    }
   }
 }
