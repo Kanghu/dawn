@@ -578,5 +578,36 @@
       "signup_form_success": "We will send you an email right before we open!",
       "password_link": "Enter using password"
     }
+  },
+  "shopify": {
+    "checkout": {
+      "shipping": {
+        "estimated_delivery_date": {
+          "few": "%{count} munkanap"
+        },
+        "other_method": {
+          "few": "%{count} Egyéb módszerek állnak rendelkezésre"
+        },
+        "subscription_delivery_description": {
+          "prepaid_delivery_frequency": {
+            "few": "-ra %{count} kézbesítés"
+          },
+          "subscription_delivery_frequency": {
+            "day": {
+              "few": "mindegyikre %{count} napok"
+            },
+            "week": {
+              "few": "mindegyikre %{count} heti"
+            },
+            "month": {
+              "few": "mindegyikre %{count} hétfő"
+            },
+            "year": {
+              "few": "mindegyikre %{count} évek"
+            }
+          }
+        }
+      }
+    }
   }
 }
