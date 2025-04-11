@@ -940,6 +940,18 @@
             }
           }
         }
+      },
+      "draft_order_details": {
+        "payment_status": {
+          "pending": {
+            "banner_overdue": {
+              "few": "Плащането за вашата поръчка е надвишило падежа с {{count}} дни"
+            },
+            "banner_due": {
+              "few": "Плащането ви се дължи в {{count}} дни"
+            }
+          }
+        }
       }
     }
   }
