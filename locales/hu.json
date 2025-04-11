@@ -716,6 +716,17 @@
         "pickup_unavailable_banner_title": {
           "few": "A tételeit nem lehet felemelni a boltból"
         }
+      },
+      "payment": {
+        "order_covered_by_gift_cards_notice": {
+          "few": "Megrendelését az ajándékkártyák fedezik."
+        },
+        "card_fields_unavailable_html": {
+          "few": "A bankkártyákkal történő fizetés jelenleg nem érhető el.<br><a href=\"%{current_url}\">Frissítse az oldalt</a> Vagy próbáljon ki egy másik fizetési módszert."
+        },
+        "expired_cards_info": {
+          "few": "Létezik %{count} Lejárt kártyák, amelyeket a fiókjában láthat és szerkeszthet."
+        }
       }
     }
   }
