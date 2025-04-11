@@ -768,6 +768,39 @@
         "gift_card_resend_failure": {
           "few": "Проблем възникна при презареждане на подаръчни карти. Опитайте отново или се свържете с нас."
         }
+      },
+      "order_payment_collection": {
+        "changes_summary": {
+          "added": {
+            "few": "Добавени (и): %{count}"
+          }
+        }
+      },
+      "open_graph_meta_tag": {
+        "title_with_products": {
+          "few": "Купете %{product_name} И все пак %{count} изделия"
+        }
+      },
+      "subscriptions": {
+        "recurring_totals_with_policies": {
+          "first_cycles": {
+            "few": "Първият %{count} Плащанията са от %{total_price} всеки"
+          }
+        },
+        "recurring_total_intervals": {
+          "day": {
+            "few": "%{count} дни"
+          },
+          "week": {
+            "few": "%{count} седмично"
+          },
+          "month": {
+            "few": "%{count} Понеделник"
+          },
+          "year": {
+            "few": "%{count} години"
+          }
+        }
       }
     }
   }
