@@ -883,5 +883,40 @@
         "few": "Търсене: Те бяха намерени %{count} Резултати за \"%{terms}”"
       }
     }
+  },
+  "customer_accounts": {
+    "orders": {
+      "order_list": {
+        "items": {
+          "few": "{{count}} изделия"
+        }
+      },
+      "order_status": {
+        "delivered_description_gift_card": {
+          "few": "Картите за подаръци са изпратени по имейл."
+        },
+        "gift_card_label": {
+          "few": "Карти за подаръци"
+        },
+        "confirmed_gift_card_additional_description": {
+          "few": "Всяка карта за подарък ще бъде изпратена в отделен имейл."
+        },
+        "delivered_description_gift_card_text": {
+          "few": "Картите за подаръци са изпратени с текстово съобщение."
+        },
+        "confirmed_gift_card_additional_description_text": {
+          "few": "Всяка карта за подарък ще бъде изпратена в отделно текстово съобщение."
+        },
+        "gift_resend_success": {
+          "few": "Картите за подаръци се върнаха"
+        },
+        "gift_resend_failure": {
+          "few": "Проблем възникна при презареждане на подаръчни карти. Опитайте отново или се свържете с нас."
+        },
+        "delivered_description_digital": {
+          "few": "Тези елементи са завършени."
+        }
+      }
+    }
   }
 }
