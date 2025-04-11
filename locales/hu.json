@@ -800,6 +800,56 @@
           "year": {
             "few": "%{count} évek"
           }
+        },
+        "recurring_totals_with_initial_order_shipping_discount_with_policies": {
+          "first_cycles": {
+            "few": ", akkor lesznek %{count} kifizetések hány %{total_price}"
+          }
+        }
+      },
+      "contextual_availability": {
+        "title": {
+          "few": "Nem kapható termékek"
+        },
+        "products_not_available": {
+          "few": "Ezeket a termékeket eltávolítják a kosárból, mert nem állnak rendelkezésre az Ön országában/régiójában."
+        },
+        "all_products_in_cart_unavailable": {
+          "few": "Ezek a termékek nem érhetők el az Ön országában/régiójában."
+        }
+      },
+      "throttle": {
+        "estimated_wait_time": {
+          "few": "Becsült várakozási idő: {{count}} jegyzőkönyv"
+        }
+      },
+      "deliverability": {
+        "not_deliverable": {
+          "title": {
+            "few": "Nincs kézbesítési módszer %{count} (OF) cikkek"
+          },
+          "message": {
+            "few": "Ezeket a cikkeket eltávolítják a kosárból, mivel a címhez nem állnak rendelkezésre kézbesítési módszerek."
+          }
+        }
+      },
+      "pickup_point": {
+        "paginator": {
+          "header": {
+            "few": "Megjelenik %{first} - %{last} TÓL %{count} szúrás"
+          },
+          "selected_pickup_point_label": {
+            "few": "%{pickup_point_index} TÓL %{count} szúrás"
+          },
+          "selected_page": {
+            "few": "%{first} - %{last} TÓL %{count} szúrás"
+          }
+        },
+        "number_of_pickup_points_near_location": {
+          "few": "%{count} Emelési pontok a helyed közelében"
+        },
+        "pickup_unavailable_banner_title": {
+          "few": "Tételeit nem lehet felemelni az emelési pontoktól"
         }
       }
     }
