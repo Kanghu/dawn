@@ -605,7 +605,52 @@
             "year": {
               "few": "mindegyikre %{count} évek"
             }
+          },
+          "first_n_order_free": {
+            "few": "Az első %{count} Ingyenes megrendelések"
+          },
+          "free_for_first_n_order": {
+            "few": "Az elsőre %{count} megrendelés"
+          },
+          "free_shipping_cycles": {
+            "few": "Ingyenes szállítás még %{count} kézbesítés"
+          },
+          "free_shipping_cycles_delivery_not_included": {
+            "few": "Ingyenes szállítás %{count} kézbesítés"
+          },
+          "first_n_order_free_with_cycle": {
+            "few": "Ingyenes szállítás még %{count} Szállítások akkor %{recurring_order_shipping_price}"
+          },
+          "first_n_order_free_with_cycle_delivery_not_included": {
+            "few": "Ingyenes szállítás %{count} Szállítások akkor %{recurring_order_shipping_price}"
+          },
+          "max_cycles_base_shipping": {
+            "few": "Még mindig %{count} szállítás az árra %{shipping_price} minden"
+          },
+          "max_cycles_base_shipping_delivery_not_included": {
+            "few": "Még mindig %{count} szállítás az árra %{shipping_price} minden"
+          },
+          "prepaid_free_shipping_with_cycles": {
+            "few": "Ingyenes szállítás az első számára %{cycle}, utána %{recurring_order_shipping_price}"
+          },
+          "prepaid_order_one_cycle": {
+            "few": "%{shipping_price} mert még %{count} Szállítások (%{per_delivery_cost})"
+          },
+          "prepaid_order_one_cycle_delivery_not_included": {
+            "few": "%{shipping_price} -ra %{count} Szállítások (%{per_delivery_cost})"
+          },
+          "prepaid_order_no_cycle": {
+            "few": "%{shipping_price} mert még %{count} kézbesítés (%{per_delivery_cost}), utána %{recurring_order_shipping_price}"
+          },
+          "prepaid_order_no_cycle_delivery_not_included": {
+            "few": "%{shipping_price} -ra %{count} Szállítások (%{per_delivery_cost}), utána %{recurring_order_shipping_price}"
           }
+        },
+        "shipping_method_first_shipment_group_title": {
+          "few": "Első szállítmányok"
+        },
+        "shipping_method_recurring_shipments_group_title": {
+          "few": "Ismétlődő szállítmányok"
         }
       }
     }
