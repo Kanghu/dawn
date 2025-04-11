@@ -930,6 +930,29 @@
           "few": "Még mindig betöltődik {{count}} áru"
         }
       }
+    },
+    "B2B": {
+      "orders": {
+        "draft_order_list": {
+          "pending_tab_accessibility_label": {
+            "pending_orders": {
+              "few": "te {{count}} (OF) megrendelések"
+            }
+          }
+        }
+      },
+      "draft_order_details": {
+        "payment_status": {
+          "pending": {
+            "banner_overdue": {
+              "few": "A megrendelés fizetése meghaladta az érettséget {{count}} napok"
+            },
+            "banner_due": {
+              "few": "A fizetése esedékes {{count}} napok"
+            }
+          }
+        }
+      }
     }
   }
 }
