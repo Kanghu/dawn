@@ -202,16 +202,19 @@
       "filter_button": "Szűrés",
       "filters_selected": {
         "one": "{{ count }} elem kijelölve",
-        "other": "{{ count }} elem kijelölve"
+        "other": "{{ count }} elem kijelölve",
+        "few": "{{ count }} válasszon"
       },
       "max_price": "A legmagasabb ár {{ price }}",
       "product_count": {
         "one": "{{ count }}/{{ product_count }} termék",
-        "other": "{{ count }}/{{ product_count }} termék"
+        "other": "{{ count }}/{{ product_count }} termék",
+        "few": "{{ product_count }} TÓL {{ count }} termékek"
       },
       "product_count_simple": {
         "one": "{{ count }} termék",
-        "other": "{{ count }} termék"
+        "other": "{{ count }} termék",
+        "few": "{{ count }} termékek"
       },
       "reset": "Alaphelyzet",
       "sort_button": "Rendezés",
@@ -233,7 +236,8 @@
       "no_results": "Nincs találat erre: {{ terms }}. Ellenőrizd a helyesírást, vagy írj be egy másik szót vagy kifejezést.",
       "results_with_count": {
         "one": "{{ count }} találat",
-        "other": "{{ count }} találat"
+        "other": "{{ count }} találat",
+        "few": "{{ count }} eredmény"
       },
       "title": "Találatok",
       "page": "Oldal",
@@ -241,19 +245,23 @@
       "search_for": "Keresés erre: {{ terms }}",
       "results_with_count_and_term": {
         "one": "{{ count }} találat erre: {{ terms }}",
-        "other": "{{ count }} találat erre: {{ terms }}"
+        "other": "{{ count }} találat erre: {{ terms }}",
+        "few": "Találtak {{ count }} Eredmények \"{{ terms }}”"
       },
       "results_pages_with_count": {
         "one": "{{ count }} oldal",
-        "other": "{{ count }} oldal"
+        "other": "{{ count }} oldal",
+        "few": "{{ count }} oldal"
       },
       "results_suggestions_with_count": {
         "one": "{{ count }} javaslat",
-        "other": "{{ count }} javaslat"
+        "other": "{{ count }} javaslat",
+        "few": "{{ count }} javaslatok"
       },
       "results_products_with_count": {
         "one": "{{ count }} termék",
-        "other": "{{ count }} termék"
+        "other": "{{ count }} termék",
+        "few": "{{ count }} termékek"
       },
       "suggestions": "Javaslatok",
       "pages": "Oldal"
