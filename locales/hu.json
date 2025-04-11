@@ -676,6 +676,45 @@
         },
         "item_label": {
           "few": "{{count}} áru"
+        },
+        "unfulfillable_product": {
+          "message": {
+            "few": "Szállítási módszer %{delivery_method} már nem érhető el ezekhez az elemekhez."
+          },
+          "default_message": {
+            "few": "A kiválasztott kézbesítési módszer már nem érhető el ezekhez az elemekhez."
+          }
+        }
+      },
+      "order_summary": {
+        "expand_component_information": {
+          "few": "kijelző %{count} áru"
+        },
+        "collapse_component_information": {
+          "few": "Elrejt %{count} áru"
+        },
+        "discount_discovery": {
+          "merchandise_quantity_label": {
+            "few": "%{count} (OF) cikkek"
+          }
+        },
+        "discount_title_stacking": {
+          "few": "Kedvezmények"
+        },
+        "discount_order_stacking": {
+          "few": "Kedvezmények megrendelésre"
+        },
+        "subtotal_label_with_quantity": {
+          "few": "Subtotal · %{count} áru"
+        },
+        "number_items": {
+          "few": "%{count} áru"
+        },
+        "view_all_items": {
+          "few": "Lásd az összeset %{count} áru"
+        },
+        "pickup_unavailable_banner_title": {
+          "few": "A tételeit nem lehet felemelni a boltból"
         }
       }
     }
