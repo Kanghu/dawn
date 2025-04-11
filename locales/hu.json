@@ -659,6 +659,24 @@
             "few": "Klaszter kialakult {{number}} Golyó"
           }
         }
+      },
+      "customer_account": {
+        "saved_address_option_description": {
+          "few": "te {{count}} mentett címek."
+        }
+      },
+      "stock": {
+        "unshippable_product": {
+          "header": {
+            "few": "Nincs kézbesítési módszer %{count} (OF) cikkek"
+          },
+          "message": {
+            "few": "Ezeket a cikkeket eltávolítják a kosárból, mivel a címhez nem állnak rendelkezésre kézbesítési módszerek."
+          }
+        },
+        "item_label": {
+          "few": "{{count}} áru"
+        }
       }
     }
   }
