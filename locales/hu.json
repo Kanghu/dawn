@@ -279,7 +279,8 @@
       "menu": "Menü",
       "cart_count": {
         "one": "{{ count }} elem",
-        "other": "{{ count }} elem"
+        "other": "{{ count }} elem",
+        "few": "{{ count }} áru"
       }
     },
     "cart": {
@@ -365,11 +366,13 @@
       "variant_total": "Változat összesen",
       "items_added": {
         "one": "{{ quantity }} termék hozzáadva",
-        "other": "{{ quantity }} termék hozzáadva"
+        "other": "{{ quantity }} termék hozzáadva",
+        "few": "{{ quantity }} Hozzáadott tételek"
       },
       "items_removed": {
         "one": "{{ quantity }} termék eltávolítva",
-        "other": "{{ quantity }} termék eltávolítva"
+        "other": "{{ quantity }} termék eltávolítva",
+        "few": "{{ quantity }} kiküszöbölt tételek"
       },
       "product_variants": "Termékváltozatok",
       "total_items": "Összes termék",
