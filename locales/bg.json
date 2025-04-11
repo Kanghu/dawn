@@ -95,7 +95,8 @@
       "read_more_title": "Прочетете още: {{ title }}",
       "comments": {
         "one": "{{ count }} коментар",
-        "other": "{{ count }} коментара"
+        "other": "{{ count }} коментара",
+        "few": "{{ count }} Коментари"
       },
       "moderated": "Имайте предвид, че коментарите трябва да бъдат одобрени, преди да се публикуват.",
       "comment_form_title": "Оставяне на коментар",
@@ -201,16 +202,19 @@
       "filter_button": "Филтър",
       "filters_selected": {
         "one": "Избрани: {{ count }}",
-        "other": "Избрани: {{ count }}"
+        "other": "Избрани: {{ count }}",
+        "few": "{{ count }} Изберете"
       },
       "max_price": "Най-високата цена е {{ price }}",
       "product_count": {
         "one": "{{ product_count }} от {{ count }} продукт",
-        "other": "{{ product_count }} от {{ count }} продукта"
+        "other": "{{ product_count }} от {{ count }} продукта",
+        "few": "{{ product_count }} От {{ count }} продукти"
       },
       "product_count_simple": {
         "one": "{{ count }} продукт",
-        "other": "{{ count }} продукта"
+        "other": "{{ count }} продукта",
+        "few": "{{ count }} продукти"
       },
       "reset": "Нулиране",
       "sort_button": "Сортиране",
