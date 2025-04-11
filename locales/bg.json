@@ -800,6 +800,56 @@
           "year": {
             "few": "%{count} години"
           }
+        },
+        "recurring_totals_with_initial_order_shipping_discount_with_policies": {
+          "first_cycles": {
+            "few": ", тогава те ще бъдат %{count} Плащания за това колко %{total_price}"
+          }
+        }
+      },
+      "contextual_availability": {
+        "title": {
+          "few": "Недостъпни продукти"
+        },
+        "products_not_available": {
+          "few": "Тези продукти ще бъдат премахнати от кошницата, тъй като те не са налични във вашата страна/регион."
+        },
+        "all_products_in_cart_unavailable": {
+          "few": "Тези продукти не се предлагат във вашата страна/регион."
+        }
+      },
+      "throttle": {
+        "estimated_wait_time": {
+          "few": "Прогнозно време за изчакване: {{count}} минути"
+        }
+      },
+      "deliverability": {
+        "not_deliverable": {
+          "title": {
+            "few": "Няма наличен метод за доставка за %{count} (от) статии"
+          },
+          "message": {
+            "few": "Тези статии ще бъдат премахнати от количката, тъй като няма налични методи за доставка за вашия адрес."
+          }
+        }
+      },
+      "pickup_point": {
+        "paginator": {
+          "header": {
+            "few": "Се показва %{first} - %{last} От %{count} пункция"
+          },
+          "selected_pickup_point_label": {
+            "few": "%{pickup_point_index} От %{count} пункция"
+          },
+          "selected_page": {
+            "few": "%{first} - %{last} От %{count} пункция"
+          }
+        },
+        "number_of_pickup_points_near_location": {
+          "few": "%{count} Повдигащи точки близо до вашето местоположение"
+        },
+        "pickup_unavailable_banner_title": {
+          "few": "Вашите артикули не могат да бъдат отменени от точките за повдигане"
         }
       }
     }
