@@ -851,6 +851,24 @@
         "pickup_unavailable_banner_title": {
           "few": "Вашите артикули не могат да бъдат отменени от точките за повдигане"
         }
+      },
+      "local_pickup": {
+        "location_information": {
+          "few": "Съществуват %{count} Магазини със запаси, близки до %{address}"
+        },
+        "paginator": {
+          "label": {
+            "few": "%{first} - %{last} От %{count} Магазин"
+          }
+        },
+        "reveal_more_label": {
+          "few": "Все още показва %{count} (от) места"
+        }
+      },
+      "merchandise_unavailable_in_buyer_location": {
+        "remove_items_action": {
+          "few": "елиминира недостъпните предмети"
+        }
       }
     }
   }
