@@ -953,6 +953,29 @@
           }
         }
       }
+    },
+    "errors": {
+      "banner_title": {
+        "few": "Съществуват {{count}} БУГИ"
+      }
+    },
+    "ui_components": {
+      "autocompleteOptionsAvailable": {
+        "few": "{{count}} Предлагат елементи"
+      },
+      "month": {
+        "few": "Понеделник"
+      },
+      "mapClusterTitle": {
+        "few": "Образуван клъстер {{number}} Куршуми"
+      }
+    },
+    "date": {
+      "humanize": {
+        "lessThanOneHourAgo": {
+          "few": "сега {{count}} минути"
+        }
+      }
     }
   }
 }
