@@ -95,7 +95,8 @@
       "read_more_title": "Lees verder: {{ title }}",
       "comments": {
         "one": "{{ count }} reactie",
-        "other": "{{ count }} reacties"
+        "other": "{{ count }} reacties",
+        "few": "{{ count }} opmerkingen"
       },
       "moderated": "Let op: opmerkingen moeten worden goedgekeurd voordat ze worden gepubliceerd.",
       "comment_form_title": "Reactie plaatsen",
@@ -366,11 +367,13 @@
       "variant_total": "Totaal variant",
       "items_added": {
         "one": "{{ quantity }} artikel toegevoegd",
-        "other": "{{ quantity }} artikelen toegevoegd"
+        "other": "{{ quantity }} artikelen toegevoegd",
+        "few": "{{ quantity }} Toegevoegde items"
       },
       "items_removed": {
         "one": "{{ quantity }} artikel verwijderd",
-        "other": "{{ quantity }} artikelen verwijderd"
+        "other": "{{ quantity }} artikelen verwijderd",
+        "few": "{{ quantity }} geëlimineerde items"
       },
       "product_variants": "Productvarianten",
       "total_items": "Totaal aantal artikelen",
