@@ -935,6 +935,36 @@
           "few": "Enviar tarjetas de regalo de nuevo"
         }
       }
+    },
+    "order_details": {
+      "image_gallery": {
+        "load_more_items": {
+          "few": "Todavía cargar {{count}} mercancía"
+        }
+      }
+    },
+    "B2B": {
+      "orders": {
+        "draft_order_list": {
+          "pending_tab_accessibility_label": {
+            "pending_orders": {
+              "few": "tú {{count}} (de) órdenes en espera"
+            }
+          }
+        }
+      },
+      "draft_order_details": {
+        "payment_status": {
+          "pending": {
+            "banner_overdue": {
+              "few": "El pago de su pedido ha excedido el vencimiento con {{count}} días"
+            },
+            "banner_due": {
+              "few": "Su pago se debe en {{count}} días"
+            }
+          }
+        }
+      }
     }
   }
 }
