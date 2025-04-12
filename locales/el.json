@@ -279,7 +279,8 @@
       "menu": "Μενού",
       "cart_count": {
         "one": "{{ count }} στοιχείο",
-        "other": "{{ count }} στοιχεία"
+        "other": "{{ count }} στοιχεία",
+        "few": "{{ count }} προϊόντα"
       }
     },
     "cart": {
@@ -937,6 +938,13 @@
       },
       "mapClusterTitle": {
         "few": "Σχηματίστηκε σύμπλεγμα {{number}} Σφαίρες"
+      }
+    },
+    "date": {
+      "humanize": {
+        "lessThanOneHourAgo": {
+          "few": "τώρα {{count}} πρακτικά"
+        }
       }
     }
   }
