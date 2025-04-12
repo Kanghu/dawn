@@ -768,6 +768,70 @@
         "gift_card_resend_failure": {
           "few": "Ein Problem trat bei der erneuten Vermittlung von Geschenkkarten auf. Versuchen Sie es erneut oder kontaktieren Sie uns."
         }
+      },
+      "order_payment_collection": {
+        "changes_summary": {
+          "added": {
+            "few": "Hinzugefügt (s): %{count}"
+          }
+        }
+      },
+      "open_graph_meta_tag": {
+        "title_with_products": {
+          "few": "Kaufen %{product_name} Und doch %{count} Ware"
+        }
+      },
+      "subscriptions": {
+        "recurring_totals_with_policies": {
+          "first_cycles": {
+            "few": "Der erste %{count} Zahlungen sind von %{total_price} jede"
+          }
+        },
+        "recurring_total_intervals": {
+          "day": {
+            "few": "%{count} Tage"
+          },
+          "week": {
+            "few": "%{count} wöchentlich"
+          },
+          "month": {
+            "few": "%{count} Montag"
+          },
+          "year": {
+            "few": "%{count} Jahre"
+          }
+        },
+        "recurring_totals_with_initial_order_shipping_discount_with_policies": {
+          "first_cycles": {
+            "few": "dann werden sie sein %{count} Zahlungen von wie vielen %{total_price}"
+          }
+        }
+      },
+      "contextual_availability": {
+        "title": {
+          "few": "Nicht verfügbare Produkte"
+        },
+        "products_not_available": {
+          "few": "Diese Produkte werden aus dem Korb entfernt, da sie in Ihrem Land/Ihrer Region nicht verfügbar sind."
+        },
+        "all_products_in_cart_unavailable": {
+          "few": "Diese Produkte sind in Ihrem Land/Ihrer Region nicht erhältlich."
+        }
+      },
+      "throttle": {
+        "estimated_wait_time": {
+          "few": "Geschätzte Wartezeit: {{count}} Minuten"
+        }
+      },
+      "deliverability": {
+        "not_deliverable": {
+          "title": {
+            "few": "Keine Liefermethode zur Verfügung %{count} (von) Artikeln"
+          },
+          "message": {
+            "few": "Diese Artikel werden aus dem Wagen entfernt, da für Ihre Adresse keine Liefermethoden verfügbar sind."
+          }
+        }
       }
     }
   }
