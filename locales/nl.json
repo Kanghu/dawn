@@ -578,5 +578,72 @@
       "signup_form_success": "We will send you an email right before we open!",
       "password_link": "Enter using password"
     }
+  },
+  "shopify": {
+    "checkout": {
+      "shipping": {
+        "estimated_delivery_date": {
+          "few": "%{count} werkdagen"
+        },
+        "other_method": {
+          "few": "%{count} Andere methoden zijn beschikbaar vanaf vanaf"
+        },
+        "subscription_delivery_description": {
+          "prepaid_delivery_frequency": {
+            "few": "voor %{count} levering"
+          },
+          "subscription_delivery_frequency": {
+            "day": {
+              "few": "aan elk %{count} dagen"
+            },
+            "week": {
+              "few": "aan elk %{count} wekelijks"
+            },
+            "month": {
+              "few": "aan elk %{count} Maandag"
+            },
+            "year": {
+              "few": "aan elk %{count} jaar"
+            }
+          },
+          "first_n_order_free": {
+            "few": "De eerste %{count} Gratis bestellingen"
+          },
+          "free_for_first_n_order": {
+            "few": "Voor het eerste %{count} bevelen"
+          },
+          "free_shipping_cycles": {
+            "few": "Gratis verzending voor nog %{count} levering"
+          },
+          "free_shipping_cycles_delivery_not_included": {
+            "few": "Gratis verzending voor %{count} levering"
+          },
+          "first_n_order_free_with_cycle": {
+            "few": "Gratis verzending voor nog %{count} leveringen dan %{recurring_order_shipping_price}"
+          },
+          "first_n_order_free_with_cycle_delivery_not_included": {
+            "few": "Gratis verzending voor %{count} leveringen dan %{recurring_order_shipping_price}"
+          },
+          "max_cycles_base_shipping": {
+            "few": "Nog steeds %{count} leveringen aan de prijs van %{shipping_price} elk"
+          },
+          "max_cycles_base_shipping_delivery_not_included": {
+            "few": "Nog steeds %{count} leveringen aan de prijs van %{shipping_price} elk"
+          },
+          "prepaid_free_shipping_with_cycles": {
+            "few": "Gratis verzending voor de eerste %{cycle}, daarna %{recurring_order_shipping_price}"
+          },
+          "prepaid_order_one_cycle": {
+            "few": "%{shipping_price} voor %{count} leveringen (%{per_delivery_cost})"
+          },
+          "prepaid_order_one_cycle_delivery_not_included": {
+            "few": "%{shipping_price} voor %{count} leveringen (%{per_delivery_cost})"
+          },
+          "prepaid_order_no_cycle": {
+            "few": "%{shipping_price} voor %{count} levering (%{per_delivery_cost}), daarna %{recurring_order_shipping_price}"
+          }
+        }
+      }
+    }
   }
 }
