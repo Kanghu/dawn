@@ -657,6 +657,19 @@
           "prepaid_order_no_cycle_delivery_not_included": {
             "few": "%{shipping_price} per %{count} consegne (%{per_delivery_cost}), dopo di che %{recurring_order_shipping_price}"
           }
+        },
+        "shipping_method_first_shipment_group_title": {
+          "few": "Prime spedizioni"
+        },
+        "shipping_method_recurring_shipments_group_title": {
+          "few": "Spedizioni ricorrenti"
+        }
+      },
+      "general": {
+        "map": {
+          "cluster_title": {
+            "few": "Cluster formato {{number}} Proiettili"
+          }
         }
       }
     }
