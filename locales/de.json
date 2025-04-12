@@ -832,6 +832,25 @@
             "few": "Diese Artikel werden aus dem Wagen entfernt, da für Ihre Adresse keine Liefermethoden verfügbar sind."
           }
         }
+      },
+      "pickup_point": {
+        "paginator": {
+          "header": {
+            "few": "Wird angezeigt %{first} - %{last} AUS %{count} Stechen"
+          },
+          "selected_pickup_point_label": {
+            "few": "%{pickup_point_index} AUS %{count} Stechen"
+          },
+          "selected_page": {
+            "few": "%{first} - %{last} AUS %{count} Stechen"
+          }
+        },
+        "number_of_pickup_points_near_location": {
+          "few": "%{count} Hebepunkte in der Nähe Ihres Standorts"
+        },
+        "pickup_unavailable_banner_title": {
+          "few": "Ihre Artikel können nicht aus Hebepunkten aufgehoben werden"
+        }
       }
     }
   }
