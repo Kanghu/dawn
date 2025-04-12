@@ -590,5 +590,36 @@
       "signup_form_success": "We will send you an email right before we open!",
       "password_link": "Enter using password"
     }
+  },
+  "shopify": {
+    "checkout": {
+      "shipping": {
+        "estimated_delivery_date": {
+          "few": "%{count} jours ouvrables"
+        },
+        "other_method": {
+          "few": "%{count} D'autres méthodes sont disponibles à partir de"
+        },
+        "subscription_delivery_description": {
+          "prepaid_delivery_frequency": {
+            "few": "pour %{count} livraison"
+          },
+          "subscription_delivery_frequency": {
+            "day": {
+              "few": "à chaque %{count} jours"
+            },
+            "week": {
+              "few": "à chaque %{count} hebdomadaire"
+            },
+            "month": {
+              "few": "à chaque %{count} Lundi"
+            },
+            "year": {
+              "few": "à chaque %{count} années"
+            }
+          }
+        }
+      }
+    }
   }
 }
