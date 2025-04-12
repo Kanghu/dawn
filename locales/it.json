@@ -590,5 +590,72 @@
       "signup_form_success": "We will send you an email right before we open!",
       "password_link": "Enter using password"
     }
+  },
+  "shopify": {
+    "checkout": {
+      "shipping": {
+        "estimated_delivery_date": {
+          "few": "%{count} Giorni di lavoro"
+        },
+        "other_method": {
+          "few": "%{count} Altri metodi sono disponibili a partire da"
+        },
+        "subscription_delivery_description": {
+          "prepaid_delivery_frequency": {
+            "few": "per %{count} consegna"
+          },
+          "subscription_delivery_frequency": {
+            "day": {
+              "few": "a ciascuno %{count} giorni"
+            },
+            "week": {
+              "few": "a ciascuno %{count} settimanale"
+            },
+            "month": {
+              "few": "a ciascuno %{count} Lunedi"
+            },
+            "year": {
+              "few": "a ciascuno %{count} anni"
+            }
+          },
+          "first_n_order_free": {
+            "few": "Il primo %{count} Ordini gratuiti"
+          },
+          "free_for_first_n_order": {
+            "few": "Per il primo %{count} ordini"
+          },
+          "free_shipping_cycles": {
+            "few": "Spedizione gratuita per ancora %{count} consegna"
+          },
+          "free_shipping_cycles_delivery_not_included": {
+            "few": "Spedizione gratuita per %{count} consegna"
+          },
+          "first_n_order_free_with_cycle": {
+            "few": "Spedizione gratuita per ancora %{count} consegne, quindi %{recurring_order_shipping_price}"
+          },
+          "first_n_order_free_with_cycle_delivery_not_included": {
+            "few": "Spedizione gratuita per %{count} consegne, quindi %{recurring_order_shipping_price}"
+          },
+          "max_cycles_base_shipping": {
+            "few": "Ancora %{count} consegne al prezzo di %{shipping_price} ogni"
+          },
+          "max_cycles_base_shipping_delivery_not_included": {
+            "few": "Ancora %{count} consegne al prezzo di %{shipping_price} ogni"
+          },
+          "prepaid_free_shipping_with_cycles": {
+            "few": "Spedizione gratuita per la prima %{cycle}, dopo di che %{recurring_order_shipping_price}"
+          },
+          "prepaid_order_one_cycle": {
+            "few": "%{shipping_price} per ancora %{count} consegne (%{per_delivery_cost})"
+          },
+          "prepaid_order_one_cycle_delivery_not_included": {
+            "few": "%{shipping_price} per %{count} consegne (%{per_delivery_cost})"
+          },
+          "prepaid_order_no_cycle": {
+            "few": "%{shipping_price} per ancora %{count} consegna (%{per_delivery_cost}), dopo di che %{recurring_order_shipping_price}"
+          }
+        }
+      }
+    }
   }
 }
