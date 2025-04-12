@@ -923,6 +923,36 @@
           "few": "Senden Sie noch einmal Geschenkkarten"
         }
       }
+    },
+    "order_details": {
+      "image_gallery": {
+        "load_more_items": {
+          "few": "Immer noch laden {{count}} Ware"
+        }
+      }
+    },
+    "B2B": {
+      "orders": {
+        "draft_order_list": {
+          "pending_tab_accessibility_label": {
+            "pending_orders": {
+              "few": "Du {{count}} (von) Auftrag auf Eis"
+            }
+          }
+        }
+      },
+      "draft_order_details": {
+        "payment_status": {
+          "pending": {
+            "banner_overdue": {
+              "few": "Die Zahlung für Ihre Bestellung hat die Reife mit überschritten {{count}} Tage"
+            },
+            "banner_due": {
+              "few": "Ihre Zahlung ist fällig in {{count}} Tage"
+            }
+          }
+        }
+      }
     }
   }
 }
