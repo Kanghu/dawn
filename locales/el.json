@@ -641,6 +641,9 @@
           },
           "prepaid_order_no_cycle": {
             "few": "%{shipping_price} για ακόμα %{count} παράδοση (%{per_delivery_cost}), μετά από αυτό %{recurring_order_shipping_price}"
+          },
+          "prepaid_order_no_cycle_delivery_not_included": {
+            "few": "%{shipping_price} για %{count} παραδόσεις (%{per_delivery_cost}), μετά από αυτό %{recurring_order_shipping_price}"
           }
         }
       }
