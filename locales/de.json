@@ -641,7 +641,16 @@
           },
           "prepaid_order_no_cycle": {
             "few": "%{shipping_price} für noch %{count} Lieferung (%{per_delivery_cost}), danach %{recurring_order_shipping_price}"
+          },
+          "prepaid_order_no_cycle_delivery_not_included": {
+            "few": "%{shipping_price} für %{count} Lieferungen (%{per_delivery_cost}), danach %{recurring_order_shipping_price}"
           }
+        },
+        "shipping_method_first_shipment_group_title": {
+          "few": "Erste Sendungen"
+        },
+        "shipping_method_recurring_shipments_group_title": {
+          "few": "Wiederkehrende Sendungen"
         }
       }
     }
