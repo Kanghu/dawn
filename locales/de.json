@@ -659,6 +659,32 @@
             "few": "Cluster gebildet {{number}} Kugeln"
           }
         }
+      },
+      "customer_account": {
+        "saved_address_option_description": {
+          "few": "Du {{count}} gespeicherte Adressen."
+        }
+      },
+      "stock": {
+        "unshippable_product": {
+          "header": {
+            "few": "Keine Liefermethode zur Verfügung %{count} (von) Artikeln"
+          },
+          "message": {
+            "few": "Diese Artikel werden aus dem Wagen entfernt, da für Ihre Adresse keine Liefermethoden verfügbar sind."
+          }
+        },
+        "item_label": {
+          "few": "{{count}} Ware"
+        },
+        "unfulfillable_product": {
+          "message": {
+            "few": "Liefermethode %{delivery_method} ist für diese Artikel nicht mehr verfügbar."
+          },
+          "default_message": {
+            "few": "Die ausgewählte Liefermethode ist für diese Artikel nicht mehr verfügbar."
+          }
+        }
       }
     }
   }
