@@ -895,5 +895,40 @@
         "few": "Cerca: sono stati trovati %{count} Risultati per \"%{terms}”"
       }
     }
+  },
+  "customer_accounts": {
+    "orders": {
+      "order_list": {
+        "items": {
+          "few": "{{count}} articoli"
+        }
+      },
+      "order_status": {
+        "delivered_description_gift_card": {
+          "few": "Le carte regalo sono state inviate via e -mail."
+        },
+        "gift_card_label": {
+          "few": "Carte regalo"
+        },
+        "confirmed_gift_card_additional_description": {
+          "few": "Ogni carta regalo verrà inviata in un'e -mail separata."
+        },
+        "delivered_description_gift_card_text": {
+          "few": "Le carte regalo sono state inviate tramite messaggio di testo."
+        },
+        "confirmed_gift_card_additional_description_text": {
+          "few": "Ogni carta regalo verrà inviata in un messaggio di testo separato."
+        },
+        "gift_resend_success": {
+          "few": "Le carte regalo sono tornate"
+        },
+        "gift_resend_failure": {
+          "few": "Un problema si è verificato quando si sono inoltrati le carte regalo. Riprova o contattaci."
+        },
+        "delivered_description_digital": {
+          "few": "Questi articoli sono completati."
+        }
+      }
+    }
   }
 }
