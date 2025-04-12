@@ -780,6 +780,70 @@
         "gift_card_resend_failure": {
           "few": "Surgió un problema al volver a enviar tarjetas de regalo. Inténtalo de nuevo o contáctenos."
         }
+      },
+      "order_payment_collection": {
+        "changes_summary": {
+          "added": {
+            "few": "Agregado (s): %{count}"
+          }
+        }
+      },
+      "open_graph_meta_tag": {
+        "title_with_products": {
+          "few": "Comprar %{product_name} Y sin embargo %{count} mercancía"
+        }
+      },
+      "subscriptions": {
+        "recurring_totals_with_policies": {
+          "first_cycles": {
+            "few": "La primera %{count} los pagos son de %{total_price} cada"
+          }
+        },
+        "recurring_total_intervals": {
+          "day": {
+            "few": "%{count} días"
+          },
+          "week": {
+            "few": "%{count} semanalmente"
+          },
+          "month": {
+            "few": "%{count} Lunes"
+          },
+          "year": {
+            "few": "%{count} años"
+          }
+        },
+        "recurring_totals_with_initial_order_shipping_discount_with_policies": {
+          "first_cycles": {
+            "few": ", entonces serán %{count} pagos de cuántos %{total_price}"
+          }
+        }
+      },
+      "contextual_availability": {
+        "title": {
+          "few": "Productos no disponibles"
+        },
+        "products_not_available": {
+          "few": "Estos productos se eliminarán de la canasta porque no están disponibles en su país/región."
+        },
+        "all_products_in_cart_unavailable": {
+          "few": "Estos productos no están disponibles en su país/región."
+        }
+      },
+      "throttle": {
+        "estimated_wait_time": {
+          "few": "Tiempo de espera estimado: {{count}} minutos"
+        }
+      },
+      "deliverability": {
+        "not_deliverable": {
+          "title": {
+            "few": "No hay método de entrega disponible para %{count} (de) artículos"
+          },
+          "message": {
+            "few": "Estos artículos se eliminarán del carrito, ya que no hay métodos de entrega disponibles para su dirección."
+          }
+        }
       }
     }
   }
