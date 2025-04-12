@@ -233,7 +233,8 @@
       "no_results": "Keine Ergebnisse gefunden für \"{{ terms }}\". Überprüfe die Schreibweise oder versuche es mit einer anderen Suchanfrage.",
       "results_with_count": {
         "one": "{{ count }} Ergebnis",
-        "other": "{{ count }} Ergebnisse"
+        "other": "{{ count }} Ergebnisse",
+        "few": "{{ count }} Ergebnis"
       },
       "title": "Suchergebnisse",
       "page": "Seite",
@@ -241,19 +242,23 @@
       "search_for": "Nach \"{{ terms }}\" suchen",
       "results_with_count_and_term": {
         "one": "{{ count }} Ergebnis für \"{{ terms }}\" gefunden",
-        "other": "{{ count }} Ergebnisse für \"{{ terms }}\" gefunden"
+        "other": "{{ count }} Ergebnisse für \"{{ terms }}\" gefunden",
+        "few": "Wurden gefunden {{ count }} Ergebnisse für \"{{ terms }}”"
       },
       "results_pages_with_count": {
         "one": "{{ count }} Seite",
-        "other": "{{ count }} Seiten"
+        "other": "{{ count }} Seiten",
+        "few": "{{ count }} Seite"
       },
       "results_suggestions_with_count": {
         "one": "{{ count }} Vorschlag",
-        "other": "{{ count }} Vorschläge"
+        "other": "{{ count }} Vorschläge",
+        "few": "{{ count }} Vorschläge"
       },
       "results_products_with_count": {
         "one": "{{ count }} Produkt",
-        "other": "{{ count }} Produkte"
+        "other": "{{ count }} Produkte",
+        "few": "{{ count }} Produkte"
       },
       "suggestions": "Vorschläge",
       "pages": "Seiten"
