@@ -676,6 +676,45 @@
         },
         "item_label": {
           "few": "{{count}} ware"
+        },
+        "unfulfillable_product": {
+          "message": {
+            "few": "Leveringsmethode %{delivery_method} is niet langer beschikbaar voor deze items."
+          },
+          "default_message": {
+            "few": "De gekozen leveringsmethode is niet langer beschikbaar voor deze items."
+          }
+        }
+      },
+      "order_summary": {
+        "expand_component_information": {
+          "few": "displays %{count} ware"
+        },
+        "collapse_component_information": {
+          "few": "Verbergen %{count} ware"
+        },
+        "discount_discovery": {
+          "merchandise_quantity_label": {
+            "few": "%{count} (van) artikelen"
+          }
+        },
+        "discount_title_stacking": {
+          "few": "Kortingen"
+        },
+        "discount_order_stacking": {
+          "few": "Kortingen voor bestelling"
+        },
+        "subtotal_label_with_quantity": {
+          "few": "Subtotaal · %{count} ware"
+        },
+        "number_items": {
+          "few": "%{count} ware"
+        },
+        "view_all_items": {
+          "few": "Zie alles %{count} ware"
+        },
+        "pickup_unavailable_banner_title": {
+          "few": "Uw items kunnen niet uit de winkel worden gehaald"
         }
       }
     }
