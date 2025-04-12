@@ -645,6 +645,19 @@
           "prepaid_order_no_cycle_delivery_not_included": {
             "few": "%{shipping_price} για %{count} παραδόσεις (%{per_delivery_cost}), μετά από αυτό %{recurring_order_shipping_price}"
           }
+        },
+        "shipping_method_first_shipment_group_title": {
+          "few": "Πρώτες αποστολές"
+        },
+        "shipping_method_recurring_shipments_group_title": {
+          "few": "Επαναλαμβανόμενες αποστολές"
+        }
+      },
+      "general": {
+        "map": {
+          "cluster_title": {
+            "few": "Σχηματίστηκε σύμπλεγμα {{number}} Σφαίρες"
+          }
         }
       }
     }
