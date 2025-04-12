@@ -289,7 +289,8 @@
       "cart_count": {
         "one": "{{ count }} artículo",
         "other": "{{ count }} artículos",
-        "many": "{{ count }} artículos"
+        "many": "{{ count }} artículos",
+        "few": "{{ count }} mercancía"
       }
     },
     "cart": {
@@ -980,6 +981,13 @@
       },
       "mapClusterTitle": {
         "few": "Clúster formado {{number}} Balas"
+      }
+    },
+    "date": {
+      "humanize": {
+        "lessThanOneHourAgo": {
+          "few": "ahora {{count}} minutos"
+        }
       }
     }
   }
