@@ -768,6 +768,39 @@
         "gift_card_resend_failure": {
           "few": "Ένα πρόβλημα προέκυψε κατά την εκ νέου υποβολή καρτών δώρων. Δοκιμάστε ξανά ή επικοινωνήστε μαζί μας."
         }
+      },
+      "order_payment_collection": {
+        "changes_summary": {
+          "added": {
+            "few": "Προστέθηκαν: %{count}"
+          }
+        }
+      },
+      "open_graph_meta_tag": {
+        "title_with_products": {
+          "few": "Αγορά %{product_name} Και όμως %{count} προϊόντα"
+        }
+      },
+      "subscriptions": {
+        "recurring_totals_with_policies": {
+          "first_cycles": {
+            "few": "Ο πρώτος %{count} Οι πληρωμές είναι από %{total_price} κάθε"
+          }
+        },
+        "recurring_total_intervals": {
+          "day": {
+            "few": "%{count} ημέρες"
+          },
+          "week": {
+            "few": "%{count} εβδομαδιαίος"
+          },
+          "month": {
+            "few": "%{count} Δευτέρα"
+          },
+          "year": {
+            "few": "%{count} έτη"
+          }
+        }
       }
     }
   }
