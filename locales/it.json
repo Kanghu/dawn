@@ -688,6 +688,33 @@
         },
         "item_label": {
           "few": "{{count}} articoli"
+        },
+        "unfulfillable_product": {
+          "message": {
+            "few": "Metodo di consegna %{delivery_method} non è più disponibile per questi articoli."
+          },
+          "default_message": {
+            "few": "Il metodo di consegna scelto non è più disponibile per questi articoli."
+          }
+        }
+      },
+      "order_summary": {
+        "expand_component_information": {
+          "few": "display %{count} articoli"
+        },
+        "collapse_component_information": {
+          "few": "Nascondere %{count} articoli"
+        },
+        "discount_discovery": {
+          "merchandise_quantity_label": {
+            "few": "%{count} (di) articoli"
+          }
+        },
+        "discount_title_stacking": {
+          "few": "Sconti"
+        },
+        "discount_order_stacking": {
+          "few": "Sconti per l'ordine"
         }
       }
     }
