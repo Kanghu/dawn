@@ -844,6 +844,38 @@
             "few": "Questi articoli verranno rimossi dal carrello, in quanto non sono disponibili metodi di consegna per il tuo indirizzo."
           }
         }
+      },
+      "pickup_point": {
+        "paginator": {
+          "header": {
+            "few": "Viene visualizzato %{first} - %{last} DA %{count} Puntura"
+          },
+          "selected_pickup_point_label": {
+            "few": "%{pickup_point_index} DA %{count} Puntura"
+          },
+          "selected_page": {
+            "few": "%{first} - %{last} DA %{count} Puntura"
+          }
+        },
+        "number_of_pickup_points_near_location": {
+          "few": "%{count} Punti di sollevamento vicino alla tua posizione"
+        },
+        "pickup_unavailable_banner_title": {
+          "few": "I tuoi articoli non possono essere sollevati dai punti di sollevamento"
+        }
+      },
+      "local_pickup": {
+        "location_information": {
+          "few": "Esistere %{count} negozi con stock vicino a %{address}"
+        },
+        "paginator": {
+          "label": {
+            "few": "%{first} - %{last} DA %{count} negozio"
+          }
+        },
+        "reveal_more_label": {
+          "few": "Visualizza ancora %{count} (di) posizioni"
+        }
       }
     }
   }
