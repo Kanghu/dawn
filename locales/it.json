@@ -671,6 +671,24 @@
             "few": "Cluster formato {{number}} Proiettili"
           }
         }
+      },
+      "customer_account": {
+        "saved_address_option_description": {
+          "few": "Voi {{count}} indirizzi salvati."
+        }
+      },
+      "stock": {
+        "unshippable_product": {
+          "header": {
+            "few": "Nessun metodo di consegna disponibile per %{count} (di) articoli"
+          },
+          "message": {
+            "few": "Questi articoli verranno rimossi dal carrello, in quanto non sono disponibili metodi di consegna per il tuo indirizzo."
+          }
+        },
+        "item_label": {
+          "few": "{{count}} articoli"
+        }
       }
     }
   }
