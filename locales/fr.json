@@ -742,6 +742,21 @@
         "order_edit_banner_items_added": {
           "few": "Ajouté (s): %{count}"
         }
+      },
+      "shipping_errors": {
+        "shipping_method_not_available_generic": {
+          "few": "Certains articles dans votre panier ne peuvent pas être expédiés à l'adresse que vous avez entrée. Vérifiez l'adresse pour vous assurer qu'elle est correcte et réessayer ou sélectionner une autre adresse."
+        },
+        "shipping_method_not_available_updated": {
+          "few": "Un ou plusieurs articles que vous avez ajoutés ne sont pas expédiés à votre emplacement. Retirez-les pour terminer la commande ou contactez le magasin."
+        }
+      },
+      "processing": {
+        "wait": {
+          "medium": {
+            "few": "Votre commande est sous traitement. Le temps d'attente estimé est de %{count} minutes."
+          }
+        }
       }
     }
   }
