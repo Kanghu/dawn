@@ -844,6 +844,38 @@
             "few": "Ces articles seront supprimés du panier, car il n'y a pas de méthodes de livraison disponibles pour votre adresse."
           }
         }
+      },
+      "pickup_point": {
+        "paginator": {
+          "header": {
+            "few": "Est affiché %{first} - %{last} DEPUIS %{count} ponction"
+          },
+          "selected_pickup_point_label": {
+            "few": "%{pickup_point_index} DEPUIS %{count} ponction"
+          },
+          "selected_page": {
+            "few": "%{first} - %{last} DEPUIS %{count} ponction"
+          }
+        },
+        "number_of_pickup_points_near_location": {
+          "few": "%{count} Points de levage près de votre emplacement"
+        },
+        "pickup_unavailable_banner_title": {
+          "few": "Vos articles ne peuvent pas être retirés des points de levage"
+        }
+      },
+      "local_pickup": {
+        "location_information": {
+          "few": "Exister %{count} magasins avec du stock à proximité de %{address}"
+        },
+        "paginator": {
+          "label": {
+            "few": "%{first} - %{last} DEPUIS %{count} boutique"
+          }
+        },
+        "reveal_more_label": {
+          "few": "Affiche toujours %{count} (de) des emplacements"
+        }
       }
     }
   }
