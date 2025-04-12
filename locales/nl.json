@@ -659,6 +659,24 @@
             "few": "Gevormd cluster {{number}} Kogels"
           }
         }
+      },
+      "customer_account": {
+        "saved_address_option_description": {
+          "few": "Jij {{count}} opgeslagen adressen."
+        }
+      },
+      "stock": {
+        "unshippable_product": {
+          "header": {
+            "few": "Geen leveringsmethode beschikbaar voor %{count} (van) artikelen"
+          },
+          "message": {
+            "few": "Deze artikelen worden uit de kar verwijderd, omdat er geen leveringsmethoden beschikbaar zijn voor uw adres."
+          }
+        },
+        "item_label": {
+          "few": "{{count}} ware"
+        }
       }
     }
   }
