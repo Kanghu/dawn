@@ -202,16 +202,19 @@
       "filter_button": "Filter",
       "filters_selected": {
         "one": "{{ count }} geselecteerd",
-        "other": "{{ count }} geselecteerd"
+        "other": "{{ count }} geselecteerd",
+        "few": "{{ count }} uitkiezen"
       },
       "max_price": "De hoogste prijs is {{ price }}",
       "product_count": {
         "one": "{{ product_count }} korting op {{ count }} producten",
-        "other": "{{ product_count }} korting op {{ count }} producten"
+        "other": "{{ product_count }} korting op {{ count }} producten",
+        "few": "{{ product_count }} VAN {{ count }} producten"
       },
       "product_count_simple": {
         "one": "{{ count }} product",
-        "other": "{{ count }} producten"
+        "other": "{{ count }} producten",
+        "few": "{{ count }} producten"
       },
       "reset": "Opnieuw instellen",
       "sort_button": "Sorteren",
