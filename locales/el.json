@@ -95,7 +95,8 @@
       "read_more_title": "Διαβάστε περισσότερα: {{ title }}",
       "comments": {
         "one": "{{ count }} σχόλιο",
-        "other": "{{ count }} σχόλια"
+        "other": "{{ count }} σχόλια",
+        "few": "{{ count }} σχόλια"
       },
       "moderated": "Έχετε υπόψη ότι τα σχόλια χρειάζεται να λάβουν έγκριση προτού δημοσιευτούν.",
       "comment_form_title": "Υποβάλετε ένα σχόλιο",
@@ -366,11 +367,13 @@
       "variant_total": "Σύνολο παραλλαγών",
       "items_added": {
         "one": "Προστέθηκε {{ quantity }} προϊόν",
-        "other": "Προστέθηκαν {{ quantity }} προϊόντα"
+        "other": "Προστέθηκαν {{ quantity }} προϊόντα",
+        "few": "{{ quantity }} Προστέθηκαν αντικείμενα"
       },
       "items_removed": {
         "one": "Καταργήθηκε {{ quantity }} προϊόν",
-        "other": "Καταργήθηκαν {{ quantity }} προϊόντα"
+        "other": "Καταργήθηκαν {{ quantity }} προϊόντα",
+        "few": "{{ quantity }} εξαλείφονται αντικείμενα"
       },
       "product_variants": "Παραλλαγές προϊόντος",
       "total_items": "Σύνολο προϊόντων",
