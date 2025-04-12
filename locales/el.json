@@ -801,6 +801,25 @@
             "few": "%{count} έτη"
           }
         }
+      },
+      "pickup_point": {
+        "paginator": {
+          "header": {
+            "few": "Εμφανίζεται %{first} - %{last} ΑΠΟ %{count} παρακέντηση"
+          },
+          "selected_pickup_point_label": {
+            "few": "%{pickup_point_index} ΑΠΟ %{count} παρακέντηση"
+          },
+          "selected_page": {
+            "few": "%{first} - %{last} ΑΠΟ %{count} παρακέντηση"
+          }
+        },
+        "number_of_pickup_points_near_location": {
+          "few": "%{count} Σημεία ανύψωσης κοντά στην τοποθεσία σας"
+        },
+        "pickup_unavailable_banner_title": {
+          "few": "Τα αντικείμενά σας δεν μπορούν να ανυψωθούν από τα σημεία ανύψωσης"
+        }
       }
     }
   }
