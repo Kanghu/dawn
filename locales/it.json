@@ -289,7 +289,8 @@
       "cart_count": {
         "one": "{{ count }} articolo",
         "other": "{{ count }} articoli",
-        "many": "{{ count }} articoli"
+        "many": "{{ count }} articoli",
+        "few": "{{ count }} articoli"
       }
     },
     "cart": {
@@ -376,12 +377,14 @@
       "items_added": {
         "one": "{{ quantity }} articolo aggiunto",
         "other": "{{ quantity }} articoli aggiunti",
-        "many": "{{ quantity }} articoli aggiunti"
+        "many": "{{ quantity }} articoli aggiunti",
+        "few": "{{ quantity }} Articoli aggiunti"
       },
       "items_removed": {
         "one": "{{ quantity }} articolo rimosso",
         "other": "{{ quantity }} articoli rimossi",
-        "many": "{{ quantity }} articoli rimossi"
+        "many": "{{ quantity }} articoli rimossi",
+        "few": "{{ quantity }} oggetti eliminati"
       },
       "product_variants": "Varianti di prodotto",
       "total_items": "Articoli totali",
