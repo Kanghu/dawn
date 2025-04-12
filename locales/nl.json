@@ -768,6 +768,70 @@
         "gift_card_resend_failure": {
           "few": "Er ontstond een probleem bij het opnieuw indienen van cadeaubonnen. Probeer het opnieuw of neem contact met ons op."
         }
+      },
+      "order_payment_collection": {
+        "changes_summary": {
+          "added": {
+            "few": "Toegevoegd (s): %{count}"
+          }
+        }
+      },
+      "open_graph_meta_tag": {
+        "title_with_products": {
+          "few": "Kopen %{product_name} En toch %{count} ware"
+        }
+      },
+      "subscriptions": {
+        "recurring_totals_with_policies": {
+          "first_cycles": {
+            "few": "De eerste %{count} Betalingen zijn van %{total_price} elk"
+          }
+        },
+        "recurring_total_intervals": {
+          "day": {
+            "few": "%{count} dagen"
+          },
+          "week": {
+            "few": "%{count} wekelijks"
+          },
+          "month": {
+            "few": "%{count} Maandag"
+          },
+          "year": {
+            "few": "%{count} jaar"
+          }
+        },
+        "recurring_totals_with_initial_order_shipping_discount_with_policies": {
+          "first_cycles": {
+            "few": ", dan zullen ze dat zijn %{count} Betalingen van hoeveel %{total_price}"
+          }
+        }
+      },
+      "contextual_availability": {
+        "title": {
+          "few": "Niet -beschikbare producten"
+        },
+        "products_not_available": {
+          "few": "Deze producten worden uit de mand verwijderd omdat ze niet beschikbaar zijn in uw land/regio."
+        },
+        "all_products_in_cart_unavailable": {
+          "few": "Deze producten zijn niet beschikbaar in uw land/regio."
+        }
+      },
+      "throttle": {
+        "estimated_wait_time": {
+          "few": "Geschatte wachttijd: {{count}} notulen"
+        }
+      },
+      "deliverability": {
+        "not_deliverable": {
+          "title": {
+            "few": "Geen leveringsmethode beschikbaar voor %{count} (van) artikelen"
+          },
+          "message": {
+            "few": "Deze artikelen worden uit de kar verwijderd, omdat er geen leveringsmethoden beschikbaar zijn voor uw adres."
+          }
+        }
       }
     }
   }
