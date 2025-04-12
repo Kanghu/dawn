@@ -728,6 +728,17 @@
         "pickup_unavailable_banner_title": {
           "few": "Sus artículos no se pueden levantar de la tienda"
         }
+      },
+      "payment": {
+        "order_covered_by_gift_cards_notice": {
+          "few": "Su pedido está cubierto por sus tarjetas de regalo."
+        },
+        "card_fields_unavailable_html": {
+          "few": "Los pagos con tarjetas bancarias no están actualmente disponibles.<br><a href=\"%{current_url}\">Actualizar la página</a> o pruebe un método de pago diferente."
+        },
+        "expired_cards_info": {
+          "few": "Existir %{count} Tarjetas caducadas, que puede ver y editar en su cuenta."
+        }
       }
     }
   }
