@@ -204,18 +204,21 @@
       "filters_selected": {
         "one": "{{ count }} seleccionado",
         "other": "{{ count }} seleccionados",
-        "many": "{{ count }} seleccionados"
+        "many": "{{ count }} seleccionados",
+        "few": "{{ count }} seleccionar"
       },
       "max_price": "El precio más alto es {{ price }}",
       "product_count": {
         "one": "{{ product_count }} producto de un total de {{ count }}",
         "other": "{{ product_count }} productos de un total de {{ count }}",
-        "many": "{{ product_count }} productos de un total de {{ count }}"
+        "many": "{{ product_count }} productos de un total de {{ count }}",
+        "few": "{{ product_count }} DE {{ count }} productos"
       },
       "product_count_simple": {
         "one": "{{ count }} producto",
         "other": "{{ count }} productos",
-        "many": "{{ count }} productos"
+        "many": "{{ count }} productos",
+        "few": "{{ count }} productos"
       },
       "reset": "Restablecer",
       "sort_button": "Ordenar",
@@ -238,7 +241,8 @@
       "results_with_count": {
         "one": "{{ count }} resultado",
         "other": "{{ count }} resultados",
-        "many": "{{ count }} resultados"
+        "many": "{{ count }} resultados",
+        "few": "{{ count }} resultado"
       },
       "title": "Resultados de búsqueda",
       "page": "Página",
@@ -247,24 +251,28 @@
       "results_with_count_and_term": {
         "one": "Se ha encontrado {{ count }} resultado para \"{{ terms }}\"",
         "other": "Se han encontrado {{ count }} resultados para \"{{ terms }}\"",
-        "many": "Se han encontrado {{ count }} resultados para \"{{ terms }}\""
+        "many": "Se han encontrado {{ count }} resultados para \"{{ terms }}\"",
+        "few": "Fueron encontrados {{ count }} Resultados para \"{{ terms }}”"
       },
       "results_pages_with_count": {
         "one": "{{ count }} página",
         "other": "{{ count }} páginas",
-        "many": "{{ count }} páginas"
+        "many": "{{ count }} páginas",
+        "few": "{{ count }} página"
       },
       "results_products_with_count": {
         "one": "{{ count }} producto",
         "other": "{{ count }} productos",
-        "many": "{{ count }} productos"
+        "many": "{{ count }} productos",
+        "few": "{{ count }} productos"
       },
       "suggestions": "Sugerencias",
       "pages": "Páginas",
       "results_suggestions_with_count": {
         "one": "{{ count }} sugerencia",
         "other": "{{ count }} sugerencias",
-        "many": "{{ count }} sugerencias"
+        "many": "{{ count }} sugerencias",
+        "few": "{{ count }} de sugerencias"
       }
     },
     "cart": {
