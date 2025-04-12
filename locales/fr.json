@@ -697,6 +697,37 @@
             "few": "La méthode de livraison choisie n'est plus disponible pour ces articles."
           }
         }
+      },
+      "order_summary": {
+        "expand_component_information": {
+          "few": "affichages %{count} ware"
+        },
+        "collapse_component_information": {
+          "few": "Cacher %{count} ware"
+        },
+        "discount_discovery": {
+          "merchandise_quantity_label": {
+            "few": "%{count} (de) articles"
+          }
+        },
+        "discount_title_stacking": {
+          "few": "Remises"
+        },
+        "discount_order_stacking": {
+          "few": "Remises pour la commande"
+        },
+        "subtotal_label_with_quantity": {
+          "few": "Sous-total · %{count} ware"
+        },
+        "number_items": {
+          "few": "%{count} ware"
+        },
+        "view_all_items": {
+          "few": "Voir tout %{count} ware"
+        },
+        "pickup_unavailable_banner_title": {
+          "few": "Vos articles ne peuvent pas être soulevés du magasin"
+        }
       }
     }
   }
