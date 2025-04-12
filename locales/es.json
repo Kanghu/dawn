@@ -671,6 +671,24 @@
             "few": "Clúster formado {{number}} Balas"
           }
         }
+      },
+      "customer_account": {
+        "saved_address_option_description": {
+          "few": "tú {{count}} direcciones guardadas."
+        }
+      },
+      "stock": {
+        "unshippable_product": {
+          "header": {
+            "few": "No hay método de entrega disponible para %{count} (de) artículos"
+          },
+          "message": {
+            "few": "Estos artículos se eliminarán del carrito, ya que no hay métodos de entrega disponibles para su dirección."
+          }
+        },
+        "item_label": {
+          "few": "{{count}} mercancía"
+        }
       }
     }
   }
