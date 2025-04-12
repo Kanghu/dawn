@@ -820,6 +820,19 @@
         "pickup_unavailable_banner_title": {
           "few": "Τα αντικείμενά σας δεν μπορούν να ανυψωθούν από τα σημεία ανύψωσης"
         }
+      },
+      "local_pickup": {
+        "location_information": {
+          "few": "Υπάρχω %{count} καταστήματα με απόθεμα κοντά στο %{address}"
+        },
+        "paginator": {
+          "label": {
+            "few": "%{first} - %{last} ΑΠΟ %{count} κατάστημα"
+          }
+        },
+        "reveal_more_label": {
+          "few": "Εμφανίζεται ακόμα %{count} (OF)"
+        }
       }
     }
   }
