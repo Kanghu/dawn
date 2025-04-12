@@ -617,7 +617,52 @@
             "year": {
               "few": "a cada uno %{count} años"
             }
+          },
+          "first_n_order_free": {
+            "few": "La primera %{count} Pedidos gratuitos"
+          },
+          "free_for_first_n_order": {
+            "few": "Para el primero %{count} órdenes"
+          },
+          "free_shipping_cycles": {
+            "few": "Envío gratis para todavía %{count} entrega"
+          },
+          "free_shipping_cycles_delivery_not_included": {
+            "few": "Envío gratis para %{count} entrega"
+          },
+          "first_n_order_free_with_cycle": {
+            "few": "Envío gratis para todavía %{count} entregas, entonces %{recurring_order_shipping_price}"
+          },
+          "first_n_order_free_with_cycle_delivery_not_included": {
+            "few": "Envío gratis para %{count} entregas, entonces %{recurring_order_shipping_price}"
+          },
+          "max_cycles_base_shipping": {
+            "few": "Aún %{count} entregas al precio de %{shipping_price} cada"
+          },
+          "max_cycles_base_shipping_delivery_not_included": {
+            "few": "Aún %{count} entregas al precio de %{shipping_price} cada"
+          },
+          "prepaid_free_shipping_with_cycles": {
+            "few": "Envío gratis para el primero %{cycle}, después %{recurring_order_shipping_price}"
+          },
+          "prepaid_order_one_cycle": {
+            "few": "%{shipping_price} Porque todavía %{count} entregas (%{per_delivery_cost})"
+          },
+          "prepaid_order_one_cycle_delivery_not_included": {
+            "few": "%{shipping_price} para %{count} entregas (%{per_delivery_cost})"
+          },
+          "prepaid_order_no_cycle": {
+            "few": "%{shipping_price} Porque todavía %{count} entrega (%{per_delivery_cost}), después %{recurring_order_shipping_price}"
+          },
+          "prepaid_order_no_cycle_delivery_not_included": {
+            "few": "%{shipping_price} para %{count} entregas (%{per_delivery_cost}), después %{recurring_order_shipping_price}"
           }
+        },
+        "shipping_method_first_shipment_group_title": {
+          "few": "Primeros envíos"
+        },
+        "shipping_method_recurring_shipments_group_title": {
+          "few": "Envíos recurrentes"
         }
       }
     }
