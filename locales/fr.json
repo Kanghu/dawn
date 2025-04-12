@@ -671,6 +671,32 @@
             "few": "Cluster formé {{number}} Balles"
           }
         }
+      },
+      "customer_account": {
+        "saved_address_option_description": {
+          "few": "toi {{count}} Adresses enregistrées."
+        }
+      },
+      "stock": {
+        "unshippable_product": {
+          "header": {
+            "few": "Aucune méthode de livraison disponible pour %{count} (de) articles"
+          },
+          "message": {
+            "few": "Ces articles seront supprimés du panier, car il n'y a pas de méthodes de livraison disponibles pour votre adresse."
+          }
+        },
+        "item_label": {
+          "few": "{{count}} ware"
+        },
+        "unfulfillable_product": {
+          "message": {
+            "few": "Méthode de livraison %{delivery_method} n'est plus disponible pour ces articles."
+          },
+          "default_message": {
+            "few": "La méthode de livraison choisie n'est plus disponible pour ces articles."
+          }
+        }
       }
     }
   }
