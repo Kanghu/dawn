@@ -952,6 +952,23 @@
             }
           }
         }
+      },
+      "draft_order_details": {
+        "payment_status": {
+          "pending": {
+            "banner_overdue": {
+              "few": "Le paiement de votre commande a dépassé l'échéance avec {{count}} jours"
+            },
+            "banner_due": {
+              "few": "Votre paiement est dû {{count}} jours"
+            }
+          }
+        }
+      }
+    },
+    "errors": {
+      "banner_title": {
+        "few": "Exister {{count}} INSECTES"
       }
     }
   }
