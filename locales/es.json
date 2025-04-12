@@ -96,7 +96,8 @@
       "comments": {
         "one": "{{ count }} comentario",
         "other": "{{ count }} comentarios",
-        "many": "{{ count }} comentarios"
+        "many": "{{ count }} comentarios",
+        "few": "{{ count }} comentario"
       },
       "moderated": "Ten en cuenta que los comentarios deben aprobarse antes de que se publiquen.",
       "comment_form_title": "Deja un comentario",
@@ -377,12 +378,14 @@
       "items_added": {
         "one": "{{ quantity }} artículo agregado",
         "other": "{{ quantity }} artículos agregados",
-        "many": "{{ quantity }} artículos agregados"
+        "many": "{{ quantity }} artículos agregados",
+        "few": "{{ quantity }} artículos agregados"
       },
       "items_removed": {
         "one": "{{ quantity }} artículo eliminado",
         "other": "{{ quantity }} artículos eliminados",
-        "many": "{{ quantity }} artículos eliminados"
+        "many": "{{ quantity }} artículos eliminados",
+        "few": "{{ quantity }} artículos eliminados"
       },
       "product_variants": "Variantes de producto",
       "total_items": "Total de artículos",
