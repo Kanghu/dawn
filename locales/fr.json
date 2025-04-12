@@ -617,7 +617,52 @@
             "year": {
               "few": "à chaque %{count} années"
             }
+          },
+          "first_n_order_free": {
+            "few": "Le premier %{count} Commandes gratuites"
+          },
+          "free_for_first_n_order": {
+            "few": "Pour le premier %{count} ordres"
+          },
+          "free_shipping_cycles": {
+            "few": "Livraison gratuite pour encore %{count} livraison"
+          },
+          "free_shipping_cycles_delivery_not_included": {
+            "few": "Livraison gratuite pour %{count} livraison"
+          },
+          "first_n_order_free_with_cycle": {
+            "few": "Livraison gratuite pour encore %{count} livraisons, alors %{recurring_order_shipping_price}"
+          },
+          "first_n_order_free_with_cycle_delivery_not_included": {
+            "few": "Livraison gratuite pour %{count} livraisons, alors %{recurring_order_shipping_price}"
+          },
+          "max_cycles_base_shipping": {
+            "few": "Toujours %{count} livraisons au prix de %{shipping_price} chaque"
+          },
+          "max_cycles_base_shipping_delivery_not_included": {
+            "few": "Toujours %{count} livraisons au prix de %{shipping_price} chaque"
+          },
+          "prepaid_free_shipping_with_cycles": {
+            "few": "Livraison gratuite pour le premier %{cycle}, après cela %{recurring_order_shipping_price}"
+          },
+          "prepaid_order_one_cycle": {
+            "few": "%{shipping_price} pour encore %{count} livraisons (%{per_delivery_cost})"
+          },
+          "prepaid_order_one_cycle_delivery_not_included": {
+            "few": "%{shipping_price} pour %{count} livraisons (%{per_delivery_cost})"
+          },
+          "prepaid_order_no_cycle": {
+            "few": "%{shipping_price} pour encore %{count} livraison (%{per_delivery_cost}), après cela %{recurring_order_shipping_price}"
+          },
+          "prepaid_order_no_cycle_delivery_not_included": {
+            "few": "%{shipping_price} pour %{count} livraisons (%{per_delivery_cost}), après cela %{recurring_order_shipping_price}"
           }
+        },
+        "shipping_method_first_shipment_group_title": {
+          "few": "Premières expéditions"
+        },
+        "shipping_method_recurring_shipments_group_title": {
+          "few": "Expéditions récurrentes"
         }
       }
     }
