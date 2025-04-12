@@ -844,6 +844,38 @@
             "few": "Estos artículos se eliminarán del carrito, ya que no hay métodos de entrega disponibles para su dirección."
           }
         }
+      },
+      "pickup_point": {
+        "paginator": {
+          "header": {
+            "few": "Se muestra %{first} - %{last} DE %{count} punción"
+          },
+          "selected_pickup_point_label": {
+            "few": "%{pickup_point_index} DE %{count} punción"
+          },
+          "selected_page": {
+            "few": "%{first} - %{last} DE %{count} punción"
+          }
+        },
+        "number_of_pickup_points_near_location": {
+          "few": "%{count} Puntos de levantamiento cerca de su ubicación"
+        },
+        "pickup_unavailable_banner_title": {
+          "few": "Sus artículos no se pueden sacar de los puntos de elevación"
+        }
+      },
+      "local_pickup": {
+        "location_information": {
+          "few": "Existir %{count} tiendas con stock cercano a %{address}"
+        },
+        "paginator": {
+          "label": {
+            "few": "%{first} - %{last} DE %{count} comercio"
+          }
+        },
+        "reveal_more_label": {
+          "few": "Todavía se muestra %{count} (de) ubicaciones"
+        }
       }
     }
   }
