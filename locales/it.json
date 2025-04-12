@@ -952,6 +952,23 @@
             }
           }
         }
+      },
+      "draft_order_details": {
+        "payment_status": {
+          "pending": {
+            "banner_overdue": {
+              "few": "Il pagamento per il tuo ordine ha superato la maturità con {{count}} giorni"
+            },
+            "banner_due": {
+              "few": "Il tuo pagamento è dovuto in {{count}} giorni"
+            }
+          }
+        }
+      }
+    },
+    "errors": {
+      "banner_title": {
+        "few": "Esistere {{count}} Bug"
       }
     }
   }
