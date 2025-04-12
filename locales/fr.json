@@ -780,6 +780,70 @@
         "gift_card_resend_failure": {
           "few": "Un problème s'est posé lors de la soumission de cartes-cadeaux. Réessayez ou contactez-nous."
         }
+      },
+      "order_payment_collection": {
+        "changes_summary": {
+          "added": {
+            "few": "Ajouté (s): %{count}"
+          }
+        }
+      },
+      "open_graph_meta_tag": {
+        "title_with_products": {
+          "few": "Acheter %{product_name} Et pourtant %{count} ware"
+        }
+      },
+      "subscriptions": {
+        "recurring_totals_with_policies": {
+          "first_cycles": {
+            "few": "Le premier %{count} Les paiements sont de %{total_price} chaque"
+          }
+        },
+        "recurring_total_intervals": {
+          "day": {
+            "few": "%{count} jours"
+          },
+          "week": {
+            "few": "%{count} hebdomadaire"
+          },
+          "month": {
+            "few": "%{count} Lundi"
+          },
+          "year": {
+            "few": "%{count} années"
+          }
+        },
+        "recurring_totals_with_initial_order_shipping_discount_with_policies": {
+          "first_cycles": {
+            "few": ", alors ils seront %{count} paiements de combien de %{total_price}"
+          }
+        }
+      },
+      "contextual_availability": {
+        "title": {
+          "few": "Produits indisponibles"
+        },
+        "products_not_available": {
+          "few": "Ces produits seront supprimés du panier car ils ne sont pas disponibles dans votre pays / région."
+        },
+        "all_products_in_cart_unavailable": {
+          "few": "Ces produits ne sont pas disponibles dans votre pays / région."
+        }
+      },
+      "throttle": {
+        "estimated_wait_time": {
+          "few": "Temps d'attente estimé: {{count}} minutes"
+        }
+      },
+      "deliverability": {
+        "not_deliverable": {
+          "title": {
+            "few": "Aucune méthode de livraison disponible pour %{count} (de) articles"
+          },
+          "message": {
+            "few": "Ces articles seront supprimés du panier, car il n'y a pas de méthodes de livraison disponibles pour votre adresse."
+          }
+        }
       }
     }
   }
