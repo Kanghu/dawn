@@ -899,6 +899,29 @@
           "few": "Φορτώστε ακόμα {{count}} προϊόντα"
         }
       }
+    },
+    "B2B": {
+      "orders": {
+        "draft_order_list": {
+          "pending_tab_accessibility_label": {
+            "pending_orders": {
+              "few": "εσείς {{count}} (των) παραγγελιών σε αναμονή"
+            }
+          }
+        }
+      },
+      "draft_order_details": {
+        "payment_status": {
+          "pending": {
+            "banner_overdue": {
+              "few": "Η πληρωμή για την παραγγελία σας έχει ξεπεράσει την ωριμότητα με {{count}} ημέρες"
+            },
+            "banner_due": {
+              "few": "Η πληρωμή σας οφείλεται {{count}} ημέρες"
+            }
+          }
+        }
+      }
     }
   }
 }
