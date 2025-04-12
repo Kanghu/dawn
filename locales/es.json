@@ -688,6 +688,45 @@
         },
         "item_label": {
           "few": "{{count}} mercancía"
+        },
+        "unfulfillable_product": {
+          "message": {
+            "few": "Método de entrega %{delivery_method} ya no está disponible para estos artículos."
+          },
+          "default_message": {
+            "few": "El método de entrega elegido ya no está disponible para estos artículos."
+          }
+        }
+      },
+      "order_summary": {
+        "expand_component_information": {
+          "few": "pantallas %{count} mercancía"
+        },
+        "collapse_component_information": {
+          "few": "Esconder %{count} mercancía"
+        },
+        "discount_discovery": {
+          "merchandise_quantity_label": {
+            "few": "%{count} (de) artículos"
+          }
+        },
+        "discount_title_stacking": {
+          "few": "Descuentos"
+        },
+        "discount_order_stacking": {
+          "few": "Descuentos para el pedido"
+        },
+        "subtotal_label_with_quantity": {
+          "few": "Subtotal · %{count} mercancía"
+        },
+        "number_items": {
+          "few": "%{count} mercancía"
+        },
+        "view_all_items": {
+          "few": "Ver todo %{count} mercancía"
+        },
+        "pickup_unavailable_banner_title": {
+          "few": "Sus artículos no se pueden levantar de la tienda"
         }
       }
     }
