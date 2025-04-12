@@ -832,6 +832,38 @@
             "few": "Deze artikelen worden uit de kar verwijderd, omdat er geen leveringsmethoden beschikbaar zijn voor uw adres."
           }
         }
+      },
+      "pickup_point": {
+        "paginator": {
+          "header": {
+            "few": "Wordt weergegeven %{first} - %{last} VAN %{count} prik"
+          },
+          "selected_pickup_point_label": {
+            "few": "%{pickup_point_index} VAN %{count} prik"
+          },
+          "selected_page": {
+            "few": "%{first} - %{last} VAN %{count} prik"
+          }
+        },
+        "number_of_pickup_points_near_location": {
+          "few": "%{count} Tilpunten in de buurt van uw locatie"
+        },
+        "pickup_unavailable_banner_title": {
+          "few": "Uw items kunnen niet worden opgeheven door tilpunten"
+        }
+      },
+      "local_pickup": {
+        "location_information": {
+          "few": "Bestaan %{count} winkels met voorraad dichtbij %{address}"
+        },
+        "paginator": {
+          "label": {
+            "few": "%{first} - %{last} VAN %{count} winkel"
+          }
+        },
+        "reveal_more_label": {
+          "few": "Toont nog steeds %{count} (van) locaties"
+        }
       }
     }
   }
