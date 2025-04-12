@@ -940,6 +940,23 @@
             }
           }
         }
+      },
+      "draft_order_details": {
+        "payment_status": {
+          "pending": {
+            "banner_overdue": {
+              "few": "Betaling voor uw bestelling heeft de looptijd overtroffen met {{count}} dagen"
+            },
+            "banner_due": {
+              "few": "Uw betaling is verschuldigd {{count}} dagen"
+            }
+          }
+        }
+      }
+    },
+    "errors": {
+      "banner_title": {
+        "few": "Bestaan {{count}} Bugs"
       }
     }
   }
