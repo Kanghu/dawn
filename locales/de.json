@@ -279,7 +279,8 @@
       "menu": "Menü",
       "cart_count": {
         "one": "{{ count }} Artikel",
-        "other": "{{ count }} Artikel"
+        "other": "{{ count }} Artikel",
+        "few": "{{ count }} Ware"
       }
     },
     "cart": {
@@ -968,6 +969,13 @@
       },
       "mapClusterTitle": {
         "few": "Cluster gebildet {{number}} Kugeln"
+      }
+    },
+    "date": {
+      "humanize": {
+        "lessThanOneHourAgo": {
+          "few": "Jetzt {{count}} Minuten"
+        }
       }
     }
   }
