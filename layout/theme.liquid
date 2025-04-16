@@ -477,7 +477,20 @@ body {
     showPopoutButton: true, // Show popout button if set to true
     // Add other customization options as needed
   };
+  (function(d,t) {
+    var BASE_URL="https://app.chatwoot.com";
+    var g=d.createElement(t),s=d.getElementsByTagName(t)[0];
+    g.src=BASE_URL+"/packs/js/sdk.js";
+    g.defer = true;
+    g.async = true;
+    s.parentNode.insertBefore(g,s);
+    g.onload=function(){
+      window.chatwootSDK.run({
+        websiteToken: 'oQQDpGSw5mcULG6tQB6GeNvN',
+        baseUrl: BASE_URL
+      })
+    }
+  })(document,"script");
 </script>
-<script src="https://app.chatwoot.com/packs/js/sdk.js" async></script>
   </body>
 </html>
