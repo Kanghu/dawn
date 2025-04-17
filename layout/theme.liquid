@@ -469,27 +469,23 @@ body {
     {%- endif -%}
 
 <script>
-  window.chatwootSettings = {
-    locale: 'ro', // Set the language
-    position: 'right', // Position of the widget: 'left' or 'right'
-    launcherTitle: 'Need help?', // Custom launcher text
-    hideMessageBubble: false, // Hide the message bubble if set to true
-    showPopoutButton: true, // Show popout button if set to true
-    // Add other customization options as needed
-  };
-  (function(d,t) {
+  (function(d, t) {
     var BASE_URL="https://app.chatwoot.com";
-    var g=d.createElement(t),s=d.getElementsByTagName(t)[0];
+    var g=d.createElement(t), s=d.getElementsByTagName(t)[0];
     g.src=BASE_URL+"/packs/js/sdk.js";
     g.defer = true;
     g.async = true;
     s.parentNode.insertBefore(g,s);
-    g.onload=function(){
+    g.onload = function(){
       window.chatwootSDK.run({
         websiteToken: 'oQQDpGSw5mcULG6tQB6GeNvN',
         baseUrl: BASE_URL
-      })
-    }
+      });
+      // după iniţializare
+      window.addEventListener('chatwoot:ready', function() {
+        window.$chatwoot.setLocale('ro');
+      });
+    };
   })(document,"script");
 </script>
   </body>
