@@ -75,7 +75,7 @@
     </div>
   </div>
 
-  <div class="flex flex-row w-100 my-4 gap-2{% if filter_type == 'drawer' %} facets-container-drawer{% endif %}{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--fade-in{% endif %}">
+  <div class="flex flex-row w-100 my-4 gap-4{% if filter_type == 'drawer' %} facets-container-drawer{% endif %}{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--fade-in{% endif %}">
     {%- if filter_type == 'vertical' or filter_type == 'horizontal' -%}
       <facet-filters-form class="facets small-hide">
         <form id="FacetFiltersForm" class="{% if filter_type == 'horizontal' %}facets__form{% else %}facets__form-vertical{% endif %}">
@@ -473,9 +473,12 @@
         <details class="mobile-facets__disclosure disclosure-has-popup">
           <summary class="mobile-facets__open-wrapper focus-offset">
             <span class="button mobile-facets__open{% if filter_type == 'drawer' and enable_filtering == false %} medium-hide large-up-hide{% endif %} px-2 text-white" style="border-radius: 15px 5px 15px 5px; min-height: 3.5rem !important; background-color: white; color: black !important; border: 1px solid #06BAD5;">
-              <span class="svg-wrapper inline-flex items-center h-6">
-                {{- 'icon-filter-sort.svg' | inline_asset_content -}}
-              </span>
+<span class="svg-wrapper">
+  <svg xmlns="http://www.w3.org/2000/svg" fill="none" class="icon icon-sort" viewBox="0 0 20 20">
+    <path fill="currentColor" fill-rule="evenodd" d="M6.5 7.5a.5.5 0 0 1 .832-.374l2.5 2.25a.5.5 0 0 1 0 .748l-2.5 2.25a.5.5 0 0 1-.832-.374v-4.5Zm7 5a.5.5 0 0 0-.832.374v-4.5a.5.5 0 0 0 .832-.374l2.5 2.25a.5.5 0 0 0 0 .748l-2.5 2.25Z" clip-rule="evenodd"/>
+  </svg>
+</span>
+
               <span class="mobile-facets__open-label button-label">
                 {{ 'products.facets.sort_button' | t }}
               </span>
