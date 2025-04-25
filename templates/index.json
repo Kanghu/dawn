@@ -12,9 +12,44 @@
     "pagefly-home": {
       "type": "pagefly-home",
       "settings": {}
+    },
+    "174558919114520042": {
+      "type": "apps",
+      "blocks": {
+        "vitals_all_reviews_badge_jYiyey": {
+          "type": "shopify://apps/vitals/blocks/all-reviews-badge/aeb48102-2a5a-4f39-bdbd-d8d49f4e20b8",
+          "settings": {}
+        }
+      },
+      "block_order": [
+        "vitals_all_reviews_badge_jYiyey"
+      ],
+      "settings": {
+        "include_margins": true
+      }
+    },
+    "featured_blog_wr7Dxf": {
+      "type": "featured-blog",
+      "name": "t:sections.featured-blog.presets.name",
+      "settings": {
+        "heading": "",
+        "heading_size": "h2",
+        "blog": "news",
+        "post_limit": 3,
+        "columns_desktop": 3,
+        "color_scheme": "",
+        "show_image": true,
+        "show_date": true,
+        "show_author": true,
+        "show_view_all": true,
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
     }
   },
   "order": [
-    "pagefly-home"
+    "pagefly-home",
+    "174558919114520042",
+    "featured_blog_wr7Dxf"
   ]
 }
