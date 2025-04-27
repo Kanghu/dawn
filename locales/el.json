@@ -807,6 +807,11 @@
           "year": {
             "few": "%{count} έτη"
           }
+        },
+        "recurring_totals_with_initial_order_shipping_discount_with_policies": {
+          "first_cycles": {
+            "few": ", τότε θα είναι %{count} Πληρωμές για πόσα %{total_price}"
+          }
         }
       },
       "pickup_point": {
@@ -844,6 +849,32 @@
       "merchandise_unavailable_in_buyer_location": {
         "remove_items_action": {
           "few": "εξαλείφει τα μη διαθέσιμα αντικείμενα"
+        }
+      },
+      "contextual_availability": {
+        "title": {
+          "few": "Μη διαθέσιμα προϊόντα"
+        },
+        "products_not_available": {
+          "few": "Αυτά τα προϊόντα θα αφαιρεθούν από το καλάθι επειδή δεν είναι διαθέσιμα στη χώρα/περιοχή σας."
+        },
+        "all_products_in_cart_unavailable": {
+          "few": "Αυτά τα προϊόντα δεν είναι διαθέσιμα στη χώρα/περιοχή σας."
+        }
+      },
+      "throttle": {
+        "estimated_wait_time": {
+          "few": "Εκτιμώμενος χρόνος αναμονής: {{count}} πρακτικά"
+        }
+      },
+      "deliverability": {
+        "not_deliverable": {
+          "title": {
+            "few": "Δεν υπάρχει διαθέσιμη μέθοδος παράδοσης για %{count} (των) άρθρων"
+          },
+          "message": {
+            "few": "Αυτά τα άρθρα θα αφαιρεθούν από το καλάθι, καθώς δεν υπάρχουν διαθέσιμες μέθοδοι παράδοσης για τη διεύθυνσή σας."
+          }
         }
       }
     },
