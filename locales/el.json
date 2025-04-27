@@ -236,7 +236,8 @@
       "no_results": "Δεν βρέθηκαν αποτελέσματα για «{{ terms }}». Ελέγξτε την ορθογραφία ή χρησιμοποιήστε άλλη λέξη ή φράση.",
       "results_with_count": {
         "one": "{{ count }} αποτέλεσμα",
-        "other": "{{ count }} αποτελέσματα"
+        "other": "{{ count }} αποτελέσματα",
+        "few": "{{ count }} αποτέλεσμα"
       },
       "title": "Αποτελέσματα αναζήτησης",
       "page": "Σελίδα",
@@ -244,21 +245,25 @@
       "search_for": "Αναζήτηση για «{{ terms }}»",
       "results_with_count_and_term": {
         "one": "Βρέθηκε {{ count }} αποτέλεσμα για «{{ terms }}»",
-        "other": "Βρέθηκαν {{ count }} αποτελέσματα για «{{ terms }}»"
+        "other": "Βρέθηκαν {{ count }} αποτελέσματα για «{{ terms }}»",
+        "few": "Βρέθηκαν {{ count }} Αποτελέσματα για \"{{ terms }}”"
       },
       "results_pages_with_count": {
         "one": "{{ count }} σελίδα",
-        "other": "{{ count }} σελίδες"
+        "other": "{{ count }} σελίδες",
+        "few": "{{ count }} σελίδα"
       },
       "results_products_with_count": {
         "one": "{{ count }} προϊόν",
-        "other": "{{ count }} προϊόντα"
+        "other": "{{ count }} προϊόντα",
+        "few": "{{ count }} προϊόντα"
       },
       "suggestions": "Προτάσεις",
       "pages": "Σελίδες",
       "results_suggestions_with_count": {
         "one": "{{ count }} πρόταση",
-        "other": "{{ count }} προτάσεις"
+        "other": "{{ count }} προτάσεις",
+        "few": "{{ count }} προτάσεις"
       }
     },
     "cart": {
