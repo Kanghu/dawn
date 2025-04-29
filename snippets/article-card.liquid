@@ -16,6 +16,36 @@
   {% render 'article-card' blog: blog, article: article, show_image: section.settings.show_image %}
 {% endcomment %}
 
+<style>
+  /* Match product card padding */
+  .article-card .card__content {
+    padding: var(--card-content-padding);
+  }
+  
+  .article-card .card__information {
+    padding: var(--card-information-padding);
+  }
+  
+  .article-card .card__inner {
+    padding: var(--card-inner-padding);
+  }
+  
+  /* Fix spacing when there's an image */
+  .article-card .card__content:not(:only-child) {
+    padding-top: 0;
+  }
+  
+  /* Additional padding adjustments for consistent look */
+  .article-card .card__heading {
+    margin-top: 0;
+    padding-top: 1rem;
+  }
+  
+  .article-card .article-card__excerpt {
+    margin-top: 0.8rem;
+  }
+</style>
+
 {%- if article and article != empty -%}
   {%- liquid
     assign ratio = 1

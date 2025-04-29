@@ -284,7 +284,7 @@
     </div>
 
   </header>
-</{% if section.settings.sticky_header_type != 'none' %}sticky-header{% else %}div{% endif %}>
+{% if section.settings.sticky_header_type != 'none' %}sticky-header{% else %}div{% endif %}
 
 {%- if settings.cart_type == "notification" -%}
   {%- render 'cart-notification', color_scheme: section.settings.color_scheme, desktop_menu_type: section.settings.menu_type_desktop -%}

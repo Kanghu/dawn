@@ -1,0 +1,331 @@
+{%- comment -%}
+  Renders a simplified country picker with flags for the localization form
+
+  Accepts:
+    - localPosition: pass in the position in which the form is coming up to create specific IDs
+{%- endcomment -%}
+
+{%- liquid
+  assign currencies = localization.available_countries | map: 'currency' | map: 'iso_code' | uniq
+  assign popular_countries = localization.available_countries | where: 'popular?' | sort: 'name'
+
+  assign show_popular_countries = false
+  if localization.available_countries.size > 9 and popular_countries.size > 1
+    assign show_popular_countries = true
+  endif
+
+  assign show_currencies = false
+  if currencies.size > 1
+    assign show_currencies = true
+  endif
+
+  assign is_mobile = false
+  if localPosition contains 'Mobile'
+    assign is_mobile = true
+  endif
+%}
+
+<div class="disclosure">
+  <button
+    type="button"
+    class="disclosure__button localization-form__select localization-selector link link--text caption-large"
+    aria-expanded="false"
+    aria-controls="{{ localPosition }}-country-results"
+    aria-describedby="{{ localPosition }}Label"
+    style="font-size: 1.1rem;"
+  >
+    <span class="country-flag-wrapper" style="display: inline-block; margin-right: 5px;">
+      <img 
+        src="{{ 'flag-icons/flags/4x3/' | append: localization.country.iso_code | downcase | append: '.svg' | asset_url }}" 
+        onerror="this.src='{{ 'flag-icons/flags/4x3/xx.svg' | asset_url }}'; this.onerror=null;" 
+        width="20" 
+        height="15" 
+        alt="" 
+        style="vertical-align: middle;">
+    </span>
+    <span style="font-size: 1.1rem;">
+      {{- localization.country.name -}}
+    </span>
+    {{ 'icon-caret.svg' | inline_asset_content }}
+  </button>
+  <div class="disclosure__list-wrapper country-selector{% if is_mobile %} mobile-country-selector{% endif %}" hidden style="z-index: {% if is_mobile %}99999{% else %}999{% endif %};">
+    <div class="country-filter country-filter--no-padding">
+      <button
+        class="country-selector__close-button button--small link"
+        type="button"
+        aria-label="{{ 'accessibility.close' | t }}"
+      >
+        {{- 'icon-close.svg' | inline_asset_content -}}
+      </button>
+    </div>
+    <div
+      class="disclosure__list country-selector__list{% if show_currencies %} country-selector__list--with-multiple-currencies{% endif %}"
+      id="{{ localPosition }}-country-results"
+    >
+      {% if show_popular_countries %}
+        <ul
+          role="list"
+          class="list-unstyled popular-countries"
+          aria-label="{{ 'localization.popular_countries_regions' | t }}"
+        >
+          {%- for country in popular_countries -%}
+            <li class="disclosure__item" tabindex="-1">
+              <a
+                class="link link--text disclosure__link caption-large focus-inset"
+                href="#"
+                {% if country.iso_code == localization.country.iso_code %}
+                  aria-current="true"
+                {% endif %}
+                data-value="{{ country.iso_code }}"
+                id="{{ country.name }}"
+                style="display: flex; align-items: center; font-size: 1.1rem;"
+              >
+                <span
+                  {% if country.iso_code != localization.country.iso_code %}
+                    class="visibility-hidden"
+                  {% endif %}
+                >
+                  {{- 'icon-checkmark.svg' | inline_asset_content -}}
+                </span>
+                <span class="country-flag-wrapper" style="display: inline-block; margin-right: 8px;">
+                  <img src="{{ 'flag-icons/flags/4x3/' | append: country.iso_code | downcase | append: '.svg' | asset_url }}" width="40" height="30" alt="" style="vertical-align: middle;">
+                </span>
+                <span class="country" style="font-size: 1.1rem;">{{- country.name }}</span>
+                <span class="localization-form__currency motion-reduce{% unless show_currencies %} hidden{% endunless %}" style="margin-left: auto; font-size: 1.1rem;">
+                  {{ country.currency.iso_code }}
+                  {{ country.currency.symbol -}}
+                </span>
+              </a>
+            </li>
+          {%- endfor -%}
+        </ul>
+      {% endif %}
+      <ul role="list" class="list-unstyled countries">
+        {%- for country in localization.available_countries -%}
+          <li class="disclosure__item" tabindex="-1">
+            <a
+              class="link link--text disclosure__link caption-large focus-inset"
+              href="#"
+              {% if country.iso_code == localization.country.iso_code %}
+                aria-current="true"
+              {% endif %}
+              data-value="{{ country.iso_code }}"
+              id="{{ country.name }}"
+              style="display: flex; align-items: center; font-size: 1.25rem;"
+            >
+              <span
+                {% if country.iso_code != localization.country.iso_code %}
+                  class="visibility-hidden"
+                {% endif %}
+              >
+                {{- 'icon-checkmark.svg' | inline_asset_content -}}
+              </span>
+              <span class="country-flag-wrapper" style="display: inline-block; margin-right: 8px;">
+                <img src="{{ 'flag-icons/flags/4x3/' | append: country.iso_code | downcase | append: '.svg' | asset_url }}" width="20" height="15" alt="" style="vertical-align: middle;">
+              </span>
+              <span class="country" style="font-size: 1.1rem;">{{- country.name }}</span>
+              <span class="localization-form__currency motion-reduce{% unless show_currencies %} hidden{% endunless %}" style="margin-left: auto; font-size: 1.1rem;">
+                {{ country.currency.iso_code }}
+                {{ country.currency.symbol -}}
+              </span>
+            </a>
+          </li>
+        {%- endfor -%}
+      </ul>
+    </div>
+  </div>
+  <div class="country-selector__overlay"></div>
+</div>
+<input type="hidden" name="country_code" value="{{ localization.country.iso_code }}">
+
+{% if is_mobile %}
+<style>
+  /* Hide announcement bar when mobile selector is open */
+  body.mobile-country-selector-active .utility-bar,
+  body.mobile-country-selector-active .announcement-bar,
+  body.mobile-country-selector-active .slideshow-component,
+  body.mobile-country-selector-active .slider-buttons,
+  body.mobile-country-selector-active button[class*="slider"],
+  body.mobile-country-selector-active button[class*="pf-slider"],
+  body.mobile-country-selector-active .nav-style-1 {
+    visibility: hidden !important;
+    opacity: 0 !important;
+    pointer-events: none !important;
+    transition: opacity 0.2s ease, visibility 0.2s ease !important;
+    z-index: -1 !important; /* Force behind everything */
+  }
+  
+  /* Show announcement bar when mobile selector is closed */
+  .utility-bar,
+  .announcement-bar,
+  .slideshow-component,
+  .slider-buttons,
+  button[class*="slider"],
+  button[class*="pf-slider"],
+  .nav-style-1 {
+    visibility: visible !important;
+    opacity: 1 !important;
+    pointer-events: auto !important;
+    transition: opacity 0.2s ease, visibility 0.2s ease !important;
+  }
+  
+  /* Additional specific rule for those stubborn slider buttons */
+  body.mobile-country-selector-active button.pf-slider-next,
+  body.mobile-country-selector-active button.pf-slider-prev,
+  body.mobile-country-selector-active button.nav-style-1 {
+    z-index: -999 !important; 
+    visibility: hidden !important;
+    opacity: 0 !important;
+    display: none !important; /* Completely hide them */
+  }
+  
+  /* Mobile-specific styles for country selector */
+  .mobile-country-selector {
+    position: fixed !important;
+    top: 0 !important;
+    left: 0 !important;
+    right: 0 !important;
+    bottom: 0 !important;
+    width: 100% !important;
+    height: 100vh !important;
+    max-height: none !important;
+    overflow-y: auto !important;
+    background-color: #fff !important;
+    z-index: 99999 !important;
+  }
+  
+  /* Ensure the overlay is also above everything else */
+  .country-selector__overlay {
+    display: none !important; /* Hidden by default with !important */
+  }
+  
+  /* Show the overlay when the selector is active */
+  body.mobile-country-selector-active .country-selector__overlay {
+    z-index: 99998 !important;
+    position: fixed !important;
+    top: 0 !important;
+    left: 0 !important;
+    width: 100% !important;
+    height: 100% !important;
+    background-color: rgba(0, 0, 0, 0.5) !important;
+    display: block !important; /* Only show when active */
+  }
+  
+  /* Remaining styles unchanged */
+  .mobile-country-selector .country-selector__list {
+    padding: 20px !important;
+    height: auto !important;
+    max-height: none !important;
+  }
+  
+  .mobile-country-selector .country-filter {
+    position: sticky !important;
+    top: 0 !important;
+    background: #fff !important;
+    padding: 10px !important;
+    z-index: 100000 !important;
+  }
+
+  /* Ensure the close button is visible and positioned correctly */
+  .mobile-country-selector .country-selector__close-button {
+    position: absolute !important;
+    top: 10px !important;
+    right: 10px !important;
+    font-size: 1.25rem !important;
+    z-index: 100001 !important;
+  }
+</style>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    const mobileSelectorButtons = document.querySelectorAll('button.disclosure__button');
+    const mobileSelectors = document.querySelectorAll('.mobile-country-selector');
+    const closeButtons = document.querySelectorAll('.country-selector__close-button');
+    
+    // Function to open mobile selector
+    function openMobileSelector(event) {
+      const button = event.currentTarget;
+      const selector = button.closest('.disclosure').querySelector('.mobile-country-selector');
+      
+      if (selector) {
+        selector.removeAttribute('hidden');
+        document.body.classList.add('mobile-country-selector-active');
+        button.setAttribute('aria-expanded', 'true');
+      }
+    }
+    
+    // Function to close mobile selector
+    function closeMobileSelector() {
+      mobileSelectors.forEach(selector => {
+        selector.setAttribute('hidden', '');
+      });
+      document.body.classList.remove('mobile-country-selector-active');
+      mobileSelectorButtons.forEach(button => {
+        button.setAttribute('aria-expanded', 'false');
+      });
+      
+      // Force a reflow to ensure CSS changes are applied immediately
+      document.body.offsetHeight;
+    }
+    
+    // Add event listeners for mobile selectors
+    mobileSelectorButtons.forEach(button => {
+      if (button.closest('.disclosure').querySelector('.mobile-country-selector')) {
+        button.addEventListener('click', openMobileSelector);
+      }
+    });
+    
+    // Add event listeners for close buttons
+    closeButtons.forEach(button => {
+      if (button.closest('.mobile-country-selector')) {
+        button.addEventListener('click', closeMobileSelector);
+      }
+    });
+    
+    // Close when clicking on the overlay
+    document.addEventListener('click', function(event) {
+      if (event.target.classList.contains('country-selector__overlay')) {
+        closeMobileSelector();
+      }
+    });
+    
+    // Close on Escape key
+    document.addEventListener('keydown', function(event) {
+      if (event.key === 'Escape') {
+        closeMobileSelector();
+      }
+    });
+    
+    // Handle country selection
+    document.querySelectorAll('.country-selector a.disclosure__link').forEach(link => {
+      link.addEventListener('click', function(e) {
+        e.preventDefault();
+        const form = this.closest('form');
+        const input = form.querySelector('input[name="country_code"]');
+        if (input) {
+          input.value = this.getAttribute('data-value');
+          form.submit();
+        }
+        closeMobileSelector();
+      });
+    });
+  });
+</script>
+
+<script>
+  // Additional safety mechanism to ensure everything is restored properly
+  (function() {
+    function checkAndRestoreElements() {
+      if (!document.querySelector('.mobile-country-selector:not([hidden])')) {
+        document.body.classList.remove('mobile-country-selector-active');
+      }
+    }
+    
+    // Check periodically and on various events
+    setInterval(checkAndRestoreElements, 1000);
+    window.addEventListener('resize', checkAndRestoreElements);
+    window.addEventListener('scroll', checkAndRestoreElements);
+    window.addEventListener('click', checkAndRestoreElements);
+  })();
+</script>
+{% endif %} 
