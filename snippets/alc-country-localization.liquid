@@ -36,8 +36,8 @@
   >
     <span class="country-flag-wrapper" style="display: inline-block; margin-right: 5px;">
       <img 
-        src="{{ 'flag-icons/flags/4x3/' | append: localization.country.iso_code | downcase | append: '.svg' | asset_url }}" 
-        onerror="this.src='{{ 'flag-icons/flags/4x3/xx.svg' | asset_url }}'; this.onerror=null;" 
+        src="/cdn/shop/t/10/assets/flags-4x3/{{ localization.country.iso_code | downcase }}.svg" 
+        onerror="this.src='/cdn/shop/t/10/assets/flags-4x3/xx.svg'; this.onerror=null;" 
         width="20" 
         height="15" 
         alt="" 
@@ -88,7 +88,13 @@
                   {{- 'icon-checkmark.svg' | inline_asset_content -}}
                 </span>
                 <span class="country-flag-wrapper" style="display: inline-block; margin-right: 8px;">
-                  <img src="{{ 'flag-icons/flags/4x3/' | append: country.iso_code | downcase | append: '.svg' | asset_url }}" width="40" height="30" alt="" style="vertical-align: middle;">
+                  <img 
+                    src="/cdn/shop/t/10/assets/flags-4x3/{{ country.iso_code | downcase }}.svg"
+                    onerror="this.src='/cdn/shop/t/10/assets/flags-4x3/xx.svg'; this.onerror=null;"
+                    width="40" 
+                    height="30" 
+                    alt="" 
+                    style="vertical-align: middle;">
                 </span>
                 <span class="country" style="font-size: 1.1rem;">{{- country.name }}</span>
                 <span class="localization-form__currency motion-reduce{% unless show_currencies %} hidden{% endunless %}" style="margin-left: auto; font-size: 1.1rem;">
@@ -121,7 +127,13 @@
                 {{- 'icon-checkmark.svg' | inline_asset_content -}}
               </span>
               <span class="country-flag-wrapper" style="display: inline-block; margin-right: 8px;">
-                <img src="{{ 'flag-icons/flags/4x3/' | append: country.iso_code | downcase | append: '.svg' | asset_url }}" width="20" height="15" alt="" style="vertical-align: middle;">
+                <img 
+                  src="/cdn/shop/t/10/assets/flags-4x3/{{ country.iso_code | downcase }}.svg"
+                  onerror="this.src='/cdn/shop/t/10/assets/flags-4x3/xx.svg'; this.onerror=null;"
+                  width="20" 
+                  height="15" 
+                  alt="" 
+                  style="vertical-align: middle;">
               </span>
               <span class="country" style="font-size: 1.1rem;">{{- country.name }}</span>
               <span class="localization-form__currency motion-reduce{% unless show_currencies %} hidden{% endunless %}" style="margin-left: auto; font-size: 1.1rem;">

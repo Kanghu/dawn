@@ -17,32 +17,149 @@
 {% endcomment %}
 
 <style>
-  /* Match product card padding */
-  .article-card .card__content {
-    padding: var(--card-content-padding);
+  /* Match product card styling */
+  .article-card-wrapper {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
   }
-  
-  .article-card .card__information {
-    padding: var(--card-information-padding);
+
+  .article-card-wrapper:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 3px 15px rgba(0, 0, 0, 0.1);
   }
   
   .article-card .card__inner {
-    padding: var(--card-inner-padding);
+    padding: 0;
+    background-color: transparent;
+    width: 100%;
+    position: relative;
   }
   
-  /* Fix spacing when there's an image */
-  .article-card .card__content:not(:only-child) {
-    padding-top: 0;
+  /* Critical fix for image container height */
+  .article-card__image.media.media--hover-effect {
+    min-height: 200px !important; /* Force minimum height */
+    height: auto !important;
+    padding-bottom: 75% !important; /* Ensure proper aspect ratio */
+    position: relative !important;
   }
   
-  /* Additional padding adjustments for consistent look */
+  /* Add image padding */
+  .article-card .article-card__image-wrapper {
+    margin: 0;
+    padding: var(--blog-card-image-padding, 1rem);
+    width: 100%;
+    display: block;
+    background-color: white;
+  }
+  
+  /* Fix image container */
+  .article-card .card__media {
+    overflow: hidden;
+    border-radius: var(--card-corner-radius, 0.4rem) var(--card-corner-radius, 0.4rem) 0 0;
+    height: auto;
+    width: 100%;
+    display: block;
+    background-color: white;
+  }
+  
+  /* Ensure image displays at proper size */
+  .article-card .article-card__image img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    position: absolute;
+    top: 0;
+    left: 0;
+    border-radius: var(--card-corner-radius, 0.4rem);
+  }
+  
+  .article-card .card__content {
+    position: relative;
+    padding: var(--card-content-padding, 1rem);
+    background-color: white;
+    width: 100%;
+  }
+  
+  .article-card .card__information {
+    padding: 0;
+    width: 100%;
+  }
+  
+  /* Match product card typography */
   .article-card .card__heading {
     margin-top: 0;
-    padding-top: 1rem;
+    font-size: 1.5rem;
+    font-weight: 500;
+    margin-bottom: 0.5rem;
+  }
+  
+  .article-card .card__heading a {
+    text-decoration: none;
   }
   
   .article-card .article-card__excerpt {
     margin-top: 0.8rem;
+    font-size: 0.9rem;
+    color: rgba(var(--color-foreground), 0.75);
+  }
+  
+  /* Add article button similar to product "add to cart" */
+  .article-view-button {
+    position: absolute;
+    bottom: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 20;
+    visibility: hidden;
+    min-width: 45%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    background: rgba(0, 0, 0, 1);
+    height: 34px;
+    border-radius: 17px;
+    border: none;
+    color: #fff;
+    font-weight: 700;
+    padding: 0 10px;
+    cursor: pointer;
+    opacity: 0;
+    transition: opacity 0.3s ease, transform 0.3s ease;
+  }
+  
+  .article-card-wrapper:hover .article-view-button {
+    visibility: visible;
+    opacity: 1;
+    transform: translateX(-50%);
+  }
+  
+  .article-view-button:hover {
+    opacity: 0.9;
+    transform: translate3d(-50%, -2px, 0);
+  }
+  
+  .article-view-button span {
+    flex: 1;
+    text-align: center;
+    font-size: 12px;
+  }
+  
+  @media (max-width: 767px) {
+    .article-view-button {
+      visibility: visible;
+      opacity: 0.8;
+      position: relative;
+      bottom: auto;
+      left: auto;
+      transform: none;
+      margin-top: 10px;
+      width: 100%;
+    }
+    
+    .article-card-wrapper:hover .article-view-button {
+      transform: none;
+    }
   }
 </style>
 
@@ -54,7 +171,6 @@
     endif
   -%}
   <div class="article-card-wrapper card-wrapper underline-links-hover">
-    {% comment %} <article aria-labelledby="Article-{{ article.id }}"> {% endcomment %}
     <div
       class="
         card article-card
@@ -103,44 +219,6 @@
             </div>
           </div>
         {%- endif -%}
-        <div class="card__content">
-          <div class="card__information">
-            <h3 class="card__heading{% if show_excerpt %} h2{% endif %}">
-              <a href="{{ article.url }}" class="full-unstyled-link">
-                {{ article.title | truncate: 50 | escape }}
-              </a>
-            </h3>
-            <div class="article-card__info caption-with-letter-spacing h5">
-              {%- if show_date -%}
-                <span class="circle-divider">{{ article.published_at | time_tag: format: 'date' }}</span>
-              {%- endif -%}
-              {%- if show_author -%}
-                <span>{{ article.author }}</span>
-              {%- endif -%}
-            </div>
-            {%- if show_excerpt -%}
-              {%- if article.excerpt.size > 0 or article.content.size > 0 -%}
-                <p class="article-card__excerpt rte-width">
-                  {%- if article.excerpt.size > 0 -%}
-                    {{ article.excerpt | strip_html | truncatewords: 30 }}
-                  {%- else -%}
-                    {{ article.content | strip_html | truncatewords: 30 }}
-                  {%- endif -%}
-                </p>
-              {%- endif -%}
-              <div class="article-card__footer">
-                {%- if article.comments_count > 0 and blog.comments_enabled? -%}
-                  <span>{{ 'blogs.article.comments' | t: count: article.comments_count }}</span>
-                {%- endif -%}
-              </div>
-            {%- endif -%}
-          </div>
-          {%- if show_badge -%}
-            <div class="card__badge {{ settings.badge_position }}">
-              <span class="badge color-{{ settings.color_schemes | first }}">{{ 'blogs.article.blog' | t }}</span>
-            </div>
-          {%- endif -%}
-        </div>
       </div>
       <div class="card__content">
         <div class="card__information">
@@ -173,6 +251,9 @@
               {%- endif -%}
             </div>
           {%- endif -%}
+          <a href="{{ article.url }}" class="article-view-button">
+            <span>Vezi articol</span>
+          </a>
         </div>
         {%- if show_badge -%}
           <div class="card__badge {{ settings.badge_position }}">
