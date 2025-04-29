@@ -36,8 +36,8 @@
   >
     <span class="country-flag-wrapper" style="display: inline-block; margin-right: 5px;">
       <img 
-        src="/cdn/shop/t/10/assets/flags-4x3/{{ localization.country.iso_code | downcase }}.svg" 
-        onerror="this.src='/cdn/shop/t/10/assets/flags-4x3/xx.svg'; this.onerror=null;" 
+        src="{{ 'flag-1x1-' | append: localization.country.iso_code | downcase | append: '.svg' | asset_url }}" 
+        onerror="this.src='{{ 'flag-1x1-xx.svg' | asset_url }}'; this.onerror=null;" 
         width="20" 
         height="15" 
         alt="" 
@@ -89,8 +89,8 @@
                 </span>
                 <span class="country-flag-wrapper" style="display: inline-block; margin-right: 8px;">
                   <img 
-                    src="/cdn/shop/t/10/assets/flags-4x3/{{ country.iso_code | downcase }}.svg"
-                    onerror="this.src='/cdn/shop/t/10/assets/flags-4x3/xx.svg'; this.onerror=null;"
+                    src="{{ 'flag-1x1-' | append: country.iso_code | downcase | append: '.svg' | asset_url }}"
+                    onerror="this.src='{{ 'flag-1x1-xx.svg' | asset_url }}'; this.onerror=null;"
                     width="40" 
                     height="30" 
                     alt="" 
@@ -128,8 +128,8 @@
               </span>
               <span class="country-flag-wrapper" style="display: inline-block; margin-right: 8px;">
                 <img 
-                  src="/cdn/shop/t/10/assets/flags-4x3/{{ country.iso_code | downcase }}.svg"
-                  onerror="this.src='/cdn/shop/t/10/assets/flags-4x3/xx.svg'; this.onerror=null;"
+                  src="{{ 'flag-1x1-' | append: country.iso_code | downcase | append: '.svg' | asset_url }}"
+                  onerror="this.src='{{ 'flag-1x1-xx.svg' | asset_url }}'; this.onerror=null;"
                   width="20" 
                   height="15" 
                   alt="" 
