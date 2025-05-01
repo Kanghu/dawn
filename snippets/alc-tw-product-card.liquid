@@ -1,0 +1,240 @@
+{% comment %}
+  Renders a product card with Tailwind CSS styling
+
+  Accepts:
+  - card_product: {Object} Product Liquid object (optional)
+  - media_aspect_ratio: {String} Size of the product image card. Values are "square" and "portrait". Default is "square" (optional)
+  - show_secondary_image: {Boolean} Show the secondary image on hover. Default: false (optional)
+  - show_vendor: {Boolean} Show the product vendor. Default: false
+  - lazy_load: {Boolean} Image should be lazy loaded. Default: true (optional)
+  - skip_styles: {Boolean} Don't include component styles. Default: false (optional)
+  - quick_add: {Boolean} Show the quick add button.
+  - section_id: {String} The ID of the section that contains this card.
+  - placeholder_image: {String} The placeholder image to use when no product exists. Default: 'product-apparel-2' (optional)
+  - button_style: {String} The style of the button. Default: 'product-card' (optional)
+
+  Usage:
+  {% render 'alc-tw-product-card', card_product: product %}
+{% endcomment %}
+
+{%- unless skip_styles -%}
+  {{ 'component-rating.css' | asset_url | stylesheet_tag }}
+  {{ 'component-volume-pricing.css' | asset_url | stylesheet_tag }}
+  {{ 'component-price.css' | asset_url | stylesheet_tag }}
+{%- endunless -%}
+
+<style>
+  /* Fix for product card width in grid layouts */
+  .complementary-slide .grid__item {
+    width: 100% !important;
+    max-width: 100% !important;
+    padding: 0 10px;
+  }
+  
+  @media screen and (min-width: 750px) {
+    .grid--4-col-desktop .grid__item {
+      width: 25% !important;
+      max-width: 25% !important;
+    }
+    
+    .grid--2-col-tablet-down .grid__item {
+      width: 50% !important;
+      max-width: 50% !important;
+    }
+  }
+  
+  /* Ensure buttons have proper styling */
+  .product-card__buttons .button {
+    min-height: 4.5rem;
+    margin-bottom: 0;
+  }
+</style>
+
+{%- if card_product and card_product != empty -%}
+  {%- liquid
+    assign ratio = 1
+    if card_product.featured_media and media_aspect_ratio == 'portrait'
+      assign ratio = 0.8
+    elsif card_product.featured_media and media_aspect_ratio == 'adapt'
+      assign ratio = card_product.featured_media.aspect_ratio
+    endif
+    if ratio == 0 or ratio == null
+      assign ratio = 1
+    endif
+  -%}
+  
+  <div class="group relative transition-all duration-300 hover:-translate-y-1 hover:shadow-lg w-full">
+    <div class="relative">
+      <div class="relative h-72 w-full overflow-hidden rounded-lg">
+        {% if card_product.featured_media %}
+          <img
+            srcset="
+              {%- if card_product.featured_media.width >= 165 -%}{{ card_product.featured_media | image_url: width: 165 }} 165w,{%- endif -%}
+              {%- if card_product.featured_media.width >= 360 -%}{{ card_product.featured_media | image_url: width: 360 }} 360w,{%- endif -%}
+              {%- if card_product.featured_media.width >= 533 -%}{{ card_product.featured_media | image_url: width: 533 }} 533w,{%- endif -%}
+              {%- if card_product.featured_media.width >= 720 -%}{{ card_product.featured_media | image_url: width: 720 }} 720w,{%- endif -%}
+              {%- if card_product.featured_media.width >= 940 -%}{{ card_product.featured_media | image_url: width: 940 }} 940w,{%- endif -%}
+              {{ card_product.featured_media | image_url }} {{ card_product.featured_media.width }}w
+            "
+            src="{{ card_product.featured_media | image_url: width: 533 }}"
+            alt="{{ card_product.featured_media.alt | escape }}"
+            class="size-full object-cover transition-opacity duration-300 group-hover:opacity-75"
+            {% unless lazy_load == false %}loading="lazy"{% endunless %}
+            width="{{ card_product.featured_media.width }}"
+            height="{{ card_product.featured_media.height }}"
+          >
+          
+          {%- if card_product.media[1] != null and show_secondary_image -%}
+            <img
+              srcset="
+                {%- if card_product.media[1].width >= 165 -%}{{ card_product.media[1] | image_url: width: 165 }} 165w,{%- endif -%}
+                {%- if card_product.media[1].width >= 360 -%}{{ card_product.media[1] | image_url: width: 360 }} 360w,{%- endif -%}
+                {%- if card_product.media[1].width >= 533 -%}{{ card_product.media[1] | image_url: width: 533 }} 533w,{%- endif -%}
+                {%- if card_product.media[1].width >= 720 -%}{{ card_product.media[1] | image_url: width: 720 }} 720w,{%- endif -%}
+                {{ card_product.media[1] | image_url }} {{ card_product.media[1].width }}w
+              "
+              src="{{ card_product.media[1] | image_url: width: 533 }}"
+              alt="{{ card_product.media[1].alt | escape }}"
+              class="size-full object-cover opacity-0 absolute inset-0 transition-opacity duration-300 group-hover:opacity-100"
+              {% unless lazy_load == false %}loading="lazy"{% endunless %}
+              width="{{ card_product.media[1].width }}"
+              height="{{ card_product.media[1].height }}"
+            >
+          {%- endif -%}
+        {% else %}
+          {{ 'product-apparel-2' | placeholder_svg_tag: 'size-full object-cover bg-gray-100' }}
+        {% endif %}
+      </div>
+      
+      <div class="relative mt-4">
+        <h3 class="text-sm font-medium text-gray-900 line-clamp-2">
+          <a href="{{ card_product.url }}" class="hover:underline">
+            {{ card_product.title | escape }}
+          </a>
+        </h3>
+        
+        {%- if show_vendor -%}
+          <p class="mt-1 text-sm text-gray-500">{{ card_product.vendor }}</p>
+        {%- endif -%}
+      </div>
+      
+      <div class="absolute inset-x-0 top-0 flex h-72 items-end justify-end overflow-hidden rounded-lg p-4">
+        <div aria-hidden="true" class="absolute inset-x-0 bottom-0 h-36 bg-gradient-to-t from-black opacity-50"></div>
+        <div class="relative text-lg font-semibold text-white">
+          {%- if card_product.compare_at_price > card_product.price and card_product.available -%}
+            <span class="line-through text-gray-300 mr-2">{{ card_product.compare_at_price | money }}</span>
+          {%- endif -%}
+          <span>{{ card_product.price | money }}</span>
+        </div>
+      </div>
+      
+      {%- if card_product.available == false -%}
+        <span class="absolute top-3 left-3 inline-flex items-center rounded-md bg-red-50 px-2 py-1 text-xs font-medium text-red-700 ring-1 ring-inset ring-red-600/10">
+          {{ 'products.product.sold_out' | t }}
+        </span>
+      {%- elsif card_product.compare_at_price > card_product.price and card_product.available -%}
+        <span class="absolute top-3 left-3 inline-flex items-center rounded-md bg-green-50 px-2 py-1 text-xs font-medium text-green-700 ring-1 ring-inset ring-green-600/20">
+          {{ 'products.product.on_sale' | t }}
+        </span>
+      {%- endif -%}
+    </div>
+    
+    <div class="product-card__buttons">
+      <a href="{{ card_product.url }}" class="button{% if button_style == 'product-card' %} button--full-width{% endif %}">
+        {{ 'products.product.view_details' | t }}
+      </a>
+      
+      {%- if quick_add != 'none' and card_product.available -%}
+        <div class="mt-4">
+          {%- liquid
+            assign product_form_id = 'quick-add-' | append: section_id | append: card_product.id
+          -%}
+          
+          <product-form class="product-form" data-section-id="{{ section_id }}">
+            {%- form 'product',
+              card_product,
+              id: product_form_id,
+              class: 'form',
+              novalidate: 'novalidate',
+              data-type: 'add-to-cart-form'
+            -%}
+              <input
+                type="hidden"
+                name="id"
+                value="{{ card_product.selected_or_first_available_variant.id }}"
+                class="product-variant-id"
+                {% if card_product.selected_or_first_available_variant.available == false %}
+                  disabled
+                {% endif %}
+              >
+              <button
+                id="{{ product_form_id }}-submit"
+                type="submit"
+                name="add"
+                class="relative flex w-full items-center justify-center rounded-md border border-transparent bg-gray-900 px-8 py-2 text-sm font-medium text-white hover:bg-gray-800 focus:outline-none focus:ring-2 focus:ring-gray-500 focus:ring-offset-2 transition-colors duration-200"
+                aria-labelledby="{{ product_form_id }}-submit title-{{ section_id }}-{{ card_product.id }}"
+                aria-live="polite"
+                data-sold-out-message="true"
+                {% if card_product.selected_or_first_available_variant.available == false %}
+                  disabled
+                {% endif %}
+              >
+                <span>
+                  {%- if card_product.selected_or_first_available_variant.available -%}
+                    {{ 'products.product.add_to_cart' | t }}
+                  {%- else -%}
+                    {{ 'products.product.sold_out' | t }}
+                  {%- endif -%}
+                </span>
+                <span class="sold-out-message hidden">
+                  {{ 'products.product.sold_out' | t }}
+                </span>
+                {%- render 'loading-spinner' -%}
+              </button>
+            {%- endform -%}
+          </product-form>
+        </div>
+      {%- endif -%}
+    </div>
+  </div>
+
+{%- else -%}
+  <div class="group relative transition-all duration-300 hover:-translate-y-1 hover:shadow-lg w-full">
+    <div class="relative">
+      <div class="relative h-72 w-full overflow-hidden rounded-lg bg-gray-100">
+        {%- if placeholder_image -%}
+          {{ placeholder_image | placeholder_svg_tag: 'size-full object-cover' }}
+        {%- else -%}
+          {{ 'product-apparel-2' | placeholder_svg_tag: 'size-full object-cover' }}
+        {% endif %}
+      </div>
+      
+      <div class="relative mt-4">
+        <h3 class="text-sm font-medium text-gray-900 line-clamp-2">
+          <a role="link" aria-disabled="true" class="hover:underline">
+            {{ 'onboarding.product_title' | t }}
+          </a>
+        </h3>
+        
+        {%- if show_vendor -%}
+          <p class="mt-1 text-sm text-gray-500">{{ 'products.product.vendor' | t }}</p>
+        {%- endif -%}
+      </div>
+      
+      <div class="absolute inset-x-0 top-0 flex h-72 items-end justify-end overflow-hidden rounded-lg p-4">
+        <div aria-hidden="true" class="absolute inset-x-0 bottom-0 h-36 bg-gradient-to-t from-black opacity-50"></div>
+        <p class="relative text-lg font-semibold text-white">$XX.XX</p>
+      </div>
+    </div>
+    
+    <div class="product-card__buttons">
+      <a 
+        role="link" 
+        aria-disabled="true" 
+        class="button button--full-width"
+      >
+        {{ 'products.product.view_details' | t }}
+      </a>
+    </div>
+  </div>
+{%- endif -%} 
