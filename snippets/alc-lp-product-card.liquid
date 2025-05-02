@@ -1,0 +1,236 @@
+{% comment %}
+  Renders a product card optimized for landing pages with "offer" styling
+  
+  Accepts:
+  - card_product: {Object} Product Liquid object (optional)
+  - media_aspect_ratio: {String} Size of the product image card. Values are "square" and "portrait". Default is "square" (optional)
+  - show_secondary_image: {Boolean} Show the secondary image on hover. Default: false (optional)
+  - show_vendor: {Boolean} Show the product vendor. Default: false
+  - show_rating: {Boolean} Show the product rating. Default: false
+  - lazy_load: {Boolean} Image should be lazy loaded. Default: true (optional)
+  - skip_styles: {Boolean} Don't include component styles. Default: false (optional)
+  - quick_add: {Boolean} Show the quick add button.
+  - section_id: {String} The ID of the section that contains this card.
+  
+  Usage:
+  {% render 'alc-lp-product-card', card_product: product %}
+{% endcomment %}
+
+{%- unless skip_styles -%}
+  {{ 'component-rating.css' | asset_url | stylesheet_tag }}
+  {{ 'component-volume-pricing.css' | asset_url | stylesheet_tag }}
+  {{ 'component-price.css' | asset_url | stylesheet_tag }}
+{%- endunless -%}
+
+{%- if card_product and card_product != empty -%}
+  {%- liquid
+    assign ratio = 1
+    if card_product.featured_media and media_aspect_ratio == 'portrait'
+      assign ratio = 0.8
+    elsif card_product.featured_media and media_aspect_ratio == 'adapt'
+      assign ratio = card_product.featured_media.aspect_ratio
+    endif
+    if ratio == 0 or ratio == null
+      assign ratio = 1
+    endif
+  -%}
+
+  <div class="group relative bg-white rounded-xl shadow-md overflow-hidden border border-gray-200 transition-all duration-300 hover:-translate-y-1 hover:shadow-lg h-full flex flex-col">
+    <!-- Badge only for sold out products -->
+    {%- if card_product.available == false -%}
+      <span class="absolute top-2 right-2 bg-gray-700 text-white py-1 px-3 text-xs font-bold rounded-full z-10">
+        {{ 'products.product.sold_out' | t }}
+      </span>
+    {%- endif -%}
+
+    <!-- Product Image -->
+    <div class="relative overflow-hidden aspect-[{{ ratio }}]">
+      <a href="{{ card_product.url | escape }}">
+        <div class="h-full w-full">
+          {% if card_product.featured_media != null %}
+            <img
+              srcset="
+                {%- if card_product.featured_media.width >= 165 -%}{{ card_product.featured_media | image_url: width: 165 }} 165w,{%- endif -%}
+                {%- if card_product.featured_media.width >= 360 -%}{{ card_product.featured_media | image_url: width: 360 }} 360w,{%- endif -%}
+                {%- if card_product.featured_media.width >= 533 -%}{{ card_product.featured_media | image_url: width: 533 }} 533w,{%- endif -%}
+                {%- if card_product.featured_media.width >= 720 -%}{{ card_product.featured_media | image_url: width: 720 }} 720w,{%- endif -%}
+                {{ card_product.featured_media | image_url }} {{ card_product.featured_media.width }}w
+              "
+              src="{{ card_product.featured_media | image_url: width: 533 }}"
+              sizes="(min-width: 1200px) 267px, (min-width: 990px) calc((100vw - 130px) / 4), (min-width: 750px) calc((100vw - 120px) / 3), calc((100vw - 35px) / 2)"
+              alt="{{ card_product.featured_media.alt | escape }}"
+              class="h-full w-full object-cover object-center transition-transform duration-300 group-hover:scale-105"
+              width="{{ card_product.featured_media.width }}"
+              height="{{ card_product.featured_media.height }}"
+              {% unless lazy_load == false %}loading="lazy"{% endunless %}
+            >
+          
+            {%- if card_product.media[1] != null and show_secondary_image -%}
+              <img
+                srcset="
+                  {%- if card_product.media[1].width >= 165 -%}{{ card_product.media[1] | image_url: width: 165 }} 165w,{%- endif -%}
+                  {%- if card_product.media[1].width >= 360 -%}{{ card_product.media[1] | image_url: width: 360 }} 360w,{%- endif -%}
+                  {%- if card_product.media[1].width >= 533 -%}{{ card_product.media[1] | image_url: width: 533 }} 533w,{%- endif -%}
+                  {%- if card_product.media[1].width >= 720 -%}{{ card_product.media[1] | image_url: width: 720 }} 720w,{%- endif -%}
+                  {{ card_product.media[1] | image_url }} {{ card_product.media[1].width }}w
+                "
+                src="{{ card_product.media[1] | image_url: width: 533 }}"
+                sizes="(min-width: 1200px) 267px, (min-width: 990px) calc((100vw - 130px) / 4), (min-width: 750px) calc((100vw - 120px) / 3), calc((100vw - 35px) / 2)"
+                alt="{{ card_product.media[1].alt | escape }}"
+                class="absolute top-0 left-0 h-full w-full object-cover object-center opacity-0 transition-opacity duration-300 group-hover:opacity-100"
+                width="{{ card_product.media[1].width }}"
+                height="{{ card_product.media[1].height }}"
+                {% unless lazy_load == false %}loading="lazy"{% endunless %}
+              >
+            {%- endif -%}
+          {% else %}
+            {{ 'product-apparel-2' | placeholder_svg_tag: 'h-full w-full object-cover object-center' }}
+          {% endif %}
+        </div>
+      </a>
+    </div>
+    
+    <!-- Product Info -->
+    <div class="p-4 flex flex-col flex-grow">
+      <!-- Vendor Info -->
+      {%- if show_vendor and card_product.vendor -%}
+        <span class="text-sm text-[#06BBD6] font-medium mb-1">{{ card_product.vendor }}</span>
+      {%- endif -%}
+      
+      <!-- Title -->
+      <a href="{{ card_product.url | escape }}" class="no-underline">
+        <h3 class="text-lg font-bold text-gray-900 line-clamp-2 hover:text-[#06BBD6] transition-colors mb-2">
+          {{ card_product.title | escape }}
+        </h3>
+      </a>
+      
+      <!-- Rating -->
+      {%- if show_rating -%}
+        {% if card_product.metafields.reviews.rating.value != blank %}
+          <div class="flex items-center mt-1 mb-2">
+            {%- liquid
+              assign rating_decimal = 0
+              assign decimal = card_product.metafields.reviews.rating.value.rating | modulo: 1
+              if decimal >= 0.3 and decimal <= 0.7
+                assign rating_decimal = 0.5
+              elsif decimal > 0.7
+                assign rating_decimal = 1
+              endif
+            -%}
+            <div class="rating" role="img" aria-label="{{ 'accessibility.star_reviews_info' | t: rating_value: card_product.metafields.reviews.rating.value, rating_max: card_product.metafields.reviews.rating.value.scale_max }}">
+              <span aria-hidden="true" class="rating-star color-icon-{{ settings.accent_icons }}{% if card_product.metafields.reviews.rating.value >= 1 %} rating-star--full{% elsif rating_decimal == 0.5 %} rating-star--half{% endif %}">★</span>
+              <span aria-hidden="true" class="rating-star color-icon-{{ settings.accent_icons }}{% if card_product.metafields.reviews.rating.value >= 2 %} rating-star--full{% elsif card_product.metafields.reviews.rating.value == 1.5 %} rating-star--half{% endif %}">★</span>
+              <span aria-hidden="true" class="rating-star color-icon-{{ settings.accent_icons }}{% if card_product.metafields.reviews.rating.value >= 3 %} rating-star--full{% elsif card_product.metafields.reviews.rating.value == 2.5 %} rating-star--half{% endif %}">★</span>
+              <span aria-hidden="true" class="rating-star color-icon-{{ settings.accent_icons }}{% if card_product.metafields.reviews.rating.value >= 4 %} rating-star--full{% elsif card_product.metafields.reviews.rating.value == 3.5 %} rating-star--half{% endif %}">★</span>
+              <span aria-hidden="true" class="rating-star color-icon-{{ settings.accent_icons }}{% if card_product.metafields.reviews.rating.value >= 5 %} rating-star--full{% elsif card_product.metafields.reviews.rating.value == 4.5 %} rating-star--half{% endif %}">★</span>
+            </div>
+            <p class="text-sm ml-2 text-gray-500">
+              ({{ card_product.metafields.reviews.rating_count.value | default: 0 }})
+            </p>
+          </div>
+        {% endif %}
+      {%- endif -%}
+      
+      <!-- Price Section with updated styling -->
+      <div class="mt-auto pt-2">
+        <div class="flex flex-wrap items-center">
+          <!-- Current price -->
+          <span class="text-2xl font-bold text-theme-accent">
+            {{ card_product.price | money }}
+          </span>
+          
+          <!-- Compare at price (when available) -->
+          {%- if card_product.compare_at_price > card_product.price -%}
+            <span class="text-xl line-through text-gray-500 ml-2">
+              {{ card_product.compare_at_price | money }}
+            </span>
+          {%- endif -%}
+        </div>
+        
+        <!-- Savings Highlight with larger text -->
+        {%- if card_product.compare_at_price > card_product.price -%}
+          {%- if card_product.price_varies == false and card_product.compare_at_price_varies == false -%}
+            <div class="text-base font-medium text-green-600 mt-1">
+              {%- liquid
+                assign price_difference = card_product.compare_at_price | minus: card_product.price
+                assign saving_percentage = price_difference | times: 100 | divided_by: card_product.compare_at_price
+              -%}
+              Economisești {{ saving_percentage }}% ({{ price_difference | money }})
+            </div>
+          {%- endif -%}
+        {%- endif -%}
+      </div>
+    </div>
+    
+    <!-- Action Buttons with hardcoded text -->
+    <div class="p-4 pt-0">
+      {% if quick_add == 'standard' and card_product.available and card_product.variants.size <= 1 %}
+        <product-form>
+          {%- form 'product', card_product, id: product_form_id, class: 'form', novalidate: 'novalidate', data-type: 'add-to-cart-form' -%}
+            <input
+              type="hidden"
+              name="id"
+              value="{{ card_product.selected_or_first_available_variant.id }}"
+              disabled
+            >
+            <button
+              id="{{ product_form_id }}-submit"
+              type="submit"
+              name="add"
+              class="w-full bg-[#06BBD6] hover:bg-[#049dae] text-white py-3 rounded-lg font-medium transition-colors flex items-center justify-center"
+              {% if card_product.selected_or_first_available_variant.available == false %}
+                disabled
+              {% endif %}
+            >
+              <span>
+                {%- if card_product.selected_or_first_available_variant.available -%}
+                  Adaugă în coș
+                {%- else -%}
+                  Stoc epuizat
+                {%- endif -%}
+              </span>
+              {%- render 'loading-spinner' -%}
+            </button>
+          {%- endform -%}
+        </product-form>
+      {% else %}
+        <a 
+          href="{{ card_product.url | escape }}" 
+          class="w-full bg-[#06BBD6] hover:bg-[#049dae] text-white py-1 rounded-lg font-medium transition-colors flex items-center justify-center no-underline"
+        >
+          Vezi produsul
+        </a>
+      {% endif %}
+    </div>
+  </div>
+
+{%- else -%}
+  <div class="group relative bg-white rounded-xl shadow-md overflow-hidden border border-gray-200 transition-all duration-300 hover:-translate-y-1 hover:shadow-lg h-full flex flex-col">
+    <!-- Placeholder image -->
+    <div class="relative overflow-hidden aspect-[1/1]">
+      {{ 'product-apparel-2' | placeholder_svg_tag: 'h-full w-full object-cover object-center' }}
+    </div>
+    
+    <!-- Placeholder content -->
+    <div class="p-4 flex flex-col flex-grow">
+      <h3 class="text-lg font-bold text-gray-900 mb-2">
+        {{ 'onboarding.product_title' | t }}
+      </h3>
+      
+      <div class="mt-auto pt-2">
+        <p class="price text-xl font-bold text-gray-900">
+          {{ 'products.product.price.from_price_html' | t: price: money }}
+        </p>
+      </div>
+    </div>
+    
+    <!-- Placeholder button -->
+    <div class="p-4 pt-0">
+      <div 
+        class="w-full bg-[#06BBD6] text-white py-3 rounded-lg font-medium flex items-center justify-center cursor-not-allowed opacity-80"
+      >
+        Vezi detalii
+      </div>
+    </div>
+  </div>
+{%- endif -%} 

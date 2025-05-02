@@ -7,6 +7,12 @@
         "id": "separator_symbol",
         "label": "Separator Symbol",
         "default": ">"
+      },
+      {
+        "type": "color",
+        "id": "background",
+        "label": "Background Color",
+        "default": "#FFFFFF"
       }
     ],
     "presets": [
@@ -98,7 +104,8 @@
   {%- assign t = template | split: '.' | first -%}
 
   <nav
-    class="breadcrumbs mt-2"
+    class="breadcrumbs py-2"
+    style="background-color: {{ section.settings.background }}"
     role="navigation"
     aria-label="breadcrumbs">
     <div class="page-width">
