@@ -7,6 +7,10 @@
     <meta name="theme-color" content="">
     <link rel="canonical" href="{{ canonical_url }}">
 
+    {% if template contains 'search' %}
+      <meta name="robots" content="noindex, nofollow">
+    {% endif %}
+
     <!-- Google Tag Manager -->
     <script>
       (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
