@@ -13,6 +13,16 @@
       "type": "pagefly-home",
       "settings": {}
     },
+    "custom_liquid_i8YzMd": {
+      "type": "custom-liquid",
+      "name": "t:sections.custom-liquid.presets.name",
+      "settings": {
+        "custom_liquid": "<div style=\"width: 100%; display: flex; align-items: center; justify-content: space-between;\n     background-image: url('https://cdn.shopify.com/s/files/1/0782/5175/3739/files/marcello_banner_low_c114399a-3d67-4eda-aaa2-5e9e739fe237_1.png?v=1745396310');\n     background-size: cover; background-position: center; padding: 60px 40px; font-family: 'Roboto', sans-serif;\n    border-radius: 12px;\">\n\n  <div style=\"flex: 1;\"></div>\n  <div style=\"flex: 1; color: white; text-align: right;\">\n    {% case request.locale.iso_code %}\n    {% when 'ro' %}\n    <p style=\"font-family: 'Roboto Black', sans-serif; font-size: 26px; margin: 0 0 20px; text-transform: uppercase;\">\n      Calitatea Marcello\n    </p>\n    <p\n      style=\"font-family: 'Roboto', sans-serif; font-weight: 400; font-size: 10px; max-width: 400px; margin: 0 0 0 auto;\">\n      în oglinzile LED Premium Marcello Funghi\n    </p>\n    {% when 'en' %}\n    <p style=\"font-family: 'Roboto Black', sans-serif; font-size: 26px; margin: 0 0 20px; text-transform: uppercase;\">\n      Marcello Quality\n    </p>\n    <p\n      style=\"font-family: 'Roboto', sans-serif; font-weight: 400; font-size: 10px; max-width: 400px; margin: 0 0 0 auto;\">\n      in Marcello Funghi Premium LED Mirrors\n    </p>\n    {% when 'hu' %}\n    <p style=\"font-family: 'Roboto Black', sans-serif; font-size: 26px; margin: 0 0 20px; text-transform: uppercase;\">\n      Marcello Minőség\n    </p>\n    <p\n      style=\"font-family: 'Roboto', sans-serif; font-weight: 400; font-size: 10px; max-width: 400px; margin: 0 0 0 auto;\">\n      a Marcello Funghi prémium LED tükrökben\n    </p>\n    {% when 'bg' %}\n    <p style=\"font-family: 'Roboto Black', sans-serif; font-size: 26px; margin: 0 0 20px; text-transform: uppercase;\">\n      Качество на Марчело\n    </p>\n    <p\n      style=\"font-family: 'Roboto', sans-serif; font-weight: 400; font-size: 10px; max-width: 400px; margin: 0 0 0 auto;\">\n      в премиум LED огледалата на Marcello Funghi\n    </p>\n    {% else %}\n    <p style=\"font-family: 'Roboto Black', sans-serif; font-size: 26px; margin: 0 0 20px; text-transform: uppercase;\">\n      Calitatea Marcello\n    </p>\n    <p\n      style=\"font-family: 'Roboto', sans-serif; font-weight: 400; font-size: 10px; max-width: 400px; margin: 0 0 0 auto;\">\n      în oglinzile LED Premium Marcello Funghi\n    </p>\n    {% endcase %}\n  </div>\n</div>",
+        "color_scheme": "",
+        "padding_top": 0,
+        "padding_bottom": 0
+      }
+    },
     "featured_collection_KFUddR": {
       "type": "featured-collection",
       "name": "t:sections.featured-collection.presets.name",
@@ -281,6 +291,7 @@
   },
   "order": [
     "pagefly-home",
+    "custom_liquid_i8YzMd",
     "featured_collection_KFUddR",
     "featured_collection_mMLGif",
     "featured_collection_w9bTLf",
