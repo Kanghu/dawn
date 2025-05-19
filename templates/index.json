@@ -91,13 +91,23 @@
         "padding_bottom": 36
       }
     },
+    "custom_liquid_hppdWr": {
+      "type": "custom-liquid",
+      "name": "t:sections.custom-liquid.presets.name",
+      "settings": {
+        "custom_liquid": "<center>\n<div style=\"width: 1300px; display: flex; align-items: center; justify-content: space-between;\n  background-image: url('https://cdn.shopify.com/s/files/1/0782/5175/3739/files/banner_aplice_optimizat_v2.png?v=1745522587');\n  background-size: cover; background-position: center; padding: 60px 40px; font-family: 'Roboto', sans-serif;\n  border: 6px solid #ffffff; border-radius: 12px;\">\n\n  <div style=\"flex: 1;\"></div>\n  <div style=\"flex: 1; color: white; text-align: right;\">\n    {% case request.locale.iso_code %}\n    {% when 'ro' %}\n    <p style=\"font-family: 'Roboto Black', sans-serif; font-size: 24px; margin: 0 0 20px; text-transform: uppercase;\">\n      Aplice LED de Perete</p>\n    <p\n      style=\"font-family: 'Roboto', sans-serif; font-weight: 400; font-size: 10px; max-width: 400px; margin: 0 0 0 auto;\">\n      Soluția eficientă pentru o iluminare ieftină și modernă în orice spațiu\n    </p>\n    {% when 'en' %}\n    <p style=\"font-family: 'Roboto Black', sans-serif; font-size: 24px; margin: 0 0 20px; text-transform: uppercase;\">\n      LED Wall Lights</p>\n    <p\n      style=\"font-family: 'Roboto', sans-serif; font-weight: 400; font-size: 10px; max-width: 400px; margin: 0 0 0 auto;\">\n      The efficient solution for affordable and modern lighting in any space\n    </p>\n    {% when 'hu' %}\n    <p style=\"font-family: 'Roboto Black', sans-serif; font-size: 24px; margin: 0 0 20px; text-transform: uppercase;\">\n      LED Fali Lámpák</p>\n    <p\n      style=\"font-family: 'Roboto', sans-serif; font-weight: 400; font-size: 10px; max-width: 400px; margin: 0 0 0 auto;\">\n      Hatékony megoldás megfizethető és modern világításhoz bármely térben\n    </p>\n    {% when 'bg' %}\n    <p style=\"font-family: 'Roboto Black', sans-serif; font-size: 24px; margin: 0 0 20px; text-transform: uppercase;\">\n      LED Стенни Осветителни Тела</p>\n    <p\n      style=\"font-family: 'Roboto', sans-serif; font-weight: 400; font-size: 10px; max-width: 400px; margin: 0 0 0 auto;\">\n      Ефективно решение за достъпно и модерно осветление във всяко пространство\n    </p>\n    {% else %}\n    <p style=\"font-family: 'Roboto Black', sans-serif; font-size: 24px; margin: 0 0 20px; text-transform: uppercase;\">\n      Aplice LED de Perete</p>\n    <p\n      style=\"font-family: 'Roboto', sans-serif; font-weight: 400; font-size: 10px; max-width: 400px; margin: 0 0 0 auto;\">\n      Soluția eficientă pentru o iluminare ieftină și modernă în orice spațiu\n    </p>\n    {% endcase %}\n  </div>\n</div>\n</center>",
+        "color_scheme": "",
+        "padding_top": 0,
+        "padding_bottom": 0
+      }
+    },
     "featured_collection_w9bTLf": {
       "type": "featured-collection",
       "name": "t:sections.featured-collection.presets.name",
       "settings": {
-        "title": "Aplice LED Perete",
+        "title": "",
         "heading_size": "h2",
-        "description": "<p>Soluția eficientă pentru o iluminare ieftină și modernă în orice spațiu<br/><br/></p>",
+        "description": "<p><br/></p>",
         "show_description": false,
         "description_style": "body",
         "collection": "aplice-de-perete",
@@ -305,6 +315,7 @@
     "featured_collection_KFUddR",
     "custom_liquid_Yee3Mx",
     "featured_collection_mMLGif",
+    "custom_liquid_hppdWr",
     "featured_collection_w9bTLf",
     "featured_collection_G38K6P",
     "featured_collection_6FQqPT",
