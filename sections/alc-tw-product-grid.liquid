@@ -59,7 +59,7 @@
                         {{ 'collection-1' | placeholder_svg_tag: 'h-full w-full object-cover object-center group-hover:opacity-75' }}
                       {%- endif -%}
                       <h3 class="absolute bottom-4 left-0 right-0 bg-[#06BBD6]/80 text-white p-2 text-center text-2xl truncate">{{ subcollection.title }}</h3>
-                    </div>
+                    </div> 
                   </a>
                 {%- endfor -%}
               </div>
@@ -114,10 +114,12 @@
               </div>
               
               <!-- Using Dawn theme's product grid structure -->
+               {{ subcollection_products | json }}
               <ul class="grid product-grid grid--2-col-tablet-down grid--5-col-desktop gap-x-6 px-4">
                 {% assign skip_card_product_styles = false %}
                 {%- for handle in subcollection_products limit: 8 -%}
                   {% assign product = all_products[handle] %}
+                  {{ handle | json }}
                   {% assign lazy_load = false %}
                   {%- if forloop.index > 2 -%}
                     {%- assign lazy_load = true -%}

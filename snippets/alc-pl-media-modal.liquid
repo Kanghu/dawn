@@ -1,0 +1,167 @@
+<product-modal id="ProductModal-{{ section.id }}" class="product-media-modal">
+  <div
+    class="product-media-modal__dialog mx-auto my-8 max-w-screen-xl color-{{ section.settings.color_scheme }} gradient"
+    role="dialog"
+    aria-label="{{ 'products.modal.label' | t }}"
+    aria-modal="true"
+    tabindex="-1">
+    <modal-close>
+      <button
+        id="ModalClose-{{ section.id }}"
+        type="button"
+        class="product-media-modal__toggle"
+        aria-label="{{ 'accessibility.close' | t }}">
+        {{ 'icon-close.svg' | inline_asset_content }}
+      </button>
+    </modal-close>
+
+    <div
+      class="product-media-modal__content p-4 sm:p-6 color-{{ section.settings.color_scheme }} gradient"
+      role="document"
+      aria-label="{{ 'products.modal.label' | t }}"
+      tabindex="0">
+      <div class="relative block" style="display: block !important;">
+        <!-- Center both thumbnails & preview -->
+        <div class="flex justify-center items-center w-full">
+          <div class="hs-carousel flex flex-col sm:flex-row items-center gap-4 w-full">
+            <!-- Thumbnails -->
+            <div class="flex-none w-full sm:w-24 md:w-28 lg:w-32">
+              <div class="hs-carousel-pagination flex sm:flex-col gap-3 overflow-x-auto sm:overflow-x-hidden sm:overflow-y-auto pb-1 [&::-webkit-scrollbar]:h-1 sm:[&::-webkit-scrollbar]:hidden [&::-webkit-scrollbar-thumb]:rounded-full [&::-webkit-scrollbar-track]:bg-gray-100 [&::-webkit-scrollbar-thumb]:bg-gray-300">
+                {%- for media in product.media -%}
+                  <div class="hs-carousel-pagination-item relative shrink-0 w-20 h-20 sm:w-full sm:h-auto rounded-md sm:rounded-lg overflow-hidden cursor-pointer border border-gray-200 hs-carousel-active:border-gray-800 hs-carousel-active:after:bg-black/10" data-index="{{ forloop.index0 }}">
+                    <img
+                      class="w-full h-full object-cover rounded-md sm:rounded-lg"
+                      src="{{ media | image_url: width: 180 }}"
+                      alt="{{ media.alt | escape }}"
+                      width="{{ media.width | default: 180 }}"
+                      height="{{ media.height | default: 180 }}">
+                  </div>
+                {%- endfor -%}
+              </div>
+            </div>
+
+            <!-- Preview -->
+            <div class="relative bg-gray-100 lg:min-w-[900px] md:min-w-[600px] rounded-lg w-full sm:w-auto max-w-full flex-shrink-0 mx-auto" style="aspect-ratio:1/1; max-height:80vh;">
+              <div class="relative w-full h-full overflow-hidden">
+                {%- for media in product.media -%}
+                  <div class="hs-carousel-slide absolute inset-0 w-full h-full opacity-0 pointer-events-none transition-opacity duration-300" data-index="{{ forloop.index0 }}">
+                    <img
+                      class="zoomable-image h-full object-cover rounded-lg transition-transform duration-300 ease-in-out pointer-events-auto"
+                      src="{{ media | image_url: width: 900 }}"
+                      alt="{{ media.alt | escape }}"
+                      width="{{ media.width | default: 900 }}"
+                      height="{{ media.height | default: 900 }}"
+                      style="transform-origin: center center; cursor: zoom-in;">
+                  </div>
+                {%- endfor -%}
+              </div>
+
+              <!-- Nav -->
+              <div class="absolute bottom-4 right-4 flex items-center gap-2 z-20">
+                <button type="button" class="hs-carousel-prev inline-flex justify-center items-center size-10 bg-white border border-gray-100 text-gray-800 rounded-full shadow-2xs hover:bg-gray-100 focus:outline-none">
+                  <span class="sr-only">Previous</span>
+                  <svg
+                    class="size-5"
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    viewBox="0 0 24 24"><path d="m15 18-6-6 6-6" /></svg>
+                </button>
+                <button type="button" class="hs-carousel-next inline-flex justify-center items-center size-10 bg-white border border-gray-100 text-gray-800 rounded-full shadow-2xs hover:bg-gray-100 focus:outline-none">
+                  <span class="sr-only">Next</span>
+                  <svg
+                    class="size-5"
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    viewBox="0 0 24 24"><path d="m9 18 6-6-6-6" /></svg>
+                </button>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    (function() {
+      const modal = document.getElementById('ProductModal-{{ section.id }}');
+      const slides = modal.querySelectorAll('.hs-carousel-slide');
+      const thumbs = modal.querySelectorAll('.hs-carousel-pagination-item');
+      const prevBtn = modal.querySelector('.hs-carousel-prev');
+      const nextBtn = modal.querySelector('.hs-carousel-next');
+      let current = 0;
+
+      function showSlide(index) {
+        slides.forEach((s,i) => {
+          const active = i === index;
+          s.classList.toggle('opacity-100', active);
+          s.classList.toggle('opacity-0', !active);
+          s.classList.toggle('pointer-events-auto', active);
+          s.classList.toggle('pointer-events-none', !active);
+          if (active) s.style.zIndex = 10;
+          else s.style.zIndex = '';
+        });
+        thumbs.forEach((t,i) => {
+          t.classList.toggle('hs-carousel-active', i === index);
+        });
+        current = index;
+      }
+
+      // Nav
+      prevBtn.addEventListener('click', e => {
+        e.stopPropagation();
+        showSlide((current - 1 + slides.length) % slides.length);
+      });
+      nextBtn.addEventListener('click', e => {
+        e.stopPropagation();
+        showSlide((current + 1) % slides.length);
+      });
+
+      // Thumbnails
+      thumbs.forEach(t => {
+        t.addEventListener('click', e => {
+          e.stopPropagation();
+          const idx = parseInt(t.dataset.index, 10);
+          showSlide(idx);
+        });
+      });
+
+      // Init
+      showSlide(0);
+
+      // Zoom
+      modal.querySelectorAll('.zoomable-image').forEach(img => {
+        let zoomed = false;
+        img.addEventListener('click', e => {
+          e.stopPropagation();
+          zoomed = !zoomed;
+          if (zoomed) {
+            const rect = img.getBoundingClientRect();
+            const x = ((e.clientX - rect.left) / rect.width) * 100;
+            const y = ((e.clientY - rect.top) / rect.height) * 100;
+            img.style.transformOrigin = `${x}% ${y}%`;
+            img.style.transform = 'scale(2)';
+            img.style.cursor = 'zoom-out';
+            img.addEventListener('mousemove', pan);
+          } else {
+            img.style.transform = 'scale(1)';
+            img.style.cursor = 'zoom-in';
+            img.style.objectPosition = 'center center';
+            img.removeEventListener('mousemove', pan);
+          }
+          function pan(ev) {
+            const r = img.getBoundingClientRect();
+            const px = ((ev.clientX - r.left) / r.width) * 100;
+            const py = ((ev.clientY - r.top) / r.height) * 100;
+            img.style.objectPosition = `${px}% ${py}%`;
+          }
+        });
+      });
+    })();
+  </script>
+</product-modal>

@@ -6,7 +6,7 @@
         "type": "text",
         "id": "separator_symbol",
         "label": "Separator Symbol",
-        "default": ">"
+        "default": "/"
       },
       {
         "type": "color",
@@ -25,102 +25,80 @@
 {% endschema %}
 
 <style>
-  .breadcrumbs__list {
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
+  .breadcrumbs {
+    max-width: 100%;
+    overflow-x: hidden;
   }
-
+  @media screen and (min-width: 750px) {
+    .breadcrumbs {
+      margin-top: 1rem;
+    }
+  }
+  .breadcrumbs__list {
+    display: flex;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    align-items: center;
+    white-space: nowrap;
+    flex-wrap: nowrap;
+    overflow: hidden;
+  }
   .breadcrumbs__item {
-    display: inline-flex;
+    display: flex;
     align-items: center;
     font-size: 0.9em;
     color: rgba(var(--color-foreground), 0.75);
+    flex-shrink: 0;
+    min-width: 0;
   }
-
-  .breadcrumbs__item:not(:last-child):after {
+  .breadcrumbs__item:not(:last-child)::after {
     content: '{{ settings.separator_symbol | default: "›" | escape }}';
     display: inline-block;
-    margin: 0 0.5em;
+    margin: 0 0.33em;
     color: rgba(var(--color-foreground), 0.4);
-    font-size: 1.2em;
+    font-size: 1em;
   }
-
+  .breadcrumbs__item.shrink {
+    min-width: 0;
+    flex-shrink: 1;
+    flex-grow: 0;
+  }
   .breadcrumbs__link {
-    color: rgba(var(--color-foreground), 0.75);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
     text-decoration: none;
-    transition: color 0.2s ease;
-    padding: 0.2em 0;
-    position: relative;
+    color: inherit;
+    display: inline-block;
+    transition: color 0.2s;
+    max-width: 100%;
   }
-
   .breadcrumbs__link:hover {
     color: rgba(var(--color-foreground), 1);
   }
-
-  /* Underline animation on hover */
-  .breadcrumbs__link:after {
-    content: '';
-    position: absolute;
-    width: 100%;
-    height: 1px;
-    bottom: 0;
-    left: 0;
-    background-color: currentColor;
-    transform: scaleX(0);
-    transform-origin: right;
-    transition: transform 0.3s ease;
-  }
-
-  .breadcrumbs__link:hover:after {
-    transform: scaleX(1);
-    transform-origin: left;
-  }
-
-  .breadcrumbs__link[aria-current='page'] {
+  .breadcrumbs__link[aria-current="page"] {
+    font-weight: 600;
     color: rgba(var(--color-foreground), 1);
-    font-weight: 500;
   }
-
-  .breadcrumbs__link[aria-current='page']:after {
-    display: none;
-  }
-
-  @media screen and (max-width: 749px) {
-    .breadcrumbs {
-      margin: 0.25em 0;
-    }
-
-    .breadcrumbs__item {
+  @media (max-width: 749px) {
+    .breadcrumbs__list {
       font-size: 0.85em;
+    }
+    .breadcrumbs__item.shrink {
+      max-width: none;
     }
   }
 </style>
 
-{%- unless template == 'index' or template == 'cart' or template == 'list-collections' or template == '404' -%}
-  {%- assign t = template | split: '.' | first -%}
-
+{%- unless template == 'index' or template == 'cart' or template == '404' -%}
   <nav
-    class="breadcrumbs py-2"
+    class="breadcrumbs"
     style="background-color: {{ section.settings.background }}"
-    role="navigation"
     aria-label="breadcrumbs">
     <div class="page-width">
       <ol class="breadcrumbs__list">
-        <li class="breadcrumbs__item">
-          <a class="breadcrumbs__link" href="/">Home</a>
-        </li>
-        {%- case t -%}
-          {%- when 'page' -%}
-            <li class="breadcrumbs__item">
-              <a
-                class="breadcrumbs__link"
-                href="{{ page.url }}"
-                aria-current="page">{{ page.title }}</a>
-            </li>
+        {%- case template | split: '.' | first -%}
           {%- when 'product' -%}
             {%- assign main_collection = product.metafields.custom.main_collection.value -%}
             {%- if main_collection != blank -%}
@@ -130,8 +108,6 @@
             {%- endif -%}
             {%- assign current_collection = product_collection -%}
             {%- assign collection_hierarchy = '' | split: ',' -%}
-
-            {%- # Build collection hierarchy array -%}
             {%- for i in (1..100) -%}
               {%- assign handle_array = current_collection | map: 'handle' | first | split: ',' -%}
               {%- assign collection_hierarchy = collection_hierarchy | concat: handle_array -%}
@@ -141,26 +117,21 @@
               {%- endif -%}
               {%- assign current_collection = parent_collection -%}
             {%- endfor -%}
-
-            {%- # Output collection hierarchy in reverse order -%}
             {%- for hdl in collection_hierarchy reversed -%}
               {%- assign col = collections[hdl] -%}
-
-              <li class="breadcrumbs__item">
-                <a
-                  class="breadcrumbs__link"
-                  href="{{ col.url }}"
-                  aria-current="page">{{ col.title }}</a>
+              <li class="breadcrumbs__item shrink">
+                <a class="breadcrumbs__link" href="{{ col.url }}">{{ col.title }}</a>
               </li>
             {%- endfor -%}
             <li class="breadcrumbs__item">
-              {{ product.title }}
+              <span class="breadcrumbs__link" aria-current="page">
+                {{ product.selected_or_first_available_variant.sku | default: product.variants.first.sku }}
+              </span>
             </li>
+
           {%- when 'collection' and collection.handle -%}
             {%- assign current_collection = collection -%}
             {%- assign collection_hierarchy = '' | split: ',' -%}
-
-            {%- # Build collection hierarchy array -%}
             {%- for i in (1..100) -%}
               {%- assign handle_array = current_collection | map: 'handle' | first | split: ',' -%}
               {%- assign collection_hierarchy = collection_hierarchy | concat: handle_array -%}
@@ -170,73 +141,43 @@
               {%- endif -%}
               {%- assign current_collection = parent_collection -%}
             {%- endfor -%}
-
-            {%- # Output collection hierarchy in reverse order -%}
             {%- for hdl in collection_hierarchy reversed -%}
               {%- assign col = collections[hdl] -%}
-
-              <li class="breadcrumbs__item">
+              <li class="breadcrumbs__item{% if forloop.last and current_tags == blank %} shrink{% endif %}">
                 {%- if forloop.last and current_tags == blank -%}
-                  {{ col.title }}
+                  <span class="breadcrumbs__link" aria-current="page">{{ col.title }}</span>
                 {%- else -%}
-                  <a
-                    class="breadcrumbs__link"
-                    href="{{ col.url }}"
-                    aria-current="page">{{ col.title }}</a>
+                  <a class="breadcrumbs__link" href="{{ col.url }}">{{ col.title }}</a>
                 {%- endif -%}
               </li>
             {%- endfor -%}
+            {%- if current_tags -%}
+              <li class="breadcrumbs__item">
+                <span class="breadcrumbs__link" aria-current="page">{{ current_tags | join: ' + ' }}</span>
+              </li>
+            {%- endif -%}
 
-            {%- # Handle tags if present -%}
-            {%- if current_tags -%}
-              <li class="breadcrumbs__item">
-                {%- capture tag_url -%}{{ collection.url }}/{{ current_tags | join: "+"}}{%- endcapture -%}
-                <a
-                  class="no-underline text-black"
-                  href="{{ tag_url }}"
-                  aria-current="page">
-                  {{- current_tags | join: ' + ' -}}
-                </a>
-              </li>
-            {%- endif -%}
-          {%- when 'blog' -%}
-            {%- if current_tags -%}
-              <li class="breadcrumbs__item">
-                {{ blog.title | link_to: blog.url }}
-              </li>
-              <li class="breadcrumbs__item">
-                {%- capture tag_url -%}{{blog.url}}/tagged/{{ current_tags | join: "+" }}{%- endcapture -%}
-                <a
-                  class="breadcrumbs__link"
-                  href="{{ tag_url }}"
-                  aria-current="page">
-                  {{- current_tags | join: ' + ' -}}
-                </a>
-              </li>
-            {%- else -%}
-              <li class="breadcrumbs__item">
-                <a
-                  class="breadcrumbs__link"
-                  href="{{ blog.url }}"
-                  aria-current="page">{{ blog.title }}</a>
-              </li>
-            {%- endif -%}
+          {%- when 'page' -%}
+            <li class="breadcrumbs__item">
+              <span class="breadcrumbs__link" aria-current="page">{{ page.title }}</span>
+            </li>
+
           {%- when 'article' -%}
             <li class="breadcrumbs__item">
-              {{ blog.title | link_to: blog.url }}
+              <a class="breadcrumbs__link" href="{{ blog.url }}">{{ blog.title }}</a>
             </li>
             <li class="breadcrumbs__item">
-              <a
-                class="breadcrumbs__link"
-                href="{{ article.url }}"
-                aria-current="page">{{ article.title }}</a>
+              <span class="breadcrumbs__link" aria-current="page">{{ article.title }}</span>
             </li>
+
+          {%- when 'blog' -%}
+            <li class="breadcrumbs__item">
+              <span class="breadcrumbs__link" aria-current="page">{{ blog.title }}</span>
+            </li>
+
           {%- else -%}
             <li class="breadcrumbs__item">
-              <a
-                class="breadcrumbs__link"
-                href="{{ request.path }}"
-                aria-current="page">{{ page_title }}</a>
+              <span class="breadcrumbs__link" aria-current="page">{{ page_title }}</span>
             </li>
         {%- endcase -%}
       </ol>
