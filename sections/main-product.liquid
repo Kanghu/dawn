@@ -493,6 +493,13 @@
                   section_id: section.id,
                   show_pickup_availability: true
                 -%}
+              {%- when 'alc_pickup_availability' -%}
+                {%- render 'alc-pickup-availability',
+                  block: block,
+                  product: product,
+                  product_form_id: product_form_id,
+                  section_id: section.id
+                -%}
               {%- when 'rating' -%}
                 {%- if product.metafields.reviews.rating.value != blank -%}
                   <div class="rating-wrapper">
@@ -951,10 +958,16 @@
       ]
     },
     {
+      /* Custom block */
       "name": "ALC - Product benefits",
       "type": "alc_product_benefits"
     },
     {
+      "name": "ALC - Pickup availability",
+      "type": "alc_pickup_availability"
+    },
+    {
+      /* Custom block */
       "name": "ALC - Price",
       "type": "alc_price",
       "settings": [
