@@ -11,7 +11,81 @@
   "sections": {
     "pagefly-home": {
       "type": "pagefly-home",
+      "disabled": true,
       "settings": {}
+    },
+    "custom_liquid_QNFNDb": {
+      "type": "custom-liquid",
+      "custom_css": [],
+      "name": "t:sections.custom-liquid.presets.name",
+      "settings": {
+        "custom_liquid": "<center>\n<div style=\"width: 1300px; display: flex; align-items: center; justify-content: space-between;\n     background-image: url('https://cdn.shopify.com/s/files/1/0782/5175/3739/files/BANNER1.png?v=1749051097');\n     background-size: cover; background-position: center; padding: 60px 40px; font-family: 'Roboto', sans-serif;\n    border-radius: 12px;\">\n\n  <div style=\"flex: 1;\"></div>\n  <div style=\"flex: 1; color: white; text-align: left;\">\n    {% case request.locale.iso_code %}\n    {% when 'ro' %}\n    <p style=\"font-family: 'Roboto Black', sans-serif; font-size: 26px; margin: 0 0 20px;\">\n      Inspirație fără limite\n    </p>\n    {% when 'en' %}\n    <p style=\"font-family: 'Roboto Black', sans-serif; font-size: 26px; margin: 0 0 20px; \">\n      Limitless Inspiration\n    </p>\n    {% when 'hu' %}\n    <p style=\"font-family: 'Roboto Black', sans-serif; font-size: 26px; margin: 0 0 20px;\">\n      Határtalan Inspiráció\n    </p>\n    {% when 'bg' %}\n    <p style=\"font-family: 'Roboto Black', sans-serif; font-size: 26px; margin: 0 0 20px;\">\n      Вдъхновение без граници\n    </p>\n    {% else %}\n    <p style=\"font-family: 'Roboto Black', sans-serif; font-size: 26px; margin: 0 0 20px; \">\n      Inspirație fără limite\n    </p>\n    {% endcase %}\n  </div>\n</div>\n</center>",
+        "color_scheme": "",
+        "padding_top": 8,
+        "padding_bottom": 0
+      }
+    },
+    "collection_list_yM6pDQ": {
+      "type": "collection-list",
+      "blocks": {
+        "featured_collection_9gqHpW": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "oglinzi-led"
+          }
+        },
+        "featured_collection_ghEfNr": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "lustre-led"
+          }
+        },
+        "featured_collection_qVyq9n": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "iluminat-de-exterior"
+          }
+        },
+        "featured_collection_Mj7NUr": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "corpuri-de-iluminat"
+          }
+        },
+        "featured_collection_iq8mAN": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "produse-led"
+          }
+        },
+        "featured_collection_FDHV6W": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "casa-gradina"
+          }
+        }
+      },
+      "block_order": [
+        "featured_collection_9gqHpW",
+        "featured_collection_ghEfNr",
+        "featured_collection_qVyq9n",
+        "featured_collection_Mj7NUr",
+        "featured_collection_iq8mAN",
+        "featured_collection_FDHV6W"
+      ],
+      "name": "t:sections.collection-list.presets.name",
+      "settings": {
+        "title": "Vezi categoriile noastre",
+        "heading_size": "h2",
+        "image_ratio": "square",
+        "columns_desktop": 6,
+        "color_scheme": "",
+        "show_view_all": false,
+        "columns_mobile": "1",
+        "swipe_on_mobile": false,
+        "padding_top": 16,
+        "padding_bottom": 24
+      }
     },
     "custom_liquid_i8YzMd": {
       "type": "custom-liquid",
@@ -311,6 +385,8 @@
   },
   "order": [
     "pagefly-home",
+    "custom_liquid_QNFNDb",
+    "collection_list_yM6pDQ",
     "custom_liquid_i8YzMd",
     "featured_collection_KFUddR",
     "custom_liquid_Yee3Mx",

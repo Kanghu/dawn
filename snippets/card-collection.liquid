@@ -31,22 +31,16 @@
   endif
 -%}
 
-<div class="card-wrapper animate-arrow {% if wrapper_class and wrapper_class != 'none' %}{{ wrapper_class }}{% else %}collection-card-wrapper{% endif %}">  
-<div
-    class="
+<div class="card-wrapper animate-arrow {% if wrapper_class and wrapper_class != 'none' %}{{ wrapper_class }}{% else %}collection-card-wrapper{% endif %}">
+  <div class="
       card
       card--{{ card_style }}
       {% if card_collection.featured_image %} card--media{% else %} card--text{% endif %}
       {% if card_style == 'card' %} color-{{ card_color_scheme }} gradient{% endif %}
       {% if extend_height %} card--extend-height{% endif %}
       {% if card_collection.featured_image == nil and card_style == 'card' %} ratio{% endif %}
-    "
-    style="--ratio-percent: {{ 1 | divided_by: ratio | times: 100 }}%;"
-  >
-    <div
-      class="card__inner {% if card_style == 'standard' %}color-{{ card_color_scheme }} gradient{% endif %}{% if card_collection.featured_image or card_style == 'standard' %} ratio{% endif %}"
-      style="--ratio-percent: {{ 1 | divided_by: ratio | times: 100 }}%;"
-    >
+    " style="--ratio-percent: {{ 1 | divided_by: ratio | times: 100 }}%;">
+    <div class="card__inner {% if card_style == 'standard' %}color-{{ card_color_scheme }} gradient{% endif %}{% if card_collection.featured_image or card_style == 'standard' %} ratio{% endif %}" style="--ratio-percent: {{ 1 | divided_by: ratio | times: 100 }}%;">
       {%- if card_collection.featured_image -%}
         <div class="card__media">
           <div class="media media--transparent media--hover-effect">
@@ -71,8 +65,7 @@
               height="{{ card_collection.featured_image.height }}"
               width="{{ card_collection.featured_image.width }}"
               loading="lazy"
-              class="motion-reduce"
-            >
+              class="motion-reduce">
           </div>
         </div>
       {%- endif -%}
@@ -86,12 +79,12 @@
             <h3 class="card__heading">
               <a
                 {% if card_collection == blank %}
-                  role="link" aria-disabled="true"
+                role="link"
+                aria-disabled="true"
                 {% else %}
-                  href="{{ card_collection.url }}"
+                href="{{ card_collection.url }}"
                 {% endif %}
-                class="full-unstyled-link"
-              >
+                class="full-unstyled-link">
                 {%- if card_collection.title != blank -%}
                   {{- card_collection.title | escape -}}
                 {%- else -%}
@@ -117,27 +110,22 @@
       {%- endif -%}
     </div>
     {%- if card_collection != blank and card_style == 'card' or card_collection.featured_image -%}
-      <div class="card__content">
+      <div class="card__content" style="max-height: 5rem;">
         <div class="card__information">
           <h3 class="card__heading">
             <a
               {% if card_collection == blank %}
-                role="link" aria-disabled="true"
+              role="link"
+              aria-disabled="true"
               {% else %}
-                href="{{ card_collection.url }}"
+              href="{{ card_collection.url }}"
               {% endif %}
-              class="full-unstyled-link"
-            >
+              class="full-unstyled-link text-center">
               {%- if card_collection.title != blank -%}
                 {{- card_collection.title | escape -}}
               {%- else -%}
                 {{ 'onboarding.collection_title' | t }}
               {%- endif -%}
-              {%- if card_collection.featured_image or card_collection.description == blank -%}
-                <span class="icon-wrap">
-                  {{- 'icon-arrow.svg' | inline_asset_content -}}
-                </span>
-              {%- endif %}
             </a>
           </h3>
           {%- if card_collection.featured_image == null and card_collection.description != blank -%}
@@ -155,7 +143,10 @@
       <div class="card__content">
         <div class="card__information">
           <h3 class="card__heading card__heading--placeholder">
-            <a role="link" aria-disabled="true" class="full-unstyled-link">
+            <a
+              role="link"
+              aria-disabled="true"
+              class="full-unstyled-link">
               {{ 'onboarding.collection_title' | t }}
               <span class="icon-wrap">
                 {{- 'icon-arrow.svg' | inline_asset_content -}}
