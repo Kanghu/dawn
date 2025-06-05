@@ -68,18 +68,8 @@
         </div>
       </div>
 
-      {% assign parent_product_ids = collection.products | map: 'id' %}
-
-      {% for product in collection.products %}
-        {% assign p = product.collections | map: 'id' %}
-        {{ p }}
-        
-      {% endfor %}
-
       {% for subcollection in subcollections %}
-        {% assign real_sub = collections[subcollection.handle] %}
-        {{ subcollection.products | map: 'id' }}
-        {% if real_sub and real_sub.products_count > 0 %}
+        {% if subcollection.products_count > 0 %}
 
           {% assign shown = 0 %}
           {% assign section_index = forloop.index | modulo: 4 %}
@@ -116,13 +106,8 @@
               <!-- Product Grid -->
               <ul class="grid product-grid grid--2-col-tablet-down grid--5-col-desktop gap-x-6 px-4">
                 {% assign skip_card_product_styles = false %}
-                {% for product in real_sub.products %}
-                  {% if parent_product_ids contains product.id %}
-                    {% assign shown = shown | plus: 1 %}
-                    {% if shown > 8 %}
-                      {% break %}
-                    {% endif %}
-
+                {% for product in collection.products %}
+                  {% if product.collections contains subcollection %}
                     {% assign lazy_load = false %}
                     {% if shown > 2 %}
                       {% assign lazy_load = true %}
