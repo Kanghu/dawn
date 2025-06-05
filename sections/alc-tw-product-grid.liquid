@@ -17,14 +17,14 @@
   <div>
     <main>
       <!-- Banner + Categories Section with unified design -->
-      <div class="bg-gradient-to-b from-[#06BBD6]/50 via-[#06BBD6]/25 to-gray-50 pt-8 pb-16">
+      <div class="pt-8 pb-16 bg-white">
         <div class="page-width">
           <!-- Banner Image with max-width 1300px -->
           <div class="w-full flex justify-center mb-8">
             <img
-              src="https://cdn.shopify.com/s/files/1/0782/5175/3739/files/banner_vanatoare_reduceri_wide.webp?v=1746203495"
+              src="{{ collection.image | image_url: width: 1300 }}"
               alt="{{ collection.title | escape }}"
-              class="w-full max-w-[1300px] h-auto object-cover rounded-lg shadow-md">
+              class="w-full max-w-[1300px] h-auto object-cover rounded-lg shadow-md object-center">
           </div>
 
           <!-- Content area for campaign description -->
@@ -33,7 +33,9 @@
               {% if collection.description != blank %}
                 {{ collection.description }}
               {% else %}
-                <p class="text-gray-600">Descoperă cea mai bună selecție de produse pentru vânătoare la prețuri reduse. Oferte exclusive pentru echipamente și accesorii de înaltă calitate. Reduceri disponibile pentru o perioadă limitată.</p>
+                <p class="text-gray-600">
+                  {{ collection.metafields.custom.description }}
+                </p>
               {% endif %}
             </div>
         </div>
@@ -41,24 +43,27 @@
           <!-- Featured Categories from metafield - larger text with more top spacing -->
           {% assign subcollections = collection.metafields.custom.slider_subcollections.value %}
           {% if subcollections != blank %}
-            <div>
+            <div class="flex justify-center">
               <!-- Changed to 6 columns on desktop, kept 2 on mobile, ensured equal sizing -->
-              <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6 justify-center">
+              <div class="grid gap-6 justify-center" style="grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); max-width: 900px;">
                 {%- for subcollection in subcollections -%}
                   <a href="#section-{{ subcollection.handle }}" class="group flex flex-col items-center">
-                    <div class="aspect-square w-full overflow-hidden rounded-lg bg-gray-100 relative shadow-md border-2 border-transparent hover:border-[#06BBD6] transition-all duration-300">
+                    <div class="aspect-square flex overflow-hidden rounded-lg bg-gray-100 relative shadow-md border-2 border-transparent transition-all duration-300 dynamic-hover-border">
                       {%- if subcollection.featured_image != blank -%}
                         <img
-                          src="{{ subcollection.featured_image | img_url: '200x200', crop: 'center' }}"
+                          src="{{ subcollection.featured_image | image_url: width: 200 }}"
+                          srcset="{{ subcollection.featured_image | image_url: width: 150 }} 150w,
+                                  {{ subcollection.featured_image | image_url: width: 200 }} 300w"
+                          sizes="(max-width:640px) 50vw, (max-width:1024px) 33vw, 16vw"
                           alt="{{ subcollection.title | escape }}"
-                          class="h-full w-full object-cover object-center group-hover:opacity-90 transition-opacity"
-                          loading="lazy"
-                          width="200"
-                          height="200">
+                          class="aspect-square max-w-1/2 object-cover object-center group-hover:opacity-90 transition-opacity"
+                          loading="lazy">
                       {%- else -%}
-                        {{ 'collection-1' | placeholder_svg_tag: 'h-full w-full object-cover object-center group-hover:opacity-75' }}
+                        {{ 'collection-1' | placeholder_svg_tag: 'object-cover object-center group-hover:opacity-75' }}
                       {%- endif -%}
-                      <h3 class="absolute bottom-4 left-0 right-0 bg-[#06BBD6]/80 text-white p-2 text-center text-2xl truncate">{{ subcollection.title }}</h3>
+                      <h3 class="absolute bottom-4 left-0 right-0 text-white p-2 text-center text-2xl truncate" style="background: linear-gradient(90deg, {{ collection.metafields.custom.main_color }}E6 50%, #fff 100%);">
+                        {{ subcollection.title }}
+                      </h3>
                     </div>
                   </a>
                 {%- endfor -%}
@@ -85,10 +90,10 @@
           {% endcase %}
 
           <div class="my-12" id="section-{{ subcollection.handle }}">
-            <div class="page-width pt-4 pb-8 bg-white border-l-4 border-[#06BBD6] rounded-lg shadow-sm">
+            <div class="page-width pt-4 pb-8 bg-white border-l-4 border-[#06BBD6] rounded-lg shadow-sm" style="border-left-color: {{ collection.metafields.custom.border_color }};">
 
               <!-- Subcollection Title Block -->
-              <div class="mx-[-1.5rem] bg-gradient-to-r from-[#06BBD6]/30 to-white">
+              <div class="mx-[-1.5rem]" style="background: linear-gradient(90deg, {{ collection.metafields.custom.main_color }}4D 0%, #fff 100%);">
                 <h2 class="text-4xl tracking-wider font-semibold text-gray-900 mb-6 mt-2 px-6 py-4">
                   {{ subcollection.title }}
                 </h2>
@@ -134,7 +139,10 @@
 
               <!-- "See All Products" Button -->
               <div class="flex justify-center">
-                <a href="{{ subcollection.url }}" class="inline-flex items-center px-6 py-3 my-6 border border-transparent text-xl font-medium rounded-md shadow-sm text-white bg-[#06BBD6] hover:bg-[#059caf] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#06BBD6] no-underline">
+                <a
+                  href="{{ subcollection.url }}"
+                  class="inline-flex items-center px-6 py-3 my-6 border border-transparent text-xl font-medium rounded-md shadow-sm text-white bg-[#06BBD6] hover:bg-[#059caf] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#06BBD6] no-underline"
+                  style="background-color: {{ collection.metafields.custom.main_color }};">
                   <span>Vezi toate produsele</span>
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
@@ -163,6 +171,12 @@
     // Add any JavaScript needed for the campaign landing page here
   });
 </script>
+
+<style>
+  .dynamic-hover-border:hover {
+    border-color: {{ collection.metafields.custom.border_color }};
+  }
+</style>
 
 {% schema %}
   {
