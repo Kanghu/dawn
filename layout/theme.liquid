@@ -483,13 +483,19 @@ body {
           g.async = true;
           s.parentNode.insertBefore(g,s);
           g.onload = function(){
+        
       window.chatwootSDK.run({
         websiteToken: 'oQQDpGSw5mcULG6tQB6GeNvN',
         baseUrl: BASE_URL
       });
       // după iniţializare
       window.addEventListener('chatwoot:ready', function() {
-        window.$chatwoot.setLocale('{{ request.locale.iso_code }}');
+        let locale = '{{ request.locale.iso_code }}';
+        if(locale !== 'bg') {
+          window.$chatwoot.setLocale('en');
+        } else {
+          window.$chatwoot.setLocale(locale);
+        }
       });
           };
         })(document,"script");
