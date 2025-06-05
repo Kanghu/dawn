@@ -208,7 +208,7 @@
       </div>
 
       {% if show_sale_badge and block.settings.difference_display_style == 'text' %}
-        <div class="price-difference-text text-lg" style="color: black;">Economisesti {{ diff_money }}</div>
+        <div class="price-difference-text text-lg" style="color: black;">{{ 'alc-benefits.savings' | t: amount: diff_money }}</div>
       {% endif %}
 
     </div>
