@@ -104,74 +104,89 @@
                   </details>
                 </div>
               {% elsif block.type == 'collapsible_metafields' %}
-                <!-- New custom metafields block -->
-                <div class="accordion" {{ block.shopify_attributes }}>
-                  <details id="Details-{{ block.id }}-{{ section.id }}">
-                    <summary id="Summary-{{ block.id }}-{{ section.id }}">
-                      {% render 'icon-accordion', icon: block.settings.icon %}
-                      <h3 class="accordion__title inline-richtext h4">
-                        {{ block.settings.heading }}
-                      </h3>
-                      {{- 'icon-caret.svg' | inline_asset_content -}}
-                    </summary>
-                    <div
-                      class="accordion__content rte"
-                      id="CollapsibleAccordion-{{ block.id }}-{{ section.id }}"
-                      role="region"
-                      aria-labelledby="Summary-{{ block.id }}-{{ section.id }}"
-                    >
-                      {% if product.metafields.custom != blank %}
-                        <!-- Need to overwrite display: grid due to conflicting 'grid' class -->
-                        <div class="py-2 grid grid-cols-1 md:grid-cols-2 gap-4" style="display: grid;">
-                          {% assign collection_with_specs = nil %}
-                          {% for collection in product.collections %}
-                            {% if collection.metafields.custom.specification_groups != blank %}
-                              {% assign collection_with_specs = collection %}
-                              {% break %}
-                            {% endif %}
-                          {% endfor %}
+  <!-- New custom metafields block -->
+  <div class="accordion" {{ block.shopify_attributes }}>
+    <details id="Details-{{ block.id }}-{{ section.id }}">
+      <summary id="Summary-{{ block.id }}-{{ section.id }}">
+        {% render 'icon-accordion', icon: block.settings.icon %}
+        <h3 class="accordion__title inline-richtext h4">
+          {{ block.settings.heading }}
+        </h3>
+        {{- 'icon-caret.svg' | inline_asset_content -}}
+      </summary>
+      <div
+        class="accordion__content rte"
+        id="CollapsibleAccordion-{{ block.id }}-{{ section.id }}"
+        role="region"
+        aria-labelledby="Summary-{{ block.id }}-{{ section.id }}"
+      >
+        {% if product.metafields.custom != blank %}
+          <!-- Force grid layout despite utility-class conflict -->
+          <div class="py-2 grid grid-cols-1 md:grid-cols-2 gap-4" style="display: grid;">
+            {% assign collection_with_specs = nil %}
+            {% for collection in product.collections %}
+              {% if collection.metafields.custom.specification_groups != blank %}
+                {% assign collection_with_specs = collection %}
+                {% break %}
+              {% endif %}
+            {% endfor %}
 
-                          {% if collection_with_specs %}
-                            {% for spec_group in collection_with_specs.metafields.custom.specification_groups.value %}
-                              {% assign spec_group_metaobj = spec_group | metaobject %}
+            {% if collection_with_specs %}
+              {% for spec_group in collection_with_specs.metafields.custom.specification_groups.value %}
+                {% assign spec_group_metaobj = spec_group | metaobject %}
 
-                              <div class="mb-16 w-100 md:w-50">
-                                <h3 class="mt-4" style="color: #EF1188">{{ spec_group_metaobj.name }}:</h3>
-                                {% assign counter = 0 %}
-                                {% for spec in spec_group_metaobj.specifications.value %}
-                                  {% assign spec_value = product.metafields.custom[spec].value %}
-                                  {% if spec_value != blank %}
-                                    {% assign is_odd = counter | modulo: 2 %}
-                                    <div
-                                      style="{% if is_odd == 0 %}background: rgba(3,186,214,0.3);{% endif %}"
-                                      class="justify-between px-3 py-3 text-2xl flex flex-row"
-                                    >
-                                      <span class="spec-name w-2/3 font-normal">
-                                        {{- spec | replace: '_', ' ' | capitalize }}:</span
-                                      >
-                                      <span class="spec-value w-1/3 font-medium">
-                                        {%- if spec_value.size > 0 -%}
-                                          {{- spec_value | join: ', ' -}}
-                                        {%- else -%}
-                                          {{- spec_value -}}
-                                        {%- endif -%}
-                                      </span>
-                                    </div>
-                                    {% assign counter = counter | plus: 1 %}
-                                  {% endif %}
-                                {% endfor %}
-                              </div>
-                            {% endfor %}
-                          {% else %}
-                            No collection metafields available.
-                          {% endif %}
-                        </div>
-                      {% else %}
-                        <p>No custom metafields available for this product.</p>
+              <div class="mb-16 w-100 md:w-50">
+                  <h3 class="mt-4" style="color: #EF1188">{{ spec_group_metaobj.name }}:</h3>
+
+                  {%- assign counter = 0 -%}
+                  {%- for spec in spec_group_metaobj.specifications.value -%}
+                      {% assign mf = product.metafields.custom[spec] %}
+                      {% if mf %}
+                          {% assign is_even = counter | modulo: 2 %}
+
+                          <div
+                                  class="justify-between px-3 py-3 text-2xl flex flex-row"
+                                  style="{% if is_even == 0 %}background: rgba(3,186,214,0.3);{% endif %}"
+                          >
+        <span class="spec-name w-2/3 font-normal">
+          {{ spec | replace: '_', ' ' | capitalize }}:
+        </span>
+
+                              <span class="spec-value w-1/3 font-medium">
+          {% if mf.type == 'list.metaobject_reference' %}
+              {% assign key = spec | remove: '_' %}
+              {% assign parsed = mf.value | parse_json %}
+              {%- for entry in parsed -%}
+                  {{ entry[key]
+                  | join: ', '
+                  | replace: '[', ''
+                  | replace: ']', ''
+                  | replace: '"', ''
+                  }}
+                  {%- unless forloop.last -%}, {% endunless -%}
+              {%- endfor -%}
+          {% else %}
+              {{ mf.value }}
+          {% endif %}
+        </span>
+                          </div>
+
+                          {%- assign counter = counter | plus: 1 -%}
                       {% endif %}
-                    </div>
-                  </details>
-                </div>
+                  {%- endfor -%}
+              </div>
+              {% endfor %}
+            {% else %}
+              <p>No collection metafields available.</p>
+            {% endif %}
+          </div>
+        {% else %}
+          <p>No custom metafields available for this product.</p>
+        {% endif %}
+      </div>
+    </details>
+  </div>
+
               {% elsif block.type == 'collapsible_qa' %}
                 <!-- Questions and Answers block -->
                 <div class="accordion" {{ block.shopify_attributes }}>
