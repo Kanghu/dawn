@@ -12,7 +12,6 @@
     "custom_liquid_QNFNDb": {
       "type": "custom-liquid",
       "custom_css": [],
-      "name": "t:sections.custom-liquid.presets.name",
       "settings": {
         "custom_liquid": "{% if request.locale.iso_code == 'ro' %}\n  <a href=\"https://www.alessandrodesign.ro/collections/reducere-de-ciresar\">\n    <img \n      src=\"https://www.alessandrodesign.ro/cdn/shop/collections/Reduceri_de_Ciresar_AD_3820x720px.png?v=1748940234&width=1300\" \n      alt=\"Reduceri de Ciresar Desktop\"\n      class=\"banner-desktop\" \n      style=\"height:auto;width:90%;margin:auto\"\n    >\n    <img \n      src=\"https://cdn.shopify.com/s/files/1/0782/5175/3739/files/Reduceri_de_Ciresar_AD_1920x1080px.webp?v=1749091791\" \n      alt=\"Reduceri de Ciresar Mobile\"\n      class=\"banner-mobile\" \n      style=\"height:auto;width:90%;margin:auto;display:none\"\n    >\n  </a>\n\n  <style>\n    @media only screen and (max-width: 768px) {\n      .banner-desktop {\n        display: none !important;\n      }\n      .banner-mobile {\n        display: block !important;\n      }\n    }\n  </style>\n{% else %}\n  <center>\n    <div style=\"width: 1300px; display: flex; align-items: center; justify-content: space-between;\n        background-image: url('https://cdn.shopify.com/s/files/1/0782/5175/3739/files/BANNER1.png?v=1749051097');\n        background-size: cover; background-position: center; padding: 60px 40px; font-family: 'Roboto', sans-serif;\n        border-radius: 12px;\">\n\n      <div style=\"flex: 1;\"></div>\n      <div style=\"flex: 1; color: white; text-align: left;\">\n        {% case request.locale.iso_code %}\n          {% when 'en' %}\n            <p style=\"font-family: 'Roboto Black', sans-serif; font-size: 26px; margin: 0 0 20px; text-transform: uppercase;\">\n              Limitless Inspiration\n            </p>\n          {% when 'hu' %}\n            <p style=\"font-family: 'Roboto Black', sans-serif; font-size: 26px; margin: 0 0 20px; text-transform: uppercase;\">\n              Határtalan Inspiráció\n            </p>\n          {% when 'bg' %}\n            <p style=\"font-family: 'Roboto Black', sans-serif; font-size: 26px; margin: 0 0 20px; text-transform: uppercase;\">\n              Вдъхновение без граници\n            </p>\n          {% when 'gr' %}\n            <p style=\"font-family: 'Roboto Black', sans-serif; font-size: 26px; margin: 0 0 20px; text-transform: uppercase;\">\n              Απεριόριστη Έμπνευση\n            </p>\n          {% else %}\n            <p style=\"font-family: 'Roboto Black', sans-serif; font-size: 26px; margin: 0 0 20px; text-transform: uppercase;\">\n              Inspirație fără limite\n            </p>\n        {% endcase %}\n      </div>\n    </div>\n  </center>\n{% endif %}",
         "color_scheme": "",
@@ -68,7 +67,6 @@
         "featured_collection_iq8mAN",
         "featured_collection_FDHV6W"
       ],
-      "name": "t:sections.collection-list.presets.name",
       "settings": {
         "title": "",
         "heading_size": "h2",
@@ -84,7 +82,6 @@
     },
     "custom_liquid_i8YzMd": {
       "type": "custom-liquid",
-      "name": "t:sections.custom-liquid.presets.name",
       "settings": {
         "custom_liquid": "<center>\n<div style=\"max-width: 1300px; height:auto; display: flex; align-items: center; justify-content: space-between;\n     background-image: url('https://cdn.shopify.com/s/files/1/0782/5175/3739/files/marcello_banner_low_c114399a-3d67-4eda-aaa2-5e9e739fe237_1.png?v=1745396310');\n     background-size: cover;padding: 40px 20px; font-family: 'Roboto', sans-serif;\n    border-radius: 4px;\">\n\n  <div style=\"flex: 1;\"></div>\n  <div style=\"flex: 1; color: white; text-align: right;\">\n    {% case request.locale.iso_code %}\n    {% when 'ro' %}\n    <p style=\"font-family: 'Roboto Black', sans-serif; font-size: 26px; margin: 0 0 20px; text-transform: uppercase;\">\n      Calitatea Marcello\n    </p>\n    <p\n      style=\"font-family: 'Roboto', sans-serif; font-weight: 400; font-size: 10px; max-width: 400px; margin: 0 0 0 auto;\">\n      în oglinzile LED Premium Marcello Funghi\n    </p>\n    {% when 'en' %}\n    <p style=\"font-family: 'Roboto Black', sans-serif; font-size: 26px; margin: 0 0 20px; text-transform: uppercase;\">\n      Marcello Quality\n    </p>\n    <p\n      style=\"font-family: 'Roboto', sans-serif; font-weight: 400; font-size: 10px; max-width: 400px; margin: 0 0 0 auto;\">\n      in Marcello Funghi Premium LED Mirrors\n    </p>\n    {% when 'hu' %}\n    <p style=\"font-family: 'Roboto Black', sans-serif; font-size: 26px; margin: 0 0 20px; text-transform: uppercase;\">\n      Marcello Minőség\n    </p>\n    <p\n      style=\"font-family: 'Roboto', sans-serif; font-weight: 400; font-size: 10px; max-width: 400px; margin: 0 0 0 auto;\">\n      a Marcello Funghi prémium LED tükrökben\n    </p>\n    {% when 'bg' %}\n    <p style=\"font-family: 'Roboto Black', sans-serif; font-size: 26px; margin: 0 0 20px; text-transform: uppercase;\">\n      Качество на Марчело\n    </p>\n    <p\n      style=\"font-family: 'Roboto', sans-serif; font-weight: 400; font-size: 10px; max-width: 400px; margin: 0 0 0 auto;\">\n      в премиум LED огледалата на Marcello Funghi\n    </p>\n    {% else %}\n    <p style=\"font-family: 'Roboto Black', sans-serif; font-size: 26px; margin: 0 0 20px; text-transform: uppercase;\">\n      Calitatea Marcello\n    </p>\n    <p\n      style=\"font-family: 'Roboto', sans-serif; font-weight: 400; font-size: 10px; max-width: 400px; margin: 0 0 0 auto;\">\n      în oglinzile LED Premium Marcello Funghi\n    </p>\n    {% endcase %}\n  </div>\n</div>\n</center>",
         "color_scheme": "",
@@ -94,7 +91,6 @@
     },
     "featured_collection_KFUddR": {
       "type": "featured-collection",
-      "name": "t:sections.featured-collection.presets.name",
       "settings": {
         "title": "",
         "heading_size": "h1",
@@ -114,7 +110,7 @@
         "show_secondary_image": true,
         "show_vendor": false,
         "show_rating": false,
-        "quick_add": "none",
+        "quick_add": "standard",
         "columns_mobile": "2",
         "swipe_on_mobile": false,
         "padding_top": 24,
@@ -123,7 +119,6 @@
     },
     "custom_liquid_Yee3Mx": {
       "type": "custom-liquid",
-      "name": "t:sections.custom-liquid.presets.name",
       "settings": {
         "custom_liquid": "<center>\n<div style=\"max-width: 1300px; height: auto; display: flex; align-items: center; justify-content: space-between;\n     background-image: url('https://cdn.shopify.com/s/files/1/0782/5175/3739/files/BANNER_CANDELABRE.png?v=1747204565');\n     background-size: cover; background-position: center; padding: 40px 20px; font-family: 'Roboto', sans-serif;\n    border-radius: 4px;\">\n\n  <div style=\"flex: 1;\"></div>\n  <div style=\"flex: 1; color: white; text-align: right;\">\n    {% case request.locale.iso_code %}\n    {% when 'ro' %}\n    <p style=\"font-family: 'Roboto Black', sans-serif; font-size: 26px; margin: 0 0 20px; text-transform: uppercase;\">\n      Candelabre Deosebite\n    </p>\n    <p\n      style=\"font-family: 'Roboto', sans-serif; font-weight: 400; font-size: 10px; max-width: 400px; margin: 0 0 0 auto;\">\n      Calitate premium la preturi accesibile\n    </p>\n    {% when 'en' %}\n    <p style=\"font-family: 'Roboto Black', sans-serif; font-size: 26px; margin: 0 0 20px; text-transform: uppercase;\">\n      Unique Chandeliers\n    </p>\n    <p\n      style=\"font-family: 'Roboto', sans-serif; font-weight: 400; font-size: 10px; max-width: 400px; margin: 0 0 0 auto;\">\n      Premium Quality at Affordable Prices\n    </p>\n    {% when 'hu' %}\n    <p style=\"font-family: 'Roboto Black', sans-serif; font-size: 26px; margin: 0 0 20px; text-transform: uppercase;\">\n      Egyedi csillárok\n    </p>\n    <p\n      style=\"font-family: 'Roboto', sans-serif; font-weight: 400; font-size: 10px; max-width: 400px; margin: 0 0 0 auto;\">\n      Prémium minőség elérhető áron\n    </p>\n    {% when 'bg' %}\n    <p style=\"font-family: 'Roboto Black', sans-serif; font-size: 26px; margin: 0 0 20px; text-transform: uppercase;\">\n      Уникални полилеи\n    </p>\n    <p\n      style=\"font-family: 'Roboto', sans-serif; font-weight: 400; font-size: 10px; max-width: 400px; margin: 0 0 0 auto;\">\n      Премиум качество на достъпни цени\n    </p>\n    {% else %}\n    <p style=\"font-family: 'Roboto Black', sans-serif; font-size: 26px; margin: 0 0 20px; text-transform: uppercase;\">\n      Candelabre Deosebite\n    </p>\n    <p\n      style=\"font-family: 'Roboto', sans-serif; font-weight: 400; font-size: 10px; max-width: 400px; margin: 0 0 0 auto;\">\n      Calitate premium la preturi accesibile\n    </p>\n    {% endcase %}\n  </div>\n</div>\n</center>",
         "color_scheme": "",
@@ -133,7 +128,6 @@
     },
     "featured_collection_mMLGif": {
       "type": "featured-collection",
-      "name": "t:sections.featured-collection.presets.name",
       "settings": {
         "title": "",
         "heading_size": "h2",
@@ -162,7 +156,6 @@
     },
     "custom_liquid_hppdWr": {
       "type": "custom-liquid",
-      "name": "t:sections.custom-liquid.presets.name",
       "settings": {
         "custom_liquid": "<center>\n<div style=\"max-width: 1300px; height: auto; display: flex; align-items: center; justify-content: space-between;\n  background-image: url('https://cdn.shopify.com/s/files/1/0782/5175/3739/files/banner_aplice_optimizat_v2.png?v=1745522587');\n  background-size: cover; background-position: center; padding: 35px 15px; font-family: 'Roboto', sans-serif;\n  border: 6px solid #ffffff; border-radius: 4px;\">\n\n  <div style=\"flex: 1;\"></div>\n  <div style=\"flex: 1; color: white; text-align: right;\">\n    {% case request.locale.iso_code %}\n    {% when 'ro' %}\n    <p style=\"font-family: 'Roboto Black', sans-serif; font-size: 24px; margin: 0 0 20px; text-transform: uppercase;\">\n      Aplice LED de Perete</p>\n    <p\n      style=\"font-family: 'Roboto', sans-serif; font-weight: 400; font-size: 10px; max-width: 400px; margin: 0 0 0 auto;\">\n      Soluția eficientă pentru o iluminare ieftină și modernă în orice spațiu\n    </p>\n    {% when 'en' %}\n    <p style=\"font-family: 'Roboto Black', sans-serif; font-size: 24px; margin: 0 0 20px; text-transform: uppercase;\">\n      LED Wall Lights</p>\n    <p\n      style=\"font-family: 'Roboto', sans-serif; font-weight: 400; font-size: 10px; max-width: 400px; margin: 0 0 0 auto;\">\n      The efficient solution for affordable and modern lighting in any space\n    </p>\n    {% when 'hu' %}\n    <p style=\"font-family: 'Roboto Black', sans-serif; font-size: 24px; margin: 0 0 20px; text-transform: uppercase;\">\n      LED Fali Lámpák</p>\n    <p\n      style=\"font-family: 'Roboto', sans-serif; font-weight: 400; font-size: 10px; max-width: 400px; margin: 0 0 0 auto;\">\n      Hatékony megoldás megfizethető és modern világításhoz bármely térben\n    </p>\n    {% when 'bg' %}\n    <p style=\"font-family: 'Roboto Black', sans-serif; font-size: 24px; margin: 0 0 20px; text-transform: uppercase;\">\n      LED Стенни Осветителни Тела</p>\n    <p\n      style=\"font-family: 'Roboto', sans-serif; font-weight: 400; font-size: 10px; max-width: 400px; margin: 0 0 0 auto;\">\n      Ефективно решение за достъпно и модерно осветление във всяко пространство\n    </p>\n    {% else %}\n    <p style=\"font-family: 'Roboto Black', sans-serif; font-size: 24px; margin: 0 0 20px; text-transform: uppercase;\">\n      Aplice LED de Perete</p>\n    <p\n      style=\"font-family: 'Roboto', sans-serif; font-weight: 400; font-size: 10px; max-width: 400px; margin: 0 0 0 auto;\">\n      Soluția eficientă pentru o iluminare ieftină și modernă în orice spațiu\n    </p>\n    {% endcase %}\n  </div>\n</div>\n</center>",
         "color_scheme": "",
@@ -172,7 +165,6 @@
     },
     "featured_collection_w9bTLf": {
       "type": "featured-collection",
-      "name": "t:sections.featured-collection.presets.name",
       "settings": {
         "title": "",
         "heading_size": "h2",
@@ -201,7 +193,6 @@
     },
     "featured_collection_G38K6P": {
       "type": "alc-featured-collection",
-      "name": "t:sections.featured-collection.presets.name",
       "settings": {
         "title": "Lustre LED",
         "heading_size": "h2",
@@ -230,7 +221,6 @@
     },
     "featured_collection_6FQqPT": {
       "type": "alc-featured-collection",
-      "name": "t:sections.featured-collection.presets.name",
       "settings": {
         "title": "",
         "heading_size": "h1",
@@ -259,7 +249,6 @@
     },
     "featured_collection_dmyEEb": {
       "type": "alc-featured-collection",
-      "name": "t:sections.featured-collection.presets.name",
       "settings": {
         "title": "",
         "heading_size": "h1",
@@ -279,7 +268,7 @@
         "show_secondary_image": true,
         "show_vendor": false,
         "show_rating": true,
-        "quick_add": "none",
+        "quick_add": "standard",
         "columns_mobile": "2",
         "swipe_on_mobile": false,
         "padding_top": 36,
@@ -288,7 +277,6 @@
     },
     "featured_collection_w6Enpp": {
       "type": "alc-featured-collection",
-      "name": "t:sections.featured-collection.presets.name",
       "settings": {
         "title": "Coloane de dus",
         "heading_size": "h1",
@@ -308,7 +296,7 @@
         "show_secondary_image": true,
         "show_vendor": false,
         "show_rating": true,
-        "quick_add": "none",
+        "quick_add": "standard",
         "columns_mobile": "2",
         "swipe_on_mobile": false,
         "padding_top": 36,
@@ -317,7 +305,6 @@
     },
     "featured_collection_Cc4U3C": {
       "type": "alc-featured-collection",
-      "name": "t:sections.featured-collection.presets.name",
       "settings": {
         "title": "Baterii de Baie",
         "heading_size": "h1",
@@ -337,7 +324,7 @@
         "show_secondary_image": true,
         "show_vendor": false,
         "show_rating": true,
-        "quick_add": "none",
+        "quick_add": "standard",
         "columns_mobile": "2",
         "swipe_on_mobile": false,
         "padding_top": 36,
@@ -361,7 +348,6 @@
     },
     "featured_blog_wr7Dxf": {
       "type": "featured-blog",
-      "name": "t:sections.featured-blog.presets.name",
       "settings": {
         "heading": "",
         "heading_size": "h2",
