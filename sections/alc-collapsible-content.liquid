@@ -166,7 +166,7 @@
                   {%- unless forloop.last -%}, {% endunless -%}
               {%- endfor -%}
           {% else %}
-              {{ mf.value }}
+              {{ mf.value | join: ', ' | replace: '[', '' | replace: ']', '' | replace: '"', '' }}
           {% endif %}
         </span>
                           </div>
@@ -185,7 +185,7 @@
         {% endif %}
       </div>
     </details>
-  </div>
+    </div>
 
               {% elsif block.type == 'collapsible_qa' %}
                 <!-- Questions and Answers block -->
