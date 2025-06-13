@@ -111,14 +111,16 @@
     }
   },
   "onboarding": {
-    "product_title": "Παράδειγμα τίτλου προϊόντος",
+  "product_title": "Παράδειγμα τίτλου προϊόντος",
     "collection_title": "Το όνομα της συλλογής σας"
   },
   "alc-benefits": {
     "stock": {
       "in_stock": "Σε απόθεμα",
       "low_stock": "Μόνο {{ count }} απομένουν σε απόθεμα",
-      "out_of_stock": "Εξαντλημένο"
+      "out_of_stock": "Εξαντλημένο",
+      "last_stock": "Μόνο {{ count }} απομένουν σε απόθεμα 🔥",
+      "last_piece": "Μόνο 1 απομένει σε απόθεμα 🔥"
     },
     "savings": "Μόλις {{ amount }}",
     "delivery": "Παράδοση σε 2 - 5 εργάσιμες ημέρες",
