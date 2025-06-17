@@ -191,10 +191,20 @@
         "padding_bottom": 12
       }
     },
+    "custom_liquid_f7YhkA": {
+      "type": "custom-liquid",
+      "name": "t:sections.custom-liquid.presets.name",
+      "settings": {
+        "custom_liquid": "<div style=\"max-width: 1300px; margin: 0 auto; height: auto; display: flex; align-items: center; justify-content: flex-start;\n     background-image: url('https://cdn.shopify.com/s/files/1/0782/5175/3739/files/BANNER_8.png?v=1750172655');\n     background-size: cover; background-position: center; padding: 40px 20px; font-family: 'Roboto', sans-serif;\n     border-radius: 4px;\">\n\n  <div style=\"max-width: 1200px; margin-left: 20px; color: white; text-align: left;\">\n    {% case request.locale.iso_code %}\n    {% when 'ro' %}\n    <p style=\"font-family: 'Roboto Black', sans-serif; font-size: 26px; margin: 0 0 20px; text-transform: uppercase;\">\n      Lustre LED\n    </p>\n    <p style=\"font-family: 'Roboto', sans-serif; font-weight: 400; font-size: 10px; max-width: 400px; margin: 0;\">\n      Design modern, lumină eficientă, prețuri accesibile\n    </p>\n    {% when 'en' %}\n    <p style=\"font-family: 'Roboto Black', sans-serif; font-size: 26px; margin: 0 0 20px; text-transform: uppercase;\">\n      LED Chandeliers\n    </p>\n    <p style=\"font-family: 'Roboto', sans-serif; font-weight: 400; font-size: 10px; max-width: 400px; margin: 0;\">\n      Modern design, efficient lighting, affordable prices\n    </p>\n    {% when 'hu' %}\n    <p style=\"font-family: 'Roboto Black', sans-serif; font-size: 26px; margin: 0 0 20px; text-transform: uppercase;\">\n      LED Csillárok\n    </p>\n    <p style=\"font-family: 'Roboto', sans-serif; font-weight: 400; font-size: 10px; max-width: 400px; margin: 0;\">\n      Modern dizájn, energiatakarékos fény, megfizethető árak\n    </p>\n    {% when 'bg' %}\n    <p style=\"font-family: 'Roboto Black', sans-serif; font-size: 26px; margin: 0 0 20px; text-transform: uppercase;\">\n      LED Полилеи\n    </p>\n    <p style=\"font-family: 'Roboto', sans-serif; font-weight: 400; font-size: 10px; max-width: 400px; margin: 0;\">\n      Модерен дизайн, ефективно осветление, достъпни цени\n    </p>\n    {% else %}\n    <p style=\"font-family: 'Roboto Black', sans-serif; font-size: 26px; margin: 0 0 20px; text-transform: uppercase;\">\n      Lustre LED\n    </p>\n    <p style=\"font-family: 'Roboto', sans-serif; font-weight: 400; font-size: 10px; max-width: 400px; margin: 0;\">\n      Design modern, lumină eficientă, prețuri accesibile\n    </p>\n    {% endcase %}\n  </div>\n</div>",
+        "color_scheme": "",
+        "padding_top": 40,
+        "padding_bottom": 52
+      }
+    },
     "featured_collection_G38K6P": {
       "type": "alc-featured-collection",
       "settings": {
-        "title": "Lustre LED",
+        "title": "",
         "heading_size": "h2",
         "description": "",
         "show_description": true,
@@ -413,6 +423,7 @@
     "featured_collection_mMLGif",
     "custom_liquid_hppdWr",
     "featured_collection_w9bTLf",
+    "custom_liquid_f7YhkA",
     "featured_collection_G38K6P",
     "custom_liquid_rxCk6h",
     "featured_collection_6FQqPT",
