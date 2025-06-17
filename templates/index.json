@@ -313,16 +313,26 @@
         "padding_bottom": 36
       }
     },
+    "custom_liquid_WMgjfb": {
+      "type": "custom-liquid",
+      "name": "t:sections.custom-liquid.presets.name",
+      "settings": {
+        "custom_liquid": "<div style=\"max-width: 1300px; margin: 0 auto; height: auto; display: flex; align-items: center; justify-content: flex-start;\n     background-image: url('https://cdn.shopify.com/s/files/1/0782/5175/3739/files/BANNER_3.png?v=1750161603');\n     background-size: cover; background-position: center; padding: 40px 20px; font-family: 'Roboto', sans-serif;\n     border-radius: 4px;\">\n\n  <div style=\"max-width: 1200px; margin-left: 20px; color: white; text-align: left;\">\n    {% case request.locale.iso_code %}\n    {% when 'ro' %}\n    <p style=\"font-family: 'Roboto Black', sans-serif; font-size: 26px; margin: 0 0 20px; text-transform: uppercase;\">\n      Lustre LED cu Cristale\n    </p>\n    <p style=\"font-family: 'Roboto', sans-serif; font-weight: 400; font-size: 10px; max-width: 400px; margin: 0;\">\n      Eleganță spectaculoasă, iluminare eficientă, prețuri accesibile\n    </p>\n    {% when 'en' %}\n    <p style=\"font-family: 'Roboto Black', sans-serif; font-size: 26px; margin: 0 0 20px; text-transform: uppercase;\">\n      Crystal LED Chandeliers\n    </p>\n    <p style=\"font-family: 'Roboto', sans-serif; font-weight: 400; font-size: 10px; max-width: 400px; margin: 0;\">\n      Spectacular elegance, efficient lighting, affordable prices\n    </p>\n    {% when 'hu' %}\n    <p style=\"font-family: 'Roboto Black', sans-serif; font-size: 26px; margin: 0 0 20px; text-transform: uppercase;\">\n      Kristályos LED Csillárok\n    </p>\n    <p style=\"font-family: 'Roboto', sans-serif; font-weight: 400; font-size: 10px; max-width: 400px; margin: 0;\">\n      Lenyűgöző elegancia, hatékony világítás, megfizethető árak\n    </p>\n    {% when 'bg' %}\n    <p style=\"font-family: 'Roboto Black', sans-serif; font-size: 26px; margin: 0 0 20px; text-transform: uppercase;\">\n      Кристални LED Полилеи\n    </p>\n    <p style=\"font-family: 'Roboto', sans-serif; font-weight: 400; font-size: 10px; max-width: 400px; margin: 0;\">\n      Спектакулярна елегантност, ефективно осветление, достъпни цени\n    </p>\n    {% else %}\n    <p style=\"font-family: 'Roboto Black', sans-serif; font-size: 26px; margin: 0 0 20px; text-transform: uppercase;\">\n      Lustre LED cu Cristale\n    </p>\n    <p style=\"font-family: 'Roboto', sans-serif; font-weight: 400; font-size: 10px; max-width: 400px; margin: 0;\">\n      Eleganță spectaculoasă, iluminare eficientă, prețuri accesibile\n    </p>\n    {% endcase %}\n  </div>\n</div>",
+        "color_scheme": "",
+        "padding_top": 40,
+        "padding_bottom": 52
+      }
+    },
     "featured_collection_Cc4U3C": {
       "type": "alc-featured-collection",
       "settings": {
-        "title": "Baterii de Baie",
+        "title": "",
         "heading_size": "h1",
         "description": "",
         "show_description": false,
         "description_style": "body",
-        "collection": "baterii-de-baie",
-        "products_to_show": 4,
+        "collection": "lustre-led-cristal",
+        "products_to_show": 5,
         "columns_desktop": 5,
         "full_width": false,
         "show_view_all": true,
@@ -388,6 +398,7 @@
     "custom_liquid_nmxh9D",
     "featured_collection_dmyEEb",
     "featured_collection_w6Enpp",
+    "custom_liquid_WMgjfb",
     "featured_collection_Cc4U3C",
     "174558919114520042",
     "featured_blog_wr7Dxf"
