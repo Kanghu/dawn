@@ -745,13 +745,9 @@
                         background: #03bad6;
                       {% endif %}
                       color: white;
-                      min-height: 3.5rem;
-                      margin-left: var(--image-padding);
-                      margin-right: var(--image-padding);
-                      margin-top: 0.1rem;
+                      margin-top: var(--image-padding);
                       margin-bottom: var(--image-padding);
-                      min-width: calc(100% - var(--image-padding) * 2);
-                      width: calc(100% - var(--image-padding) * 2);
+                      width: 100%;
                     "
                     aria-haspopup="dialog"
                     aria-labelledby="{{ product_form_id }}-submit title-{{ section_id }}-{{ card_product.id }}"
