@@ -277,16 +277,6 @@
         "padding_bottom": 12
       }
     },
-    "custom_liquid_yfKCiJ": {
-      "type": "custom-liquid",
-      "name": "t:sections.custom-liquid.presets.name",
-      "settings": {
-        "custom_liquid": "<style>\n  .hotspot-container {\n    position: relative;\n    width: 100%;\n    max-width: 13000px;\n    margin: 0 auto;\n  }\n\n  .hotspot-container img.bg {\n    width: 100%;\n    display: block;\n  }\n\n  .hotspot {\n    position: absolute;\n    width: 20px;\n    height: 20px;\n    background-color: cyan;\n    border-radius: 50%;\n    z-index: 10;\n    transition: transform 0.2s ease, box-shadow 0.2s ease;\n    box-shadow: 0 0 10px rgba(0, 255, 255, 0.4);\n  }\n\n  .hotspot:hover {\n    transform: scale(1.4);\n    box-shadow: 0 0 18px rgba(0, 255, 255, 0.8);\n  }\n\n  .hotspot .preview {\n    position: absolute;\n    bottom: 120%;\n    left: 50%;\n    transform: translateX(-50%);\n    width: 80px;\n    height: auto;\n    opacity: 0;\n    pointer-events: none;\n    transition: opacity 0.3s ease;\n    z-index: 20;\n    box-shadow: 0 0 8px rgba(0,0,0,0.4);\n    border-radius: 4px;\n    background: white;\n    padding: 4px;\n  }\n\n  .hotspot:hover .preview {\n    opacity: 1;\n  }\n\n  .hotspot .preview img {\n    width: 100%;\n    height: auto;\n    display: block;\n    border-radius: 4px;\n  }\n</style>\n\n<div class=\"hotspot-container\">\n  <img src=\"https://cdn.shopify.com/s/files/1/0782/5175/3739/files/TEST_MOCKUP.png?v=1750342836\" alt=\"Mockup Produse\" class=\"bg\">\n\n  <!-- HOTSPOT 1 -->\n<a href=\"https://www.alessandrodesign.ro/products/baterie-de-podea-cu-para-si-furtun-alama-sanitara-auriu-cf2037\" class=\"hotspot\" style=\"top: 50%; left: 30%;\" title=\"Baterie Podea Auriu CF2037\">\n  <div class=\"preview\">\n    <img src=\"https://www.alessandrodesign.ro/cdn/shop/files/baterie-de-podea-para-furtun-alama-sanitara-auriu-cf2037_BS2483AU_02.webp?v=1740395728&width=900\" alt=\"Baterie CF2037\">\n  </div>\n</a>\n\n  <!-- HOTSPOT 2 -->\n  <a href=\"https://www.alessandrodesign.ro/products/cada-freestanding-drepuntghiulara-acril-lemon-yellow-170x78x60-cm\" class=\"hotspot\" style=\"top: 75%; left: 35%;\" title=\"Cada Freestanding Lemon\">\n    <div class=\"preview\">\n      <img src=\"https://www.alessandrodesign.ro/cdn/shop/files/i189c357xzue1_1.png?v=1744818363&width=900\" =\"Cada Freestanding Lemon\">\n    </div>\n  </a>\n\n  <!-- HOTSPOT 3 -->\n  <a href=\"https://www.alessandrodesign.ro/products/baterie-lavoar-alama-sanitara-auriu-cf101-a?_pos=1&_fid=f0bbf59a2&_ss=c\" class=\"hotspot\" style=\"top: 60%; left: 58%;\" title=\"Baterie Lavoar Auriu\">\n    <div class=\"preview\">\n      <img src=\"https://www.alessandrodesign.ro/cdn/shop/files/baterie-lavoar-alama-sanitara-auriu-cf101-a_BS2575AU_02.webp?v=1740412940&width=900\" alt=\"Produs 3\">\n    </div>\n  </a>\n</div>\n\n <!-- HOTSPOT 4 -->\n  <a href=\"https://www.alessandrodesign.ro/products/oglinda-led-rectangulara-120x80cm-eclat-motionglow-marcello-sistem-dezaburire-ceas-termometru-lupa-cosmetica-dimabila\" class=\"hotspot\" style=\"top: %; left: 75%;\" title=\"Oglinda LED Eclat\">\n    <div class=\"preview\">\n      <img src=\"https://www.alessandrodesign.ro/cdn/shop/files/a7_dad4882d-9303-4871-945e-b5278ed832fa.png?v=1750148632&width=900\" alt=\"Oglinda LED Eclat\">\n    </div>\n  </a>\n</div>",
-        "color_scheme": "",
-        "padding_top": 40,
-        "padding_bottom": 52
-      }
-    },
     "custom_liquid_rxCk6h": {
       "type": "custom-liquid",
       "name": "t:sections.custom-liquid.presets.name",
@@ -484,7 +474,6 @@
     "featured_collection_w9bTLf",
     "custom_liquid_f7YhkA",
     "featured_collection_G38K6P",
-    "custom_liquid_yfKCiJ",
     "custom_liquid_rxCk6h",
     "featured_collection_6FQqPT",
     "custom_liquid_nmxh9D",
