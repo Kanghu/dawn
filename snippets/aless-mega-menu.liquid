@@ -257,7 +257,7 @@
     margin-left: calc(-50vw + 50%);
     margin-right: calc(-50vw + 50%);
     width: 100vw;
-    background: linear-gradient(90deg, var(--menu-primary-color) 63%, var(--menu-secondary-color) 100%);
+    background: linear-gradient(to right, #000000, #003840, #00BAD7);
     border-bottom: none !important;
     z-index: 101;
     /* Add this to ensure header menu is above overlay */
@@ -276,14 +276,13 @@
     font-weight: 500;
     font-size: 1.25rem;
     padding: 0.5rem 0;
-    transition: all 0.3s ease;
     /* Changed from opacity to all */
   }
 
   .aless-menu__item:hover {
-    opacity: 0.9;
     color: var(--menu-hover-color);
-    transform: scale(1.05);
+    border-bottom: 1px solid #00BAD7;
+    color: #ffffff;
   }
 
   .mega-menu__link:hover {
@@ -295,7 +294,8 @@
   }
 
   .mega-menu-parent {
-    border-right: 1px solid #eee;
+    border-right: 1px solid;
+    border-image: linear-gradient(to bottom, #00BAD7, transparent) 1;
     z-index: 101;
     cursor: pointer;
   }
