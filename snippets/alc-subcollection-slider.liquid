@@ -5,43 +5,41 @@
 
 
 <script>
-    document.addEventListener('DOMContentLoaded', function() {
-      const subcollectionSwiper = new Swiper('.subcollection-swiper', {
-        slidesPerView: 1,
-        spaceBetween: 20,
-        loop: false,
-        pagination: {
-          el: '.swiper-pagination',
-          clickable: true,  
-        },
-        navigation: {
-          nextEl: '.swiper-button-next',
-          prevEl: '.swiper-button-prev',
-        },
-        breakpoints: {
-          320: {
-            slidesPerView: 2,
-            spaceBetween: 10,
-          },
-          480: {
-            slidesPerView: 3,
-            spaceBetween: 15,
-          },
-          768: {
-            slidesPerView: 4,
-            spaceBetween: 20,
-          },
-          1024: {
-            slidesPerView: 5,
-            spaceBetween: 20,
-          },
-          1280: {
-            slidesPerView: 6,
-            spaceBetween: 20,
-          }
-        }
-      });
+  document.addEventListener('DOMContentLoaded', function() {
+    const subcollectionSwiper = new Swiper('.subcollection-swiper', {
+      // keep your responsive slidesPerView & spaceBetween…
+      slidesPerView: 1,
+      spaceBetween: 20,
+      breakpoints: {
+        320:  { slidesPerView: 2, spaceBetween: 10 },
+        480:  { slidesPerView: 3, spaceBetween: 15 },
+        768:  { slidesPerView: 4, spaceBetween: 20 },
+        1024: { slidesPerView: 5, spaceBetween: 20 },
+        1280: { slidesPerView: 6, spaceBetween: 20 },
+      },
+
+      // === NEW: FREE MODE ===
+      freeMode: true,            // turn off snapping
+      freeModeMomentum: true,    // keep momentum after you release
+      grabCursor: true,          // gives that “grab-and-drag” cursor
+
+      // === OPTIONAL: jump multiple slides on arrow-click ===
+      // set this to the same as your `slidesPerView` if you want arrows
+      // to advance a “page” of slides rather than one at a time
+      slidesPerGroup: 1,
+
+      // your existing nav & pagination…
+      loop: false,
+      pagination: {
+        el: '.swiper-pagination',
+        clickable: true,
+      },
+      navigation: {
+        nextEl: '.swiper-button-next',
+        prevEl: '.swiper-button-prev',
+      },
     });
+  });
 </script>
 
 
