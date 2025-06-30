@@ -11,10 +11,11 @@
   "sections": {
     "banner": {
       "type": "alc-main-collection-banner",
+      "disabled": true,
       "settings": {
-        "show_collection_description": true,
+        "show_collection_description": false,
         "show_collection_image": false,
-        "show_collection_slider": true,
+        "show_collection_slider": false,
         "color_scheme": "scheme-15b3ebfc-72e7-42d0-af22-57c8d007abe9"
       }
     },
@@ -50,7 +51,7 @@
         "show_vendor": false,
         "show_rating": true,
         "quick_add": "standard",
-        "enable_filtering": true,
+        "enable_filtering": false,
         "filter_type": "vertical",
         "enable_sorting": true,
         "columns_mobile": "2",
