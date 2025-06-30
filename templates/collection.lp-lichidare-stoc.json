@@ -73,12 +73,61 @@
         "padding_top": 0,
         "padding_bottom": 0
       }
+    },
+    "image_with_text_BAycFP": {
+      "type": "image-with-text",
+      "blocks": {
+        "heading_4A9xXX": {
+          "type": "heading",
+          "settings": {
+            "heading": "<strong>De ce atat de ieftin?</strong>",
+            "heading_size": "h2"
+          }
+        },
+        "text_Yhj8Lc": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Suntem producători, nu doar comercianți. Asta înseamnă că eliminăm intermediarii, controlăm costurile de fabricație, optimizăm fluxurile logistice și putem livra direct către client la un preț corect, fără adaosuri artificiale.</p><p>Mai mult, lucrăm constant la îmbunătățirea proceselor și la selectarea atentă a materialelor, astfel încât să oferim produse moderne, fiabile și estetice, la prețuri mult sub media pieței. </p>",
+            "text_style": "body"
+          }
+        },
+        "button_QQJBH8": {
+          "type": "button",
+          "settings": {
+            "button_label": "",
+            "button_link": "",
+            "button_style_secondary": false
+          }
+        }
+      },
+      "block_order": [
+        "heading_4A9xXX",
+        "text_Yhj8Lc",
+        "button_QQJBH8"
+      ],
+      "name": "t:sections.image-with-text.presets.name",
+      "settings": {
+        "image": "shopify://shop_images/MOCKUP-DORMITOR1_FRM.png",
+        "height": "adapt",
+        "desktop_image_width": "small",
+        "layout": "image_first",
+        "desktop_content_position": "top",
+        "desktop_content_alignment": "left",
+        "content_layout": "no-overlap",
+        "section_color_scheme": "",
+        "color_scheme": "",
+        "image_behavior": "none",
+        "mobile_content_alignment": "left",
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
     }
   },
   "order": [
     "banner",
     "image_banner_W7Hj8W",
     "product-grid",
-    "video_Q7FAKA"
+    "video_Q7FAKA",
+    "image_with_text_BAycFP"
   ]
 }
