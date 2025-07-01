@@ -93,7 +93,7 @@
       "settings": {
         "custom_liquid": "<center>\n<div style=\"max-width: 1300px; height:auto; display: flex; align-items: center; justify-content: space-between;\n     background-image: url('https://cdn.shopify.com/s/files/1/0782/5175/3739/files/marcello_banner_low_c114399a-3d67-4eda-aaa2-5e9e739fe237_1.png?v=1745396310');\n     background-size: cover;padding: 40px 20px; font-family: 'Roboto', sans-serif;\n    border-radius: 4px;\">\n\n  <div style=\"flex: 1;\"></div>\n  <div style=\"flex: 1; color: white; text-align: right;\">\n    {% case request.locale.iso_code %}\n    {% when 'ro' %}\n    <p style=\"font-family: 'Roboto Black', sans-serif; font-size: 26px; margin: 0 0 20px; text-transform: uppercase;\">\n      Calitatea Marcello\n    </p>\n    <p\n      style=\"font-family: 'Roboto', sans-serif; font-weight: 400; font-size: 10px; max-width: 400px; margin: 0 0 0 auto;\">\n      în oglinzile LED Premium Marcello Funghi\n    </p>\n    {% when 'en' %}\n    <p style=\"font-family: 'Roboto Black', sans-serif; font-size: 26px; margin: 0 0 20px; text-transform: uppercase;\">\n      Marcello Quality\n    </p>\n    <p\n      style=\"font-family: 'Roboto', sans-serif; font-weight: 400; font-size: 10px; max-width: 400px; margin: 0 0 0 auto;\">\n      in Marcello Funghi Premium LED Mirrors\n    </p>\n    {% when 'hu' %}\n    <p style=\"font-family: 'Roboto Black', sans-serif; font-size: 26px; margin: 0 0 20px; text-transform: uppercase;\">\n      Marcello Minőség\n    </p>\n    <p\n      style=\"font-family: 'Roboto', sans-serif; font-weight: 400; font-size: 10px; max-width: 400px; margin: 0 0 0 auto;\">\n      a Marcello Funghi prémium LED tükrökben\n    </p>\n    {% when 'bg' %}\n    <p style=\"font-family: 'Roboto Black', sans-serif; font-size: 26px; margin: 0 0 20px; text-transform: uppercase;\">\n      Качество на Марчело\n    </p>\n    <p\n      style=\"font-family: 'Roboto', sans-serif; font-weight: 400; font-size: 10px; max-width: 400px; margin: 0 0 0 auto;\">\n      в премиум LED огледалата на Marcello Funghi\n    </p>\n    {% else %}\n    <p style=\"font-family: 'Roboto Black', sans-serif; font-size: 26px; margin: 0 0 20px; text-transform: uppercase;\">\n      Calitatea Marcello\n    </p>\n    <p\n      style=\"font-family: 'Roboto', sans-serif; font-weight: 400; font-size: 10px; max-width: 400px; margin: 0 0 0 auto;\">\n      în oglinzile LED Premium Marcello Funghi\n    </p>\n    {% endcase %}\n  </div>\n</div>\n</center>",
         "color_scheme": "",
-        "padding_top": 0,
+        "padding_top": 24,
         "padding_bottom": 0
       }
     },
@@ -121,7 +121,7 @@
         "quick_add": "standard",
         "columns_mobile": "2",
         "swipe_on_mobile": true,
-        "padding_top": 12,
+        "padding_top": 24,
         "padding_bottom": 12
       }
     },
@@ -169,8 +169,8 @@
         "color_scheme": "",
         "image_behavior": "none",
         "mobile_content_alignment": "center",
-        "padding_top": 12,
-        "padding_bottom": 12
+        "padding_top": 24,
+        "padding_bottom": 24
       }
     },
     "custom_liquid_Yee3Mx": {
@@ -179,7 +179,7 @@
         "custom_liquid": "<div style=\"max-width: 1300px; margin: 0 auto; height: auto; display: flex; align-items: center; justify-content: flex-start;\n     background-image: url('https://cdn.shopify.com/s/files/1/0782/5175/3739/files/BANNER_2.png?v=1750161603');\n     background-size: cover; background-position: center; padding: 40px 20px; font-family: 'Roboto', sans-serif;\n     border-radius: 4px;\">\n\n  <div style=\"max-width: 1200px; margin-left: 20px; color: white; text-align: left;\">\n    {% case request.locale.iso_code %}\n    {% when 'ro' %}\n    <p style=\"font-family: 'Roboto Black', sans-serif; font-size: 26px; margin: 0 0 20px; text-transform: uppercase;\">\n      Candelabre Deosebite\n    </p>\n    <p style=\"font-family: 'Roboto', sans-serif; font-weight: 400; font-size: 10px; max-width: 400px; margin: 0;\">\n      Calitate premium la preturi accesibile\n    </p>\n    {% when 'en' %}\n    <p style=\"font-family: 'Roboto Black', sans-serif; font-size: 26px; margin: 0 0 20px; text-transform: uppercase;\">\n      Unique Chandeliers\n    </p>\n    <p style=\"font-family: 'Roboto', sans-serif; font-weight: 400; font-size: 10px; max-width: 400px; margin: 0;\">\n      Premium Quality at Affordable Prices\n    </p>\n    {% when 'hu' %}\n    <p style=\"font-family: 'Roboto Black', sans-serif; font-size: 26px; margin: 0 0 20px; text-transform: uppercase;\">\n      Egyedi csillárok\n    </p>\n    <p style=\"font-family: 'Roboto', sans-serif; font-weight: 400; font-size: 10px; max-width: 400px; margin: 0;\">\n      Prémium minőség elérhető áron\n    </p>\n    {% when 'bg' %}\n    <p style=\"font-family: 'Roboto Black', sans-serif; font-size: 26px; margin: 0 0 20px; text-transform: uppercase;\">\n      Уникални полилеи\n    </p>\n    <p style=\"font-family: 'Roboto', sans-serif; font-weight: 400; font-size: 10px; max-width: 400px; margin: 0;\">\n      Премиум качество на достъпни цени\n    </p>\n    {% else %}\n    <p style=\"font-family: 'Roboto Black', sans-serif; font-size: 26px; margin: 0 0 20px; text-transform: uppercase;\">\n      Candelabre Deosebite\n    </p>\n    <p style=\"font-family: 'Roboto', sans-serif; font-weight: 400; font-size: 10px; max-width: 400px; margin: 0;\">\n      Calitate premium la preturi accesibile\n    </p>\n    {% endcase %}\n  </div>\n</div>",
         "color_scheme": "",
         "padding_top": 0,
-        "padding_bottom": 0
+        "padding_bottom": 24
       }
     },
     "featured_collection_mMLGif": {
