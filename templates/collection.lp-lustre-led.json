@@ -37,6 +37,16 @@
         "show_text_below": true
       }
     },
+    "custom_liquid_NfjicE": {
+      "type": "custom-liquid",
+      "name": "t:sections.custom-liquid.presets.name",
+      "settings": {
+        "custom_liquid": "{% comment %} sections/responsive-video.liquid {% endcomment %}\n\n<section class=\"responsive-video-banner\">\n  <div class=\"responsive-video-wrapper\">\n    <!-- Video pentru desktop -->\n    <video\n      class=\"responsive-video__media video-desktop\"\n      autoplay loop muted playsinline preload=\"auto\"\n      poster=\"https://cdn.shopify.com/s/files/1/0782/5175/3739/files/2730x730px_Reduceri_de_Iulie_AD.png?v=1751346750\"\n      src=\"https://cdn.shopify.com/videos/c/o/v/248e804c903c4047adc33d387ed137a1.mp4\"\n    >\n      Browser-ul tău nu suportă video.\n    </video>\n\n    <!-- Video pentru mobil -->\n    <video\n      class=\"responsive-video__media video-mobile\"\n      autoplay loop muted playsinline preload=\"auto\"\n      poster=\"https://cdn.shopify.com/s/files/1/0782/5175/3739/files/2730x730px_Reduceri_de_Iulie_AD.png?v=1751346750\"\n      src=\"https://cdn.shopify.com/videos/c/o/v/850df815ed174328a57b7c1c2ffc5bf3.mp4\"\n    >\n      Browser-ul tău nu suportă video.\n    </video>\n  </div>\n</section>\n\n<style>\n  .responsive-video-banner {\n    display: flex;\n    justify-content: center;\n    margin: 20px 0;\n  }\n  .responsive-video-wrapper {\n    position: relative;\n    width: 100%;\n    max-width: 1300px;\n    margin: 0 auto;\n    /* păstrează raportul 2730×730 → 26.7% */\n    padding-top: calc(730 / 2730 * 100%);\n    overflow: hidden;\n  }\n  .responsive-video__media {\n    position: absolute;\n    top: 0; left: 0;",
+        "color_scheme": "",
+        "padding_top": 40,
+        "padding_bottom": 52
+      }
+    },
     "product-grid": {
       "type": "main-collection-product-grid",
       "custom_css": [
@@ -58,16 +68,6 @@
         "columns_mobile": "2",
         "padding_top": 36,
         "padding_bottom": 36
-      }
-    },
-    "custom_liquid_NfjicE": {
-      "type": "custom-liquid",
-      "name": "t:sections.custom-liquid.presets.name",
-      "settings": {
-        "custom_liquid": "",
-        "color_scheme": "",
-        "padding_top": 40,
-        "padding_bottom": 52
       }
     }
   },
