@@ -19,6 +19,16 @@
         "color_scheme": "scheme-15b3ebfc-72e7-42d0-af22-57c8d007abe9"
       }
     },
+    "custom_liquid_WNYPhB": {
+      "type": "custom-liquid",
+      "name": "t:sections.custom-liquid.presets.name",
+      "settings": {
+        "custom_liquid": "{% assign locale = request.locale.iso_code %}\n\n{% if locale == 'hu' %}\n  <img src=\"https://cdn.shopify.com/s/files/1/0782/5175/3739/files/BANNER_e5a22efb-834e-482c-b1fe-8d16a355d39b.png?v=1751541262\" alt=\"Banner HU\" style=\"width: 100%; height: auto;\">\n{% elsif locale == 'bg' %}\n  <img src=\"https://cdn.shopify.com/s/files/1/0782/5175/3739/files/BANNER_2aafc22e-b432-47e6-8d5e-cd810fa3347b.png?v=1751541318\" alt=\"Banner BG\" style=\"width: 100%; height: auto;\">\n{% else %}\n  <img src=\"https://cdn.shopify.com/s/files/1/0782/5175/3739/files/3820x730px_Reduceri_de_Iulie_AD.png?v=1751368983\" alt=\"Banner RO\" style=\"width: 100%; height: auto;\">\n{% endif %}",
+        "color_scheme": "",
+        "padding_top": 40,
+        "padding_bottom": 52
+      }
+    },
     "product-grid": {
       "type": "alc-tw-product-grid",
       "custom_css": [
@@ -37,6 +47,7 @@
   },
   "order": [
     "banner",
+    "custom_liquid_WNYPhB",
     "product-grid"
   ]
 }
