@@ -125,6 +125,43 @@
         "padding_bottom": 24
       }
     },
+    "custom_liquid_6zDcbj": {
+      "type": "custom-liquid",
+      "settings": {
+        "custom_liquid": "<center>\n<div style=\"max-width: 1300px; height:auto; display: flex; align-items: center; justify-content: space-between;\n     background-image: url('https://cdn.shopify.com/s/files/1/0782/5175/3739/files/CADITE_DE_DUS.png?v=1752054222');\n     background-size: cover;padding: 40px 20px; font-family: 'Roboto', sans-serif;\n    border-radius: 4px;\">\n\n  <div style=\"flex: 1;\"></div>\n  <div style=\"flex: 1; color: white; text-align: right;\">\n    {% case request.locale.iso_code %}\n    {% when 'ro' %}\n    <p style=\"font-family: 'Roboto Black', sans-serif; font-size: 26px; margin: 0 0 20px; text-transform: uppercase;\">\n      Cadite de Dus\n    </p>\n    <p\n      style=\"font-family: 'Roboto', sans-serif; font-weight: 400; font-size: 10px; max-width: 400px; margin: 0 0 0 auto;\">\n      moderne, rezistente și ușor de întreținut\n\n    </p>\n    {% when 'en' %}\n    <p style=\"font-family: 'Roboto Black', sans-serif; font-size: 26px; margin: 0 0 20px; text-transform: uppercase;\">\n     Shower Trays\n    </p>\n    <p\n      style=\"font-family: 'Roboto', sans-serif; font-weight: 400; font-size: 10px; max-width: 400px; margin: 0 0 0 auto;\">\n      Modern, durable, and easy-to-clean shower trays\n\n\n    </p>\n    {% when 'hu' %}\n    <p style=\"font-family: 'Roboto Black', sans-serif; font-size: 26px; margin: 0 0 20px; text-transform: uppercase;\">\n      Zuhanytálcák\n    </p>\n    <p\n      style=\"font-family: 'Roboto', sans-serif; font-weight: 400; font-size: 10px; max-width: 400px; margin: 0 0 0 auto;\">\n      Modern, tartós és könnyen tisztítható zuhanytálcák\n\n    </p>\n    {% when 'bg' %}\n    <p style=\"font-family: 'Roboto Black', sans-serif; font-size: 26px; margin: 0 0 20px; text-transform: uppercase;\">\n      Душ корита\n    </p>\n    <p\n      style=\"font-family: 'Roboto', sans-serif; font-weight: 400; font-size: 10px; max-width: 400px; margin: 0 0 0 auto;\">\n      Модерни, издръжливи и лесни за почистване душ корита\n    </p>\n    {% else %}\n    <p style=\"font-family: 'Roboto Black', sans-serif; font-size: 26px; margin: 0 0 20px; text-transform: uppercase;\">\n     Shower Trays\n    </p>\n    <p\n      style=\"font-family: 'Roboto', sans-serif; font-weight: 400; font-size: 10px; max-width: 400px; margin: 0 0 0 auto;\">\n      Modern, durable, and easy-to-clean shower trays\n    </p>\n    {% endcase %}\n  </div>\n</div>\n</center>",
+        "color_scheme": "",
+        "padding_top": 24,
+        "padding_bottom": 0
+      }
+    },
+    "alc_featured_collection_eK7URW": {
+      "type": "alc-featured-collection",
+      "settings": {
+        "title": "",
+        "heading_size": "h1",
+        "description": "",
+        "show_description": false,
+        "description_style": "body",
+        "collection": "cadite-de-dus",
+        "products_to_show": 4,
+        "columns_desktop": 4,
+        "full_width": false,
+        "show_view_all": true,
+        "view_all_style": "solid",
+        "enable_desktop_slider": false,
+        "color_scheme": "",
+        "image_ratio": "adapt",
+        "image_shape": "default",
+        "show_secondary_image": true,
+        "show_vendor": false,
+        "show_rating": true,
+        "quick_add": "standard",
+        "columns_mobile": "2",
+        "swipe_on_mobile": false,
+        "padding_top": 24,
+        "padding_bottom": 24
+      }
+    },
     "custom_liquid_i8YzMd": {
       "type": "custom-liquid",
       "settings": {
@@ -512,6 +549,8 @@
     "collection_list_yM6pDQ",
     "custom_liquid_ggcwHk",
     "alc_featured_collection_ERArtK",
+    "custom_liquid_6zDcbj",
+    "alc_featured_collection_eK7URW",
     "custom_liquid_i8YzMd",
     "featured_collection_KFUddR",
     "image_with_text_dAeUQP",
