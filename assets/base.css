@@ -3626,3 +3626,58 @@ details-disclosure > details {
 .text-theme-accent {
   color: var(--theme-accent);
 }
+
+/* Add at the end of the file */
+
+/* Performance optimizations */
+.reduce-motion *,
+.reduce-motion *::before,
+.reduce-motion *::after {
+  animation-duration: 0.01ms !important;
+  animation-iteration-count: 1 !important;
+  transition-duration: 0.01ms !important;
+  scroll-behavior: auto !important;
+}
+
+/* Optimize animations for better performance */
+.animate--hover-3d-lift .card-wrapper .card--card,
+.animate--hover-3d-lift .card-wrapper .card--standard .card__inner {
+  will-change: transform;
+  transform: translateZ(0); /* Force hardware acceleration */
+}
+
+/* Optimize scroll animations */
+.scroll-trigger {
+  will-change: transform, opacity;
+}
+
+.animate--zoom-in > img,
+.animate--zoom-in > .svg-wrapper {
+  will-change: transform;
+  transform: translateZ(0);
+}
+
+/* Reduce animation complexity on mobile */
+@media (max-width: 749px) {
+  .animate--hover-3d-lift .card-wrapper:hover .card--card,
+  .animate--hover-3d-lift .card-wrapper:hover .card--standard .card__inner {
+    transform: translateY(-0.5rem);
+    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.1);
+  }
+  
+  .animate--hover-vertical-lift .card-wrapper:hover .card--card,
+  .animate--hover-vertical-lift .card-wrapper:hover .card--standard .card__inner {
+    transform: translateY(-0.25rem);
+  }
+}
+
+/* Optimize for low-end devices */
+@media (max-width: 480px) {
+  .animate--hover-3d-lift .card-wrapper:hover .card--card,
+  .animate--hover-3d-lift .card-wrapper:hover .card--standard .card__inner,
+  .animate--hover-vertical-lift .card-wrapper:hover .card--card,
+  .animate--hover-vertical-lift .card-wrapper:hover .card--standard .card__inner {
+    transform: none;
+    box-shadow: none;
+  }
+}

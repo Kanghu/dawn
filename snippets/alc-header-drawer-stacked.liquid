@@ -1,0 +1,375 @@
+{% comment %}
+  Snippet: alc-header-drawer-stacked.liquid
+  Implements:
+  1) Split row: left = category link, right = arrow to open next level (levels 2/3).
+  2) First drawer_menu_item also prints product links inline above categories.
+{% endcomment %}
+
+<header-drawer data-breakpoint="{% if menu_type_desktop == 'drawer' %}desktop{% else %}tablet{% endif %}" class="overflow-hidden">
+  <details
+    id="Details-menu-drawer-container"
+    class="menu-drawer-container"
+onToggle="
+   document.documentElement.classList.toggle('overflow-hidden');
+   document.body.classList.toggle('overflow-hidden');
+ "
+    <!-- Drawer Toggle Button -->
+    <summary class="header__icon header__icon--menu header__icon--summary link focus-inset" aria-label="{{ 'sections.header.menu' | t }}">
+      <span>
+        {{ 'icon-hamburger.svg' | inline_asset_content }}
+        {{ 'icon-close.svg' | inline_asset_content }}
+      </span>
+    </summary>
+
+    <div id="menu-drawer" class="gradient menu-drawer motion-reduce color-{{ menu_color_scheme }} fixed h-screen max-h-screen overflow-hidden">
+      <div class="menu-drawer__inner-container h-full">
+        <div class="menu-drawer__navigation-container h-full">
+          <nav class="menu-drawer__navigation h-screen overflow-y-auto">
+            <ul class="menu-drawer__menu has-submenu flex flex-col" role="list">
+              {% for block_item in all_blocks %}
+                {% if block_item.type == 'drawer_menu_item' %}
+                  {% assign label = block_item.settings.menu_label %}
+                  {% assign menu_handle = block_item.settings.menu_handle %}
+                  {% assign top_menu = linklists[menu_handle] %}
+
+                  <li class="first-level-group border-gray-200" id="menu-group-{{ block_item.id }}">
+                    <h2 class="first-level-title px-4 py-3 text-lg font-semibold flex items-center justify-between">
+                      <span>{{ label }}</span>
+                    {%- comment -%}
+                      Optional: link to a landing page for this menu if you have one
+                    {%- endcomment -%}
+                    </h2>
+
+                    {% if top_menu.links.size > 0 %}
+                      <ul class="menu-drawer__menu has-submenu flex flex-col space-y-2 pb-4" role="list">
+                        {% for link in top_menu.links %}
+                          <li class="w-full">
+                            {% if link.links != blank %}
+                              {%- comment -%} Level 2 item WITH children → keep drawer (details) {%- endcomment -%}
+                              <details id="Details-menu-drawer-{{ link.handle }}" class="stacked-menu-item">
+                                <summary class="menu-drawer__menu-item list-menu__item px-0 link link--text focus-inset js-split-summary">
+                                  <div class="split-row flex items-stretch w-full">
+                                    <!-- LEFT: link to category -->
+                                    <a href="{{ link.url }}" class="split-row__link flex items-center gap-4 flex-1 js-category-link no-underline text-black">
+                                      {% if link.object and link.object.image and link.object.image.src %}
+                                        <img
+                                          src="{{ link.object.image.src | img_url: '120x120' }}"
+                                          alt="{{ link.title | escape }}"
+                                          class="h-16 object-cover rounded-md flex-shrink-0">
+                                      {% endif %}
+                                      <div class="flex-1 text-left">
+                                        <span class="font-medium">{{ link.title | escape }}</span>
+                                      </div>
+                                    </a>
+                                    <!-- RIGHT: arrow to open submenu -->
+                                    <button
+                                      class="split-row__arrow flex items-center justify-center px-4 py-4 js-next-level"
+                                      aria-label="{{ 'general.next' | t | default: 'Open submenu' }}"
+                                      type="button">
+                                      <span class="svg-wrapper transform">
+                                        {{ 'icon-chevron.svg' | inline_asset_content }}
+                                      </span>
+                                    </button>
+                                  </div>
+                                </summary>
+
+                                <!-- Level 3 drawer -->
+                                <div
+                                  id="link-{{ link.handle | escape }}"
+                                  class="menu-drawer__submenu has-submenu gradient motion-reduce"
+                                  tabindex="-1">
+                                  <div class="menu-drawer__inner-submenu">
+                                    <button class="menu-drawer__close-button link--text focus-inset flex items-center gap-2 border-b border-main pb-1" aria-expanded="true">
+                                      <span class="svg-wrapper transform">
+                                        {{ 'icon-chevron.svg' | inline_asset_content }}
+                                      </span>
+                                      {{ link.title | escape }}
+                                    </button>
+
+                                    <ul
+                                      class="menu-drawer__menu flex flex-col space-y-2"
+                                      role="list"
+                                      tabindex="-1">
+                                      {% for childlink in link.links %}
+                                        <li class="w-full">
+                                          {% if childlink.links == blank %}
+                                            <!-- plain link -->
+                                            <a
+                                              id="HeaderDrawer-{{ link.handle }}-{{ childlink.handle }}"
+                                              href="{{ childlink.url }}"
+                                              class="menu-drawer__menu-item link link--text list-menu__item flex items-center focus-inset hover:bg-gray-50 transition-colors p-0">
+                                              <div class="flex items-center gap-4 flex-1">
+                                                {% if childlink.object and childlink.object.image and childlink.object.image.src %}
+                                                  <img
+                                                    src="{{ childlink.object.image.src | img_url: '120x120' }}"
+                                                    alt="{{ childlink.title | escape }}"
+                                                    class="h-16 object-cover rounded-md flex-shrink-0">
+                                                {% endif %}
+                                                <div class="flex-1">
+                                                  <span class="font-medium">{{ childlink.title | escape }}</span>
+                                                </div>
+                                              </div>
+                                            </a>
+                                          {% else %}
+                                            <!-- Level 4 (grandchildren) still drawer -->
+                                            <details id="Details-menu-drawer-{{ link.handle }}-{{ childlink.handle }}" class="stacked-menu-item">
+                                              <summary class="menu-drawer__menu-item link link--text list-menu__item px-0 focus-inset js-split-summary">
+                                                <div class="split-row flex items-stretch w-full">
+                                                  <a href="{{ childlink.url }}" class="split-row__link flex items-center gap-4 flex-1 js-category-link no-underline text-black">
+                                                    {% if childlink.object and childlink.object.image and childlink.object.image.src %}
+                                                      <img
+                                                        src="{{ childlink.object.image.src | img_url: '120x120' }}"
+                                                        alt="{{ childlink.title | escape }}"
+                                                        class="h-16 object-cover rounded-md flex-shrink-0">
+                                                    {% endif %}
+                                                    <div class="flex-1 text-left">
+                                                      <span class="font-medium">{{ childlink.title | escape }}</span>
+                                                    </div>
+                                                  </a>
+                                                  <button
+                                                    class="split-row__arrow flex items-center justify-center px-4 py-4 js-next-level"
+                                                    type="button"
+                                                    aria-label="{{ 'general.next' | t | default: 'Open submenu' }}">
+                                                    <span class="svg-wrapper transform flex-shrink-0 ml-2">
+                                                      {{ 'icon-chevron.svg' | inline_asset_content }}
+                                                    </span>
+                                                  </button>
+                                                </div>
+                                              </summary>
+
+                                              <div id="childlink-{{ childlink.handle | escape }}" class="menu-drawer__submenu has-submenu gradient motion-reduce">
+                                                <button class="menu-drawer__close-button link link--text focus-inset flex items-center gap-2" aria-expanded="true">
+                                                  <span class="svg-wrapper transform ">
+                                                    {{ 'icon-chevron.svg' | inline_asset_content }}
+                                                  </span>
+                                                  {{ childlink.title | escape }}
+                                                </button>
+
+                                                <ul
+                                                  class="menu-drawer__menu flex flex-col space-y-2"
+                                                  role="list"
+                                                  tabindex="-1">
+                                                  {% for grandchildlink in childlink.links %}
+                                                    <li class="w-full">
+                                                      <a
+                                                        id="HeaderDrawer-{{ link.handle }}-{{ childlink.handle }}-{{ grandchildlink.handle }}"
+                                                        href="{{ grandchildlink.url }}"
+                                                        class="menu-drawer__menu-item link link--text list-menu__item flex items-center px-4 py-4 focus-inset hover:bg-gray-50 transition-colors">
+                                                        <div class="flex items-center gap-4 flex-1">
+                                                          {% if grandchildlink.object and grandchildlink.object.image and grandchildlink.object.image.src %}
+                                                            <img
+                                                              src="{{ grandchildlink.object.image.src | img_url: '120x120' }}"
+                                                              alt="{{ grandchildlink.title | escape }}"
+                                                              class="h-16 object-cover rounded-md flex-shrink-0">
+                                                          {% endif %}
+                                                          <div class="flex-1">
+                                                            <span class="font-medium">{{ grandchildlink.title | escape }}</span>
+                                                          </div>
+                                                        </div>
+                                                      </a>
+                                                    </li>
+                                                  {% endfor %}
+                                                </ul>
+
+                                                <div class="px-4 py-3 mt-4">
+                                                  <a href="{{ childlink.url }}" class="button button--primary w-full text-center h-12 flex items-center justify-center">
+                                                    Vezi toata categoria
+                                                  </a>
+                                                </div>
+                                              </div>
+                                            </details>
+                                          {% endif %}
+                                        </li>
+                                      {% endfor %}
+                                    </ul>
+
+                                    <div class="px-4 py-3 mt-4">
+                                      <a href="{{ link.url }}" class="button button--primary w-full text-center h-12 flex items-center justify-center">
+                                        Vezi toata categoria
+                                      </a>
+                                    </div>
+                                  </div>
+                                </div>
+                              </details>
+                            {% else %}
+                              <!-- Level 2 item without children -->
+                              <a
+                                id="HeaderDrawer-{{ link.handle }}"
+                                href="{{ link.url }}"
+                                class="menu-drawer__menu-item list-menu__item flex items-center link link--text focus-inset hover:bg-gray-50 transition-colors">
+                                <div class="flex items-center gap-4 flex-1">
+                                  {% if link.object and link.object.image and link.object.image.src %}
+                                    <img
+                                      src="{{ link.object.image.src | img_url: '120x120' }}"
+                                      alt="{{ link.title | escape }}"
+                                      class="h-16 object-cover rounded-md flex-shrink-0">
+                                  {% endif %}
+                                  <div class="flex-1">
+                                    <span class="font-medium">{{ link.title | escape }}</span>
+                                    {% if link.object and link.object.description %}
+                                      <p class="text-sm text-gray-600 mt-1">{{ link.object.description | truncate: 60 }}</p>
+                                    {% endif %}
+                                  </div>
+                                </div>
+                              </a>
+                            {% endif %}
+                          </li>
+                        {% endfor %}
+                      </ul>
+                    {% else %}
+                      <p class="px-4 py-3">No links in "{{ label }}" menu.</p>
+                    {% endif %}
+                  </li>
+
+                {% endif %}
+              {% endfor %}
+            </ul>
+          </nav>
+
+          <!-- Utility Links, Localization, Social, etc. -->
+          <div class="menu-drawer__utility-links">
+            {%- comment -%} ... your existing account / localization / social code ... {%- endcomment -%}
+          </div>
+        </div>
+      </div>
+    </div>
+  </details>
+</header-drawer>
+
+<style>
+  ul {
+    padding-left: 1rem;
+    margin-left: 0;
+  }
+  li {
+    list-style: none;
+  }
+  .menu-drawer__navigation {
+    overscroll-behavior: contain;
+  }
+  .menu-drawer__navigation-container {
+    overscroll-behavior: contain;
+  }
+
+  #menu-drawer {
+    width: 85vw;
+    right: 0;
+    border-top: 1px solid lightgray;
+    /* keep it right‑anchored */
+  }
+
+  .first-level-group + .first-level-group {
+    margin-top: 1rem;
+  }
+  .first-level-title {
+    background: linear-gradient(135deg, #00BAD7 0%, #00bad7b5 50%, #01cded52 100%);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+    position: relative;
+    overflow: hidden;
+    
+  }
+
+  .first-level-title::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(90deg, transparent 0%, rgba(255, 255, 255, 0.1) 50%, transparent 100%);
+    pointer-events: none;
+  }
+  /* --- Existing styles kept --- */
+  .stacked-menu-item summary {
+    cursor: pointer;
+  }
+
+  .stacked-menu-item summary::-webkit-details-marker {
+    display: none;
+  }
+
+  .menu-drawer__menu-item:hover {
+    background-color: rgba(0, 0, 0, 0.05);
+  }
+
+  .svg-wrapper {
+    width: 28px;
+    height: 28px;
+    transition: transform 0.2s ease;
+  }
+
+  .transform.rotate-90 {
+    transform: rotate(90deg);
+  }
+
+  .transform.-rotate-90 {
+    transform: rotate(-90deg);
+  }
+
+  /* Chevron icon specific styling */
+  .svg-wrapper svg.icon-chevron {
+    color: #6b7280; /* Gray color for chevrons */
+    transition: color 0.2s ease, transform 0.2s ease;
+  }
+
+  .svg-wrapper svg.icon-chevron:hover {
+    color: #374151; /* Darker gray on hover */
+  }
+
+  .menu-drawer__menu-item img {
+    min-width: 72px;
+    min-height: 72px;
+  }
+
+  /* --- NEW: split-row helpers --- */
+  .split-row__arrow {
+    min-width: 48px;
+  }
+
+  .split-row__arrow:hover {
+    background: rgba(0, 0, 0, 0.05);
+  }
+
+  /* Ensure summary doesn't add its own padding since we handle it inside */
+  .js-split-summary {
+    padding: 0;
+  }
+</style>
+
+<!-- ===================== CHANGE #1 SUPPORT JS ===================== -->
+<script>
+  (function () {
+    /**
+     * Goal:
+     *  - Clicking the LEFT link should navigate without opening/closing <details>.
+     *  - Clicking the RIGHT arrow should toggle the <details> (default summary behaviour).
+     *
+     * Trick:
+     *  - Both areas are inside <summary>, so prevent the default toggle when left is clicked.
+     */
+    document.addEventListener('click', function (e) {
+      const leftLink = e.target.closest('.js-category-link');
+      if (leftLink) {
+        const summary = leftLink.closest('summary');
+        // Prevent the summary click from toggling
+        if (summary) {
+          e.preventDefault();
+          e.stopPropagation();
+          window.location.href = leftLink.getAttribute('href');
+        }
+      }
+
+      const rightArrow = e.target.closest('.js-next-level');
+      if (rightArrow) {
+        // Allow summary to toggle if we're inside it
+        const summary = rightArrow.closest('summary');
+        if (summary) {
+          e.preventDefault();
+          e.stopPropagation();
+          // trigger the native toggle
+          summary.click();
+        }
+      }
+    }, true); // capture = true so we intercept before <summary> toggles
+  })();
+</script>

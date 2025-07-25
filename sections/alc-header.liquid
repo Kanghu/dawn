@@ -151,7 +151,7 @@
         <div class="flex md:hidden">
           {%- liquid
             if section.settings.menu != blank
-              render 'alc-header-drawer', all_blocks: section.blocks, menu_color_scheme: section.settings.menu_color_scheme
+              render 'alc-header-drawer-stacked', all_blocks: section.blocks, menu_color_scheme: section.settings.menu_color_scheme
             endif
 
             if section.settings.logo_position == 'top-center' or section.settings.menu == blank

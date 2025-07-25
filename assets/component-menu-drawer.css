@@ -85,7 +85,7 @@ details[open].menu-opening > .menu-drawer__submenu {
 }
 
 .menu-drawer__navigation {
-  padding: 3rem 0;
+  padding: 1rem 0;
 }
 
 .menu-drawer__inner-submenu {
@@ -99,7 +99,7 @@ details[open].menu-opening > .menu-drawer__submenu {
 }
 
 .menu-drawer__menu-item {
-  padding: 1.1rem 3rem;
+  padding: 1.0rem 0.2rem;
   text-decoration: none;
   font-size: 1.8rem;
 }
@@ -150,8 +150,8 @@ details[open].menu-opening > .menu-drawer__submenu {
 }
 
 .menu-drawer__close-button {
-  margin-top: 1.5rem;
-  padding: 1.2rem 2.6rem 1.2rem 3rem;
+  margin-bottom: 2rem;
+  padding: 1rem 2rem 1rem 2rem;
   text-decoration: none;
   display: flex;
   align-items: center;
@@ -166,7 +166,7 @@ details[open].menu-opening > .menu-drawer__submenu {
 .menu-drawer__close-button .svg-wrapper {
   transform: rotate(180deg);
   margin-right: 1rem;
-  width: 15px;
+  width: 20px;
 }
 
 .menu-drawer__utility-links {
