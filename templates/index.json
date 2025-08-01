@@ -9,21 +9,14 @@
  */
 {
   "sections": {
-    "image_banner_3ahDUJ": {
-      "type": "image-banner",
-      "name": "t:sections.image-banner.presets.name",
+    "custom_liquid_MVifHb": {
+      "type": "custom-liquid",
+      "name": "t:sections.custom-liquid.presets.name",
       "settings": {
-        "image": "shopify://shop_images/ULTRAWIDE_12f271da-4a19-4265-b1a8-0bb010f2841f.png",
-        "image_overlay_opacity": 0,
-        "image_height": "adapt",
-        "desktop_content_position": "middle-center",
-        "show_text_box": true,
-        "desktop_content_alignment": "center",
+        "custom_liquid": "<a href=\"https://www.alessandrodesign.ro/collections/summer-sale\" style=\"display:block;\">\n  <picture>\n    <source media=\"(max-width: 768px)\" srcset=\"https://cdn.shopify.com/s/files/1/0782/5175/3739/files/ULTRAWIDE_12f271da-4a19-4265-b1a8-0bb010f2841f.png?v=1754028245\">\n    <img src=\"https://cdn.shopify.com/s/files/1/0782/5175/3739/files/ULTRAWIDE_12f271da-4a19-4265-b1a8-0bb010f2841f.png?v=1754028245\" alt=\"Banner Summer Sale\" style=\"width:100%; height:auto; display:block;\">\n  </picture>\n</a>",
         "color_scheme": "",
-        "image_behavior": "none",
-        "mobile_content_alignment": "center",
-        "stack_images_on_mobile": true,
-        "show_text_below": true
+        "padding_top": 40,
+        "padding_bottom": 52
       }
     },
     "collection_list_yM6pDQ": {
@@ -552,7 +545,7 @@
     }
   },
   "order": [
-    "image_banner_3ahDUJ",
+    "custom_liquid_MVifHb",
     "collection_list_yM6pDQ",
     "custom_liquid_ggcwHk",
     "alc_featured_collection_ERArtK",
