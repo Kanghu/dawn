@@ -13,7 +13,7 @@
       "type": "custom-liquid",
       "name": "t:sections.custom-liquid.presets.name",
       "settings": {
-        "custom_liquid": "{% assign domain = shop.domain %}\n\n{% if domain contains \".ro\" %}\n  {% assign sale_url = \"https://www.alessandrodesign.ro/collections/summer-sale\" %}\n{% elsif domain contains \".hu\" %}\n  {% assign sale_url = \"https://www.alessandrodesign.hu/collections/summer-sale\" %}\n{% elsif domain contains \".bg\" %}\n  {% assign sale_url = \"https://www.alessandrodesign.bg/collections/summer-sale\" %}\n{% else %}\n  {% assign sale_url = \"https://www.alessandrodesign.com/collections/summer-sale\" %}\n{% endif %}\n\n<a href=\"{{ sale_url }}\">\n  <img src=\"https://cdn.shopify.com/s/files/1/0782/5175/3739/files/ULTRAWIDE_12f271da-4a19-4265-b1a8-0bb010f2841f.png?v=1754028245\" \n       alt=\"Summer Sale\" style=\"width:100%;max-width:100%;\">\n</a>",
+        "custom_liquid": "{% assign host = request.host | downcase %}\n\n{% if host contains \".ro\" %}\n  {% assign sale_url = \"https://www.alessandrodesign.ro/collections/summer-sale\" %}\n{% elsif host contains \".hu\" %}\n  {% assign sale_url = \"https://www.alessandrodesign.hu/collections/summer-sale\" %}\n{% elsif host contains \".bg\" %}\n  {% assign sale_url = \"https://www.alessandrodesign.bg/collections/summer-sale\" %}\n{% else %}\n  {% assign sale_url = \"https://www.alessandrodesign.com/collections/summer-sale\" %}\n{% endif %}\n\n<a href=\"{{ sale_url }}\">\n  <img src=\"https://cdn.shopify.com/s/files/1/0782/5175/3739/files/ULTRAWIDE_12f271da-4a19-4265-b1a8-0bb010f2841f.png?v=1754028245\" \n       alt=\"Summer Sale\" style=\"width:100%;max-width:100%;\">\n</a>",
         "color_scheme": "",
         "padding_top": 40,
         "padding_bottom": 52
