@@ -145,10 +145,10 @@
 
                           <div class="justify-between px-3 py-3 text-2xl flex flex-row transition-colors duration-200" {% if is_even == 0 %}style="background-color: rgba(3,186,214,0.3);"{% endif %}>
         <span class="spec-name w-2/3 font-normal">
-          DEBUG spec={{ spec }}, locale={{ request.locale.iso_code }}
+          {%- comment -%} Force refresh translation {%- endcomment -%}
           {%- assign spec_key = 'products.metaobjects.specification_groups.' | append: spec -%}
-          {%- assign translated_spec = spec_key | t: locale: request.locale.iso_code -%}
-          DEBUG: spec_key={{ spec_key }}, translated={{ translated_spec }}, current_locale={{ request.locale.iso_code }}
+          {%- assign translated_spec = spec_key | t -%}
+          DEBUG: trying fresh lookup for {{ spec_key }}: {{ spec_key | t }}
           {%- if translated_spec contains 'translation missing' -%}
             {{ spec | replace: '_', ' ' | capitalize }}:
           {%- else -%}
