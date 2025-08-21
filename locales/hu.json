@@ -351,7 +351,10 @@
         "cc_schedule": "Ügyfélkapcsolati program: L-V: 10-18",
         "showroom_schedule_1": "Kapcsolat Voluntari: L-V: 9-18; S: 9-15",
         "showroom_schedule_2": "Kapcsolat Vulcanescu: L-V: 10-19; S: 10-16"
-      }
+      },
+      "privacy": "adatvédelmi irányelv",
+      "cookies": "Sütik politika",
+      "sitemap": "Helytérkép |"
     },
     "featured_blog": {
       "view_all": "Az összes megtekintése",
@@ -758,6 +761,14 @@
           "per_item": {
             "few": "%{price} -ra %{count} áru"
           }
+        },
+        "return_rules_experiment": {
+          "limited_window_title": {
+            "few": "Ingyenes visszatérés %{count} napok"
+          },
+          "limited_window_title_with_final_sale": {
+            "few": "Ingyenes visszatérés %{count} Napok a végső promóció kivételével"
+          }
         }
       },
       "payment": {
@@ -906,12 +917,23 @@
         },
         "reveal_more_label": {
           "few": "Még mindig megjelenít %{count} (OF) helyek"
+        },
+        "location_information_next": {
+          "few": "Létezik %{count} Elhelyezkedés a közelben lévő készletekkel"
         }
       },
       "merchandise_unavailable_in_buyer_location": {
         "remove_items_action": {
           "few": "kiküszöböli a nem elérhető tételeket"
         }
+      },
+      "review_address_modal": {
+        "subtitle": {
+          "few": "Ezt a parancsot a címre szállítják {{merchant}}. Válassza ki a szállítási címet."
+        }
+      },
+      "merchant_instruction_errors": {
+        "invalid_entrypoint_for_remote_negotiation": "A távolról nem zajló tárgyalási ülések esetén a távoli tárgyalási utasítások megadása nem lehetséges."
       }
     },
     "notices": {

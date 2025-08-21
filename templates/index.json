@@ -13,10 +13,10 @@
       "type": "custom-liquid",
       "name": "t:sections.custom-liquid.presets.name",
       "settings": {
-        "custom_liquid": "<a href=\"https://www.alessandrodesign.ro/collections/summer-sale\" style=\"display:block;\">\n  <picture>\n    <source media=\"(max-width: 768px)\" srcset=\"https://cdn.shopify.com/s/files/1/0782/5175/3739/files/ULTRAWIDE.png?v=1754027361\">\n    <img src=\"https://cdn.shopify.com/s/files/1/0782/5175/3739/files/ULTRAWIDE_12f271da-4a19-4265-b1a8-0bb010f2841f.png?v=1754028245\" alt=\"Banner Summer Sale\" style=\"width:100%; height:auto; display:block;\">\n  </picture>\n</a>",
+        "custom_liquid": "{% assign host = request.host | downcase %}\n\n{% if host contains \".ro\" %}\n  {% assign sale_url = \"https://www.alessandrodesign.ro/collections/summer-sale\" %}\n{% elsif host contains \".hu\" %}\n  {% assign sale_url = \"https://www.alessandrodesign.hu/collections/summer-sale\" %}\n{% elsif host contains \".bg\" %}\n  {% assign sale_url = \"https://www.alessandrodesign.bg/collections/summer-sale\" %}\n{% elsif host contains \".gr\" %}\n  {% assign sale_url = \"https://www.alessandrodesign.gr/collections/summer-sale\" %}\n{% elsif host contains \".pl\" %}\n  {% assign sale_url = \"https://www.alessandrodesign.pl/collections/summer-sale\" %}\n{% elsif host contains \".sk\" %}\n  {% assign sale_url = \"https://www.alessandrodesign.sk/collections/summer-sale\" %}\n{% elsif host contains \".hr\" %}\n  {% assign sale_url = \"https://www.alessandrodesign.hr/collections/summer-sale\" %}\n{% else %}\n  {% assign sale_url = \"https://www.alessandrodesign.com/collections/summer-sale\" %}\n{% endif %}\n\n<a href=\"{{ sale_url }}\">\n  <img src=\"https://cdn.shopify.com/s/files/1/0782/5175/3739/files/ULTRAWIDE_12f271da-4a19-4265-b1a8-0bb010f2841f.png?v=1754028245\" \n       alt=\"Summer Sale\" style=\"width:100%;max-width:100%;\">\n</a>",
         "color_scheme": "",
-        "padding_top": 40,
-        "padding_bottom": 52
+        "padding_top": 0,
+        "padding_bottom": 24
       }
     },
     "collection_list_yM6pDQ": {

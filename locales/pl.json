@@ -127,7 +127,9 @@
     "price_info": "Cena producenta",
     "return_policy": "14-dniowa darmowa polityka zwrotów",
     "warranty": "Dołączona gwarancja: <a href=\"\">zobacz szczegóły</a>",
-    "warranty_link_text": "zobacz szczegóły"
+    "warranty_link_text": "zobacz szczegóły",
+    "savings": "Oszczędzasz {{ amount }}",
+    "warranty_link": "/strony/gwarancja"
   },
   "products": {
     "product": {
@@ -349,7 +351,20 @@
       "taxes_at_checkout_shipping_at_checkout_without_policy": "Obliczenie podatków, rabatów i wysyłki przy realizacji zakupu."
     },
     "footer": {
-      "payment": "Metody płatności"
+      "payment": "Metody płatności",
+      "about": "O nas",
+      "contact": "Kontakt",
+      "useful": "Użyteczne",
+      "terms": "Warunki i zasady",
+      "privacy": "polityka prywatności",
+      "cookies": "Polityka plików cookie",
+      "sitemap": "Mapa witryny |",
+      "business": "Biznes",
+      "contact_info": {
+        "cc_schedule": "Godziny pracy Działu Obsługi Klienta: Pon.: 10-18",
+        "showroom_schedule_1": "Wolontariusze w salonie wystawowym: LV: 9-18; S: 9-15",
+        "showroom_schedule_2": "Showroom Vulcanescu: Pon: 10-19; Sobota: 10-16"
+      }
     },
     "featured_blog": {
       "view_all": "Wyświetl wszystkie",
@@ -655,6 +670,24 @@
         "lungime_cm_": "Długość (cm)",
         "latime_cm_": "Szerokość (cm)"
       }
+    }
+  },
+  "shopify": {
+    "checkout": {
+      "payment_errors": {
+        "shop_pay_wallet_not_available": "Shop Pay nie obsługuje tej formy płatności.",
+        "market_manager_blocks_wallet_payments": "Ta metoda płatności nie jest obsługiwana w Twoim kraju."
+      }
+    }
+  },
+  "customer_accounts": {
+    "navigation_and_structure": {
+      "loading_policy_content_accessibility_label": "Treść polityki została załadowana."
+    },
+    "announcement_bar": {
+      "expand_label": "Rozszerzanie paska powiadomień",
+      "collapse_label": "Zwiń pasek reklam",
+      "close_label": "Zamykanie paska powiadomień"
     }
   }
 }
