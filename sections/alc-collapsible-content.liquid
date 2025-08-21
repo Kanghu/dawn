@@ -147,8 +147,8 @@
         <span class="spec-name w-2/3 font-normal">
           DEBUG spec={{ spec }}, locale={{ request.locale.iso_code }}
           {%- assign spec_key = 'products.metaobjects.specification_groups.' | append: spec -%}
-          {%- assign translated_spec = spec_key | t -%}
-          DEBUG: spec_key={{ spec_key }}, translated={{ translated_spec }}
+          {%- assign translated_spec = spec_key | t: locale: request.locale.iso_code -%}
+          DEBUG: spec_key={{ spec_key }}, translated={{ translated_spec }}, current_locale={{ request.locale.iso_code }}
           {%- if translated_spec contains 'translation missing' -%}
             {{ spec | replace: '_', ' ' | capitalize }}:
           {%- else -%}
