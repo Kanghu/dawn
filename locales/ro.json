@@ -670,7 +670,67 @@
         "load_model": "Încarcă modelul 3D {{ index }} în vizualizarea galeriei",
         "load_video": "Redă videoclipul {{ index }} în vizualizarea galeriei",
         "image_available": "Imaginea {{ index }} este disponibilă acum în vizualizarea galeriei"
-      }
+      },
+      "view_full_details": "Vedeți detaliile complete",
+      "shipping_policy_html": "<a href=\"{{ link }}\">Taxele de expediere</a> sunt calculate la finalizarea comenzii.",
+      "choose_options": "Alege opțiunile",
+      "choose_product_options": "Alege opțiunile pentru {{ product_name }}",
+      "value_unavailable": "{{ option_value }} – Indisponibil",
+      "variant_sold_out_or_unavailable": "Varianta are stocul epuizat sau este indisponibilă",
+      "inventory_in_stock": "În stoc",
+      "inventory_in_stock_show_count": "{{ quantity }} în stoc",
+      "inventory_low_stock": "Stoc redus",
+      "inventory_low_stock_show_count": "Stoc redus: doar {{ quantity }} articole rămase",
+      "inventory_out_of_stock": "Nu există în stoc",
+      "inventory_out_of_stock_continue_selling": "În stoc",
+      "sku": "SKU",
+      "volume_pricing": {
+        "title": "Stabilire preț per volum",
+        "note": "Stabilirea prețului per volum este disponibilă",
+        "minimum": "Peste {{ quantity }}",
+        "price_at_each": "la {{ price }}/buc.",
+        "price_range": "{{ minimum }} - {{ maximum }}"
+      },
+      "taxes_included": "Taxe incluse.",
+      "duties_included": "Taxe vamale incluse.",
+      "duties_and_taxes_included": "Taxe și taxe vamale incluse."
+    },
+    "modal": {
+      "label": "Galerie media"
+    },
+    "facets": {
+      "apply": "Aplică",
+      "clear": "Golește",
+      "clear_all": "Elimină tot",
+      "from": "De la",
+      "filter_and_sort": "Filtrează și sortează",
+      "filter_by_label": "Filtrează:",
+      "filter_button": "Filtrează",
+      "max_price": "Cel mai mare preț este {{ price }}",
+      "reset": "Resetează",
+      "sort_button": "Sortează",
+      "sort_by_label": "Sortează după:",
+      "to": "Către",
+      "filters_selected": {
+        "one": "{{ count }} selectat",
+        "other": "{{ count }} selectate",
+        "few": "{{ count }} selectate"
+      },
+      "product_count": {
+        "one": "{{ product_count }} din {{ count }} produs",
+        "other": "{{ product_count }} din {{ count }} produse",
+        "few": "{{ product_count }} din {{ count }} produse"
+      },
+      "product_count_simple": {
+        "one": "{{ count }} produs",
+        "other": "{{ count }} produse",
+        "few": "{{ count }} produse"
+      },
+      "clear_filter": "Elimină filtrul",
+      "filter_selected_accessibility": "{{ type }} ({{ count }} filtre selectate)",
+      "show_more": "Afișează mai mult",
+      "show_less": "Afișează mai puțin",
+      "filter_and_operator_subtitle": "Potrivește-le pe toate"
     },
     "metaobjects": {
       "specification_groups": {

@@ -252,6 +252,13 @@
     /* keep it right‑anchored */
   }
 
+  /* Prevent body scroll when main menu is open */
+  body.menu-open {
+    overflow: hidden !important;
+    position: fixed !important;
+    width: 100% !important;
+  }
+
   .first-level-group + .first-level-group {
     margin-top: 1rem;
   }
@@ -333,39 +340,121 @@
   }
 </style>
 
-{% comment %} <script>
-          (function () {
-            /**
-             * Goal:
-             *  - Clicking the LEFT link should navigate without opening/closing <details>.
-             *  - Clicking the RIGHT arrow should toggle the <details> (default summary behaviour).
-             *
-             * Trick:
-             *  - Both areas are inside <summary>, so prevent the default toggle when left is clicked.
-             */
-            document.addEventListener('click', function (e) {
-              const leftLink = e.target.closest('.js-category-link');
-              if (leftLink) {
-                const summary = leftLink.closest('summary');
-                // Prevent the summary click from toggling
-                if (summary) {
-                  e.preventDefault();
-                  e.stopPropagation();
-                  window.location.href = leftLink.getAttribute('href');
-                }
-              }
+<script>
+  (function () {
+    /**
+     * Goal:
+     *  - Clicking the LEFT link should navigate without opening/closing <details>.
+     *  - Clicking the RIGHT arrow should toggle the <details> (default summary behaviour).
+     *
+     * Trick:
+     *  - Both areas are inside <summary>, so prevent the default toggle when left is clicked.
+     */
+    document.addEventListener('click', function (e) {
+      // Handle category link clicks (left side of split row)
+      const leftLink = e.target.closest('.js-category-link');
+      if (leftLink) {
+        const summary = leftLink.closest('summary');
+        // Prevent the summary click from toggling
+        if (summary) {
+          e.preventDefault();
+          e.stopPropagation();
+          window.location.href = leftLink.getAttribute('href');
+        }
+        return;
+      }
 
-              const rightArrow = e.target.closest('.js-next-level');
-              if (rightArrow) {
-                // Allow summary to toggle if we're inside it
-                const summary = rightArrow.closest('summary');
-                if (summary) {
-                  e.preventDefault();
-                  e.stopPropagation();
-                  // trigger the native toggle
-                  summary.click();
-                }
+      // Handle chevron/arrow clicks (right side of split row)
+      const rightArrow = e.target.closest('.js-next-level');
+      if (rightArrow) {
+        const summary = rightArrow.closest('summary');
+        const details = rightArrow.closest('details');
+        
+        if (summary && details) {
+          e.preventDefault();
+          e.stopPropagation();
+          
+          // Toggle the details element with proper CSS classes
+          if (details.hasAttribute('open')) {
+            // Close submenu
+            details.classList.remove('menu-opening');
+            // Wait for transition then remove open attribute
+            setTimeout(() => {
+              details.removeAttribute('open');
+            }, 300); // Match CSS transition duration
+          } else {
+            // Open submenu
+            details.setAttribute('open', '');
+            // Use requestAnimationFrame for smoother animation
+            requestAnimationFrame(() => {
+              details.classList.add('menu-opening');
+            });
+          }
+          
+          // Rotate chevron icon for visual feedback
+          const chevronIcon = rightArrow.querySelector('.svg-wrapper');
+          if (chevronIcon) {
+            chevronIcon.classList.toggle('rotate-90');
+          }
+        }
+      }
+
+      // Handle close button clicks in submenus
+      const closeButton = e.target.closest('.menu-drawer__close-button');
+      if (closeButton) {
+        const details = closeButton.closest('details');
+        if (details) {
+          e.preventDefault();
+          e.stopPropagation();
+          
+          // Close with transition
+          details.classList.remove('menu-opening');
+          setTimeout(() => {
+            details.removeAttribute('open');
+          }, 300);
+          
+          // Reset chevron rotation
+          const parentSummary = details.querySelector('summary');
+          if (parentSummary) {
+            const chevronIcon = parentSummary.querySelector('.svg-wrapper');
+            if (chevronIcon) {
+              chevronIcon.classList.remove('rotate-90');
+            }
+          }
+        }
+      }
+    }, true); // capture = true so we intercept before <summary> toggles
+
+    // Body scroll management for main menu
+    function setupBodyScrollLock() {
+      const mainMenuDrawer = document.getElementById('Details-menu-drawer-container');
+      if (mainMenuDrawer) {
+        const observer = new MutationObserver(function(mutations) {
+          mutations.forEach(function(mutation) {
+            if (mutation.type === 'attributes' && mutation.attributeName === 'open') {
+              if (mainMenuDrawer.hasAttribute('open')) {
+                document.body.classList.add('menu-open');
+              } else {
+                document.body.classList.remove('menu-open');
               }
-            }, true); // capture = true so we intercept before <summary> toggles
-          })();
-</script>  {% endcomment %}
+            }
+          });
+        });
+        observer.observe(mainMenuDrawer, { attributes: true });
+      }
+    }
+
+    // Initialize chevron states on page load
+    document.addEventListener('DOMContentLoaded', function() {
+      setupBodyScrollLock();
+      
+      const openDetails = document.querySelectorAll('.stacked-menu-item[open]');
+      openDetails.forEach(function(details) {
+        const chevronIcon = details.querySelector('summary .svg-wrapper');
+        if (chevronIcon) {
+          chevronIcon.classList.add('rotate-90');
+        }
+      });
+    });
+  })();
+</script>

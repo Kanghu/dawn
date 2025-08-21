@@ -50,11 +50,21 @@
     <script src="{{ 'details-modal.js' | asset_url }}" defer="defer"></script>
     <script src="{{ 'search-form.js' | asset_url }}" defer="defer"></script>
 
+    <!-- Load Bootstrap CSS non-blocking to improve INP -->
     <link
-      rel="stylesheet"
+      rel="preload"
       href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+      as="style"
       integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
-      crossorigin="anonymous">
+      crossorigin="anonymous"
+      onload="this.onload=null;this.rel='stylesheet'">
+    <noscript>
+      <link
+        rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
+        crossorigin="anonymous">
+    </noscript>
 
     {%- if settings.animations_reveal_on_scroll -%}
       <script src="{{ 'animations.js' | asset_url }}" defer="defer"></script>
@@ -490,7 +500,18 @@ body {
       <script src="{{ 'cart-drawer.js' | asset_url }}" defer="defer"></script>
     {%- endif -%}
 
-    <script src="{{ 'preline.js' | asset_url }}" defer="defer"></script>
+    <!-- Load Preline.js after page load to reduce INP blocking -->
+    <script>
+      window.addEventListener('load', () => {
+        // Load Preline after initial page interactions are ready
+        setTimeout(() => {
+          const script = document.createElement('script');
+          script.src = '{{ "preline.js" | asset_url }}';
+          script.defer = true;
+          document.head.appendChild(script);
+        }, 500);
+      });
+    </script>
 
     <!-- Replace the existing Chatwoot script with this optimized version -->
     <script>
