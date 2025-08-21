@@ -145,15 +145,41 @@
 
                           <div class="justify-between px-3 py-3 text-2xl flex flex-row transition-colors duration-200" {% if is_even == 0 %}style="background-color: rgba(3,186,214,0.3);"{% endif %}>
         <span class="spec-name w-2/3 font-normal">
-          {%- comment -%} Force refresh translation {%- endcomment -%}
-          {%- assign spec_key = 'products.metaobjects.specification_groups.' | append: spec -%}
-          {%- assign translated_spec = spec_key | t -%}
-          DEBUG: trying fresh lookup for {{ spec_key }}: {{ spec_key | t }}
-          {%- if translated_spec contains 'translation missing' -%}
-            {{ spec | replace: '_', ' ' | capitalize }}:
+          {%- comment -%} Manual translation lookup by locale {%- endcomment -%}
+          {%- assign current_locale = request.locale.iso_code -%}
+          {%- assign translated_spec = '' -%}
+          
+          {%- if current_locale == 'bg' -%}
+            {%- case spec -%}
+              {%- when 'material_' -%}{%- assign translated_spec = 'Материал' -%}
+              {%- when 'culoare' -%}{%- assign translated_spec = 'Цвят' -%}
+              {%- when 'tip_produs_' -%}{%- assign translated_spec = 'Тип продукт' -%}
+              {%- when 'utilizare_' -%}{%- assign translated_spec = 'Употреба' -%}
+              {%- when 'forma_' -%}{%- assign translated_spec = 'Форма' -%}
+              {%- when 'putere_' -%}{%- assign translated_spec = 'Мощност' -%}
+              {%- when 'nr_surse_iluminat_' -%}{%- assign translated_spec = 'Брой източници на светлина' -%}
+              {%- else -%}{%- assign translated_spec = spec | replace: '_', ' ' | capitalize -%}
+            {%- endcase -%}
+          {%- elsif current_locale == 'hu' -%}
+            {%- case spec -%}
+              {%- when 'material_' -%}{%- assign translated_spec = 'Anyag' -%}
+              {%- when 'culoare' -%}{%- assign translated_spec = 'Szín' -%}
+              {%- when 'tip_produs_' -%}{%- assign translated_spec = 'Termék típusa' -%}
+              {%- when 'utilizare_' -%}{%- assign translated_spec = 'Használat' -%}
+              {%- when 'nr_functii_' -%}{%- assign translated_spec = 'Funkciók száma' -%}
+              {%- when 'continut_pachet_' -%}{%- assign translated_spec = 'Csomag tartalma' -%}
+              {%- else -%}{%- assign translated_spec = spec | replace: '_', ' ' | capitalize -%}
+            {%- endcase -%}
           {%- else -%}
-            {{ translated_spec }}:
+            {%- comment -%} Fallback to Shopify translation system {%- endcomment -%}
+            {%- assign spec_key = 'products.metaobjects.specification_groups.' | append: spec -%}
+            {%- assign translated_spec = spec_key | t -%}
+            {%- if translated_spec contains 'translation missing' -%}
+              {%- assign translated_spec = spec | replace: '_', ' ' | capitalize -%}
+            {%- endif -%}
           {%- endif -%}
+          
+          {{ translated_spec }}:
         </span>
 
                 <span class="spec-value w-1/3 font-medium">

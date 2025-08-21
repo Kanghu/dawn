@@ -79,6 +79,8 @@
   .swiper {
     width: 100%;
     height: 100%;
+    /* Fix layout shift: provide consistent height before Swiper initializes */
+    min-height: 120px;
   }
 
   .swiper-slide {
@@ -88,6 +90,11 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    /* Prevent layout shift by setting consistent slide dimensions */
+    min-width: 100px;
+    min-height: 120px;
+    transition: all 0.2s ease;
+    cursor: pointer;
   }
 
   .swiper-slide img {
@@ -95,6 +102,17 @@
     width: 100%;
     height: 100%;
     object-fit: cover;
+    transition: transform 0.2s ease;
+    border-radius: 8px;
+  }
+  
+  .swiper-slide:hover {
+    transform: scale(1.02);
+    z-index: 10;
+  }
+  
+  .swiper-slide:hover img {
+    transform: scale(1.05);
   }
 
   /* Add new styles for current product variant */
