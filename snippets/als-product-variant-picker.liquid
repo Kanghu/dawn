@@ -105,12 +105,12 @@
     transition: transform 0.2s ease;
     border-radius: 8px;
   }
-  
+
   .swiper-slide:hover {
     transform: scale(1.02);
     z-index: 10;
   }
-  
+
   .swiper-slide:hover img {
     transform: scale(1.05);
   }
@@ -328,9 +328,21 @@
       return;
     }
     
-    // Store original image for restoration
+    // Debug: Log details about the found image element
+    console.log('Found main product image element:', mainProductImage);
+    console.log('Image element classes:', mainProductImage.className);
+    console.log('Image element parent:', mainProductImage.parentElement);
+    console.log('Image element dimensions:', {
+      width: mainProductImage.offsetWidth,
+      height: mainProductImage.offsetHeight,
+      visible: mainProductImage.offsetWidth > 0 && mainProductImage.offsetHeight > 0
+    });
+    
+    // Store original image and srcset for restoration
     const originalImageSrc = mainProductImage.src;
+    const originalImageSrcset = mainProductImage.srcset;
     console.log('Original image src:', originalImageSrc);
+    console.log('Original image srcset:', originalImageSrcset);
     
     variantSlides.forEach((slide, index) => {
       const variantImg = slide.querySelector('img');
@@ -342,29 +354,32 @@
         const variantImageSrc = variantImg.src.replace('400x400', '800x800');
         console.log('Changing to variant image:', variantImageSrc);
         
-        // Force image reload by clearing src first, then setting new one
-        mainProductImage.style.opacity = '0.7';
-        mainProductImage.src = '';
-        
-        // Use setTimeout to ensure DOM update
-        setTimeout(() => {
+        // Pre-load the new image to prevent flash
+        const tempImage = new Image();
+        tempImage.onload = () => {
+          // Image is loaded, now switch smoothly
+          mainProductImage.style.opacity = '0.8';
+          mainProductImage.srcset = '';
           mainProductImage.src = variantImageSrc;
           mainProductImage.style.opacity = '1';
           console.log('Image src changed to:', mainProductImage.src);
-        }, 10);
+        };
+        tempImage.src = variantImageSrc;
       });
       
       slide.addEventListener('mouseleave', () => {
         console.log('Mouse left variant, restoring original image');
-        // Force restore original image with same reload technique
-        mainProductImage.style.opacity = '0.7';
-        mainProductImage.src = '';
-        
-        setTimeout(() => {
+        // Pre-load original image to prevent flash on restore
+        const tempImage = new Image();
+        tempImage.onload = () => {
+          // Original image is loaded, restore smoothly
+          mainProductImage.style.opacity = '0.8';
           mainProductImage.src = originalImageSrc;
+          mainProductImage.srcset = originalImageSrcset;
           mainProductImage.style.opacity = '1';
           console.log('Restored to original image:', mainProductImage.src);
-        }, 10);
+        };
+        tempImage.src = originalImageSrc;
       });
     });
   }
