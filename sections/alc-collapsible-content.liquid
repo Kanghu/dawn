@@ -151,23 +151,157 @@
           
           {%- if current_locale == 'bg' -%}
             {%- case spec -%}
+              {%- when 'tip_produs_' -%}{%- assign translated_spec = 'Тип продукт' -%}
               {%- when 'material_' -%}{%- assign translated_spec = 'Материал' -%}
               {%- when 'culoare' -%}{%- assign translated_spec = 'Цвят' -%}
-              {%- when 'tip_produs_' -%}{%- assign translated_spec = 'Тип продукт' -%}
               {%- when 'utilizare_' -%}{%- assign translated_spec = 'Употреба' -%}
               {%- when 'forma_' -%}{%- assign translated_spec = 'Форма' -%}
-              {%- when 'putere_' -%}{%- assign translated_spec = 'Мощност' -%}
               {%- when 'nr_surse_iluminat_' -%}{%- assign translated_spec = 'Брой източници на светлина' -%}
+              {%- when 'constructie_' -%}{%- assign translated_spec = 'Конструкция' -%}
+              {%- when 'design_' -%}{%- assign translated_spec = 'Дизайн' -%}
+              {%- when 'dimabil_' -%}{%- assign translated_spec = 'С димер' -%}
+              {%- when 'tip_bec_' -%}{%- assign translated_spec = 'Тип крушка' -%}
+              {%- when 'tip_soclu_' -%}{%- assign translated_spec = 'Тип цокъл' -%}
+              {%- when 'recomandare_' -%}{%- assign translated_spec = 'Препоръка' -%}
+              {%- when 'pozitionare_' -%}{%- assign translated_spec = 'Позициониране' -%}
+              {%- when 'autonomie_' -%}{%- assign translated_spec = 'Автономия' -%}
+              {%- when 'putere_w_' -%}{%- assign translated_spec = 'Мощност (W)' -%}
+              {%- when 'tensiune_alimentare_' -%}{%- assign translated_spec = 'Захранващо напрежение' -%}
+              {%- when 'tip_lumina_' -%}{%- assign translated_spec = 'Тип светлина' -%}
+              {%- when 'kelvin_' -%}{%- assign translated_spec = 'Келвин' -%}
+              {%- when 'flux_de_lumina_lm_' -%}{%- assign translated_spec = 'Светлинен поток (lm)' -%}
+              {%- when 'clasa_de_protectie_' -%}{%- assign translated_spec = 'Клас на защита' -%}
+              {%- when 'tip_intrerupator_' -%}{%- assign translated_spec = 'Тип превключвател' -%}
+              {%- when 'tip_alimentare_' -%}{%- assign translated_spec = 'Тип захранване' -%}
+              {%- when 'tip_comanda_' -%}{%- assign translated_spec = 'Тип управление' -%}
+              {%- when 'numar_functii_' -%}{%- assign translated_spec = 'Брой функции' -%}
+              {%- when 'nr_functii_' -%}{%- assign translated_spec = 'Брой функции' -%}
+              {%- when 'continut_pachet_' -%}{%- assign translated_spec = 'Съдържание на пакета' -%}
+              {%- when 'diametru_cartus_' -%}{%- assign translated_spec = 'Диаметър на патрона' -%}
               {%- else -%}{%- assign translated_spec = spec | replace: '_', ' ' | capitalize -%}
             {%- endcase -%}
           {%- elsif current_locale == 'hu' -%}
             {%- case spec -%}
+              {%- when 'tip_produs_' -%}{%- assign translated_spec = 'Termék típusa' -%}
               {%- when 'material_' -%}{%- assign translated_spec = 'Anyag' -%}
               {%- when 'culoare' -%}{%- assign translated_spec = 'Szín' -%}
-              {%- when 'tip_produs_' -%}{%- assign translated_spec = 'Termék típusa' -%}
               {%- when 'utilizare_' -%}{%- assign translated_spec = 'Használat' -%}
+              {%- when 'forma_' -%}{%- assign translated_spec = 'Forma' -%}
+              {%- when 'nr_surse_iluminat_' -%}{%- assign translated_spec = 'Fényforrások száma' -%}
+              {%- when 'constructie_' -%}{%- assign translated_spec = 'Konstrukció' -%}
+              {%- when 'design_' -%}{%- assign translated_spec = 'Dizájn' -%}
+              {%- when 'dimabil_' -%}{%- assign translated_spec = 'Dimmerelhető' -%}
+              {%- when 'tip_bec_' -%}{%- assign translated_spec = 'Izzó típusa' -%}
+              {%- when 'tip_soclu_' -%}{%- assign translated_spec = 'Foglalat típusa' -%}
+              {%- when 'recomandare_' -%}{%- assign translated_spec = 'Ajánlás' -%}
+              {%- when 'pozitionare_' -%}{%- assign translated_spec = 'Elhelyezés' -%}
+              {%- when 'autonomie_' -%}{%- assign translated_spec = 'Autonómia' -%}
+              {%- when 'putere_w_' -%}{%- assign translated_spec = 'Teljesítmény (W)' -%}
+              {%- when 'tensiune_alimentare_' -%}{%- assign translated_spec = 'Tápfeszültség' -%}
+              {%- when 'tip_lumina_' -%}{%- assign translated_spec = 'Fény típusa' -%}
+              {%- when 'kelvin_' -%}{%- assign translated_spec = 'Kelvin' -%}
+              {%- when 'flux_de_lumina_lm_' -%}{%- assign translated_spec = 'Fényáram (lm)' -%}
+              {%- when 'clasa_de_protectie_' -%}{%- assign translated_spec = 'Védelmi osztály' -%}
+              {%- when 'tip_intrerupator_' -%}{%- assign translated_spec = 'Kapcsoló típusa' -%}
+              {%- when 'tip_alimentare_' -%}{%- assign translated_spec = 'Táplálás típusa' -%}
+              {%- when 'tip_comanda_' -%}{%- assign translated_spec = 'Vezérlés típusa' -%}
+              {%- when 'numar_functii_' -%}{%- assign translated_spec = 'Funkciók száma' -%}
               {%- when 'nr_functii_' -%}{%- assign translated_spec = 'Funkciók száma' -%}
               {%- when 'continut_pachet_' -%}{%- assign translated_spec = 'Csomag tartalma' -%}
+              {%- when 'diametru_cartus_' -%}{%- assign translated_spec = 'Patron átmérője' -%}
+              {%- else -%}{%- assign translated_spec = spec | replace: '_', ' ' | capitalize -%}
+            {%- endcase -%}
+          {%- elsif current_locale == 'pl' -%}
+            {%- case spec -%}
+              {%- when 'tip_produs_' -%}{%- assign translated_spec = 'Typ produktu' -%}
+              {%- when 'material_' -%}{%- assign translated_spec = 'Materiał' -%}
+              {%- when 'culoare' -%}{%- assign translated_spec = 'Kolor' -%}
+              {%- when 'utilizare_' -%}{%- assign translated_spec = 'Wykorzystanie' -%}
+              {%- when 'forma_' -%}{%- assign translated_spec = 'Kształt' -%}
+              {%- when 'nr_surse_iluminat_' -%}{%- assign translated_spec = 'Liczba źródeł światła' -%}
+              {%- when 'constructie_' -%}{%- assign translated_spec = 'Konstrukcja' -%}
+              {%- when 'design_' -%}{%- assign translated_spec = 'Wzór' -%}
+              {%- when 'dimabil_' -%}{%- assign translated_spec = 'Możliwość ściemniania' -%}
+              {%- when 'tip_bec_' -%}{%- assign translated_spec = 'Typ żarówki' -%}
+              {%- when 'tip_soclu_' -%}{%- assign translated_spec = 'Typ gwintu' -%}
+              {%- when 'recomandare_' -%}{%- assign translated_spec = 'Zalecenie' -%}
+              {%- when 'pozitionare_' -%}{%- assign translated_spec = 'Pozycjonowanie' -%}
+              {%- when 'autonomie_' -%}{%- assign translated_spec = 'Autonomia' -%}
+              {%- when 'putere_w_' -%}{%- assign translated_spec = 'Moc (W)' -%}
+              {%- when 'tensiune_alimentare_' -%}{%- assign translated_spec = 'Napięcie zasilania' -%}
+              {%- when 'tip_lumina_' -%}{%- assign translated_spec = 'Typ światła' -%}
+              {%- when 'kelvin_' -%}{%- assign translated_spec = 'Kelvin' -%}
+              {%- when 'flux_de_lumina_lm_' -%}{%- assign translated_spec = 'Strumień świetlny (lm)' -%}
+              {%- when 'clasa_de_protectie_' -%}{%- assign translated_spec = 'Klasa ochrony' -%}
+              {%- when 'tip_intrerupator_' -%}{%- assign translated_spec = 'Typ przełącznika' -%}
+              {%- when 'tip_alimentare_' -%}{%- assign translated_spec = 'Typ zasilania' -%}
+              {%- when 'tip_comanda_' -%}{%- assign translated_spec = 'Typ sterowania' -%}
+              {%- when 'numar_functii_' -%}{%- assign translated_spec = 'Liczba funkcji' -%}
+              {%- when 'nr_functii_' -%}{%- assign translated_spec = 'Liczba funkcji' -%}
+              {%- when 'continut_pachet_' -%}{%- assign translated_spec = 'Zawartość pakietu' -%}
+              {%- when 'diametru_cartus_' -%}{%- assign translated_spec = 'Średnica wkładu' -%}
+              {%- else -%}{%- assign translated_spec = spec | replace: '_', ' ' | capitalize -%}
+            {%- endcase -%}
+          {%- elsif current_locale == 'sk' -%}
+            {%- case spec -%}
+              {%- when 'tip_produs_' -%}{%- assign translated_spec = 'Typ produktu' -%}
+              {%- when 'material_' -%}{%- assign translated_spec = 'Materiál' -%}
+              {%- when 'culoare' -%}{%- assign translated_spec = 'Farba' -%}
+              {%- when 'utilizare_' -%}{%- assign translated_spec = 'Použitie' -%}
+              {%- when 'forma_' -%}{%- assign translated_spec = 'Tvar' -%}
+              {%- when 'nr_surse_iluminat_' -%}{%- assign translated_spec = 'Počet svetelných zdrojov' -%}
+              {%- when 'constructie_' -%}{%- assign translated_spec = 'Konštrukcia' -%}
+              {%- when 'design_' -%}{%- assign translated_spec = 'Dizajn' -%}
+              {%- when 'dimabil_' -%}{%- assign translated_spec = 'Stmievateľné' -%}
+              {%- when 'tip_bec_' -%}{%- assign translated_spec = 'Typ žiarovky' -%}
+              {%- when 'tip_soclu_' -%}{%- assign translated_spec = 'Typ pätice' -%}
+              {%- when 'recomandare_' -%}{%- assign translated_spec = 'Odporúčanie' -%}
+              {%- when 'pozitionare_' -%}{%- assign translated_spec = 'Umiestnenie' -%}
+              {%- when 'autonomie_' -%}{%- assign translated_spec = 'Autonómia' -%}
+              {%- when 'putere_w_' -%}{%- assign translated_spec = 'Výkon (W)' -%}
+              {%- when 'tensiune_alimentare_' -%}{%- assign translated_spec = 'Napájacie napätie' -%}
+              {%- when 'tip_lumina_' -%}{%- assign translated_spec = 'Typ svetla' -%}
+              {%- when 'kelvin_' -%}{%- assign translated_spec = 'Kelvin' -%}
+              {%- when 'flux_de_lumina_lm_' -%}{%- assign translated_spec = 'Svetelný tok (lm)' -%}
+              {%- when 'clasa_de_protectie_' -%}{%- assign translated_spec = 'Trieda ochrany' -%}
+              {%- when 'tip_intrerupator_' -%}{%- assign translated_spec = 'Typ spínača' -%}
+              {%- when 'tip_alimentare_' -%}{%- assign translated_spec = 'Typ napájania' -%}
+              {%- when 'tip_comanda_' -%}{%- assign translated_spec = 'Typ ovládania' -%}
+              {%- when 'numar_functii_' -%}{%- assign translated_spec = 'Počet funkcií' -%}
+              {%- when 'nr_functii_' -%}{%- assign translated_spec = 'Počet funkcií' -%}
+              {%- when 'continut_pachet_' -%}{%- assign translated_spec = 'Obsah balenia' -%}
+              {%- when 'diametru_cartus_' -%}{%- assign translated_spec = 'Priemer patrony' -%}
+              {%- else -%}{%- assign translated_spec = spec | replace: '_', ' ' | capitalize -%}
+            {%- endcase -%}
+          {%- elsif current_locale == 'hr' -%}
+            {%- case spec -%}
+              {%- when 'tip_produs_' -%}{%- assign translated_spec = 'Tip produkta' -%}
+              {%- when 'material_' -%}{%- assign translated_spec = 'Materijal' -%}
+              {%- when 'culoare' -%}{%- assign translated_spec = 'Boja' -%}
+              {%- when 'utilizare_' -%}{%- assign translated_spec = 'Upotreba' -%}
+              {%- when 'forma_' -%}{%- assign translated_spec = 'Oblik' -%}
+              {%- when 'nr_surse_iluminat_' -%}{%- assign translated_spec = 'Broj izvora svjetlosti' -%}
+              {%- when 'constructie_' -%}{%- assign translated_spec = 'Konstrukcija' -%}
+              {%- when 'design_' -%}{%- assign translated_spec = 'Dizajn' -%}
+              {%- when 'dimabil_' -%}{%- assign translated_spec = 'Zatamnjivo' -%}
+              {%- when 'tip_bec_' -%}{%- assign translated_spec = 'Tip žarulje' -%}
+              {%- when 'tip_soclu_' -%}{%- assign translated_spec = 'Tip grla' -%}
+              {%- when 'recomandare_' -%}{%- assign translated_spec = 'Preporuka' -%}
+              {%- when 'pozitionare_' -%}{%- assign translated_spec = 'Pozicioniranje' -%}
+              {%- when 'autonomie_' -%}{%- assign translated_spec = 'Autonomija' -%}
+              {%- when 'putere_w_' -%}{%- assign translated_spec = 'Snaga (W)' -%}
+              {%- when 'tensiune_alimentare_' -%}{%- assign translated_spec = 'Napon napajanja' -%}
+              {%- when 'tip_lumina_' -%}{%- assign translated_spec = 'Tip svjetlosti' -%}
+              {%- when 'kelvin_' -%}{%- assign translated_spec = 'Kelvin' -%}
+              {%- when 'flux_de_lumina_lm_' -%}{%- assign translated_spec = 'Svjetlosni tok (lm)' -%}
+              {%- when 'clasa_de_protectie_' -%}{%- assign translated_spec = 'Klasa zaštite' -%}
+              {%- when 'tip_intrerupator_' -%}{%- assign translated_spec = 'Tip prekidača' -%}
+              {%- when 'tip_alimentare_' -%}{%- assign translated_spec = 'Tip napajanja' -%}
+              {%- when 'tip_comanda_' -%}{%- assign translated_spec = 'Tip upravljanja' -%}
+              {%- when 'numar_functii_' -%}{%- assign translated_spec = 'Broj funkcija' -%}
+              {%- when 'nr_functii_' -%}{%- assign translated_spec = 'Broj funkcija' -%}
+              {%- when 'continut_pachet_' -%}{%- assign translated_spec = 'Sadržaj paketa' -%}
+              {%- when 'diametru_cartus_' -%}{%- assign translated_spec = 'Promjer uloška' -%}
               {%- else -%}{%- assign translated_spec = spec | replace: '_', ' ' | capitalize -%}
             {%- endcase -%}
           {%- else -%}

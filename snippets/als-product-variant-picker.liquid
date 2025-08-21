@@ -260,9 +260,25 @@
 
 <script>
   document.addEventListener('DOMContentLoaded', function () {
+    // Initialize Swiper with safety check
+    if (typeof Swiper === 'undefined') {
+      console.warn('Swiper library not loaded yet, retrying...');
+      // Retry after a short delay
+      setTimeout(() => {
+        if (typeof Swiper !== 'undefined') {
+          initializeVariantSwiper();
+        }
+      }, 500);
+      return;
+    }
+    
+    initializeVariantSwiper();
+  });
+
+  function initializeVariantSwiper() {
     const swiper = new Swiper('.swiper', {
-      slidesPerView: 1, // Start with one slide per view for small screens
-      spaceBetween: 8, // Adjust spacing between slides
+      slidesPerView: 1,
+      spaceBetween: 8,
       navigation: {
         nextEl: '.swiper-button-next',
         prevEl: '.swiper-button-prev',
@@ -272,24 +288,86 @@
         clickable: true,
       },
       breakpoints: {
-        320: {
-          slidesPerView: 4.5,
-        },
-        480: {
-          slidesPerView: 4.75,
-        },
-        640: {
-          slidesPerView: 5,
-        },
-        768: {
-          slidesPerView: 5.2,
-        },
-        1024: {
-          slidesPerView: 5.5,
-        },
+        320: { slidesPerView: 4.5 },
+        480: { slidesPerView: 4.75 },
+        640: { slidesPerView: 5 },
+        768: { slidesPerView: 5.2 },
+        1024: { slidesPerView: 5.5 },
       },
     });
-  });
+
+    // Add hover functionality to change main product image
+    initializeImageHoverChange();
+  }
+
+  function initializeImageHoverChange() {
+    const variantSlides = document.querySelectorAll('#ProductVariantsSlider .swiper-slide');
+    
+    // Try multiple selectors to find the main product image
+    const possibleSelectors = [
+      '.product__media-item.is-active .product__media img',
+      '.product__media-item.is-active img',
+      '.product__media-list .is-active img',
+      '.product__media img',
+      '.product__media-wrapper img'
+    ];
+    
+    let mainProductImage = null;
+    for (const selector of possibleSelectors) {
+      mainProductImage = document.querySelector(selector);
+      if (mainProductImage) {
+        console.log('Found main product image with selector:', selector);
+        break;
+      }
+    }
+    
+    if (!mainProductImage) {
+      console.warn('Main product image not found with any selector');
+      // Debug: log what elements we can find
+      console.log('Available product media elements:', document.querySelectorAll('[class*="product__media"]'));
+      return;
+    }
+    
+    // Store original image for restoration
+    const originalImageSrc = mainProductImage.src;
+    console.log('Original image src:', originalImageSrc);
+    
+    variantSlides.forEach((slide, index) => {
+      const variantImg = slide.querySelector('img');
+      if (!variantImg) return;
+      
+      slide.addEventListener('mouseenter', () => {
+        console.log(`Hovering over variant ${index + 1}`);
+        // Get high-res version of variant image (upgrade from 400x400 to 800x800)
+        const variantImageSrc = variantImg.src.replace('400x400', '800x800');
+        console.log('Changing to variant image:', variantImageSrc);
+        
+        // Force image reload by clearing src first, then setting new one
+        mainProductImage.style.opacity = '0.7';
+        mainProductImage.src = '';
+        
+        // Use setTimeout to ensure DOM update
+        setTimeout(() => {
+          mainProductImage.src = variantImageSrc;
+          mainProductImage.style.opacity = '1';
+          console.log('Image src changed to:', mainProductImage.src);
+        }, 10);
+      });
+      
+      slide.addEventListener('mouseleave', () => {
+        console.log('Mouse left variant, restoring original image');
+        // Force restore original image with same reload technique
+        mainProductImage.style.opacity = '0.7';
+        mainProductImage.src = '';
+        
+        setTimeout(() => {
+          mainProductImage.src = originalImageSrc;
+          mainProductImage.style.opacity = '1';
+          console.log('Restored to original image:', mainProductImage.src);
+        }, 10);
+      });
+    });
+  }
 
   document.querySelectorAll('input[name="related_variant_selection"]').forEach(function (radio) {
     radio.addEventListener('change', function (event) {
