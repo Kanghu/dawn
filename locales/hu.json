@@ -758,6 +758,14 @@
           "per_item": {
             "few": "%{price} -ra %{count} áru"
           }
+        },
+        "return_rules_experiment": {
+          "limited_window_title": {
+            "few": "Ingyenes visszatérés %{count} napok"
+          },
+          "limited_window_title_with_final_sale": {
+            "few": "Ingyenes visszatérés %{count} Napok a végső promóció kivételével"
+          }
         }
       },
       "payment": {
