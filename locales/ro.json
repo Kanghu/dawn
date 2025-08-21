@@ -620,6 +620,97 @@
       "password_link": "Intra folosind parola!"
     }
   },
+  "products": {
+    "product": {
+      "add_to_cart": "Adăugați în coș",
+      "description": "Descriere",
+      "on_sale": "Reducere",
+      "product_variants": "Variante de produse",
+      "share": "Distribuiți acest produs",
+      "sold_out": "Stoc epuizat",
+      "unavailable": "Indisponibil",
+      "vendor": "Vânzător",
+      "video_exit_message": "{{ title }} deschide videoclipul în ecran complet în aceeași fereastră.",
+      "xr_button": "Vizualizați în spațiul dvs.",
+      "xr_button_label": "Vizualizați în spațiul dvs., articolul se încarcă în fereastra de realitate augmentată",
+      "quantity": {
+        "label": "Cantitate",
+        "input_label": "Cantitate pentru {{ product }}",
+        "increase": "Creșteți cantitatea pentru {{ product }}",
+        "decrease": "Reduceți cantitatea pentru {{ product }}",
+        "minimum_of": "Minimum {{ quantity }}",
+        "maximum_of": "Maximum {{ quantity }}",
+        "multiples_of": "Incrementuri de {{ quantity }}",
+        "in_cart_html": "<span class=\"quantity-cart\">{{ quantity }}</span> în coș",
+        "note": "Vezi regulile legate de cantitate",
+        "min_of": "Minimum {{ quantity }}",
+        "max_of": "Maximum {{ quantity }}"
+      },
+      "price": {
+        "from_price_html": "Începând cu {{ price }}",
+        "regular_price": "Preț obișnuit",
+        "sale_price": "Preț redus",
+        "unit_price": "Preț unitar"
+      },
+      "pickup_availability": {
+        "view_store_info": "Vizualizați informațiile despre magazin",
+        "check_other_stores": "Vizualizați disponibilitatea la alte magazine",
+        "pick_up_available": "Ridicare disponibilă",
+        "pick_up_available_at_html": "Ridicare disponibilă la <span class=\"color-foreground\">{{ location_name }}</span>",
+        "pick_up_unavailable_at_html": "Ridicare indisponibilă momentan la <span class=\"color-foreground\">{{ location_name }}</span>",
+        "unavailable": "Nu am putut încărca disponibilitatea pentru ridicare",
+        "refresh": "Reîmprospătați"
+      },
+      "media": {
+        "open_media": "Deschide conținutul media {{ index }} într-o fereastră modală",
+        "play_model": "Redați în vizualizatorul 3D",
+        "play_video": "Redați videoclipul",
+        "gallery_viewer": "Vizualizatorul galeriei",
+        "load_image": "Încarcă imaginea {{ index }} în vizualizarea galeriei",
+        "load_model": "Încarcă modelul 3D {{ index }} în vizualizarea galeriei",
+        "load_video": "Redă videoclipul {{ index }} în vizualizarea galeriei",
+        "image_available": "Imaginea {{ index }} este disponibilă acum în vizualizarea galeriei"
+      }
+    },
+    "metaobjects": {
+      "specification_groups": {
+        "tip_produs_": "Tip produs",
+        "nr_surse_iluminat_": "Numărul surselor de iluminat",
+        "forma_": "Formă",
+        "constructie_": "Construcție",
+        "design_": "Design",
+        "dimabil_": "Dimabil",
+        "tip_bec_": "Tip bec",
+        "tip_soclu_": "Tip soclu",
+        "utilizare_": "Utilizare",
+        "recomandare_": "Recomandare",
+        "pozitionare_": "Poziționare",
+        "autonomie_": "Autonomie",
+        "putere_w_": "Putere (W)",
+        "tensiune_alimentare_": "Tensiune alimentare",
+        "tip_lumina_": "Tip lumină",
+        "kelvin_": "Kelvin",
+        "flux_de_lumina_lm_": "Flux de lumină (lm)",
+        "clasa_de_protectie_": "Clasa de protecție",
+        "tip_intrerupator_": "Tip întrerupător",
+        "tip_alimentare_": "Tip alimentare",
+        "tip_comanda_": "Tip comandă",
+        "numar_functii_": "Numărul funcțiilor",
+        "continut_pachet_": "Conținut pachet",
+        "material_": "Material",
+        "diametru_cartus_": "Diametrul cartușului",
+        "culoare": "Culoare",
+        "tip_montaj_": "Tip montaj",
+        "orificii_montare_": "Orificii montare",
+        "tip_pipa_": "Tip pipă",
+        "racordare_apa_": "Racordare apă",
+        "diametru_cm_": "Diametru (cm)",
+        "inaltime_cm_": "Înălțime (cm)",
+        "lungime_cm_": "Lungime (cm)",
+        "latime_cm_": "Lățime (cm)"
+      }
+    }
+  },
   "shopify": {
     "checkout": {
       "contact": {

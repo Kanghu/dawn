@@ -6,13 +6,7 @@
 {% endcomment %}
 
 <header-drawer data-breakpoint="{% if menu_type_desktop == 'drawer' %}desktop{% else %}tablet{% endif %}" class="overflow-hidden">
-  <details
-    id="Details-menu-drawer-container"
-    class="menu-drawer-container"
-onToggle="
-   document.documentElement.classList.toggle('overflow-hidden');
-   document.body.classList.toggle('overflow-hidden');
- "
+  <details id="Details-menu-drawer-container" class="menu-drawer-container">
     <!-- Drawer Toggle Button -->
     <summary class="header__icon header__icon--menu header__icon--summary link focus-inset" aria-label="{{ 'sections.header.menu' | t }}">
       <span>
@@ -43,24 +37,24 @@ onToggle="
                     {% if top_menu.links.size > 0 %}
                       <ul class="menu-drawer__menu has-submenu flex flex-col space-y-2 pb-4" role="list">
                         {% for link in top_menu.links %}
-                          <li class="w-full">
+                          <li class="w-full flex items-stretch">
                             {% if link.links != blank %}
+                              <!-- LEFT: link to category -->
+                              <a href="{{ link.url }}" class="split-row__link flex items-center gap-4 flex-1 js-category-link no-underline text-black">
+                                {% if link.object and link.object.image and link.object.image.src %}
+                                  <img
+                                    src="{{ link.object.image.src | img_url: '120x120' }}"
+                                    alt="{{ link.title | escape }}"
+                                    class="h-24 object-cover rounded-md flex-shrink-0">
+                                {% endif %}
+                                <div class="flex-1 text-left">
+                                  <span class="font-medium">{{ link.title | escape }}</span>
+                                </div>
+                              </a>
                               {%- comment -%} Level 2 item WITH children → keep drawer (details) {%- endcomment -%}
                               <details id="Details-menu-drawer-{{ link.handle }}" class="stacked-menu-item">
                                 <summary class="menu-drawer__menu-item list-menu__item px-0 link link--text focus-inset js-split-summary">
                                   <div class="split-row flex items-stretch w-full">
-                                    <!-- LEFT: link to category -->
-                                    <a href="{{ link.url }}" class="split-row__link flex items-center gap-4 flex-1 js-category-link no-underline text-black">
-                                      {% if link.object and link.object.image and link.object.image.src %}
-                                        <img
-                                          src="{{ link.object.image.src | img_url: '120x120' }}"
-                                          alt="{{ link.title | escape }}"
-                                          class="h-16 object-cover rounded-md flex-shrink-0">
-                                      {% endif %}
-                                      <div class="flex-1 text-left">
-                                        <span class="font-medium">{{ link.title | escape }}</span>
-                                      </div>
-                                    </a>
                                     <!-- RIGHT: arrow to open submenu -->
                                     <button
                                       class="split-row__arrow flex items-center justify-center px-4 py-4 js-next-level"
@@ -266,7 +260,7 @@ onToggle="
     border-bottom: 1px solid rgba(0, 0, 0, 0.05);
     position: relative;
     overflow: hidden;
-    
+
   }
 
   .first-level-title::before {
@@ -308,12 +302,15 @@ onToggle="
 
   /* Chevron icon specific styling */
   .svg-wrapper svg.icon-chevron {
-    color: #6b7280; /* Gray color for chevrons */
-    transition: color 0.2s ease, transform 0.2s ease;
+    color: #6b7280;
+    /* Gray color for chevrons */
+    transition: color 0.2s ease
+    , transform 0.2s ease;
   }
 
   .svg-wrapper svg.icon-chevron:hover {
-    color: #374151; /* Darker gray on hover */
+    color: #374151;
+    /* Darker gray on hover */
   }
 
   .menu-drawer__menu-item img {
@@ -336,40 +333,39 @@ onToggle="
   }
 </style>
 
-<!-- ===================== CHANGE #1 SUPPORT JS ===================== -->
-<script>
-  (function () {
-    /**
-     * Goal:
-     *  - Clicking the LEFT link should navigate without opening/closing <details>.
-     *  - Clicking the RIGHT arrow should toggle the <details> (default summary behaviour).
-     *
-     * Trick:
-     *  - Both areas are inside <summary>, so prevent the default toggle when left is clicked.
-     */
-    document.addEventListener('click', function (e) {
-      const leftLink = e.target.closest('.js-category-link');
-      if (leftLink) {
-        const summary = leftLink.closest('summary');
-        // Prevent the summary click from toggling
-        if (summary) {
-          e.preventDefault();
-          e.stopPropagation();
-          window.location.href = leftLink.getAttribute('href');
-        }
-      }
+{% comment %} <script>
+          (function () {
+            /**
+             * Goal:
+             *  - Clicking the LEFT link should navigate without opening/closing <details>.
+             *  - Clicking the RIGHT arrow should toggle the <details> (default summary behaviour).
+             *
+             * Trick:
+             *  - Both areas are inside <summary>, so prevent the default toggle when left is clicked.
+             */
+            document.addEventListener('click', function (e) {
+              const leftLink = e.target.closest('.js-category-link');
+              if (leftLink) {
+                const summary = leftLink.closest('summary');
+                // Prevent the summary click from toggling
+                if (summary) {
+                  e.preventDefault();
+                  e.stopPropagation();
+                  window.location.href = leftLink.getAttribute('href');
+                }
+              }
 
-      const rightArrow = e.target.closest('.js-next-level');
-      if (rightArrow) {
-        // Allow summary to toggle if we're inside it
-        const summary = rightArrow.closest('summary');
-        if (summary) {
-          e.preventDefault();
-          e.stopPropagation();
-          // trigger the native toggle
-          summary.click();
-        }
-      }
-    }, true); // capture = true so we intercept before <summary> toggles
-  })();
-</script>
+              const rightArrow = e.target.closest('.js-next-level');
+              if (rightArrow) {
+                // Allow summary to toggle if we're inside it
+                const summary = rightArrow.closest('summary');
+                if (summary) {
+                  e.preventDefault();
+                  e.stopPropagation();
+                  // trigger the native toggle
+                  summary.click();
+                }
+              }
+            }, true); // capture = true so we intercept before <summary> toggles
+          })();
+</script>  {% endcomment %}
