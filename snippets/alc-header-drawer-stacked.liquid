@@ -74,10 +74,10 @@
                                   tabindex="-1">
                                   <div class="menu-drawer__inner-submenu">
                                     <button class="menu-drawer__close-button link--text focus-inset flex items-center gap-2 border-b border-main pb-1" aria-expanded="true">
-                                      <span class="svg-wrapper transform">
+                                      <span class="svg-wrapper transform rotate-90">
                                         {{ 'icon-chevron.svg' | inline_asset_content }}
                                       </span>
-                                      {{ link.title | escape }}
+                                      <span class="text-black">{{ 'general.back' | t | default: 'Înapoi' }}</span>
                                     </button>
 
                                     <ul
@@ -133,10 +133,10 @@
 
                                               <div id="childlink-{{ childlink.handle | escape }}" class="menu-drawer__submenu has-submenu gradient motion-reduce">
                                                 <button class="menu-drawer__close-button link link--text focus-inset flex items-center gap-2" aria-expanded="true">
-                                                  <span class="svg-wrapper transform ">
+                                                  <span class="svg-wrapper transform rotate-90">
                                                     {{ 'icon-chevron.svg' | inline_asset_content }}
                                                   </span>
-                                                  {{ childlink.title | escape }}
+                                                  <span class="text-black">{{ 'general.back' | t | default: 'Înapoi' }}</span>
                                                 </button>
 
                                                 <ul
@@ -247,9 +247,10 @@
 
   #menu-drawer {
     width: 85vw;
-    right: 0;
+    left: 0;
+    right: auto;
     border-top: 1px solid lightgray;
-    /* keep it right‑anchored */
+    /* keep it left‑anchored to match main CSS */
   }
 
   /* Prevent body scroll when main menu is open */
@@ -279,6 +280,37 @@
     bottom: 0;
     background: linear-gradient(90deg, transparent 0%, rgba(255, 255, 255, 0.1) 50%, transparent 100%);
     pointer-events: none;
+  }
+
+  /* Style back buttons to match first-level-title */
+  .menu-drawer__close-button {
+    background: linear-gradient(135deg, #00BAD7 0%, #00bad7b5 50%, #01cded52 100%) !important;
+    color: white !important;
+    font-weight: 600 !important;
+    padding: 1rem 2rem !important;
+    position: relative !important;
+    overflow: hidden !important;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05) !important;
+  }
+
+  .menu-drawer__close-button::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(90deg, transparent 0%, rgba(255, 255, 255, 0.1) 50%, transparent 100%);
+    pointer-events: none;
+  }
+
+  .menu-drawer__close-button .svg-wrapper {
+    z-index: 1;
+    position: relative;
+  }
+
+  .menu-drawer__close-button:hover {
+    background: linear-gradient(135deg, #0099b3 0%, #0099b3b5 50%, #00b3cc52 100%) !important;
   }
   /* --- Existing styles kept --- */
   .stacked-menu-item summary {

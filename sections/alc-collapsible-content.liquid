@@ -137,7 +137,6 @@
 
               <div class="mb-16 w-100 md:w-50">
                   <h3 class="mt-4 font-semibold" style="color: #EF1188;">{{ spec_group_metaobj.name }}:</h3>
-
                   {%- assign counter = 0 -%}
                   {%- for spec in spec_group_metaobj.specifications.value -%}
                       {% assign mf = product.metafields.custom[spec] %}
@@ -146,8 +145,10 @@
 
                           <div class="justify-between px-3 py-3 text-2xl flex flex-row transition-colors duration-200" {% if is_even == 0 %}style="background-color: rgba(3,186,214,0.3);"{% endif %}>
         <span class="spec-name w-2/3 font-normal">
+          DEBUG spec={{ spec }}, locale={{ request.locale.iso_code }}
           {%- assign spec_key = 'products.metaobjects.specification_groups.' | append: spec -%}
           {%- assign translated_spec = spec_key | t -%}
+          DEBUG: spec_key={{ spec_key }}, translated={{ translated_spec }}
           {%- if translated_spec contains 'translation missing' -%}
             {{ spec | replace: '_', ' ' | capitalize }}:
           {%- else -%}

@@ -247,12 +247,50 @@
     z-index: 100001 !important;
   }
 </style>
+{% else %}
+<style>
+  /* Fix desktop country selector display - show more countries */
+  .disclosure__list-wrapper.country-selector {
+    max-height: 80vh !important;
+  }
+
+  .disclosure__list.country-selector__list {
+    max-height: 75vh !important;
+  }
+  
+  /* Ensure proper scrolling and spacing for better UX */
+  .country-selector__list {
+    padding-bottom: 1rem;
+    scroll-behavior: smooth;
+  }
+  
+  /* Optional: Improve visual appearance for longer lists */
+  .country-selector__list .disclosure__item {
+    padding: 0.25rem 0;
+  }
+</style>
 
 <script>
   document.addEventListener('DOMContentLoaded', function() {
-    const mobileSelectorButtons = document.querySelectorAll('button.disclosure__button');
-    const mobileSelectors = document.querySelectorAll('.mobile-country-selector');
-    const closeButtons = document.querySelectorAll('.country-selector__close-button');
+    // Optimize DOM queries for better INP - use specific form IDs instead of document-wide scanning
+    const headerCountryForm = document.getElementById('HeaderCountryForm');
+    const mobileCountryForm = document.getElementById('MobileHeaderCountryForm');
+    
+    // Early return if no country localization forms exist
+    if (!headerCountryForm && !mobileCountryForm) return;
+    
+    // Collect elements from existing forms only (much more efficient)
+    const forms = [headerCountryForm, mobileCountryForm].filter(Boolean);
+    const mobileSelectorButtons = [];
+    const mobileSelectors = [];
+    const closeButtons = [];
+    
+    forms.forEach(form => {
+      // Scoped queries within small containers - much faster than document.querySelectorAll
+      mobileSelectorButtons.push(...form.querySelectorAll('button.disclosure__button'));
+      mobileSelectors.push(...form.querySelectorAll('.mobile-country-selector'));
+      closeButtons.push(...form.querySelectorAll('.country-selector__close-button'));
+    });
     
     // Function to open mobile selector
     function openMobileSelector(event) {
@@ -280,14 +318,14 @@
       document.body.offsetHeight;
     }
     
-    // Add event listeners for mobile selectors
+    // Add event listeners for mobile selectors - now working with pre-filtered arrays
     mobileSelectorButtons.forEach(button => {
       if (button.closest('.disclosure').querySelector('.mobile-country-selector')) {
         button.addEventListener('click', openMobileSelector);
       }
     });
     
-    // Add event listeners for close buttons
+    // Add event listeners for close buttons - now working with pre-filtered arrays  
     closeButtons.forEach(button => {
       if (button.closest('.mobile-country-selector')) {
         button.addEventListener('click', closeMobileSelector);
