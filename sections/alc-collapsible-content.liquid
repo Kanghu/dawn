@@ -178,6 +178,7 @@
               {%- when 'nr_functii_' -%}{%- assign translated_spec = 'Брой функции' -%}
               {%- when 'continut_pachet_' -%}{%- assign translated_spec = 'Съдържание на пакета' -%}
               {%- when 'diametru_cartus_' -%}{%- assign translated_spec = 'Диаметър на патрона' -%}
+              {%- when 'tip_rama_' -%}{%- assign translated_spec = 'Тип рамка' -%}
               {%- else -%}{%- assign translated_spec = spec | replace: '_', ' ' | capitalize -%}
             {%- endcase -%}
           {%- elsif current_locale == 'hu' -%}
@@ -209,6 +210,7 @@
               {%- when 'nr_functii_' -%}{%- assign translated_spec = 'Funkciók száma' -%}
               {%- when 'continut_pachet_' -%}{%- assign translated_spec = 'Csomag tartalma' -%}
               {%- when 'diametru_cartus_' -%}{%- assign translated_spec = 'Patron átmérője' -%}
+              {%- when 'tip_rama_' -%}{%- assign translated_spec = 'Keret típusa' -%}
               {%- else -%}{%- assign translated_spec = spec | replace: '_', ' ' | capitalize -%}
             {%- endcase -%}
           {%- elsif current_locale == 'pl' -%}
@@ -240,6 +242,7 @@
               {%- when 'nr_functii_' -%}{%- assign translated_spec = 'Liczba funkcji' -%}
               {%- when 'continut_pachet_' -%}{%- assign translated_spec = 'Zawartość pakietu' -%}
               {%- when 'diametru_cartus_' -%}{%- assign translated_spec = 'Średnica wkładu' -%}
+              {%- when 'tip_rama_' -%}{%- assign translated_spec = 'Typ ramy' -%}
               {%- else -%}{%- assign translated_spec = spec | replace: '_', ' ' | capitalize -%}
             {%- endcase -%}
           {%- elsif current_locale == 'sk' -%}
@@ -271,6 +274,7 @@
               {%- when 'nr_functii_' -%}{%- assign translated_spec = 'Počet funkcií' -%}
               {%- when 'continut_pachet_' -%}{%- assign translated_spec = 'Obsah balenia' -%}
               {%- when 'diametru_cartus_' -%}{%- assign translated_spec = 'Priemer patrony' -%}
+              {%- when 'tip_rama_' -%}{%- assign translated_spec = 'Typ rámu' -%}
               {%- else -%}{%- assign translated_spec = spec | replace: '_', ' ' | capitalize -%}
             {%- endcase -%}
           {%- elsif current_locale == 'hr' -%}
@@ -302,6 +306,7 @@
               {%- when 'nr_functii_' -%}{%- assign translated_spec = 'Broj funkcija' -%}
               {%- when 'continut_pachet_' -%}{%- assign translated_spec = 'Sadržaj paketa' -%}
               {%- when 'diametru_cartus_' -%}{%- assign translated_spec = 'Promjer uloška' -%}
+              {%- when 'tip_rama_' -%}{%- assign translated_spec = 'Tip okvira' -%}
               {%- else -%}{%- assign translated_spec = spec | replace: '_', ' ' | capitalize -%}
             {%- endcase -%}
           {%- else -%}

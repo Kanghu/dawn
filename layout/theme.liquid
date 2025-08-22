@@ -377,7 +377,6 @@ body {
     <!-- Add resource hints for external domains -->
     <link rel="dns-prefetch" href="//cdn.jsdelivr.net">
     <link rel="dns-prefetch" href="//app.chatwoot.com">
-    <link rel="dns-prefetch" href="//www.googletagmanager.com">
 
     <link
       rel="preconnect"
@@ -386,10 +385,6 @@ body {
     <link
       rel="preconnect"
       href="https://app.chatwoot.com"
-      crossorigin>
-    <link
-      rel="preconnect"
-      href="https://www.googletagmanager.com"
       crossorigin>
 
     <!-- Performance optimization script -->
@@ -568,90 +563,6 @@ body {
       chatwootTimeout = setTimeout(loadChatwoot, 5000);
           }
         });
-    </script>
-
-    <!-- Replace the current script tag with this optimized version -->
-    <script>
-      // Lazy load the Sienna widget script
-      function loadSiennaWidget() {
-        if (window.siennaLoaded) return;
-        
-        const script = document.createElement('script');
-        script.src = 'https://website-widgets.pages.dev/dist/sienna.min.js';
-        script.defer = true;
-        script.onload = function() {
-          window.siennaLoaded = true;
-        };
-        document.head.appendChild(script);
-      }
-
-      // Load on user interaction or after delay
-      let siennaTimeout = setTimeout(loadSiennaWidget, 10000); // 10 second delay
-      
-      // Load on scroll
-      window.addEventListener('scroll', function() {
-        if (window.scrollY > 500) {
-          clearTimeout(siennaTimeout);
-          loadSiennaWidget();
-        }
-      }, { passive: true });
-      
-      // Load on user interaction
-      document.addEventListener('click', function() {
-        clearTimeout(siennaTimeout);
-        loadSiennaWidget();
-      }, { once: true });
-    </script>
-
-    <!-- Performance monitoring -->
-    <script>
-      // Performance monitoring
-      if ('performance' in window) {
-        window.addEventListener('load', function() {
-          setTimeout(function() {
-            const perfData = performance.getEntriesByType('navigation')[0];
-            const fcp = performance.getEntriesByName('first-contentful-paint')[0];
-            
-            // Log performance metrics
-            console.log('Page Load Time:', perfData.loadEventEnd - perfData.loadEventStart);
-            console.log('DOM Content Loaded:', perfData.domContentLoadedEventEnd - perfData.domContentLoadedEventStart);
-            
-            if (fcp) {
-              console.log('First Contentful Paint:', fcp.startTime);
-            }
-            
-            // Send to analytics if needed
-            if (typeof gtag !== 'undefined') {
-              gtag('event', 'performance', {
-                'page_load_time': perfData.loadEventEnd - perfData.loadEventStart,
-                'dom_ready_time': perfData.domContentLoadedEventEnd - perfData.domContentLoadedEventStart
-              });
-            }
-          }, 0);
-        });
-      }
-      
-      // Monitor INP
-      if ('PerformanceObserver' in window) {
-        try {
-          const observer = new PerformanceObserver((list) => {
-            for (const entry of list.getEntries()) {
-              if (entry.interactionId) {
-                console.log('Interaction:', entry.name, 'Duration:', entry.duration);
-                
-                // Alert if interaction is too slow
-                if (entry.duration > 200) {
-                  console.warn('Slow interaction detected:', entry.name, entry.duration + 'ms');
-                }
-              }
-            }
-          });
-          
-          observer.observe({ entryTypes: ['interaction'] });
-        } catch (e) {
-          console.warn('PerformanceObserver not supported');
-        }
-      }
     </script>
   </body>
 </html>

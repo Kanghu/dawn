@@ -7,10 +7,19 @@ window.dataLayer = window.dataLayer || [];
 
 if (location.href.includes('{{ shop.metafields.themarketer-com-app.settings.value.domain }}')) {
 {% if shop.metafields.themarketer-com-app.settings.value.google_status %}
-(function(w,d,s,l,i){
-  w[l]=w[l]||[];w[l].push({"gtm.start":new Date().getTime(),event:"gtm.js"}); var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!="dataLayer"?"&l="+l:"";
-  j.async=true;j.src="https://www.googletagmanager.com/gtm.js?id="+i+dl;f.parentNode.insertBefore(j,f);
-})(window,document,"script","dataLayer", "{{ shop.metafields.themarketer-com-app.settings.value.google_tagcode }}");
+// Defer GTM loading for performance
+function loadTheMarketerGTM() {
+  (function(w,d,s,l,i){
+    w[l]=w[l]||[];w[l].push({"gtm.start":new Date().getTime(),event:"gtm.js"}); var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!="dataLayer"?"&l="+l:"";
+    j.async=true;j.src="https://www.googletagmanager.com/gtm.js?id="+i+dl;f.parentNode.insertBefore(j,f);
+  })(window,document,"script","dataLayer", "{{ shop.metafields.themarketer-com-app.settings.value.google_tagcode }}");
+}
+
+// Load after user interaction or delay
+['mousedown', 'touchstart', 'scroll', 'keydown'].forEach(event => {
+  document.addEventListener(event, loadTheMarketerGTM, { once: true });
+});
+setTimeout(loadTheMarketerGTM, 3000); // Fallback after 3 seconds
 {% endif %}
 (function(d, s, i) {
   var f = d.getElementsByTagName(s)[0], j = d.createElement(s);j.async = true; j.src = "https://t.themarketer.com/t/j/" + i;
