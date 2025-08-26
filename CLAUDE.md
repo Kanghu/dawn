@@ -8,7 +8,6 @@ This is a Shopify theme based on Dawn (Shopify's reference theme), heavily custo
 
 - Custom components with "alc-" and "aless-" prefixes (Alessandro customizations)
 - Tailwind CSS integration for styling
-- PageFly app integration for landing pages
 - Multi-language support (locales directory)
 - Flag icons integration for country/language selection
 
@@ -48,7 +47,6 @@ shopify theme push      # Push theme to Shopify store
 ### Custom Component Naming
 - `alc-*` prefix: Alessandro custom components (main customizations)
 - `aless-*` prefix: Alessandro-specific features
-- `pf-*` prefix: PageFly app-generated components
 
 ### CSS Architecture
 - **Tailwind CSS**: Primary utility framework (compiled from `style.css` to `assets/style.css`)
@@ -73,11 +71,6 @@ shopify theme push      # Push theme to Shopify store
 - `alc-price.liquid` - Custom price display
 - `alc-header-drawer-stacked.liquid` - Mobile navigation drawer
 - `aless-mega-menu.liquid` - Custom mega menu
-
-### PageFly Integration
-Multiple PageFly-generated sections and templates for landing pages:
-- `pagefly-home.liquid`, `pagefly-section.liquid`
-- Various `pf-*` template files for specific campaigns
 
 ## Development Workflow
 

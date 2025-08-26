@@ -52,6 +52,28 @@
   if target == product and product.price_varies
     assign money_price = 'products.product.price.from_price_html' | t: price: money_price
   endif
+
+  comment
+    EUR conversion for Bulgarian locale
+    BGN to EUR conversion rate: approximately 1.95 BGN = 1 EUR
+  endcomment
+  assign show_eur_price = false
+  assign eur_price = 0
+  assign eur_compare_at_price = 0
+  assign eur_money_price = ''
+  assign eur_compare_price_money = ''
+
+  if request.locale.iso_code == 'bg'
+    assign show_eur_price = true
+    assign bgn_to_eur_rate = 1.955
+    assign eur_price = price | divided_by: bgn_to_eur_rate | round: 2
+    assign eur_money_price = eur_price | money_without_currency | append: ' €'
+
+    if compare_at_price > 0
+      assign eur_compare_at_price = compare_at_price | divided_by: bgn_to_eur_rate | round: 2
+      assign eur_compare_price_money = eur_compare_at_price | money_without_currency | append: ' €'
+    endif
+  endif
 -%}
 
 {%- unless target == null and placeholder == null -%}
@@ -119,6 +141,13 @@
                     {{ compare_at_price | money }}
                   {% endif %}
                 </s>
+
+                {%- comment -%} Display EUR compare price for volume pricing in Bulgarian locale {%- endcomment -%}
+                {% if show_eur_price and compare_at_price > 0 %}
+                  <s class="text-sm text-gray-500 line-through ml-2">
+                    ({{ eur_compare_price_money }})
+                  </s>
+                {% endif %}
               </span>
             {%- endunless -%}
           {%- endif -%}
@@ -130,6 +159,17 @@
               'products.product.volume_pricing.price_range' | t: minimum: money_price_min, maximum: money_price_max
             -}}
           </span>
+
+          {%- comment -%} Display EUR volume pricing for Bulgarian locale {%- endcomment -%}
+          {% if show_eur_price %}
+            {% assign eur_price_min = price_min | divided_by: bgn_to_eur_rate | round: 2 %}
+            {% assign eur_price_max = price_max | divided_by: bgn_to_eur_rate | round: 2 %}
+            {% assign eur_money_price_min = eur_price_min | money_without_currency | append: ' €' %}
+            {% assign eur_money_price_max = eur_price_max | money_without_currency | append: ' €' %}
+            <div class="eur-price-display text-base text-gray-600 mt-1">
+              ({{ eur_money_price_min }} - {{ eur_money_price_max }})
+            </div>
+          {% endif %}
         {%- else -%}
           <span class="visually-hidden visually-hidden--inline">
             {{ 'products.product.price.regular_price' | t }}
@@ -144,6 +184,13 @@
             <span class="price-item text-4xl price-item--regular">
               {{ money_price }}
             </span>
+          {% endif %}
+
+          {%- comment -%} Display EUR price for Bulgarian locale {%- endcomment -%}
+          {% if show_eur_price %}
+            <div class="eur-price-display text-base text-gray-600 mt-1">
+              ({{ eur_money_price }})
+            </div>
           {% endif %}
         {%- endif -%}
       </div>
@@ -171,6 +218,13 @@
                   {{ compare_at_price | money }}
                 {% endif %}
               </s>
+
+              {%- comment -%} Display EUR compare price for Bulgarian locale {%- endcomment -%}
+              {% if show_eur_price and compare_at_price > 0 %}
+                <s class="text-sm text-gray-500 line-through ml-2">
+                  ({{ eur_compare_price_money }})
+                </s>
+              {% endif %}
 
               {%- comment -%}
                 In STACKED layout, show the difference badge *immediately* next to compare price
@@ -204,6 +258,13 @@
           <span class="price-item price-item--sale price-item--last ml-1" style="font-size: 2.5rem;">
             {{ money_price }}
           </span>
+        {% endif %}
+
+        {%- comment -%} Display EUR sale price for Bulgarian locale {%- endcomment -%}
+        {% if show_eur_price %}
+          <div class="eur-price-display text-lg text-gray-600 mt-1">
+            ({{ eur_money_price }})
+          </div>
         {% endif %}
       </div>
 
