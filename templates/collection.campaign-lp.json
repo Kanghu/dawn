@@ -21,10 +21,9 @@
     },
     "custom_liquid_WNYPhB": {
       "type": "custom-liquid",
-      "disabled": true,
       "name": "t:sections.custom-liquid.presets.name",
       "settings": {
-        "custom_liquid": "{% assign locale = request.locale.iso_code %}\n\n{% if locale == 'hu' %}\n  <img src=\"https://cdn.shopify.com/s/files/1/0782/5175/3739/files/BANNER_e5a22efb-834e-482c-b1fe-8d16a355d39b.png?v=1751541262\" alt=\"Banner HU\" style=\"width: 100%; height: auto;\">\n{% elsif locale == 'bg' %}\n  <img src=\"https://cdn.shopify.com/s/files/1/0782/5175/3739/files/BANNER_2aafc22e-b432-47e6-8d5e-cd810fa3347b.png?v=1751541318\" alt=\"Banner BG\" style=\"width: 100%; height: auto;\">\n{% else %}\n  <img src=\"https://cdn.shopify.com/s/files/1/0782/5175/3739/files/3820x730px_Reduceri_de_Iulie_AD.png?v=1751368983\" alt=\"Banner RO\" style=\"width: 100%; height: auto;\">\n{% endif %}",
+        "custom_liquid": "{% assign tld = request.host | downcase | split: '.' | last %}\n\n{% case tld %}\n  {% when 'ro' %}\n    {% assign banner_url = \"https://cdn.shopify.com/s/files/1/0782/5175/3739/files/WEBSITE__RO.png?v=1756709078\" %}\n  {% when 'hu' %}\n    {% assign banner_url = \"https://cdn.shopify.com/s/files/1/0782/5175/3739/files/WEBSITE_HU.png?v=1756709078\" %}\n  {% when 'bg' %}\n    {% assign banner_url = \"https://cdn.shopify.com/s/files/1/0782/5175/3739/files/WEBSITE_BG.png?v=1756709077\" %}\n  {% when 'pl' %}\n    {% assign banner_url = \"https://cdn.shopify.com/s/files/1/0782/5175/3739/files/WEBSITE_PL.png?v=1756709078\" %}\n  {% when 'gr' or 'sk' or 'hr' %}\n    {% assign banner_url = \"https://cdn.shopify.com/s/files/1/0782/5175/3739/files/WEBSITE_ENG.png?v=1756709080\" %}\n  {% else %}\n    {% assign banner_url = \"https://cdn.shopify.com/s/files/1/0782/5175/3739/files/WEBSITE_ENG.png?v=1756709080\" %}\n{% endcase %}\n\n<a href=\"{{ banner_url }}\">\n  <img src=\"{{ banner_url }}\" alt=\"Country banner\" style=\"width:100%;max-width:100%;\">\n</a>",
         "color_scheme": "",
         "padding_top": 40,
         "padding_bottom": 52
