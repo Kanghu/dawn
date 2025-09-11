@@ -761,6 +761,14 @@
           "per_item": {
             "few": "%{price} за %{count} изделия"
           }
+        },
+        "return_rules_experiment": {
+          "limited_window_title": {
+            "few": "Безплатни връщания %{count} дни"
+          },
+          "limited_window_title_with_final_sale": {
+            "few": "Безплатни връщания %{count} дни, с изключение на окончателната промоция"
+          }
         }
       },
       "payment": {
