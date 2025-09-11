@@ -231,7 +231,31 @@
       "variant_sold_out_or_unavailable": "Wariant ma wyczerpany zapas lub jest niedostępny",
       "inventory_in_stock": "W magazynie",
       "inventory_in_stock_show_count": "{{ quantity }} w magazynie",
-      "inventory_low_stock": "Zmniejszone zapasy"
+      "inventory_low_stock": "Zmniejszone zapasy",
+      "inventory_low_stock_show_count": "Zmniejszone zapasy: tylko {{ quantity }} pozostałe artykuły",
+      "inventory_out_of_stock": "Nie ma w magazynie",
+      "inventory_out_of_stock_continue_selling": "W magazynie",
+      "sku": "SKU",
+      "volume_pricing": {
+        "title": "Ustawienie cen za wolumen",
+        "note": "Ustanowienie ceny za wolumen jest dostępne",
+        "minimum": "Ryba {{ quantity }}",
+        "price_at_each": "DO {{ price }}/PCS.",
+        "price_range": "{{ minimum }} - {{ maximum }}"
+      },
+      "taxes_included": "Wliczone podatki.",
+      "duties_included": "W zestawie opłaty celne.",
+      "duties_and_taxes_included": "W tym podatki i cele celne."
+    },
+    "modal": {
+      "label": "Galeria mediów"
+    },
+    "facets": {
+      "apply": "Stosować",
+      "clear": "Jasne",
+      "clear_all": "Wyeliminuj wszystko",
+      "from": "Z",
+      "filter_and_sort": "Filtry i sorty"
     }
   },
   "templates": {
