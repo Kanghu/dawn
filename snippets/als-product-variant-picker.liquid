@@ -81,6 +81,112 @@
     height: 100%;
     /* Fix layout shift: provide consistent height before Swiper initializes */
     min-height: 120px;
+    /* ADD THESE TOUCH-ACTION PROPERTIES */
+    touch-action: pan-y pinch-zoom;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    overflow: hidden;
+  }
+
+  /* Mobile Swiper Styles */
+  @media (max-width: 767px) {
+    .swiper-wrapper {
+      display: flex;
+    }
+
+    .swiper-slide {
+      flex-shrink: 0;
+    }
+  }
+
+  /* Desktop Grid Styles */
+  @media (min-width: 768px) {
+    .variant-container {
+      display: grid !important;
+      grid-template-columns: repeat(6, 1fr) !important;
+      gap: 20px 6px !important;
+      /* row-gap column-gap */
+      max-width: 100% !important;
+      width: 100% !important;
+      overflow: visible !important;
+      align-items: start !important;
+      margin-top: 16px !important;
+    }
+
+    /* Tablet: 4 columns */
+    .variant-container.variant-grid-tablet {
+      grid-template-columns: repeat(4, 1fr) !important;
+    }
+
+    /* Desktop: 6 columns with proper spacing */
+    @media (min-width: 1024px) {
+      .variant-container {
+        grid-template-columns: repeat(6, 1fr) !important;
+        gap: 24px 8px !important;
+      }
+
+      .variant-container.variant-grid-desktop {
+        grid-template-columns: repeat(6, 1fr) !important;
+      }
+    }
+
+    /* Large screens: keep 6 columns but with more gap and slightly larger items */
+    @media (min-width: 1280px) {
+      .variant-container.variant-grid-large {
+        grid-template-columns: repeat(6, 1fr) !important;
+        gap: 28px 8px !important;
+        /* row-gap column-gap */
+      }
+
+      .swiper-slide {
+        min-width: 95px !important;
+        max-width: 95px !important;
+        width: 95px !important;
+        min-height: 100px;
+        max-height: 115px;
+      }
+
+      .swiper-slide a {
+        min-height: 100px;
+        max-height: 115px;
+      }
+
+      .swiper-slide img {
+        height: 60px;
+      }
+
+      .swiper-slide p {
+        font-size: 12px !important;
+      }
+    }
+
+    /* Override Swiper behavior completely on desktop */
+    .swiper {
+      overflow: visible !important;
+      width: 100% !important;
+    }
+
+    .swiper-wrapper {
+      display: grid !important;
+      grid-template-columns: inherit !important;
+      gap: inherit !important;
+      transform: none !important;
+      transition: none !important;
+      width: 100% !important;
+      height: auto !important;
+      flex-wrap: wrap !important;
+    }
+
+    .swiper-slide {
+      width: auto !important;
+      height: auto !important;
+      margin-right: 0 !important;
+      margin-bottom: 0 !important;
+      transform: none !important;
+      flex-shrink: 0 !important;
+    }
   }
 
   .swiper-slide {
@@ -95,6 +201,56 @@
     min-height: 120px;
     transition: all 0.2s ease;
     cursor: pointer;
+    /* ADD THIS FOR BETTER TOUCH HANDLING */
+    touch-action: manipulation;
+  }
+
+  /* Desktop grid items - consistent sizing */
+  @media (min-width: 768px) {
+    .swiper-slide {
+      min-width: 85px !important;
+      max-width: 85px !important;
+      width: 85px !important;
+      min-height: 90px;
+      max-height: 105px;
+    }
+
+    .swiper-slide a {
+      padding: 4px !important;
+      min-height: 90px;
+      max-height: 105px;
+      display: flex !important;
+      flex-direction: column !important;
+    }
+
+    .swiper-slide img {
+      width: 100%;
+      height: 50px;
+      object-fit: cover;
+      border-radius: 4px;
+      flex-shrink: 0;
+    }
+
+    .swiper-slide .flex-grow {
+      padding: 4px 2px 6px !important;
+      flex-grow: 1 !important;
+      display: flex !important;
+      align-items: center !important;
+      justify-content: center !important;
+      min-height: 35px !important;
+    }
+
+    .swiper-slide p {
+      font-size: 10px !important;
+      line-height: 1.3 !important;
+      padding: 1px !important;
+      margin: 0 !important;
+      max-width: 80px !important;
+      white-space: nowrap !important;
+      overflow: hidden !important;
+      text-overflow: ellipsis !important;
+      text-align: center !important;
+    }
   }
 
   .swiper-slide img {
@@ -103,7 +259,7 @@
     height: 100%;
     object-fit: cover;
     transition: transform 0.2s ease;
-    border-radius: 8px;
+    border-radius: 6px;
   }
 
   .swiper-slide:hover {
@@ -159,6 +315,17 @@
           {% assign group_metaobj = variant_group | metaobject %}
           {% assign group_group_metaobj = variant_group.group | metaobject %}
 
+          {% comment %} Count available variants in this group {% endcomment %}
+          {% assign available_variants_count = 0 %}
+          {% for group_product in group_group_metaobj.value %}
+            {% assign group_product_metaobj = group_product | metaobject %}
+            {% if group_product_metaobj.product.value.available %}
+              {% assign available_variants_count = available_variants_count | plus: 1 %}
+            {% endif %}
+          {% endfor %}
+
+          {% comment %} Only show group if it has more than 1 available variant {% endcomment %}
+          {% if available_variants_count > 1 %}
             <div class="w-full flex flex-col">
             <!-- Display group info + tag (i.e. colors, sizes, etc.) -->
             {% if block.settings.custom_text %}
@@ -168,22 +335,22 @@
               </p>
             {% endif %}
 
-            <!-- Swiper container -->
-            <div class="swiper" id="ProductVariantsSlider">
+            <!-- Variant container - Swiper on mobile, Grid on desktop -->
+            <div class="swiper variant-container variant-grid-tablet variant-grid-desktop variant-grid-large" id="ProductVariantsSlider">
               <div class="swiper-wrapper">
                 <!-- Add current product first if it matches the variant group -->
                 {% for group_product in group_group_metaobj.value %}
                   {% assign group_product_metaobj = group_product | metaobject %}
-                  {% if group_product_metaobj.product.value.handle == product.handle %}
+                  {% if group_product_metaobj.product.value.handle == product.handle and group_product_metaobj.product.value.available %}
                     <div class="swiper-slide current-product">
                       <a
                         href="/products/{{ product.handle }}"
                         title="{{ product.title }}"
-                        class="w-full h-auto flex flex-col border bg-white shadow-md rounded-lg overflow-hidden hover:bg-black transition p-2 no-underline">
+                        class="w-full h-auto flex flex-col border bg-white shadow-md rounded-md overflow-hidden hover:bg-black transition p-2 no-underline">
                         {% if product.featured_image %}
                           <div>
                             <img
-                              class="rounded-sm"
+                              class="rounded-md"
                               src="{{ product.featured_image | img_url: '400x400' }}"
                               alt="{{ product.title }}">
                           </div>
@@ -202,11 +369,12 @@
                 {% for group_product in group_group_metaobj.value %}
                   {% assign group_product_metaobj = group_product | metaobject %}
                   {% unless group_product_metaobj.product.value.handle == product.handle %}
-                    <div class="swiper-slide">
+                    {% if group_product_metaobj.product.value.available %}
+                      <div class="swiper-slide">
                       <a
                         href="/products/{{ group_product_metaobj.product.value.handle }}"
                         title="{{ group_product_metaobj.product.value.title }}"
-                        class="w-full h-auto flex flex-col border bg-white shadow-md rounded-lg overflow-hidden hover:bg-black transition p-2 no-underline">
+                        class="w-full h-auto flex flex-col border bg-white shadow-md rounded-md overflow-hidden hover:bg-black transition p-2 no-underline">
                         <!-- Variant image -->
                         {% if group_product_metaobj.product.value.featured_image %}
                           <div>
@@ -221,12 +389,14 @@
                           </p>
                         </div>
                       </a>
-                    </div>
+                      </div>
+                    {% endif %}
                   {% endunless %}
                 {% endfor %}
               </div>
             </div>
           </div>
+          {% endif %}
         {% endfor %}
       </div>
     {% else %}
@@ -260,25 +430,75 @@
 
 <script>
   document.addEventListener('DOMContentLoaded', function () {
-    // Initialize Swiper with safety check
-    if (typeof Swiper === 'undefined') {
-      console.warn('Swiper library not loaded yet, retrying...');
-      // Retry after a short delay
-      setTimeout(() => {
-        if (typeof Swiper !== 'undefined') {
-          initializeVariantSwiper();
-        }
-      }, 500);
-      return;
+    // Only initialize Swiper on mobile devices
+    const isMobile = window.matchMedia('(max-width: 767px)');
+
+    function handleScreenChange(e) {
+      if (e.matches) {
+        // Mobile - initialize Swiper
+        initializeVariantSwiperIfNeeded();
+      } else {
+        // Desktop - destroy Swiper if it exists and initialize hover
+        destroyVariantSwiper();
+        initializeImageHoverChange();
+      }
     }
-    
-    initializeVariantSwiper();
+
+    // Initial check
+    handleScreenChange(isMobile);
+
+    // Listen for screen size changes
+    isMobile.addEventListener('change', handleScreenChange);
   });
 
+  let variantSwiper = null;
+
+  function initializeVariantSwiperIfNeeded() {
+    // Don't initialize if Swiper already exists or library not loaded
+    if (variantSwiper || typeof Swiper === 'undefined') {
+      if (typeof Swiper === 'undefined') {
+        console.warn('Swiper library not loaded yet, retrying...');
+        setTimeout(() => {
+          if (typeof Swiper !== 'undefined') {
+            initializeVariantSwiperIfNeeded();
+          }
+        }, 500);
+      }
+      return;
+    }
+
+    initializeVariantSwiper();
+  }
+
+  function destroyVariantSwiper() {
+    if (variantSwiper) {
+      variantSwiper.destroy(true, true);
+      variantSwiper = null;
+    }
+  }
+
   function initializeVariantSwiper() {
-    const swiper = new Swiper('.swiper', {
+    variantSwiper = new Swiper('#ProductVariantsSlider', {
       slidesPerView: 1,
       spaceBetween: 8,
+
+      // Simplified freeMode settings
+      freeMode: true,
+      freeModeMomentum: true,
+      grabCursor: true,
+      touchRatio: 1,
+      simulateTouch: true,
+      allowTouchMove: true,
+
+      // Consistent resistance and momentum settings
+      resistanceRatio: 0.2,
+      freeModeMomentumRatio: 0.25,
+      freeModeMomentumBounce: false,
+      watchSlidesProgress: true,
+
+      // Proper offset for last slide accessibility
+      slidesOffsetAfter: 40,
+
       navigation: {
         nextEl: '.swiper-button-next',
         prevEl: '.swiper-button-prev',
@@ -288,11 +508,31 @@
         clickable: true,
       },
       breakpoints: {
-        320: { slidesPerView: 4.5 },
-        480: { slidesPerView: 4.75 },
-        640: { slidesPerView: 5 },
-        768: { slidesPerView: 5.2 },
-        1024: { slidesPerView: 5.5 },
+        320: {
+          slidesPerView: 3.5,
+          spaceBetween: 6,
+          slidesOffsetAfter: 30,
+        },
+        480: {
+          slidesPerView: 4,
+          spaceBetween: 6,
+          slidesOffsetAfter: 35,
+        },
+        640: {
+          slidesPerView: 4.5,
+          spaceBetween: 8,
+          slidesOffsetAfter: 40,
+        },
+        768: {
+          slidesPerView: 4.5,
+          spaceBetween: 8,
+          slidesOffsetAfter: 45,
+        },
+        1024: {
+          slidesPerView: 4.5,
+          spaceBetween: 8,
+          slidesOffsetAfter: 50,
+        },
       },
     });
 
@@ -302,6 +542,8 @@
 
   function initializeImageHoverChange() {
     const variantSlides = document.querySelectorAll('#ProductVariantsSlider .swiper-slide');
+
+    console.log('Initializing hover for', variantSlides.length, 'variant slides');
     
     // Try multiple selectors to find the main product image
     const possibleSelectors = [
@@ -322,28 +564,13 @@
     }
     
     if (!mainProductImage) {
-      console.warn('Main product image not found with any selector');
-      // Debug: log what elements we can find
-      console.log('Available product media elements:', document.querySelectorAll('[class*="product__media"]'));
       return;
     }
-    
-    // Debug: Log details about the found image element
-    console.log('Found main product image element:', mainProductImage);
-    console.log('Image element classes:', mainProductImage.className);
-    console.log('Image element parent:', mainProductImage.parentElement);
-    console.log('Image element dimensions:', {
-      width: mainProductImage.offsetWidth,
-      height: mainProductImage.offsetHeight,
-      visible: mainProductImage.offsetWidth > 0 && mainProductImage.offsetHeight > 0
-    });
-    
+  
     // Store original image and srcset for restoration
     const originalImageSrc = mainProductImage.src;
     const originalImageSrcset = mainProductImage.srcset;
-    console.log('Original image src:', originalImageSrc);
-    console.log('Original image srcset:', originalImageSrcset);
-    
+
     variantSlides.forEach((slide, index) => {
       const variantImg = slide.querySelector('img');
       if (!variantImg) return;
@@ -352,7 +579,6 @@
         console.log(`Hovering over variant ${index + 1}`);
         // Get high-res version of variant image (upgrade from 400x400 to 800x800)
         const variantImageSrc = variantImg.src.replace('400x400', '800x800');
-        console.log('Changing to variant image:', variantImageSrc);
         
         // Pre-load the new image to prevent flash
         const tempImage = new Image();
@@ -368,7 +594,6 @@
       });
       
       slide.addEventListener('mouseleave', () => {
-        console.log('Mouse left variant, restoring original image');
         // Pre-load original image to prevent flash on restore
         const tempImage = new Image();
         tempImage.onload = () => {
@@ -377,7 +602,6 @@
           mainProductImage.src = originalImageSrc;
           mainProductImage.srcset = originalImageSrcset;
           mainProductImage.style.opacity = '1';
-          console.log('Restored to original image:', mainProductImage.src);
         };
         tempImage.src = originalImageSrc;
       });

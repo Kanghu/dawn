@@ -495,18 +495,6 @@ body {
       <script src="{{ 'cart-drawer.js' | asset_url }}" defer="defer"></script>
     {%- endif -%}
 
-    <!-- Load Preline.js after page load to reduce INP blocking -->
-    <script>
-      window.addEventListener('load', () => {
-        // Load Preline after initial page interactions are ready
-        setTimeout(() => {
-          const script = document.createElement('script');
-          script.src = '{{ "preline.js" | asset_url }}';
-          script.defer = true;
-          document.head.appendChild(script);
-        }, 500);
-      });
-    </script>
 
     <!-- Replace the existing Chatwoot script with this optimized version -->
     <script>
