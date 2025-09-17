@@ -51,8 +51,14 @@
     }
 
     .section-{{ section.id }}.grid--peek .grid__item:first-of-type {
-      margin-left: 0.2rem;
+      margin-left: 0;
     }
+  }
+
+  /* Fix Y-position jitter by removing hover transform */
+  .section-{{ section.id }} .card-wrapper:hover {
+    transform: none !important;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
   }
 
   @media screen and (min-width: 750px) {
@@ -95,18 +101,32 @@
         role="list">
         {%- for product in collection.products limit: section.settings.products_to_show -%}
           <li class="grid__item slider__slide">
-            {% render 'card-product'
-              , card_product: product
-              , media_aspect_ratio: section.settings.image_ratio
-              , image_shape: section.settings.image_shape
-              , show_secondary_image: section.settings.show_secondary_image
-              , show_vendor: section.settings.show_vendor
-              , show_rating: section.settings.show_rating
-              , lazy_load: true
-              , skip_styles: true
-              , quick_add: 'standard'
-              , section_id: section.id
-            %}
+            {%- if section.settings.use_mobile_card -%}
+              {% render 'alc-tw-product-card-mobile'
+                , card_product: product
+                , media_aspect_ratio: section.settings.image_ratio
+                , image_shape: section.settings.image_shape
+                , show_secondary_image: section.settings.show_secondary_image
+                , show_vendor: section.settings.show_vendor
+                , show_rating: false
+                , lazy_load: true
+                , skip_styles: true
+                , section_id: section.id
+              %}
+            {%- else -%}
+              {% render 'card-product'
+                , card_product: product
+                , media_aspect_ratio: section.settings.image_ratio
+                , image_shape: section.settings.image_shape
+                , show_secondary_image: section.settings.show_secondary_image
+                , show_vendor: section.settings.show_vendor
+                , show_rating: section.settings.show_rating
+                , lazy_load: true
+                , skip_styles: true
+                , quick_add: 'standard'
+                , section_id: section.id
+              %}
+            {%- endif -%}
           </li>
         {%- endfor -%}
       </ul>
@@ -259,6 +279,13 @@
             "label": "t:sections.related-products.settings.columns_mobile.options__2.label"
           }
         ]
+      },
+      {
+        "type": "checkbox",
+        "id": "use_mobile_card",
+        "label": "Use compact mobile cards",
+        "info": "Optimized for mobile: removes reviews, caps text to 2 lines, moves discount badge to corner",
+        "default": true
       },
       {
         "type": "range",

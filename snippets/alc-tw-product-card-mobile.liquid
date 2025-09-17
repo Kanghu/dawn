@@ -1,0 +1,171 @@
+{% comment %}
+  Compact mobile product card for collection sliders
+  Optimized for mobile: no reviews, 2-line text, corner badge, compact pricing
+{% endcomment %}
+
+{%- if card_product and card_product != empty -%}
+  {%- liquid
+    assign ratio = 1
+    if card_product.featured_media and media_aspect_ratio == 'portrait'
+      assign ratio = 0.8
+    elsif card_product.featured_media and media_aspect_ratio == 'adapt'
+      assign ratio = card_product.featured_media.aspect_ratio
+    endif
+    if ratio == 0 or ratio == null
+      assign ratio = 1
+    endif
+  -%}
+
+  <div class="card-wrapper product-card-wrapper underline-links-hover">
+    <div
+      class="
+        card card--{{ settings.card_style }}
+        {% if card_product.featured_media %} card--media{% else %} card--text{% endif %}
+        {% if settings.card_style == 'card' %} color-{{ settings.card_color_scheme }} gradient{% endif %}
+        {% if image_shape and image_shape != 'default' %} card--shape{% endif %}
+        {% if extend_height %} card--extend-height{% endif %}
+        {% if card_product.featured_media == nil and settings.card_style == 'card' %} ratio{% endif %}
+        alc-mobile-card
+      "
+      style="--ratio-percent: {{ 1 | divided_by: ratio | times: 100 }}%;"
+    >
+      <div
+        class="card__inner {% if settings.card_style == 'standard' %}color-{{ settings.card_color_scheme }} gradient{% endif %}{% if card_product.featured_media or settings.card_style == 'standard' %} ratio{% endif %}"
+        style="--ratio-percent: {{ 1 | divided_by: ratio | times: 100 }}%;"
+      >
+        <style>
+          .alc-mobile-card .card__content {
+            padding: 8px 6px !important;
+          }
+
+          .alc-mobile-card .card__heading {
+            font-size: 12px !important;
+            line-height: 1.3 !important;
+            margin-bottom: 4px !important;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            height: 32px;
+          }
+
+          .alc-mobile-card .price {
+            font-size: 11px !important;
+            line-height: 1.2 !important;
+            margin: 0 !important;
+          }
+
+          .alc-mobile-card .price__regular {
+            white-space: nowrap;
+          }
+
+          .alc-mobile-card .price__sale {
+            white-space: nowrap;
+          }
+
+          .alc-mobile-card .card__badge {
+            top: 4px !important;
+            right: 4px !important;
+            left: auto !important;
+            bottom: auto !important;
+          }
+
+          .alc-mobile-card .badge {
+            font-size: 9px !important;
+            padding: 2px 6px !important;
+            border-radius: 8px !important;
+          }
+
+          @media screen and (max-width: 749px) {
+            .alc-mobile-card {
+              max-height: 240px;
+            }
+
+            .alc-mobile-card .card__media {
+              height: 140px !important;
+            }
+
+            .alc-mobile-card .media img {
+              height: 140px !important;
+              object-fit: cover;
+            }
+          }
+        </style>
+
+        {%- if card_product.featured_media -%}
+          <div class="card__media h-auto {% if image_shape and image_shape != 'default' %} shape--{{ image_shape }} color-{{ settings.card_color_scheme }} gradient{% endif %}">
+            <div class="media media--transparent">
+              <img
+                srcset="
+                  {%- if card_product.featured_media.width >= 165 -%}{{ card_product.featured_media | image_url: width: 165 }} 165w,{%- endif -%}
+                  {%- if card_product.featured_media.width >= 360 -%}{{ card_product.featured_media | image_url: width: 360 }} 360w,{%- endif -%}
+                  {%- if card_product.featured_media.width >= 533 -%}{{ card_product.featured_media | image_url: width: 533 }} 533w,{%- endif -%}
+                  {{ card_product.featured_media | image_url }} {{ card_product.featured_media.width }}w
+                "
+                src="{{ card_product.featured_media | image_url: width: 360 }}"
+                sizes="(min-width: 750px) calc((100vw - 120px) / 3), calc((100vw - 35px) / 2)"
+                alt="{{ card_product.featured_media.alt | escape }}"
+                class="motion-reduce"
+                {% unless lazy_load == false %}
+                  loading="lazy"
+                {% endunless %}
+                width="{{ card_product.featured_media.width }}"
+                height="{{ card_product.featured_media.height }}"
+              >
+            </div>
+          </div>
+        {%- endif -%}
+
+        <!-- Corner Badge -->
+        <div class="card__badge">
+          {%- if card_product.compare_at_price > card_product.price and card_product.available -%}
+            {%- if card_product.metafields.custom.featured_campaign.value.title != blank -%}
+              <span
+                class="badge"
+                style="background-color: #F01088; color: #fff;"
+              >
+                {{ card_product.metafields.custom.featured_campaign.value.title }}
+              </span>
+            {%- endif -%}
+          {%- endif -%}
+        </div>
+      </div>
+
+      <!-- Compact Content -->
+      <div class="card__content">
+        <div class="card__information">
+          <h3 class="card__heading">
+            <a
+              href="{{ card_product.url }}"
+              class="full-unstyled-link"
+            >
+              {{ card_product.title | escape }}
+            </a>
+          </h3>
+
+          <!-- Compact Pricing -->
+          <div class="card-information">
+            {% render 'price', product: card_product, price_class: '', show_badges: false %}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+{%- else -%}
+  <div class="card-wrapper product-card-wrapper underline-links-hover">
+    <div class="card card--{{ settings.card_style }} card--text{% if extend_height %} card--extend-height{% endif %}{% if settings.card_style == 'card' %} color-{{ settings.card_color_scheme }} gradient{% endif %} alc-mobile-card">
+      <div class="card__inner">
+        <div class="card__content">
+          <div class="card__information">
+            <h3 class="card__heading">
+              <a role="link" aria-disabled="true" class="full-unstyled-link">
+                {{ 'onboarding.product_title' | t }}
+              </a>
+            </h3>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+{%- endif -%}
