@@ -15,10 +15,10 @@
       </span>
     </summary>
 
-    <div id="menu-drawer" class="gradient menu-drawer motion-reduce color-{{ menu_color_scheme }} fixed h-screen max-h-screen overflow-hidden">
+    <div id="menu-drawer" class="gradient menu-drawer motion-reduce color-{{ menu_color_scheme }} fixed overflow-hidden">
       <div class="menu-drawer__inner-container h-full">
         <div class="menu-drawer__navigation-container h-full">
-          <nav class="menu-drawer__navigation h-screen overflow-y-auto">
+          <nav class="menu-drawer__navigation overflow-y-auto">
             <ul class="menu-drawer__menu has-submenu flex flex-col" role="list">
               {% for block_item in all_blocks %}
                 {% if block_item.type == 'drawer_menu_item' %}
@@ -240,9 +240,14 @@
   }
   .menu-drawer__navigation {
     overscroll-behavior: contain;
+    overflow-y: auto !important; /* Move scrolling to navigation only */
+    height: 100%; /* Take full height of grid area */
   }
+
   .menu-drawer__navigation-container {
     overscroll-behavior: contain;
+    overflow-y: visible !important; /* Remove scrolling from container */
+    height: calc(100vh - var(--header-height, 60px)) !important; /* Account for header */
   }
 
   #menu-drawer {
