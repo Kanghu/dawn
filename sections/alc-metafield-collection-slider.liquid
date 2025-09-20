@@ -51,14 +51,75 @@
     }
 
     .section-{{ section.id }}.grid--peek .grid__item:first-of-type {
-      margin-left: 0;
+      margin-left: 0 !important;
+    }
+
+    /* Override base.css margin for mobile product cards */
+    .section-{{ section.id }}.grid--peek.slider .grid__item:first-of-type {
+      margin-left: 0 !important;
     }
   }
 
   /* Fix Y-position jitter by removing hover transform */
-  .section-{{ section.id }} .card-wrapper:hover {
+  .section-{{ section.id }}.card-wrapper:hover {
     transform: none !important;
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+  }
+
+  /* Ensure cards fit within the allocated space */
+  .section-{{ section.id }} .card-wrapper {
+    max-height: 500px;
+    /* Slightly less than slider height for padding */
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+  }
+
+  /* Ensure card content is properly contained */
+  .section-{{ section.id }} .card {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+  }
+
+  /* Prevent card content from growing beyond available space */
+  .section-{{ section.id }} .card__content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    overflow: hidden;
+  }
+
+  /* Constrain product title height to prevent overflow */
+  .section-{{ section.id }} .card__heading {
+    max-height: 4.5em;
+    /* Allow for 3 lines of text */
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+  }
+
+  /* Ensure hover effects don't cause overflow */
+  .section-{{ section.id }}.card-wrapper:hover {
+    transform: none !important;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+  }
+
+  /* Ensure grid items are properly constrained within the slider */
+  .section-{{ section.id }} .grid__item.slider__slide {
+    height: auto;
+    max-height: 500px;
+    display: flex;
+    flex-direction: column;
+  }
+
+  @media screen and (max-width: 749px) {
+    .section-{{ section.id }} .grid__item.slider__slide {
+      max-height: 460px;
+    }
   }
 
   @media screen and (min-width: 750px) {
@@ -100,7 +161,7 @@
         id="Slider-{{ section.id }}"
         role="list">
         {%- for product in collection.products limit: section.settings.products_to_show -%}
-          <li class="grid__item slider__slide">
+          <li class="grid__item slider__slide" style="margin-left: 0 !important;">
             {%- if section.settings.use_mobile_card -%}
               {% render 'alc-tw-product-card-mobile'
                 , card_product: product
@@ -111,6 +172,7 @@
                 , show_rating: false
                 , lazy_load: true
                 , skip_styles: true
+                , quick_add: 'standard'
                 , section_id: section.id
               %}
             {%- else -%}

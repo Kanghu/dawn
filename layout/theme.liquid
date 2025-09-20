@@ -497,7 +497,9 @@ body {
 
 
     <!-- Replace the existing Chatwoot script with this optimized version -->
-    <script>
+    {% if settings.dev_mode == false %}
+      <script>
+        console.log('Chatwoot is enabled');
         // Lazy load Chatwoot only when needed
         let chatwootLoaded = false;
         let chatwootTimeout = null;
@@ -511,19 +513,19 @@ body {
           script.defer = true;
           script.async = true;
           script.onload = function() {
-      window.chatwootSDK.run({
+              window.chatwootSDK.run({
         websiteToken: 'oQQDpGSw5mcULG6tQB6GeNvN',
         baseUrl: 'https://app.chatwoot.com'
-      });
-      
-      window.addEventListener('chatwoot:ready', function() {
+              });
+              
+              window.addEventListener('chatwoot:ready', function() {
         let locale = '{{ request.locale.iso_code }}';
         if(locale == 'bg') {
           window.$chatwoot.setLocale('en');
         } else {
           window.$chatwoot.setLocale(locale);
         }
-      });
+              });
           };
           document.head.appendChild(script);
         }
@@ -533,8 +535,8 @@ body {
         
         window.addEventListener('scroll', function() {
           if (window.scrollY > 1000) {
-      clearTimeout(chatwootTimeout);
-      loadChatwoot();
+              clearTimeout(chatwootTimeout);
+              loadChatwoot();
           }
         }, { passive: true });
         
@@ -547,10 +549,11 @@ body {
         // Load on page visibility change
         document.addEventListener('visibilitychange', function() {
           if (!document.hidden) {
-      clearTimeout(chatwootTimeout);
-      chatwootTimeout = setTimeout(loadChatwoot, 5000);
+              clearTimeout(chatwootTimeout);
+              chatwootTimeout = setTimeout(loadChatwoot, 5000);
           }
         });
-    </script>
+      </script>
+    {% endif %}
   </body>
 </html>

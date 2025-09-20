@@ -8,6 +8,7 @@
   - show_badges: {Boolean} Renders 'Sale' and 'Sold Out' tags if the product matches the condition (optional)
   - price_class: {String} Adds a price class to the price element (optional)
   - show_compare_at_price: {Boolean} Renders the compare at price if the product matches the condition (optional)
+  - show_discount_percentage: {Boolean} Renders the discount percentage badge if the product is on sale (optional)
 
   Usage:
   {% render 'price', product: product %}
@@ -67,11 +68,12 @@
             {{ compare_at_price | money }}
           {% endif %}
         </s>
-        {%- assign discount_percentage = compare_at_price | minus: price | times: 100.0 | divided_by: compare_at_price | round
-        -%}
-        <span class="ml-2 px-2 py-1 text-lg font-bold" style="border-radius: 7px 3px 7px 3px; background-color: #EF1187; color: white;">
-          -{{ discount_percentage }}%
-        </span>
+        {%- if show_discount_percentage -%}
+          {%- assign discount_percentage = compare_at_price | minus: price | times: 100.0 | divided_by: compare_at_price | round -%}
+          <span class="ml-2 px-2 py-1 text-lg font-bold" style="border-radius: 7px 3px 7px 3px; background-color: #EF1187; color: white;">
+            -{{ discount_percentage }}%
+          </span>
+        {%- endif -%}
       {%- endif -%}
     </span>
     <span class="visually-hidden visually-hidden--inline">{{ 'products.product.price.sale_price' | t }}</span>

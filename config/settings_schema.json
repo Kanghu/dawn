@@ -1,5 +1,16 @@
 [
   {
+  "name": "Development",
+  "settings": [
+    {
+      "type": "checkbox",
+      "id": "dev_mode",
+      "label": "Enable dev mode (skip heavy scripts/assets)",
+      "default": false
+    }
+  ]
+  },
+  {
     "name": "theme_info",
     "theme_name": "Dawn",
     "theme_version": "15.2.0",
