@@ -1,9 +1,9 @@
 <div class="page-width">
-  <div class="bg-white py-24 sm:py-32 dark:bg-gray-900">
-    <div class="max-w-[1300px]">
+  <div class="bg-white py-12 sm:py-32 dark:bg-gray-900">
+    <div class="lg:max-w-[1300px] md:max-w-[700px] mx-auto">
       <!-- Removed max-w-2xl constraint and increased grid gap -->
       <div class="grid grid-cols-1 items-start gap-x-12 gap-y-16 sm:gap-y-24 lg:mx-0 lg:grid-cols-2">
-        <div class="lg:pr-4">
+        <div class="lg:pr-4 lg:min-w-[600px]">
           <!-- Constrain the video container to a reasonable width -->
           <div class="relative overflow-hidden rounded-3xl bg-gray-900 shadow-2xl dark:bg-gray-800 dark:shadow-none dark:after:pointer-events-none dark:after:absolute dark:after:inset-0 dark:after:rounded-3xl dark:after:ring-1 dark:after:ring-inset dark:after:ring-white/10 max-w-3xl mx-auto lg:mx-0">
             <!-- Fixed aspect ratio and width constraints -->
@@ -33,7 +33,7 @@
         </div>
         <div>
           <!-- Removed lg:max-w-lg constraint to allow more width -->
-          <div class="text-lg/8 text-gray-700 dark:text-gray-400">
+          <div class="text-lg/8 text-gray-800">
             <p class="text-lg/8 font-semibold text-indigo-600 dark:text-indigo-400">Direct producator</p>
             <h1 class="mt-2 text-pretty text-5xl font-semibold tracking-tight text-black sm:text-6xl">Fabrica Alessandro Design</h1>
             <!-- Increased from max-w-xl to max-w-4xl for more text width -->
@@ -43,7 +43,7 @@
               </p>
               <p class="mt-8"></p>
               <p class="mt-8 text-xl/8">
-                Pentru a asigura cea mai buna calitate, toate corpurile sunt produse in propria fabrică, dupa fise de specificatii si standarde riguroase stabilite intern.                
+                Pentru a asigura cea mai buna calitate, toate corpurile sunt produse in propria fabrică, dupa fise de specificatii si standarde riguroase stabilite intern.                                                      
               Acest factor ne permite sa asiguram ca parametrii tehnici sunt respectati, cat si sa ofertam produse cu preturi competitive in intreaga piata europeana.
               </p>
             </div>
@@ -67,7 +67,7 @@
             </div>
           </dl>
           <div class="mt-10 flex">
-            <a href="#" class="text-lg/8 font-semibold text-indigo-600 hover:text-indigo-500 dark:text-indigo-400 dark:hover:text-indigo-300">Learn more about our company
+            <a href="#" class="text-lg/8 font-semibold text-indigo-600 hover:text-indigo-500 dark:text-indigo-400 dark:hover:text-indigo-300">Afla mai multe despre compania noastra
               <span aria-hidden="true">&rarr;</span>
             </a>
           </div>
@@ -81,23 +81,24 @@
   document.addEventListener('DOMContentLoaded', function() {
   const placeholder = document.getElementById('video-placeholder');
   const container = document.getElementById('video-container');
-  
+
   if (placeholder && container) {
     placeholder.addEventListener('click', function() {
-      // Create iframe
       const iframe = document.createElement('iframe');
-      iframe.className = 'w-full h-full rounded-3xl';
-      iframe.src = 'https://www.youtube.com/embed/5vx-UAD7Cvg?autoplay=1';
-      iframe.title = 'Factory Video';
-      iframe.frameBorder = '0';
-      iframe.allow = 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share';
+      iframe.width = "640";
+      iframe.height = "480";
+      iframe.className = "w-full h-full rounded-3xl";
+      iframe.src = "https://www.youtube.com/embed/5vx-UAD7Cvg?autoplay=1";
+      iframe.title = "Factory Video";
+      iframe.frameBorder = "0";
+      iframe.allow = "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share";
       iframe.allowFullscreen = true;
-      
-      // Replace placeholder directly (keep aspect-video wrapper)
-      container.innerHTML = '';
+
+      container.innerHTML = "";
       container.appendChild(iframe);
     });
   }
   });
+
 
 </script>

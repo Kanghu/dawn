@@ -1073,6 +1073,26 @@ video {
   width: 0.75rem;
 }
 
+.min-w-\[\] {
+  min-width: ;
+}
+
+.min-w-\[6\] {
+  min-width: 6;
+}
+
+.min-w-\[60\] {
+  min-width: 60;
+}
+
+.min-w-\[600\] {
+  min-width: 600;
+}
+
+.min-w-\[600px\] {
+  min-width: 600px;
+}
+
 .max-w-2xl {
   max-width: 42rem;
 }
@@ -1632,6 +1652,11 @@ video {
 .py-4 {
   padding-top: 1rem;
   padding-bottom: 1rem;
+}
+
+.py-12 {
+  padding-top: 3rem;
+  padding-bottom: 3rem;
 }
 
 .pb-1 {
@@ -2332,6 +2357,26 @@ video {
     min-width: 600px;
   }
 
+  .md\:max-w-\[1000px\] {
+    max-width: 1000px;
+  }
+
+  .md\:max-w-\[000px\] {
+    max-width: 000px;
+  }
+
+  .md\:max-w-\[9000px\] {
+    max-width: 9000px;
+  }
+
+  .md\:max-w-\[900px\] {
+    max-width: 900px;
+  }
+
+  .md\:max-w-\[700px\] {
+    max-width: 700px;
+  }
+
   .md\:grid-cols-2 {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
@@ -2413,6 +2458,10 @@ video {
     min-width: 900px;
   }
 
+  .lg\:min-w-\[600px\] {
+    min-width: 600px;
+  }
+
   .lg\:max-w-lg {
     max-width: 32rem;
   }
@@ -2423,6 +2472,10 @@ video {
 
   .lg\:max-w-full {
     max-width: 100%;
+  }
+
+  .lg\:max-w-\[1300px\] {
+    max-width: 1300px;
   }
 
   .lg\:grid-cols-2 {
