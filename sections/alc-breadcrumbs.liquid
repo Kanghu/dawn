@@ -92,6 +92,138 @@
 </style>
 
 {%- unless template == 'index' or template == 'cart' or template == '404' -%}
+  {%- comment -%} Generate JSON-LD structured data for breadcrumbs {%- endcomment -%}
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+                            {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "{{ shop.name | escape }}",
+          "item": "{{ shop.secure_url }}"
+        }
+        {%- case template | split: '.' | first -%}
+        {%- when 'product' -%}
+          {%- assign main_collection = product.metafields.custom.main_collection.value -%}
+          {%- if main_collection != blank -%}
+            {%- assign product_collection = main_collection -%}
+          {%- else -%}
+            {%- assign product_collection = product.collections | last -%}
+            {%- endif -%}
+            {%- assign current_collection = product_collection -%}
+            {%- assign collection_hierarchy = '' | split: ',' -%}
+            {%- for i in (1..100) -%}
+              {%- assign handle_array = current_collection | map: 'handle' | first | split: ',' -%}
+              {%- assign collection_hierarchy = collection_hierarchy | concat: handle_array -%}
+              {%- assign parent_collection = current_collection.metafields.custom.parent_collection.value -%}
+              {%- if parent_collection == blank -%}
+                {%- break -%}
+                {%- endif -%}
+                {%- assign current_collection = parent_collection -%}
+                {%- endfor -%}
+                {%- assign position = 2 -%}
+                {%- for hdl in collection_hierarchy reversed -%}
+                  {%- assign col = collections[hdl] -%},
+                  {
+                    "@type": "ListItem",
+                    "position": {{ position }},
+                    "name": "{{ col.title | escape }}",
+                    "item": "{{ shop.secure_url }} {{ col.url }}"
+                  }
+                  {%- assign position = position | plus: 1 -%}
+                  {%- endfor -%},
+                  {
+                    "@type": "ListItem",
+                    "position": {{ position }},
+                    "name": "{{ product.selected_or_first_available_variant.sku | default: product.variants.first.sku | escape }}",
+                    "item": "{{ shop.secure_url }} {{ product.url }}"
+                  }
+
+                {%- when 'collection' and collection.handle -%}
+                  {%- assign current_collection = collection -%}
+                  {%- assign collection_hierarchy = '' | split: ',' -%}
+                  {%- for i in (1..100) -%}
+                    {%- assign handle_array = current_collection | map: 'handle' | first | split: ',' -%}
+                    {%- assign collection_hierarchy = collection_hierarchy | concat: handle_array -%}
+                    {%- assign parent_collection = current_collection.metafields.custom.parent_collection.value -%}
+                    {%- if parent_collection == blank -%}
+                      {%- break -%}
+                      {%- endif -%}
+                      {%- assign current_collection = parent_collection -%}
+                      {%- endfor -%}
+                      {%- assign position = 2 -%}
+                      {%- for hdl in collection_hierarchy reversed -%}
+                        {%- assign col = collections[hdl] -%}
+                        {%- if forloop.last and current_tags == blank -%},
+                          {
+                            "@type": "ListItem",
+                            "position": {{ position }},
+                            "name": "{{ col.title | escape }}",
+                            "item": "{{ shop.secure_url }} {{ col.url }}"
+                          }
+                        {%- else -%},
+                          {
+                            "@type": "ListItem",
+                            "position": {{ position }},
+                            "name": "{{ col.title | escape }}",
+                            "item": "{{ shop.secure_url }} {{ col.url }}"
+                          }
+                          {%- endif -%}
+                          {%- assign position = position | plus: 1 -%}
+                          {%- endfor -%}
+                          {%- if current_tags -%},
+                            {
+                              "@type": "ListItem",
+                              "position": {{ position }},
+                              "name": "{{ current_tags | join: ' + ' | escape }}",
+                              "item": "{{ shop.secure_url }} {{ collection.url }}/{{ current_tags | join: '+' }}"
+                            }
+                            {%- endif -%}
+
+                          {%- when 'page' -%},
+                            {
+                              "@type": "ListItem",
+                              "position": 2,
+                              "name": "{{ page.title | escape }}",
+                              "item": "{{ shop.secure_url }} {{ page.url }}"
+                            }
+
+                          {%- when 'article' -%},
+                            {
+                              "@type": "ListItem",
+                              "position": 2,
+                              "name": "{{ blog.title | escape }}",
+                              "item": "{{ shop.secure_url }} {{ blog.url }}"
+                            },
+                            {
+                              "@type": "ListItem",
+                              "position": 3,
+                              "name": "{{ article.title | escape }}",
+                              "item": "{{ shop.secure_url }} {{ article.url }}"
+                            }
+
+                          {%- when 'blog' -%},
+                            {
+                              "@type": "ListItem",
+                              "position": 2,
+                              "name": "{{ blog.title | escape }}",
+                              "item": "{{ shop.secure_url }} {{ blog.url }}"
+                            }
+
+                          {%- else -%},
+                            {
+                              "@type": "ListItem",
+                              "position": 2,
+                              "name": "{{ page_title | escape }}",
+                              "item": "{{ shop.secure_url }} {{ request.path }}"
+                            }
+                            {%- endcase -%}
+                          ]
+                        }
+  </script>
+
   <nav
     class="breadcrumbs"
     style="background-color: {{ section.settings.background }}"
