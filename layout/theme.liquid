@@ -387,29 +387,6 @@ body {
       href="https://app.chatwoot.com"
       crossorigin>
 
-    <!-- Performance optimization script -->
-    <script>
-      // Disable animations on low-end devices
-      if (navigator.hardwareConcurrency <= 2 || navigator.deviceMemory <= 4) {
-        document.documentElement.classList.add('reduce-motion');
-      }
-      
-      // Preload critical CSS
-      const criticalCSS = [
-        '{{ "base.css" | asset_url }}',
-        '{{ "alc.css" | asset_url }}'
-      ];
-      
-      criticalCSS.forEach(url => {
-        const link = document.createElement('link');
-        link.rel = 'preload';
-        link.as = 'style';
-        link.href = url;
-        document.head.appendChild(link);
-      });
-    </script>
-
-
     {%- if template contains 'slideshow' or template contains 'product' or template contains 'collection' -%}
       <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
       <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js" defer></script>
