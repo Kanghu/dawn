@@ -90,7 +90,7 @@
     <div class="product product--{{ section.settings.media_size }} product--{{ section.settings.media_position }} product--{{ section.settings.gallery_layout }} product--mobile-{{ section.settings.mobile_thumbnails }} grid grid--1-col {% if product.media.size > 0 %}grid--2-col-tablet{% else %}product--no-media{% endif %}">
       <div class="grid__item product__media-wrapper">
         {%- if is_campaign_product -%}
-          {% render 'product-media-gallery-campaign', variant_images: variant_images %}
+          {% render 'product-media-gallery-campaign', variant_images: variant_images, section: section %}
         {%- else -%}
           {% render 'product-media-gallery', variant_images: variant_images %}
         {%- endif -%}
@@ -2503,6 +2503,46 @@
       "unit": "px",
       "label": "t:sections.all.padding.padding_bottom",
       "default": 36
+    },
+    {
+      "type": "header",
+      "content": "Campaign Badge Colors"
+    },
+    {
+      "type": "color",
+      "id": "campaign_badge_bg_start",
+      "label": "Featured Campaign Badge Background Start",
+      "default": "#d52b36"
+    },
+    {
+      "type": "color",
+      "id": "campaign_badge_bg_end",
+      "label": "Featured Campaign Badge Background End",
+      "default": "#aa1c2a"
+    },
+    {
+      "type": "color",
+      "id": "campaign_badge_text",
+      "label": "Featured Campaign Badge Text",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "discount_badge_bg_start",
+      "label": "Discount Badge Background Start",
+      "default": "#ff1744"
+    },
+    {
+      "type": "color",
+      "id": "discount_badge_bg_end",
+      "label": "Discount Badge Background End",
+      "default": "#d50000"
+    },
+    {
+      "type": "color",
+      "id": "discount_badge_text",
+      "label": "Discount Badge Text",
+      "default": "#ffffff"
     }
   ]
 }

@@ -37,7 +37,7 @@
             "normal_price_color": "#f01188",
             "compare_price_color": "#414042",
             "difference_price_color": "#03bad6",
-            "badge_sale_color": "#ed0010",
+            "badge_sale_color": "#d52b36",
             "difference_price_text_color": "#ffffff",
             "badge_sale_text_color": "#ffffff",
             "sale_badge_text": "CAMPAIGN SALE",
@@ -57,12 +57,6 @@
         "alc_product_benefits_kj4nTE": {
           "type": "alc_product_benefits",
           "settings": {}
-        },
-        "alc_scarcity_messages_Campaign": {
-          "type": "custom_liquid",
-          "settings": {
-            "custom_liquid": "{% render 'alc-scarcity-messages', product: product %}"
-          }
         },
         "alc_buy_buttons_kb47Ba": {
           "type": "alc_buy_buttons",
@@ -122,7 +116,6 @@
         "alc_price_8PqTaF",
         "alc_countdown_timer_CampaignNew",
         "alc_product_benefits_kj4nTE",
-        "alc_scarcity_messages_Campaign",
         "alc_buy_buttons_kb47Ba",
         "related_variants_T9dRaW",
         "variant_picker",
