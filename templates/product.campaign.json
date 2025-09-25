@@ -1,0 +1,358 @@
+{
+  "sections": {
+    "main": {
+      "type": "main-product",
+      "blocks": {
+        "custom_liquid_idALWp": {
+          "type": "custom_liquid",
+          "settings": {
+            "custom_liquid": "<div class=\"text-base \nfont-bold\">Cod produs: \n {{product.selected_or_first_available_variant.sku}}\n</div>"
+          }
+        },
+        "title": {
+          "type": "title",
+          "settings": {}
+        },
+        "caption": {
+          "type": "text",
+          "settings": {
+            "text": "{{ product.metafields.descriptors.subtitle.value }}",
+            "text_style": "subtitle"
+          }
+        },
+        "alc_price_8PqTaF": {
+          "type": "alc_price",
+          "settings": {
+            "price_layout": "side_by_side",
+            "bold_current_price": true,
+            "normal_price_color": "#f01188",
+            "compare_price_color": "#414042",
+            "difference_price_color": "#03bad6",
+            "badge_sale_color": "#d52b36",
+            "difference_price_text_color": "#ffffff",
+            "badge_sale_text_color": "#ffffff",
+            "sale_badge_text": "CAMPAIGN SALE",
+            "difference_display_style": "text"
+          }
+        },
+        "alc_countdown_timer_CampaignNew": {
+          "type": "alc_countdown_timer",
+          "settings": {
+            "timer_style": "urgent",
+            "background_color": "#d52b36",
+            "text_color": "#ffffff",
+            "show_progress_bar": true,
+            "urgent_threshold_hours": 24
+          }
+        },
+        "alc_product_benefits_kj4nTE": {
+          "type": "alc_product_benefits",
+          "settings": {}
+        },
+        "alc_scarcity_messages_Campaign": {
+          "type": "custom_liquid",
+          "settings": {
+            "custom_liquid": "{% render 'alc-scarcity-messages', product: product %}"
+          }
+        },
+        "alc_buy_buttons_kb47Ba": {
+          "type": "alc_buy_buttons",
+          "settings": {
+            "show_dynamic_checkout": false,
+            "show_gift_card_recipient": true,
+            "button_color": "#d52b36"
+          }
+        },
+        "related_variants_T9dRaW": {
+          "type": "related_variants",
+          "settings": {
+            "custom_text": "Alege dintre",
+            "picker_style": "buttons"
+          }
+        },
+        "variant_picker": {
+          "type": "variant_picker",
+          "settings": {
+            "picker_type": "button",
+            "swatch_shape": "circle"
+          }
+        },
+        "inventory_urgency_NewCampaign": {
+          "type": "inventory",
+          "settings": {
+            "text_style": "uppercase",
+            "inventory_threshold": 10,
+            "show_inventory_quantity": true
+          }
+        },
+        "custom_liquid_EeQGgT": {
+          "type": "custom_liquid",
+          "disabled": true,
+          "settings": {
+            "custom_liquid": "<span style=\"\n    font-family: Roboto, 'Segoe UI', Helvetica, Arial, sans-serif;\n    font-weight: 400; font-size:1.33rem;\"> \n{{ product.metafields.custom.long_description }}\n</span>"
+          }
+        },
+        "complementary_jKHL39": {
+          "type": "complementary",
+          "settings": {
+            "block_heading": "Recomandam impreuna cu",
+            "make_collapsible_row": true,
+            "icon": "price_tag",
+            "product_list_limit": 6,
+            "products_per_page": 4,
+            "pagination_style": "counter",
+            "image_ratio": "square",
+            "enable_quick_add": true
+          }
+        }
+      },
+      "block_order": [
+        "custom_liquid_idALWp",
+        "title",
+        "caption",
+        "alc_price_8PqTaF",
+        "alc_countdown_timer_CampaignNew",
+        "alc_product_benefits_kj4nTE",
+        "alc_scarcity_messages_Campaign",
+        "alc_buy_buttons_kb47Ba",
+        "related_variants_T9dRaW",
+        "variant_picker",
+        "inventory_urgency_NewCampaign",
+        "custom_liquid_EeQGgT",
+        "complementary_jKHL39"
+      ],
+      "custom_css": [
+        "h1,.h1 {font-size: calc(var(--font-heading-scale) * 1.85rem);}",
+        "@media only screen and (min-width: 750px) {h1, .h1 {font-size: calc(var(--font-heading-scale) * 2.25rem); }}",
+        ".product__title {margin-top: 0.5rem !important;}",
+        ".alc-countdown-timer {animation: pulse 2s infinite;}",
+        ".campaign-badge {animation: pulse 3s infinite;}",
+        ".discount-badge {box-shadow: 0 2px 8px rgba(213, 43, 54, 0.3);}"
+      ],
+      "settings": {
+        "enable_sticky_info": true,
+        "color_scheme": "scheme-15b3ebfc-72e7-42d0-af22-57c8d007abe9",
+        "media_size": "medium",
+        "constrain_to_viewport": true,
+        "media_fit": "contain",
+        "gallery_layout": "thumbnail",
+        "media_position": "left",
+        "image_zoom": "lightbox",
+        "mobile_thumbnails": "show",
+        "hide_variants": true,
+        "enable_video_looping": false,
+        "padding_top": 12,
+        "padding_bottom": 12
+      }
+    },
+    "related-products": {
+      "type": "related-products",
+      "disabled": true,
+      "settings": {
+        "heading": "Alte produse din gama",
+        "heading_size": "h2",
+        "products_to_show": 6,
+        "columns_desktop": 6,
+        "color_scheme": "scheme-1",
+        "image_ratio": "square",
+        "image_shape": "default",
+        "show_secondary_image": true,
+        "show_vendor": false,
+        "show_rating": false,
+        "columns_mobile": "2",
+        "padding_top": 36,
+        "padding_bottom": 28
+      }
+    },
+    "alc_metafield_collection_slider_NfJjNq": {
+      "type": "alc-metafield-collection-slider",
+      "settings": {
+        "title": "Vezi alte produse din gama {{ product.metafields.custom.collection | metafield_text }}",
+        "heading_size": "h2",
+        "products_to_show": 6,
+        "columns_desktop": 6,
+        "image_ratio": "square",
+        "image_shape": "default",
+        "show_secondary_image": true,
+        "show_vendor": false,
+        "show_rating": false,
+        "columns_mobile": "2",
+        "use_mobile_card": false,
+        "padding_top": 36,
+        "padding_bottom": 36,
+        "color_scheme": ""
+      }
+    },
+    "alc_collapsible_content_qgxhx4": {
+      "type": "alc-collapsible-content",
+      "blocks": {
+        "collapsible_row_aiagCC": {
+          "type": "collapsible_row",
+          "settings": {
+            "heading": "Descriere",
+            "icon": "check_mark",
+            "row_content": "",
+            "row_liquid": "{{ product.description }}",
+            "page": ""
+          }
+        },
+        "collapsible_metafields_xfKYrj": {
+          "type": "collapsible_metafields",
+          "settings": {
+            "heading": "Specificatii",
+            "icon": "clipboard"
+          }
+        },
+        "collapsible_qa_ecDGG4": {
+          "type": "collapsible_qa",
+          "settings": {
+            "heading": "Intrebari frecvente (FAQ)",
+            "icon": "chat_bubble"
+          }
+        }
+      },
+      "block_order": [
+        "collapsible_row_aiagCC",
+        "collapsible_metafields_xfKYrj",
+        "collapsible_qa_ecDGG4"
+      ],
+      "settings": {
+        "caption": "",
+        "heading": "",
+        "heading_size": "h1",
+        "heading_alignment": "center",
+        "layout": "none",
+        "color_scheme": "",
+        "container_color_scheme": "",
+        "open_first_collapsible_row": false,
+        "image_ratio": "adapt",
+        "desktop_layout": "image_second",
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    },
+    "17347064802c9f17aa": {
+      "type": "apps",
+      "blocks": {
+        "vitals_product_reviews_XaVEAf": {
+          "type": "shopify://apps/vitals/blocks/product-reviews/aeb48102-2a5a-4f39-bdbd-d8d49f4e20b8",
+          "settings": {}
+        }
+      },
+      "block_order": [
+        "vitals_product_reviews_XaVEAf"
+      ],
+      "settings": {
+        "include_margins": true
+      }
+    },
+    "image-with-text": {
+      "type": "image-with-text",
+      "blocks": {
+        "image-with-text-0": {
+          "type": "heading",
+          "settings": {
+            "heading": "Oferta limitata!",
+            "heading_size": "h2"
+          }
+        },
+        "image-with-text-1": {
+          "type": "text",
+          "settings": {
+            "text": "<p><strong>URGENT!</strong> Aceasta campanie se termina in curand! Nu rata ocazia de a achizitiona acest produs la cel mai bun pret.</p><p>Alessandro Design iti ofera produse de calitate premium la preturi de campanie exceptionale - doar pentru o perioada limitata!</p>",
+            "text_style": "body"
+          }
+        }
+      },
+      "block_order": [
+        "image-with-text-0",
+        "image-with-text-1"
+      ],
+      "settings": {
+        "image": "shopify://shop_images/metal-warehouse.jpg",
+        "height": "small",
+        "desktop_image_width": "small",
+        "layout": "image_first",
+        "desktop_content_position": "top",
+        "desktop_content_alignment": "left",
+        "content_layout": "no-overlap",
+        "section_color_scheme": "",
+        "color_scheme": "scheme-2",
+        "image_behavior": "none",
+        "mobile_content_alignment": "left",
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    },
+    "17344485676cd9137d": {
+      "type": "apps",
+      "settings": {
+        "include_margins": true
+      }
+    },
+    "1734705383ce5c5048": {
+      "type": "apps",
+      "blocks": {
+        "vitals_product_reviews_XXiFQy": {
+          "type": "shopify://apps/vitals/blocks/product-reviews/aeb48102-2a5a-4f39-bdbd-d8d49f4e20b8",
+          "settings": {}
+        }
+      },
+      "block_order": [
+        "vitals_product_reviews_XXiFQy"
+      ],
+      "settings": {
+        "include_margins": true
+      }
+    },
+    "1734705789523688e8": {
+      "type": "apps",
+      "settings": {
+        "include_margins": true
+      }
+    },
+    "17382403506a4b872b": {
+      "type": "apps",
+      "blocks": {
+        "vitals_related_products_D6pzRj": {
+          "type": "shopify://apps/vitals/blocks/related-products/aeb48102-2a5a-4f39-bdbd-d8d49f4e20b8",
+          "settings": {}
+        }
+      },
+      "block_order": [
+        "vitals_related_products_D6pzRj"
+      ],
+      "settings": {
+        "include_margins": true
+      }
+    },
+    "1738240867ea0a657c": {
+      "type": "apps",
+      "blocks": {
+        "vitals_recently_viewed_tNLaUb": {
+          "type": "shopify://apps/vitals/blocks/recently-viewed/aeb48102-2a5a-4f39-bdbd-d8d49f4e20b8",
+          "settings": {}
+        }
+      },
+      "block_order": [
+        "vitals_recently_viewed_tNLaUb"
+      ],
+      "settings": {
+        "include_margins": true
+      }
+    }
+  },
+  "order": [
+    "main",
+    "related-products",
+    "alc_metafield_collection_slider_NfJjNq",
+    "alc_collapsible_content_qgxhx4",
+    "17347064802c9f17aa",
+    "image-with-text",
+    "17344485676cd9137d",
+    "1734705383ce5c5048",
+    "1734705789523688e8",
+    "17382403506a4b872b",
+    "1738240867ea0a657c"
+  ]
+}

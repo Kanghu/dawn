@@ -1,0 +1,511 @@
+{% comment %}
+  Campaign version of product media gallery with overlay badges
+  Based on product-media-gallery.liquid with added campaign badges
+
+  Accepts:
+  - product: {Object} Product liquid object
+  - variant_images: {Array} Product images associated with a variant
+  - limit: {Number} (optional) When passed, limits the number of media items to render
+
+  Usage:
+  {% render 'product-media-gallery-campaign' %}
+{% endcomment %}
+
+{%- liquid
+  if section.settings.hide_variants and variant_images.size == product.media.size
+    assign single_media_visible = true
+  endif
+
+  if limit == 1
+    assign single_media_visible = true
+  endif
+
+  assign media_count = product.media.size
+  if section.settings.hide_variants and media_count > 1 and variant_images.size > 0
+    assign media_count = media_count | minus: variant_images.size | plus: 1
+  endif
+
+  if media_count == 1 or single_media_visible
+    assign single_media_visible_mobile = true
+  endif
+
+  if media_count == 0 or single_media_visible_mobile or section.settings.mobile_thumbnails == 'show' or section.settings.mobile_thumbnails == 'columns' and media_count < 3
+    assign hide_mobile_slider = true
+  endif
+
+  if section.settings.media_size == 'large'
+    assign media_width = 0.65
+  elsif section.settings.media_size == 'medium'
+    assign media_width = 0.55
+  elsif section.settings.media_size == 'small'
+    assign media_width = 0.45
+  endif
+
+  # Campaign badge data
+  assign featured_campaign = product.metafields.custom.featured_campaign.value
+  assign compare_at_price = product.selected_or_first_available_variant.compare_at_price
+  assign current_price = product.selected_or_first_available_variant.price
+  assign discount_percentage = 0
+
+  if compare_at_price and compare_at_price > current_price
+    assign discount_amount = compare_at_price | minus: current_price
+    assign discount_percentage = discount_amount | times: 100.0 | divided_by: compare_at_price | round
+  endif
+-%}
+
+<media-gallery
+  id="MediaGallery-{{ section.id }}"
+  role="region"
+  {% if section.settings.enable_sticky_info %}
+    class="product__column-sticky"
+  {% endif %}
+  aria-label="{{ 'products.product.media.gallery_viewer' | t }}"
+  data-desktop-layout="{{ section.settings.gallery_layout }}"
+>
+  <div id="GalleryStatus-{{ section.id }}" class="visually-hidden" role="status"></div>
+  <slider-component id="GalleryViewer-{{ section.id }}" class="slider-mobile-gutter campaign-media-gallery">
+    <a class="skip-to-content-link button visually-hidden quick-add-hidden" href="#ProductInfo-{{ section.id }}">
+      {{ 'accessibility.skip_to_product_info' | t }}
+    </a>
+    <ul
+      id="Slider-Gallery-{{ section.id }}"
+      class="product__media-list contains-media grid grid--peek list-unstyled slider slider--mobile"
+      role="list"
+    >
+      {%- if product.selected_or_first_available_variant.featured_media != null -%}
+        {%- assign featured_media = product.selected_or_first_available_variant.featured_media -%}
+        <li
+          id="Slide-{{ section.id }}-{{ featured_media.id }}"
+          class="product__media-item grid__item slider__slide is-active campaign-media-item{% if single_media_visible %} product__media-item--single{% endif %}{% if featured_media.media_type != 'image' %} product__media-item--full{% endif %}{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--fade-in{% endif %}"
+          data-media-id="{{ section.id }}-{{ featured_media.id }}"
+        >
+          {%- assign media_position = 1 -%}
+
+          <!-- Campaign Badges - Direct Positioning -->
+          <!-- Discount Badge (Top Right Corner) -->
+          {%- if discount_percentage > 0 -%}
+            <div class="campaign-discount-badge">
+              <span class="discount-percentage">-{{ discount_percentage }}%</span>
+              <span class="discount-text">REDUCERE</span>
+            </div>
+          {%- endif -%}
+
+          <!-- Featured Campaign Badge (Bottom Banner) -->
+          {%- if featured_campaign.title != blank -%}
+            <div class="campaign-featured-badge">
+              <div class="featured-badge-content">
+                <span class="featured-badge-icon">🔥</span>
+                <span class="featured-badge-text">{{ featured_campaign.title | upcase }}</span>
+                <span class="featured-badge-icon">🔥</span>
+              </div>
+            </div>
+          {%- endif -%}
+
+          {% render 'product-thumbnail',
+            media: featured_media,
+            media_count: media_count,
+            position: media_position,
+            desktop_layout: section.settings.gallery_layout,
+            mobile_layout: section.settings.mobile_thumbnails,
+            loop: section.settings.enable_video_looping,
+            modal_id: section.id,
+            xr_button: true,
+            media_width: media_width,
+            media_fit: section.settings.media_fit,
+            constrain_to_viewport: section.settings.constrain_to_viewport,
+            lazy_load: false
+          %}
+        </li>
+      {%- endif -%}
+      {%- for media in product.media -%}
+        {% if media_position >= limit
+          or media_position >= 1
+          and section.settings.hide_variants
+          and variant_images contains media.src
+        %}
+          {% continue %}
+        {% endif %}
+
+        {%- unless media.id == product.selected_or_first_available_variant.featured_media.id -%}
+          <li
+            id="Slide-{{ section.id }}-{{ media.id }}"
+            class="product__media-item grid__item slider__slide{% if single_media_visible %} product__media-item--single{% endif %}{% if product.selected_or_first_available_variant.featured_media == nil and forloop.index == 1 %} is-active{% endif %}{% if media.media_type != 'image' %} product__media-item--full{% endif %}{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--fade-in{% endif %}"
+            data-media-id="{{ section.id }}-{{ media.id }}"
+          >
+            {%- liquid
+              assign media_position = media_position | default: 0 | plus: 1
+              assign lazy_load = false
+              if media_position > 1
+                assign lazy_load = true
+              endif
+            -%}
+
+            <!-- Only show badges on first image -->
+            {%- if forloop.first and product.selected_or_first_available_variant.featured_media == nil -%}
+              <!-- Discount Badge (Top Right Corner) -->
+              {%- if discount_percentage > 0 -%}
+                <div class="campaign-discount-badge">
+                  <span class="discount-percentage">-{{ discount_percentage }}%</span>
+                  <span class="discount-text">REDUCERE</span>
+                </div>
+              {%- endif -%}
+
+              <!-- Featured Campaign Badge (Bottom Banner) -->
+              {%- if featured_campaign.title != blank -%}
+                <div class="campaign-featured-badge">
+                  <div class="featured-badge-content">
+                    <span class="featured-badge-icon">🔥</span>
+                    <span class="featured-badge-text">{{ featured_campaign.title | upcase }}</span>
+                    <span class="featured-badge-icon">🔥</span>
+                  </div>
+                </div>
+              {%- endif -%}
+            {%- endif -%}
+
+            {% render 'product-thumbnail',
+              media: media,
+              media_count: media_count,
+              position: media_position,
+              desktop_layout: section.settings.gallery_layout,
+              mobile_layout: section.settings.mobile_thumbnails,
+              loop: section.settings.enable_video_looping,
+              modal_id: section.id,
+              xr_button: true,
+              media_width: media_width,
+              media_fit: section.settings.media_fit,
+              constrain_to_viewport: section.settings.constrain_to_viewport,
+              lazy_load: lazy_load
+            %}
+          </li>
+        {%- endunless -%}
+      {%- endfor -%}
+    </ul>
+    <div class="slider-buttons quick-add-hidden{% if hide_mobile_slider %} small-hide{% endif %}">
+      <button
+        type="button"
+        class="slider-button slider-button--prev"
+        name="previous"
+        aria-label="{{ 'general.slider.previous_slide' | t }}"
+      >
+        <span class="svg-wrapper">
+          {{- 'icon-caret.svg' | inline_asset_content -}}
+        </span>
+      </button>
+      <div class="slider-counter caption">
+        <span class="slider-counter--current">1</span>
+        <span aria-hidden="true"> / </span>
+        <span class="visually-hidden">{{ 'general.slider.of' | t }}</span>
+        <span class="slider-counter--total">{{ media_count }}</span>
+      </div>
+      <button
+        type="button"
+        class="slider-button slider-button--next"
+        name="next"
+        aria-label="{{ 'general.slider.next_slide' | t }}"
+      >
+        <span class="svg-wrapper">
+          {{- 'icon-caret.svg' | inline_asset_content -}}
+        </span>
+      </button>
+    </div>
+  </slider-component>
+  {%- if product.media.size > 1
+    and section.settings.gallery_layout contains 'thumbnail'
+    or section.settings.mobile_thumbnails == 'show'
+  -%}
+    <slider-component
+      id="GalleryThumbnails-{{ section.id }}"
+      class="thumbnail-slider slider-mobile-gutter quick-add-hidden{% unless section.settings.gallery_layout contains 'thumbnail' %} medium-hide large-up-hide{% endunless %}{% if section.settings.mobile_thumbnails != 'show' %} small-hide{% endif %}{% if media_count <= 3 %} thumbnail-slider--no-slide{% endif %}"
+    >
+      <button
+        type="button"
+        class="slider-button slider-button--prev{% if media_count <= 3 %} small-hide{% endif %}{% if media_count <= 4 %} medium-hide large-up-hide{% endif %}"
+        name="previous"
+        aria-label="{{ 'general.slider.previous_slide' | t }}"
+        aria-controls="GalleryThumbnails-{{ section.id }}"
+        data-step="3"
+      >
+        <span class="svg-wrapper">
+          {{- 'icon-caret.svg' | inline_asset_content -}}
+        </span>
+      </button>
+      <ul
+        id="Slider-Thumbnails-{{ section.id }}"
+        class="thumbnail-list list-unstyled slider slider--mobile"
+      >
+        {%- capture sizes -%}
+          (min-width: {{ settings.page_width }}px) calc(({{ settings.page_width | minus: 100 | times: media_width | round }} - 4rem) / 4),
+          (min-width: 990px) calc(({{ media_width | times: 100 }}vw - 4rem) / 4),
+          (min-width: 750px) calc((100vw - 15rem) / 8),
+          calc((100vw - 8rem) / 3)
+        {%- endcapture -%}
+        {%- if product.selected_or_first_available_variant.featured_media != null -%}
+          {%- assign featured_media = product.selected_or_first_available_variant.featured_media -%}
+          <li
+            id="Slide-Thumbnails-{{ section.id }}-0"
+            class="thumbnail-list__item slider__slide{% if section.settings.hide_variants and variant_images contains featured_media.src %} thumbnail-list_item--variant{% endif %}"
+            data-target="{{ section.id }}-{{ featured_media.id }}"
+            data-media-position="1"
+          >
+            {%- if featured_media.media_type == 'model' -%}
+              <span class="thumbnail-badge" aria-label="{{ 'products.product.media.view_in_space_label' | t }}">
+                <span class="svg-wrapper">
+                  {{- 'icon-3d-model.svg' | inline_asset_content -}}
+                </span>
+              </span>
+            {%- endif -%}
+            {%- if featured_media.media_type == 'video' or featured_media.media_type == 'external_video' -%}
+              <span class="thumbnail-badge" aria-label="{{ 'products.product.media.play_video' | t }}">
+                <span class="svg-wrapper">
+                  {{- 'icon-play.svg' | inline_asset_content -}}
+                </span>
+              </span>
+            {%- endif -%}
+            {{
+              featured_media.preview_image
+              | image_url: width: 416
+              | image_tag:
+                class: 'thumbnail global-media-settings',
+                sizes: sizes,
+                widths: '54, 74, 104, 162, 208, 324, 416',
+                alt: featured_media.alt
+              | escape
+            }}
+            <button
+              class="thumbnail__media thumbnail__media--{{ featured_media.media_type }} media media--transparent"
+              aria-label="{%- if featured_media.media_type == 'image' -%}{{ 'products.product.media.load_image' | t: index: media_position }}{%- elsif featured_media.media_type == 'model' -%}{{ 'products.product.media.load_model' | t: index: media_position }}{%- elsif featured_media.media_type == 'video' or featured_media.media_type == 'external_video' -%}{{ 'products.product.media.load_video' | t: index: media_position }}{%- endif -%}"
+              aria-current="true"
+              aria-describedby="Thumbnail-{{ section.id }}-0 GalleryViewer-{{ section.id }}"
+              style="aspect-ratio: {{ featured_media.aspect_ratio }}"
+            >
+              <img
+                class="thumbnail__image"
+                alt=""
+                src="{{ featured_media | image_url: width: 416 }}"
+                width="416"
+                height="{{ 416 | divided_by: featured_media.aspect_ratio | ceil }}"
+              >
+            </button>
+          </li>
+        {%- endif -%}
+        {%- for media in product.media -%}
+          {%- unless media.id == product.selected_or_first_available_variant.featured_media.id -%}
+            <li
+              id="Slide-Thumbnails-{{ section.id }}-{{ media.position }}"
+              class="thumbnail-list__item slider__slide{% if section.settings.hide_variants and variant_images contains media.src %} thumbnail-list_item--variant{% endif %}"
+              data-target="{{ section.id }}-{{ media.id }}"
+              data-media-position="{{ media.position }}"
+            >
+              {%- if media.media_type == 'model' -%}
+                <span class="thumbnail-badge" aria-label="{{ 'products.product.media.view_in_space_label' | t }}">
+                  <span class="svg-wrapper">
+                    {{- 'icon-3d-model.svg' | inline_asset_content -}}
+                  </span>
+                </span>
+              {%- endif -%}
+              {%- if media.media_type == 'video' or media.media_type == 'external_video' -%}
+                <span class="thumbnail-badge" aria-label="{{ 'products.product.media.play_video' | t }}">
+                  <span class="svg-wrapper">
+                    {{- 'icon-play.svg' | inline_asset_content -}}
+                  </span>
+                </span>
+              {%- endif -%}
+              {{
+                media.preview_image
+                | image_url: width: 416
+                | image_tag:
+                  class: 'thumbnail global-media-settings',
+                  sizes: sizes,
+                  widths: '54, 74, 104, 162, 208, 324, 416',
+                  alt: media.alt
+                | escape
+              }}
+              <button
+                class="thumbnail__media thumbnail__media--{{ media.media_type }} media media--transparent"
+                aria-label="{%- if media.media_type == 'image' -%}{{ 'products.product.media.load_image' | t: index: media.position }}{%- elsif media.media_type == 'model' -%}{{ 'products.product.media.load_model' | t: index: media.position }}{%- elsif media.media_type == 'video' or media.media_type == 'external_video' -%}{{ 'products.product.media.load_video' | t: index: media.position }}{%- endif -%}"
+                aria-describedby="Thumbnail-{{ section.id }}-{{ media.position }} GalleryViewer-{{ section.id }}"
+                style="aspect-ratio: {{ media.aspect_ratio }}"
+              >
+                <img
+                  class="thumbnail__image"
+                  alt=""
+                  src="{{ media | image_url: width: 416 }}"
+                  width="416"
+                  height="{{ 416 | divided_by: media.aspect_ratio | ceil }}"
+                >
+              </button>
+            </li>
+          {%- endunless -%}
+        {%- endfor -%}
+      </ul>
+      <button
+        type="button"
+        class="slider-button slider-button--next{% if media_count <= 3 %} small-hide{% endif %}{% if media_count <= 4 %} medium-hide large-up-hide{% endif %}"
+        name="next"
+        aria-label="{{ 'general.slider.next_slide' | t }}"
+        aria-controls="GalleryThumbnails-{{ section.id }}"
+        data-step="3"
+      >
+        <span class="svg-wrapper">
+          {{- 'icon-caret.svg' | inline_asset_content -}}
+        </span>
+      </button>
+    </slider-component>
+  {%- endif -%}
+</media-gallery>
+
+<style>
+  /* Campaign badges container */
+  .campaign-media-item {
+    position: relative;
+  }
+
+  /* Discount badge (top right corner) */
+  .campaign-discount-badge {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    z-index: 2;
+    pointer-events: none;
+    background: linear-gradient(135deg, #ff1744, #d50000);
+    color: white;
+    padding: 0.5rem 0.75rem;
+    border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-width: 4rem;
+    box-shadow: 0 4px 12px rgba(255, 23, 68, 0.4);
+    transform: rotate(-5deg);
+    animation: discountBounce 2s infinite alternate;
+    font-family: var(--font-heading-family, inherit);
+  }
+
+  .discount-percentage {
+    font-size: 1.25rem;
+    font-weight: 900;
+    line-height: 1;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+  }
+
+  .discount-text {
+    font-size: 0.6rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    margin-top: 0.1rem;
+    text-transform: uppercase;
+  }
+
+  @keyframes discountBounce {
+    0% { transform: rotate(-5deg) scale(1); }
+    100% { transform: rotate(-5deg) scale(1.05); }
+  }
+
+  /* Featured campaign badge (bottom banner) */
+  .campaign-featured-badge {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 2;
+    pointer-events: none;
+    background: linear-gradient(90deg, rgba(213, 43, 54, 0.95), rgba(170, 28, 42, 0.95));
+    backdrop-filter: blur(4px);
+    border-top: 2px solid rgba(255, 255, 255, 0.2);
+  }
+
+  .featured-badge-content {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.75rem 1rem;
+    gap: 0.5rem;
+    animation: campaignPulse 3s infinite;
+  }
+
+  .featured-badge-text {
+    font-size: 0.875rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    color: white;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+    font-family: var(--font-heading-family, inherit);
+  }
+
+  .featured-badge-icon {
+    font-size: 1rem;
+    animation: flameFlicker 1s infinite alternate;
+  }
+
+  @keyframes campaignPulse {
+    0%, 100% { background: linear-gradient(90deg, rgba(213, 43, 54, 0.95), rgba(170, 28, 42, 0.95)); }
+    50% { background: linear-gradient(90deg, rgba(255, 23, 68, 0.95), rgba(213, 43, 54, 0.95)); }
+  }
+
+  @keyframes flameFlicker {
+    0% { transform: scale(1) rotate(-2deg); }
+    100% { transform: scale(1.1) rotate(2deg); }
+  }
+
+  /* Mobile responsive */
+  @media (max-width: 749px) {
+    .campaign-discount-badge {
+      top: 0.5rem;
+      right: 0.5rem;
+      padding: 0.4rem 0.6rem;
+      min-width: 3rem;
+    }
+
+    .discount-percentage {
+      font-size: 1rem;
+    }
+
+    .discount-text {
+      font-size: 0.55rem;
+    }
+
+    .featured-badge-content {
+      padding: 0.5rem 0.75rem;
+      gap: 0.25rem;
+    }
+
+    .featured-badge-text {
+      font-size: 0.75rem;
+    }
+
+    .featured-badge-icon {
+      font-size: 0.875rem;
+    }
+  }
+
+  /* Hover effects */
+  .campaign-media-item:hover .campaign-discount-badge {
+    animation: discountBounce 0.5s infinite alternate;
+    transform: rotate(-5deg) scale(1.1);
+  }
+
+  .campaign-media-item:hover .featured-badge-content {
+    animation: campaignPulse 1s infinite;
+  }
+
+  /* Urgent state styles */
+  .campaign-urgent .campaign-discount-badge {
+    background: linear-gradient(135deg, #ff6b00, #e65100);
+    animation: urgentFlash 0.8s infinite alternate;
+  }
+
+  .campaign-urgent .campaign-featured-badge {
+    background: linear-gradient(90deg, rgba(255, 107, 0, 0.95), rgba(230, 81, 0, 0.95));
+  }
+
+  @keyframes urgentFlash {
+    0% {
+      box-shadow: 0 4px 12px rgba(255, 107, 0, 0.6);
+      transform: rotate(-5deg) scale(1);
+    }
+    100% {
+      box-shadow: 0 6px 20px rgba(255, 107, 0, 0.8);
+      transform: rotate(-5deg) scale(1.05);
+    }
+  }
+</style>
