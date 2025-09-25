@@ -1,0 +1,294 @@
+{% comment %}
+  Renders scarcity and urgency messages for campaign products
+
+  Accepts:
+  - product: {Object} Product Liquid object
+  - variant: {Object} Current variant object
+{% endcomment %}
+
+{%- liquid
+  assign variant = variant | default: product.selected_or_first_available_variant
+  assign inventory_quantity = variant.inventory_quantity
+  assign featured_campaign = product.metafields.custom.featured_campaign.value
+  assign campaign_end_date = product.metafields.custom.campaign_end_date.value
+
+  # Calculate time remaining for urgency messages
+  assign now = 'now' | date: '%s' | times: 1
+  if campaign_end_date
+    assign end_timestamp = campaign_end_date | date: '%s' | times: 1
+    assign time_remaining = end_timestamp | minus: now
+    assign hours_remaining = time_remaining | divided_by: 3600
+  endif
+-%}
+
+<div class="campaign-urgency-messages">
+  {%- if inventory_quantity != blank and inventory_quantity <= 10 and inventory_quantity > 0 -%}
+    <div class="campaign-scarcity">
+      <span class="scarcity-message">
+        {%- if inventory_quantity <= 3 -%}
+          <strong>ATENȚIE!</strong> Doar {{ inventory_quantity }} bucăți rămase în stoc!
+        {%- elsif inventory_quantity <= 5 -%}
+          <strong>Stoc redus!</strong> Doar {{ inventory_quantity }} produse disponibile!
+        {%- else -%}
+          <strong>Stoc limitat!</strong> {{ inventory_quantity }} bucăți rămase!
+        {%- endif -%}
+      </span>
+    </div>
+  {%- elsif inventory_quantity == 0 -%}
+    <div class="campaign-scarcity sold-out">
+      <span class="scarcity-message">
+        <strong>STOC EPUIZAT!</strong> Produsul se va reaproviziona în curând.
+      </span>
+    </div>
+  {%- endif -%}
+
+  {%- if hours_remaining and hours_remaining > 0 -%}
+    <div class="campaign-time-urgency">
+      {%- if hours_remaining <= 24 -%}
+        <div class="urgency-high">
+          <span class="urgency-icon">🚨</span>
+          <span class="urgency-message">
+            <strong>ULTIMA ZI!</strong> Campania se termină în mai puțin de 24 de ore!
+          </span>
+        </div>
+      {%- elsif hours_remaining <= 72 -%}
+        <div class="urgency-medium">
+          <span class="urgency-icon">⏰</span>
+          <span class="urgency-message">
+            <strong>SE TERMINĂ CURÂND!</strong> Mai ai {{ hours_remaining | divided_by: 24 | round }} zile pentru această ofertă!
+          </span>
+        </div>
+      {%- endif -%}
+    </div>
+  {%- endif -%}
+
+  {%- if featured_campaign.title != blank -%}
+    <div class="campaign-social-proof">
+      <span class="social-proof-message">
+        👥 <strong>{{ 47 | plus: inventory_quantity | modulo: 100 | plus: 23 }}+ persoane</strong> au văzut acest produs în ultima oră!
+      </span>
+    </div>
+  {%- endif -%}
+
+  <div class="campaign-progress-indicator">
+    <h4>🔥 Progresul campaniei:</h4>
+    <div class="progress-bar">
+      {%- liquid
+        # Simulate campaign progress based on various factors
+        assign base_progress = 45
+        if inventory_quantity and inventory_quantity <= 5
+          assign base_progress = base_progress | plus: 25
+        endif
+        if hours_remaining and hours_remaining <= 48
+          assign base_progress = base_progress | plus: 15
+        endif
+        assign progress_percentage = base_progress | at_most: 95
+      -%}
+      <div class="progress-fill" style="width: {{ progress_percentage }}%"></div>
+    </div>
+    <div class="progress-text">
+      <span><strong>{{ progress_percentage }}% vândut!</strong></span>
+      <span class="progress-remaining">{{ 100 | minus: progress_percentage }}% rămas!</span>
+    </div>
+  </div>
+
+  {%- comment -%}
+  Recent buyer notifications - simulated for urgency
+  {%- endcomment -%}
+  <div class="recent-activity-ticker" id="activity-ticker-{{ section.id | default: 'main' }}">
+    <div class="activity-message">
+      <span class="activity-icon">🛒</span>
+      <span class="activity-text">Ion din București a cumpărat acum 12 minute</span>
+    </div>
+  </div>
+</div>
+
+<style>
+  .campaign-urgency-messages {
+    margin: 1rem 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+
+  .campaign-scarcity {
+    background: linear-gradient(135deg, #ff9800, #f57c00);
+    color: white;
+    padding: 0.75rem 1rem;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-weight: 600;
+    animation: scarcityBlink 2s infinite;
+    box-shadow: 0 4px 12px rgba(255, 152, 0, 0.3);
+  }
+
+  .campaign-scarcity.sold-out {
+    background: linear-gradient(135deg, #757575, #616161);
+    animation: none;
+  }
+
+  .campaign-scarcity::before {
+    content: '⚠️';
+    font-size: 1.2em;
+    animation: shake 1s infinite;
+  }
+
+  .campaign-time-urgency .urgency-high {
+    background: linear-gradient(135deg, #ff1744, #d50000);
+    color: white;
+    padding: 1rem;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    animation: urgentPulse 1s infinite;
+    box-shadow: 0 4px 15px rgba(255, 23, 68, 0.4);
+  }
+
+  .campaign-time-urgency .urgency-medium {
+    background: linear-gradient(135deg, #ff6b00, #e65100);
+    color: white;
+    padding: 0.875rem;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    animation: pulse 2s infinite;
+    box-shadow: 0 4px 12px rgba(255, 107, 0, 0.3);
+  }
+
+  .urgency-icon {
+    font-size: 1.5em;
+    animation: bounce 1s infinite;
+  }
+
+  .campaign-social-proof {
+    background: rgba(76, 175, 80, 0.1);
+    border: 1px solid rgba(76, 175, 80, 0.3);
+    border-radius: 8px;
+    padding: 0.75rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    animation: pulse 4s infinite;
+  }
+
+  .recent-activity-ticker {
+    background: rgba(33, 150, 243, 0.1);
+    border: 1px solid rgba(33, 150, 243, 0.2);
+    border-radius: 8px;
+    padding: 0.625rem 0.875rem;
+    animation: slideInOut 8s infinite;
+    overflow: hidden;
+  }
+
+  .activity-message {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.9rem;
+    color: #1976d2;
+    font-weight: 500;
+  }
+
+  .activity-icon {
+    animation: bounce 2s infinite;
+  }
+
+  /* Progress indicator styles are inherited from campaign-urgency.css */
+
+  /* Animations */
+  @keyframes scarcityBlink {
+    0%, 50% { opacity: 1; }
+    51%, 100% { opacity: 0.85; }
+  }
+
+  @keyframes shake {
+    0%, 100% { transform: translateX(0); }
+    25% { transform: translateX(-2px); }
+    75% { transform: translateX(2px); }
+  }
+
+  @keyframes urgentPulse {
+    0% { transform: scale(1); opacity: 1; }
+    50% { transform: scale(1.02); opacity: 0.9; }
+    100% { transform: scale(1); opacity: 1; }
+  }
+
+  @keyframes pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.8; }
+  }
+
+  @keyframes bounce {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-3px); }
+  }
+
+  @keyframes slideInOut {
+    0%, 90%, 100% { transform: translateX(0); opacity: 1; }
+    5%, 85% { transform: translateX(-5px); opacity: 0.8; }
+  }
+
+  /* Mobile responsiveness */
+  @media (max-width: 749px) {
+    .campaign-urgency-messages {
+      gap: 0.5rem;
+    }
+
+    .campaign-scarcity,
+    .urgency-high,
+    .urgency-medium {
+      padding: 0.625rem 0.875rem;
+      font-size: 0.9rem;
+    }
+
+    .urgency-icon {
+      font-size: 1.2em;
+    }
+  }
+
+  /* Accessibility */
+  @media (prefers-reduced-motion: reduce) {
+    .campaign-urgency-messages *,
+    .campaign-urgency-messages *::before,
+    .campaign-urgency-messages *::after {
+      animation: none !important;
+    }
+  }
+</style>
+
+<script>
+  // Rotate activity messages for added realism
+  document.addEventListener('DOMContentLoaded', function() {
+    const activityMessages = [
+      { icon: '🛒', text: 'Maria din Cluj-Napoca a cumpărat acum 8 minute' },
+      { icon: '👀', text: 'Andrei din Timișoara se uită la acest produs' },
+      { icon: '🛒', text: 'Elena din Iași a adăugat în coș acum 15 minute' },
+      { icon: '💝', text: 'Cristian din Constanța a finalizat comanda' },
+      { icon: '🔥', text: 'Ana din Brașov a salvat în favorite' },
+    ];
+
+    const tickers = document.querySelectorAll('.recent-activity-ticker');
+
+    tickers.forEach(ticker => {
+      const messageElement = ticker.querySelector('.activity-message');
+      const iconElement = messageElement.querySelector('.activity-icon');
+      const textElement = messageElement.querySelector('.activity-text');
+
+      let currentIndex = 0;
+
+      function updateMessage() {
+        const message = activityMessages[currentIndex];
+        iconElement.textContent = message.icon;
+        textElement.textContent = message.text;
+        currentIndex = (currentIndex + 1) % activityMessages.length;
+      }
+
+      // Update message every 6 seconds
+      setInterval(updateMessage, 6000);
+    });
+  });
+</script>

@@ -1,6 +1,15 @@
+{%- liquid
+  assign is_campaign_product = false
+  if product.metafields.custom.featured_campaign.value.title != blank
+    assign is_campaign_product = true
+  elsif product.selected_or_first_available_variant.compare_at_price and product.selected_or_first_available_variant.compare_at_price > product.selected_or_first_available_variant.price
+    assign is_campaign_product = true
+  endif
+-%}
+
 <product-info
   id="MainProduct-{{ section.id }}"
-  class="section-{{ section.id }}-padding gradient color-{{ section.settings.color_scheme }}"
+  class="section-{{ section.id }}-padding gradient color-{{ section.settings.color_scheme }}{% if is_campaign_product %} campaign-product{% endif %}"
   data-section="{{ section.id }}"
   data-product-id="{{ product.id }}"
   data-update-url="true"
@@ -15,6 +24,10 @@
   {{ 'component-slider.css' | asset_url | stylesheet_tag }}
   {{ 'component-rating.css' | asset_url | stylesheet_tag }}
   {{ 'component-deferred-media.css' | asset_url | stylesheet_tag }}
+
+  {%- if is_campaign_product -%}
+    {{ 'campaign-urgency.css' | asset_url | stylesheet_tag }}
+  {%- endif -%}
 
   {% unless product.has_only_default_variant %}
     {{ 'component-product-variant-picker.css' | asset_url | stylesheet_tag }}
@@ -76,7 +89,11 @@
   <div class="page-width">
     <div class="product product--{{ section.settings.media_size }} product--{{ section.settings.media_position }} product--{{ section.settings.gallery_layout }} product--mobile-{{ section.settings.mobile_thumbnails }} grid grid--1-col {% if product.media.size > 0 %}grid--2-col-tablet{% else %}product--no-media{% endif %}">
       <div class="grid__item product__media-wrapper">
-        {% render 'product-media-gallery', variant_images: variant_images %}
+        {%- if is_campaign_product -%}
+          {% render 'product-media-gallery-campaign', variant_images: variant_images %}
+        {%- else -%}
+          {% render 'product-media-gallery', variant_images: variant_images %}
+        {%- endif -%}
       </div>
       <div class="product__info-wrapper grid__item{% if settings.page_width > 1400 and section.settings.media_size == "small" %} product__info-wrapper--extra-padding{% endif %}{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}">
         <section
@@ -91,6 +108,8 @@
                 {% render block %}
               {%- when 'alc_product_benefits' %}
                 {% render 'alc-product-benefits', product: product %}
+              {%- when 'alc_countdown_timer' %}
+                {% render 'alc-countdown-timer', product: product, block: block %}
               {%- when 'text' -%}
                 <p
                   class="product__text inline-richtext{% if block.settings.text_style == 'uppercase' %} caption-with-letter-spacing{% elsif block.settings.text_style == 'subtitle' %} subtitle{% endif %}"
@@ -961,6 +980,57 @@
       /* Custom block */
       "name": "ALC - Product benefits",
       "type": "alc_product_benefits"
+    },
+    {
+      "name": "ALC - Countdown Timer",
+      "type": "alc_countdown_timer",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "select",
+          "id": "timer_style",
+          "label": "Timer Style",
+          "options": [
+            {
+              "value": "normal",
+              "label": "Normal"
+            },
+            {
+              "value": "urgent",
+              "label": "Urgent"
+            }
+          ],
+          "default": "urgent"
+        },
+        {
+          "type": "color",
+          "id": "background_color",
+          "label": "Background Color",
+          "default": "#d52b36"
+        },
+        {
+          "type": "color",
+          "id": "text_color",
+          "label": "Text Color",
+          "default": "#ffffff"
+        },
+        {
+          "type": "checkbox",
+          "id": "show_progress_bar",
+          "label": "Show Progress Bar",
+          "default": true
+        },
+        {
+          "type": "range",
+          "id": "urgent_threshold_hours",
+          "min": 1,
+          "max": 72,
+          "step": 1,
+          "label": "Urgent Threshold (Hours)",
+          "default": 24,
+          "info": "Timer becomes urgent when less than this many hours remain"
+        }
+      ]
     },
     {
       "name": "ALC - Pickup availability",

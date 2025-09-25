@@ -1,0 +1,357 @@
+{% comment %}
+  Renders a countdown timer for campaign urgency
+
+  Accepts:
+  - product: {Object} Product Liquid object
+  - block: {Object} Block settings object
+{% endcomment %}
+
+{%- liquid
+  assign campaign_end_date = product.metafields.custom.campaign_end_date.value
+  assign featured_campaign = product.metafields.custom.featured_campaign.value
+
+  if campaign_end_date == blank
+    assign campaign_end_date = "2025-01-31T23:59:59"
+  endif
+
+  assign timer_style = block.settings.timer_style | default: "urgent"
+  assign background_color = block.settings.background_color | default: "#d52b36"
+  assign text_color = block.settings.text_color | default: "#ffffff"
+  assign show_progress_bar = block.settings.show_progress_bar | default: true
+  assign urgent_threshold_hours = block.settings.urgent_threshold_hours | default: 24
+-%}
+
+{%- if featured_campaign.title != blank or campaign_end_date != blank -%}
+  <div class="alc-countdown-timer campaign-urgency"
+       data-end-date="{{ campaign_end_date }}"
+       data-urgent-threshold="{{ urgent_threshold_hours }}"
+       style="--timer-bg-color: {{ background_color }}; --timer-text-color: {{ text_color }};"
+       {{ block.shopify_attributes }}>
+
+    {%- if featured_campaign.title != blank -%}
+      <div class="campaign-badge">
+        <span class="campaign-badge__icon">🔥</span>
+        <span class="campaign-badge__text">{{ featured_campaign.title | upcase }}</span>
+      </div>
+    {%- endif -%}
+
+    <div class="countdown-display">
+      <div class="countdown-message">
+        <span class="countdown-message__text">Oferta se termină în:</span>
+      </div>
+
+      <div class="countdown-timer" id="countdown-{{ block.id }}">
+        <div class="countdown-unit">
+          <span class="countdown-number" data-days>0</span>
+          <span class="countdown-label">zile</span>
+        </div>
+        <div class="countdown-separator">:</div>
+        <div class="countdown-unit">
+          <span class="countdown-number" data-hours>0</span>
+          <span class="countdown-label">ore</span>
+        </div>
+        <div class="countdown-separator">:</div>
+        <div class="countdown-unit">
+          <span class="countdown-number" data-minutes>0</span>
+          <span class="countdown-label">min</span>
+        </div>
+        <div class="countdown-separator">:</div>
+        <div class="countdown-unit">
+          <span class="countdown-number" data-seconds>0</span>
+          <span class="countdown-label">sec</span>
+        </div>
+      </div>
+
+      {%- if show_progress_bar -%}
+        <div class="countdown-progress">
+          <div class="countdown-progress__bar" id="progress-{{ block.id }}">
+            <div class="countdown-progress__fill"></div>
+          </div>
+          <div class="countdown-progress__text">
+            <span class="urgency-message">⚡ Grăbește-te! Stoc limitat!</span>
+          </div>
+        </div>
+      {%- endif -%}
+    </div>
+
+    <div class="countdown-expired" id="expired-{{ block.id }}" style="display: none;">
+      <div class="expired-message">
+        <span class="expired-icon">⏰</span>
+        <span class="expired-text">Campania s-a încheiat</span>
+      </div>
+    </div>
+  </div>
+
+  <style>
+    .alc-countdown-timer {
+      background: linear-gradient(135deg, var(--timer-bg-color), #aa1c2a);
+      color: var(--timer-text-color);
+      border-radius: 12px;
+      padding: 1.5rem;
+      margin: 1rem 0;
+      border: 2px solid rgba(255, 255, 255, 0.1);
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .alc-countdown-timer::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 2px;
+      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+      animation: shimmer 3s infinite;
+    }
+
+    @keyframes shimmer {
+      0% { left: -100%; }
+      100% { left: 100%; }
+    }
+
+    .campaign-badge {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      margin-bottom: 0.75rem;
+      font-weight: 700;
+      font-size: 0.875rem;
+      letter-spacing: 0.05em;
+    }
+
+    .campaign-badge__icon {
+      font-size: 1.1rem;
+      animation: pulse 2s infinite;
+    }
+
+    .countdown-message {
+      text-align: center;
+      margin-bottom: 1rem;
+      font-weight: 600;
+      font-size: 1.1rem;
+    }
+
+    .countdown-timer {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 0.5rem;
+      margin-bottom: 1rem;
+    }
+
+    .countdown-unit {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      min-width: 3rem;
+    }
+
+    .countdown-number {
+      font-size: 1.75rem;
+      font-weight: 700;
+      line-height: 1;
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 6px;
+      padding: 0.25rem 0.5rem;
+      min-width: 2.5rem;
+      text-align: center;
+      transition: all 0.3s ease;
+    }
+
+    .countdown-label {
+      font-size: 0.75rem;
+      font-weight: 500;
+      margin-top: 0.25rem;
+      opacity: 0.9;
+    }
+
+    .countdown-separator {
+      font-size: 1.5rem;
+      font-weight: 700;
+      opacity: 0.7;
+      animation: blink 1s infinite;
+    }
+
+    @keyframes blink {
+      0%, 50% { opacity: 0.7; }
+      51%, 100% { opacity: 0.3; }
+    }
+
+    .countdown-progress {
+      margin-top: 1rem;
+    }
+
+    .countdown-progress__bar {
+      background: rgba(255, 255, 255, 0.2);
+      border-radius: 10px;
+      height: 6px;
+      overflow: hidden;
+      position: relative;
+      margin-bottom: 0.5rem;
+    }
+
+    .countdown-progress__fill {
+      background: linear-gradient(90deg, #ffeb3b, #ff9800);
+      height: 100%;
+      border-radius: 10px;
+      transition: width 1s ease;
+      width: 75%;
+      animation: progressPulse 2s infinite alternate;
+    }
+
+    @keyframes progressPulse {
+      0% { opacity: 0.8; }
+      100% { opacity: 1; }
+    }
+
+    .countdown-progress__text {
+      text-align: center;
+      font-size: 0.875rem;
+      font-weight: 600;
+    }
+
+    .urgency-message {
+      animation: pulse 2s infinite;
+    }
+
+    .countdown-expired {
+      text-align: center;
+      padding: 1rem;
+      background: rgba(0, 0, 0, 0.1);
+      border-radius: 8px;
+    }
+
+    .expired-icon {
+      font-size: 1.5rem;
+      margin-right: 0.5rem;
+    }
+
+    .expired-text {
+      font-weight: 600;
+      opacity: 0.8;
+    }
+
+    /* Urgent state when less than threshold hours remain */
+    .alc-countdown-timer.urgent {
+      animation: urgentPulse 1s infinite alternate;
+      background: linear-gradient(135deg, #ff1744, #d50000);
+    }
+
+    @keyframes urgentPulse {
+      0% { box-shadow: 0 4px 20px rgba(255, 23, 68, 0.3); }
+      100% { box-shadow: 0 4px 30px rgba(255, 23, 68, 0.6); }
+    }
+
+    .alc-countdown-timer.urgent .countdown-number {
+      background: rgba(255, 255, 255, 0.2);
+      animation: numberFlash 0.5s infinite alternate;
+    }
+
+    @keyframes numberFlash {
+      0% { background: rgba(255, 255, 255, 0.2); }
+      100% { background: rgba(255, 255, 255, 0.4); }
+    }
+
+    /* Mobile responsive */
+    @media (max-width: 749px) {
+      .alc-countdown-timer {
+        padding: 1rem;
+        margin: 0.75rem 0;
+      }
+
+      .countdown-timer {
+        gap: 0.25rem;
+      }
+
+      .countdown-number {
+        font-size: 1.5rem;
+        min-width: 2rem;
+        padding: 0.2rem 0.4rem;
+      }
+
+      .countdown-label {
+        font-size: 0.7rem;
+      }
+
+      .countdown-message__text {
+        font-size: 1rem;
+      }
+    }
+  </style>
+
+  <script>
+    class CountdownTimer {
+      constructor(element) {
+        this.element = element;
+        this.endDate = new Date(element.dataset.endDate);
+        this.urgentThreshold = parseInt(element.dataset.urgentThreshold) * 60 * 60 * 1000; // Convert hours to milliseconds
+        this.isExpired = false;
+
+        this.daysEl = element.querySelector('[data-days]');
+        this.hoursEl = element.querySelector('[data-hours]');
+        this.minutesEl = element.querySelector('[data-minutes]');
+        this.secondsEl = element.querySelector('[data-seconds]');
+        this.progressEl = element.querySelector('.countdown-progress__fill');
+        this.expiredEl = element.querySelector('.countdown-expired');
+        this.timerEl = element.querySelector('.countdown-display');
+
+        this.update();
+        this.interval = setInterval(() => this.update(), 1000);
+      }
+
+      update() {
+        const now = new Date();
+        const timeRemaining = this.endDate - now;
+
+        if (timeRemaining <= 0) {
+          this.expire();
+          return;
+        }
+
+        const days = Math.floor(timeRemaining / (1000 * 60 * 60 * 24));
+        const hours = Math.floor((timeRemaining % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        const minutes = Math.floor((timeRemaining % (1000 * 60 * 60)) / (1000 * 60));
+        const seconds = Math.floor((timeRemaining % (1000 * 60)) / 1000);
+
+        this.daysEl.textContent = days.toString().padStart(2, '0');
+        this.hoursEl.textContent = hours.toString().padStart(2, '0');
+        this.minutesEl.textContent = minutes.toString().padStart(2, '0');
+        this.secondsEl.textContent = seconds.toString().padStart(2, '0');
+
+        // Update progress bar (example: 7 days campaign)
+        const totalDuration = 7 * 24 * 60 * 60 * 1000; // 7 days in milliseconds
+        const elapsed = totalDuration - timeRemaining;
+        const progress = Math.min((elapsed / totalDuration) * 100, 100);
+
+        if (this.progressEl) {
+          this.progressEl.style.width = `${progress}%`;
+        }
+
+        // Add urgent state if within threshold
+        if (timeRemaining <= this.urgentThreshold) {
+          this.element.classList.add('urgent');
+        }
+      }
+
+      expire() {
+        if (this.isExpired) return;
+
+        this.isExpired = true;
+        clearInterval(this.interval);
+
+        if (this.timerEl) this.timerEl.style.display = 'none';
+        if (this.expiredEl) this.expiredEl.style.display = 'block';
+
+        this.element.classList.add('expired');
+      }
+    }
+
+    // Initialize countdown timers
+    document.addEventListener('DOMContentLoaded', function() {
+      const timers = document.querySelectorAll('.alc-countdown-timer');
+      timers.forEach(timer => new CountdownTimer(timer));
+    });
+  </script>
+{%- endif -%}
