@@ -7,8 +7,8 @@
 {% endcomment %}
 
 {%- liquid
-  assign campaign_end_date = product.metafields.custom.campaign_end_date.value
   assign featured_campaign = product.metafields.custom.featured_campaign.value
+  assign campaign_end_date = featured_campaign.metafields.custom.campaign_end_date.value
 
   if campaign_end_date == blank
     assign campaign_end_date = "2025-01-31T23:59:59"

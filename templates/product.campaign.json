@@ -49,12 +49,6 @@
           "type": "alc_product_benefits",
           "settings": {}
         },
-        "alc_scarcity_messages_Campaign": {
-          "type": "custom_liquid",
-          "settings": {
-            "custom_liquid": "{% render 'alc-scarcity-messages', product: product %}"
-          }
-        },
         "alc_buy_buttons_kb47Ba": {
           "type": "alc_buy_buttons",
           "settings": {
@@ -113,7 +107,6 @@
         "alc_price_8PqTaF",
         "alc_countdown_timer_CampaignNew",
         "alc_product_benefits_kj4nTE",
-        "alc_scarcity_messages_Campaign",
         "alc_buy_buttons_kb47Ba",
         "related_variants_T9dRaW",
         "variant_picker",
