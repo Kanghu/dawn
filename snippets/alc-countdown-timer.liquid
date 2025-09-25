@@ -10,6 +10,12 @@
   assign featured_campaign = product.metafields.custom.featured_campaign.value
   assign campaign_end_date = featured_campaign.metafields.custom.campaign_end_date.value
 
+  # Local development fallback - metafields don't work properly in Shopify CLI
+  if campaign_end_date == blank and request.host contains '127.0.0.1'
+    assign campaign_end_date = "2025-02-15T23:59:59"
+  endif
+
+  # Fallback for any other cases
   if campaign_end_date == blank
     assign campaign_end_date = "2025-01-31T23:59:59"
   endif
@@ -21,6 +27,7 @@
   assign urgent_threshold_hours = block.settings.urgent_threshold_hours | default: 24
 -%}
 
+<!-- DEBUG: featured_campaign: {{ featured_campaign }}, title: {{ featured_campaign.title }}, campaign_end_date: {{ campaign_end_date }} -->
 {%- if featured_campaign.title != blank or campaign_end_date != blank -%}
   <div class="alc-countdown-timer campaign-urgency"
        data-end-date="{{ campaign_end_date }}"
@@ -32,6 +39,14 @@
       <div class="campaign-badge">
         <span class="campaign-badge__icon">🔥</span>
         <span class="campaign-badge__text">{{ featured_campaign.title | upcase }}</span>
+      </div>
+    {%- endif -%}
+
+    {%- if request.host contains '127.0.0.1' and featured_campaign -%}
+      <div class="local-dev-indicator" style="text-align: center; margin-bottom: 0.5rem;">
+        <small style="opacity: 0.7; font-size: 0.75rem; background: rgba(255, 152, 0, 0.1); padding: 0.25rem 0.5rem; border-radius: 4px; border: 1px solid rgba(255, 152, 0, 0.3);">
+          ⚠️ Local dev mode - using placeholder date
+        </small>
       </div>
     {%- endif -%}
 

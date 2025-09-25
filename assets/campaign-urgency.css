@@ -42,32 +42,6 @@
 }
 
 
-/* Enhanced Price Display */
-.campaign-product .alc-price,
-.campaign-product .price {
-  position: relative;
-  padding: 0.75rem;
-  background: linear-gradient(135deg, rgba(255, 23, 68, 0.1), rgba(255, 107, 0, 0.05));
-  border: 2px solid rgba(255, 23, 68, 0.2);
-  border-radius: 12px;
-  margin: 1rem 0;
-}
-
-.campaign-product .alc-price::before,
-.campaign-product .price::before {
-  content: '💸 SUPER PREȚ!';
-  position: absolute;
-  top: -10px;
-  left: 15px;
-  background: linear-gradient(135deg, #ff6b00, #e65100);
-  color: white;
-  padding: 0.25rem 0.75rem;
-  border-radius: 15px;
-  font-size: 0.75rem;
-  font-weight: 700;
-  letter-spacing: 0.05em;
-  animation: urgentPulse 2s infinite;
-}
 
 /* Scarcity Indicators */
 .campaign-scarcity {
@@ -109,19 +83,7 @@
   margin-bottom: 1.5rem !important;
 }
 
-.campaign-product .product__title::after {
-  content: '🔥 OFERTĂ LIMITATĂ 🔥';
-  position: absolute;
-  bottom: -1.2rem;
-  left: 0;
-  right: 0;
-  text-align: center;
-  font-size: 0.8rem;
-  font-weight: 700;
-  color: #ff1744;
-  letter-spacing: 0.1em;
-  animation: urgentPulse 2s infinite;
-}
+/* Limited offer text is now controlled via theme editor - removed hardcoded ::after pseudo-element */
 
 /* Floating action elements */
 .campaign-floating-message {
@@ -281,12 +243,6 @@
 
 /* High contrast mode support */
 @media (prefers-contrast: high) {
-  .campaign-product .alc-price,
-  .campaign-product .price {
-    border: 3px solid #ff1744;
-    background: white;
-  }
-
   .campaign-discount-badge,
   .campaign-featured-badge {
     border: 2px solid white;
@@ -295,11 +251,6 @@
 
 /* Dark mode support */
 @media (prefers-color-scheme: dark) {
-  .campaign-product .alc-price,
-  .campaign-product .price {
-    background: linear-gradient(135deg, rgba(255, 23, 68, 0.2), rgba(255, 107, 0, 0.1));
-  }
-
   .campaign-scarcity {
     background: linear-gradient(135deg, #f57c00, #ef6c00);
   }

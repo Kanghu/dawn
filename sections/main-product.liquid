@@ -125,6 +125,19 @@
                       {{ product.title | escape }}
                     </h2>
                   </a>
+                  {%- if section.settings.limited_offer_text != blank -%}
+                    <div class="limited-offer-text" style="
+                      text-align: center;
+                      margin-top: 0.75rem;
+                      font-size: 0.875rem;
+                      font-weight: 700;
+                      color: #ff1744;
+                      letter-spacing: 0.1em;
+                      animation: pulse 2s infinite;
+                    ">
+                      {{ section.settings.limited_offer_text }}
+                    </div>
+                  {%- endif -%}
                 </div>
               {%- when 'price' -%}
                 <div id="price-{{ section.id }}" role="status" {{ block.shopify_attributes }}>
@@ -494,7 +507,8 @@
                   use_variant: true,
                   show_badges: true,
                   price_class: 'price--large',
-                  block: block
+                  block: block,
+                  section: section
                 -%}
               {%- when 'buy_buttons' -%}
                 {%- render 'buy-buttons',
@@ -2542,6 +2556,78 @@
       "type": "color",
       "id": "discount_badge_text",
       "label": "Discount Badge Text",
+      "default": "#ffffff"
+    },
+    {
+      "type": "header",
+      "content": "Enhanced Price Display"
+    },
+    {
+      "type": "checkbox",
+      "id": "enable_enhanced_price",
+      "label": "Enable Enhanced Price Display",
+      "default": false,
+      "info": "Add background, border and styling to price display"
+    },
+    {
+      "type": "color",
+      "id": "price_bg_start",
+      "label": "Price Background Start Color",
+      "default": "#ff1744"
+    },
+    {
+      "type": "color",
+      "id": "price_bg_end",
+      "label": "Price Background End Color",
+      "default": "#ff6b00"
+    },
+    {
+      "type": "checkbox",
+      "id": "enable_price_border",
+      "label": "Enable Price Border",
+      "default": false
+    },
+    {
+      "type": "color",
+      "id": "price_border_color",
+      "label": "Price Border Color",
+      "default": "#ff1744"
+    },
+    {
+      "type": "checkbox",
+      "id": "enable_super_price_badge",
+      "label": "Enable Super Price Badge",
+      "default": false,
+      "info": "Show badge above price (e.g., 'SUPER PREȚ!')"
+    },
+    {
+      "type": "text",
+      "id": "super_price_badge_text",
+      "label": "Super Price Badge Text",
+      "default": "💸 SUPER PREȚ!"
+    },
+    {
+      "type": "text",
+      "id": "limited_offer_text",
+      "label": "Limited offer text (shown after product title)",
+      "info": "Leave empty to hide. Example: '🔥 OFERTĂ LIMITATĂ 🔥'"
+    },
+    {
+      "type": "color",
+      "id": "super_badge_bg_start",
+      "label": "Super Badge Background Start",
+      "default": "#ff6b00"
+    },
+    {
+      "type": "color",
+      "id": "super_badge_bg_end",
+      "label": "Super Badge Background End",
+      "default": "#e65100"
+    },
+    {
+      "type": "color",
+      "id": "super_badge_text_color",
+      "label": "Super Badge Text Color",
       "default": "#ffffff"
     }
   ]

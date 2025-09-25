@@ -3,6 +3,7 @@
 
   New/Updated Accepts:
   - product: {Object} Product Liquid object (optional)
+  - section: {Object} Section object for accessing enhanced price settings (optional)
   - placeholder: {Boolean} Renders a placeholder price (optional)
   - use_variant: {Boolean} Renders selected or first variant price instead of overall product pricing (optional)
   - show_badges: {Boolean} Renders 'Sale' and 'Sold Out' tags if the product matches the condition (optional)
@@ -16,6 +17,7 @@
   - compare_price_color: {Color} CSS color for the compare-at price text
   - sale_badge_text: {String} Replaces default "Sale" text
   - Show difference between compare_at_price and price on a separate badge
+  - Enhanced price display settings from theme editor (when section is passed)
 {% endcomment %}
 
 <style>
@@ -74,6 +76,31 @@
       assign eur_compare_price_money = eur_compare_at_price | money_without_currency | append: ' €'
     endif
   endif
+
+  # Enhanced price display settings from theme editor
+  assign enable_enhanced_price = false
+  assign enable_price_border = false
+  assign enable_super_price_badge = false
+  assign price_bg_start = '#ff1744'
+  assign price_bg_end = '#ff6b00'
+  assign price_border_color = '#ff1744'
+  assign super_price_badge_text = '💸 SUPER PREȚ!'
+  assign super_badge_bg_start = '#ff6b00'
+  assign super_badge_bg_end = '#e65100'
+  assign super_badge_text_color = '#ffffff'
+
+  if section
+    assign enable_enhanced_price = section.settings.enable_enhanced_price | default: false
+    assign enable_price_border = section.settings.enable_price_border | default: false
+    assign enable_super_price_badge = section.settings.enable_super_price_badge | default: false
+    assign price_bg_start = section.settings.price_bg_start | default: '#ff1744'
+    assign price_bg_end = section.settings.price_bg_end | default: '#ff6b00'
+    assign price_border_color = section.settings.price_border_color | default: '#ff1744'
+    assign super_price_badge_text = section.settings.super_price_badge_text | default: '💸 SUPER PREȚ!'
+    assign super_badge_bg_start = section.settings.super_badge_bg_start | default: '#ff6b00'
+    assign super_badge_bg_end = section.settings.super_badge_bg_end | default: '#e65100'
+    assign super_badge_text_color = section.settings.super_badge_text_color | default: '#ffffff'
+  endif
 -%}
 
 {%- unless target == null and placeholder == null -%}
@@ -118,8 +145,37 @@
       {%- if compare_at_price > price and product.quantity_price_breaks_configured? %} volume-pricing--sale-badge{% endif -%}
       {%- if product.price_varies == false and product.compare_at_price_varies %} price--no-compare{% endif -%}
       {%- if show_badges %} price--show-badge{% endif -%}
-    ">
+    "
+    {%- if enable_enhanced_price -%}
+      style="
+        background: linear-gradient(135deg, {{ price_bg_start }}, {{ price_bg_end }});
+        color: white;
+        padding: 1rem 1.5rem;
+        border-radius: 12px;
+        margin: 1rem 0;
+        position: relative;
+        {% if enable_price_border %}border: 2px solid {{ price_border_color }};{% endif %}
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+      "
+    {%- endif -%}>
     <div class="price__container flex flex-col">
+      {%- comment -%} Super price badge {%- endcomment -%}
+      {%- if enable_super_price_badge -%}
+        <div class="super-price-badge" style="
+          background: linear-gradient(135deg, {{ super_badge_bg_start }}, {{ super_badge_bg_end }});
+          color: {{ super_badge_text_color }};
+          padding: 0.5rem 1rem;
+          border-radius: 20px;
+          text-align: center;
+          font-weight: 700;
+          font-size: 0.875rem;
+          margin-bottom: 0.75rem;
+          animation: pulse 2s infinite;
+        ">
+          {{ super_price_badge_text }}
+        </div>
+      {%- endif -%}
+
       {%- comment -%}
         ======================
         REGULAR PRICE SECTION
@@ -269,7 +325,7 @@
       </div>
 
       {% if show_sale_badge and block.settings.difference_display_style == 'text' %}
-        <div class="price-difference-text text-lg" style="color: black;">{{ 'alc-benefits.savings' | t: amount: diff_money }}</div>
+        <div class="price-difference-text text-lg font-bold" style="color: black;">{{ 'alc-benefits.savings' | t: amount: diff_money }}</div>
       {% endif %}
 
     </div>
@@ -284,7 +340,7 @@
               color: {{ block.settings.difference_price_text_color }};
               background-color: {{ block.settings.difference_price_color }};
             ">
-            {{ 'alc-benefits.savings' | t: amount: diff_money }}
+            <strong>{{ 'alc-benefits.savings' | t: amount: diff_money }}</strong>
           </span>
         {% endif %}
 
