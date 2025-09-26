@@ -54,6 +54,14 @@
             "urgent_threshold_hours": 24
           }
         },
+        "inventory_mRFHDX": {
+          "type": "inventory",
+          "settings": {
+            "text_style": "body",
+            "inventory_threshold": 0,
+            "show_inventory_quantity": true
+          }
+        },
         "alc_product_benefits_kj4nTE": {
           "type": "alc_product_benefits",
           "settings": {}
@@ -78,14 +86,6 @@
           "settings": {
             "picker_type": "button",
             "swatch_shape": "circle"
-          }
-        },
-        "inventory_urgency_NewCampaign": {
-          "type": "inventory",
-          "settings": {
-            "text_style": "uppercase",
-            "inventory_threshold": 10,
-            "show_inventory_quantity": true
           }
         },
         "custom_liquid_EeQGgT": {
@@ -115,11 +115,11 @@
         "caption",
         "alc_price_8PqTaF",
         "alc_countdown_timer_CampaignNew",
+        "inventory_mRFHDX",
         "alc_product_benefits_kj4nTE",
         "alc_buy_buttons_kb47Ba",
         "related_variants_T9dRaW",
         "variant_picker",
-        "inventory_urgency_NewCampaign",
         "custom_liquid_EeQGgT",
         "complementary_jKHL39"
       ],
@@ -144,7 +144,24 @@
         "hide_variants": true,
         "enable_video_looping": false,
         "padding_top": 12,
-        "padding_bottom": 12
+        "padding_bottom": 12,
+        "campaign_badge_bg_start": "#d52b36",
+        "campaign_badge_bg_end": "#aa1c2a",
+        "campaign_badge_text": "#ffffff",
+        "discount_badge_bg_start": "#ff1744",
+        "discount_badge_bg_end": "#d50000",
+        "discount_badge_text": "#ffffff",
+        "enable_enhanced_price": false,
+        "price_bg_start": "#ff1744",
+        "price_bg_end": "#ff6b00",
+        "enable_price_border": false,
+        "price_border_color": "#ff1744",
+        "enable_super_price_badge": false,
+        "super_price_badge_text": "💸 SUPER PREȚ!",
+        "limited_offer_text": "",
+        "super_badge_bg_start": "#ff6b00",
+        "super_badge_bg_end": "#e65100",
+        "super_badge_text_color": "#ffffff"
       }
     },
     "related-products": {
