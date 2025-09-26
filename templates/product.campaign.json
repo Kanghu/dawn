@@ -58,7 +58,7 @@
           "type": "inventory",
           "settings": {
             "text_style": "body",
-            "inventory_threshold": 0,
+            "inventory_threshold": 30,
             "show_inventory_quantity": true
           }
         },
@@ -151,11 +151,11 @@
         "discount_badge_bg_start": "#ff1744",
         "discount_badge_bg_end": "#d50000",
         "discount_badge_text": "#ffffff",
-        "enable_enhanced_price": false,
-        "price_bg_start": "#ff1744",
-        "price_bg_end": "#ff6b00",
-        "enable_price_border": false,
-        "price_border_color": "#ff1744",
+        "enable_enhanced_price": true,
+        "price_bg_start": "#fadae1",
+        "price_bg_end": "#ffffff",
+        "enable_price_border": true,
+        "price_border_color": "#ffb8c8",
         "enable_super_price_badge": false,
         "super_price_badge_text": "💸 SUPER PREȚ!",
         "limited_offer_text": "",
