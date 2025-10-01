@@ -104,7 +104,7 @@
               style="--animation-order: {{ forloop.index }};"
             {% endif %}
           >
-            {% render 'card-product',
+            {% render 'alc-card-product',
               card_product: product,
               media_aspect_ratio: section.settings.image_ratio,
               image_shape: section.settings.image_shape,
@@ -136,7 +136,7 @@
                 endcase
               %}
               {%- assign placeholder_image = 'product-apparel-' | append: ridx -%}
-              {% render 'card-product',
+              {% render 'alc-card-product',
                 show_vendor: section.settings.show_vendor,
                 media_aspect_ratio: section.settings.image_ratio,
                 image_shape: section.settings.image_shape,

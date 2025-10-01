@@ -60,6 +60,29 @@
   assign discount_bg_start = section.settings.discount_badge_bg_start | default: '#ff1744'
   assign discount_bg_end = section.settings.discount_badge_bg_end | default: '#d50000'
   assign discount_text = section.settings.discount_badge_text | default: '#ffffff'
+
+  # Badge sizing and effects
+  assign enable_discount_glow = section.settings.enable_discount_glow | default: true
+  assign discount_glow_color = section.settings.discount_glow_color | default: '#ff1744'
+  assign discount_badge_corner_size = section.settings.discount_badge_corner_size | default: 100
+  assign campaign_banner_height = section.settings.campaign_banner_height | default: 100
+
+  # Free shipping badge settings
+  assign enable_free_shipping_badge = section.settings.enable_free_shipping_badge | default: false
+  assign free_shipping_threshold = section.settings.free_shipping_threshold | default: 0
+  assign free_shipping_badge_bg_start = section.settings.free_shipping_badge_bg_start | default: '#4caf50'
+  assign free_shipping_badge_bg_end = section.settings.free_shipping_badge_bg_end | default: '#2e7d32'
+  assign free_shipping_badge_text = section.settings.free_shipping_badge_text | default: '#ffffff'
+  assign free_shipping_badge_position = section.settings.free_shipping_badge_position | default: 'top-left'
+
+  # Check if product qualifies for free shipping
+  assign show_free_shipping_badge = false
+  if enable_free_shipping_badge
+    assign product_price_in_currency = current_price | divided_by: 100.0
+    if product_price_in_currency >= free_shipping_threshold
+      assign show_free_shipping_badge = true
+    endif
+  endif
 -%}
 
 <media-gallery
@@ -70,7 +93,7 @@
   {% endif %}
   aria-label="{{ 'products.product.media.gallery_viewer' | t }}"
   data-desktop-layout="{{ section.settings.gallery_layout }}"
-  style="--campaign-bg-start: {{ campaign_bg_start }}; --campaign-bg-end: {{ campaign_bg_end }}; --campaign-text: {{ campaign_text }}; --discount-bg-start: {{ discount_bg_start }}; --discount-bg-end: {{ discount_bg_end }}; --discount-text: {{ discount_text }};"
+  style="--campaign-bg-start: {{ campaign_bg_start }}; --campaign-bg-end: {{ campaign_bg_end }}; --campaign-text: {{ campaign_text }}; --discount-bg-start: {{ discount_bg_start }}; --discount-bg-end: {{ discount_bg_end }}; --discount-text: {{ discount_text }}; --discount-glow-color: {{ discount_glow_color }}; --badge-corner-scale: {{ discount_badge_corner_size | times: 0.01 }}; --banner-height-scale: {{ campaign_banner_height | times: 0.01 }}; --free-shipping-bg-start: {{ free_shipping_badge_bg_start }}; --free-shipping-bg-end: {{ free_shipping_badge_bg_end }}; --free-shipping-text: {{ free_shipping_badge_text }};"
 >
   <div id="GalleryStatus-{{ section.id }}" class="visually-hidden" role="status"></div>
   <slider-component id="GalleryViewer-{{ section.id }}" class="slider-mobile-gutter campaign-media-gallery">
@@ -125,6 +148,34 @@
             constrain_to_viewport: section.settings.constrain_to_viewport,
             lazy_load: false
           %}
+
+          <!-- Campaign Badges - Positioned after thumbnail to avoid click blocking -->
+          <!-- Free Shipping Badge -->
+          {%- if show_free_shipping_badge -%}
+            <div class="free-shipping-badge free-shipping-{{ free_shipping_badge_position }}">
+              <span class="free-shipping-icon">🚚</span>
+              <span class="free-shipping-text">{{ 'alc-benefits.free_shipping' | t }}</span>
+            </div>
+          {%- endif -%}
+
+          <!-- Discount Badge (Top Right Corner) -->
+          {%- if discount_percentage > 0 -%}
+            <div class="campaign-discount-badge">
+              <span class="discount-percentage">-{{ discount_percentage }}%</span>
+              <span class="discount-text">REDUCERE</span>
+            </div>
+          {%- endif -%}
+
+          <!-- Featured Campaign Badge (Bottom Banner) -->
+          {%- if featured_campaign.title != blank -%}
+            <div class="campaign-featured-badge">
+              <div class="featured-badge-content">
+                <span class="featured-badge-icon">🔥</span>
+                <span class="featured-badge-text">{{ featured_campaign.title | upcase }}</span>
+                <span class="featured-badge-icon">🔥</span>
+              </div>
+            </div>
+          {%- endif -%}
         </li>
       {%- endif -%}
       {%- for media in product.media -%}
@@ -186,6 +237,36 @@
               constrain_to_viewport: section.settings.constrain_to_viewport,
               lazy_load: lazy_load
             %}
+
+            <!-- Only show badges on first image -->
+            {%- if forloop.first and product.selected_or_first_available_variant.featured_media == nil -%}
+              <!-- Free Shipping Badge -->
+              {%- if show_free_shipping_badge -%}
+                <div class="free-shipping-badge free-shipping-{{ free_shipping_badge_position }}">
+                  <span class="free-shipping-icon">🚚</span>
+                  <span class="free-shipping-text">{{ 'alc-benefits.free_shipping' | t }}</span>
+                </div>
+              {%- endif -%}
+
+              <!-- Discount Badge (Top Right Corner) -->
+              {%- if discount_percentage > 0 -%}
+                <div class="campaign-discount-badge">
+                  <span class="discount-percentage">-{{ discount_percentage }}%</span>
+                  <span class="discount-text">REDUCERE</span>
+                </div>
+              {%- endif -%}
+
+              <!-- Featured Campaign Badge (Bottom Banner) -->
+              {%- if featured_campaign.title != blank -%}
+                <div class="campaign-featured-badge">
+                  <div class="featured-badge-content">
+                    <span class="featured-badge-icon">🔥</span>
+                    <span class="featured-badge-text">{{ featured_campaign.title | upcase }}</span>
+                    <span class="featured-badge-icon">🔥</span>
+                  </div>
+                </div>
+              {%- endif -%}
+            {%- endif -%}
           </li>
         {%- endunless -%}
       {%- endfor -%}
@@ -257,44 +338,40 @@
             data-target="{{ section.id }}-{{ featured_media.id }}"
             data-media-position="1"
           >
-            {%- if featured_media.media_type == 'model' -%}
-              <span class="thumbnail-badge" aria-label="{{ 'products.product.media.view_in_space_label' | t }}">
-                <span class="svg-wrapper">
-                  {{- 'icon-3d-model.svg' | inline_asset_content -}}
-                </span>
-              </span>
-            {%- endif -%}
-            {%- if featured_media.media_type == 'video' or featured_media.media_type == 'external_video' -%}
-              <span class="thumbnail-badge" aria-label="{{ 'products.product.media.play_video' | t }}">
-                <span class="svg-wrapper">
-                  {{- 'icon-play.svg' | inline_asset_content -}}
-                </span>
-              </span>
-            {%- endif -%}
-            {{
-              featured_media.preview_image
-              | image_url: width: 416
-              | image_tag:
-                class: 'thumbnail global-media-settings',
-                sizes: sizes,
-                widths: '54, 74, 104, 162, 208, 324, 416',
-                alt: featured_media.alt
-              | escape
-            }}
+            {%- capture thumbnail_id -%}
+              Thumbnail-{{ section.id }}-0
+            {%- endcapture -%}
             <button
-              class="thumbnail__media thumbnail__media--{{ featured_media.media_type }} media media--transparent"
+              class="thumbnail global-media-settings global-media-settings--no-shadow"
               aria-label="{%- if featured_media.media_type == 'image' -%}{{ 'products.product.media.load_image' | t: index: media_position }}{%- elsif featured_media.media_type == 'model' -%}{{ 'products.product.media.load_model' | t: index: media_position }}{%- elsif featured_media.media_type == 'video' or featured_media.media_type == 'external_video' -%}{{ 'products.product.media.load_video' | t: index: media_position }}{%- endif -%}"
               aria-current="true"
-              aria-describedby="Thumbnail-{{ section.id }}-0 GalleryViewer-{{ section.id }}"
-              style="aspect-ratio: {{ featured_media.aspect_ratio }}"
+              aria-controls="GalleryViewer-{{ section.id }}"
+              aria-describedby="{{ thumbnail_id }}"
             >
-              <img
-                class="thumbnail__image"
-                alt=""
-                src="{{ featured_media | image_url: width: 416 }}"
-                width="416"
-                height="{{ 416 | divided_by: featured_media.aspect_ratio | ceil }}"
-              >
+              {%- if featured_media.media_type == 'model' -%}
+                <span class="thumbnail__badge" aria-hidden="true">
+                  <span class="svg-wrapper">
+                    {{- 'icon-3d-model.svg' | inline_asset_content -}}
+                  </span>
+                </span>
+              {%- elsif featured_media.media_type == 'video' or featured_media.media_type == 'external_video' -%}
+                <span class="thumbnail__badge" aria-hidden="true">
+                  <span class="svg-wrapper">
+                    {{- 'icon-play.svg' | inline_asset_content -}}
+                  </span>
+                </span>
+              {%- endif -%}
+              {{
+                featured_media.preview_image
+                | image_url: width: 416
+                | image_tag:
+                  loading: 'lazy',
+                  sizes: sizes,
+                  widths: '54, 74, 104, 162, 208, 324, 416',
+                  id: thumbnail_id,
+                  alt: featured_media.alt
+                | escape
+              }}
             </button>
           </li>
         {%- endif -%}
@@ -306,43 +383,45 @@
               data-target="{{ section.id }}-{{ media.id }}"
               data-media-position="{{ media.position }}"
             >
-              {%- if media.media_type == 'model' -%}
-                <span class="thumbnail-badge" aria-label="{{ 'products.product.media.view_in_space_label' | t }}">
-                  <span class="svg-wrapper">
-                    {{- 'icon-3d-model.svg' | inline_asset_content -}}
-                  </span>
-                </span>
-              {%- endif -%}
-              {%- if media.media_type == 'video' or media.media_type == 'external_video' -%}
-                <span class="thumbnail-badge" aria-label="{{ 'products.product.media.play_video' | t }}">
-                  <span class="svg-wrapper">
-                    {{- 'icon-play.svg' | inline_asset_content -}}
-                  </span>
-                </span>
-              {%- endif -%}
-              {{
-                media.preview_image
-                | image_url: width: 416
-                | image_tag:
-                  class: 'thumbnail global-media-settings',
-                  sizes: sizes,
-                  widths: '54, 74, 104, 162, 208, 324, 416',
-                  alt: media.alt
-                | escape
-              }}
+              {%- capture thumbnail_id -%}
+                Thumbnail-{{ section.id }}-{{ forloop.index }}
+              {%- endcapture -%}
               <button
-                class="thumbnail__media thumbnail__media--{{ media.media_type }} media media--transparent"
+                class="thumbnail global-media-settings global-media-settings--no-shadow"
                 aria-label="{%- if media.media_type == 'image' -%}{{ 'products.product.media.load_image' | t: index: media.position }}{%- elsif media.media_type == 'model' -%}{{ 'products.product.media.load_model' | t: index: media.position }}{%- elsif media.media_type == 'video' or media.media_type == 'external_video' -%}{{ 'products.product.media.load_video' | t: index: media.position }}{%- endif -%}"
-                aria-describedby="Thumbnail-{{ section.id }}-{{ media.position }} GalleryViewer-{{ section.id }}"
-                style="aspect-ratio: {{ media.aspect_ratio }}"
+                {% if media == product.selected_or_first_available_variant.featured_media
+                  or product.selected_or_first_available_variant.featured_media == null
+                  and forloop.index == 1
+                %}
+                  aria-current="true"
+                {% endif %}
+                aria-controls="GalleryViewer-{{ section.id }}"
+                aria-describedby="{{ thumbnail_id }}"
               >
-                <img
-                  class="thumbnail__image"
-                  alt=""
-                  src="{{ media | image_url: width: 416 }}"
-                  width="416"
-                  height="{{ 416 | divided_by: media.aspect_ratio | ceil }}"
-                >
+                {%- if media.media_type == 'model' -%}
+                  <span class="thumbnail__badge" aria-hidden="true">
+                    <span class="svg-wrapper">
+                      {{- 'icon-3d-model.svg' | inline_asset_content -}}
+                    </span>
+                  </span>
+                {%- elsif media.media_type == 'video' or media.media_type == 'external_video' -%}
+                  <span class="thumbnail__badge" aria-hidden="true">
+                    <span class="svg-wrapper">
+                      {{- 'icon-play.svg' | inline_asset_content -}}
+                    </span>
+                  </span>
+                {%- endif -%}
+                {{
+                  media.preview_image
+                  | image_url: width: 416
+                  | image_tag:
+                    loading: 'lazy',
+                    sizes: sizes,
+                    widths: '54, 74, 104, 162, 208, 324, 416',
+                    id: thumbnail_id,
+                    alt: media.alt
+                  | escape
+                }}
               </button>
             </li>
           {%- endunless -%}
@@ -373,22 +452,27 @@
   /* Discount badge (top right corner) */
   .campaign-discount-badge {
     position: absolute;
-    top: 1rem;
-    right: 1rem;
+    top: calc(1rem * var(--badge-corner-scale, 1));
+    right: calc(1rem * var(--badge-corner-scale, 1));
     z-index: 2;
     pointer-events: none;
     background: linear-gradient(135deg, var(--discount-bg-start), var(--discount-bg-end));
     color: var(--discount-text);
-    padding: 0.5rem 0.75rem;
-    border-radius: 8px;
+    padding: calc(0.5rem * var(--badge-corner-scale, 1)) calc(0.75rem * var(--badge-corner-scale, 1));
+    border-radius: calc(8px * var(--badge-corner-scale, 1));
     display: flex;
     flex-direction: column;
     align-items: center;
-    min-width: 4rem;
-    box-shadow: 0 4px 12px rgba(255, 23, 68, 0.4);
-    transform: rotate(-5deg);
+    min-width: calc(4rem * var(--badge-corner-scale, 1));
+    transform: rotate(-5deg) scale(var(--badge-corner-scale, 1));
+    transform-origin: top right;
     animation: discountBounce 2s infinite alternate;
     font-family: var(--font-heading-family, inherit);
+  }
+
+  /* Conditional glow */
+  media-gallery[style*="--discount-glow-color"] .campaign-discount-badge {
+    box-shadow: 0 4px 12px color-mix(in srgb, var(--discount-glow-color) 40%, transparent);
   }
 
   .discount-percentage {
@@ -422,18 +506,20 @@
     background: linear-gradient(90deg, color-mix(in srgb, var(--campaign-bg-start) 95%, transparent), color-mix(in srgb, var(--campaign-bg-end) 95%, transparent));
     backdrop-filter: blur(4px);
     border-top: 2px solid rgba(255, 255, 255, 0.2);
+    transform: scaleY(var(--banner-height-scale, 1));
+    transform-origin: bottom;
   }
 
   .featured-badge-content {
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 0.75rem 1rem;
-    gap: 0.5rem;
+    padding: calc(0.75rem * var(--banner-height-scale, 1)) calc(1rem * var(--banner-height-scale, 1));
+    gap: calc(0.5rem * var(--banner-height-scale, 1));
   }
 
   .featured-badge-text {
-    font-size: 0.875rem;
+    font-size: calc(0.875rem * var(--banner-height-scale, 1));
     font-weight: 700;
     letter-spacing: 0.1em;
     color: var(--campaign-text);
@@ -442,8 +528,86 @@
   }
 
   .featured-badge-icon {
-    font-size: 1rem;
+    font-size: calc(1rem * var(--banner-height-scale, 1));
     animation: flameFlicker 1s infinite alternate;
+  }
+
+  /* Free shipping badge */
+  .free-shipping-badge {
+    position: absolute;
+    z-index: 3;
+    pointer-events: none;
+    background: linear-gradient(135deg, var(--free-shipping-bg-start), var(--free-shipping-bg-end));
+    color: var(--free-shipping-text);
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    box-shadow: 0 4px 12px rgba(76, 175, 80, 0.4);
+    animation: freeShippingPulse 2s infinite alternate;
+    font-family: var(--font-heading-family, inherit);
+  }
+
+  .free-shipping-top-left {
+    top: 1rem;
+    left: 1rem;
+  }
+
+  .free-shipping-top-center {
+    top: 1rem;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+
+  .free-shipping-bottom-center {
+    bottom: 3.5rem;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+
+  .free-shipping-icon {
+    font-size: 1.25rem;
+    line-height: 1;
+  }
+
+  .free-shipping-text {
+    font-size: 0.875rem;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
+  }
+
+  @keyframes freeShippingPulse {
+    0% {
+      box-shadow: 0 4px 12px rgba(76, 175, 80, 0.4);
+      transform: scale(1);
+    }
+    100% {
+      box-shadow: 0 6px 16px rgba(76, 175, 80, 0.6);
+      transform: scale(1.03);
+    }
+  }
+
+  /* Adjust animation for positioned badges */
+  .free-shipping-top-center {
+    animation: freeShippingPulseCenter 2s infinite alternate;
+  }
+
+  .free-shipping-bottom-center {
+    animation: freeShippingPulseCenter 2s infinite alternate;
+  }
+
+  @keyframes freeShippingPulseCenter {
+    0% {
+      box-shadow: 0 4px 12px rgba(76, 175, 80, 0.4);
+      transform: translateX(-50%) scale(1);
+    }
+    100% {
+      box-shadow: 0 6px 16px rgba(76, 175, 80, 0.6);
+      transform: translateX(-50%) scale(1.03);
+    }
   }
 
   @keyframes campaignPulse {
@@ -459,10 +623,10 @@
   /* Mobile responsive */
   @media (max-width: 749px) {
     .campaign-discount-badge {
-      top: 0.5rem;
-      right: 0.5rem;
-      padding: 0.4rem 0.6rem;
-      min-width: 3rem;
+      top: calc(0.5rem * var(--badge-corner-scale, 1));
+      right: calc(0.5rem * var(--badge-corner-scale, 1));
+      padding: calc(0.4rem * var(--badge-corner-scale, 1)) calc(0.6rem * var(--badge-corner-scale, 1));
+      min-width: calc(3rem * var(--badge-corner-scale, 1));
     }
 
     .discount-percentage {
@@ -474,16 +638,41 @@
     }
 
     .featured-badge-content {
-      padding: 0.5rem 0.75rem;
-      gap: 0.25rem;
+      padding: calc(0.5rem * var(--banner-height-scale, 1)) calc(0.75rem * var(--banner-height-scale, 1));
+      gap: calc(0.25rem * var(--banner-height-scale, 1));
     }
 
     .featured-badge-text {
-      font-size: 0.75rem;
+      font-size: calc(0.75rem * var(--banner-height-scale, 1));
     }
 
     .featured-badge-icon {
-      font-size: 0.875rem;
+      font-size: calc(0.875rem * var(--banner-height-scale, 1));
+    }
+
+    .free-shipping-badge {
+      padding: 0.4rem 0.75rem;
+    }
+
+    .free-shipping-top-left {
+      top: 0.5rem;
+      left: 0.5rem;
+    }
+
+    .free-shipping-top-center {
+      top: 0.5rem;
+    }
+
+    .free-shipping-bottom-center {
+      bottom: 3rem;
+    }
+
+    .free-shipping-icon {
+      font-size: 1rem;
+    }
+
+    .free-shipping-text {
+      font-size: 0.7rem;
     }
   }
 
@@ -509,12 +698,12 @@
 
   @keyframes urgentFlash {
     0% {
-      box-shadow: 0 4px 12px rgba(255, 107, 0, 0.6);
-      transform: rotate(-5deg) scale(1);
+      box-shadow: 0 4px 12px color-mix(in srgb, var(--discount-glow-color, #ff6b00) 60%, transparent);
+      transform: rotate(-5deg) scale(var(--badge-corner-scale, 1));
     }
     100% {
-      box-shadow: 0 6px 20px rgba(255, 107, 0, 0.8);
-      transform: rotate(-5deg) scale(1.05);
+      box-shadow: 0 6px 20px color-mix(in srgb, var(--discount-glow-color, #ff6b00) 80%, transparent);
+      transform: rotate(-5deg) scale(calc(var(--badge-corner-scale, 1) * 1.05));
     }
   }
 </style>

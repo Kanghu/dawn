@@ -8,6 +8,34 @@
   {{ 'roboto_n5' | font_face }}
   {{ 'roboto_i4' | font_face }}
 </style>
+{%- liquid
+  assign show_stock_status = true
+  assign show_delivery = true
+  assign show_price_info = true
+  assign show_return_policy = true
+  assign show_warranty = true
+  assign high_stock_threshold = 15
+  assign medium_stock_threshold = 5
+  assign low_stock_threshold = 1
+
+  if block
+    assign show_stock_status = block.settings.show_stock_status
+    assign show_delivery = block.settings.show_delivery
+    assign show_price_info = block.settings.show_price_info
+    assign show_return_policy = block.settings.show_return_policy
+    assign show_warranty = block.settings.show_warranty
+
+    if block.settings.high_stock_threshold
+      assign high_stock_threshold = block.settings.high_stock_threshold
+    endif
+    if block.settings.medium_stock_threshold
+      assign medium_stock_threshold = block.settings.medium_stock_threshold
+    endif
+    if block.settings.low_stock_threshold
+      assign low_stock_threshold = block.settings.low_stock_threshold
+    endif
+  endif
+-%}
 <div
   class="w-full flex flex-col gap-2 lg:pr-5"
   style="
@@ -19,9 +47,9 @@
   "
 >
 
-
+{% if show_stock_status %}
   {% if product.available %}
-    {% if product.variants.first.inventory_quantity > 15 or product.variants.first.inventory_policy == 'continue' %}
+    {% if product.variants.first.inventory_quantity > high_stock_threshold or product.variants.first.inventory_policy == 'continue' %}
       <div class="flex flex-col items-start md:space-y-1 md:w-1/2 text-xl font-semibold" style="color: green">
         <div class="flex items-center text-green text-15px leading-tight -tracking-0.39">
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="size-6">
@@ -33,51 +61,55 @@
       </div>
 
     {% else %}
-      {% if product.variants.first.inventory_quantity == 1 %}
-              <div class="flex flex-col items-start md:space-y-1 md:w-1/2 text-lg font-semibold" style="color: #ff6b00">
-        <div class="flex items-center text-13px leading-tight -tracking-0.39">
-          <svg
-            class="inline-block mr-1"
-            width="10px"
-            height="10px"
-            viewBox="0 0 20 20"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <path class="fill-current" d="m10 0 .1.1s1.2 3.6 3.7 6c2.5 2.6 6 3.8 6 3.8l.2.1-.1.1s-3.6 1.2-6.1 3.7c-2.5 2.5-3.7 6-3.7 6l-.1.2-.1-.1s-1.2-3.6-3.7-6C3.7 11.2.2 10 .2 10H0l.1-.1s3.6-1.2 6.1-3.7c2.5-2.5 3.7-6 3.7-6L10 0"></path>
-          </svg>
-          {{ 'alc-benefits.stock.last_piece' | t }}
+      {% if product.variants.first.inventory_quantity <= low_stock_threshold %}
+        <div class="flex flex-col items-start md:space-y-1 md:w-1/2 text-lg font-semibold" style="color: red">
+          <div class="flex items-center text-13px leading-tight -tracking-0.39">
+            <svg
+              class="inline-block mr-1"
+              width="10px"
+              height="10px"
+              viewBox="0 0 20 20"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path class="fill-current" d="m10 0 .1.1s1.2 3.6 3.7 6c2.5 2.6 6 3.8 6 3.8l.2.1-.1.1s-3.6 1.2-6.1 3.7c-2.5 2.5-3.7 6-3.7 6l-.1.2-.1-.1s-1.2-3.6-3.7-6C3.7 11.2.2 10 .2 10H0l.1-.1s3.6-1.2 6.1-3.7c2.5-2.5 3.7-6 3.7-6L10 0"></path>
+            </svg>
+            {% if product.variants.first.inventory_quantity == 1 %}
+              {{ 'alc-benefits.stock.last_piece' | t }}
+            {% else %}
+              {{ 'alc-benefits.stock.last_stock' | t: count: product.variants.first.inventory_quantity }}
+            {% endif %}
+          </div>
         </div>
-      </div>
-      {% elsif product.variants.first.inventory_quantity <= 5 %}
-      <div class="flex flex-col items-start md:space-y-1 md:w-1/2 text-lg font-semibold" style="color: #ff6b00">
-        <div class="flex items-center text-13px leading-tight -tracking-0.39">
-          <svg
-            class="inline-block mr-1"
-            width="10px"
-            height="10px"
-            viewBox="0 0 20 20"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <path class="fill-current" d="m10 0 .1.1s1.2 3.6 3.7 6c2.5 2.6 6 3.8 6 3.8l.2.1-.1.1s-3.6 1.2-6.1 3.7c-2.5 2.5-3.7 6-3.7 6l-.1.2-.1-.1s-1.2-3.6-3.7-6C3.7 11.2.2 10 .2 10H0l.1-.1s3.6-1.2 6.1-3.7c2.5-2.5 3.7-6 3.7-6L10 0"></path>
-          </svg>
-          {{ 'alc-benefits.stock.last_stock' | t: count: product.variants.first.inventory_quantity }}
+      {% elsif product.variants.first.inventory_quantity <= medium_stock_threshold %}
+        <div class="flex flex-col items-start md:space-y-1 md:w-1/2 text-lg font-semibold" style="color: #ff6b00">
+          <div class="flex items-center text-13px leading-tight -tracking-0.39">
+            <svg
+              class="inline-block mr-1"
+              width="10px"
+              height="10px"
+              viewBox="0 0 20 20"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path class="fill-current" d="m10 0 .1.1s1.2 3.6 3.7 6c2.5 2.6 6 3.8 6 3.8l.2.1-.1.1s-3.6 1.2-6.1 3.7c-2.5 2.5-3.7 6-3.7 6l-.1.2-.1-.1s-1.2-3.6-3.7-6C3.7 11.2.2 10 .2 10H0l.1-.1s3.6-1.2 6.1-3.7c2.5-2.5 3.7-6 3.7-6L10 0"></path>
+            </svg>
+            {{ 'alc-benefits.stock.last_stock' | t: count: product.variants.first.inventory_quantity }}
+          </div>
         </div>
-      </div>
       {% else %}
-      <div class="flex flex-col items-start md:space-y-1 md:w-1/2 text-lg font-semibold" style="color: #ff6b00">
-        <div class="flex items-center text-13px leading-tight -tracking-0.39">
-          <svg
-            class="inline-block mr-1"
-            width="10px"
-            height="10px"
-            viewBox="0 0 20 20"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <path class="fill-current" d="m10 0 .1.1s1.2 3.6 3.7 6c2.5 2.6 6 3.8 6 3.8l.2.1-.1.1s-3.6 1.2-6.1 3.7c-2.5 2.5-3.7 6-3.7 6l-.1.2-.1-.1s-1.2-3.6-3.7-6C3.7 11.2.2 10 .2 10H0l.1-.1s3.6-1.2 6.1-3.7c2.5-2.5 3.7-6 3.7-6L10 0"></path>
-          </svg>
-          {{ 'alc-benefits.stock.low_stock' | t: count: product.variants.first.inventory_quantity }}
+        <div class="flex flex-col items-start md:space-y-1 md:w-1/2 text-lg font-semibold" style="color: #ff6b00">
+          <div class="flex items-center text-13px leading-tight -tracking-0.39">
+            <svg
+              class="inline-block mr-1"
+              width="10px"
+              height="10px"
+              viewBox="0 0 20 20"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path class="fill-current" d="m10 0 .1.1s1.2 3.6 3.7 6c2.5 2.6 6 3.8 6 3.8l.2.1-.1.1s-3.6 1.2-6.1 3.7c-2.5 2.5-3.7 6-3.7 6l-.1.2-.1-.1s-1.2-3.6-3.7-6C3.7 11.2.2 10 .2 10H0l.1-.1s3.6-1.2 6.1-3.7c2.5-2.5 3.7-6 3.7-6L10 0"></path>
+            </svg>
+            {{ 'alc-benefits.stock.low_stock' | t: count: product.variants.first.inventory_quantity }}
+          </div>
         </div>
-      </div>
       {% endif %}
     {% endif %}
   {% else %}
@@ -96,8 +128,10 @@
       </div>
     </div>
   {% endif %}
+{% endif %}
 
-  
+{% if show_delivery %}
+
 {%- liquid
   assign product_price = product.price_min
   assign is_romanian = false
@@ -124,7 +158,9 @@
     {% endif %}
   </div>
 </div>
+{% endif %}
 
+{% if show_price_info %}
   <div class="text-xl">
     <div class="flex flex-row gap-2">
       <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 448 512">
@@ -133,7 +169,9 @@
       <p class="mb-0">{{ 'alc-benefits.price_info' | t }} <a href="{{ 'alc-benefits.price_info_link' | t }}">{{ 'alc-benefits.price_info_link_text' | t }}</a></p>
     </div>
   </div>
+{% endif %}
 
+{% if show_return_policy %}
   <div class="text-xl">
     <div class="flex flex-row gap-2">
       <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 448 512">
@@ -142,7 +180,9 @@
       <p class="mb-0">{{ 'alc-benefits.return_policy' | t }}</p>
     </div>
   </div>
+{% endif %}
 
+{% if show_warranty %}
   <div class="text-xl">
     <div class="flex flex-row gap-2">
       <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 448 512">
@@ -151,4 +191,5 @@
       <p class="mb-0">{{ 'alc-benefits.warranty' | t }} <a href="{{ 'alc-benefits.warranty_link' | t }}">{{ 'alc-benefits.warranty_link_text' | t }}</a></p>
     </div>
   </div>
+{% endif %}
 </div>

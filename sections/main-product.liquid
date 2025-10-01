@@ -107,7 +107,7 @@
               {%- when '@app' -%}
                 {% render block %}
               {%- when 'alc_product_benefits' %}
-                {% render 'alc-product-benefits', product: product %}
+                {% render 'alc-product-benefits', product: product, block: block %}
               {%- when 'alc_countdown_timer' %}
                 {% render 'alc-countdown-timer', product: product, block: block %}
               {%- when 'text' -%}
@@ -185,31 +185,28 @@
                   {%- if product.selected_or_first_available_variant.inventory_management == 'shopify' -%}
                     {%- if product.selected_or_first_available_variant.inventory_quantity > 0 -%}
                       {%- if product.selected_or_first_available_variant.inventory_quantity
+                          <= block.settings.critical_stock_threshold
+                      -%}
+                        <span class="svg-wrapper" style="color: rgb(220, 38, 38)">
+                          {{- 'icon-inventory-status.svg' | inline_asset_content -}}
+                        </span>
+                        {%- if product.selected_or_first_available_variant.inventory_quantity == 1 -%}
+                          {{- 'alc-benefits.stock.last_piece' | t -}}
+                        {%- else -%}
+                          {{- 'alc-benefits.stock.last_stock' | t: count: product.selected_or_first_available_variant.inventory_quantity -}}
+                        {%- endif -%}
+                      {%- elsif product.selected_or_first_available_variant.inventory_quantity
                           <= block.settings.inventory_threshold
                       -%}
                         <span class="svg-wrapper" style="color: rgb(238, 148, 65)">
                           {{- 'icon-inventory-status.svg' | inline_asset_content -}}
                         </span>
-                        {%- if block.settings.show_inventory_quantity -%}
-                          {{-
-                            'products.product.inventory_low_stock_show_count'
-                            | t: quantity: product.selected_or_first_available_variant.inventory_quantity
-                          -}}
-                        {%- else -%}
-                          {{- 'products.product.inventory_low_stock' | t -}}
-                        {%- endif -%}
+                        {{- 'alc-benefits.stock.low_stock' | t: count: product.selected_or_first_available_variant.inventory_quantity -}}
                       {%- else -%}
                         <span class="svg-wrapper" style="color: rgb(62, 214, 96)">
                           {{- 'icon-inventory-status.svg' | inline_asset_content -}}
                         </span>
-                        {%- if block.settings.show_inventory_quantity -%}
-                          {{-
-                            'products.product.inventory_in_stock_show_count'
-                            | t: quantity: product.selected_or_first_available_variant.inventory_quantity
-                          -}}
-                        {%- else -%}
-                          {{- 'products.product.inventory_in_stock' | t -}}
-                        {%- endif -%}
+                        {{- 'alc-benefits.stock.in_stock' | t -}}
                       {%- endif -%}
                     {%- else -%}
                       {%- if product.selected_or_first_available_variant.inventory_policy == 'continue' -%}
@@ -221,7 +218,7 @@
                         <span class="svg-wrapper" style="color: rgb(200, 200, 200)">
                           {{- 'icon-inventory-status.svg' | inline_asset_content -}}
                         </span>
-                        {{- 'products.product.inventory_out_of_stock' | t -}}
+                        {{- 'alc-benefits.stock.out_of_stock' | t -}}
                       {%- endif -%}
                     {%- endif -%}
                   {%- endif -%}
@@ -524,7 +521,8 @@
                   product: product,
                   product_form_id: product_form_id,
                   section_id: section.id,
-                  show_pickup_availability: true
+                  show_pickup_availability: true,
+                  section: section
                 -%}
               {%- when 'alc_pickup_availability' -%}
                 {%- render 'alc-pickup-availability',
@@ -892,18 +890,22 @@
         {
           "type": "range",
           "id": "inventory_threshold",
-          "label": "t:sections.main-product.blocks.inventory.settings.inventory_threshold.label",
-          "min": 0,
+          "label": "Warning Stock Threshold",
+          "min": 2,
           "max": 100,
           "step": 1,
-          "info": "t:sections.main-product.blocks.inventory.settings.inventory_threshold.info",
+          "info": "Show yellow warning when stock is at or below this level (with quantity). Above this shows green 'In Stock' (no quantity).",
           "default": 10
         },
         {
-          "type": "checkbox",
-          "id": "show_inventory_quantity",
-          "label": "t:sections.main-product.blocks.inventory.settings.show_inventory_quantity.label",
-          "default": true
+          "type": "range",
+          "id": "critical_stock_threshold",
+          "label": "Critical Stock Threshold",
+          "min": 1,
+          "max": 10,
+          "step": 1,
+          "info": "Show red danger when stock is at or below this level (with quantity)",
+          "default": 1
         }
       ]
     },
@@ -993,7 +995,69 @@
     {
       /* Custom block */
       "name": "ALC - Product benefits",
-      "type": "alc_product_benefits"
+      "type": "alc_product_benefits",
+      "settings": [
+        {
+          "type": "checkbox",
+          "id": "show_stock_status",
+          "label": "Show Stock Status",
+          "default": true
+        },
+        {
+          "type": "checkbox",
+          "id": "show_delivery",
+          "label": "Show Delivery/Free Shipping",
+          "default": true
+        },
+        {
+          "type": "checkbox",
+          "id": "show_price_info",
+          "label": "Show Price Match Guarantee",
+          "default": true
+        },
+        {
+          "type": "checkbox",
+          "id": "show_return_policy",
+          "label": "Show Return Policy",
+          "default": true
+        },
+        {
+          "type": "checkbox",
+          "id": "show_warranty",
+          "label": "Show Warranty",
+          "default": true
+        },
+        {
+          "type": "range",
+          "id": "high_stock_threshold",
+          "label": "High Stock Threshold",
+          "info": "Above this quantity, show green 'In Stock' without quantity",
+          "min": 5,
+          "max": 100,
+          "step": 1,
+          "default": 15
+        },
+        {
+          "type": "range",
+          "id": "medium_stock_threshold",
+          "label": "Medium Stock Threshold",
+          "info": "At or below this quantity, show yellow warning with quantity",
+          "min": 2,
+          "max": 20,
+          "step": 1,
+          "default": 5
+        },
+        {
+          "type": "range",
+          "id": "low_stock_threshold",
+          "label": "Critical Stock Threshold",
+          "info": "At or below this quantity, show red danger with quantity",
+          "min": 1,
+          "max": 5,
+          "step": 1,
+          "default": 1
+        }
+      ]
     },
     {
       "name": "ALC - Countdown Timer",
@@ -2629,6 +2693,162 @@
       "id": "super_badge_text_color",
       "label": "Super Badge Text Color",
       "default": "#ffffff"
+    },
+    {
+      "type": "header",
+      "content": "Sale Badge (Price Display)"
+    },
+    {
+      "type": "checkbox",
+      "id": "enable_sale_badge_gradient",
+      "label": "Enable Sale Badge Gradient",
+      "default": false,
+      "info": "Use gradient background for featured campaign sale badge"
+    },
+    {
+      "type": "color",
+      "id": "sale_badge_bg_start",
+      "label": "Sale Badge Background Start",
+      "default": "#d52b36"
+    },
+    {
+      "type": "color",
+      "id": "sale_badge_bg_end",
+      "label": "Sale Badge Background End",
+      "default": "#aa1c2a"
+    },
+    {
+      "type": "color",
+      "id": "sale_badge_text",
+      "label": "Sale Badge Text Color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "header",
+      "content": "Badge Sizing & Effects"
+    },
+    {
+      "type": "checkbox",
+      "id": "enable_discount_glow",
+      "label": "Enable Discount Badge Glow",
+      "default": true,
+      "info": "Adds shadow glow effect to discount badges"
+    },
+    {
+      "type": "color",
+      "id": "discount_glow_color",
+      "label": "Discount Badge Glow Color",
+      "default": "#ff1744"
+    },
+    {
+      "type": "range",
+      "id": "discount_badge_corner_size",
+      "min": 50,
+      "max": 150,
+      "step": 5,
+      "unit": "%",
+      "label": "Discount Badge Corner Size (Percentage)",
+      "default": 100,
+      "info": "Size of the percentage badge in the corner"
+    },
+    {
+      "type": "range",
+      "id": "campaign_banner_height",
+      "min": 50,
+      "max": 150,
+      "step": 5,
+      "unit": "%",
+      "label": "Campaign Banner Height",
+      "default": 100,
+      "info": "Height of the bottom campaign banner"
+    },
+    {
+      "type": "header",
+      "content": "Free Shipping Badge"
+    },
+    {
+      "type": "checkbox",
+      "id": "enable_free_shipping_badge",
+      "label": "Enable Free Shipping Badge",
+      "default": false,
+      "info": "Show free shipping badge when product price meets threshold"
+    },
+    {
+      "type": "range",
+      "id": "free_shipping_threshold",
+      "min": 0,
+      "max": 1000,
+      "step": 10,
+      "label": "Free Shipping Threshold",
+      "default": 0,
+      "info": "Minimum order value for free shipping (in base currency). Set to 0 to always show."
+    },
+    {
+      "type": "color",
+      "id": "free_shipping_badge_bg_start",
+      "label": "Free Shipping Badge Background Start",
+      "default": "#4caf50"
+    },
+    {
+      "type": "color",
+      "id": "free_shipping_badge_bg_end",
+      "label": "Free Shipping Badge Background End",
+      "default": "#2e7d32"
+    },
+    {
+      "type": "color",
+      "id": "free_shipping_badge_text",
+      "label": "Free Shipping Badge Text Color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "select",
+      "id": "free_shipping_badge_position",
+      "label": "Free Shipping Badge Position",
+      "options": [
+        {
+          "value": "top-left",
+          "label": "Top Left"
+        },
+        {
+          "value": "top-center",
+          "label": "Top Center"
+        },
+        {
+          "value": "bottom-center",
+          "label": "Bottom Center (Above Campaign Badge)"
+        }
+      ],
+      "default": "top-left"
+    },
+    {
+      "type": "header",
+      "content": "Add to Cart Button"
+    },
+    {
+      "type": "color",
+      "id": "button_bg_start",
+      "label": "Button Background Start",
+      "default": "#000000"
+    },
+    {
+      "type": "color",
+      "id": "button_bg_end",
+      "label": "Button Background End",
+      "default": "#000000"
+    },
+    {
+      "type": "color",
+      "id": "button_text_color",
+      "label": "Button Text Color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "checkbox",
+      "id": "button_gradient",
+      "label": "Enable Button Gradient",
+      "default": false,
+      "info": "Use gradient background for add to cart button"
     }
   ]
 }
@@ -2637,7 +2857,7 @@
   document.addEventListener('DOMContentLoaded', () => {
     // Connect all modal openers to their corresponding modals
     const openers = document.querySelectorAll('modal-opener, .product__modal-opener');
-    
+
     openers.forEach((opener) => {
       opener.addEventListener('click', (e) => {
         const modalId = opener.getAttribute('data-modal');
@@ -2649,5 +2869,115 @@
         }
       });
     });
+
+    // Auto-positioning system for campaign badge controls in theme editor
+    if (Shopify && Shopify.designMode) {
+      // Define setting groups that should move together
+      const campaignBadgeGroup = [
+        'campaign_badge_bg_start',
+        'campaign_badge_bg_end',
+        'campaign_badge_text'
+      ];
+
+      const discountBadgeGroup = [
+        'discount_badge_bg_start',
+        'discount_badge_bg_end',
+        'discount_badge_text'
+      ];
+
+      const saleBadgeGroup = [
+        'sale_badge_bg_start',
+        'sale_badge_bg_end',
+        'sale_badge_text',
+        'enable_sale_badge_gradient'
+      ];
+
+      const badgeSizingGroup = [
+        'enable_discount_glow',
+        'discount_glow_color',
+        'discount_badge_corner_size',
+        'campaign_banner_height'
+      ];
+
+      const buttonGroup = [
+        'button_bg_start',
+        'button_bg_end',
+        'button_text_color',
+        'button_gradient'
+      ];
+
+      const freeShippingGroup = [
+        'enable_free_shipping_badge',
+        'free_shipping_threshold',
+        'free_shipping_badge_bg_start',
+        'free_shipping_badge_bg_end',
+        'free_shipping_badge_text',
+        'free_shipping_badge_position'
+      ];
+
+      // Function to move settings to the same position
+      function moveSettingsToSamePosition(triggerSettingId, relatedSettingIds) {
+        // Wait for Shopify theme editor to be ready
+        setTimeout(() => {
+          const triggerInput = document.querySelector(`[data-setting-key="${triggerSettingId}"]`);
+          if (!triggerInput) return;
+
+          const triggerRow = triggerInput.closest('.theme-editor-setting');
+          if (!triggerRow) return;
+
+          const targetParent = triggerRow.parentElement;
+          const triggerIndex = Array.from(targetParent.children).indexOf(triggerRow);
+
+          // Move each related setting right after the trigger
+          relatedSettingIds.forEach((settingId, index) => {
+            const settingInput = document.querySelector(`[data-setting-key="${settingId}"]`);
+            if (!settingInput) return;
+
+            const settingRow = settingInput.closest('.theme-editor-setting');
+            if (!settingRow || settingRow.parentElement !== targetParent) return;
+
+            // Insert after the previous setting in the group
+            const insertAfterIndex = triggerIndex + index + 1;
+            const insertAfterElement = targetParent.children[insertAfterIndex];
+
+            if (insertAfterElement && insertAfterElement !== settingRow) {
+              targetParent.insertBefore(settingRow, insertAfterElement.nextSibling);
+            }
+          });
+        }, 500);
+      }
+
+      // Listen for changes to trigger settings
+      const observeSettingChanges = () => {
+        const settingGroups = [
+          { trigger: 'campaign_badge_bg_start', related: campaignBadgeGroup.slice(1) },
+          { trigger: 'discount_badge_bg_start', related: discountBadgeGroup.slice(1) },
+          { trigger: 'sale_badge_bg_start', related: saleBadgeGroup.slice(1) },
+          { trigger: 'enable_discount_glow', related: badgeSizingGroup.slice(1) },
+          { trigger: 'enable_free_shipping_badge', related: freeShippingGroup.slice(1) },
+          { trigger: 'button_bg_start', related: buttonGroup.slice(1) }
+        ];
+
+        settingGroups.forEach(group => {
+          const triggerInput = document.querySelector(`[data-setting-key="${group.trigger}"]`);
+          if (triggerInput) {
+            // Auto-position on page load
+            moveSettingsToSamePosition(group.trigger, group.related);
+
+            // Re-position when trigger is focused (user is editing it)
+            triggerInput.addEventListener('focus', () => {
+              moveSettingsToSamePosition(group.trigger, group.related);
+            });
+          }
+        });
+      };
+
+      // Run when theme editor loads
+      observeSettingChanges();
+
+      // Re-run when section is re-rendered in theme editor
+      document.addEventListener('shopify:section:load', observeSettingChanges);
+      document.addEventListener('shopify:section:reorder', observeSettingChanges);
+    }
   });
 </script>

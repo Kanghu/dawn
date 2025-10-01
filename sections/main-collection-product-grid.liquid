@@ -103,7 +103,6 @@
 {%- endstyle -%}
 
 
-
 <div class="section-{{ section.id }}-padding pt-1 gradient color-{{ section.settings.color_scheme }}">
   {%- paginate collection.products by section.settings.products_per_page -%}
     <div class="{% if section.settings.filter_type == 'vertical' %} facets-vertical page-width{% endif %}">
@@ -207,7 +206,7 @@
                   data-cascade
                   style="--animation-order: {{ forloop.index }};"
                   {% endif %}>
-                  {% render 'card-product'
+                  {% render 'alc-card-product'
                     , card_product: product
                     , media_aspect_ratio: section.settings.image_ratio
                     , image_shape: section.settings.image_shape

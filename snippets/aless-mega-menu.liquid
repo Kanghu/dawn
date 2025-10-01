@@ -257,7 +257,7 @@
     margin-left: calc(-50vw + 50%);
     margin-right: calc(-50vw + 50%);
     width: 100vw;
-    background: linear-gradient(to right, #000000, #003840, #00BAD7);
+    background: linear-gradient(to right, {{ section.settings.menu_gradient_start | default: '#000000' }}, {{ section.settings.menu_gradient_middle | default: '#003840' }}, {{ section.settings.menu_gradient_end | default: '#00BAD7' }});
     border-bottom: none !important;
     z-index: 101;
     /* Add this to ensure header menu is above overlay */

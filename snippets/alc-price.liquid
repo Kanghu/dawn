@@ -20,12 +20,6 @@
   - Enhanced price display settings from theme editor (when section is passed)
 {% endcomment %}
 
-<style>
-  .price {
-    margin-bottom: 0;
-  }
-</style>
-
 {%- liquid
   if use_variant
     assign target = product.selected_or_first_available_variant
@@ -88,6 +82,10 @@
   assign super_badge_bg_start = '#ff6b00'
   assign super_badge_bg_end = '#e65100'
   assign super_badge_text_color = '#ffffff'
+  assign enable_sale_badge_gradient = false
+  assign sale_badge_bg_start = '#d52b36'
+  assign sale_badge_bg_end = '#aa1c2a'
+  assign sale_badge_text = '#ffffff'
 
   if section
     assign enable_enhanced_price = section.settings.enable_enhanced_price | default: false
@@ -100,8 +98,29 @@
     assign super_badge_bg_start = section.settings.super_badge_bg_start | default: '#ff6b00'
     assign super_badge_bg_end = section.settings.super_badge_bg_end | default: '#e65100'
     assign super_badge_text_color = section.settings.super_badge_text_color | default: '#ffffff'
+    assign enable_sale_badge_gradient = section.settings.enable_sale_badge_gradient | default: false
+    assign sale_badge_bg_start = section.settings.sale_badge_bg_start | default: '#d52b36'
+    assign sale_badge_bg_end = section.settings.sale_badge_bg_end | default: '#aa1c2a'
+    assign sale_badge_text = section.settings.sale_badge_text | default: '#ffffff'
   endif
 -%}
+
+<style>
+  .price {
+    margin-bottom: 0;
+  }
+
+  .price__badge-sale {
+    {% if enable_sale_badge_gradient %}
+      background: linear-gradient(135deg, {{ sale_badge_bg_start }}, {{ sale_badge_bg_end }}) !important;
+    {% else %}
+      background-color: {{ sale_badge_bg_start }} !important;
+    {% endif %}
+    color: {{ sale_badge_text }} !important;
+    border: none !important;
+    border-radius: 5px !important;
+  }
+</style>
 
 {%- unless target == null and placeholder == null -%}
   {%- comment -%}
@@ -345,11 +364,7 @@
         {% endif %}
 
         {% if product.metafields.custom.featured_campaign.value %}
-          <span style="
-            color: {{ block.settings.badge_sale_text_color }};
-            background-color: {{ block.settings.badge_sale_color }};
-            border-radius: 5px;
-          " class="badge price__badge-sale">
+          <span class="badge price__badge-sale">
             {{ product.metafields.custom.featured_campaign.value.title | upcase }}
           </span>
         {% endif %}

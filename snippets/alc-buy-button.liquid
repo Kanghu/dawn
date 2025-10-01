@@ -6,10 +6,25 @@
   - product_form_id: {String} product form id.
   - section_id: {String} id of section to which this snippet belongs.
   - show_pickup_availability: {Boolean} for the pickup availability. If true the pickup availability is rendered, false - not rendered (optional).
+  - section: {Object} section object for accessing button color settings (optional).
 
   Usage:
-  {% render 'buy-buttons', block: block, product: product, product_form_id: product_form_id, section_id: section.id, show_pickup_availability: true %}
+  {% render 'alc-buy-button', block: block, product: product, product_form_id: product_form_id, section_id: section.id, show_pickup_availability: true, section: section %}
 {% endcomment %}
+
+{%- liquid
+  assign button_bg_start = '#000000'
+  assign button_bg_end = '#000000'
+  assign button_text_color = '#ffffff'
+  assign button_gradient = false
+
+  if section
+    assign button_bg_start = section.settings.button_bg_start | default: '#000000'
+    assign button_bg_end = section.settings.button_bg_end | default: '#000000'
+    assign button_text_color = section.settings.button_text_color | default: '#ffffff'
+    assign button_gradient = section.settings.button_gradient | default: false
+  endif
+-%}
 
 <style>
   .curved-button {
@@ -25,6 +40,22 @@
     /* Simple fade effect on hover */
     transform: scale(1.02);
     transition: all 0.1s ease;
+  }
+
+  #ProductSubmitButton-{{ section_id }} {
+    {% if button_gradient %}
+      background: linear-gradient(135deg, {{ button_bg_start }}, {{ button_bg_end }}) !important;
+    {% else %}
+      background-color: {{ button_bg_start }} !important;
+    {% endif %}
+    color: {{ button_text_color }} !important;
+  }
+
+  /* Override pseudo-element backgrounds to prevent red bleed-through */
+  #ProductSubmitButton-{{ section_id }}:before,
+  #ProductSubmitButton-{{ section_id }}:after {
+    background: transparent !important;
+    box-shadow: none !important;
   }
 </style>
 

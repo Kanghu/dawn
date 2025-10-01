@@ -410,6 +410,7 @@
               <div class="caption-with-letter-spacing light">{{ card_product.vendor }}</div>
             {%- endif -%}
 
+            {% if block.settings.show_rating %}
             <div class="min-h-[24px]" style="display: block !important;">
               {%- if block.settings.description != blank
                 or show_rating
@@ -471,6 +472,7 @@
                 {%- endif -%}
               {%- endif -%}
             </div>
+            {% endif %}
 
             {% if card_product.available %}
               {% if card_product.variants.first.inventory_quantity > 15 or card_product.variants.first.inventory_policy == 'continue' %}

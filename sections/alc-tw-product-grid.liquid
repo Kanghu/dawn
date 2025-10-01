@@ -119,7 +119,7 @@
                     {% endif %}
 
                     <li class="grid__item">
-                      {% render 'alc-lp-product-card'
+                      {% render 'alc-card-product'
                         , card_product: product
                         , media_aspect_ratio: section.settings.image_ratio
                         , image_shape: section.settings.image_shape
@@ -128,7 +128,7 @@
                         , show_rating: false
                         , lazy_load: lazy_load
                         , skip_styles: skip_card_product_styles
-                        , quick_add: section.settings.quick_add
+                        , quick_add: true
                         , section_id: section.id
                       %}
                     </li>
