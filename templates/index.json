@@ -23,73 +23,59 @@
         "padding_bottom": 24
       }
     },
-    "collection_list_yM6pDQ": {
-      "type": "collection-list",
+    "alc_collection_list_campaign_XeTR6y": {
+      "type": "alc-collection-list-campaign",
       "blocks": {
-        "featured_collection_9gqHpW": {
+        "featured_collection_RjbwwK": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "aplice-de-exterior"
+          }
+        },
+        "featured_collection_ViTxkT": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "mobilier-baie"
+          }
+        },
+        "featured_collection_4NDq6g": {
           "type": "featured_collection",
           "settings": {
             "collection": "lustre-led-cu-telecomanda"
           }
         },
-        "featured_collection_qY4kag": {
+        "featured_collection_8QnBnd": {
           "type": "featured_collection",
           "settings": {
-            "collection": "obiecte-sanitare"
+            "collection": "chiuvete-lavoare"
           }
         },
-        "featured_collection_ghEfNr": {
+        "featured_collection_8kikMX": {
           "type": "featured_collection",
           "settings": {
-            "collection": "lustre-led"
-          }
-        },
-        "featured_collection_qVyq9n": {
-          "type": "featured_collection",
-          "settings": {
-            "collection": "iluminat-de-exterior"
-          }
-        },
-        "featured_collection_Mj7NUr": {
-          "type": "featured_collection",
-          "settings": {
-            "collection": "corpuri-de-iluminat"
-          }
-        },
-        "featured_collection_iq8mAN": {
-          "type": "featured_collection",
-          "settings": {
-            "collection": "produse-led"
-          }
-        },
-        "featured_collection_FDHV6W": {
-          "type": "featured_collection",
-          "disabled": true,
-          "settings": {
-            "collection": "casa-gradina"
+            "collection": "cazi-de-baie-freestanding"
           }
         }
       },
       "block_order": [
-        "featured_collection_9gqHpW",
-        "featured_collection_qY4kag",
-        "featured_collection_ghEfNr",
-        "featured_collection_qVyq9n",
-        "featured_collection_Mj7NUr",
-        "featured_collection_iq8mAN",
-        "featured_collection_FDHV6W"
+        "featured_collection_RjbwwK",
+        "featured_collection_ViTxkT",
+        "featured_collection_4NDq6g",
+        "featured_collection_8QnBnd",
+        "featured_collection_8kikMX"
       ],
+      "name": "t:sections.collection-list.presets.name",
       "settings": {
         "title": "",
-        "heading_size": "h2",
+        "heading_size": "h1",
         "image_ratio": "square",
-        "columns_desktop": 6,
-        "color_scheme": "scheme-1",
+        "columns_desktop": 5,
+        "color_scheme": "",
         "show_view_all": false,
-        "columns_mobile": "2",
+        "columns_mobile": "1",
         "swipe_on_mobile": true,
-        "padding_top": 4,
-        "padding_bottom": 0
+        "padding_top": 16,
+        "padding_bottom": 16
       }
     },
     "custom_liquid_ggcwHk": {
@@ -323,7 +309,7 @@
   },
   "order": [
     "custom_liquid_MVifHb",
-    "collection_list_yM6pDQ",
+    "alc_collection_list_campaign_XeTR6y",
     "custom_liquid_ggcwHk",
     "alc_featured_collection_ERArtK",
     "custom_liquid_6zDcbj",
