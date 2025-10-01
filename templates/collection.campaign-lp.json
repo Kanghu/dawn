@@ -11,6 +11,10 @@
   "sections": {
     "custom_liquid_fKNUgr": {
       "type": "custom-liquid",
+      "custom_css": [
+        ".banner-img {display: block; width: 100%; height: auto;}",
+        "@media (min-width: 768px) {.banner-img {max-width: 1300px; margin: auto; }}"
+      ],
       "name": "t:sections.custom-liquid.presets.name",
       "settings": {
         "custom_liquid": "<a href=\"https://www.alessandrodesign.ro/collections/black-season\">\n  <picture>\n    <source media=\"(min-width:768px)\" srcset=\"https://cdn.shopify.com/s/files/1/0782/5175/3739/files/WIDE_0f16ea6a-d3ea-4428-8fbb-a6d9121e1f6a.png?v=1759244671\">\n    <source media=\"(max-width:767px)\" srcset=\"https://cdn.shopify.com/s/files/1/0782/5175/3739/files/MOBILE.png?v=1759244654\">\n    <img \n      src=\"https://cdn.shopify.com/s/files/1/0782/5175/3739/files/MOBILE.png?v=1759244654\" \n      alt=\"Black Season Banner\" \n      class=\"banner-img\">\n  </picture>\n</a>",
