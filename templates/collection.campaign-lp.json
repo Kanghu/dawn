@@ -47,11 +47,67 @@
         "show_rating": true,
         "quick_add": false
       }
+    },
+    "alc_collection_list_campaign_dcVbgP": {
+      "type": "alc-collection-list-campaign",
+      "blocks": {
+        "featured_collection_X8Y7Ji": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "lustre-led-cu-telecomanda"
+          }
+        },
+        "featured_collection_6PPTTG": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "aplice-de-exterior"
+          }
+        },
+        "featured_collection_knBGYy": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "mobilier-baie"
+          }
+        },
+        "featured_collection_RiDXFi": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "chiuvete-lavoare"
+          }
+        },
+        "featured_collection_aktW3B": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "cazi-de-baie-freestanding"
+          }
+        }
+      },
+      "block_order": [
+        "featured_collection_X8Y7Ji",
+        "featured_collection_6PPTTG",
+        "featured_collection_knBGYy",
+        "featured_collection_RiDXFi",
+        "featured_collection_aktW3B"
+      ],
+      "name": "ALC - Campaign List",
+      "settings": {
+        "title": "",
+        "heading_size": "h1",
+        "image_ratio": "square",
+        "columns_desktop": 5,
+        "color_scheme": "",
+        "show_view_all": false,
+        "columns_mobile": "1",
+        "swipe_on_mobile": false,
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
     }
   },
   "order": [
     "custom_liquid_fKNUgr",
     "banner",
-    "product-grid"
+    "product-grid",
+    "alc_collection_list_campaign_dcVbgP"
   ]
 }
