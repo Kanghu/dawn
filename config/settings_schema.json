@@ -1280,6 +1280,64 @@
     ]
   },
   {
+    "name": "Campaign Badges",
+    "settings": [
+      {
+        "type": "header",
+        "content": "Product Card Campaign Badge"
+      },
+      {
+        "type": "paragraph",
+        "content": "Configure the appearance of campaign badges on product cards (shown when product has featured_campaign metafield)"
+      },
+      {
+        "type": "checkbox",
+        "id": "campaign_badge_gradient",
+        "label": "Enable Gradient Background",
+        "default": false
+      },
+      {
+        "type": "color",
+        "id": "campaign_badge_bg_start",
+        "label": "Background Color (or Gradient Start)",
+        "default": "#F01088"
+      },
+      {
+        "type": "color",
+        "id": "campaign_badge_bg_end",
+        "label": "Gradient End Color",
+        "default": "#d5006d",
+        "info": "Only used if gradient is enabled"
+      },
+      {
+        "type": "color",
+        "id": "campaign_badge_text",
+        "label": "Text Color",
+        "default": "#ffffff"
+      },
+      {
+        "type": "header",
+        "content": "Discount Percentage Badge"
+      },
+      {
+        "type": "paragraph",
+        "content": "Configure the discount percentage badge that appears above campaign badges"
+      },
+      {
+        "type": "color",
+        "id": "discount_badge_bg",
+        "label": "Background Color",
+        "default": "#ff3333"
+      },
+      {
+        "type": "color",
+        "id": "discount_badge_text",
+        "label": "Text Color",
+        "default": "#ffffff"
+      }
+    ]
+  },
+  {
     "name": "t:settings_schema.brand_information.name",
     "settings": [
       {

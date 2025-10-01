@@ -109,30 +109,10 @@
         {%- assign featured_media = product.selected_or_first_available_variant.featured_media -%}
         <li
           id="Slide-{{ section.id }}-{{ featured_media.id }}"
-          class="product__media-item grid__item slider__slide is-active campaign-media-item{% if single_media_visible %} product__media-item--single{% endif %}{% if featured_media.media_type != 'image' %} product__media-item--full{% endif %}{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--fade-in{% endif %}"
+          class="product__media-item grid__item slider__slide is-active{% if single_media_visible %} product__media-item--single{% endif %}{% if featured_media.media_type != 'image' %} product__media-item--full{% endif %}{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--fade-in{% endif %}"
           data-media-id="{{ section.id }}-{{ featured_media.id }}"
         >
           {%- assign media_position = 1 -%}
-
-          <!-- Campaign Badges - Direct Positioning -->
-          <!-- Discount Badge (Top Right Corner) -->
-          {%- if discount_percentage > 0 -%}
-            <div class="campaign-discount-badge">
-              <span class="discount-percentage">-{{ discount_percentage }}%</span>
-              <span class="discount-text">REDUCERE</span>
-            </div>
-          {%- endif -%}
-
-          <!-- Featured Campaign Badge (Bottom Banner) -->
-          {%- if featured_campaign.title != blank -%}
-            <div class="campaign-featured-badge">
-              <div class="featured-badge-content">
-                <span class="featured-badge-icon">🔥</span>
-                <span class="featured-badge-text">{{ featured_campaign.title | upcase }}</span>
-                <span class="featured-badge-icon">🔥</span>
-              </div>
-            </div>
-          {%- endif -%}
 
           {% render 'product-thumbnail',
             media: featured_media,
@@ -148,34 +128,6 @@
             constrain_to_viewport: section.settings.constrain_to_viewport,
             lazy_load: false
           %}
-
-          <!-- Campaign Badges - Positioned after thumbnail to avoid click blocking -->
-          <!-- Free Shipping Badge -->
-          {%- if show_free_shipping_badge -%}
-            <div class="free-shipping-badge free-shipping-{{ free_shipping_badge_position }}">
-              <span class="free-shipping-icon">🚚</span>
-              <span class="free-shipping-text">{{ 'alc-benefits.free_shipping' | t }}</span>
-            </div>
-          {%- endif -%}
-
-          <!-- Discount Badge (Top Right Corner) -->
-          {%- if discount_percentage > 0 -%}
-            <div class="campaign-discount-badge">
-              <span class="discount-percentage">-{{ discount_percentage }}%</span>
-              <span class="discount-text">REDUCERE</span>
-            </div>
-          {%- endif -%}
-
-          <!-- Featured Campaign Badge (Bottom Banner) -->
-          {%- if featured_campaign.title != blank -%}
-            <div class="campaign-featured-badge">
-              <div class="featured-badge-content">
-                <span class="featured-badge-icon">🔥</span>
-                <span class="featured-badge-text">{{ featured_campaign.title | upcase }}</span>
-                <span class="featured-badge-icon">🔥</span>
-              </div>
-            </div>
-          {%- endif -%}
         </li>
       {%- endif -%}
       {%- for media in product.media -%}
@@ -201,28 +153,6 @@
               endif
             -%}
 
-            <!-- Only show badges on first image -->
-            {%- if forloop.first and product.selected_or_first_available_variant.featured_media == nil -%}
-              <!-- Discount Badge (Top Right Corner) -->
-              {%- if discount_percentage > 0 -%}
-                <div class="campaign-discount-badge">
-                  <span class="discount-percentage">-{{ discount_percentage }}%</span>
-                  <span class="discount-text">REDUCERE</span>
-                </div>
-              {%- endif -%}
-
-              <!-- Featured Campaign Badge (Bottom Banner) -->
-              {%- if featured_campaign.title != blank -%}
-                <div class="campaign-featured-badge">
-                  <div class="featured-badge-content">
-                    <span class="featured-badge-icon">🔥</span>
-                    <span class="featured-badge-text">{{ featured_campaign.title | upcase }}</span>
-                    <span class="featured-badge-icon">🔥</span>
-                  </div>
-                </div>
-              {%- endif -%}
-            {%- endif -%}
-
             {% render 'product-thumbnail',
               media: media,
               media_count: media_count,
@@ -237,40 +167,38 @@
               constrain_to_viewport: section.settings.constrain_to_viewport,
               lazy_load: lazy_load
             %}
-
-            <!-- Only show badges on first image -->
-            {%- if forloop.first and product.selected_or_first_available_variant.featured_media == nil -%}
-              <!-- Free Shipping Badge -->
-              {%- if show_free_shipping_badge -%}
-                <div class="free-shipping-badge free-shipping-{{ free_shipping_badge_position }}">
-                  <span class="free-shipping-icon">🚚</span>
-                  <span class="free-shipping-text">{{ 'alc-benefits.free_shipping' | t }}</span>
-                </div>
-              {%- endif -%}
-
-              <!-- Discount Badge (Top Right Corner) -->
-              {%- if discount_percentage > 0 -%}
-                <div class="campaign-discount-badge">
-                  <span class="discount-percentage">-{{ discount_percentage }}%</span>
-                  <span class="discount-text">REDUCERE</span>
-                </div>
-              {%- endif -%}
-
-              <!-- Featured Campaign Badge (Bottom Banner) -->
-              {%- if featured_campaign.title != blank -%}
-                <div class="campaign-featured-badge">
-                  <div class="featured-badge-content">
-                    <span class="featured-badge-icon">🔥</span>
-                    <span class="featured-badge-text">{{ featured_campaign.title | upcase }}</span>
-                    <span class="featured-badge-icon">🔥</span>
-                  </div>
-                </div>
-              {%- endif -%}
-            {%- endif -%}
           </li>
         {%- endunless -%}
       {%- endfor -%}
     </ul>
+
+    <!-- Campaign Badges - Fixed position on gallery container -->
+    <!-- Free Shipping Badge -->
+    {%- if show_free_shipping_badge -%}
+      <div class="campaign-gallery-badge free-shipping-badge free-shipping-{{ free_shipping_badge_position }}">
+        <span class="free-shipping-icon">🚚</span>
+        <span class="free-shipping-text">{{ 'alc-benefits.free_shipping' | t }}</span>
+      </div>
+    {%- endif -%}
+
+    <!-- Discount Badge (Top Right Corner) -->
+    {%- if discount_percentage > 0 -%}
+      <div class="campaign-gallery-badge campaign-discount-badge">
+        <span class="discount-percentage">-{{ discount_percentage }}%</span>
+        <span class="discount-text">REDUCERE</span>
+      </div>
+    {%- endif -%}
+
+    <!-- Featured Campaign Badge (Bottom Banner) -->
+    {%- if featured_campaign.title != blank -%}
+      <div class="campaign-gallery-badge campaign-featured-badge">
+        <div class="featured-badge-content">
+          <span class="featured-badge-icon">🔥</span>
+          <span class="featured-badge-text">{{ featured_campaign.title | upcase }}</span>
+          <span class="featured-badge-icon">🔥</span>
+        </div>
+      </div>
+    {%- endif -%}
     <div class="slider-buttons quick-add-hidden{% if hide_mobile_slider %} small-hide{% endif %}">
       <button
         type="button"
@@ -444,18 +372,34 @@
 </media-gallery>
 
 <style>
-  /* Campaign badges container */
-  .campaign-media-item {
+  /* Campaign badges - positioned on slider-component container */
+  .campaign-media-gallery {
     position: relative;
+  }
+
+  /* Ensure the image list has no bottom margin that creates gap */
+  .campaign-media-gallery .product__media-list {
+    margin-bottom: 0;
+  }
+
+  /* Add gap between main gallery and thumbnails on desktop */
+  @media (min-width: 750px) {
+    .campaign-media-gallery {
+      margin-bottom: 2rem;
+    }
+  }
+
+  /* Base styles for all gallery badges */
+  .campaign-gallery-badge {
+    position: absolute;
+    z-index: 2;
+    pointer-events: none;
   }
 
   /* Discount badge (top right corner) */
   .campaign-discount-badge {
-    position: absolute;
     top: calc(1rem * var(--badge-corner-scale, 1));
     right: calc(1rem * var(--badge-corner-scale, 1));
-    z-index: 2;
-    pointer-events: none;
     background: linear-gradient(135deg, var(--discount-bg-start), var(--discount-bg-end));
     color: var(--discount-text);
     padding: calc(0.5rem * var(--badge-corner-scale, 1)) calc(0.75rem * var(--badge-corner-scale, 1));
@@ -497,12 +441,9 @@
 
   /* Featured campaign badge (bottom banner) */
   .campaign-featured-badge {
-    position: absolute;
     bottom: 0;
     left: 0;
     right: 0;
-    z-index: 2;
-    pointer-events: none;
     background: linear-gradient(90deg, color-mix(in srgb, var(--campaign-bg-start) 95%, transparent), color-mix(in srgb, var(--campaign-bg-end) 95%, transparent));
     backdrop-filter: blur(4px);
     border-top: 2px solid rgba(255, 255, 255, 0.2);
@@ -534,9 +475,7 @@
 
   /* Free shipping badge */
   .free-shipping-badge {
-    position: absolute;
     z-index: 3;
-    pointer-events: none;
     background: linear-gradient(135deg, var(--free-shipping-bg-start), var(--free-shipping-bg-end));
     color: var(--free-shipping-text);
     padding: 0.5rem 1rem;
@@ -674,16 +613,6 @@
     .free-shipping-text {
       font-size: 0.7rem;
     }
-  }
-
-  /* Hover effects */
-  .campaign-media-item:hover .campaign-discount-badge {
-    animation: discountBounce 0.5s infinite alternate;
-    transform: rotate(-5deg) scale(1.1);
-  }
-
-  .campaign-media-item:hover .featured-badge-content {
-    animation: campaignPulse 1s infinite;
   }
 
   /* Urgent state styles */

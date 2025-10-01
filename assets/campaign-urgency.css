@@ -24,20 +24,19 @@
   51%, 100% { opacity: 0.6; }
 }
 
-/* Enhanced Buy Button Urgency */
-.campaign-product .alc-buy-buttons button[name="add"],
-.campaign-product .product-form__buttons button[name="add"] {
-  background: linear-gradient(135deg, #ff1744, #d50000) !important;
+/* Enhanced Buy Button Urgency
+   Note: These styles are only applied if section settings don't already define button colors.
+   If button_bg_start/button_bg_end are set in main-product section settings, those take precedence.
+*/
+.campaign-product .alc-buy-buttons button[name="add"]:not([style*="background"]),
+.campaign-product .product-form__buttons button[name="add"]:not([style*="background"]) {
   border: 2px solid rgba(255, 255, 255, 0.2);
-  box-shadow: 0 4px 15px rgba(255, 23, 68, 0.4);
-  animation: urgentPulse 2s infinite;
   position: relative;
   overflow: hidden;
 }
 
-.campaign-product .alc-buy-buttons button[name="add"]:hover,
-.campaign-product .product-form__buttons button[name="add"]:hover {
-  animation: urgentGlow 1s infinite;
+.campaign-product .alc-buy-buttons button[name="add"]:not([style*="background"]):hover,
+.campaign-product .product-form__buttons button[name="add"]:not([style*="background"]):hover {
   transform: translateY(-2px);
 }
 

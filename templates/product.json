@@ -46,7 +46,16 @@
         },
         "alc_product_benefits_kj4nTE": {
           "type": "alc_product_benefits",
-          "settings": {}
+          "settings": {
+            "show_stock_status": true,
+            "show_delivery": true,
+            "show_price_info": true,
+            "show_return_policy": true,
+            "show_warranty": true,
+            "high_stock_threshold": 15,
+            "medium_stock_threshold": 5,
+            "low_stock_threshold": 1
+          }
         },
         "alc_buy_buttons_kb47Ba": {
           "type": "alc_buy_buttons",
@@ -138,7 +147,25 @@
         "limited_offer_text": "",
         "super_badge_bg_start": "#ff6b00",
         "super_badge_bg_end": "#e65100",
-        "super_badge_text_color": "#ffffff"
+        "super_badge_text_color": "#ffffff",
+        "enable_sale_badge_gradient": true,
+        "sale_badge_bg_start": "#6e5929",
+        "sale_badge_bg_end": "#caad6a",
+        "sale_badge_text": "#ffffff",
+        "enable_discount_glow": true,
+        "discount_glow_color": "#caad6a",
+        "discount_badge_corner_size": 100,
+        "campaign_banner_height": 100,
+        "enable_free_shipping_badge": false,
+        "free_shipping_threshold": 0,
+        "free_shipping_badge_bg_start": "#4caf50",
+        "free_shipping_badge_bg_end": "#2e7d32",
+        "free_shipping_badge_text": "#ffffff",
+        "free_shipping_badge_position": "top-left",
+        "button_bg_start": "#6e5929",
+        "button_bg_end": "#caad6a",
+        "button_text_color": "#ffffff",
+        "button_gradient": false
       }
     },
     "related-products": {
