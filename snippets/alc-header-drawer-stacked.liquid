@@ -190,20 +190,15 @@
                               <a
                                 id="HeaderDrawer-{{ link.handle }}"
                                 href="{{ link.url }}"
-                                class="menu-drawer__menu-item list-menu__item flex items-center link link--text focus-inset hover:bg-gray-50 transition-colors">
-                                <div class="flex items-center gap-4 flex-1">
-                                  {% if link.object and link.object.image and link.object.image.src %}
-                                    <img
-                                      src="{{ link.object.image.src | img_url: '120x120' }}"
-                                      alt="{{ link.title | escape }}"
-                                      class="h-16 object-cover rounded-md flex-shrink-0">
-                                  {% endif %}
-                                  <div class="flex-1">
-                                    <span class="font-medium">{{ link.title | escape }}</span>
-                                    {% if link.object and link.object.description %}
-                                      <p class="text-sm text-gray-600 mt-1">{{ link.object.description | truncate: 60 }}</p>
-                                    {% endif %}
-                                  </div>
+                                class="split-row__link flex items-center gap-4 flex-1 no-underline text-black hover:bg-gray-50 transition-colors">
+                                {% if link.object and link.object.image and link.object.image.src %}
+                                  <img
+                                    src="{{ link.object.image.src | img_url: '120x120' }}"
+                                    alt="{{ link.title | escape }}"
+                                    class="h-24 object-cover rounded-md flex-shrink-0">
+                                {% endif %}
+                                <div class="flex-1 text-left">
+                                  <span class="font-medium">{{ link.title | escape }}</span>
                                 </div>
                               </a>
                             {% endif %}
