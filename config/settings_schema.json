@@ -1338,6 +1338,26 @@
     ]
   },
   {
+    "name": "Product Card Buttons",
+    "settings": [
+      {
+        "type": "header",
+        "content": "Add to Cart Button"
+      },
+      {
+        "type": "paragraph",
+        "content": "Configure the appearance of the Add to Cart button on product cards"
+      },
+      {
+        "type": "color",
+        "id": "product_card_button_color",
+        "label": "Button Background Color",
+        "default": "#000000",
+        "info": "This color applies to all product cards unless overridden by section-specific settings"
+      }
+    ]
+  },
+  {
     "name": "t:settings_schema.brand_information.name",
     "settings": [
       {
