@@ -151,7 +151,7 @@
         <div class="flex md:hidden">
           {%- liquid
             if section.settings.menu != blank
-              render 'alc-header-drawer-stacked', all_blocks: section.blocks, menu_color_scheme: section.settings.menu_color_scheme
+              render 'alc-header-drawer-stacked', all_blocks: section.blocks, menu_color_scheme: section.settings.menu_color_scheme, menu_gradient_start: section.settings.menu_gradient_start, menu_gradient_middle: section.settings.menu_gradient_middle, menu_gradient_end: section.settings.menu_gradient_end
             endif
 
             if section.settings.logo_position == 'top-center' or section.settings.menu == blank
@@ -603,13 +603,13 @@
         "type": "color",
         "id": "menu_gradient_middle",
         "label": "Gradient Middle Color",
-        "default": "#003840"
+        "default": "#1a1a1a"
       },
       {
         "type": "color",
         "id": "menu_gradient_end",
         "label": "Gradient End Color",
-        "default": "#00BAD7"
+        "default": "#333333"
       },
       {
         "type": "header",

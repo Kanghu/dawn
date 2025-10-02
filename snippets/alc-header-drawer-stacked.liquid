@@ -240,14 +240,18 @@
   }
   .menu-drawer__navigation {
     overscroll-behavior: contain;
-    overflow-y: auto !important; /* Move scrolling to navigation only */
-    height: 100%; /* Take full height of grid area */
+    overflow-y: auto !important;
+    height: 100%;
+    max-height: 100%; /* Ensure it doesn't exceed parent */
+    -webkit-overflow-scrolling: touch; /* Smooth scrolling on iOS */
+    padding-bottom: 4rem !important; /* Ensure last item is fully visible */
   }
 
   .menu-drawer__navigation-container {
     overscroll-behavior: contain;
-    overflow-y: visible !important; /* Remove scrolling from container */
-    height: calc(100vh - var(--header-height, 60px)) !important; /* Account for header */
+    overflow-y: hidden !important; /* Container should not scroll */
+    height: calc(100vh - var(--header-height, 60px)) !important;
+    max-height: calc(100vh - var(--header-height, 60px)) !important;
   }
 
   #menu-drawer {
@@ -255,6 +259,8 @@
     left: 0;
     right: auto;
     border-top: 1px solid lightgray;
+    height: calc(100vh - var(--header-height, 60px));
+    max-height: calc(100vh - var(--header-height, 60px));
     /* keep it left‑anchored to match main CSS */
   }
 
@@ -269,11 +275,11 @@
     margin-top: 1rem;
   }
   .first-level-title {
-    background: linear-gradient(135deg, #00BAD7 0%, #00bad7b5 50%, #01cded52 100%);
-    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+    background: linear-gradient(135deg, {{ menu_gradient_start | default: '#000000' }} 0%, {{ menu_gradient_middle | default: '#1a1a1a' }} 50%, {{ menu_gradient_end | default: '#333333' }} 100%);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
     position: relative;
     overflow: hidden;
-
+    color: white;
   }
 
   .first-level-title::before {
@@ -289,13 +295,13 @@
 
   /* Style back buttons to match first-level-title */
   .menu-drawer__close-button {
-    background: linear-gradient(135deg, #00BAD7 0%, #00bad7b5 50%, #01cded52 100%) !important;
+    background: linear-gradient(135deg, {{ menu_gradient_start | default: '#000000' }} 0%, {{ menu_gradient_middle | default: '#1a1a1a' }} 50%, {{ menu_gradient_end | default: '#333333' }} 100%) !important;
     color: white !important;
     font-weight: 600 !important;
     padding: 1rem 2rem !important;
     position: relative !important;
     overflow: hidden !important;
-    border-bottom: 1px solid rgba(0, 0, 0, 0.05) !important;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1) !important;
   }
 
   .menu-drawer__close-button::before {
@@ -315,7 +321,7 @@
   }
 
   .menu-drawer__close-button:hover {
-    background: linear-gradient(135deg, #0099b3 0%, #0099b3b5 50%, #00b3cc52 100%) !important;
+    background: linear-gradient(135deg, #0a0a0a 0%, #242424 50%, #3d3d3d 100%) !important;
   }
   /* --- Existing styles kept --- */
   .stacked-menu-item summary {
@@ -374,6 +380,32 @@
   /* Ensure summary doesn't add its own padding since we handle it inside */
   .js-split-summary {
     padding: 0;
+  }
+
+  /* Fix submenu scrolling */
+  .menu-drawer__submenu {
+    display: flex;
+    flex-direction: column;
+  }
+
+  /* Back button should not shrink */
+  .menu-drawer__inner-submenu > .menu-drawer__close-button {
+    flex-shrink: 0;
+  }
+
+  .menu-drawer__inner-submenu > ul {
+    flex: 1 1 auto; /* Allow list to grow and shrink */
+    min-height: 0; /* Important for flex scrolling */
+    overflow-y: auto;
+    padding-bottom: 3rem; /* Ensure last item is visible */
+    overscroll-behavior: contain;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  /* Bottom buttons should not shrink */
+  .menu-drawer__inner-submenu > .button,
+  .menu-drawer__inner-submenu > div:has(.button) {
+    flex-shrink: 0; /* Keep buttons at their natural size */
   }
 </style>
 
