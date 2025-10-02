@@ -369,12 +369,12 @@
               </a>
             </h3>
           </div>
-          <div class="card__badge {{ settings.badge_position }}">
+          <div class="card__badge {{ settings.badge_position }}" style="gap: 0.25rem; display: flex; flex-direction: column; align-items: flex-start;">
             {%- if card_product.compare_at_price > card_product.price and card_product.available -%}
               {%- if card_product.metafields.custom.featured_campaign.value.title != blank -%}
                 <span
                   id="NoMediaStandardBadge-{{ section_id }}-{{ card_product.id }}"
-                  class="badge badge--bottom-left text-base p-2 px-3"
+                  class="badge badge--bottom-left text-lg p-3 px-4 md:text-base md:p-2 md:px-3"
                   style="border-radius: 15px 3px 15px 3px; background-color: #F01088; color: #fff; letter-spacing: 0.025em;"
                 >
                   {{ card_product.metafields.custom.featured_campaign.value.title }}
@@ -851,18 +851,18 @@
             </div>
           {% endif %}
         {% endif %}
-        <div class="card__badge {{ settings.badge_position }}">
+        <div class="card__badge {{ settings.badge_position }}" style="gap: 0.25rem; display: flex; flex-direction: column; align-items: flex-start;">
           {%- if card_product.available == false -%}
             <span
               id="Badge-{{ section_id }}-{{ card_product.id }}"
-              class="badge badge--bottom-left color-{{ settings.sold_out_badge_color_scheme }}"
+              class="badge badge--bottom-left color-{{ settings.sold_out_badge_color_scheme }} text-lg p-3 px-4 md:text-base md:p-2 md:px-3"
             >
               {{- 'products.product.sold_out' | t -}}
             </span>
           {%- elsif card_product.compare_at_price > card_product.price and card_product.available -%}
             <span
               id="Badge-{{ section_id }}-{{ card_product.id }}"
-              class="badge badge--bottom-left color-{{ settings.sale_badge_color_scheme }}"
+              class="badge badge--bottom-left color-{{ settings.sale_badge_color_scheme }} text-lg p-3 px-4 md:text-base md:p-2 md:px-3"
             >
               {{- 'products.product.on_sale' | t -}}
             </span>

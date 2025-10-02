@@ -41,7 +41,13 @@
             >
           {%- endif -%}
           <p class="announcement-bar__message h5">
-            <span>{{ section.blocks.first.settings.text | escape }}</span>
+            <span>
+              {%- if section.blocks.first.settings.text contains 't:' -%}
+                {{- section.blocks.first.settings.text | remove: 't:' | t -}}
+              {%- else -%}
+                {{- section.blocks.first.settings.text | escape -}}
+              {%- endif -%}
+            </span>
             {%- if section.blocks.first.settings.link != blank -%}
               {{- 'icon-arrow.svg' | inline_asset_content -}}
             {%- endif -%}
@@ -102,7 +108,13 @@
                       >
                     {%- endif -%}
                     <p class="announcement-bar__message h5">
-                      <span>{{ block.settings.text | escape }}</span>
+                      <span>
+                        {%- if block.settings.text contains 't:' -%}
+                          {{- block.settings.text | remove: 't:' | t -}}
+                        {%- else -%}
+                          {{- block.settings.text | escape -}}
+                        {%- endif -%}
+                      </span>
                       {%- if block.settings.link != blank -%}
                         {{- 'icon-arrow.svg' | inline_asset_content -}}
                       {%- endif -%}

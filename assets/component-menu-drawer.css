@@ -85,8 +85,13 @@ details[open].menu-opening > .menu-drawer__submenu {
 
 .menu-drawer__inner-submenu {
   height: 100%;
+  max-height: 100%; /* Prevent exceeding parent */
   overflow-x: hidden;
   overflow-y: auto;
+  overscroll-behavior: contain;
+  -webkit-overflow-scrolling: touch; /* Smooth scrolling on iOS */
+  display: flex;
+  flex-direction: column;
 }
 
 .js .menu-drawer__menu li {
@@ -134,10 +139,13 @@ details[open].menu-opening > .menu-drawer__submenu {
   width: 100%;
   bottom: 0;
   left: 0;
+  height: 100%; /* Explicit height */
+  max-height: 100%; /* Prevent exceeding parent */
   background-color: rgb(var(--color-background));
   z-index: 1;
   transform: translateX(100%);
   visibility: hidden;
+  overflow: hidden; /* Prevent submenu itself from scrolling */
 }
 
 .js .menu-drawer__submenu .menu-drawer__submenu {
