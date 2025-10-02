@@ -14,15 +14,23 @@
     "announcement-bar": {
       "type": "announcement-bar",
       "blocks": {
+        "announcement_crfAe7": {
+          "type": "announcement",
+          "settings": {
+            "text": "🎁 Black Season: La orice lustra LED cu telecomanda primesti o aplica cadou 🎁",
+            "link": ""
+          }
+        },
         "announcement_ebkqRi": {
           "type": "announcement",
           "settings": {
-            "text": "🎉 Livrare Gratuita - pentru toate comenzile 🎉",
+            "text": "🎉 Black Season: LIVRARE GRATUITA pentru toate comenzile 🎉",
             "link": ""
           }
         }
       },
       "block_order": [
+        "announcement_crfAe7",
         "announcement_ebkqRi"
       ],
       "settings": {
