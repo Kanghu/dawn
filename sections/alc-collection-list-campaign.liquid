@@ -27,10 +27,17 @@
 <div class="color-{{ section.settings.color_scheme }} gradient">
   <div class="collection-list-wrapper page-width isolate{% if show_mobile_slider %} page-width-desktop{% endif %}{% if section.settings.title == blank %} no-heading{% endif %}{% if section.settings.show_view_all == false or section.blocks.size > collections.size %} no-mobile-link{% endif %} section-{{ section.id }}-padding">
     {%- unless section.settings.title == blank -%}
-      <div class="title-wrapper-with-link{% if show_mobile_slider %} title-wrapper--self-padded-tablet-down{% else %} title-wrapper--self-padded-mobile{% endif %} title-wrapper--no-top-margin">
+      <div class="title-wrapper-with-link{% if show_mobile_slider %} title-wrapper--self-padded-tablet-down{% else %} title-wrapper--self-padded-mobile{% endif %} title-wrapper--no-top-margin" style="display: flex; justify-content: space-between; align-items: center;">
         <h2 id="SectionHeading-{{ section.id }}" class="collection-list-title inline-richtext {{ section.settings.heading_size }}{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}">
           {{ section.settings.title }}
         </h2>
+
+        <a
+          href="{{ section.settings.see_all_url | default: routes.collections_url }}"
+          class="button button--secondary{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}"
+          style="white-space: nowrap;">
+          {{- section.settings.see_all_button_text | default: 'See all products' -}}
+        </a>
 
         {%- if section.settings.show_view_all and show_mobile_slider -%}
           <a
@@ -177,18 +184,18 @@
   {%- comment -%} Modal containers for popup blocks {%- endcomment -%}
   {%- for block in section.blocks -%}
     {%- if block.type == 'custom_image' and block.settings.action_type == 'popup' and block.settings.popup_message != blank -%}
-      <details-modal id="popup-{{ section.id }}-{{ forloop.index }}" class="modal">
+      <details-modal id="popup-{{ section.id }}-{{ forloop.index }}">
         <details>
-          <summary class="modal__toggle" aria-label="Open popup">
+          <summary class="modal__toggle" aria-label="Open popup" style="display: none;">
             <span></span>
           </summary>
           <div class="modal__content" role="dialog" aria-modal="true" aria-label="Campaign message">
-            <div class="modal__overlay"></div>
-            <div class="modal-dialog page-width" style="max-width: 600px; margin: 2rem auto; padding: 2rem; background: white; position: relative; z-index: 2; border-radius: 8px;">
-              <button type="button" class="modal__close-button link link--text focus-inset" aria-label="Close">
+            <div class="modal__overlay" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.5); z-index: 3;"></div>
+            <div class="modal-dialog" style="position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); max-width: 600px; width: 90%; max-height: 80vh; overflow-y: auto; padding: 2rem; background: white; z-index: 4; border-radius: 8px; box-shadow: 0 4px 6px rgba(0,0,0,0.1);">
+              <button type="button" class="modal__close-button link link--text focus-inset" aria-label="Close" style="position: absolute; top: 1rem; right: 1rem; width: 44px; height: 44px; display: flex; align-items: center; justify-content: center; background: transparent; border: none; cursor: pointer;">
                 {{ 'icon-close.svg' | inline_asset_content }}
               </button>
-              <div class="rte" style="padding: 1rem;">
+              <div class="rte" style="padding: 2rem 1rem 1rem 1rem;">
                 {{ block.settings.popup_message }}
               </div>
             </div>
@@ -199,25 +206,54 @@
   {%- endfor -%}
 </div>
 
+<style>
+  details-modal:not([open]) .modal__content {
+    display: none;
+  }
+
+  details-modal[open] .modal__content {
+    display: block;
+  }
+</style>
+
 <script>
-  // Handle modal opening via data-open-modal attribute
-  document.addEventListener('DOMContentLoaded', function() {
-    const modalTriggers = document.querySelectorAll('[data-open-modal]');
+  (function() {
+    // Handle modal opening via data-open-modal attribute
+    function initModalTriggers() {
+      const modalTriggers = document.querySelectorAll('[data-open-modal]');
 
-    modalTriggers.forEach(trigger => {
-      trigger.addEventListener('click', function(e) {
-        e.preventDefault();
-        const modalId = this.getAttribute('data-open-modal');
-        const modal = document.getElementById(modalId);
+      modalTriggers.forEach(trigger => {
+        // Remove existing listener if any
+        trigger.removeEventListener('click', trigger._modalClickHandler);
 
-        if (modal && modal.querySelector('details')) {
-          const details = modal.querySelector('details');
-          details.setAttribute('open', '');
-          document.body.classList.add('overflow-hidden');
-        }
+        // Create and store the handler
+        trigger._modalClickHandler = function(e) {
+          e.preventDefault();
+          const modalId = this.getAttribute('data-open-modal');
+          const modal = document.getElementById(modalId);
+
+          if (modal) {
+            const summary = modal.querySelector('summary');
+            if (summary) {
+              summary.click();
+            }
+          }
+        };
+
+        trigger.addEventListener('click', trigger._modalClickHandler);
       });
-    });
-  });
+    }
+
+    // Initialize on DOM ready
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', initModalTriggers);
+    } else {
+      initModalTriggers();
+    }
+
+    // Re-initialize when Shopify section is re-rendered
+    document.addEventListener('shopify:section:load', initModalTriggers);
+  })();
 </script>
 
 {% schema %}
@@ -306,6 +342,22 @@
         "id": "show_view_all",
         "default": false,
         "label": "t:sections.collection-list.settings.show_view_all.label"
+      },
+      {
+        "type": "header",
+        "content": "See All Button"
+      },
+      {
+        "type": "text",
+        "id": "see_all_button_text",
+        "label": "Button Text",
+        "default": "See all products"
+      },
+      {
+        "type": "url",
+        "id": "see_all_url",
+        "label": "Button URL",
+        "info": "Leave empty to link to all collections"
       },
       {
         "type": "header",
