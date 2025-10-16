@@ -100,7 +100,7 @@
                     type="button"
                     class="full-unstyled-link"
                     style="border: none; background: none; padding: 0; cursor: pointer; width: 100%;"
-                    data-open-modal="popup-{{ section.id }}-{{ forloop.index }}"
+                    data-open-modal="popup-data-{{ section.id }}-{{ forloop.index }}"
                     aria-label="{{ block.settings.alt_text | escape }}"
                   >
                 {%- else -%}
@@ -181,78 +181,128 @@
     {%- endif -%}
   </div>
 
-  {%- comment -%} Modal containers for popup blocks {%- endcomment -%}
+  {%- comment -%} Store popup messages as data attributes {%- endcomment -%}
   {%- for block in section.blocks -%}
     {%- if block.type == 'custom_image' and block.settings.action_type == 'popup' and block.settings.popup_message != blank -%}
-      <details-modal id="popup-{{ section.id }}-{{ forloop.index }}">
-        <details>
-          <summary class="modal__toggle" aria-label="Open popup" style="display: none;">
-            <span></span>
-          </summary>
-          <div class="modal__content" role="dialog" aria-modal="true" aria-label="Campaign message">
-            <div class="modal__overlay" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.5); z-index: 3;"></div>
-            <div class="modal-dialog" style="position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); max-width: 600px; width: 90%; max-height: 80vh; overflow-y: auto; padding: 2rem; background: white; z-index: 4; border-radius: 8px; box-shadow: 0 4px 6px rgba(0,0,0,0.1);">
-              <button type="button" class="modal__close-button link link--text focus-inset" aria-label="Close" style="position: absolute; top: 1rem; right: 1rem; width: 44px; height: 44px; display: flex; align-items: center; justify-content: center; background: transparent; border: none; cursor: pointer;">
-                {{ 'icon-close.svg' | inline_asset_content }}
-              </button>
-              <div class="rte" style="padding: 2rem 1rem 1rem 1rem;">
-                {{ block.settings.popup_message }}
-              </div>
-            </div>
-          </div>
-        </details>
-      </details-modal>
+      <div id="popup-data-{{ section.id }}-{{ forloop.index }}" style="display: none;">
+        {{ block.settings.popup_message }}
+      </div>
     {%- endif -%}
   {%- endfor -%}
 </div>
 
+{%- comment -%} Load SweetAlert2 CDN {%- endcomment -%}
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
 <style>
-  details-modal:not([open]) .modal__content {
-    display: none;
+  .campaign-popup {
+    max-width: 1000px !important;
+    border-radius: 12px !important;
   }
 
-  details-modal[open] .modal__content {
-    display: block;
+  .campaign-popup-title {
+    font-size: 2.5rem !important;
+    font-weight: 900 !important;
+    color: #000 !important;
+    letter-spacing: 0.05em !important;
+    margin-bottom: 1.5rem !important;
+  }
+
+  .campaign-popup-content {
+    font-size: 1.25rem !important;
+    line-height: 1.6 !important;
+  }
+
+  .campaign-popup-content h1,
+  .campaign-popup-content h2,
+  .campaign-popup-content h3 {
+    font-size: 2rem !important;
+    font-weight: 700 !important;
+    margin-bottom: 1rem !important;
+  }
+
+  .campaign-popup-content p {
+    font-size: 1.25rem !important;
+    margin-bottom: 1rem !important;
+  }
+
+  .campaign-popup-content strong,
+  .campaign-popup-content b {
+    font-weight: 700 !important;
+    font-size: 1.35rem !important;
+  }
+
+  @media screen and (max-width: 750px) {
+    .campaign-popup-content {
+      font-size: 1.1rem !important;
+    }
+
+    .campaign-popup-content h1,
+    .campaign-popup-content h2,
+    .campaign-popup-content h3 {
+      font-size: 1.5rem !important;
+    }
+
+    .campaign-popup-content p {
+      font-size: 1.1rem !important;
+    }
+
+    .campaign-popup-content strong,
+    .campaign-popup-content b {
+      font-size: 1.2rem !important;
+    }
   }
 </style>
 
 <script>
   (function() {
-    // Handle modal opening via data-open-modal attribute
-    function initModalTriggers() {
-      const modalTriggers = document.querySelectorAll('[data-open-modal]');
+    // Handle popup opening via data-open-modal attribute
+    function initPopupTriggers() {
+      const popupTriggers = document.querySelectorAll('[data-open-modal]');
 
-      modalTriggers.forEach(trigger => {
+      popupTriggers.forEach(trigger => {
         // Remove existing listener if any
-        trigger.removeEventListener('click', trigger._modalClickHandler);
+        trigger.removeEventListener('click', trigger._popupClickHandler);
 
         // Create and store the handler
-        trigger._modalClickHandler = function(e) {
+        trigger._popupClickHandler = function(e) {
           e.preventDefault();
-          const modalId = this.getAttribute('data-open-modal');
-          const modal = document.getElementById(modalId);
+          const popupId = this.getAttribute('data-open-modal');
+          const popupData = document.getElementById(popupId);
 
-          if (modal) {
-            const summary = modal.querySelector('summary');
-            if (summary) {
-              summary.click();
-            }
+          if (popupData) {
+            const htmlContent = popupData.innerHTML;
+
+            Swal.fire({
+              title: 'BLACK FRIDAY',
+              html: htmlContent,
+              showCloseButton: true,
+              showConfirmButton: false,
+              customClass: {
+                popup: 'campaign-popup',
+                title: 'campaign-popup-title',
+                htmlContainer: 'rte campaign-popup-content'
+              },
+              width: '90%',
+              padding: '3rem',
+              backdrop: 'rgba(0,0,0,0.7)'
+            });
           }
         };
 
-        trigger.addEventListener('click', trigger._modalClickHandler);
+        trigger.addEventListener('click', trigger._popupClickHandler);
       });
     }
 
     // Initialize on DOM ready
     if (document.readyState === 'loading') {
-      document.addEventListener('DOMContentLoaded', initModalTriggers);
+      document.addEventListener('DOMContentLoaded', initPopupTriggers);
     } else {
-      initModalTriggers();
+      initPopupTriggers();
     }
 
     // Re-initialize when Shopify section is re-rendered
-    document.addEventListener('shopify:section:load', initModalTriggers);
+    document.addEventListener('shopify:section:load', initPopupTriggers);
   })();
 </script>
 
