@@ -9,6 +9,14 @@
  */
 {
   "sections": {
+    "alc_breadcrumbs_h7ztXa": {
+      "type": "alc-breadcrumbs",
+      "name": "Breadcrumbs",
+      "settings": {
+        "separator_symbol": "/",
+        "background": "#ffffff"
+      }
+    },
     "main": {
       "type": "main-product",
       "blocks": {
@@ -131,11 +139,11 @@
         "enable_video_looping": false,
         "padding_top": 12,
         "padding_bottom": 12,
-        "campaign_badge_bg_start": "#383737",
-        "campaign_badge_bg_end": "#c5a65b",
-        "campaign_badge_text": "#e5dbc5",
-        "discount_badge_bg_start": "#3a3939",
-        "discount_badge_bg_end": "#c5a65b",
+        "campaign_badge_bg_start": "#280101",
+        "campaign_badge_bg_end": "#a20c01",
+        "campaign_badge_text": "#fee6b5",
+        "discount_badge_bg_start": "#a20c01",
+        "discount_badge_bg_end": "#da0000",
         "discount_badge_text": "#ffffff",
         "enable_enhanced_price": false,
         "price_bg_start": "#ffffff",
@@ -149,11 +157,11 @@
         "super_badge_bg_end": "#e65100",
         "super_badge_text_color": "#ffffff",
         "enable_sale_badge_gradient": true,
-        "sale_badge_bg_start": "#9a792a",
-        "sale_badge_bg_end": "#caad6a",
+        "sale_badge_bg_start": "#280101",
+        "sale_badge_bg_end": "#000000",
         "sale_badge_text": "#ffffff",
         "enable_discount_glow": true,
-        "discount_glow_color": "#e3d3ac",
+        "discount_glow_color": "#ffffff",
         "discount_badge_corner_size": 150,
         "campaign_banner_height": 105,
         "enable_free_shipping_badge": false,
@@ -162,10 +170,10 @@
         "free_shipping_badge_bg_end": "#cb9c2a",
         "free_shipping_badge_text": "#ffffff",
         "free_shipping_badge_position": "top-left",
-        "button_bg_start": "#cb9c2a",
-        "button_bg_end": "#caad6a",
+        "button_bg_start": "#000000",
+        "button_bg_end": "#940a01",
         "button_text_color": "#ffffff",
-        "button_gradient": false
+        "button_gradient": true
       }
     },
     "related-products": {
@@ -362,14 +370,6 @@
       ],
       "settings": {
         "include_margins": true
-      }
-    },
-    "alc_breadcrumbs_h7ztXa": {
-      "type": "alc-breadcrumbs",
-      "name": "Breadcrumbs",
-      "settings": {
-        "separator_symbol": "/",
-        "background": "#FFFFFF"
       }
     }
   },
