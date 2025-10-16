@@ -23,6 +23,94 @@
         "padding_bottom": 20
       }
     },
+    "alc_collection_list_campaign_mGB9xF": {
+      "type": "alc-collection-list-campaign",
+      "blocks": {
+        "custom_image_KjBzPe": {
+          "type": "custom_image",
+          "settings": {
+            "image": "shopify://shop_images/400RON.jpg",
+            "alt_text": "cadou 400 ron aplica led cheia sol",
+            "action_type": "popup",
+            "link_url": "",
+            "popup_message": "<p>Adauga in cos produse de 400 lei si primesti CADOU o aplica LED de perete. Cadoul este adaugat automat.</p>"
+          }
+        },
+        "custom_image_MKmAbi": {
+          "type": "custom_image",
+          "settings": {
+            "image": "shopify://shop_images/700RON.jpg",
+            "alt_text": "cadou 700 ron lustra led cerc",
+            "action_type": "popup",
+            "link_url": "",
+            "popup_message": "<p>Adauga in cos produse de 700 lei si primesti CADOU o lustra LED. Cadoul este adaugat automat.</p>"
+          }
+        },
+        "custom_image_txBiM4": {
+          "type": "custom_image",
+          "settings": {
+            "image": "shopify://shop_images/1000RON.jpg",
+            "alt_text": "cadou 1000 ron lustra led cerc cu telecomanda",
+            "action_type": "popup",
+            "link_url": "",
+            "popup_message": "<p>Adauga in cos produse de 1000 lei si primesti CADOU o Lustra LED cu Telecomanda. Cadoul este adaugat automat.</p>"
+          }
+        },
+        "custom_image_axKjwY": {
+          "type": "custom_image",
+          "settings": {
+            "image": "shopify://shop_images/VOLUME_DISCOUNT_APLICE.jpg",
+            "alt_text": "discount volum aplice",
+            "action_type": "popup",
+            "link_url": "",
+            "popup_message": "<p>Cumpara mai multe aplice LED de exterior si beneficiezi de discount din ce in ce mai mare.</p>"
+          }
+        },
+        "custom_image_bPtj74": {
+          "type": "custom_image",
+          "settings": {
+            "image": "shopify://shop_images/MOBILIER_BATERIE_BAIE.jpg",
+            "alt_text": "mobilier cadou orice baterie",
+            "action_type": "url",
+            "link_url": "shopify://collections/mobilier-baie",
+            "popup_message": ""
+          }
+        },
+        "custom_image_tDy8f3": {
+          "type": "custom_image",
+          "settings": {
+            "image": "shopify://shop_images/LAVOAR_BATERIE_BUCATARIE.jpg",
+            "alt_text": "cadou lavoar",
+            "action_type": "popup",
+            "link_url": "",
+            "popup_message": "<p>Cumpara acum o chiuveta lavoar si primeste o baterie compatibila CADOU!</p>"
+          }
+        }
+      },
+      "block_order": [
+        "custom_image_KjBzPe",
+        "custom_image_MKmAbi",
+        "custom_image_txBiM4",
+        "custom_image_axKjwY",
+        "custom_image_bPtj74",
+        "custom_image_tDy8f3"
+      ],
+      "name": "ALC - Campaign List",
+      "settings": {
+        "title": "",
+        "heading_size": "h1",
+        "image_ratio": "square",
+        "columns_desktop": 6,
+        "color_scheme": "",
+        "show_view_all": false,
+        "see_all_button_text": "See all products",
+        "see_all_url": "",
+        "columns_mobile": "2",
+        "swipe_on_mobile": false,
+        "padding_top": 0,
+        "padding_bottom": 12
+      }
+    },
     "alc_collection_list_campaign_XeTR6y": {
       "type": "alc-collection-list-campaign",
       "blocks": {
@@ -64,6 +152,7 @@
         "featured_collection_8QnBnd",
         "featured_collection_8kikMX"
       ],
+      "disabled": true,
       "name": "t:sections.collection-list.presets.name",
       "settings": {
         "title": "",
@@ -311,6 +400,7 @@
   },
   "order": [
     "custom_liquid_MVifHb",
+    "alc_collection_list_campaign_mGB9xF",
     "alc_collection_list_campaign_XeTR6y",
     "custom_liquid_ggcwHk",
     "alc_featured_collection_ERArtK",
