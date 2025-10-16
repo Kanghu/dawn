@@ -58,20 +58,100 @@
         {%- for block in section.blocks -%}
           <li
             id="Slide-{{ section.id }}-{{ forloop.index }}"
-            class="collection-list__item grid__item{% if show_mobile_slider %} slider__slide{% endif %}{% if block.settings.collection.featured_image == nil %} collection-list__item--no-media{% endif %}{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}"
+            class="collection-list__item grid__item{% if show_mobile_slider %} slider__slide{% endif %}{% if block.type == 'featured_collection' and block.settings.collection.featured_image == nil %} collection-list__item--no-media{% elsif block.type == 'custom_image' and block.settings.image == nil %} collection-list__item--no-media{% endif %}{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}"
             {{ block.shopify_attributes }}
             {% if settings.animations_reveal_on_scroll %}
             data-cascade
             style="--animation-order: {{ forloop.index }};"
             {% endif %}>
-            {%- assign placeholder_image_index = forloop.index0 | modulo: 4 | plus: 1 -%}
-            {%- assign placeholder_image = 'collection-apparel-' | append: placeholder_image_index -%}
-            {% render 'alc-card-collection-campaign'
-              , card_collection: block.settings.collection
-              , media_aspect_ratio: section.settings.image_ratio
-              , columns: columns
-              , placeholder_image: placeholder_image
-            %}
+
+            {%- if block.type == 'featured_collection' -%}
+              {%- assign placeholder_image_index = forloop.index0 | modulo: 4 | plus: 1 -%}
+              {%- assign placeholder_image = 'collection-apparel-' | append: placeholder_image_index -%}
+              {% render 'alc-card-collection-campaign'
+                , card_collection: block.settings.collection
+                , media_aspect_ratio: section.settings.image_ratio
+                , columns: columns
+                , placeholder_image: placeholder_image
+              %}
+            {%- elsif block.type == 'custom_image' -%}
+              {%- liquid
+                assign ratio = 1
+                if block.settings.image and section.settings.image_ratio == 'portrait'
+                  assign ratio = 0.8
+                elsif block.settings.image and section.settings.image_ratio == 'adapt'
+                  assign ratio = block.settings.image.aspect_ratio
+                endif
+                if ratio == 0 or ratio == null
+                  assign ratio = 1
+                endif
+              -%}
+
+              <div class="card-wrapper">
+                {%- if block.settings.action_type == 'popup' -%}
+                  <button
+                    type="button"
+                    class="full-unstyled-link"
+                    style="border: none; background: none; padding: 0; cursor: pointer; width: 100%;"
+                    data-open-modal="popup-{{ section.id }}-{{ forloop.index }}"
+                    aria-label="{{ block.settings.alt_text | escape }}"
+                  >
+                {%- else -%}
+                  <a
+                    href="{{ block.settings.link_url | default: '#' }}"
+                    class="full-unstyled-link"
+                  >
+                {%- endif -%}
+                  <div
+                    class="card card--media"
+                    style="--ratio-percent: {{ 1 | divided_by: ratio | times: 100 }}%; border: none;"
+                  >
+                    <div
+                      class="card__inner ratio"
+                      style="--ratio-percent: {{ 1 | divided_by: ratio | times: 100 }}%; border: none;"
+                    >
+                      {%- if block.settings.image -%}
+                        <div class="card__media" style="border: none;">
+                          <div class="media media--transparent media--hover-effect">
+                            <img
+                              srcset="
+                                {%- if block.settings.image.width >= 165 -%}{{ block.settings.image | image_url: width: 165 }} 165w,{%- endif -%}
+                                {%- if block.settings.image.width >= 330 -%}{{ block.settings.image | image_url: width: 330 }} 330w,{%- endif -%}
+                                {%- if block.settings.image.width >= 535 -%}{{ block.settings.image | image_url: width: 535 }} 535w,{%- endif -%}
+                                {%- if block.settings.image.width >= 750 -%}{{ block.settings.image | image_url: width: 750 }} 750w,{%- endif -%}
+                                {%- if block.settings.image.width >= 1000 -%}{{ block.settings.image | image_url: width: 1000 }} 1000w,{%- endif -%}
+                                {%- if block.settings.image.width >= 1500 -%}{{ block.settings.image | image_url: width: 1500 }} 1500w,{%- endif -%}
+                                {%- if block.settings.image.width >= 3000 -%}{{ block.settings.image | image_url: width: 3000 }} 3000w,{%- endif -%}
+                                {{ block.settings.image | image_url }} {{ block.settings.image.width }}w
+                              "
+                              src="{{ block.settings.image | image_url: width: 1500 }}"
+                              sizes="
+                                (min-width: {{ settings.page_width }}px) {{ settings.page_width | minus: 100 | divided_by: columns }}px,
+                                (min-width: 750px) {% if columns > 1 %}calc((100vw - 10rem) / 2){% else %}calc(100vw - 10rem){% endif %},
+                                calc(100vw - 3rem)
+                              "
+                              alt="{{ block.settings.alt_text | escape }}"
+                              height="{{ block.settings.image.height }}"
+                              width="{{ block.settings.image.width }}"
+                              loading="lazy"
+                              class="motion-reduce"
+                            >
+                          </div>
+                        </div>
+                      {%- else -%}
+                        <div class="card__media" style="border: none;">
+                          {{ 'image' | placeholder_svg_tag: 'placeholder-svg' }}
+                        </div>
+                      {%- endif -%}
+                    </div>
+                  </div>
+                {%- if block.settings.action_type == 'popup' -%}
+                  </button>
+                {%- else -%}
+                  </a>
+                {%- endif -%}
+              </div>
+            {%- endif -%}
           </li>
         {%- endfor -%}
       </ul>
@@ -93,7 +173,52 @@
       </div>
     {%- endif -%}
   </div>
+
+  {%- comment -%} Modal containers for popup blocks {%- endcomment -%}
+  {%- for block in section.blocks -%}
+    {%- if block.type == 'custom_image' and block.settings.action_type == 'popup' and block.settings.popup_message != blank -%}
+      <details-modal id="popup-{{ section.id }}-{{ forloop.index }}" class="modal">
+        <details>
+          <summary class="modal__toggle" aria-label="Open popup">
+            <span></span>
+          </summary>
+          <div class="modal__content" role="dialog" aria-modal="true" aria-label="Campaign message">
+            <div class="modal__overlay"></div>
+            <div class="modal-dialog page-width" style="max-width: 600px; margin: 2rem auto; padding: 2rem; background: white; position: relative; z-index: 2; border-radius: 8px;">
+              <button type="button" class="modal__close-button link link--text focus-inset" aria-label="Close">
+                {{ 'icon-close.svg' | inline_asset_content }}
+              </button>
+              <div class="rte" style="padding: 1rem;">
+                {{ block.settings.popup_message }}
+              </div>
+            </div>
+          </div>
+        </details>
+      </details-modal>
+    {%- endif -%}
+  {%- endfor -%}
 </div>
+
+<script>
+  // Handle modal opening via data-open-modal attribute
+  document.addEventListener('DOMContentLoaded', function() {
+    const modalTriggers = document.querySelectorAll('[data-open-modal]');
+
+    modalTriggers.forEach(trigger => {
+      trigger.addEventListener('click', function(e) {
+        e.preventDefault();
+        const modalId = this.getAttribute('data-open-modal');
+        const modal = document.getElementById(modalId);
+
+        if (modal && modal.querySelector('details')) {
+          const details = modal.querySelector('details');
+          details.setAttribute('open', '');
+          document.body.classList.add('overflow-hidden');
+        }
+      });
+    });
+  });
+</script>
 
 {% schema %}
   {
@@ -242,6 +367,51 @@
             "type": "collection",
             "id": "collection",
             "label": "t:sections.collection-list.blocks.featured_collection.settings.collection.label"
+          }
+        ]
+      },
+      {
+        "type": "custom_image",
+        "name": "Custom Image",
+        "settings": [
+          {
+            "type": "image_picker",
+            "id": "image",
+            "label": "Image"
+          },
+          {
+            "type": "text",
+            "id": "alt_text",
+            "label": "Image Alt Text",
+            "default": "Campaign image"
+          },
+          {
+            "type": "select",
+            "id": "action_type",
+            "label": "Action Type",
+            "options": [
+              {
+                "value": "url",
+                "label": "Link to URL"
+              },
+              {
+                "value": "popup",
+                "label": "Show Pop-up Message"
+              }
+            ],
+            "default": "url"
+          },
+          {
+            "type": "url",
+            "id": "link_url",
+            "label": "Link URL",
+            "info": "Used when Action Type is 'Link to URL'"
+          },
+          {
+            "type": "richtext",
+            "id": "popup_message",
+            "label": "Pop-up Message",
+            "info": "Used when Action Type is 'Show Pop-up Message'"
           }
         ]
       }
