@@ -26,14 +26,14 @@
     "alc_collection_list_campaign_dcVbgP": {
       "type": "alc-collection-list-campaign",
       "blocks": {
-        "custom_image_nnCLVi": {
+        "custom_image_d3Fnnh": {
           "type": "custom_image",
           "settings": {
-            "image": "shopify://shop_images/1000RON.jpg",
+            "image": "shopify://shop_images/400RON.jpg",
             "alt_text": "Campaign image",
             "action_type": "popup",
             "link_url": "",
-            "popup_message": "<p>Adauga in cos produse de 1000 lei si primesti CADOU o Lustra LED cu Telecomanda. Cadoul este adaugat automat.</p>"
+            "popup_message": "<p>Adauga in cos produse de 400 lei si primesti CADOU o aplica LED de perete. Cadoul este adaugat automat.</p>"
           }
         },
         "custom_image_HndinN": {
@@ -44,6 +44,16 @@
             "action_type": "popup",
             "link_url": "",
             "popup_message": "<p>Adauga in cos produse de 700 lei si primesti CADOU o lustra LED. Cadoul este adaugat automat.</p>"
+          }
+        },
+        "custom_image_nnCLVi": {
+          "type": "custom_image",
+          "settings": {
+            "image": "shopify://shop_images/1000RON.jpg",
+            "alt_text": "Campaign image",
+            "action_type": "popup",
+            "link_url": "",
+            "popup_message": "<p>Adauga in cos produse de 1000 lei si primesti CADOU o Lustra LED cu Telecomanda. Cadoul este adaugat automat.</p>"
           }
         },
         "custom_image_GHhXTJ": {
@@ -66,30 +76,31 @@
             "popup_message": ""
           }
         },
-        "custom_image_d3Fnnh": {
+        "custom_image_CPUbyx": {
           "type": "custom_image",
           "settings": {
-            "image": "shopify://shop_images/400RON.jpg",
-            "alt_text": "Campaign image",
+            "image": "shopify://shop_images/LAVOAR_BATERIE_BUCATARIE.jpg",
+            "alt_text": "cadou lavoar",
             "action_type": "popup",
             "link_url": "",
-            "popup_message": "<p>Adauga in cos produse de 400 lei si primesti CADOU o aplica LED de perete. Cadoul este adaugat automat.</p>"
+            "popup_message": "<p>Cumpara acum o chiuveta lavoar si primeste o baterie compatibila CADOU!</p>"
           }
         }
       },
       "block_order": [
-        "custom_image_nnCLVi",
+        "custom_image_d3Fnnh",
         "custom_image_HndinN",
+        "custom_image_nnCLVi",
         "custom_image_GHhXTJ",
         "custom_image_3x3fGc",
-        "custom_image_d3Fnnh"
+        "custom_image_CPUbyx"
       ],
       "name": "ALC - Campaign List",
       "settings": {
         "title": "",
         "heading_size": "h1",
         "image_ratio": "square",
-        "columns_desktop": 5,
+        "columns_desktop": 6,
         "color_scheme": "",
         "show_view_all": false,
         "see_all_button_text": "See all products",
