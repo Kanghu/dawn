@@ -26,43 +26,60 @@
     "alc_collection_list_campaign_dcVbgP": {
       "type": "alc-collection-list-campaign",
       "blocks": {
-        "featured_collection_X8Y7Ji": {
-          "type": "featured_collection",
+        "custom_image_nnCLVi": {
+          "type": "custom_image",
           "settings": {
-            "collection": "lustre-led-cu-telecomanda"
+            "image": "shopify://shop_images/1000RON.jpg",
+            "alt_text": "Campaign image",
+            "action_type": "popup",
+            "link_url": "",
+            "popup_message": "<p>Adauga in cos produse de 1000 lei si primesti CADOU o Lustra LED cu Telecomanda. Cadoul este adaugat automat.</p>"
           }
         },
-        "featured_collection_6PPTTG": {
-          "type": "featured_collection",
+        "custom_image_HndinN": {
+          "type": "custom_image",
           "settings": {
-            "collection": "aplice-de-exterior"
+            "alt_text": "Campaign image",
+            "action_type": "url",
+            "link_url": "",
+            "popup_message": ""
           }
         },
-        "featured_collection_knBGYy": {
-          "type": "featured_collection",
+        "custom_image_GHhXTJ": {
+          "type": "custom_image",
           "settings": {
-            "collection": "mobilier-baie"
+            "alt_text": "Campaign image",
+            "action_type": "url",
+            "link_url": "",
+            "popup_message": ""
           }
         },
-        "featured_collection_RiDXFi": {
-          "type": "featured_collection",
+        "custom_image_3x3fGc": {
+          "type": "custom_image",
           "settings": {
-            "collection": "chiuvete-lavoare"
+            "alt_text": "Campaign image",
+            "action_type": "url",
+            "link_url": "",
+            "popup_message": ""
           }
         },
-        "featured_collection_aktW3B": {
-          "type": "featured_collection",
+        "custom_image_d3Fnnh": {
+          "type": "custom_image",
           "settings": {
-            "collection": "cazi-de-baie-freestanding"
+            "image": "shopify://shop_images/400RON.jpg",
+            "alt_text": "Campaign image",
+            "action_type": "popup",
+            "link_url": "",
+            "popup_message": "<p>Adauga in cos produse de 400 lei si primesti CADOU o aplica LED de perete. Cadoul este adaugat automat.</p>"
           }
         }
       },
       "block_order": [
-        "featured_collection_X8Y7Ji",
-        "featured_collection_6PPTTG",
-        "featured_collection_knBGYy",
-        "featured_collection_RiDXFi",
-        "featured_collection_aktW3B"
+        "custom_image_nnCLVi",
+        "custom_image_HndinN",
+        "custom_image_GHhXTJ",
+        "custom_image_3x3fGc",
+        "custom_image_d3Fnnh"
       ],
       "name": "ALC - Campaign List",
       "settings": {
