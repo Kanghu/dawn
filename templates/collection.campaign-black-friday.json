@@ -92,6 +92,8 @@
         "columns_desktop": 5,
         "color_scheme": "",
         "show_view_all": false,
+        "see_all_button_text": "See all products",
+        "see_all_url": "",
         "columns_mobile": "2",
         "swipe_on_mobile": true,
         "padding_top": 8,
@@ -114,13 +116,13 @@
         ".rating-star {--color-rating-star: #fecf07; letter-spacing: 0.03em;}"
       ],
       "settings": {
-        "products_per_page": 36,
+        "products_per_page": 20,
         "image_ratio": "square",
         "image_shape": "default",
         "show_secondary_image": true,
         "show_vendor": false,
         "show_rating": true,
-        "quick_add": false
+        "quick_add": true
       }
     }
   },
