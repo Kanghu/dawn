@@ -26,6 +26,94 @@
         "color_scheme": "scheme-15b3ebfc-72e7-42d0-af22-57c8d007abe9"
       }
     },
+    "alc_collection_list_campaign_yhUQeh": {
+      "type": "alc-collection-list-campaign",
+      "blocks": {
+        "custom_image_LzLAXN": {
+          "type": "custom_image",
+          "settings": {
+            "image": "shopify://shop_images/400RON.jpg",
+            "alt_text": "cadou 400 ron aplica led cheia sol",
+            "action_type": "popup",
+            "link_url": "",
+            "popup_message": "<p>Adauga in cos produse de 400 lei si primesti CADOU o aplica LED de perete. Cadoul este adaugat automat.</p>"
+          }
+        },
+        "custom_image_mPpymd": {
+          "type": "custom_image",
+          "settings": {
+            "image": "shopify://shop_images/700RON.jpg",
+            "alt_text": "cadou 700 ron lustra led cerc",
+            "action_type": "popup",
+            "link_url": "",
+            "popup_message": "<p>Adauga in cos produse de 700 lei si primesti CADOU o lustra LED. Cadoul este adaugat automat.</p>"
+          }
+        },
+        "custom_image_kTypUm": {
+          "type": "custom_image",
+          "settings": {
+            "image": "shopify://shop_images/1000RON.jpg",
+            "alt_text": "cadou 1000 ron lustra led cerc cu telecomanda",
+            "action_type": "popup",
+            "link_url": "",
+            "popup_message": "<p>Adauga in cos produse de 1000 lei si primesti CADOU o Lustra LED cu Telecomanda. Cadoul este adaugat automat.</p>"
+          }
+        },
+        "custom_image_D4yztq": {
+          "type": "custom_image",
+          "settings": {
+            "image": "shopify://shop_images/LAVOAR_BATERIE_BUCATARIE.jpg",
+            "alt_text": "cadou lavoar",
+            "action_type": "popup",
+            "link_url": "",
+            "popup_message": "<p>Cumpara acum o chiuveta lavoar si primeste o baterie compatibila CADOU!</p>"
+          }
+        },
+        "custom_image_jLKXdK": {
+          "type": "custom_image",
+          "settings": {
+            "image": "shopify://shop_images/MOBILIER_BATERIE_BAIE.jpg",
+            "alt_text": "mobilier cadou orice baterie",
+            "action_type": "popup",
+            "link_url": "shopify://collections/mobilier-baie",
+            "popup_message": ""
+          }
+        },
+        "custom_image_bVeEPK": {
+          "type": "custom_image",
+          "disabled": true,
+          "settings": {
+            "alt_text": "Campaign image",
+            "action_type": "url",
+            "link_url": "",
+            "popup_message": ""
+          }
+        }
+      },
+      "block_order": [
+        "custom_image_LzLAXN",
+        "custom_image_mPpymd",
+        "custom_image_kTypUm",
+        "custom_image_D4yztq",
+        "custom_image_jLKXdK",
+        "custom_image_bVeEPK"
+      ],
+      "name": "ALC - Campaign List",
+      "settings": {
+        "title": "",
+        "heading_size": "h2",
+        "image_ratio": "square",
+        "columns_desktop": 6,
+        "color_scheme": "",
+        "show_view_all": false,
+        "see_all_button_text": "See all products",
+        "see_all_url": "",
+        "columns_mobile": "2",
+        "swipe_on_mobile": true,
+        "padding_top": 12,
+        "padding_bottom": 12
+      }
+    },
     "product-grid": {
       "type": "main-collection-product-grid",
       "custom_css": [
@@ -53,6 +141,7 @@
   "order": [
     "alc_breadcrumbs_Bd8j7D",
     "banner",
+    "alc_collection_list_campaign_yhUQeh",
     "product-grid"
   ]
 }
