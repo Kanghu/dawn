@@ -21,12 +21,11 @@
     },
     "image_banner_MiPgtb": {
       "type": "image-banner",
-      "disabled": true,
       "name": "t:sections.image-banner.presets.name",
       "settings": {
-        "image": "shopify://shop_images/LUSTRE_LED_OFERTE.png",
+        "image": "shopify://shop_images/LUSTRASUB50_RO_MOBILE.png",
         "image_overlay_opacity": 0,
-        "image_height": "adapt",
+        "image_height": "small",
         "desktop_content_position": "middle-center",
         "show_text_box": true,
         "desktop_content_alignment": "center",
@@ -35,16 +34,6 @@
         "mobile_content_alignment": "center",
         "stack_images_on_mobile": true,
         "show_text_below": true
-      }
-    },
-    "custom_liquid_NfjicE": {
-      "type": "custom-liquid",
-      "name": "t:sections.custom-liquid.presets.name",
-      "settings": {
-        "custom_liquid": "<section class=\"video-banner\">\n  {% if request.device_type == 'mobile' %}\n    <video\n      class=\"video-banner__media\"\n      autoplay\n      loop\n      muted\n      playsinline\n      preload=\"auto\"\n      src=\"https://cdn.shopify.com/videos/c/o/v/850df815ed174328a57b7c1c2ffc5bf3.mp4\">\n    </video>\n  {% else %}\n    <video\n      class=\"video-banner__media\"\n      autoplay\n      loop\n      muted\n      playsinline\n      preload=\"auto\"\n      src=\"https://cdn.shopify.com/videos/c/o/v/248e804c903c4047adc33d387ed137a1.mp4\">\n    </video>\n  {% endif %}\n</section>",
-        "color_scheme": "",
-        "padding_top": 0,
-        "padding_bottom": 0
       }
     },
     "product-grid": {
@@ -74,7 +63,6 @@
   "order": [
     "banner",
     "image_banner_MiPgtb",
-    "custom_liquid_NfjicE",
     "product-grid"
   ]
 }
