@@ -7,17 +7,30 @@
   - columns: {Number}
   - extend_height: {Boolean} Card height extends to available container space. Default: false (optional)
   - placeholder_image: {String} Placeholder image when collection is empty (optional)
+  - show_title_overlay: {Boolean} Show collection title overlaid on image. Default: false (optional)
 
   Usage:
-  {% render 'alc-card-collection-campaign', card_collection: collection %}
+  {% render 'alc-card-collection-campaign', card_collection: collection, show_title_overlay: true %}
 {% endcomment %}
 
 {%- liquid
+  assign collection_image = card_collection.featured_image
+  if collection_image == blank
+    assign collection_image = card_collection.image
+  endif
+
+  comment Check if image has a src property (metafield collection) or is a direct image object
+    assign has_src = false
+    if collection_image.src
+      assign has_src = true
+    endif
+  endcomment
+
   assign ratio = 1
-  if card_collection.featured_image and media_aspect_ratio == 'portrait'
+  if collection_image and media_aspect_ratio == 'portrait'
     assign ratio = 0.8
-  elsif card_collection.featured_image and media_aspect_ratio == 'adapt'
-    assign ratio = card_collection.featured_image.aspect_ratio
+  elsif collection_image and media_aspect_ratio == 'adapt'
+    assign ratio = collection_image.aspect_ratio
   endif
   if ratio == 0 or ratio == null
     assign ratio = 1
@@ -32,48 +45,57 @@
 <div class="card-wrapper">
   <a
     {% if card_collection == blank %}
-      role="link"
-      aria-disabled="true"
+    role="link"
+    aria-disabled="true"
     {% else %}
-      href="{{ card_collection.url }}"
+    href="{{ card_collection.url }}"
     {% endif %}
-    class="full-unstyled-link"
-  >
-    <div
-      class="card card--media {% if extend_height %}card--extend-height{% endif %}"
-      style="--ratio-percent: {{ 1 | divided_by: ratio | times: 100 }}%; border: none;"
-    >
-      <div
-        class="card__inner ratio"
-        style="--ratio-percent: {{ 1 | divided_by: ratio | times: 100 }}%; border: none;"
-      >
-        {%- if card_collection.featured_image -%}
+    class="full-unstyled-link">
+    <div class="card card--media {% if extend_height %}card--extend-height{% endif %}" style="--ratio-percent: {{ 1 | divided_by: ratio | times: 100 }}%; border: none;">
+      <div class="card__inner ratio" style="--ratio-percent: {{ 1 | divided_by: ratio | times: 100 }}%; border: none;">
+        {%- if collection_image -%}
           <div class="card__media" style="border: none;">
             <div class="media media--transparent media--hover-effect">
-              <img
-                srcset="
-                  {%- if card_collection.featured_image.width >= 165 -%}{{ card_collection.featured_image | image_url: width: 165 }} 165w,{%- endif -%}
-                  {%- if card_collection.featured_image.width >= 330 -%}{{ card_collection.featured_image | image_url: width: 330 }} 330w,{%- endif -%}
-                  {%- if card_collection.featured_image.width >= 535 -%}{{ card_collection.featured_image | image_url: width: 535 }} 535w,{%- endif -%}
-                  {%- if card_collection.featured_image.width >= 750 -%}{{ card_collection.featured_image | image_url: width: 750 }} 750w,{%- endif -%}
-                  {%- if card_collection.featured_image.width >= 1000 -%}{{ card_collection.featured_image | image_url: width: 1000 }} 1000w,{%- endif -%}
-                  {%- if card_collection.featured_image.width >= 1500 -%}{{ card_collection.featured_image | image_url: width: 1500 }} 1500w,{%- endif -%}
-                  {%- if card_collection.featured_image.width >= 3000 -%}{{ card_collection.featured_image | image_url: width: 3000 }} 3000w,{%- endif -%}
-                  {{ card_collection.featured_image | image_url }} {{ card_collection.featured_image.width }}w
-                "
-                src="{{ card_collection.featured_image | image_url: width: 1500 }}"
-                sizes="
-                  (min-width: {{ settings.page_width }}px) {{ settings.page_width | minus: 100 | divided_by: columns_safe }}px,
-                  (min-width: 750px) {% if columns_safe > 1 %}calc((100vw - 10rem) / 2){% else %}calc(100vw - 10rem){% endif %},
-                  calc(100vw - 3rem)
-                "
-                alt="{{ card_collection.title | escape }}"
-                height="{{ card_collection.featured_image.height }}"
-                width="{{ card_collection.featured_image.width }}"
-                loading="lazy"
-                class="motion-reduce"
-              >
+              {%- if has_src -%}
+                {%- comment -%} Metafield collection with direct CDN URL {%- endcomment -%}
+                <img
+                  src="https:{{ collection_image.src }}"
+                  alt="{{ card_collection.title | escape }}"
+                  height="{{ collection_image.height }}"
+                  width="{{ collection_image.width }}"
+                  loading="lazy"
+                  class="motion-reduce">
+              {%- else -%}
+                {%- comment -%} Standard collection with image object {%- endcomment -%}
+                <img
+                  srcset="
+                    {%- if collection_image.width >= 165 -%}{{ collection_image | image_url: width: 165 }} 165w,{%- endif -%}
+                    {%- if collection_image.width >= 330 -%}{{ collection_image | image_url: width: 330 }} 330w,{%- endif -%}
+                    {%- if collection_image.width >= 535 -%}{{ collection_image | image_url: width: 535 }} 535w,{%- endif -%}
+                    {%- if collection_image.width >= 750 -%}{{ collection_image | image_url: width: 750 }} 750w,{%- endif -%}
+                    {%- if collection_image.width >= 1000 -%}{{ collection_image | image_url: width: 1000 }} 1000w,{%- endif -%}
+                    {%- if collection_image.width >= 1500 -%}{{ collection_image | image_url: width: 1500 }} 1500w,{%- endif -%}
+                    {%- if collection_image.width >= 3000 -%}{{ collection_image | image_url: width: 3000 }} 3000w,{%- endif -%}
+                    {{ collection_image | image_url }} {{ collection_image.width }}w
+                  "
+                  src="{{ collection_image | image_url: width: 1500 }}"
+                  sizes="
+                    (min-width: {{ settings.page_width }}px) {{ settings.page_width | minus: 100 | divided_by: columns_safe }}px,
+                    (min-width: 750px) {% if columns_safe > 1 %}calc((100vw - 10rem) / 2){% else %}calc(100vw - 10rem){% endif %},
+                    calc(100vw - 3rem)
+                  "
+                  alt="{{ card_collection.title | escape }}"
+                  height="{{ collection_image.height }}"
+                  width="{{ collection_image.width }}"
+                  loading="lazy"
+                  class="motion-reduce">
+              {%- endif -%}
             </div>
+            {%- if show_title_overlay and card_collection.title -%}
+              <div class="collection-card-overlay" style="position: absolute; bottom: 0; left: 0; right: 0; padding: 0.75rem 1rem; background-color: rgba(255, 255, 255, 0.9); text-align: center;">
+                <h3 class="h5" style="margin: 0; font-size: 1rem; font-weight: 500;">{{ card_collection.title }}</h3>
+              </div>
+            {%- endif -%}
           </div>
         {%- elsif card_collection == blank -%}
           <div class="card__media" style="border: none;">

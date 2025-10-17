@@ -18,12 +18,16 @@
       }
     },
     "banner": {
-      "type": "alc-main-collection-banner",
+      "type": "alc-main-coll-banner-v2",
       "settings": {
         "show_collection_description": true,
         "show_collection_image": false,
         "show_collection_slider": true,
-        "color_scheme": "scheme-15b3ebfc-72e7-42d0-af22-57c8d007abe9"
+        "color_scheme": "scheme-15b3ebfc-72e7-42d0-af22-57c8d007abe9",
+        "slider_columns_desktop": 5,
+        "slider_columns_mobile": "2",
+        "slider_enable_mobile": true,
+        "slider_image_ratio": "square"
       }
     },
     "alc_collection_list_campaign_yhUQeh": {

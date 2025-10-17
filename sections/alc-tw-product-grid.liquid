@@ -39,6 +39,7 @@
             <!-- Subcollection Title Block -->
             <div class="page-width">
               {%- liquid
+                assign main_color = section.settings.header_button_color | default: collection.metafields.custom.main_color | default: '#06BBD6'
                 assign bg_style = ''
                 assign opacity_hex = ''
 
@@ -67,25 +68,25 @@
 
                 case section.settings.header_background_style
                   when 'solid'
-                    assign bg_style = 'background-color: ' | append: collection.metafields.custom.main_color | append: opacity_hex | append: ';'
+                    assign bg_style = 'background-color: ' | append: main_color | append: opacity_hex | append: ';'
                   when 'gradient_subtle'
-                    assign bg_style = 'background: linear-gradient(90deg, ' | append: collection.metafields.custom.main_color | append: opacity_hex | append: ' 0%, #fff 100%);'
+                    assign bg_style = 'background: linear-gradient(90deg, ' | append: main_color | append: opacity_hex | append: ' 0%, #fff 100%);'
                   when 'gradient_prominent'
                     assign opacity_hex_end = '66'
                     if section.settings.header_bg_opacity <= 40
                       assign opacity_hex_end = '33'
                     endif
-                    assign bg_style = 'background: linear-gradient(90deg, ' | append: collection.metafields.custom.main_color | append: opacity_hex | append: ' 0%, ' | append: collection.metafields.custom.main_color | append: opacity_hex_end | append: ' 100%);'
+                    assign bg_style = 'background: linear-gradient(90deg, ' | append: main_color | append: opacity_hex | append: ' 0%, ' | append: main_color | append: opacity_hex_end | append: ' 100%);'
                 endcase
               -%}
-              <div class="flex justify-between items-center px-6 py-6 border-b-4" style="{{ bg_style }} border-bottom-color: {{ collection.metafields.custom.main_color | default: '#06BBD6' }};">
+              <div class="flex justify-between items-center px-6 py-6 border-b-4" style="{{ bg_style }} border-bottom-color: {{ main_color }};">
                 <h2 class="text-4xl tracking-wider font-bold text-gray-900">
                   {{ subcollection.title }}
                 </h2>
                 <a
                   href="{{ subcollection.url }}"
                   class="inline-flex items-center px-6 py-3 border border-transparent text-base font-medium rounded-md shadow-sm text-white bg-[#1B1D1C] hover:bg-[#059caf] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#06BBD6] no-underline whitespace-nowrap"
-                  style="background-color: {{ collection.metafields.custom.main_color }};">
+                  style="background-color: {{ main_color }};">
                   <span>{{ section.settings.see_all_button_text | default: 'Vezi toate produsele' }}</span>
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
@@ -133,10 +134,13 @@
 
               <!-- "See All Products" Button -->
               <div class="flex justify-center">
+                {%- liquid
+                  assign main_color = section.settings.header_button_color | default: collection.metafields.custom.main_color | default: '#06BBD6'
+                -%}
                 <a
                   href="{{ subcollection.url }}"
                   class="inline-flex items-center px-6 py-3 my-6 border border-transparent text-xl font-medium rounded-md shadow-sm text-white bg-[#1B1D1C] hover:bg-[#059caf] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#06BBD6] no-underline"
-                  style="background-color: {{ collection.metafields.custom.main_color }};">
+                  style="background-color: {{ main_color }};">
                   <span>Vezi toate produsele</span>
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
@@ -270,6 +274,13 @@
       {
         "type": "header",
         "content": "Subcollection Header Styling"
+      },
+      {
+        "type": "color",
+        "id": "header_button_color",
+        "label": "Header & Button Color",
+        "default": "#06BBD6",
+        "info": "Color used for header backgrounds, borders, and buttons. Falls back to collection metafield if not set."
       },
       {
         "type": "select",

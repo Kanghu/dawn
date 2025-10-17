@@ -108,42 +108,42 @@
                             {% endif %}
 
                             {% unless is_campaign %}
-                            <div class="mega-menu__right-content{% if forloop.first %} active{% endif %}" data-content="{{ childlink.handle }}">
-                              <ul class="mega-menu__grid" role="list">
-                                {% for grandchildlink in childlink.links %}
-                                  <li class="mega-menu__grid-item">
-                                    <div class="aspect-square bg-white relative transition-transform duration-100 hover:scale-104" style="width: 120px; height: 120px;">
-                                      <a href="{{ grandchildlink.url }}" class="mega-menu__link px-0">
-                                        {% if grandchildlink.object and grandchildlink.object.image %}
-                                          <img
-                                            src="{{ grandchildlink.object.image.src | img_url: '120x120', crop: 'center' }}"
-                                            alt="{{ grandchildlink.title | escape }}"
-                                            class="object-cover object-center"
-                                            width="120"
-                                            height="120"
-                                            loading="lazy">
-                                        {% endif %}
-                                        <h4 class="absolute top-28 left-0 right-0 text-xl font-semibold pt-4">
-                                          {{ grandchildlink.title | escape }}
-                                        </h4>
-                                      </a>
-                                    </div>
+                              <div class="mega-menu__right-content{% if forloop.first %} active{% endif %}" data-content="{{ childlink.handle }}">
+                                <ul class="mega-menu__grid" role="list">
+                                  {% for grandchildlink in childlink.links %}
+                                    <li class="mega-menu__grid-item">
+                                      <div class="aspect-square bg-white relative transition-transform duration-100 hover:scale-104" style="width: 120px; height: 120px;">
+                                        <a href="{{ grandchildlink.url }}" class="mega-menu__link px-0">
+                                          {% if grandchildlink.object and grandchildlink.object.image %}
+                                            <img
+                                              src="{{ grandchildlink.object.image.src | img_url: '120x120', crop: 'center' }}"
+                                              alt="{{ grandchildlink.title | escape }}"
+                                              class="object-cover object-center"
+                                              width="120"
+                                              height="120"
+                                              loading="lazy">
+                                          {% endif %}
+                                          <h4 class="absolute top-28 left-0 right-0 text-xl font-semibold pt-4">
+                                            {{ grandchildlink.title | escape }}
+                                          </h4>
+                                        </a>
+                                      </div>
 
-                                    {% if grandchildlink.links.size > 0 %}
-                                      <ul class="mega-menu__sublinks mx-0 px-0 pt-2">
-                                        {% for grandgrandchildlink in grandchildlink.links %}
-                                          <li class="my-[-8px] py-2">
-                                            <a href="{{ grandgrandchildlink.url }}" class="mega-menu__sublink text-xl no-underline text-black my-[-8px] py-0 font-light">
-                                              {{ grandgrandchildlink.title | escape }}
-                                            </a>
-                                          </li>
-                                        {% endfor %}
-                                      </ul>
-                                    {% endif %}
-                                  </li>
-                                {% endfor %}
-                              </ul>
-                            </div>
+                                      {% if grandchildlink.links.size > 0 %}
+                                        <ul class="mega-menu__sublinks mx-0 px-0 pt-2">
+                                          {% for grandgrandchildlink in grandchildlink.links %}
+                                            <li class="my-[-8px] py-2">
+                                              <a href="{{ grandgrandchildlink.url }}" class="mega-menu__sublink text-xl no-underline text-black my-[-8px] py-0 font-light">
+                                                {{ grandgrandchildlink.title | escape }}
+                                              </a>
+                                            </li>
+                                          {% endfor %}
+                                        </ul>
+                                      {% endif %}
+                                    </li>
+                                  {% endfor %}
+                                </ul>
+                              </div>
                             {% endunless %}
                           {% endfor %}
                         </div>
@@ -357,7 +357,7 @@
   .mega-menu__left-column {
     width: 300px;
     border-right: 1px solid #eee;
-    padding: 0;
+    padding: 0 1rem;
     margin: 0;
   }
 

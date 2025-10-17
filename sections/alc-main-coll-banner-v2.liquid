@@ -54,17 +54,13 @@
 </div>
 
 {%- if section.settings.show_collection_slider -%}
-  <div class="flex flex-row">
-    {% render 'alc-subcollection-slider-native',
-      collection: collection,
-      columns_desktop: section.settings.slider_columns_desktop,
-      columns_mobile: section.settings.slider_columns_mobile,
-      enable_desktop_slider: section.settings.slider_enable_desktop,
-      enable_mobile_slider: section.settings.slider_enable_mobile,
-      show_navigation: section.settings.show_slider_buttons,
-      image_ratio: section.settings.slider_image_ratio
-    %}
-  </div>
+  {% render 'alc-subcollection-slider-simple',
+    collection: collection,
+    columns_desktop: section.settings.slider_columns_desktop,
+    columns_mobile: section.settings.slider_columns_mobile,
+    enable_mobile_slider: section.settings.slider_enable_mobile,
+    image_ratio: section.settings.slider_image_ratio
+  %}
 {%- endif -%}
 
 {% schema %}
@@ -137,24 +133,10 @@
       },
       {
         "type": "checkbox",
-        "id": "slider_enable_desktop",
-        "default": true,
-        "label": "Enable slider on desktop",
-        "info": "If disabled, shows a static grid on desktop"
-      },
-      {
-        "type": "checkbox",
         "id": "slider_enable_mobile",
         "default": true,
         "label": "Enable swipe on mobile",
         "info": "Allow horizontal scrolling/swiping on mobile devices"
-      },
-      {
-        "type": "checkbox",
-        "id": "show_slider_buttons",
-        "default": true,
-        "label": "Show navigation arrows and counter",
-        "info": "Display prev/next arrows and slide counter"
       },
       {
         "type": "select",
