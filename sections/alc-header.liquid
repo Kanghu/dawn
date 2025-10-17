@@ -305,7 +305,7 @@
           if section.settings.menu_type_desktop == 'dropdown'
             render 'header-dropdown-menu'
           elsif section.settings.menu_type_desktop == 'aless_mega'
-            render 'aless-mega-menu', all_blocks: section.blocks, menu_color_scheme: section.settings.menu_color_scheme
+            render 'aless-mega-menu', all_blocks: section.blocks, menu_color_scheme: section.settings.menu_color_scheme, menu_separator_color: section.settings.menu_separator_color
           elsif section.settings.menu_type_desktop != 'drawer'
             render 'header-mega-menu'
           endif
@@ -610,6 +610,13 @@
         "id": "menu_gradient_end",
         "label": "Gradient End Color",
         "default": "#333333"
+      },
+      {
+        "type": "color",
+        "id": "menu_separator_color",
+        "label": "Menu Separator Color",
+        "default": "#00BAD7",
+        "info": "Color for the vertical line separator between menu items"
       },
       {
         "type": "header",

@@ -14,7 +14,7 @@
 <script src="{{ 'product-form.js' | asset_url }}" defer="defer"></script>
 <script src="{{ 'facets.js' | asset_url }}" defer="defer"></script>
 
-<div class="bg-gray-50">
+<div class="bg-white">
   <div>
     <main>
       {% assign subcollections = collection.metafields.custom.slider_subcollections.value %}
@@ -36,16 +36,73 @@
           {% endcase %}
 
           <div id="section-{{ subcollection.handle }}">
-            <div class="page-width pt-4 pb-8 bg-white border-l-4 border-[#06BBD6] rounded-lg shadow-sm" style="border-left-color: {{ collection.metafields.custom.border_color }};">
+            <!-- Subcollection Title Block -->
+            <div class="page-width">
+              {%- liquid
+                assign bg_style = ''
+                assign opacity_hex = ''
 
-              <!-- Subcollection Title Block -->
-              <div class="mx-[-1.5rem]" style="background: linear-gradient(90deg, {{ collection.metafields.custom.main_color }}4D 0%, #fff 100%);">
-                <h2 class="text-4xl tracking-wider font-semibold text-gray-900 mb-6 mt-2 px-6 py-4">
+                case section.settings.header_bg_opacity
+                  when 10
+                    assign opacity_hex = '1A'
+                  when 20
+                    assign opacity_hex = '33'
+                  when 30
+                    assign opacity_hex = '4D'
+                  when 40
+                    assign opacity_hex = '66'
+                  when 50
+                    assign opacity_hex = '80'
+                  when 60
+                    assign opacity_hex = '99'
+                  when 70
+                    assign opacity_hex = 'B3'
+                  when 80
+                    assign opacity_hex = 'CC'
+                  when 90
+                    assign opacity_hex = 'E6'
+                  when 100
+                    assign opacity_hex = 'FF'
+                endcase
+
+                case section.settings.header_background_style
+                  when 'solid'
+                    assign bg_style = 'background-color: ' | append: collection.metafields.custom.main_color | append: opacity_hex | append: ';'
+                  when 'gradient_subtle'
+                    assign bg_style = 'background: linear-gradient(90deg, ' | append: collection.metafields.custom.main_color | append: opacity_hex | append: ' 0%, #fff 100%);'
+                  when 'gradient_prominent'
+                    assign opacity_hex_end = '66'
+                    if section.settings.header_bg_opacity <= 40
+                      assign opacity_hex_end = '33'
+                    endif
+                    assign bg_style = 'background: linear-gradient(90deg, ' | append: collection.metafields.custom.main_color | append: opacity_hex | append: ' 0%, ' | append: collection.metafields.custom.main_color | append: opacity_hex_end | append: ' 100%);'
+                endcase
+              -%}
+              <div class="flex justify-between items-center px-6 py-6 border-b-4" style="{{ bg_style }} border-bottom-color: {{ collection.metafields.custom.main_color | default: '#06BBD6' }};">
+                <h2 class="text-4xl tracking-wider font-bold text-gray-900">
                   {{ subcollection.title }}
                 </h2>
+                <a
+                  href="{{ subcollection.url }}"
+                  class="inline-flex items-center px-6 py-3 border border-transparent text-base font-medium rounded-md shadow-sm text-white bg-[#1B1D1C] hover:bg-[#059caf] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#06BBD6] no-underline whitespace-nowrap"
+                  style="background-color: {{ collection.metafields.custom.main_color }};">
+                  <span>{{ section.settings.see_all_button_text | default: 'Vezi toate produsele' }}</span>
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    class="h-5 w-5 ml-2"
+                    viewBox="0 0 20 20"
+                    fill="currentColor">
+                    <path
+                      fill-rule="evenodd"
+                      d="M10.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L12.586 11H5a1 1 0 110-2h7.586l-2.293-2.293a1 1 0 010-1.414z"
+                      clip-rule="evenodd" />
+                  </svg>
+                </a>
               </div>
+            </div>
 
-              <!-- Product Grid -->
+            <!-- Product Grid -->
+            <div class="page-width pt-4 pb-8">
               <ul class="grid product-grid grid--2-col-tablet-down grid--5-col-desktop gap-x-6">
                 {% assign skip_card_product_styles = false %}
                 {% for product in collection.products %}
@@ -209,6 +266,57 @@
         "id": "quick_add",
         "default": false,
         "label": "t:sections.main-collection-product-grid.settings.quick_add.label"
+      },
+      {
+        "type": "header",
+        "content": "Subcollection Header Styling"
+      },
+      {
+        "type": "select",
+        "id": "header_background_style",
+        "label": "Header Background Style",
+        "options": [
+          {
+            "value": "none",
+            "label": "None (White)"
+          },
+          {
+            "value": "solid",
+            "label": "Solid Color"
+          },
+          {
+            "value": "gradient_subtle",
+            "label": "Subtle Gradient"
+          },
+          {
+            "value": "gradient_prominent",
+            "label": "Prominent Gradient"
+          }
+        ],
+        "default": "none",
+        "info": "Choose background style for subcollection headers"
+      },
+      {
+        "type": "range",
+        "id": "header_bg_opacity",
+        "min": 10,
+        "max": 100,
+        "step": 10,
+        "unit": "%",
+        "label": "Background Color Opacity",
+        "default": 30,
+        "info": "Controls the intensity of the background color (only applies when style is not 'None')"
+      },
+      {
+        "type": "header",
+        "content": "Subcollection Buttons"
+      },
+      {
+        "type": "text",
+        "id": "see_all_button_text",
+        "label": "See All Button Text",
+        "default": "Vezi toate produsele",
+        "info": "Text displayed on the button at the top right of each subcollection"
       }
     ]
   }

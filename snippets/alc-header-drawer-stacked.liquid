@@ -37,8 +37,24 @@
                     {% if top_menu.links.size > 0 %}
                       <ul class="menu-drawer__menu has-submenu flex flex-col space-y-2 pb-4" role="list">
                         {% for link in top_menu.links %}
+                          {% comment %}Check if this collection is a campaign{% endcomment %}
+                          {% assign is_campaign = false %}
+                          {% if link.object and link.object.metafields.custom.is_campaign %}
+                            {% assign is_campaign = true %}
+                          {% endif %}
+
                           <li class="w-full flex items-stretch">
-                            {% if link.links != blank %}
+                            {% if is_campaign %}
+                              {% comment %}Campaign collection: show image directly without drawer expansion{% endcomment %}
+                              <a href="{{ link.url }}" class="drawer-campaign-link flex items-center gap-4 flex-1 no-underline text-black hover:bg-gray-50 transition-colors">
+                                {% if link.object and link.object.image and link.object.image.src %}
+                                  <img
+                                    src="{{ link.object.image.src | img_url: 'master' }}"
+                                    alt="{{ link.title | escape }}"
+                                    class="w-full h-auto object-contain rounded-md">
+                                {% endif %}
+                              </a>
+                            {% elsif link.links != blank %}
                               <!-- LEFT: link to category -->
                               <a href="{{ link.url }}" class="split-row__link flex items-center gap-4 flex-1 js-category-link no-underline text-black">
                                 {% if link.object and link.object.image and link.object.image.src %}
@@ -230,6 +246,10 @@
     padding-left: 1rem;
     margin-left: 0;
   }
+
+  .menu-drawer__menu {
+    padding-right: 1rem;
+  }
   li {
     list-style: none;
   }
@@ -237,14 +257,18 @@
     overscroll-behavior: contain;
     overflow-y: auto !important;
     height: 100%;
-    max-height: 100%; /* Ensure it doesn't exceed parent */
-    -webkit-overflow-scrolling: touch; /* Smooth scrolling on iOS */
-    padding-bottom: 4rem !important; /* Ensure last item is fully visible */
+    max-height: 100%;
+    /* Ensure it doesn't exceed parent */
+    -webkit-overflow-scrolling: touch;
+    /* Smooth scrolling on iOS */
+    padding-bottom: 4rem !important;
+    /* Ensure last item is fully visible */
   }
 
   .menu-drawer__navigation-container {
     overscroll-behavior: contain;
-    overflow-y: hidden !important; /* Container should not scroll */
+    overflow-y: hidden !important;
+    /* Container should not scroll */
     height: calc(100vh - var(--header-height, 60px)) !important;
     max-height: calc(100vh - var(--header-height, 60px)) !important;
   }
@@ -253,7 +277,6 @@
     width: 85vw;
     left: 0;
     right: auto;
-    border-top: 1px solid lightgray;
     height: calc(100vh - var(--header-height, 60px));
     max-height: calc(100vh - var(--header-height, 60px));
     /* keep it left‑anchored to match main CSS */
@@ -389,10 +412,13 @@
   }
 
   .menu-drawer__inner-submenu > ul {
-    flex: 1 1 auto; /* Allow list to grow and shrink */
-    min-height: 0; /* Important for flex scrolling */
+    flex: 1 1 auto;
+    /* Allow list to grow and shrink */
+    min-height: 0;
+    /* Important for flex scrolling */
     overflow-y: auto;
-    padding-bottom: 3rem; /* Ensure last item is visible */
+    padding-bottom: 3rem;
+    /* Ensure last item is visible */
     overscroll-behavior: contain;
     -webkit-overflow-scrolling: touch;
   }
@@ -400,7 +426,22 @@
   /* Bottom buttons should not shrink */
   .menu-drawer__inner-submenu > .button,
   .menu-drawer__inner-submenu > div:has(.button) {
-    flex-shrink: 0; /* Keep buttons at their natural size */
+    flex-shrink: 0;
+    /* Keep buttons at their natural size */
+  }
+
+  /* Campaign collection styles for drawer */
+  .drawer-campaign-link {
+    display: block;
+    width: 100%;
+  }
+
+  .drawer-campaign-link img {
+    transition: transform 0.3s ease;
+  }
+
+  .drawer-campaign-link:hover img {
+    transform: scale(1.02);
   }
 </style>
 

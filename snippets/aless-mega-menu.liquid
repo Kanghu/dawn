@@ -59,26 +59,55 @@
                         <!-- Left Column: 2nd-level links -->
                         <ul class="mega-menu__left-column" role="list">
                           {% for childlink in mega_menu.links %}
-                            <li class="mega-menu__left-item overflow-hidden {% if forloop.first %} active{% endif %}" data-target="{{ childlink.handle }}">
-                              <a href="{{ childlink.url }}" class="mega-menu__link mega-menu__link--level-2 text-2xl">
-                                {% if childlink.object and childlink.object.image %}
-                                  <div class="mega-menu__icon-wrapper">
+                            {% comment %}Check if this collection is a campaign{% endcomment %}
+                            {% assign is_campaign = false %}
+                            {% if childlink.object and childlink.object.metafields.custom.is_campaign %}
+                              {% assign is_campaign = true %}
+                            {% endif %}
+
+                            {% if is_campaign %}
+                              {% comment %}Campaign collection: show image directly without nested menu{% endcomment %}
+                              <li class="mega-menu__left-item mega-menu__campaign-item overflow-hidden">
+                                <a href="{{ childlink.url }}" class="mega-menu__link mega-menu__link--campaign block">
+                                  {% if childlink.object and childlink.object.image %}
                                     <img
-                                      src="{{ childlink.object.image.src | img_url}}"
+                                      src="{{ childlink.object.image.src | img_url: 'master' }}"
                                       alt="{{ childlink.title | escape }}"
-                                      class=""
+                                      class="w-full h-auto object-contain rounded"
                                       loading="lazy">
-                                  </div>
-                                {% endif %}
-                                {{ childlink.title | escape }}
-                              </a>
-                            </li>
+                                  {% endif %}
+                                </a>
+                              </li>
+                            {% else %}
+                              {% comment %}Regular collection: show with hover menu{% endcomment %}
+                              <li class="mega-menu__left-item overflow-hidden {% if forloop.first %} active{% endif %}" data-target="{{ childlink.handle }}">
+                                <a href="{{ childlink.url }}" class="mega-menu__link mega-menu__link--level-2 text-2xl">
+                                  {% if childlink.object and childlink.object.image %}
+                                    <div class="mega-menu__icon-wrapper">
+                                      <img
+                                        src="{{ childlink.object.image.src | img_url}}"
+                                        alt="{{ childlink.title | escape }}"
+                                        class=""
+                                        loading="lazy">
+                                    </div>
+                                  {% endif %}
+                                  {{ childlink.title | escape }}
+                                </a>
+                              </li>
+                            {% endif %}
                           {% endfor %}
                         </ul>
 
                         <!-- Right Column: 3rd-level links -->
                         <div class="mega-menu__right-column">
                           {% for childlink in mega_menu.links %}
+                            {% comment %}Skip campaign collections in right column{% endcomment %}
+                            {% assign is_campaign = false %}
+                            {% if childlink.object and childlink.object.metafields.custom.is_campaign %}
+                              {% assign is_campaign = true %}
+                            {% endif %}
+
+                            {% unless is_campaign %}
                             <div class="mega-menu__right-content{% if forloop.first %} active{% endif %}" data-content="{{ childlink.handle }}">
                               <ul class="mega-menu__grid" role="list">
                                 {% for grandchildlink in childlink.links %}
@@ -115,6 +144,7 @@
                                 {% endfor %}
                               </ul>
                             </div>
+                            {% endunless %}
                           {% endfor %}
                         </div>
                       </div>
@@ -295,7 +325,7 @@
 
   .mega-menu-parent {
     border-right: 1px solid;
-    border-image: linear-gradient(to bottom, #00BAD7, transparent) 1;
+    border-image: linear-gradient(to bottom, {{ menu_separator_color | default: '#00BAD7' }}, transparent) 1;
     z-index: 101;
     cursor: pointer;
   }
@@ -432,6 +462,24 @@
   /* Ensure mega menu appears above overlay */
   .mega-menu__container {
     z-index: 100;
+  }
+
+  /* Campaign collection styles */
+  .mega-menu__campaign-item {
+    margin-bottom: 1rem;
+  }
+
+  .mega-menu__link--campaign {
+    padding: 0;
+  }
+
+  .mega-menu__link--campaign:hover {
+    transform: scale(1.05);
+  }
+
+  /* Campaign items don't trigger right column */
+  .mega-menu__campaign-item:hover {
+    background-color: transparent !important;
   }
 </style>
 
