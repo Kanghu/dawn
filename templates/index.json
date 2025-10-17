@@ -111,68 +111,10 @@
         "padding_bottom": 12
       }
     },
-    "alc_collection_list_campaign_XeTR6y": {
-      "type": "alc-collection-list-campaign",
-      "blocks": {
-        "featured_collection_RjbwwK": {
-          "type": "featured_collection",
-          "settings": {
-            "collection": "aplice-de-exterior"
-          }
-        },
-        "featured_collection_ViTxkT": {
-          "type": "featured_collection",
-          "settings": {
-            "collection": "mobilier-baie"
-          }
-        },
-        "featured_collection_4NDq6g": {
-          "type": "featured_collection",
-          "settings": {
-            "collection": "lustre-led-cu-telecomanda"
-          }
-        },
-        "featured_collection_8QnBnd": {
-          "type": "featured_collection",
-          "settings": {
-            "collection": "chiuvete-lavoare"
-          }
-        },
-        "featured_collection_8kikMX": {
-          "type": "featured_collection",
-          "settings": {
-            "collection": "cazi-de-baie-freestanding"
-          }
-        }
-      },
-      "block_order": [
-        "featured_collection_RjbwwK",
-        "featured_collection_ViTxkT",
-        "featured_collection_4NDq6g",
-        "featured_collection_8QnBnd",
-        "featured_collection_8kikMX"
-      ],
-      "disabled": true,
-      "name": "t:sections.collection-list.presets.name",
-      "settings": {
-        "title": "",
-        "heading_size": "h1",
-        "image_ratio": "square",
-        "columns_desktop": 5,
-        "color_scheme": "",
-        "show_view_all": false,
-        "see_all_button_text": "See all products",
-        "see_all_url": "",
-        "columns_mobile": "2",
-        "swipe_on_mobile": true,
-        "padding_top": 16,
-        "padding_bottom": 16
-      }
-    },
     "custom_liquid_ggcwHk": {
       "type": "custom-liquid",
       "settings": {
-        "custom_liquid": "{%- assign locale_code = request.locale.iso_code | default: localization.language.iso_code | downcase -%}\n{%- if locale_code == 'ro' -%}\n  <img\n    src=\"https://cdn.shopify.com/s/files/1/0782/5175/3739/files/LUSTRASUB50_RO.jpg?v=1760718855\"\n    alt=\"LUSTRE LED SUB 50 – Black Friday\"\n    width=\"2880\" height=\"524\"\n    loading=\"lazy\"\n    style=\"width:100%;height:auto;display:block;margin:0 auto;\"\n  >\n{%- else -%}\n  <img\n    src=\"https://cdn.shopify.com/s/files/1/0782/5175/3739/files/LUSTRASUB50_ENG.jpg?v=1760718855\"\n    alt=\"LED LIGHTING – Black Friday\"\n    width=\"2880\" height=\"524\"\n    loading=\"lazy\"\n    style=\"width:100%;height:auto;display:block;margin:0 auto;\"\n  >\n{%- endif -%}",
+        "custom_liquid": "{%- assign locale_code = request.locale.iso_code | default: localization.language.iso_code | downcase -%}\n{%- if locale_code == 'ro' -%}\n  <img\n    src=\"https://cdn.shopify.com/s/files/1/0782/5175/3739/files/LUSTRASUB50_RO.jpg?v=1760718855\"\n    alt=\"LUSTRE LED SUB 50 – Black Friday\"\n    width=\"2880\" height=\"524\"\n    loading=\"lazy\"\n    style=\"width:100%;height:auto;display:block;margin:0 auto;\"\n  >\n{%- else -%}\n  <img\n    src=\"https://cdn.shopify.com/s/files/1/0782/5175/3739/files/LUSTRASUB50_ENG.jpg?v=1760718855\"\n    alt=\"LED LIGHTING FIXTURES  – Black Friday\"\n    width=\"2880\" height=\"524\"\n    loading=\"lazy\"\n    style=\"width:100%;height:auto;display:block;margin:0 auto;\"\n  >\n{%- endif -%}",
         "color_scheme": "",
         "padding_top": 24,
         "padding_bottom": 0
@@ -187,7 +129,7 @@
         "show_description": false,
         "description_style": "body",
         "collection": "lustre-led-oferte",
-        "products_to_show": 4,
+        "products_to_show": 8,
         "columns_desktop": 4,
         "full_width": false,
         "show_view_all": true,
@@ -209,7 +151,7 @@
     "custom_liquid_6zDcbj": {
       "type": "custom-liquid",
       "settings": {
-        "custom_liquid": "<picture>\n  <source \n    media=\"(min-width: 768px)\" \n    srcset=\"https://cdn.shopify.com/s/files/1/0782/5175/3739/files/LUSTRABEC_BANNERD.png?v=1759236101\">\n    \n  <source \n    media=\"(max-width: 767px)\" \n    srcset=\"https://cdn.shopify.com/s/files/1/0782/5175/3739/files/LUSTRABEC_BANNERM.png?v=1759243991\">\n    \n  <img \n    src=\"https://cdn.shopify.com/s/files/1/0782/5175/3739/files/LUSTRABEC_BANNERM.png?v=1759243991\" \n    alt=\"Banner\" \n    style=\"max-width: 1300px; width: 100%; height: auto; margin:auto;\">\n</picture>",
+        "custom_liquid": "{%- assign locale_code = request.locale.iso_code | default: localization.language.iso_code | downcase -%}\n\n<style>\n  .banner-mobile { display: none; }\n  .banner-desktop { display: block; }\n\n  @media screen and (max-width: 768px) {\n    .banner-desktop { display: none; }\n    .banner-mobile { display: block; }\n  }\n</style>\n\n{%- if locale_code == 'ro' -%}\n  <!-- Română -->\n  <img\n    class=\"banner-desktop\"\n    src=\"https://cdn.shopify.com/s/files/1/0782/5175/3739/files/MOBILIER_RO.jpg?v=1760718855\"\n    alt=\"Mobilier de baie – Black Friday\"\n    width=\"2880\" height=\"524\"\n    loading=\"lazy\"\n    style=\"width:100%;height:auto;display:block;margin:0 auto;\"\n  >\n  <img\n    class=\"banner-mobile\"\n    src=\"https://cdn.shopify.com/s/files/1/0782/5175/3739/files/MOBILIER_RO_MOBILE.png?v=1760720043\"\n    alt=\"Mobilier de baie – Black Friday\"\n    width=\"1080\" height=\"1350\"\n    loading=\"lazy\"\n    style=\"width:100%;height:auto;display:block;margin:0 auto;\"\n  >\n{%- else -%}\n  <!-- Engleză / alte limbi -->\n  <img\n    class=\"banner-desktop\"\n    src=\"https://cdn.shopify.com/s/files/1/0782/5175/3739/files/MOBILIER_ENG.jpg?v=1760718855\"\n    alt=\"Bathroom furniture – Black Friday\"\n    width=\"2880\" height=\"524\"\n    loading=\"lazy\"\n    style=\"width:100%;height:auto;display:block;margin:0 auto;\"\n  >\n  <img\n    class=\"banner-mobile\"\n    src=\"https://cdn.shopify.com/s/files/1/0782/5175/3739/files/MOBILIER_ENG_MOBILE.png?v=1760720043\"\n    alt=\"Bathroom furniture – Black Friday\"\n    width=\"1080\" height=\"1350\"\n    loading=\"lazy\"\n    style=\"width:100%;height:auto;display:block;margin:0 auto;\"\n  >\n{%- endif -%}",
         "color_scheme": "",
         "padding_top": 24,
         "padding_bottom": 0
@@ -224,7 +166,7 @@
         "show_description": false,
         "description_style": "body",
         "collection": "mobilier-baie",
-        "products_to_show": 4,
+        "products_to_show": 8,
         "columns_desktop": 4,
         "full_width": false,
         "show_view_all": true,
@@ -246,7 +188,7 @@
     "custom_liquid_i8YzMd": {
       "type": "custom-liquid",
       "settings": {
-        "custom_liquid": "{%- assign locale_code = request.locale.iso_code | default: localization.language.iso_code | downcase -%}\n{%- if locale_code == 'ro' -%}\n  <img\n    src=\"https://cdn.shopify.com/s/files/1/0782/5175/3739/files/COLOANE_RO.jpg?v=1760718855\"\n    alt=\"COLOANE DE DUS – Black Friday\"\n    width=\"2880\" height=\"524\"\n    loading=\"lazy\"\n    style=\"width:100%;height:auto;display:block;margin:0 auto;\"\n  >\n{%- else -%}\n  <img\n    src=\"https://cdn.shopify.com/s/files/1/0782/5175/3739/files/COLOANE_ENG.jpg?v=1760718855\"\n    alt=\"BATHROOM  – Black Friday\"\n    width=\"2880\" height=\"524\"\n    loading=\"lazy\"\n    style=\"width:100%;height:auto;display:block;margin:0 auto;\"\n  >\n{%- endif -%}",
+        "custom_liquid": "<picture>\n  <source media=\"(min-width: 768px)\" srcset=\"https://cdn.shopify.com/s/files/1/0782/5175/3739/files/USCATOR_BANNERD.png?v=1759236056\">\n  <source media=\"(max-width: 767px)\" srcset=\"https://cdn.shopify.com/s/files/1/0782/5175/3739/files/USCATOR_BANNERM.png?v=1759243991\">\n  <img \n    src=\"https://cdn.shopify.com/s/files/1/0782/5175/3739/files/USCATOR_BANNERM.png?v=1759243991\" \n    alt=\"Banner\"\n    loading=\"lazy\"\n    style=\"max-width:1300px; width:100%; height:auto; margin: auto;\">\n</picture>",
         "color_scheme": "",
         "padding_top": 24,
         "padding_bottom": 0
@@ -260,8 +202,8 @@
         "description": "",
         "show_description": false,
         "description_style": "body",
-        "collection": "baterii-coloane-de-dus",
-        "products_to_show": 8,
+        "collection": "uscatoare-de-maini",
+        "products_to_show": 4,
         "columns_desktop": 4,
         "full_width": false,
         "show_view_all": true,
@@ -401,7 +343,6 @@
   "order": [
     "custom_liquid_MVifHb",
     "alc_collection_list_campaign_mGB9xF",
-    "alc_collection_list_campaign_XeTR6y",
     "custom_liquid_ggcwHk",
     "alc_featured_collection_ERArtK",
     "custom_liquid_6zDcbj",
