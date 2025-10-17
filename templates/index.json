@@ -29,7 +29,7 @@
         "custom_image_KjBzPe": {
           "type": "custom_image",
           "settings": {
-            "image": "shopify://shop_images/400RON_RO.png",
+            "image": "shopify://shop_images/400RON.jpg",
             "alt_text": "cadou 400 ron aplica led cheia sol",
             "action_type": "popup",
             "link_url": "",
@@ -39,7 +39,7 @@
         "custom_image_MKmAbi": {
           "type": "custom_image",
           "settings": {
-            "image": "shopify://shop_images/700RON_RO.png",
+            "image": "shopify://shop_images/700RON.jpg",
             "alt_text": "cadou 700 ron lustra led cerc",
             "action_type": "popup",
             "link_url": "",
@@ -49,7 +49,7 @@
         "custom_image_txBiM4": {
           "type": "custom_image",
           "settings": {
-            "image": "shopify://shop_images/1000RON_RO.png",
+            "image": "shopify://shop_images/1000RON.jpg",
             "alt_text": "cadou 1000 ron lustra led cerc cu telecomanda",
             "action_type": "popup",
             "link_url": "",
@@ -111,10 +111,68 @@
         "padding_bottom": 12
       }
     },
+    "alc_collection_list_campaign_XeTR6y": {
+      "type": "alc-collection-list-campaign",
+      "blocks": {
+        "featured_collection_RjbwwK": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "aplice-de-exterior"
+          }
+        },
+        "featured_collection_ViTxkT": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "mobilier-baie"
+          }
+        },
+        "featured_collection_4NDq6g": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "lustre-led-cu-telecomanda"
+          }
+        },
+        "featured_collection_8QnBnd": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "chiuvete-lavoare"
+          }
+        },
+        "featured_collection_8kikMX": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "cazi-de-baie-freestanding"
+          }
+        }
+      },
+      "block_order": [
+        "featured_collection_RjbwwK",
+        "featured_collection_ViTxkT",
+        "featured_collection_4NDq6g",
+        "featured_collection_8QnBnd",
+        "featured_collection_8kikMX"
+      ],
+      "disabled": true,
+      "name": "t:sections.collection-list.presets.name",
+      "settings": {
+        "title": "",
+        "heading_size": "h1",
+        "image_ratio": "square",
+        "columns_desktop": 5,
+        "color_scheme": "",
+        "show_view_all": false,
+        "see_all_button_text": "See all products",
+        "see_all_url": "",
+        "columns_mobile": "2",
+        "swipe_on_mobile": true,
+        "padding_top": 16,
+        "padding_bottom": 16
+      }
+    },
     "custom_liquid_ggcwHk": {
       "type": "custom-liquid",
       "settings": {
-        "custom_liquid": "{%- assign locale_code = request.locale.iso_code | default: localization.language.iso_code | downcase -%}\n\n{%- if locale_code == 'ro' -%}\n  <!-- Română -->\n  <picture>\n    <!-- Mobile -->\n    <source\n      media=\"(max-width: 768px)\"\n      srcset=\"https://cdn.shopify.com/s/files/1/0782/5175/3739/files/LUSTRASUB50_RO_MOBILE.png?v=1760720042\">\n    <!-- Desktop -->\n    <img\n      src=\"https://cdn.shopify.com/s/files/1/0782/5175/3739/files/LUSTRASUB50_RO.jpg?v=1760718855\"\n      alt=\"Lustre LED sub 50 – Black Friday\"\n      width=\"2880\" height=\"524\"\n      loading=\"lazy\" decoding=\"async\"\n      style=\"width:100%;height:auto;display:block;margin:0 auto;\">\n  </picture>\n{%- else -%}\n  <!-- Engleză / alte limbi -->\n  <picture>\n    <!-- Mobile -->\n    <source\n      media=\"(max-width: 768px)\"\n      srcset=\"https://cdn.shopify.com/s/files/1/0782/5175/3739/files/LUSTRASUB50_ENG_RO.png?v=1760720043\">\n    <!-- Desktop -->\n    <img\n      src=\"https://cdn.shopify.com/s/files/1/0782/5175/3739/files/LUSTRASUB50_ENG.jpg?v=1760718855\"\n      alt=\"LED Lighting Fixtures – Black Friday\"\n      width=\"2880\" height=\"524\"\n      loading=\"lazy\" decoding=\"async\"\n      style=\"width:100%;height:auto;display:block;margin:0 auto;\">\n  </picture>\n{%- endif -%}",
+        "custom_liquid": "{%- assign locale_code = request.locale.iso_code | default: localization.language.iso_code | downcase -%}\n{%- if locale_code == 'ro' -%}\n  <img\n    src=\"https://cdn.shopify.com/s/files/1/0782/5175/3739/files/LUSTRASUB50_RO.jpg?v=1760718855\"\n    alt=\"LUSTRE LED SUB 50 – Black Friday\"\n    width=\"2880\" height=\"524\"\n    loading=\"lazy\"\n    style=\"width:100%;height:auto;display:block;margin:0 auto;\"\n  >\n{%- else -%}\n  <img\n    src=\"https://cdn.shopify.com/s/files/1/0782/5175/3739/files/LUSTRASUB50_ENG.jpg?v=1760718855\"\n    alt=\"LED LIGHTING – Black Friday\"\n    width=\"2880\" height=\"524\"\n    loading=\"lazy\"\n    style=\"width:100%;height:auto;display:block;margin:0 auto;\"\n  >\n{%- endif -%}",
         "color_scheme": "",
         "padding_top": 24,
         "padding_bottom": 0
@@ -129,7 +187,7 @@
         "show_description": false,
         "description_style": "body",
         "collection": "lustre-led-oferte",
-        "products_to_show": 8,
+        "products_to_show": 4,
         "columns_desktop": 4,
         "full_width": false,
         "show_view_all": true,
@@ -151,7 +209,7 @@
     "custom_liquid_6zDcbj": {
       "type": "custom-liquid",
       "settings": {
-        "custom_liquid": "{%- assign locale_code = request.locale.iso_code | default: localization.language.iso_code | downcase -%}\n\n{%- if locale_code == 'ro' -%}\n  <!-- Română -->\n  <picture>\n    <source\n      media=\"(max-width: 768px)\"\n      srcset=\"https://cdn.shopify.com/s/files/1/0782/5175/3739/files/MOBILIER_RO_MOBILE.png?v=1760720043\">\n    <img\n      src=\"https://cdn.shopify.com/s/files/1/0782/5175/3739/files/MOBILIER_RO.jpg?v=1760718855\"\n      alt=\"Mobilier de baie – Black Friday\"\n      width=\"2880\" height=\"524\"\n      loading=\"lazy\"\n      style=\"width:100%;height:auto;display:block;margin:0 auto;\">\n  </picture>\n{%- else -%}\n  <!-- Engleză / alte limbi -->\n  <picture>\n    <source\n      media=\"(max-width: 768px)\"\n      srcset=\"https://cdn.shopify.com/s/files/1/0782/5175/3739/files/MOBILIER_ENG_MOBILE.png?v=1760720043\">\n    <img\n      src=\"https://cdn.shopify.com/s/files/1/0782/5175/3739/files/MOBILIER_ENG.jpg?v=1760718855\"\n      alt=\"Bathroom furniture – Black Friday\"\n      width=\"2880\" height=\"524\"\n      loading=\"lazy\"\n      style=\"width:100%;height:auto;display:block;margin:0 auto;\">\n  </picture>\n{%- endif -%}",
+        "custom_liquid": "<picture>\n  <source \n    media=\"(min-width: 768px)\" \n    srcset=\"https://cdn.shopify.com/s/files/1/0782/5175/3739/files/LUSTRABEC_BANNERD.png?v=1759236101\">\n    \n  <source \n    media=\"(max-width: 767px)\" \n    srcset=\"https://cdn.shopify.com/s/files/1/0782/5175/3739/files/LUSTRABEC_BANNERM.png?v=1759243991\">\n    \n  <img \n    src=\"https://cdn.shopify.com/s/files/1/0782/5175/3739/files/LUSTRABEC_BANNERM.png?v=1759243991\" \n    alt=\"Banner\" \n    style=\"max-width: 1300px; width: 100%; height: auto; margin:auto;\">\n</picture>",
         "color_scheme": "",
         "padding_top": 24,
         "padding_bottom": 0
@@ -166,7 +224,7 @@
         "show_description": false,
         "description_style": "body",
         "collection": "mobilier-baie",
-        "products_to_show": 8,
+        "products_to_show": 4,
         "columns_desktop": 4,
         "full_width": false,
         "show_view_all": true,
@@ -188,7 +246,7 @@
     "custom_liquid_i8YzMd": {
       "type": "custom-liquid",
       "settings": {
-        "custom_liquid": "{%- assign locale_code = request.locale.iso_code | default: localization.language.iso_code | downcase -%}\n\n{%- if locale_code == 'ro' -%}\n  <!-- Română -->\n  <picture>\n    <source\n      media=\"(max-width: 768px)\"\n      srcset=\"https://cdn.shopify.com/s/files/1/0782/5175/3739/files/COLOANE_RO_MOBILE.png?v=1760720042\">\n    <img\n      src=\"https://cdn.shopify.com/s/files/1/0782/5175/3739/files/COLOANE_RO.jpg?v=1760718855\"\n      alt=\"Coloane de duș – Black Friday\"\n      width=\"2880\" height=\"524\"\n      loading=\"lazy\" decoding=\"async\"\n      style=\"width:100%;height:auto;display:block;margin:0 auto;\">\n  </picture>\n{%- else -%}\n  <!-- Engleză / alte limbi -->\n  <picture>\n    <source\n      media=\"(max-width: 768px)\"\n      srcset=\"https://cdn.shopify.com/s/files/1/0782/5175/3739/files/COLOANE_ENG_MOBILE.png?v=1760720042\">\n    <img\n      src=\"https://cdn.shopify.com/s/files/1/0782/5175/3739/files/COLOANE_ENG.jpg?v=1760718855\"\n      alt=\"Shower columns & faucets – Black Friday\"\n      width=\"2880\" height=\"524\"\n      loading=\"lazy\" decoding=\"async\"\n      style=\"width:100%;height:auto;display:block;margin:0 auto;\">\n  </picture>\n{%- endif -%}",
+        "custom_liquid": "{%- assign locale_code = request.locale.iso_code | default: localization.language.iso_code | downcase -%}\n\n<style>\n  .banner-mobile { display: none; }\n  .banner-desktop { display: block; }\n\n  @media screen and (max-width: 768px) {\n    .banner-desktop { display: none; }\n    .banner-mobile { display: block; }\n  }\n</style>\n\n{%- if locale_code == 'ro' -%}\n  <!-- Română -->\n  <img\n    class=\"banner-desktop\"\n    src=\"https://cdn.shopify.com/s/files/1/0782/5175/3739/files/COLOANE_RO.jpg?v=1760718855\"\n    alt=\"Coloane de duș – Black Friday\"\n    width=\"2880\" height=\"524\"\n    loading=\"lazy\"\n    style=\"width:100%;height:auto;display:block;margin:0 auto;\"\n  >\n  <img\n    class=\"banner-mobile\"\n    src=\"https://cdn.shopify.com/s/files/1/0782/5175/3739/files/COLOANE_RO_MOBILE.png?v=1760720042\"\n    alt=\"Coloane de duș – Black Friday\"\n    width=\"1080\" height=\"1350\"\n    loading=\"lazy\"\n    style=\"width:100%;height:auto;display:block;margin:0 auto;\"\n  >\n{%- else -%}\n  <!-- Engleză / alte limbi -->\n  <img\n    class=\"banner-desktop\"\n    src=\"https://cdn.shopify.com/s/files/1/0782/5175/3739/files/COLOANE_ENG.jpg?v=1760718855\"\n    alt=\"Shower columns & faucets – Black Friday\"\n    width=\"2880\" height=\"524\"\n    loading=\"lazy\"\n    style=\"width:100%;height:auto;display:block;margin:0 auto;\"\n  >\n  <img\n    class=\"banner-mobile\"\n    src=\"https://cdn.shopify.com/s/files/1/0782/5175/3739/files/COLOANE_ENG_MOBILE.png?v=1760720042\"\n    alt=\"Shower columns & faucets – Black Friday\"\n    width=\"1080\" height=\"1350\"\n    loading=\"lazy\"\n    style=\"width:100%;height:auto;display:block;margin:0 auto;\"\n  >\n{%- endif -%}",
         "color_scheme": "",
         "padding_top": 24,
         "padding_bottom": 0
@@ -202,8 +260,8 @@
         "description": "",
         "show_description": false,
         "description_style": "body",
-        "collection": "baterii-coloane-de-dus",
-        "products_to_show": 4,
+        "collection": "uscatoare-de-maini",
+        "products_to_show": 8,
         "columns_desktop": 4,
         "full_width": false,
         "show_view_all": true,
@@ -343,6 +401,7 @@
   "order": [
     "custom_liquid_MVifHb",
     "alc_collection_list_campaign_mGB9xF",
+    "alc_collection_list_campaign_XeTR6y",
     "custom_liquid_ggcwHk",
     "alc_featured_collection_ERArtK",
     "custom_liquid_6zDcbj",
