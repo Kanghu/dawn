@@ -17,7 +17,7 @@
       ],
       "name": "t:sections.custom-liquid.presets.name",
       "settings": {
-        "custom_liquid": "<div class=\"bf-video-wrap\" aria-hidden=\"true\">\n  <video\n    class=\"bf-video\"\n    autoplay\n    muted\n    loop\n    playsinline\n    preload=\"auto\"\n  >\n    <source src=\"https://cdn.shopify.com/videos/c/o/v/125f1879eb3348caa69fd95bb3662ae3.mp4\" type=\"video/mp4\">\n  </video>\n</div>\n\n<style>\n  .bf-video-wrap {\n    position: relative;\n    width: 100%;\n    overflow: hidden;\n    aspect-ratio: 16 / 6; /* crop controlat pe înălțime */\n    background: #120a0a; /* fallback */\n  }\n\n  .bf-video {\n    position: absolute;\n    top: 50%;\n    left: 50%;\n    width: 100%;\n    height: 100%;\n    min-width: 100%;\n    min-height: 100%;\n    object-fit: cover;\n    transform: translate(-50%, -50%);\n  }\n\n  /* fallback pentru ecrane înguste (mobile): ocupă tot ecranul */\n  @media (max-width: 768px) {\n    .bf-video-wrap {\n      aspect-ratio: 16 / 9;\n    }\n  }\n</style>",
+        "custom_liquid": "{%- assign locale_code = request.locale.iso_code | default: localization.language.iso_code | downcase -%}\n\n<div class=\"bf-video-wrap\" aria-hidden=\"true\">\n  <video\n    class=\"bf-video\"\n    autoplay\n    muted\n    loop\n    playsinline\n    preload=\"auto\"\n  >\n    {%- if locale_code == 'ro' -%}\n      <source src=\"https://cdn.shopify.com/videos/c/o/v/125f1879eb3348caa69fd95bb3662ae3.mp4\" type=\"video/mp4\">\n    {%- else -%}\n      <source src=\"https://cdn.shopify.com/videos/c/o/v/7fc4c7b3d1f54f59b3823e98fd8da4f2.mp4\" type=\"video/mp4\">\n    {%- endif -%}\n  </video>\n</div>\n\n<style>\n  .bf-video-wrap {\n    position: relative;\n    width: 100%;\n    overflow: hidden;\n    aspect-ratio: 16 / 6; /* crop pe desktop */\n    background: #120a0a; /* fallback */\n  }\n\n  .bf-video {\n    position: absolute;\n    top: 50%;\n    left: 50%;\n    width: 100%;\n    height: 100%;\n    min-width: 100%;\n    min-height: 100%;\n    object-fit: cover;\n    transform: translate(-50%, -50%);\n  }\n\n  @media (max-width: 768px) {\n    .bf-video-wrap {\n      aspect-ratio: 16 / 9; /* revenire full pe mobil */\n    }\n  }\n</style>",
         "color_scheme": "",
         "padding_top": 0,
         "padding_bottom": 0
@@ -29,7 +29,7 @@
         "custom_image_d3Fnnh": {
           "type": "custom_image",
           "settings": {
-            "image": "shopify://shop_images/400RON.jpg",
+            "image": "shopify://shop_images/400RON_RO.png",
             "alt_text": "Campaign image",
             "action_type": "popup",
             "link_url": "",
@@ -39,7 +39,7 @@
         "custom_image_HndinN": {
           "type": "custom_image",
           "settings": {
-            "image": "shopify://shop_images/700RON.jpg",
+            "image": "shopify://shop_images/700RON_RO.png",
             "alt_text": "Campaign image",
             "action_type": "popup",
             "link_url": "",
@@ -49,7 +49,7 @@
         "custom_image_nnCLVi": {
           "type": "custom_image",
           "settings": {
-            "image": "shopify://shop_images/1000RON.jpg",
+            "image": "shopify://shop_images/1000RON_RO.png",
             "alt_text": "Campaign image",
             "action_type": "popup",
             "link_url": "",
