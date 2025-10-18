@@ -246,7 +246,7 @@
     "custom_liquid_i8YzMd": {
       "type": "custom-liquid",
       "settings": {
-        "custom_liquid": "{%- assign locale_code = request.locale.iso_code | default: localization.language.iso_code | downcase -%}\n\n<style>\n  .banner-mobile { display: none; }\n  .banner-desktop { display: block; }\n\n  @media screen and (max-width: 768px) {\n    .banner-desktop { display: none; }\n    .banner-mobile { display: block; }\n  }\n</style>\n\n{%- if locale_code == 'ro' -%}\n  <!-- Română -->\n  <img\n    class=\"banner-desktop\"\n    src=\"https://cdn.shopify.com/s/files/1/0782/5175/3739/files/COLOANE_RO.jpg?v=1760718855\"\n    alt=\"Coloane de duș – Black Friday\"\n    width=\"2880\" height=\"524\"\n    loading=\"lazy\"\n    style=\"width:100%;height:auto;display:block;margin:0 auto;max-width:1300px;\"\n  >\n{%- else -%}\n  <!-- Engleză / alte limbi -->\n  <img\n    class=\"banner-desktop\"\n    src=\"https://cdn.shopify.com/s/files/1/0782/5175/3739/files/COLOANE_ENG.jpg?v=1760718855\"\n    alt=\"Shower columns & faucets – Black Friday\"\n    width=\"2880\" height=\"524\"\n    loading=\"lazy\"\n    style=\"width:100%;height:auto;display:block;margin:0 auto;max-width:1300px;\"\n  >\n{%- endif -%}",
+        "custom_liquid": "{%- assign locale_code = request.locale.iso_code | default: localization.language.iso_code | downcase -%}\n\n{%- if locale_code == 'ro' -%}\n  <!-- Română -->\n  <picture>\n    <source\n      media=\"(max-width: 768px)\"\n      srcset=\"https://cdn.shopify.com/s/files/1/0782/5175/3739/files/COLOANE_RO_MOBILE.png?v=1760720042\">\n    <img\n      src=\"https://cdn.shopify.com/s/files/1/0782/5175/3739/files/COLOANE_RO.jpg?v=1760718855\"\n      alt=\"Coloane de duș – Black Friday\"\n      width=\"2880\" height=\"524\"\n      loading=\"lazy\" decoding=\"async\"\n      style=\"width:100%;height:auto;display:block;margin:0 auto;\">\n  </picture>\n{%- else -%}\n  <!-- Engleză / alte limbi -->\n  <picture>\n    <source\n      media=\"(max-width: 768px)\"\n      srcset=\"https://cdn.shopify.com/s/files/1/0782/5175/3739/files/COLOANE_ENG_MOBILE.png?v=1760720042\">\n    <img\n      src=\"https://cdn.shopify.com/s/files/1/0782/5175/3739/files/COLOANE_ENG.jpg?v=1760718855\"\n      alt=\"Shower columns & faucets – Black Friday\"\n      width=\"2880\" height=\"524\"\n      loading=\"lazy\" decoding=\"async\"\n      style=\"width:100%;height:auto;display:block;margin:0 auto;\">\n  </picture>\n{%- endif -%}",
         "color_scheme": "",
         "padding_top": 24,
         "padding_bottom": 0
@@ -260,7 +260,7 @@
         "description": "",
         "show_description": false,
         "description_style": "body",
-        "collection": "uscatoare-de-maini",
+        "collection": "baterii-coloane-de-dus",
         "products_to_show": 8,
         "columns_desktop": 4,
         "full_width": false,
