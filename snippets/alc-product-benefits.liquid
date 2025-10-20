@@ -141,7 +141,7 @@
     assign is_romanian = true
   endif
   
-  if is_romanian and product_price > 6500
+  if is_romanian and product_price >= 40000
     assign show_free_shipping = true
   endif
 -%}
