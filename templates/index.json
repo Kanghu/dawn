@@ -26,6 +26,17 @@
     "alc_collection_list_campaign_mGB9xF": {
       "type": "alc-collection-list-campaign",
       "blocks": {
+        "custom_image_QwGCwg": {
+          "type": "custom_image",
+          "settings": {
+            "image": "shopify://shop_images/400RON_ENG.jpg",
+            "alt_text": "Campaign image",
+            "action_type": "url",
+            "link_url": "",
+            "popup_message": "",
+            "locale_codes": "bg"
+          }
+        },
         "custom_image_KjBzPe": {
           "type": "custom_image",
           "settings": {
@@ -33,7 +44,8 @@
             "alt_text": "cadou 400 ron aplica led cheia sol",
             "action_type": "popup",
             "link_url": "",
-            "popup_message": "<p>Adauga in cos produse de 400 lei si primesti CADOU o aplica LED de perete. Revendica cadoul direct in cos!</p>"
+            "popup_message": "<p>Adauga in cos produse de 400 lei si primesti CADOU o aplica LED de perete. Revendica cadoul direct in cos!</p>",
+            "locale_codes": ""
           }
         },
         "custom_image_MKmAbi": {
@@ -43,7 +55,8 @@
             "alt_text": "cadou 700 ron lustra led cerc",
             "action_type": "popup",
             "link_url": "",
-            "popup_message": "<p>Adauga in cos produse de 700 lei si primesti CADOU o lustra LED. Revendica cadoul direct in cos!</p>"
+            "popup_message": "<p>Adauga in cos produse de 700 lei si primesti CADOU o lustra LED. Revendica cadoul direct in cos!</p>",
+            "locale_codes": ""
           }
         },
         "custom_image_txBiM4": {
@@ -53,7 +66,8 @@
             "alt_text": "cadou 1000 ron lustra led cerc cu telecomanda",
             "action_type": "popup",
             "link_url": "",
-            "popup_message": "<p>Adauga in cos produse de 1000 lei si primesti CADOU o Lustra LED cu Telecomanda. Revendica cadoul direct in cos!</p>"
+            "popup_message": "<p>Adauga in cos produse de 1000 lei si primesti CADOU o Lustra LED cu Telecomanda. Revendica cadoul direct in cos!</p>",
+            "locale_codes": ""
           }
         },
         "custom_image_axKjwY": {
@@ -63,7 +77,8 @@
             "alt_text": "discount volum aplice",
             "action_type": "popup",
             "link_url": "",
-            "popup_message": "<p>Cumpara mai multe aplice LED de exterior si beneficiezi de discount din ce in ce mai mare. Revendica cadoul direct in cos!</p>"
+            "popup_message": "<p>Cumpara mai multe aplice LED de exterior si beneficiezi de discount din ce in ce mai mare. Revendica cadoul direct in cos!</p>",
+            "locale_codes": ""
           }
         },
         "custom_image_bPtj74": {
@@ -73,7 +88,8 @@
             "alt_text": "mobilier cadou orice baterie",
             "action_type": "url",
             "link_url": "shopify://collections/mobilier-baie",
-            "popup_message": ""
+            "popup_message": "",
+            "locale_codes": ""
           }
         },
         "custom_image_tDy8f3": {
@@ -83,11 +99,13 @@
             "alt_text": "cadou lavoar",
             "action_type": "popup",
             "link_url": "",
-            "popup_message": "<p>Cumpara acum o chiuveta lavoar si primeste o baterie compatibila CADOU! Revendica cadoul direct in cos!</p>"
+            "popup_message": "<p>Cumpara acum o chiuveta lavoar si primeste o baterie compatibila CADOU! Revendica cadoul direct in cos!</p>",
+            "locale_codes": ""
           }
         }
       },
       "block_order": [
+        "custom_image_QwGCwg",
         "custom_image_KjBzPe",
         "custom_image_MKmAbi",
         "custom_image_txBiM4",
@@ -117,31 +135,36 @@
         "featured_collection_RjbwwK": {
           "type": "featured_collection",
           "settings": {
-            "collection": "aplice-de-exterior"
+            "collection": "aplice-de-exterior",
+            "locale_codes": ""
           }
         },
         "featured_collection_ViTxkT": {
           "type": "featured_collection",
           "settings": {
-            "collection": "mobilier-baie"
+            "collection": "mobilier-baie",
+            "locale_codes": ""
           }
         },
         "featured_collection_4NDq6g": {
           "type": "featured_collection",
           "settings": {
-            "collection": "lustre-led-cu-telecomanda"
+            "collection": "lustre-led-cu-telecomanda",
+            "locale_codes": ""
           }
         },
         "featured_collection_8QnBnd": {
           "type": "featured_collection",
           "settings": {
-            "collection": "chiuvete-lavoare"
+            "collection": "chiuvete-lavoare",
+            "locale_codes": ""
           }
         },
         "featured_collection_8kikMX": {
           "type": "featured_collection",
           "settings": {
-            "collection": "cazi-de-baie-freestanding"
+            "collection": "cazi-de-baie-freestanding",
+            "locale_codes": ""
           }
         }
       },
