@@ -28,8 +28,9 @@
       "blocks": {
         "custom_image_DeVWjB": {
           "type": "custom_image",
+          "name": "BG 1000 RON",
           "settings": {
-            "image": "shopify://shop_images/1000RON_ENG.jpg",
+            "image": "shopify://shop_images/1000RON_BG.png",
             "alt_text": "Campaign image",
             "action_type": "url",
             "link_url": "",
@@ -39,6 +40,7 @@
         },
         "custom_image_QXVqVx": {
           "type": "custom_image",
+          "name": "BG 700RON",
           "settings": {
             "image": "shopify://shop_images/700RON_ENG.jpg",
             "alt_text": "Campaign image",
@@ -50,6 +52,7 @@
         },
         "custom_image_QwGCwg": {
           "type": "custom_image",
+          "name": "BG 400RON",
           "settings": {
             "image": "shopify://shop_images/400RON_ENG.jpg",
             "alt_text": "Campaign image",
@@ -61,6 +64,7 @@
         },
         "custom_image_KjBzPe": {
           "type": "custom_image",
+          "name": "RO 400RON",
           "settings": {
             "image": "shopify://shop_images/400RON_RO.png",
             "alt_text": "cadou 400 ron aplica led cheia sol",
@@ -72,6 +76,7 @@
         },
         "custom_image_MKmAbi": {
           "type": "custom_image",
+          "name": "RO 700 RON",
           "settings": {
             "image": "shopify://shop_images/700RON_RO.png",
             "alt_text": "cadou 700 ron lustra led cerc",
@@ -83,6 +88,7 @@
         },
         "custom_image_txBiM4": {
           "type": "custom_image",
+          "name": "RO 1000 RON",
           "settings": {
             "image": "shopify://shop_images/1000RON_RO.png",
             "alt_text": "cadou 1000 ron lustra led cerc cu telecomanda",
@@ -94,8 +100,21 @@
         },
         "custom_image_axKjwY": {
           "type": "custom_image",
+          "name": "RO VOLUM",
           "settings": {
-            "image": "shopify://shop_images/VOLUME_DISCOUNT_APLICE.jpg",
+            "image": "shopify://shop_images/VOLUM_RO.png",
+            "alt_text": "discount volum aplice",
+            "action_type": "popup",
+            "link_url": "",
+            "popup_message": "<p>Cumpara mai multe aplice LED de exterior si beneficiezi de discount din ce in ce mai mare. Revendica cadoul direct in cos!</p>",
+            "locale_codes": "ro"
+          }
+        },
+        "custom_image_Ve9naz": {
+          "type": "custom_image",
+          "name": "BG VOLUM",
+          "settings": {
+            "image": "shopify://shop_images/VOLUM_RO.png",
             "alt_text": "discount volum aplice",
             "action_type": "popup",
             "link_url": "",
@@ -105,6 +124,19 @@
         },
         "custom_image_bPtj74": {
           "type": "custom_image",
+          "name": "RO MOBILIER",
+          "settings": {
+            "image": "shopify://shop_images/MOBILIER_BATERIE_BAIE.jpg",
+            "alt_text": "mobilier cadou orice baterie",
+            "action_type": "url",
+            "link_url": "shopify://collections/mobilier-baie",
+            "popup_message": "",
+            "locale_codes": "ro"
+          }
+        },
+        "custom_image_QyrynB": {
+          "type": "custom_image",
+          "name": "BG MOBILIER",
           "settings": {
             "image": "shopify://shop_images/MOBILIER_BATERIE_BAIE.jpg",
             "alt_text": "mobilier cadou orice baterie",
@@ -116,6 +148,19 @@
         },
         "custom_image_tDy8f3": {
           "type": "custom_image",
+          "name": "RO LAVOAR",
+          "settings": {
+            "image": "shopify://shop_images/LAVOAR_BATERIE_BUCATARIE.jpg",
+            "alt_text": "cadou lavoar",
+            "action_type": "popup",
+            "link_url": "",
+            "popup_message": "<p>Cumpara acum o chiuveta lavoar si primeste o baterie compatibila CADOU! Revendica cadoul direct in cos!</p>",
+            "locale_codes": "ro"
+          }
+        },
+        "custom_image_AeKE8N": {
+          "type": "custom_image",
+          "name": "BG LAVOAR",
           "settings": {
             "image": "shopify://shop_images/LAVOAR_BATERIE_BUCATARIE.jpg",
             "alt_text": "cadou lavoar",
@@ -134,8 +179,11 @@
         "custom_image_MKmAbi",
         "custom_image_txBiM4",
         "custom_image_axKjwY",
+        "custom_image_Ve9naz",
         "custom_image_bPtj74",
-        "custom_image_tDy8f3"
+        "custom_image_QyrynB",
+        "custom_image_tDy8f3",
+        "custom_image_AeKE8N"
       ],
       "name": "ALC - Campaign List",
       "settings": {
