@@ -26,105 +26,33 @@
     "alc_collection_list_campaign_mGB9xF": {
       "type": "alc-collection-list-campaign",
       "blocks": {
-        "custom_image_KjBzPe": {
-          "type": "custom_image",
-          "name": "PL 400RON",
-          "settings": {
-            "image": "shopify://shop_images/400RON_PL.png",
-            "alt_text": "cadou 400 ron aplica led cheia sol",
-            "action_type": "popup",
-            "link_url": "",
-            "popup_message": "<p>Adauga in cos produse de 400 lei si primesti CADOU o aplica LED de perete. Revendica cadoul direct in cos!</p>",
-            "locale_codes": "pl"
-          }
-        },
-        "custom_image_CiCqXm": {
-          "type": "custom_image",
-          "name": "HU 400RON",
-          "settings": {
-            "image": "shopify://shop_images/400RON_HU.png",
-            "alt_text": "cadou 400 ron aplica led cheia sol",
-            "action_type": "popup",
-            "link_url": "",
-            "popup_message": "<p>Adauga in cos produse de 400 lei si primesti CADOU o aplica LED de perete. Revendica cadoul direct in cos!</p>",
-            "locale_codes": "hu"
-          }
-        },
-        "custom_image_MKmAbi": {
-          "type": "custom_image",
-          "name": "PL 700 RON",
-          "settings": {
-            "image": "shopify://shop_images/700RON_PL.png",
-            "alt_text": "cadou 700 ron lustra led cerc",
-            "action_type": "popup",
-            "link_url": "",
-            "popup_message": "<p>Adauga in cos produse de 700 lei si primesti CADOU o lustra LED. Revendica cadoul direct in cos!</p>",
-            "locale_codes": "pl"
-          }
-        },
-        "custom_image_4ex4Mg": {
-          "type": "custom_image",
-          "name": "HU 700 RON",
-          "settings": {
-            "image": "shopify://shop_images/700RON_HU.png",
-            "alt_text": "cadou 700 ron lustra led cerc",
-            "action_type": "popup",
-            "link_url": "",
-            "popup_message": "<p>Adauga in cos produse de 700 lei si primesti CADOU o lustra LED. Revendica cadoul direct in cos!</p>",
-            "locale_codes": "hu"
-          }
-        },
-        "custom_image_DeVWjB": {
-          "type": "custom_image",
-          "name": "PL 1000 RON",
-          "settings": {
-            "image": "shopify://shop_images/1000RON_PL.png",
-            "alt_text": "Campaign image",
-            "action_type": "url",
-            "link_url": "",
-            "popup_message": "",
-            "locale_codes": "pl"
-          }
-        },
-        "custom_image_e9hLcK": {
-          "type": "custom_image",
-          "name": "HU 1000 RON",
-          "settings": {
-            "image": "shopify://shop_images/1000RON_HU.png",
-            "alt_text": "Campaign image",
-            "action_type": "url",
-            "link_url": "",
-            "popup_message": "",
-            "locale_codes": "hu"
-          }
-        },
         "custom_image_Ve9naz": {
           "type": "custom_image",
-          "name": "PL VOLUM",
+          "name": "ENG 400 RON",
           "settings": {
-            "image": "shopify://shop_images/VOLUM_PL.png",
+            "image": "shopify://shop_images/400RON_ENG.jpg",
             "alt_text": "discount volum aplice",
             "action_type": "popup",
             "link_url": "",
             "popup_message": "<p>Cumpara mai multe aplice LED de exterior si beneficiezi de discount din ce in ce mai mare. Revendica cadoul direct in cos!</p>",
-            "locale_codes": "pl"
+            "locale_codes": "sk,cz,hr,fr,gr"
           }
         },
         "custom_image_e7WEPy": {
           "type": "custom_image",
-          "name": "HU VOLUM",
+          "name": "ENG 700 RON",
           "settings": {
-            "image": "shopify://shop_images/VOLUM_HU.png",
+            "image": "shopify://shop_images/700RON_ENG.jpg",
             "alt_text": "discount volum aplice",
             "action_type": "popup",
             "link_url": "",
             "popup_message": "<p>Cumpara mai multe aplice LED de exterior si beneficiezi de discount din ce in ce mai mare. Revendica cadoul direct in cos!</p>",
-            "locale_codes": "hu"
+            "locale_codes": "sk,cz,hr,fr,gr"
           }
         },
         "custom_image_QyrynB": {
           "type": "custom_image",
-          "name": "PL MOBILIER",
+          "name": "ENG 1000 RON",
           "settings": {
             "image": "shopify://shop_images/MOBILIER_PL.png",
             "alt_text": "mobilier cadou orice baterie",
@@ -136,7 +64,7 @@
         },
         "custom_image_4MQ3Vk": {
           "type": "custom_image",
-          "name": "HU MOBILIER",
+          "name": "ENG MOBILIER",
           "settings": {
             "image": "shopify://shop_images/MOBILIER_HU.png",
             "alt_text": "mobilier cadou orice baterie",
@@ -148,7 +76,7 @@
         },
         "custom_image_AeKE8N": {
           "type": "custom_image",
-          "name": "PL LAVOAR",
+          "name": "ENG VOLUM",
           "settings": {
             "image": "shopify://shop_images/LAVOAR_PL.png",
             "alt_text": "cadou lavoar",
@@ -159,6 +87,178 @@
           }
         },
         "custom_image_mHCbf7": {
+          "type": "custom_image",
+          "name": "ENG VOLUM",
+          "settings": {
+            "image": "shopify://shop_images/LAVOAR_HU.png",
+            "alt_text": "cadou lavoar",
+            "action_type": "popup",
+            "link_url": "",
+            "popup_message": "<p>Cumpara acum o chiuveta lavoar si primeste o baterie compatibila CADOU! Revendica cadoul direct in cos!</p>",
+            "locale_codes": "hu"
+          }
+        }
+      },
+      "block_order": [
+        "custom_image_Ve9naz",
+        "custom_image_e7WEPy",
+        "custom_image_QyrynB",
+        "custom_image_4MQ3Vk",
+        "custom_image_AeKE8N",
+        "custom_image_mHCbf7"
+      ],
+      "name": "ALC - Campaign List (ENG)",
+      "settings": {
+        "title": "",
+        "heading_size": "h1",
+        "image_ratio": "square",
+        "columns_desktop": 6,
+        "color_scheme": "",
+        "show_view_all": false,
+        "see_all_button_text": "See all products",
+        "see_all_url": "",
+        "columns_mobile": "2",
+        "swipe_on_mobile": true,
+        "padding_top": 0,
+        "padding_bottom": 12
+      }
+    },
+    "alc_collection_list_campaign_yEiHKH": {
+      "type": "alc-collection-list-campaign",
+      "blocks": {
+        "custom_image_hNrAPX": {
+          "type": "custom_image",
+          "name": "PL 400RON",
+          "settings": {
+            "image": "shopify://shop_images/400RON_PL.png",
+            "alt_text": "cadou 400 ron aplica led cheia sol",
+            "action_type": "popup",
+            "link_url": "",
+            "popup_message": "<p>Adauga in cos produse de 400 lei si primesti CADOU o aplica LED de perete. Revendica cadoul direct in cos!</p>",
+            "locale_codes": "pl"
+          }
+        },
+        "custom_image_9XgqYr": {
+          "type": "custom_image",
+          "name": "HU 400RON",
+          "settings": {
+            "image": "shopify://shop_images/400RON_HU.png",
+            "alt_text": "cadou 400 ron aplica led cheia sol",
+            "action_type": "popup",
+            "link_url": "",
+            "popup_message": "<p>Adauga in cos produse de 400 lei si primesti CADOU o aplica LED de perete. Revendica cadoul direct in cos!</p>",
+            "locale_codes": "hu"
+          }
+        },
+        "custom_image_BYRhbb": {
+          "type": "custom_image",
+          "name": "PL 700 RON",
+          "settings": {
+            "image": "shopify://shop_images/700RON_PL.png",
+            "alt_text": "cadou 700 ron lustra led cerc",
+            "action_type": "popup",
+            "link_url": "",
+            "popup_message": "<p>Adauga in cos produse de 700 lei si primesti CADOU o lustra LED. Revendica cadoul direct in cos!</p>",
+            "locale_codes": "pl"
+          }
+        },
+        "custom_image_fPyB9t": {
+          "type": "custom_image",
+          "name": "HU 700 RON",
+          "settings": {
+            "image": "shopify://shop_images/700RON_HU.png",
+            "alt_text": "cadou 700 ron lustra led cerc",
+            "action_type": "popup",
+            "link_url": "",
+            "popup_message": "<p>Adauga in cos produse de 700 lei si primesti CADOU o lustra LED. Revendica cadoul direct in cos!</p>",
+            "locale_codes": "hu"
+          }
+        },
+        "custom_image_63npd3": {
+          "type": "custom_image",
+          "name": "PL 1000 RON",
+          "settings": {
+            "image": "shopify://shop_images/1000RON_PL.png",
+            "alt_text": "Campaign image",
+            "action_type": "url",
+            "link_url": "",
+            "popup_message": "",
+            "locale_codes": "pl"
+          }
+        },
+        "custom_image_TnzCQK": {
+          "type": "custom_image",
+          "name": "HU 1000 RON",
+          "settings": {
+            "image": "shopify://shop_images/1000RON_HU.png",
+            "alt_text": "Campaign image",
+            "action_type": "url",
+            "link_url": "",
+            "popup_message": "",
+            "locale_codes": "hu"
+          }
+        },
+        "custom_image_pbnPkE": {
+          "type": "custom_image",
+          "name": "PL VOLUM",
+          "settings": {
+            "image": "shopify://shop_images/VOLUM_PL.png",
+            "alt_text": "discount volum aplice",
+            "action_type": "popup",
+            "link_url": "",
+            "popup_message": "<p>Cumpara mai multe aplice LED de exterior si beneficiezi de discount din ce in ce mai mare. Revendica cadoul direct in cos!</p>",
+            "locale_codes": "pl"
+          }
+        },
+        "custom_image_3QCBne": {
+          "type": "custom_image",
+          "name": "HU VOLUM",
+          "settings": {
+            "image": "shopify://shop_images/VOLUM_HU.png",
+            "alt_text": "discount volum aplice",
+            "action_type": "popup",
+            "link_url": "",
+            "popup_message": "<p>Cumpara mai multe aplice LED de exterior si beneficiezi de discount din ce in ce mai mare. Revendica cadoul direct in cos!</p>",
+            "locale_codes": "hu"
+          }
+        },
+        "custom_image_pTcKN3": {
+          "type": "custom_image",
+          "name": "PL MOBILIER",
+          "settings": {
+            "image": "shopify://shop_images/MOBILIER_PL.png",
+            "alt_text": "mobilier cadou orice baterie",
+            "action_type": "url",
+            "link_url": "shopify://collections/mobilier-baie",
+            "popup_message": "",
+            "locale_codes": "pl"
+          }
+        },
+        "custom_image_YhfTaw": {
+          "type": "custom_image",
+          "name": "HU MOBILIER",
+          "settings": {
+            "image": "shopify://shop_images/MOBILIER_HU.png",
+            "alt_text": "mobilier cadou orice baterie",
+            "action_type": "url",
+            "link_url": "shopify://collections/mobilier-baie",
+            "popup_message": "",
+            "locale_codes": "hu"
+          }
+        },
+        "custom_image_zwjcPw": {
+          "type": "custom_image",
+          "name": "PL LAVOAR",
+          "settings": {
+            "image": "shopify://shop_images/LAVOAR_PL.png",
+            "alt_text": "cadou lavoar",
+            "action_type": "popup",
+            "link_url": "",
+            "popup_message": "<p>Cumpara acum o chiuveta lavoar si primeste o baterie compatibila CADOU! Revendica cadoul direct in cos!</p>",
+            "locale_codes": "pl"
+          }
+        },
+        "custom_image_Mb44YQ": {
           "type": "custom_image",
           "name": "HU LAVOAR",
           "settings": {
@@ -172,18 +272,18 @@
         }
       },
       "block_order": [
-        "custom_image_KjBzPe",
-        "custom_image_CiCqXm",
-        "custom_image_MKmAbi",
-        "custom_image_4ex4Mg",
-        "custom_image_DeVWjB",
-        "custom_image_e9hLcK",
-        "custom_image_Ve9naz",
-        "custom_image_e7WEPy",
-        "custom_image_QyrynB",
-        "custom_image_4MQ3Vk",
-        "custom_image_AeKE8N",
-        "custom_image_mHCbf7"
+        "custom_image_hNrAPX",
+        "custom_image_9XgqYr",
+        "custom_image_BYRhbb",
+        "custom_image_fPyB9t",
+        "custom_image_63npd3",
+        "custom_image_TnzCQK",
+        "custom_image_pbnPkE",
+        "custom_image_3QCBne",
+        "custom_image_pTcKN3",
+        "custom_image_YhfTaw",
+        "custom_image_zwjcPw",
+        "custom_image_Mb44YQ"
       ],
       "name": "ALC - Campaign List (PL & HU)",
       "settings": {
@@ -713,6 +813,7 @@
   "order": [
     "custom_liquid_MVifHb",
     "alc_collection_list_campaign_mGB9xF",
+    "alc_collection_list_campaign_yEiHKH",
     "alc_collection_list_campaign_KXnJGX",
     "alc_collection_list_campaign_XeTR6y",
     "custom_liquid_ggcwHk",
