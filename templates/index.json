@@ -23,6 +23,16 @@
         "padding_bottom": 0
       }
     },
+    "custom_liquid_9HGKkC": {
+      "type": "custom-liquid",
+      "name": "t:sections.custom-liquid.presets.name",
+      "settings": {
+        "custom_liquid": "<!-- Countdown Responsive Alessandro Design -->\n<link href=\"https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap\" rel=\"stylesheet\">\n\n<div class=\"ad-countdown\" \n     data-deadline=\"2025-11-21T23:59:59+02:00\" \n     data-end-text=\"Oferta s-a încheiat.\">\n</div>\n\n<style>\n  .ad-countdown {\n    display: flex;\n    justify-content: center;\n    align-items: center;\n    gap: 1rem;\n    font-family: 'Roboto', sans-serif;\n    background: #000;\n    color: #FFD600;\n    padding: 1rem 1.5rem;\n    border-radius: 12px;\n    text-align: center;\n    width: fit-content;\n    margin: 0 auto;\n    box-shadow: 0 0 20px rgba(255, 214, 0, 0.2);\n  }\n\n  .ad-countdown .itm {\n    min-width: 4.5ch;\n  }\n\n  .ad-countdown .val {\n    display: block;\n    font-weight: 700;\n    font-size: 2rem;\n    line-height: 1;\n  }\n\n  .ad-countdown .lbl {\n    font-size: 0.9rem;\n    opacity: 0.8;\n    text-transform: uppercase;\n    letter-spacing: 0.05em;\n  }\n\n  @media (max-width: 600px) {\n    .ad-countdown {\n      gap: 0.5rem;\n      padding: 0.75rem 1rem;\n    }\n    .ad-countdown .val {\n      font-size: 1.4rem;\n    }\n    .ad-countdown .lbl {\n      font-size: 0.7rem;\n    }\n  }\n</style>\n\n<script>\n(function(){\n  function pad(n){return n<10?'0'+n:''+n;}\n  function build(root){\n    root.innerHTML =\n      '<div class=\"itm\"><span class=\"val js-d\">00</span><span class=\"lbl\">Zile</span></div>'+\n      '<div class=\"itm\"><span class=\"val js-h\">00</span><span class=\"lbl\">Ore</span></div>'+\n      '<div class=\"itm\"><span class=\"val js-m\">00</span><span class=\"lbl\">Minute</span></div>'+\n      '<div class=\"itm\"><span class=\"val js-s\">00</span><span class=\"lbl\">Secunde</span></div>';\n  }\n  function start(root){\n    var dStr = root.getAttribute('data-deadline');\n    var endText = root.getAttribute('data-end-text') || 'Oferta s-a încheiat.';\n    var deadline = new Date(dStr);\n    if(isNaN(deadline)){ console.warn('Invalid countdown date:', dStr); return; }\n\n    var dEl=root.querySelector('.js-d'), hEl=root.querySelector('.js-h'),\n        mEl=root.querySelector('.js-m'), sEl=root.querySelector('.js-s');\n\n    function tick(){\n      var diff = deadline - new Date();\n      if(diff<=0){\n        root.textContent = endText;\n        clearInterval(t); return;\n      }\n      var s = Math.floor(diff/1000),\n          days = Math.floor(s/86400); s -= days*86400;\n          hours = Math.floor(s/3600); s -= hours*3600;\n          minutes = Math.floor(s/60); s -= minutes*60;\n      dEl.textContent = pad(days);\n      hEl.textContent = pad(hours);\n      mEl.textContent = pad(minutes);\n      sEl.textContent = pad(s);\n    }\n    tick();\n    var t=setInterval(tick,1000);\n  }\n\n  document.querySelectorAll('.ad-countdown').forEach(function(root){\n    build(root); start(root);\n  });\n})();\n</script>",
+        "color_scheme": "",
+        "padding_top": 4,
+        "padding_bottom": 0
+      }
+    },
     "alc_collection_list_campaign_mGB9xF": {
       "type": "alc-collection-list-campaign",
       "blocks": {
@@ -773,6 +783,7 @@
   },
   "order": [
     "custom_liquid_MVifHb",
+    "custom_liquid_9HGKkC",
     "alc_collection_list_campaign_mGB9xF",
     "alc_collection_list_campaign_yEiHKH",
     "alc_collection_list_campaign_KXnJGX",
