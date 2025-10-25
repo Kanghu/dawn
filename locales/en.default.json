@@ -1164,5 +1164,50 @@
         "few": "{{count}} subscriptions have been updated successfully"
       }
     }
+  },
+  "pagefly": {
+    "products": {
+      "product": {
+        "regular_price": "Normal price",
+        "sold_out": "Out of stock",
+        "unavailable": "Unavailable",
+        "on_sale": "Reduction",
+        "quantity": "Amount",
+        "add_to_cart": "Add to cart",
+        "back_to_collection": "Back to {{ title }}",
+        "view_details": "See details"
+      }
+    },
+    "article": {
+      "tags": "Tags:",
+      "all_topics": "All topics",
+      "by_author": "by {{ author }}",
+      "posted_in": "Posted in",
+      "read_more": "Read more",
+      "back_to_blog": "Back to {{ title }}"
+    },
+    "comments": {
+      "title": "Add a comment",
+      "name": "Name",
+      "email": "E-mail",
+      "message": "Message",
+      "post": "Add comment",
+      "moderated": "Comments need approval before being published.",
+      "success_moderated": "Your comment has been registered and will be checked and then published!",
+      "success": "Comment successfully posted!",
+      "comments_with_count": {
+        "one": "{{ count }} comment",
+        "other": "{{ count }} comments"
+      }
+    },
+    "password_page": {
+      "login_form_message": "Enter using the password:",
+      "login_form_password_label": "Password",
+      "login_form_password_placeholder": "Your password",
+      "login_form_submit": "Enter",
+      "signup_form_email_label": "E-mail",
+      "signup_form_success": "We will send you an email before opening!",
+      "password_link": "Enter using your password!"
+    }
   }
 }
