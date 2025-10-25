@@ -798,7 +798,14 @@
           "few": "You will soon receive separate confirmation emails from each store"
         },
         "thank_you_confirmed_orders_with_phone_description": {
-          "one": "You will soon receive a confirmation message"
+          "one": "You will soon receive a confirmation message",
+          "other": "You will soon receive separate confirmation messages from each store",
+          "few": "You will soon receive separate confirmation messages from each store"
+        },
+        "thank_you_confirmed_orders_with_email_and_phone_description": {
+          "one": "You will soon receive a confirmation email",
+          "other": "You will soon receive separate confirmation emails from each store",
+          "few": "You will soon receive separate confirmation emails from each store"
         }
       },
       "order_payment_collection": {
@@ -900,6 +907,11 @@
       "merchandise_unavailable_in_buyer_location": {
         "remove_items_action": {
           "few": "remove unavailable items"
+        }
+      },
+      "review_address_modal": {
+        "subtitle": {
+          "few": "This order will be shipped to an address provided by {{merchant}}. Select a shipping address."
         }
       }
     },
