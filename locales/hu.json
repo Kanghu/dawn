@@ -934,7 +934,14 @@
           "few": "Hamarosan minden üzlettől külön megerősítő e-mailt fog kapni"
         },
         "thank_you_confirmed_orders_with_phone_description": {
-          "one": "Hamarosan kap egy megerősítő üzenetet"
+          "one": "Hamarosan kap egy megerősítő üzenetet",
+          "other": "Hamarosan minden üzlettől külön megerősítő üzenetet kap",
+          "few": "Hamarosan minden üzlettől külön megerősítő üzenetet kap"
+        },
+        "thank_you_confirmed_orders_with_email_and_phone_description": {
+          "one": "Hamarosan kap egy megerősítő e-mailt",
+          "other": "Hamarosan minden üzlettől külön megerősítő e-mailt fog kapni",
+          "few": "Hamarosan minden üzlettől külön megerősítő e-mailt fog kapni"
         }
       },
       "order_payment_collection": {
@@ -1048,6 +1055,11 @@
       },
       "merchant_instruction_errors": {
         "invalid_entrypoint_for_remote_negotiation": "A távolról nem zajló tárgyalási ülések esetén a távoli tárgyalási utasítások megadása nem lehetséges."
+      },
+      "remote_merchandise_only": {
+        "detail_item_label": {
+          "few": "{{count}} áru"
+        }
       }
     },
     "notices": {
