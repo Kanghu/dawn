@@ -194,8 +194,98 @@
         "increase": "Αυξήστε την ποσότητα για {{ product }}",
         "decrease": "Μειώστε την ποσότητα για {{ product }}",
         "minimum_of": "Ελάχιστο {{ quantity }}",
-        "maximum_of": "Ανώτατο όριο {{ quantity }}"
-      }
+        "maximum_of": "Ανώτατο όριο {{ quantity }}",
+        "multiples_of": "Αυξήσεις του {{ quantity }}",
+        "in_cart_html": "<span class=\"quantity-cart\">{{ quantity }}</span> στο καλάθι",
+        "note": "Δείτε τους κανόνες ποσότητας",
+        "min_of": "Ελάχιστο {{ quantity }}",
+        "max_of": "Ανώτατο όριο {{ quantity }}"
+      },
+      "price": {
+        "from_price_html": "Ξεκινώντας με {{ price }}",
+        "regular_price": "Κανονική τιμή",
+        "sale_price": "Μειωμένη τιμή",
+        "unit_price": "Τιμή μονάδας"
+      },
+      "pickup_availability": {
+        "view_store_info": "Προβολή πληροφοριών καταστήματος",
+        "check_other_stores": "Δείτε τη διαθεσιμότητα σε άλλα καταστήματα",
+        "pick_up_available": "Διατίθεται παραλαβή",
+        "pick_up_available_at_html": "Διατίθεται παραλαβή στο <span class=\"color-foreground\">{{ location_name }}</span>",
+        "pick_up_unavailable_at_html": "Η παραλαβή δεν είναι διαθέσιμη αυτήν τη στιγμή στις <span class=\"color-foreground\">{{ location_name }}</span>",
+        "unavailable": "Δεν ήταν δυνατή η φόρτωση της διαθεσιμότητας για παραλαβή",
+        "refresh": "Φρεσκάρω"
+      },
+      "media": {
+        "open_media": "Ανοίξτε το περιεχόμενο πολυμέσων {{ index }} σε ένα τροπικό παράθυρο",
+        "play_model": "Παίξτε στην προβολή 3D",
+        "play_video": "Παίξτε το βίντεο",
+        "gallery_viewer": "Προβολή γκαλερί",
+        "load_image": "Φορτώστε την εικόνα {{ index }} στην άποψη της γκαλερί",
+        "load_model": "Φορτώστε το τρισδιάστατο μοντέλο {{ index }} στην άποψη της γκαλερί",
+        "load_video": "Παίξτε το βίντεο {{ index }} στην άποψη της γκαλερί",
+        "image_available": "εικών {{ index }} είναι πλέον διαθέσιμο στην προβολή γκαλερί"
+      },
+      "view_full_details": "Δείτε πλήρεις λεπτομέρειες",
+      "shipping_policy_html": "<a href=\"{{ link }}\">Έξοδα αποστολής</a> υπολογίζονται με την ολοκλήρωση της παραγγελίας.",
+      "choose_options": "Επιλέξτε τις επιλογές",
+      "choose_product_options": "Επιλέξτε επιλογές για {{ product_name }}",
+      "value_unavailable": "{{ option_value }} – Μη διαθέσιμο",
+      "variant_sold_out_or_unavailable": "Η παραλλαγή δεν είναι διαθέσιμη ή δεν είναι διαθέσιμη",
+      "inventory_in_stock": "Σε απόθεμα",
+      "inventory_in_stock_show_count": "{{ quantity }} σε απόθεμα",
+      "inventory_low_stock": "Μειωμένο απόθεμα",
+      "inventory_low_stock_show_count": "Χαμηλό απόθεμα: μόνο {{ quantity }} υπόλοιπα στοιχεία",
+      "inventory_out_of_stock": "Δεν υπάρχει απόθεμα",
+      "inventory_out_of_stock_continue_selling": "Σε απόθεμα",
+      "sku": "SKU",
+      "volume_pricing": {
+        "title": "Τιμολόγηση ανά όγκο",
+        "note": "Η τιμολόγηση όγκου είναι διαθέσιμη",
+        "minimum": "Ψάρι {{ quantity }}",
+        "price_at_each": "ΝΑ {{ price }}/ τεμ.",
+        "price_range": "{{ minimum }} - {{ maximum }}"
+      },
+      "taxes_included": "Συμπεριλαμβάνονται φόροι.",
+      "duties_included": "Περιλαμβάνονται οι τελωνειακοί δασμοί.",
+      "duties_and_taxes_included": "Συμπεριλαμβάνονται οι φόροι και οι δασμοί."
+    },
+    "modal": {
+      "label": "Γκαλερί πολυμέσων"
+    },
+    "facets": {
+      "apply": "Εφαρμόζω",
+      "clear": "Σαφής",
+      "clear_all": "Αφαιρέστε τα πάντα",
+      "from": "Από",
+      "filter_and_sort": "Φιλτράρισμα και ταξινόμηση",
+      "filter_by_label": "Φίλτρο:",
+      "filter_button": "φιλτραρισμένο",
+      "max_price": "Η υψηλότερη τιμή είναι {{ price }}",
+      "reset": "Σαφής",
+      "sort_button": "Ταξινόμησε",
+      "sort_by_label": "Ταξινόμηση κατά:",
+      "to": "Με",
+      "filters_selected": {
+        "one": "{{ count }} επιλεγμένο",
+        "other": "{{ count }} επιλέγω",
+        "few": "{{ count }} επιλέγω"
+      },
+      "product_count": {
+        "one": "{{ product_count }} ΑΠΟ {{ count }} προϊόν",
+        "other": "{{ product_count }} ΑΠΟ {{ count }} προϊόντα",
+        "few": "{{ product_count }} ΑΠΟ {{ count }} προϊόντα"
+      },
+      "product_count_simple": {
+        "one": "{{ count }} προϊόν",
+        "other": "{{ count }} προϊόντα",
+        "few": "{{ count }} προϊόντα"
+      },
+      "clear_filter": "Αφαιρέστε το φίλτρο",
+      "filter_selected_accessibility": "{{ type }} ({{ count }} επιλεγμένα φίλτρα)",
+      "show_more": "Εμφάνιση περισσότερων",
+      "show_less": "Δείξτε λιγότερα",
+      "filter_and_operator_subtitle": "Ταίριαξέ τα όλα"
     }
   },
   "templates": {
