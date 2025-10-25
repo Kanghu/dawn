@@ -155,6 +155,100 @@
         "latime_cm_": "Šírka (cm)",
         "tip_rama_": "Typ rámu"
       }
+    },
+    "product": {
+      "quantity": {
+        "multiples_of": "Prírastky o {{ quantity }}",
+        "in_cart_html": "<span class=\"quantity-cart\">{{ quantity }}</span> v košíku",
+        "note": "Pozrite si pravidlá pre množstvo",
+        "min_of": "Minimum {{ quantity }}",
+        "max_of": "Maximálne {{ quantity }}"
+      },
+      "price": {
+        "from_price_html": "Počnúc {{ price }}",
+        "regular_price": "Bežná cena",
+        "sale_price": "Znížená cena",
+        "unit_price": "Jednotková cena"
+      },
+      "pickup_availability": {
+        "view_store_info": "Zobraziť informácie o obchode",
+        "check_other_stores": "Pozrite si dostupnosť v iných predajniach",
+        "pick_up_available": "Odber možný",
+        "pick_up_available_at_html": "Odber možný na <span class=\"color-foreground\">{{ location_name }}</span>",
+        "pick_up_unavailable_at_html": "Vyzdvihnutie momentálne nie je k dispozícii na <span class=\"color-foreground\">{{ location_name }}</span>",
+        "unavailable": "Nepodarilo sa načítať dostupnosť na vyzdvihnutie",
+        "refresh": "Obnoviť"
+      },
+      "media": {
+        "open_media": "Otvorte mediálny obsah {{ index }} v modálnom okne",
+        "play_model": "Hrajte v 3D zobrazovači",
+        "play_video": "Prehrajte video",
+        "gallery_viewer": "Prehliadač galérie",
+        "load_image": "Načítať obrázok {{ index }} v zobrazení galérie",
+        "load_model": "Načítajte 3D model {{ index }} v zobrazení galérie",
+        "load_video": "Prehrajte video {{ index }} v zobrazení galérie",
+        "image_available": "obrázok {{ index }} je teraz k dispozícii v zobrazení galérie"
+      },
+      "view_full_details": "Pozrite si úplné podrobnosti",
+      "shipping_policy_html": "<a href=\"{{ link }}\">Poplatky za prepravu</a> sú vypočítané po dokončení objednávky.",
+      "choose_options": "Vyberte možnosti",
+      "choose_product_options": "Vyberte možnosti pre {{ product_name }}",
+      "value_unavailable": "{{ option_value }} – Nie je k dispozícii",
+      "variant_sold_out_or_unavailable": "Variant je vypredaný alebo nedostupný",
+      "inventory_in_stock": "Skladom",
+      "inventory_in_stock_show_count": "{{ quantity }} na sklade",
+      "inventory_low_stock": "Znížené zásoby",
+      "inventory_low_stock_show_count": "Nízke zásoby: len {{ quantity }} zostávajúce položky",
+      "inventory_out_of_stock": "Nie je skladom",
+      "inventory_out_of_stock_continue_selling": "Skladom",
+      "sku": "SKU",
+      "volume_pricing": {
+        "title": "Cena za objem",
+        "note": "Objemové ceny sú k dispozícii",
+        "minimum": "Ryby {{ quantity }}",
+        "price_at_each": "TO {{ price }}/ ks.",
+        "price_range": "{{ minimum }} - {{ maximum }}"
+      },
+      "taxes_included": "Vrátane daní.",
+      "duties_included": "Vrátane ciel.",
+      "duties_and_taxes_included": "Vrátane daní a ciel."
+    },
+    "modal": {
+      "label": "Galéria médií"
+    },
+    "facets": {
+      "apply": "Použiť",
+      "clear": "Jasné",
+      "clear_all": "Odstráňte všetko",
+      "from": "Od",
+      "filter_and_sort": "Filtrovať a triediť",
+      "filter_by_label": "Filter:",
+      "filter_button": "filtrované",
+      "max_price": "Najvyššia cena je {{ price }}",
+      "reset": "Jasné",
+      "sort_button": "Zoraďte to",
+      "sort_by_label": "Zoradiť podľa:",
+      "to": "Autor:",
+      "filters_selected": {
+        "one": "{{ count }} vybrané",
+        "other": "{{ count }} vyberte",
+        "few": "{{ count }} vyberte"
+      },
+      "product_count": {
+        "one": "{{ product_count }} OD {{ count }} produkt",
+        "other": "{{ product_count }} OD {{ count }} produktov",
+        "few": "{{ product_count }} OD {{ count }} produktov"
+      },
+      "product_count_simple": {
+        "one": "{{ count }} produkt",
+        "other": "{{ count }} produktov",
+        "few": "{{ count }} produktov"
+      },
+      "clear_filter": "Odstráňte filter",
+      "filter_selected_accessibility": "{{ type }} ({{ count }} vybrané filtre)",
+      "show_more": "Ukáž viac",
+      "show_less": "Ukážte menej",
+      "filter_and_operator_subtitle": "Spojte ich všetky"
     }
   },
   "templates": {
