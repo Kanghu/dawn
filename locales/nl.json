@@ -808,7 +808,14 @@
           "few": "Binnenkort ontvang je van elke winkel een aparte bevestigingsmail"
         },
         "thank_you_confirmed_orders_with_phone_description": {
-          "one": "U ontvangt binnenkort een bevestigingsbericht"
+          "one": "U ontvangt binnenkort een bevestigingsbericht",
+          "other": "Binnenkort ontvang je van elke winkel aparte bevestigingsberichten",
+          "few": "Binnenkort ontvang je van elke winkel aparte bevestigingsberichten"
+        },
+        "thank_you_confirmed_orders_with_email_and_phone_description": {
+          "one": "Je ontvangt binnenkort een bevestigingsmail",
+          "other": "Binnenkort ontvang je van elke winkel een aparte bevestigingsmail",
+          "few": "Binnenkort ontvang je van elke winkel een aparte bevestigingsmail"
         }
       },
       "order_payment_collection": {
@@ -910,6 +917,11 @@
       "merchandise_unavailable_in_buyer_location": {
         "remove_items_action": {
           "few": "elimineert niet -beschikbare items"
+        }
+      },
+      "review_address_modal": {
+        "subtitle": {
+          "few": "Deze bestelling wordt verzonden naar een adres dat is opgegeven door {{merchant}}. Selecteer een verzendadres."
         }
       }
     },
