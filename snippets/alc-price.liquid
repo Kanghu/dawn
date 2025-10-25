@@ -86,6 +86,7 @@
   assign sale_badge_bg_start = '#d52b36'
   assign sale_badge_bg_end = '#aa1c2a'
   assign sale_badge_text = '#ffffff'
+  assign enable_price_timer = false
 
   if section
     assign enable_enhanced_price = section.settings.enable_enhanced_price | default: false
@@ -102,6 +103,21 @@
     assign sale_badge_bg_start = section.settings.sale_badge_bg_start | default: '#d52b36'
     assign sale_badge_bg_end = section.settings.sale_badge_bg_end | default: '#aa1c2a'
     assign sale_badge_text = section.settings.sale_badge_text | default: '#ffffff'
+    assign enable_price_timer = section.settings.enable_price_timer | default: false
+  endif
+
+  # Campaign timer data
+  assign featured_campaign = product.metafields.custom.featured_campaign.value
+  assign campaign_end_date = featured_campaign.metafields.custom.campaign_end_date.value
+
+  # Local development fallback - metafields don't work properly in Shopify CLI
+  if campaign_end_date == blank and request.host contains '127.0.0.1' and featured_campaign
+    assign campaign_end_date = "2025-02-15T23:59:59"
+  endif
+
+  # Fallback for any other cases when featured_campaign exists but no end date
+  if campaign_end_date == blank and featured_campaign.title != blank
+    assign campaign_end_date = "2025-01-31T23:59:59"
   endif
 -%}
 
@@ -119,6 +135,151 @@
     color: {{ sale_badge_text }} !important;
     border: none !important;
     border-radius: 5px !important;
+  }
+
+  /* Compact Timer in Enhanced Price Display */
+  .price-timer-compact {
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 8px;
+    padding: 0.75rem;
+    margin-bottom: 1rem;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+  }
+
+  .price-timer-badge {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    margin-bottom: 0.5rem;
+    font-weight: 700;
+    font-size: 0.813rem;
+    letter-spacing: 0.05em;
+  }
+
+  .timer-icon {
+    font-size: 1rem;
+    animation: pulse 2s infinite;
+  }
+
+  .timer-campaign-name {
+    color: inherit;
+  }
+
+  .price-timer-countdown {
+    text-align: center;
+  }
+
+  .timer-label {
+    display: block;
+    font-size: 0.75rem;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+    opacity: 0.9;
+  }
+
+  .timer-display {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0.25rem;
+    font-weight: 700;
+  }
+
+  .timer-unit {
+    display: inline-flex;
+    align-items: baseline;
+    gap: 0.1rem;
+  }
+
+  .timer-number {
+    font-size: 1.25rem;
+    line-height: 1;
+    background: rgba(255, 255, 255, 0.15);
+    border-radius: 4px;
+    padding: 0.2rem 0.4rem;
+    min-width: 1.75rem;
+    text-align: center;
+    display: inline-block;
+  }
+
+  .timer-suffix {
+    font-size: 0.75rem;
+    opacity: 0.8;
+    font-weight: 500;
+  }
+
+  .timer-sep {
+    font-size: 1rem;
+    opacity: 0.6;
+    animation: blink 1s infinite;
+  }
+
+  @keyframes blink {
+    0%, 50% { opacity: 0.6; }
+    51%, 100% { opacity: 0.3; }
+  }
+
+  .price-timer-expired {
+    text-align: center;
+    padding: 0.5rem;
+    background: rgba(0, 0, 0, 0.1);
+    border-radius: 6px;
+  }
+
+  .timer-expired-icon {
+    font-size: 1.25rem;
+    margin-right: 0.5rem;
+  }
+
+  .timer-expired-text {
+    font-weight: 600;
+    font-size: 0.875rem;
+    opacity: 0.8;
+  }
+
+  /* Urgent state when less than 24 hours remain */
+  .price-timer-compact.urgent .timer-number {
+    background: rgba(255, 255, 255, 0.25);
+    animation: numberFlash 0.5s infinite alternate;
+  }
+
+  @keyframes numberFlash {
+    0% { background: rgba(255, 255, 255, 0.25); }
+    100% { background: rgba(255, 255, 255, 0.4); }
+  }
+
+  .price-timer-compact.urgent .timer-icon {
+    animation: pulse 1s infinite;
+  }
+
+  /* Mobile responsive */
+  @media (max-width: 749px) {
+    .price-timer-compact {
+      padding: 0.5rem;
+    }
+
+    .price-timer-badge {
+      font-size: 0.75rem;
+    }
+
+    .timer-label {
+      font-size: 0.7rem;
+    }
+
+    .timer-number {
+      font-size: 1rem;
+      min-width: 1.5rem;
+      padding: 0.15rem 0.3rem;
+    }
+
+    .timer-suffix {
+      font-size: 0.65rem;
+    }
+
+    .timer-display {
+      gap: 0.15rem;
+    }
   }
 </style>
 
@@ -192,6 +353,46 @@
           animation: pulse 2s infinite;
         ">
           {{ super_price_badge_text }}
+        </div>
+      {%- endif -%}
+
+      {%- comment -%} Compact countdown timer in enhanced price display {%- endcomment -%}
+      {%- if enable_price_timer and enable_enhanced_price and featured_campaign.title != blank and campaign_end_date != blank -%}
+        <div class="price-timer-compact"
+             data-end-date="{{ campaign_end_date }}"
+             data-timer-id="price-timer-{{ section.id | default: 'default' }}">
+          <div class="price-timer-badge">
+            <span class="timer-icon">🔥</span>
+            <span class="timer-campaign-name">{{ featured_campaign.title | upcase }}</span>
+          </div>
+          <div class="price-timer-countdown">
+            <span class="timer-label">Se termină în:</span>
+            <div class="timer-display">
+              <span class="timer-unit">
+                <span class="timer-number" data-days>0</span>
+                <span class="timer-suffix">z</span>
+              </span>
+              <span class="timer-sep">:</span>
+              <span class="timer-unit">
+                <span class="timer-number" data-hours>00</span>
+                <span class="timer-suffix">h</span>
+              </span>
+              <span class="timer-sep">:</span>
+              <span class="timer-unit">
+                <span class="timer-number" data-minutes>00</span>
+                <span class="timer-suffix">m</span>
+              </span>
+              <span class="timer-sep">:</span>
+              <span class="timer-unit">
+                <span class="timer-number" data-seconds>00</span>
+                <span class="timer-suffix">s</span>
+              </span>
+            </div>
+          </div>
+          <div class="price-timer-expired" style="display: none;">
+            <span class="timer-expired-icon">⏰</span>
+            <span class="timer-expired-text">Campania s-a încheiat</span>
+          </div>
         </div>
       {%- endif -%}
 
@@ -376,5 +577,84 @@
     {%- endif -%}
   </div>
 {% endunless %}
+
+{%- if enable_price_timer and enable_enhanced_price and featured_campaign.title != blank and campaign_end_date != blank -%}
+<script>
+  // Compact Price Timer Class
+  class PriceTimer {
+    constructor(element) {
+      this.element = element;
+      this.endDate = new Date(element.dataset.endDate);
+      this.urgentThreshold = 24 * 60 * 60 * 1000; // 24 hours in milliseconds
+      this.isExpired = false;
+
+      this.daysEl = element.querySelector('[data-days]');
+      this.hoursEl = element.querySelector('[data-hours]');
+      this.minutesEl = element.querySelector('[data-minutes]');
+      this.secondsEl = element.querySelector('[data-seconds]');
+      this.countdownEl = element.querySelector('.price-timer-countdown');
+      this.expiredEl = element.querySelector('.price-timer-expired');
+
+      this.update();
+      this.interval = setInterval(() => this.update(), 1000);
+    }
+
+    update() {
+      const now = new Date();
+      const timeRemaining = this.endDate - now;
+
+      if (timeRemaining <= 0) {
+        this.expire();
+        return;
+      }
+
+      const days = Math.floor(timeRemaining / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((timeRemaining % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      const minutes = Math.floor((timeRemaining % (1000 * 60 * 60)) / (1000 * 60));
+      const seconds = Math.floor((timeRemaining % (1000 * 60)) / 1000);
+
+      if (this.daysEl) this.daysEl.textContent = days.toString();
+      if (this.hoursEl) this.hoursEl.textContent = hours.toString().padStart(2, '0');
+      if (this.minutesEl) this.minutesEl.textContent = minutes.toString().padStart(2, '0');
+      if (this.secondsEl) this.secondsEl.textContent = seconds.toString().padStart(2, '0');
+
+      // Add urgent state if within threshold (24 hours)
+      if (timeRemaining <= this.urgentThreshold) {
+        this.element.classList.add('urgent');
+      }
+    }
+
+    expire() {
+      if (this.isExpired) return;
+
+      this.isExpired = true;
+      clearInterval(this.interval);
+
+      if (this.countdownEl) this.countdownEl.style.display = 'none';
+      if (this.expiredEl) this.expiredEl.style.display = 'block';
+
+      this.element.classList.add('expired');
+    }
+  }
+
+  // Initialize price timers when DOM is ready
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initPriceTimers);
+  } else {
+    initPriceTimers();
+  }
+
+  function initPriceTimers() {
+    const timers = document.querySelectorAll('.price-timer-compact');
+    timers.forEach(timer => {
+      // Avoid initializing the same timer twice
+      if (!timer.dataset.initialized) {
+        new PriceTimer(timer);
+        timer.dataset.initialized = 'true';
+      }
+    });
+  }
+</script>
+{%- endif -%}
 
 <script src="{{ 'product-modal.js' | asset_url }}" defer="defer"></script>
