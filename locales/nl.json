@@ -319,19 +319,23 @@
       "search_for": "Zoeken naar '{{ terms }}'",
       "results_with_count_and_term": {
         "one": "{{ count }} resultaat gevonden voor “{{ terms }}”",
-        "other": "{{ count }} resultaten gevonden voor “{{ terms }}”"
+        "other": "{{ count }} resultaten gevonden voor “{{ terms }}”",
+        "few": "Ze hebben elkaar gevonden {{ count }} resultaten voor \"{{ terms }}”"
       },
       "results_pages_with_count": {
         "one": "{{ count }} pagina",
-        "other": "{{ count }} pagina's"
+        "other": "{{ count }} pagina's",
+        "few": "{{ count }} pagina"
       },
       "results_suggestions_with_count": {
         "one": "{{ count }} suggestie",
-        "other": "{{ count }} suggesties"
+        "other": "{{ count }} suggesties",
+        "few": "{{ count }} van suggesties"
       },
       "results_products_with_count": {
         "one": "{{ count }} product",
-        "other": "{{ count }} producten"
+        "other": "{{ count }} producten",
+        "few": "{{ count }} producten"
       },
       "suggestions": "Suggesties",
       "pages": "Pagina's"
