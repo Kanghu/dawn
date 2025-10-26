@@ -68,9 +68,10 @@
           {%- if block.settings.locale_codes != blank -%}
             {%- assign locale_codes = block.settings.locale_codes | split: ',' -%}
             {%- assign show_block = false -%}
+            {%- assign current_locale = request.locale.iso_code | downcase -%}
             {%- for code in locale_codes -%}
-              {%- assign trimmed_code = code | strip -%}
-              {%- if trimmed_code == request.locale.iso_code -%}
+              {%- assign trimmed_code = code | strip | downcase -%}
+              {%- if trimmed_code == current_locale -%}
                 {%- assign show_block = true -%}
                 {%- break -%}
               {%- endif -%}
@@ -199,7 +200,22 @@
 
   {%- comment -%} Store popup messages as data attributes {%- endcomment -%}
   {%- for block in section.blocks -%}
-    {%- if block.type == 'custom_image' and block.settings.action_type == 'popup' and block.settings.popup_message != blank -%}
+    {%- comment -%} Check if block should be displayed for current locale {%- endcomment -%}
+    {%- assign show_block = true -%}
+    {%- if block.settings.locale_codes != blank -%}
+      {%- assign locale_codes = block.settings.locale_codes | split: ',' -%}
+      {%- assign show_block = false -%}
+      {%- assign current_locale = request.locale.iso_code | downcase -%}
+      {%- for code in locale_codes -%}
+        {%- assign trimmed_code = code | strip | downcase -%}
+        {%- if trimmed_code == current_locale -%}
+          {%- assign show_block = true -%}
+          {%- break -%}
+        {%- endif -%}
+      {%- endfor -%}
+    {%- endif -%}
+
+    {%- if show_block and block.type == 'custom_image' and block.settings.action_type == 'popup' and block.settings.popup_message != blank -%}
       <div id="popup-data-{{ section.id }}-{{ forloop.index }}" style="display: none;">
         {{ block.settings.popup_message }}
       </div>
