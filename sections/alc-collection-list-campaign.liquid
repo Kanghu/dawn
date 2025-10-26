@@ -22,7 +22,24 @@
   if section.settings.swipe_on_mobile and section.blocks.size > columns_mobile_int
     assign show_mobile_slider = true
   endif
+
+  # Check if section should be displayed for current locale
+  assign show_section = true
+  if section.settings.section_locale_codes != blank
+    assign section_locale_codes = section.settings.section_locale_codes | split: ','
+    assign show_section = false
+    assign current_locale = request.locale.iso_code | downcase
+    for code in section_locale_codes
+      assign trimmed_code = code | strip | downcase
+      if trimmed_code == current_locale
+        assign show_section = true
+        break
+      endif
+    endfor
+  endif
 -%}
+
+{%- if show_section -%}
 
 <div class="color-{{ section.settings.color_scheme }} gradient">
   <div class="collection-list-wrapper page-width isolate{% if show_mobile_slider %} page-width-desktop{% endif %}{% if section.settings.title == blank %} no-heading{% endif %}{% if section.settings.show_view_all == false or section.blocks.size > collections.size %} no-mobile-link{% endif %} section-{{ section.id }}-padding">
@@ -338,6 +355,8 @@
   })();
 </script>
 
+{%- endif -%}
+
 {% schema %}
   {
     "name": "ALC - Campaign List",
@@ -348,6 +367,20 @@
       "groups": ["header", "footer"]
     },
     "settings": [
+      {
+        "type": "header",
+        "content": "Section Visibility"
+      },
+      {
+        "type": "text",
+        "id": "section_locale_codes",
+        "label": "Show section only on these locales (optional)",
+        "info": "Enter comma-separated ISO codes (e.g., 'pl,hu' or 'ro,bg'). Leave blank to show on all locales. This hides the entire section when the locale doesn't match."
+      },
+      {
+        "type": "header",
+        "content": "Section Content"
+      },
       {
         "type": "inline_richtext",
         "id": "title",
