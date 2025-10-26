@@ -23,6 +23,101 @@
         "padding_bottom": 0
       }
     },
+    "alc_collection_list_campaign_URTqdD": {
+      "type": "alc-collection-list-campaign",
+      "blocks": {
+        "custom_image_JLJxPJ": {
+          "type": "custom_image",
+          "settings": {
+            "image": "shopify://shop_images/700RON_BG.png",
+            "alt_text": "Campaign image",
+            "action_type": "popup",
+            "link_url": "",
+            "popup_message": "<p><br/>Добави в количката продукти за 700 лв и получаваш ПОДАРЪК LED полилей. Вземи подаръка директно в количката!<br/><br/></p>",
+            "locale_codes": ""
+          }
+        },
+        "custom_image_mMhJqr": {
+          "type": "custom_image",
+          "settings": {
+            "image": "shopify://shop_images/1000RON_BG.png",
+            "alt_text": "Campaign image",
+            "action_type": "popup",
+            "link_url": "",
+            "popup_message": "<p><br/>Добави в количката продукти за 1000 лв и получаваш ПОДАРЪК LED полилей с дистанционно. Вземи подаръка директно в количката!<br/><br/></p>",
+            "locale_codes": ""
+          }
+        },
+        "custom_image_VGUXz4": {
+          "type": "custom_image",
+          "settings": {
+            "image": "shopify://shop_images/VOLUM_BG.png",
+            "alt_text": "Campaign image",
+            "action_type": "popup",
+            "link_url": "",
+            "popup_message": "",
+            "locale_codes": ""
+          }
+        },
+        "custom_image_nBiHng": {
+          "type": "custom_image",
+          "settings": {
+            "image": "shopify://shop_images/LAVOAR_BG.png",
+            "alt_text": "Campaign image",
+            "action_type": "popup",
+            "link_url": "",
+            "popup_message": "<p><br/>Купи сега мивка за баня и получаваш ПОДАРЪК съвместим смесител! Вземи подаръка директно в количката!<br/><br/></p>",
+            "locale_codes": ""
+          }
+        },
+        "custom_image_U7QaxT": {
+          "type": "custom_image",
+          "settings": {
+            "image": "shopify://shop_images/MOBILIER_BG.png",
+            "alt_text": "Campaign image",
+            "action_type": "url",
+            "link_url": "shopify://collections/mobilier-baie",
+            "popup_message": "",
+            "locale_codes": ""
+          }
+        },
+        "custom_image_mBgnyn": {
+          "type": "custom_image",
+          "settings": {
+            "image": "shopify://shop_images/400RON_BG.png",
+            "alt_text": "Campaign image",
+            "action_type": "popup",
+            "link_url": "",
+            "popup_message": "<p><br/>Добави в количката продукти за 400 лв и получаваш ПОДАРЪК LED аплик за стена. Вземи подаръка директно в количката!<br/><br/></p>",
+            "locale_codes": ""
+          }
+        }
+      },
+      "block_order": [
+        "custom_image_JLJxPJ",
+        "custom_image_mMhJqr",
+        "custom_image_VGUXz4",
+        "custom_image_nBiHng",
+        "custom_image_U7QaxT",
+        "custom_image_mBgnyn"
+      ],
+      "name": "ALC - Campaign List (BG)",
+      "settings": {
+        "section_locale_codes": "bg",
+        "title": "",
+        "heading_size": "h1",
+        "image_ratio": "square",
+        "columns_desktop": 6,
+        "color_scheme": "",
+        "show_view_all": false,
+        "see_all_button_text": "See all products",
+        "see_all_url": "",
+        "columns_mobile": "2",
+        "swipe_on_mobile": true,
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    },
     "alc_collection_list_campaign_mGB9xF": {
       "type": "alc-collection-list-campaign",
       "blocks": {
@@ -777,6 +872,7 @@
   },
   "order": [
     "custom_liquid_MVifHb",
+    "alc_collection_list_campaign_URTqdD",
     "alc_collection_list_campaign_mGB9xF",
     "alc_collection_list_campaign_yEiHKH",
     "alc_collection_list_campaign_KXnJGX",
