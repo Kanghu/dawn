@@ -13,7 +13,7 @@
       "type": "custom-liquid",
       "name": "t:sections.custom-liquid.presets.name",
       "settings": {
-        "custom_liquid": "<style>\n.custom-video-wrapper {\n  position: relative;\n  width: 100%;\n  height: auto;\n  overflow: hidden;\n}\n\n.custom-video-wrapper video {\n  width: 100%;\n  height: auto;\n  object-fit: cover;\n  display: block;\n}\n</style>\n\n<div class=\"custom-video-wrapper\">\n  <video autoplay muted loop playsinline preload=\"auto\">\n    <source src=\"https://cdn.shopify.com/videos/c/o/v/5f5ce83e803a4511823bbe9da131e605.mp4\" type=\"video/mp4\">\n    Browserul tău nu suportă redarea video.\n  </video>\n</div>",
+        "custom_liquid": "<style>\n.custom-video-wrapper {\n  width: 100%;\n  display: flex;\n  flex-direction: column;\n  gap: 20px;\n}\n\n.custom-video-wrapper video {\n  width: 100%;\n  height: auto;\n  object-fit: cover;\n  display: block;\n  border-radius: 8px;\n}\n</style>\n\n<div class=\"custom-video-wrapper\">\n  <!-- Desktop video -->\n  <video autoplay muted loop playsinline preload=\"auto\">\n    <source src=\"https://cdn.shopify.com/videos/c/o/v/e511ea6ef87b43219f72fbeb6f87a88e.mp4\" type=\"video/mp4\">\n  </video>\n\n  <!-- Mobile video -->\n  <video autoplay muted loop playsinline preload=\"auto\">\n    <source src=\"https://cdn.shopify.com/videos/c/o/v/b52aae0175b44b529ea9cfb2e18a2b76.mp4\" type=\"video/mp4\">\n  </video>\n</div>",
         "color_scheme": "",
         "padding_top": 12,
         "padding_bottom": 12
