@@ -1,0 +1,535 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "custom_liquid_biJp4e": {
+      "type": "custom-liquid",
+      "name": "t:sections.custom-liquid.presets.name",
+      "settings": {
+        "custom_liquid": "{%- assign locale_code = request.locale.iso_code | default: localization.language.iso_code | downcase -%}\n\n{%- assign tld = 'ro' -%}\n{%- case locale_code -%}\n  {%- when 'ro' -%}{%- assign tld = 'ro' -%}\n  {%- when 'bg' -%}{%- assign tld = 'bg' -%}\n  {%- when 'hu' -%}{%- assign tld = 'hu' -%}\n  {%- when 'pl' -%}{%- assign tld = 'pl' -%}\n  {%- else -%}{%- assign tld = 'ro' -%}\n{%- endcase -%}\n\n{%- assign bf_url = 'https://www.alessandrodesign.' | append: tld | append: '/collections/black-friday' -%}\n\n<a class=\"bf-video-link page-width\" href=\"{{ bf_url }}\" aria-label=\"Black Friday - {{ locale_code | upcase }}\">\n  <div class=\"bf-video-wrap\">\n    <video\n      class=\"bf-video\"\n      autoplay\n      muted\n      loop\n      playsinline\n      preload=\"auto\"\n    >\n      {%- case locale_code -%}\n        {%- when 'ro' -%}\n          <source src=\"https://cdn.shopify.com/videos/c/o/v/5f5ce83e803a4511823bbe9da131e605.mp4\" type=\"video/mp4\">\n        {%- else -%}\n          <source src=\"https://cdn.shopify.com/videos/c/o/v/5f5ce83e803a4511823bbe9da131e605.mp4\" type=\"video/mp4\">\n      {%- endcase -%}\n    </video>\n  </div>\n</a>\n\n<style>\n  .bf-video-link { display: block; text-decoration: none; }\n  .bf-video-wrap {\n    position: relative;\n    width: 100%;\n    overflow: hidden;\n    aspect-ratio: 16 / 6; /* crop pe desktop */\n    background: #120a0a; /* fallback */\n    cursor: pointer;\n  }\n  .bf-video {\n    position: absolute;\n    top: 50%;\n    left: 50%;\n    width: 100%;\n    height: 100%;\n    min-width: 100%;\n    min-height: 100%;\n    object-fit: cover;\n    transform: translate(-50%, -50%);\n  }\n  @media (max-width: 768px) {\n    .bf-video-wrap { aspect-ratio: 16 / 9; /* revenire full pe mobil */ }\n  }\n</style>",
+        "color_scheme": "",
+        "padding_top": 40,
+        "padding_bottom": 52
+      }
+    },
+    "alc_breadcrumbs_Bd8j7D": {
+      "type": "alc-breadcrumbs",
+      "name": "Breadcrumbs",
+      "settings": {
+        "separator_symbol": "/",
+        "background": "#ffffff"
+      }
+    },
+    "banner": {
+      "type": "alc-main-coll-banner-v2",
+      "settings": {
+        "show_collection_description": true,
+        "show_collection_image": false,
+        "color_scheme": "scheme-15b3ebfc-72e7-42d0-af22-57c8d007abe9",
+        "show_collection_slider": true,
+        "slider_columns_desktop": 6,
+        "slider_columns_mobile": "2",
+        "slider_enable_mobile": true,
+        "slider_image_ratio": "square"
+      }
+    },
+    "alc_collection_list_campaign_rtzP3r": {
+      "type": "alc-collection-list-campaign",
+      "blocks": {
+        "custom_image_CB8A88": {
+          "type": "custom_image",
+          "name": "RO 400RON",
+          "settings": {
+            "image": "shopify://shop_images/400RON_RO.png",
+            "alt_text": "cadou 400 ron aplica led cheia sol",
+            "action_type": "popup",
+            "link_url": "",
+            "popup_message": "<p>Adauga in cos produse de 400 lei si primesti CADOU o aplica LED de perete. Revendica cadoul direct in cos!</p>",
+            "locale_codes": "ro"
+          }
+        },
+        "custom_image_FX9aYQ": {
+          "type": "custom_image",
+          "name": "BG 400RON",
+          "settings": {
+            "image": "shopify://shop_images/400RON_BG.png",
+            "alt_text": "Campaign image",
+            "action_type": "popup",
+            "link_url": "",
+            "popup_message": "<p><br/>Добави в количката продукти за 400 лв и получаваш ПОДАРЪК LED аплик за стена. Вземи подаръка директно в количката!<br/><br/></p>",
+            "locale_codes": "bg"
+          }
+        },
+        "custom_image_AjKXTJ": {
+          "type": "custom_image",
+          "name": "RO 700 RON",
+          "settings": {
+            "image": "shopify://shop_images/700RON_RO.png",
+            "alt_text": "cadou 700 ron lustra led cerc",
+            "action_type": "popup",
+            "link_url": "",
+            "popup_message": "<p>Adauga in cos produse de 700 lei si primesti CADOU o lustra LED. Revendica cadoul direct in cos!</p>",
+            "locale_codes": "ro"
+          }
+        },
+        "custom_image_HgMPwx": {
+          "type": "custom_image",
+          "name": "BG 700RON",
+          "settings": {
+            "image": "shopify://shop_images/700RON_BG.png",
+            "alt_text": "Campaign image",
+            "action_type": "popup",
+            "link_url": "",
+            "popup_message": "<p><br/>Добави в количката продукти за 700 лв и получаваш ПОДАРЪК LED полилей. Вземи подаръка директно в количката!<br/><br/></p>",
+            "locale_codes": "bg"
+          }
+        },
+        "custom_image_DGYeUX": {
+          "type": "custom_image",
+          "name": "RO 1000 RON",
+          "settings": {
+            "image": "shopify://shop_images/1000RON_RO.png",
+            "alt_text": "cadou 1000 ron lustra led cerc cu telecomanda",
+            "action_type": "popup",
+            "link_url": "",
+            "popup_message": "<p>Adauga in cos produse de 1000 lei si primesti CADOU o Lustra LED cu Telecomanda. Revendica cadoul direct in cos!</p>",
+            "locale_codes": "ro"
+          }
+        },
+        "custom_image_YBeb3B": {
+          "type": "custom_image",
+          "name": "BG 1000 RON",
+          "settings": {
+            "image": "shopify://shop_images/1000RON_BG.png",
+            "alt_text": "Campaign image",
+            "action_type": "popup",
+            "link_url": "",
+            "popup_message": "<p><br/>Добави в количката продукти за 1000 лв и получаваш ПОДАРЪК LED полилей с дистанционно. Вземи подаръка директно в количката!<br/><br/></p>",
+            "locale_codes": "bg"
+          }
+        },
+        "custom_image_AXUz48": {
+          "type": "custom_image",
+          "name": "RO VOLUM",
+          "settings": {
+            "image": "shopify://shop_images/VOLUM_RO.png",
+            "alt_text": "discount volum aplice",
+            "action_type": "popup",
+            "link_url": "",
+            "popup_message": "<p>Cumpara mai multe aplice LED de exterior si beneficiezi de discount din ce in ce mai mare. Revendica cadoul direct in cos!</p>",
+            "locale_codes": "ro"
+          }
+        },
+        "custom_image_9bjfhY": {
+          "type": "custom_image",
+          "name": "BG VOLUM",
+          "settings": {
+            "image": "shopify://shop_images/VOLUM_BG.png",
+            "alt_text": "discount volum aplice",
+            "action_type": "popup",
+            "link_url": "",
+            "popup_message": "<p><br/>Купи повече външни LED аплици и се възползвай от все по-голяма отстъпка. Вземи подаръка директно в количката!<br/><br/></p>",
+            "locale_codes": "bg"
+          }
+        },
+        "custom_image_kQUzhG": {
+          "type": "custom_image",
+          "name": "RO MOBILIER",
+          "settings": {
+            "image": "shopify://shop_images/MOBILIER_BATERIE_BAIE.jpg",
+            "alt_text": "mobilier cadou orice baterie",
+            "action_type": "url",
+            "link_url": "shopify://collections/mobilier-baie",
+            "popup_message": "",
+            "locale_codes": "ro"
+          }
+        },
+        "custom_image_yVyK9G": {
+          "type": "custom_image",
+          "name": "BG MOBILIER",
+          "settings": {
+            "image": "shopify://shop_images/MOBILIER_BG.png",
+            "alt_text": "mobilier cadou orice baterie",
+            "action_type": "url",
+            "link_url": "shopify://collections/mobilier-baie",
+            "popup_message": "",
+            "locale_codes": "bg"
+          }
+        },
+        "custom_image_DKfitB": {
+          "type": "custom_image",
+          "name": "RO LAVOAR",
+          "settings": {
+            "image": "shopify://shop_images/LAVOAR_BATERIE_BUCATARIE.jpg",
+            "alt_text": "cadou lavoar",
+            "action_type": "popup",
+            "link_url": "",
+            "popup_message": "<p>Cumpara acum o chiuveta lavoar si primeste o baterie compatibila CADOU! Revendica cadoul direct in cos!</p>",
+            "locale_codes": "ro"
+          }
+        },
+        "custom_image_dUJRi4": {
+          "type": "custom_image",
+          "name": "BG LAVOAR",
+          "settings": {
+            "image": "shopify://shop_images/LAVOAR_BG.png",
+            "alt_text": "cadou lavoar",
+            "action_type": "popup",
+            "link_url": "",
+            "popup_message": "<p><br/>Купи сега мивка за баня и получаваш ПОДАРЪК съвместим смесител! Вземи подаръка директно в количката!<br/><br/></p>",
+            "locale_codes": "bg"
+          }
+        }
+      },
+      "block_order": [
+        "custom_image_CB8A88",
+        "custom_image_FX9aYQ",
+        "custom_image_AjKXTJ",
+        "custom_image_HgMPwx",
+        "custom_image_DGYeUX",
+        "custom_image_YBeb3B",
+        "custom_image_AXUz48",
+        "custom_image_9bjfhY",
+        "custom_image_kQUzhG",
+        "custom_image_yVyK9G",
+        "custom_image_DKfitB",
+        "custom_image_dUJRi4"
+      ],
+      "name": "ALC - Campaign List (RO & BG)",
+      "settings": {
+        "section_locale_codes": "",
+        "title": "",
+        "heading_size": "h1",
+        "image_ratio": "square",
+        "columns_desktop": 6,
+        "color_scheme": "",
+        "show_view_all": false,
+        "see_all_button_text": "See all products",
+        "see_all_url": "",
+        "columns_mobile": "2",
+        "swipe_on_mobile": true,
+        "padding_top": 0,
+        "padding_bottom": 12
+      }
+    },
+    "alc_collection_list_campaign_g7xNDq": {
+      "type": "alc-collection-list-campaign",
+      "blocks": {
+        "custom_image_Tfn33w": {
+          "type": "custom_image",
+          "name": "ENG 400 RON",
+          "settings": {
+            "image": "shopify://shop_images/400RON_ENG.jpg",
+            "alt_text": "discount volum aplice",
+            "action_type": "popup",
+            "link_url": "",
+            "popup_message": "<p><br/>Add products worth 400 lei to your cart and get a FREE wall LED lamp. Claim your gift directly in the cart!<br/><br/></p>",
+            "locale_codes": "sk,cz,hr,fr,gr"
+          }
+        },
+        "custom_image_bNTtLG": {
+          "type": "custom_image",
+          "name": "ENG 700 RON",
+          "settings": {
+            "image": "shopify://shop_images/700RON_ENG.jpg",
+            "alt_text": "discount volum aplice",
+            "action_type": "popup",
+            "link_url": "",
+            "popup_message": "<p><br/>Add products worth 700 lei to your cart and get a FREE LED chandelier. Claim your gift directly in the cart!<br/><br/></p>",
+            "locale_codes": "sk,cz,hr,fr,gr"
+          }
+        },
+        "custom_image_N4qRgA": {
+          "type": "custom_image",
+          "name": "ENG 1000 RON",
+          "settings": {
+            "image": "shopify://shop_images/1000RON_ENG.jpg",
+            "alt_text": "mobilier cadou orice baterie",
+            "action_type": "url",
+            "link_url": "shopify://collections/mobilier-baie",
+            "popup_message": "<p><br/>Add products worth 1000 lei to your cart and get a FREE LED chandelier with remote control. Claim your gift directly in the cart!<br/><br/></p>",
+            "locale_codes": "sk,cz,hr,fr,gr"
+          }
+        },
+        "custom_image_6iJU3C": {
+          "type": "custom_image",
+          "name": "ENG MOBILIER",
+          "settings": {
+            "image": "shopify://shop_images/MOBILIER.png",
+            "alt_text": "mobilier cadou orice baterie",
+            "action_type": "url",
+            "link_url": "shopify://collections/mobilier-baie",
+            "popup_message": "",
+            "locale_codes": "sk,cz,hr,fr,gr"
+          }
+        },
+        "custom_image_7ayehQ": {
+          "type": "custom_image",
+          "name": "ENG LAVOAR",
+          "settings": {
+            "image": "shopify://shop_images/LAVOAR_ENG.png",
+            "alt_text": "cadou lavoar",
+            "action_type": "popup",
+            "link_url": "",
+            "popup_message": "<p><br/>Buy a washbasin sink now and get a FREE compatible faucet! Claim your gift directly in the cart!<br/><br/></p>",
+            "locale_codes": "sk,cz,hr,fr,gr"
+          }
+        },
+        "custom_image_tnwqCD": {
+          "type": "custom_image",
+          "name": "ENG VOLUM",
+          "settings": {
+            "image": "shopify://shop_images/VOLUM_ENG.png",
+            "alt_text": "cadou lavoar",
+            "action_type": "popup",
+            "link_url": "",
+            "popup_message": "<p><br/>Buy more outdoor LED wall lights and enjoy increasing discounts. Claim your gift directly in the cart!<br/><br/></p>",
+            "locale_codes": "sk,cz,hr,fr,gr"
+          }
+        }
+      },
+      "block_order": [
+        "custom_image_Tfn33w",
+        "custom_image_bNTtLG",
+        "custom_image_N4qRgA",
+        "custom_image_6iJU3C",
+        "custom_image_7ayehQ",
+        "custom_image_tnwqCD"
+      ],
+      "name": "ALC - Campaign List (ENG)",
+      "settings": {
+        "section_locale_codes": "",
+        "title": "",
+        "heading_size": "h1",
+        "image_ratio": "square",
+        "columns_desktop": 6,
+        "color_scheme": "",
+        "show_view_all": false,
+        "see_all_button_text": "See all products",
+        "see_all_url": "",
+        "columns_mobile": "2",
+        "swipe_on_mobile": true,
+        "padding_top": 0,
+        "padding_bottom": 12
+      }
+    },
+    "alc_collection_list_campaign_xqbxiH": {
+      "type": "alc-collection-list-campaign",
+      "blocks": {
+        "custom_image_zmzgJq": {
+          "type": "custom_image",
+          "name": "PL 400RON",
+          "settings": {
+            "image": "shopify://shop_images/400RON_PL.png",
+            "alt_text": "cadou 400 ron aplica led cheia sol",
+            "action_type": "popup",
+            "link_url": "",
+            "popup_message": "<p><br/>Tegyél a kosárba 700 lej értékű terméket, és AJÁNDÉKBA kapsz egy LED csillárt. Igényeld az ajándékot közvetlenül a kosárban!<br/><br/></p>",
+            "locale_codes": "pl"
+          }
+        },
+        "custom_image_g3zTgi": {
+          "type": "custom_image",
+          "name": "HU 400RON",
+          "settings": {
+            "image": "shopify://shop_images/400RON_HU.png",
+            "alt_text": "cadou 400 ron aplica led cheia sol",
+            "action_type": "popup",
+            "link_url": "",
+            "popup_message": "<p><br/>Tegyél a kosárba 400 lej értékű terméket, és AJÁNDÉKBA kapsz egy fali LED lámpát. Igényeld az ajándékot közvetlenül a kosárban!<br/><br/></p>",
+            "locale_codes": "hu"
+          }
+        },
+        "custom_image_DrxQQk": {
+          "type": "custom_image",
+          "name": "PL 700 RON",
+          "settings": {
+            "image": "shopify://shop_images/700RON_PL.png",
+            "alt_text": "cadou 700 ron lustra led cerc",
+            "action_type": "popup",
+            "link_url": "",
+            "popup_message": "<p><br/>Dodaj do koszyka produkty za 700 lei i otrzymasz w PREZENCIE żyrandol LED. Odbierz prezent bezpośrednio w koszyku!<br/><br/></p>",
+            "locale_codes": "pl"
+          }
+        },
+        "custom_image_NgwhxB": {
+          "type": "custom_image",
+          "name": "HU 700 RON",
+          "settings": {
+            "image": "shopify://shop_images/700RON_HU.png",
+            "alt_text": "cadou 700 ron lustra led cerc",
+            "action_type": "popup",
+            "link_url": "",
+            "popup_message": "<p><br/>Tegyél a kosárba 700 lej értékű terméket, és AJÁNDÉKBA kapsz egy LED csillárt. Igényeld az ajándékot közvetlenül a kosárban!<br/><br/></p>",
+            "locale_codes": "hu"
+          }
+        },
+        "custom_image_iHW4tq": {
+          "type": "custom_image",
+          "name": "PL 1000 RON",
+          "settings": {
+            "image": "shopify://shop_images/1000RON_PL.png",
+            "alt_text": "Campaign image",
+            "action_type": "popup",
+            "link_url": "",
+            "popup_message": "<p><br/>Dodaj do koszyka produkty za 1000 lei i otrzymasz w PREZENCIE żyrandol LED z pilotem. Odbierz prezent bezpośrednio w koszyku!<br/><br/></p>",
+            "locale_codes": "pl"
+          }
+        },
+        "custom_image_nCfjgk": {
+          "type": "custom_image",
+          "name": "HU 1000 RON",
+          "settings": {
+            "image": "shopify://shop_images/1000RON_HU.png",
+            "alt_text": "Campaign image",
+            "action_type": "popup",
+            "link_url": "",
+            "popup_message": "<p><br/>Tegyél a kosárba 1000 lej értékű terméket, és AJÁNDÉKBA kapsz egy távirányítós LED csillárt. Igényeld az ajándékot közvetlenül a kosárban!<br/><br/></p>",
+            "locale_codes": "hu"
+          }
+        },
+        "custom_image_htzxMx": {
+          "type": "custom_image",
+          "name": "PL VOLUM",
+          "settings": {
+            "image": "shopify://shop_images/VOLUM_PL.png",
+            "alt_text": "discount volum aplice",
+            "action_type": "popup",
+            "link_url": "",
+            "popup_message": "<p><br/>Kup więcej zewnętrznych kinkietów LED i korzystaj z coraz większego rabatu. Odbierz prezent bezpośrednio w koszyku!<br/><br/></p>",
+            "locale_codes": "pl"
+          }
+        },
+        "custom_image_Axc6YN": {
+          "type": "custom_image",
+          "name": "HU VOLUM",
+          "settings": {
+            "image": "shopify://shop_images/VOLUM_HU.png",
+            "alt_text": "discount volum aplice",
+            "action_type": "popup",
+            "link_url": "",
+            "popup_message": "<p><br/>Vásárolj több kültéri LED fali lámpát, és részesülj egyre nagyobb kedvezményben. Igényeld az ajándékot közvetlenül a kosárban!<br/><br/></p>",
+            "locale_codes": "hu"
+          }
+        },
+        "custom_image_nrKUxP": {
+          "type": "custom_image",
+          "name": "PL MOBILIER",
+          "settings": {
+            "image": "shopify://shop_images/MOBILIER_PL.png",
+            "alt_text": "mobilier cadou orice baterie",
+            "action_type": "popup",
+            "link_url": "shopify://collections/mobilier-baie",
+            "popup_message": "",
+            "locale_codes": "pl"
+          }
+        },
+        "custom_image_QRack9": {
+          "type": "custom_image",
+          "name": "HU MOBILIER",
+          "settings": {
+            "image": "shopify://shop_images/MOBILIER_HU.png",
+            "alt_text": "mobilier cadou orice baterie",
+            "action_type": "url",
+            "link_url": "shopify://collections/mobilier-baie",
+            "popup_message": "",
+            "locale_codes": "hu"
+          }
+        },
+        "custom_image_c7wK8H": {
+          "type": "custom_image",
+          "name": "PL LAVOAR",
+          "settings": {
+            "image": "shopify://shop_images/LAVOAR_PL.png",
+            "alt_text": "cadou lavoar",
+            "action_type": "popup",
+            "link_url": "",
+            "popup_message": "<p><br/>Kup teraz umywalkę i otrzymasz w PREZENCIE kompatybilną baterię! Odbierz prezent bezpośrednio w koszyku!<br/><br/></p>",
+            "locale_codes": "pl"
+          }
+        },
+        "custom_image_gLPMbd": {
+          "type": "custom_image",
+          "name": "HU LAVOAR",
+          "settings": {
+            "image": "shopify://shop_images/LAVOAR_HU.png",
+            "alt_text": "cadou lavoar",
+            "action_type": "popup",
+            "link_url": "",
+            "popup_message": "<p><br/>Vásárolj most egy mosdókagylót, és AJÁNDÉKBA kapsz egy kompatibilis csaptelepet! Igényeld az ajándékot közvetlenül a kosárban!<br/><br/></p>",
+            "locale_codes": "hu"
+          }
+        }
+      },
+      "block_order": [
+        "custom_image_zmzgJq",
+        "custom_image_g3zTgi",
+        "custom_image_DrxQQk",
+        "custom_image_NgwhxB",
+        "custom_image_iHW4tq",
+        "custom_image_nCfjgk",
+        "custom_image_htzxMx",
+        "custom_image_Axc6YN",
+        "custom_image_nrKUxP",
+        "custom_image_QRack9",
+        "custom_image_c7wK8H",
+        "custom_image_gLPMbd"
+      ],
+      "name": "ALC - Campaign List (PL & HU)",
+      "settings": {
+        "section_locale_codes": "",
+        "title": "",
+        "heading_size": "h1",
+        "image_ratio": "square",
+        "columns_desktop": 6,
+        "color_scheme": "",
+        "show_view_all": false,
+        "see_all_button_text": "See all products",
+        "see_all_url": "",
+        "columns_mobile": "2",
+        "swipe_on_mobile": true,
+        "padding_top": 0,
+        "padding_bottom": 12
+      }
+    },
+    "product-grid": {
+      "type": "main-collection-product-grid",
+      "custom_css": [
+        ".rating-star {--color-rating-star: #fecf07; letter-spacing: 0.03em;}"
+      ],
+      "settings": {
+        "products_per_page": 36,
+        "columns_desktop": 4,
+        "color_scheme": "scheme-15b3ebfc-72e7-42d0-af22-57c8d007abe9",
+        "image_ratio": "square",
+        "image_shape": "default",
+        "show_secondary_image": true,
+        "show_vendor": false,
+        "show_rating": true,
+        "quick_add": "standard",
+        "enable_filtering": true,
+        "filter_type": "vertical",
+        "enable_sorting": true,
+        "columns_mobile": "2",
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    }
+  },
+  "order": [
+    "custom_liquid_biJp4e",
+    "alc_breadcrumbs_Bd8j7D",
+    "banner",
+    "alc_collection_list_campaign_rtzP3r",
+    "alc_collection_list_campaign_g7xNDq",
+    "alc_collection_list_campaign_xqbxiH",
+    "product-grid"
+  ]
+}
