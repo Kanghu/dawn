@@ -9,6 +9,16 @@
  */
 {
   "sections": {
+    "custom_liquid_biJp4e": {
+      "type": "custom-liquid",
+      "name": "t:sections.custom-liquid.presets.name",
+      "settings": {
+        "custom_liquid": "{%- assign locale_code = request.locale.iso_code | default: localization.language.iso_code | downcase -%}\n\n{%- assign tld = 'ro' -%}\n{%- case locale_code -%}\n  {%- when 'ro' -%}{%- assign tld = 'ro' -%}\n  {%- when 'bg' -%}{%- assign tld = 'bg' -%}\n  {%- when 'hu' -%}{%- assign tld = 'hu' -%}\n  {%- when 'pl' -%}{%- assign tld = 'pl' -%}\n  {%- else -%}{%- assign tld = 'ro' -%}\n{%- endcase -%}\n\n{%- assign bf_url = 'https://www.alessandrodesign.' | append: tld | append: '/collections/black-friday' -%}\n\n<a class=\"bf-video-link page-width\" href=\"{{ bf_url }}\" aria-label=\"Black Friday - {{ locale_code | upcase }}\">\n  <div class=\"bf-video-wrap\">\n    <video\n      class=\"bf-video\"\n      autoplay\n      muted\n      loop\n      playsinline\n      preload=\"auto\"\n    >\n      {%- case locale_code -%}\n        {%- when 'ro' -%}\n          <source src=\"https://cdn.shopify.com/videos/c/o/v/5f5ce83e803a4511823bbe9da131e605.mp4\" type=\"video/mp4\">\n        {%- else -%}\n          <source src=\"https://cdn.shopify.com/videos/c/o/v/5f5ce83e803a4511823bbe9da131e605.mp4\" type=\"video/mp4\">\n      {%- endcase -%}\n    </video>\n  </div>\n</a>\n\n<style>\n  .bf-video-link { display: block; text-decoration: none; }\n  .bf-video-wrap {\n    position: relative;\n    width: 100%;\n    overflow: hidden;\n    aspect-ratio: 16 / 6; /* crop pe desktop */\n    background: #120a0a; /* fallback */\n    cursor: pointer;\n  }\n  .bf-video {\n    position: absolute;\n    top: 50%;\n    left: 50%;\n    width: 100%;\n    height: 100%;\n    min-width: 100%;\n    min-height: 100%;\n    object-fit: cover;\n    transform: translate(-50%, -50%);\n  }\n  @media (max-width: 768px) {\n    .bf-video-wrap { aspect-ratio: 16 / 9; /* revenire full pe mobil */ }\n  }\n</style>",
+        "color_scheme": "",
+        "padding_top": 40,
+        "padding_bottom": 52
+      }
+    },
     "alc_breadcrumbs_Bd8j7D": {
       "type": "alc-breadcrumbs",
       "name": "Breadcrumbs",
@@ -194,6 +204,7 @@
       ],
       "name": "ALC - Campaign List (RO & BG)",
       "settings": {
+        "section_locale_codes": "",
         "title": "",
         "heading_size": "h1",
         "image_ratio": "square",
@@ -294,6 +305,7 @@
       ],
       "name": "ALC - Campaign List (ENG)",
       "settings": {
+        "section_locale_codes": "",
         "title": "",
         "heading_size": "h1",
         "image_ratio": "square",
@@ -472,6 +484,7 @@
       ],
       "name": "ALC - Campaign List (PL & HU)",
       "settings": {
+        "section_locale_codes": "",
         "title": "",
         "heading_size": "h1",
         "image_ratio": "square",
@@ -511,6 +524,7 @@
     }
   },
   "order": [
+    "custom_liquid_biJp4e",
     "alc_breadcrumbs_Bd8j7D",
     "banner",
     "alc_collection_list_campaign_rtzP3r",
