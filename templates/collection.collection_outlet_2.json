@@ -1,0 +1,113 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "custom_liquid_fKNUgr": {
+      "type": "custom-liquid",
+      "custom_css": [
+        ".banner-img {display: block; width: 100%; height: auto;}",
+        "@media (min-width: 768px) {.banner-img {max-width: 1300px; margin: auto; }}"
+      ],
+      "name": "t:sections.custom-liquid.presets.name",
+      "settings": {
+        "custom_liquid": "<a id=\"black-season-link\" href=\"https://www.alessandrodesign.ro/collections/black-season\">\n  <picture>\n    <source id=\"bs-desktop\" media=\"(min-width:768px)\" srcset=\"\">\n    <source id=\"bs-mobile\"  media=\"(max-width:767px)\" srcset=\"\">\n    <img id=\"bs-img\" alt=\"Black Season Banner\" class=\"banner-img\" src=\"\" loading=\"lazy\">\n  </picture>\n</a>\n\n<script>\n(function() {\n  // Bannerele pentru domeniul .ro\n  const desktopRO  = \"https://cdn.shopify.com/s/files/1/0782/5175/3739/files/BF_Banner_RO.jpg?v=1760635411\";\n  const mobileRO   = \"https://cdn.shopify.com/s/files/1/0782/5175/3739/files/BF_Banner_RO.jpg?v=1760635411\";\n  // Bannerele pentru orice alt domeniu\n  const desktopENG = \"https://cdn.shopify.com/s/files/1/0782/5175/3739/files/MEGA_WIDE_ENG.jpg?v=1759841896\";\n  const mobileENG  = \"https://cdn.shopify.com/s/files/1/0782/5175/3739/files/ULTRA_WIDE_ENG.jpg?v=1759841895\";\n\n  // Verifică dacă hostname-ul conține \".ro\" la final\n  const host = window.location.hostname.toLowerCase();\n  const isRo = host.endsWith(\".ro\") || host.includes(\".ro\");\n\n  // Alege bannerele potrivite\n  const desktopSrc = isRo ? desktopRO : desktopENG;\n  const mobileSrc  = isRo ? mobileRO  : mobileENG;\n\n  // Setează sursele\n  document.getElementById(\"bs-desktop\").srcset = desktopSrc;\n  document.getElementById(\"bs-mobile\").srcset  = mobileSrc;\n\n  // Fallback <img>\n  const img = document.getElementById(\"bs-img\");\n  img.src = (window.innerWidth >= 768) ? desktopSrc : mobileSrc;\n})();\n</script>",
+        "color_scheme": "",
+        "padding_top": 0,
+        "padding_bottom": 0
+      }
+    },
+    "alc_collection_list_campaign_dcVbgP": {
+      "type": "alc-collection-list-campaign",
+      "blocks": {
+        "featured_collection_X8Y7Ji": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "lustre-led-cu-telecomanda"
+          }
+        },
+        "featured_collection_6PPTTG": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "aplice-de-exterior"
+          }
+        },
+        "featured_collection_knBGYy": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "mobilier-baie"
+          }
+        },
+        "featured_collection_RiDXFi": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "chiuvete-lavoare"
+          }
+        },
+        "featured_collection_aktW3B": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "cazi-de-baie-freestanding"
+          }
+        }
+      },
+      "block_order": [
+        "featured_collection_X8Y7Ji",
+        "featured_collection_6PPTTG",
+        "featured_collection_knBGYy",
+        "featured_collection_RiDXFi",
+        "featured_collection_aktW3B"
+      ],
+      "name": "ALC - Campaign List",
+      "settings": {
+        "title": "",
+        "heading_size": "h1",
+        "image_ratio": "square",
+        "columns_desktop": 5,
+        "color_scheme": "",
+        "show_view_all": false,
+        "columns_mobile": "1",
+        "swipe_on_mobile": true,
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    },
+    "banner": {
+      "type": "alc-main-collection-banner",
+      "disabled": true,
+      "settings": {
+        "show_collection_description": true,
+        "show_collection_image": false,
+        "show_collection_slider": true,
+        "color_scheme": "scheme-15b3ebfc-72e7-42d0-af22-57c8d007abe9"
+      }
+    },
+    "product-grid": {
+      "type": "alc-tw-product-grid",
+      "custom_css": [
+        ".rating-star {--color-rating-star: #fecf07; letter-spacing: 0.03em;}"
+      ],
+      "settings": {
+        "products_per_page": 36,
+        "image_ratio": "square",
+        "image_shape": "default",
+        "show_secondary_image": true,
+        "show_vendor": false,
+        "show_rating": true,
+        "quick_add": false
+      }
+    }
+  },
+  "order": [
+    "custom_liquid_fKNUgr",
+    "alc_collection_list_campaign_dcVbgP",
+    "banner",
+    "product-grid"
+  ]
+}
