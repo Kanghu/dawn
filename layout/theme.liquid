@@ -407,7 +407,11 @@ body {
       {%- render 'cart-drawer' -%}
     {%- endif -%}
 
-    {% sections 'header-group' %}
+    {%- if template contains 'black-friday' or template contains 'bf' -%}
+      {% sections 'header-campaign-group' %}
+    {%- else -%}
+      {% sections 'header-group' %}
+    {%- endif -%}
 
     <main
       id="MainContent"

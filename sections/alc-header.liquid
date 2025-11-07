@@ -756,6 +756,64 @@
             "info": "Enter locale codes separated by commas (e.g., en,fr,es). Leave empty to show for all locales."
           }
         ]
+      },
+      {
+        "type": "drawer_menu_campaign",
+        "name": "Campaign Menu Item",
+        "settings": [
+          {
+            "type": "text",
+            "id": "campaign_label",
+            "label": "Campaign Label",
+            "default": "Campaign",
+            "info": "Text to display in the menu"
+          },
+          {
+            "type": "url",
+            "id": "campaign_url",
+            "label": "Campaign URL",
+            "info": "Direct link when clicked"
+          },
+          {
+            "type": "select",
+            "id": "highlight_style",
+            "label": "Highlight Style",
+            "options": [
+              {
+                "value": "default",
+                "label": "Default (same as regular items)"
+              },
+              {
+                "value": "highlight",
+                "label": "Highlight (colored underline)"
+              },
+              {
+                "value": "button",
+                "label": "Button (with background)"
+              }
+            ],
+            "default": "highlight"
+          },
+          {
+            "type": "color",
+            "id": "text_color",
+            "label": "Text Color",
+            "default": "#ffffff"
+          },
+          {
+            "type": "color",
+            "id": "background_color",
+            "label": "Background Color (Button style only)",
+            "default": "#00BAD7",
+            "info": "Only applies when Highlight Style is set to 'Button'"
+          },
+          {
+            "type": "text",
+            "id": "locale_codes",
+            "label": "Show only for these locales",
+            "info": "Enter locale codes separated by commas (e.g., en,fr,es). Leave empty to show for all locales."
+          }
+        ]
       }
     ]
   }

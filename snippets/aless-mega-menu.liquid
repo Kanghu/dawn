@@ -18,7 +18,42 @@
     <div class="page-width">
       <ul class="aless-menu aless-menu--inline pl-0 mb-0" role="list">
         {% for block_item in all_blocks %}
-          {% if block_item.type == 'drawer_menu_item' %}
+          {% if block_item.type == 'drawer_menu_campaign' %}
+            {% comment %}
+              Check if campaign should be displayed for current locale
+            {% endcomment %}
+            {% assign show_campaign = true %}
+            {% if block_item.settings.locale_codes != blank %}
+              {% assign locale_codes = block_item.settings.locale_codes | split: ',' %}
+              {% assign show_campaign = false %}
+              {% for code in locale_codes %}
+                {% assign trimmed_code = code | strip %}
+                {% if trimmed_code == request.locale.iso_code %}
+                  {% assign show_campaign = true %}
+                  {% break %}
+                {% endif %}
+              {% endfor %}
+            {% endif %}
+
+            {% if show_campaign %}
+              {% comment %}
+                Campaign menu item - direct link, no mega menu
+              {% endcomment %}
+              <li class="campaign-menu-item campaign-menu-item--{{ block_item.settings.highlight_style }} px-6 py-4 text-xl hidden md:block"
+                  data-campaign-text-color="{{ block_item.settings.text_color }}"
+                  data-campaign-bg-color="{{ block_item.settings.background_color }}"
+                  style="
+                    --campaign-text-color: {{ block_item.settings.text_color }};
+                    --campaign-bg-color: {{ block_item.settings.background_color }};
+                  ">
+                <a href="{{ block_item.settings.campaign_url }}"
+                   class="campaign-menu__link"
+                   style="font-weight: 400; letter-spacing: 0.08rem;">
+                  {{ block_item.settings.campaign_label }}
+                </a>
+              </li>
+            {% endif %}
+          {% elsif block_item.type == 'drawer_menu_item' %}
             {% comment %}
               Check if menu should be displayed for current locale
             {% endcomment %}
@@ -480,6 +515,75 @@
   /* Campaign items don't trigger right column */
   .mega-menu__campaign-item:hover {
     background-color: transparent !important;
+  }
+
+  /* Campaign Menu Item Styles */
+  .campaign-menu-item {
+    border-right: 1px solid;
+    border-image: linear-gradient(to bottom, {{ menu_separator_color | default: '#00BAD7' }}, transparent) 1;
+    cursor: pointer;
+  }
+
+  .campaign-menu-item:first-child {
+    padding-left: 0;
+  }
+
+  .campaign-menu__link {
+    text-decoration: none;
+    color: var(--campaign-text-color, var(--aless-menu-text-color));
+    font-weight: 500;
+    font-size: 1.25rem;
+    padding: 0.5rem 0;
+    display: inline-block;
+    transition: all 0.3s ease;
+  }
+
+  /* Default style - same as regular menu items */
+  .campaign-menu-item--default .campaign-menu__link {
+    color: var(--campaign-text-color, var(--aless-menu-text-color));
+  }
+
+  .campaign-menu-item--default .campaign-menu__link:hover {
+    color: var(--menu-hover-color);
+    border-bottom: 1px solid #00BAD7;
+  }
+
+  /* Highlight style - colored underline */
+  .campaign-menu-item--highlight .campaign-menu__link {
+    color: var(--campaign-text-color, #ffffff);
+    border-bottom: 2px solid var(--campaign-text-color, #00BAD7);
+    padding-bottom: 0.3rem;
+  }
+
+  .campaign-menu-item--highlight .campaign-menu__link:hover {
+    border-bottom-width: 3px;
+    transform: translateY(-2px);
+  }
+
+  /* Button style - with background */
+  .campaign-menu-item--button .campaign-menu__link {
+    background: var(--campaign-bg-color, #00BAD7);
+    color: var(--campaign-text-color, #ffffff);
+    padding: 0.75rem 1.5rem;
+    border-radius: 4px;
+    font-weight: 600;
+  }
+
+  .campaign-menu-item--button .campaign-menu__link:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    opacity: 0.9;
+  }
+
+  .campaign-menu-item--button {
+    border-right: none;
+  }
+
+  /* Hide on mobile */
+  @media (max-width: 989px) {
+    .campaign-menu-item {
+      display: none !important;
+    }
   }
 </style>
 

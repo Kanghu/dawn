@@ -21,6 +21,11 @@
           <nav class="menu-drawer__navigation overflow-y-auto">
             <ul class="menu-drawer__menu has-submenu flex flex-col" role="list">
               {% for block_item in all_blocks %}
+                {% comment %}Skip campaign menu items in mobile drawer{% endcomment %}
+                {% if block_item.type == 'drawer_menu_campaign' %}
+                  {% continue %}
+                {% endif %}
+
                 {% if block_item.type == 'drawer_menu_item' %}
                   {% assign label = block_item.settings.menu_label %}
                   {% assign menu_handle = block_item.settings.menu_handle %}

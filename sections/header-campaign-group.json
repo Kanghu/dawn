@@ -1,0 +1,23 @@
+{
+  "name": "Campaign Header",
+  "type": "header",
+  "sections": {
+    "campaign-header": {
+      "type": "alc-campaign-header",
+      "settings": {
+        "back_url": "/",
+        "back_text": "Back to website",
+        "sticky_header_type": "always",
+        "show_line_separator": false,
+        "color_scheme": "scheme-1",
+        "enable_customer_avatar": true,
+        "margin_bottom": 0,
+        "padding_top": 12,
+        "padding_bottom": 12
+      }
+    }
+  },
+  "order": [
+    "campaign-header"
+  ]
+}

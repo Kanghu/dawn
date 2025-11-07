@@ -1,0 +1,280 @@
+{%- style -%}
+  .section-{{ section.id }}-padding {
+    padding-top: {{ section.settings.padding_top | times: 0.75 | round: 0 }}px;
+    padding-bottom: {{ section.settings.padding_bottom | times: 0.75 | round: 0 }}px;
+  }
+
+  @media screen and (min-width: 750px) {
+    .section-{{ section.id }}-padding {
+      padding-top: {{ section.settings.padding_top }}px;
+      padding-bottom: {{ section.settings.padding_bottom }}px;
+    }
+  }
+{%- endstyle -%}
+
+<div class="color-{{ section.settings.color_scheme }} gradient">
+  <div class="category-links-wrapper page-width section-{{ section.id }}-padding">
+    {%- unless section.settings.title == blank -%}
+      <div class="title-wrapper{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}">
+        <h2 class="category-links-title inline-richtext {{ section.settings.heading_size }}">
+          {{ section.settings.title }}
+        </h2>
+      </div>
+    {%- endunless -%}
+
+    {%- if section.blocks.size > 0 -%}
+      <div class="flex flex-wrap gap-3 md:gap-4 justify-{{ section.settings.alignment }}{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}">
+        {%- for block in section.blocks -%}
+          {%- if block.settings.link_text != blank -%}
+            <a
+              href="{{ block.settings.link_url | default: '#' }}"
+              class="category-link-pill inline-flex items-center px-4 py-2 md:px-6 md:py-4 rounded-full transition-all duration-200 ease-in-out no-underline"
+              style="
+                background-color: {{ section.settings.pill_bg_color | default: '#4e0000' }};
+                color: {{ section.settings.pill_text_color | default: '#ffffff' }};
+                border: {{ section.settings.pill_border_width }}px solid {{ section.settings.pill_border_color | default: 'transparent' }};
+              "
+              {{ block.shopify_attributes }}>
+              {{ block.settings.link_text }}
+            </a>
+          {%- endif -%}
+        {%- endfor -%}
+      </div>
+    {%- else -%}
+      <div class="text-center py-8 text-gray-500">
+        <p>Add category links from the theme editor</p>
+      </div>
+    {%- endif -%}
+  </div>
+</div>
+
+<style>
+  .category-link-pill {
+    font-size: 16px;
+    font-weight: 700;
+  }
+
+  .category-link-pill:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    opacity: 0.9;
+  }
+
+  .category-link-pill:active {
+    transform: translateY(0);
+  }
+
+  .category-links-title {
+    margin-bottom: 1.5rem;
+  }
+
+  @media screen and (min-width: 750px) {
+    .category-link-pill {
+      font-size: 24px;
+    }
+  }
+
+  @media screen and (max-width: 749px) {
+    .category-links-title {
+      margin-bottom: 1rem;
+    }
+  }
+</style>
+
+{% schema %}
+{
+  "name": "ALC - Category Links",
+  "tag": "section",
+  "class": "section section-category-links",
+  "disabled_on": {
+    "groups": ["header", "footer"]
+  },
+  "settings": [
+    {
+      "type": "header",
+      "content": "Section Content"
+    },
+    {
+      "type": "inline_richtext",
+      "id": "title",
+      "label": "Heading",
+      "default": "Shop by Category"
+    },
+    {
+      "type": "select",
+      "id": "heading_size",
+      "options": [
+        {
+          "value": "h2",
+          "label": "Small"
+        },
+        {
+          "value": "h1",
+          "label": "Medium"
+        },
+        {
+          "value": "h0",
+          "label": "Large"
+        },
+        {
+          "value": "hxl",
+          "label": "Extra Large"
+        },
+        {
+          "value": "hxxl",
+          "label": "Extra Extra Large"
+        }
+      ],
+      "default": "h1",
+      "label": "Heading size"
+    },
+    {
+      "type": "select",
+      "id": "alignment",
+      "options": [
+        {
+          "value": "start",
+          "label": "Left"
+        },
+        {
+          "value": "center",
+          "label": "Center"
+        },
+        {
+          "value": "end",
+          "label": "Right"
+        }
+      ],
+      "default": "center",
+      "label": "Links alignment"
+    },
+    {
+      "type": "header",
+      "content": "Pill Styling"
+    },
+    {
+      "type": "color",
+      "id": "pill_bg_color",
+      "label": "Background color",
+      "default": "#4e0000"
+    },
+    {
+      "type": "color",
+      "id": "pill_text_color",
+      "label": "Text color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "pill_border_color",
+      "label": "Border color",
+      "default": "transparent"
+    },
+    {
+      "type": "range",
+      "id": "pill_border_width",
+      "min": 0,
+      "max": 4,
+      "step": 1,
+      "unit": "px",
+      "label": "Border width",
+      "default": 0
+    },
+    {
+      "type": "header",
+      "content": "Section Settings"
+    },
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "Color scheme",
+      "default": "scheme-1"
+    },
+    {
+      "type": "header",
+      "content": "Section Padding"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "Padding top",
+      "default": 36
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "Padding bottom",
+      "default": 36
+    }
+  ],
+  "blocks": [
+    {
+      "type": "category_link",
+      "name": "Category Link",
+      "settings": [
+        {
+          "type": "text",
+          "id": "link_text",
+          "label": "Link text",
+          "default": "Category Name"
+        },
+        {
+          "type": "url",
+          "id": "link_url",
+          "label": "Link URL"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "ALC - Category Links",
+      "blocks": [
+        {
+          "type": "category_link",
+          "settings": {
+            "link_text": "LED Chandeliers",
+            "link_url": ""
+          }
+        },
+        {
+          "type": "category_link",
+          "settings": {
+            "link_text": "Outdoor Lighting",
+            "link_url": ""
+          }
+        },
+        {
+          "type": "category_link",
+          "settings": {
+            "link_text": "Bathroom Furniture",
+            "link_url": ""
+          }
+        },
+        {
+          "type": "category_link",
+          "settings": {
+            "link_text": "Sinks & Basins",
+            "link_url": ""
+          }
+        },
+        {
+          "type": "category_link",
+          "settings": {
+            "link_text": "Bathtubs",
+            "link_url": ""
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

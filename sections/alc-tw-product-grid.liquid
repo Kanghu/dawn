@@ -37,7 +37,7 @@
 
           <div id="section-{{ subcollection.handle }}">
             <!-- Subcollection Title Block -->
-            <div class="page-width">
+            <div class="page-width-desktop-only">
               {%- liquid
                 assign main_color = section.settings.header_button_color | default: collection.metafields.custom.main_color | default: '#06BBD6'
                 assign bg_style = ''
@@ -103,31 +103,39 @@
             </div>
 
             <!-- Product Grid -->
-            <div class="page-width pt-4 pb-8">
+            <div class="page-width-desktop-only pt-4 pb-8">
               <ul class="grid product-grid grid--2-col-tablet-down grid--5-col-desktop gap-x-6">
                 {% assign skip_card_product_styles = false %}
                 {% for product in collection.products %}
                   {% if product.collections contains subcollection %}
-                    {% assign lazy_load = false %}
-                    {% if shown > 2 %}
-                      {% assign lazy_load = true %}
+                    {%- comment -%} Check if we should skip out-of-stock products {%- endcomment -%}
+                    {% assign should_show = true %}
+                    {% if section.settings.hide_out_of_stock and product.available == false %}
+                      {% assign should_show = false %}
                     {% endif %}
 
-                    <li class="grid__item">
-                      {% render 'alc-card-product'
-                        , card_product: product
-                        , media_aspect_ratio: section.settings.image_ratio
-                        , image_shape: section.settings.image_shape
-                        , show_secondary_image: section.settings.show_secondary_image
-                        , show_vendor: section.settings.show_vendor
-                        , show_rating: false
-                        , lazy_load: lazy_load
-                        , skip_styles: skip_card_product_styles
-                        , section_id: section.id
-                        , quick_add: 'standard'
-                      %}
-                    </li>
-                    {% assign skip_card_product_styles = true %}
+                    {% if should_show %}
+                      {% assign lazy_load = false %}
+                      {% if shown > 2 %}
+                        {% assign lazy_load = true %}
+                      {% endif %}
+
+                      <li class="grid__item">
+                        {% render 'alc-card-product'
+                          , card_product: product
+                          , media_aspect_ratio: section.settings.image_ratio
+                          , image_shape: section.settings.image_shape
+                          , show_secondary_image: section.settings.show_secondary_image
+                          , show_vendor: section.settings.show_vendor
+                          , show_rating: false
+                          , lazy_load: lazy_load
+                          , skip_styles: skip_card_product_styles
+                          , section_id: section.id
+                          , quick_add: 'standard'
+                        %}
+                      </li>
+                      {% assign skip_card_product_styles = true %}
+                    {% endif %}
                   {% endif %}
                 {% endfor %}
               </ul>
@@ -173,6 +181,20 @@
 <style>
   .dynamic-hover-border:hover {
     border-color: {{ collection.metafields.custom.border_color }};
+  }
+
+  /* Apply page-width only on desktop */
+  .page-width-desktop-only {
+    width: 100%;
+    padding: 0 1.5rem;
+  }
+
+  @media screen and (min-width: 990px) {
+    .page-width-desktop-only {
+      max-width: var(--page-width);
+      margin: 0 auto;
+      padding: 0 5rem;
+    }
   }
 </style>
 
@@ -270,6 +292,13 @@
         "id": "quick_add",
         "default": false,
         "label": "t:sections.main-collection-product-grid.settings.quick_add.label"
+      },
+      {
+        "type": "checkbox",
+        "id": "hide_out_of_stock",
+        "default": false,
+        "label": "Hide out of stock products",
+        "info": "When enabled, products that are out of stock will not be displayed in the grid"
       },
       {
         "type": "header",
