@@ -71,9 +71,9 @@
   /* Mobile-only color scheme background */
   @media screen and (max-width: 749px) {
     .mobile-color-scheme-{{ section.id }} {
-      background-color: rgb(var(--color-{{ section.settings.color_scheme }}-background));
-      background-image: var(--gradient-{{ section.settings.color_scheme }});
-      color: rgb(var(--color-{{ section.settings.color_scheme }}-text));
+      background: rgb(var(--color-background));
+      background: var(--gradient-background);
+      color: rgb(var(--color-foreground));
     }
 
     .category-links-title {
