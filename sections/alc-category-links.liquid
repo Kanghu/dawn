@@ -12,7 +12,7 @@
   }
 {%- endstyle -%}
 
-<div class="color-{{ section.settings.color_scheme }} gradient">
+<div class="mobile-color-scheme-{{ section.id }}">
   <div class="category-links-wrapper page-width section-{{ section.id }}-padding">
     {%- unless section.settings.title == blank -%}
       <div class="title-wrapper{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}">
@@ -68,15 +68,27 @@
     margin-bottom: 1.5rem;
   }
 
-  @media screen and (min-width: 750px) {
-    .category-link-pill {
-      font-size: 24px;
+  /* Mobile-only color scheme background */
+  @media screen and (max-width: 749px) {
+    .mobile-color-scheme-{{ section.id }} {
+      background-color: rgb(var(--color-{{ section.settings.color_scheme }}-background));
+      background-image: var(--gradient-{{ section.settings.color_scheme }});
+      color: rgb(var(--color-{{ section.settings.color_scheme }}-text));
+    }
+
+    .category-links-title {
+      margin-bottom: 1rem;
     }
   }
 
-  @media screen and (max-width: 749px) {
-    .category-links-title {
-      margin-bottom: 1rem;
+  /* Desktop - transparent background */
+  @media screen and (min-width: 750px) {
+    .mobile-color-scheme-{{ section.id }} {
+      background: transparent;
+    }
+
+    .category-link-pill {
+      font-size: 24px;
     }
   }
 </style>
