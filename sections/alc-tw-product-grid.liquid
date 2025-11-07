@@ -14,7 +14,7 @@
 <script src="{{ 'product-form.js' | asset_url }}" defer="defer"></script>
 <script src="{{ 'facets.js' | asset_url }}" defer="defer"></script>
 
-<div class="bg-white">
+<div style="background-color: {{ section.settings.grid_bg_color | default: '#ffffff' }};">
   <div>
     <main>
       {% assign subcollections = collection.metafields.custom.slider_subcollections.value %}
@@ -80,7 +80,7 @@
                 endcase
               -%}
               <div class="flex justify-between items-center px-6 py-6 border-b-4" style="{{ bg_style }} border-bottom-color: {{ main_color }};">
-                <h2 class="text-4xl tracking-wider font-bold text-gray-900">
+                <h2 class="text-4xl tracking-wider font-bold" style="color: {{ section.settings.header_text_color | default: '#1f2937' }};">
                   {{ subcollection.title }}
                 </h2>
                 <a
@@ -186,7 +186,7 @@
   /* Apply page-width only on desktop */
   .page-width-desktop-only {
     width: 100%;
-    padding: 0 1.5rem;
+    padding: 0;
   }
 
   @media screen and (min-width: 990px) {
@@ -364,6 +364,17 @@
         "label": "See All Button Text",
         "default": "Vezi toate produsele",
         "info": "Text displayed on the button at the top right of each subcollection"
+      },
+      {
+        "type": "header",
+        "content": "Grid Styling"
+      },
+      {
+        "type": "color",
+        "id": "grid_bg_color",
+        "label": "Grid Background Color",
+        "default": "#ffffff",
+        "info": "Background color for the entire product grid area"
       }
     ]
   }
