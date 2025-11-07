@@ -116,7 +116,7 @@
 
       {%- comment -%} Left: Back to Website Button {%- endcomment -%}
       <div class="flex items-center" style="flex: 1;">
-        <a href="{{ section.settings.back_url | default: routes.root_url }}" class="campaign-header__back-button link link--text focus-inset">
+        <a href="{{ section.settings.back_url | default: routes.root_url }}?no-redirect=1" class="campaign-header__back-button link link--text focus-inset">
           <span class="campaign-header__back-arrow">
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/>

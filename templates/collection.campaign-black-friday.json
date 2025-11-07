@@ -465,6 +465,7 @@
         "custom_image_ehaMjp",
         "custom_image_NhU8CT"
       ],
+      "disabled": true,
       "name": "ALC - Campaign List (RO & BG)",
       "settings": {
         "section_locale_codes": "",
@@ -484,8 +485,58 @@
     },
     "alc_category_links_BF2025": {
       "type": "alc-category-links",
-      "blocks": {},
-      "block_order": [],
+      "blocks": {
+        "category_link_czBWi3": {
+          "type": "category_link",
+          "settings": {
+            "link_text": "Oglinzi LED",
+            "link_url": "https://www.alessandrodesign.ro/collections/promo-oglinzi-led"
+          }
+        },
+        "category_link_HYXFKe": {
+          "type": "category_link",
+          "settings": {
+            "link_text": "Iluminat",
+            "link_url": ""
+          }
+        },
+        "category_link_gwkwXb": {
+          "type": "category_link",
+          "settings": {
+            "link_text": "Mobilier",
+            "link_url": "https://www.alessandrodesign.ro/collections/mobilier-de-baie-uscatoare-de-maini"
+          }
+        },
+        "category_link_z6Vhqk": {
+          "type": "category_link",
+          "settings": {
+            "link_text": "Chivete",
+            "link_url": "https://www.alessandrodesign.ro/collections/baterii-baie-bucatarie-coloane-de-dus"
+          }
+        },
+        "category_link_A8E4cD": {
+          "type": "category_link",
+          "settings": {
+            "link_text": "Baterii & Coloane dus",
+            "link_url": "https://www.alessandrodesign.ro/collections/baterii-baie-bucatarie-coloane-de-dus"
+          }
+        },
+        "category_link_LFyTVN": {
+          "type": "category_link",
+          "settings": {
+            "link_text": "BF Outlet",
+            "link_url": "https://www.alessandrodesign.ro/collections/outlet"
+          }
+        }
+      },
+      "block_order": [
+        "category_link_czBWi3",
+        "category_link_HYXFKe",
+        "category_link_gwkwXb",
+        "category_link_z6Vhqk",
+        "category_link_A8E4cD",
+        "category_link_LFyTVN"
+      ],
       "name": "ALC - Category Links",
       "settings": {
         "title": "",
@@ -493,11 +544,11 @@
         "alignment": "center",
         "pill_bg_color": "#4e0000",
         "pill_text_color": "#ffffff",
-        "pill_border_color": "transparent",
+        "pill_border_color": "rgba(0,0,0,0)",
         "pill_border_width": 0,
-        "color_scheme": "",
-        "padding_top": 36,
-        "padding_bottom": 36
+        "color_scheme": "scheme-1",
+        "padding_top": 24,
+        "padding_bottom": 24
       }
     },
     "banner": {
@@ -523,7 +574,8 @@
         "show_vendor": false,
         "show_rating": true,
         "quick_add": true,
-        "header_button_color": "#cd1305",
+        "hide_out_of_stock": false,
+        "header_button_color": "#930000",
         "header_background_style": "gradient_subtle",
         "header_bg_opacity": 60,
         "see_all_button_text": "Vezi toata promotia"
