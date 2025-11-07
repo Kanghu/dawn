@@ -476,6 +476,7 @@
         "custom_image_ehaMjp",
         "custom_image_NhU8CT"
       ],
+      "disabled": true,
       "name": "ALC - Campaign List (RO & BG)",
       "settings": {
         "section_locale_codes": "",
@@ -503,6 +504,74 @@
         "color_scheme": "scheme-15b3ebfc-72e7-42d0-af22-57c8d007abe9"
       }
     },
+    "alc_category_links_6eKVGp": {
+      "type": "alc-category-links",
+      "blocks": {
+        "category_link_HU8EzV": {
+          "type": "category_link",
+          "settings": {
+            "link_text": "Iluminat",
+            "link_url": "shopify://collections/promo-lustre-led"
+          }
+        },
+        "category_link_JdGXVf": {
+          "type": "category_link",
+          "settings": {
+            "link_text": "Oglinzi LED",
+            "link_url": "shopify://collections/promo-oglinzi-led"
+          }
+        },
+        "category_link_zBUEia": {
+          "type": "category_link",
+          "settings": {
+            "link_text": "Outlet BF",
+            "link_url": "shopify://collections/outlet"
+          }
+        },
+        "category_link_b6xRxW": {
+          "type": "category_link",
+          "settings": {
+            "link_text": "Chiuvete",
+            "link_url": "shopify://collections/chiuvete-cazi-cadite"
+          }
+        },
+        "category_link_7LdR7j": {
+          "type": "category_link",
+          "settings": {
+            "link_text": "Baterii & Coloane",
+            "link_url": "shopify://collections/baterii-coloane-de-dus"
+          }
+        },
+        "category_link_XEyVec": {
+          "type": "category_link",
+          "settings": {
+            "link_text": "Mobilier",
+            "link_url": "shopify://collections/mobilier-baie"
+          }
+        }
+      },
+      "block_order": [
+        "category_link_HU8EzV",
+        "category_link_JdGXVf",
+        "category_link_zBUEia",
+        "category_link_b6xRxW",
+        "category_link_7LdR7j",
+        "category_link_XEyVec"
+      ],
+      "name": "ALC - Category Links",
+      "settings": {
+        "title": "",
+        "heading_size": "h1",
+        "alignment": "center",
+        "pill_bg_color": "#4e0000",
+        "pill_text_color": "#ffffff",
+        "pill_border_color": "transparent",
+        "pill_border_width": 0,
+        "color_scheme": "",
+        "padding_top": 24,
+        "padding_bottom": 36
+      }
+    },
     "product-grid": {
       "type": "alc-tw-product-grid",
       "custom_css": [
@@ -516,10 +585,13 @@
         "show_vendor": false,
         "show_rating": true,
         "quick_add": true,
-        "header_button_color": "#cd1305",
+        "hide_out_of_stock": false,
+        "header_button_color": "#771c16",
+        "header_text_color": "#ffffff",
         "header_background_style": "gradient_subtle",
-        "header_bg_opacity": 60,
-        "see_all_button_text": "Vezi toata promotia"
+        "header_bg_opacity": 100,
+        "see_all_button_text": "Vezi toata promotia",
+        "grid_bg_color": "#ffffff"
       }
     }
   },
@@ -530,6 +602,7 @@
     "alc_collection_list_campaign_gFjNRH",
     "alc_collection_list_campaign_KgaRPk",
     "banner",
+    "alc_category_links_6eKVGp",
     "product-grid"
   ]
 }
