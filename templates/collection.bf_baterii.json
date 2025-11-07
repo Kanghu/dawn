@@ -465,6 +465,7 @@
         "custom_image_ehaMjp",
         "custom_image_NhU8CT"
       ],
+      "disabled": true,
       "name": "ALC - Campaign List (RO & BG)",
       "settings": {
         "section_locale_codes": "",
@@ -492,6 +493,66 @@
         "color_scheme": "scheme-15b3ebfc-72e7-42d0-af22-57c8d007abe9"
       }
     },
+    "alc_category_links_bq7YFX": {
+      "type": "alc-category-links",
+      "blocks": {
+        "category_link_76FzWy": {
+          "type": "category_link",
+          "settings": {
+            "link_text": "LED Chandeliers",
+            "link_url": ""
+          }
+        },
+        "category_link_AziV8d": {
+          "type": "category_link",
+          "settings": {
+            "link_text": "Outdoor Lighting",
+            "link_url": ""
+          }
+        },
+        "category_link_4xFMYp": {
+          "type": "category_link",
+          "settings": {
+            "link_text": "Bathroom Furniture",
+            "link_url": ""
+          }
+        },
+        "category_link_JNJDt8": {
+          "type": "category_link",
+          "settings": {
+            "link_text": "Sinks & Basins",
+            "link_url": ""
+          }
+        },
+        "category_link_XeLfNK": {
+          "type": "category_link",
+          "settings": {
+            "link_text": "Bathtubs",
+            "link_url": ""
+          }
+        }
+      },
+      "block_order": [
+        "category_link_76FzWy",
+        "category_link_AziV8d",
+        "category_link_4xFMYp",
+        "category_link_JNJDt8",
+        "category_link_XeLfNK"
+      ],
+      "name": "ALC - Category Links",
+      "settings": {
+        "title": "",
+        "heading_size": "h1",
+        "alignment": "center",
+        "pill_bg_color": "#4e0000",
+        "pill_text_color": "#ffffff",
+        "pill_border_color": "transparent",
+        "pill_border_width": 0,
+        "color_scheme": "",
+        "padding_top": 24,
+        "padding_bottom": 36
+      }
+    },
     "product-grid": {
       "type": "alc-tw-product-grid",
       "custom_css": [
@@ -505,10 +566,13 @@
         "show_vendor": false,
         "show_rating": true,
         "quick_add": true,
+        "hide_out_of_stock": false,
         "header_button_color": "#cd1305",
+        "header_text_color": "#1f2937",
         "header_background_style": "gradient_subtle",
         "header_bg_opacity": 60,
-        "see_all_button_text": "Vezi toata promotia"
+        "see_all_button_text": "Vezi toata promotia",
+        "grid_bg_color": "#ffffff"
       }
     }
   },
@@ -518,6 +582,7 @@
     "alc_collection_list_campaign_gFjNRH",
     "alc_collection_list_campaign_KgaRPk",
     "banner",
+    "alc_category_links_bq7YFX",
     "product-grid"
   ]
 }
