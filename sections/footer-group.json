@@ -11,38 +11,12 @@
   "name": "t:sections.footer.name",
   "type": "footer",
   "sections": {
-    "newsletter_MtUfdN": {
-      "type": "newsletter",
-      "blocks": {
-        "paragraph_xDRYJx": {
-          "type": "paragraph",
-          "settings": {
-            "text": "<p>Aboneaza-te la newsletterul nostru pentru cele mai noi oferte.</p>"
-          }
-        },
-        "email_form_TrYwBN": {
-          "type": "email_form",
-          "settings": {}
-        }
-      },
-      "block_order": [
-        "paragraph_xDRYJx",
-        "email_form_TrYwBN"
-      ],
-      "settings": {
-        "color_scheme": "",
-        "full_width": true,
-        "padding_top": 40,
-        "padding_bottom": 52
-      }
-    },
     "footer": {
       "type": "footer",
       "settings": {}
     }
   },
   "order": [
-    "newsletter_MtUfdN",
     "footer"
   ]
 }
