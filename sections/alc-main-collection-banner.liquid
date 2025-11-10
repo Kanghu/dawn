@@ -55,12 +55,16 @@
   </div>
 </div>
 
-<div class="flex flex-row page-width">
-  {%- if section.settings.show_collection_slider -%}
-    {% render 'alc-subcollection-slider'
-      , collection: collection %}
-  {%- endif -%}
-</div>
+{%- if section.settings.show_collection_slider -%}
+  {% render 'alc-subcollection-slider-simple',
+    collection: collection,
+    columns_desktop: section.settings.slider_columns_desktop,
+    columns_mobile: section.settings.slider_columns_mobile,
+    enable_mobile_slider: section.settings.slider_enable_mobile,
+    enable_desktop_slider: section.settings.slider_enable_desktop,
+    image_ratio: section.settings.slider_image_ratio
+  %}
+{%- endif -%}
 
 {% schema %}
   {
@@ -85,17 +89,84 @@
         "info": "t:sections.main-collection-banner.settings.show_collection_image.info"
       },
       {
-        "type": "checkbox",
-        "id": "show_collection_slider",
-        "default": false,
-        "label": "Show Collection Slider",
-        "info": "Show the collection slider"
-      },
-      {
         "type": "color_scheme",
         "id": "color_scheme",
         "label": "t:sections.all.colors.label",
         "default": "scheme-1"
+      },
+      {
+        "type": "header",
+        "content": "Subcollection Slider Settings"
+      },
+      {
+        "type": "paragraph",
+        "content": "Configure the subcollection slider. Subcollections are loaded from the collection's metafield: custom.slider_subcollections"
+      },
+      {
+        "type": "checkbox",
+        "id": "show_collection_slider",
+        "default": false,
+        "label": "Show Subcollection Slider"
+      },
+      {
+        "type": "range",
+        "id": "slider_columns_desktop",
+        "min": 2,
+        "max": 6,
+        "step": 1,
+        "default": 5,
+        "label": "Number of columns on desktop",
+        "info": "Number of subcollections visible at once on desktop screens"
+      },
+      {
+        "type": "checkbox",
+        "id": "slider_enable_desktop",
+        "default": true,
+        "label": "Enable swipe on desktop",
+        "info": "When enabled, subcollections become swipeable after the maximum number of columns is reached. When disabled, subcollections will wrap to a second row."
+      },
+      {
+        "type": "select",
+        "id": "slider_columns_mobile",
+        "options": [
+          {
+            "value": "1",
+            "label": "1 column"
+          },
+          {
+            "value": "2",
+            "label": "2 columns"
+          }
+        ],
+        "default": "2",
+        "label": "Number of columns on mobile"
+      },
+      {
+        "type": "checkbox",
+        "id": "slider_enable_mobile",
+        "default": true,
+        "label": "Enable swipe on mobile",
+        "info": "Allow horizontal scrolling/swiping on mobile devices"
+      },
+      {
+        "type": "select",
+        "id": "slider_image_ratio",
+        "options": [
+          {
+            "value": "adapt",
+            "label": "Adapt to image"
+          },
+          {
+            "value": "portrait",
+            "label": "Portrait (4:5)"
+          },
+          {
+            "value": "square",
+            "label": "Square (1:1)"
+          }
+        ],
+        "default": "square",
+        "label": "Subcollection image ratio"
       }
     ]
   }

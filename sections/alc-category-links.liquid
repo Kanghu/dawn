@@ -12,7 +12,7 @@
   }
 {%- endstyle -%}
 
-<div class="mobile-color-scheme-{{ section.id }}">
+<div class="mobile-color-scheme-{{ section.id }} color-{{ section.settings.color_scheme }} gradient">
   <div class="category-links-wrapper page-width section-{{ section.id }}-padding">
     {%- unless section.settings.title == blank -%}
       <div class="title-wrapper{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}">
@@ -26,6 +26,17 @@
       <div class="flex flex-wrap gap-3 md:gap-4 justify-{{ section.settings.alignment }}{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}">
         {%- for block in section.blocks -%}
           {%- if block.settings.link_text != blank -%}
+            {%- comment -%}
+              Check if there's a localization key, otherwise use the manual text
+            {%- endcomment -%}
+            {%- assign link_label = block.settings.link_text -%}
+            {%- if block.settings.locale_key != blank -%}
+              {%- assign locale_key = 'category_links.' | append: block.settings.locale_key -%}
+              {%- assign translated_text = locale_key | t -%}
+              {%- unless translated_text contains 'translation missing' -%}
+                {%- assign link_label = translated_text -%}
+              {%- endunless -%}
+            {%- endif -%}
             <a
               href="{{ block.settings.link_url | default: '#' }}"
               class="category-link-pill inline-flex items-center px-4 py-2 md:px-6 md:py-4 rounded-full transition-all duration-200 ease-in-out no-underline"
@@ -35,7 +46,7 @@
                 border: {{ section.settings.pill_border_width }}px solid {{ section.settings.pill_border_color | default: 'transparent' }};
               "
               {{ block.shopify_attributes }}>
-              {{ block.settings.link_text }}
+              {{ link_label }}
             </a>
           {%- endif -%}
         {%- endfor -%}
@@ -68,27 +79,22 @@
     margin-bottom: 1.5rem;
   }
 
-  /* Mobile-only color scheme background */
-  @media screen and (max-width: 749px) {
-    .mobile-color-scheme-{{ section.id }} {
-      background: rgb(var(--color-background));
-      background: var(--gradient-background);
-      color: rgb(var(--color-foreground));
-    }
-
-    .category-links-title {
-      margin-bottom: 1rem;
-    }
-  }
-
-  /* Desktop - transparent background */
+  /* Desktop - transparent background, hide color scheme */
   @media screen and (min-width: 750px) {
-    .mobile-color-scheme-{{ section.id }} {
-      background: transparent;
+    .mobile-color-scheme-{{ section.id }}.color-{{ section.settings.color_scheme }} {
+      background: transparent !important;
+      background-image: none !important;
     }
 
     .category-link-pill {
       font-size: 24px;
+    }
+  }
+
+  /* Mobile-only - show color scheme background */
+  @media screen and (max-width: 749px) {
+    .category-links-title {
+      margin-bottom: 1rem;
     }
   }
 </style>
@@ -235,8 +241,15 @@
         {
           "type": "text",
           "id": "link_text",
-          "label": "Link text",
-          "default": "Category Name"
+          "label": "Link text (fallback)",
+          "default": "Category Name",
+          "info": "This text will be used if no localization key is provided"
+        },
+        {
+          "type": "text",
+          "id": "locale_key",
+          "label": "Localization key",
+          "info": "Optional: Use a key like 'led_mirrors' to enable automatic translations. Available keys: led_mirrors, lighting, furniture, sinks, faucets_showers, bf_outlet"
         },
         {
           "type": "url",
