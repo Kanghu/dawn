@@ -565,10 +565,10 @@
       "type": "custom-liquid",
       "name": "t:sections.custom-liquid.presets.name",
       "settings": {
-        "custom_liquid": "<!-- Elfsight Google Reviews | Untitled Google Reviews 4 -->\n<script src=\"https://elfsightcdn.com/platform.js\" async></script>\n<div class=\"elfsight-app-4f166041-83b8-48ce-b451-9219d9639190\" data-elfsight-app-lazy></div>",
+        "custom_liquid": "{% case request.locale.iso_code %}\n  {% when 'ro' %}\n    <!-- Elfsight Google Reviews | Untitled Google Reviews 4 -->\n    <script src=\"https://elfsightcdn.com/platform.js\" async></script>\n    <div class=\"elfsight-app-4f166041-83b8-48ce-b451-9219d9639190\" data-elfsight-app-lazy></div>\n\n  {% when 'bg' %}\n    <!-- Elfsight Google Reviews | Google Reviews BG -->\n    <script src=\"https://elfsightcdn.com/platform.js\" async></script>\n    <div class=\"elfsight-app-d0146bde-7554-46bc-ab24-fba2a2dabe46\" data-elfsight-app-lazy></div>\n\n  {% when 'hu' %}\n    <!-- Elfsight Google Reviews | Google Reviews HU -->\n    <script src=\"https://elfsightcdn.com/platform.js\" async></script>\n    <div class=\"elfsight-app-06a99517-0b60-452a-9a51-e4e0ad17c3da\" data-elfsight-app-lazy></div>\n\n  {% when 'pl' %}\n    <!-- Elfsight Google Reviews | Google Reviews PL -->\n    <script src=\"https://elfsightcdn.com/platform.js\" async></script>\n    <div class=\"elfsight-app-41d8f1db-42e0-46bf-b08d-e0624453fec0\" data-elfsight-app-lazy></div>\n{% endcase %}",
         "color_scheme": "",
         "padding_top": 0,
-        "padding_bottom": 12
+        "padding_bottom": 16
       }
     },
     "banner": {
