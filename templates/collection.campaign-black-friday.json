@@ -502,6 +502,7 @@
           "type": "category_link",
           "settings": {
             "link_text": "Oglinzi LED",
+            "locale_key": "led_mirrors",
             "link_url": "https://www.alessandrodesign.ro/collections/promo-oglinzi-led"
           }
         },
@@ -509,6 +510,7 @@
           "type": "category_link",
           "settings": {
             "link_text": "Iluminat",
+            "locale_key": "lighting",
             "link_url": "shopify://collections/promo-lustre-led"
           }
         },
@@ -516,6 +518,7 @@
           "type": "category_link",
           "settings": {
             "link_text": "Mobilier",
+            "locale_key": "furniture",
             "link_url": "https://www.alessandrodesign.ro/collections/mobilier-de-baie-uscatoare-de-maini"
           }
         },
@@ -523,6 +526,7 @@
           "type": "category_link",
           "settings": {
             "link_text": "Chiuvete",
+            "locale_key": "sinks",
             "link_url": "https://www.alessandrodesign.ro/collections/baterii-baie-bucatarie-coloane-de-dus"
           }
         },
@@ -530,6 +534,7 @@
           "type": "category_link",
           "settings": {
             "link_text": "Baterii & Coloane dus",
+            "locale_key": "faucets_showers",
             "link_url": "https://www.alessandrodesign.ro/collections/baterii-baie-bucatarie-coloane-de-dus"
           }
         },
@@ -537,6 +542,7 @@
           "type": "category_link",
           "settings": {
             "link_text": "BF Outlet",
+            "locale_key": "bf_outlet",
             "link_url": "https://www.alessandrodesign.ro/collections/outlet"
           }
         }
@@ -579,8 +585,13 @@
       "settings": {
         "show_collection_description": true,
         "show_collection_image": false,
+        "color_scheme": "scheme-15b3ebfc-72e7-42d0-af22-57c8d007abe9",
         "show_collection_slider": true,
-        "color_scheme": "scheme-15b3ebfc-72e7-42d0-af22-57c8d007abe9"
+        "slider_columns_desktop": 5,
+        "slider_enable_desktop": true,
+        "slider_columns_mobile": "2",
+        "slider_enable_mobile": true,
+        "slider_image_ratio": "square"
       }
     },
     "product-grid": {
