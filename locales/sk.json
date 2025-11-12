@@ -196,7 +196,13 @@
         "in_cart_html": "<span class=\"quantity-cart\">{{ quantity }}</span> v košíku",
         "note": "Pozrite si pravidlá pre množstvo",
         "min_of": "Minimum {{ quantity }}",
-        "max_of": "Maximálne {{ quantity }}"
+        "max_of": "Maximálne {{ quantity }}",
+        "label": "Množstvo",
+        "input_label": "Množstvo za {{ product }}",
+        "increase": "Zvýšte množstvo pre {{ product }}",
+        "decrease": "Znížte množstvo pre {{ product }}",
+        "minimum_of": "Minimum {{ quantity }}",
+        "maximum_of": "Maximálne {{ quantity }}"
       },
       "price": {
         "from_price_html": "Počnúc {{ price }}",
@@ -245,7 +251,18 @@
       },
       "taxes_included": "Vrátane daní.",
       "duties_included": "Vrátane ciel.",
-      "duties_and_taxes_included": "Vrátane daní a ciel."
+      "duties_and_taxes_included": "Vrátane daní a ciel.",
+      "add_to_cart": "Pridať do košíka",
+      "description": "Popis",
+      "on_sale": "Zľava",
+      "product_variants": "Varianty produktu",
+      "share": "Zdieľajte tento produkt",
+      "sold_out": "Vypredané",
+      "unavailable": "Nie je k dispozícii",
+      "vendor": "Predávajúci",
+      "video_exit_message": "{{ title }} otvorte video na celej obrazovke v tom istom okne.",
+      "xr_button": "Zobraziť vo svojom priestore",
+      "xr_button_label": "Zobraziť vo svojom priestore, článok sa načíta v okne rozšírenej reality"
     },
     "modal": {
       "label": "Galéria médií"
@@ -702,5 +719,26 @@
     "sinks": "Umývadlá",
     "faucets_showers": "Batérie & Sprchové stĺpy",
     "bf_outlet": "BF Outlet"
+  },
+  "alc-benefits": {
+    "stock": {
+      "in_stock": "na sklade",
+      "low_stock": "Len {{ count }} vľavo na sklade",
+      "last_stock": "Tie posledné {{ count }} kusov 🔥",
+      "last_piece": "Posledný kus 🔥",
+      "out_of_stock": "Vypredané"
+    },
+    "free_shipping": "Doprava ZDARMA ⚡ (2 - 4 pracovné dni)",
+    "free_shipping_link_text": "pozri podrobnosti",
+    "free_shipping_link": "/pages/livrare",
+    "savings": "Ušetríte {{ amount }}",
+    "delivery": "Dodanie do 2-4 pracovných dní",
+    "price_info": "Priamy výrobca: ",
+    "price_info_link": "/pages/fabrica-alessandro-design",
+    "price_info_link_text": "pozri továreň Alessandro Design",
+    "return_policy": "14 dní bezplatné právo na vrátenie",
+    "warranty": "Záruka zahŕňa:",
+    "warranty_link_text": "pozri podrobnosti",
+    "warranty_link": "/pages/garantie"
   }
 }
