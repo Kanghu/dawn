@@ -111,6 +111,7 @@
         "custom_image_U7QaxT",
         "custom_image_mBgnyn"
       ],
+      "disabled": true,
       "name": "ALC - Campaign List (BG)",
       "settings": {
         "section_locale_codes": "bg",
@@ -212,6 +213,7 @@
         "custom_image_AeKE8N",
         "custom_image_mHCbf7"
       ],
+      "disabled": true,
       "name": "ALC - Campaign List (ENG)",
       "settings": {
         "section_locale_codes": "",
@@ -391,6 +393,7 @@
         "custom_image_zwjcPw",
         "custom_image_Mb44YQ"
       ],
+      "disabled": true,
       "name": "ALC - Campaign List (PL & HU)",
       "settings": {
         "section_locale_codes": "",
@@ -411,6 +414,17 @@
     "alc_collection_list_campaign_KXnJGX": {
       "type": "alc-collection-list-campaign",
       "blocks": {
+        "custom_image_K4kBAp": {
+          "type": "custom_image",
+          "settings": {
+            "image": "shopify://shop_images/MOBILE_OUTLET_RO.png",
+            "alt_text": "Campaign image",
+            "action_type": "url",
+            "link_url": "",
+            "popup_message": "",
+            "locale_codes": ""
+          }
+        },
         "custom_image_hH3PWn": {
           "type": "custom_image",
           "name": "RO 400RON",
@@ -482,22 +496,36 @@
             "popup_message": "<p>Cumpara acum o chiuveta lavoar si primeste o baterie compatibila CADOU! Revendica cadoul direct in cos!</p>",
             "locale_codes": "ro"
           }
+        },
+        "custom_image_pt3YJ4": {
+          "type": "custom_image",
+          "settings": {
+            "image": "shopify://shop_images/BATERII_SANITARE_LICHIDARE.png",
+            "alt_text": "Campaign image",
+            "action_type": "url",
+            "link_url": "",
+            "popup_message": "",
+            "locale_codes": ""
+          }
         }
       },
       "block_order": [
+        "custom_image_K4kBAp",
         "custom_image_hH3PWn",
         "custom_image_MdpPhb",
         "custom_image_aaRCWR",
         "custom_image_JqQfMN",
         "custom_image_eTWqKp",
-        "custom_image_Gf68ME"
+        "custom_image_Gf68ME",
+        "custom_image_pt3YJ4"
       ],
+      "disabled": true,
       "name": "ALC - Campaign List (RO & BG)",
       "settings": {
         "section_locale_codes": "ro,bg",
         "title": "",
         "heading_size": "h1",
-        "image_ratio": "square",
+        "image_ratio": "adapt",
         "columns_desktop": 6,
         "color_scheme": "",
         "show_view_all": false,
