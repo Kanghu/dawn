@@ -14,32 +14,32 @@
     "announcement-bar": {
       "type": "announcement-bar",
       "blocks": {
-        "announcement_L83Bhf": {
+        "announcement_bf_continues": {
           "type": "announcement",
           "settings": {
-            "text": "t:sections.announcements.black_season_bathroom_furniture",
+            "text": "t:sections.announcements.black_friday_continues",
             "link": ""
           }
         },
-        "announcement_crfAe7": {
+        "announcement_bf_lowest": {
           "type": "announcement",
           "settings": {
-            "text": "t:sections.announcements.black_season_led_chandelier",
+            "text": "t:sections.announcements.black_friday_lowest_prices",
             "link": ""
           }
         },
-        "announcement_ebkqRi": {
+        "announcement_bf_delay": {
           "type": "announcement",
           "settings": {
-            "text": "t:sections.announcements.black_season_free_shipping",
+            "text": "t:sections.announcements.black_friday_delivery_delay",
             "link": ""
           }
         }
       },
       "block_order": [
-        "announcement_L83Bhf",
-        "announcement_crfAe7",
-        "announcement_ebkqRi"
+        "announcement_bf_continues",
+        "announcement_bf_lowest",
+        "announcement_bf_delay"
       ],
       "settings": {
         "color_scheme": "scheme-5",
