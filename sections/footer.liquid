@@ -65,13 +65,31 @@
                   {{ 'sections.footer.useful' | t }}
                 </h4>
                 <ul class="space-y-1 px-0 text-lg">
-                  {% for link in linklists.footer-utile.links %}
-                    <li class="my-3">
-                      <a href="{{ link.url }}" class="hover:text-gray-400 no-underline text-als-gray">
-                        {{ link.title }}
-                      </a>
-                    </li>
-                  {% endfor %}
+                  <li class="my-3">
+                    <a href="{{ 'sections.footer.utile_links.help_center.url' | t }}" class="hover:text-gray-400 no-underline text-als-gray">
+                      {{ 'sections.footer.utile_links.help_center.title' | t }}
+                    </a>
+                  </li>
+                  <li class="my-3">
+                    <a href="{{ 'sections.footer.utile_links.return_warranty.url' | t }}" class="hover:text-gray-400 no-underline text-als-gray">
+                      {{ 'sections.footer.utile_links.return_warranty.title' | t }}
+                    </a>
+                  </li>
+                  <li class="my-3">
+                    <a href="{{ 'sections.footer.utile_links.order_status.url' | t }}" class="hover:text-gray-400 no-underline text-als-gray">
+                      {{ 'sections.footer.utile_links.order_status.title' | t }}
+                    </a>
+                  </li>
+                  <li class="my-3">
+                    <a href="{{ 'sections.footer.utile_links.public_procurement.url' | t }}" class="hover:text-gray-400 no-underline text-als-gray">
+                      {{ 'sections.footer.utile_links.public_procurement.title' | t }}
+                    </a>
+                  </li>
+                  <li class="my-3">
+                    <a href="{{ 'sections.footer.utile_links.return_form.url' | t }}" class="hover:text-gray-400 no-underline text-als-gray">
+                      {{ 'sections.footer.utile_links.return_form.title' | t }}
+                    </a>
+                  </li>
                 </ul>
               </div>
             </div>
