@@ -537,6 +537,61 @@
         "padding_bottom": 8
       }
     },
+    "collection_list_tgakcd": {
+      "type": "collection-list",
+      "blocks": {
+        "featured_collection_JwRYHW": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "oglinzi-led"
+          }
+        },
+        "featured_collection_XeVY3V": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "corpuri-de-iluminat"
+          }
+        },
+        "featured_collection_qgttEL": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "obiecte-sanitare"
+          }
+        },
+        "featured_collection_8bAa9w": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "produse-led"
+          }
+        },
+        "featured_collection_BrfgLH": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "lustre-led"
+          }
+        }
+      },
+      "block_order": [
+        "featured_collection_JwRYHW",
+        "featured_collection_XeVY3V",
+        "featured_collection_qgttEL",
+        "featured_collection_8bAa9w",
+        "featured_collection_BrfgLH"
+      ],
+      "name": "t:sections.collection-list.presets.name",
+      "settings": {
+        "title": "",
+        "heading_size": "h2",
+        "image_ratio": "square",
+        "columns_desktop": 5,
+        "color_scheme": "",
+        "show_view_all": false,
+        "columns_mobile": "1",
+        "swipe_on_mobile": true,
+        "padding_top": 16,
+        "padding_bottom": 0
+      }
+    },
     "alc_collection_list_campaign_XeTR6y": {
       "type": "alc-collection-list-campaign",
       "blocks": {
@@ -839,6 +894,7 @@
     "alc_collection_list_campaign_mGB9xF",
     "alc_collection_list_campaign_yEiHKH",
     "alc_collection_list_campaign_KXnJGX",
+    "collection_list_tgakcd",
     "alc_collection_list_campaign_XeTR6y",
     "custom_liquid_ggcwHk",
     "alc_featured_collection_ERArtK",
