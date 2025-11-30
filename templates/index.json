@@ -697,6 +697,15 @@
         "padding_bottom": 24
       }
     },
+    "custom_liquid_Yee3Mx": {
+      "type": "custom-liquid",
+      "settings": {
+        "custom_liquid": "{%- assign locale_code = request.locale.iso_code | default: localization.language.iso_code | downcase -%}\n\n<style>\n  .banner-container {\n    width: 100%;\n    max-width: 1300px;\n    margin: 0 auto;\n  }\n\n  @media (max-width: 768px) {\n    .banner-container {\n      max-width: 100%;\n      padding: 0 16px; /* puțin spațiu lateral pe mobil */\n    }\n  }\n</style>\n\n<div class=\"banner-container\">\n  {%- if locale_code == 'ro' -%}\n    <!-- Română -->\n    <picture>\n      <source\n        media=\"(max-width: 768px)\"\n        srcset=\"https://cdn.shopify.com/s/files/1/0782/5175/3739/files/OGLINZISUB300_RO_MOBILE.png?v=1760794499\">\n      <img\n        src=\"https://cdn.shopify.com/s/files/1/0782/5175/3739/files/OGLINZISUB300_RO_0272826b-fa60-4176-a540-597ba751b926.png?v=1760794500\"\n        alt=\"Mobilier de baie – Black Friday\"\n        width=\"2880\" height=\"524\"\n        loading=\"lazy\"\n        decoding=\"async\"\n        style=\"width:100%;height:auto;display:block;\">\n    </picture>\n  {%- else -%}\n    <!-- Engleză / alte limbi -->\n    <picture>\n      <source\n        media=\"(max-width: 768px)\"\n        srcset=\"https://cdn.shopify.com/s/files/1/0782/5175/3739/files/OGLINZISUB300_ENG_MOBILE.png?v=1760794499\">\n      <img\n        src=\"https://cdn.shopify.com/s/files/1/0782/5175/3739/files/OGLINZISUB300_ENG.png?v=1760794500\"\n        alt=\"Bathroom furniture – Black Friday\"\n        width=\"2880\" height=\"524\"\n        loading=\"lazy\"\n        decoding=\"async\"\n        style=\"width:100%;height:auto;display:block;\">\n    </picture>\n  {%- endif -%}\n</div>",
+        "color_scheme": "",
+        "padding_top": 0,
+        "padding_bottom": 24
+      }
+    },
     "custom_liquid_6zDcbj": {
       "type": "custom-liquid",
       "settings": {
@@ -819,15 +828,6 @@
         "padding_bottom": 24
       }
     },
-    "custom_liquid_Yee3Mx": {
-      "type": "custom-liquid",
-      "settings": {
-        "custom_liquid": "{%- assign locale_code = request.locale.iso_code | default: localization.language.iso_code | downcase -%}\n\n<style>\n  .banner-container {\n    width: 100%;\n    max-width: 1300px;\n    margin: 0 auto;\n  }\n\n  @media (max-width: 768px) {\n    .banner-container {\n      max-width: 100%;\n      padding: 0 16px; /* puțin spațiu lateral pe mobil */\n    }\n  }\n</style>\n\n<div class=\"banner-container\">\n  {%- if locale_code == 'ro' -%}\n    <!-- Română -->\n    <picture>\n      <source\n        media=\"(max-width: 768px)\"\n        srcset=\"https://cdn.shopify.com/s/files/1/0782/5175/3739/files/OGLINZISUB300_RO_MOBILE.png?v=1760794499\">\n      <img\n        src=\"https://cdn.shopify.com/s/files/1/0782/5175/3739/files/OGLINZISUB300_RO_0272826b-fa60-4176-a540-597ba751b926.png?v=1760794500\"\n        alt=\"Mobilier de baie – Black Friday\"\n        width=\"2880\" height=\"524\"\n        loading=\"lazy\"\n        decoding=\"async\"\n        style=\"width:100%;height:auto;display:block;\">\n    </picture>\n  {%- else -%}\n    <!-- Engleză / alte limbi -->\n    <picture>\n      <source\n        media=\"(max-width: 768px)\"\n        srcset=\"https://cdn.shopify.com/s/files/1/0782/5175/3739/files/OGLINZISUB300_ENG_MOBILE.png?v=1760794499\">\n      <img\n        src=\"https://cdn.shopify.com/s/files/1/0782/5175/3739/files/OGLINZISUB300_ENG.png?v=1760794500\"\n        alt=\"Bathroom furniture – Black Friday\"\n        width=\"2880\" height=\"524\"\n        loading=\"lazy\"\n        decoding=\"async\"\n        style=\"width:100%;height:auto;display:block;\">\n    </picture>\n  {%- endif -%}\n</div>",
-        "color_scheme": "",
-        "padding_top": 0,
-        "padding_bottom": 24
-      }
-    },
     "featured_collection_mMLGif": {
       "type": "featured-collection",
       "settings": {
@@ -901,13 +901,13 @@
     "custom_liquid_W8WWQz",
     "custom_liquid_ggcwHk",
     "alc_featured_collection_ERArtK",
+    "custom_liquid_Yee3Mx",
+    "featured_collection_mMLGif",
     "custom_liquid_6zDcbj",
     "alc_featured_collection_eK7URW",
     "custom_liquid_i8YzMd",
     "featured_collection_KFUddR",
     "image_with_text_dAeUQP",
-    "custom_liquid_Yee3Mx",
-    "featured_collection_mMLGif",
     "174558919114520042",
     "featured_blog_wr7Dxf"
   ]
