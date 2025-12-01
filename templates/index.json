@@ -538,61 +538,6 @@
         "padding_bottom": 8
       }
     },
-    "collection_list_tgakcd": {
-      "type": "collection-list",
-      "blocks": {
-        "featured_collection_JwRYHW": {
-          "type": "featured_collection",
-          "settings": {
-            "collection": "oglinzi-led"
-          }
-        },
-        "featured_collection_XeVY3V": {
-          "type": "featured_collection",
-          "settings": {
-            "collection": "corpuri-de-iluminat"
-          }
-        },
-        "featured_collection_qgttEL": {
-          "type": "featured_collection",
-          "settings": {
-            "collection": "obiecte-sanitare"
-          }
-        },
-        "featured_collection_8bAa9w": {
-          "type": "featured_collection",
-          "settings": {
-            "collection": "produse-led"
-          }
-        },
-        "featured_collection_BrfgLH": {
-          "type": "featured_collection",
-          "settings": {
-            "collection": "lustre-led"
-          }
-        }
-      },
-      "block_order": [
-        "featured_collection_JwRYHW",
-        "featured_collection_XeVY3V",
-        "featured_collection_qgttEL",
-        "featured_collection_8bAa9w",
-        "featured_collection_BrfgLH"
-      ],
-      "name": "t:sections.collection-list.presets.name",
-      "settings": {
-        "title": "",
-        "heading_size": "h2",
-        "image_ratio": "square",
-        "columns_desktop": 5,
-        "color_scheme": "",
-        "show_view_all": false,
-        "columns_mobile": "1",
-        "swipe_on_mobile": true,
-        "padding_top": 16,
-        "padding_bottom": 0
-      }
-    },
     "alc_collection_list_campaign_XeTR6y": {
       "type": "alc-collection-list-campaign",
       "blocks": {
@@ -651,6 +596,7 @@
     },
     "custom_liquid_W8WWQz": {
       "type": "custom-liquid",
+      "disabled": true,
       "name": "t:sections.custom-liquid.presets.name",
       "settings": {
         "custom_liquid": "{%- assign locale_code = request.locale.iso_code | default: localization.language.iso_code | default: 'en' | downcase -%}\n\n{%- assign img_suffix = 'ENG' -%}\n{%- assign tld = 'com' -%}\n{%- case locale_code -%}\n  {%- when 'ro' -%}\n    {%- assign img_suffix = 'RO' -%}{%- assign tld = 'ro' -%}\n  {%- when 'hu' -%}\n    {%- assign img_suffix = 'HU' -%}{%- assign tld = 'hu' -%}\n  {%- when 'bg' -%}\n    {%- assign img_suffix = 'BG' -%}{%- assign tld = 'bg' -%}\n  {%- when 'pl' -%}\n    {%- assign img_suffix = 'PL' -%}{%- assign tld = 'pl' -%}\n  {%- when 'en' or 'eng' -%}\n    {%- assign img_suffix = 'ENG' -%}{%- assign tld = 'com' -%}\n  {%- else -%}\n    {%- assign img_suffix = 'ENG' -%}{%- assign tld = 'com' -%}\n{%- endcase -%}\n\n{%- assign mobile_src = '' -%}\n{%- assign desktop_src = '' -%}\n{%- case img_suffix -%}\n  {%- when 'RO' -%}\n    {%- assign mobile_src = 'https://cdn.shopify.com/s/files/1/0782/5175/3739/files/BF_MOBILE_RO.png' -%}\n    {%- assign desktop_src = 'https://cdn.shopify.com/s/files/1/0782/5175/3739/files/DESKTOP_OUTLET_RO.png' -%}\n  {%- when 'HU' -%}\n    {%- assign mobile_src = 'https://cdn.shopify.com/s/files/1/0782/5175/3739/files/BF_MOBILE_HU.png' -%}\n    {%- assign desktop_src = 'https://cdn.shopify.com/s/files/1/0782/5175/3739/files/DESKTOP_OUTLET_HU.png' -%}\n  {%- when 'BG' -%}\n    {%- assign mobile_src = 'https://cdn.shopify.com/s/files/1/0782/5175/3739/files/BF_MOBILE_BG.png' -%}\n    {%- assign desktop_src = 'https://cdn.shopify.com/s/files/1/0782/5175/3739/files/DESKTOP_OUTLET_BG.png' -%}\n  {%- when 'PL' -%}\n    {%- assign mobile_src = 'https://cdn.shopify.com/s/files/1/0782/5175/3739/files/BF_MOBILE_PL.png' -%}\n    {%- assign desktop_src = 'https://cdn.shopify.com/s/files/1/0782/5175/3739/files/DESKTOP_OUTLET_PL.png' -%}\n  {%- when 'ENG' -%}\n    {%- assign mobile_src = 'https://cdn.shopify.com/s/files/1/0782/5175/3739/files/BF_MOBILE_ENG.png' -%}\n    {%- assign desktop_src = 'https://cdn.shopify.com/s/files/1/0782/5175/3739/files/DESKTOP_OUTLET_ENG.png' -%}\n  {%- else -%}\n    {%- assign mobile_src = 'https://cdn.shopify.com/s/files/1/0782/5175/3739/files/BF_MOBILE_ENG.png' -%}\n    {%- assign desktop_src = 'https://cdn.shopify.com/s/files/1/0782/5175/3739/files/DESKTOP_OUTLET_ENG.png' -%}\n{%- endcase -%}\n\n{%- assign target_url = 'https://www.alessandrodesign.' | append: tld | append: '/collections/outlet' -%}\n\n<a class=\"l50-banner-link\" href=\"{{ target_url }}\" aria-label=\"Black Friday - {{ locale_code | upcase }}\">\n  <picture class=\"l50-banner\">\n    <!-- Desktop -->\n    <source media=\"(min-width: 769px)\" srcset=\"{{ desktop_src | escape }}\">\n    <!-- Mobile -->\n    <img\n      src=\"{{ mobile_src | escape }}\"\n      alt=\"Black Friday banner\"\n      loading=\"lazy\"\n      decoding=\"async\"\n      class=\"l50-banner__img\"\n      width=\"1920\"\n      height=\"1080\"\n    >\n  </picture>\n</a>\n\n<style>\n  .l50-banner-link {\n    display: block;\n    text-decoration: none;\n  }\n  .l50-banner {\n    display: block;\n    width: 100%;\n    line-height: 0;\n    max-width: 1300px; /* limitare desktop */\n    margin: 0 auto;     /* centru pe orizontală */\n  }\n  .l50-banner__img {\n    display: block;\n    width: 100%;\n    height: auto;\n  }\n</style>",
@@ -704,6 +650,34 @@
         "color_scheme": "",
         "padding_top": 0,
         "padding_bottom": 24
+      }
+    },
+    "featured_collection_mMLGif": {
+      "type": "featured-collection",
+      "settings": {
+        "title": "",
+        "heading_size": "h2",
+        "description": "",
+        "show_description": false,
+        "description_style": "body",
+        "collection": "oglinzi-led-sub-300",
+        "products_to_show": 16,
+        "columns_desktop": 4,
+        "full_width": false,
+        "show_view_all": true,
+        "view_all_style": "solid",
+        "enable_desktop_slider": false,
+        "color_scheme": "",
+        "image_ratio": "adapt",
+        "image_shape": "default",
+        "show_secondary_image": true,
+        "show_vendor": false,
+        "show_rating": true,
+        "quick_add": "standard",
+        "columns_mobile": "2",
+        "swipe_on_mobile": false,
+        "padding_top": 12,
+        "padding_bottom": 12
       }
     },
     "custom_liquid_6zDcbj": {
@@ -828,34 +802,6 @@
         "padding_bottom": 24
       }
     },
-    "featured_collection_mMLGif": {
-      "type": "featured-collection",
-      "settings": {
-        "title": "",
-        "heading_size": "h2",
-        "description": "",
-        "show_description": false,
-        "description_style": "body",
-        "collection": "oglinzi-led-sub-300",
-        "products_to_show": 16,
-        "columns_desktop": 4,
-        "full_width": false,
-        "show_view_all": true,
-        "view_all_style": "solid",
-        "enable_desktop_slider": false,
-        "color_scheme": "",
-        "image_ratio": "adapt",
-        "image_shape": "default",
-        "show_secondary_image": true,
-        "show_vendor": false,
-        "show_rating": true,
-        "quick_add": "standard",
-        "columns_mobile": "2",
-        "swipe_on_mobile": false,
-        "padding_top": 12,
-        "padding_bottom": 12
-      }
-    },
     "174558919114520042": {
       "type": "apps",
       "blocks": {
@@ -896,7 +842,6 @@
     "alc_collection_list_campaign_mGB9xF",
     "alc_collection_list_campaign_yEiHKH",
     "alc_collection_list_campaign_KXnJGX",
-    "collection_list_tgakcd",
     "alc_collection_list_campaign_XeTR6y",
     "custom_liquid_W8WWQz",
     "custom_liquid_ggcwHk",
