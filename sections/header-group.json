@@ -14,13 +14,6 @@
     "announcement-bar": {
       "type": "announcement-bar",
       "blocks": {
-        "announcement_bf_continues": {
-          "type": "announcement",
-          "settings": {
-            "text": "t:sections.announcements.black_friday_continues",
-            "link": ""
-          }
-        },
         "announcement_bf_lowest": {
           "type": "announcement",
           "settings": {
@@ -31,13 +24,12 @@
         "announcement_bf_delay": {
           "type": "announcement",
           "settings": {
-            "text": "t:sections.announcements.black_friday_delivery_delay",
+            "text": "t:sections.announcements.holiday_closure",
             "link": ""
           }
         }
       },
       "block_order": [
-        "announcement_bf_continues",
         "announcement_bf_lowest",
         "announcement_bf_delay"
       ],
