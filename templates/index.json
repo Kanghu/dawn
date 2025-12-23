@@ -734,56 +734,10 @@
         "padding_bottom": 12
       }
     },
-    "custom_liquid_6zDcbj": {
-      "type": "custom-liquid",
-      "settings": {
-        "custom_liquid": "{%- assign lang = request.locale.iso_code | downcase -%}\n\n{%- case lang -%}\n  {%- when 'ro' -%}\n    {%- assign desktop_url = 'https://cdn.shopify.com/s/files/1/0782/5175/3739/files/MOBILIER_DESKTOP_RO.png' -%}\n    {%- assign mobile_url  = 'https://cdn.shopify.com/s/files/1/0782/5175/3739/files/MOBILIER_MOBILE_RO.png' -%}\n  {%- when 'en' or 'eng' -%}\n    {%- assign desktop_url = 'https://cdn.shopify.com/s/files/1/0782/5175/3739/files/MOBILIER_DESKTOP_ENG.png' -%}\n    {%- assign mobile_url  = 'https://cdn.shopify.com/s/files/1/0782/5175/3739/files/MOBILIER_MOBILE_ENG.png' -%}\n  {%- when 'hu' -%}\n    {%- assign desktop_url = 'https://cdn.shopify.com/s/files/1/0782/5175/3739/files/MOBILIER_DESKTOP_HU.png' -%}\n    {%- assign mobile_url  = 'https://cdn.shopify.com/s/files/1/0782/5175/3739/files/MOBILIER_MOBILE_HU.png' -%}\n  {%- when 'bg' -%}\n    {%- assign desktop_url = 'https://cdn.shopify.com/s/files/1/0782/5175/3739/files/MOBILIER_DESKTOP_BG.png' -%}\n    {%- assign mobile_url  = 'https://cdn.shopify.com/s/files/1/0782/5175/3739/files/MOBILIER_MOBILE_BG.png' -%}\n  {%- when 'pl' -%}\n    {%- assign desktop_url = 'https://cdn.shopify.com/s/files/1/0782/5175/3739/files/MOBILIER_DESKTOP_PL.png' -%}\n    {%- assign mobile_url  = 'https://cdn.shopify.com/s/files/1/0782/5175/3739/files/MOBILIER_MOBILE_PL.png' -%}\n  {%- else -%}\n    {%- assign desktop_url = 'https://cdn.shopify.com/s/files/1/0782/5175/3739/files/MOBILIER_DESKTOP_ENG.png' -%}\n    {%- assign mobile_url  = 'https://cdn.shopify.com/s/files/1/0782/5175/3739/files/MOBILIER_MOBILE_ENG.png' -%}\n{%- endcase -%}\n\n<style>\n  .banner-wrapper {\n    max-width: 1300px;\n    margin: 0 auto;\n  }\n  .banner-wrapper img {\n    width: 100%;\n    height: auto;\n    display: block;\n  }\n</style>\n\n<div class=\"banner-wrapper\">\n  <picture>\n    <!-- Desktop -->\n    <source media=\"(min-width: 992px)\" srcset=\"{{ desktop_url | escape }}\">\n    <!-- Mobile -->\n    <img src=\"{{ mobile_url | escape }}\" alt=\"Mobilier banner\" loading=\"lazy\">\n  </picture>\n</div>",
-        "color_scheme": "",
-        "padding_top": 0,
-        "padding_bottom": 0
-      }
-    },
-    "alc_featured_collection_eK7URW": {
-      "type": "alc-featured-collection",
-      "settings": {
-        "title": "",
-        "heading_size": "h1",
-        "description": "",
-        "show_description": false,
-        "description_style": "body",
-        "collection": "mobilier-baie",
-        "products_to_show": 8,
-        "columns_desktop": 4,
-        "full_width": false,
-        "show_view_all": true,
-        "view_all_style": "solid",
-        "enable_desktop_slider": false,
-        "color_scheme": "",
-        "image_ratio": "adapt",
-        "image_shape": "default",
-        "show_secondary_image": true,
-        "show_vendor": false,
-        "show_rating": true,
-        "quick_add": "standard",
-        "columns_mobile": "2",
-        "swipe_on_mobile": false,
-        "padding_top": 24,
-        "padding_bottom": 24
-      }
-    },
-    "custom_liquid_i8YzMd": {
-      "type": "custom-liquid",
-      "settings": {
-        "custom_liquid": "{%- assign locale_code = request.locale.iso_code | default: localization.language.iso_code | downcase -%}\n\n<style>\n  .banner-container {\n    width: 100%;\n    max-width: 1300px;\n    margin: 0 auto;\n  }\n\n  @media (max-width: 768px) {\n    .banner-container {\n      max-width: 100%;\n      padding: 0 16px; /* margini laterale pe mobil */\n    }\n  }\n</style>\n\n<div class=\"banner-container\">\n  {%- if locale_code == 'ro' -%}\n    <!-- Română -->\n    <picture>\n      <source\n        media=\"(max-width: 768px)\"\n        srcset=\"https://cdn.shopify.com/s/files/1/0782/5175/3739/files/COLOANE_RO_MOBILE.png?v=1760720042\">\n      <img\n        src=\"https://cdn.shopify.com/s/files/1/0782/5175/3739/files/COLOANE_RO.jpg?v=1760718855\"\n        alt=\"Coloane de duș – Black Friday\"\n        width=\"2880\" height=\"524\"\n        loading=\"lazy\"\n        decoding=\"async\"\n        style=\"width:100%;height:auto;display:block;\">\n    </picture>\n  {%- else -%}\n    <!-- Engleză / alte limbi -->\n    <picture>\n      <source\n        media=\"(max-width: 768px)\"\n        srcset=\"https://cdn.shopify.com/s/files/1/0782/5175/3739/files/COLOANE_ENG_MOBILE.png?v=1760720042\">\n      <img\n        src=\"https://cdn.shopify.com/s/files/1/0782/5175/3739/files/COLOANE_ENG.jpg?v=1760718855\"\n        alt=\"Shower columns & faucets – Black Friday\"\n        width=\"2880\" height=\"524\"\n        loading=\"lazy\"\n        decoding=\"async\"\n        style=\"width:100%;height:auto;display:block;\">\n    </picture>\n  {%- endif -%}\n</div>",
-        "color_scheme": "",
-        "padding_top": 24,
-        "padding_bottom": 0
-      }
-    },
     "featured_collection_KFUddR": {
       "type": "featured-collection",
       "settings": {
-        "title": "",
+        "title": "Coloane de dus",
         "heading_size": "h1",
         "description": "",
         "show_description": false,
@@ -808,50 +762,30 @@
         "padding_bottom": 12
       }
     },
-    "image_with_text_dAeUQP": {
-      "type": "image-with-text",
-      "blocks": {
-        "heading_tm3zPX": {
-          "type": "heading",
-          "settings": {
-            "heading": "Coloana Dus, Inox SUS304",
-            "heading_size": "h1"
-          }
-        },
-        "text_AfhtUB": {
-          "type": "text",
-          "settings": {
-            "text": "<p>Inoxul SUS304, acest material este foarte stabil, nu conține plumb, zinc și alte aliaje care pot dăuna sănătății.<br/><br/></p>",
-            "text_style": "body"
-          }
-        },
-        "button_znTx8d": {
-          "type": "button",
-          "settings": {
-            "button_label": "Vezi produsul",
-            "button_link": "https://www.alessandrodesign.ro/products/coloana-dus-inox-sus304-satinat-n-ly001",
-            "button_style_secondary": false
-          }
-        }
-      },
-      "block_order": [
-        "heading_tm3zPX",
-        "text_AfhtUB",
-        "button_znTx8d"
-      ],
-      "name": "t:sections.image-with-text.presets.name",
+    "alc_featured_collection_eK7URW": {
+      "type": "alc-featured-collection",
       "settings": {
-        "image": "shopify://shop_images/A7_274cfade-e064-4333-96e2-51deba758c72.png",
-        "height": "adapt",
-        "desktop_image_width": "small",
-        "layout": "image_first",
-        "desktop_content_position": "middle",
-        "desktop_content_alignment": "center",
-        "content_layout": "no-overlap",
-        "section_color_scheme": "scheme-1",
+        "title": "Mobilier de baie",
+        "heading_size": "h1",
+        "description": "",
+        "show_description": false,
+        "description_style": "body",
+        "collection": "mobilier-baie",
+        "products_to_show": 8,
+        "columns_desktop": 4,
+        "full_width": false,
+        "show_view_all": true,
+        "view_all_style": "solid",
+        "enable_desktop_slider": false,
         "color_scheme": "",
-        "image_behavior": "none",
-        "mobile_content_alignment": "center",
+        "image_ratio": "adapt",
+        "image_shape": "default",
+        "show_secondary_image": true,
+        "show_vendor": false,
+        "show_rating": true,
+        "quick_add": "standard",
+        "columns_mobile": "2",
+        "swipe_on_mobile": false,
         "padding_top": 24,
         "padding_bottom": 24
       }
@@ -903,11 +837,8 @@
     "alc_featured_collection_ERArtK",
     "custom_liquid_Yee3Mx",
     "featured_collection_mMLGif",
-    "custom_liquid_6zDcbj",
-    "alc_featured_collection_eK7URW",
-    "custom_liquid_i8YzMd",
     "featured_collection_KFUddR",
-    "image_with_text_dAeUQP",
+    "alc_featured_collection_eK7URW",
     "174558919114520042",
     "featured_blog_wr7Dxf"
   ]
