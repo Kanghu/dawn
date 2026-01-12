@@ -301,7 +301,8 @@
         "other": "{{ count }} articles",
         "many": "{{ count }} articles",
         "few": "{{ count }} ware"
-      }
+      },
+      "back_to_website": "Retour"
     },
     "cart": {
       "title": "Votre panier",
@@ -336,7 +337,42 @@
       "taxes_at_checkout_shipping_at_checkout_without_policy": "Taxes, réductions et frais d’expédition calculés à l’étape du paiement."
     },
     "footer": {
-      "payment": "Moyens de paiement"
+      "payment": "Moyens de paiement",
+      "about": "À propos de nous",
+      "useful": "Utile",
+      "contact": "Contacter",
+      "terms": "Termes et conditions",
+      "privacy": "Politique de confidentialité",
+      "cookies": "Politique de cookies",
+      "sitemap": "Plan du site",
+      "business": "Affaires",
+      "contact_info": {
+        "cc_schedule": "Programme de relations clients : L-F : 10-18",
+        "showroom_schedule_1": "Bénévoles du showroom : L-F : 9-18 ; P : 9-15",
+        "showroom_schedule_2": "Showroom Vulcanescu : L-F : 10-19 ; S : 10-16"
+      },
+      "utile_links": {
+        "help_center": {
+          "title": "Centre d'aide",
+          "url": "https://help.alessandrodesign.ro/"
+        },
+        "return_warranty": {
+          "title": "Retour et garantie",
+          "url": "https://help.alessandrodesign.ro/hc/alessandro-design/ro/categories/retur-si-sesizri"
+        },
+        "order_status": {
+          "title": "Statut de la commande",
+          "url": "https://help.alessandrodesign.ro/hc/alessandro-design/articles/1763659675-statusul-comenzii-mele"
+        },
+        "public_procurement": {
+          "title": "Marchés publics SEAP",
+          "url": "https://help.alessandrodesign.ro/hc/alessandro-design/articles/1763981934-achizi-ii-publice-seap-alc"
+        },
+        "return_form": {
+          "title": "Formulaire de retour et de garantie",
+          "url": "https://www.alessandrodesign.ro/pages/formular-retur"
+        }
+      }
     },
     "featured_blog": {
       "view_all": "Tout afficher",
@@ -1053,6 +1089,12 @@
         "product_count": {
           "few": "{{count}} produits"
         }
+      },
+      "updating_contracts": {
+        "few": "{{count}} les abonnements sont en cours de mise à jour..."
+      },
+      "contracts_updated": {
+        "few": "{{count}} les abonnements ont été mis à jour avec succès"
       }
     }
   }
