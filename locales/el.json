@@ -799,7 +799,12 @@
             "shop_cash_not_allowed": "Κατάστημα Τα μετρητά δεν επιτρέπονται χωρίς το Shop Pay.",
             "shop_cash_unsupported_checkout_source": "Το Shop Cash δεν δέχεται αυτό το ταμείο.",
             "shop_cash_gift_card_not_allowed": "Το Shop Cash δεν επιτρέπει την αγορά δωροκαρτών.",
-            "shop_cash_not_enabled": "Το Shop Cash δεν είναι ενεργοποιημένο για αυτό το κατάστημα."
+            "shop_cash_not_enabled": "Το Shop Cash δεν είναι ενεργοποιημένο για αυτό το κατάστημα.",
+            "shop_cash_unsupported_subscriptions": "Το Shop Cash δεν δέχεται συνδρομές.",
+            "shop_cash_unsupported_shipping": "Το Shop Cash δεν δέχεται εμπορεύματα χωρίς αποστολή.",
+            "shop_cash_unsupported_currency": "Το Shop Cash δεν δέχεται αυτό το νόμισμα.",
+            "shop_cash_not_available": "Η μέθοδος πληρωμής καταστημάτων με μετρητά δεν γίνεται αποδεκτή για αυτήν την αγορά.",
+            "shop_cash_not_found": "Δεν ήταν δυνατή η εύρεση του Shop Cash."
           }
         }
       },
@@ -863,6 +868,9 @@
           "per_item": {
             "few": "%{price} για %{count} προϊόντα"
           }
+        },
+        "pickup_unavailable_banner_title_with_country": {
+          "few": "Σε %{country} δεν υπάρχουν διαθέσιμα καταστήματα με τα προϊόντα σας"
         }
       },
       "payment": {
