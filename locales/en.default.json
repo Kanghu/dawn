@@ -740,6 +740,27 @@
           "cluster_title": {
             "few": "Cluster consisting of {{number}} markers"
           }
+        },
+        "errors": {
+          "payment": {
+            "installments_amount_invalid": "Invalid amount for installment transaction.",
+            "installments_test_mode_not_allowed": "Test mode is not allowed.",
+            "installments_gift_card_not_allowed": "The use of gift cards is not allowed for payment in installments.",
+            "installments_unsupported_currency": "This currency is not accepted for payment in installments.",
+            "installments_unsupported_shipping": "For payment in installments, shipping to this address is not accepted.",
+            "installments_unsupported_billing": "This billing address is not accepted for installment payments.",
+            "installments_unsupported_subscriptions": "Payment in installments is not accepted, subscriptions are not accepted.",
+            "installments_ineligible_line_item": "Installment payment is disabled for a line item in this purchase.",
+            "shop_cash_not_allowed": "Shop Cash is not allowed without Shop Pay.",
+            "shop_cash_unsupported_checkout_source": "Shop Cash does not accept this checkout.",
+            "shop_cash_gift_card_not_allowed": "Shop Cash does not allow the purchase of gift cards.",
+            "shop_cash_not_enabled": "Shop Cash is not enabled for this store.",
+            "shop_cash_unsupported_subscriptions": "Shop Cash does not accept subscriptions.",
+            "shop_cash_unsupported_shipping": "Shop Cash does not accept merchandise without shipping.",
+            "shop_cash_unsupported_currency": "Shop Cash does not accept this currency.",
+            "shop_cash_not_available": "The Shop Cash payment method is not accepted for this purchase.",
+            "shop_cash_not_found": "Could not find Shop Cash."
+          }
         }
       },
       "customer_account": {
