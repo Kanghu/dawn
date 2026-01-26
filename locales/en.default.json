@@ -1187,18 +1187,32 @@
     "subscriptions": {
       "subscription_contracts": {
         "more_items": {
-          "few": "Still {{count}} products"
+          "few": "Still {{count}} products",
+          "one": "Still {{count}} product",
+          "other": "Still {{count}} products"
         },
         "product_count": {
-          "few": "{{count}} products"
-        }
+          "few": "{{count}} products",
+          "one": "{{count}} product",
+          "other": "{{count}} products"
+        },
+        "title": "Use the payment method for recurring orders",
+        "subscription_contracts_updated": "{{succeeded}} from {{total}} subscriptions has been updated",
+        "product_details": "Product details",
+        "load_more": "Load more"
       },
       "updating_contracts": {
-        "few": "{{count}} subscriptions are being updated..."
+        "few": "{{count}} subscriptions are being updated...",
+        "one": "{{count}} subscription agreement is being updated...",
+        "other": "{{count}} subscriptions are being updated..."
       },
       "contracts_updated": {
-        "few": "{{count}} subscriptions have been updated successfully"
-      }
+        "few": "{{count}} subscriptions have been updated successfully",
+        "one": "{{count}} subscription has been updated successfully",
+        "other": "{{count}} subscriptions have been updated successfully"
+      },
+      "contracts_update_failed": "Some subscription contracts failed to update",
+      "invalid_wallet_type_error": "The digital wallet type is invalid."
     }
   },
   "pagefly": {
