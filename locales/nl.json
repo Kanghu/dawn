@@ -1169,18 +1169,32 @@
     "subscriptions": {
       "subscription_contracts": {
         "more_items": {
-          "few": "Nog steeds {{count}} producten"
+          "few": "Nog steeds {{count}} producten",
+          "one": "Nog steeds {{count}} product",
+          "other": "Nog steeds {{count}} producten"
         },
         "product_count": {
-          "few": "{{count}} producten"
-        }
+          "few": "{{count}} producten",
+          "one": "{{count}} product",
+          "other": "{{count}} producten"
+        },
+        "title": "Gebruik de betaalmethode voor terugkerende bestellingen",
+        "subscription_contracts_updated": "{{succeeded}} van {{total}} abonnementen zijn bijgewerkt",
+        "product_details": "Productdetails",
+        "load_more": "Laad meer"
       },
       "updating_contracts": {
-        "few": "{{count}} abonnementen worden bijgewerkt..."
+        "few": "{{count}} abonnementen worden bijgewerkt...",
+        "one": "{{count}} abonnementsovereenkomst wordt bijgewerkt...",
+        "other": "{{count}} abonnementen worden bijgewerkt..."
       },
       "contracts_updated": {
-        "few": "{{count}} abonnementen zijn succesvol bijgewerkt"
-      }
+        "few": "{{count}} abonnementen zijn succesvol bijgewerkt",
+        "one": "{{count}} abonnement is succesvol bijgewerkt",
+        "other": "{{count}} abonnementen zijn succesvol bijgewerkt"
+      },
+      "contracts_update_failed": "Sommige abonnementscontracten konden niet worden bijgewerkt",
+      "invalid_wallet_type_error": "Het type digitale portemonnee is ongeldig."
     }
   },
   "alc-benefits": {
