@@ -785,6 +785,22 @@
           "cluster_title": {
             "few": "Σχηματίστηκε σύμπλεγμα {{number}} Σφαίρες"
           }
+        },
+        "errors": {
+          "payment": {
+            "installments_amount_invalid": "Μη έγκυρο ποσό για συναλλαγή δόσεων.",
+            "installments_test_mode_not_allowed": "Η δοκιμαστική λειτουργία δεν επιτρέπεται.",
+            "installments_gift_card_not_allowed": "Δεν επιτρέπεται η χρήση δωροκαρτών για πληρωμή σε δόσεις.",
+            "installments_unsupported_currency": "Αυτό το νόμισμα δεν γίνεται αποδεκτό για πληρωμή σε δόσεις.",
+            "installments_unsupported_shipping": "Για πληρωμή σε δόσεις δεν γίνονται δεκτές αποστολές σε αυτή τη διεύθυνση.",
+            "installments_unsupported_billing": "Αυτή η διεύθυνση χρέωσης δεν γίνεται αποδεκτή για πληρωμές με δόσεις.",
+            "installments_unsupported_subscriptions": "Δεν γίνονται δεκτές πληρωμές σε δόσεις, δεν γίνονται δεκτές συνδρομές.",
+            "installments_ineligible_line_item": "Η πληρωμή με δόσεις είναι απενεργοποιημένη για ένα στοιχείο γραμμής σε αυτήν την αγορά.",
+            "shop_cash_not_allowed": "Κατάστημα Τα μετρητά δεν επιτρέπονται χωρίς το Shop Pay.",
+            "shop_cash_unsupported_checkout_source": "Το Shop Cash δεν δέχεται αυτό το ταμείο.",
+            "shop_cash_gift_card_not_allowed": "Το Shop Cash δεν επιτρέπει την αγορά δωροκαρτών.",
+            "shop_cash_not_enabled": "Το Shop Cash δεν είναι ενεργοποιημένο για αυτό το κατάστημα."
+          }
         }
       },
       "customer_account": {
