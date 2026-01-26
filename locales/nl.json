@@ -764,6 +764,27 @@
           "cluster_title": {
             "few": "Gevormd cluster {{number}} Kogels"
           }
+        },
+        "errors": {
+          "payment": {
+            "installments_amount_invalid": "Ongeldig bedrag voor termijntransactie.",
+            "installments_test_mode_not_allowed": "Testmodus is niet toegestaan.",
+            "installments_gift_card_not_allowed": "Bij betaling in termijnen is het gebruik van cadeaubonnen niet toegestaan.",
+            "installments_unsupported_currency": "Deze valuta wordt niet geaccepteerd voor betaling in termijnen.",
+            "installments_unsupported_shipping": "Bij betaling in termijnen wordt verzending naar dit adres niet geaccepteerd.",
+            "installments_unsupported_billing": "Dit factuuradres wordt niet geaccepteerd voor termijnbetalingen.",
+            "installments_unsupported_subscriptions": "Betaling in termijnen wordt niet geaccepteerd, abonnementen worden niet geaccepteerd.",
+            "installments_ineligible_line_item": "Betaling in termijnen is uitgeschakeld voor een regelitem in deze aankoop.",
+            "shop_cash_not_allowed": "Zonder Shop Pay is Shop Cash niet toegestaan.",
+            "shop_cash_unsupported_checkout_source": "Shop Cash accepteert deze kassa niet.",
+            "shop_cash_gift_card_not_allowed": "Shop Cash staat de aankoop van cadeaubonnen niet toe.",
+            "shop_cash_not_enabled": "Shop Cash is niet ingeschakeld voor deze winkel.",
+            "shop_cash_unsupported_subscriptions": "Shop Cash accepteert geen abonnementen.",
+            "shop_cash_unsupported_shipping": "Shop Cash accepteert geen goederen zonder verzending.",
+            "shop_cash_unsupported_currency": "Shop Cash accepteert deze valuta niet.",
+            "shop_cash_not_available": "Voor deze aankoop wordt de betaalmethode Shop Cash niet geaccepteerd.",
+            "shop_cash_not_found": "Kon Shop Cash niet vinden."
+          }
         }
       },
       "customer_account": {
