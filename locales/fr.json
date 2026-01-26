@@ -798,6 +798,27 @@
           "cluster_title": {
             "few": "Cluster formé {{number}} Balles"
           }
+        },
+        "errors": {
+          "payment": {
+            "installments_amount_invalid": "Montant invalide pour la transaction échelonnée.",
+            "installments_test_mode_not_allowed": "Le mode test n'est pas autorisé.",
+            "installments_gift_card_not_allowed": "L'utilisation de cartes cadeaux n'est pas autorisée pour les paiements échelonnés.",
+            "installments_unsupported_currency": "Cette devise n'est pas acceptée pour les paiements échelonnés.",
+            "installments_unsupported_shipping": "Pour les paiements échelonnés, l'expédition à cette adresse n'est pas acceptée.",
+            "installments_unsupported_billing": "Cette adresse de facturation n'est pas acceptée pour les paiements échelonnés.",
+            "installments_unsupported_subscriptions": "Les paiements échelonnés ne sont pas acceptés, les abonnements ne sont pas acceptés.",
+            "installments_ineligible_line_item": "Le paiement échelonné est désactivé pour un élément de campagne de cet achat.",
+            "shop_cash_not_allowed": "Shop Cash n’est pas autorisé sans Shop Pay.",
+            "shop_cash_unsupported_checkout_source": "Shop Cash n’accepte pas ce paiement.",
+            "shop_cash_gift_card_not_allowed": "Shop Cash ne permet pas l’achat de cartes cadeaux.",
+            "shop_cash_not_enabled": "Shop Cash n'est pas activé pour ce magasin.",
+            "shop_cash_unsupported_subscriptions": "Shop Cash n’accepte pas les abonnements.",
+            "shop_cash_unsupported_shipping": "Shop Cash n’accepte pas de marchandise sans expédition.",
+            "shop_cash_unsupported_currency": "Shop Cash n'accepte pas cette devise.",
+            "shop_cash_not_available": "Le mode de paiement Shop Cash n’est pas accepté pour cet achat.",
+            "shop_cash_not_found": "Impossible de trouver Shop Cash."
+          }
         }
       },
       "customer_account": {
