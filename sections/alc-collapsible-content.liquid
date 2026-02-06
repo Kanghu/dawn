@@ -1,5 +1,6 @@
 {{ 'component-accordion.css' | asset_url | stylesheet_tag }}
 {{ 'collapsible-content.css' | asset_url | stylesheet_tag }}
+<script src="{{ 'alc-collapsible-preview.js' | asset_url }}" defer="defer"></script>
 
 {%- style -%}
   .section-{{ section.id }}-padding {
@@ -69,7 +70,19 @@
             </div>
           {% endif %}
           <div class="grid__item">
+            {%- assign preview_block_count = 0 -%}
             {%- for block in section.blocks -%}
+              {%- comment -%} Track preview-eligible blocks for open state {%- endcomment -%}
+              {%- if block.type == 'collapsible_row' or block.type == 'collapsible_metafields' -%}
+                {%- assign preview_block_count = preview_block_count | plus: 1 -%}
+                {%- assign should_open = false -%}
+                {%- if preview_block_count <= 2 -%}
+                  {%- assign should_open = true -%}
+                {%- endif -%}
+              {%- else -%}
+                {%- assign should_open = false -%}
+              {%- endif -%}
+
               {% if block.type == 'collapsible_row' %}
                 <div
                   class="accordion{% if section.settings.layout == 'row' %} content-container color-{{ section.settings.container_color_scheme }} gradient{% endif %}"
@@ -77,9 +90,7 @@
                 >
                   <details
                     id="Details-{{ block.id }}-{{ section.id }}"
-                    {% if section.settings.open_first_collapsible_row and forloop.first %}
-                      open
-                    {% endif %}
+                    {% if should_open %}open{% endif %}
                   >
                     <summary id="Summary-{{ block.id }}-{{ section.id }}">
                       {% render 'icon-accordion', icon: block.settings.icon %}
@@ -88,25 +99,38 @@
                       </h3>
                       {{- 'icon-caret.svg' | inline_asset_content -}}
                     </summary>
-                    <div
-                      class="accordion__content rte"
-                      id="CollapsibleAccordion-{{ block.id }}-{{ section.id }}"
-                      role="region"
-                      aria-labelledby="Summary-{{ block.id }}-{{ section.id }}"
-                    >
-                      {% if block.settings.row_liquid != blank %}
-                        {{ block.settings.row_liquid }}
-                      {% elsif block.settings.row_content != blank %}
-                        {{ block.settings.row_content }}
-                      {% endif %}
-                      {{ block.settings.page.content }}
-                    </div>
+                    <alc-collapsible-preview>
+                      <div
+                        class="accordion__content-preview is-collapsed"
+                        id="CollapsibleAccordion-{{ block.id }}-{{ section.id }}"
+                        role="region"
+                        aria-labelledby="Summary-{{ block.id }}-{{ section.id }}"
+                      >
+                        <div class="accordion__content rte">
+                          {% if block.settings.row_liquid != blank %}
+                            {{ block.settings.row_liquid }}
+                          {% elsif block.settings.row_content != blank %}
+                            {{ block.settings.row_content }}
+                          {% endif %}
+                          {{ block.settings.page.content }}
+                        </div>
+                        <div class="accordion__gradient-overlay" aria-hidden="true"></div>
+                      </div>
+                      <button
+                        type="button"
+                        class="accordion__see-more-btn"
+                        aria-expanded="false"
+                      >
+                        <span class="see-more-label">{{ 'products.facets.show_more' | t }}</span>
+                        <span class="see-less-label hidden">{{ 'products.facets.show_less' | t }}</span>
+                      </button>
+                    </alc-collapsible-preview>
                   </details>
                 </div>
               {% elsif block.type == 'collapsible_metafields' %}
   <!-- New custom metafields block -->
   <div class="accordion" {{ block.shopify_attributes }}>
-    <details id="Details-{{ block.id }}-{{ section.id }}">
+    <details id="Details-{{ block.id }}-{{ section.id }}" {% if should_open %}open{% endif %}>
       <summary id="Summary-{{ block.id }}-{{ section.id }}">
         {% render 'icon-accordion', icon: block.settings.icon %}
         <h3 class="accordion__title inline-richtext h4">
@@ -114,12 +138,14 @@
         </h3>
         {{- 'icon-caret.svg' | inline_asset_content -}}
       </summary>
-      <div
-        class="accordion__content rte"
-        id="CollapsibleAccordion-{{ block.id }}-{{ section.id }}"
-        role="region"
-        aria-labelledby="Summary-{{ block.id }}-{{ section.id }}"
-      >
+      <alc-collapsible-preview>
+        <div
+          class="accordion__content-preview is-collapsed"
+          id="CollapsibleAccordion-{{ block.id }}-{{ section.id }}"
+          role="region"
+          aria-labelledby="Summary-{{ block.id }}-{{ section.id }}"
+        >
+          <div class="accordion__content rte">
         {% if product.metafields.custom != blank %}
           <!-- Force grid layout despite utility-class conflict -->
           <div class="py-2 grid grid-cols-1 md:grid-cols-2 gap-4" style="display: grid;">
@@ -359,9 +385,20 @@
         {% else %}
           <p>No custom metafields available for this product.</p>
         {% endif %}
-      </div>
+          </div>
+          <div class="accordion__gradient-overlay" aria-hidden="true"></div>
+        </div>
+        <button
+          type="button"
+          class="accordion__see-more-btn"
+          aria-expanded="false"
+        >
+          <span class="see-more-label">{{ 'products.facets.show_more' | t }}</span>
+          <span class="see-less-label hidden">{{ 'products.facets.show_less' | t }}</span>
+        </button>
+      </alc-collapsible-preview>
     </details>
-    
+  </div>
               {% elsif block.type == 'collapsible_qa' %}
                 <!-- Questions and Answers block -->
                 <div class="accordion" {{ block.shopify_attributes }}>
