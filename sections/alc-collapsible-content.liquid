@@ -173,6 +173,7 @@
                       {%- else -%}
                         {%- assign mf = product.metafields.custom[spec] -%}
                       {%- endif -%}
+                      <!-- DEBUG: spec={{ spec }} | namespace={{ spec_namespace }} | key={{ spec_key }} | mf={{ mf }} | mf.value={{ mf.value }} -->
                       {% if mf %}
                           {% assign is_even = counter | modulo: 2 %}
 
@@ -182,8 +183,13 @@
           {%- assign current_locale = request.locale.iso_code -%}
           {%- assign translated_spec = '' -%}
 
-          {%- if spec contains '.' and mf.definition.name -%}
-            {%- assign translated_spec = mf.definition.name -%}
+          {%- if spec contains '.' -%}
+            {%- if mf.definition.name != blank -%}
+              {%- assign translated_spec = mf.definition.name -%}
+            {%- else -%}
+              {%- comment -%} Fallback: format the key portion nicely {%- endcomment -%}
+              {%- assign translated_spec = spec_key | replace: '-', ' ' | capitalize -%}
+            {%- endif -%}
           {%- elsif current_locale == 'bg' -%}
             {%- case spec -%}
               {%- when 'tip_produs_' -%}{%- assign translated_spec = 'Тип продукт' -%}
@@ -358,24 +364,34 @@
 
                 <span class="spec-value w-1/3 font-medium">
                   {% if mf.type == 'list.metaobject_reference' %}
-                    {% assign spec_length = spec | size %}
-                    {% assign key_length = spec_length | minus: 1 %}
-                    {% assign key = spec | slice: 0, key_length %}
+                    {%- if spec contains '.' -%}
+                      {%- comment -%} Shopify standard metaobject references - use label field {%- endcomment -%}
+                      {%- for metaobj_ref in mf.value -%}
+                        {%- assign metaobj = metaobj_ref | metaobject -%}
+                        {{ metaobj.label | default: metaobj.system.display_name }}
+                        {%- unless forloop.last -%}, {% endunless -%}
+                      {%- endfor -%}
+                    {%- else -%}
+                      {%- comment -%} Custom metaobject references - use existing logic {%- endcomment -%}
+                      {% assign spec_length = spec | size %}
+                      {% assign key_length = spec_length | minus: 1 %}
+                      {% assign key = spec | slice: 0, key_length %}
 
-                    {%- if spec == 'tip_produs_' -%}
-                      {% assign key = 'lustra_led' %}
+                      {%- if spec == 'tip_produs_' -%}
+                        {% assign key = 'lustra_led' %}
+                      {%- endif -%}
+
+                      {% assign parsed = mf.value | parse_json %}
+                      {%- for entry in parsed -%}
+                        {{ entry[key]
+                        | join: ', '
+                        | replace: '[', ''
+                        | replace: ']', ''
+                        | replace: '"', ''
+                        }}
+                        {%- unless forloop.last -%}, {% endunless -%}
+                      {%- endfor -%}
                     {%- endif -%}
-
-                    {% assign parsed = mf.value | parse_json %}
-                    {%- for entry in parsed -%}
-                      {{ entry[key]
-                      | join: ', '
-                      | replace: '[', ''
-                      | replace: ']', ''
-                      | replace: '"', ''
-                      }}
-                      {%- unless forloop.last -%}, {% endunless -%}
-                    {%- endfor -%}
                   {% else %}
                     {{ mf.value | join: ', ' | replace: '[', '' | replace: ']', '' | replace: '"', '' }}
                   {% endif %}
