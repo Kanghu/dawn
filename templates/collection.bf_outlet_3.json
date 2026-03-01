@@ -17,7 +17,7 @@
       ],
       "name": "t:sections.custom-liquid.presets.name",
       "settings": {
-        "custom_liquid": "{%- assign locale_code = request.locale.iso_code | default: localization.language.iso_code | default: 'en' | downcase -%}\n\n{%- assign img_suffix = 'ENG' -%}\n{%- assign tld = 'com' -%}\n{%- case locale_code -%}\n  {%- when 'ro' -%}\n    {%- assign img_suffix = 'RO' -%}{%- assign tld = 'ro' -%}\n  {%- when 'hu' -%}\n    {%- assign img_suffix = 'HU' -%}{%- assign tld = 'hu' -%}\n  {%- when 'bg' -%}\n    {%- assign img_suffix = 'BG' -%}{%- assign tld = 'bg' -%}\n  {%- when 'pl' -%}\n    {%- assign img_suffix = 'PL' -%}{%- assign tld = 'pl' -%}\n  {%- when 'en' or 'eng' -%}\n    {%- assign img_suffix = 'ENG' -%}{%- assign tld = 'com' -%}\n  {%- else -%}\n    {%- assign img_suffix = 'ENG' -%}{%- assign tld = 'com' -%}\n{%- endcase -%}\n\n{%- assign mobile_src = '' -%}\n{%- assign desktop_src = '' -%}\n{%- case img_suffix -%}\n  {%- when 'RO' -%}\n    {%- assign mobile_src = 'https://cdn.shopify.com/s/files/1/0782/5175/3739/files/BF_MOBILE_RO.png' -%}\n    {%- assign desktop_src = 'https://cdn.shopify.com/s/files/1/0782/5175/3739/files/DESKTOP_OUTLET_RO.png' -%}\n  {%- when 'HU' -%}\n    {%- assign mobile_src = 'https://cdn.shopify.com/s/files/1/0782/5175/3739/files/BF_MOBILE_HU.png' -%}\n    {%- assign desktop_src = 'https://cdn.shopify.com/s/files/1/0782/5175/3739/files/DESKTOP_OUTLET_HU.png' -%}\n  {%- when 'BG' -%}\n    {%- assign mobile_src = 'https://cdn.shopify.com/s/files/1/0782/5175/3739/files/BF_MOBILE_BG.png' -%}\n    {%- assign desktop_src = 'https://cdn.shopify.com/s/files/1/0782/5175/3739/files/DESKTOP_OUTLET_BG.png' -%}\n  {%- when 'PL' -%}\n    {%- assign mobile_src = 'https://cdn.shopify.com/s/files/1/0782/5175/3739/files/BF_MOBILE_PL.png' -%}\n    {%- assign desktop_src = 'https://cdn.shopify.com/s/files/1/0782/5175/3739/files/DESKTOP_OUTLET_PL.png' -%}\n  {%- when 'ENG' -%}\n    {%- assign mobile_src = 'https://cdn.shopify.com/s/files/1/0782/5175/3739/files/BF_MOBILE_ENG.png' -%}\n    {%- assign desktop_src = 'https://cdn.shopify.com/s/files/1/0782/5175/3739/files/DESKTOP_OUTLET_ENG.png' -%}\n  {%- else -%}\n    {%- assign mobile_src = 'https://cdn.shopify.com/s/files/1/0782/5175/3739/files/BF_MOBILE_ENG.png' -%}\n    {%- assign desktop_src = 'https://cdn.shopify.com/s/files/1/0782/5175/3739/files/DESKTOP_OUTLET_ENG.png' -%}\n{%- endcase -%}\n\n{%- assign target_url = 'https://www.alessandrodesign.' | append: tld | append: '/collections/outlet' -%}\n\n<a class=\"l50-banner-link\" href=\"{{ target_url }}\" aria-label=\"Black Friday - {{ locale_code | upcase }}\">\n  <picture class=\"l50-banner\">\n    <!-- Desktop -->\n    <source media=\"(min-width: 769px)\" srcset=\"{{ desktop_src | escape }}\">\n    <!-- Mobile -->\n    <img\n      src=\"{{ mobile_src | escape }}\"\n      alt=\"Black Friday banner\"\n      loading=\"lazy\"\n      decoding=\"async\"\n      class=\"l50-banner__img\"\n      width=\"1920\"\n      height=\"1080\"\n    >\n  </picture>\n</a>\n\n<style>\n  .l50-banner-link {\n    display: block;\n    text-decoration: none;\n  }\n  .l50-banner {\n    display: block;\n    width: 100%;\n    line-height: 0;\n    max-width: 1300px; /* limitare desktop */\n    margin: 0 auto;     /* centru pe orizontală */\n  }\n  .l50-banner__img {\n    display: block;\n    width: 100%;\n    height: auto;\n  }\n</style>",
+        "custom_liquid": "{%- assign locale_code = request.locale.iso_code \n  | default: localization.language.iso_code \n  | default: 'ro' \n  | downcase -%}\n\n{%- assign lang = 'ENG' -%}\n{%- assign tld = 'ro' -%}\n\n{%- if locale_code == 'ro' -%}\n  {%- assign lang = 'RO' -%}\n  {%- assign tld = 'ro' -%}\n{%- elsif locale_code == 'hu' -%}\n  {%- assign lang = 'HU' -%}\n  {%- assign tld = 'hu' -%}\n{%- elsif locale_code == 'bg' -%}\n  {%- assign lang = 'BG' -%}\n  {%- assign tld = 'bg' -%}\n{%- elsif locale_code == 'pl' -%}\n  {%- assign lang = 'PL' -%}\n  {%- assign tld = 'pl' -%}\n{%- endif -%}\n\n{%- assign base_url = 'https://cdn.shopify.com/s/files/1/0782/5175/3739/files/' -%}\n{%- assign desktop_img = base_url | append: 'OUTLET_' | append: lang | append: '_DESKTOP.png' -%}\n{%- assign mobile_img  = base_url | append: 'OUTLET_' | append: lang | append: '_MOBILE.png' -%}\n\n{%- assign target_url = 'https://www.alessandrodesign.' | append: tld | append: '/collections/outlet' -%}\n\n<a class=\"outlet-banner-link\" href=\"{{ target_url }}\" aria-label=\"Outlet Banner\">\n  <picture class=\"outlet-banner\">\n    <source media=\"(min-width: 769px)\" srcset=\"{{ desktop_img }}\">\n    <img\n      src=\"{{ mobile_img }}\"\n      alt=\"Outlet Banner\"\n      loading=\"lazy\"\n      decoding=\"async\"\n      class=\"outlet-banner__img\"\n      width=\"1920\"\n      height=\"1080\">\n  </picture>\n</a>\n\n<style>\n  .outlet-banner-link { display:block; text-decoration:none; }\n  .outlet-banner { display:block; width:100%; line-height:0; }\n  .outlet-banner__img { display:block; width:100%; height:auto; }\n</style>",
         "color_scheme": "",
         "padding_top": 16,
         "padding_bottom": 0
@@ -309,8 +309,13 @@
       "settings": {
         "show_collection_description": true,
         "show_collection_image": false,
+        "color_scheme": "scheme-15b3ebfc-72e7-42d0-af22-57c8d007abe9",
         "show_collection_slider": true,
-        "color_scheme": "scheme-15b3ebfc-72e7-42d0-af22-57c8d007abe9"
+        "slider_columns_desktop": 5,
+        "slider_enable_desktop": true,
+        "slider_columns_mobile": "2",
+        "slider_enable_mobile": true,
+        "slider_image_ratio": "square"
       }
     },
     "alc_category_links_PiyAYB": {
@@ -320,6 +325,7 @@
           "type": "category_link",
           "settings": {
             "link_text": "Iluminat",
+            "locale_key": "",
             "link_url": "shopify://collections/promo-lustre-led"
           }
         },
@@ -327,6 +333,7 @@
           "type": "category_link",
           "settings": {
             "link_text": "Oglinzi LED",
+            "locale_key": "",
             "link_url": "shopify://collections/promo-oglinzi-led"
           }
         },
@@ -334,6 +341,7 @@
           "type": "category_link",
           "settings": {
             "link_text": "Outlet BF",
+            "locale_key": "",
             "link_url": "shopify://collections/outlet"
           }
         },
@@ -341,6 +349,7 @@
           "type": "category_link",
           "settings": {
             "link_text": "Chiuvete",
+            "locale_key": "",
             "link_url": "shopify://collections/chiuvete-cazi-cadite"
           }
         },
@@ -348,6 +357,7 @@
           "type": "category_link",
           "settings": {
             "link_text": "Baterii & Coloane",
+            "locale_key": "",
             "link_url": "shopify://collections/baterii-baie-bucatarie-coloane-de-dus"
           }
         },
@@ -355,6 +365,7 @@
           "type": "category_link",
           "settings": {
             "link_text": "Mobilier",
+            "locale_key": "",
             "link_url": "shopify://collections/mobilier-de-baie-uscatoare-de-maini"
           }
         }
@@ -372,7 +383,7 @@
         "title": "",
         "heading_size": "h1",
         "alignment": "center",
-        "pill_bg_color": "#4e0000",
+        "pill_bg_color": "#00adff",
         "pill_text_color": "#ffffff",
         "pill_border_color": "rgba(0,0,0,0)",
         "pill_border_width": 0,
@@ -395,7 +406,7 @@
         "show_rating": true,
         "quick_add": true,
         "hide_out_of_stock": false,
-        "header_button_color": "#771c16",
+        "header_button_color": "#00adff",
         "header_text_color": "#ffffff",
         "header_background_style": "solid",
         "header_bg_opacity": 100,
