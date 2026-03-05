@@ -144,7 +144,7 @@
         "heading_WFqyXp": {
           "type": "heading",
           "settings": {
-            "heading": "<strong>Te-am convins să ne faci o vizită?</strong>",
+            "heading": "<strong>Program de Lucru</strong>",
             "heading_size": "h2"
           }
         },
@@ -169,16 +169,26 @@
         "padding_bottom": 0
       }
     },
+    "image_banner_86wkX3": {
+      "type": "image-banner",
+      "name": "t:sections.image-banner.presets.name",
+      "settings": {
+        "image": "shopify://shop_images/SHVOL_0dc63644-f875-439e-b56c-8d8f7ca21184.webp",
+        "image_overlay_opacity": 0,
+        "image_height": "medium",
+        "desktop_content_position": "middle-center",
+        "show_text_box": true,
+        "desktop_content_alignment": "center",
+        "color_scheme": "",
+        "image_behavior": "none",
+        "mobile_content_alignment": "center",
+        "stack_images_on_mobile": true,
+        "show_text_below": true
+      }
+    },
     "rich_text_gHKfMe": {
       "type": "rich-text",
       "blocks": {
-        "heading_XjnGAF": {
-          "type": "heading",
-          "settings": {
-            "heading": "Program de lucru showroom",
-            "heading_size": "h1"
-          }
-        },
         "text_m7j7pW": {
           "type": "text",
           "settings": {
@@ -187,7 +197,6 @@
         }
       },
       "block_order": [
-        "heading_XjnGAF",
         "text_m7j7pW"
       ],
       "name": "t:sections.rich-text.presets.name",
@@ -209,6 +218,16 @@
         "padding_top": 40,
         "padding_bottom": 52
       }
+    },
+    "custom_liquid_mQbVp8": {
+      "type": "custom-liquid",
+      "name": "t:sections.custom-liquid.presets.name",
+      "settings": {
+        "custom_liquid": "",
+        "color_scheme": "",
+        "padding_top": 40,
+        "padding_bottom": 52
+      }
     }
   },
   "order": [
@@ -218,7 +237,9 @@
     "blocks_E4PNEU",
     "blocks_8fC9rt",
     "rich_text_hwKxNU",
+    "image_banner_86wkX3",
     "rich_text_gHKfMe",
-    "custom_liquid_XKJdPE"
+    "custom_liquid_XKJdPE",
+    "custom_liquid_mQbVp8"
   ]
 }
