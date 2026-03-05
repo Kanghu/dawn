@@ -11,14 +11,56 @@
   "sections": {
     "main": {
       "type": "main-page",
-      "disabled": true,
       "settings": {
         "padding_top": 28,
         "padding_bottom": 28
       }
+    },
+    "rich_text_gHKfMe": {
+      "type": "rich-text",
+      "blocks": {
+        "heading_XjnGAF": {
+          "type": "heading",
+          "settings": {
+            "heading": "Program de lucru showroom",
+            "heading_size": "h1"
+          }
+        },
+        "text_m7j7pW": {
+          "type": "text",
+          "settings": {
+            "text": "<p><strong>Luni - Vineri: 09:00 - 18:00</strong></p><p><strong>Sambata: 09:00 - 15:00</strong></p><p><strong>Duminica: Inchis</strong></p>"
+          }
+        }
+      },
+      "block_order": [
+        "heading_XjnGAF",
+        "text_m7j7pW"
+      ],
+      "name": "t:sections.rich-text.presets.name",
+      "settings": {
+        "desktop_content_position": "center",
+        "content_alignment": "center",
+        "color_scheme": "",
+        "full_width": true,
+        "padding_top": 0,
+        "padding_bottom": 0
+      }
+    },
+    "custom_liquid_XKJdPE": {
+      "type": "custom-liquid",
+      "name": "t:sections.custom-liquid.presets.name",
+      "settings": {
+        "custom_liquid": "<div style=\"display:flex; justify-content:center;\">\n  <iframe\n    src=\"https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2845.951236792003!2d26.204163876688852!3d44.49566597107471!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x40b1fe47cdf57acf%3A0xd3b59273c7d1c0e!2sAlessandro%20Design%20-%20Lustre%20si%20Corpuri%20de%20Iluminat!5e0!3m2!1sen!2sro!4v1741853160649!5m2!1sen!2sro\"\n    width=\"600\"\n    height=\"450\"\n    style=\"border:0;\"\n    allowfullscreen\n    loading=\"lazy\"\n    referrerpolicy=\"no-referrer-when-downgrade\">\n  </iframe>\n</div>",
+        "color_scheme": "",
+        "padding_top": 40,
+        "padding_bottom": 52
+      }
     }
   },
   "order": [
-    "main"
+    "main",
+    "rich_text_gHKfMe",
+    "custom_liquid_XKJdPE"
   ]
 }
