@@ -11,9 +11,162 @@
   "sections": {
     "main": {
       "type": "main-page",
+      "disabled": true,
       "settings": {
         "padding_top": 28,
         "padding_bottom": 28
+      }
+    },
+    "rich_text_kqKhDp": {
+      "type": "rich-text",
+      "blocks": {
+        "heading_z46AMB": {
+          "type": "heading",
+          "settings": {
+            "heading": "<strong>Vizitează Showroom-ul Alessandro Design.</strong>",
+            "heading_size": "h2"
+          }
+        },
+        "text_8MyHbF": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Descoperă cele mai recente colecții de corpuri de iluminat și decorațiuni interioare, create pentru a aduce eleganță și armonie în casa ta. Inspiră-te din noile tendințe și transformă-ți spațiul într-un loc cu adevărat special!<br/><br/></p>"
+          }
+        }
+      },
+      "block_order": [
+        "heading_z46AMB",
+        "text_8MyHbF"
+      ],
+      "name": "t:sections.rich-text.presets.name",
+      "settings": {
+        "desktop_content_position": "center",
+        "content_alignment": "center",
+        "color_scheme": "scheme-4",
+        "full_width": true,
+        "padding_top": 40,
+        "padding_bottom": 52
+      }
+    },
+    "blocks_nU64y6": {
+      "type": "_blocks",
+      "blocks": {
+        "ai_gen_block_cd6b924_9px4DW": {
+          "type": "ai_gen_block_cd6b924",
+          "settings": {
+            "image": "shopify://shop_images/ChatGPT_Image_Mar_5_2026_12_09_36_PM.png",
+            "image_position": "left",
+            "bevel_size": 5,
+            "title": "<p>Oferte exclusive </p>",
+            "title_font": "roboto_n4",
+            "title_size": 36,
+            "title_bold": true,
+            "title_color": "#121212",
+            "text": "<p>Bucură-te de avantajele unor oferte exclusive disponibile doar în showroomurile noastre și descoperă produse de calitate la prețuri speciale!<br/><br/></p>",
+            "text_font": "roboto_n4",
+            "text_size": 16,
+            "text_bold": false,
+            "text_color": "#121212",
+            "background_color": "#ffffff"
+          },
+          "blocks": {}
+        }
+      },
+      "block_order": [
+        "ai_gen_block_cd6b924_9px4DW"
+      ],
+      "name": "Bevel image with text",
+      "settings": {}
+    },
+    "blocks_E4PNEU": {
+      "type": "_blocks",
+      "blocks": {
+        "ai_gen_block_cd6b924_8bMRLy": {
+          "type": "ai_gen_block_cd6b924",
+          "settings": {
+            "image": "shopify://shop_images/SS1.webp",
+            "image_position": "right",
+            "bevel_size": 5,
+            "title": "<p>Consiliere de specialitate</p>",
+            "title_font": "roboto_n4",
+            "title_size": 36,
+            "title_bold": true,
+            "title_color": "#ffffff",
+            "text": "<p>Beneficiază de consiliere de specialitate pentru a alege produsele ideale care se potrivesc perfect stilului și nevoilor casei tale. Echipa noastră de experți îți oferă sfaturi personalizate și soluții inspirate pentru un decor armonios.</p>",
+            "text_font": "roboto_n4",
+            "text_size": 16,
+            "text_bold": false,
+            "text_color": "#ffffff",
+            "background_color": "#121212"
+          },
+          "blocks": {}
+        }
+      },
+      "block_order": [
+        "ai_gen_block_cd6b924_8bMRLy"
+      ],
+      "name": "Bevel image with text",
+      "settings": {}
+    },
+    "blocks_8fC9rt": {
+      "type": "_blocks",
+      "blocks": {
+        "ai_gen_block_cd6b924_BW7ViH": {
+          "type": "ai_gen_block_cd6b924",
+          "settings": {
+            "image": "shopify://shop_images/SS2.webp",
+            "image_position": "left",
+            "bevel_size": 5,
+            "title": "<p>Optiunea de testare produse</p>",
+            "title_font": "roboto_n4",
+            "title_size": 36,
+            "title_bold": true,
+            "title_color": "#121212",
+            "text": "<p>Profită de opțiunea de testare a produselor înainte de achiziție și asigură-te că faci cea mai bună alegere pentru casa ta. Vino în showroomurile noastre și descoperă confortul și calitatea produselor noastre direct la fața locului!<br/><br/></p>",
+            "text_font": "roboto_n4",
+            "text_size": 16,
+            "text_bold": false,
+            "text_color": "#121212",
+            "background_color": "#ffffff"
+          },
+          "blocks": {}
+        }
+      },
+      "block_order": [
+        "ai_gen_block_cd6b924_BW7ViH"
+      ],
+      "name": "Bevel image with text",
+      "settings": {}
+    },
+    "rich_text_hwKxNU": {
+      "type": "rich-text",
+      "blocks": {
+        "heading_WFqyXp": {
+          "type": "heading",
+          "settings": {
+            "heading": "<strong>Te-am convins să ne faci o vizită?</strong>",
+            "heading_size": "h2"
+          }
+        },
+        "text_RRdJgh": {
+          "type": "text",
+          "settings": {
+            "text": ""
+          }
+        }
+      },
+      "block_order": [
+        "heading_WFqyXp",
+        "text_RRdJgh"
+      ],
+      "name": "t:sections.rich-text.presets.name",
+      "settings": {
+        "desktop_content_position": "center",
+        "content_alignment": "center",
+        "color_scheme": "scheme-4",
+        "full_width": true,
+        "padding_top": 16,
+        "padding_bottom": 0
       }
     },
     "rich_text_gHKfMe": {
@@ -60,6 +213,11 @@
   },
   "order": [
     "main",
+    "rich_text_kqKhDp",
+    "blocks_nU64y6",
+    "blocks_E4PNEU",
+    "blocks_8fC9rt",
+    "rich_text_hwKxNU",
     "rich_text_gHKfMe",
     "custom_liquid_XKJdPE"
   ]
