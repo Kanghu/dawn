@@ -115,11 +115,52 @@
       "type": "mktr_custom_app",
       "disabled": true,
       "settings": {}
+    },
+    "custom_liquid_QBBVUp": {
+      "type": "custom-liquid",
+      "name": "IFRAME - LOCATION",
+      "settings": {
+        "custom_liquid": "<iframe\n  src=\"https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2845.951236792003!2d26.204163876688852!3d44.49566597107471!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x40b1fe47cdf57acf%3A0xd3b59273c7d1c0e!2sAlessandro%20Design%20-%20Lustre%20si%20Corpuri%20de%20Iluminat!5e0!3m2!1sen!2sro!4v1741853160649!5m2!1sen!2sro\"\n  width=\"600\" height=\"450\" style=\"border:0;\" allowfullscreen=\"\" loading=\"lazy\"\n  referrerpolicy=\"no-referrer-when-downgrade\"></iframe>",
+        "color_scheme": "",
+        "padding_top": 40,
+        "padding_bottom": 52
+      }
+    },
+    "1772705048532a5462": {
+      "type": "_blocks",
+      "blocks": {
+        "ai_gen_block_cd6b924_zt8pRh": {
+          "type": "ai_gen_block_cd6b924",
+          "settings": {
+            "image": "shopify://shop_images/ChatGPT_Image_Mar_5_2026_12_09_36_PM.png",
+            "image_position": "left",
+            "bevel_size": 5,
+            "title": "<p>Oferte exclusive </p>",
+            "title_font": "roboto_n4",
+            "title_size": 36,
+            "title_bold": true,
+            "title_color": "#121212",
+            "text": "<p>Bucură-te de avantajele unor oferte exclusive disponibile doar în showroomurile noastre și descoperă produse de calitate la prețuri speciale!<br/><br/></p>",
+            "text_font": "roboto_n4",
+            "text_size": 16,
+            "text_bold": false,
+            "text_color": "#121212",
+            "background_color": "#ffffff"
+          },
+          "blocks": {}
+        }
+      },
+      "block_order": [
+        "ai_gen_block_cd6b924_zt8pRh"
+      ],
+      "settings": {}
     }
   },
   "order": [
     "announcement-bar",
     "header",
-    "mktr_custom_app"
+    "mktr_custom_app",
+    "custom_liquid_QBBVUp",
+    "1772705048532a5462"
   ]
 }
