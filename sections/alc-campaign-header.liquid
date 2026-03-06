@@ -6,7 +6,7 @@
 
 <style>
   .campaign-header-wrapper {
-    background-color: #2f0000 !important;
+    background-color: {{ section.settings.header_bg_color | default: '#2f0000' }} !important;
     z-index: 1000 !important;
     position: relative;
   }
@@ -355,6 +355,17 @@
     "name": "Campaign Header",
     "class": "section-header",
     "settings": [
+      {
+        "type": "header",
+        "content": "Header Background"
+      },
+      {
+        "type": "color",
+        "id": "header_bg_color",
+        "label": "Background Color",
+        "default": "#2f0000",
+        "info": "Background color for the sticky header"
+      },
       {
         "type": "header",
         "content": "Back Button Settings"
