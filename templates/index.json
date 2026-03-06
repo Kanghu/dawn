@@ -686,17 +686,6 @@
         "padding_bottom": 12
       }
     },
-    "custom_liquid_W8WWQz": {
-      "type": "custom-liquid",
-      "disabled": true,
-      "name": "t:sections.custom-liquid.presets.name",
-      "settings": {
-        "custom_liquid": "{%- assign locale_code = request.locale.iso_code | default: localization.language.iso_code | default: 'en' | downcase -%}\n\n{%- assign img_suffix = 'ENG' -%}\n{%- assign tld = 'com' -%}\n{%- case locale_code -%}\n  {%- when 'ro' -%}\n    {%- assign img_suffix = 'RO' -%}{%- assign tld = 'ro' -%}\n  {%- when 'hu' -%}\n    {%- assign img_suffix = 'HU' -%}{%- assign tld = 'hu' -%}\n  {%- when 'bg' -%}\n    {%- assign img_suffix = 'BG' -%}{%- assign tld = 'bg' -%}\n  {%- when 'pl' -%}\n    {%- assign img_suffix = 'PL' -%}{%- assign tld = 'pl' -%}\n  {%- when 'en' or 'eng' -%}\n    {%- assign img_suffix = 'ENG' -%}{%- assign tld = 'com' -%}\n  {%- else -%}\n    {%- assign img_suffix = 'ENG' -%}{%- assign tld = 'com' -%}\n{%- endcase -%}\n\n{%- assign mobile_src = '' -%}\n{%- assign desktop_src = '' -%}\n{%- case img_suffix -%}\n  {%- when 'RO' -%}\n    {%- assign mobile_src = 'https://cdn.shopify.com/s/files/1/0782/5175/3739/files/BF_MOBILE_RO.png' -%}\n    {%- assign desktop_src = 'https://cdn.shopify.com/s/files/1/0782/5175/3739/files/DESKTOP_OUTLET_RO.png' -%}\n  {%- when 'HU' -%}\n    {%- assign mobile_src = 'https://cdn.shopify.com/s/files/1/0782/5175/3739/files/BF_MOBILE_HU.png' -%}\n    {%- assign desktop_src = 'https://cdn.shopify.com/s/files/1/0782/5175/3739/files/DESKTOP_OUTLET_HU.png' -%}\n  {%- when 'BG' -%}\n    {%- assign mobile_src = 'https://cdn.shopify.com/s/files/1/0782/5175/3739/files/BF_MOBILE_BG.png' -%}\n    {%- assign desktop_src = 'https://cdn.shopify.com/s/files/1/0782/5175/3739/files/DESKTOP_OUTLET_BG.png' -%}\n  {%- when 'PL' -%}\n    {%- assign mobile_src = 'https://cdn.shopify.com/s/files/1/0782/5175/3739/files/BF_MOBILE_PL.png' -%}\n    {%- assign desktop_src = 'https://cdn.shopify.com/s/files/1/0782/5175/3739/files/DESKTOP_OUTLET_PL.png' -%}\n  {%- when 'ENG' -%}\n    {%- assign mobile_src = 'https://cdn.shopify.com/s/files/1/0782/5175/3739/files/BF_MOBILE_ENG.png' -%}\n    {%- assign desktop_src = 'https://cdn.shopify.com/s/files/1/0782/5175/3739/files/DESKTOP_OUTLET_ENG.png' -%}\n  {%- else -%}\n    {%- assign mobile_src = 'https://cdn.shopify.com/s/files/1/0782/5175/3739/files/BF_MOBILE_ENG.png' -%}\n    {%- assign desktop_src = 'https://cdn.shopify.com/s/files/1/0782/5175/3739/files/DESKTOP_OUTLET_ENG.png' -%}\n{%- endcase -%}\n\n{%- assign target_url = 'https://www.alessandrodesign.' | append: tld | append: '/collections/outlet' -%}\n\n<a class=\"l50-banner-link\" href=\"{{ target_url }}\" aria-label=\"Black Friday - {{ locale_code | upcase }}\">\n  <picture class=\"l50-banner\">\n    <!-- Desktop -->\n    <source media=\"(min-width: 769px)\" srcset=\"{{ desktop_src | escape }}\">\n    <!-- Mobile -->\n    <img\n      src=\"{{ mobile_src | escape }}\"\n      alt=\"Black Friday banner\"\n      loading=\"lazy\"\n      decoding=\"async\"\n      class=\"l50-banner__img\"\n      width=\"1920\"\n      height=\"1080\"\n    >\n  </picture>\n</a>\n\n<style>\n  .l50-banner-link {\n    display: block;\n    text-decoration: none;\n  }\n  .l50-banner {\n    display: block;\n    width: 100%;\n    line-height: 0;\n    max-width: 1300px; /* limitare desktop */\n    margin: 0 auto;     /* centru pe orizontală */\n  }\n  .l50-banner__img {\n    display: block;\n    width: 100%;\n    height: auto;\n  }\n</style>",
-        "color_scheme": "",
-        "padding_top": 0,
-        "padding_bottom": 0
-      }
-    },
     "custom_liquid_Yee3Mx": {
       "type": "custom-liquid",
       "settings": {
@@ -715,6 +704,44 @@
         "show_description": false,
         "description_style": "body",
         "collection": "lustre-led-oferte",
+        "products_to_show": 8,
+        "columns_desktop": 4,
+        "full_width": false,
+        "show_view_all": true,
+        "view_all_style": "solid",
+        "enable_desktop_slider": false,
+        "color_scheme": "",
+        "image_ratio": "adapt",
+        "image_shape": "default",
+        "show_secondary_image": true,
+        "show_vendor": false,
+        "show_rating": true,
+        "quick_add": "standard",
+        "columns_mobile": "2",
+        "swipe_on_mobile": false,
+        "padding_top": 24,
+        "padding_bottom": 24
+      }
+    },
+    "custom_liquid_W8WWQz": {
+      "type": "custom-liquid",
+      "name": "t:sections.custom-liquid.presets.name",
+      "settings": {
+        "custom_liquid": "{%- assign locale_code = request.locale.iso_code \n  | default: localization.language.iso_code \n  | default: 'ro' \n  | downcase -%}\n\n{%- assign lang = 'ENG' -%}\n{%- assign tld = 'ro' -%}\n\n{%- if locale_code == 'ro' -%}\n  {%- assign lang = 'RO' -%}\n  {%- assign tld = 'ro' -%}\n{%- elsif locale_code == 'hu' -%}\n  {%- assign lang = 'HU' -%}\n  {%- assign tld = 'hu' -%}\n{%- elsif locale_code == 'bg' -%}\n  {%- assign lang = 'BG' -%}\n  {%- assign tld = 'bg' -%}\n{%- elsif locale_code == 'pl' -%}\n  {%- assign lang = 'PL' -%}\n  {%- assign tld = 'pl' -%}\n{%- endif -%}\n\n{%- assign base_url = 'https://cdn.shopify.com/s/files/1/0782/5175/3739/files/' -%}\n{%- assign desktop_img = base_url | append: 'Mobilier_' | append: lang | append: '_Desktop.png' -%}\n{%- assign mobile_img  = base_url | append: 'Mobilier_' | append: lang | append: '_Mobile.png' -%}\n\n{%- assign target_url = 'https://www.alessandrodesign.' | append: tld | append: '/collections/mobilier-baie' -%}\n\n<a class=\"om-banner-link\" href=\"{{ target_url }}\" aria-label=\"Mobilier Baie Banner\">\n\n  <picture class=\"om-banner\">\n    <source media=\"(min-width: 769px)\" srcset=\"{{ desktop_img }}\">\n    <img\n      src=\"{{ mobile_img }}\"\n      alt=\"Mobilier Baie Banner\"\n      loading=\"lazy\"\n      decoding=\"async\"\n      class=\"om-banner__img\"\n      width=\"1920\"\n      height=\"1080\">\n  </picture>\n\n</a>\n\n<style>\n.om-banner-link {\n  display:block;\n  text-decoration:none;\n  width:100%;\n}\n\n.om-banner {\n  display:block;\n  width:100%;\n  line-height:0;\n}\n\n.om-banner__img {\n  display:block;\n  width:100%;\n  height:auto;\n}\n\n@media (min-width: 769px) {\n  .om-banner-link {\n    max-width:1300px;\n    margin:0 auto;\n  }\n}\n</style>",
+        "color_scheme": "",
+        "padding_top": 0,
+        "padding_bottom": 0
+      }
+    },
+    "alc_featured_collection_eK7URW": {
+      "type": "alc-featured-collection",
+      "settings": {
+        "title": "",
+        "heading_size": "h1",
+        "description": "",
+        "show_description": false,
+        "description_style": "body",
+        "collection": "mobilier-baie",
         "products_to_show": 8,
         "columns_desktop": 4,
         "full_width": false,
@@ -762,34 +789,6 @@
         "padding_bottom": 12
       }
     },
-    "alc_featured_collection_eK7URW": {
-      "type": "alc-featured-collection",
-      "settings": {
-        "title": "Mobilier de baie",
-        "heading_size": "h1",
-        "description": "",
-        "show_description": false,
-        "description_style": "body",
-        "collection": "mobilier-baie",
-        "products_to_show": 8,
-        "columns_desktop": 4,
-        "full_width": false,
-        "show_view_all": true,
-        "view_all_style": "solid",
-        "enable_desktop_slider": false,
-        "color_scheme": "",
-        "image_ratio": "adapt",
-        "image_shape": "default",
-        "show_secondary_image": true,
-        "show_vendor": false,
-        "show_rating": true,
-        "quick_add": "standard",
-        "columns_mobile": "2",
-        "swipe_on_mobile": false,
-        "padding_top": 24,
-        "padding_bottom": 24
-      }
-    },
     "174558919114520042": {
       "type": "apps",
       "blocks": {
@@ -834,11 +833,11 @@
     "alc_collection_list_campaign_XeTR6y",
     "custom_liquid_ggcwHk",
     "featured_collection_KFUddR",
-    "custom_liquid_W8WWQz",
     "custom_liquid_Yee3Mx",
     "alc_featured_collection_ERArtK",
-    "featured_collection_mMLGif",
+    "custom_liquid_W8WWQz",
     "alc_featured_collection_eK7URW",
+    "featured_collection_mMLGif",
     "174558919114520042",
     "featured_blog_wr7Dxf"
   ]
