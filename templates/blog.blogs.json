@@ -9,20 +9,52 @@
  */
 {
   "sections": {
+    "rich_text_xcLW8T": {
+      "type": "rich-text",
+      "blocks": {
+        "heading_pcRKpe": {
+          "type": "heading",
+          "settings": {
+            "heading": "Lasă-te inspirat!",
+            "heading_size": "h1"
+          }
+        },
+        "text_kKH3fT": {
+          "type": "text",
+          "settings": {
+            "text": "<p><br/>Descoperă idei de amenajare, tendințe moderne în design interior și sfaturi utile pentru alegerea corpurilor de iluminat potrivite pentru casa ta. Află cum poți transforma fiecare spațiu prin lumină, stil și funcționalitate.<br/><br/></p>"
+          }
+        }
+      },
+      "block_order": [
+        "heading_pcRKpe",
+        "text_kKH3fT"
+      ],
+      "name": "t:sections.rich-text.presets.name",
+      "settings": {
+        "desktop_content_position": "center",
+        "content_alignment": "center",
+        "color_scheme": "",
+        "full_width": true,
+        "padding_top": 0,
+        "padding_bottom": 0
+      }
+    },
     "main": {
       "type": "main-blog",
       "settings": {
-        "layout": "collage",
+        "layout": "grid",
         "show_image": true,
-        "image_height": "medium",
+        "image_height": "adapt",
         "show_date": true,
-        "show_author": false,
+        "show_author": true,
         "padding_top": 36,
         "padding_bottom": 36
       }
     }
   },
   "order": [
+    "rich_text_xcLW8T",
     "main"
   ]
 }
