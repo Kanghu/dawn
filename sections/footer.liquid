@@ -292,15 +292,16 @@
               class="max-h-14" />
           </a>
           <!--Pepita badge-->
-<div id="pepita-partner-badge" data-pssid="15916">
+<div id="pepita-partner-badge" data-pssid="15916" class="flex items-center space-x-2">
   <a id="pepita-partner-badge-seller-link" href="https://pepita.hu/forgalmazo/atlantic-logistic-concept-srl-d15916" target="_blank">
-    <img src="https://pepita.hu/partner-badge-image/15916" alt="Pepita Super Seller" class="max-h-14">
+    <img src="https://pepita.hu/partner-badge-image/15916" alt="Pepita Super Seller" id="pepita-super-seller">
   </a>
   <a id="pepita-partner-badge-site-link" href="https://pepita.hu" target="_blank">
-    <img src="https://pepita.hu/partner-badge-pepita-logo/15916" alt="Pepita.hu" class="max-h-14">
+    <img src="https://pepita.hu/partner-badge-pepita-logo/15916" alt="Pepita.hu" id="pepita-logo">
     <span>marketplace partner</span>
   </a>
   <script>
+    // Încarcă badge-ul oficial
     (function(w, d, s) {
       var scriptElement = d.getElementsByTagName(s)[0];
       var script = d.createElement(s);
@@ -308,6 +309,14 @@
       script.src = "https://pepita.hu/js/partner-badge.js";
       scriptElement.parentNode.insertBefore(script, scriptElement);
     })(window, document, 'script');
+
+    // Forțează max-h-14 după ce script-ul încarcă imaginile
+    window.addEventListener('load', function() {
+      const sellerImg = document.getElementById('pepita-super-seller');
+      const logoImg = document.getElementById('pepita-logo');
+      if(sellerImg) sellerImg.style.maxHeight = '3.5rem';
+      if(logoImg) logoImg.style.maxHeight = '3.5rem';
+    });
   </script>
 </div>
 <!-- /Pepita badge-->
