@@ -1,6 +1,630 @@
+{% doc %}
+  @prompt
+    am nevoie de o sectiune de galerie optimizata pentru mobile dar si desktop, unde incarc poze. Mai multe poze, galerie frumos asezata, layout modern selectabil in mai multe stiluri, si la fiecare poza, sa aibe comentariu , nu mai vreau comentarii, vreau decat mass import la mai multe poze
+{% enddoc %}
+{% assign ai_gen_id = block.id | replace: '_', '' | downcase %}
+
+{% style %}
+  .ai-gallery-{{ ai_gen_id }} {
+    display: block;
+    width: 100%;
+    padding: 40px 20px;
+    background-color: {{ block.settings.background_color }};
+  }
+
+  .ai-gallery-container-{{ ai_gen_id }} {
+    max-width: {{ block.settings.max_width }}px;
+    margin: 0 auto;
+  }
+
+  .ai-gallery-heading-{{ ai_gen_id }} {
+    text-align: center;
+    margin-bottom: 40px;
+    color: {{ block.settings.text_color }};
+    font-size: {{ block.settings.heading_size }}px;
+  }
+
+  .ai-gallery-grid-{{ ai_gen_id }} {
+    display: grid;
+    gap: {{ block.settings.gap }}px;
+  }
+
+  .ai-gallery-grid-{{ ai_gen_id }}.layout-grid {
+    grid-template-columns: repeat({{ block.settings.columns_desktop }}, 1fr);
+  }
+
+  .ai-gallery-grid-{{ ai_gen_id }}.layout-masonry {
+    grid-template-columns: repeat({{ block.settings.columns_desktop }}, 1fr);
+    grid-auto-rows: 10px;
+  }
+
+  .ai-gallery-grid-{{ ai_gen_id }}.layout-carousel {
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .ai-gallery-item-{{ ai_gen_id }} {
+    position: relative;
+    overflow: hidden;
+    border-radius: {{ block.settings.border_radius }}px;
+    background-color: #f4f4f4;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+  }
+
+  .ai-gallery-item-{{ ai_gen_id }}:hover {
+    transform: translateY(-5px);
+  }
+
+  .ai-gallery-grid-{{ ai_gen_id }}.layout-carousel .ai-gallery-item-{{ ai_gen_id }} {
+    scroll-snap-align: start;
+  }
+
+  .ai-gallery-image-wrapper-{{ ai_gen_id }} {
+    position: relative;
+    width: 100%;
+    padding-bottom: 100%;
+    overflow: hidden;
+  }
+
+  .ai-gallery-grid-{{ ai_gen_id }}.layout-masonry .ai-gallery-image-wrapper-{{ ai_gen_id }} {
+    padding-bottom: 0;
+    height: auto;
+  }
+
+  .ai-gallery-image-{{ ai_gen_id }} {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .ai-gallery-grid-{{ ai_gen_id }}.layout-masonry .ai-gallery-image-{{ ai_gen_id }} {
+    position: relative;
+    height: auto;
+  }
+
+  .ai-gallery-placeholder-{{ ai_gen_id }} {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #f4f4f4;
+  }
+
+  .ai-gallery-placeholder-{{ ai_gen_id }} svg {
+    width: 60%;
+    height: 60%;
+    opacity: 0.3;
+  }
+
+  .ai-gallery-modal-{{ ai_gen_id }} {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.9);
+    z-index: 9999;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+  }
+
+  .ai-gallery-modal-{{ ai_gen_id }}.active {
+    display: flex;
+  }
+
+  .ai-gallery-modal-content-{{ ai_gen_id }} {
+    position: relative;
+    max-width: 90%;
+    max-height: 90%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .ai-gallery-modal-image-{{ ai_gen_id }} {
+    max-width: 100%;
+    max-height: 80vh;
+    object-fit: contain;
+    border-radius: {{ block.settings.border_radius }}px;
+  }
+
+  .ai-gallery-modal-close-{{ ai_gen_id }} {
+    position: absolute;
+    top: -40px;
+    right: 0;
+    background: none;
+    border: none;
+    color: #ffffff;
+    font-size: 40px;
+    cursor: pointer;
+    padding: 0;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .ai-gallery-modal-close-{{ ai_gen_id }}:hover {
+    opacity: 0.7;
+  }
+
+  .ai-gallery-modal-nav-{{ ai_gen_id }} {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(255, 255, 255, 0.2);
+    border: none;
+    color: #ffffff;
+    font-size: 30px;
+    cursor: pointer;
+    padding: 15px 20px;
+    border-radius: 4px;
+  }
+
+  .ai-gallery-modal-nav-{{ ai_gen_id }}:hover {
+    background: rgba(255, 255, 255, 0.3);
+  }
+
+  .ai-gallery-modal-prev-{{ ai_gen_id }} {
+    left: 20px;
+  }
+
+  .ai-gallery-modal-next-{{ ai_gen_id }} {
+    right: 20px;
+  }
+
+  @media screen and (max-width: 749px) {
+    .ai-gallery-grid-{{ ai_gen_id }}.layout-grid,
+    .ai-gallery-grid-{{ ai_gen_id }}.layout-masonry {
+      grid-template-columns: repeat({{ block.settings.columns_mobile }}, 1fr);
+    }
+
+    .ai-gallery-heading-{{ ai_gen_id }} {
+      font-size: calc({{ block.settings.heading_size }}px * 0.8);
+    }
+
+    .ai-gallery-modal-nav-{{ ai_gen_id }} {
+      padding: 10px 15px;
+      font-size: 24px;
+    }
+
+    .ai-gallery-modal-prev-{{ ai_gen_id }} {
+      left: 10px;
+    }
+
+    .ai-gallery-modal-next-{{ ai_gen_id }} {
+      right: 10px;
+    }
+  }
+{% endstyle %}
+
+<gallery-block-{{ ai_gen_id }} class="ai-gallery-{{ ai_gen_id }}" {{ block.shopify_attributes }}>
+  <div class="ai-gallery-container-{{ ai_gen_id }}">
+    {% if block.settings.heading != blank %}
+      <h2 class="ai-gallery-heading-{{ ai_gen_id }}">{{ block.settings.heading }}</h2>
+    {% endif %}
+
+    <div class="ai-gallery-grid-{{ ai_gen_id }} layout-{{ block.settings.layout }}">
+      {% for i in (1..24) %}
+        {% liquid
+          assign image_key = 'image_' | append: i
+          assign image = block.settings[image_key]
+        %}
+
+        {% if image != blank %}
+          <div class="ai-gallery-item-{{ ai_gen_id }}" data-index="{{ forloop.index0 }}">
+            <div class="ai-gallery-image-wrapper-{{ ai_gen_id }}">
+              <img
+                src="{{ image | image_url: width: 800 }}"
+                alt="{{ image.alt | escape }}"
+                loading="lazy"
+                width="{{ image.width }}"
+                height="{{ image.height }}"
+                class="ai-gallery-image-{{ ai_gen_id }}"
+              >
+            </div>
+          </div>
+        {% endif %}
+      {% endfor %}
+    </div>
+  </div>
+
+  <div class="ai-gallery-modal-{{ ai_gen_id }}">
+    <div class="ai-gallery-modal-content-{{ ai_gen_id }}">
+      <button class="ai-gallery-modal-close-{{ ai_gen_id }}" aria-label="Close">&times;</button>
+      <button class="ai-gallery-modal-nav-{{ ai_gen_id }} ai-gallery-modal-prev-{{ ai_gen_id }}" aria-label="Previous">&#8249;</button>
+      <img src="" alt="" class="ai-gallery-modal-image-{{ ai_gen_id }}">
+      <button class="ai-gallery-modal-nav-{{ ai_gen_id }} ai-gallery-modal-next-{{ ai_gen_id }}" aria-label="Next">&#8250;</button>
+    </div>
+  </div>
+</gallery-block-{{ ai_gen_id }}>
+
+<script>
+  (function() {
+    class GalleryBlock{{ ai_gen_id }} extends HTMLElement {
+      constructor() {
+        super();
+        this.currentIndex = 0;
+        this.images = [];
+      }
+
+      connectedCallback() {
+        this.items = this.querySelectorAll('.ai-gallery-item-{{ ai_gen_id }}');
+        this.modal = this.querySelector('.ai-gallery-modal-{{ ai_gen_id }}');
+        this.modalImage = this.querySelector('.ai-gallery-modal-image-{{ ai_gen_id }}');
+        this.closeBtn = this.querySelector('.ai-gallery-modal-close-{{ ai_gen_id }}');
+        this.prevBtn = this.querySelector('.ai-gallery-modal-prev-{{ ai_gen_id }}');
+        this.nextBtn = this.querySelector('.ai-gallery-modal-next-{{ ai_gen_id }}');
+
+        this.collectImages();
+        this.setupEventListeners();
+        this.adjustMasonryLayout();
+      }
+
+      collectImages() {
+        this.items.forEach((item, index) => {
+          const img = item.querySelector('.ai-gallery-image-{{ ai_gen_id }}');
+          if (img) {
+            this.images.push({
+              src: img.src,
+              alt: img.alt
+            });
+          }
+        });
+      }
+
+      setupEventListeners() {
+        this.items.forEach((item, index) => {
+          item.addEventListener('click', () => {
+            this.openModal(index);
+          });
+        });
+
+        this.closeBtn.addEventListener('click', () => {
+          this.closeModal();
+        });
+
+        this.prevBtn.addEventListener('click', () => {
+          this.showPrevious();
+        });
+
+        this.nextBtn.addEventListener('click', () => {
+          this.showNext();
+        });
+
+        this.modal.addEventListener('click', (e) => {
+          if (e.target === this.modal) {
+            this.closeModal();
+          }
+        });
+
+        document.addEventListener('keydown', (e) => {
+          if (this.modal.classList.contains('active')) {
+            if (e.key === 'Escape') {
+              this.closeModal();
+            } else if (e.key === 'ArrowLeft') {
+              this.showPrevious();
+            } else if (e.key === 'ArrowRight') {
+              this.showNext();
+            }
+          }
+        });
+
+        window.addEventListener('resize', () => {
+          this.adjustMasonryLayout();
+        });
+      }
+
+      adjustMasonryLayout() {
+        const grid = this.querySelector('.ai-gallery-grid-{{ ai_gen_id }}');
+        if (grid && grid.classList.contains('layout-masonry')) {
+          this.items.forEach((item) => {
+            const img = item.querySelector('.ai-gallery-image-{{ ai_gen_id }}');
+            if (img && img.complete) {
+              const height = img.offsetHeight;
+              const rowSpan = Math.ceil((height + {{ block.settings.gap }}) / 10);
+              item.style.gridRowEnd = 'span ' + rowSpan;
+            } else if (img) {
+              img.addEventListener('load', () => {
+                const height = img.offsetHeight;
+                const rowSpan = Math.ceil((height + {{ block.settings.gap }}) / 10);
+                item.style.gridRowEnd = 'span ' + rowSpan;
+              });
+            }
+          });
+        }
+      }
+
+      openModal(index) {
+        this.currentIndex = index;
+        this.updateModal();
+        this.modal.classList.add('active');
+        document.body.style.overflow = 'hidden';
+      }
+
+      closeModal() {
+        this.modal.classList.remove('active');
+        document.body.style.overflow = '';
+      }
+
+      showPrevious() {
+        this.currentIndex = (this.currentIndex - 1 + this.images.length) % this.images.length;
+        this.updateModal();
+      }
+
+      showNext() {
+        this.currentIndex = (this.currentIndex + 1) % this.images.length;
+        this.updateModal();
+      }
+
+      updateModal() {
+        const image = this.images[this.currentIndex];
+        this.modalImage.src = image.src;
+        this.modalImage.alt = image.alt;
+      }
+    }
+
+    customElements.define('gallery-block-{{ ai_gen_id }}', GalleryBlock{{ ai_gen_id }});
+  })();
+</script>
+
 {% schema %}
- {
-   "name": "AI_Block",
-   "tag": "shopify-ai-generated-block"
- }
+{
+  "name": "Galerie foto",
+  "settings": [
+    {
+      "type": "header",
+      "content": "General"
+    },
+    {
+      "type": "richtext",
+      "id": "heading",
+      "label": "Titlu",
+      "default": "<p>Galeria noastră</p>"
+    },
+    {
+      "type": "select",
+      "id": "layout",
+      "label": "Stil layout",
+      "options": [
+        {
+          "value": "grid",
+          "label": "Grid uniform"
+        },
+        {
+          "value": "masonry",
+          "label": "Masonry (înălțimi variabile)"
+        },
+        {
+          "value": "carousel",
+          "label": "Carousel"
+        }
+      ],
+      "default": "grid"
+    },
+    {
+      "type": "range",
+      "id": "columns_desktop",
+      "label": "Coloane desktop",
+      "min": 2,
+      "max": 6,
+      "step": 1,
+      "default": 4
+    },
+    {
+      "type": "select",
+      "id": "columns_mobile",
+      "label": "Coloane mobile",
+      "options": [
+        {
+          "value": "1",
+          "label": "1"
+        },
+        {
+          "value": "2",
+          "label": "2"
+        }
+      ],
+      "default": "2"
+    },
+    {
+      "type": "range",
+      "id": "gap",
+      "label": "Spațiu între imagini",
+      "min": 5,
+      "max": 40,
+      "step": 5,
+      "unit": "px",
+      "default": 15
+    },
+    {
+      "type": "range",
+      "id": "max_width",
+      "label": "Lățime maximă",
+      "min": 800,
+      "max": 1600,
+      "step": 100,
+      "unit": "px",
+      "default": 1200
+    },
+    {
+      "type": "header",
+      "content": "Stil"
+    },
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "Culoare fundal",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Culoare text",
+      "default": "#000000"
+    },
+    {
+      "type": "range",
+      "id": "heading_size",
+      "label": "Dimensiune titlu",
+      "min": 20,
+      "max": 60,
+      "step": 2,
+      "unit": "px",
+      "default": 32
+    },
+    {
+      "type": "range",
+      "id": "border_radius",
+      "label": "Rotunjire colțuri",
+      "min": 0,
+      "max": 30,
+      "step": 2,
+      "unit": "px",
+      "default": 8
+    },
+    {
+      "type": "header",
+      "content": "Imagini"
+    },
+    {
+      "type": "image_picker",
+      "id": "image_1",
+      "label": "Imagine 1"
+    },
+    {
+      "type": "image_picker",
+      "id": "image_2",
+      "label": "Imagine 2"
+    },
+    {
+      "type": "image_picker",
+      "id": "image_3",
+      "label": "Imagine 3"
+    },
+    {
+      "type": "image_picker",
+      "id": "image_4",
+      "label": "Imagine 4"
+    },
+    {
+      "type": "image_picker",
+      "id": "image_5",
+      "label": "Imagine 5"
+    },
+    {
+      "type": "image_picker",
+      "id": "image_6",
+      "label": "Imagine 6"
+    },
+    {
+      "type": "image_picker",
+      "id": "image_7",
+      "label": "Imagine 7"
+    },
+    {
+      "type": "image_picker",
+      "id": "image_8",
+      "label": "Imagine 8"
+    },
+    {
+      "type": "image_picker",
+      "id": "image_9",
+      "label": "Imagine 9"
+    },
+    {
+      "type": "image_picker",
+      "id": "image_10",
+      "label": "Imagine 10"
+    },
+    {
+      "type": "image_picker",
+      "id": "image_11",
+      "label": "Imagine 11"
+    },
+    {
+      "type": "image_picker",
+      "id": "image_12",
+      "label": "Imagine 12"
+    },
+    {
+      "type": "image_picker",
+      "id": "image_13",
+      "label": "Imagine 13"
+    },
+    {
+      "type": "image_picker",
+      "id": "image_14",
+      "label": "Imagine 14"
+    },
+    {
+      "type": "image_picker",
+      "id": "image_15",
+      "label": "Imagine 15"
+    },
+    {
+      "type": "image_picker",
+      "id": "image_16",
+      "label": "Imagine 16"
+    },
+    {
+      "type": "image_picker",
+      "id": "image_17",
+      "label": "Imagine 17"
+    },
+    {
+      "type": "image_picker",
+      "id": "image_18",
+      "label": "Imagine 18"
+    },
+    {
+      "type": "image_picker",
+      "id": "image_19",
+      "label": "Imagine 19"
+    },
+    {
+      "type": "image_picker",
+      "id": "image_20",
+      "label": "Imagine 20"
+    },
+    {
+      "type": "image_picker",
+      "id": "image_21",
+      "label": "Imagine 21"
+    },
+    {
+      "type": "image_picker",
+      "id": "image_22",
+      "label": "Imagine 22"
+    },
+    {
+      "type": "image_picker",
+      "id": "image_23",
+      "label": "Imagine 23"
+    },
+    {
+      "type": "image_picker",
+      "id": "image_24",
+      "label": "Imagine 24"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Galerie foto"
+    }
+  ]
+}
 {% endschema %}
