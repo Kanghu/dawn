@@ -14,28 +14,25 @@
     "announcement-bar": {
       "type": "announcement-bar",
       "blocks": {
-        "announcement_bf_lowest": {
+        "announcement_9GVdi3": {
           "type": "announcement",
-          "disabled": true,
           "settings": {
-            "text": "t:sections.announcements.black_friday_lowest_prices",
+            "text": "🎉 Facem toate eforturile ca comenzile plasate pana Joi dimineata sa fie livrate Vineri 🎉",
             "link": ""
           }
         },
-        "announcement_bf_delay": {
+        "announcement_m3Ly93": {
           "type": "announcement",
-          "disabled": true,
           "settings": {
-            "text": "t:sections.announcements.holiday_closure",
+            "text": "Program sarbatori: 10 - 13 Aprilie LIBER. 14 Aprilie - Program normal.",
             "link": ""
           }
         }
       },
       "block_order": [
-        "announcement_bf_lowest",
-        "announcement_bf_delay"
+        "announcement_9GVdi3",
+        "announcement_m3Ly93"
       ],
-      "disabled": true,
       "settings": {
         "color_scheme": "scheme-5",
         "show_line_separator": true,
