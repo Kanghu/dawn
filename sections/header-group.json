@@ -11,38 +11,6 @@
   "name": "t:sections.header.name",
   "type": "header",
   "sections": {
-    "announcement-bar": {
-      "type": "announcement-bar",
-      "blocks": {
-        "announcement_9GVdi3": {
-          "type": "announcement",
-          "settings": {
-            "text": "🎉 Facem toate eforturile ca comenzile plasate pana Joi dimineata sa fie livrate Vineri 🎉",
-            "link": ""
-          }
-        },
-        "announcement_m3Ly93": {
-          "type": "announcement",
-          "settings": {
-            "text": "Program sarbatori: 10 - 13 Aprilie LIBER. 14 Aprilie - Program normal.",
-            "link": ""
-          }
-        }
-      },
-      "block_order": [
-        "announcement_9GVdi3",
-        "announcement_m3Ly93"
-      ],
-      "settings": {
-        "color_scheme": "scheme-5",
-        "show_line_separator": true,
-        "show_social": false,
-        "auto_rotate": true,
-        "change_slides_speed": 3,
-        "enable_country_selector": false,
-        "enable_language_selector": false
-      }
-    },
     "header": {
       "type": "alc-header",
       "blocks": {
@@ -147,7 +115,6 @@
     }
   },
   "order": [
-    "announcement-bar",
     "header",
     "mktr_custom_app",
     "1772705048532a5462"
