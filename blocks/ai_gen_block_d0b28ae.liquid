@@ -1,3 +1,6 @@
+{% assign ai_gen_id = block.id | replace: '_', '' | downcase %}
+{% assign current_lang = request.locale.iso_code | downcase | slice: 0, 2 %}
+
 {% style %}
   .ai-collections-slider-{{ ai_gen_id }} {
     display: block;
@@ -316,35 +319,43 @@
 
 <collections-slider-{{ ai_gen_id }} class="ai-collections-slider-{{ ai_gen_id }}" {{ block.shopify_attributes }}>
   {% liquid
-    if current_lang == 'ro'
-      assign default_heading = 'Inspiră-ți spațiul'
-      assign default_subheading = 'Descoperă colecțiile noastre premium'
-      assign default_cta = 'Descoperă colecția →'
-      assign prev_label = 'Colecția anterioară'
-      assign next_label = 'Colecția următoare'
-      assign go_to_slide_label = 'Mergi la slide-ul'
-    else
-      assign default_heading = 'Inspire your space'
-      assign default_subheading = 'Discover our premium collections'
-      assign default_cta = 'Explore collection →'
-      assign prev_label = 'Previous collection'
-      assign next_label = 'Next collection'
-      assign go_to_slide_label = 'Go to slide'
+    case current_lang
+      when 'ro'
+        assign display_heading = block.settings.heading
+        assign display_subheading = block.settings.subheading
+        assign default_cta = 'Descoperă colecția'
+        assign prev_label = 'Colecția anterioară'
+        assign next_label = 'Colecția următoare'
+        assign go_to_slide_label = 'Mergi la slide-ul'
+      when 'bg'
+        assign display_heading = block.settings.heading_bg
+        assign display_subheading = block.settings.subheading_bg
+        assign default_cta = 'Разгледай колекцията'
+        assign prev_label = 'Предишна колекция'
+        assign next_label = 'Следваща колекция'
+        assign go_to_slide_label = 'Към слайд'
+      else
+        assign display_heading = block.settings.heading_en
+        assign display_subheading = block.settings.subheading_en
+        assign default_cta = 'Explore collection'
+        assign prev_label = 'Previous collection'
+        assign next_label = 'Next collection'
+        assign go_to_slide_label = 'Go to slide'
+    endcase
+
+    if display_heading == blank
+      assign display_heading = block.settings.heading
+    endif
+
+    if display_subheading == blank
+      assign display_subheading = block.settings.subheading
     endif
   %}
 
   <div class="ai-collections-header-{{ ai_gen_id }}">
-    {% if block.settings.heading != blank %}
-      <h2>{{ block.settings.heading }}</h2>
-    {% else %}
-      <h2>{{ default_heading }}</h2>
-    {% endif %}
-
-    {% if block.settings.subheading != blank %}
-      <p>{{ block.settings.subheading }}</p>
-    {% else %}
-      <p>{{ default_subheading }}</p>
-    {% endif %}
+    <h2>{{ display_heading }}</h2>
+    <p>{{ display_subheading }}</p>
+    <div class="ai-collections-header-accent-{{ ai_gen_id }}"></div>
   </div>
 
   <div class="ai-collections-slider-shell-{{ ai_gen_id }}">
@@ -379,15 +390,31 @@
         {% liquid
           assign collection_key = 'collection_' | append: i
           assign title_key = 'collection_' | append: i | append: '_title'
+          assign title_en_key = 'collection_' | append: i | append: '_title_en'
+          assign title_bg_key = 'collection_' | append: i | append: '_title_bg'
           assign description_key = 'collection_' | append: i | append: '_description'
+          assign description_en_key = 'collection_' | append: i | append: '_description_en'
+          assign description_bg_key = 'collection_' | append: i | append: '_description_bg'
           assign image_key = 'collection_' | append: i | append: '_image'
           assign cta_key = 'collection_' | append: i | append: '_cta'
+          assign cta_en_key = 'collection_' | append: i | append: '_cta_en'
+          assign cta_bg_key = 'collection_' | append: i | append: '_cta_bg'
 
           assign collection = block.settings[collection_key]
-          assign custom_title = block.settings[title_key]
-          assign custom_description = block.settings[description_key]
+
+          assign custom_title_ro = block.settings[title_key]
+          assign custom_title_en = block.settings[title_en_key]
+          assign custom_title_bg = block.settings[title_bg_key]
+
+          assign custom_description_ro = block.settings[description_key]
+          assign custom_description_en = block.settings[description_en_key]
+          assign custom_description_bg = block.settings[description_bg_key]
+
           assign custom_image = block.settings[image_key]
-          assign custom_cta = block.settings[cta_key]
+
+          assign custom_cta_ro = block.settings[cta_key]
+          assign custom_cta_en = block.settings[cta_en_key]
+          assign custom_cta_bg = block.settings[cta_bg_key]
 
           if collection != blank
             assign collection_url = collection.url
@@ -399,10 +426,31 @@
             assign collection_image = null
           endif
 
-          if custom_title != blank
-            assign display_title = custom_title
-          else
-            assign display_title = collection_title
+          case current_lang
+            when 'bg'
+              assign display_title = custom_title_bg
+              assign display_description = custom_description_bg
+              assign display_cta = custom_cta_bg
+            when 'en'
+              assign display_title = custom_title_en
+              assign display_description = custom_description_en
+              assign display_cta = custom_cta_en
+            else
+              assign display_title = custom_title_ro
+              assign display_description = custom_description_ro
+              assign display_cta = custom_cta_ro
+          endcase
+
+          if display_title == blank
+            if custom_title_ro != blank
+              assign display_title = custom_title_ro
+            else
+              assign display_title = collection_title
+            endif
+          endif
+
+          if display_description == blank
+            assign display_description = custom_description_ro
           endif
 
           if custom_image != blank
@@ -411,10 +459,12 @@
             assign display_image = collection_image
           endif
 
-          if custom_cta != blank
-            assign display_cta = custom_cta
-          else
-            assign display_cta = default_cta
+          if display_cta == blank
+            if custom_cta_ro != blank
+              assign display_cta = custom_cta_ro
+            else
+              assign display_cta = default_cta
+            endif
           endif
         %}
 
@@ -437,8 +487,8 @@
             {% if display_title != blank %}
               <h3>{{ display_title }}</h3>
             {% endif %}
-            {% if custom_description != blank %}
-              <p>{{ custom_description }}</p>
+            {% if display_description != blank %}
+              <p>{{ display_description }}</p>
             {% endif %}
             <span class="ai-collection-card-cta-{{ ai_gen_id }}">{{ display_cta }}</span>
           </div>
@@ -652,14 +702,38 @@
     {
       "type": "text",
       "id": "heading",
-      "label": "Heading",
+      "label": "Heading (RO)",
       "default": "Inspiră-ți spațiul"
     },
     {
       "type": "text",
+      "id": "heading_en",
+      "label": "Heading (EN)",
+      "default": "Inspire your space"
+    },
+    {
+      "type": "text",
+      "id": "heading_bg",
+      "label": "Heading (BG)",
+      "default": "Вдъхнови своето пространство"
+    },
+    {
+      "type": "text",
       "id": "subheading",
-      "label": "Subheading",
+      "label": "Subheading (RO)",
       "default": "Descoperă colecțiile noastre premium"
+    },
+    {
+      "type": "text",
+      "id": "subheading_en",
+      "label": "Subheading (EN)",
+      "default": "Discover our premium collections"
+    },
+    {
+      "type": "text",
+      "id": "subheading_bg",
+      "label": "Subheading (BG)",
+      "default": "Разгледайте нашите премиум колекции"
     },
     {
       "type": "range",
@@ -1074,6 +1148,7 @@
       "unit": "s",
       "default": 0.3
     },
+
     {
       "type": "header",
       "content": "Collection 1"
@@ -1086,12 +1161,32 @@
     {
       "type": "text",
       "id": "collection_1_title",
-      "label": "Custom title"
+      "label": "Custom title (RO)"
+    },
+    {
+      "type": "text",
+      "id": "collection_1_title_en",
+      "label": "Custom title (EN)"
+    },
+    {
+      "type": "text",
+      "id": "collection_1_title_bg",
+      "label": "Custom title (BG)"
     },
     {
       "type": "text",
       "id": "collection_1_description",
-      "label": "Description"
+      "label": "Description (RO)"
+    },
+    {
+      "type": "text",
+      "id": "collection_1_description_en",
+      "label": "Description (EN)"
+    },
+    {
+      "type": "text",
+      "id": "collection_1_description_bg",
+      "label": "Description (BG)"
     },
     {
       "type": "image_picker",
@@ -1101,8 +1196,19 @@
     {
       "type": "text",
       "id": "collection_1_cta",
-      "label": "CTA text"
+      "label": "CTA text (RO)"
     },
+    {
+      "type": "text",
+      "id": "collection_1_cta_en",
+      "label": "CTA text (EN)"
+    },
+    {
+      "type": "text",
+      "id": "collection_1_cta_bg",
+      "label": "CTA text (BG)"
+    },
+
     {
       "type": "header",
       "content": "Collection 2"
@@ -1115,12 +1221,32 @@
     {
       "type": "text",
       "id": "collection_2_title",
-      "label": "Custom title"
+      "label": "Custom title (RO)"
+    },
+    {
+      "type": "text",
+      "id": "collection_2_title_en",
+      "label": "Custom title (EN)"
+    },
+    {
+      "type": "text",
+      "id": "collection_2_title_bg",
+      "label": "Custom title (BG)"
     },
     {
       "type": "text",
       "id": "collection_2_description",
-      "label": "Description"
+      "label": "Description (RO)"
+    },
+    {
+      "type": "text",
+      "id": "collection_2_description_en",
+      "label": "Description (EN)"
+    },
+    {
+      "type": "text",
+      "id": "collection_2_description_bg",
+      "label": "Description (BG)"
     },
     {
       "type": "image_picker",
@@ -1130,8 +1256,19 @@
     {
       "type": "text",
       "id": "collection_2_cta",
-      "label": "CTA text"
+      "label": "CTA text (RO)"
     },
+    {
+      "type": "text",
+      "id": "collection_2_cta_en",
+      "label": "CTA text (EN)"
+    },
+    {
+      "type": "text",
+      "id": "collection_2_cta_bg",
+      "label": "CTA text (BG)"
+    },
+
     {
       "type": "header",
       "content": "Collection 3"
@@ -1144,12 +1281,32 @@
     {
       "type": "text",
       "id": "collection_3_title",
-      "label": "Custom title"
+      "label": "Custom title (RO)"
+    },
+    {
+      "type": "text",
+      "id": "collection_3_title_en",
+      "label": "Custom title (EN)"
+    },
+    {
+      "type": "text",
+      "id": "collection_3_title_bg",
+      "label": "Custom title (BG)"
     },
     {
       "type": "text",
       "id": "collection_3_description",
-      "label": "Description"
+      "label": "Description (RO)"
+    },
+    {
+      "type": "text",
+      "id": "collection_3_description_en",
+      "label": "Description (EN)"
+    },
+    {
+      "type": "text",
+      "id": "collection_3_description_bg",
+      "label": "Description (BG)"
     },
     {
       "type": "image_picker",
@@ -1159,8 +1316,19 @@
     {
       "type": "text",
       "id": "collection_3_cta",
-      "label": "CTA text"
+      "label": "CTA text (RO)"
     },
+    {
+      "type": "text",
+      "id": "collection_3_cta_en",
+      "label": "CTA text (EN)"
+    },
+    {
+      "type": "text",
+      "id": "collection_3_cta_bg",
+      "label": "CTA text (BG)"
+    },
+
     {
       "type": "header",
       "content": "Collection 4"
@@ -1173,12 +1341,32 @@
     {
       "type": "text",
       "id": "collection_4_title",
-      "label": "Custom title"
+      "label": "Custom title (RO)"
+    },
+    {
+      "type": "text",
+      "id": "collection_4_title_en",
+      "label": "Custom title (EN)"
+    },
+    {
+      "type": "text",
+      "id": "collection_4_title_bg",
+      "label": "Custom title (BG)"
     },
     {
       "type": "text",
       "id": "collection_4_description",
-      "label": "Description"
+      "label": "Description (RO)"
+    },
+    {
+      "type": "text",
+      "id": "collection_4_description_en",
+      "label": "Description (EN)"
+    },
+    {
+      "type": "text",
+      "id": "collection_4_description_bg",
+      "label": "Description (BG)"
     },
     {
       "type": "image_picker",
@@ -1188,8 +1376,19 @@
     {
       "type": "text",
       "id": "collection_4_cta",
-      "label": "CTA text"
+      "label": "CTA text (RO)"
     },
+    {
+      "type": "text",
+      "id": "collection_4_cta_en",
+      "label": "CTA text (EN)"
+    },
+    {
+      "type": "text",
+      "id": "collection_4_cta_bg",
+      "label": "CTA text (BG)"
+    },
+
     {
       "type": "header",
       "content": "Collection 5"
@@ -1202,12 +1401,32 @@
     {
       "type": "text",
       "id": "collection_5_title",
-      "label": "Custom title"
+      "label": "Custom title (RO)"
+    },
+    {
+      "type": "text",
+      "id": "collection_5_title_en",
+      "label": "Custom title (EN)"
+    },
+    {
+      "type": "text",
+      "id": "collection_5_title_bg",
+      "label": "Custom title (BG)"
     },
     {
       "type": "text",
       "id": "collection_5_description",
-      "label": "Description"
+      "label": "Description (RO)"
+    },
+    {
+      "type": "text",
+      "id": "collection_5_description_en",
+      "label": "Description (EN)"
+    },
+    {
+      "type": "text",
+      "id": "collection_5_description_bg",
+      "label": "Description (BG)"
     },
     {
       "type": "image_picker",
@@ -1217,7 +1436,17 @@
     {
       "type": "text",
       "id": "collection_5_cta",
-      "label": "CTA text"
+      "label": "CTA text (RO)"
+    },
+    {
+      "type": "text",
+      "id": "collection_5_cta_en",
+      "label": "CTA text (EN)"
+    },
+    {
+      "type": "text",
+      "id": "collection_5_cta_bg",
+      "label": "CTA text (BG)"
     }
   ],
   "presets": [
