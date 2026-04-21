@@ -1,6 +1,3 @@
-{% assign ai_gen_id = block.id | replace: '_', '' | downcase %}
-{% assign current_lang = request.locale.iso_code | downcase | slice: 0, 2 %}
-
 {% style %}
   .ai-collections-slider-{{ ai_gen_id }} {
     display: block;
@@ -22,14 +19,23 @@
     margin: 0 0 {{ block.settings.subheading_spacing }}px;
     color: {{ block.settings.heading_color }};
     font-family: 'Roboto', sans-serif;
-    line-height: 1.2;
+    line-height: 1.15;
+    letter-spacing: -0.02em;
   }
 
   .ai-collections-header-{{ ai_gen_id }} p {
     color: {{ block.settings.subheading_color }};
     margin: 0;
     font-size: {{ block.settings.subheading_size }}px;
-    line-height: 1.4;
+    line-height: 1.45;
+  }
+
+  .ai-collections-header-accent-{{ ai_gen_id }} {
+    width: 52px;
+    height: 3px;
+    border-radius: 999px;
+    margin-top: 10px;
+    background: linear-gradient(90deg, #caa14a 0%, #e6c16a 100%);
   }
 
   .ai-collections-slider-shell-{{ ai_gen_id }} {
@@ -72,13 +78,19 @@
     text-decoration: none;
     color: {{ block.settings.card_text_color }};
     background: #000;
-    transition: transform {{ block.settings.hover_duration }}s ease, box-shadow {{ block.settings.hover_duration }}s ease;
+    transition:
+      transform {{ block.settings.hover_duration }}s ease,
+      box-shadow {{ block.settings.hover_duration }}s ease,
+      filter {{ block.settings.hover_duration }}s ease;
     display: block;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+    isolation: isolate;
   }
 
   .ai-collection-card-{{ ai_gen_id }}:hover {
     transform: translateY(-{{ block.settings.hover_lift }}px);
-    box-shadow: 0 {{ block.settings.hover_shadow_y }}px {{ block.settings.hover_shadow_blur }}px {{ block.settings.hover_shadow_color }};
+    box-shadow: 0 {{ block.settings.hover_shadow_y }}px {{ block.settings.hover_shadow_blur }}px rgba(0,0,0,0.18);
+    filter: saturate(1.03);
   }
 
   .ai-collection-card-{{ ai_gen_id }} img {
@@ -87,6 +99,12 @@
     object-fit: cover;
     display: block;
     pointer-events: none;
+    transform: scale(1);
+    transition: transform 0.6s ease;
+  }
+
+  .ai-collection-card-{{ ai_gen_id }}:hover img {
+    transform: scale(1.04);
   }
 
   .ai-collection-card-placeholder-{{ ai_gen_id }} {
@@ -108,12 +126,30 @@
   .ai-collection-card-overlay-{{ ai_gen_id }} {
     position: absolute;
     inset: 0;
-    background: linear-gradient(
-      to top,
-      {{ block.settings.overlay_bottom_color }} 0%,
-      {{ block.settings.overlay_middle_color }} {{ block.settings.overlay_middle_position }}%,
-      {{ block.settings.overlay_top_color }} {{ block.settings.overlay_top_position }}%
-    );
+    background:
+      linear-gradient(
+        to top,
+        rgba(0,0,0,0.94) 0%,
+        rgba(0,0,0,0.84) 18%,
+        rgba(0,0,0,0.58) 40%,
+        rgba(0,0,0,0.24) 66%,
+        rgba(0,0,0,0.06) 100%
+      );
+    z-index: 1;
+  }
+
+  .ai-collection-card-overlay-{{ ai_gen_id }}::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background:
+      linear-gradient(
+        180deg,
+        rgba(255,255,255,0.05) 0%,
+        rgba(255,255,255,0) 22%
+      );
+    mix-blend-mode: screen;
+    opacity: 0.55;
   }
 
   .ai-collection-card-content-{{ ai_gen_id }} {
@@ -130,20 +166,36 @@
     font-size: {{ block.settings.title_size }}px;
     font-weight: {{ block.settings.title_weight }};
     color: {{ block.settings.card_text_color }};
-    line-height: 1.2;
+    line-height: 1.12;
+    letter-spacing: -0.02em;
   }
 
   .ai-collection-card-content-{{ ai_gen_id }} p {
     margin: 0 0 {{ block.settings.description_spacing }}px;
     font-size: {{ block.settings.description_size }}px;
     color: {{ block.settings.card_description_color }};
-    line-height: 1.4;
+    line-height: 1.42;
+    max-width: 92%;
   }
 
   .ai-collection-card-cta-{{ ai_gen_id }} {
     font-size: {{ block.settings.cta_size }}px;
     color: {{ block.settings.cta_color }};
     font-weight: {{ block.settings.cta_weight }};
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    text-shadow: 0 1px 1px rgba(0,0,0,0.25);
+  }
+
+  .ai-collection-card-cta-{{ ai_gen_id }}::after {
+    content: '→';
+    display: inline-block;
+    transition: transform 0.25s ease;
+  }
+
+  .ai-collection-card-{{ ai_gen_id }}:hover .ai-collection-card-cta-{{ ai_gen_id }}::after {
+    transform: translateX(3px);
   }
 
   .ai-collections-nav-{{ ai_gen_id }} {
@@ -160,33 +212,36 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 0 10px;
+    padding: 0 12px;
   }
 
   .ai-collections-arrow-{{ ai_gen_id }} {
-    width: 44px;
-    height: 44px;
+    width: 46px;
+    height: 46px;
     border-radius: 999px;
-    border: 1px solid rgba(0,0,0,0.08);
-    background: rgba(255,255,255,0.95);
+    border: 1px solid rgba(0,0,0,0.06);
+    background: rgba(255,255,255,0.96);
     color: #111;
     display: flex;
     align-items: center;
     justify-content: center;
     cursor: pointer;
     pointer-events: auto;
-    transition: opacity 0.2s ease, transform 0.2s ease;
-    box-shadow: 0 6px 20px rgba(0,0,0,0.12);
+    transition: opacity 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.12);
+    backdrop-filter: blur(8px);
   }
 
   .ai-collections-arrow-{{ ai_gen_id }}:hover {
-    transform: scale(1.04);
+    transform: scale(1.05);
+    box-shadow: 0 10px 28px rgba(0,0,0,0.16);
   }
 
   .ai-collections-arrow-{{ ai_gen_id }}:disabled {
     opacity: 0.35;
     cursor: not-allowed;
     transform: none;
+    box-shadow: 0 6px 18px rgba(0,0,0,0.08);
   }
 
   .ai-collections-arrow-{{ ai_gen_id }} svg {
@@ -197,8 +252,8 @@
   .ai-collections-dots-{{ ai_gen_id }} {
     display: flex;
     justify-content: center;
-    gap: 8px;
-    padding: 8px {{ settings.spacing_grid_horizontal }}px 0;
+    gap: 10px;
+    padding: 10px {{ settings.spacing_grid_horizontal }}px 0;
   }
 
   .ai-collections-dot-{{ ai_gen_id }} {
@@ -206,15 +261,16 @@
     height: 8px;
     border-radius: 999px;
     background: rgba(0,0,0,0.18);
-    transition: transform 0.2s ease, background 0.2s ease;
+    transition: transform 0.2s ease, background 0.2s ease, width 0.2s ease;
     border: 0;
     padding: 0;
     cursor: pointer;
   }
 
   .ai-collections-dot-{{ ai_gen_id }}.is-active {
-    background: rgba(0,0,0,0.65);
-    transform: scale(1.2);
+    background: rgba(0,0,0,0.75);
+    transform: scale(1);
+    width: 10px;
   }
 
   @media (max-width: 989px) {
