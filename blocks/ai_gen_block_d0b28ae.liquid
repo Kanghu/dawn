@@ -1,5 +1,4 @@
 {% assign ai_gen_id = block.id | replace: '_', '' | downcase %}
-{% assign current_lang = request.locale.iso_code | downcase | slice: 0, 2 %}
 
 {% style %}
   .ai-collections-slider-{{ ai_gen_id }} {
@@ -22,23 +21,14 @@
     margin: 0 0 {{ block.settings.subheading_spacing }}px;
     color: {{ block.settings.heading_color }};
     font-family: 'Roboto', sans-serif;
-    line-height: 1.15;
-    letter-spacing: -0.02em;
+    line-height: 1.2;
   }
 
   .ai-collections-header-{{ ai_gen_id }} p {
     color: {{ block.settings.subheading_color }};
     margin: 0;
     font-size: {{ block.settings.subheading_size }}px;
-    line-height: 1.45;
-  }
-
-  .ai-collections-header-accent-{{ ai_gen_id }} {
-    width: 52px;
-    height: 3px;
-    border-radius: 999px;
-    margin-top: 10px;
-    background: linear-gradient(90deg, #caa14a 0%, #e6c16a 100%);
+    line-height: 1.4;
   }
 
   .ai-collections-slider-shell-{{ ai_gen_id }} {
@@ -81,19 +71,13 @@
     text-decoration: none;
     color: {{ block.settings.card_text_color }};
     background: #000;
-    transition:
-      transform {{ block.settings.hover_duration }}s ease,
-      box-shadow {{ block.settings.hover_duration }}s ease,
-      filter {{ block.settings.hover_duration }}s ease;
+    transition: transform {{ block.settings.hover_duration }}s ease, box-shadow {{ block.settings.hover_duration }}s ease;
     display: block;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
-    isolation: isolate;
   }
 
   .ai-collection-card-{{ ai_gen_id }}:hover {
     transform: translateY(-{{ block.settings.hover_lift }}px);
-    box-shadow: 0 {{ block.settings.hover_shadow_y }}px {{ block.settings.hover_shadow_blur }}px rgba(0,0,0,0.18);
-    filter: saturate(1.03);
+    box-shadow: 0 {{ block.settings.hover_shadow_y }}px {{ block.settings.hover_shadow_blur }}px {{ block.settings.hover_shadow_color }};
   }
 
   .ai-collection-card-{{ ai_gen_id }} img {
@@ -102,12 +86,6 @@
     object-fit: cover;
     display: block;
     pointer-events: none;
-    transform: scale(1);
-    transition: transform 0.6s ease;
-  }
-
-  .ai-collection-card-{{ ai_gen_id }}:hover img {
-    transform: scale(1.04);
   }
 
   .ai-collection-card-placeholder-{{ ai_gen_id }} {
@@ -129,30 +107,12 @@
   .ai-collection-card-overlay-{{ ai_gen_id }} {
     position: absolute;
     inset: 0;
-    background:
-      linear-gradient(
-        to top,
-        rgba(0,0,0,0.94) 0%,
-        rgba(0,0,0,0.84) 18%,
-        rgba(0,0,0,0.58) 40%,
-        rgba(0,0,0,0.24) 66%,
-        rgba(0,0,0,0.06) 100%
-      );
-    z-index: 1;
-  }
-
-  .ai-collection-card-overlay-{{ ai_gen_id }}::after {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background:
-      linear-gradient(
-        180deg,
-        rgba(255,255,255,0.05) 0%,
-        rgba(255,255,255,0) 22%
-      );
-    mix-blend-mode: screen;
-    opacity: 0.55;
+    background: linear-gradient(
+      to top,
+      {{ block.settings.overlay_bottom_color }} 0%,
+      {{ block.settings.overlay_middle_color }} {{ block.settings.overlay_middle_position }}%,
+      {{ block.settings.overlay_top_color }} {{ block.settings.overlay_top_position }}%
+    );
   }
 
   .ai-collection-card-content-{{ ai_gen_id }} {
@@ -169,36 +129,20 @@
     font-size: {{ block.settings.title_size }}px;
     font-weight: {{ block.settings.title_weight }};
     color: {{ block.settings.card_text_color }};
-    line-height: 1.12;
-    letter-spacing: -0.02em;
+    line-height: 1.2;
   }
 
   .ai-collection-card-content-{{ ai_gen_id }} p {
     margin: 0 0 {{ block.settings.description_spacing }}px;
     font-size: {{ block.settings.description_size }}px;
     color: {{ block.settings.card_description_color }};
-    line-height: 1.42;
-    max-width: 92%;
+    line-height: 1.4;
   }
 
   .ai-collection-card-cta-{{ ai_gen_id }} {
     font-size: {{ block.settings.cta_size }}px;
     color: {{ block.settings.cta_color }};
     font-weight: {{ block.settings.cta_weight }};
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    text-shadow: 0 1px 1px rgba(0,0,0,0.25);
-  }
-
-  .ai-collection-card-cta-{{ ai_gen_id }}::after {
-    content: '→';
-    display: inline-block;
-    transition: transform 0.25s ease;
-  }
-
-  .ai-collection-card-{{ ai_gen_id }}:hover .ai-collection-card-cta-{{ ai_gen_id }}::after {
-    transform: translateX(3px);
   }
 
   .ai-collections-nav-{{ ai_gen_id }} {
@@ -215,36 +159,33 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 0 12px;
+    padding: 0 10px;
   }
 
   .ai-collections-arrow-{{ ai_gen_id }} {
-    width: 46px;
-    height: 46px;
+    width: 44px;
+    height: 44px;
     border-radius: 999px;
-    border: 1px solid rgba(0,0,0,0.06);
-    background: rgba(255,255,255,0.96);
+    border: 1px solid rgba(0,0,0,0.08);
+    background: rgba(255,255,255,0.95);
     color: #111;
     display: flex;
     align-items: center;
     justify-content: center;
     cursor: pointer;
     pointer-events: auto;
-    transition: opacity 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
-    box-shadow: 0 8px 24px rgba(0,0,0,0.12);
-    backdrop-filter: blur(8px);
+    transition: opacity 0.2s ease, transform 0.2s ease;
+    box-shadow: 0 6px 20px rgba(0,0,0,0.12);
   }
 
   .ai-collections-arrow-{{ ai_gen_id }}:hover {
-    transform: scale(1.05);
-    box-shadow: 0 10px 28px rgba(0,0,0,0.16);
+    transform: scale(1.04);
   }
 
   .ai-collections-arrow-{{ ai_gen_id }}:disabled {
     opacity: 0.35;
     cursor: not-allowed;
     transform: none;
-    box-shadow: 0 6px 18px rgba(0,0,0,0.08);
   }
 
   .ai-collections-arrow-{{ ai_gen_id }} svg {
@@ -255,8 +196,8 @@
   .ai-collections-dots-{{ ai_gen_id }} {
     display: flex;
     justify-content: center;
-    gap: 10px;
-    padding: 10px {{ settings.spacing_grid_horizontal }}px 0;
+    gap: 8px;
+    padding: 8px {{ settings.spacing_grid_horizontal }}px 0;
   }
 
   .ai-collections-dot-{{ ai_gen_id }} {
@@ -264,16 +205,15 @@
     height: 8px;
     border-radius: 999px;
     background: rgba(0,0,0,0.18);
-    transition: transform 0.2s ease, background 0.2s ease, width 0.2s ease;
+    transition: transform 0.2s ease, background 0.2s ease;
     border: 0;
     padding: 0;
     cursor: pointer;
   }
 
   .ai-collections-dot-{{ ai_gen_id }}.is-active {
-    background: rgba(0,0,0,0.75);
-    transform: scale(1);
-    width: 10px;
+    background: rgba(0,0,0,0.65);
+    transform: scale(1.2);
   }
 
   @media (max-width: 989px) {
@@ -319,43 +259,26 @@
 
 <collections-slider-{{ ai_gen_id }} class="ai-collections-slider-{{ ai_gen_id }}" {{ block.shopify_attributes }}>
   {% liquid
-    case current_lang
-      when 'ro'
-        assign display_heading = block.settings.heading
-        assign display_subheading = block.settings.subheading
-        assign default_cta = 'Descoperă colecția'
-        assign prev_label = 'Colecția anterioară'
-        assign next_label = 'Colecția următoare'
-        assign go_to_slide_label = 'Mergi la slide-ul'
-      when 'bg'
-        assign display_heading = block.settings.heading_bg
-        assign display_subheading = block.settings.subheading_bg
-        assign default_cta = 'Разгледай колекцията'
-        assign prev_label = 'Предишна колекция'
-        assign next_label = 'Следваща колекция'
-        assign go_to_slide_label = 'Към слайд'
-      else
-        assign display_heading = block.settings.heading_en
-        assign display_subheading = block.settings.subheading_en
-        assign default_cta = 'Explore collection'
-        assign prev_label = 'Previous collection'
-        assign next_label = 'Next collection'
-        assign go_to_slide_label = 'Go to slide'
-    endcase
-
-    if display_heading == blank
-      assign display_heading = block.settings.heading
-    endif
-
-    if display_subheading == blank
-      assign display_subheading = block.settings.subheading
-    endif
+    assign default_heading = 'sections.collections_slider.heading' | t
+    assign default_subheading = 'sections.collections_slider.subheading' | t
+    assign default_cta = 'sections.collections_slider.cta' | t
+    assign prev_label = 'sections.collections_slider.prev' | t
+    assign next_label = 'sections.collections_slider.next' | t
+    assign go_to_slide_label = 'sections.collections_slider.go_to_slide' | t
   %}
 
   <div class="ai-collections-header-{{ ai_gen_id }}">
-    <h2>{{ display_heading }}</h2>
-    <p>{{ display_subheading }}</p>
-    <div class="ai-collections-header-accent-{{ ai_gen_id }}"></div>
+    {% if block.settings.heading != blank %}
+      <h2>{{ block.settings.heading }}</h2>
+    {% else %}
+      <h2>{{ default_heading }}</h2>
+    {% endif %}
+
+    {% if block.settings.subheading != blank %}
+      <p>{{ block.settings.subheading }}</p>
+    {% else %}
+      <p>{{ default_subheading }}</p>
+    {% endif %}
   </div>
 
   <div class="ai-collections-slider-shell-{{ ai_gen_id }}">
@@ -390,31 +313,23 @@
         {% liquid
           assign collection_key = 'collection_' | append: i
           assign title_key = 'collection_' | append: i | append: '_title'
-          assign title_en_key = 'collection_' | append: i | append: '_title_en'
-          assign title_bg_key = 'collection_' | append: i | append: '_title_bg'
           assign description_key = 'collection_' | append: i | append: '_description'
-          assign description_en_key = 'collection_' | append: i | append: '_description_en'
-          assign description_bg_key = 'collection_' | append: i | append: '_description_bg'
           assign image_key = 'collection_' | append: i | append: '_image'
           assign cta_key = 'collection_' | append: i | append: '_cta'
-          assign cta_en_key = 'collection_' | append: i | append: '_cta_en'
-          assign cta_bg_key = 'collection_' | append: i | append: '_cta_bg'
 
           assign collection = block.settings[collection_key]
-
-          assign custom_title_ro = block.settings[title_key]
-          assign custom_title_en = block.settings[title_en_key]
-          assign custom_title_bg = block.settings[title_bg_key]
-
-          assign custom_description_ro = block.settings[description_key]
-          assign custom_description_en = block.settings[description_en_key]
-          assign custom_description_bg = block.settings[description_bg_key]
-
+          assign custom_title = block.settings[title_key]
+          assign custom_description = block.settings[description_key]
           assign custom_image = block.settings[image_key]
+          assign custom_cta = block.settings[cta_key]
 
-          assign custom_cta_ro = block.settings[cta_key]
-          assign custom_cta_en = block.settings[cta_en_key]
-          assign custom_cta_bg = block.settings[cta_bg_key]
+          assign locale_title_key = 'sections.collections_slider.cards.card_' | append: i | append: '.title'
+          assign locale_description_key = 'sections.collections_slider.cards.card_' | append: i | append: '.description'
+          assign locale_cta_key = 'sections.collections_slider.cards.card_' | append: i | append: '.cta'
+
+          assign translated_title = locale_title_key | t
+          assign translated_description = locale_description_key | t
+          assign translated_cta = locale_cta_key | t
 
           if collection != blank
             assign collection_url = collection.url
@@ -426,31 +341,20 @@
             assign collection_image = null
           endif
 
-          case current_lang
-            when 'bg'
-              assign display_title = custom_title_bg
-              assign display_description = custom_description_bg
-              assign display_cta = custom_cta_bg
-            when 'en'
-              assign display_title = custom_title_en
-              assign display_description = custom_description_en
-              assign display_cta = custom_cta_en
-            else
-              assign display_title = custom_title_ro
-              assign display_description = custom_description_ro
-              assign display_cta = custom_cta_ro
-          endcase
-
-          if display_title == blank
-            if custom_title_ro != blank
-              assign display_title = custom_title_ro
-            else
-              assign display_title = collection_title
-            endif
+          if custom_title != blank
+            assign display_title = custom_title
+          elsif translated_title != locale_title_key
+            assign display_title = translated_title
+          else
+            assign display_title = collection_title
           endif
 
-          if display_description == blank
-            assign display_description = custom_description_ro
+          if custom_description != blank
+            assign display_description = custom_description
+          elsif translated_description != locale_description_key
+            assign display_description = translated_description
+          else
+            assign display_description = blank
           endif
 
           if custom_image != blank
@@ -459,12 +363,12 @@
             assign display_image = collection_image
           endif
 
-          if display_cta == blank
-            if custom_cta_ro != blank
-              assign display_cta = custom_cta_ro
-            else
-              assign display_cta = default_cta
-            endif
+          if custom_cta != blank
+            assign display_cta = custom_cta
+          elsif translated_cta != locale_cta_key
+            assign display_cta = translated_cta
+          else
+            assign display_cta = default_cta
           endif
         %}
 
@@ -702,38 +606,12 @@
     {
       "type": "text",
       "id": "heading",
-      "label": "Heading (RO)",
-      "default": "Inspiră-ți spațiul"
-    },
-    {
-      "type": "text",
-      "id": "heading_en",
-      "label": "Heading (EN)",
-      "default": "Inspire your space"
-    },
-    {
-      "type": "text",
-      "id": "heading_bg",
-      "label": "Heading (BG)",
-      "default": "Вдъхнови своето пространство"
+      "label": "Heading override"
     },
     {
       "type": "text",
       "id": "subheading",
-      "label": "Subheading (RO)",
-      "default": "Descoperă colecțiile noastre premium"
-    },
-    {
-      "type": "text",
-      "id": "subheading_en",
-      "label": "Subheading (EN)",
-      "default": "Discover our premium collections"
-    },
-    {
-      "type": "text",
-      "id": "subheading_bg",
-      "label": "Subheading (BG)",
-      "default": "Разгледайте нашите премиум колекции"
+      "label": "Subheading override"
     },
     {
       "type": "range",
@@ -1148,7 +1026,6 @@
       "unit": "s",
       "default": 0.3
     },
-
     {
       "type": "header",
       "content": "Collection 1"
@@ -1161,32 +1038,12 @@
     {
       "type": "text",
       "id": "collection_1_title",
-      "label": "Custom title (RO)"
-    },
-    {
-      "type": "text",
-      "id": "collection_1_title_en",
-      "label": "Custom title (EN)"
-    },
-    {
-      "type": "text",
-      "id": "collection_1_title_bg",
-      "label": "Custom title (BG)"
+      "label": "Custom title override"
     },
     {
       "type": "text",
       "id": "collection_1_description",
-      "label": "Description (RO)"
-    },
-    {
-      "type": "text",
-      "id": "collection_1_description_en",
-      "label": "Description (EN)"
-    },
-    {
-      "type": "text",
-      "id": "collection_1_description_bg",
-      "label": "Description (BG)"
+      "label": "Description override"
     },
     {
       "type": "image_picker",
@@ -1196,19 +1053,8 @@
     {
       "type": "text",
       "id": "collection_1_cta",
-      "label": "CTA text (RO)"
+      "label": "CTA text override"
     },
-    {
-      "type": "text",
-      "id": "collection_1_cta_en",
-      "label": "CTA text (EN)"
-    },
-    {
-      "type": "text",
-      "id": "collection_1_cta_bg",
-      "label": "CTA text (BG)"
-    },
-
     {
       "type": "header",
       "content": "Collection 2"
@@ -1221,32 +1067,12 @@
     {
       "type": "text",
       "id": "collection_2_title",
-      "label": "Custom title (RO)"
-    },
-    {
-      "type": "text",
-      "id": "collection_2_title_en",
-      "label": "Custom title (EN)"
-    },
-    {
-      "type": "text",
-      "id": "collection_2_title_bg",
-      "label": "Custom title (BG)"
+      "label": "Custom title override"
     },
     {
       "type": "text",
       "id": "collection_2_description",
-      "label": "Description (RO)"
-    },
-    {
-      "type": "text",
-      "id": "collection_2_description_en",
-      "label": "Description (EN)"
-    },
-    {
-      "type": "text",
-      "id": "collection_2_description_bg",
-      "label": "Description (BG)"
+      "label": "Description override"
     },
     {
       "type": "image_picker",
@@ -1256,19 +1082,8 @@
     {
       "type": "text",
       "id": "collection_2_cta",
-      "label": "CTA text (RO)"
+      "label": "CTA text override"
     },
-    {
-      "type": "text",
-      "id": "collection_2_cta_en",
-      "label": "CTA text (EN)"
-    },
-    {
-      "type": "text",
-      "id": "collection_2_cta_bg",
-      "label": "CTA text (BG)"
-    },
-
     {
       "type": "header",
       "content": "Collection 3"
@@ -1281,32 +1096,12 @@
     {
       "type": "text",
       "id": "collection_3_title",
-      "label": "Custom title (RO)"
-    },
-    {
-      "type": "text",
-      "id": "collection_3_title_en",
-      "label": "Custom title (EN)"
-    },
-    {
-      "type": "text",
-      "id": "collection_3_title_bg",
-      "label": "Custom title (BG)"
+      "label": "Custom title override"
     },
     {
       "type": "text",
       "id": "collection_3_description",
-      "label": "Description (RO)"
-    },
-    {
-      "type": "text",
-      "id": "collection_3_description_en",
-      "label": "Description (EN)"
-    },
-    {
-      "type": "text",
-      "id": "collection_3_description_bg",
-      "label": "Description (BG)"
+      "label": "Description override"
     },
     {
       "type": "image_picker",
@@ -1316,19 +1111,8 @@
     {
       "type": "text",
       "id": "collection_3_cta",
-      "label": "CTA text (RO)"
+      "label": "CTA text override"
     },
-    {
-      "type": "text",
-      "id": "collection_3_cta_en",
-      "label": "CTA text (EN)"
-    },
-    {
-      "type": "text",
-      "id": "collection_3_cta_bg",
-      "label": "CTA text (BG)"
-    },
-
     {
       "type": "header",
       "content": "Collection 4"
@@ -1341,32 +1125,12 @@
     {
       "type": "text",
       "id": "collection_4_title",
-      "label": "Custom title (RO)"
-    },
-    {
-      "type": "text",
-      "id": "collection_4_title_en",
-      "label": "Custom title (EN)"
-    },
-    {
-      "type": "text",
-      "id": "collection_4_title_bg",
-      "label": "Custom title (BG)"
+      "label": "Custom title override"
     },
     {
       "type": "text",
       "id": "collection_4_description",
-      "label": "Description (RO)"
-    },
-    {
-      "type": "text",
-      "id": "collection_4_description_en",
-      "label": "Description (EN)"
-    },
-    {
-      "type": "text",
-      "id": "collection_4_description_bg",
-      "label": "Description (BG)"
+      "label": "Description override"
     },
     {
       "type": "image_picker",
@@ -1376,19 +1140,8 @@
     {
       "type": "text",
       "id": "collection_4_cta",
-      "label": "CTA text (RO)"
+      "label": "CTA text override"
     },
-    {
-      "type": "text",
-      "id": "collection_4_cta_en",
-      "label": "CTA text (EN)"
-    },
-    {
-      "type": "text",
-      "id": "collection_4_cta_bg",
-      "label": "CTA text (BG)"
-    },
-
     {
       "type": "header",
       "content": "Collection 5"
@@ -1401,32 +1154,12 @@
     {
       "type": "text",
       "id": "collection_5_title",
-      "label": "Custom title (RO)"
-    },
-    {
-      "type": "text",
-      "id": "collection_5_title_en",
-      "label": "Custom title (EN)"
-    },
-    {
-      "type": "text",
-      "id": "collection_5_title_bg",
-      "label": "Custom title (BG)"
+      "label": "Custom title override"
     },
     {
       "type": "text",
       "id": "collection_5_description",
-      "label": "Description (RO)"
-    },
-    {
-      "type": "text",
-      "id": "collection_5_description_en",
-      "label": "Description (EN)"
-    },
-    {
-      "type": "text",
-      "id": "collection_5_description_bg",
-      "label": "Description (BG)"
+      "label": "Description override"
     },
     {
       "type": "image_picker",
@@ -1436,17 +1169,7 @@
     {
       "type": "text",
       "id": "collection_5_cta",
-      "label": "CTA text (RO)"
-    },
-    {
-      "type": "text",
-      "id": "collection_5_cta_en",
-      "label": "CTA text (EN)"
-    },
-    {
-      "type": "text",
-      "id": "collection_5_cta_bg",
-      "label": "CTA text (BG)"
+      "label": "CTA text override"
     }
   ],
   "presets": [
