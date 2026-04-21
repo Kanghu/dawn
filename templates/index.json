@@ -23,6 +23,90 @@
         "padding_bottom": 0
       }
     },
+    "17767703530432b021": {
+      "type": "_blocks",
+      "blocks": {
+        "ai_gen_block_d0b28ae_6bheTn": {
+          "type": "ai_gen_block_d0b28ae",
+          "settings": {
+            "heading": "Inspiră-ți spațiul",
+            "subheading": "Descoperă colecțiile noastre premium",
+            "heading_size": 30,
+            "heading_size_mobile": 24,
+            "heading_weight": "500",
+            "heading_color": "#121212",
+            "subheading_size": 15,
+            "subheading_size_mobile": 14,
+            "subheading_color": "#6f6f6f",
+            "header_spacing": 24,
+            "subheading_spacing": 6,
+            "desktop_width_percent": 100,
+            "section_spacing": 48,
+            "section_spacing_mobile": 28,
+            "card_gap": 18,
+            "scrollbar_spacing": 10,
+            "card_width": 270,
+            "card_height": 380,
+            "card_width_tablet": 230,
+            "card_height_tablet": 340,
+            "card_width_mobile": 75,
+            "card_height_mobile": 340,
+            "card_radius": 16,
+            "card_text_color": "#ffffff",
+            "card_description_color": "#d6d6d6",
+            "overlay_bottom_color": "rgba(0,0,0,0.85)",
+            "overlay_middle_color": "rgba(0,0,0,0.5)",
+            "overlay_middle_position": 40,
+            "overlay_top_color": "rgba(0,0,0,0.1)",
+            "overlay_top_position": 70,
+            "content_padding": 18,
+            "title_size": 19,
+            "title_weight": "500",
+            "title_spacing": 6,
+            "description_size": 14,
+            "description_spacing": 10,
+            "cta_size": 14,
+            "cta_color": "#d4af37",
+            "cta_weight": "500",
+            "hover_lift": 6,
+            "hover_shadow_y": 10,
+            "hover_shadow_blur": 30,
+            "hover_shadow_color": "rgba(0,0,0,0.15)",
+            "hover_duration": 0.3,
+            "collection_1": "oglinzi-led",
+            "collection_1_title": "Oglinzi LED",
+            "collection_1_description": "Lumină perfectă. Design impecabil.",
+            "collection_1_image": "shopify://shop_images/2b57e426-98b8-4704-bcb5-7e1235bcc1a0.png",
+            "collection_1_cta": "",
+            "collection_2": "corpuri-de-iluminat",
+            "collection_2_title": "Corpuri de iluminat",
+            "collection_2_description": "Lumină care creează atmosferă.",
+            "collection_2_image": "shopify://shop_images/a79cb72e-8067-4728-bffd-ee6fdc0c0779.png",
+            "collection_2_cta": "",
+            "collection_3": "baie",
+            "collection_3_title": "Baie",
+            "collection_3_description": "Detalii care fac diferența.",
+            "collection_3_image": "shopify://shop_images/5cb3d36f-8efb-4b44-8c2b-d4779856e0cf.png",
+            "collection_3_cta": "",
+            "collection_4": "iluminat-de-exterior",
+            "collection_4_title": "Iluminat Exterior",
+            "collection_4_description": "Accente care completează.",
+            "collection_4_image": "shopify://shop_images/fa2fc814-c8c7-411a-b871-ab9f57b61fcb.png",
+            "collection_4_cta": "",
+            "collection_5": "mobilier-baie",
+            "collection_5_title": "Mobilier",
+            "collection_5_description": "Funcționalitate și eleganță.",
+            "collection_5_image": "shopify://shop_images/3b2d1a41-f4e6-40a9-8a6b-cb74dd9a9763.png",
+            "collection_5_cta": ""
+          },
+          "blocks": {}
+        }
+      },
+      "block_order": [
+        "ai_gen_block_d0b28ae_6bheTn"
+      ],
+      "settings": {}
+    },
     "custom_liquid_7LUQ3Y": {
       "type": "custom-liquid",
       "name": "t:sections.custom-liquid.presets.name",
@@ -31,16 +115,6 @@
         "color_scheme": "",
         "padding_top": 0,
         "padding_bottom": 0
-      }
-    },
-    "custom_liquid_tmtNBq": {
-      "type": "custom-liquid",
-      "name": "t:sections.custom-liquid.presets.name",
-      "settings": {
-        "custom_liquid": "<style>\n.section-cat {\n  background: #fff; \n  padding: 28px 0 18px;\n}\n\n.section-title {\n  max-width: 1200px;\n  margin: 0 auto 16px;\n  padding: 0 10px;\n  font-family: 'Roboto', sans-serif;\n  font-size: 18px;\n  font-weight: 500;\n  color: #1a1a1a;\n}\n\n.cat-wrap {\n  display: grid;\n  grid-template-columns: repeat(5, 1fr);\n  gap: 16px;\n  max-width: 1000px;\n  margin: 0 auto;\n  padding: 0 10px;\n}\n\n.cat-item {\n  position: relative;\n  border-radius: 16px;\n  overflow: hidden;\n  background: #fff;\n  height: 340px;\n  text-decoration: none;\n  transition: all 0.25s ease;\n\n  /* shadow premium */\n  box-shadow: \n    0 2px 6px rgba(0,0,0,0.04),\n    0 8px 20px rgba(0,0,0,0.08),\n    0 20px 50px rgba(0,0,0,0.06);\n}\n\n.cat-item:hover {\n  transform: translateY(-6px);\n  box-shadow: \n    0 4px 10px rgba(0,0,0,0.06),\n    0 18px 40px rgba(0,0,0,0.14),\n    0 30px 80px rgba(0,0,0,0.10);\n}\n\n.cat-item img {\n  width: 100%;\n  height: 100%;\n  object-fit: cover;\n  object-position: top;\n  transition: transform 0.4s ease;\n}\n\n.cat-item:hover img {\n  transform: scale(1.05);\n}\n\n.cat-label {\n  position: absolute;\n  bottom: 0;\n  width: 100%;\n  text-align: center;\n  font-family: 'Roboto', sans-serif;\n  font-size: 15px;\n  font-weight: 500;\n  padding: 22px 16px;\n  color: #222;\n\n  background: linear-gradient(\n    to top,\n    rgba(255,255,255,1) 0%,\n    rgba(255,255,255,0.96) 30%,\n    rgba(255,255,255,0.85) 55%,\n    rgba(255,255,255,0.5) 75%,\n    rgba(255,255,255,0.0) 100%\n  );\n}\n\n/* MOBILE */\n@media (max-width: 768px) {\n  .cat-wrap {\n    display: flex;\n    overflow-x: auto;\n    gap: 12px;\n  }\n\n  .cat-item {\n    flex: 0 0 130px;\n    height: 180px;\n  }\n}\n</style>\n\n<div class=\"section-cat\">\n\n  <div class=\"section-title\"></div>\n\n  <div class=\"cat-wrap\">\n\n    <a href=\"https://www.alessandrodesign.ro/collections/oglinzi-led\" class=\"cat-item\">\n      <img src=\"https://cdn.shopify.com/s/files/1/0782/5175/3739/files/CP_OGLINDA_LED.png\">\n      <div class=\"cat-label\">Oglinzi LED</div>\n    </a>\n\n    <a href=\"https://www.alessandrodesign.ro/collections/corpuri-de-iluminat\" class=\"cat-item\">\n      <img src=\"https://cdn.shopify.com/s/files/1/0782/5175/3739/files/CP_LUSTRALED.png\">\n      <div class=\"cat-label\">Corpuri de Iluminat</div>\n    </a>\n\n    <a href=\"https://www.alessandrodesign.ro/collections/baie\" class=\"cat-item\">\n      <img src=\"https://cdn.shopify.com/s/files/1/0782/5175/3739/files/CP_BATERII.png\">\n      <div class=\"cat-label\">Baie</div>\n    </a>\n\n    <a href=\"https://www.alessandrodesign.ro/collections/produse-led\" class=\"cat-item\">\n      <img src=\"https://cdn.shopify.com/s/files/1/0782/5175/3739/files/CP_PRODUSELED.png\">\n      <div class=\"cat-label\">Produse LED</div>\n    </a>\n\n    <a href=\"https://www.alessandrodesign.ro/collections/iluminat-de-exterior\" class=\"cat-item\">\n      <img src=\"https://cdn.shopify.com/s/files/1/0782/5175/3739/files/CP_EXTERIOR_LIGHTING.png\">\n      <div class=\"cat-label\">Iluminat de Exterior</div>\n    </a>\n\n  </div>\n\n</div>",
-        "color_scheme": "",
-        "padding_top": 20,
-        "padding_bottom": 20
       }
     },
     "custom_liquid_ggcwHk": {
@@ -259,8 +333,8 @@
   },
   "order": [
     "custom_liquid_MVifHb",
+    "17767703530432b021",
     "custom_liquid_7LUQ3Y",
-    "custom_liquid_tmtNBq",
     "custom_liquid_ggcwHk",
     "featured_collection_KFUddR",
     "custom_liquid_Yee3Mx",
