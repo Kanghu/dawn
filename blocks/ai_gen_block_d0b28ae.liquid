@@ -1,6 +1,5 @@
-
 {% assign ai_gen_id = block.id | replace: '_', '' | downcase %}
-{% assign current_lang = request.locale.iso_code | downcase %}
+{% assign current_lang = request.locale.iso_code | downcase | slice: 0, 2 %}
 
 {% style %}
   .ai-collections-slider-{{ ai_gen_id }} {
