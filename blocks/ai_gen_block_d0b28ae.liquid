@@ -1,194 +1,6 @@
-{% doc %}
-  @prompt
-    vreau sa imi faci full o sectiune interactive ca asta "<div class="collections-slider">
-    
-      <div class="collections-header">
-        <h2>Inspiră-ți spațiul</h2>
-        <p>Descoperă colecțiile noastre premium</p>
-      </div>
-    
-      <div class="collections-track">
-    
-        <a href="#" class="collection-card">
-          <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c">
-          <div class="overlay"></div>
-          <div class="content">
-            <h3>Oglinzi LED</h3>
-            <p>Lumină perfectă. Design impecabil.</p>
-            <span>Descoperă colecția →</span>
-          </div>
-        </a>
-    
-        <a href="#" class="collection-card">
-          <img src="https://images.unsplash.com/photo-1505691938895-1758d7feb511">
-          <div class="overlay"></div>
-          <div class="content">
-            <h3>Corpuri de iluminat</h3>
-            <p>Lumină care creează atmosferă.</p>
-            <span>Descoperă colecția →</span>
-          </div>
-        </a>
-    
-        <a href="#" class="collection-card">
-          <img src="https://images.unsplash.com/photo-1584622650111-993a426fbf0a">
-          <div class="overlay"></div>
-          <div class="content">
-            <h3>Baie</h3>
-            <p>Detalii care fac diferența.</p>
-            <span>Descoperă colecția →</span>
-          </div>
-        </a>
-    
-        <a href="#" class="collection-card">
-          <img src="https://images.unsplash.com/photo-1616628182506-3b8c1c6a9d8f">
-          <div class="overlay"></div>
-          <div class="content">
-            <h3>Accesorii</h3>
-            <p>Accente care completează.</p>
-            <span>Descoperă colecția →</span>
-          </div>
-        </a>
-    
-        <a href="#" class="collection-card">
-          <img src="https://images.unsplash.com/photo-1616594039964-ae9021a400a0">
-          <div class="overlay"></div>
-          <div class="content">
-            <h3>Mobilier</h3>
-            <p>Funcționalitate și eleganță.</p>
-            <span>Descoperă colecția →</span>
-          </div>
-        </a>
-    
-      </div>
-    
-    </div>
-    
-    <!-- FONT -->
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;600&display=swap" rel="stylesheet">
-    
-    <style>
-    .collections-slider {
-      max-width: 1300px;
-      margin: 48px auto;
-      font-family: 'Roboto', sans-serif;
-    }
-    
-    /* HEADER */
-    .collections-header {
-      padding: 0 16px;
-    }
-    
-    .collections-header h2 {
-      font-size: 30px;
-      font-weight: 500;
-      margin: 0 0 6px;
-    }
-    
-    .collections-header p {
-      color: #6f6f6f;
-      margin: 0 0 24px;
-      font-size: 15px;
-    }
-    
-    /* TRACK */
-    .collections-track {
-      display: flex;
-      gap: 18px;
-      overflow-x: auto;
-      scroll-snap-type: x mandatory;
-      padding: 0 16px 10px;
-    }
-    
-    .collections-track::-webkit-scrollbar {
-      display: none;
-    }
-    
-    /* CARD */
-    .collection-card {
-      position: relative;
-      flex: 0 0 270px;
-      height: 380px;
-      border-radius: 16px;
-      overflow: hidden;
-      scroll-snap-align: start;
-      text-decoration: none;
-      color: white;
-      background: #000;
-      transition: transform 0.25s ease, box-shadow 0.25s ease;
-    }
-    
-    .collection-card:hover {
-      transform: translateY(-6px);
-      box-shadow: 0 10px 30px rgba(0,0,0,0.15);
-    }
-    
-    .collection-card img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-    }
-    
-    /* OVERLAY – mai premium */
-    .collection-card .overlay {
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(
-        to top,
-        rgba(0,0,0,0.85) 0%,
-        rgba(0,0,0,0.5) 40%,
-        rgba(0,0,0,0.1) 70%
-      );
-    }
-    
-    /* CONTENT */
-    .collection-card .content {
-      position: absolute;
-      bottom: 18px;
-      left: 18px;
-      right: 18px;
-    }
-    
-    .collection-card h3 {
-      margin: 0 0 6px;
-      font-size: 19px;
-      font-weight: 500;
-    }
-    
-    .collection-card p {
-      margin: 0 0 10px;
-      font-size: 14px;
-      color: #d6d6d6;
-    }
-    
-    /* CTA */
-    .collection-card span {
-      font-size: 14px;
-      color: #d4af37; /* gold */
-      font-weight: 500;
-    }
-    
-    /* TABLET */
-    @media (max-width: 989px) {
-      .collection-card {
-        flex: 0 0 230px;
-        height: 340px;
-      }
-    }
-    
-    /* MOBILE */
-    @media (max-width: 749px) {
-      .collections-slider {
-        margin: 28px 0;
-      }
-    
-      .collection-card {
-        flex: 0 0 78%;
-        height: 340px;
-      }
-    }
-    </style>", font roboto btw
-{% enddoc %}
+
 {% assign ai_gen_id = block.id | replace: '_', '' | downcase %}
+{% assign current_lang = request.locale.iso_code | downcase %}
 
 {% style %}
   .ai-collections-slider-{{ ai_gen_id }} {
@@ -197,6 +9,7 @@
     margin: {{ block.settings.section_spacing }}px auto;
     font-family: 'Roboto', sans-serif;
     width: {{ block.settings.desktop_width_percent }}%;
+    position: relative;
   }
 
   .ai-collections-header-{{ ai_gen_id }} {
@@ -210,21 +23,39 @@
     margin: 0 0 {{ block.settings.subheading_spacing }}px;
     color: {{ block.settings.heading_color }};
     font-family: 'Roboto', sans-serif;
+    line-height: 1.2;
   }
 
   .ai-collections-header-{{ ai_gen_id }} p {
     color: {{ block.settings.subheading_color }};
     margin: 0;
     font-size: {{ block.settings.subheading_size }}px;
+    line-height: 1.4;
+  }
+
+  .ai-collections-slider-shell-{{ ai_gen_id }} {
+    position: relative;
   }
 
   .ai-collections-track-{{ ai_gen_id }} {
     display: flex;
     gap: {{ block.settings.card_gap }}px;
     overflow-x: auto;
+    overflow-y: hidden;
     scroll-snap-type: x mandatory;
+    scroll-behavior: smooth;
     padding: 0 {{ settings.spacing_grid_horizontal }}px {{ block.settings.scrollbar_spacing }}px;
     scrollbar-width: none;
+    -ms-overflow-style: none;
+    -webkit-overflow-scrolling: touch;
+    user-select: none;
+    cursor: grab;
+  }
+
+  .ai-collections-track-{{ ai_gen_id }}.is-dragging {
+    cursor: grabbing;
+    scroll-snap-type: none;
+    scroll-behavior: auto;
   }
 
   .ai-collections-track-{{ ai_gen_id }}::-webkit-scrollbar {
@@ -234,6 +65,7 @@
   .ai-collection-card-{{ ai_gen_id }} {
     position: relative;
     flex: 0 0 {{ block.settings.card_width }}px;
+    width: {{ block.settings.card_width }}px;
     height: {{ block.settings.card_height }}px;
     border-radius: {{ block.settings.card_radius }}px;
     overflow: hidden;
@@ -242,6 +74,7 @@
     color: {{ block.settings.card_text_color }};
     background: #000;
     transition: transform {{ block.settings.hover_duration }}s ease, box-shadow {{ block.settings.hover_duration }}s ease;
+    display: block;
   }
 
   .ai-collection-card-{{ ai_gen_id }}:hover {
@@ -253,6 +86,8 @@
     width: 100%;
     height: 100%;
     object-fit: cover;
+    display: block;
+    pointer-events: none;
   }
 
   .ai-collection-card-placeholder-{{ ai_gen_id }} {
@@ -287,6 +122,8 @@
     bottom: {{ block.settings.content_padding }}px;
     left: {{ block.settings.content_padding }}px;
     right: {{ block.settings.content_padding }}px;
+    z-index: 2;
+    pointer-events: none;
   }
 
   .ai-collection-card-content-{{ ai_gen_id }} h3 {
@@ -294,12 +131,14 @@
     font-size: {{ block.settings.title_size }}px;
     font-weight: {{ block.settings.title_weight }};
     color: {{ block.settings.card_text_color }};
+    line-height: 1.2;
   }
 
   .ai-collection-card-content-{{ ai_gen_id }} p {
     margin: 0 0 {{ block.settings.description_spacing }}px;
     font-size: {{ block.settings.description_size }}px;
     color: {{ block.settings.card_description_color }};
+    line-height: 1.4;
   }
 
   .ai-collection-card-cta-{{ ai_gen_id }} {
@@ -308,20 +147,99 @@
     font-weight: {{ block.settings.cta_weight }};
   }
 
+  .ai-collections-nav-{{ ai_gen_id }} {
+    position: absolute;
+    top: 50%;
+    left: 0;
+    right: 0;
+    transform: translateY(-50%);
+    z-index: 5;
+    pointer-events: none;
+  }
+
+  .ai-collections-nav-inner-{{ ai_gen_id }} {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 10px;
+  }
+
+  .ai-collections-arrow-{{ ai_gen_id }} {
+    width: 44px;
+    height: 44px;
+    border-radius: 999px;
+    border: 1px solid rgba(0,0,0,0.08);
+    background: rgba(255,255,255,0.95);
+    color: #111;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    pointer-events: auto;
+    transition: opacity 0.2s ease, transform 0.2s ease;
+    box-shadow: 0 6px 20px rgba(0,0,0,0.12);
+  }
+
+  .ai-collections-arrow-{{ ai_gen_id }}:hover {
+    transform: scale(1.04);
+  }
+
+  .ai-collections-arrow-{{ ai_gen_id }}:disabled {
+    opacity: 0.35;
+    cursor: not-allowed;
+    transform: none;
+  }
+
+  .ai-collections-arrow-{{ ai_gen_id }} svg {
+    width: 18px;
+    height: 18px;
+  }
+
+  .ai-collections-dots-{{ ai_gen_id }} {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+    padding: 8px {{ settings.spacing_grid_horizontal }}px 0;
+  }
+
+  .ai-collections-dot-{{ ai_gen_id }} {
+    width: 8px;
+    height: 8px;
+    border-radius: 999px;
+    background: rgba(0,0,0,0.18);
+    transition: transform 0.2s ease, background 0.2s ease;
+    border: 0;
+    padding: 0;
+    cursor: pointer;
+  }
+
+  .ai-collections-dot-{{ ai_gen_id }}.is-active {
+    background: rgba(0,0,0,0.65);
+    transform: scale(1.2);
+  }
+
   @media (max-width: 989px) {
     .ai-collection-card-{{ ai_gen_id }} {
       flex: 0 0 {{ block.settings.card_width_tablet }}px;
+      width: {{ block.settings.card_width_tablet }}px;
       height: {{ block.settings.card_height_tablet }}px;
+    }
+
+    .ai-collections-arrow-{{ ai_gen_id }} {
+      width: 40px;
+      height: 40px;
     }
   }
 
   @media (max-width: 749px) {
     .ai-collections-slider-{{ ai_gen_id }} {
       margin: {{ block.settings.section_spacing_mobile }}px 0;
+      width: 100%;
     }
 
     .ai-collection-card-{{ ai_gen_id }} {
       flex: 0 0 {{ block.settings.card_width_mobile }}%;
+      width: {{ block.settings.card_width_mobile }}%;
       height: {{ block.settings.card_height_mobile }}px;
     }
 
@@ -332,93 +250,341 @@
     .ai-collections-header-{{ ai_gen_id }} p {
       font-size: {{ block.settings.subheading_size_mobile }}px;
     }
+
+    .ai-collections-nav-{{ ai_gen_id }} {
+      display: none;
+    }
   }
 {% endstyle %}
 
 <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
 <collections-slider-{{ ai_gen_id }} class="ai-collections-slider-{{ ai_gen_id }}" {{ block.shopify_attributes }}>
+  {% liquid
+    if current_lang == 'ro'
+      assign default_heading = 'Inspiră-ți spațiul'
+      assign default_subheading = 'Descoperă colecțiile noastre premium'
+      assign default_cta = 'Descoperă colecția →'
+      assign prev_label = 'Colecția anterioară'
+      assign next_label = 'Colecția următoare'
+      assign go_to_slide_label = 'Mergi la slide-ul'
+    else
+      assign default_heading = 'Inspire your space'
+      assign default_subheading = 'Discover our premium collections'
+      assign default_cta = 'Explore collection →'
+      assign prev_label = 'Previous collection'
+      assign next_label = 'Next collection'
+      assign go_to_slide_label = 'Go to slide'
+    endif
+  %}
+
   <div class="ai-collections-header-{{ ai_gen_id }}">
     {% if block.settings.heading != blank %}
       <h2>{{ block.settings.heading }}</h2>
+    {% else %}
+      <h2>{{ default_heading }}</h2>
     {% endif %}
+
     {% if block.settings.subheading != blank %}
       <p>{{ block.settings.subheading }}</p>
+    {% else %}
+      <p>{{ default_subheading }}</p>
     {% endif %}
   </div>
 
-  <div class="ai-collections-track-{{ ai_gen_id }}">
-    {% for i in (1..5) %}
-      {% liquid
-        assign collection_key = 'collection_' | append: i
-        assign title_key = 'collection_' | append: i | append: '_title'
-        assign description_key = 'collection_' | append: i | append: '_description'
-        assign image_key = 'collection_' | append: i | append: '_image'
-        assign cta_key = 'collection_' | append: i | append: '_cta'
+  <div class="ai-collections-slider-shell-{{ ai_gen_id }}">
+    <div class="ai-collections-nav-{{ ai_gen_id }}">
+      <div class="ai-collections-nav-inner-{{ ai_gen_id }}">
+        <button
+          type="button"
+          class="ai-collections-arrow-{{ ai_gen_id }}"
+          data-prev
+          aria-label="{{ prev_label }}"
+        >
+          <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <path d="M15 6L9 12L15 18" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+          </svg>
+        </button>
 
-        assign collection = block.settings[collection_key]
-        assign custom_title = block.settings[title_key]
-        assign custom_description = block.settings[description_key]
-        assign custom_image = block.settings[image_key]
-        assign custom_cta = block.settings[cta_key]
+        <button
+          type="button"
+          class="ai-collections-arrow-{{ ai_gen_id }}"
+          data-next
+          aria-label="{{ next_label }}"
+        >
+          <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <path d="M9 6L15 12L9 18" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+          </svg>
+        </button>
+      </div>
+    </div>
 
-        if collection != blank
-          assign collection_url = collection.url
-          assign collection_title = collection.title
-          assign collection_image = collection.featured_image
-        else
-          assign collection_url = '#'
-          assign collection_title = ''
-          assign collection_image = null
-        endif
+    <div class="ai-collections-track-{{ ai_gen_id }}" data-track>
+      {% for i in (1..5) %}
+        {% liquid
+          assign collection_key = 'collection_' | append: i
+          assign title_key = 'collection_' | append: i | append: '_title'
+          assign description_key = 'collection_' | append: i | append: '_description'
+          assign image_key = 'collection_' | append: i | append: '_image'
+          assign cta_key = 'collection_' | append: i | append: '_cta'
 
-        if custom_title != blank
-          assign display_title = custom_title
-        else
-          assign display_title = collection_title
-        endif
+          assign collection = block.settings[collection_key]
+          assign custom_title = block.settings[title_key]
+          assign custom_description = block.settings[description_key]
+          assign custom_image = block.settings[image_key]
+          assign custom_cta = block.settings[cta_key]
 
-        if custom_image != blank
-          assign display_image = custom_image
-        else
-          assign display_image = collection_image
-        endif
+          if collection != blank
+            assign collection_url = collection.url
+            assign collection_title = collection.title
+            assign collection_image = collection.featured_image
+          else
+            assign collection_url = '#'
+            assign collection_title = ''
+            assign collection_image = null
+          endif
 
-        if custom_cta != blank
-          assign display_cta = custom_cta
-        else
-          assign display_cta = 'Descoperă colecția →'
-        endif
-      %}
+          if custom_title != blank
+            assign display_title = custom_title
+          else
+            assign display_title = collection_title
+          endif
 
-      <a href="{{ collection_url }}" class="ai-collection-card-{{ ai_gen_id }}">
-        {% if display_image %}
-          <img
-            src="{{ display_image | image_url: width: 600 }}"
-            alt="{{ display_image.alt | escape }}"
-            loading="lazy"
-            width="600"
-            height="800"
-          >
-        {% else %}
-          <div class="ai-collection-card-placeholder-{{ ai_gen_id }}">
-            {{ 'collection-1' | placeholder_svg_tag }}
+          if custom_image != blank
+            assign display_image = custom_image
+          else
+            assign display_image = collection_image
+          endif
+
+          if custom_cta != blank
+            assign display_cta = custom_cta
+          else
+            assign display_cta = default_cta
+          endif
+        %}
+
+        <a href="{{ collection_url }}" class="ai-collection-card-{{ ai_gen_id }}" data-card>
+          {% if display_image %}
+            <img
+              src="{{ display_image | image_url: width: 600 }}"
+              alt="{% if display_title != blank %}{{ display_title | escape }}{% elsif display_image.alt != blank %}{{ display_image.alt | escape }}{% else %}Collection image{% endif %}"
+              loading="lazy"
+              width="600"
+              height="800"
+            >
+          {% else %}
+            <div class="ai-collection-card-placeholder-{{ ai_gen_id }}">
+              {{ 'collection-1' | placeholder_svg_tag }}
+            </div>
+          {% endif %}
+          <div class="ai-collection-card-overlay-{{ ai_gen_id }}"></div>
+          <div class="ai-collection-card-content-{{ ai_gen_id }}">
+            {% if display_title != blank %}
+              <h3>{{ display_title }}</h3>
+            {% endif %}
+            {% if custom_description != blank %}
+              <p>{{ custom_description }}</p>
+            {% endif %}
+            <span class="ai-collection-card-cta-{{ ai_gen_id }}">{{ display_cta }}</span>
           </div>
-        {% endif %}
-        <div class="ai-collection-card-overlay-{{ ai_gen_id }}"></div>
-        <div class="ai-collection-card-content-{{ ai_gen_id }}">
-          {% if display_title != blank %}
-            <h3>{{ display_title }}</h3>
-          {% endif %}
-          {% if custom_description != blank %}
-            <p>{{ custom_description }}</p>
-          {% endif %}
-          <span class="ai-collection-card-cta-{{ ai_gen_id }}">{{ display_cta }}</span>
-        </div>
-      </a>
-    {% endfor %}
+        </a>
+      {% endfor %}
+    </div>
+
+    <div class="ai-collections-dots-{{ ai_gen_id }}" data-dots></div>
   </div>
 </collections-slider-{{ ai_gen_id }}>
+
+<script>
+  (() => {
+    class CollectionsSlider{{ ai_gen_id }} extends HTMLElement {
+      constructor() {
+        super();
+        this.track = this.querySelector('[data-track]');
+        this.prevBtn = this.querySelector('[data-prev]');
+        this.nextBtn = this.querySelector('[data-next]');
+        this.dotsWrap = this.querySelector('[data-dots]');
+        this.cards = Array.from(this.querySelectorAll('[data-card]'));
+
+        this.isDown = false;
+        this.startX = 0;
+        this.scrollLeft = 0;
+        this.hasMoved = false;
+        this.resizeTimer = null;
+      }
+
+      connectedCallback() {
+        if (!this.track || !this.cards.length) return;
+        this.buildDots();
+        this.bindEvents();
+        this.updateUI();
+
+        requestAnimationFrame(() => {
+          this.updateUI();
+        });
+      }
+
+      getCardStep() {
+        const firstCard = this.cards[0];
+        if (!firstCard) return this.track.clientWidth;
+
+        const styles = window.getComputedStyle(this.track);
+        const gap = parseFloat(styles.columnGap || styles.gap || 0);
+        return firstCard.getBoundingClientRect().width + gap;
+      }
+
+      getMaxIndex() {
+        const step = this.getCardStep();
+        return Math.max(0, Math.round((this.track.scrollWidth - this.track.clientWidth) / step));
+      }
+
+      getCurrentIndex() {
+        const step = this.getCardStep();
+        if (!step) return 0;
+        return Math.round(this.track.scrollLeft / step);
+      }
+
+      scrollToIndex(index) {
+        const step = this.getCardStep();
+        const maxIndex = this.getMaxIndex();
+        const safeIndex = Math.max(0, Math.min(index, maxIndex));
+
+        this.track.scrollTo({
+          left: safeIndex * step,
+          behavior: 'smooth'
+        });
+      }
+
+      buildDots() {
+        if (!this.dotsWrap) return;
+
+        const totalDots = this.getMaxIndex() + 1;
+        this.dotsWrap.innerHTML = '';
+
+        if (totalDots <= 1) {
+          this.dotsWrap.style.display = 'none';
+          return;
+        }
+
+        this.dotsWrap.style.display = 'flex';
+
+        for (let i = 0; i < totalDots; i++) {
+          const dot = document.createElement('button');
+          dot.type = 'button';
+          dot.className = 'ai-collections-dot-{{ ai_gen_id }}';
+          dot.setAttribute('aria-label', '{{ go_to_slide_label }} ' + (i + 1));
+          dot.addEventListener('click', () => this.scrollToIndex(i));
+          this.dotsWrap.appendChild(dot);
+        }
+      }
+
+      updateDots() {
+        if (!this.dotsWrap) return;
+        const dots = Array.from(this.dotsWrap.children);
+        const current = this.getCurrentIndex();
+
+        dots.forEach((dot, index) => {
+          dot.classList.toggle('is-active', index === current);
+        });
+      }
+
+      updateArrows() {
+        if (!this.prevBtn || !this.nextBtn) return;
+
+        const maxScrollLeft = this.track.scrollWidth - this.track.clientWidth;
+        const canScroll = maxScrollLeft > 4;
+
+        if (!canScroll) {
+          this.prevBtn.disabled = true;
+          this.nextBtn.disabled = true;
+          return;
+        }
+
+        this.prevBtn.disabled = this.track.scrollLeft <= 4;
+        this.nextBtn.disabled = this.track.scrollLeft >= (maxScrollLeft - 4);
+      }
+
+      updateUI() {
+        this.buildDots();
+        this.updateDots();
+        this.updateArrows();
+      }
+
+      bindEvents() {
+        if (this.prevBtn) {
+          this.prevBtn.addEventListener('click', () => {
+            this.scrollToIndex(this.getCurrentIndex() - 1);
+          });
+        }
+
+        if (this.nextBtn) {
+          this.nextBtn.addEventListener('click', () => {
+            this.scrollToIndex(this.getCurrentIndex() + 1);
+          });
+        }
+
+        this.track.addEventListener('scroll', () => {
+          this.updateDots();
+          this.updateArrows();
+        }, { passive: true });
+
+        window.addEventListener('resize', () => {
+          clearTimeout(this.resizeTimer);
+          this.resizeTimer = setTimeout(() => this.updateUI(), 150);
+        });
+
+        this.track.addEventListener('mousedown', (e) => {
+          this.isDown = true;
+          this.hasMoved = false;
+          this.track.classList.add('is-dragging');
+          this.startX = e.pageX - this.track.offsetLeft;
+          this.scrollLeft = this.track.scrollLeft;
+        });
+
+        this.track.addEventListener('mouseleave', () => {
+          this.isDown = false;
+          this.track.classList.remove('is-dragging');
+        });
+
+        this.track.addEventListener('mouseup', () => {
+          this.isDown = false;
+          this.track.classList.remove('is-dragging');
+        });
+
+        this.track.addEventListener('mousemove', (e) => {
+          if (!this.isDown) return;
+          e.preventDefault();
+          const x = e.pageX - this.track.offsetLeft;
+          const walk = (x - this.startX) * 1.2;
+          if (Math.abs(walk) > 4) this.hasMoved = true;
+          this.track.scrollLeft = this.scrollLeft - walk;
+        });
+
+        this.track.addEventListener('click', (e) => {
+          if (this.hasMoved) {
+            e.preventDefault();
+            e.stopPropagation();
+            this.hasMoved = false;
+          }
+        }, true);
+
+        this.track.addEventListener('wheel', (e) => {
+          if (window.innerWidth > 749 && Math.abs(e.deltaY) > Math.abs(e.deltaX)) {
+            const canScrollHorizontally = this.track.scrollWidth > this.track.clientWidth;
+            if (canScrollHorizontally) {
+              e.preventDefault();
+              this.track.scrollLeft += e.deltaY;
+            }
+          }
+        }, { passive: false });
+      }
+    }
+
+    if (!customElements.get('collections-slider-{{ ai_gen_id }}')) {
+      customElements.define('collections-slider-{{ ai_gen_id }}', CollectionsSlider{{ ai_gen_id }});
+    }
+  })();
+</script>
 
 {% schema %}
 {
@@ -673,13 +839,13 @@
       "type": "color",
       "id": "overlay_bottom_color",
       "label": "Overlay bottom color",
-      "default": "rgba(0,0,0,0.85)"
+      "default": "#000000"
     },
     {
       "type": "color",
       "id": "overlay_middle_color",
       "label": "Overlay middle color",
-      "default": "rgba(0,0,0,0.5)"
+      "default": "#000000"
     },
     {
       "type": "range",
@@ -695,7 +861,7 @@
       "type": "color",
       "id": "overlay_top_color",
       "label": "Overlay top color",
-      "default": "rgba(0,0,0,0.1)"
+      "default": "#000000"
     },
     {
       "type": "range",
@@ -841,7 +1007,7 @@
       "type": "color",
       "id": "hover_shadow_color",
       "label": "Hover shadow color",
-      "default": "rgba(0,0,0,0.15)"
+      "default": "#000000"
     },
     {
       "type": "range",
