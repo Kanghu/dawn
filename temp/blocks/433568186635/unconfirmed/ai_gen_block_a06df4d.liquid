@@ -1,6 +1,772 @@
+{% doc %}
+  @prompt
+    <div class="custom-benefits-bar" style="background: {{ section.settings.section_bg }};">
+      <div class="custom-benefits-bar__inner page-width" style="
+        background: {{ section.settings.inner_bg }};
+        border-color: {{ section.settings.border_color }};
+        border-radius: {{ section.settings.border_radius }}px;
+      ">
+        {% for block in section.blocks %}
+          <div class="custom-benefit-item" {{ block.shopify_attributes }}>
+            <div class="custom-benefit-item__icon" style="color: {{ section.settings.icon_color }};">
+              {% case block.settings.icon %}
+                {% when 'delivery' %}
+                  <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                    <path d="M3 6h11v8H3V6Zm11 3h3l3 3v2h-6V9Zm-8 8a2 2 0 1 0 0-4 2 2 0 0 0 0 4Zm11 0a2 2 0 1 0 0-4 2 2 0 0 0 0 4Z" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/>
+                  </svg>
+                {% when 'shield' %}
+                  <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                    <path d="M12 3l7 3v5c0 5-3.5 8-7 10-3.5-2-7-5-7-10V6l7-3Z" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/>
+                  </svg>
+                {% when 'return' %}
+                  <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                    <path d="M8 7H4m0 0l3-3M4 7l3 3" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/>
+                    <path d="M20 12a8 8 0 0 0-13.66-5.66L4 7m16 5a8 8 0 1 1-2.34-5.66" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/>
+                  </svg>
+                {% when 'support' %}
+                  <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                    <path d="M5 14v-2a7 7 0 1 1 14 0v2" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/>
+                    <path d="M5 14a2 2 0 0 0 2 2h1v-5H7a2 2 0 0 0-2 2Zm14 0a2 2 0 0 1-2 2h-1v-5h1a2 2 0 0 1 2 2Zm-7 6h2" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/>
+                  </svg>
+              {% endcase %}
+            </div>
+    
+            <div class="custom-benefit-item__content">
+              <div class="custom-benefit-item__title" style="
+                color: {{ section.settings.title_color }};
+                font-size: {{ section.settings.title_size }}px;
+              ">
+                {{ block.settings.title }}
+              </div>
+              <div class="custom-benefit-item__text" style="
+                color: {{ section.settings.text_color }};
+                font-size: {{ section.settings.text_size }}px;
+              ">
+                {{ block.settings.text }}
+              </div>
+            </div>
+          </div>
+        {% endfor %}
+      </div>
+    </div>
+    
+    <style>
+      .custom-benefits-bar {
+        margin: {{ section.settings.margin_top }}px 0 {{ section.settings.margin_bottom }}px;
+      }
+    
+      .custom-benefits-bar__inner {
+        display: grid;
+        grid-template-columns: repeat({{ section.settings.columns_desktop }}, minmax(0, 1fr));
+        border: 1px solid;
+        overflow: hidden;
+      }
+    
+      .custom-benefit-item {
+        position: relative;
+        display: flex;
+        align-items: center;
+        gap: 16px;
+        padding: 22px 28px;
+        min-height: 92px;
+      }
+    
+      .custom-benefit-item:not(:last-child)::after {
+        content: "";
+        position: absolute;
+        top: 22%;
+        right: 0;
+        width: 1px;
+        height: 56%;
+        background: {{ section.settings.divider_color }};
+      }
+    
+      .custom-benefit-item__icon {
+        width: 34px;
+        height: 34px;
+        min-width: 34px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+    
+      .custom-benefit-item__icon svg {
+        width: 34px;
+        height: 34px;
+        display: block;
+      }
+    
+      .custom-benefit-item__content {
+        display: flex;
+        flex-direction: column;
+      }
+    
+      .custom-benefit-item__title {
+        margin: 0 0 4px;
+        line-height: 1.2;
+        font-weight: 600;
+      }
+    
+      .custom-benefit-item__text {
+        line-height: 1.45;
+      }
+    
+      @media screen and (max-width: 989px) {
+        .custom-benefits-bar__inner {
+          grid-template-columns: repeat({{ section.settings.columns_tablet }}, minmax(0, 1fr));
+        }
+    
+        .custom-benefit-item:nth-child(2n)::after {
+          display: none;
+        }
+      }
+    
+      @media screen and (max-width: 749px) {
+        .custom-benefits-bar {
+          margin: {{ section.settings.mobile_margin_top }}px 0 {{ section.settings.mobile_margin_bottom }}px;
+        }
+    
+        .custom-benefits-bar__inner {
+          grid-template-columns: 1fr;
+        }
+    
+        .custom-benefit-item {
+          padding: 18px 18px;
+          min-height: auto;
+        }
+    
+        .custom-benefit-item::after {
+          display: none !important;
+        }
+    
+        .custom-benefit-item:not(:last-child) {
+          border-bottom: 1px solid {{ section.settings.divider_color }};
+        }
+    
+        .custom-benefit-item__title {
+          font-size: {{ section.settings.mobile_title_size }}px !important;
+        }
+    
+        .custom-benefit-item__text {
+          font-size: {{ section.settings.mobile_text_size }}px !important;
+        }
+    
+        .custom-benefit-item__icon,
+        .custom-benefit-item__icon svg {
+          
+{% enddoc %}
+{% assign ai_gen_id = block.id | replace: '_', '' | downcase %}
+
+{% style %}
+  .ai-benefits-bar-{{ ai_gen_id }} {
+    display: block;
+    background: {{ block.settings.section_bg }};
+    margin: {{ block.settings.margin_top }}px 0 {{ block.settings.margin_bottom }}px;
+  }
+
+  .ai-benefits-bar__inner-{{ ai_gen_id }} {
+    max-width: {{ block.settings.desktop_width_percent }}%;
+    margin: 0 auto;
+    background: {{ block.settings.inner_bg }};
+    border: 1px solid {{ block.settings.border_color }};
+    border-radius: {{ block.settings.border_radius }}px;
+    display: grid;
+    grid-template-columns: repeat({{ block.settings.columns_desktop }}, minmax(0, 1fr));
+    overflow: hidden;
+  }
+
+  .ai-benefit-item-{{ ai_gen_id }} {
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding: 22px 28px;
+    min-height: 92px;
+  }
+
+  .ai-benefit-item-{{ ai_gen_id }}:not(:last-child)::after {
+    content: "";
+    position: absolute;
+    top: 22%;
+    right: 0;
+    width: 1px;
+    height: 56%;
+    background: {{ block.settings.divider_color }};
+  }
+
+  .ai-benefit-item__icon-{{ ai_gen_id }} {
+    width: 34px;
+    height: 34px;
+    min-width: 34px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: {{ block.settings.icon_color }};
+  }
+
+  .ai-benefit-item__icon-{{ ai_gen_id }} svg {
+    width: 34px;
+    height: 34px;
+    display: block;
+  }
+
+  .ai-benefit-item__content-{{ ai_gen_id }} {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .ai-benefit-item__title-{{ ai_gen_id }} {
+    margin: 0 0 4px;
+    line-height: 1.2;
+    font-weight: 600;
+    color: {{ block.settings.title_color }};
+    font-size: {{ block.settings.title_size }}px;
+  }
+
+  .ai-benefit-item__text-{{ ai_gen_id }} {
+    line-height: 1.45;
+    color: {{ block.settings.text_color }};
+    font-size: {{ block.settings.text_size }}px;
+  }
+
+  @media screen and (max-width: 989px) {
+    .ai-benefits-bar__inner-{{ ai_gen_id }} {
+      grid-template-columns: repeat({{ block.settings.columns_tablet }}, minmax(0, 1fr));
+    }
+
+    .ai-benefit-item-{{ ai_gen_id }}:nth-child(2n)::after {
+      display: none;
+    }
+  }
+
+  @media screen and (max-width: 749px) {
+    .ai-benefits-bar-{{ ai_gen_id }} {
+      margin: {{ block.settings.mobile_margin_top }}px 0 {{ block.settings.mobile_margin_bottom }}px;
+    }
+
+    .ai-benefits-bar__inner-{{ ai_gen_id }} {
+      grid-template-columns: 1fr;
+    }
+
+    .ai-benefit-item-{{ ai_gen_id }} {
+      padding: 18px 18px;
+      min-height: auto;
+    }
+
+    .ai-benefit-item-{{ ai_gen_id }}::after {
+      display: none !important;
+    }
+
+    .ai-benefit-item-{{ ai_gen_id }}:not(:last-child) {
+      border-bottom: 1px solid {{ block.settings.divider_color }};
+    }
+
+    .ai-benefit-item__title-{{ ai_gen_id }} {
+      font-size: {{ block.settings.mobile_title_size }}px !important;
+    }
+
+    .ai-benefit-item__text-{{ ai_gen_id }} {
+      font-size: {{ block.settings.mobile_text_size }}px !important;
+    }
+
+    .ai-benefit-item__icon-{{ ai_gen_id }},
+    .ai-benefit-item__icon-{{ ai_gen_id }} svg {
+      width: 28px;
+      height: 28px;
+      min-width: 28px;
+    }
+  }
+{% endstyle %}
+
+<div class="ai-benefits-bar-{{ ai_gen_id }}" {{ block.shopify_attributes }}>
+  <div class="ai-benefits-bar__inner-{{ ai_gen_id }}">
+    {% if block.settings.benefit_1_enabled %}
+      <div class="ai-benefit-item-{{ ai_gen_id }}">
+        <div class="ai-benefit-item__icon-{{ ai_gen_id }}">
+          {% case block.settings.benefit_1_icon %}
+            {% when 'delivery' %}
+              <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                <path d="M3 6h11v8H3V6Zm11 3h3l3 3v2h-6V9Zm-8 8a2 2 0 1 0 0-4 2 2 0 0 0 0 4Zm11 0a2 2 0 1 0 0-4 2 2 0 0 0 0 4Z" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            {% when 'shield' %}
+              <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                <path d="M12 3l7 3v5c0 5-3.5 8-7 10-3.5-2-7-5-7-10V6l7-3Z" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            {% when 'return' %}
+              <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                <path d="M8 7H4m0 0l3-3M4 7l3 3" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/>
+                <path d="M20 12a8 8 0 0 0-13.66-5.66L4 7m16 5a8 8 0 1 1-2.34-5.66" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            {% when 'support' %}
+              <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                <path d="M5 14v-2a7 7 0 1 1 14 0v2" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/>
+                <path d="M5 14a2 2 0 0 0 2 2h1v-5H7a2 2 0 0 0-2 2Zm14 0a2 2 0 0 1-2 2h-1v-5h1a2 2 0 0 1 2 2Zm-7 6h2" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+          {% endcase %}
+        </div>
+        <div class="ai-benefit-item__content-{{ ai_gen_id }}">
+          {% if block.settings.benefit_1_title != blank %}
+            <div class="ai-benefit-item__title-{{ ai_gen_id }}">
+              {{ block.settings.benefit_1_title }}
+            </div>
+          {% endif %}
+          {% if block.settings.benefit_1_text != blank %}
+            <div class="ai-benefit-item__text-{{ ai_gen_id }}">
+              {{ block.settings.benefit_1_text }}
+            </div>
+          {% endif %}
+        </div>
+      </div>
+    {% endif %}
+
+    {% if block.settings.benefit_2_enabled %}
+      <div class="ai-benefit-item-{{ ai_gen_id }}">
+        <div class="ai-benefit-item__icon-{{ ai_gen_id }}">
+          {% case block.settings.benefit_2_icon %}
+            {% when 'delivery' %}
+              <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                <path d="M3 6h11v8H3V6Zm11 3h3l3 3v2h-6V9Zm-8 8a2 2 0 1 0 0-4 2 2 0 0 0 0 4Zm11 0a2 2 0 1 0 0-4 2 2 0 0 0 0 4Z" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            {% when 'shield' %}
+              <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                <path d="M12 3l7 3v5c0 5-3.5 8-7 10-3.5-2-7-5-7-10V6l7-3Z" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            {% when 'return' %}
+              <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                <path d="M8 7H4m0 0l3-3M4 7l3 3" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/>
+                <path d="M20 12a8 8 0 0 0-13.66-5.66L4 7m16 5a8 8 0 1 1-2.34-5.66" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            {% when 'support' %}
+              <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                <path d="M5 14v-2a7 7 0 1 1 14 0v2" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/>
+                <path d="M5 14a2 2 0 0 0 2 2h1v-5H7a2 2 0 0 0-2 2Zm14 0a2 2 0 0 1-2 2h-1v-5h1a2 2 0 0 1 2 2Zm-7 6h2" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+          {% endcase %}
+        </div>
+        <div class="ai-benefit-item__content-{{ ai_gen_id }}">
+          {% if block.settings.benefit_2_title != blank %}
+            <div class="ai-benefit-item__title-{{ ai_gen_id }}">
+              {{ block.settings.benefit_2_title }}
+            </div>
+          {% endif %}
+          {% if block.settings.benefit_2_text != blank %}
+            <div class="ai-benefit-item__text-{{ ai_gen_id }}">
+              {{ block.settings.benefit_2_text }}
+            </div>
+          {% endif %}
+        </div>
+      </div>
+    {% endif %}
+
+    {% if block.settings.benefit_3_enabled %}
+      <div class="ai-benefit-item-{{ ai_gen_id }}">
+        <div class="ai-benefit-item__icon-{{ ai_gen_id }}">
+          {% case block.settings.benefit_3_icon %}
+            {% when 'delivery' %}
+              <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                <path d="M3 6h11v8H3V6Zm11 3h3l3 3v2h-6V9Zm-8 8a2 2 0 1 0 0-4 2 2 0 0 0 0 4Zm11 0a2 2 0 1 0 0-4 2 2 0 0 0 0 4Z" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            {% when 'shield' %}
+              <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                <path d="M12 3l7 3v5c0 5-3.5 8-7 10-3.5-2-7-5-7-10V6l7-3Z" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            {% when 'return' %}
+              <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                <path d="M8 7H4m0 0l3-3M4 7l3 3" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/>
+                <path d="M20 12a8 8 0 0 0-13.66-5.66L4 7m16 5a8 8 0 1 1-2.34-5.66" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            {% when 'support' %}
+              <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                <path d="M5 14v-2a7 7 0 1 1 14 0v2" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/>
+                <path d="M5 14a2 2 0 0 0 2 2h1v-5H7a2 2 0 0 0-2 2Zm14 0a2 2 0 0 1-2 2h-1v-5h1a2 2 0 0 1 2 2Zm-7 6h2" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+          {% endcase %}
+        </div>
+        <div class="ai-benefit-item__content-{{ ai_gen_id }}">
+          {% if block.settings.benefit_3_title != blank %}
+            <div class="ai-benefit-item__title-{{ ai_gen_id }}">
+              {{ block.settings.benefit_3_title }}
+            </div>
+          {% endif %}
+          {% if block.settings.benefit_3_text != blank %}
+            <div class="ai-benefit-item__text-{{ ai_gen_id }}">
+              {{ block.settings.benefit_3_text }}
+            </div>
+          {% endif %}
+        </div>
+      </div>
+    {% endif %}
+
+    {% if block.settings.benefit_4_enabled %}
+      <div class="ai-benefit-item-{{ ai_gen_id }}">
+        <div class="ai-benefit-item__icon-{{ ai_gen_id }}">
+          {% case block.settings.benefit_4_icon %}
+            {% when 'delivery' %}
+              <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                <path d="M3 6h11v8H3V6Zm11 3h3l3 3v2h-6V9Zm-8 8a2 2 0 1 0 0-4 2 2 0 0 0 0 4Zm11 0a2 2 0 1 0 0-4 2 2 0 0 0 0 4Z" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            {% when 'shield' %}
+              <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                <path d="M12 3l7 3v5c0 5-3.5 8-7 10-3.5-2-7-5-7-10V6l7-3Z" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            {% when 'return' %}
+              <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                <path d="M8 7H4m0 0l3-3M4 7l3 3" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/>
+                <path d="M20 12a8 8 0 0 0-13.66-5.66L4 7m16 5a8 8 0 1 1-2.34-5.66" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            {% when 'support' %}
+              <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                <path d="M5 14v-2a7 7 0 1 1 14 0v2" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/>
+                <path d="M5 14a2 2 0 0 0 2 2h1v-5H7a2 2 0 0 0-2 2Zm14 0a2 2 0 0 1-2 2h-1v-5h1a2 2 0 0 1 2 2Zm-7 6h2" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+          {% endcase %}
+        </div>
+        <div class="ai-benefit-item__content-{{ ai_gen_id }}">
+          {% if block.settings.benefit_4_title != blank %}
+            <div class="ai-benefit-item__title-{{ ai_gen_id }}">
+              {{ block.settings.benefit_4_title }}
+            </div>
+          {% endif %}
+          {% if block.settings.benefit_4_text != blank %}
+            <div class="ai-benefit-item__text-{{ ai_gen_id }}">
+              {{ block.settings.benefit_4_text }}
+            </div>
+          {% endif %}
+        </div>
+      </div>
+    {% endif %}
+  </div>
+</div>
+
 {% schema %}
- {
-   "name": "AI_Block",
-   "tag": "shopify-ai-generated-block"
- }
+{
+  "name": "Benefits bar",
+  "tag": null,
+  "settings": [
+    {
+      "type": "header",
+      "content": "Layout"
+    },
+    {
+      "type": "range",
+      "id": "desktop_width_percent",
+      "label": "Desktop width",
+      "min": 50,
+      "max": 100,
+      "step": 5,
+      "unit": "%",
+      "default": 100
+    },
+    {
+      "type": "select",
+      "id": "columns_desktop",
+      "label": "Columns on desktop",
+      "options": [
+        { "value": "2", "label": "2" },
+        { "value": "3", "label": "3" },
+        { "value": "4", "label": "4" }
+      ],
+      "default": "4"
+    },
+    {
+      "type": "select",
+      "id": "columns_tablet",
+      "label": "Columns on tablet",
+      "options": [
+        { "value": "1", "label": "1" },
+        { "value": "2", "label": "2" }
+      ],
+      "default": "2"
+    },
+    {
+      "type": "header",
+      "content": "Spacing"
+    },
+    {
+      "type": "range",
+      "id": "margin_top",
+      "label": "Top margin (desktop)",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "default": 0
+    },
+    {
+      "type": "range",
+      "id": "margin_bottom",
+      "label": "Bottom margin (desktop)",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "default": 0
+    },
+    {
+      "type": "range",
+      "id": "mobile_margin_top",
+      "label": "Top margin (mobile)",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "default": 0
+    },
+    {
+      "type": "range",
+      "id": "mobile_margin_bottom",
+      "label": "Bottom margin (mobile)",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "default": 0
+    },
+    {
+      "type": "header",
+      "content": "Colors"
+    },
+    {
+      "type": "color",
+      "id": "section_bg",
+      "label": "Outer background",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "inner_bg",
+      "label": "Inner background",
+      "default": "#f3f3f3"
+    },
+    {
+      "type": "color",
+      "id": "border_color",
+      "label": "Border",
+      "default": "#e0e0e0"
+    },
+    {
+      "type": "color",
+      "id": "divider_color",
+      "label": "Divider",
+      "default": "#e0e0e0"
+    },
+    {
+      "type": "color",
+      "id": "icon_color",
+      "label": "Icon",
+      "default": "#121212"
+    },
+    {
+      "type": "color",
+      "id": "title_color",
+      "label": "Title",
+      "default": "#121212"
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Text",
+      "default": "#121212"
+    },
+    {
+      "type": "header",
+      "content": "Typography"
+    },
+    {
+      "type": "range",
+      "id": "title_size",
+      "label": "Title size (desktop)",
+      "min": 12,
+      "max": 24,
+      "step": 1,
+      "unit": "px",
+      "default": 16
+    },
+    {
+      "type": "range",
+      "id": "text_size",
+      "label": "Text size (desktop)",
+      "min": 10,
+      "max": 20,
+      "step": 1,
+      "unit": "px",
+      "default": 14
+    },
+    {
+      "type": "range",
+      "id": "mobile_title_size",
+      "label": "Title size (mobile)",
+      "min": 12,
+      "max": 20,
+      "step": 1,
+      "unit": "px",
+      "default": 14
+    },
+    {
+      "type": "range",
+      "id": "mobile_text_size",
+      "label": "Text size (mobile)",
+      "min": 10,
+      "max": 18,
+      "step": 1,
+      "unit": "px",
+      "default": 12
+    },
+    {
+      "type": "header",
+      "content": "Border"
+    },
+    {
+      "type": "range",
+      "id": "border_radius",
+      "label": "Border radius",
+      "min": 0,
+      "max": 40,
+      "step": 2,
+      "unit": "px",
+      "default": 0
+    },
+    {
+      "type": "header",
+      "content": "Benefit 1"
+    },
+    {
+      "type": "checkbox",
+      "id": "benefit_1_enabled",
+      "label": "Enable benefit 1",
+      "default": true
+    },
+    {
+      "type": "select",
+      "id": "benefit_1_icon",
+      "label": "Icon",
+      "options": [
+        { "value": "delivery", "label": "Delivery" },
+        { "value": "shield", "label": "Shield" },
+        { "value": "return", "label": "Return" },
+        { "value": "support", "label": "Support" }
+      ],
+      "default": "delivery"
+    },
+    {
+      "type": "text",
+      "id": "benefit_1_title",
+      "label": "Title",
+      "default": "Free shipping"
+    },
+    {
+      "type": "text",
+      "id": "benefit_1_text",
+      "label": "Text",
+      "default": "On orders over $50"
+    },
+    {
+      "type": "header",
+      "content": "Benefit 2"
+    },
+    {
+      "type": "checkbox",
+      "id": "benefit_2_enabled",
+      "label": "Enable benefit 2",
+      "default": true
+    },
+    {
+      "type": "select",
+      "id": "benefit_2_icon",
+      "label": "Icon",
+      "options": [
+        { "value": "delivery", "label": "Delivery" },
+        { "value": "shield", "label": "Shield" },
+        { "value": "return", "label": "Return" },
+        { "value": "support", "label": "Support" }
+      ],
+      "default": "shield"
+    },
+    {
+      "type": "text",
+      "id": "benefit_2_title",
+      "label": "Title",
+      "default": "Secure payment"
+    },
+    {
+      "type": "text",
+      "id": "benefit_2_text",
+      "label": "Text",
+      "default": "100% secure transactions"
+    },
+    {
+      "type": "header",
+      "content": "Benefit 3"
+    },
+    {
+      "type": "checkbox",
+      "id": "benefit_3_enabled",
+      "label": "Enable benefit 3",
+      "default": true
+    },
+    {
+      "type": "select",
+      "id": "benefit_3_icon",
+      "label": "Icon",
+      "options": [
+        { "value": "delivery", "label": "Delivery" },
+        { "value": "shield", "label": "Shield" },
+        { "value": "return", "label": "Return" },
+        { "value": "support", "label": "Support" }
+      ],
+      "default": "return"
+    },
+    {
+      "type": "text",
+      "id": "benefit_3_title",
+      "label": "Title",
+      "default": "Easy returns"
+    },
+    {
+      "type": "text",
+      "id": "benefit_3_text",
+      "label": "Text",
+      "default": "30-day return policy"
+    },
+    {
+      "type": "header",
+      "content": "Benefit 4"
+    },
+    {
+      "type": "checkbox",
+      "id": "benefit_4_enabled",
+      "label": "Enable benefit 4",
+      "default": true
+    },
+    {
+      "type": "select",
+      "id": "benefit_4_icon",
+      "label": "Icon",
+      "options": [
+        { "value": "delivery", "label": "Delivery" },
+        { "value": "shield", "label": "Shield" },
+        { "value": "return", "label": "Return" },
+        { "value": "support", "label": "Support" }
+      ],
+      "default": "support"
+    },
+    {
+      "type": "text",
+      "id": "benefit_4_title",
+      "label": "Title",
+      "default": "24/7 support"
+    },
+    {
+      "type": "text",
+      "id": "benefit_4_text",
+      "label": "Text",
+      "default": "Dedicated customer service"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Benefits bar"
+    }
+  ]
+}
 {% endschema %}
