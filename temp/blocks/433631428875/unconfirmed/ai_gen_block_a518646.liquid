@@ -1,6 +1,721 @@
+{% doc %}
+  @prompt
+    Am nevoie de o secțiune Shopify (Liquid section) pentru un banner hero complet customizabil, optimizată pentru traduceri (compatibilă cu Shopify Translate & Adapt, Localize etc.).
+    
+    CERINȚE GENERALE:
+    - Toate textele (titlu, subtitlu, CTA) trebuie să fie definite în schema și să suporte traducere (nu hardcoded).
+    - Cod curat, modern, fără dependențe externe.
+    
+    LAYOUT:
+    - Secțiunea trebuie să fie centrată și să aibă un MAX-WIDTH de 1300px pe desktop.
+    - Conținutul NU trebuie să fie full-width.
+    - Pe mobile poate fi full width (edge-to-edge).
+    - Containerul trebuie să fie centrat cu margin: 0 auto.
+    
+    IMAGINI:
+    - 2 image pickers separate:
+      - imagine desktop
+      - imagine mobile
+    - Responsive logic:
+      - desktop image pentru >768px
+      - mobile image pentru <=768px
+    
+    TEXT:
+    - Titlu
+    - Subtitlu
+    - CTA text
+    - CTA link
+    
+    CONTROL AVANSAT (FOARTE IMPORTANT):
+    
+    LAYOUT:
+    - poziție text (left / center / right)
+    - aliniere verticală (top / center / bottom)
+    - max width pentru content (slider)
+    - spacing (padding top/bottom)
+    
+    TIPOGRAFIE:
+    - font size separat pentru:
+      - titlu (desktop + mobile)
+      - subtitlu (desktop + mobile)
+      - CTA (desktop + mobile)
+    - font weight
+    - line height
+    
+    CULORI:
+    - culoare titlu
+    - culoare subtitlu
+    - culoare CTA
+    - culoare background buton
+    - culoare hover buton
+    
+    OVERLAY:
+    - overlay activ/inactiv
+    - culoare overlay
+    - opacitate overlay (range slider)
+    
+    BUTON:
+    - stil buton:
+      - outline
+      - solid
+    - border radius
+    - padding
+    
+    ALTE DETALII:
+    - opțiune pentru gradient overlay (jos sau lateral)
+    - suport pentru text shadow (on/off)
+    - border radius pentru banner
+    - hover subtle effect (zoom imagine sau fade)
+    
+    RESPONSIVE:
+    - layout optimizat pentru mobile
+    - control separat pentru poziționare text pe mobile
+    
+    STRUCTURĂ:
+    - folosește best practices Shopify sections
+    - include `{% schema %}` complet
+    - cod semantic și performant
+    
+    SCOP:
+    Vreau o secțiune premium, flexibilă, reutilizabilă pentru homepage sau category banners, cu control granular și compatibilitate perfectă cu multi-language.
+{% enddoc %}
+{% assign ai_gen_id = block.id | replace: '_', '' | downcase %}
+
+{% style %}
+  .ai-hero-banner-{{ ai_gen_id }} {
+    display: block;
+    width: 100%;
+    position: relative;
+    overflow: hidden;
+    border-radius: {{ block.settings.banner_border_radius }}px;
+  }
+
+  .ai-hero-banner__wrapper-{{ ai_gen_id }} {
+    max-width: 1300px;
+    margin: 0 auto;
+    padding: {{ block.settings.spacing_top }}px 0 {{ block.settings.spacing_bottom }}px;
+  }
+
+  .ai-hero-banner__container-{{ ai_gen_id }} {
+    position: relative;
+    width: 100%;
+    min-height: 400px;
+    display: flex;
+    align-items: {{ block.settings.vertical_alignment }};
+    justify-content: {{ block.settings.text_position }};
+    overflow: hidden;
+    border-radius: {{ block.settings.banner_border_radius }}px;
+  }
+
+  .ai-hero-banner__image-{{ ai_gen_id }} {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.6s ease;
+  }
+
+  {% if block.settings.hover_effect == 'zoom' %}
+    .ai-hero-banner__container-{{ ai_gen_id }}:hover .ai-hero-banner__image-{{ ai_gen_id }} {
+      transform: scale(1.05);
+    }
+  {% endif %}
+
+  .ai-hero-banner__image-mobile-{{ ai_gen_id }} {
+    display: none;
+  }
+
+  .ai-hero-banner__overlay-{{ ai_gen_id }} {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    {% if block.settings.overlay_enabled %}
+      {% if block.settings.overlay_gradient == 'bottom' %}
+        background: linear-gradient(to top, {{ block.settings.overlay_color }}, transparent);
+      {% elsif block.settings.overlay_gradient == 'left' %}
+        background: linear-gradient(to right, {{ block.settings.overlay_color }}, transparent);
+      {% elsif block.settings.overlay_gradient == 'right' %}
+        background: linear-gradient(to left, {{ block.settings.overlay_color }}, transparent);
+      {% else %}
+        background-color: {{ block.settings.overlay_color }};
+      {% endif %}
+      opacity: {{ block.settings.overlay_opacity | divided_by: 100.0 }};
+    {% endif %}
+  }
+
+  .ai-hero-banner__content-{{ ai_gen_id }} {
+    position: relative;
+    z-index: 2;
+    max-width: {{ block.settings.content_max_width }}px;
+    padding: 40px 20px;
+    text-align: {{ block.settings.text_position }};
+    {% if block.settings.text_shadow_enabled %}
+      text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+    {% endif %}
+  }
+
+  .ai-hero-banner__title-{{ ai_gen_id }} {
+    color: {{ block.settings.title_color }};
+    font-size: {{ block.settings.title_size_desktop }}px;
+    font-weight: {{ block.settings.font_weight }};
+    line-height: {{ block.settings.line_height }};
+    margin: 0 0 16px;
+  }
+
+  .ai-hero-banner__subtitle-{{ ai_gen_id }} {
+    color: {{ block.settings.subtitle_color }};
+    font-size: {{ block.settings.subtitle_size_desktop }}px;
+    line-height: {{ block.settings.line_height }};
+    margin: 0 0 24px;
+  }
+
+  .ai-hero-banner__cta-{{ ai_gen_id }} {
+    display: inline-block;
+    padding: {{ block.settings.button_padding_vertical }}px {{ block.settings.button_padding_horizontal }}px;
+    font-size: {{ block.settings.cta_size_desktop }}px;
+    font-weight: {{ block.settings.font_weight }};
+    text-decoration: none;
+    border-radius: {{ block.settings.button_border_radius }}px;
+    transition: all 0.3s ease;
+    {% if block.settings.button_style == 'solid' %}
+      background-color: {{ block.settings.button_bg_color }};
+      color: {{ block.settings.cta_color }};
+      border: 2px solid {{ block.settings.button_bg_color }};
+    {% else %}
+      background-color: transparent;
+      color: {{ block.settings.cta_color }};
+      border: 2px solid {{ block.settings.cta_color }};
+    {% endif %}
+  }
+
+  .ai-hero-banner__cta-{{ ai_gen_id }}:hover {
+    {% if block.settings.button_style == 'solid' %}
+      background-color: {{ block.settings.button_hover_color }};
+      border-color: {{ block.settings.button_hover_color }};
+    {% else %}
+      background-color: {{ block.settings.button_hover_color }};
+      border-color: {{ block.settings.button_hover_color }};
+      color: {{ block.settings.button_bg_color }};
+    {% endif %}
+    {% if block.settings.hover_effect == 'fade' %}
+      opacity: 0.8;
+    {% endif %}
+  }
+
+  @media screen and (max-width: 768px) {
+    .ai-hero-banner__image-desktop-{{ ai_gen_id }} {
+      display: none;
+    }
+
+    .ai-hero-banner__image-mobile-{{ ai_gen_id }} {
+      display: block;
+    }
+
+    .ai-hero-banner__wrapper-{{ ai_gen_id }} {
+      padding: {{ block.settings.spacing_top | times: 0.6 }}px 0 {{ block.settings.spacing_bottom | times: 0.6 }}px;
+    }
+
+    .ai-hero-banner__container-{{ ai_gen_id }} {
+      min-height: 300px;
+      justify-content: {{ block.settings.text_position_mobile }};
+    }
+
+    .ai-hero-banner__content-{{ ai_gen_id }} {
+      padding: 30px 16px;
+      text-align: {{ block.settings.text_position_mobile }};
+    }
+
+    .ai-hero-banner__title-{{ ai_gen_id }} {
+      font-size: {{ block.settings.title_size_mobile }}px;
+      margin-bottom: 12px;
+    }
+
+    .ai-hero-banner__subtitle-{{ ai_gen_id }} {
+      font-size: {{ block.settings.subtitle_size_mobile }}px;
+      margin-bottom: 20px;
+    }
+
+    .ai-hero-banner__cta-{{ ai_gen_id }} {
+      font-size: {{ block.settings.cta_size_mobile }}px;
+    }
+  }
+{% endstyle %}
+
+<div class="ai-hero-banner-{{ ai_gen_id }}" {{ block.shopify_attributes }}>
+  <div class="ai-hero-banner__wrapper-{{ ai_gen_id }}">
+    <div class="ai-hero-banner__container-{{ ai_gen_id }}">
+      {% if block.settings.image_desktop %}
+        <img
+          src="{{ block.settings.image_desktop | image_url: width: 2000 }}"
+          alt="{{ block.settings.image_desktop.alt | escape }}"
+          loading="lazy"
+          width="{{ block.settings.image_desktop.width }}"
+          height="{{ block.settings.image_desktop.height }}"
+          class="ai-hero-banner__image-{{ ai_gen_id }} ai-hero-banner__image-desktop-{{ ai_gen_id }}"
+        >
+      {% else %}
+        <div class="ai-hero-banner__image-placeholder-{{ ai_gen_id }}">
+          {{ 'hero-apparel-1' | placeholder_svg_tag }}
+        </div>
+      {% endif %}
+
+      {% if block.settings.image_mobile %}
+        <img
+          src="{{ block.settings.image_mobile | image_url: width: 1000 }}"
+          alt="{{ block.settings.image_mobile.alt | escape }}"
+          loading="lazy"
+          width="{{ block.settings.image_mobile.width }}"
+          height="{{ block.settings.image_mobile.height }}"
+          class="ai-hero-banner__image-{{ ai_gen_id }} ai-hero-banner__image-mobile-{{ ai_gen_id }}"
+        >
+      {% endif %}
+
+      <div class="ai-hero-banner__overlay-{{ ai_gen_id }}"></div>
+
+      <div class="ai-hero-banner__content-{{ ai_gen_id }}">
+        {% if block.settings.title != blank %}
+          <h2 class="ai-hero-banner__title-{{ ai_gen_id }}">{{ block.settings.title }}</h2>
+        {% endif %}
+
+        {% if block.settings.subtitle != blank %}
+          <p class="ai-hero-banner__subtitle-{{ ai_gen_id }}">{{ block.settings.subtitle }}</p>
+        {% endif %}
+
+        {% if block.settings.cta_text != blank and block.settings.cta_link != blank %}
+          <a href="{{ block.settings.cta_link }}" class="ai-hero-banner__cta-{{ ai_gen_id }}">
+            {{ block.settings.cta_text }}
+          </a>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+</div>
+
 {% schema %}
- {
-   "name": "AI_Block",
-   "tag": "shopify-ai-generated-block"
- }
+{
+  "name": "Hero banner",
+  "tag": null,
+  "settings": [
+    {
+      "type": "header",
+      "content": "Images"
+    },
+    {
+      "type": "image_picker",
+      "id": "image_desktop",
+      "label": "Desktop image"
+    },
+    {
+      "type": "image_picker",
+      "id": "image_mobile",
+      "label": "Mobile image"
+    },
+    {
+      "type": "header",
+      "content": "Content"
+    },
+    {
+      "type": "inline_richtext",
+      "id": "title",
+      "label": "Title",
+      "default": "Premium LED Lighting"
+    },
+    {
+      "type": "inline_richtext",
+      "id": "subtitle",
+      "label": "Subtitle",
+      "default": "Discover contemporary home fixtures"
+    },
+    {
+      "type": "inline_richtext",
+      "id": "cta_text",
+      "label": "Button text",
+      "default": "Shop now"
+    },
+    {
+      "type": "url",
+      "id": "cta_link",
+      "label": "Button link"
+    },
+    {
+      "type": "header",
+      "content": "Layout"
+    },
+    {
+      "type": "select",
+      "id": "text_position",
+      "label": "Text position",
+      "options": [
+        {
+          "value": "flex-start",
+          "label": "Left"
+        },
+        {
+          "value": "center",
+          "label": "Center"
+        },
+        {
+          "value": "flex-end",
+          "label": "Right"
+        }
+      ],
+      "default": "center"
+    },
+    {
+      "type": "select",
+      "id": "text_position_mobile",
+      "label": "Text position on mobile",
+      "options": [
+        {
+          "value": "flex-start",
+          "label": "Left"
+        },
+        {
+          "value": "center",
+          "label": "Center"
+        },
+        {
+          "value": "flex-end",
+          "label": "Right"
+        }
+      ],
+      "default": "center"
+    },
+    {
+      "type": "select",
+      "id": "vertical_alignment",
+      "label": "Vertical alignment",
+      "options": [
+        {
+          "value": "flex-start",
+          "label": "Top"
+        },
+        {
+          "value": "center",
+          "label": "Center"
+        },
+        {
+          "value": "flex-end",
+          "label": "Bottom"
+        }
+      ],
+      "default": "center"
+    },
+    {
+      "type": "range",
+      "id": "content_max_width",
+      "label": "Content max width",
+      "min": 400,
+      "max": 1000,
+      "step": 50,
+      "unit": "px",
+      "default": 700
+    },
+    {
+      "type": "range",
+      "id": "spacing_top",
+      "label": "Spacing top",
+      "min": 0,
+      "max": 100,
+      "step": 10,
+      "unit": "px",
+      "default": 40
+    },
+    {
+      "type": "range",
+      "id": "spacing_bottom",
+      "label": "Spacing bottom",
+      "min": 0,
+      "max": 100,
+      "step": 10,
+      "unit": "px",
+      "default": 40
+    },
+    {
+      "type": "header",
+      "content": "Typography"
+    },
+    {
+      "type": "range",
+      "id": "title_size_desktop",
+      "label": "Title size (desktop)",
+      "min": 20,
+      "max": 80,
+      "step": 2,
+      "unit": "px",
+      "default": 48
+    },
+    {
+      "type": "range",
+      "id": "title_size_mobile",
+      "label": "Title size (mobile)",
+      "min": 16,
+      "max": 50,
+      "step": 2,
+      "unit": "px",
+      "default": 32
+    },
+    {
+      "type": "range",
+      "id": "subtitle_size_desktop",
+      "label": "Subtitle size (desktop)",
+      "min": 12,
+      "max": 40,
+      "step": 2,
+      "unit": "px",
+      "default": 20
+    },
+    {
+      "type": "range",
+      "id": "subtitle_size_mobile",
+      "label": "Subtitle size (mobile)",
+      "min": 12,
+      "max": 30,
+      "step": 2,
+      "unit": "px",
+      "default": 16
+    },
+    {
+      "type": "range",
+      "id": "cta_size_desktop",
+      "label": "Button size (desktop)",
+      "min": 12,
+      "max": 30,
+      "step": 2,
+      "unit": "px",
+      "default": 16
+    },
+    {
+      "type": "range",
+      "id": "cta_size_mobile",
+      "label": "Button size (mobile)",
+      "min": 12,
+      "max": 24,
+      "step": 2,
+      "unit": "px",
+      "default": 14
+    },
+    {
+      "type": "select",
+      "id": "font_weight",
+      "label": "Font weight",
+      "options": [
+        {
+          "value": "300",
+          "label": "Light"
+        },
+        {
+          "value": "400",
+          "label": "Normal"
+        },
+        {
+          "value": "500",
+          "label": "Medium"
+        },
+        {
+          "value": "600",
+          "label": "Semi bold"
+        },
+        {
+          "value": "700",
+          "label": "Bold"
+        }
+      ],
+      "default": "600"
+    },
+    {
+      "type": "range",
+      "id": "line_height",
+      "label": "Line height",
+      "min": 1,
+      "max": 2,
+      "step": 0.1,
+      "default": 1.4
+    },
+    {
+      "type": "checkbox",
+      "id": "text_shadow_enabled",
+      "label": "Enable text shadow",
+      "default": true
+    },
+    {
+      "type": "header",
+      "content": "Colors"
+    },
+    {
+      "type": "color",
+      "id": "title_color",
+      "label": "Title color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "subtitle_color",
+      "label": "Subtitle color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "cta_color",
+      "label": "Button text color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "button_bg_color",
+      "label": "Button background",
+      "default": "#000000"
+    },
+    {
+      "type": "color",
+      "id": "button_hover_color",
+      "label": "Button hover background",
+      "default": "#333333"
+    },
+    {
+      "type": "header",
+      "content": "Overlay"
+    },
+    {
+      "type": "checkbox",
+      "id": "overlay_enabled",
+      "label": "Enable overlay",
+      "default": true
+    },
+    {
+      "type": "color",
+      "id": "overlay_color",
+      "label": "Overlay color",
+      "default": "#000000"
+    },
+    {
+      "type": "range",
+      "id": "overlay_opacity",
+      "label": "Overlay opacity",
+      "min": 0,
+      "max": 100,
+      "step": 5,
+      "unit": "%",
+      "default": 40
+    },
+    {
+      "type": "select",
+      "id": "overlay_gradient",
+      "label": "Overlay gradient",
+      "options": [
+        {
+          "value": "none",
+          "label": "None"
+        },
+        {
+          "value": "bottom",
+          "label": "Bottom"
+        },
+        {
+          "value": "left",
+          "label": "Left"
+        },
+        {
+          "value": "right",
+          "label": "Right"
+        }
+      ],
+      "default": "bottom"
+    },
+    {
+      "type": "header",
+      "content": "Button style"
+    },
+    {
+      "type": "select",
+      "id": "button_style",
+      "label": "Style",
+      "options": [
+        {
+          "value": "solid",
+          "label": "Solid"
+        },
+        {
+          "value": "outline",
+          "label": "Outline"
+        }
+      ],
+      "default": "solid"
+    },
+    {
+      "type": "range",
+      "id": "button_border_radius",
+      "label": "Border radius",
+      "min": 0,
+      "max": 50,
+      "step": 2,
+      "unit": "px",
+      "default": 4
+    },
+    {
+      "type": "range",
+      "id": "button_padding_vertical",
+      "label": "Padding vertical",
+      "min": 8,
+      "max": 30,
+      "step": 2,
+      "unit": "px",
+      "default": 14
+    },
+    {
+      "type": "range",
+      "id": "button_padding_horizontal",
+      "label": "Padding horizontal",
+      "min": 16,
+      "max": 60,
+      "step": 4,
+      "unit": "px",
+      "default": 32
+    },
+    {
+      "type": "header",
+      "content": "Effects"
+    },
+    {
+      "type": "select",
+      "id": "hover_effect",
+      "label": "Hover effect",
+      "options": [
+        {
+          "value": "none",
+          "label": "None"
+        },
+        {
+          "value": "zoom",
+          "label": "Zoom image"
+        },
+        {
+          "value": "fade",
+          "label": "Fade"
+        }
+      ],
+      "default": "zoom"
+    },
+    {
+      "type": "range",
+      "id": "banner_border_radius",
+      "label": "Banner border radius",
+      "min": 0,
+      "max": 40,
+      "step": 2,
+      "unit": "px",
+      "default": 0
+    }
+  ],
+  "presets": [
+    {
+      "name": "Hero banner"
+    }
+  ]
+}
 {% endschema %}
