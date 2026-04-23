@@ -1,581 +1,959 @@
-{% doc %}
-  @prompt
-    Am nevoie de o secțiune Shopify (Liquid section) pentru un banner hero complet customizabil, optimizată pentru traduceri (compatibilă cu Shopify Translate & Adapt, Localize etc.).
-    
-    CERINȚE GENERALE:
-    - Toate textele (titlu, subtitlu, CTA) trebuie să fie definite în schema și să suporte traducere (nu hardcoded).
-    - Cod curat, modern, fără dependențe externe.
-    
-    LAYOUT:
-    - Secțiunea trebuie să fie centrată și să aibă un MAX-WIDTH de 1300px pe desktop.
-    - Conținutul NU trebuie să fie full-width.
-    - Pe mobile poate fi full width (edge-to-edge).
-    - Containerul trebuie să fie centrat cu margin: 0 auto.
-    
-    IMAGINI:
-    - 2 image pickers separate:
-      - imagine desktop
-      - imagine mobile
-    - Responsive logic:
-      - desktop image pentru >768px
-      - mobile image pentru <=768px
-    
-    TEXT:
-    - Titlu
-    - Subtitlu
-    - CTA text
-    - CTA link
-    
-    CONTROL AVANSAT (FOARTE IMPORTANT):
-    
-    LAYOUT:
-    - poziție text (left / center / right)
-    - aliniere verticală (top / center / bottom)
-    - max width pentru content (slider)
-    - spacing (padding top/bottom)
-    
-    TIPOGRAFIE:
-    - font size separat pentru:
-      - titlu (desktop + mobile)
-      - subtitlu (desktop + mobile)
-      - CTA (desktop + mobile)
-    - font weight
-    - line height
-    
-    CULORI:
-    - culoare titlu
-    - culoare subtitlu
-    - culoare CTA
-    - culoare background buton
-    - culoare hover buton
-    
-    OVERLAY:
-    - overlay activ/inactiv
-    - culoare overlay
-    - opacitate overlay (range slider)
-    
-    BUTON:
-    - stil buton:
-      - outline
-      - solid
-    - border radius
-    - padding
-    
-    ALTE DETALII:
-    - opțiune pentru gradient overlay (jos sau lateral)
-    - suport pentru text shadow (on/off)
-    - border radius pentru banner
-    - hover subtle effect (zoom imagine sau fade)
-    
-    RESPONSIVE:
-    - layout optimizat pentru mobile
-    - control separat pentru poziționare text pe mobile
-    
-    STRUCTURĂ:
-    - folosește best practices Shopify sections
-    - include `{% schema %}` complet
-    - cod semantic și performant
-    
-    SCOP:
-    Vreau o secțiune premium, flexibilă, reutilizabilă pentru homepage sau category banners, cu control granular și compatibilitate perfectă cu multi-language.
-{% enddoc %}
-{% assign ai_gen_id = block.id | replace: '_', '' | downcase %}
+{% liquid
+  assign section_id = 'hero-banner-' | append: section.id
+%}
 
-{% style %}
-  .ai-hero-banner-{{ ai_gen_id }} {
-    display: block;
-    width: 100%;
-    position: relative;
-    overflow: hidden;
-    border-radius: {{ block.settings.banner_border_radius }}px;
+<style>
+  .{{ section_id }} {
+    --hb-max-width: 1300px;
+    --hb-radius: {{ section.settings.banner_radius }}px;
+    --hb-content-max: {{ section.settings.content_max_width }}px;
+
+    --hb-title-color: {{ section.settings.title_color }};
+    --hb-subtitle-color: {{ section.settings.subtitle_color }};
+    --hb-button-text: {{ section.settings.button_text_color }};
+    --hb-button-bg: {{ section.settings.button_bg_color }};
+    --hb-button-border: {{ section.settings.button_border_color }};
+    --hb-button-hover-text: {{ section.settings.button_hover_text_color }};
+    --hb-button-hover-bg: {{ section.settings.button_hover_bg_color }};
+    --hb-button-hover-border: {{ section.settings.button_hover_border_color }};
+
+    --hb-title-size-desktop: {{ section.settings.title_size_desktop }}px;
+    --hb-subtitle-size-desktop: {{ section.settings.subtitle_size_desktop }}px;
+    --hb-button-size-desktop: {{ section.settings.button_size_desktop }}px;
+
+    --hb-title-size-mobile: {{ section.settings.title_size_mobile }}px;
+    --hb-subtitle-size-mobile: {{ section.settings.subtitle_size_mobile }}px;
+    --hb-button-size-mobile: {{ section.settings.button_size_mobile }}px;
+
+    --hb-title-weight: {{ section.settings.title_weight }};
+    --hb-subtitle-weight: {{ section.settings.subtitle_weight }};
+    --hb-button-weight: {{ section.settings.button_weight }};
+
+    --hb-title-line: {{ section.settings.title_line_height }};
+    --hb-subtitle-line: {{ section.settings.subtitle_line_height }};
+    --hb-button-radius: {{ section.settings.button_radius }}px;
+
+    --hb-py-top: {{ section.settings.padding_top }}px;
+    --hb-py-bottom: {{ section.settings.padding_bottom }}px;
+
+    --hb-overlay-opacity: {{ section.settings.overlay_opacity | divided_by: 100.0 }};
+    --hb-overlay-solid: {{ section.settings.overlay_color }};
+    --hb-overlay-soft: {{ section.settings.overlay_color | color_modify: 'alpha', 0.0 }};
+
+    --hb-desktop-min-height: {{ section.settings.banner_height_desktop }}px;
+    --hb-mobile-min-height: {{ section.settings.banner_height_mobile }}px;
+
+    --hb-content-padding-desktop: {{ section.settings.content_padding_desktop }}px;
+    --hb-content-padding-mobile: {{ section.settings.content_padding_mobile }}px;
+
+    --hb-gap: {{ section.settings.content_gap }}px;
   }
 
-  .ai-hero-banner__wrapper-{{ ai_gen_id }} {
-    max-width: 1300px;
+  .{{ section_id }} {
+    width: 100%;
+    padding-top: var(--hb-py-top);
+    padding-bottom: var(--hb-py-bottom);
+  }
+
+  .{{ section_id }}__inner {
+    max-width: var(--hb-max-width);
     margin: 0 auto;
-    padding: {{ block.settings.spacing_top }}px 0 {{ block.settings.spacing_bottom }}px;
-  }
-
-  .ai-hero-banner__container-{{ ai_gen_id }} {
     position: relative;
-    width: 100%;
-    min-height: 400px;
-    display: flex;
-    align-items: {{ block.settings.vertical_alignment }};
-    justify-content: {{ block.settings.text_position }};
-    overflow: hidden;
-    border-radius: {{ block.settings.banner_border_radius }}px;
+    padding-left: 0;
+    padding-right: 0;
   }
 
-  .ai-hero-banner__image-{{ ai_gen_id }} {
+  .{{ section_id }}__banner {
+    position: relative;
+    min-height: var(--hb-desktop-min-height);
+    border-radius: var(--hb-radius);
+    overflow: hidden;
+    display: flex;
+    width: 100%;
+    isolation: isolate;
+    background: #f4f4f4;
+  }
+
+  .{{ section_id }}__media {
     position: absolute;
-    top: 0;
-    left: 0;
+    inset: 0;
+    z-index: 0;
+  }
+
+  .{{ section_id }}__image {
+    position: absolute;
+    inset: 0;
     width: 100%;
     height: 100%;
     object-fit: cover;
-    transition: transform 0.6s ease;
+    transform: scale(1);
+    transition: transform 700ms ease, opacity 350ms ease;
   }
 
-  {% if block.settings.hover_effect == 'zoom' %}
-    .ai-hero-banner__container-{{ ai_gen_id }}:hover .ai-hero-banner__image-{{ ai_gen_id }} {
-      transform: scale(1.05);
-    }
-  {% endif %}
-
-  .ai-hero-banner__image-mobile-{{ ai_gen_id }} {
+  .{{ section_id }}__image--mobile {
     display: none;
   }
 
-  .ai-hero-banner__overlay-{{ ai_gen_id }} {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    pointer-events: none;
-    {% if block.settings.overlay_enabled %}
-      {% if block.settings.overlay_gradient == 'bottom' %}
-        background: linear-gradient(to top, {{ block.settings.overlay_color }}, transparent);
-      {% elsif block.settings.overlay_gradient == 'left' %}
-        background: linear-gradient(to right, {{ block.settings.overlay_color }}, transparent);
-      {% elsif block.settings.overlay_gradient == 'right' %}
-        background: linear-gradient(to left, {{ block.settings.overlay_color }}, transparent);
-      {% else %}
-        background-color: {{ block.settings.overlay_color }};
-      {% endif %}
-      opacity: {{ block.settings.overlay_opacity | divided_by: 100.0 }};
-    {% endif %}
+  .{{ section_id }}__banner:hover .{{ section_id }}__image--zoom {
+    transform: scale(1.04);
   }
 
-  .ai-hero-banner__content-{{ ai_gen_id }} {
+  .{{ section_id }}__overlay {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 200ms ease;
+  }
+
+  .{{ section_id }}__overlay--enabled {
+    opacity: var(--hb-overlay-opacity);
+  }
+
+  .{{ section_id }}__overlay--solid {
+    background: var(--hb-overlay-solid);
+  }
+
+  .{{ section_id }}__overlay--left {
+    background: linear-gradient(90deg, var(--hb-overlay-solid) 0%, var(--hb-overlay-soft) 65%);
+  }
+
+  .{{ section_id }}__overlay--right {
+    background: linear-gradient(270deg, var(--hb-overlay-solid) 0%, var(--hb-overlay-soft) 65%);
+  }
+
+  .{{ section_id }}__overlay--top {
+    background: linear-gradient(180deg, var(--hb-overlay-solid) 0%, var(--hb-overlay-soft) 60%);
+  }
+
+  .{{ section_id }}__overlay--bottom {
+    background: linear-gradient(0deg, var(--hb-overlay-solid) 0%, var(--hb-overlay-soft) 60%);
+  }
+
+  .{{ section_id }}__overlay--radial {
+    background: radial-gradient(circle at center, var(--hb-overlay-soft) 10%, var(--hb-overlay-solid) 100%);
+  }
+
+  .{{ section_id }}__content-wrap {
     position: relative;
     z-index: 2;
-    max-width: {{ block.settings.content_max_width }}px;
-    padding: 40px 20px;
-    text-align: {{ block.settings.text_position }};
-    {% if block.settings.text_shadow_enabled %}
-      text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+    width: 100%;
+    display: flex;
+    padding: var(--hb-content-padding-desktop);
+  }
+
+  .{{ section_id }}__content-wrap--left {
+    justify-content: flex-start;
+  }
+
+  .{{ section_id }}__content-wrap--center {
+    justify-content: center;
+  }
+
+  .{{ section_id }}__content-wrap--right {
+    justify-content: flex-end;
+  }
+
+  .{{ section_id }}__content-wrap--top {
+    align-items: flex-start;
+  }
+
+  .{{ section_id }}__content-wrap--middle {
+    align-items: center;
+  }
+
+  .{{ section_id }}__content-wrap--bottom {
+    align-items: flex-end;
+  }
+
+  .{{ section_id }}__content {
+    width: 100%;
+    max-width: var(--hb-content-max);
+    display: flex;
+    flex-direction: column;
+    gap: var(--hb-gap);
+  }
+
+  .{{ section_id }}__content--left {
+    text-align: left;
+    align-items: flex-start;
+  }
+
+  .{{ section_id }}__content--center {
+    text-align: center;
+    align-items: center;
+  }
+
+  .{{ section_id }}__content--right {
+    text-align: right;
+    align-items: flex-end;
+  }
+
+  .{{ section_id }}__eyebrow {
+    margin: 0;
+    color: {{ section.settings.eyebrow_color }};
+    font-size: {{ section.settings.eyebrow_size_desktop }}px;
+    line-height: 1.2;
+    font-weight: {{ section.settings.eyebrow_weight }};
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+  }
+
+  .{{ section_id }}__title {
+    margin: 0;
+    color: var(--hb-title-color);
+    font-size: var(--hb-title-size-desktop);
+    line-height: var(--hb-title-line);
+    font-weight: var(--hb-title-weight);
+    {% if section.settings.title_max_width > 0 %}
+      max-width: {{ section.settings.title_max_width }}px;
     {% endif %}
   }
 
-  .ai-hero-banner__title-{{ ai_gen_id }} {
-    color: {{ block.settings.title_color }};
-    font-size: {{ block.settings.title_size_desktop }}px;
-    font-weight: {{ block.settings.font_weight }};
-    line-height: {{ block.settings.line_height }};
-    margin: 0 0 16px;
+  .{{ section_id }}__subtitle {
+    margin: 0;
+    color: var(--hb-subtitle-color);
+    font-size: var(--hb-subtitle-size-desktop);
+    line-height: var(--hb-subtitle-line);
+    font-weight: var(--hb-subtitle-weight);
+    {% if section.settings.subtitle_max_width > 0 %}
+      max-width: {{ section.settings.subtitle_max_width }}px;
+    {% endif %}
   }
 
-  .ai-hero-banner__subtitle-{{ ai_gen_id }} {
-    color: {{ block.settings.subtitle_color }};
-    font-size: {{ block.settings.subtitle_size_desktop }}px;
-    line-height: {{ block.settings.line_height }};
-    margin: 0 0 24px;
+  .{{ section_id }}__actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-top: {{ section.settings.button_margin_top }}px;
   }
 
-  .ai-hero-banner__cta-{{ ai_gen_id }} {
-    display: inline-block;
-    padding: {{ block.settings.button_padding_vertical }}px {{ block.settings.button_padding_horizontal }}px;
-    font-size: {{ block.settings.cta_size_desktop }}px;
-    font-weight: {{ block.settings.font_weight }};
+  .{{ section_id }}__button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    min-height: 44px;
+    padding: {{ section.settings.button_padding_y }}px {{ section.settings.button_padding_x }}px;
+    border-radius: var(--hb-button-radius);
+    font-size: var(--hb-button-size-desktop);
+    line-height: 1;
+    font-weight: var(--hb-button-weight);
     text-decoration: none;
-    border-radius: {{ block.settings.button_border_radius }}px;
-    transition: all 0.3s ease;
-    {% if block.settings.button_style == 'solid' %}
-      background-color: {{ block.settings.button_bg_color }};
-      color: {{ block.settings.cta_color }};
-      border: 2px solid {{ block.settings.button_bg_color }};
-    {% else %}
-      background-color: transparent;
-      color: {{ block.settings.cta_color }};
-      border: 2px solid {{ block.settings.cta_color }};
-    {% endif %}
+    cursor: pointer;
+    transition:
+      background-color 220ms ease,
+      color 220ms ease,
+      border-color 220ms ease,
+      transform 220ms ease,
+      opacity 220ms ease;
   }
 
-  .ai-hero-banner__cta-{{ ai_gen_id }}:hover {
-    {% if block.settings.button_style == 'solid' %}
-      background-color: {{ block.settings.button_hover_color }};
-      border-color: {{ block.settings.button_hover_color }};
-    {% else %}
-      background-color: {{ block.settings.button_hover_color }};
-      border-color: {{ block.settings.button_hover_color }};
-      color: {{ block.settings.button_bg_color }};
-    {% endif %}
-    {% if block.settings.hover_effect == 'fade' %}
-      opacity: 0.8;
-    {% endif %}
+  .{{ section_id }}__button:hover {
+    transform: translateY(-1px);
+  }
+
+  .{{ section_id }}__button--solid {
+    color: var(--hb-button-text);
+    background: var(--hb-button-bg);
+    border: 1px solid var(--hb-button-border);
+  }
+
+  .{{ section_id }}__button--solid:hover {
+    color: var(--hb-button-hover-text);
+    background: var(--hb-button-hover-bg);
+    border-color: var(--hb-button-hover-border);
+  }
+
+  .{{ section_id }}__button--outline {
+    color: var(--hb-button-text);
+    background: transparent;
+    border: 1px solid var(--hb-button-border);
+  }
+
+  .{{ section_id }}__button--outline:hover {
+    color: var(--hb-button-hover-text);
+    background: var(--hb-button-hover-bg);
+    border-color: var(--hb-button-hover-border);
+  }
+
+  .{{ section_id }}__button--text {
+    color: var(--hb-button-text);
+    background: transparent;
+    border: 0;
+    padding-left: 0;
+    padding-right: 0;
+    min-height: auto;
+  }
+
+  .{{ section_id }}__button--text:hover {
+    color: var(--hb-button-hover-text);
+    background: transparent;
+    border-color: transparent;
+    opacity: .8;
+  }
+
+  .{{ section_id }}__button-icon {
+    width: 1em;
+    height: 1em;
+    display: inline-block;
+    flex: 0 0 auto;
+  }
+
+  .{{ section_id }}__placeholder {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, #efefef, #dbdbdb);
+  }
+
+  .{{ section_id }}__placeholder svg {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  {% if section.settings.enable_text_shadow %}
+    .{{ section_id }}__title,
+    .{{ section_id }}__subtitle,
+    .{{ section_id }}__eyebrow,
+    .{{ section_id }}__button {
+      text-shadow: 0 2px 14px rgba(0,0,0,.25);
+    }
+  {% endif %}
+
+  @media screen and (max-width: 1299px) {
+    .{{ section_id }}__inner {
+      padding-left: 20px;
+      padding-right: 20px;
+    }
   }
 
   @media screen and (max-width: 768px) {
-    .ai-hero-banner__image-desktop-{{ ai_gen_id }} {
+    .{{ section_id }} {
+      padding-top: {{ section.settings.padding_top_mobile }}px;
+      padding-bottom: {{ section.settings.padding_bottom_mobile }}px;
+    }
+
+    .{{ section_id }}__inner {
+      padding-left: 0;
+      padding-right: 0;
+    }
+
+    .{{ section_id }}__banner {
+      min-height: var(--hb-mobile-min-height);
+      border-radius: {{ section.settings.banner_radius_mobile }}px;
+    }
+
+    .{{ section_id }}__image--desktop {
       display: none;
     }
 
-    .ai-hero-banner__image-mobile-{{ ai_gen_id }} {
+    .{{ section_id }}__image--mobile {
       display: block;
     }
 
-    .ai-hero-banner__wrapper-{{ ai_gen_id }} {
-      padding: {{ block.settings.spacing_top | times: 0.6 }}px 0 {{ block.settings.spacing_bottom | times: 0.6 }}px;
+    .{{ section_id }}__content-wrap {
+      padding: var(--hb-content-padding-mobile);
     }
 
-    .ai-hero-banner__container-{{ ai_gen_id }} {
-      min-height: 300px;
-      justify-content: {{ block.settings.text_position_mobile }};
+    .{{ section_id }}__content-wrap--mobile-left {
+      justify-content: flex-start;
     }
 
-    .ai-hero-banner__content-{{ ai_gen_id }} {
-      padding: 30px 16px;
-      text-align: {{ block.settings.text_position_mobile }};
+    .{{ section_id }}__content-wrap--mobile-center {
+      justify-content: center;
     }
 
-    .ai-hero-banner__title-{{ ai_gen_id }} {
-      font-size: {{ block.settings.title_size_mobile }}px;
-      margin-bottom: 12px;
+    .{{ section_id }}__content-wrap--mobile-right {
+      justify-content: flex-end;
     }
 
-    .ai-hero-banner__subtitle-{{ ai_gen_id }} {
-      font-size: {{ block.settings.subtitle_size_mobile }}px;
-      margin-bottom: 20px;
+    .{{ section_id }}__content-wrap--mobile-top {
+      align-items: flex-start;
     }
 
-    .ai-hero-banner__cta-{{ ai_gen_id }} {
-      font-size: {{ block.settings.cta_size_mobile }}px;
+    .{{ section_id }}__content-wrap--mobile-middle {
+      align-items: center;
+    }
+
+    .{{ section_id }}__content-wrap--mobile-bottom {
+      align-items: flex-end;
+    }
+
+    .{{ section_id }}__content--mobile-left {
+      text-align: left;
+      align-items: flex-start;
+    }
+
+    .{{ section_id }}__content--mobile-center {
+      text-align: center;
+      align-items: center;
+    }
+
+    .{{ section_id }}__content--mobile-right {
+      text-align: right;
+      align-items: flex-end;
+    }
+
+    .{{ section_id }}__eyebrow {
+      font-size: {{ section.settings.eyebrow_size_mobile }}px;
+    }
+
+    .{{ section_id }}__title {
+      font-size: var(--hb-title-size-mobile);
+    }
+
+    .{{ section_id }}__subtitle {
+      font-size: var(--hb-subtitle-size_mobile);
+      font-size: var(--hb-subtitle-size-mobile);
+    }
+
+    .{{ section_id }}__button {
+      font-size: var(--hb-button-size-mobile);
+    }
+
+    .{{ section_id }}__actions {
+      margin-top: {{ section.settings.button_margin_top_mobile }}px;
     }
   }
-{% endstyle %}
+</style>
 
-<div class="ai-hero-banner-{{ ai_gen_id }}" {{ block.shopify_attributes }}>
-  <div class="ai-hero-banner__wrapper-{{ ai_gen_id }}">
-    <div class="ai-hero-banner__container-{{ ai_gen_id }}">
-      {% if block.settings.image_desktop %}
-        <img
-          src="{{ block.settings.image_desktop | image_url: width: 2000 }}"
-          alt="{{ block.settings.image_desktop.alt | escape }}"
-          loading="lazy"
-          width="{{ block.settings.image_desktop.width }}"
-          height="{{ block.settings.image_desktop.height }}"
-          class="ai-hero-banner__image-{{ ai_gen_id }} ai-hero-banner__image-desktop-{{ ai_gen_id }}"
-        >
-      {% else %}
-        <div class="ai-hero-banner__image-placeholder-{{ ai_gen_id }}">
-          {{ 'hero-apparel-1' | placeholder_svg_tag }}
+<section class="{{ section_id }}">
+  <div class="{{ section_id }}__inner">
+    <div class="{{ section_id }}__banner">
+      <div class="{{ section_id }}__media">
+        {% if section.settings.image_desktop != blank %}
+          {{
+            section.settings.image_desktop
+            | image_url: width: 2600
+            | image_tag:
+              class: section_id | append: '__image ' | append: section_id | append: '__image--desktop ' | append: section_id | append: '__image--zoom',
+              widths: '768, 1024, 1440, 1800, 2200, 2600',
+              loading: 'lazy',
+              alt: section.settings.image_desktop.alt | escape
+          }}
+        {% else %}
+          <div class="{{ section_id }}__placeholder">
+            {{ 'lifestyle-2' | placeholder_svg_tag }}
+          </div>
+        {% endif %}
+
+        {% if section.settings.image_mobile != blank %}
+          {{
+            section.settings.image_mobile
+            | image_url: width: 1400
+            | image_tag:
+              class: section_id | append: '__image ' | append: section_id | append: '__image--mobile ' | append: section_id | append: '__image--zoom',
+              widths: '480, 640, 768, 960, 1200, 1400',
+              loading: 'lazy',
+              alt: section.settings.image_mobile.alt | escape
+          }}
+        {% elsif section.settings.image_desktop != blank %}
+          {{
+            section.settings.image_desktop
+            | image_url: width: 1400
+            | image_tag:
+              class: section_id | append: '__image ' | append: section_id | append: '__image--mobile ' | append: section_id | append: '__image--zoom',
+              widths: '480, 640, 768, 960, 1200, 1400',
+              loading: 'lazy',
+              alt: section.settings.image_desktop.alt | escape
+          }}
+        {% endif %}
+      </div>
+
+      <div class="
+        {{ section_id }}__overlay
+        {% if section.settings.enable_overlay %}{{ section_id }}__overlay--enabled{% endif %}
+        {% case section.settings.overlay_style %}
+          {% when 'solid' %} {{ section_id }}__overlay--solid
+          {% when 'left' %} {{ section_id }}__overlay--left
+          {% when 'right' %} {{ section_id }}__overlay--right
+          {% when 'top' %} {{ section_id }}__overlay--top
+          {% when 'bottom' %} {{ section_id }}__overlay--bottom
+          {% when 'radial' %} {{ section_id }}__overlay--radial
+        {% endcase %}
+      "></div>
+
+      <div class="
+        {{ section_id }}__content-wrap
+        {{ section_id }}__content-wrap--{{ section.settings.horizontal_alignment }}
+        {{ section_id }}__content-wrap--{{ section.settings.vertical_alignment }}
+        {{ section_id }}__content-wrap--mobile-{{ section.settings.horizontal_alignment_mobile }}
+        {{ section_id }}__content-wrap--mobile-{{ section.settings.vertical_alignment_mobile }}
+      ">
+        <div class="
+          {{ section_id }}__content
+          {{ section_id }}__content--{{ section.settings.text_align }}
+          {{ section_id }}__content--mobile-{{ section.settings.text_align_mobile }}
+        ">
+          {% if section.settings.eyebrow != blank %}
+            <p class="{{ section_id }}__eyebrow">{{ section.settings.eyebrow }}</p>
+          {% endif %}
+
+          {% if section.settings.title != blank %}
+            <h2 class="{{ section_id }}__title">{{ section.settings.title }}</h2>
+          {% endif %}
+
+          {% if section.settings.subtitle != blank %}
+            <div class="{{ section_id }}__subtitle">{{ section.settings.subtitle }}</div>
+          {% endif %}
+
+          {% if section.settings.button_text != blank and section.settings.button_link != blank %}
+            <div class="{{ section_id }}__actions">
+              <a
+                href="{{ section.settings.button_link }}"
+                class="{{ section_id }}__button {{ section_id }}__button--{{ section.settings.button_style }}"
+                {% if section.settings.button_link.type == 'external_link' %}target="_blank" rel="noopener noreferrer"{% endif %}
+              >
+                <span>{{ section.settings.button_text }}</span>
+                {% if section.settings.show_button_icon %}
+                  <svg class="{{ section_id }}__button-icon" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+                    <path d="M3.333 8h9.334M8.667 3.333 13.334 8l-4.667 4.667" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                  </svg>
+                {% endif %}
+              </a>
+            </div>
+          {% endif %}
         </div>
-      {% endif %}
-
-      {% if block.settings.image_mobile %}
-        <img
-          src="{{ block.settings.image_mobile | image_url: width: 1000 }}"
-          alt="{{ block.settings.image_mobile.alt | escape }}"
-          loading="lazy"
-          width="{{ block.settings.image_mobile.width }}"
-          height="{{ block.settings.image_mobile.height }}"
-          class="ai-hero-banner__image-{{ ai_gen_id }} ai-hero-banner__image-mobile-{{ ai_gen_id }}"
-        >
-      {% endif %}
-
-      <div class="ai-hero-banner__overlay-{{ ai_gen_id }}"></div>
-
-      <div class="ai-hero-banner__content-{{ ai_gen_id }}">
-        {% if block.settings.title != blank %}
-          <h2 class="ai-hero-banner__title-{{ ai_gen_id }}">{{ block.settings.title }}</h2>
-        {% endif %}
-
-        {% if block.settings.subtitle != blank %}
-          <p class="ai-hero-banner__subtitle-{{ ai_gen_id }}">{{ block.settings.subtitle }}</p>
-        {% endif %}
-
-        {% if block.settings.cta_text != blank and block.settings.cta_link != blank %}
-          <a href="{{ block.settings.cta_link }}" class="ai-hero-banner__cta-{{ ai_gen_id }}">
-            {{ block.settings.cta_text }}
-          </a>
-        {% endif %}
       </div>
     </div>
   </div>
-</div>
+</section>
 
 {% schema %}
 {
-  "name": "Hero banner",
-  "tag": null,
+  "name": "Hero banner premium",
   "settings": [
     {
       "type": "header",
-      "content": "Images"
+      "content": "Imagini"
     },
     {
       "type": "image_picker",
       "id": "image_desktop",
-      "label": "Desktop image"
+      "label": "Imagine desktop"
     },
     {
       "type": "image_picker",
       "id": "image_mobile",
-      "label": "Mobile image"
+      "label": "Imagine mobile"
     },
     {
       "type": "header",
-      "content": "Content"
+      "content": "Conținut"
+    },
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "Eyebrow / text mic",
+      "default": "Colecție premium"
     },
     {
       "type": "inline_richtext",
       "id": "title",
-      "label": "Title",
-      "default": "Premium LED Lighting"
+      "label": "Titlu",
+      "default": "Banner premium pentru homepage"
     },
     {
-      "type": "inline_richtext",
+      "type": "richtext",
       "id": "subtitle",
-      "label": "Subtitle",
-      "default": "Discover contemporary home fixtures"
+      "label": "Subtitlu",
+      "default": "<p>Adaugă aici un subtitlu clar, elegant și ușor de tradus.</p>"
     },
     {
-      "type": "inline_richtext",
-      "id": "cta_text",
-      "label": "Button text",
-      "default": "Shop now"
+      "type": "text",
+      "id": "button_text",
+      "label": "Text buton",
+      "default": "Descoperă colecția"
     },
     {
       "type": "url",
-      "id": "cta_link",
-      "label": "Button link"
+      "id": "button_link",
+      "label": "Link buton"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_button_icon",
+      "label": "Arată icon în buton",
+      "default": true
     },
     {
       "type": "header",
-      "content": "Layout"
+      "content": "Layout desktop"
+    },
+    {
+      "type": "range",
+      "id": "banner_height_desktop",
+      "label": "Înălțime banner desktop",
+      "min": 320,
+      "max": 900,
+      "step": 20,
+      "unit": "px",
+      "default": 560
     },
     {
       "type": "select",
-      "id": "text_position",
-      "label": "Text position",
+      "id": "horizontal_alignment",
+      "label": "Poziție orizontală content",
       "options": [
-        {
-          "value": "flex-start",
-          "label": "Left"
-        },
-        {
-          "value": "center",
-          "label": "Center"
-        },
-        {
-          "value": "flex-end",
-          "label": "Right"
-        }
+        { "value": "left", "label": "Stânga" },
+        { "value": "center", "label": "Centru" },
+        { "value": "right", "label": "Dreapta" }
       ],
-      "default": "center"
-    },
-    {
-      "type": "select",
-      "id": "text_position_mobile",
-      "label": "Text position on mobile",
-      "options": [
-        {
-          "value": "flex-start",
-          "label": "Left"
-        },
-        {
-          "value": "center",
-          "label": "Center"
-        },
-        {
-          "value": "flex-end",
-          "label": "Right"
-        }
-      ],
-      "default": "center"
+      "default": "left"
     },
     {
       "type": "select",
       "id": "vertical_alignment",
-      "label": "Vertical alignment",
+      "label": "Poziție verticală content",
       "options": [
-        {
-          "value": "flex-start",
-          "label": "Top"
-        },
-        {
-          "value": "center",
-          "label": "Center"
-        },
-        {
-          "value": "flex-end",
-          "label": "Bottom"
-        }
+        { "value": "top", "label": "Sus" },
+        { "value": "middle", "label": "Mijloc" },
+        { "value": "bottom", "label": "Jos" }
       ],
-      "default": "center"
+      "default": "middle"
+    },
+    {
+      "type": "select",
+      "id": "text_align",
+      "label": "Aliniere text",
+      "options": [
+        { "value": "left", "label": "Stânga" },
+        { "value": "center", "label": "Centru" },
+        { "value": "right", "label": "Dreapta" }
+      ],
+      "default": "left"
     },
     {
       "type": "range",
       "id": "content_max_width",
-      "label": "Content max width",
-      "min": 400,
-      "max": 1000,
-      "step": 50,
+      "label": "Lățime maximă content",
+      "min": 320,
+      "max": 900,
+      "step": 20,
       "unit": "px",
-      "default": 700
+      "default": 560
     },
     {
       "type": "range",
-      "id": "spacing_top",
-      "label": "Spacing top",
-      "min": 0,
-      "max": 100,
-      "step": 10,
-      "unit": "px",
-      "default": 40
-    },
-    {
-      "type": "range",
-      "id": "spacing_bottom",
-      "label": "Spacing bottom",
-      "min": 0,
-      "max": 100,
-      "step": 10,
-      "unit": "px",
-      "default": 40
-    },
-    {
-      "type": "header",
-      "content": "Typography"
-    },
-    {
-      "type": "range",
-      "id": "title_size_desktop",
-      "label": "Title size (desktop)",
-      "min": 20,
-      "max": 80,
-      "step": 2,
+      "id": "content_padding_desktop",
+      "label": "Padding interior content desktop",
+      "min": 16,
+      "max": 120,
+      "step": 4,
       "unit": "px",
       "default": 48
     },
     {
       "type": "range",
-      "id": "title_size_mobile",
-      "label": "Title size (mobile)",
-      "min": 16,
-      "max": 50,
-      "step": 2,
-      "unit": "px",
-      "default": 32
-    },
-    {
-      "type": "range",
-      "id": "subtitle_size_desktop",
-      "label": "Subtitle size (desktop)",
-      "min": 12,
+      "id": "content_gap",
+      "label": "Spațiere între elemente",
+      "min": 8,
       "max": 40,
-      "step": 2,
-      "unit": "px",
-      "default": 20
-    },
-    {
-      "type": "range",
-      "id": "subtitle_size_mobile",
-      "label": "Subtitle size (mobile)",
-      "min": 12,
-      "max": 30,
-      "step": 2,
-      "unit": "px",
-      "default": 16
-    },
-    {
-      "type": "range",
-      "id": "cta_size_desktop",
-      "label": "Button size (desktop)",
-      "min": 12,
-      "max": 30,
-      "step": 2,
-      "unit": "px",
-      "default": 16
-    },
-    {
-      "type": "range",
-      "id": "cta_size_mobile",
-      "label": "Button size (mobile)",
-      "min": 12,
-      "max": 24,
       "step": 2,
       "unit": "px",
       "default": 14
     },
     {
+      "type": "range",
+      "id": "title_max_width",
+      "label": "Lățime maximă titlu",
+      "min": 0,
+      "max": 900,
+      "step": 20,
+      "unit": "px",
+      "default": 0
+    },
+    {
+      "type": "range",
+      "id": "subtitle_max_width",
+      "label": "Lățime maximă subtitlu",
+      "min": 0,
+      "max": 900,
+      "step": 20,
+      "unit": "px",
+      "default": 0
+    },
+    {
+      "type": "header",
+      "content": "Layout mobile"
+    },
+    {
+      "type": "range",
+      "id": "banner_height_mobile",
+      "label": "Înălțime banner mobile",
+      "min": 240,
+      "max": 700,
+      "step": 20,
+      "unit": "px",
+      "default": 420
+    },
+    {
       "type": "select",
-      "id": "font_weight",
-      "label": "Font weight",
+      "id": "horizontal_alignment_mobile",
+      "label": "Poziție orizontală content mobile",
       "options": [
-        {
-          "value": "300",
-          "label": "Light"
-        },
-        {
-          "value": "400",
-          "label": "Normal"
-        },
-        {
-          "value": "500",
-          "label": "Medium"
-        },
-        {
-          "value": "600",
-          "label": "Semi bold"
-        },
-        {
-          "value": "700",
-          "label": "Bold"
-        }
+        { "value": "left", "label": "Stânga" },
+        { "value": "center", "label": "Centru" },
+        { "value": "right", "label": "Dreapta" }
+      ],
+      "default": "left"
+    },
+    {
+      "type": "select",
+      "id": "vertical_alignment_mobile",
+      "label": "Poziție verticală content mobile",
+      "options": [
+        { "value": "top", "label": "Sus" },
+        { "value": "middle", "label": "Mijloc" },
+        { "value": "bottom", "label": "Jos" }
+      ],
+      "default": "bottom"
+    },
+    {
+      "type": "select",
+      "id": "text_align_mobile",
+      "label": "Aliniere text mobile",
+      "options": [
+        { "value": "left", "label": "Stânga" },
+        { "value": "center", "label": "Centru" },
+        { "value": "right", "label": "Dreapta" }
+      ],
+      "default": "left"
+    },
+    {
+      "type": "range",
+      "id": "content_padding_mobile",
+      "label": "Padding interior content mobile",
+      "min": 12,
+      "max": 48,
+      "step": 2,
+      "unit": "px",
+      "default": 20
+    },
+    {
+      "type": "header",
+      "content": "Spațiere secțiune"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "label": "Padding top desktop",
+      "min": 0,
+      "max": 120,
+      "step": 4,
+      "unit": "px",
+      "default": 36
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "label": "Padding bottom desktop",
+      "min": 0,
+      "max": 120,
+      "step": 4,
+      "unit": "px",
+      "default": 36
+    },
+    {
+      "type": "range",
+      "id": "padding_top_mobile",
+      "label": "Padding top mobile",
+      "min": 0,
+      "max": 80,
+      "step": 4,
+      "unit": "px",
+      "default": 0
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom_mobile",
+      "label": "Padding bottom mobile",
+      "min": 0,
+      "max": 80,
+      "step": 4,
+      "unit": "px",
+      "default": 0
+    },
+    {
+      "type": "header",
+      "content": "Tipografie"
+    },
+    {
+      "type": "range",
+      "id": "eyebrow_size_desktop",
+      "label": "Mărime eyebrow desktop",
+      "min": 10,
+      "max": 30,
+      "step": 1,
+      "unit": "px",
+      "default": 13
+    },
+    {
+      "type": "range",
+      "id": "eyebrow_size_mobile",
+      "label": "Mărime eyebrow mobile",
+      "min": 10,
+      "max": 24,
+      "step": 1,
+      "unit": "px",
+      "default": 12
+    },
+    {
+      "type": "select",
+      "id": "eyebrow_weight",
+      "label": "Greutate eyebrow",
+      "options": [
+        { "value": "400", "label": "400" },
+        { "value": "500", "label": "500" },
+        { "value": "600", "label": "600" },
+        { "value": "700", "label": "700" }
       ],
       "default": "600"
     },
     {
       "type": "range",
-      "id": "line_height",
-      "label": "Line height",
-      "min": 1,
-      "max": 2,
+      "id": "title_size_desktop",
+      "label": "Mărime titlu desktop",
+      "min": 20,
+      "max": 96,
+      "step": 2,
+      "unit": "px",
+      "default": 54
+    },
+    {
+      "type": "range",
+      "id": "title_size_mobile",
+      "label": "Mărime titlu mobile",
+      "min": 18,
+      "max": 56,
+      "step": 2,
+      "unit": "px",
+      "default": 32
+    },
+    {
+      "type": "select",
+      "id": "title_weight",
+      "label": "Greutate titlu",
+      "options": [
+        { "value": "400", "label": "400" },
+        { "value": "500", "label": "500" },
+        { "value": "600", "label": "600" },
+        { "value": "700", "label": "700" },
+        { "value": "800", "label": "800" }
+      ],
+      "default": "700"
+    },
+    {
+      "type": "range",
+      "id": "title_line_height",
+      "label": "Line-height titlu",
+      "min": 0.9,
+      "max": 1.6,
+      "step": 0.1,
+      "default": 1.0
+    },
+    {
+      "type": "range",
+      "id": "subtitle_size_desktop",
+      "label": "Mărime subtitlu desktop",
+      "min": 12,
+      "max": 36,
+      "step": 1,
+      "unit": "px",
+      "default": 18
+    },
+    {
+      "type": "range",
+      "id": "subtitle_size_mobile",
+      "label": "Mărime subtitlu mobile",
+      "min": 12,
+      "max": 26,
+      "step": 1,
+      "unit": "px",
+      "default": 15
+    },
+    {
+      "type": "select",
+      "id": "subtitle_weight",
+      "label": "Greutate subtitlu",
+      "options": [
+        { "value": "300", "label": "300" },
+        { "value": "400", "label": "400" },
+        { "value": "500", "label": "500" },
+        { "value": "600", "label": "600" }
+      ],
+      "default": "400"
+    },
+    {
+      "type": "range",
+      "id": "subtitle_line_height",
+      "label": "Line-height subtitlu",
+      "min": 1.0,
+      "max": 2.0,
       "step": 0.1,
       "default": 1.4
     },
     {
+      "type": "range",
+      "id": "button_size_desktop",
+      "label": "Mărime text buton desktop",
+      "min": 12,
+      "max": 24,
+      "step": 1,
+      "unit": "px",
+      "default": 15
+    },
+    {
+      "type": "range",
+      "id": "button_size_mobile",
+      "label": "Mărime text buton mobile",
+      "min": 12,
+      "max": 22,
+      "step": 1,
+      "unit": "px",
+      "default": 14
+    },
+    {
+      "type": "select",
+      "id": "button_weight",
+      "label": "Greutate text buton",
+      "options": [
+        { "value": "400", "label": "400" },
+        { "value": "500", "label": "500" },
+        { "value": "600", "label": "600" },
+        { "value": "700", "label": "700" }
+      ],
+      "default": "600"
+    },
+    {
       "type": "checkbox",
-      "id": "text_shadow_enabled",
-      "label": "Enable text shadow",
-      "default": true
+      "id": "enable_text_shadow",
+      "label": "Text shadow",
+      "default": false
     },
     {
       "type": "header",
-      "content": "Colors"
+      "content": "Culori"
+    },
+    {
+      "type": "color",
+      "id": "eyebrow_color",
+      "label": "Culoare eyebrow",
+      "default": "#FFFFFF"
     },
     {
       "type": "color",
       "id": "title_color",
-      "label": "Title color",
-      "default": "#ffffff"
+      "label": "Culoare titlu",
+      "default": "#FFFFFF"
     },
     {
       "type": "color",
       "id": "subtitle_color",
-      "label": "Subtitle color",
-      "default": "#ffffff"
-    },
-    {
-      "type": "color",
-      "id": "cta_color",
-      "label": "Button text color",
-      "default": "#ffffff"
-    },
-    {
-      "type": "color",
-      "id": "button_bg_color",
-      "label": "Button background",
-      "default": "#000000"
-    },
-    {
-      "type": "color",
-      "id": "button_hover_color",
-      "label": "Button hover background",
-      "default": "#333333"
+      "label": "Culoare subtitlu",
+      "default": "#FFFFFF"
     },
     {
       "type": "header",
@@ -583,130 +961,161 @@
     },
     {
       "type": "checkbox",
-      "id": "overlay_enabled",
-      "label": "Enable overlay",
+      "id": "enable_overlay",
+      "label": "Activează overlay",
       "default": true
     },
     {
       "type": "color",
       "id": "overlay_color",
-      "label": "Overlay color",
+      "label": "Culoare overlay",
       "default": "#000000"
     },
     {
       "type": "range",
       "id": "overlay_opacity",
-      "label": "Overlay opacity",
+      "label": "Opacitate overlay",
       "min": 0,
       "max": 100,
       "step": 5,
       "unit": "%",
-      "default": 40
+      "default": 35
     },
     {
       "type": "select",
-      "id": "overlay_gradient",
-      "label": "Overlay gradient",
+      "id": "overlay_style",
+      "label": "Stil overlay",
       "options": [
-        {
-          "value": "none",
-          "label": "None"
-        },
-        {
-          "value": "bottom",
-          "label": "Bottom"
-        },
-        {
-          "value": "left",
-          "label": "Left"
-        },
-        {
-          "value": "right",
-          "label": "Right"
-        }
+        { "value": "solid", "label": "Solid" },
+        { "value": "left", "label": "Gradient din stânga" },
+        { "value": "right", "label": "Gradient din dreapta" },
+        { "value": "top", "label": "Gradient de sus" },
+        { "value": "bottom", "label": "Gradient de jos" },
+        { "value": "radial", "label": "Radial" }
       ],
-      "default": "bottom"
+      "default": "left"
     },
     {
       "type": "header",
-      "content": "Button style"
+      "content": "Buton"
     },
     {
       "type": "select",
       "id": "button_style",
-      "label": "Style",
+      "label": "Stil buton",
       "options": [
-        {
-          "value": "solid",
-          "label": "Solid"
-        },
-        {
-          "value": "outline",
-          "label": "Outline"
-        }
+        { "value": "solid", "label": "Solid" },
+        { "value": "outline", "label": "Outline" },
+        { "value": "text", "label": "Text only" }
       ],
-      "default": "solid"
+      "default": "outline"
+    },
+    {
+      "type": "color",
+      "id": "button_text_color",
+      "label": "Culoare text buton",
+      "default": "#FFFFFF"
+    },
+    {
+      "type": "color",
+      "id": "button_bg_color",
+      "label": "Background buton",
+      "default": "rgba(255,255,255,0)"
+    },
+    {
+      "type": "color",
+      "id": "button_border_color",
+      "label": "Border buton",
+      "default": "#FFFFFF"
+    },
+    {
+      "type": "color",
+      "id": "button_hover_text_color",
+      "label": "Text hover buton",
+      "default": "#111111"
+    },
+    {
+      "type": "color",
+      "id": "button_hover_bg_color",
+      "label": "Background hover buton",
+      "default": "#FFFFFF"
+    },
+    {
+      "type": "color",
+      "id": "button_hover_border_color",
+      "label": "Border hover buton",
+      "default": "#FFFFFF"
     },
     {
       "type": "range",
-      "id": "button_border_radius",
-      "label": "Border radius",
+      "id": "button_radius",
+      "label": "Radius buton",
       "min": 0,
-      "max": 50,
+      "max": 40,
       "step": 2,
       "unit": "px",
-      "default": 4
+      "default": 10
     },
     {
       "type": "range",
-      "id": "button_padding_vertical",
-      "label": "Padding vertical",
+      "id": "button_padding_x",
+      "label": "Padding orizontal buton",
+      "min": 12,
+      "max": 48,
+      "step": 2,
+      "unit": "px",
+      "default": 24
+    },
+    {
+      "type": "range",
+      "id": "button_padding_y",
+      "label": "Padding vertical buton",
       "min": 8,
-      "max": 30,
-      "step": 2,
+      "max": 22,
+      "step": 1,
       "unit": "px",
-      "default": 14
+      "default": 13
     },
     {
       "type": "range",
-      "id": "button_padding_horizontal",
-      "label": "Padding horizontal",
-      "min": 16,
-      "max": 60,
-      "step": 4,
+      "id": "button_margin_top",
+      "label": "Spațiu deasupra butonului desktop",
+      "min": 0,
+      "max": 40,
+      "step": 2,
       "unit": "px",
-      "default": 32
+      "default": 8
+    },
+    {
+      "type": "range",
+      "id": "button_margin_top_mobile",
+      "label": "Spațiu deasupra butonului mobile",
+      "min": 0,
+      "max": 32,
+      "step": 2,
+      "unit": "px",
+      "default": 6
     },
     {
       "type": "header",
-      "content": "Effects"
-    },
-    {
-      "type": "select",
-      "id": "hover_effect",
-      "label": "Hover effect",
-      "options": [
-        {
-          "value": "none",
-          "label": "None"
-        },
-        {
-          "value": "zoom",
-          "label": "Zoom image"
-        },
-        {
-          "value": "fade",
-          "label": "Fade"
-        }
-      ],
-      "default": "zoom"
+      "content": "Stilizare banner"
     },
     {
       "type": "range",
-      "id": "banner_border_radius",
-      "label": "Banner border radius",
+      "id": "banner_radius",
+      "label": "Radius banner desktop",
       "min": 0,
       "max": 40,
+      "step": 2,
+      "unit": "px",
+      "default": 18
+    },
+    {
+      "type": "range",
+      "id": "banner_radius_mobile",
+      "label": "Radius banner mobile",
+      "min": 0,
+      "max": 32,
       "step": 2,
       "unit": "px",
       "default": 0
@@ -714,7 +1123,7 @@
   ],
   "presets": [
     {
-      "name": "Hero banner"
+      "name": "Hero banner premium"
     }
   ]
 }
