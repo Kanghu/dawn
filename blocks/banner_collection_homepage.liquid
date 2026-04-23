@@ -1,0 +1,1130 @@
+{% liquid
+  assign section_id = 'hero-banner-' | append: section.id
+%}
+
+<style>
+  .{{ section_id }} {
+    --hb-max-width: 1300px;
+    --hb-radius: {{ section.settings.banner_radius }}px;
+    --hb-content-max: {{ section.settings.content_max_width }}px;
+
+    --hb-title-color: {{ section.settings.title_color }};
+    --hb-subtitle-color: {{ section.settings.subtitle_color }};
+    --hb-button-text: {{ section.settings.button_text_color }};
+    --hb-button-bg: {{ section.settings.button_bg_color }};
+    --hb-button-border: {{ section.settings.button_border_color }};
+    --hb-button-hover-text: {{ section.settings.button_hover_text_color }};
+    --hb-button-hover-bg: {{ section.settings.button_hover_bg_color }};
+    --hb-button-hover-border: {{ section.settings.button_hover_border_color }};
+
+    --hb-title-size-desktop: {{ section.settings.title_size_desktop }}px;
+    --hb-subtitle-size-desktop: {{ section.settings.subtitle_size_desktop }}px;
+    --hb-button-size-desktop: {{ section.settings.button_size_desktop }}px;
+
+    --hb-title-size-mobile: {{ section.settings.title_size_mobile }}px;
+    --hb-subtitle-size-mobile: {{ section.settings.subtitle_size_mobile }}px;
+    --hb-button-size-mobile: {{ section.settings.button_size_mobile }}px;
+
+    --hb-title-weight: {{ section.settings.title_weight }};
+    --hb-subtitle-weight: {{ section.settings.subtitle_weight }};
+    --hb-button-weight: {{ section.settings.button_weight }};
+
+    --hb-title-line: {{ section.settings.title_line_height }};
+    --hb-subtitle-line: {{ section.settings.subtitle_line_height }};
+    --hb-button-radius: {{ section.settings.button_radius }}px;
+
+    --hb-py-top: {{ section.settings.padding_top }}px;
+    --hb-py-bottom: {{ section.settings.padding_bottom }}px;
+
+    --hb-overlay-opacity: {{ section.settings.overlay_opacity | divided_by: 100.0 }};
+    --hb-overlay-solid: {{ section.settings.overlay_color }};
+    --hb-overlay-soft: {{ section.settings.overlay_color | color_modify: 'alpha', 0.0 }};
+
+    --hb-desktop-min-height: {{ section.settings.banner_height_desktop }}px;
+    --hb-mobile-min-height: {{ section.settings.banner_height_mobile }}px;
+
+    --hb-content-padding-desktop: {{ section.settings.content_padding_desktop }}px;
+    --hb-content-padding-mobile: {{ section.settings.content_padding_mobile }}px;
+
+    --hb-gap: {{ section.settings.content_gap }}px;
+  }
+
+  .{{ section_id }} {
+    width: 100%;
+    padding-top: var(--hb-py-top);
+    padding-bottom: var(--hb-py-bottom);
+  }
+
+  .{{ section_id }}__inner {
+    max-width: var(--hb-max-width);
+    margin: 0 auto;
+    position: relative;
+    padding-left: 0;
+    padding-right: 0;
+  }
+
+  .{{ section_id }}__banner {
+    position: relative;
+    min-height: var(--hb-desktop-min-height);
+    border-radius: var(--hb-radius);
+    overflow: hidden;
+    display: flex;
+    width: 100%;
+    isolation: isolate;
+    background: #f4f4f4;
+  }
+
+  .{{ section_id }}__media {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+  }
+
+  .{{ section_id }}__image {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transform: scale(1);
+    transition: transform 700ms ease, opacity 350ms ease;
+  }
+
+  .{{ section_id }}__image--mobile {
+    display: none;
+  }
+
+  .{{ section_id }}__banner:hover .{{ section_id }}__image--zoom {
+    transform: scale(1.04);
+  }
+
+  .{{ section_id }}__overlay {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 200ms ease;
+  }
+
+  .{{ section_id }}__overlay--enabled {
+    opacity: var(--hb-overlay-opacity);
+  }
+
+  .{{ section_id }}__overlay--solid {
+    background: var(--hb-overlay-solid);
+  }
+
+  .{{ section_id }}__overlay--left {
+    background: linear-gradient(90deg, var(--hb-overlay-solid) 0%, var(--hb-overlay-soft) 65%);
+  }
+
+  .{{ section_id }}__overlay--right {
+    background: linear-gradient(270deg, var(--hb-overlay-solid) 0%, var(--hb-overlay-soft) 65%);
+  }
+
+  .{{ section_id }}__overlay--top {
+    background: linear-gradient(180deg, var(--hb-overlay-solid) 0%, var(--hb-overlay-soft) 60%);
+  }
+
+  .{{ section_id }}__overlay--bottom {
+    background: linear-gradient(0deg, var(--hb-overlay-solid) 0%, var(--hb-overlay-soft) 60%);
+  }
+
+  .{{ section_id }}__overlay--radial {
+    background: radial-gradient(circle at center, var(--hb-overlay-soft) 10%, var(--hb-overlay-solid) 100%);
+  }
+
+  .{{ section_id }}__content-wrap {
+    position: relative;
+    z-index: 2;
+    width: 100%;
+    display: flex;
+    padding: var(--hb-content-padding-desktop);
+  }
+
+  .{{ section_id }}__content-wrap--left {
+    justify-content: flex-start;
+  }
+
+  .{{ section_id }}__content-wrap--center {
+    justify-content: center;
+  }
+
+  .{{ section_id }}__content-wrap--right {
+    justify-content: flex-end;
+  }
+
+  .{{ section_id }}__content-wrap--top {
+    align-items: flex-start;
+  }
+
+  .{{ section_id }}__content-wrap--middle {
+    align-items: center;
+  }
+
+  .{{ section_id }}__content-wrap--bottom {
+    align-items: flex-end;
+  }
+
+  .{{ section_id }}__content {
+    width: 100%;
+    max-width: var(--hb-content-max);
+    display: flex;
+    flex-direction: column;
+    gap: var(--hb-gap);
+  }
+
+  .{{ section_id }}__content--left {
+    text-align: left;
+    align-items: flex-start;
+  }
+
+  .{{ section_id }}__content--center {
+    text-align: center;
+    align-items: center;
+  }
+
+  .{{ section_id }}__content--right {
+    text-align: right;
+    align-items: flex-end;
+  }
+
+  .{{ section_id }}__eyebrow {
+    margin: 0;
+    color: {{ section.settings.eyebrow_color }};
+    font-size: {{ section.settings.eyebrow_size_desktop }}px;
+    line-height: 1.2;
+    font-weight: {{ section.settings.eyebrow_weight }};
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+  }
+
+  .{{ section_id }}__title {
+    margin: 0;
+    color: var(--hb-title-color);
+    font-size: var(--hb-title-size-desktop);
+    line-height: var(--hb-title-line);
+    font-weight: var(--hb-title-weight);
+    {% if section.settings.title_max_width > 0 %}
+      max-width: {{ section.settings.title_max_width }}px;
+    {% endif %}
+  }
+
+  .{{ section_id }}__subtitle {
+    margin: 0;
+    color: var(--hb-subtitle-color);
+    font-size: var(--hb-subtitle-size-desktop);
+    line-height: var(--hb-subtitle-line);
+    font-weight: var(--hb-subtitle-weight);
+    {% if section.settings.subtitle_max_width > 0 %}
+      max-width: {{ section.settings.subtitle_max_width }}px;
+    {% endif %}
+  }
+
+  .{{ section_id }}__actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-top: {{ section.settings.button_margin_top }}px;
+  }
+
+  .{{ section_id }}__button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    min-height: 44px;
+    padding: {{ section.settings.button_padding_y }}px {{ section.settings.button_padding_x }}px;
+    border-radius: var(--hb-button-radius);
+    font-size: var(--hb-button-size-desktop);
+    line-height: 1;
+    font-weight: var(--hb-button-weight);
+    text-decoration: none;
+    cursor: pointer;
+    transition:
+      background-color 220ms ease,
+      color 220ms ease,
+      border-color 220ms ease,
+      transform 220ms ease,
+      opacity 220ms ease;
+  }
+
+  .{{ section_id }}__button:hover {
+    transform: translateY(-1px);
+  }
+
+  .{{ section_id }}__button--solid {
+    color: var(--hb-button-text);
+    background: var(--hb-button-bg);
+    border: 1px solid var(--hb-button-border);
+  }
+
+  .{{ section_id }}__button--solid:hover {
+    color: var(--hb-button-hover-text);
+    background: var(--hb-button-hover-bg);
+    border-color: var(--hb-button-hover-border);
+  }
+
+  .{{ section_id }}__button--outline {
+    color: var(--hb-button-text);
+    background: transparent;
+    border: 1px solid var(--hb-button-border);
+  }
+
+  .{{ section_id }}__button--outline:hover {
+    color: var(--hb-button-hover-text);
+    background: var(--hb-button-hover-bg);
+    border-color: var(--hb-button-hover-border);
+  }
+
+  .{{ section_id }}__button--text {
+    color: var(--hb-button-text);
+    background: transparent;
+    border: 0;
+    padding-left: 0;
+    padding-right: 0;
+    min-height: auto;
+  }
+
+  .{{ section_id }}__button--text:hover {
+    color: var(--hb-button-hover-text);
+    background: transparent;
+    border-color: transparent;
+    opacity: .8;
+  }
+
+  .{{ section_id }}__button-icon {
+    width: 1em;
+    height: 1em;
+    display: inline-block;
+    flex: 0 0 auto;
+  }
+
+  .{{ section_id }}__placeholder {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, #efefef, #dbdbdb);
+  }
+
+  .{{ section_id }}__placeholder svg {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  {% if section.settings.enable_text_shadow %}
+    .{{ section_id }}__title,
+    .{{ section_id }}__subtitle,
+    .{{ section_id }}__eyebrow,
+    .{{ section_id }}__button {
+      text-shadow: 0 2px 14px rgba(0,0,0,.25);
+    }
+  {% endif %}
+
+  @media screen and (max-width: 1299px) {
+    .{{ section_id }}__inner {
+      padding-left: 20px;
+      padding-right: 20px;
+    }
+  }
+
+  @media screen and (max-width: 768px) {
+    .{{ section_id }} {
+      padding-top: {{ section.settings.padding_top_mobile }}px;
+      padding-bottom: {{ section.settings.padding_bottom_mobile }}px;
+    }
+
+    .{{ section_id }}__inner {
+      padding-left: 0;
+      padding-right: 0;
+    }
+
+    .{{ section_id }}__banner {
+      min-height: var(--hb-mobile-min-height);
+      border-radius: {{ section.settings.banner_radius_mobile }}px;
+    }
+
+    .{{ section_id }}__image--desktop {
+      display: none;
+    }
+
+    .{{ section_id }}__image--mobile {
+      display: block;
+    }
+
+    .{{ section_id }}__content-wrap {
+      padding: var(--hb-content-padding-mobile);
+    }
+
+    .{{ section_id }}__content-wrap--mobile-left {
+      justify-content: flex-start;
+    }
+
+    .{{ section_id }}__content-wrap--mobile-center {
+      justify-content: center;
+    }
+
+    .{{ section_id }}__content-wrap--mobile-right {
+      justify-content: flex-end;
+    }
+
+    .{{ section_id }}__content-wrap--mobile-top {
+      align-items: flex-start;
+    }
+
+    .{{ section_id }}__content-wrap--mobile-middle {
+      align-items: center;
+    }
+
+    .{{ section_id }}__content-wrap--mobile-bottom {
+      align-items: flex-end;
+    }
+
+    .{{ section_id }}__content--mobile-left {
+      text-align: left;
+      align-items: flex-start;
+    }
+
+    .{{ section_id }}__content--mobile-center {
+      text-align: center;
+      align-items: center;
+    }
+
+    .{{ section_id }}__content--mobile-right {
+      text-align: right;
+      align-items: flex-end;
+    }
+
+    .{{ section_id }}__eyebrow {
+      font-size: {{ section.settings.eyebrow_size_mobile }}px;
+    }
+
+    .{{ section_id }}__title {
+      font-size: var(--hb-title-size-mobile);
+    }
+
+    .{{ section_id }}__subtitle {
+      font-size: var(--hb-subtitle-size_mobile);
+      font-size: var(--hb-subtitle-size-mobile);
+    }
+
+    .{{ section_id }}__button {
+      font-size: var(--hb-button-size-mobile);
+    }
+
+    .{{ section_id }}__actions {
+      margin-top: {{ section.settings.button_margin_top_mobile }}px;
+    }
+  }
+</style>
+
+<section class="{{ section_id }}">
+  <div class="{{ section_id }}__inner">
+    <div class="{{ section_id }}__banner">
+      <div class="{{ section_id }}__media">
+        {% if section.settings.image_desktop != blank %}
+          {{
+            section.settings.image_desktop
+            | image_url: width: 2600
+            | image_tag:
+              class: section_id | append: '__image ' | append: section_id | append: '__image--desktop ' | append: section_id | append: '__image--zoom',
+              widths: '768, 1024, 1440, 1800, 2200, 2600',
+              loading: 'lazy',
+              alt: section.settings.image_desktop.alt | escape
+          }}
+        {% else %}
+          <div class="{{ section_id }}__placeholder">
+            {{ 'lifestyle-2' | placeholder_svg_tag }}
+          </div>
+        {% endif %}
+
+        {% if section.settings.image_mobile != blank %}
+          {{
+            section.settings.image_mobile
+            | image_url: width: 1400
+            | image_tag:
+              class: section_id | append: '__image ' | append: section_id | append: '__image--mobile ' | append: section_id | append: '__image--zoom',
+              widths: '480, 640, 768, 960, 1200, 1400',
+              loading: 'lazy',
+              alt: section.settings.image_mobile.alt | escape
+          }}
+        {% elsif section.settings.image_desktop != blank %}
+          {{
+            section.settings.image_desktop
+            | image_url: width: 1400
+            | image_tag:
+              class: section_id | append: '__image ' | append: section_id | append: '__image--mobile ' | append: section_id | append: '__image--zoom',
+              widths: '480, 640, 768, 960, 1200, 1400',
+              loading: 'lazy',
+              alt: section.settings.image_desktop.alt | escape
+          }}
+        {% endif %}
+      </div>
+
+      <div class="
+        {{ section_id }}__overlay
+        {% if section.settings.enable_overlay %}{{ section_id }}__overlay--enabled{% endif %}
+        {% case section.settings.overlay_style %}
+          {% when 'solid' %} {{ section_id }}__overlay--solid
+          {% when 'left' %} {{ section_id }}__overlay--left
+          {% when 'right' %} {{ section_id }}__overlay--right
+          {% when 'top' %} {{ section_id }}__overlay--top
+          {% when 'bottom' %} {{ section_id }}__overlay--bottom
+          {% when 'radial' %} {{ section_id }}__overlay--radial
+        {% endcase %}
+      "></div>
+
+      <div class="
+        {{ section_id }}__content-wrap
+        {{ section_id }}__content-wrap--{{ section.settings.horizontal_alignment }}
+        {{ section_id }}__content-wrap--{{ section.settings.vertical_alignment }}
+        {{ section_id }}__content-wrap--mobile-{{ section.settings.horizontal_alignment_mobile }}
+        {{ section_id }}__content-wrap--mobile-{{ section.settings.vertical_alignment_mobile }}
+      ">
+        <div class="
+          {{ section_id }}__content
+          {{ section_id }}__content--{{ section.settings.text_align }}
+          {{ section_id }}__content--mobile-{{ section.settings.text_align_mobile }}
+        ">
+          {% if section.settings.eyebrow != blank %}
+            <p class="{{ section_id }}__eyebrow">{{ section.settings.eyebrow }}</p>
+          {% endif %}
+
+          {% if section.settings.title != blank %}
+            <h2 class="{{ section_id }}__title">{{ section.settings.title }}</h2>
+          {% endif %}
+
+          {% if section.settings.subtitle != blank %}
+            <div class="{{ section_id }}__subtitle">{{ section.settings.subtitle }}</div>
+          {% endif %}
+
+          {% if section.settings.button_text != blank and section.settings.button_link != blank %}
+            <div class="{{ section_id }}__actions">
+              <a
+                href="{{ section.settings.button_link }}"
+                class="{{ section_id }}__button {{ section_id }}__button--{{ section.settings.button_style }}"
+                {% if section.settings.button_link.type == 'external_link' %}target="_blank" rel="noopener noreferrer"{% endif %}
+              >
+                <span>{{ section.settings.button_text }}</span>
+                {% if section.settings.show_button_icon %}
+                  <svg class="{{ section_id }}__button-icon" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+                    <path d="M3.333 8h9.334M8.667 3.333 13.334 8l-4.667 4.667" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                  </svg>
+                {% endif %}
+              </a>
+            </div>
+          {% endif %}
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Hero banner premium",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Imagini"
+    },
+    {
+      "type": "image_picker",
+      "id": "image_desktop",
+      "label": "Imagine desktop"
+    },
+    {
+      "type": "image_picker",
+      "id": "image_mobile",
+      "label": "Imagine mobile"
+    },
+    {
+      "type": "header",
+      "content": "Conținut"
+    },
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "Eyebrow / text mic",
+      "default": "Colecție premium"
+    },
+    {
+      "type": "inline_richtext",
+      "id": "title",
+      "label": "Titlu",
+      "default": "Banner premium pentru homepage"
+    },
+    {
+      "type": "richtext",
+      "id": "subtitle",
+      "label": "Subtitlu",
+      "default": "<p>Adaugă aici un subtitlu clar, elegant și ușor de tradus.</p>"
+    },
+    {
+      "type": "text",
+      "id": "button_text",
+      "label": "Text buton",
+      "default": "Descoperă colecția"
+    },
+    {
+      "type": "url",
+      "id": "button_link",
+      "label": "Link buton"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_button_icon",
+      "label": "Arată icon în buton",
+      "default": true
+    },
+    {
+      "type": "header",
+      "content": "Layout desktop"
+    },
+    {
+      "type": "range",
+      "id": "banner_height_desktop",
+      "label": "Înălțime banner desktop",
+      "min": 320,
+      "max": 900,
+      "step": 20,
+      "unit": "px",
+      "default": 560
+    },
+    {
+      "type": "select",
+      "id": "horizontal_alignment",
+      "label": "Poziție orizontală content",
+      "options": [
+        { "value": "left", "label": "Stânga" },
+        { "value": "center", "label": "Centru" },
+        { "value": "right", "label": "Dreapta" }
+      ],
+      "default": "left"
+    },
+    {
+      "type": "select",
+      "id": "vertical_alignment",
+      "label": "Poziție verticală content",
+      "options": [
+        { "value": "top", "label": "Sus" },
+        { "value": "middle", "label": "Mijloc" },
+        { "value": "bottom", "label": "Jos" }
+      ],
+      "default": "middle"
+    },
+    {
+      "type": "select",
+      "id": "text_align",
+      "label": "Aliniere text",
+      "options": [
+        { "value": "left", "label": "Stânga" },
+        { "value": "center", "label": "Centru" },
+        { "value": "right", "label": "Dreapta" }
+      ],
+      "default": "left"
+    },
+    {
+      "type": "range",
+      "id": "content_max_width",
+      "label": "Lățime maximă content",
+      "min": 320,
+      "max": 900,
+      "step": 20,
+      "unit": "px",
+      "default": 560
+    },
+    {
+      "type": "range",
+      "id": "content_padding_desktop",
+      "label": "Padding interior content desktop",
+      "min": 16,
+      "max": 120,
+      "step": 4,
+      "unit": "px",
+      "default": 48
+    },
+    {
+      "type": "range",
+      "id": "content_gap",
+      "label": "Spațiere între elemente",
+      "min": 8,
+      "max": 40,
+      "step": 2,
+      "unit": "px",
+      "default": 14
+    },
+    {
+      "type": "range",
+      "id": "title_max_width",
+      "label": "Lățime maximă titlu",
+      "min": 0,
+      "max": 900,
+      "step": 20,
+      "unit": "px",
+      "default": 0
+    },
+    {
+      "type": "range",
+      "id": "subtitle_max_width",
+      "label": "Lățime maximă subtitlu",
+      "min": 0,
+      "max": 900,
+      "step": 20,
+      "unit": "px",
+      "default": 0
+    },
+    {
+      "type": "header",
+      "content": "Layout mobile"
+    },
+    {
+      "type": "range",
+      "id": "banner_height_mobile",
+      "label": "Înălțime banner mobile",
+      "min": 240,
+      "max": 700,
+      "step": 20,
+      "unit": "px",
+      "default": 420
+    },
+    {
+      "type": "select",
+      "id": "horizontal_alignment_mobile",
+      "label": "Poziție orizontală content mobile",
+      "options": [
+        { "value": "left", "label": "Stânga" },
+        { "value": "center", "label": "Centru" },
+        { "value": "right", "label": "Dreapta" }
+      ],
+      "default": "left"
+    },
+    {
+      "type": "select",
+      "id": "vertical_alignment_mobile",
+      "label": "Poziție verticală content mobile",
+      "options": [
+        { "value": "top", "label": "Sus" },
+        { "value": "middle", "label": "Mijloc" },
+        { "value": "bottom", "label": "Jos" }
+      ],
+      "default": "bottom"
+    },
+    {
+      "type": "select",
+      "id": "text_align_mobile",
+      "label": "Aliniere text mobile",
+      "options": [
+        { "value": "left", "label": "Stânga" },
+        { "value": "center", "label": "Centru" },
+        { "value": "right", "label": "Dreapta" }
+      ],
+      "default": "left"
+    },
+    {
+      "type": "range",
+      "id": "content_padding_mobile",
+      "label": "Padding interior content mobile",
+      "min": 12,
+      "max": 48,
+      "step": 2,
+      "unit": "px",
+      "default": 20
+    },
+    {
+      "type": "header",
+      "content": "Spațiere secțiune"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "label": "Padding top desktop",
+      "min": 0,
+      "max": 120,
+      "step": 4,
+      "unit": "px",
+      "default": 36
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "label": "Padding bottom desktop",
+      "min": 0,
+      "max": 120,
+      "step": 4,
+      "unit": "px",
+      "default": 36
+    },
+    {
+      "type": "range",
+      "id": "padding_top_mobile",
+      "label": "Padding top mobile",
+      "min": 0,
+      "max": 80,
+      "step": 4,
+      "unit": "px",
+      "default": 0
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom_mobile",
+      "label": "Padding bottom mobile",
+      "min": 0,
+      "max": 80,
+      "step": 4,
+      "unit": "px",
+      "default": 0
+    },
+    {
+      "type": "header",
+      "content": "Tipografie"
+    },
+    {
+      "type": "range",
+      "id": "eyebrow_size_desktop",
+      "label": "Mărime eyebrow desktop",
+      "min": 10,
+      "max": 30,
+      "step": 1,
+      "unit": "px",
+      "default": 13
+    },
+    {
+      "type": "range",
+      "id": "eyebrow_size_mobile",
+      "label": "Mărime eyebrow mobile",
+      "min": 10,
+      "max": 24,
+      "step": 1,
+      "unit": "px",
+      "default": 12
+    },
+    {
+      "type": "select",
+      "id": "eyebrow_weight",
+      "label": "Greutate eyebrow",
+      "options": [
+        { "value": "400", "label": "400" },
+        { "value": "500", "label": "500" },
+        { "value": "600", "label": "600" },
+        { "value": "700", "label": "700" }
+      ],
+      "default": "600"
+    },
+    {
+      "type": "range",
+      "id": "title_size_desktop",
+      "label": "Mărime titlu desktop",
+      "min": 20,
+      "max": 96,
+      "step": 2,
+      "unit": "px",
+      "default": 54
+    },
+    {
+      "type": "range",
+      "id": "title_size_mobile",
+      "label": "Mărime titlu mobile",
+      "min": 18,
+      "max": 56,
+      "step": 2,
+      "unit": "px",
+      "default": 32
+    },
+    {
+      "type": "select",
+      "id": "title_weight",
+      "label": "Greutate titlu",
+      "options": [
+        { "value": "400", "label": "400" },
+        { "value": "500", "label": "500" },
+        { "value": "600", "label": "600" },
+        { "value": "700", "label": "700" },
+        { "value": "800", "label": "800" }
+      ],
+      "default": "700"
+    },
+    {
+      "type": "range",
+      "id": "title_line_height",
+      "label": "Line-height titlu",
+      "min": 0.9,
+      "max": 1.6,
+      "step": 0.1,
+      "default": 1.0
+    },
+    {
+      "type": "range",
+      "id": "subtitle_size_desktop",
+      "label": "Mărime subtitlu desktop",
+      "min": 12,
+      "max": 36,
+      "step": 1,
+      "unit": "px",
+      "default": 18
+    },
+    {
+      "type": "range",
+      "id": "subtitle_size_mobile",
+      "label": "Mărime subtitlu mobile",
+      "min": 12,
+      "max": 26,
+      "step": 1,
+      "unit": "px",
+      "default": 15
+    },
+    {
+      "type": "select",
+      "id": "subtitle_weight",
+      "label": "Greutate subtitlu",
+      "options": [
+        { "value": "300", "label": "300" },
+        { "value": "400", "label": "400" },
+        { "value": "500", "label": "500" },
+        { "value": "600", "label": "600" }
+      ],
+      "default": "400"
+    },
+    {
+      "type": "range",
+      "id": "subtitle_line_height",
+      "label": "Line-height subtitlu",
+      "min": 1.0,
+      "max": 2.0,
+      "step": 0.1,
+      "default": 1.4
+    },
+    {
+      "type": "range",
+      "id": "button_size_desktop",
+      "label": "Mărime text buton desktop",
+      "min": 12,
+      "max": 24,
+      "step": 1,
+      "unit": "px",
+      "default": 15
+    },
+    {
+      "type": "range",
+      "id": "button_size_mobile",
+      "label": "Mărime text buton mobile",
+      "min": 12,
+      "max": 22,
+      "step": 1,
+      "unit": "px",
+      "default": 14
+    },
+    {
+      "type": "select",
+      "id": "button_weight",
+      "label": "Greutate text buton",
+      "options": [
+        { "value": "400", "label": "400" },
+        { "value": "500", "label": "500" },
+        { "value": "600", "label": "600" },
+        { "value": "700", "label": "700" }
+      ],
+      "default": "600"
+    },
+    {
+      "type": "checkbox",
+      "id": "enable_text_shadow",
+      "label": "Text shadow",
+      "default": false
+    },
+    {
+      "type": "header",
+      "content": "Culori"
+    },
+    {
+      "type": "color",
+      "id": "eyebrow_color",
+      "label": "Culoare eyebrow",
+      "default": "#FFFFFF"
+    },
+    {
+      "type": "color",
+      "id": "title_color",
+      "label": "Culoare titlu",
+      "default": "#FFFFFF"
+    },
+    {
+      "type": "color",
+      "id": "subtitle_color",
+      "label": "Culoare subtitlu",
+      "default": "#FFFFFF"
+    },
+    {
+      "type": "header",
+      "content": "Overlay"
+    },
+    {
+      "type": "checkbox",
+      "id": "enable_overlay",
+      "label": "Activează overlay",
+      "default": true
+    },
+    {
+      "type": "color",
+      "id": "overlay_color",
+      "label": "Culoare overlay",
+      "default": "#000000"
+    },
+    {
+      "type": "range",
+      "id": "overlay_opacity",
+      "label": "Opacitate overlay",
+      "min": 0,
+      "max": 100,
+      "step": 5,
+      "unit": "%",
+      "default": 35
+    },
+    {
+      "type": "select",
+      "id": "overlay_style",
+      "label": "Stil overlay",
+      "options": [
+        { "value": "solid", "label": "Solid" },
+        { "value": "left", "label": "Gradient din stânga" },
+        { "value": "right", "label": "Gradient din dreapta" },
+        { "value": "top", "label": "Gradient de sus" },
+        { "value": "bottom", "label": "Gradient de jos" },
+        { "value": "radial", "label": "Radial" }
+      ],
+      "default": "left"
+    },
+    {
+      "type": "header",
+      "content": "Buton"
+    },
+    {
+      "type": "select",
+      "id": "button_style",
+      "label": "Stil buton",
+      "options": [
+        { "value": "solid", "label": "Solid" },
+        { "value": "outline", "label": "Outline" },
+        { "value": "text", "label": "Text only" }
+      ],
+      "default": "outline"
+    },
+    {
+      "type": "color",
+      "id": "button_text_color",
+      "label": "Culoare text buton",
+      "default": "#FFFFFF"
+    },
+    {
+      "type": "color",
+      "id": "button_bg_color",
+      "label": "Background buton",
+      "default": "rgba(255,255,255,0)"
+    },
+    {
+      "type": "color",
+      "id": "button_border_color",
+      "label": "Border buton",
+      "default": "#FFFFFF"
+    },
+    {
+      "type": "color",
+      "id": "button_hover_text_color",
+      "label": "Text hover buton",
+      "default": "#111111"
+    },
+    {
+      "type": "color",
+      "id": "button_hover_bg_color",
+      "label": "Background hover buton",
+      "default": "#FFFFFF"
+    },
+    {
+      "type": "color",
+      "id": "button_hover_border_color",
+      "label": "Border hover buton",
+      "default": "#FFFFFF"
+    },
+    {
+      "type": "range",
+      "id": "button_radius",
+      "label": "Radius buton",
+      "min": 0,
+      "max": 40,
+      "step": 2,
+      "unit": "px",
+      "default": 10
+    },
+    {
+      "type": "range",
+      "id": "button_padding_x",
+      "label": "Padding orizontal buton",
+      "min": 12,
+      "max": 48,
+      "step": 2,
+      "unit": "px",
+      "default": 24
+    },
+    {
+      "type": "range",
+      "id": "button_padding_y",
+      "label": "Padding vertical buton",
+      "min": 8,
+      "max": 22,
+      "step": 1,
+      "unit": "px",
+      "default": 13
+    },
+    {
+      "type": "range",
+      "id": "button_margin_top",
+      "label": "Spațiu deasupra butonului desktop",
+      "min": 0,
+      "max": 40,
+      "step": 2,
+      "unit": "px",
+      "default": 8
+    },
+    {
+      "type": "range",
+      "id": "button_margin_top_mobile",
+      "label": "Spațiu deasupra butonului mobile",
+      "min": 0,
+      "max": 32,
+      "step": 2,
+      "unit": "px",
+      "default": 6
+    },
+    {
+      "type": "header",
+      "content": "Stilizare banner"
+    },
+    {
+      "type": "range",
+      "id": "banner_radius",
+      "label": "Radius banner desktop",
+      "min": 0,
+      "max": 40,
+      "step": 2,
+      "unit": "px",
+      "default": 18
+    },
+    {
+      "type": "range",
+      "id": "banner_radius_mobile",
+      "label": "Radius banner mobile",
+      "min": 0,
+      "max": 32,
+      "step": 2,
+      "unit": "px",
+      "default": 0
+    }
+  ],
+  "presets": [
+    {
+      "name": "Hero banner premium"
+    }
+  ]
+}
+{% endschema %}
