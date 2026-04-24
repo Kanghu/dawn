@@ -230,12 +230,75 @@
     },
     "custom_liquid_Yee3Mx": {
       "type": "custom-liquid",
+      "disabled": true,
       "settings": {
         "custom_liquid": "{%- assign locale_code = request.locale.iso_code \n  | default: localization.language.iso_code \n  | default: 'ro' \n  | downcase -%}\n\n{%- assign lang = 'ENG' -%}\n{%- assign tld = 'ro' -%}\n\n{%- if locale_code == 'ro' -%}\n  {%- assign lang = 'RO' -%}\n  {%- assign tld = 'ro' -%}\n{%- elsif locale_code == 'hu' -%}\n  {%- assign lang = 'HU' -%}\n  {%- assign tld = 'hu' -%}\n{%- elsif locale_code == 'bg' -%}\n  {%- assign lang = 'BG' -%}\n  {%- assign tld = 'bg' -%}\n{%- elsif locale_code == 'pl' -%}\n  {%- assign lang = 'PL' -%}\n  {%- assign tld = 'pl' -%}\n{%- endif -%}\n\n{%- assign base_url = 'https://cdn.shopify.com/s/files/1/0782/5175/3739/files/' -%}\n{%- assign desktop_img = base_url | append: 'OUTLET_' | append: lang | append: '_DESKTOP.png' -%}\n{%- assign mobile_img  = base_url | append: 'OUTLET_' | append: lang | append: '_MOBILE.png' -%}\n\n{%- assign target_url = 'https://www.alessandrodesign.' | append: tld | append: '/collections/outlet' -%}\n\n<a class=\"outlet-banner-link\" href=\"{{ target_url }}\" aria-label=\"Outlet Banner\">\n\n  <picture class=\"outlet-banner\">\n    <source media=\"(min-width: 769px)\" srcset=\"{{ desktop_img }}\">\n    <img\n      src=\"{{ mobile_img }}\"\n      alt=\"Outlet Banner\"\n      loading=\"lazy\"\n      decoding=\"async\"\n      class=\"outlet-banner__img\"\n      width=\"1920\"\n      height=\"1080\">\n  </picture>\n\n</a>\n\n<style>\n.outlet-banner-link {\n  display:block;\n  text-decoration:none;\n  width:100%;\n}\n\n.outlet-banner {\n  display:block;\n  width:100%;\n  line-height:0;\n}\n\n.outlet-banner__img {\n  display:block;\n  width:100%;\n  height:auto;\n}\n\n@media (min-width: 769px) {\n  .outlet-banner-link {\n    max-width:1300px;\n    margin:0 auto;\n  }\n}\n</style>",
         "color_scheme": "",
         "padding_top": 16,
         "padding_bottom": 24
       }
+    },
+    "blocks_8HTAtC": {
+      "type": "_blocks",
+      "blocks": {
+        "ai_gen_block_61ac348_8fxEVW": {
+          "type": "ai_gen_block_61ac348",
+          "settings": {
+            "image_desktop": "shopify://shop_images/edc6d775-ddb4-419b-907b-aca3b21009c9.png",
+            "image_mobile": "shopify://shop_images/edc6d775-ddb4-419b-907b-aca3b21009c9_28335a0e-bd89-4cc0-a4b7-c01df692f62d.png",
+            "banner_height_desktop": 300,
+            "banner_height_mobile": 200,
+            "banner_border_radius": 0,
+            "title": "Corpuri de Iluminat",
+            "subtitle": "Corpuri de iluminat premium, cu design modern și lumină caldă pentru un ambient elegant.",
+            "cta_text": "Vezi ofertele",
+            "cta_link": "shopify://collections/oglinzi-led",
+            "text_position_horizontal": "left",
+            "text_position_vertical": "center",
+            "text_position_horizontal_mobile": "left",
+            "content_max_width": 500,
+            "content_padding_top": 15,
+            "content_padding_bottom": 0,
+            "content_padding_horizontal": 20,
+            "title_size_desktop": 38,
+            "title_size_mobile": 28,
+            "title_font_weight": "700",
+            "title_line_height": 1,
+            "title_spacing": 10,
+            "title_color": "#ffffff",
+            "subtitle_size_desktop": 16,
+            "subtitle_size_mobile": 14,
+            "subtitle_font_weight": "400",
+            "subtitle_line_height": 1.5,
+            "subtitle_spacing": 30,
+            "subtitle_color": "#ffdf00",
+            "cta_size_desktop": 16,
+            "cta_size_mobile": 14,
+            "cta_font_weight": "600",
+            "cta_color": "#ffffff",
+            "button_style": "solid",
+            "button_background_color": "#000000",
+            "button_hover_color": "#343030",
+            "button_border_radius": 4,
+            "button_padding_vertical": 15,
+            "button_padding_horizontal": 30,
+            "overlay_enabled": true,
+            "overlay_color": "#000000",
+            "overlay_opacity": 100,
+            "gradient_overlay_enabled": true,
+            "gradient_direction": "left",
+            "gradient_opacity": 0,
+            "text_shadow_enabled": true,
+            "hover_effect": "none"
+          },
+          "blocks": {}
+        }
+      },
+      "block_order": [
+        "ai_gen_block_61ac348_8fxEVW"
+      ],
+      "name": "Hero banner",
+      "settings": {}
     },
     "featured_collection_PDnXwY": {
       "type": "featured-collection",
@@ -481,6 +544,7 @@
     "blocks_wHWbDA",
     "featured_collection_KFUddR",
     "custom_liquid_Yee3Mx",
+    "blocks_8HTAtC",
     "featured_collection_PDnXwY",
     "alc_featured_collection_ERArtK",
     "custom_liquid_W8WWQz",
