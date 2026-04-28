@@ -349,6 +349,7 @@
     },
     "custom_liquid_W8WWQz": {
       "type": "custom-liquid",
+      "disabled": true,
       "name": "t:sections.custom-liquid.presets.name",
       "settings": {
         "custom_liquid": "{%- assign locale_code = request.locale.iso_code \n  | default: localization.language.iso_code \n  | default: 'ro' \n  | downcase -%}\n\n{%- assign lang = 'ENG' -%}\n{%- assign tld = 'ro' -%}\n\n{%- if locale_code == 'ro' -%}\n  {%- assign lang = 'RO' -%}\n  {%- assign tld = 'ro' -%}\n{%- elsif locale_code == 'hu' -%}\n  {%- assign lang = 'HU' -%}\n  {%- assign tld = 'hu' -%}\n{%- elsif locale_code == 'bg' -%}\n  {%- assign lang = 'BG' -%}\n  {%- assign tld = 'bg' -%}\n{%- elsif locale_code == 'pl' -%}\n  {%- assign lang = 'PL' -%}\n  {%- assign tld = 'pl' -%}\n{%- endif -%}\n\n{%- assign base_url = 'https://cdn.shopify.com/s/files/1/0782/5175/3739/files/' -%}\n{%- assign desktop_img = base_url | append: 'Mobilier_' | append: lang | append: '_Desktop.png' -%}\n\n{%- assign target_url = 'https://www.alessandrodesign.' | append: tld | append: '/collections/mobilier-baie' -%}\n\n<a class=\"om-banner-link\" href=\"{{ target_url }}\" aria-label=\"Mobilier Baie Banner\">\n  <img\n    src=\"{{ desktop_img }}\"\n    alt=\"Mobilier Baie Banner\"\n    loading=\"lazy\"\n    decoding=\"async\"\n    class=\"om-banner__img\"\n    width=\"1920\"\n    height=\"1080\">\n</a>\n\n<style>\n.om-banner-link {\n  display:block;\n  width:100vw;\n  margin-left:calc(50% - 50vw);\n  margin-right:calc(50% - 50vw);\n  text-decoration:none;\n}\n\n.om-banner__img {\n  display:block;\n  width:100%;\n  height:auto;\n}\n</style>",
@@ -356,6 +357,68 @@
         "padding_top": 0,
         "padding_bottom": 0
       }
+    },
+    "blocks_d4EQfk": {
+      "type": "_blocks",
+      "blocks": {
+        "ai_gen_block_61ac348_ETyK6k": {
+          "type": "ai_gen_block_61ac348",
+          "settings": {
+            "image_desktop": "shopify://shop_images/OV.png",
+            "image_mobile": "shopify://shop_images/OV_M.png",
+            "banner_height_desktop": 300,
+            "banner_height_mobile": 200,
+            "banner_border_radius": 0,
+            "title": "Mobilier baie",
+            "subtitle": "Soluții inteligente pentru baie, cu linii curate și spații bine organizate, create pentru confort zilnic și estetică contemporană.",
+            "cta_text": "Vezi ofertele",
+            "cta_link": "shopify://collections/baie",
+            "text_position_horizontal": "right",
+            "text_position_vertical": "center",
+            "text_position_horizontal_mobile": "left",
+            "content_max_width": 500,
+            "content_padding_top": 15,
+            "content_padding_bottom": 0,
+            "content_padding_horizontal": 20,
+            "title_size_desktop": 38,
+            "title_size_mobile": 28,
+            "title_font_weight": "700",
+            "title_line_height": 1,
+            "title_spacing": 10,
+            "title_color": "#ffffff",
+            "subtitle_size_desktop": 16,
+            "subtitle_size_mobile": 14,
+            "subtitle_font_weight": "400",
+            "subtitle_line_height": 1.5,
+            "subtitle_spacing": 30,
+            "subtitle_color": "#ffdf00",
+            "cta_size_desktop": 16,
+            "cta_size_mobile": 14,
+            "cta_font_weight": "600",
+            "cta_color": "#ffffff",
+            "button_style": "solid",
+            "button_background_color": "#000000",
+            "button_hover_color": "#343030",
+            "button_border_radius": 4,
+            "button_padding_vertical": 15,
+            "button_padding_horizontal": 30,
+            "overlay_enabled": true,
+            "overlay_color": "#000000",
+            "overlay_opacity": 100,
+            "gradient_overlay_enabled": true,
+            "gradient_direction": "left",
+            "gradient_opacity": 0,
+            "text_shadow_enabled": true,
+            "hover_effect": "none"
+          },
+          "blocks": {}
+        }
+      },
+      "block_order": [
+        "ai_gen_block_61ac348_ETyK6k"
+      ],
+      "name": "Hero banner",
+      "settings": {}
     },
     "alc_featured_collection_eK7URW": {
       "type": "alc-featured-collection",
@@ -537,6 +600,7 @@
     "featured_collection_PDnXwY",
     "alc_featured_collection_ERArtK",
     "custom_liquid_W8WWQz",
+    "blocks_d4EQfk",
     "alc_featured_collection_eK7URW",
     "featured_collection_mMLGif",
     "174558919114520042",
