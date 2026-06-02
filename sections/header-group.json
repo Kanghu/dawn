@@ -11,6 +11,31 @@
   "name": "t:sections.header.name",
   "type": "header",
   "sections": {
+    "announcement_bar_nHa8X9": {
+      "type": "announcement-bar",
+      "blocks": {
+        "announcement_PeptB3": {
+          "type": "announcement",
+          "settings": {
+            "text": "In perioada 16 Mai - 30 Iunie Showroomul din Voluntari va fi inchis pentru renovari.",
+            "link": "shopify://pages/showroom"
+          }
+        }
+      },
+      "block_order": [
+        "announcement_PeptB3"
+      ],
+      "name": "t:sections.announcement-bar.presets.name",
+      "settings": {
+        "color_scheme": "",
+        "show_line_separator": true,
+        "show_social": false,
+        "auto_rotate": false,
+        "change_slides_speed": 5,
+        "enable_country_selector": false,
+        "enable_language_selector": false
+      }
+    },
     "header": {
       "type": "alc-header",
       "blocks": {
@@ -78,39 +103,14 @@
         "padding_bottom": 0
       }
     },
-    "announcement_bar_nHa8X9": {
-      "type": "announcement-bar",
-      "blocks": {
-        "announcement_PeptB3": {
-          "type": "announcement",
-          "settings": {
-            "text": "In perioada 16 - 30 Mai Showroomul din Voluntari va fi inchis pentru renovari.",
-            "link": "shopify://pages/showroom"
-          }
-        }
-      },
-      "block_order": [
-        "announcement_PeptB3"
-      ],
-      "name": "t:sections.announcement-bar.presets.name",
-      "settings": {
-        "color_scheme": "",
-        "show_line_separator": true,
-        "show_social": false,
-        "auto_rotate": false,
-        "change_slides_speed": 5,
-        "enable_country_selector": false,
-        "enable_language_selector": false
-      }
-    },
     "mktr_custom_app": {
       "type": "mktr_custom_app",
       "settings": {}
     }
   },
   "order": [
-    "header",
     "announcement_bar_nHa8X9",
+    "header",
     "mktr_custom_app"
   ]
 }
