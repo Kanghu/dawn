@@ -128,16 +128,6 @@
         "padding_bottom": 0
       }
     },
-    "custom_liquid_ggcwHk": {
-      "type": "custom-liquid",
-      "disabled": true,
-      "settings": {
-        "custom_liquid": "{%- assign locale_code = request.locale.iso_code \n  | default: localization.language.iso_code \n  | default: 'ro' \n  | downcase -%}\n\n{%- assign lang = 'ENG' -%}\n{%- assign tld = 'ro' -%}\n\n{%- if locale_code == 'ro' -%}\n  {%- assign lang = 'RO' -%}\n  {%- assign tld = 'ro' -%}\n{%- elsif locale_code == 'hu' -%}\n  {%- assign lang = 'HU' -%}\n  {%- assign tld = 'hu' -%}\n{%- elsif locale_code == 'bg' -%}\n  {%- assign lang = 'BG' -%}\n  {%- assign tld = 'bg' -%}\n{%- elsif locale_code == 'pl' -%}\n  {%- assign lang = 'PL' -%}\n  {%- assign tld = 'pl' -%}\n{%- endif -%}\n\n{%- assign base_url = 'https://cdn.shopify.com/s/files/1/0782/5175/3739/files/' -%}\n{%- assign desktop_img = base_url | append: 'OM_' | append: lang | append: '_DESKTOP.png' -%}\n{%- assign mobile_img  = base_url | append: 'OM_' | append: lang | append: '_MOBILE.png' -%}\n\n{%- assign target_url = 'https://www.alessandrodesign.' | append: tld | append: '/collections/oglinzi-led-machiaj' -%}\n\n<div class=\"om-banner-wrapper\">\n  <a class=\"om-banner-link\" href=\"{{ target_url }}\" aria-label=\"Oglinzi Machiaj Banner\">\n    <picture class=\"om-banner\">\n      <source media=\"(min-width: 769px)\" srcset=\"{{ desktop_img }}\">\n      <img\n        src=\"{{ mobile_img }}\"\n        alt=\"Oglinzi Machiaj Banner\"\n        loading=\"lazy\"\n        decoding=\"async\"\n        class=\"om-banner__img\"\n        width=\"1920\"\n        height=\"1080\">\n    </picture>\n  </a>\n</div>\n\n<style>\n/* 🔥 FIX UNIVERSAL (merge pe orice temă Shopify) */\n.om-banner-wrapper {\n  width: 100vw;\n  margin-left: calc(50% - 50vw);\n  display: flex;\n  justify-content: center;\n}\n\n.om-banner-link {\n  display: block;\n  width: 100%;\n  max-width: 1300px;\n  text-decoration: none;\n}\n\n.om-banner {\n  display: block;\n  width: 100%;\n  line-height: 0;\n}\n\n.om-banner__img {\n  display: block;\n  width: 100%;\n  height: auto;\n}\n</style>",
-        "color_scheme": "",
-        "padding_top": 24,
-        "padding_bottom": 0
-      }
-    },
     "blocks_wHWbDA": {
       "type": "_blocks",
       "blocks": {
@@ -465,17 +455,6 @@
         "padding_bottom": 24
       }
     },
-    "custom_liquid_W8WWQz": {
-      "type": "custom-liquid",
-      "disabled": true,
-      "name": "t:sections.custom-liquid.presets.name",
-      "settings": {
-        "custom_liquid": "{%- assign locale_code = request.locale.iso_code \n  | default: localization.language.iso_code \n  | default: 'ro' \n  | downcase -%}\n\n{%- assign lang = 'ENG' -%}\n{%- assign tld = 'ro' -%}\n\n{%- if locale_code == 'ro' -%}\n  {%- assign lang = 'RO' -%}\n  {%- assign tld = 'ro' -%}\n{%- elsif locale_code == 'hu' -%}\n  {%- assign lang = 'HU' -%}\n  {%- assign tld = 'hu' -%}\n{%- elsif locale_code == 'bg' -%}\n  {%- assign lang = 'BG' -%}\n  {%- assign tld = 'bg' -%}\n{%- elsif locale_code == 'pl' -%}\n  {%- assign lang = 'PL' -%}\n  {%- assign tld = 'pl' -%}\n{%- endif -%}\n\n{%- assign base_url = 'https://cdn.shopify.com/s/files/1/0782/5175/3739/files/' -%}\n{%- assign desktop_img = base_url | append: 'Mobilier_' | append: lang | append: '_Desktop.png' -%}\n\n{%- assign target_url = 'https://www.alessandrodesign.' | append: tld | append: '/collections/mobilier-baie' -%}\n\n<a class=\"om-banner-link\" href=\"{{ target_url }}\" aria-label=\"Mobilier Baie Banner\">\n  <img\n    src=\"{{ desktop_img }}\"\n    alt=\"Mobilier Baie Banner\"\n    loading=\"lazy\"\n    decoding=\"async\"\n    class=\"om-banner__img\"\n    width=\"1920\"\n    height=\"1080\">\n</a>\n\n<style>\n.om-banner-link {\n  display:block;\n  width:100vw;\n  margin-left:calc(50% - 50vw);\n  margin-right:calc(50% - 50vw);\n  text-decoration:none;\n}\n\n.om-banner__img {\n  display:block;\n  width:100%;\n  height:auto;\n}\n</style>",
-        "color_scheme": "",
-        "padding_top": 0,
-        "padding_bottom": 0
-      }
-    },
     "174558919114520042": {
       "type": "apps",
       "blocks": {
@@ -593,7 +572,6 @@
     "17767703530432b021",
     "custom_liquid_7LUQ3Y",
     "custom_liquid_tqDTMf",
-    "custom_liquid_ggcwHk",
     "blocks_wHWbDA",
     "featured_collection_KFUddR",
     "blocks_d4EQfk",
@@ -602,7 +580,6 @@
     "blocks_8HTAtC",
     "featured_collection_PDnXwY",
     "alc_featured_collection_ERArtK",
-    "custom_liquid_W8WWQz",
     "174558919114520042",
     "featured_blog_wr7Dxf",
     "blocks_yDhkmc"
