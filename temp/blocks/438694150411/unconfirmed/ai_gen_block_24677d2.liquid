@@ -1,6 +1,507 @@
+{% doc %}
+  @prompt
+    genereaza-mi o sectiunea mobile friendly, unde aleg un produs, si imi apar 3 optiuni. 3000K, 4500K, si 6000K. Astea sunt temperaturile de lumina. Eu selectez una si imi da un overlay la imaginea principala a produsului astfel incat sa para ca incaperea e lumina de o lumina, de kelvinii respectivi.
+{% enddoc %}
+{% assign ai_gen_id = block.id | replace: '_', '' | downcase %}
+
+{% style %}
+  .ai-light-temp-selector-{{ ai_gen_id }} {
+    display: block;
+    width: {{ block.settings.desktop_width_percent }}%;
+    max-width: 100%;
+    margin: 0 auto;
+  }
+
+  .ai-light-temp-container-{{ ai_gen_id }} {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    padding: 20px;
+    background-color: {{ block.settings.background_color }};
+    border-radius: {{ block.settings.border_radius }}px;
+  }
+
+  .ai-light-temp-heading-{{ ai_gen_id }} {
+    font-size: {{ block.settings.heading_size }}px;
+    color: {{ block.settings.text_color }};
+    margin: 0;
+    text-align: center;
+  }
+
+  .ai-light-temp-image-wrapper-{{ ai_gen_id }} {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+    border-radius: {{ block.settings.image_border_radius }}px;
+  }
+
+  .ai-light-temp-image-{{ ai_gen_id }} {
+    width: 100%;
+    height: auto;
+    display: block;
+  }
+
+  .ai-light-temp-placeholder-{{ ai_gen_id }} {
+    width: 100%;
+    aspect-ratio: 4 / 3;
+    background-color: #f4f4f4;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+  }
+
+  .ai-light-temp-placeholder-{{ ai_gen_id }} svg {
+    width: 100%;
+    height: 100%;
+    max-width: 400px;
+    max-height: 400px;
+  }
+
+  .ai-light-temp-empty-state-{{ ai_gen_id }} {
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 12px 20px;
+    font-size: 14px;
+    color: #666;
+    text-align: center;
+    pointer-events: none;
+  }
+
+  .ai-light-temp-overlay-{{ ai_gen_id }} {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 0.5s ease;
+    mix-blend-mode: multiply;
+  }
+
+  .ai-light-temp-overlay-{{ ai_gen_id }}.active {
+    opacity: {{ block.settings.overlay_intensity | divided_by: 100.0 }};
+  }
+
+  .ai-light-temp-buttons-{{ ai_gen_id }} {
+    display: flex;
+    gap: 12px;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  .ai-light-temp-button-{{ ai_gen_id }} {
+    flex: 1;
+    min-width: 100px;
+    padding: 14px 20px;
+    border: 2px solid {{ block.settings.button_border_color }};
+    background-color: {{ block.settings.button_bg_color }};
+    color: {{ block.settings.button_text_color }};
+    border-radius: {{ block.settings.button_border_radius }}px;
+    font-size: {{ block.settings.button_font_size }}px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-align: center;
+  }
+
+  .ai-light-temp-button-{{ ai_gen_id }}:hover {
+    background-color: {{ block.settings.button_hover_bg_color }};
+    color: {{ block.settings.button_hover_text_color }};
+    border-color: {{ block.settings.button_hover_border_color }};
+    transform: translateY(-2px);
+  }
+
+  .ai-light-temp-button-{{ ai_gen_id }}.active {
+    background-color: {{ block.settings.button_active_bg_color }};
+    color: {{ block.settings.button_active_text_color }};
+    border-color: {{ block.settings.button_active_border_color }};
+  }
+
+  .ai-light-temp-label-{{ ai_gen_id }} {
+    display: block;
+    font-weight: 600;
+    margin-bottom: 4px;
+  }
+
+  .ai-light-temp-kelvin-{{ ai_gen_id }} {
+    display: block;
+    font-size: 12px;
+    opacity: 0.8;
+  }
+
+  @media screen and (max-width: 749px) {
+    .ai-light-temp-container-{{ ai_gen_id }} {
+      padding: 16px;
+      gap: 20px;
+    }
+
+    .ai-light-temp-buttons-{{ ai_gen_id }} {
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .ai-light-temp-button-{{ ai_gen_id }} {
+      min-width: 100%;
+      padding: 16px;
+    }
+
+    .ai-light-temp-heading-{{ ai_gen_id }} {
+      font-size: {{ block.settings.heading_size | times: 0.8 }}px;
+    }
+  }
+{% endstyle %}
+
+<light-temperature-selector-{{ ai_gen_id }}
+  class="ai-light-temp-selector-{{ ai_gen_id }}"
+  {{ block.shopify_attributes }}
+>
+  <div class="ai-light-temp-container-{{ ai_gen_id }}">
+    {% if block.settings.heading != blank %}
+      <h2 class="ai-light-temp-heading-{{ ai_gen_id }}">{{ block.settings.heading }}</h2>
+    {% endif %}
+
+    <div class="ai-light-temp-image-wrapper-{{ ai_gen_id }}">
+      {% if block.settings.product %}
+        {% if block.settings.product.featured_image %}
+          <img
+            src="{{ block.settings.product.featured_image | image_url: width: 1200 }}"
+            alt="{{ block.settings.product.featured_image.alt | escape }}"
+            width="{{ block.settings.product.featured_image.width }}"
+            height="{{ block.settings.product.featured_image.height }}"
+            loading="lazy"
+            class="ai-light-temp-image-{{ ai_gen_id }}"
+          >
+        {% else %}
+          <div class="ai-light-temp-placeholder-{{ ai_gen_id }}">
+            {{ 'product-1' | placeholder_svg_tag }}
+          </div>
+        {% endif %}
+      {% else %}
+        <div class="ai-light-temp-placeholder-{{ ai_gen_id }}">
+          {{ 'product-1' | placeholder_svg_tag }}
+          <div class="ai-light-temp-empty-state-{{ ai_gen_id }}">
+            Selectează un produs pentru a vedea efectul temperaturii luminii
+          </div>
+        </div>
+      {% endif %}
+
+      <div
+        class="ai-light-temp-overlay-{{ ai_gen_id }}"
+        data-overlay="3000"
+        style="background-color: {{ block.settings.warm_color }};"
+      ></div>
+      <div
+        class="ai-light-temp-overlay-{{ ai_gen_id }}"
+        data-overlay="4500"
+        style="background-color: {{ block.settings.neutral_color }};"
+      ></div>
+      <div
+        class="ai-light-temp-overlay-{{ ai_gen_id }}"
+        data-overlay="6000"
+        style="background-color: {{ block.settings.cool_color }};"
+      ></div>
+    </div>
+
+    <div class="ai-light-temp-buttons-{{ ai_gen_id }}">
+      <button
+        class="ai-light-temp-button-{{ ai_gen_id }}"
+        data-temperature="3000"
+        aria-pressed="false"
+      >
+        <span class="ai-light-temp-label-{{ ai_gen_id }}">{{ block.settings.warm_label }}</span>
+        <span class="ai-light-temp-kelvin-{{ ai_gen_id }}">3000K</span>
+      </button>
+      <button
+        class="ai-light-temp-button-{{ ai_gen_id }}"
+        data-temperature="4500"
+        aria-pressed="false"
+      >
+        <span class="ai-light-temp-label-{{ ai_gen_id }}">{{ block.settings.neutral_label }}</span>
+        <span class="ai-light-temp-kelvin-{{ ai_gen_id }}">4500K</span>
+      </button>
+      <button
+        class="ai-light-temp-button-{{ ai_gen_id }}"
+        data-temperature="6000"
+        aria-pressed="false"
+      >
+        <span class="ai-light-temp-label-{{ ai_gen_id }}">{{ block.settings.cool_label }}</span>
+        <span class="ai-light-temp-kelvin-{{ ai_gen_id }}">6000K</span>
+      </button>
+    </div>
+  </div>
+</light-temperature-selector-{{ ai_gen_id }}>
+
+<script>
+  (function() {
+    class LightTemperatureSelector{{ ai_gen_id }} extends HTMLElement {
+      constructor() {
+        super();
+        this.buttons = [];
+        this.overlays = [];
+        this.currentTemp = null;
+      }
+
+      connectedCallback() {
+        this.buttons = this.querySelectorAll('.ai-light-temp-button-{{ ai_gen_id }}');
+        this.overlays = this.querySelectorAll('.ai-light-temp-overlay-{{ ai_gen_id }}');
+        this.setupEventListeners();
+      }
+
+      setupEventListeners() {
+        this.buttons.forEach((button) => {
+          button.addEventListener('click', () => {
+            const temperature = button.getAttribute('data-temperature');
+            this.selectTemperature(temperature);
+          });
+        });
+      }
+
+      selectTemperature(temperature) {
+        this.buttons.forEach((btn) => {
+          const btnTemp = btn.getAttribute('data-temperature');
+          if (btnTemp === temperature) {
+            btn.classList.add('active');
+            btn.setAttribute('aria-pressed', 'true');
+          } else {
+            btn.classList.remove('active');
+            btn.setAttribute('aria-pressed', 'false');
+          }
+        });
+
+        this.overlays.forEach((overlay) => {
+          const overlayTemp = overlay.getAttribute('data-overlay');
+          if (overlayTemp === temperature) {
+            overlay.classList.add('active');
+          } else {
+            overlay.classList.remove('active');
+          }
+        });
+
+        this.currentTemp = temperature;
+      }
+    }
+
+    customElements.define('light-temperature-selector-{{ ai_gen_id }}', LightTemperatureSelector{{ ai_gen_id }});
+  })();
+</script>
+
 {% schema %}
- {
-   "name": "AI_Block",
-   "tag": "shopify-ai-generated-block"
- }
+{
+  "name": "Light temperature",
+  "tag": null,
+  "settings": [
+    {
+      "type": "header",
+      "content": "Produs"
+    },
+    {
+      "type": "product",
+      "id": "product",
+      "label": "Produs"
+    },
+    {
+      "type": "inline_richtext",
+      "id": "heading",
+      "label": "Titlu",
+      "default": "Alege temperatura luminii"
+    },
+    {
+      "type": "range",
+      "id": "heading_size",
+      "label": "Dimensiune titlu",
+      "min": 16,
+      "max": 48,
+      "step": 2,
+      "unit": "px",
+      "default": 24
+    },
+    {
+      "type": "range",
+      "id": "desktop_width_percent",
+      "label": "Desktop width",
+      "min": 50,
+      "max": 100,
+      "step": 5,
+      "unit": "%",
+      "default": 100
+    },
+    {
+      "type": "header",
+      "content": "Etichete butoane"
+    },
+    {
+      "type": "inline_richtext",
+      "id": "warm_label",
+      "label": "Etichetă lumină caldă",
+      "default": "Caldă"
+    },
+    {
+      "type": "inline_richtext",
+      "id": "neutral_label",
+      "label": "Etichetă lumină neutră",
+      "default": "Neutră"
+    },
+    {
+      "type": "inline_richtext",
+      "id": "cool_label",
+      "label": "Etichetă lumină rece",
+      "default": "Rece"
+    },
+    {
+      "type": "header",
+      "content": "Culori overlay"
+    },
+    {
+      "type": "color",
+      "id": "warm_color",
+      "label": "Culoare lumină caldă (3000K)",
+      "default": "#ffb347"
+    },
+    {
+      "type": "color",
+      "id": "neutral_color",
+      "label": "Culoare lumină neutră (4500K)",
+      "default": "#f5f5dc"
+    },
+    {
+      "type": "color",
+      "id": "cool_color",
+      "label": "Culoare lumină rece (6000K)",
+      "default": "#e0f4ff"
+    },
+    {
+      "type": "range",
+      "id": "overlay_intensity",
+      "label": "Intensitate overlay",
+      "min": 10,
+      "max": 80,
+      "step": 5,
+      "unit": "%",
+      "default": 40
+    },
+    {
+      "type": "header",
+      "content": "Stil container"
+    },
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "Culoare fundal",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Culoare text",
+      "default": "#121212"
+    },
+    {
+      "type": "range",
+      "id": "border_radius",
+      "label": "Rotunjire colțuri container",
+      "min": 0,
+      "max": 40,
+      "step": 4,
+      "unit": "px",
+      "default": 8
+    },
+    {
+      "type": "range",
+      "id": "image_border_radius",
+      "label": "Rotunjire colțuri imagine",
+      "min": 0,
+      "max": 40,
+      "step": 4,
+      "unit": "px",
+      "default": 8
+    },
+    {
+      "type": "header",
+      "content": "Stil butoane"
+    },
+    {
+      "type": "color",
+      "id": "button_bg_color",
+      "label": "Culoare fundal",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "button_text_color",
+      "label": "Culoare text",
+      "default": "#121212"
+    },
+    {
+      "type": "color",
+      "id": "button_border_color",
+      "label": "Culoare bordură",
+      "default": "#e0e0e0"
+    },
+    {
+      "type": "color",
+      "id": "button_hover_bg_color",
+      "label": "Culoare fundal hover",
+      "default": "#f5f5f5"
+    },
+    {
+      "type": "color",
+      "id": "button_hover_text_color",
+      "label": "Culoare text hover",
+      "default": "#121212"
+    },
+    {
+      "type": "color",
+      "id": "button_hover_border_color",
+      "label": "Culoare bordură hover",
+      "default": "#121212"
+    },
+    {
+      "type": "color",
+      "id": "button_active_bg_color",
+      "label": "Culoare fundal activ",
+      "default": "#121212"
+    },
+    {
+      "type": "color",
+      "id": "button_active_text_color",
+      "label": "Culoare text activ",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "button_active_border_color",
+      "label": "Culoare bordură activ",
+      "default": "#121212"
+    },
+    {
+      "type": "range",
+      "id": "button_font_size",
+      "label": "Dimensiune font buton",
+      "min": 12,
+      "max": 20,
+      "step": 1,
+      "unit": "px",
+      "default": 14
+    },
+    {
+      "type": "range",
+      "id": "button_border_radius",
+      "label": "Rotunjire colțuri buton",
+      "min": 0,
+      "max": 40,
+      "step": 2,
+      "unit": "px",
+      "default": 8
+    }
+  ],
+  "presets": [
+    {
+      "name": "Light temperature"
+    }
+  ]
+}
 {% endschema %}
