@@ -1,3 +1,8 @@
+{% doc %}
+  @prompt
+    Temperature showcase 3000K / 4500K / 6000K. Imagine în stânga, text și butoane în dreapta. Max width 1300px.
+{% enddoc %}
+
 {% assign ai_gen_id = block.id | replace: '_', '' | downcase %}
 
 {% style %}
@@ -6,121 +11,23 @@
     max-width: 1300px;
     margin: 0 auto;
     padding: 24px 16px;
+    box-sizing: border-box;
   }
 
   .ai-temp-showcase__container-{{ ai_gen_id }} {
+    width: 100%;
+    max-width: 1300px;
+    margin: 0 auto;
     background: {{ block.settings.background_color }};
     border-radius: {{ block.settings.container_border_radius }}px;
     padding: clamp(20px, 4vw, {{ block.settings.container_padding }}px);
     display: grid;
-    grid-template-columns: minmax(280px, 0.85fr) minmax(320px, 1.15fr);
+    grid-template-columns: minmax(320px, 1.1fr) minmax(280px, 0.9fr);
     gap: clamp(22px, 4vw, {{ block.settings.grid_gap }}px);
     align-items: center;
     box-shadow: 0 18px 50px rgba(0,0,0,0.06);
     overflow: hidden;
-  }
-
-  .ai-temp-showcase__content-{{ ai_gen_id }} {
-    display: flex;
-    flex-direction: column;
-    gap: 22px;
-  }
-
-  .ai-temp-showcase__eyebrow-{{ ai_gen_id }} {
-    font-size: 12px;
-    letter-spacing: .14em;
-    text-transform: uppercase;
-    opacity: .65;
-    margin: 0 0 8px;
-    color: {{ block.settings.subtitle_color }};
-    font-weight: 600;
-  }
-
-  .ai-temp-showcase__title-{{ ai_gen_id }} {
-    font-size: clamp(28px, 4vw, {{ block.settings.title_font_size }}px);
-    color: {{ block.settings.title_color }};
-    margin: 0;
-    font-weight: 700;
-    line-height: 1.05;
-  }
-
-  .ai-temp-showcase__subtitle-{{ ai_gen_id }} {
-    font-size: {{ block.settings.subtitle_font_size }}px;
-    color: {{ block.settings.subtitle_color }};
-    margin: 12px 0 0;
-    opacity: 0.78;
-    line-height: 1.55;
-    max-width: 460px;
-  }
-
-  .ai-temp-showcase__controls-{{ ai_gen_id }} {
-    display: grid;
-    gap: 10px;
-  }
-
-  .ai-temp-showcase__button-{{ ai_gen_id }} {
-    border: 1px solid {{ block.settings.button_border_color }};
-    background: {{ block.settings.button_background }};
-    color: {{ block.settings.button_text_color }};
-    border-radius: {{ block.settings.button_border_radius }}px;
-    padding: 16px;
-    cursor: pointer;
-    display: grid;
-    grid-template-columns: auto 1fr auto;
-    gap: 14px;
-    align-items: center;
-    text-align: left;
-    transition: transform .25s ease, border-color .25s ease, background .25s ease, box-shadow .25s ease;
-  }
-
-  .ai-temp-showcase__button-{{ ai_gen_id }}:hover {
-    transform: translateY(-2px);
-    border-color: {{ block.settings.button_hover_border_color }};
-    box-shadow: 0 10px 28px rgba(0,0,0,0.07);
-  }
-
-  .ai-temp-showcase__button-{{ ai_gen_id }}.active {
-    background: {{ block.settings.button_active_background }};
-    color: {{ block.settings.button_active_text_color }};
-    border-color: {{ block.settings.button_active_background }};
-    box-shadow: 0 14px 34px rgba(0,0,0,0.12);
-  }
-
-  .ai-temp-showcase__dot-{{ ai_gen_id }} {
-    width: 34px;
-    height: 34px;
-    border-radius: 999px;
-    background: rgba(0,0,0,.06);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 13px;
-    font-weight: 700;
-  }
-
-  .ai-temp-showcase__button-{{ ai_gen_id }}.active .ai-temp-showcase__dot-{{ ai_gen_id }} {
-    background: rgba(255,255,255,.18);
-  }
-
-  .ai-temp-showcase__button-label-{{ ai_gen_id }} {
-    display: block;
-    font-size: {{ block.settings.button_label_size }}px;
-    font-weight: 700;
-    line-height: 1.2;
-  }
-
-  .ai-temp-showcase__button-desc-{{ ai_gen_id }} {
-    display: block;
-    font-size: {{ block.settings.button_desc_size }}px;
-    opacity: .68;
-    margin-top: 4px;
-    line-height: 1.35;
-  }
-
-  .ai-temp-showcase__button-temp-{{ ai_gen_id }} {
-    font-size: {{ block.settings.temp_badge_size }}px;
-    font-weight: 800;
-    letter-spacing: -.03em;
+    box-sizing: border-box;
   }
 
   .ai-temp-showcase__image-area-{{ ai_gen_id }} {
@@ -165,12 +72,118 @@
     opacity: .25;
   }
 
+  .ai-temp-showcase__content-{{ ai_gen_id }} {
+    display: flex;
+    flex-direction: column;
+    gap: 22px;
+  }
+
+  .ai-temp-showcase__eyebrow-{{ ai_gen_id }} {
+    font-size: 12px;
+    letter-spacing: .14em;
+    text-transform: uppercase;
+    opacity: .65;
+    margin: 0 0 8px;
+    color: {{ block.settings.subtitle_color }};
+    font-weight: 600;
+  }
+
+  .ai-temp-showcase__title-{{ ai_gen_id }} {
+    font-size: clamp(28px, 4vw, {{ block.settings.title_font_size }}px);
+    color: {{ block.settings.title_color }};
+    margin: 0;
+    font-weight: 700;
+    line-height: 1.05;
+  }
+
+  .ai-temp-showcase__subtitle-{{ ai_gen_id }} {
+    font-size: {{ block.settings.subtitle_font_size }}px;
+    color: {{ block.settings.subtitle_color }};
+    margin: 12px 0 0;
+    opacity: 0.78;
+    line-height: 1.55;
+    max-width: 460px;
+  }
+
+  .ai-temp-showcase__controls-{{ ai_gen_id }} {
+    display: grid;
+    gap: {{ block.settings.button_gap }}px;
+  }
+
+  .ai-temp-showcase__button-{{ ai_gen_id }} {
+    border: {{ block.settings.button_border_width }}px solid {{ block.settings.button_border_color }};
+    background: {{ block.settings.button_background }};
+    color: {{ block.settings.button_text_color }};
+    border-radius: {{ block.settings.button_border_radius }}px;
+    padding: {{ block.settings.button_padding }}px;
+    cursor: pointer;
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    gap: 14px;
+    align-items: center;
+    text-align: left;
+    transition: transform .25s ease, border-color .25s ease, background .25s ease, box-shadow .25s ease;
+  }
+
+  .ai-temp-showcase__button-{{ ai_gen_id }}:hover {
+    transform: translateY(-2px);
+    border-color: {{ block.settings.button_hover_border_color }};
+    box-shadow: 0 10px 28px rgba(0,0,0,0.07);
+  }
+
+  .ai-temp-showcase__button-{{ ai_gen_id }}.active {
+    background: {{ block.settings.button_active_background }};
+    color: {{ block.settings.button_active_text_color }};
+    border-color: {{ block.settings.button_active_background }};
+    box-shadow: 0 14px 34px rgba(0,0,0,0.12);
+  }
+
+  .ai-temp-showcase__dot-{{ ai_gen_id }} {
+    width: {{ block.settings.indicator_size | times: 2 }}px;
+    height: {{ block.settings.indicator_size | times: 2 }}px;
+    border-radius: 999px;
+    background: rgba(0,0,0,.06);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 13px;
+    font-weight: 700;
+    flex-shrink: 0;
+  }
+
+  .ai-temp-showcase__button-{{ ai_gen_id }}.active .ai-temp-showcase__dot-{{ ai_gen_id }} {
+    background: rgba(255,255,255,.18);
+  }
+
+  .ai-temp-showcase__button-label-{{ ai_gen_id }} {
+    display: block;
+    font-size: {{ block.settings.button_label_size }}px;
+    font-weight: 700;
+    line-height: 1.2;
+  }
+
+  .ai-temp-showcase__button-desc-{{ ai_gen_id }} {
+    display: block;
+    font-size: {{ block.settings.button_desc_size }}px;
+    opacity: .68;
+    margin-top: 4px;
+    line-height: 1.35;
+  }
+
+  .ai-temp-showcase__button-temp-{{ ai_gen_id }} {
+    font-size: {{ block.settings.temp_badge_size }}px;
+    font-weight: 800;
+    letter-spacing: -.03em;
+    white-space: nowrap;
+  }
+
   @media screen and (max-width: 989px) {
     .ai-temp-showcase__container-{{ ai_gen_id }} {
       grid-template-columns: 1fr;
     }
 
     .ai-temp-showcase__image-area-{{ ai_gen_id }} {
+      order: 1;
       max-width: 620px;
       width: 100%;
       margin: 0 auto;
@@ -178,10 +191,6 @@
 
     .ai-temp-showcase__content-{{ ai_gen_id }} {
       order: 2;
-    }
-
-    .ai-temp-showcase__image-area-{{ ai_gen_id }} {
-      order: 1;
     }
   }
 
@@ -196,14 +205,8 @@
       gap: 18px;
     }
 
-    .ai-temp-showcase__controls-{{ ai_gen_id }} {
-      grid-template-columns: 1fr;
-      gap: 8px;
-    }
-
     .ai-temp-showcase__button-{{ ai_gen_id }} {
       padding: 13px;
-      grid-template-columns: auto 1fr auto;
     }
 
     .ai-temp-showcase__dot-{{ ai_gen_id }} {
@@ -220,42 +223,6 @@
 
 <temp-showcase-{{ ai_gen_id }} class="ai-temp-showcase-{{ ai_gen_id }}" {{ block.shopify_attributes }}>
   <div class="ai-temp-showcase__container-{{ ai_gen_id }}">
-    <div class="ai-temp-showcase__content-{{ ai_gen_id }}">
-      <div>
-        <p class="ai-temp-showcase__eyebrow-{{ ai_gen_id }}">Temperatura luminii</p>
-
-        {% if block.settings.title != blank %}
-          <h2 class="ai-temp-showcase__title-{{ ai_gen_id }}">{{ block.settings.title }}</h2>
-        {% endif %}
-
-        {% if block.settings.subtitle != blank %}
-          <p class="ai-temp-showcase__subtitle-{{ ai_gen_id }}">{{ block.settings.subtitle }}</p>
-        {% endif %}
-      </div>
-
-      <div class="ai-temp-showcase__controls-{{ ai_gen_id }}">
-        {% assign temps = "3000,4500,6000" | split: "," %}
-
-        {% for temp in temps %}
-          {% assign label_key = "label_" | append: temp | append: "k" %}
-          {% assign desc_key = "desc_" | append: temp | append: "k" %}
-
-          <button
-            class="ai-temp-showcase__button-{{ ai_gen_id }} {% if forloop.first %}active{% endif %}"
-            data-temp="{{ temp }}"
-            type="button"
-          >
-            <span class="ai-temp-showcase__dot-{{ ai_gen_id }}">{{ forloop.index }}</span>
-            <span>
-              <span class="ai-temp-showcase__button-label-{{ ai_gen_id }}">{{ block.settings[label_key] }}</span>
-              <span class="ai-temp-showcase__button-desc-{{ ai_gen_id }}">{{ block.settings[desc_key] }}</span>
-            </span>
-            <span class="ai-temp-showcase__button-temp-{{ ai_gen_id }}">{{ temp }}K</span>
-          </button>
-        {% endfor %}
-      </div>
-    </div>
-
     <div class="ai-temp-showcase__image-area-{{ ai_gen_id }}">
       {% if block.settings.image_3000k %}
         <img src="{{ block.settings.image_3000k | image_url: width: 1300 }}" class="ai-temp-showcase__image-{{ ai_gen_id }} active" data-temp="3000" loading="lazy" alt="{{ block.settings.image_3000k.alt | escape }}">
@@ -275,6 +242,49 @@
         <div class="ai-temp-showcase__placeholder-{{ ai_gen_id }}" data-temp="6000" style="display:none;">{{ 'product-1' | placeholder_svg_tag }}</div>
       {% endif %}
     </div>
+
+    <div class="ai-temp-showcase__content-{{ ai_gen_id }}">
+      <div>
+        <p class="ai-temp-showcase__eyebrow-{{ ai_gen_id }}">Temperatura luminii</p>
+
+        {% if block.settings.title != blank %}
+          <h2 class="ai-temp-showcase__title-{{ ai_gen_id }}">{{ block.settings.title }}</h2>
+        {% endif %}
+
+        {% if block.settings.subtitle != blank %}
+          <p class="ai-temp-showcase__subtitle-{{ ai_gen_id }}">{{ block.settings.subtitle }}</p>
+        {% endif %}
+      </div>
+
+      <div class="ai-temp-showcase__controls-{{ ai_gen_id }}">
+        <button class="ai-temp-showcase__button-{{ ai_gen_id }} active" data-temp="3000" type="button">
+          <span class="ai-temp-showcase__dot-{{ ai_gen_id }}">1</span>
+          <span>
+            <span class="ai-temp-showcase__button-label-{{ ai_gen_id }}">{{ block.settings.label_3000k }}</span>
+            <span class="ai-temp-showcase__button-desc-{{ ai_gen_id }}">{{ block.settings.desc_3000k }}</span>
+          </span>
+          <span class="ai-temp-showcase__button-temp-{{ ai_gen_id }}">3000K</span>
+        </button>
+
+        <button class="ai-temp-showcase__button-{{ ai_gen_id }}" data-temp="4500" type="button">
+          <span class="ai-temp-showcase__dot-{{ ai_gen_id }}">2</span>
+          <span>
+            <span class="ai-temp-showcase__button-label-{{ ai_gen_id }}">{{ block.settings.label_4500k }}</span>
+            <span class="ai-temp-showcase__button-desc-{{ ai_gen_id }}">{{ block.settings.desc_4500k }}</span>
+          </span>
+          <span class="ai-temp-showcase__button-temp-{{ ai_gen_id }}">4500K</span>
+        </button>
+
+        <button class="ai-temp-showcase__button-{{ ai_gen_id }}" data-temp="6000" type="button">
+          <span class="ai-temp-showcase__dot-{{ ai_gen_id }}">3</span>
+          <span>
+            <span class="ai-temp-showcase__button-label-{{ ai_gen_id }}">{{ block.settings.label_6000k }}</span>
+            <span class="ai-temp-showcase__button-desc-{{ ai_gen_id }}">{{ block.settings.desc_6000k }}</span>
+          </span>
+          <span class="ai-temp-showcase__button-temp-{{ ai_gen_id }}">6000K</span>
+        </button>
+      </div>
+    </div>
   </div>
 </temp-showcase-{{ ai_gen_id }}>
 
@@ -292,6 +302,7 @@
 
             this.buttons.forEach(item => item.classList.toggle('active', item === button));
             this.images.forEach(image => image.classList.toggle('active', image.dataset.temp === temp));
+
             this.placeholders.forEach(item => {
               item.style.display = item.dataset.temp === temp ? 'flex' : 'none';
             });
@@ -315,16 +326,6 @@
     },
     {
       "type": "range",
-      "id": "desktop_width_percent",
-      "label": "Desktop width",
-      "min": 50,
-      "max": 100,
-      "step": 5,
-      "unit": "%",
-      "default": 90
-    },
-    {
-      "type": "range",
       "id": "container_padding",
       "label": "Container padding",
       "min": 20,
@@ -341,7 +342,7 @@
       "max": 40,
       "step": 2,
       "unit": "px",
-      "default": 12
+      "default": 20
     },
     {
       "type": "color",
@@ -351,33 +352,13 @@
     },
     {
       "type": "range",
-      "id": "content_gap",
-      "label": "Content gap",
-      "min": 20,
-      "max": 60,
-      "step": 5,
-      "unit": "px",
-      "default": 40
-    },
-    {
-      "type": "range",
       "id": "grid_gap",
       "label": "Grid gap",
       "min": 20,
       "max": 80,
       "step": 5,
       "unit": "px",
-      "default": 40
-    },
-    {
-      "type": "range",
-      "id": "mobile_gap",
-      "label": "Mobile gap",
-      "min": 15,
-      "max": 40,
-      "step": 5,
-      "unit": "px",
-      "default": 25
+      "default": 45
     },
     {
       "type": "header",
@@ -387,17 +368,17 @@
       "type": "text",
       "id": "title",
       "label": "Title",
-      "default": "Choose your temperature"
+      "default": "Alege temperatura luminii"
     },
     {
       "type": "range",
       "id": "title_font_size",
       "label": "Title font size",
-      "min": 20,
-      "max": 48,
+      "min": 24,
+      "max": 58,
       "step": 2,
       "unit": "px",
-      "default": 32
+      "default": 42
     },
     {
       "type": "color",
@@ -406,20 +387,10 @@
       "default": "#121212"
     },
     {
-      "type": "range",
-      "id": "title_margin_bottom",
-      "label": "Title margin bottom",
-      "min": 5,
-      "max": 30,
-      "step": 5,
-      "unit": "px",
-      "default": 10
-    },
-    {
       "type": "text",
       "id": "subtitle",
       "label": "Subtitle",
-      "default": "See the difference"
+      "default": "Compară rapid diferența dintre lumină caldă, neutră și rece."
     },
     {
       "type": "range",
@@ -429,7 +400,7 @@
       "max": 20,
       "step": 1,
       "unit": "px",
-      "default": 14
+      "default": 15
     },
     {
       "type": "color",
@@ -464,7 +435,7 @@
       "max": 40,
       "step": 2,
       "unit": "px",
-      "default": 8
+      "default": 18
     },
     {
       "type": "color",
@@ -490,13 +461,13 @@
       "type": "text",
       "id": "label_3000k",
       "label": "Label",
-      "default": "Warm White"
+      "default": "Alb cald"
     },
     {
       "type": "text",
       "id": "desc_3000k",
       "label": "Description",
-      "default": "Cozy and relaxing"
+      "default": "Atmosferă relaxantă, confortabilă, ideală pentru living și dormitor."
     },
     {
       "type": "header",
@@ -506,13 +477,13 @@
       "type": "text",
       "id": "label_4500k",
       "label": "Label",
-      "default": "Neutral White"
+      "default": "Alb neutru"
     },
     {
       "type": "text",
       "id": "desc_4500k",
       "label": "Description",
-      "default": "Balanced and natural"
+      "default": "Lumină echilibrată, naturală, potrivită pentru utilizare zilnică."
     },
     {
       "type": "header",
@@ -522,13 +493,13 @@
       "type": "text",
       "id": "label_6000k",
       "label": "Label",
-      "default": "Cool White"
+      "default": "Alb rece"
     },
     {
       "type": "text",
       "id": "desc_6000k",
       "label": "Description",
-      "default": "Bright and energizing"
+      "default": "Lumină clară și intensă, bună pentru spații de lucru sau zone tehnice."
     },
     {
       "type": "header",
@@ -542,7 +513,7 @@
       "max": 30,
       "step": 2,
       "unit": "px",
-      "default": 12
+      "default": 10
     },
     {
       "type": "range",
@@ -552,17 +523,17 @@
       "max": 30,
       "step": 2,
       "unit": "px",
-      "default": 18
+      "default": 16
     },
     {
       "type": "range",
       "id": "button_border_radius",
       "label": "Border radius",
       "min": 0,
-      "max": 20,
+      "max": 24,
       "step": 2,
       "unit": "px",
-      "default": 8
+      "default": 14
     },
     {
       "type": "range",
@@ -584,7 +555,7 @@
       "type": "color",
       "id": "button_border_color",
       "label": "Border color",
-      "default": "#e0e0e0"
+      "default": "#e6e6e6"
     },
     {
       "type": "color",
@@ -623,7 +594,7 @@
       "id": "button_label_size",
       "label": "Label size",
       "min": 12,
-      "max": 20,
+      "max": 22,
       "step": 1,
       "unit": "px",
       "default": 16
@@ -636,17 +607,17 @@
       "max": 16,
       "step": 1,
       "unit": "px",
-      "default": 12
+      "default": 13
     },
     {
       "type": "range",
       "id": "temp_badge_size",
       "label": "Temperature badge size",
       "min": 14,
-      "max": 24,
+      "max": 26,
       "step": 1,
       "unit": "px",
-      "default": 18
+      "default": 19
     },
     {
       "type": "range",
