@@ -1,317 +1,352 @@
-{% doc %}
-  @prompt
-    Temperature showcase 3000K / 4500K / 6000K. Imagine în stânga, text și butoane în dreapta. Max width 1300px.
-{% enddoc %}
-
 {% assign ai_gen_id = block.id | replace: '_', '' | downcase %}
 
 {% style %}
-  .ai-temp-showcase-{{ ai_gen_id }} {
+  .temp-showcase-{{ ai_gen_id }} {
     width: 100%;
     max-width: 1300px;
     margin: 0 auto;
-    padding: 24px 16px;
+    padding: 32px 16px;
     box-sizing: border-box;
   }
 
-  .ai-temp-showcase__container-{{ ai_gen_id }} {
+  .temp-showcase__inner-{{ ai_gen_id }} {
     width: 100%;
-    max-width: 1300px;
-    margin: 0 auto;
+    display: grid;
+    grid-template-columns: minmax(360px, 1.25fr) minmax(280px, 0.75fr);
+    gap: clamp(28px, 5vw, 72px);
+    align-items: center;
     background: {{ block.settings.background_color }};
     border-radius: {{ block.settings.container_border_radius }}px;
-    padding: clamp(20px, 4vw, {{ block.settings.container_padding }}px);
-    display: grid;
-    grid-template-columns: minmax(320px, 1.1fr) minmax(280px, 0.9fr);
-    gap: clamp(22px, 4vw, {{ block.settings.grid_gap }}px);
-    align-items: center;
-    box-shadow: 0 18px 50px rgba(0,0,0,0.06);
-    overflow: hidden;
+    padding: clamp(18px, 4vw, {{ block.settings.container_padding }}px);
     box-sizing: border-box;
   }
 
-  .ai-temp-showcase__image-area-{{ ai_gen_id }} {
+  .temp-showcase__media-{{ ai_gen_id }} {
     position: relative;
+    width: 100%;
     aspect-ratio: 1 / 1;
     border-radius: {{ block.settings.image_border_radius }}px;
     overflow: hidden;
     background: {{ block.settings.image_background }};
-    box-shadow: inset 0 0 0 1px rgba(0,0,0,.06);
   }
 
-  .ai-temp-showcase__image-{{ ai_gen_id }},
-  .ai-temp-showcase__placeholder-{{ ai_gen_id }} {
+  .temp-showcase__image-{{ ai_gen_id }},
+  .temp-showcase__placeholder-{{ ai_gen_id }} {
     position: absolute;
     inset: 0;
     width: 100%;
     height: 100%;
   }
 
-  .ai-temp-showcase__image-{{ ai_gen_id }} {
+  .temp-showcase__image-{{ ai_gen_id }} {
     object-fit: cover;
     opacity: 0;
-    transform: scale(1.025);
-    transition: opacity {{ block.settings.transition_duration }}s ease, transform .7s ease;
+    transition: opacity .32s ease;
+    will-change: opacity;
   }
 
-  .ai-temp-showcase__image-{{ ai_gen_id }}.active {
+  .temp-showcase__image-{{ ai_gen_id }}.is-active {
     opacity: 1;
-    transform: scale(1);
   }
 
-  .ai-temp-showcase__placeholder-{{ ai_gen_id }} {
-    background: #f4f4f4;
+  .temp-showcase__placeholder-{{ ai_gen_id }} {
+    background: {{ block.settings.image_background }};
     display: flex;
     align-items: center;
     justify-content: center;
   }
 
-  .ai-temp-showcase__placeholder-{{ ai_gen_id }} svg {
+  .temp-showcase__placeholder-{{ ai_gen_id }} svg {
     width: 55%;
     height: 55%;
-    opacity: .25;
+    opacity: .22;
   }
 
-  .ai-temp-showcase__content-{{ ai_gen_id }} {
+  .temp-showcase__panel-{{ ai_gen_id }} {
     display: flex;
     flex-direction: column;
-    gap: 22px;
+    justify-content: center;
   }
 
-  .ai-temp-showcase__eyebrow-{{ ai_gen_id }} {
+  .temp-showcase__eyebrow-{{ ai_gen_id }} {
+    margin: 0 0 12px;
     font-size: 12px;
-    letter-spacing: .14em;
+    line-height: 1;
+    letter-spacing: .16em;
     text-transform: uppercase;
-    opacity: .65;
-    margin: 0 0 8px;
-    color: {{ block.settings.subtitle_color }};
-    font-weight: 600;
-  }
-
-  .ai-temp-showcase__title-{{ ai_gen_id }} {
-    font-size: clamp(28px, 4vw, {{ block.settings.title_font_size }}px);
-    color: {{ block.settings.title_color }};
-    margin: 0;
     font-weight: 700;
-    line-height: 1.05;
-  }
-
-  .ai-temp-showcase__subtitle-{{ ai_gen_id }} {
-    font-size: {{ block.settings.subtitle_font_size }}px;
     color: {{ block.settings.subtitle_color }};
-    margin: 12px 0 0;
-    opacity: 0.78;
-    line-height: 1.55;
-    max-width: 460px;
+    opacity: .55;
   }
 
-  .ai-temp-showcase__controls-{{ ai_gen_id }} {
-    display: grid;
-    gap: {{ block.settings.button_gap }}px;
+  .temp-showcase__title-{{ ai_gen_id }} {
+    margin: 0;
+    color: {{ block.settings.title_color }};
+    font-size: clamp(30px, 4vw, {{ block.settings.title_font_size }}px);
+    line-height: 1.04;
+    letter-spacing: -0.04em;
+    font-weight: 750;
   }
 
-  .ai-temp-showcase__button-{{ ai_gen_id }} {
-    border: {{ block.settings.button_border_width }}px solid {{ block.settings.button_border_color }};
-    background: {{ block.settings.button_background }};
-    color: {{ block.settings.button_text_color }};
-    border-radius: {{ block.settings.button_border_radius }}px;
-    padding: {{ block.settings.button_padding }}px;
+  .temp-showcase__subtitle-{{ ai_gen_id }} {
+    margin: 16px 0 0;
+    color: {{ block.settings.subtitle_color }};
+    font-size: {{ block.settings.subtitle_font_size }}px;
+    line-height: 1.6;
+    opacity: .72;
+    max-width: 420px;
+  }
+
+  .temp-showcase__options-{{ ai_gen_id }} {
+    margin-top: 32px;
+    display: flex;
+    flex-direction: column;
+    border-top: 1px solid rgba(0,0,0,.12);
+  }
+
+  .temp-showcase__option-{{ ai_gen_id }} {
+    appearance: none;
+    border: 0;
+    border-bottom: 1px solid rgba(0,0,0,.12);
+    background: transparent;
+    padding: 18px 0;
     cursor: pointer;
     display: grid;
-    grid-template-columns: auto 1fr auto;
+    grid-template-columns: 22px 1fr auto;
     gap: 14px;
     align-items: center;
     text-align: left;
-    transition: transform .25s ease, border-color .25s ease, background .25s ease, box-shadow .25s ease;
+    color: {{ block.settings.button_text_color }};
   }
 
-  .ai-temp-showcase__button-{{ ai_gen_id }}:hover {
-    transform: translateY(-2px);
-    border-color: {{ block.settings.button_hover_border_color }};
-    box-shadow: 0 10px 28px rgba(0,0,0,0.07);
-  }
-
-  .ai-temp-showcase__button-{{ ai_gen_id }}.active {
-    background: {{ block.settings.button_active_background }};
-    color: {{ block.settings.button_active_text_color }};
-    border-color: {{ block.settings.button_active_background }};
-    box-shadow: 0 14px 34px rgba(0,0,0,0.12);
-  }
-
-  .ai-temp-showcase__dot-{{ ai_gen_id }} {
-    width: {{ block.settings.indicator_size | times: 2 }}px;
-    height: {{ block.settings.indicator_size | times: 2 }}px;
+  .temp-showcase__radio-{{ ai_gen_id }} {
+    width: 14px;
+    height: 14px;
     border-radius: 999px;
-    background: rgba(0,0,0,.06);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 13px;
-    font-weight: 700;
-    flex-shrink: 0;
+    border: 1.5px solid currentColor;
+    position: relative;
+    opacity: .45;
   }
 
-  .ai-temp-showcase__button-{{ ai_gen_id }}.active .ai-temp-showcase__dot-{{ ai_gen_id }} {
-    background: rgba(255,255,255,.18);
+  .temp-showcase__option-{{ ai_gen_id }}.is-active .temp-showcase__radio-{{ ai_gen_id }} {
+    opacity: 1;
   }
 
-  .ai-temp-showcase__button-label-{{ ai_gen_id }} {
+  .temp-showcase__option-{{ ai_gen_id }}.is-active .temp-showcase__radio-{{ ai_gen_id }}::after {
+    content: "";
+    position: absolute;
+    inset: 3px;
+    border-radius: 999px;
+    background: currentColor;
+  }
+
+  .temp-showcase__label-{{ ai_gen_id }} {
     display: block;
     font-size: {{ block.settings.button_label_size }}px;
-    font-weight: 700;
-    line-height: 1.2;
+    line-height: 1.25;
+    font-weight: 650;
+    opacity: .62;
+    transition: opacity .2s ease;
   }
 
-  .ai-temp-showcase__button-desc-{{ ai_gen_id }} {
+  .temp-showcase__desc-{{ ai_gen_id }} {
     display: block;
+    margin-top: 5px;
     font-size: {{ block.settings.button_desc_size }}px;
-    opacity: .68;
-    margin-top: 4px;
     line-height: 1.35;
+    opacity: .48;
+    transition: opacity .2s ease;
   }
 
-  .ai-temp-showcase__button-temp-{{ ai_gen_id }} {
+  .temp-showcase__temp-{{ ai_gen_id }} {
     font-size: {{ block.settings.temp_badge_size }}px;
-    font-weight: 800;
-    letter-spacing: -.03em;
+    font-weight: 750;
+    letter-spacing: -0.03em;
+    opacity: .48;
     white-space: nowrap;
+    transition: opacity .2s ease;
+  }
+
+  .temp-showcase__option-{{ ai_gen_id }}.is-active .temp-showcase__label-{{ ai_gen_id }},
+  .temp-showcase__option-{{ ai_gen_id }}.is-active .temp-showcase__temp-{{ ai_gen_id }} {
+    opacity: 1;
+  }
+
+  .temp-showcase__option-{{ ai_gen_id }}.is-active .temp-showcase__desc-{{ ai_gen_id }} {
+    opacity: .72;
+  }
+
+  .temp-showcase__option-{{ ai_gen_id }}:hover .temp-showcase__label-{{ ai_gen_id }},
+  .temp-showcase__option-{{ ai_gen_id }}:hover .temp-showcase__temp-{{ ai_gen_id }} {
+    opacity: 1;
   }
 
   @media screen and (max-width: 989px) {
-    .ai-temp-showcase__container-{{ ai_gen_id }} {
+    .temp-showcase__inner-{{ ai_gen_id }} {
       grid-template-columns: 1fr;
+      gap: 28px;
     }
 
-    .ai-temp-showcase__image-area-{{ ai_gen_id }} {
-      order: 1;
+    .temp-showcase__media-{{ ai_gen_id }} {
+      max-width: 620px;
+      margin: 0 auto;
+    }
+
+    .temp-showcase__panel-{{ ai_gen_id }} {
       max-width: 620px;
       width: 100%;
       margin: 0 auto;
     }
-
-    .ai-temp-showcase__content-{{ ai_gen_id }} {
-      order: 2;
-    }
   }
 
   @media screen and (max-width: 749px) {
-    .ai-temp-showcase-{{ ai_gen_id }} {
-      padding: 16px 12px;
+    .temp-showcase-{{ ai_gen_id }} {
+      padding: 20px 12px;
     }
 
-    .ai-temp-showcase__container-{{ ai_gen_id }} {
+    .temp-showcase__inner-{{ ai_gen_id }} {
+      padding: 14px;
       border-radius: 18px;
-      padding: 16px;
-      gap: 18px;
     }
 
-    .ai-temp-showcase__button-{{ ai_gen_id }} {
-      padding: 13px;
+    .temp-showcase__subtitle-{{ ai_gen_id }} {
+      font-size: 14px;
     }
 
-    .ai-temp-showcase__dot-{{ ai_gen_id }} {
-      width: 28px;
-      height: 28px;
-      font-size: 11px;
+    .temp-showcase__options-{{ ai_gen_id }} {
+      margin-top: 24px;
     }
 
-    .ai-temp-showcase__button-desc-{{ ai_gen_id }} {
+    .temp-showcase__option-{{ ai_gen_id }} {
+      padding: 15px 0;
+      grid-template-columns: 18px 1fr auto;
+      gap: 10px;
+    }
+
+    .temp-showcase__desc-{{ ai_gen_id }} {
       display: none;
     }
   }
 {% endstyle %}
 
-<temp-showcase-{{ ai_gen_id }} class="ai-temp-showcase-{{ ai_gen_id }}" {{ block.shopify_attributes }}>
-  <div class="ai-temp-showcase__container-{{ ai_gen_id }}">
-    <div class="ai-temp-showcase__image-area-{{ ai_gen_id }}">
+<temperature-showcase-{{ ai_gen_id }} class="temp-showcase-{{ ai_gen_id }}" {{ block.shopify_attributes }}>
+  <div class="temp-showcase__inner-{{ ai_gen_id }}">
+    <div class="temp-showcase__media-{{ ai_gen_id }}">
       {% if block.settings.image_3000k %}
-        <img src="{{ block.settings.image_3000k | image_url: width: 1300 }}" class="ai-temp-showcase__image-{{ ai_gen_id }} active" data-temp="3000" loading="lazy" alt="{{ block.settings.image_3000k.alt | escape }}">
+        <img
+          src="{{ block.settings.image_3000k | image_url: width: 1400 }}"
+          alt="{{ block.settings.image_3000k.alt | escape }}"
+          loading="lazy"
+          class="temp-showcase__image-{{ ai_gen_id }} is-active"
+          data-temp="3000"
+        >
       {% else %}
-        <div class="ai-temp-showcase__placeholder-{{ ai_gen_id }}" data-temp="3000">{{ 'product-1' | placeholder_svg_tag }}</div>
+        <div class="temp-showcase__placeholder-{{ ai_gen_id }}" data-temp="3000">
+          {{ 'product-1' | placeholder_svg_tag }}
+        </div>
       {% endif %}
 
       {% if block.settings.image_4500k %}
-        <img src="{{ block.settings.image_4500k | image_url: width: 1300 }}" class="ai-temp-showcase__image-{{ ai_gen_id }}" data-temp="4500" loading="lazy" alt="{{ block.settings.image_4500k.alt | escape }}">
+        <img
+          src="{{ block.settings.image_4500k | image_url: width: 1400 }}"
+          alt="{{ block.settings.image_4500k.alt | escape }}"
+          loading="lazy"
+          class="temp-showcase__image-{{ ai_gen_id }}"
+          data-temp="4500"
+        >
       {% else %}
-        <div class="ai-temp-showcase__placeholder-{{ ai_gen_id }}" data-temp="4500" style="display:none;">{{ 'product-1' | placeholder_svg_tag }}</div>
+        <div class="temp-showcase__placeholder-{{ ai_gen_id }}" data-temp="4500" style="display: none;">
+          {{ 'product-1' | placeholder_svg_tag }}
+        </div>
       {% endif %}
 
       {% if block.settings.image_6000k %}
-        <img src="{{ block.settings.image_6000k | image_url: width: 1300 }}" class="ai-temp-showcase__image-{{ ai_gen_id }}" data-temp="6000" loading="lazy" alt="{{ block.settings.image_6000k.alt | escape }}">
+        <img
+          src="{{ block.settings.image_6000k | image_url: width: 1400 }}"
+          alt="{{ block.settings.image_6000k.alt | escape }}"
+          loading="lazy"
+          class="temp-showcase__image-{{ ai_gen_id }}"
+          data-temp="6000"
+        >
       {% else %}
-        <div class="ai-temp-showcase__placeholder-{{ ai_gen_id }}" data-temp="6000" style="display:none;">{{ 'product-1' | placeholder_svg_tag }}</div>
+        <div class="temp-showcase__placeholder-{{ ai_gen_id }}" data-temp="6000" style="display: none;">
+          {{ 'product-1' | placeholder_svg_tag }}
+        </div>
       {% endif %}
     </div>
 
-    <div class="ai-temp-showcase__content-{{ ai_gen_id }}">
-      <div>
-        <p class="ai-temp-showcase__eyebrow-{{ ai_gen_id }}">Temperatura luminii</p>
+    <div class="temp-showcase__panel-{{ ai_gen_id }}">
+      <p class="temp-showcase__eyebrow-{{ ai_gen_id }}">Temperatura luminii</p>
 
-        {% if block.settings.title != blank %}
-          <h2 class="ai-temp-showcase__title-{{ ai_gen_id }}">{{ block.settings.title }}</h2>
-        {% endif %}
+      {% if block.settings.title != blank %}
+        <h2 class="temp-showcase__title-{{ ai_gen_id }}">{{ block.settings.title }}</h2>
+      {% endif %}
 
-        {% if block.settings.subtitle != blank %}
-          <p class="ai-temp-showcase__subtitle-{{ ai_gen_id }}">{{ block.settings.subtitle }}</p>
-        {% endif %}
-      </div>
+      {% if block.settings.subtitle != blank %}
+        <p class="temp-showcase__subtitle-{{ ai_gen_id }}">{{ block.settings.subtitle }}</p>
+      {% endif %}
 
-      <div class="ai-temp-showcase__controls-{{ ai_gen_id }}">
-        <button class="ai-temp-showcase__button-{{ ai_gen_id }} active" data-temp="3000" type="button">
-          <span class="ai-temp-showcase__dot-{{ ai_gen_id }}">1</span>
+      <div class="temp-showcase__options-{{ ai_gen_id }}">
+        <button class="temp-showcase__option-{{ ai_gen_id }} is-active" type="button" data-temp="3000" aria-label="3000K">
+          <span class="temp-showcase__radio-{{ ai_gen_id }}"></span>
           <span>
-            <span class="ai-temp-showcase__button-label-{{ ai_gen_id }}">{{ block.settings.label_3000k }}</span>
-            <span class="ai-temp-showcase__button-desc-{{ ai_gen_id }}">{{ block.settings.desc_3000k }}</span>
+            <span class="temp-showcase__label-{{ ai_gen_id }}">{{ block.settings.label_3000k }}</span>
+            <span class="temp-showcase__desc-{{ ai_gen_id }}">{{ block.settings.desc_3000k }}</span>
           </span>
-          <span class="ai-temp-showcase__button-temp-{{ ai_gen_id }}">3000K</span>
+          <span class="temp-showcase__temp-{{ ai_gen_id }}">3000K</span>
         </button>
 
-        <button class="ai-temp-showcase__button-{{ ai_gen_id }}" data-temp="4500" type="button">
-          <span class="ai-temp-showcase__dot-{{ ai_gen_id }}">2</span>
+        <button class="temp-showcase__option-{{ ai_gen_id }}" type="button" data-temp="4500" aria-label="4500K">
+          <span class="temp-showcase__radio-{{ ai_gen_id }}"></span>
           <span>
-            <span class="ai-temp-showcase__button-label-{{ ai_gen_id }}">{{ block.settings.label_4500k }}</span>
-            <span class="ai-temp-showcase__button-desc-{{ ai_gen_id }}">{{ block.settings.desc_4500k }}</span>
+            <span class="temp-showcase__label-{{ ai_gen_id }}">{{ block.settings.label_4500k }}</span>
+            <span class="temp-showcase__desc-{{ ai_gen_id }}">{{ block.settings.desc_4500k }}</span>
           </span>
-          <span class="ai-temp-showcase__button-temp-{{ ai_gen_id }}">4500K</span>
+          <span class="temp-showcase__temp-{{ ai_gen_id }}">4500K</span>
         </button>
 
-        <button class="ai-temp-showcase__button-{{ ai_gen_id }}" data-temp="6000" type="button">
-          <span class="ai-temp-showcase__dot-{{ ai_gen_id }}">3</span>
+        <button class="temp-showcase__option-{{ ai_gen_id }}" type="button" data-temp="6000" aria-label="6000K">
+          <span class="temp-showcase__radio-{{ ai_gen_id }}"></span>
           <span>
-            <span class="ai-temp-showcase__button-label-{{ ai_gen_id }}">{{ block.settings.label_6000k }}</span>
-            <span class="ai-temp-showcase__button-desc-{{ ai_gen_id }}">{{ block.settings.desc_6000k }}</span>
+            <span class="temp-showcase__label-{{ ai_gen_id }}">{{ block.settings.label_6000k }}</span>
+            <span class="temp-showcase__desc-{{ ai_gen_id }}">{{ block.settings.desc_6000k }}</span>
           </span>
-          <span class="ai-temp-showcase__button-temp-{{ ai_gen_id }}">6000K</span>
+          <span class="temp-showcase__temp-{{ ai_gen_id }}">6000K</span>
         </button>
       </div>
     </div>
   </div>
-</temp-showcase-{{ ai_gen_id }}>
+</temperature-showcase-{{ ai_gen_id }}>
 
 <script>
   (() => {
-    class TempShowcase{{ ai_gen_id }} extends HTMLElement {
+    class TemperatureShowcase{{ ai_gen_id }} extends HTMLElement {
       connectedCallback() {
-        this.buttons = this.querySelectorAll('.ai-temp-showcase__button-{{ ai_gen_id }}');
-        this.images = this.querySelectorAll('.ai-temp-showcase__image-{{ ai_gen_id }}');
-        this.placeholders = this.querySelectorAll('.ai-temp-showcase__placeholder-{{ ai_gen_id }}');
+        this.options = this.querySelectorAll('.temp-showcase__option-{{ ai_gen_id }}');
+        this.images = this.querySelectorAll('.temp-showcase__image-{{ ai_gen_id }}');
+        this.placeholders = this.querySelectorAll('.temp-showcase__placeholder-{{ ai_gen_id }}');
 
-        this.buttons.forEach(button => {
-          button.addEventListener('click', () => {
-            const temp = button.dataset.temp;
+        this.options.forEach(option => {
+          option.addEventListener('click', () => {
+            const selectedTemp = option.dataset.temp;
 
-            this.buttons.forEach(item => item.classList.toggle('active', item === button));
-            this.images.forEach(image => image.classList.toggle('active', image.dataset.temp === temp));
+            this.options.forEach(item => {
+              item.classList.toggle('is-active', item === option);
+            });
 
-            this.placeholders.forEach(item => {
-              item.style.display = item.dataset.temp === temp ? 'flex' : 'none';
+            this.images.forEach(image => {
+              image.classList.toggle('is-active', image.dataset.temp === selectedTemp);
+            });
+
+            this.placeholders.forEach(placeholder => {
+              placeholder.style.display = placeholder.dataset.temp === selectedTemp ? 'flex' : 'none';
             });
           });
         });
       }
     }
 
-    customElements.define('temp-showcase-{{ ai_gen_id }}', TempShowcase{{ ai_gen_id }});
+    customElements.define('temperature-showcase-{{ ai_gen_id }}', TemperatureShowcase{{ ai_gen_id }});
   })();
 </script>
 
@@ -328,9 +363,9 @@
       "type": "range",
       "id": "container_padding",
       "label": "Container padding",
-      "min": 20,
+      "min": 16,
       "max": 80,
-      "step": 5,
+      "step": 4,
       "unit": "px",
       "default": 40
     },
@@ -342,49 +377,39 @@
       "max": 40,
       "step": 2,
       "unit": "px",
-      "default": 20
+      "default": 22
     },
     {
       "type": "color",
       "id": "background_color",
       "label": "Background color",
-      "default": "#f8f8f8"
-    },
-    {
-      "type": "range",
-      "id": "grid_gap",
-      "label": "Grid gap",
-      "min": 20,
-      "max": 80,
-      "step": 5,
-      "unit": "px",
-      "default": 45
+      "default": "#f7f7f5"
     },
     {
       "type": "header",
-      "content": "Header"
+      "content": "Text"
     },
     {
       "type": "text",
       "id": "title",
       "label": "Title",
-      "default": "Alege temperatura luminii"
+      "default": "Alege lumina potrivită pentru spațiul tău"
     },
     {
       "type": "range",
       "id": "title_font_size",
       "label": "Title font size",
-      "min": 24,
-      "max": 58,
+      "min": 28,
+      "max": 64,
       "step": 2,
       "unit": "px",
-      "default": 42
+      "default": 46
     },
     {
       "type": "color",
       "id": "title_color",
       "label": "Title color",
-      "default": "#121212"
+      "default": "#111111"
     },
     {
       "type": "text",
@@ -396,7 +421,7 @@
       "type": "range",
       "id": "subtitle_font_size",
       "label": "Subtitle font size",
-      "min": 12,
+      "min": 13,
       "max": 20,
       "step": 1,
       "unit": "px",
@@ -406,7 +431,7 @@
       "type": "color",
       "id": "subtitle_color",
       "label": "Subtitle color",
-      "default": "#121212"
+      "default": "#111111"
     },
     {
       "type": "header",
@@ -444,18 +469,8 @@
       "default": "#ffffff"
     },
     {
-      "type": "range",
-      "id": "transition_duration",
-      "label": "Transition duration",
-      "min": 0,
-      "max": 1,
-      "step": 0.1,
-      "unit": "s",
-      "default": 0.5
-    },
-    {
       "type": "header",
-      "content": "3000K warm white"
+      "content": "3000K"
     },
     {
       "type": "text",
@@ -467,11 +482,11 @@
       "type": "text",
       "id": "desc_3000k",
       "label": "Description",
-      "default": "Atmosferă relaxantă, confortabilă, ideală pentru living și dormitor."
+      "default": "Atmosferă relaxantă, ideală pentru living și dormitor."
     },
     {
       "type": "header",
-      "content": "4500K neutral white"
+      "content": "4500K"
     },
     {
       "type": "text",
@@ -483,11 +498,11 @@
       "type": "text",
       "id": "desc_4500k",
       "label": "Description",
-      "default": "Lumină echilibrată, naturală, potrivită pentru utilizare zilnică."
+      "default": "Lumină echilibrată, naturală, pentru utilizare zilnică."
     },
     {
       "type": "header",
-      "content": "6000K cool white"
+      "content": "6000K"
     },
     {
       "type": "text",
@@ -499,111 +514,33 @@
       "type": "text",
       "id": "desc_6000k",
       "label": "Description",
-      "default": "Lumină clară și intensă, bună pentru spații de lucru sau zone tehnice."
+      "default": "Lumină clară și intensă, potrivită pentru zone de lucru."
     },
     {
       "type": "header",
-      "content": "Button style"
-    },
-    {
-      "type": "range",
-      "id": "button_gap",
-      "label": "Gap between buttons",
-      "min": 8,
-      "max": 30,
-      "step": 2,
-      "unit": "px",
-      "default": 10
-    },
-    {
-      "type": "range",
-      "id": "button_padding",
-      "label": "Button padding",
-      "min": 12,
-      "max": 30,
-      "step": 2,
-      "unit": "px",
-      "default": 16
-    },
-    {
-      "type": "range",
-      "id": "button_border_radius",
-      "label": "Border radius",
-      "min": 0,
-      "max": 24,
-      "step": 2,
-      "unit": "px",
-      "default": 14
-    },
-    {
-      "type": "range",
-      "id": "button_border_width",
-      "label": "Border width",
-      "min": 0,
-      "max": 4,
-      "step": 1,
-      "unit": "px",
-      "default": 1
-    },
-    {
-      "type": "color",
-      "id": "button_background",
-      "label": "Background",
-      "default": "#ffffff"
-    },
-    {
-      "type": "color",
-      "id": "button_border_color",
-      "label": "Border color",
-      "default": "#e6e6e6"
+      "content": "Selector style"
     },
     {
       "type": "color",
       "id": "button_text_color",
       "label": "Text color",
-      "default": "#121212"
-    },
-    {
-      "type": "color",
-      "id": "button_hover_border_color",
-      "label": "Hover border color",
-      "default": "#121212"
-    },
-    {
-      "type": "header",
-      "content": "Button active state"
-    },
-    {
-      "type": "color",
-      "id": "button_active_background",
-      "label": "Active background",
-      "default": "#121212"
-    },
-    {
-      "type": "color",
-      "id": "button_active_text_color",
-      "label": "Active text color",
-      "default": "#ffffff"
-    },
-    {
-      "type": "header",
-      "content": "Button text sizes"
+      "default": "#111111"
     },
     {
       "type": "range",
       "id": "button_label_size",
       "label": "Label size",
-      "min": 12,
+      "min": 14,
       "max": 22,
       "step": 1,
       "unit": "px",
-      "default": 16
+      "default": 17
     },
     {
       "type": "range",
       "id": "button_desc_size",
       "label": "Description size",
-      "min": 10,
+      "min": 11,
       "max": 16,
       "step": 1,
       "unit": "px",
@@ -612,22 +549,12 @@
     {
       "type": "range",
       "id": "temp_badge_size",
-      "label": "Temperature badge size",
+      "label": "Temperature size",
       "min": 14,
       "max": 26,
       "step": 1,
       "unit": "px",
-      "default": 19
-    },
-    {
-      "type": "range",
-      "id": "indicator_size",
-      "label": "Indicator size",
-      "min": 12,
-      "max": 24,
-      "step": 2,
-      "unit": "px",
-      "default": 16
+      "default": 18
     }
   ],
   "presets": [
