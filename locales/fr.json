@@ -2570,8 +2570,9 @@
           "other": "%{count} points de retrait à proximité de chez vous"
         },
         "pickup_unavailable_banner_title": {
-          "few": "Vos articles ne peuvent pas être retirés des points de levage",
-          "one": "Il n'y a aucun point de retrait disponible pour votre article"
+          "few": "Il n'y a pas de points de retrait disponibles pour vos articles",
+          "one": "Il n'y a aucun point de retrait disponible pour votre article",
+          "other": "Il n'y a pas de points de retrait disponibles pour vos articles"
         },
         "location_is_currently_closed": "Fermé",
         "business_hours": "Calendrier",
@@ -3173,6 +3174,78 @@
       "session_errors": {
         "session_not_unique": "Un problème est survenu lors du traitement de votre commande. Actualisez cette page pour revenir au magasin.",
         "session_already_finished": "Cette commande a déjà été envoyée. Vous pouvez revenir au magasin pour démarrer une nouvelle commande."
+      },
+      "error_page": {
+        "terminal": {
+          "title": "Un problème est survenu lors de la finalisation de la commande",
+          "message": "Veuillez actualiser cette page ou réessayer dans quelques minutes",
+          "action": {
+            "cta": "Actualiser la page"
+          },
+          "request_id": "Numéro de demande : {{requestId}}"
+        },
+        "embed_errors": {
+          "storefront_password_required": "Cette boutique est protégée par mot de passe",
+          "customer_account_required": "Un compte client est requis pour finaliser le paiement",
+          "cart_completed": "Ce paiement a déjà été effectué",
+          "invalid_cart": "Ce panier n'est plus valable",
+          "not_authorized": "L'authentification pour le paiement a échoué. Vérifiez les informations d'identification de l'application",
+          "killswitch_enabled": "Le paiement est temporairement indisponible",
+          "policy_violation": "L'achèvement du paiement n'est pas possible en raison de restrictions de configuration de la politique",
+          "unrecoverable_failure": "Échec du téléchargement du paiement. Réessayez"
+        }
+      },
+      "notice_banner": {
+        "return_to_cart_link_text": "Retour au panier",
+        "return_to_cart_to_update_quantities": "%{return_to_cart_link_text} pour mettre à jour les quantités",
+        "subscription_changed": "Un de vos abonnements a changé.",
+        "company_location_changed": "Votre panier a été mis à jour. Vérifiez votre commande avant de l'envoyer.",
+        "violations_title": "{{violation}} manquant ou invalide",
+        "individual_violations_title": {
+          "DeliveryViolations": "Adresse de livraison",
+          "PaymentViolations": "Adresse de facturation",
+          "OtherViolations": "Informations sur la commande",
+          "UnhandledViolations": "Informations sur la commande"
+        },
+        "all_violations_content": "Appelez-nous ou {{emailLink}} pour mettre à jour ces informations et finaliser votre commande :",
+        "all_violations_email_link": "envoyez-nous un email",
+        "editable_shipping_address_violations_message_title": "Ajoutez ces informations pour finaliser votre commande :",
+        "editable_shipping_address_violations_message_footer": "Pour mettre à jour définitivement l'adresse de cet emplacement, {{emailLink}}.",
+        "editable_shipping_address_violations_email_link": "contactez-nous",
+        "company_location_changed_product_removed": "Votre panier a été mis à jour car certains produits ne sont pas disponibles à cet emplacement. Vérifiez votre commande avant de l'envoyer.",
+        "shipping_address_incomplete_title": "L'adresse de livraison est incomplète",
+        "calculating_shipping": "Les frais de port sont toujours en cours de calcul. Réessayez dans quelques secondes. Vous n'avez pas été facturé.",
+        "calculating_taxes": "Les taxes sont toujours en cours de calcul. Réessayez dans quelques secondes. Vous n'avez pas été facturé.",
+        "generic_processing_error": {
+          "title": "Un problème est survenu lors du traitement de votre commande.",
+          "body": "Vous n'avez pas été facturé. Réessayez ou utilisez un autre mode de paiement."
+        },
+        "contact_information": {
+          "title": "Les coordonnées sont incorrectes",
+          "header": "Pour mettre à jour vos informations, {{emailLink}}.",
+          "email_link": "contactez-nous"
+        },
+        "payment_method_not_available_with_payment_terms": "Le mode de paiement que vous avez sélectionné n'est plus disponible car le paiement de cette commande est désormais dû {{paymentTerms}}",
+        "payment_method_not_available_with_fulfillment_terms": "Le mode de paiement que vous avez sélectionné n'est plus disponible car le paiement de cette commande est désormais dû au moment de l'exécution de la commande.",
+        "payment_method_not_available_with_fixed_terms": "Le mode de paiement que vous avez sélectionné n'est plus disponible car le paiement de cette commande est désormais dû plus tard",
+        "payment_method_not_available_with_review_requirement": "Le mode de paiement sélectionné n'est pas disponible car le paiement sera dû immédiatement après la confirmation de la commande.",
+        "validation_errors_banner": {
+          "section_label": {
+            "delivery": "Expédition",
+            "contact": "Contacter",
+            "payment": "Paiement",
+            "billing": "Facturation"
+          },
+          "heading": {
+            "one": "Il y a {{count}} erreur :",
+            "other": "Il y a {{count}} erreurs :",
+            "few": "Il y a {{count}} erreurs :"
+          },
+          "errors_in_section": {
+            "one": "{{count}} erreur dans la section {{section}}",
+            "other": "{{count}} erreurs de section {{section}}"
+          }
+        }
       }
     },
     "notices": {
