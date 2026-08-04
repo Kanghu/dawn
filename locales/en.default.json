@@ -3941,14 +3941,78 @@
       "list_title_confirmed_orders_accessibility_label": "Orders: confirmed",
       "list_title_pending_orders_accessibility_label": "Orders: pending",
       "switch_order_type_pending_orders_accessibility_label": "Change order type, currently viewing pending orders",
-      "switch_order_type_confirmed_orders_accessibility_label": "Change order type, currently viewing confirmed orders"
+      "switch_order_type_confirmed_orders_accessibility_label": "Change order type, currently viewing confirmed orders",
+      "group_title_label": "Part of: {{groupTitle}}",
+      "group_title_label_with_parent": "For: {{groupTitle}}"
     },
     "order_details": {
       "image_gallery": {
         "load_more_items": {
           "few": "Load {{count}} more items"
         }
-      }
+      },
+      "addresses_section_title": "Billing and Shipping",
+      "billing_address": "Billing address",
+      "card_ending_with": "ends with {{lastDigits}}",
+      "contact": "Contact",
+      "hide_items": "Hide articles",
+      "loading": "Loading order details",
+      "loading_finished_accessibility_message": "Order details have been loaded",
+      "payment": {
+        "status_in_review": "Payment is due after review",
+        "status_unpaid": "Payment is due at {{date}}",
+        "title": "Payment",
+        "card_payment_details": "ends with {{lastDigits}} - {{formattedTransactionAmount}}",
+        "shop_pay_installments": {
+          "paid_in_installments": "Paid with Rate Shop Pay",
+          "view_schedule": "See the schedule",
+          "summary": "Rate Shop"
+        },
+        "gift_card_payment_details": "ends with {{lastDigits}} - {{formattedTransactionAmount}}",
+        "manual_payment_methods": {
+          "money_order": "Payment order - {{formattedTransactionAmount}}",
+          "cash_on_delivery": "Cash on Delivery - {{formattedTransactionAmount}}",
+          "bank_deposit": "Bank deposit - {{formattedTransactionAmount}}",
+          "manual": "Manual - {{formattedTransactionAmount}}"
+        },
+        "store_credit_payment_details": "Store credit - {{formattedTransactionAmount}}",
+        "transactions": {
+          "show_all": "Show all",
+          "show_less": "Show less",
+          "details": "Details",
+          "payment_details": "Payment details"
+        },
+        "emv_details": {
+          "auth": "AUTHORIZATION:",
+          "aid": "HELP:",
+          "source": "SOURCE:"
+        },
+        "card_payment_short_details": "{{paymentTypeLabel}} •••• {{lastDigits}}",
+        "payment_type": {
+          "gift_card": "Gift card",
+          "store_credit": "Store credit",
+          "money_order": "Payment order",
+          "cash_on_delivery": "Cash on delivery",
+          "bank_deposit": "Bank deposit",
+          "manual": "Manual"
+        },
+        "bank_payment_short_details": "{{paymentTypeLabel}} •••• {{lastDigits}}"
+      },
+      "shipping": {
+        "address": "Shipping address",
+        "address_map_marker": "Shipping address",
+        "method": "Shipping method",
+        "summary": "Transportation",
+        "free": "Free of charge",
+        "free_shipping_discount": "Free shipping",
+        "one_time": "Single shipment",
+        "subscription": "Subscription based shipping",
+        "method_short": "Method",
+        "ship_to": "Shipping to"
+      },
+      "show_items": "Show articles",
+      "subtitle": "Confirmed {{date}}",
+      "subtotal": "Subtotal"
     },
     "B2B": {
       "orders": {
