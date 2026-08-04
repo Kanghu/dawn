@@ -2461,36 +2461,80 @@
             "other": "%{count} mois"
           },
           "year": {
-            "few": "%{count} années"
+            "few": "%{count} années",
+            "one": "année",
+            "other": "%{count} années"
           }
         },
         "recurring_totals_with_initial_order_shipping_discount_with_policies": {
           "first_cycles": {
-            "few": ", alors ils seront %{count} paiements de combien de %{total_price}"
+            "few": ", alors ils seront %{count} paiements de combien %{total_price}",
+            "one": ", alors ce sera %{count} paiement de %{total_price}",
+            "other": ", alors ils seront %{count} paiements de combien %{total_price}"
           }
         },
-        "recurring_totals": "%{total_price} à chacun %{interval}"
+        "recurring_totals": "%{total_price} à chacun %{interval}",
+        "recurring_totals_with_initial_order_shipping_discount": "Le premier paiement est %{total_price_with_discount}, alors %{recurring_total}"
       },
       "contextual_availability": {
         "title": {
-          "few": "Produits indisponibles"
+          "few": "Produits indisponibles",
+          "one": "Produit indisponible",
+          "other": "Produits indisponibles"
         },
         "products_not_available": {
-          "few": "Ces produits seront supprimés du panier car ils ne sont pas disponibles dans votre pays / région."
+          "few": "Ces produits seront supprimés de votre panier car ils ne sont pas disponibles dans votre pays/région.",
+          "one": "Ce produit sera supprimé de votre panier car il n'est pas disponible dans votre pays/région.",
+          "other": "Ces produits seront supprimés de votre panier car ils ne sont pas disponibles dans votre pays/région."
         },
         "all_products_in_cart_unavailable": {
-          "few": "Ces produits ne sont pas disponibles dans votre pays / région."
-        }
+          "few": "Ces produits ne sont pas disponibles dans votre pays/région.",
+          "one": "Ce produit n'est pas disponible dans votre pays/région.",
+          "other": "Ces produits ne sont pas disponibles dans votre pays/région."
+        },
+        "unavailable_label": "Non disponible"
       },
       "throttle": {
         "estimated_wait_time": {
-          "few": "Temps d'attente estimé: {{count}} minutes"
+          "few": "Temps d'attente estimé : {{count}} minutes",
+          "calculating": "Le temps d'attente estimé est calculé",
+          "less_than_one": "Temps d'attente estimé : moins d'une minute",
+          "one": "Temps d'attente estimé : {{count}} minute",
+          "other": "Temps d'attente estimé : {{count}} minutes"
+        },
+        "line_to_check_out": "Vous êtes en ligne pour finaliser votre commande",
+        "cart_summary_heading": "Votre panier",
+        "merchandise": {
+          "sold_out": "En rupture de stock",
+          "available": "Disponible"
+        },
+        "inventory": {
+          "partial_inventory_banner": "Certains articles de votre panier sont en rupture de stock et ne seront pas disponibles à l'achat au moment du paiement.",
+          "sold_out": {
+            "heading": "Le panier est en rupture de stock",
+            "storefront_body": "Retourner au magasin pour continuer vos achats",
+            "no_storefront_body": "Malheureusement, l'article que vous souhaitez acheter n'est plus disponible.",
+            "link": "Retour au magasin"
+          }
+        },
+        "title": "Queue",
+        "time_to_checkout_title": "Il est temps de finaliser votre commande – {{shopName}}",
+        "last_checked": "(Dernier contrôle à : {{time}})",
+        "footer": {
+          "heading": "Ne rafraîchissez pas cette page, elle sera mise à jour automatiquement.",
+          "body": "Les articles de votre panier ne seront pas réservés tant que vous n'aurez pas finalisé votre commande."
+        },
+        "too_many_attempts": {
+          "message": "Trop de tentatives",
+          "description": "Veuillez réessayer dans quelques minutes"
         }
       },
       "deliverability": {
         "not_deliverable": {
           "title": {
-            "few": "Aucune méthode de livraison disponible pour %{count} (de) articles"
+            "few": "Aucun mode de livraison disponible pour %{count} (des) articles",
+            "one": "Aucun mode de livraison disponible pour %{count} article",
+            "other": "Aucun mode de livraison disponible pour %{count} (des) articles"
           },
           "message": {
             "few": "Ces articles seront supprimés du panier, car il n'y a pas de méthodes de livraison disponibles pour votre adresse."
@@ -3055,6 +3099,25 @@
         "cart_updated_based_on_country": "Votre panier a été mis à jour en fonction de votre pays de livraison.",
         "cart_and_currency_updated_based_on_country": "Panier et devise mis à jour en fonction du pays d'expédition.",
         "currency_updated_for_country": "Devise mise à jour pour %{country}"
+      },
+      "customer_payment_methods": {
+        "page_title": "Modes de paiement",
+        "title": "Modes de paiement",
+        "update_card_button_label": "Mettre à jour la carte",
+        "delete_customer_mandate": {
+          "generic_error": "Un problème est survenu lors du traitement de votre demande.",
+          "success_message": "Votre mode de paiement a été supprimé avec succès"
+        }
+      },
+      "mor_policies": {
+        "terms_and_conditions": "Conditions générales pour les marchands enregistrés",
+        "privacy_policy": "Politique de confidentialité des commerçants enregistrés"
+      },
+      "change_cart_localization": {
+        "verify_shipping_address": "Votre pays/région a été mis à jour. Entrez votre adresse de livraison pour poursuivre la commande."
+      },
+      "cart_checkout_validation": {
+        "runtime_error": "Un problème est survenu lors du traitement de votre demande. Contactez le propriétaire du magasin."
       }
     },
     "notices": {
