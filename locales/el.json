@@ -140,27 +140,27 @@
     "metaobjects": {
       "specification_groups": {
         "tip_produs_": "Τύπος προϊόντος",
-        "nr_surse_iluminat_": "Αριθμός πηγών φωτισμού",
-        "forma_": "Σχήμα",
+        "nr_surse_iluminat_": "Ο αριθμός των πηγών φωτισμού",
+        "forma_": "Φόρμα",
         "constructie_": "Κατασκευή",
         "design_": "Σχεδιασμός",
-        "dimabil_": "Ρυθμιζόμενο",
+        "dimabil_": "Dimable",
         "tip_bec_": "Τύπος λαμπτήρα",
-        "tip_soclu_": "Τύπος ντουί",
+        "tip_soclu_": "Τύπος πρίζας",
         "utilizare_": "Χρήση",
         "recomandare_": "Σύσταση",
         "pozitionare_": "Τοποθέτηση",
         "autonomie_": "Αυτονομία",
         "putere_w_": "Ισχύς (W)",
         "tensiune_alimentare_": "Τάση τροφοδοσίας",
-        "tip_lumina_": "Τύπος φωτός",
+        "tip_lumina_": "Ελαφρύς τύπος",
         "kelvin_": "Κέλβιν",
         "flux_de_lumina_lm_": "Φωτεινή ροή (lm)",
-        "clasa_de_protectie_": "Κλάση προστασίας",
+        "clasa_de_protectie_": "Κατηγορία προστασίας",
         "tip_intrerupator_": "Τύπος διακόπτη",
-        "tip_alimentare_": "Τύπος τροφοδοσίας",
-        "tip_comanda_": "Τύπος ελέγχου",
-        "numar_functii_": "Αριθμός λειτουργιών",
+        "tip_alimentare_": "Τύπος φαγητού",
+        "tip_comanda_": "Τύπος παραγγελίας",
+        "numar_functii_": "Ο αριθμός των λειτουργιών",
         "continut_pachet_": "Περιεχόμενα πακέτου",
         "material_": "Υλικό",
         "diametru_cartus_": "Διάμετρος φυσιγγίου",
@@ -284,33 +284,33 @@
       "duties_included": "Περιλαμβάνονται οι τελωνειακοί δασμοί.",
       "duties_and_taxes_included": "Συμπεριλαμβάνονται οι φόροι και οι δασμοί.",
       "lowest_price_of_year": "Η χαμηλότερη τιμή της χρονιάς",
-      "super_price": "Σούπερ τιμή"
+      "super_price": "Μεγάλη τιμή"
     },
     "modal": {
       "label": "Γκαλερί πολυμέσων"
     },
     "facets": {
-      "apply": "Εφαρμόζω",
-      "clear": "Σαφής",
+      "apply": "Εφαρμόστε",
+      "clear": "Αδειάστε το",
       "clear_all": "Αφαιρέστε τα πάντα",
       "from": "Από",
       "filter_and_sort": "Φιλτράρισμα και ταξινόμηση",
       "filter_by_label": "Φίλτρο:",
-      "filter_button": "φιλτραρισμένο",
+      "filter_button": "Φίλτρο",
       "max_price": "Η υψηλότερη τιμή είναι {{ price }}",
-      "reset": "Σαφής",
+      "reset": "Επαναφορά",
       "sort_button": "Ταξινόμησε",
       "sort_by_label": "Ταξινόμηση κατά:",
-      "to": "Με",
+      "to": "προς",
       "filters_selected": {
         "one": "{{ count }} επιλεγμένο",
-        "other": "{{ count }} επιλέγω",
-        "few": "{{ count }} επιλέγω"
+        "other": "{{ count }} επιλεγμένο",
+        "few": "{{ count }} επιλεγμένο"
       },
       "product_count": {
-        "one": "{{ product_count }} ΑΠΟ {{ count }} προϊόν",
-        "other": "{{ product_count }} ΑΠΟ {{ count }} προϊόντα",
-        "few": "{{ product_count }} ΑΠΟ {{ count }} προϊόντα"
+        "one": "{{ product_count }} από {{ count }} προϊόν",
+        "other": "{{ product_count }} από {{ count }} προϊόντα",
+        "few": "{{ product_count }} από {{ count }} προϊόντα"
       },
       "product_count_simple": {
         "one": "{{ count }} προϊόν",
