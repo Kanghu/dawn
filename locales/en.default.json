@@ -340,8 +340,8 @@
       },
       "results_suggestions_with_count": {
         "one": "{{ count }} suggestion",
-        "other": "{{ count }} suggestions",
-        "few": "{{ count }} suggestions"
+        "other": "{{ count }} of suggestions",
+        "few": "{{ count }} of suggestions"
       },
       "results_products_with_count": {
         "one": "{{ count }} product",
@@ -354,17 +354,17 @@
         "few": "{{ count }} results"
       },
       "results_with_count_and_term": {
-        "one": "{{ count }} result found for “{{ terms }}”",
-        "other": "{{ count }} results found for “{{ terms }}”",
-        "few": "Found {{ count }} results for \" {{ terms }} \""
+        "one": "It was found {{ count }} result for \"{{ terms }}”",
+        "other": "They found each other {{ count }} results for \"{{ terms }}”",
+        "few": "They found each other {{ count }} results for \"{{ terms }}”"
       },
       "title": "Search results",
-      "search_for": "Search for “{{ terms }}”",
+      "search_for": "Search for \"{{ terms }}”",
       "suggestions": "Suggestions",
       "pages": "Pages"
     },
     "cart": {
-      "cart": "Cart"
+      "cart": "Basket"
     },
     "contact": {
       "form": {
@@ -373,8 +373,8 @@
         "email": "Email",
         "phone": "Phone number",
         "comment": "Comment",
-        "send": "Send",
-        "post_success": "Thanks for contacting us. We'll get back to you as soon as possible.",
+        "send": "Submit",
+        "post_success": "Thank you for contacting us. We will get back to you as soon as possible.",
         "error_heading": "Please adjust the following:"
       }
     }
@@ -532,29 +532,29 @@
     }
   },
   "localization": {
-    "country_label": "Country/region",
+    "country_label": "Country/Region",
     "language_label": "Language",
-    "update_language": "Update language",
-    "update_country": "Update country/region",
+    "update_language": "Update your language",
+    "update_country": "Update your country/region",
     "search": "Search",
     "popular_countries_regions": "Popular countries/regions",
     "country_results_count": "{{ count }} countries/regions found"
   },
   "customer": {
     "account": {
-      "title": "Account",
+      "title": "account",
       "details": "Account details",
-      "view_addresses": "View addresses",
-      "return": "Return to Account details"
+      "view_addresses": "Show addresses",
+      "return": "Back to account details"
     },
-    "account_fallback": "Account",
+    "account_fallback": "account",
     "activate_account": {
-      "title": "Activate account",
-      "subtext": "Create your password to activate your account.",
+      "title": "Activate your account",
+      "subtext": "Create a password to activate your account.",
       "password": "Password",
       "password_confirm": "Confirm password",
-      "submit": "Activate account",
-      "cancel": "Decline invitation"
+      "submit": "Activate your account",
+      "cancel": "Decline the invitation"
     },
     "addresses": {
       "title": "Addresses",
@@ -580,7 +580,7 @@
       "delete_confirm": "Are you sure you wish to delete this address?"
     },
     "log_in": "Log in",
-    "log_out": "Log out",
+    "log_out": "Sign out",
     "login_page": {
       "cancel": "Cancel",
       "create_account": "Create account",
