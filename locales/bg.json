@@ -3912,7 +3912,13 @@
     "notices": {
       "order": {
         "cancel_reason": {
-          "few": "Нещо друго"
+          "few": "Нещо друго",
+          "declined": "Отказано плащане",
+          "inventory": "Артикулите не са налични",
+          "fraud": "Измамна поръчка",
+          "customer": "Клиентът е променил/анулирал поръчката",
+          "other": "Нещо друго",
+          "staff": "Лична грешка"
         },
         "not_available": "Тази команда не е налична",
         "financial_status": {
@@ -3921,8 +3927,25 @@
           "paid": "Платено",
           "unpaid": "Неплатени",
           "voided": "Отменено",
-          "partially_paid": "Частично платени"
-        }
+          "partially_paid": "Частично платени",
+          "partially_refunded": "Частично възстановени суми",
+          "refunded": "Възстановени",
+          "expired": "Изтекъл"
+        },
+        "fulfillment_status": {
+          "fulfilled": "Изпълнено",
+          "complete": "Завършено",
+          "partial": "частично",
+          "unfulfilled": "Неизпълнени",
+          "restocked": "Със зареден запас"
+        },
+        "transaction_status": {
+          "success": "успех",
+          "pending": "Чакане",
+          "failure": "Провал",
+          "error": "Грешка"
+        },
+        "cash_on_delivery": "Наложен платеж"
       },
       "customer": {
         "password_reset_error": "Грешка при повторно задаване на парола",
@@ -3940,6 +3963,40 @@
         "error_creating": "Грешка при създаване на адрес.",
         "deleted": "Адресът е изтрит успешно",
         "error_deleting": "Грешка при изтриването на адреса."
+      },
+      "cart": {
+        "only_n_items_available": "Можете само да добавите %{count} %{name} към кошницата.",
+        "too_many_items_in_cart": "Не можете да добавяте повече %{name} в кошницата.",
+        "all_items_in_cart": "Всички тези %{count} %{name} В твоята количка съм.",
+        "empty_update": "не може да актуализира празната кошница",
+        "missing_parameters": "няма валиден идентификатор или параметър на реда",
+        "generic_error": "Грешка в кошницата",
+        "too_many_line_items_error": "Вашата кошница не може да съдържа риба %{max} статии.",
+        "link_expired": "Линкът е изтекъл",
+        "link_no_longer_exists": "Връзката вече не съществува.",
+        "stock_problems_html": "Един или повече артикули вече не са налични. Направих го достъпно <a href='%{link}'>актуализирана кошница</a>.",
+        "changed": "Модифицирана кошница",
+        "items_changed": "Един или повече елементи са променени.",
+        "product_sold_out": "продуктът \"%{name}” вече е разпродаден.",
+        "variant_not_found": "Не може да се намери опция",
+        "variant_requires_selling_plan": "Вариантът може да бъде закупен само с план за покупка.",
+        "shipping_address_not_required": "Тази количка не изисква доставка",
+        "shipping_address_invalid": "Възникна проблем при изчисляването на вашите такси за доставка. Продължете към плащането, за да изберете такса за доставка преди плащане.",
+        "selling_plan_not_applicable": "Планът за продажби не може да се приложи към варианта",
+        "selling_plan_not_available_for_company_locations": "За B2B поръчки са налични само индивидуални покупки.",
+        "digital_product_not_available_for_company_locations": "Този артикул не може да бъде добавен към B2B поръчка",
+        "product_not_available": "Продуктът не е наличен",
+        "less_than_minimum": "Този артикул има минимум %{min}.",
+        "more_than_maximum": "Този артикул има максимума %{max}.",
+        "not_respect_step": "Можете да въведете този елемент само на стъпки от %{step}.",
+        "bundle_requires_components": "Продуктът под формата на комплект \"%{name}” не може да се добави в количката.",
+        "gift_card_with_components_not_supported": "Продуктът под формата на комплект \"%{name}” не може да се добави в количката.",
+        "view_lines_limit_reached": "Броят на редовете трябва да е по-малък или равен на %{limit}",
+        "merchandise_line_transformers": {
+          "run_error": "Възникна грешка с вашата пазарска количка."
+        },
+        "gift_card_price_must_be_greater_than_zero": "Продуктът под формата на комплект \"%{name}” не може да се добави в количката.",
+        "cart_too_large": "Кошницата е твърде голяма."
       }
     },
     "page_titles": {
