@@ -1417,24 +1417,37 @@
       },
       "order_summary": {
         "expand_component_information": {
-          "few": "display %{count} articoli"
+          "few": "Visualizzazione %{count} articoli",
+          "one": "Visualizzazione %{count} articolo",
+          "other": "Visualizzazione %{count} articoli"
         },
         "collapse_component_information": {
-          "few": "Nascondere %{count} articoli"
+          "few": "Nasconditi %{count} articoli",
+          "one": "Nasconditi %{count} articolo",
+          "other": "Nasconditi %{count} articoli"
         },
         "discount_discovery": {
           "merchandise_quantity_label": {
-            "few": "%{count} (di) articoli"
-          }
+            "few": "%{count} (di) articoli",
+            "one": "%{count} articolo",
+            "other": "%{count} (di) articoli"
+          },
+          "add_code": "Aggiungi uno sconto",
+          "back_to_finalize_order": "Torna alla cassa"
         },
         "discount_title_stacking": {
-          "few": "Sconti"
+          "few": "Sconti",
+          "one": "Sconto",
+          "other": "Sconti"
         },
         "discount_order_stacking": {
-          "few": "Sconti per l'ordine"
+          "few": "Sconti sugli ordini",
+          "one": "Sconto sull'ordine",
+          "other": "Sconti sugli ordini"
         },
         "subtotal_label_with_quantity": {
-          "few": "Subtotale · %{count} articoli"
+          "few": "Subtotale · %{count} articoli",
+          "one": "Totale parziale · %{count} articolo"
         },
         "number_items": {
           "few": "%{count} articoli"
@@ -1562,7 +1575,43 @@
         "maximum_discount_code_limit_reached": "Hai raggiunto il numero massimo di codici sconto. Rimuovere un codice esistente per utilizzare il codice <strong style=\"text-transform:uppercase\">%{code}</strong>.",
         "order_total_label": "Totale dell'ordine",
         "discount_code_application_failed": "<strong style=\"text-transform:uppercase\">%{code}</strong> non funziona al momento. Contattaci per ricevere aiuto.",
-        "due_on_fulfillment": "Dovuto al momento dell'onore"
+        "due_on_fulfillment": "Dovuto al momento dell'onore",
+        "gift_card_masked": "•••• %{last_characters}",
+        "subscriptions": "Abbonamenti",
+        "duties_label": "Dazi doganali",
+        "duties_and_taxes_label": "Dazi doganali e tasse",
+        "error_duties_tooltip": "Questo ordine viene spedito da un altro Paese, pertanto al momento della consegna potrebbero essere addebitati dazi doganali e tasse.",
+        "may_be_charged_on_delivery": "Potrebbero essere addebitati al momento della consegna",
+        "total_updated_label_with_price": "Prezzo totale aggiornato: %{totalPrice}",
+        "recurring_payments": "Pagamenti ricorrenti",
+        "recurring_total_multiple_label": "È previsto un addebito ricorrente per diversi articoli in questo ordine.",
+        "deferred_total_due_date_label": "Totale dovuto a {{date}}",
+        "full_price": "Prezzo intero: %{price}",
+        "custom_discount": "Sconto personalizzato",
+        "component_quantity_title": "%{quantity} × %{product_title}",
+        "alternative_payment_currency_total": "Importo addebitato: %{amount_due}",
+        "calculating": "Si calcola...",
+        "group_title_label": "Parte di \"%{group_title}”",
+        "price_per_item": {
+          "accessibility_label": "%{price} per articolo",
+          "label": "%{price}/pz."
+        },
+        "updated_shipping_method": "Metodo di pagamento aggiornato: %{shipping_method}",
+        "discount_not_found": "Impossibile trovare uno sconto valido corrispondente al codice inserito",
+        "total_savings": "Risparmio totale",
+        "return_restocking_fee_label": "Tassa di rifornimento",
+        "return_shipping_fee_label": "Spedizione di reso",
+        "enter_shipping_address": "Inserisci l'indirizzo di spedizione",
+        "shipping_discount_title": "Sconto sulla spedizione",
+        "discount_code_applied": "Codice sconto applicato",
+        "discount_code_applied_with_code": "Codice sconto %{code} è stato applicato",
+        "gift_card_applied": "La carta regalo è stata applicata",
+        "duties_included_label": "Il totale include tutte le tasse e i dazi applicabili. Non ci sono costi aggiuntivi per la consegna.",
+        "deferred_balance_info": {
+          "title": "Valore del saldo {{amount_due}} ha una data di scadenza {{due_at}}",
+          "due_on_fulfillment_title": "Valore del saldo {{amount_due}} ha la data di scadenza al momento dell'onore"
+        },
+        "eligible_customer_missing_notice": "Per il codice sconto <strong style=\"text-transform:uppercase\">%{code}</strong> è richiesto un cliente idoneo"
       },
       "payment": {
         "order_covered_by_gift_cards_notice": {
