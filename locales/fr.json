@@ -2640,8 +2640,15 @@
       },
       "remote_merchandise_only": {
         "detail_item_label": {
-          "few": "{{count}} articles"
-        }
+          "few": "{{count}} articles",
+          "one": "{{count}} article",
+          "other": "{{count}} articles"
+        },
+        "title": "Terminez l'achat",
+        "remote_only_notice": "Ces articles sont vendus et expédiés par d'autres magasins. Payez dans chaque magasin individuel pour finaliser votre achat.",
+        "return_to_store_label": "Retour au magasin",
+        "checkout_on_shop_label": "Payer à %{shop_name}",
+        "single_shop_transition": "Nous vous redirigeons vers %{advertiser} pour finaliser l'achat."
       },
       "redeemable_errors": {
         "shop_cash": {
@@ -3462,7 +3469,75 @@
         "kilogram": "kilos",
         "milliliter": "ml",
         "centiliter": "cl",
-        "liter": "je"
+        "liter": "je",
+        "cubic_meter": "m³",
+        "millimeter": "mm",
+        "centimeter": "cm",
+        "meter": "m",
+        "square_meter": "m²",
+        "ounce": "once",
+        "pound": "livre",
+        "fluid_ounce": "once liquide",
+        "pint": "pinte",
+        "quart": "quart de gallon",
+        "gallon": "gallon",
+        "inch": "pouces",
+        "foot": "pied",
+        "yard": "cour",
+        "square_foot": "pied carré",
+        "item": "article"
+      },
+      "memberships": {
+        "delivery_promise_unfulfillable": "Adresse non acceptée pour l'abonnement en cours.",
+        "items_split_across_locations_unsupported": "L'expédition Prime n'est pas disponible pour votre commande. Vos options d'expédition ont été mises à jour."
+      },
+      "editor": {
+        "navigation": {
+          "store_logo_accessibility_label": "Accéder à la boutique en ligne"
+        }
+      },
+      "tooltip": {
+        "accessibility_label_context": "Plus d'informations sur %{context}",
+        "additional_payment_methods": "Autres modes de paiement"
+      },
+      "remote": {
+        "errors": {
+          "only_remote_merchandise_lines": "Le paiement comprend uniquement le transport à distance. La redirection vers un magasin distant est nécessaire pour finaliser le paiement.",
+          "currency_mismatch": "Cet article ne peut pas être ajouté au panier car il provient d'un magasin qui utilise une devise différente.",
+          "max_remote_shops_exceeded": "L'ajout de ce produit n'est pas possible, le panier est déjà rempli d'articles provenant d'autres magasins.",
+          "currency_mismatch_removal": "Un article a été supprimé du panier car il provenait d'un magasin qui utilise une devise différente."
+        }
+      },
+      "remote_policies": {
+        "unavailable_policy": "Ce magasin n'a pas %{policy_name}. Pour plus d'informations, contactez directement le magasin %{shop_name}."
+      },
+      "offsite_payment_failed": {
+        "payment_not_processed_title": "Échec du paiement",
+        "payment_not_processed_text": "Réessayez en scannant à nouveau le code QR. Si cela ne fonctionne pas, contactez notre personnel et essayez un autre mode de paiement.",
+        "payment_link_expired_title": "Le lien de paiement a expiré",
+        "payment_link_expired_text": "Réessayez en scannant à nouveau le code QR.",
+        "title": "Le paiement à distance a échoué"
+      },
+      "taxes": {
+        "tax_details": "Données fiscales supplémentaires",
+        "vat_number": {
+          "field": {
+            "label": "Numéro de TVA (facultatif)",
+            "tooltip": "Il valide le numéro de TVA et applique automatiquement l'autoliquidation aux commandes éligibles."
+          },
+          "add": "Ajouter un numéro de TVA",
+          "vaulted": "Numéro de TVA : %{number}",
+          "badge": "Numéro de TVA : %{number}",
+          "domestic_order": "L’exonération de l’autoliquidation s’applique uniquement aux commandes transfrontalières de l’UE. La TVA standard est facturée pour les commandes locales.",
+          "status": {
+            "invalid_format": {
+              "at": "Numéros de TVA autrichiens : AT et 9 caractères",
+              "be": "Numéros de TVA belge : BE et 10 caractères",
+              "bg": "Numéros de TVA bulgares : BG et 9-10 caractères",
+              "hr": "Numéros de TVA croate : HR et 11 caractères"
+            }
+          }
+        }
       }
     },
     "notices": {
