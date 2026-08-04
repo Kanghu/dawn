@@ -4240,6 +4240,17 @@
           "due_date": "Οφειλόμενο στις {{date}}",
           "total_balance": "Συνολικό υπόλοιπο"
         }
+      },
+      "account_information": {
+        "company_card_name_label": "Επωνυμία εταιρείας",
+        "company_card_section_accessibility_label": "Εταιρεία"
+      },
+      "locations": {
+        "contact_email": "Email",
+        "contact_list_title": "Πρόσωπα",
+        "contact_name": "Όνομα",
+        "contact_permissions": "Άδειες",
+        "contact_phone_number": "Αριθμός τηλεφώνου"
       }
     },
     "errors": {
@@ -4443,7 +4454,56 @@
       "delete_confirmation_button": "Διαγράψτε τη διεύθυνση",
       "delete_confirmation_button_accessibility_label": "Διαγράψτε τη διεύθυνση {{address}}",
       "delete_confirmation_message": "Διαγραφή διεύθυνσης; Οι υπάρχουσες παραγγελίες δεν θα επηρεαστούν.",
-      "edit_button": "Εκδίδω"
+      "edit_button": "Εκδίδω",
+      "edit_button_accessibility_label": "Επεξεργασία διεύθυνσης {{address}}",
+      "edit_section_accessibility_label": "Επεξεργασία διεύθυνσης {{address}}",
+      "loading_accessibility_message": "Φόρτωση διεύθυνσης",
+      "loading_addresses_accessibility_message": "Φόρτωση διευθύνσεων",
+      "loading_billing_accessibility_message": "Φόρτωση διεύθυνσης χρέωσης",
+      "loading_finished_accessibility_message": "Η νέα σελίδα διεύθυνσης έχει φορτωθεί",
+      "loading_shipping_accessibility_message": "Φόρτωση διευθύνσεων χρέωσης",
+      "pagination": {
+        "load_more": "Εμφάνιση περισσότερων",
+        "load_more_accessibility_label": "Εμφάνιση περισσότερων διευθύνσεων"
+      },
+      "save_new_address_accessibility_label": "Αποθηκεύστε τη διεύθυνση",
+      "title": "Διευθύνσεις",
+      "delete_confirmation_title": "Διαγραφή διεύθυνσης;",
+      "delete_confirmation_description": "Οι υπάρχουσες παραγγελίες δεν θα επηρεαστούν.",
+      "edit_modal_title": {
+        "default": "Επεξεργασία διεύθυνσης",
+        "billing": "Επεξεργασία διεύθυνσης χρέωσης",
+        "shipping": "Επεξεργασία διεύθυνσης αποστολής"
+      },
+      "add_address_banner": "Προσθέστε διευθύνσεις για χρήση στο ταμείο",
+      "billing_address_dropdown_placeholder": "Διεύθυνση χρέωσης",
+      "add_button_text": "Προσθήκη",
+      "add_button_accessibility_label": "Προσθέστε μια διεύθυνση",
+      "back_button": "Πίσω",
+      "back_button_accessibility_label": "Επιστροφή στην επεξεργασία διεύθυνσης {{address}}",
+      "no_addresses_banner": "Δεν προστέθηκε διεύθυνση"
+    },
+    "address_form": {
+      "auto_complete_close_accessibility_label": "Κλείστε τις προτάσεις",
+      "auto_complete_title": "Προτάσεις",
+      "billing_address": "Χρήση ως διεύθυνση χρέωσης",
+      "cancel": "Ακύρωση",
+      "cancel_accessibility_label": "Ακύρωση επεξεργασίας διεύθυνσης {{address}}",
+      "creation_success_notification": "Η διεύθυνση προστέθηκε",
+      "default_address": "Αυτή είναι η προεπιλεγμένη μου διεύθυνση",
+      "default_address_creation_success_notification": "Προστέθηκε προεπιλεγμένη διεύθυνση",
+      "default_address_update_success_notification": "Ενημερώθηκε η προεπιλεγμένη διεύθυνση",
+      "loading_add_form_accessibility_message": "Φόρτωση της φόρμας για προσθήκη νέας διεύθυνσης",
+      "loading_edit_form_accessibility_message": "Η φόρμα για την επεξεργασία μιας διεύθυνσης φορτώνεται",
+      "loading_finished_accessibility_message": "Η φόρμα διεύθυνσης έχει φορτωθεί",
+      "save": "Αποθήκευση",
+      "save_accessibility_label": "Αποθηκεύστε τη διεύθυνση {{address}}",
+      "section_title_accessibility_label": "Προσθέστε μια διεύθυνση",
+      "update_success_notification": "Η διεύθυνση ενημερώθηκε",
+      "attention": "Προσοχή",
+      "attention_help_text": "Όνομα προσώπου ή τμήματος",
+      "loading_form_accessibility_message": "Φόρτωση της φόρμας διεύθυνσης",
+      "attention_company": "Εταιρεία/προσοχή"
     }
   },
   "category_links": {
