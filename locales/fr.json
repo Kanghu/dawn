@@ -3760,7 +3760,9 @@
     },
     "page_titles": {
       "search_results": {
-        "few": "Recherche: ils ont été trouvés %{count} Résultats pour \"%{terms}”"
+        "few": "Rechercher : trouvé %{count} résultats pour \"%{terms}”",
+        "one": "Rechercher : trouvé %{count} résultat pour \"%{terms}”",
+        "other": "Rechercher : trouvé %{count} résultats pour \"%{terms}”"
       },
       "products": "Produits",
       "shopping_cart": "Votre panier",
@@ -3769,7 +3771,12 @@
       "reset_account": "Réinitialisez votre compte",
       "addresses": "Adresses",
       "order": "Commande %{name}",
-      "search": "Rechercher"
+      "search": "Rechercher",
+      "collections": "Collections",
+      "not_found": "404 introuvable",
+      "challenge": "Défi",
+      "checkpoint": "Point de validation",
+      "blog_or_article_with_error": "Erreur – %{title}"
     },
     "sentence": {
       "words_connector": ", ",
@@ -3963,6 +3970,58 @@
         "message": "Êtes-vous sûr de vouloir vous désabonner du marketing par SMS ?",
         "button": "Se désabonner"
       }
+    },
+    "cart": {
+      "discounts_with_count": "Ils ont été appliqués %{count} réductions"
+    },
+    "challenge": {
+      "message": "Pour continuer, prouvez que vous n'êtes pas un robot.",
+      "error": "Votre réponse était incorrecte, réessayez.",
+      "submit_button_text": "Envoyer"
+    },
+    "checkpoint": {
+      "message": "Résolvez le captcha pour continuer",
+      "error": "La validation du captcha a échoué",
+      "submit_button_text": "Envoyer"
+    },
+    "store_availability": {
+      "pick_up_time": {
+        "one_hour": "Prêt généralement en une heure",
+        "two_hours": "Prêt généralement en deux heures",
+        "four_hours": "Généralement prêt en 4 heures",
+        "twenty_four_hours": "Généralement prêt dans les 24 heures",
+        "two_to_four_days": "Généralement prêt en 2 à 4 jours",
+        "five_or_more_days": "Généralement prêt en plus de 5 jours",
+        "zero_to_two_hours": "Prêt généralement en deux heures",
+        "two_to_four_hours": "Généralement prêt en 4 heures",
+        "immediately": "Prêt à récupérer maintenant",
+        "next_day": "Prêt pour le retrait le lendemain"
+      }
+    },
+    "filters": {
+      "availability": {
+        "value": {
+          "in_stock": "En stock",
+          "out_of_stock": "En rupture de stock"
+        }
+      },
+      "boolean": {
+        "true_label": "Oui",
+        "false_label": "Non"
+      }
+    },
+    "search": {
+      "sorting": {
+        "relevance": "Pertinence",
+        "price_ascending": "Prix, de bas en haut",
+        "price_descending": "Prix, du haut au bas"
+      },
+      "error": "Un problème est survenu lors du chargement des résultats de la recherche. Veuillez actualiser la page ou réessayer plus tard."
+    },
+    "subscriptions": {
+      "buyer_consent_product": "Cet article est un achat récurrent ou différé. En continuant, je suis d'accord avec %{cancellationPolicyLink} et je vous autorise à débiter automatiquement mon mode de paiement aux prix, fréquences et dates spécifiés jusqu'à ce que ma commande soit exécutée ou que je l'annule, si cela est autorisé.",
+      "buyer_consent_cart": "Un ou plusieurs des articles de votre panier constituent un achat récurrent ou différé. En continuant, je suis d'accord avec %{cancellationPolicyLink} et je vous autorise à débiter automatiquement mon mode de paiement aux prix, fréquences et dates spécifiés jusqu'à ce que ma commande soit exécutée ou que je l'annule, si cela est autorisé.",
+      "cancellation_policy": "politique d'annulation"
     }
   },
   "customer_accounts": {
@@ -4072,6 +4131,28 @@
       },
       "contracts_updated": {
         "few": "{{count}} les abonnements ont été mis à jour avec succès"
+      }
+    },
+    "callback": {
+      "try_again": "Réessayez"
+    },
+    "navigation_and_structure": {
+      "account_menu": {
+        "hide_accessibility_label": "Masquer le menu du compte",
+        "show_accessibility_label": "Afficher le menu Compte",
+        "nav_accessibility_label": "Navigation dans le compte",
+        "open_menu_accessibility_label": "Navigation dans le compte ouvert",
+        "close_menu_accessibility_label": "Fermer la navigation dans le compte",
+        "loading_message": "Chargement de la navigation du compte",
+        "label": "compte"
+      },
+      "action_menu_accessibility_label": "Plus de propositions",
+      "close_menu_accessibility_label": "Fermer la navigation principale",
+      "contact_email_subject": "Contact depuis la boutique en ligne {{shopName}}",
+      "contact_link": "Coordonnées",
+      "delete_confirmation": {
+        "cancel": "Annuler",
+        "delete": "Supprimer"
       }
     }
   },
