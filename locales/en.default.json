@@ -2482,6 +2482,17 @@
       "redeemable_errors": {
         "shop_cash": {
           "currency_mismatch": "The currency has changed. See Shop Cash and the offer."
+        },
+        "gift_card": {
+          "duplicate": "The gift card has already been applied to your order",
+          "insufficient_funds": "This gift card is out of funds",
+          "expired": "This gift card has expired",
+          "not_available": "This gift card is no longer available",
+          "invalid": "Please enter a valid gift card",
+          "currency_mismatch": "Only gift cards are accepted in %{shop_currency}",
+          "generic": "The gift card could not be added to the checkout section",
+          "throttle_limit_exceeded": "You have exceeded the maximum number of attempts. Try again later.",
+          "no_longer_available": "This gift card can no longer be used for this checkout"
         }
       },
       "contact": {
@@ -3022,7 +3033,136 @@
         "generic_error": "Your order could not be processed because your discount code is no longer available. Review your order total and try again."
       },
       "wallets": {
-        "return_to_store": "Come back to the store"
+        "return_to_store": "Come back to the store",
+        "redirect_hint": "You will be prompted to log in with {{walletName}}.",
+        "logged_in": "Connected to {{email}}",
+        "shipping_line_label": "Shipping",
+        "connect_shipping_methods": "{{method1}} and {{method2}}",
+        "payment_in_progress_title": "Payment in progress",
+        "payment_in_progress_body": "Your payment is being processed. Your order will be completed shortly.",
+        "call_to_action": "Pay with {{walletName}}",
+        "errors": {
+          "unavailable": {
+            "title": "{{walletName}} is not available",
+            "description": "{{walletName}} was not available. Please use another payment method or try again later.",
+            "instructions": "A problem occurred with the function {{walletName}}. Return to the store to try again or complete the order in another way.",
+            "unavailable_for_country": "Payment method {{walletName}} is not available in {{countryName}}. Select another payment method to complete your purchase"
+          },
+          "generic": "There was a problem with {{walletName}}. Try again or use another payment method.",
+          "terminal": "A problem occurred at {{walletName}}. Use another payment method.",
+          "detour": {
+            "stock_problems": "Some items are no longer available. Close {{walletName}} and try again.",
+            "price_change": "The prices of some items have changed. Close {{walletName}} to review the order and try again.",
+            "queue": "You have been placed in a checkout queue. Close {{walletName}} to continue.",
+            "currency_change": "You cannot use another address with {{walletName}}. Please use your original address or try another payment method."
+          },
+          "unsupported": {
+            "address": "The merchant cannot deliver to the shipping address you selected.",
+            "postal_code": "This location is not supported",
+            "wallet_is_unavailable": "{{walletName}} cannot be used with this address. Select another address or close {{walletName}} to complete the purchase"
+          },
+          "outdated": {
+            "shipping_method": "The shipping options have changed for your order. Review your selection.",
+            "payment_terms": "Payment terms have changed. Check your order"
+          },
+          "invalid": {
+            "shipping_address": "Please enter a valid shipping address",
+            "billing_address": "Please enter a valid billing address",
+            "shipping_option": "Choose a valid shipping option",
+            "email": "Please enter a valid email",
+            "zone": "Please enter a valid state/province",
+            "postal_code": "Please enter a valid ZIP/postal code",
+            "reduction_code": "Enter a valid discount code or gift card",
+            "billing_must_match_shipping": "Must match shipping address",
+            "phone": "Please enter a valid phone number",
+            "emirate": "Please enter a valid emirate",
+            "billing_zone": "Please enter a valid state/province for your billing address",
+            "billing_phone": "Please enter a valid phone number for your billing address",
+            "billing_zip": "Please enter a valid ZIP/postal code for your billing address"
+          },
+          "missing": {
+            "first_name": "Enter a first name",
+            "last_name": "Enter a last name",
+            "address1": "Enter an address",
+            "address2": "Enter an apartment, a room, etc.",
+            "city": "Enter a city",
+            "province": "Select a state/province",
+            "country": "Select a country/region",
+            "zip": "Enter a ZIP code/postal code",
+            "phone": "Enter a phone number",
+            "billing_first_name": "Enter a first name for the billing address",
+            "billing_address1": "Enter the billing address",
+            "billing_address2": "Enter an apartment, a room, etc. for the billing address",
+            "billing_city": "Enter a city for the billing address",
+            "billing_province": "Select a state/province for your billing address",
+            "billing_zip": "Enter a ZIP/postal code for your billing address",
+            "contact_info": "Fill in the contact information"
+          },
+          "formatting": {
+            "name_contains_emojis": "Delete the emoji from your name",
+            "postal_code_contains_emoji": "Delete the zip code emoji",
+            "first_name_too_long": "The first name contains too many letters",
+            "last_name_too_long": "Surname contains too many letters",
+            "address_too_long": "The information in the address line is too long"
+          },
+          "select_different_shipping_address_to_resolve_errors": "Shipping address is invalid. Select another address or use a new one.",
+          "unavailable_terminal": {
+            "instructions": "Payment method {{walletName}} is currently unavailable for your order. To continue the purchase, choose another payment method."
+          },
+          "discount_code": "Application of this discount code is not possible. Check your code and try again.",
+          "processing_error_checkout_as_guest": "There was a problem processing your payment. Try again or {{checkout_as_guest_link}}.",
+          "subscription_review_required": "Your order includes a subscription. You must review the terms below before completing your order."
+        },
+        "redirection_notice": "We will redirect you to {{walletName}} to complete your purchase",
+        "return_to_checkout": "Come back to complete the order",
+        "scrim": {
+          "continue_purchase_in_window": "Continue shopping in the window {{walletName}}",
+          "and_return_to_checkout": "and return to checkout",
+          "cancel": "Cancel"
+        },
+        "place_order": "Place the order",
+        "recovery_notice": "There was a problem with your order details. Update your information to complete payment.",
+        "deceleration": {
+          "one_more_step": "One more step..."
+        }
+      },
+      "markets": {
+        "invalid_market_manager_error": "Review your contact information before completing your payment"
+      },
+      "store_credit_errors": {
+        "generic_error": "There was a problem with your store credit. Try again or reload the page."
+      },
+      "note": {
+        "length_exceeds_maximum": "Please reduce the note size to a maximum of 5000 characters."
+      },
+      "billing": {
+        "billing_address_title": "Billing to",
+        "same_as_shipping": "Same as shipping address",
+        "add_address": "Use a different address",
+        "edit": "Edit",
+        "delete": "Delete",
+        "address_more": "More actions for this address",
+        "address_edit": "Edit address",
+        "address_delete": "Delete the address",
+        "address_confirm": "Are you sure you want to delete this address from your account?",
+        "address_form": {
+          "add_address": "Add an address",
+          "save": "Save",
+          "cancel": "Cancel"
+        },
+        "billing_address_rollup_accessibility_label": "Billing Options"
+      },
+      "vaulted": {
+        "change_button": "Change"
+      },
+      "shop_pay_external": {
+        "errors": {
+          "problem_loading": "There was a problem loading Shop Pay",
+          "try_again_later": "Check your connection or close this window and try again in a few moments.",
+          "checkout_has_expired": "Checkout timed out. Close this window and try to complete the order from again {{shopName}}."
+        },
+        "return_to_store": "Come back to {{shopName}}",
+        "return_to_store_simple": "Come back to the store"
       }
     },
     "notices": {
