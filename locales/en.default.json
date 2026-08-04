@@ -69,20 +69,20 @@
   },
   "newsletter": {
     "label": "Email",
-    "success": "Thanks for subscribing",
+    "success": "Thank you for subscribing",
     "button_label": "Subscribe"
   },
   "accessibility": {
     "skip_to_text": "Skip to content",
-    "skip_to_product_info": "Skip to product information",
-    "close": "Close",
-    "unit_price_separator": "per",
-    "vendor": "Vendor:",
+    "skip_to_product_info": "Jump to product information",
+    "close": "Close it",
+    "unit_price_separator": "on",
+    "vendor": "Seller:",
     "error": "Error",
     "refresh_page": "Choosing a selection results in a full page refresh.",
     "link_messages": {
       "new_window": "Opens in a new window.",
-      "external": "Opens external website."
+      "external": "Open the external site."
     },
     "loading": "Loading...",
     "total_reviews": "total reviews",
@@ -385,11 +385,11 @@
       "next_announcement": "Next announcement",
       "carousel": "Carousel",
       "announcement": "Announcement",
-      "announcement_bar": "Announcement bar",
-      "black_friday_continues": "🎉 Black Friday continues with discounts (up to 80%)",
-      "black_friday_lowest_prices": "🎉 Black Friday: the lowest prices of the year on selected products",
-      "black_friday_delivery_delay": "⚠️ During this period, orders may experience slight fluctuations in estimated delivery times",
-      "holiday_closure": "We're closed Dec 25–28, Dec 31–Jan 4, Jan 6–7. Orders continue to be processed and delivered on all other days."
+      "announcement_bar": "Announcements bar",
+      "black_friday_continues": "🎉 BLACK FRIDAY continues with discounts UP TO 80%",
+      "black_friday_lowest_prices": "🎉 BLACK FRIDAY: The lowest prices of the year on most products",
+      "black_friday_delivery_delay": "⚠️ During this period, orders may have small fluctuations in the estimated delivery time",
+      "holiday_closure": "We are closed Dec 25–28, Dec 31–Jan 4, Jan 6–7. On the rest of the days, order processing and delivery continues as normal."
     },
     "header": {
       "announcement": "Announcement",
@@ -495,40 +495,40 @@
       "load_slide": "Load the slide",
       "previous_slideshow": "Previous slide",
       "next_slideshow": "Next slide",
-      "pause_slideshow": "Pause slideshow",
-      "play_slideshow": "Play slideshow",
+      "pause_slideshow": "Pause the slideshow",
+      "play_slideshow": "Play the slideshow",
       "carousel": "Carousel",
       "slide": "Slide"
     },
     "page": {
-      "title": "Page title"
+      "title": "The title of the page"
     },
     "quick_order_list": {
       "product_total": "Product subtotal",
-      "view_cart": "View cart",
-      "each": "{{ money }}/ea",
+      "view_cart": "View the basket",
+      "each": "{{ money }}/ pc.",
       "product": "Product",
       "variant": "Variant",
-      "variant_total": "Variant total",
+      "variant_total": "Total variant",
       "items_added": {
         "one": "{{ quantity }} item added",
         "other": "{{ quantity }} items added",
         "few": "{{ quantity }} items added"
       },
       "items_removed": {
-        "one": "{{ quantity }} item removed",
-        "other": "{{ quantity }} items removed",
-        "few": "{{ quantity }} items removed"
+        "one": "{{ quantity }} deleted article",
+        "other": "{{ quantity }} deleted items",
+        "few": "{{ quantity }} deleted items"
       },
       "product_variants": "Product variants",
       "total_items": "Total items",
-      "remove_all_single_item_confirmation": "Remove 1 item from your cart?",
-      "remove_all_items_confirmation": "Remove all {{ quantity }} items from your cart?",
-      "remove_all": "Remove all",
+      "remove_all_single_item_confirmation": "Remove 1 item from cart?",
+      "remove_all_items_confirmation": "Remove all those {{ quantity }} items in cart?",
+      "remove_all": "Remove everything",
       "cancel": "Cancel",
-      "min_error": "This item has a minimum of {{ min }}",
-      "max_error": "This item has a maximum of {{ max }}",
-      "step_error": "You can only add this item in increments of {{ step }}"
+      "min_error": "For this item, the minimum value is {{ min }}",
+      "max_error": "For this item, the maximum value is {{ max }}",
+      "step_error": "You can only enter this item in increments of {{ step }}"
     }
   },
   "localization": {
