@@ -1292,22 +1292,35 @@
       "stock": {
         "unshippable_product": {
           "header": {
-            "few": "Aucune méthode de livraison disponible pour %{count} (de) articles"
+            "few": "Aucun mode de livraison disponible pour %{count} (des) articles",
+            "one": "Aucun mode de livraison disponible pour %{count} article",
+            "other": "Aucun mode de livraison disponible pour %{count} (des) articles"
           },
           "message": {
-            "few": "Ces articles seront supprimés du panier, car il n'y a pas de méthodes de livraison disponibles pour votre adresse."
-          }
+            "few": "Ces articles seront supprimés de votre panier car aucun mode d'expédition n'est disponible pour votre adresse.",
+            "one": "Cet article sera supprimé de votre panier car aucun mode d'expédition n'est disponible pour votre adresse.",
+            "other": "Ces articles seront supprimés de votre panier car aucun mode d'expédition n'est disponible pour votre adresse."
+          },
+          "title": "Aucun mode de livraison disponible",
+          "status_column_header": "Aucun mode de livraison"
         },
         "item_label": {
-          "few": "{{count}} ware"
+          "few": "{{count}} articles",
+          "one": "{{count}} article",
+          "other": "{{count}} articles"
         },
         "unfulfillable_product": {
           "message": {
-            "few": "Méthode de livraison %{delivery_method} n'est plus disponible pour ces articles."
+            "few": "Mode de livraison %{delivery_method} n'est plus disponible pour ces articles.",
+            "one": "Mode de livraison %{delivery_method} n'est plus disponible pour cet article.",
+            "other": "Mode de livraison %{delivery_method} n'est plus disponible pour ces articles."
           },
           "default_message": {
-            "few": "La méthode de livraison choisie n'est plus disponible pour ces articles."
-          }
+            "few": "Le mode de livraison choisi n'est plus disponible pour ces articles.",
+            "one": "Le mode de livraison choisi n'est plus disponible pour cet article.",
+            "other": "Le mode de livraison choisi n'est plus disponible pour ces articles."
+          },
+          "title": "La livraison n'est pas disponible"
         },
         "page_title": "Problèmes d'inventaire",
         "title": "Pas en stock",
@@ -1318,7 +1331,46 @@
         "status_column_header": "État",
         "removed_from_cart_notice": "Retiré du panier",
         "sold_out_label": "En rupture de stock",
-        "reduced_label": "Réduit"
+        "reduced_label": "Réduit",
+        "reduced_with_quantity_label": "Il ne reste plus que %{quantity_available}",
+        "remove_from_cart_button_label": "Supprimer du panier",
+        "continue_shopping_button_label": "Continuer",
+        "go_back_to_cart_button_label": "Retour à mon panier",
+        "remove": "Éliminer",
+        "empty_cart_label": "Votre panier est vide",
+        "quantity_update": {
+          "page_title": "Mettre à jour les quantités",
+          "title": "Mettre à jour les quantités",
+          "description": "Les quantités disponibles pour ces articles ont changé et ont été mises à jour dans le panier."
+        },
+        "unpurchasable_product": {
+          "title": "Produit qui ne peut pas être acheté",
+          "header": "Certains articles ont été supprimés de votre panier",
+          "message": "Ces articles ne sont pas disponibles pour les commandes B2B.",
+          "status_column_header": "Non disponible"
+        },
+        "unpurchasable_product_generic": {
+          "title": "Produit qui ne peut pas être acheté",
+          "header": "Certains articles ont été supprimés de votre panier",
+          "message": "Ces articles ne sont pas disponibles.",
+          "status_column_header": "Non disponible"
+        },
+        "price_update": {
+          "title": "Mise à jour des prix",
+          "description": "Les prix de ces articles ont changé et ont été mis à jour dans le panier.",
+          "updated_price": "Prix mis à jour"
+        },
+        "return_to_store_label": "Revenez au magasin",
+        "continue_cta_label": "Continuer la commande",
+        "out_of_stock": {
+          "description": "Ces articles ne sont plus disponibles et seront supprimés de votre panier.",
+          "items_unavailable": "Certains articles ne sont plus disponibles et seront supprimés de votre panier."
+        },
+        "price_and_quantity_update": {
+          "title": "Mettre à jour les prix et les quantités",
+          "description": "Les prix et les quantités disponibles pour ces articles ont changé et ont été mis à jour dans le panier."
+        },
+        "out_of_stock_in_context_label": "Ce produit n'est pas disponible dans votre pays/région."
       },
       "order_summary": {
         "expand_component_information": {
@@ -1357,7 +1409,12 @@
         },
         "pickup_unavailable_banner_title_with_country": {
           "few": "Dans %{country} il n'y a aucun magasin disponible avec vos articles"
-        }
+        },
+        "title": "Récapitulatif de la commande",
+        "order_name_label": "Commande %{name}",
+        "shopping_cart_label": "Le panier",
+        "discount_title": "Remise",
+        "discount_label": "Code de réduction"
       },
       "payment": {
         "order_covered_by_gift_cards_notice": {
