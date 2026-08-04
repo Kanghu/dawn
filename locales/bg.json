@@ -679,53 +679,53 @@
       "email_label_optional_for_no_js_behavior": "Имейл адрес на получател (по избор)",
       "send_on": "ДД.ММ.ГГГГ",
       "send_on_label": "Изпрати до (по избор)",
-      "expanded": "Формулярът за получател на ваучер за подарък е разгънат",
-      "collapsed": "Формулярът за получател на ваучер за подарък е свит"
+      "expanded": "Формата за получателя на подаръчната карта е разширена",
+      "collapsed": "Формулярът за получател на карта за подарък е ограничен"
     }
   },
   "pagefly": {
     "products": {
       "product": {
-        "regular_price": "Regular price",
-        "sold_out": "Sold out",
-        "unavailable": "Unavailable",
-        "on_sale": "Sale",
-        "quantity": "Quantity",
-        "add_to_cart": "Add to cart",
-        "back_to_collection": "Back to {{ title }}",
-        "view_details": "View details"
+        "regular_price": "Нормална цена",
+        "sold_out": "Изчерпана наличност",
+        "unavailable": "Недостъпен",
+        "on_sale": "Отстъпка",
+        "quantity": "Количество",
+        "add_to_cart": "Добавяне в количката",
+        "back_to_collection": "Обратно към {{ title }}",
+        "view_details": "Вижте подробности"
       }
     },
     "article": {
-      "tags": "Tags:",
-      "all_topics": "All topics",
-      "by_author": "by {{ author }}",
-      "posted_in": "Posted in",
-      "read_more": "Read more",
-      "back_to_blog": "Back to {{ title }}"
+      "tags": "Тагове:",
+      "all_topics": "Всички теми",
+      "by_author": "от {{ author }}",
+      "posted_in": "Публикувано в",
+      "read_more": "Прочетете повече",
+      "back_to_blog": "Обратно към {{ title }}"
     },
     "comments": {
-      "title": "Leave a comment",
-      "name": "Name",
-      "email": "Email",
-      "message": "Message",
-      "post": "Post comment",
-      "moderated": "Please note, comments must be approved before they are published",
-      "success_moderated": "Your comment was posted successfully. We will publish it in a little while, as our blog is moderated.",
-      "success": "Your comment was posted successfully! Thank you!",
+      "title": "Добавяне на коментар",
+      "name": "Име",
+      "email": "Имейл",
+      "message": "Съобщение",
+      "post": "Добавете коментар",
+      "moderated": "Коментарите се нуждаят от одобрение преди да бъдат публикувани.",
+      "success_moderated": "Вашият коментар е регистриран и ще бъде проверен и публикуван!",
+      "success": "Коментарът е публикуван успешно!",
       "comments_with_count": {
-        "one": "{{ count }} comment",
-        "other": "{{ count }} comments"
+        "one": "{{ count }} коментар",
+        "other": "{{ count }} коментари"
       }
     },
     "password_page": {
-      "login_form_message": "Enter store using password:",
-      "login_form_password_label": "Password",
-      "login_form_password_placeholder": "Your password",
-      "login_form_submit": "Enter",
-      "signup_form_email_label": "Email",
-      "signup_form_success": "We will send you an email right before we open!",
-      "password_link": "Enter using password"
+      "login_form_message": "Въведете с паролата:",
+      "login_form_password_label": "Паролата",
+      "login_form_password_placeholder": "Вашата парола",
+      "login_form_submit": "Въведете",
+      "signup_form_email_label": "Имейл",
+      "signup_form_success": "Ще ви изпратим имейл преди отваряне!",
+      "password_link": "Влезте с вашата парола!"
     }
   },
   "shopify": {
@@ -4590,10 +4590,10 @@
   },
   "category_links": {
     "led_mirrors": "LED огледала",
-    "lighting": "Осветление",
+    "lighting": "Осветеност",
     "furniture": "Мебели",
     "sinks": "Мивки",
-    "faucets_showers": "Смесители & Душ колони",
+    "faucets_showers": "Смесители и душ колони",
     "bf_outlet": "BF Outlet"
   }
 }
