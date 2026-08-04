@@ -87,52 +87,52 @@
     "skip_to_product_info": "Μετάβαση στις πληροφορίες προϊόντος",
     "total_reviews": "συνολικές κριτικές",
     "star_reviews_info": "{{ rating_value }} από {{ rating_max }} αστέρια",
-    "collapsible_content_title": "Περιεχόμενο με δυνατότητα σύμπτυξης",
+    "collapsible_content_title": "Περιεχόμενο που ενδέχεται να περιοριστεί",
     "complementary_products": "Συμπληρωματικά προϊόντα"
   },
   "blogs": {
     "article": {
       "blog": "Ιστολόγιο",
-      "read_more_title": "Διαβάστε περισσότερα: {{ title }}",
+      "read_more_title": "Μάθετε περισσότερα: {{ title }}",
       "comments": {
         "one": "{{ count }} σχόλιο",
         "other": "{{ count }} σχόλια",
         "few": "{{ count }} σχόλια"
       },
-      "moderated": "Έχετε υπόψη ότι τα σχόλια χρειάζεται να λάβουν έγκριση προτού δημοσιευτούν.",
-      "comment_form_title": "Υποβάλετε ένα σχόλιο",
+      "moderated": "Σημείωση: Τα σχόλια πρέπει να εγκριθούν πριν από τη δημοσίευση.",
+      "comment_form_title": "Γράψτε ένα σχόλιο",
       "name": "Όνομα",
       "email": "Email",
       "message": "Σχόλιο",
-      "post": "Ανάρτηση σχολίου",
-      "back_to_blog": "Επιστροφή στο ιστολόγιο",
-      "share": "Κοινοποίηση αυτού του άρθρου",
-      "success": "Το σχόλιό σας αναρτήθηκε επιτυχώς! Ευχαριστούμε!",
-      "success_moderated": "Το σχόλιό σας αναρτήθηκε επιτυχώς. Θα το δημοσιεύσουμε σε λίγο γιατί το ιστολόγιό μας είναι εποπτευόμενο."
+      "post": "Δημοσιεύστε το σχόλιο",
+      "back_to_blog": "Επιστροφή στο blog",
+      "share": "Μοιραστείτε αυτό το άρθρο",
+      "success": "Το σχόλιο δημοσιεύτηκε με επιτυχία! Σας ευχαριστώ!",
+      "success_moderated": "Το σχόλιο δημοσιεύτηκε με επιτυχία. Θα το δημοσιεύσουμε σύντομα καθώς το ιστολόγιό μας εποπτεύεται."
     }
   },
   "onboarding": {
     "product_title": "Παράδειγμα τίτλου προϊόντος",
-    "collection_title": "Το όνομα της συλλογής σας"
+    "collection_title": "Το όνομα της συλλογής"
   },
   "alc-benefits": {
     "stock": {
-      "in_stock": "Σε απόθεμα",
-      "low_stock": "Μόνο {{ count }} απομένουν σε απόθεμα",
-      "out_of_stock": "Εξαντλημένο",
-      "last_stock": "Μόνο {{ count }} απομένουν σε απόθεμα 🔥",
-      "last_piece": "Μόνο 1 απομένει σε απόθεμα 🔥"
+      "in_stock": "σε απόθεμα",
+      "low_stock": "Απλά {{ count }} έμεινε σε απόθεμα",
+      "out_of_stock": "Εκτός αποθέματος",
+      "last_stock": "Τα τελευταία {{ count }} κομμάτια 🔥",
+      "last_piece": "Το τελευταίο κομμάτι 🔥"
     },
-    "savings": "Μόλις {{ amount }}",
-    "delivery": "Παράδοση σε 2 - 5 εργάσιμες ημέρες",
-    "price_info": "Τιμή κατασκευαστή",
+    "savings": "Αποταμιεύεις {{ amount }}",
+    "delivery": "Παράδοση σε 2 - 4 εργάσιμες ημέρες",
+    "price_info": "Άμεσος παραγωγός: ",
     "price_info_link": "/pages/fabrica-alessandro-design",
-    "price_info_link_text": "δείτε την παραγωγή Alessandro Design",
-    "return_policy": "14 ημέρες δωρεάν πολιτική επιστροφής",
-    "warranty": "Περιλαμβάνεται εγγύηση:",
+    "price_info_link_text": "δείτε το εργοστάσιο Alessandro Design",
+    "return_policy": "14 ημέρες δωρεάν δικαίωμα επιστροφής",
+    "warranty": "Περιλαμβάνεται η εγγύηση:",
     "warranty_link_text": "δείτε λεπτομέρειες",
-    "warranty_link": "/pages/εγγυηση",
-    "free_shipping": "ΔΩΡΕΑΝ αποστολή ⚡ (1 - 3 εργάσιμες ημέρες)",
+    "warranty_link": "/pages/garantie",
+    "free_shipping": "ΔΩΡΕΑΝ αποστολή ⚡ (2-4 εργάσιμες)",
     "free_shipping_link_text": "δείτε λεπτομέρειες",
     "free_shipping_link": "/pages/livrare"
   },
@@ -213,17 +213,17 @@
     "product": {
       "add_to_cart": "Προσθήκη στο καλάθι",
       "description": "Περιγραφή",
-      "on_sale": "Μείωση",
+      "on_sale": "Έκπτωση",
       "product_variants": "Παραλλαγές προϊόντων",
       "share": "Μοιραστείτε αυτό το προϊόν",
       "sold_out": "Εκτός αποθέματος",
-      "unavailable": "Δυσεύρετος",
+      "unavailable": "Μη διαθέσιμο",
       "vendor": "Πωλητής",
       "video_exit_message": "{{ title }} ανοίξτε το βίντεο σε πλήρη οθόνη στο ίδιο παράθυρο.",
       "xr_button": "Προβολή στον χώρο σας",
       "xr_button_label": "Προβολή στο χώρο σας, το άρθρο φορτώνεται στο παράθυρο επαυξημένης πραγματικότητας",
       "quantity": {
-        "label": "Ποσό",
+        "label": "Ποσότητα",
         "input_label": "Ποσότητα για {{ product }}",
         "increase": "Αυξήστε την ποσότητα για {{ product }}",
         "decrease": "Μειώστε την ποσότητα για {{ product }}",
