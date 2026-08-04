@@ -1348,7 +1348,16 @@
         },
         "unit_price": {
           "per_item": {
-            "few": "%{price} за %{count} изделия"
+            "few": "%{price} за %{count} статии",
+            "single": "%{price} всеки артикул",
+            "one": "%{price} за %{count} статия",
+            "other": "%{price} за %{count} статии"
+          },
+          "accessible_separator": "на",
+          "content_html": "%{price}%{accessible_separator}%{per_unit}",
+          "per_unit": {
+            "single": "%{price}/%{unit}",
+            "plural": "%{price}/%{count}%{unit}"
           }
         },
         "return_rules_experiment": {
@@ -1419,7 +1428,53 @@
         "description_label": "Описание",
         "price_label": "Цена",
         "quantity_label": "Количество",
-        "product_change_label": "Променете"
+        "product_change_label": "Променете",
+        "product_image_label": "Изображение на продукта",
+        "scroll_order_summary": "Превъртете за още статии",
+        "expand_order_summary_short": "Дисплей",
+        "collapse_order_summary_short": "Скрий се",
+        "total_updated_label": "Актуализирана обща цена:",
+        "order_total_updated_label": "Общо актуализирано",
+        "total_already_paid_label": "Платена сума",
+        "estimated_taxes_label": "Очаквани такси",
+        "information_estimated_taxes_label": "Такси (приблизително)",
+        "gift_card_ending": "Карта за подарък, завършваща на %{last_characters}",
+        "estimated_tax_label": "Очаквани такси",
+        "multiple_shipping_lines_label": "Обща доставка",
+        "applied_free_shipping_discount_label": "Приложено",
+        "original_price": "Оригиналната цена",
+        "sale_price": "Офертна цена",
+        "recurring_subtotal_label": "Повтаряща се междинна сума",
+        "recurring_total_label": "Напълно повтарящи се",
+        "recurring_total_tooltip": "Не включва доставка, данъци, мита или приложими отстъпки.",
+        "gift_card_subscriptions_notice": "Подаръчните карти ще се прилагат само за първото плащане",
+        "confirmation_number_label": "№ потвърждение %{confirmation_number}",
+        "estimated_taxes_finalization_tooltip_content": "Окончателните такси и общата сума ще бъдат потвърдени чрез имейл или текстово съобщение след извършване на поръчката.",
+        "deferred_payment_info": {
+          "title": "Плащане в размер на %{amount_due} има падеж %{due_at}",
+          "description_html": "За въпроси относно вашата поръчка, %{contact_us}.",
+          "paid_today": "Общо платено днес",
+          "due_on_fulfillment_title": "Плащане в размер на %{amount_due} има датата на падежа към момента на уважаването",
+          "due_on_receipt_title": "Плащане в размер на %{amount_due} има падеж в момента на получаване",
+          "paid_today_next": "Платено днес"
+        },
+        "percent_off_shipping": "Отстъпка от %{percent}% върху доставката",
+        "amount_off_shipping": "Отстъпка от %{amount} при изпращане",
+        "payment_terms_totals": {
+          "due_today": "Общо дължимо днес",
+          "due_later": "Общо поради %{due_at}",
+          "due_later_checkout_to_draft": "Общо дължимо по-късно",
+          "due_on_fulfillment": "Общо дължимо към момента на почитане",
+          "due_on_receipt": "Общо дължимо при получаване",
+          "total_paid": "Общо платено",
+          "due_today_next": "Срок днес",
+          "due_on_fulfillment_next": "Изтича в момента на изпълнение на поръчката"
+        },
+        "higher_value_discount_applied": "<strong style=\"text-transform:uppercase\">%{code}</strong> не може да се използва заедно със съществуващи отстъпки.",
+        "maximum_discount_code_limit_reached": "Достигнахте максималния брой кодове за отстъпка. Премахнете съществуващ код, за да използвате кода <strong style=\"text-transform:uppercase\">%{code}</strong>.",
+        "order_total_label": "Общо за поръчката",
+        "discount_code_application_failed": "<strong style=\"text-transform:uppercase\">%{code}</strong> не работи в момента. Свържете се с нас за помощ.",
+        "due_on_fulfillment": "Дължими в момента на почитането"
       },
       "payment": {
         "order_covered_by_gift_cards_notice": {
