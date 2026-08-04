@@ -3645,7 +3645,33 @@
       "order": {
         "cancel_reason": {
           "few": "Autre chose"
+        },
+        "not_available": "Cette commande n'est pas disponible",
+        "financial_status": {
+          "authorized": "Autorisé",
+          "pending": "En attente",
+          "paid": "Payé",
+          "unpaid": "Impayé",
+          "voided": "Annulé",
+          "partially_paid": "Partiellement payé"
         }
+      },
+      "customer": {
+        "password_reset_error": "Erreur de réinitialisation du mot de passe",
+        "no_account_found": "Aucun compte trouvé avec cet email.",
+        "invalid_credentials": "Adresse e-mail ou mot de passe incorrect.",
+        "denylisted_reset_password": "Votre compte n'est pas accessible car le mot de passe actuel n'est pas sécurisé. Vous recevrez un e-mail pour vous aider à mettre à jour votre mot de passe.",
+        "signup_disabled": "La création de comptes clients a été désactivée.",
+        "subscribe_error": "Erreur lors de l'abonnement",
+        "unsubscribe_error": "Erreur lors de la désinscription"
+      },
+      "address": {
+        "updated": "Adresse mise à jour avec succès.",
+        "error_updating": "Erreur lors de la mise à jour de l'adresse",
+        "created": "Adresse créée avec succès",
+        "error_creating": "Erreur lors de la création de l'adresse.",
+        "deleted": "Adresse supprimée avec succès",
+        "error_deleting": "Erreur lors de la suppression de l'adresse."
       }
     },
     "page_titles": {
@@ -3751,7 +3777,55 @@
       "shop_404": {
         "title": "Créez un site e-commerce et vendez en ligne ! Logiciel de commerce électronique de Shopify",
         "heros": {
-          "store_unavailable": "Cette boutique est actuellement indisponible."
+          "store_unavailable": "Cette boutique est actuellement indisponible.",
+          "store_not_exist": "Ce magasin n'existe pas.",
+          "no_storefront": "Ce magasin n'a pas encore de site internet.",
+          "store_will_be_right_back": "Ce magasin sera de retour prochainement"
+        },
+        "links": {
+          "explore_other_stores": "Découvrez d'autres magasins",
+          "start_free_trial": "Un essai gratuit commence",
+          "refresh_page": "Recharger la page"
+        },
+        "owner_ctas": {
+          "header": "Êtes-vous le propriétaire du magasin?",
+          "fix_domain": "Terminez la configuration de la nouvelle adresse Web, accédez %{domain_settings_link}. Cliquez sur \"Connecter le domaine\" et saisissez : %{domain}.<br>Si vous rencontrez des problèmes pour accéder au magasin, essayez la page %{forgot_your_store_link}.",
+          "fix_domain_link_text": "paramètres de domaine",
+          "forgot_your_store_link_text": "tu as oublié les détails du magasin",
+          "add_storefront": "Vous pouvez configurer votre site Web en ajoutant le canal de boutique en ligne à votre compte %{admin_link}. Si vous rencontrez des problèmes pour accéder au magasin, essayez la page %{forgot_your_store_link}.",
+          "admin_link_text": "administrateur"
+        },
+        "ctas": {
+          "sell_in_person": {
+            "header": "Vendre en personne",
+            "caption": "Bénéficiez des fonctionnalités dont vous avez besoin pour gérer votre magasin de détail, que vous soyez débutant ou en expansion.",
+            "link_text": "L'essai gratuit commence"
+          },
+          "open_a_store": {
+            "header": "Ouvrir une nouvelle boutique Shopify",
+            "caption": "Commencez un essai gratuit de 3 jours, puis continuez pour 1 $/mois pendant les 3 mois suivants.",
+            "link_text": "Inscrivez-vous maintenant"
+          },
+          "editions": {
+            "header": "Explorez les éditions Shopify",
+            "caption": "Avec plus de 100 mises à jour de produits, vous pouvez être plus productif, plus créatif et plus puissant dans le commerce que vous ne l'auriez jamais imaginé.",
+            "link_text": "Découvrez la dernière version des Éditions"
+          },
+          "store_owner": {
+            "header": "Êtes-vous le propriétaire du magasin?",
+            "caption": "Vous rencontrez des difficultés pour accéder au magasin ? Essayez la fonction %{forgot_your_store_link}. Si vous souhaitez réactiver les coordonnées du magasin, contactez-nous %{shopify_support_link}.",
+            "shopify_support_link_text": "Assistance Shopify"
+          }
+        },
+        "title_unavailable": "Magasin indisponible",
+        "subtitles": {
+          "store_will_be_right_back": "Shopify s'efforce de le remettre en ligne dès que possible."
+        },
+        "status_card": {
+          "eyebrow": "Aide aux commerçants",
+          "header": "Vérifiez votre statut Shopify",
+          "caption": "Découvrez s'il y a une panne affectant d'autres magasins Shopify, pas seulement celui-ci.",
+          "link_text": "Afficher l'état de vos systèmes Shopify"
         }
       }
     }
