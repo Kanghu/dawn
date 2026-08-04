@@ -2411,13 +2411,28 @@
       "order_payment_collection": {
         "changes_summary": {
           "added": {
-            "few": "Ajouté (s): %{count}"
-          }
-        }
+            "few": "Ajouté(s) : %{count}",
+            "one": "Ajouté",
+            "other": "Ajouté(s) : %{count}"
+          },
+          "removed": "Supprimé",
+          "subtracted": "Supprimé(s) : %{count}",
+          "returned": "Retourné(s) : %{count}",
+          "return_line_item_removed": "Supprimé du retour : %{count}"
+        },
+        "custom_line_item_description": "Montant du paiement de la commande %{order_name}",
+        "additional_payment_requested": "Il faut payer le montant de %{total_outstanding}",
+        "checkout_review_and_pay": "votre commande, %{order_name} a été mis à jour. Vérifiez ces modifications, puis payez pour confirmer votre commande.",
+        "order_updated_on": "Votre commande a été mise à jour le %{last_edited_at}.",
+        "order_review_and_pay": "Votre commande a été mise à jour. Vérifiez et payez pour confirmer votre commande.",
+        "pay_now": "Payez maintenant"
       },
       "open_graph_meta_tag": {
         "title_with_products": {
-          "few": "Acheter %{product_name} Et pourtant %{count} ware"
+          "few": "Achetez-le %{product_name} et encore %{count} articles",
+          "zero": "Achetez-le %{product_name}",
+          "one": "Achetez-le %{product_name} et encore %{count} article",
+          "other": "Achetez-le %{product_name} et encore %{count} articles"
         }
       },
       "subscriptions": {
@@ -2946,7 +2961,48 @@
         "terms_of_service": "Conditions d'utilisation",
         "legal_notice": "Mentions légales",
         "shipping_policy": "Transport",
-        "terms_of_sale": "Conditions de vente"
+        "terms_of_sale": "Conditions de vente",
+        "subscription_policy": "Annulations",
+        "purchase_options_policy": "Politique d'options d'achat",
+        "contact_information": "Contacter",
+        "purchase_options_cancellation_policy": "Annulations",
+        "cookie_preferences": "Biscuits",
+        "policy_label": "Politique",
+        "policies_label": "Politiciens",
+        "select_policy_label": "Sélectionnez une politique",
+        "terms_and_policies": "Conditions et politiques"
+      },
+      "notifications": {
+        "title": "Notifications"
+      },
+      "tips": {
+        "title": "Ajouter un conseil",
+        "description": "Soutenez l’équipe de %{shop_name}",
+        "presets_description": "Sélectionnez un pourcentage de pourboire",
+        "custom_label": "Conseil personnalisé",
+        "add_tip": "Ajouter un conseil",
+        "update_tip": "Conseil de mise à jour",
+        "message": "Merci, nous apprécions le geste.",
+        "preset_label": "%{tip_percent}%",
+        "no_tip_label": "Sans",
+        "not_available_with_spi": "Non disponible pour les paiements échelonnés avec Shop Pay"
+      },
+      "localized_fields": {
+        "additional_information": {
+          "title": "Informations supplémentaires",
+          "tax_credential_br": "CPF/CNPJ",
+          "shipping_credential_br": "CPF/CNPJ",
+          "shipping_credential_kr": "Code douanier personnel",
+          "shipping_credential_cn": "Numéro d'identification du résident",
+          "tax_credential_it": "Code Fiscale (facultatif)",
+          "tax_email_it": "PEC (facultatif)",
+          "tax_credential_cl": "ORN",
+          "shipping_credential_cl": "ORN",
+          "tax_credential_co": "Cédula/TVA",
+          "tax_credential_type_co": "Type cédule",
+          "shipping_credential_co": "Cédula/TVA",
+          "shipping_credential_type_co": "Type cédule"
+        }
       }
     },
     "notices": {
