@@ -86,65 +86,65 @@
     "loading": "Betöltés...",
     "skip_to_product_info": "Ugrás a termékinformációkhoz",
     "total_reviews": "összes vélemény",
-    "star_reviews_info": "{{ rating_max }}/{{ rating_value }} csillag",
-    "collapsible_content_title": "Összecsukható tartalom",
+    "star_reviews_info": "{{ rating_value }} től {{ rating_max }} csillagok",
+    "collapsible_content_title": "Korlátozott tartalom",
     "complementary_products": "Kiegészítő termékek"
   },
   "blogs": {
     "article": {
       "blog": "Blog",
-      "read_more_title": "Továbbiak: {{ title }}",
+      "read_more_title": "További információ: {{ title }}",
       "comments": {
-        "one": "{{ count }} hozzászólás",
-        "other": "{{ count }} hozzászólás",
-        "few": "{{ count }} megjegyzések"
+        "one": "{{ count }} megjegyzést",
+        "other": "{{ count }} megjegyzéseket",
+        "few": "{{ count }} megjegyzéseket"
       },
-      "moderated": "Felhívjuk a figyelmedet, hogy a hozzászólásokat jóvá kell hagyni a közzétételük előtt.",
-      "comment_form_title": "Hozzászólás írása",
+      "moderated": "Megjegyzés: A megjegyzéseket a közzététel előtt jóvá kell hagyni.",
+      "comment_form_title": "Írj megjegyzést",
       "name": "Név",
-      "email": "E-mail-cím",
-      "message": "Hozzászólás",
-      "post": "Hozzászólás elküldése",
-      "back_to_blog": "Vissza a blogba",
-      "share": "Cikk megosztása",
-      "success": "Elküldtük a hozzászólásodat. Köszönjük!",
-      "success_moderated": "Elküldtük a hozzászólásodat. Blogunkat moderáljuk, ezért egy kis idő múlva tesszük csak közzé a hozzászólást."
+      "email": "E-mail",
+      "message": "Megjegyzés",
+      "post": "Tegye közzé a megjegyzést",
+      "back_to_blog": "Vissza a blogra",
+      "share": "Oszd meg ezt a cikket",
+      "success": "A megjegyzés sikeresen elküldve! Köszönöm!",
+      "success_moderated": "A megjegyzés sikeresen elküldve. Hamarosan közzétesszük, mivel blogunk moderált."
     }
   },
   "onboarding": {
-    "product_title": "Példa terméknévre",
-    "collection_title": "Kollekció neve"
+    "product_title": "Példa a termék címére",
+    "collection_title": "A gyűjtemény neve"
   },
   "alc-benefits": {
     "stock": {
-      "in_stock": "Raktáron",
-      "low_stock": "Már csak {{ count }} maradt raktáron",
-      "out_of_stock": "Nincs készleten",
-      "last_stock": "Már csak {{ count }} maradt raktáron 🔥",
-      "last_piece": "Már csak 1 darab maradt raktáron🔥"
+      "in_stock": "raktáron",
+      "low_stock": "Csak {{ count }} raktáron maradt",
+      "out_of_stock": "Elfogyott",
+      "last_stock": "Az utolsók {{ count }} darabokat 🔥",
+      "last_piece": "Az utolsó darab 🔥"
     },
-    "savings": "{{ amount }}-ot spórolsz",
-    "delivery": "Szállítás 2 - 5 munkanapon belül",
-    "price_info": "Gyártói ár",
+    "savings": "Megmented {{ amount }}",
+    "delivery": "Szállítás 2-4 munkanapon belül",
+    "price_info": "Közvetlen producer: ",
     "price_info_link": "/pages/fabrica-alessandro-design",
-    "price_info_link_text": "megtekintse a Alessandro Design gyárat",
-    "return_policy": "14 napos ingyenes visszaküldési lehetőség",
-    "warranty": "Tartalmazott garancia:",
-    "warranty_link_text": "részletek megtekintése",
-    "warranty_link": "/pages/garancia",
-    "free_shipping": "INGYENES szállítás ⚡ (2-5 munkanap)",
+    "price_info_link_text": "lásd az Alessandro Design gyárat",
+    "return_policy": "14 napos ingyenes visszaküldési jog",
+    "warranty": "Garancia tartalmazza:",
+    "warranty_link_text": "lásd a részleteket",
+    "warranty_link": "/pages/garantie",
+    "free_shipping": "INGYENES szállítás ⚡ (2-4 munkanap)",
     "free_shipping_link_text": "lásd a részleteket",
     "free_shipping_link": "/pages/livrare"
   },
   "products": {
     "product": {
-      "add_to_cart": "Hozzáadás a kosárhoz",
+      "add_to_cart": "Kosárba",
       "description": "Leírás",
-      "on_sale": "Akciós",
+      "on_sale": "Kedvezmény",
       "product_variants": "Termékváltozatok",
       "quantity": {
         "label": "Mennyiség",
-        "input_label": "{{ product }} mennyisége",
+        "input_label": "Mennyiség ehhez {{ product }}",
         "increase": "{{ product }} mennyiségének növelése",
         "decrease": "{{ product }} mennyiségének csökkentése",
         "minimum_of": "Minimum: {{ quantity }}",
@@ -161,13 +161,13 @@
         "sale_price": "Akciós ár",
         "unit_price": "Egységár"
       },
-      "share": "A termék megosztása",
+      "share": "Oszd meg ezt a terméket",
       "sold_out": "Elfogyott",
-      "unavailable": "Nincs készleten",
-      "vendor": "Forgalmazó",
-      "video_exit_message": "{{ title }}: a teljes képernyős videó ugyanabban az ablakban nyílik meg.",
-      "xr_button": "Megtekintés a saját környezetben",
-      "xr_button_label": "Megtekintés a saját környezetben: kiterjesztettvalóság-alapú ablakban töltődik be az elem",
+      "unavailable": "Nem elérhető",
+      "vendor": "Eladó",
+      "video_exit_message": "{{ title }} nyissa meg a videót teljes képernyőn ugyanabban az ablakban.",
+      "xr_button": "Nézd meg a te téreden",
+      "xr_button_label": "Tekintse meg a teret, a cikk betöltődik a kiterjesztett valóság ablakában",
       "pickup_availability": {
         "view_store_info": "Webáruház adatai",
         "check_other_stores": "Kapható más webáruházakban?",
