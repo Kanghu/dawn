@@ -2949,8 +2949,75 @@
           "payment_method_title": "Fizetési mód",
           "change_link_label": "Módosít",
           "change_contact_method_link_label": "Módosítsa a kapcsolattartási adatokat",
-          "change_billing_address_link_label": "Számlázási cím módosítása"
+          "change_billing_address_link_label": "Számlázási cím módosítása",
+          "change_shipping_address_link_label": "Szállítási cím módosítása",
+          "change_shipping_method_link_label": "Szállítási mód módosítása",
+          "change_payment_method_link_label": "Fizetési mód módosítása",
+          "pick_up_in_store_shipping_method_html": "Átvétel az üzletből · %{location_name}",
+          "purchase_order_number_title": "Megrendelés száma",
+          "change_purchase_order_number_label": "Módosítsa a beszerzési rendelés számát",
+          "change_delivery_method_link_label": "Szállítási mód módosítása",
+          "no_address": "(nincs cím)",
+          "no_purchase_order_number": "(szám nélküli megrendelés)",
+          "due_after_order_reviewed_html": "Megrendelés áttekintése után esedékes",
+          "review_title_free_order": "Tekintse át és fejezze be rendelését",
+          "payment_method_saved_company_location": "Mentse el a kártyát erre a helyre",
+          "company_location": "A cég helye",
+          "change_company_location_link_label": "A cég címének változása",
+          "pickup_items_at": {
+            "one": "Emelés %{count} cikkből",
+            "other": "Emelés %{count} cikkek a",
+            "few": "Emelés %{count} cikkek a"
+          },
+          "ship_items_to": {
+            "one": "Szállítás %{count} cikk címen",
+            "other": "Szállítás %{count} cikkek címen",
+            "few": "Szállítás %{count} cikkek címen"
+          },
+          "no_purchase_order_number_long": "Nincs beszerzési rendelés száma"
+        },
+        "block_title": "Tekintse át adatait",
+        "checkout_a_different_way": "Töltse ki a rendelést más módon",
+        "item_header": {
+          "change_value": "Módosítsa az értéket",
+          "section": "szakasz",
+          "value": "Érték"
+        },
+        "review_and_confirm_title": "Tekintse át és erősítse meg",
+        "account_more_actions": "További műveletek ehhez a fiókhoz"
+      },
+      "marketing": {
+        "accept_marketing_checkbox_label": "Szeretnék e-maileket kapni hírekről és ajánlatokról",
+        "unsubscribe": {
+          "title": "Leiratkozott",
+          "description": "Többé nem kap tőlünk marketinges frissítéseket."
+        },
+        "accept_sms_checkbox_label": "Szeretnék SMS-eket kapni hírekről és ajánlatokról",
+        "sms": {
+          "disclaimer": {
+            "privacy_policy": "Adatvédelmi szabályzat",
+            "terms_of_service": "Felhasználási feltételek",
+            "description_html": "Ha SMS-ben regisztrál, beleegyezik abba, hogy rendszeres automatizált marketingüzeneteket kapjon, beleértve a kosárra emlékeztetőt is, a megadott telefonszámra. A hozzájárulás nem feltétele a vásárlásnak. A leiratkozáshoz válaszoljon a STOP kifejezéssel. Segítségért válaszoljon a SEGÍTSÉGÉVEL. Az üzenetek gyakorisága változó. Üzenet- és adatátviteli díjak vonatkozhatnak. Megtekintés %{privacy_policy_link} és %{terms_of_service_link}.",
+            "description_transactional_html": "Szöveges üzeneteket kaphat a megrendelés visszaigazolásával és a szállítással kapcsolatos frissítésekkel kapcsolatban. A leiratkozáshoz válaszoljon a STOP kifejezéssel. Segítségért válaszoljon a SEGÍTSÉGÉVEL. Az üzenetek gyakorisága változó. Üzenet- és adatátviteli díjak vonatkozhatnak. Nézd meg %{privacy_policy_modal_link} és %{terms_of_service_modal_link}."
+          },
+          "mobile_phone_number": "Mobil telefonszám",
+          "get_offers_by_text": "Ajánlatok fogadása szöveges üzenetben"
+        },
+        "post_accept_marketing_checkbox_label": "Feliratkozott a hírekre és ajánlatokra e-mailben",
+        "pending_accept_marketing_checkbox_label": "Ellenőrizze e-mail fiókját a hírekre és ajánlatokra való feliratkozás megerősítéséhez",
+        "accept_shop_pay_marketing_checkbox_label": "Iratkozz fel az áruház híreire és ajánlataira",
+        "disclaimer": {
+          "privacy_policy": "Adatvédelmi szabályzat",
+          "terms_of_service": "Felhasználási feltételek"
         }
+      },
+      "shop_policies": {
+        "refund_policy": "Visszatérítési szabályzat",
+        "privacy_policy": "Adatvédelmi szabályzat",
+        "terms_of_service": "Felhasználási feltételek",
+        "legal_notice": "Jogi nyilatkozat",
+        "shipping_policy": "Közlekedés",
+        "terms_of_sale": "Eladási feltételek"
       }
     },
     "notices": {
