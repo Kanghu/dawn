@@ -3404,7 +3404,63 @@
     "collections": {
       "sorting": {
         "manual": "Recommended",
-        "best_selling": "The best seller"
+        "best_selling": "The best seller",
+        "az": "Alphabetically, A-Z",
+        "za": "Alphabetically, Z-A",
+        "price_ascending": "Price, from low to high",
+        "price_descending": "Price, from high to low",
+        "date_ascending": "Date, from old to new",
+        "date_descending": "Date, from new to old",
+        "most_relevant": "The most relevant"
+      }
+    },
+    "errors": {
+      "blank": "cannot be blank",
+      "credit_card_session_expired": "Credit card authorization has expired, re-enter payment information. No amount will be charged to your card.",
+      "empty": "cannot be empty",
+      "invalid_email": "must be a valid email address",
+      "discount_disabled": "This discount has been disabled",
+      "discount_expired": "This discount is no longer valid",
+      "discount_limit_reached": "This discount has reached its usage limit",
+      "discount_not_found": "Could not find a valid discount matching the code entered",
+      "customer_already_used_once_per_customer_discount_notice": "This discount has reached its usage limit",
+      "gift_card_already_applied": "The code has already been applied at checkout",
+      "gift_card_code_invalid": "The code is not valid",
+      "gift_card_currency_mismatch": "This gift card cannot be used for this purchase. Get in touch %{shop_name} for its reissuance.",
+      "gift_card_depleted": "There are no funds left on this gift card",
+      "gift_card_disabled": "The gift card is disabled",
+      "gift_card_expired": "The gift card has expired",
+      "invalid": "is invalid",
+      "bad_domain": "contains an invalid domain name",
+      "taken": "it was already taken",
+      "contains_html_tags": "cannot contain HTML tags",
+      "too_short": "is too short (minimum length is %{count} characters)",
+      "too_long": "is too long (the maximum length is %{count} characters)",
+      "password_mismatch": "must match the password provided",
+      "contains_spaces": "starts or ends with spaces.",
+      "invalid_for_country": "not valid for %{country}",
+      "invalid_for_country_and_province": "not valid for %{province} and %{country}",
+      "invalid_province_in_country": "is not a valid province of %{country}",
+      "invalid_state_in_country": "is not a valid state of %{country}",
+      "invalid_region_in_country": "is not a valid region from %{country}",
+      "less_than_or_equal_to": "must be less than or equal to %{count}",
+      "not_supported": "is not accepted",
+      "full_name_required": "Enter a first and last name",
+      "invalid_for_card_type": "is not valid",
+      "invalid_type": "sorry, we do not accept cards of this type",
+      "invalid_format": "the format is not valid",
+      "expired": "expired",
+      "invalid_start_date_or_issue_number_for_debit": "a valid start date or issue number is required",
+      "invalid_expiry_year": "is not a valid expiration year",
+      "reset_password_html": "This email address is already associated with an account. If this account is yours, you can <a href=\"/account/login#recover\">reset your password</a>",
+      "verify_email": "I sent an email to %{customer_email}, click the included link to verify your email address.",
+      "blocked_address": "This location is not supported",
+      "product_not_available": "the product is not published for this customer.",
+      "shop_404": {
+        "title": "Create an e-commerce site and sell online! Ecommerce software from Shopify",
+        "heros": {
+          "store_unavailable": "This store is currently unavailable."
+        }
       }
     }
   },
