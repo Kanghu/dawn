@@ -3637,13 +3637,80 @@
     "orders": {
       "order_list": {
         "items": {
-          "few": "{{count}} προϊόντα"
+          "few": "{{count}} άρθρα",
+          "one": "{{count}} άρθρο",
+          "other": "{{count}} άρθρα"
         },
         "column_headers": {
           "total": "Εντελώς",
           "order": "Παραγγελία",
           "actions_accessibility_label": "Δράσεις",
           "products_accessibility_label": "Προϊόντα"
+        },
+        "delivered": "Παραδόθηκε σε: {{date}}",
+        "empty_state_order_source_description": "Εδώ θα εμφανίζονται μόνο οι παραγγελίες που γίνονται από τη διεύθυνση email {{email}}.",
+        "empty_state_subtitle": "Πηγαίνετε στο κατάστημα για να κάνετε μια παραγγελία.",
+        "empty_state_title": "Δεν υπάρχουν παραγγελίες ακόμα",
+        "estimated_delivery": "Εκτιμώμενη ημερομηνία: {{date}}",
+        "order_link": "Δείτε την παραγγελία {{name}}",
+        "order_number": "Παραγγελία {{name}}",
+        "orders_title": "Επιβεβαιώθηκε",
+        "pagination": {
+          "nav_accessibility_label": "Κουμπιά πλοήγησης για εντολές",
+          "next": "Πριν",
+          "next_accessibility_label": "Επόμενες παραγγελίες",
+          "previous": "Πίσω",
+          "previous_accessibility_label": "Προηγούμενες παραγγελίες",
+          "load_more": "Εμφάνιση περισσότερων",
+          "load_more_accessibility_label": "Εμφάνιση περισσότερων εντολών"
+        },
+        "sort_by": "Ταξινόμηση κατά: {{option}}",
+        "sort_hide_options_accessibility_label": "Αποκρύπτει τις επιλογές ταξινόμησης για επιβεβαιωμένες παραγγελίες.",
+        "sort_show_options_accessibility_label": "Εμφανίζει επιλογές ταξινόμησης για επιβεβαιωμένες παραγγελίες.",
+        "sort_title": "Ταξινόμησε",
+        "sort": {
+          "date": {
+            "newest": "Από το νεότερο στο πιο παλιό",
+            "oldest": "Από το πιο παλιό στο νεότερο"
+          },
+          "location": {
+            "ascending": "Τοποθεσία (Α-Ω)",
+            "descending": "Τοποθεσία (Z-A)"
+          },
+          "order_number": {
+            "ascending": "Αριθμός παραγγελίας (αύξουσα)",
+            "descending": "Αριθμός παραγγελίας (απόγονος)"
+          },
+          "order_total": {
+            "ascending": "Σύνολο παραγγελίας (αύξουσα)",
+            "descending": "Σύνολο παραγγελίας (φθίνουσα)"
+          }
+        },
+        "one_images_accessibility_label": "Η παραγγελία περιλαμβάνει {{lineItemName1}}",
+        "two_images_accessibility_label": "Η παραγγελία περιλαμβάνει {{lineItemName1}}, {{lineItemName2}}",
+        "three_images_accessibility_label": "Η παραγγελία περιλαμβάνει {{lineItemName1}}, {{lineItemName2}}, {{lineItemName3}}",
+        "four_images_accessibility_label": "Η παραγγελία περιλαμβάνει {{lineItemName1}}, {{lineItemName2}}, {{lineItemName3}}, {{lineItemName4}}",
+        "no_filtered_results_description": "Αφαιρέστε ή προσαρμόστε τα φίλτρα για προβολή στοιχείων ελέγχου",
+        "no_filtered_results_title": "Δεν υπάρχουν φιλτραρισμένα αποτελέσματα",
+        "estimated_shortform": "Εκτίμηση: {{date}}",
+        "payment_status": {
+          "list_view": {
+            "overdue": "Λήξη",
+            "due": "Ωριμότητα {{date}}",
+            "due_today": "Λήγει σήμερα",
+            "due_without_date": "Ωριμότητα",
+            "due_on_fulfillment": "Λήγει τη στιγμή της εκτέλεσης της παραγγελίας",
+            "pay_to_confirm": "Πληρώστε για επιβεβαίωση",
+            "payment_not_due": "Δεν είναι ακόμη οφειλόμενο",
+            "paid": "Πληρωμένη"
+          },
+          "gallery_view": {
+            "overdue": "Εκπρόθεσμη πληρωμή",
+            "due": "Ημερομηνία λήξης πληρωμής {{date}}",
+            "due_today": "Η πληρωμή λήγει σήμερα",
+            "due_without_date": "Ημερομηνία λήξης πληρωμής",
+            "due_on_fulfillment": "Πληρωμή που οφείλεται κατά την εκτέλεση της παραγγελίας"
+          }
         }
       },
       "order_status": {
