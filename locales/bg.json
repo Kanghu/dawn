@@ -333,49 +333,49 @@
       "no_results": "Няма намерени резултати за \"{{ terms }}\". Проверете правописа си или използвайте друга дума или фраза.",
       "results_with_count": {
         "one": "{{ count }} резултат",
-        "other": "{{ count }} резултата",
-        "few": "{{ count }} резултат"
+        "other": "{{ count }} резултати",
+        "few": "{{ count }} резултати"
       },
       "title": "Резултати от търсенето",
       "page": "Страница",
       "products": "Продукти",
-      "search_for": "Търсене на „{{ terms }}“",
+      "search_for": "търсене на \"{{ terms }}”",
       "results_with_count_and_term": {
-        "one": "Открит е {{ count }} резултат за „{{ terms }}“",
-        "other": "Открити са {{ count }} резултата за „{{ terms }}“",
-        "few": "Са намерени {{ count }} Резултати за \"{{ terms }}”"
+        "one": "Беше намерено {{ count }} резултат за \"{{ terms }}”",
+        "other": "Намериха се {{ count }} резултати за \"{{ terms }}”",
+        "few": "Намериха се {{ count }} резултати за \"{{ terms }}”"
       },
       "results_pages_with_count": {
         "one": "{{ count }} страница",
         "other": "{{ count }} страници",
-        "few": "{{ count }} страница"
+        "few": "{{ count }} страници"
       },
       "results_suggestions_with_count": {
-        "one": "{{ count }} предложениe",
-        "other": "{{ count }} предложения",
-        "few": "{{ count }} на предложения"
+        "one": "{{ count }} предложение",
+        "other": "{{ count }} от предложения",
+        "few": "{{ count }} от предложения"
       },
       "results_products_with_count": {
         "one": "{{ count }} продукт",
-        "other": "{{ count }} продукта",
+        "other": "{{ count }} продукти",
         "few": "{{ count }} продукти"
       },
       "suggestions": "Предложения",
       "pages": "Страници"
     },
     "cart": {
-      "cart": "Количка"
+      "cart": "Кошница"
     },
     "contact": {
       "form": {
         "name": "Име",
         "email": "Имейл",
-        "comment": "Коментар",
-        "send": "Изпрати",
-        "post_success": "Благодарим, че се свързахте с нас. Ще се свържем с вас възможно най-скоро.",
-        "error_heading": "Коригирайте следното:",
-        "phone": "Телефонен номер",
-        "title": "Формуляр за контакт"
+        "comment": "Коментирайте",
+        "send": "Изпратете",
+        "post_success": "Благодарим ви, че се свързахте с нас. Ние ще се свържем с вас възможно най-скоро.",
+        "error_heading": "Моля, коригирайте следното:",
+        "phone": "телефонен номер",
+        "title": "Форма за контакт"
       }
     }
   },
@@ -533,22 +533,22 @@
   },
   "localization": {
     "country_label": "Държава/регион",
-    "language_label": "Език",
-    "update_language": "Актуализиране на езика",
-    "update_country": "Актуализиране на държава/регион",
+    "language_label": "език",
+    "update_language": "Актуализирайте езика си",
+    "update_country": "Актуализирайте вашата държава/регион",
     "search": "Търсене",
-    "popular_countries_regions": "Популярни страни/региони",
-    "country_results_count": "Открити са {{ count }} страни/региона"
+    "popular_countries_regions": "Популярни държави/региони",
+    "country_results_count": "{{ count }} намерени държави/региони"
   },
   "customer": {
-    "account_fallback": "Профил",
+    "account_fallback": "сметка",
     "activate_account": {
-      "subtext": "Създайте парола, за да активирате профила си.",
+      "subtext": "Създайте парола, за да активирате акаунта си.",
       "password": "Парола",
-      "title": "Активиране на профил",
-      "password_confirm": "Потвърждаване на паролата",
-      "submit": "Активиране на профил",
-      "cancel": "Отхвърляне на поканата"
+      "title": "Активирайте акаунта си",
+      "password_confirm": "Потвърдете паролата",
+      "submit": "Активирайте акаунта си",
+      "cancel": "Откажете поканата"
     },
     "addresses": {
       "default": "По подразбиране",
@@ -573,8 +573,8 @@
       "add": "Добавяне на адрес",
       "update": "Актуализиране на адрес"
     },
-    "log_in": "Влизане",
-    "log_out": "Излизане",
+    "log_in": "влезте",
+    "log_out": "Излезте",
     "login_page": {
       "cancel": "Отказ",
       "email": "Имейл",
@@ -619,10 +619,10 @@
       "submit": "Подновяване на паролата"
     },
     "account": {
-      "title": "Профил",
-      "details": "Информация за профила",
-      "view_addresses": "Покажи адресите",
-      "return": "Назад към информацията за профила"
+      "title": "сметка",
+      "details": "Данни за акаунта",
+      "view_addresses": "Показване на адреси",
+      "return": "Назад към подробностите за акаунта"
     },
     "order": {
       "title": "Поръчка {{ name }}",
