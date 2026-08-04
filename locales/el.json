@@ -1327,44 +1327,14 @@
         "compare_at_sale": "προώθηση (%{sale_amount})",
         "discount_code_applied_count": {
           "few": "Εμφάνιση %{count} εκπτώσεις"
-        },
-        "tax_line": {
-          "hst": "HST",
-          "gst": "GST",
-          "pst": "PST",
-          "rst": "RST",
-          "qst": "QST",
-          "vpt": "VPT"
-        },
-        "automatic_discount_tooltip": "Οι εκπτώσεις που εφαρμόζονται αυτόματα δεν μπορούν να αφαιρεθούν",
-        "alternative_payment_currency_chinese_yuan": "Επιβεβαιώστε το τελικό σύνολο σε CNY στην εφαρμογή %{wallet}.",
-        "alternative_payment_currency_total_disclosure": "%{shop_name} διαδικασία πληρωμών σε %{shop_currency} (%{amount_due}).",
-        "settlement_currency_note": "%{shop_name} διαδικασία πληρωμών σε %{processing_currency}. Εσείς ψωνίσατε %{original_currency}.",
-        "settlement_currency_note_wallet": "%{shop_name} διαδικασία πληρωμών σε %{processing_currency}. Εσείς ψωνίσατε %{original_currency} και πλήρωσες με %{wallet} στο CNY. Ελέγξτε την εφαρμογή %{wallet_app} για το τελικό ποσό.",
-        "settlement_currency_note_wallet_no_conversion": "Πλήρωσες με %{wallet} στο CNY. Ελέγξτε την εφαρμογή %{wallet_app} για το τελικό ποσό.",
-        "lpm": {
-          "wechat_pay": {
-            "checkout_disclosure": "Επιβεβαιώστε το τελικό σύνολο σε CNY στην εφαρμογή WeChat",
-            "post_purchase_disclosure": "Προβολή συνόλου σε CNY στο WeChat",
-            "checkout_disclosure_with_alternative_payment_currency": "%{shop_name} θα επεξεργαστεί αυτήν την πληρωμή στο ποσό των %{amount_due} %{processing_currency}, το οποίο το WeChat μετατρέπει σε CNY"
-          },
-          "alipay": {
-            "checkout_disclosure": "Επιβεβαιώστε το τελικό σύνολο σε CNY στην εφαρμογή Alipay",
-            "post_purchase_disclosure": "Δείτε το σύνολο σε CNY στο Alipay",
-            "checkout_disclosure_with_alternative_payment_currency": "%{shop_name} θα επεξεργαστεί αυτήν την πληρωμή στο ποσό των %{amount_due} %{processing_currency}, το οποίο η Alipay μετατρέπει σε CNY"
-          }
         }
       },
       "payment": {
         "order_covered_by_gift_cards_notice": {
-          "few": "Η παραγγελία σας καλύπτεται από τις δωροκάρτες σας.",
-          "one": "Η παραγγελία σας καλύπτεται από τη δωροκάρτα σας.",
-          "other": "Η παραγγελία σας καλύπτεται από τις δωροκάρτες σας."
+          "few": "Η παραγγελία σας καλύπτεται από τις κάρτες δώρων σας."
         },
         "card_fields_unavailable_html": {
-          "few": "Οι πληρωμές με τραπεζική κάρτα δεν είναι προς το παρόν διαθέσιμες.<br><a href=\"%{current_url}\">Ανανεώστε τη σελίδα</a> ή δοκιμάστε έναν διαφορετικό τρόπο πληρωμής.",
-          "one": "Οι πληρωμές με τραπεζική κάρτα δεν είναι προς το παρόν διαθέσιμες.<br><a href=\"%{current_url}\">Ανανεώστε τη σελίδα</a> ή δοκιμάστε ξανά αργότερα.",
-          "other": "Οι πληρωμές με τραπεζική κάρτα δεν είναι προς το παρόν διαθέσιμες.<br><a href=\"%{current_url}\">Ανανεώστε τη σελίδα</a> ή δοκιμάστε έναν διαφορετικό τρόπο πληρωμής."
+          "few": "Οι πληρωμές με τραπεζικές κάρτες δεν είναι επί του παρόντος διαθέσιμες.<br><a href=\"%{current_url}\">Ανανεώστε τη σελίδα</a> ή δοκιμάστε μια διαφορετική μέθοδο πληρωμής."
         },
         "expired_cards_info": {
           "few": "Υπάρχω %{count} Έγινε κάρτες, τις οποίες μπορείτε να δείτε και να επεξεργαστείτε στο λογαριασμό σας."
@@ -1377,81 +1347,7 @@
         },
         "discount_codes_removed_summary": {
           "few": "%{count} οι εκπτωτικοί κωδικοί έχουν αφαιρεθεί"
-        },
-        "amazon_payments_label": "Amazon Pay",
-        "amazon_payments_login_hint": "Θα σας ζητηθεί να συνδεθείτε με το Amazon.",
-        "amazon_payments_logout": "Αποσυνδεθείτε από το Amazon Pay",
-        "amazon_payments_failed_mfa_challenge": "Δεν ήταν δυνατή η χρήση του επιλεγμένου τρόπου πληρωμής. Επιλέξτε διαφορετική μέθοδο ή επικοινωνήστε με την τράπεζα ή τον εκδότη της κάρτας σας.",
-        "amazon_payments_abandoned_mfa_challenge": "Δεν ήταν δυνατή η ολοκλήρωση της πληρωμής σας. Επιλέξτε διαφορετικό τρόπο πληρωμής ή επικοινωνήστε με την τράπεζα ή τον εκδότη της κάρτας σας.",
-        "amazon_payments_could_not_enqueue_authorize": "Παρουσιάστηκε πρόβλημα κατά την επεξεργασία της πληρωμής σας. Δοκιμάστε ξανά ή χρησιμοποιήστε διαφορετικό τρόπο πληρωμής.",
-        "title": "Πληρωμή",
-        "amount_left_to_pay_label": "Προθεσμία πληρωμής:",
-        "discount_button_action_label": "Εφαρμογή κωδικού έκπτωσης",
-        "gift_card_code_label": "Κωδικός δωροκάρτας",
-        "apply_gift_card_button_label": "Εφαρμόστε",
-        "gift_card_balance_label": "Υπόλοιπο:",
-        "supported_card_brands_more_label": "και άλλα...",
-        "detected_card_brand": "Εντοπίστηκε επωνυμία κάρτας: {brand}",
-        "card_number_label": "Αριθμός κάρτας",
-        "card_number_placeholder": "Αριθμός κάρτας",
-        "card_pay_with": "Πληρώστε με:",
-        "card_security_notice": "Όλες οι συναλλαγές είναι ασφαλείς και κρυπτογραφημένες.",
-        "card_information_notice": "Όλες οι συναλλαγές είναι ασφαλείς και κρυπτογραφημένες. Τα στοιχεία της πιστωτικής κάρτας δεν αποθηκεύονται ποτέ.",
-        "name_on_card_label": "Το όνομα στην κάρτα",
-        "name_on_card_placeholder": "Το όνομα στην κάρτα",
-        "card_expiry_label": "Ημερομηνία λήξης (ΜΜ/ΕΕ)",
-        "card_expiry_placeholder": "Ημερομηνία λήξης (ΜΜ/ΕΕ)",
-        "credit_card_start_month": "Μήνας έναρξης",
-        "credit_card_start_year": "Έναρξη έτους",
-        "card_verification_value_label": "Κωδικός ασφαλείας",
-        "card_verification_value_placeholder": "Κωδικός ασφαλείας",
-        "card_expiry_date_explanation": "Ημερομηνία λήξης της κάρτας σε μορφή: μήνας, μήνας, έτος, έτος",
-        "card_expiration_month_label": "Μήνας λήξης",
-        "card_expiration_year_label": "Έτος λήξης",
-        "card_verification_value_explanation": "Ο 3ψήφιος κωδικός ασφαλείας βρίσκεται συνήθως στο πίσω μέρος της κάρτας. Οι κάρτες American Express έχουν έναν 4ψήφιο κωδικό που βρίσκεται στο μπροστινό μέρος.",
-        "card_verification_value_explanation_amex": "Ο 4ψήφιος κωδικός ασφαλείας στην όψη της κάρτας",
-        "card_verification_value_explanation_other": "Ο 3ψήφιος κωδικός ασφαλείας στο πίσω μέρος της κάρτας",
-        "card_start_label": "Ημερομηνία έκδοσης (ΜΜ/ΕΕ)",
-        "card_start_placeholder": "Ημερομηνία έκδοσης (ΜΜ/ΕΕ)",
-        "card_issue_number_label": "Αριθμός τεύχους",
-        "card_issue_number_placeholder": "Αριθμός τεύχους",
-        "card_change_label": "Τροποποίηση",
-        "ends_with_label": "τελειώνει σε %{last_digits}",
-        "masked_digits_label": "•••• %{last_digits}",
-        "saved_by_payment_method": "Αποθηκεύτηκε από %{payment_method}",
-        "pay_with_payment_method": "Πληρώστε με %{payment_method}",
-        "same_billing_address_label": "Ίδιο με τη διεύθυνση αποστολής",
-        "different_billing_address_label": "Χρησιμοποιήστε διαφορετική διεύθυνση χρέωσης",
-        "free_order_notice_html": "Η παραγγελία σας είναι <strong>δωρεάν</strong>. Δεν απαιτείται πληρωμή.",
-        "express_checkout_free_order": "Δεν θα χρεωθείτε για μια δωρεάν παραγγελία",
-        "offsite_gateway_redirect_hint": "Θα σας ανακατευθύνουμε στο %{gateway_label} για να ολοκληρώσετε την αγορά σας.",
-        "offsite_gateway_redirect_hint_multi_currency_html": "%{gateway_label} σύνολο %{total_shop_price}",
-        "billing_address_title": "Διεύθυνση χρέωσης",
-        "billing_address_description": "Επιλέξτε τη διεύθυνση που αντιστοιχεί στην κάρτα ή τον τρόπο πληρωμής σας.",
-        "billing_address_description_no_shipping_address": "Εισαγάγετε τη διεύθυνση που αντιστοιχεί στην κάρτα ή τον τρόπο πληρωμής σας.",
-        "no_js_credit_card_fields_redirect_hint": "Θα ανακατευθυνθείτε για να προσθέσετε τα στοιχεία πληρωμής σας.",
-        "card_fields_container_prefix": "Πεδίο δοχείο για:",
-        "card_fields_processing_error": "Παρουσιάστηκε πρόβλημα κατά την επεξεργασία της πληρωμής σας. Δοκιμάστε να ανανεώσετε αυτήν τη σελίδα ή ελέγξτε τη σύνδεσή σας στο διαδίκτυο.",
-        "technical_error": "Δεν είναι δυνατή η επεξεργασία των πληρωμών αυτή τη στιγμή λόγω τεχνικού προβλήματος. Δοκιμάστε ξανά σε λίγα λεπτά.",
-        "no_method_error": "Αυτό το κατάστημα δεν μπορεί να δεχτεί πληρωμές αυτήν τη στιγμή.",
-        "not_configured_error": "Αυτό το κατάστημα δεν μπορεί να δεχτεί πληρωμές αυτήν τη στιγμή.",
-        "missing_credit_card_error": "Εισαγάγετε τα στοιχεία της κάρτας σας για να ολοκληρώσετε την πληρωμή",
-        "billing_address_not_supported_for_payment_method_error": "Αυτή η μέθοδος πληρωμής δεν είναι διαθέσιμη για τη διεύθυνση χρέωσης και το νόμισμά σας. Δοκιμάστε άλλη μέθοδο πληρωμής.",
-        "generic_incorrect_card_info": "Δεν ήταν δυνατή η επαλήθευση των στοιχείων πληρωμής σας. Ελέγξτε τα στοιχεία της κάρτας σας και δοκιμάστε ξανά.",
-        "sofort_label": "Εύκολη τραπεζική μεταφορά",
-        "paypal_label": "PayPal",
-        "klarna_pay_later_label": "Πληρώστε αργότερα με την Klarna",
-        "klarna_pay_now_label": "Πληρώστε τώρα με την Klarna",
-        "bancontact_label": "Bancontact",
-        "giropay_label": "Giropay",
-        "eps_label": "eps-Überweisung",
-        "klarna_slice_it_label": "Ταμείο με την Klarna",
-        "ideal_label": "ΙΔΑΝΙΚΟ | Wero",
-        "bank_picker_label": "Τράπεζα",
-        "change_currency_section_description": "Επιλέξτε μια επιλογή νομίσματος",
-        "no_real_orders_dev_store": "Αυτό το κατάστημα δεν δέχεται πραγματικές παραγγελίες ή πραγματικές πληρωμές.",
-        "subscription_agreement_label_html": "Κατανοώ και συμφωνώ με μια συνδρομή. Θα ανανεώσω στην τιμή και τη συχνότητα που αναγράφεται μέχρι να τελειώσει ή να είναι\n<a class=\"link--small\" data-modal=\"true\" data-title-text=\"%{subscription_policy}\" href=\"%{policy_href}\">ακυρώθηκε</a>.\n",
-        "waiting_on_payment_methods": "Λαμβάνουμε τους διαθέσιμους τρόπους πληρωμής..."
+        }
       },
       "shipping_errors": {
         "shipping_method_not_available_generic": {
