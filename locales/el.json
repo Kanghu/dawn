@@ -1586,22 +1586,34 @@
           "other": "αγοράστε και αυτά τα προϊόντα"
         },
         "gift_card_confirmation_by_text_typ": {
-          "few": "Θα λάβετε ένα μήνυμα κειμένου με τις κάρτες δώρων σε λίγα λεπτά."
+          "few": "Θα λάβετε ένα μήνυμα κειμένου με τις δωροκάρτες σε λίγα λεπτά.",
+          "one": "Θα λάβετε ένα μήνυμα κειμένου με τη δωροκάρτα σε λίγα λεπτά.",
+          "other": "Θα λάβετε ένα μήνυμα κειμένου με τις δωροκάρτες σε λίγα λεπτά."
         },
         "gift_card_confirmation_by_email_typ": {
-          "few": "Θα λάβετε ένα μήνυμα ηλεκτρονικού ταχυδρομείου με τις κάρτες δώρων σε λίγα λεπτά."
+          "few": "Θα λάβετε ένα email με τις δωροκάρτες σε λίγα λεπτά.",
+          "one": "Θα λάβετε ένα email με τη δωροκάρτα σε λίγα λεπτά.",
+          "other": "Θα λάβετε ένα email με τις δωροκάρτες σε λίγα λεπτά."
         },
         "gift_card_email_title": {
-          "few": "Οι κάρτες δώρων έχουν σταλεί μέσω email"
+          "few": "Οι δωροκάρτες έχουν σταλεί με email",
+          "one": "Η δωροκάρτα έχει σταλεί με email",
+          "other": "Οι δωροκάρτες έχουν σταλεί με email"
         },
         "gift_card_text_title": {
-          "few": "Οι κάρτες δώρων έχουν σταλεί μέσω email"
+          "few": "Οι δωροκάρτες έχουν σταλεί με email",
+          "one": "Η δωροκάρτα στάλθηκε μέσω μηνύματος κειμένου",
+          "other": "Οι δωροκάρτες έχουν σταλεί με email"
         },
         "gift_card_resent_confirmation": {
-          "few": "Οι κάρτες CADIU υποβλήθηκαν σε εκ νέου."
+          "few": "Οι δωροκάρτες έχουν σταλεί πίσω.",
+          "one": "Η δωροκάρτα έχει σταλεί ξανά.",
+          "other": "Οι δωροκάρτες έχουν σταλεί πίσω."
         },
         "gift_card_resend_failure": {
-          "few": "Ένα πρόβλημα προέκυψε κατά την εκ νέου υποβολή καρτών δώρων. Δοκιμάστε ξανά ή επικοινωνήστε μαζί μας."
+          "few": "Παρουσιάστηκε πρόβλημα με την εκ νέου αποστολή δωροκαρτών. Δοκιμάστε ξανά ή επικοινωνήστε μαζί μας.",
+          "one": "Παρουσιάστηκε πρόβλημα με την εκ νέου αποστολή της δωροκάρτας. Δοκιμάστε ξανά ή επικοινωνήστε μαζί μας.",
+          "other": "Παρουσιάστηκε πρόβλημα με την εκ νέου αποστολή δωροκαρτών. Δοκιμάστε ξανά ή επικοινωνήστε μαζί μας."
         },
         "thank_you_unconfirmed_items_heading": {
           "few": "Ορισμένα στοιχεία δεν επιβεβαιώνονται"
@@ -1789,7 +1801,41 @@
           "text_html": "%{contact_us} για να προσθέσετε τη διεύθυνση",
           "contact_us": "Επικοινωνήστε μαζί μας"
         },
-        "order_status_confirmed_with_installments_payment_return": "Επιστρέψτε την προσοχή σας στον συνεργάτη πωλήσεων."
+        "order_status_confirmed_with_installments_payment_return": "Επιστρέψτε την προσοχή σας στον συνεργάτη πωλήσεων.",
+        "order_status_confirmed_with_installments_payment_confirm": "Σύντομα θα λάβετε ένα email επιβεβαίωσης με τον αριθμό παραγγελίας και τις λεπτομέρειες του προγράμματος δόσεων",
+        "first_payment_complete": "Η πρώτη πληρωμή ολοκληρώθηκε",
+        "in_store_purchase": "Αγορές στο κατάστημα",
+        "choose_payment_method_later": "Επιλέξτε τον τρόπο πληρωμής σας αργότερα",
+        "purchase_order_number_title": "Αριθμός παραγγελίας αγοράς: %{purchase_order_number}",
+        "thank_you_ready_for_picked_up": "Η παραγγελία σας παραλήφθηκε στη διεύθυνση %{address}.",
+        "ready_for_delivery": "Έτοιμο για παράδοση",
+        "order_updates_subscribe_to_email_notifications_failed": "Δεν μπορούμε να αποθηκεύσουμε αυτήν τη διεύθυνση ηλεκτρονικού ταχυδρομείου για ενημερώσεις. Δοκιμάστε ξανά ή χρησιμοποιήστε διαφορετική διεύθυνση email.",
+        "order_updates_subscribe_to_email_notifications_email_already_exists": "Η διεύθυνση email που καταχωρίσατε υπάρχει ήδη.",
+        "subscriptions_management": {
+          "title": "Συνδρομή",
+          "description": "Συνεχίστε με τον λογαριασμό σας για να προβάλετε και να διαχειριστείτε τις συνδρομές σας.",
+          "button_label": "Διαχειριστείτε τη συνδρομή σας"
+        },
+        "manage_order_label": "Διαχειριστείτε την παραγγελία σας",
+        "resend_gift_cards_by_email": "Θέλω να στείλω ξανά το email",
+        "resend_gift_cards_by_text": "Θέλω να στείλω ξανά το μήνυμα κειμένου",
+        "failed_pending_payment_page_title": "Υπάρχει πρόβλημα με την πληρωμή σας",
+        "thank_you_title_payments_app_pending_default": "Η πληρωμή σας είναι υπό επεξεργασία",
+        "thank_you_title_payments_app_pending_buyer_action_required": "Η παραγγελία σας έχει ληφθεί",
+        "thank_you_title_payments_app_failed_pending_payment": "Δεν ήταν δυνατή η επεξεργασία της πληρωμής σας",
+        "thank_you_payments_app_failed_pending_payment": "Δεν έχετε χρεωθεί για την παραγγελία σας. Επιστρέψτε στο καλάθι αγορών για να ελέγξετε την παραγγελία και να πραγματοποιήσετε ξανά την πληρωμή.",
+        "order_status_payments_app_pending_payment_description_default_with_email_and_phone": "Σύντομα θα λάβετε ένα email επιβεβαίωσης. Παρακολουθήστε την παραγγελία σας χρησιμοποιώντας την εφαρμογή Shop.",
+        "order_status_payments_app_pending_payment_description_default_with_email": "Σύντομα θα λάβετε ένα email επιβεβαίωσης. Παρακολουθήστε την παραγγελία σας χρησιμοποιώντας την εφαρμογή Shop.",
+        "order_status_payments_app_pending_payment_description_default_with_phone": "Σύντομα θα λάβετε ένα μήνυμα κειμένου επιβεβαίωσης. Παρακολουθήστε την παραγγελία σας χρησιμοποιώντας την εφαρμογή Shop.",
+        "order_status_payments_app_pending_payment_description_buyer_action_required_with_email_and_phone": "Μετά την ολοκλήρωση της πληρωμής, θα λάβετε ένα email επιβεβαίωσης. Παρακολουθήστε την παραγγελία σας χρησιμοποιώντας την εφαρμογή Shop.",
+        "order_status_payments_app_pending_payment_description_buyer_action_required_with_email": "Μετά την ολοκλήρωση της πληρωμής, θα λάβετε ένα email επιβεβαίωσης. Παρακολουθήστε την παραγγελία σας χρησιμοποιώντας την εφαρμογή Shop.",
+        "order_status_payments_app_pending_payment_description_buyer_action_required_with_phone": "Μετά την ολοκλήρωση της πληρωμής, θα λάβετε ένα μήνυμα κειμένου επιβεβαίωσης. Παρακολουθήστε την παραγγελία σας χρησιμοποιώντας την εφαρμογή Shop.",
+        "order_status_payments_app_failed_pending_payment": "Δεν έχετε χρεωθεί για την παραγγελία σας. Επιστρέψτε στο καλάθι αγορών για να ελέγξετε την παραγγελία και να πραγματοποιήσετε ξανά την πληρωμή.",
+        "order_status_payments_app_pending_payment_description_buyer_action_required_with_email_pick_up": "Μετά την ολοκλήρωση της πληρωμής, θα λάβετε ένα email επιβεβαίωσης. Παρακολουθήστε την παραγγελία σας χρησιμοποιώντας την εφαρμογή Shop.",
+        "thank_you_confirmed_order_with_missing_payment": "Επικοινωνήστε μαζί μας μέσω email ή τηλεφώνου για να λάβετε επιβεβαίωση παραγγελίας.",
+        "thank_you_confirmed_order_with_missing_pick_up": "Επικοινωνήστε μαζί μας μέσω email ή τηλεφώνου για να λάβετε επιβεβαίωση παραγγελίας.",
+        "thank_you_confirmed_order_with_draft_payment": "Θα σας ενημερώσουμε εάν χρειαστούμε περισσότερες πληροφορίες ή όταν επιβεβαιωθεί η παραγγελία σας.",
+        "thank_you_confirmed_order_with_draft_pick_up": "Θα σας ενημερώσουμε εάν χρειαστούμε περισσότερες πληροφορίες ή όταν επιβεβαιωθεί η παραγγελία σας."
       },
       "order_payment_collection": {
         "changes_summary": {
