@@ -1173,24 +1173,37 @@
       },
       "order_summary": {
         "expand_component_information": {
-          "few": "Show %{count} items"
+          "few": "Display %{count} articles",
+          "one": "Display %{count} article",
+          "other": "Display %{count} articles"
         },
         "collapse_component_information": {
-          "few": "Hide %{count} items"
+          "few": "Hide %{count} articles",
+          "one": "Hide %{count} article",
+          "other": "Hide %{count} articles"
         },
         "discount_discovery": {
           "merchandise_quantity_label": {
-            "few": "%{count} items"
-          }
+            "few": "%{count} (of) articles",
+            "one": "%{count} article",
+            "other": "%{count} (of) articles"
+          },
+          "add_code": "Add a discount",
+          "back_to_finalize_order": "Back to checkout"
         },
         "discount_title_stacking": {
-          "few": "Discounts"
+          "few": "Discounts",
+          "one": "Discount",
+          "other": "Discounts"
         },
         "discount_order_stacking": {
-          "few": "Order discounts"
+          "few": "Order discounts",
+          "one": "Order discount",
+          "other": "Order discounts"
         },
         "subtotal_label_with_quantity": {
-          "few": "Subtotal · %{count} items"
+          "few": "Subtotal · %{count} items",
+          "one": "Subtotal · %{count} article"
         },
         "number_items": {
           "few": "%{count} items"
@@ -1203,7 +1216,16 @@
         },
         "unit_price": {
           "per_item": {
-            "few": "%{price} for %{count} ware"
+            "few": "%{price} for %{count} articles",
+            "single": "%{price} each item",
+            "one": "%{price} for %{count} article",
+            "other": "%{price} for %{count} articles"
+          },
+          "accessible_separator": "on",
+          "content_html": "%{price}%{accessible_separator}%{per_unit}",
+          "per_unit": {
+            "single": "%{price}/%{unit}",
+            "plural": "%{price}/%{count}%{unit}"
           }
         },
         "pickup_unavailable_banner_title_with_country": {
@@ -1263,7 +1285,89 @@
         "description_label": "Description",
         "price_label": "Price",
         "quantity_label": "Quantity",
-        "product_change_label": "Modify"
+        "product_change_label": "Modify",
+        "product_image_label": "Product image",
+        "scroll_order_summary": "Scroll for more articles",
+        "expand_order_summary_short": "Display",
+        "collapse_order_summary_short": "Hide",
+        "total_updated_label": "Updated total price:",
+        "order_total_updated_label": "Updated total",
+        "total_already_paid_label": "Amount paid",
+        "estimated_taxes_label": "Estimated fees",
+        "information_estimated_taxes_label": "Fees (estimated)",
+        "gift_card_ending": "Gift card ending in %{last_characters}",
+        "estimated_tax_label": "Estimated fees",
+        "multiple_shipping_lines_label": "Shipping total",
+        "applied_free_shipping_discount_label": "Applied",
+        "original_price": "The original price",
+        "sale_price": "Offer price",
+        "recurring_subtotal_label": "Recurring subtotal",
+        "recurring_total_label": "Totally recurring",
+        "recurring_total_tooltip": "Does not include shipping, taxes, duties or applicable discounts.",
+        "gift_card_subscriptions_notice": "Gift cards will only be applied to the first payment",
+        "confirmation_number_label": "No. confirmation %{confirmation_number}",
+        "estimated_taxes_finalization_tooltip_content": "Final charges and total will be confirmed by email or text message after placing the order.",
+        "deferred_payment_info": {
+          "title": "Payment in the amount of %{amount_due} has a due date %{due_at}",
+          "description_html": "For questions about your order, %{contact_us}.",
+          "paid_today": "Total paid today",
+          "due_on_fulfillment_title": "Payment in the amount of %{amount_due} has the due date at the time of honoring",
+          "due_on_receipt_title": "Payment in the amount of %{amount_due} has a due date at the time of receipt",
+          "paid_today_next": "Paid today"
+        },
+        "percent_off_shipping": "Discount of %{percent}% on shipping",
+        "amount_off_shipping": "Discount of %{amount} upon shipment",
+        "payment_terms_totals": {
+          "due_today": "Total due today",
+          "due_later": "Total due to %{due_at}",
+          "due_later_checkout_to_draft": "Total due later",
+          "due_on_fulfillment": "Total due at time of honoring",
+          "due_on_receipt": "Total due upon receipt",
+          "total_paid": "Total paid",
+          "due_today_next": "Due today",
+          "due_on_fulfillment_next": "Expires at the time of order execution"
+        },
+        "higher_value_discount_applied": "<strong style=\"text-transform:uppercase\">%{code}</strong> could not be used in conjunction with existing discounts.",
+        "maximum_discount_code_limit_reached": "You have reached the maximum number of discount codes. Remove an existing code to use the code <strong style=\"text-transform:uppercase\">%{code}</strong>.",
+        "order_total_label": "Order total",
+        "discount_code_application_failed": "<strong style=\"text-transform:uppercase\">%{code}</strong> not working at the moment. Contact us for help.",
+        "due_on_fulfillment": "Due at the time of honoring",
+        "gift_card_masked": "•••• %{last_characters}",
+        "subscriptions": "Subscriptions",
+        "duties_label": "Customs duties",
+        "duties_and_taxes_label": "Customs duties and taxes",
+        "error_duties_tooltip": "This order is being shipped from another country, so customs duties and taxes may be charged upon delivery.",
+        "may_be_charged_on_delivery": "They may be charged upon delivery",
+        "total_updated_label_with_price": "Updated total price: %{totalPrice}",
+        "recurring_payments": "Recurring payments",
+        "recurring_total_multiple_label": "There is a recurring charge for several items in this order.",
+        "deferred_total_due_date_label": "Total due to {{date}}",
+        "full_price": "Full price: %{price}",
+        "custom_discount": "Custom discount",
+        "component_quantity_title": "%{quantity} × %{product_title}",
+        "alternative_payment_currency_total": "Amount debited: %{amount_due}",
+        "calculating": "It is calculated...",
+        "group_title_label": "Part of \"%{group_title}”",
+        "price_per_item": {
+          "accessibility_label": "%{price} per article",
+          "label": "%{price}/ pc."
+        },
+        "updated_shipping_method": "Payment method updated: %{shipping_method}",
+        "discount_not_found": "Could not find a valid discount matching the code entered",
+        "total_savings": "Total savings",
+        "return_restocking_fee_label": "Restocking fee",
+        "return_shipping_fee_label": "Return shipping",
+        "enter_shipping_address": "Enter the shipping address",
+        "shipping_discount_title": "Shipping discount",
+        "discount_code_applied": "Discount code applied",
+        "discount_code_applied_with_code": "Discount code %{code} was applied",
+        "gift_card_applied": "The gift card has been applied",
+        "duties_included_label": "Total includes all applicable taxes and duties. There are no additional costs for delivery.",
+        "deferred_balance_info": {
+          "title": "Balance worth {{amount_due}} has a due date {{due_at}}",
+          "due_on_fulfillment_title": "Balance worth {{amount_due}} has the due date at the time of honoring"
+        },
+        "eligible_customer_missing_notice": "For the discount code <strong style=\"text-transform:uppercase\">%{code}</strong> an eligible customer is required"
       },
       "payment": {
         "order_covered_by_gift_cards_notice": {
