@@ -3305,7 +3305,63 @@
     "collections": {
       "sorting": {
         "manual": "Συνιστάται",
-        "best_selling": "The best seller"
+        "best_selling": "The best seller",
+        "az": "Αλφαβητικά Α-Ω",
+        "za": "Αλφαβητικά, Ζ-Α",
+        "price_ascending": "Τιμή, από χαμηλή σε υψηλή",
+        "price_descending": "Τιμή, από υψηλή σε χαμηλή",
+        "date_ascending": "Ημερομηνία, από παλιά σε νέα",
+        "date_descending": "Ραντεβού, από το νέο στο παλιό",
+        "most_relevant": "Το πιο σχετικό"
+      }
+    },
+    "errors": {
+      "blank": "δεν μπορεί να είναι κενό",
+      "credit_card_session_expired": "Η εξουσιοδότηση πιστωτικής κάρτας έχει λήξει. Εισαγάγετε ξανά τα στοιχεία πληρωμής. Δεν θα χρεωθεί κανένα ποσό στην κάρτα σας.",
+      "empty": "δεν μπορεί να είναι κενό",
+      "invalid_email": "πρέπει να είναι έγκυρη διεύθυνση email",
+      "discount_disabled": "Αυτή η έκπτωση έχει απενεργοποιηθεί",
+      "discount_expired": "Αυτή η έκπτωση δεν ισχύει πλέον",
+      "discount_limit_reached": "Αυτή η έκπτωση έχει φτάσει στο όριο χρήσης της",
+      "discount_not_found": "Δεν βρέθηκε έγκυρη έκπτωση που να ταιριάζει με τον κωδικό που εισαγάγατε",
+      "customer_already_used_once_per_customer_discount_notice": "Αυτή η έκπτωση έχει φτάσει στο όριο χρήσης της",
+      "gift_card_already_applied": "Ο κωδικός έχει ήδη εφαρμοστεί στο ταμείο",
+      "gift_card_code_invalid": "Ο κωδικός δεν είναι έγκυρος",
+      "gift_card_currency_mismatch": "Αυτή η δωροκάρτα δεν μπορεί να χρησιμοποιηθεί για αυτήν την αγορά. Ελάτε σε επαφή %{shop_name} για την επανέκδοσή του.",
+      "gift_card_depleted": "Δεν έχουν απομείνει χρήματα σε αυτήν τη δωροκάρτα",
+      "gift_card_disabled": "Η δωροκάρτα είναι απενεργοποιημένη",
+      "gift_card_expired": "Η δωροκάρτα έχει λήξει",
+      "invalid": "είναι άκυρη",
+      "bad_domain": "περιέχει ένα μη έγκυρο όνομα τομέα",
+      "taken": "είχε ήδη ληφθεί",
+      "contains_html_tags": "δεν μπορεί να περιέχει ετικέτες HTML",
+      "too_short": "είναι πολύ μικρό (το ελάχιστο μήκος είναι %{count} χαρακτήρες)",
+      "too_long": "είναι πολύ μεγάλο (το μέγιστο μήκος είναι %{count} χαρακτήρες)",
+      "password_mismatch": "πρέπει να ταιριάζει με τον κωδικό πρόσβασης που παρέχεται",
+      "contains_spaces": "αρχίζει ή τελειώνει με κενά.",
+      "invalid_for_country": "δεν ισχύει για %{country}",
+      "invalid_for_country_and_province": "δεν ισχύει για %{province} και %{country}",
+      "invalid_province_in_country": "δεν είναι έγκυρη επαρχία του %{country}",
+      "invalid_state_in_country": "δεν είναι έγκυρη κατάσταση του %{country}",
+      "invalid_region_in_country": "δεν είναι έγκυρη περιοχή από %{country}",
+      "less_than_or_equal_to": "πρέπει να είναι μικρότερο ή ίσο με %{count}",
+      "not_supported": "δεν γίνεται αποδεκτό",
+      "full_name_required": "Εισαγάγετε όνομα και επώνυμο",
+      "invalid_for_card_type": "δεν ισχύει",
+      "invalid_type": "Δυστυχώς, δεν δεχόμαστε κάρτες αυτού του τύπου",
+      "invalid_format": "η μορφή δεν είναι έγκυρη",
+      "expired": "έχει λήξει",
+      "invalid_start_date_or_issue_number_for_debit": "απαιτείται έγκυρη ημερομηνία έναρξης ή αριθμός έκδοσης",
+      "invalid_expiry_year": "δεν είναι έγκυρο έτος λήξης",
+      "reset_password_html": "Αυτή η διεύθυνση ηλεκτρονικού ταχυδρομείου έχει ήδη συσχετιστεί με έναν λογαριασμό. Εάν αυτός ο λογαριασμός είναι δικός σας, μπορείτε <a href=\"/account/login#recover\">επαναφέρετε τον κωδικό πρόσβασής σας</a>",
+      "verify_email": "Έστειλα email στο %{customer_email}, κάντε κλικ στον σύνδεσμο που περιλαμβάνεται για να επαληθεύσετε τη διεύθυνση email σας.",
+      "blocked_address": "Αυτή η τοποθεσία δεν υποστηρίζεται",
+      "product_not_available": "το προϊόν δεν δημοσιεύεται για αυτόν τον πελάτη.",
+      "shop_404": {
+        "title": "Δημιουργήστε έναν ιστότοπο ηλεκτρονικού εμπορίου και πουλήστε online! Λογισμικό ηλεκτρονικού εμπορίου από το Shopify",
+        "heros": {
+          "store_unavailable": "Αυτό το κατάστημα δεν είναι διαθέσιμο προς το παρόν."
+        }
       }
     }
   },
