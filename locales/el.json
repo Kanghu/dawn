@@ -3810,8 +3810,9 @@
           "other": "Οι δωροκάρτες έχουν επιστραφεί"
         },
         "gift_resend_failure": {
-          "few": "Ένα πρόβλημα προέκυψε κατά την εκ νέου υποβολή καρτών δώρων. Δοκιμάστε ξανά ή επικοινωνήστε μαζί μας.",
-          "one": "Παρουσιάστηκε πρόβλημα με την εκ νέου αποστολή της δωροκάρτας. Δοκιμάστε ξανά ή επικοινωνήστε μαζί μας."
+          "few": "Παρουσιάστηκε πρόβλημα με την εκ νέου αποστολή δωροκαρτών. Δοκιμάστε ξανά ή επικοινωνήστε μαζί μας.",
+          "one": "Παρουσιάστηκε πρόβλημα με την εκ νέου αποστολή της δωροκάρτας. Δοκιμάστε ξανά ή επικοινωνήστε μαζί μας.",
+          "other": "Παρουσιάστηκε πρόβλημα με την εκ νέου αποστολή δωροκαρτών. Δοκιμάστε ξανά ή επικοινωνήστε μαζί μας."
         },
         "delivered_description_digital": {
           "few": "Αυτά τα στοιχεία έχουν ολοκληρωθεί."
@@ -3851,7 +3852,77 @@
         "confirmed_description_digital": "Θα λάβετε ένα email όταν η παραγγελία σας είναι έτοιμη.",
         "ready_for_pickup_location": "Η παραγγελία σας είναι έτοιμη για παραλαβή",
         "confirmed_description_pickup": "Ετοιμάζουμε αυτά τα είδη για παραλαβή.",
-        "confirmed_description_gift_card_text": "Θα λάβετε ένα μήνυμα κειμένου όταν η παραγγελία σας είναι έτοιμη."
+        "confirmed_description_gift_card_text": "Θα λάβετε ένα μήνυμα κειμένου όταν η παραγγελία σας είναι έτοιμη.",
+        "amazon_buy_with_prime": {
+          "order_tracking_link": {
+            "text": "Διαχειριστείτε με το Amazon",
+            "new_window_disclaimer": "(ανοίγει νέο παράθυρο)"
+          }
+        },
+        "attempted_to_deliver_label": "Επιχειρήθηκε η παράδοση",
+        "there_was_a_problem_label": "Παρουσιάστηκε πρόβλημα",
+        "buy_with_prime_logo_accessibility_label": "Amazon Buy with Prime logo",
+        "delivered": "Παραδόθηκε στις {{date}}",
+        "complete_label": "Ολοκληρώθηκε",
+        "multiple_statuses_label": "Καταστάσεις για πολλαπλές παραγγελίες",
+        "status_timestamp": "Ημερομηνία ενημέρωσης: {{date}}",
+        "delivery_promise": {
+          "claim_shop_cash_cta": {
+            "no_shop_app_label": "{{appDownloadLink}} για να διεκδικήσετε Μετρητά Κατάστημα",
+            "has_shop_app_label": "Απαίτηση Κατάστημα Μετρητά",
+            "download_shop_app_label": "Λήψη Κατάστημα"
+          },
+          "promise_line": {
+            "single_brand_label": "Η παράδοση υποστηρίζεται από",
+            "mixed_brands_label": "Εγγυημένη παράδοση",
+            "not_delivered_by_label": "Δεν παραδόθηκε από {{date}}",
+            "modal_accessibility_button_label": "Λεπτομέρειες της υπόσχεσης παράδοσης"
+          },
+          "details_modal": {
+            "title": "Η παράδοση υποστηρίζεται από",
+            "modal_accessiblity_label": "Λεπτομέρειες της υπόσχεσης παράδοσης",
+            "delivery_by_label": "Παράδοση από {{date}}",
+            "delivery_guaranteed_by_label": "Εγγυημένη παράδοση από {{date}}",
+            "shop_cash_claim": {
+              "may_be_eligible_label": "Το Shop Promise εγγυάται γρήγορη και αξιόπιστη παράδοση. Ζητήστε μετρητά Αγορά εάν η παραγγελία σας φτάσει αργά.",
+              "may_be_eligible_not_authorized_label": "Ενδέχεται να πληροίτε τις προϋποθέσεις για να διεκδικήσετε το Shop Cash καθώς αυτή η παραγγελία έφτασε καθυστερημένα. Συνδεθείτε για να δείτε λεπτομέρειες.",
+              "redeemed_label": "Έχετε ήδη διεκδικήσει το Shop Cash επειδή αυτή η παραγγελία έφτασε καθυστερημένα.",
+              "expired_label": "Αυτή η παραγγελία δεν είναι επιλέξιμη για αξίωση καθυστερημένης παράδοσης, καθώς η εγγύηση των 30 ημερών έχει λήξει.",
+              "no_shop_cash_label": "Αυτή η παραγγελία δεν είναι κατάλληλη για αξίωση καθυστερημένης παράδοσης, καθώς δεν πληρώθηκε με Shop Pay.",
+              "no_longer_guaranteed_label": "Αυτά τα είδη δεν υποστηρίζονται πλέον από εγγύηση παράδοσης.",
+              "claim_shop_cash_title": "Σάρωση για αξίωση {{amount}} στο Κατάστημα Μετρητά",
+              "claim_shop_cash_description": "Μπορείτε να χρησιμοποιήσετε το Shop Cash για μελλοντικές αγορές στην εφαρμογή Shop."
+            },
+            "delivery_guarantee_label": "Εγγυημένη παράδοση"
+          }
+        },
+        "external_promise_manage_button_label": {
+          "buy_with_prime": "Διαχείριση στο Amazon"
+        },
+        "delivery_promise_v2": {
+          "promise_line": {
+            "shop_promise_brand_label": "Εγγυημένη παράδοση από",
+            "external_promise_brand_label": "Παράδοση από",
+            "not_delivered_by_label": "Παραδόθηκε μετά {{date}}",
+            "delivery_guarantee_expired_label": "Η εγγύηση παράδοσης έχει λήξει",
+            "modal_accessibility_button_label": "Λεπτομέρειες της υπόσχεσης παράδοσης",
+            "download_shop_app_button_label": "Κατεβάστε το Shop για να ακολουθήσετε",
+            "track_with_shop_button_label": "Ακολουθήστε με το Shop",
+            "claim_shop_cash_button_label": "Απαίτηση Κατάστημα Μετρητά"
+          },
+          "details_modal": {
+            "title": "Εγγύηση παράδοσης",
+            "active_delivery_guarantee_label": "Παράδοση από {{date}}",
+            "expired_delivery_guarantee_description": "Η εγγύηση 30 ημερών του Shop Promise για αυτήν την παραγγελία έχει λήξει.",
+            "expired_badge_label": "Λήξη",
+            "order_includes_guarantees_label": "Η παραγγελία σας περιλαμβάνει εγγυήσεις {{deliveryAgreementsCount}}",
+            "order_includes_guarantees_description": "Το Shop Promise εγγυάται γρήγορη και αξιόπιστη παράδοση. Ζητήστε μετρητά από το κατάστημα εάν η παραγγελία σας φτάσει μετά {{date}}.",
+            "delivered_after_label": "Παραδόθηκε μετά {{date}}",
+            "delivered_after_description": "Επειδή η παραγγελία έφτασε αργά, μπορείτε να διεκδικήσετε {{amount}} Αγορά μετρητά.",
+            "claimed_shop_cash_description": "Επειδή αυτή η παραγγελία έφτασε καθυστερημένα, τη διεκδίκησες {{amount}} Αγορά μετρητά.",
+            "eligible_to_claim_shop_cash_description": "Επειδή η παραγγελία έφτασε αργά, μπορείτε να διεκδικήσετε {{amount}} Αγορά μετρητά."
+          }
+        }
       },
       "list_layout_accessibility_label": "Επιλογές εμφάνισης",
       "list_title": "Παραγγελίες"
