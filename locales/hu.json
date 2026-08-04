@@ -4227,6 +4227,12 @@
       "order_list": {
         "items": {
           "few": "{{count}} áru"
+        },
+        "column_headers": {
+          "total": "Teljesen",
+          "order": "Rendeljen",
+          "actions_accessibility_label": "Akciók",
+          "products_accessibility_label": "Termékek"
         }
       },
       "order_status": {
@@ -4260,7 +4266,9 @@
         "gift_card_resend_button": {
           "few": "Küldjön újra ajándékkártyákat"
         }
-      }
+      },
+      "list_layout_accessibility_label": "Megjelenési lehetőségek",
+      "list_title": "Megrendelések"
     },
     "order_details": {
       "image_gallery": {
@@ -4450,7 +4458,69 @@
         "save_accessibility_label": "Profil mentése",
         "title": "Profil",
         "no_name_provided_accessibility_label": "Nincs hozzáadva név",
-        "email": "E-mail"
+        "email": "E-mail",
+        "errors": {
+          "name_too_long": "A mező neve {{fieldName}} túl hosszú (maximum 255 karakter)",
+          "name_cannot_contain_url": "A mező {{fieldName}} nem tartalmazhat URL-t",
+          "name_cannot_contain_html_tags": "A mező {{fieldName}} nem tartalmazhat HTML címkéket",
+          "email_cant_be_blank": "Az e-mail cím közlése kötelező",
+          "invalid_email_format": "Kérjük, írjon be egy érvényes e-mail címet"
+        },
+        "editable_email_help_text": "Használja ezt az e-mail címet a bejelentkezéshez és a rendelések frissítéséhez."
+      },
+      "profile_update_confirmation_message": "Frissített profil",
+      "title": "Profil",
+      "people": {
+        "pagination": {
+          "load_more": "Mutass többet",
+          "load_more_accessibility_label": "Mutasson több embert",
+          "loading_accessibility_label": "Emberek betöltése"
+        }
+      },
+      "add_button": "Hozzáadás",
+      "verify_new_email_modal": {
+        "title": "Ellenőrizze az új e-mailt",
+        "description": "Most írja be az új e-mail címére küldött hatjegyű kódot:",
+        "one_time_password_label": "6 számjegyű kód",
+        "email_resend_button": "Küldje el újra a kódot",
+        "email_resend_button_accessibility_label": "Küldje el újra az ellenőrző kódot",
+        "verify_button": "Nézd meg",
+        "verify_button_accessibility_label": "Ellenőrizze egyedi jelszavát",
+        "cancel_button": "Mégsem",
+        "cancel_button_accessibility_label": "Profilszerkesztés megszakítása",
+        "email_resend_button_success_toast_message": "Az ellenőrző kód elküldve",
+        "email_resend_button_failure_banner_message": "Nem sikerült elküldeni az ellenőrző kódot"
+      },
+      "email_update_success_modal": {
+        "title": "Ellenőrizze az e-mailjét",
+        "description": "Az e-mail sikeresen frissítve. Átirányítja a bejelentkezéshez."
+      },
+      "email_update_confirmation_message": "Az e-mail cím frissítve lett {{email}}",
+      "verify_current_email_modal": {
+        "cancel_button": "Mégsem",
+        "cancel_button_accessibility_label": "Profilszerkesztés megszakítása",
+        "description": "Írja be az eredeti e-mail címére küldött hatjegyű kódot:",
+        "email_resend_button_accessibility_label": "Küldje el újra az ellenőrző kódot",
+        "title": "Erősítsd meg, hogy te vagy az",
+        "verify_button": "Következő",
+        "verify_button_accessibility_label": "Ellenőrizze aktuális e-mailjét"
+      },
+      "marketing_preferences": {
+        "email_label": "E-mail",
+        "pending_confirmation": "Kattintson az e-mailben található linkre a megerősítéshez.",
+        "resend_email": "Küldje el újra az e-mailt",
+        "resend_email_success": "A link elküldve",
+        "title": "Marketingbeállítások",
+        "unsubscribe_confirmation": {
+          "cancel": "Mégsem",
+          "description": "A továbbiakban nem kap e-mail marketinget a következőtől {{shopName}}",
+          "title": "Leiratkozik az e-mailekről?",
+          "unsubscribe": "Leiratkozás"
+        },
+        "update_error": {
+          "description": "Hiba történt a marketingbeállítások frissítésekor. Próbálja meg frissíteni ezt az oldalt, vagy ellenőrizze az internetkapcsolatot."
+        },
+        "update_success": "Marketingbeállításai frissültek"
       }
     }
   },
