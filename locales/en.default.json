@@ -2315,49 +2315,103 @@
       "subscriptions": {
         "recurring_totals_with_policies": {
           "first_cycles": {
-            "few": "The first %{count} payments are %{total_price} each"
-          }
+            "few": "The first ones %{count} payments are of %{total_price} each one",
+            "one": "The first payment is %{total_price}",
+            "other": "The first ones %{count} payments are of %{total_price} each one"
+          },
+          "following_cycles": ", then you will pay %{total_price} to each %{interval}"
         },
         "recurring_total_intervals": {
           "day": {
-            "few": "%{count} days"
+            "few": "%{count} days",
+            "one": "day",
+            "other": "%{count} days"
           },
           "week": {
-            "few": "%{count} weeks"
+            "few": "%{count} weeks",
+            "one": "week",
+            "other": "%{count} weeks"
           },
           "month": {
-            "few": "%{count} months"
+            "few": "%{count} months",
+            "one": "month",
+            "other": "%{count} months"
           },
           "year": {
-            "few": "%{count} years"
+            "few": "%{count} years",
+            "one": "year",
+            "other": "%{count} years"
           }
         },
         "recurring_totals_with_initial_order_shipping_discount_with_policies": {
           "first_cycles": {
-            "few": ", then there will be %{count} payments of %{total_price}"
+            "few": ", then they will be %{count} payments of how much %{total_price}",
+            "one": ", then it will be %{count} payment of %{total_price}",
+            "other": ", then they will be %{count} payments of how much %{total_price}"
           }
-        }
+        },
+        "recurring_totals": "%{total_price} to each %{interval}",
+        "recurring_totals_with_initial_order_shipping_discount": "The first payment is %{total_price_with_discount}, then %{recurring_total}"
       },
       "contextual_availability": {
         "title": {
-          "few": "Unavailable products"
+          "few": "Unavailable products",
+          "one": "Product unavailable",
+          "other": "Unavailable products"
         },
         "products_not_available": {
-          "few": "These products will be removed from your cart because they are not available in your country/region."
+          "few": "These products will be removed from your cart because they are not available in your country/region.",
+          "one": "This product will be removed from your cart because it is not available in your country/region.",
+          "other": "These products will be removed from your cart because they are not available in your country/region."
         },
         "all_products_in_cart_unavailable": {
-          "few": "These products are not available in your country/region."
-        }
+          "few": "These products are not available in your country/region.",
+          "one": "This product is not available in your country/region.",
+          "other": "These products are not available in your country/region."
+        },
+        "unavailable_label": "Not available"
       },
       "throttle": {
         "estimated_wait_time": {
-          "few": "Estimated wait time: {{count}} minutes"
+          "few": "Estimated waiting time: {{count}} minutes",
+          "calculating": "Estimated waiting time is calculated",
+          "less_than_one": "Estimated wait time: under a minute",
+          "one": "Estimated waiting time: {{count}} minute",
+          "other": "Estimated waiting time: {{count}} minutes"
+        },
+        "line_to_check_out": "You are in line to complete your order",
+        "cart_summary_heading": "Your basket",
+        "merchandise": {
+          "sold_out": "Out of stock",
+          "available": "Available"
+        },
+        "inventory": {
+          "partial_inventory_banner": "Some items in your cart are out of stock and will not be available for purchase at checkout.",
+          "sold_out": {
+            "heading": "Cart is out of stock",
+            "storefront_body": "Return to the store to continue shopping",
+            "no_storefront_body": "Unfortunately, the item you want to buy is no longer available.",
+            "link": "Back to the store"
+          }
+        },
+        "title": "Tail",
+        "time_to_checkout_title": "Time to complete your order – {{shopName}}",
+        "last_checked": "(Last check at: {{time}})",
+        "footer": {
+          "heading": "Do not refresh this page, it will update automatically.",
+          "body": "Items in your cart will not be reserved until you complete your order."
+        },
+        "too_many_attempts": {
+          "message": "Too many attempts",
+          "description": "Please try again in a few minutes"
         }
       },
       "deliverability": {
         "not_deliverable": {
           "title": {
-            "few": "No shipping method available for %{count} items"
+            "few": "No delivery method available for %{count} (of) articles",
+            "one": "No delivery method available for %{count} article",
+            "other": "No delivery method available for %{count} (of) articles"
           },
           "message": {
             "few": "These items will be removed from your cart because there are no shipping methods available for your address."
@@ -2810,8 +2864,69 @@
           "tax_credential_co": "Cédula/VAT",
           "tax_credential_type_co": "Cédula type",
           "shipping_credential_co": "Cédula/VAT",
-          "shipping_credential_type_co": "Cédula type"
+          "shipping_credential_type_co": "Cédula type",
+          "tax_credential_cr": "Identification Number/RUT",
+          "shipping_credential_cr": "Identification Number/RUT",
+          "tax_credential_ec": "CI/RUC/VAT",
+          "shipping_credential_ec": "CI/RUC/VAT",
+          "tax_credential_gt": "NIT/VAT",
+          "shipping_credential_gt": "NIT/VAT",
+          "tax_credential_id": "NPWP",
+          "shipping_credential_id": "NPWP",
+          "tax_credential_my": "TIN/Registration Number",
+          "shipping_credential_my": "TIN/Registration Number",
+          "shipping_credential_mx": "RFC",
+          "tax_credential_mx": "RFC",
+          "tax_credential_type_mx": "Fiscal Regime",
+          "tax_credential_use_mx": "Uso de CFDI",
+          "tax_credential_py": "CI/RUC/VAT",
+          "shipping_credential_py": "CI/RUC/VAT",
+          "tax_credential_pe": "DNI/RUC/CE",
+          "shipping_credential_pe": "DNI/RUC/CE",
+          "tax_credential_pt": "TIN/VAT",
+          "shipping_credential_pt": "TIN/VAT",
+          "tax_credential_es": "DNI/TIN",
+          "shipping_credential_es": "DNI/TIN",
+          "shipping_credential_tw": "National identification number/Tax code",
+          "tax_credential_tr": "Türkiye Cumhuriyeti Kimlik Numarası/KDV",
+          "shipping_credential_tr": "Türkiye Cumhuriyeti Kimlik Numarası/KDV"
         }
+      },
+      "post_purchase": {
+        "page_title": "After purchase",
+        "title": "After purchase",
+        "escape_confirmation": "You have paid for the order.",
+        "escape_action": "View order information ›",
+        "components": {
+          "close": "Close",
+          "expand": "See more",
+          "processing": "Processing...",
+          "submit": "Send"
+        }
+      },
+      "change_country": {
+        "cart_updated_based_on_country": "Your cart has been updated based on your shipping country.",
+        "cart_and_currency_updated_based_on_country": "Cart and currency updated based on shipping country.",
+        "currency_updated_for_country": "Updated currency for %{country}"
+      },
+      "customer_payment_methods": {
+        "page_title": "Payment methods",
+        "title": "Payment methods",
+        "update_card_button_label": "Update the card",
+        "delete_customer_mandate": {
+          "generic_error": "There was a problem processing your request.",
+          "success_message": "Your payment method has been successfully deleted"
+        }
+      },
+      "mor_policies": {
+        "terms_and_conditions": "Registered Merchant Terms and Conditions",
+        "privacy_policy": "Registered Merchant Privacy Policy"
+      },
+      "change_cart_localization": {
+        "verify_shipping_address": "Your country/region has been updated. Enter your shipping address to continue checkout."
+      },
+      "cart_checkout_validation": {
+        "runtime_error": "There was a problem processing your request. Contact the store owner."
       }
     },
     "notices": {
