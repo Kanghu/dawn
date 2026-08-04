@@ -11,19 +11,19 @@
   "general": {
     "password_page": {
       "login_form_heading": "Accedi al negozio utilizzando la password:",
-      "login_password_button": "Accedi utilizzando la password",
-      "login_form_password_label": "Password",
-      "login_form_password_placeholder": "La tua password",
+      "login_password_button": "Accedi utilizzando la tua password",
+      "login_form_password_label": "Parola d'ordine",
+      "login_form_password_placeholder": "la tua password",
       "login_form_error": "Password errata!",
-      "login_form_submit": "Accedi",
+      "login_form_submit": "Accesso",
       "admin_link_html": "Sei il proprietario del negozio? <a href=\"/admin\" class=\"link underlined-link\">Accedi qui</a>",
-      "powered_by_shopify_html": "Questo negozio sarà ospitato su {{ shopify }}"
+      "powered_by_shopify_html": "Questo negozio sarà sulla piattaforma {{ shopify }}"
     },
     "social": {
       "alt_text": {
         "share_on_facebook": "Condividi su Facebook",
         "share_on_twitter": "Condividi su X",
-        "share_on_pinterest": "Aggiungi un pin su Pinterest"
+        "share_on_pinterest": "Pubblica un Pin su Pinterest"
       },
       "links": {
         "twitter": "X (Twitter)",
@@ -37,33 +37,33 @@
         "tiktok": "TikTok"
       }
     },
-    "continue_shopping": "Continua lo shopping",
+    "continue_shopping": "Continua a fare acquisti",
     "pagination": {
-      "label": "Impaginazione",
-      "page": "Pagina {{ number }}",
+      "label": "Cercapersone",
+      "page": "La pagina {{ number }}",
       "next": "Pagina successiva",
       "previous": "Pagina precedente"
     },
     "search": {
-      "search": "Cerca",
-      "reset": "Cancella termine ricerca"
+      "search": "Cerca il prodotto desiderato",
+      "reset": "Cancella il termine di ricerca"
     },
     "cart": {
       "view": "Visualizza carrello ({{ count }})",
-      "item_added": "Articolo aggiunto al carrello",
-      "view_empty_cart": "Visualizza carrello"
+      "item_added": "L'articolo è stato aggiunto al carrello",
+      "view_empty_cart": "Visualizza il carrello"
     },
     "share": {
-      "copy_to_clipboard": "Copia link",
+      "copy_to_clipboard": "Copia il collegamento",
       "share_url": "Link",
-      "success_message": "Link copiato negli appunti",
-      "close": "Chiudi condivisione"
+      "success_message": "Il collegamento è stato copiato negli appunti",
+      "close": "Condivisione ravvicinata"
     },
     "slider": {
-      "of": "su",
+      "of": "da",
       "next_slide": "Scorri verso destra",
       "previous_slide": "Scorri verso sinistra",
-      "name": "Cursore"
+      "name": "Dispositivo di scorrimento"
     },
     "back": "Indietro"
   },
@@ -723,75 +723,151 @@
     "checkout": {
       "shipping": {
         "estimated_delivery_date": {
-          "few": "%{count} Giorni di lavoro"
+          "few": "%{count} giorni lavorativi",
+          "one": "%{count} giornata lavorativa",
+          "other": "%{count} giorni lavorativi"
         },
         "other_method": {
-          "few": "%{count} Altri metodi sono disponibili a partire da"
+          "few": "%{count} sono disponibili altri metodi da",
+          "zero": "Non sono disponibili altri metodi",
+          "one": "%{count} un altro metodo è disponibile all'indirizzo",
+          "other": "%{count} sono disponibili altri metodi da"
         },
         "subscription_delivery_description": {
           "prepaid_delivery_frequency": {
-            "few": "per %{count} consegna"
+            "few": "per %{count} consegne",
+            "one": "per %{count} consegna",
+            "other": "per %{count} consegne"
           },
           "subscription_delivery_frequency": {
             "day": {
-              "few": "a ciascuno %{count} giorni"
+              "few": "a ciascuno %{count} giorni",
+              "one": "ogni giorno",
+              "other": "a ciascuno %{count} giorni"
             },
             "week": {
-              "few": "a ciascuno %{count} settimanale"
+              "few": "a ciascuno %{count} settimane",
+              "one": "ogni settimana",
+              "other": "a ciascuno %{count} settimane"
             },
             "month": {
-              "few": "a ciascuno %{count} Lunedi"
+              "few": "a ciascuno %{count} mesi",
+              "one": "ogni mese",
+              "other": "a ciascuno %{count} mesi"
             },
             "year": {
-              "few": "a ciascuno %{count} anni"
+              "few": "a ciascuno %{count} anni",
+              "one": "ogni anno",
+              "other": "a ciascuno %{count} anni"
             }
           },
           "first_n_order_free": {
-            "few": "Il primo %{count} Ordini gratuiti"
+            "few": "I primi %{count} ordini gratuiti",
+            "one": "Primo ordine gratuito",
+            "other": "I primi %{count} ordini gratuiti"
           },
           "free_for_first_n_order": {
-            "few": "Per il primo %{count} ordini"
+            "few": "Per i primi %{count} ordini",
+            "one": "Per il primo ordine",
+            "other": "Per i primi %{count} ordini"
           },
           "free_shipping_cycles": {
-            "few": "Spedizione gratuita per ancora %{count} consegna"
+            "few": "Spedizione gratuita per ancora %{count} consegne",
+            "one": "Spedizione gratuita per ancora %{count} consegna",
+            "other": "Spedizione gratuita per ancora %{count} consegne"
           },
           "free_shipping_cycles_delivery_not_included": {
-            "few": "Spedizione gratuita per %{count} consegna"
+            "few": "Spedizione gratuita per %{count} consegne",
+            "one": "Spedizione gratuita per %{count} consegna",
+            "other": "Spedizione gratuita per %{count} consegne"
           },
           "first_n_order_free_with_cycle": {
-            "few": "Spedizione gratuita per ancora %{count} consegne, quindi %{recurring_order_shipping_price}"
+            "few": "Spedizione gratuita per ancora %{count} le consegne, quindi %{recurring_order_shipping_price}",
+            "one": "Spedizione gratuita per ancora %{count} consegna quindi %{recurring_order_shipping_price}",
+            "other": "Spedizione gratuita per ancora %{count} le consegne, quindi %{recurring_order_shipping_price}"
           },
           "first_n_order_free_with_cycle_delivery_not_included": {
-            "few": "Spedizione gratuita per %{count} consegne, quindi %{recurring_order_shipping_price}"
+            "few": "Spedizione gratuita per %{count} le consegne, quindi %{recurring_order_shipping_price}",
+            "one": "Spedizione gratuita per %{count} consegna quindi %{recurring_order_shipping_price}",
+            "other": "Spedizione gratuita per %{count} le consegne, quindi %{recurring_order_shipping_price}"
           },
           "max_cycles_base_shipping": {
-            "few": "Ancora %{count} consegne al prezzo di %{shipping_price} ogni"
+            "few": "Ancora %{count} consegne al prezzo di %{shipping_price} ciascuno",
+            "one": "Ancora %{count} consegna al prezzo di %{shipping_price}",
+            "other": "Ancora %{count} consegne al prezzo di %{shipping_price} ciascuno"
           },
           "max_cycles_base_shipping_delivery_not_included": {
-            "few": "Ancora %{count} consegne al prezzo di %{shipping_price} ogni"
+            "few": "Ancora %{count} consegne al prezzo di %{shipping_price} ciascuno",
+            "one": "%{count} consegna al prezzo di %{shipping_price}",
+            "other": "Ancora %{count} consegne al prezzo di %{shipping_price} ciascuno"
           },
           "prepaid_free_shipping_with_cycles": {
-            "few": "Spedizione gratuita per la prima %{cycle}, dopo di che %{recurring_order_shipping_price}"
+            "few": "Spedizione gratuita per i primi %{cycle}, dopo di che %{recurring_order_shipping_price}",
+            "one": "Spedizione gratuita per il tuo primo %{cycle}, dopo di che %{recurring_order_shipping_price}",
+            "other": "Spedizione gratuita per i primi %{cycle}, dopo di che %{recurring_order_shipping_price}"
           },
           "prepaid_order_one_cycle": {
-            "few": "%{shipping_price} per ancora %{count} consegne (%{per_delivery_cost})"
+            "few": "%{shipping_price} per ancora %{count} consegne (%{per_delivery_cost})",
+            "one": "%{shipping_price} per ancora %{count} consegna",
+            "other": "%{shipping_price} per ancora %{count} consegne (%{per_delivery_cost})"
           },
           "prepaid_order_one_cycle_delivery_not_included": {
-            "few": "%{shipping_price} per %{count} consegne (%{per_delivery_cost})"
+            "few": "%{shipping_price} per %{count} consegne (%{per_delivery_cost})",
+            "one": "%{shipping_price} per %{count} consegna",
+            "other": "%{shipping_price} per %{count} consegne (%{per_delivery_cost})"
           },
           "prepaid_order_no_cycle": {
-            "few": "%{shipping_price} per ancora %{count} consegna (%{per_delivery_cost}), dopo di che %{recurring_order_shipping_price}"
+            "few": "%{shipping_price} per ancora %{count} consegna (%{per_delivery_cost}), dopo di che %{recurring_order_shipping_price}",
+            "one": "%{shipping_price} per ancora %{count} consegna, dopo di che %{recurring_order_shipping_price}",
+            "other": "%{shipping_price} per ancora %{count} consegna (%{per_delivery_cost}), dopo di che %{recurring_order_shipping_price}"
           },
           "prepaid_order_no_cycle_delivery_not_included": {
-            "few": "%{shipping_price} per %{count} consegne (%{per_delivery_cost}), dopo di che %{recurring_order_shipping_price}"
-          }
+            "few": "%{shipping_price} per %{count} consegne (%{per_delivery_cost}), dopo di che %{recurring_order_shipping_price}",
+            "one": "%{shipping_price} per %{count} consegna, dopo di che %{recurring_order_shipping_price}",
+            "other": "%{shipping_price} per %{count} consegne (%{per_delivery_cost}), dopo di che %{recurring_order_shipping_price}"
+          },
+          "multiple_subscriptions_shipping_price_label": "%{shipping_price} per ogni consegna",
+          "prepaid_shipping_price_label": "%{shipping_price} per ogni consegna x %{delivery_interval_count}",
+          "initial_order_discounted": "Il costo della prima spedizione è %{discounted_shipping_cost}, quindi %{frequency_description}",
+          "prepaid_initial_order_discounted": "Il costo della prima spedizione è %{discounted_shipping_price} %{prepaid_delivery_frequency}",
+          "prepaid_initial_order_discounted_with_per_delivery_price": "Il costo della prima spedizione è %{discounted_shipping_price} %{prepaid_delivery_frequency} (%{discounted_cost_per_delivery})",
+          "prepaid_initial_order_discounted_with_renewal": "Il costo della prima spedizione è %{discounted_shipping_price} %{prepaid_delivery_frequency}, quindi %{shipping_price} %{billing_cycle}",
+          "prepaid_initial_order_discounted_with_per_delivery_price_and_renewal": "Il costo della prima spedizione è %{discounted_shipping_price} %{prepaid_delivery_frequency} (%{discounted_cost_per_delivery}), quindi %{shipping_price} %{billing_cycle}",
+          "shipping_price_included": "Incluso",
+          "recurring_order_shipping_price": "seguito da %{recurring_order_shipping_price}",
+          "first_order_shipping_price_included": "Viene incluso il primo comando, seguito da %{recurring_order_shipping_price}",
+          "first_order_different_shipping_price": "%{first_order_shipping_price} (%{per_delivery_price} per consegna), seguito da %{recurring_order_shipping_price}",
+          "subscription_free_with_frequency_label": "Spedizione gratuita %{delivery_frequency}"
         },
         "shipping_method_first_shipment_group_title": {
           "few": "Prime spedizioni"
         },
         "shipping_method_recurring_shipments_group_title": {
           "few": "Spedizioni ricorrenti"
-        }
+        },
+        "title": "Trasporti",
+        "shipping_method_title": "Metodo di spedizione",
+        "waiting_on_rate_notice": "Ottenere i prezzi di spedizione disponibili…",
+        "waiting_on_pickup_location_notice": "Come ottenere i luoghi di ritiro disponibili...",
+        "no_rates_for_cart_or_destination_notice": "Non è disponibile alcun metodo di spedizione per il tuo carrello o indirizzo",
+        "no_pickup_location_notice": "Almeno uno dei tuoi prodotti non è disponibile per il ritiro",
+        "no_rates_for_country_notice": "Nessuna tariffa di spedizione trovata per questo indirizzo.",
+        "no_rates_contact_notice": "Contattaci per ulteriori informazioni",
+        "free_rate_label": "Gratuito",
+        "cheapest_rate_label": "Il più economico",
+        "estimated_delivery_date_range": "Tra %{minimum} e %{maximum} giorni lavorativi",
+        "shipping_line_phone_label": "Numero di cellulare (richiesto)",
+        "shipping_line_phone": "Il corriere potrà utilizzare questo numero per contattarti.",
+        "shipping_rate_discounted_amount": "Era: %{original_amount}. Ora: %{amount}",
+        "optional_shipping_line_delivery_instructions_label": "Istruzioni per la consegna (facoltative)",
+        "shipping_line_delivery_phone": "Potresti essere contattato per fornire aggiornamenti sulla consegna.",
+        "shipping_line_delivery_phone_label": "Numero di cellulare",
+        "shipping_line_delivery_instructions": "Inserisci le informazioni richieste come codici citofono o istruzioni di consegna.",
+        "local_delivery": "Consegna locale",
+        "subscription_shipping": "Spedizione basata su abbonamento",
+        "shipping_method_one_time_purchase_group_title": "Acquisto una tantum",
+        "shipping_method_subscription_group_title": "Abbonamento",
+        "one_time_purchase_shipping": "Spedizione unica"
       },
       "general": {
         "map": {
@@ -1073,6 +1149,11 @@
       "search_results": {
         "few": "Cerca: sono stati trovati %{count} Risultati per \"%{terms}”"
       }
+    },
+    "sentence": {
+      "words_connector": ", ",
+      "two_words_connector": " e ",
+      "last_word_connector": " e "
     }
   },
   "customer_accounts": {
