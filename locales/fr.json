@@ -2078,22 +2078,34 @@
           "other": "achète aussi ces produits"
         },
         "gift_card_confirmation_by_text_typ": {
-          "few": "Vous recevrez un SMS avec les cartes-cadeaux en quelques minutes."
+          "few": "Vous recevrez un SMS avec les cartes cadeaux dans quelques minutes.",
+          "one": "Vous recevrez un SMS avec la carte cadeau dans quelques minutes.",
+          "other": "Vous recevrez un SMS avec les cartes cadeaux dans quelques minutes."
         },
         "gift_card_confirmation_by_email_typ": {
-          "few": "Vous recevrez un e-mail avec les cartes-cadeaux en quelques minutes."
+          "few": "Vous recevrez un e-mail avec les cartes cadeaux dans quelques minutes.",
+          "one": "Vous recevrez un e-mail avec la carte cadeau dans quelques minutes.",
+          "other": "Vous recevrez un e-mail avec les cartes cadeaux dans quelques minutes."
         },
         "gift_card_email_title": {
-          "few": "Les cartes-cadeaux ont été envoyées par e-mail"
+          "few": "Les cartes cadeaux ont été envoyées par email",
+          "one": "La carte cadeau a été envoyée par email",
+          "other": "Les cartes cadeaux ont été envoyées par email"
         },
         "gift_card_text_title": {
-          "few": "Les cartes-cadeaux ont été envoyées par e-mail"
+          "few": "Les cartes cadeaux ont été envoyées par email",
+          "one": "La carte cadeau a été envoyée par SMS",
+          "other": "Les cartes cadeaux ont été envoyées par email"
         },
         "gift_card_resent_confirmation": {
-          "few": "Les cartes Cadiu ont été soumises."
+          "few": "Les cartes cadeaux ont été renvoyées.",
+          "one": "La carte cadeau a été renvoyée.",
+          "other": "Les cartes cadeaux ont été renvoyées."
         },
         "gift_card_resend_failure": {
-          "few": "Un problème s'est posé lors de la soumission de cartes-cadeaux. Réessayez ou contactez-nous."
+          "few": "Un problème est survenu lors du renvoi des cartes cadeaux. Réessayez ou contactez-nous.",
+          "one": "Un problème est survenu lors du renvoi de la carte cadeau. Réessayez ou contactez-nous.",
+          "other": "Un problème est survenu lors du renvoi des cartes cadeaux. Réessayez ou contactez-nous."
         },
         "thank_you_unconfirmed_items_heading": {
           "few": "Certains éléments ne sont pas confirmés"
@@ -2266,7 +2278,41 @@
           "text_html": "%{contact_us} pour ajouter l'adresse",
           "contact_us": "Contactez-nous"
         },
-        "order_status_confirmed_with_installments_payment_return": "Reportez votre attention sur le vendeur."
+        "order_status_confirmed_with_installments_payment_return": "Reportez votre attention sur le vendeur.",
+        "order_status_confirmed_with_installments_payment_confirm": "Vous recevrez sous peu un e-mail de confirmation avec le numéro de commande et les détails du calendrier de versement.",
+        "first_payment_complete": "Le premier paiement est terminé",
+        "in_store_purchase": "Achats en magasin",
+        "choose_payment_method_later": "Choisissez votre mode de paiement plus tard",
+        "purchase_order_number_title": "Numéro de bon de commande : %{purchase_order_number}",
+        "thank_you_ready_for_picked_up": "Votre commande a été récupérée à l'adresse %{address}.",
+        "ready_for_delivery": "Prêt pour la livraison",
+        "order_updates_subscribe_to_email_notifications_failed": "Nous ne pouvons pas stocker cette adresse e-mail pour les mises à jour. Veuillez réessayer ou utiliser une autre adresse e-mail.",
+        "order_updates_subscribe_to_email_notifications_email_already_exists": "L'adresse e-mail que vous avez saisie existe déjà.",
+        "subscriptions_management": {
+          "title": "Abonnement",
+          "description": "Continuez avec votre compte pour afficher et gérer vos abonnements.",
+          "button_label": "Gérez votre abonnement"
+        },
+        "manage_order_label": "Gérer votre commande",
+        "resend_gift_cards_by_email": "Je veux renvoyer l'e-mail",
+        "resend_gift_cards_by_text": "Je veux renvoyer le SMS",
+        "failed_pending_payment_page_title": "Il y a un problème avec votre paiement",
+        "thank_you_title_payments_app_pending_default": "Votre paiement est en cours de traitement",
+        "thank_you_title_payments_app_pending_buyer_action_required": "Votre commande a été reçue",
+        "thank_you_title_payments_app_failed_pending_payment": "Votre paiement n'a pas pu être traité",
+        "thank_you_payments_app_failed_pending_payment": "Votre commande n'a pas été facturée. Retournez au panier pour vérifier la commande et effectuer à nouveau le paiement.",
+        "order_status_payments_app_pending_payment_description_default_with_email_and_phone": "Vous recevrez un e-mail de confirmation sous peu. Suivez votre commande à l'aide de l'application Shop.",
+        "order_status_payments_app_pending_payment_description_default_with_email": "Vous recevrez un e-mail de confirmation sous peu. Suivez votre commande à l'aide de l'application Shop.",
+        "order_status_payments_app_pending_payment_description_default_with_phone": "Vous recevrez sous peu un SMS de confirmation. Suivez votre commande à l'aide de l'application Shop.",
+        "order_status_payments_app_pending_payment_description_buyer_action_required_with_email_and_phone": "Après avoir effectué le paiement, vous recevrez un e-mail de confirmation. Suivez votre commande à l'aide de l'application Shop.",
+        "order_status_payments_app_pending_payment_description_buyer_action_required_with_email": "Après avoir effectué le paiement, vous recevrez un e-mail de confirmation. Suivez votre commande à l'aide de l'application Shop.",
+        "order_status_payments_app_pending_payment_description_buyer_action_required_with_phone": "Après avoir effectué le paiement, vous recevrez un SMS de confirmation. Suivez votre commande à l'aide de l'application Shop.",
+        "order_status_payments_app_failed_pending_payment": "Votre commande n'a pas été facturée. Retournez au panier pour vérifier la commande et effectuer à nouveau le paiement.",
+        "order_status_payments_app_pending_payment_description_buyer_action_required_with_email_pick_up": "Après avoir effectué le paiement, vous recevrez un e-mail de confirmation. Suivez votre commande à l'aide de l'application Shop.",
+        "thank_you_confirmed_order_with_missing_payment": "Contactez-nous par email ou par téléphone pour recevoir une confirmation de commande.",
+        "thank_you_confirmed_order_with_missing_pick_up": "Contactez-nous par email ou par téléphone pour recevoir une confirmation de commande.",
+        "thank_you_confirmed_order_with_draft_payment": "Nous vous ferons savoir si nous avons besoin de plus d'informations ou lorsque votre commande sera confirmée.",
+        "thank_you_confirmed_order_with_draft_pick_up": "Nous vous ferons savoir si nous avons besoin de plus d'informations ou lorsque votre commande sera confirmée."
       },
       "order_payment_collection": {
         "changes_summary": {
