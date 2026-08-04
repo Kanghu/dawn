@@ -2146,22 +2146,34 @@
           "one": "vásárolja meg ezt a terméket is"
         },
         "gift_card_confirmation_by_text_typ": {
-          "few": "Néhány perc múlva szöveges üzenetet kap az ajándékkártyákkal."
+          "few": "Néhány percen belül SMS-t kapsz az ajándékkártyákkal együtt.",
+          "one": "Néhány percen belül SMS-t kapsz az ajándékutalványról.",
+          "other": "Néhány percen belül SMS-t kapsz az ajándékkártyákkal együtt."
         },
         "gift_card_confirmation_by_email_typ": {
-          "few": "Néhány perc múlva kap egy e -mailt az ajándékkártyákkal."
+          "few": "Néhány percen belül e-mailt kapsz az ajándékutalványokról.",
+          "one": "Néhány percen belül e-mailt kapsz az ajándékutalványról.",
+          "other": "Néhány percen belül e-mailt kapsz az ajándékutalványokról."
         },
         "gift_card_email_title": {
-          "few": "Az ajándékkártyákat e -mailben küldték el"
+          "few": "Az ajándékutalványokat e-mailben küldtük",
+          "one": "Az ajándékutalványt e-mailben küldtük el",
+          "other": "Az ajándékutalványokat e-mailben küldtük"
         },
         "gift_card_text_title": {
-          "few": "Az ajándékkártyákat e -mailben küldték el"
+          "few": "Az ajándékutalványokat e-mailben küldtük",
+          "one": "Az ajándékutalványt SMS-ben küldték el",
+          "other": "Az ajándékutalványokat e-mailben küldtük"
         },
         "gift_card_resent_confirmation": {
-          "few": "A CADIU kártyákat újból benyújtották."
+          "few": "Az ajándékutalványokat visszaküldtük.",
+          "one": "Az ajándékutalvány újraküldése megtörtént.",
+          "other": "Az ajándékutalványokat visszaküldtük."
         },
         "gift_card_resend_failure": {
-          "few": "Probléma merült fel, amikor ajándékkártyák újbóli benyújtása volt. Próbálja újra, vagy vegye fel velünk a kapcsolatot."
+          "few": "Hiba történt az ajándékutalványok újraküldésekor. Próbálja újra, vagy lépjen kapcsolatba velünk.",
+          "one": "Hiba történt az ajándékutalvány újraküldésekor. Próbálja újra, vagy lépjen kapcsolatba velünk.",
+          "other": "Hiba történt az ajándékutalványok újraküldésekor. Próbálja újra, vagy lépjen kapcsolatba velünk."
         },
         "thank_you_unconfirmed_items_heading": {
           "few": "Bizonyos tételeket nem erősítenek meg"
@@ -2296,7 +2308,41 @@
         "other_options": "Egyéb lehetőségek",
         "picked_up_title": "Megrendelését felvették",
         "picked_up_description_html": "Megrendelését átvették innen %{location_name} be %{date}.",
-        "shop_phone_description": "Szöveges üzenetet fog kapni a Shop alkalmazás linkjével, amely segít nyomon követni rendelését."
+        "shop_phone_description": "Szöveges üzenetet fog kapni a Shop alkalmazás linkjével, amely segít nyomon követni rendelését.",
+        "order_status_confirmed_with_installments_payment_confirm": "Hamarosan kap egy visszaigazoló e-mailt a rendelési számmal és a részletfizetési ütemezéssel",
+        "first_payment_complete": "Az első fizetés befejeződött",
+        "in_store_purchase": "Bolti vásárlások",
+        "choose_payment_method_later": "Később válassza ki a fizetési módot",
+        "purchase_order_number_title": "Megrendelés száma: %{purchase_order_number}",
+        "thank_you_ready_for_picked_up": "Megrendelését átvették a címen %{address}.",
+        "ready_for_delivery": "Szállításra kész",
+        "order_updates_subscribe_to_email_notifications_failed": "Ezt az e-mail címet nem tudjuk tárolni frissítések céljából. Kérjük, próbálja újra, vagy használjon másik e-mail címet.",
+        "order_updates_subscribe_to_email_notifications_email_already_exists": "A megadott e-mail cím már létezik.",
+        "subscriptions_management": {
+          "title": "Előfizetés",
+          "description": "Folytassa fiókjával az előfizetések megtekintéséhez és kezeléséhez.",
+          "button_label": "Kezelje előfizetését"
+        },
+        "manage_order_label": "Kezelje megrendelését",
+        "resend_gift_cards_by_email": "Szeretném újra elküldeni az e-mailt",
+        "resend_gift_cards_by_text": "Szeretném újra elküldeni a szöveges üzenetet",
+        "failed_pending_payment_page_title": "Probléma van a fizetéssel",
+        "thank_you_title_payments_app_pending_default": "Befizetése feldolgozás alatt áll",
+        "thank_you_title_payments_app_pending_buyer_action_required": "Megrendelése megérkezett",
+        "thank_you_title_payments_app_failed_pending_payment": "Befizetését nem tudtuk feldolgozni",
+        "thank_you_payments_app_failed_pending_payment": "Nem számítottunk fel díjat a rendeléséért. Térjen vissza a bevásárlókosárba a rendelés ellenőrzéséhez és a fizetés újbóli teljesítéséhez.",
+        "order_status_payments_app_pending_payment_description_default_with_email_and_phone": "Hamarosan kap egy megerősítő e-mailt. Kövesse nyomon rendelését a Shop alkalmazás segítségével.",
+        "order_status_payments_app_pending_payment_description_default_with_email": "Hamarosan kap egy megerősítő e-mailt. Kövesse nyomon rendelését a Shop alkalmazás segítségével.",
+        "order_status_payments_app_pending_payment_description_default_with_phone": "Hamarosan kap egy megerősítő szöveges üzenetet. Kövesse nyomon rendelését a Shop alkalmazás segítségével.",
+        "order_status_payments_app_pending_payment_description_buyer_action_required_with_email_and_phone": "A fizetés befejezése után visszaigazoló e-mailt kap. Kövesse nyomon rendelését a Shop alkalmazás segítségével.",
+        "order_status_payments_app_pending_payment_description_buyer_action_required_with_email": "A fizetés befejezése után visszaigazoló e-mailt kap. Kövesse nyomon rendelését a Shop alkalmazás segítségével.",
+        "order_status_payments_app_pending_payment_description_buyer_action_required_with_phone": "A fizetés befejezése után egy megerősítő szöveges üzenetet kap. Kövesse nyomon rendelését a Shop alkalmazás segítségével.",
+        "order_status_payments_app_failed_pending_payment": "Nem számítottunk fel díjat a rendeléséért. Térjen vissza a bevásárlókosárba a rendelés ellenőrzéséhez és a fizetés újbóli teljesítéséhez.",
+        "order_status_payments_app_pending_payment_description_buyer_action_required_with_email_pick_up": "A fizetés befejezése után visszaigazoló e-mailt kap. Kövesse nyomon rendelését a Shop alkalmazás segítségével.",
+        "thank_you_confirmed_order_with_missing_payment": "Vegye fel velünk a kapcsolatot e-mailben vagy telefonon, hogy megkapja a megrendelés visszaigazolását.",
+        "thank_you_confirmed_order_with_missing_pick_up": "Vegye fel velünk a kapcsolatot e-mailben vagy telefonon, hogy megkapja a megrendelés visszaigazolását.",
+        "thank_you_confirmed_order_with_draft_payment": "Értesíteni fogjuk, ha további információra van szükségünk, vagy ha megrendelését visszaigazoljuk.",
+        "thank_you_confirmed_order_with_draft_pick_up": "Értesíteni fogjuk, ha további információra van szükségünk, vagy ha megrendelését visszaigazoljuk."
       },
       "order_payment_collection": {
         "changes_summary": {
