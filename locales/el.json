@@ -1581,8 +1581,9 @@
       },
       "thank_you": {
         "login_reorder_link_text": {
-          "few": "αγοράστε επίσης αυτά τα προϊόντα",
-          "one": "αγοράστε και αυτό το προϊόν"
+          "few": "αγοράστε και αυτά τα προϊόντα",
+          "one": "αγοράστε και αυτό το προϊόν",
+          "other": "αγοράστε και αυτά τα προϊόντα"
         },
         "gift_card_confirmation_by_text_typ": {
           "few": "Θα λάβετε ένα μήνυμα κειμένου με τις κάρτες δώρων σε λίγα λεπτά."
@@ -1724,7 +1725,71 @@
         "other_options": "Άλλες επιλογές",
         "picked_up_title": "Η παραγγελία σας παραλήφθηκε",
         "picked_up_description_html": "Η παραγγελία σας παραλήφθηκε από %{location_name} επάνω %{date}.",
-        "shop_phone_description": "Θα λάβετε ένα μήνυμα κειμένου με έναν σύνδεσμο προς την εφαρμογή Shop, που θα σας βοηθήσει να παρακολουθείτε την παραγγελία σας."
+        "shop_phone_description": "Θα λάβετε ένα μήνυμα κειμένου με έναν σύνδεσμο προς την εφαρμογή Shop, που θα σας βοηθήσει να παρακολουθείτε την παραγγελία σας.",
+        "marker": {
+          "current": "Τρέχουσα τοποθεσία αποστολής",
+          "shipping": "Διεύθυνση αποστολής"
+        },
+        "pick_up_in_store_marker": {
+          "current": "Τρέχουσα τοποθεσία αποστολής",
+          "shipping": "Τοποθεσία παραλαβής"
+        },
+        "fulfillment": {
+          "fulfilled_table_title": "Τα είδη αυτής της αποστολής",
+          "unfulfilled_table_title": "Τα είδη είναι έτοιμα για αποστολή",
+          "product_image_label": "Εικόνα προϊόντος",
+          "description_label": "Περιγραφή",
+          "quantity_label": "Ποσότητα"
+        },
+        "ready_for_delivery_title": "Η παραγγελία σας είναι έτοιμη για παράδοση",
+        "ready_for_delivery_description": "Έχω ετοιμάσει την παραγγελία σας.",
+        "order_status_confirmed_order_local": "Ετοιμάζουμε την παραγγελία σας για παράδοση.",
+        "delivery_information_label": "Πληροφορίες παράδοσης:",
+        "gift_card_sent_confirmation": "Έχουν σταλεί δωροκάρτες",
+        "out_for_delivery_local_title": "Η παραγγελία σας παραδίδεται.",
+        "out_for_delivery_local_description_html": "Η παραγγελία σας θα φτάσει σύντομα.",
+        "delivered_local_title": "Η παραγγελία σας παραδόθηκε",
+        "delivered_local_description_html": "Δεν λάβατε αυτό που παραγγείλατε; %{let_us_know}.",
+        "let_us_know": "Ενημερώστε μας",
+        "qr_code": {
+          "title": "Παρακολουθήστε στο τηλέφωνό σας",
+          "send_link_to_phone": "Ή στείλτε έναν σύνδεσμο στο τηλέφωνό σας"
+        },
+        "gift_card_confirmation_by_text": "Εάν δεν το λάβατε, ζητήστε να στείλετε ξανά ένα μήνυμα κειμένου ή επικοινωνήστε μαζί μας.",
+        "gift_card_confirmation_by_email": "Εάν δεν το λάβατε, ζητήστε την εκ νέου αποστολή του email ή επικοινωνήστε μαζί μας.",
+        "gift_card_title": "Δωροκάρτες",
+        "resend_gift_cards": "Στείλτε ξανά τις δωροκάρτες",
+        "attempted_delivery_local_title": "Η παράδοση απέτυχε",
+        "attempted_delivery_local_description_html": "Δεν μπορέσαμε να παραδώσουμε την παραγγελία σας. Για να προγραμματίσετε μια άλλη παράδοση, %{contact_us}.",
+        "thank_you_title_payment": "Η πληρωμή σας επιβεβαιώθηκε",
+        "thank_you_confirmed_order_with_email_payment": "Έχετε κάνει μια πληρωμή για την παραγγελία σας %{date}.",
+        "thank_you_confirmed_order_with_phone_payment": "Έχετε κάνει μια πληρωμή για την παραγγελία σας %{date}.",
+        "thank_you_confirmed_order_with_email_and_phone_payment": "Έχετε κάνει μια πληρωμή για την παραγγελία σας %{date}.",
+        "order_status_confirmed_order_with_email_payment": "Έχετε κάνει μια πληρωμή για την παραγγελία σας %{date}.",
+        "order_status_confirmed_order_with_phone_payment": "Έχετε κάνει μια πληρωμή για την παραγγελία σας %{date}.",
+        "order_status_confirmed_order_with_email_and_phone_payment": "Έχετε κάνει μια πληρωμή για την παραγγελία σας %{date}.",
+        "shop_qr_with_sms_upsell": {
+          "qr_code": {
+            "title": "Σάρωση με το τηλέφωνό σας"
+          },
+          "sms": {
+            "title": "Ή στείλτε έναν σύνδεσμο στο τηλέφωνό σας"
+          }
+        },
+        "estimated_delivery": "Τρέχουσα εκτίμηση για την παράδοση: ",
+        "view_business_customer_account": "Δείτε τον λογαριασμό",
+        "company_location_title": "Τοποθεσία",
+        "thank_you_title_review": "Η παραγγελία σας έχει σταλεί για έλεγχο",
+        "thank_you_confirmed_order_with_draft": "Θα σας ενημερώσουμε εάν χρειαστούμε περισσότερες πληροφορίες ή όταν επιβεβαιωθεί η παραγγελία σας.",
+        "breadcrumbs_submitted": "Στάλθηκε",
+        "breadcrumbs_in_review": "Υπό εξέταση",
+        "breadcrumbs_confirmed": "Επιβεβαιώθηκε",
+        "missing_shipping_address_banner": {
+          "title": "Η παραγγελία δεν περιλαμβάνει διεύθυνση παράδοσης",
+          "text_html": "%{contact_us} για να προσθέσετε τη διεύθυνση",
+          "contact_us": "Επικοινωνήστε μαζί μας"
+        },
+        "order_status_confirmed_with_installments_payment_return": "Επιστρέψτε την προσοχή σας στον συνεργάτη πωλήσεων."
       },
       "order_payment_collection": {
         "changes_summary": {
