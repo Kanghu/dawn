@@ -2440,15 +2440,56 @@
       },
       "local_pickup": {
         "location_information": {
-          "few": "There are %{count} stores with stock near %{address}"
+          "few": "I am close to you %{count} locations with stock",
+          "one": "I am close to you %{count} location with stock",
+          "other": "I am close to you %{count} locations with stock"
         },
         "paginator": {
           "label": {
-            "few": "%{first} - %{last} of %{count} stores"
-          }
+            "few": "%{first} - %{last} from %{count} shops",
+            "one": "%{first} - %{last} from %{count} shop",
+            "other": "%{first} - %{last} from %{count} shops"
+          },
+          "accessibility_label": "Local retrieval pagination",
+          "previous": "Previous page",
+          "next": "Next page"
         },
         "reveal_more_label": {
-          "few": "Show %{count} more locations"
+          "few": "Show more %{count} (of) locations",
+          "one": "Show more %{count} location",
+          "other": "Show more %{count} (of) locations"
+        },
+        "toggle_location": "Change location",
+        "or": "OR",
+        "cancel": "Cancel",
+        "your_location": "your location",
+        "search_button": "Find stores",
+        "no_stores_found": "No stores found",
+        "could_not_resolve_address": "Your address could not be found. Please try again or use a different address",
+        "location_address_search_label": "Address",
+        "all_stores_far_away": {
+          "title": "The closest locations are at a greater distance from %{distance}",
+          "description": "Select a location or %{ship_to_address_link}",
+          "ship_to_address_link": "delivery address",
+          "title_with_location": "The nearest location is over %{distance} versus %{location}",
+          "description_with_location": "%{change_location_link} or %{ship_to_address_link}",
+          "change_location_link": "Change your location",
+          "title_with_specific_location": "The nearest location with your item is over a distance away %{distance} of %{location}",
+          "title_with_item": {
+            "one": "The nearest location with your item is more than %{distance} of %{location}",
+            "other": "The nearest location with your items is more than %{distance} of %{location}",
+            "few": "The nearest location with your items is more than %{distance} of %{location}"
+          }
+        },
+        "selected_pickup_option_no_longer_available": {
+          "title": "The location you previously selected is no longer available",
+          "description": "We have selected the nearest location with your items in stock."
+        },
+        "pick_up_location": "Pick up location",
+        "no_pickup_locations_found": "No pickup locations found",
+        "pickup_unavailable_banner_body": {
+          "try_different_location": "Try another location",
+          "ship_to_address": "delivery address"
         }
       },
       "merchandise_unavailable_in_buyer_location": {
@@ -2458,8 +2499,16 @@
       },
       "review_address_modal": {
         "subtitle": {
-          "few": "This order will be shipped to an address provided by {{merchant}}. Select a shipping address."
-        }
+          "few": "This order will be shipped to an address provided by {{merchant}}. Select a shipping address.",
+          "one": "This order will be shipped to the address provided by {{merchant}}.",
+          "other": "This order will be shipped to an address provided by {{merchant}}. Select a shipping address."
+        },
+        "title": "Review the address",
+        "subtitle_no_match": "This address does not match any of the addresses you have saved.",
+        "subtitle_must_use": "Your order will be shipped to this address.",
+        "continue": "Continue with this address",
+        "use_saved_address": "Use another address",
+        "return_to_cart": "Return to cart"
       },
       "remote_merchandise_only": {
         "detail_item_label": {
@@ -2997,9 +3046,19 @@
           },
           "errors_in_section": {
             "one": "{{count}} error in the section {{section}}",
-            "other": "{{count}} section errors {{section}}"
+            "other": "{{count}} section errors {{section}}",
+            "few": "{{count}} section errors {{section}}"
           }
         }
+      },
+      "marketplaces": {
+        "legal_notice": {
+          "legal_text": "Consult",
+          "link_label": "Terms and conditions {{partnerDisplayName}}"
+        }
+      },
+      "online_store_chat": {
+        "title": "Do you have questions? Chat with us"
       }
     },
     "notices": {
