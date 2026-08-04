@@ -1961,18 +1961,27 @@
       "subscriptions": {
         "recurring_totals_with_policies": {
           "first_cycles": {
-            "few": "Ο πρώτος %{count} Οι πληρωμές είναι από %{total_price} κάθε"
-          }
+            "few": "Τα πρώτα %{count} οι πληρωμές είναι του %{total_price} το καθένα",
+            "one": "Η πρώτη πληρωμή είναι %{total_price}",
+            "other": "Τα πρώτα %{count} οι πληρωμές είναι του %{total_price} το καθένα"
+          },
+          "following_cycles": ", τότε θα πληρώσετε %{total_price} στον καθένα %{interval}"
         },
         "recurring_total_intervals": {
           "day": {
-            "few": "%{count} ημέρες"
+            "few": "%{count} ημέρες",
+            "one": "ημέρα",
+            "other": "%{count} ημέρες"
           },
           "week": {
-            "few": "%{count} εβδομαδιαίος"
+            "few": "%{count} εβδομάδες",
+            "one": "εβδομάδα",
+            "other": "%{count} εβδομάδες"
           },
           "month": {
-            "few": "%{count} Δευτέρα"
+            "few": "%{count} μήνες",
+            "one": "μήνα",
+            "other": "%{count} μήνες"
           },
           "year": {
             "few": "%{count} έτη"
@@ -1982,7 +1991,8 @@
           "first_cycles": {
             "few": ", τότε θα είναι %{count} Πληρωμές για πόσα %{total_price}"
           }
-        }
+        },
+        "recurring_totals": "%{total_price} στον καθένα %{interval}"
       },
       "pickup_point": {
         "paginator": {
@@ -2386,8 +2396,50 @@
           "tax_credential_co": "Cédula/ΦΠΑ",
           "tax_credential_type_co": "Τύπος Cédula",
           "shipping_credential_co": "Cédula/ΦΠΑ",
-          "shipping_credential_type_co": "Τύπος Cédula"
+          "shipping_credential_type_co": "Τύπος Cédula",
+          "tax_credential_cr": "Αριθμός αναγνώρισης/RUT",
+          "shipping_credential_cr": "Αριθμός αναγνώρισης/RUT",
+          "tax_credential_ec": "CI/RUC/ΦΠΑ",
+          "shipping_credential_ec": "CI/RUC/ΦΠΑ",
+          "tax_credential_gt": "NIT/ΦΠΑ",
+          "shipping_credential_gt": "NIT/ΦΠΑ",
+          "tax_credential_id": "NPWP",
+          "shipping_credential_id": "NPWP",
+          "tax_credential_my": "ΑΦΜ/Αριθμός Μητρώου",
+          "shipping_credential_my": "ΑΦΜ/Αριθμός Μητρώου",
+          "shipping_credential_mx": "RFC",
+          "tax_credential_mx": "RFC",
+          "tax_credential_type_mx": "Δημοσιονομικό καθεστώς",
+          "tax_credential_use_mx": "Χρήση CFDI",
+          "tax_credential_py": "CI/RUC/ΦΠΑ",
+          "shipping_credential_py": "CI/RUC/ΦΠΑ",
+          "tax_credential_pe": "DNI/RUC/CE",
+          "shipping_credential_pe": "DNI/RUC/CE",
+          "tax_credential_pt": "ΑΦΜ/ΦΠΑ",
+          "shipping_credential_pt": "ΑΦΜ/ΦΠΑ",
+          "tax_credential_es": "DNI/TIN",
+          "shipping_credential_es": "DNI/TIN",
+          "shipping_credential_tw": "Εθνικός αριθμός αναγνώρισης/Φορολογικός κωδικός",
+          "tax_credential_tr": "Türkiye Cumhuriyeti Kimlik Numarası/KDV",
+          "shipping_credential_tr": "Türkiye Cumhuriyeti Kimlik Numarası/KDV"
         }
+      },
+      "post_purchase": {
+        "page_title": "Μετά την αγορά",
+        "title": "Μετά την αγορά",
+        "escape_confirmation": "Έχετε πληρώσει για την παραγγελία.",
+        "escape_action": "Προβολή πληροφοριών παραγγελίας ›",
+        "components": {
+          "close": "Κλείσιμο",
+          "expand": "Δείτε περισσότερα",
+          "processing": "Επεξεργασία...",
+          "submit": "Αποστολή"
+        }
+      },
+      "change_country": {
+        "cart_updated_based_on_country": "Το καλάθι σας έχει ενημερωθεί με βάση τη χώρα αποστολής σας.",
+        "cart_and_currency_updated_based_on_country": "Το καλάθι και το νόμισμα ενημερώθηκαν με βάση τη χώρα αποστολής.",
+        "currency_updated_for_country": "Ενημερώθηκε το νόμισμα για %{country}"
       }
     },
     "notices": {
