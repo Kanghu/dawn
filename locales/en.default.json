@@ -973,6 +973,68 @@
             "shop_cash_not_available": "The Shop Cash payment method is not accepted for this purchase.",
             "shop_cash_not_found": "Could not find Shop Cash."
           }
+        },
+        "loading_title": "Complete order – {{shopName}}",
+        "display_name": "{{firstName}} {{lastName}}",
+        "google_map_title": "Google map",
+        "submit_order_button_label": "Submit the order",
+        "submit_for_review_button_label": "Submit for review",
+        "submit_for_review_notice_label": "Payment will not be due until we review the order",
+        "continue_to_payment_plans_button_label": "Continue with payment plans",
+        "back_button_label": "Returns",
+        "choose_delivery_strategy": "Choose a delivery method",
+        "autocomplete_zero_item": "No items available",
+        "autocomplete_powered_by_google": "On the platform {{brandName}}",
+        "submit": "Send",
+        "processing": "Processing...",
+        "stepper": {
+          "increase": "Grow up {{type}}",
+          "decrease": "It decreases {{type}}",
+          "minimum_reached": "The minimum limit of has been reached {{value}}",
+          "maximum_reached": "The maximum limit has been reached {{value}}"
+        },
+        "remove_item": "Eliminate %{label}",
+        "remove_tag": "Remove tag",
+        "dates": {
+          "weekdays": {
+            "monday": "Monday",
+            "tuesday": "Tuesday",
+            "wednesday": "Wednesday",
+            "thursday": "Thursday",
+            "friday": "Friday",
+            "saturday": "Saturday",
+            "sunday": "Sunday"
+          },
+          "weekdays_abbreviation": {
+            "monday": "L",
+            "tuesday": "Ma",
+            "wednesday": "Mi",
+            "thursday": "J",
+            "friday": "V",
+            "saturday": "S",
+            "sunday": "d"
+          },
+          "months": {
+            "january": "January",
+            "february": "February",
+            "march": "March",
+            "april": "April",
+            "may": "May",
+            "june": "June",
+            "july": "July",
+            "august": "August",
+            "september": "September",
+            "october": "October",
+            "november": "November",
+            "december": "December"
+          }
+        },
+        "datepicker": {
+          "show_previous_month": "Show previous month, {{month}} {{year}}",
+          "show_next_month": "Show next month, {{month}} {{year}}",
+          "range_start": "Start of interval",
+          "in_range": "In the interval",
+          "range_end": "End of interval"
         }
       },
       "customer_account": {
