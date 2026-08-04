@@ -4166,29 +4166,43 @@
         "empty_state_redesign_cta": "Achetez maintenant",
         "empty_state_redesign_subtitle": "Êtes-vous prêt à faire du shopping ?",
         "empty_state_redesign_welcome": "bienvenue",
-        "empty_state_redesign_welcome_with_name": "bienvenue, {{firstName}}"
+        "empty_state_redesign_welcome_with_name": "bienvenue, {{firstName}}",
+        "sort_options_accessibility_label": "Options de tri pour les commandes confirmées"
       },
       "order_status": {
         "delivered_description_gift_card": {
-          "few": "Les cartes-cadeaux ont été envoyées par e-mail."
+          "few": "Les cartes cadeaux ont été envoyées par email.",
+          "one": "La carte cadeau a été envoyée par email.",
+          "other": "Les cartes cadeaux ont été envoyées par email."
         },
         "gift_card_label": {
-          "few": "Cartes-cadeaux"
+          "few": "Cartes cadeaux",
+          "one": "Carte cadeau",
+          "other": "Cartes cadeaux"
         },
         "confirmed_gift_card_additional_description": {
-          "few": "Chaque carte-cadeau sera envoyée dans un e-mail séparé."
+          "few": "Chaque carte-cadeau sera envoyée dans un e-mail séparé.",
+          "one": "La carte cadeau sera envoyée dans un e-mail séparé.",
+          "other": "Chaque carte-cadeau sera envoyée dans un e-mail séparé."
         },
         "delivered_description_gift_card_text": {
-          "few": "Les cartes-cadeaux ont été envoyées par SMS."
+          "few": "Les cartes cadeaux ont été envoyées par SMS.",
+          "one": "La carte cadeau a été envoyée par SMS.",
+          "other": "Les cartes cadeaux ont été envoyées par SMS."
         },
         "confirmed_gift_card_additional_description_text": {
-          "few": "Chaque carte-cadeau sera envoyée dans un SMS séparé."
+          "few": "Chaque carte-cadeau sera envoyée dans un message texte séparé.",
+          "one": "La carte cadeau sera envoyée dans un message texte séparé.",
+          "other": "Chaque carte-cadeau sera envoyée dans un message texte séparé."
         },
         "gift_resend_success": {
-          "few": "Les cartes-cadeaux ont été de retour"
+          "few": "Les cartes cadeaux ont été retournées",
+          "one": "La carte cadeau a été renvoyée",
+          "other": "Les cartes cadeaux ont été retournées"
         },
         "gift_resend_failure": {
-          "few": "Un problème s'est posé lors de la soumission de cartes-cadeaux. Réessayez ou contactez-nous."
+          "few": "Un problème s'est posé lors de la soumission de cartes-cadeaux. Réessayez ou contactez-nous.",
+          "one": "Un problème est survenu lors du renvoi de la carte cadeau. Réessayez ou contactez-nous."
         },
         "delivered_description_digital": {
           "few": "Ces articles sont terminés."
@@ -4198,7 +4212,37 @@
         },
         "gift_card_resend_button": {
           "few": "Envoyer à nouveau les cartes-cadeaux"
-        }
+        },
+        "canceled_label": "Annulé",
+        "canceled_title": "Votre commande a été annulée",
+        "come_back": "Revenez sur cette page pour des mises à jour sur l'état de votre commande.",
+        "company_tracking_number": "Numéro de suivi {{company}}:",
+        "confirmed_label": "Confirmé",
+        "confirmed_title": "Votre commande est confirmée",
+        "delivered_label": "Livré",
+        "estimated_delivery": "Date estimée : {{date}}",
+        "in_review_label": "En cours de révision",
+        "in_review_title": "Votre commande est en cours d'examen",
+        "no_tracking_number": "Il n'y a pas de numéro de suivi pour cet envoi.",
+        "on_its_way_label": "En cours de livraison",
+        "out_for_delivery_label": "Expédié pour livraison",
+        "resume_tracking": "Reprendre le suivi",
+        "submitted_label": "Envoyé",
+        "track_shipment": "Suivre l'expédition",
+        "request_return": "Demander un retour",
+        "attempted_delivery_label": "Tentative de livraison",
+        "preparing_for_shipping_label": "Préparation de l'expédition",
+        "ready_for_pickup_label": "Prêt pour le ramassage",
+        "ready_for_pickup_description": "Ces articles sont prêts à être récupérés. Emportez la confirmation de commande avec vous lorsque vous récupérez la commande.",
+        "picked_up_label": "Élevé",
+        "submitted_description": "Vérifiez les détails de votre commande et de votre paiement.",
+        "last_updated": "Dernière mise à jour à {{date}}",
+        "multiple_shipments_label": "Plus d'envois",
+        "view_order_for_details": "Pour plus de détails, voir la commande",
+        "confirmed_description_digital": "Vous recevrez un e-mail lorsque votre commande sera prête.",
+        "ready_for_pickup_location": "Votre commande est prête à être récupérée",
+        "confirmed_description_pickup": "Nous préparons ces articles pour le ramassage.",
+        "confirmed_description_gift_card_text": "Vous recevrez un SMS lorsque votre commande sera prête."
       },
       "list_layout_accessibility_label": "Options d'apparence",
       "list_title": "Commandes"
