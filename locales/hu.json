@@ -732,27 +732,42 @@
     "checkout": {
       "shipping": {
         "estimated_delivery_date": {
-          "few": "%{count} munkanap"
+          "few": "%{count} munkanapokon",
+          "one": "%{count} munkanap",
+          "other": "%{count} munkanapokon"
         },
         "other_method": {
-          "few": "%{count} Egyéb módszerek állnak rendelkezésre"
+          "few": "%{count} más módszerek is elérhetők innen",
+          "zero": "Más módszerek nem állnak rendelkezésre",
+          "one": "%{count} másik módszer elérhető a címen",
+          "other": "%{count} más módszerek is elérhetők innen"
         },
         "subscription_delivery_description": {
           "prepaid_delivery_frequency": {
-            "few": "-ra %{count} kézbesítés"
+            "few": "számára %{count} szállítások",
+            "one": "számára %{count} szállítás",
+            "other": "számára %{count} szállítások"
           },
           "subscription_delivery_frequency": {
             "day": {
-              "few": "mindegyikre %{count} napok"
+              "few": "mindegyikhez %{count} napokon",
+              "one": "minden nap",
+              "other": "mindegyikhez %{count} napokon"
             },
             "week": {
-              "few": "mindegyikre %{count} heti"
+              "few": "mindegyikhez %{count} hétig",
+              "one": "minden héten",
+              "other": "mindegyikhez %{count} hétig"
             },
             "month": {
-              "few": "mindegyikre %{count} hétfő"
+              "few": "mindegyikhez %{count} hónap",
+              "one": "minden hónapban",
+              "other": "mindegyikhez %{count} hónap"
             },
             "year": {
-              "few": "mindegyikre %{count} évek"
+              "few": "mindegyikhez %{count} év",
+              "one": "minden évben",
+              "other": "mindegyikhez %{count} év"
             }
           },
           "first_n_order_free": {
@@ -793,14 +808,38 @@
           },
           "prepaid_order_no_cycle_delivery_not_included": {
             "few": "%{shipping_price} -ra %{count} Szállítások (%{per_delivery_cost}), utána %{recurring_order_shipping_price}"
-          }
+          },
+          "multiple_subscriptions_shipping_price_label": "%{shipping_price} minden szállításhoz"
         },
         "shipping_method_first_shipment_group_title": {
           "few": "Első szállítmányok"
         },
         "shipping_method_recurring_shipments_group_title": {
           "few": "Ismétlődő szállítmányok"
-        }
+        },
+        "title": "Közlekedés",
+        "shipping_method_title": "Szállítási mód",
+        "waiting_on_rate_notice": "Elérhető szállítási árak lekérése…",
+        "waiting_on_pickup_location_notice": "Elérhető átvételi helyek lekérése…",
+        "no_rates_for_cart_or_destination_notice": "A kosárhoz vagy a címhez nem áll rendelkezésre szállítási mód",
+        "no_pickup_location_notice": "Legalább egy terméke nem vehető át",
+        "no_rates_for_country_notice": "Nem található szállítási díj erre a címre.",
+        "no_rates_contact_notice": "További információért forduljon hozzánk",
+        "free_rate_label": "ingyenes",
+        "cheapest_rate_label": "A legolcsóbb",
+        "estimated_delivery_date_range": "között %{minimum} és %{maximum} munkanapokon",
+        "shipping_line_phone_label": "Mobil telefonszám (kötelező)",
+        "shipping_line_phone": "A futár ezen a számon veheti fel Önnel a kapcsolatot.",
+        "shipping_rate_discounted_amount": "Ez volt: %{original_amount}. Most: %{amount}",
+        "optional_shipping_line_delivery_instructions_label": "Szállítási útmutató (opcionális)",
+        "shipping_line_delivery_phone": "Előfordulhat, hogy felveszik Önnel a kapcsolatot a szállítással kapcsolatos frissítésekkel kapcsolatban.",
+        "shipping_line_delivery_phone_label": "Mobil telefonszám",
+        "shipping_line_delivery_instructions": "Adja meg a szükséges információkat, például a kaputelefon kódokat vagy az átadási utasításokat.",
+        "local_delivery": "Helyi szállítás",
+        "subscription_shipping": "Előfizetés alapú szállítás",
+        "shipping_method_one_time_purchase_group_title": "Egyszeri vásárlás",
+        "shipping_method_subscription_group_title": "Előfizetés",
+        "one_time_purchase_shipping": "Egyetlen szállítmány"
       },
       "general": {
         "map": {
@@ -1108,6 +1147,11 @@
       "search_results": {
         "few": "Keresés: Megtalálták őket %{count} Eredmények \"%{terms}”"
       }
+    },
+    "sentence": {
+      "words_connector": ", ",
+      "two_words_connector": " és ",
+      "last_word_connector": " és "
     }
   },
   "customer_accounts": {
