@@ -959,7 +959,26 @@
             "missing_session_id": "Les informations de carte de crédit sont manquantes pour la session.",
             "gateway_not_supported": "La passerelle de paiement ne prend pas en charge le stockage des méthodes de paiement.",
             "credit_card_last_name_required": "Le champ « nom » ne peut pas avoir la valeur zéro.",
-            "credit_card_update_failed": "La mise à jour de la carte de crédit a échoué."
+            "credit_card_update_failed": "La mise à jour de la carte de crédit a échoué.",
+            "invalid_address_type": "Le type d'adresse fourni n'est pas valide pour ce mode de paiement.",
+            "missing_retail_attributions": "Des affectations de vente au détail sont requises pour les paiements par carte de crédit saisis manuellement.",
+            "unexpected_retail_attributions": "Des crédits de détail ont été accordés de manière inattendue pour les paiements par carte de crédit.",
+            "invalid_card_source": "Cette session n'est pas autorisée à utiliser cette source de carte.",
+            "wallet_content_missing": "Le contenu du portefeuille est manquant.",
+            "payment_instrument_not_found": "Le mode de paiement est introuvable",
+            "unauthorized_capture_method": "La configuration du mode de capture des paiements n'est pas autorisée.",
+            "saved_payment_methods_not_allowed": "Les méthodes de paiement enregistrées ne sont pas autorisées.",
+            "saved_payment_methods_not_enabled": "Les méthodes de paiement enregistrées ne sont pas activées pour cette boutique.",
+            "store_credit_not_enabled": "Le crédit de magasin n'est pas activé pour ce magasin.",
+            "store_credit_account_not_found": "Compte de crédit du magasin introuvable.",
+            "store_credit_account_mismatch": "Le compte de crédit du magasin ne correspond pas à l'identité de l'acheteur.",
+            "store_credit_mismatched_currency": "La devise du compte de crédit du magasin ne correspond pas à la devise du paiement.",
+            "store_credit_insufficient_funds": "Il n'y a pas suffisamment de fonds sur votre compte de crédit en magasin.",
+            "store_credit_buying_gift_card": "Vous ne pouvez pas utiliser le crédit du magasin pour acheter une carte-cadeau.",
+            "gift_cards_not_allowed_for_b2b": "Les cartes cadeaux ne sont pas autorisées dans les magasins B2B.",
+            "method_required": "Un mode de paiement doit être proposé.",
+            "paypal_express_address_invalid": "PayPal a renvoyé une adresse invalide.",
+            "saved_payment_methods_cvv_verification_disabled": "Le mode de paiement sélectionné nécessite une vérification CVV, qui n'est pas activée pour cette boutique. Sélectionnez un autre mode de paiement."
           },
           "session_identifier_not_unique_error": "Il y a eu un problème avec votre commande. Veuillez réessayer le paiement.",
           "line_item_limit_reached": "Le nombre maximum d'éléments a été atteint.",
@@ -1065,6 +1084,52 @@
             "allocated_required": "Champ « attribué » manquant.",
             "value_required": "Le champ \"valeur\" est manquant.",
             "line_splits_not_supported": "Le champ « lignes de transport » doit être divisé afin que chacune comporte un seul composant de ligne dans la proposition du vendeur."
+          },
+          "tip": {
+            "not_accepted_by_shop": "Le magasin n'accepte pas les pourboires.",
+            "only_one_tip_line_allowed": "Les lignes de signalement multiples ne sont pas acceptées.",
+            "tips_not_allowed_for_b2b": "Les pourboires ne sont pas autorisés dans les magasins B2B.",
+            "currency_change_reset": "Le pourboire a été réinitialisé en raison d'un changement de devise.",
+            "tips_not_allowed_for_deferred_purchase_options": "Les pourboires ne sont pas encore acceptés pour les options d’achat différé."
+          },
+          "sale_attribution": {
+            "draft_order_not_exist": "Cette commande en attente n'existe pas dans la boutique actuelle.",
+            "staff_member_not_exist": "Ce personnel n'existe pas dans le magasin actuel.",
+            "location_not_exist": "Cet emplacement n'existe pas dans le magasin actuel.",
+            "point_of_sale_device_not_exist": "Ce dispositif de point de vente n'existe pas dans le magasin actuel.",
+            "unresolvable_target_merchandise_lines": "Les missions commerciales proposées ne peuvent être résolues dans le contexte actuel de la négociation."
+          },
+          "non_negotiable": {
+            "missing_non_negotiable_terms": "La proposition de l'acheteur doit contenir des conditions non négociables.",
+            "invalid_signature": "Signature pour {{target_terms}} est invalide."
+          },
+          "inventory": {
+            "missing_quantity_value": "Le champ quantité est absent des lignes de stock de l'acheteur.",
+            "changing_behavior_not_allowed": "Ce client n'est pas autorisé à modifier le comportement de l'inventaire.",
+            "only_one_inventory_behavior_allowed": "Actuellement, un seul comportement d'inventaire est autorisé par paiement."
+          },
+          "optional_duties": {
+            "optional_duties_not_permitted": "Le refus des droits de douane n'est pas autorisé pour cette caisse."
+          },
+          "attribution": {
+            "retail_attribution_not_allowed": "L'attribution au détail n'est pas autorisée pour ce paiement.",
+            "retail_attribution_required": "Une affectation au détail est requise pour cette commande."
+          },
+          "captcha": {
+            "metadata_missing": "Pour finaliser cette commande, il est nécessaire de réaliser une validation captcha.",
+            "metadata_mismatch": "Le fournisseur et le type de validation captcha fournis ne correspondent pas aux valeurs attendues.",
+            "token_missing": "Un jeton captcha doit être fourni pour finaliser cette commande.",
+            "job_enqueue_failed": "La tâche de validation captcha n'a pas pu être mise en file d'attente.",
+            "job_already_queued": "La validation Captcha a déjà été mise en file d'attente pour ce jeton captcha.",
+            "token_expired": "Le jeton captcha fourni a expiré. Refaites la validation captcha pour poursuivre le processus de paiement.",
+            "token_invalid": "Le jeton captcha fourni n'était pas valide. Refaites la validation captcha pour poursuivre le processus de paiement.",
+            "token_not_valid_for_session": "La validation captcha fournie ne peut pas être utilisée pour ce paiement."
+          },
+          "fx_reconciliation_override": {
+            "shop_currency_mismatch": "Le montant reçu doit être dans la devise du magasin."
+          },
+          "checkout_source": {
+            "revoked": "Cette caisse n'est plus disponible."
           }
         },
         "page_title": "Complétez la commande",
@@ -1106,6 +1171,71 @@
         },
         "checkout_context": {
           "step_one": "%{shop_name} – Compléter la commande"
+        },
+        "full_price": "Plein tarif :",
+        "title": "Commande complète – {{shopName}}",
+        "full_title": "{{pageTitle}} – {{shopName}} – Compléter la commande",
+        "loading_title": "Commande complète – {{shopName}}",
+        "display_name": "{{firstName}} {{lastName}}",
+        "google_map_title": "Carte Google",
+        "submit_order_button_label": "Soumettre la commande",
+        "submit_for_review_button_label": "Soumettre pour examen",
+        "submit_for_review_notice_label": "Le paiement ne sera dû qu'après examen de la commande",
+        "continue_to_payment_plans_button_label": "Continuer avec les plans de paiement",
+        "back_button_label": "Retours",
+        "choose_delivery_strategy": "Choisissez un mode de livraison",
+        "autocomplete_zero_item": "Aucun article disponible",
+        "autocomplete_powered_by_google": "Sur la plateforme {{brandName}}",
+        "submit": "Envoyer",
+        "processing": "Traitement...",
+        "stepper": {
+          "increase": "Grandir {{type}}",
+          "decrease": "Cela diminue {{type}}",
+          "minimum_reached": "La limite minimale de a été atteinte {{value}}",
+          "maximum_reached": "La limite maximale a été atteinte {{value}}"
+        },
+        "remove_item": "Éliminer %{label}",
+        "remove_tag": "Supprimer la balise",
+        "dates": {
+          "weekdays": {
+            "monday": "Lundi",
+            "tuesday": "mardi",
+            "wednesday": "mercredi",
+            "thursday": "jeudi",
+            "friday": "vendredi",
+            "saturday": "samedi",
+            "sunday": "dimanche"
+          },
+          "weekdays_abbreviation": {
+            "monday": "L",
+            "tuesday": "Maman",
+            "wednesday": "Mi",
+            "thursday": "J.",
+            "friday": "V",
+            "saturday": "S",
+            "sunday": "ré"
+          },
+          "months": {
+            "january": "janvier",
+            "february": "Février",
+            "march": "Mars",
+            "april": "avril",
+            "may": "mai",
+            "june": "juin",
+            "july": "juillet",
+            "august": "Août",
+            "september": "septembre",
+            "october": "octobre",
+            "november": "novembre",
+            "december": "décembre"
+          }
+        },
+        "datepicker": {
+          "show_previous_month": "Afficher le mois précédent, {{month}} {{year}}",
+          "show_next_month": "Montrer le mois prochain, {{month}} {{year}}",
+          "range_start": "Début de l'intervalle",
+          "in_range": "Dans l'intervalle",
+          "range_end": "Fin de l'intervalle"
         }
       },
       "customer_account": {
