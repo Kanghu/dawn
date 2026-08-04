@@ -406,31 +406,31 @@
       "caption": "Cart items",
       "remove_title": "Remove {{ title }}",
       "estimated_total": "Estimated total",
-      "new_estimated_total": "New estimated total",
+      "new_estimated_total": "The new estimated total",
       "note": "Order special instructions",
       "checkout": "Check out",
       "empty": "Your cart is empty",
       "cart_error": "There was an error while updating your cart. Please try again.",
       "cart_quantity_error_html": "You can only add {{ quantity }} of this item to your cart.",
-      "duties_and_taxes_included_shipping_at_checkout_with_policy_html": "Duties and taxes included. Discounts and <a href=\"{{ link }}\">shipping</a> calculated at checkout.",
-      "duties_and_taxes_included_shipping_at_checkout_without_policy": "Duties and taxes included. Discounts and shipping calculated at checkout.",
-      "taxes_included_shipping_at_checkout_with_policy_html": "Taxes included. Discounts and <a href=\"{{ link }}\">shipping</a> calculated at checkout.",
-      "taxes_included_shipping_at_checkout_without_policy": "Taxes included. Discounts and shipping calculated at checkout.",
-      "duties_included_taxes_at_checkout_shipping_at_checkout_with_policy_html": "Duties included. Taxes, discounts and <a href=\"{{ link }}\">shipping</a> calculated at checkout.",
-      "duties_included_taxes_at_checkout_shipping_at_checkout_without_policy": "Duties included. Taxes, discounts and shipping calculated at checkout.",
-      "taxes_at_checkout_shipping_at_checkout_with_policy_html": "Taxes, discounts and <a href=\"{{ link }}\">shipping</a> calculated at checkout.",
-      "taxes_at_checkout_shipping_at_checkout_without_policy": "Taxes, discounts and shipping calculated at checkout.",
+      "duties_and_taxes_included_shipping_at_checkout_with_policy_html": "Taxes and customs duties included. Discounts and <a href=\"{{ link }}\">transportation</a> are calculated upon completion of the order.",
+      "duties_and_taxes_included_shipping_at_checkout_without_policy": "Taxes and customs duties included. Discounts and shipping are calculated at checkout.",
+      "taxes_included_shipping_at_checkout_with_policy_html": "Taxes included. Discounts and <a href=\"{{ link }}\">transportation</a> are calculated upon completion of the order.",
+      "taxes_included_shipping_at_checkout_without_policy": "Taxes included. Discounts and shipping are calculated at checkout.",
+      "duties_included_taxes_at_checkout_shipping_at_checkout_with_policy_html": "Customs duties included. Taxes, discounts and <a href=\"{{ link }}\">transportation</a> are calculated upon completion of the order.",
+      "duties_included_taxes_at_checkout_shipping_at_checkout_without_policy": "Customs duties included. Taxes, discounts and shipping are calculated at checkout.",
+      "taxes_at_checkout_shipping_at_checkout_with_policy_html": "Taxes, discounts and <a href=\"{{ link }}\">transportation</a> are calculated upon completion of the order.",
+      "taxes_at_checkout_shipping_at_checkout_without_policy": "Taxes, discounts and shipping are calculated at checkout.",
       "headings": {
         "product": "Product",
         "price": "Price",
-        "total": "Total",
+        "total": "Totally",
         "quantity": "Quantity",
         "image": "Product image"
       },
       "update": "Update",
       "login": {
-        "title": "Have an account?",
-        "paragraph_html": "<a href=\"{{ link }}\" class=\"link underlined-link\">Log in</a> to check out faster."
+        "title": "Do you have an account?",
+        "paragraph_html": "<a href=\"{{ link }}\" class=\"link underlined-link\">Connect yourself</a> to complete the order faster."
       }
     },
     "footer": {
@@ -438,23 +438,23 @@
       "about": "About us",
       "useful": "Useful",
       "business": "Business",
-      "terms": "Terms",
+      "terms": "Terms and conditions",
       "contact": "Contact",
       "contact_info": {
-        "cc_schedule": "Customer Relations: L-V: 10-18",
-        "showroom_schedule_1": "Voluntari Showroom: L-V: 9-18; S: 9-15",
-        "showroom_schedule_2": "Vulcanescu Showroom: L-V: 10-19; S: 10-16"
+        "cc_schedule": "Customer Relations Program: M-F: 10-18",
+        "showroom_schedule_1": "Showroom Volunteers: M-F: 9-18; S: 9-15",
+        "showroom_schedule_2": "Vulcanescu Showroom: M-F: 10-19; S: 10-16"
       },
-      "privacy": "privacy policy",
+      "privacy": "Privacy Policy",
       "cookies": "Cookies policy",
-      "sitemap": "Site Map |",
+      "sitemap": "Sitemap",
       "utile_links": {
         "help_center": {
           "title": "Help Center",
           "url": "https://help.alessandrodesign.ro/"
         },
         "return_warranty": {
-          "title": "Return and Warranty",
+          "title": "Return & Warranty",
           "url": "https://help.alessandrodesign.ro/hc/alessandro-design/ro/categories/retur-si-sesizri"
         },
         "order_status": {
@@ -472,27 +472,27 @@
       }
     },
     "featured_blog": {
-      "view_all": "View all",
+      "view_all": "Show all",
       "onboarding_title": "Blog post",
       "onboarding_content": "Give your customers a summary of your blog post"
     },
     "featured_collection": {
-      "view_all": "View all",
-      "view_all_label": "View all products in the {{ collection_name }} collection"
+      "view_all": "Show all",
+      "view_all_label": "Show all products in the collection {{ collection_name }}"
     },
     "collection_list": {
-      "view_all": "View all"
+      "view_all": "Show all"
     },
     "collection_template": {
       "empty": "No products found",
       "title": "Collection",
-      "use_fewer_filters_html": "Use fewer filters or <a class=\"{{ class }}\" href=\"{{ link }}\">remove all</a>"
+      "use_fewer_filters_html": "Use fewer filters or <a class=\"{{ class }}\" href=\"{{ link }}\">remove them all</a>"
     },
     "video": {
-      "load_video": "Load video: {{ description }}"
+      "load_video": "Upload video clip: {{ description }}"
     },
     "slideshow": {
-      "load_slide": "Load slide",
+      "load_slide": "Load the slide",
       "previous_slideshow": "Previous slide",
       "next_slideshow": "Next slide",
       "pause_slideshow": "Pause slideshow",
