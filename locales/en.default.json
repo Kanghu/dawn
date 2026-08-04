@@ -1448,10 +1448,14 @@
       },
       "payment": {
         "order_covered_by_gift_cards_notice": {
-          "few": "Your order is covered by your gift cards."
+          "few": "Your order is covered by your gift cards.",
+          "one": "Your order is covered by your gift card.",
+          "other": "Your order is covered by your gift cards."
         },
         "card_fields_unavailable_html": {
-          "few": "Bank card payments are currently unavailable.<br> <a href=\"%{current_url}\">Refresh the page</a> or try a different payment method."
+          "few": "Bank card payments are currently not available.<br><a href=\"%{current_url}\">Refresh the page</a> or try a different payment method.",
+          "one": "Bank card payments are currently not available.<br><a href=\"%{current_url}\">Refresh the page</a> or try again later.",
+          "other": "Bank card payments are currently not available.<br><a href=\"%{current_url}\">Refresh the page</a> or try a different payment method."
         },
         "expired_cards_info": {
           "few": "There are %{count} expired cards, which you can view and edit in your account."
@@ -1494,7 +1498,51 @@
         "card_verification_value_placeholder": "Security code",
         "card_expiry_date_explanation": "Card expiry date in the format: month, month, year, year",
         "card_expiration_month_label": "Month of expiration",
-        "card_expiration_year_label": "Expiry year"
+        "card_expiration_year_label": "Expiry year",
+        "card_verification_value_explanation": "The 3-digit security code usually found on the back of the card. American Express cards have a 4-digit code located on the front.",
+        "card_verification_value_explanation_amex": "The 4-digit security code on the face of the card",
+        "card_verification_value_explanation_other": "The 3-digit security code on the back of the card",
+        "card_start_label": "Date of issue (MM/YY)",
+        "card_start_placeholder": "Date of issue (MM/YY)",
+        "card_issue_number_label": "Issue number",
+        "card_issue_number_placeholder": "Issue number",
+        "card_change_label": "Modify",
+        "ends_with_label": "ends in %{last_digits}",
+        "masked_digits_label": "•••• %{last_digits}",
+        "saved_by_payment_method": "Saved by %{payment_method}",
+        "pay_with_payment_method": "Pay with %{payment_method}",
+        "same_billing_address_label": "Same as shipping address",
+        "different_billing_address_label": "Use a different billing address",
+        "free_order_notice_html": "Your order is <strong>free of charge</strong>. No payment is required.",
+        "express_checkout_free_order": "You will not be charged for a free order",
+        "offsite_gateway_redirect_hint": "We will redirect you to %{gateway_label} to complete your purchase.",
+        "offsite_gateway_redirect_hint_multi_currency_html": "%{gateway_label} total %{total_shop_price}",
+        "billing_address_title": "Billing address",
+        "billing_address_description": "Select the address that corresponds to your card or payment method.",
+        "billing_address_description_no_shipping_address": "Enter the address that corresponds to your card or payment method.",
+        "no_js_credit_card_fields_redirect_hint": "You will be redirected to add your payment information.",
+        "card_fields_container_prefix": "Field container for:",
+        "card_fields_processing_error": "There was a problem processing your payment. Try refreshing this page or check your internet connection.",
+        "technical_error": "Payments cannot be processed right now due to a technical issue. Please try again in a few minutes.",
+        "no_method_error": "This store cannot accept payments at this time.",
+        "not_configured_error": "This store cannot accept payments at this time.",
+        "missing_credit_card_error": "Enter your card details to complete the payment",
+        "billing_address_not_supported_for_payment_method_error": "This payment method is not available for your billing address and currency. Try another payment method.",
+        "generic_incorrect_card_info": "Your payment details could not be verified. Please check your card details and try again.",
+        "sofort_label": "Easy bank transfer",
+        "paypal_label": "PayPal",
+        "klarna_pay_later_label": "Pay later with Klarna",
+        "klarna_pay_now_label": "Pay now with Klarna",
+        "bancontact_label": "Bancontact",
+        "giropay_label": "Giropay",
+        "eps_label": "eps-Überweisung",
+        "klarna_slice_it_label": "Fund with Klarna",
+        "ideal_label": "iDEAL | Wero",
+        "bank_picker_label": "Bank",
+        "change_currency_section_description": "Select a currency option",
+        "no_real_orders_dev_store": "This store cannot accept real orders or real payments.",
+        "subscription_agreement_label_html": "I understand and agree to a subscription. I will renew at the price and frequency listed until it ends or is\n<a class=\"link--small\" data-modal=\"true\" data-title-text=\"%{subscription_policy}\" href=\"%{policy_href}\">cancelled</a>.\n",
+        "waiting_on_payment_methods": "We get the available payment methods..."
       },
       "shipping_errors": {
         "shipping_method_not_available_generic": {
