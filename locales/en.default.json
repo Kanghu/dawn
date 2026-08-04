@@ -687,27 +687,42 @@
     "checkout": {
       "shipping": {
         "estimated_delivery_date": {
-          "few": "%{count} business days"
+          "few": "%{count} working days",
+          "one": "%{count} working day",
+          "other": "%{count} working days"
         },
         "other_method": {
-          "few": "%{count} other methods are available starting at"
+          "few": "%{count} other methods are available from",
+          "zero": "No other methods are available",
+          "one": "%{count} another method is available at",
+          "other": "%{count} other methods are available from"
         },
         "subscription_delivery_description": {
           "prepaid_delivery_frequency": {
-            "few": "for %{count} deliveries"
+            "few": "for %{count} deliveries",
+            "one": "for %{count} delivery",
+            "other": "for %{count} deliveries"
           },
           "subscription_delivery_frequency": {
             "day": {
-              "few": "every %{count} days"
+              "few": "to each %{count} days",
+              "one": "every day",
+              "other": "to each %{count} days"
             },
             "week": {
-              "few": "every %{count} weeks"
+              "few": "to each %{count} weeks",
+              "one": "every week",
+              "other": "to each %{count} weeks"
             },
             "month": {
-              "few": "every %{count} months"
+              "few": "to each %{count} months",
+              "one": "every month",
+              "other": "to each %{count} months"
             },
             "year": {
-              "few": "every %{count} years"
+              "few": "to each %{count} years",
+              "one": "every year",
+              "other": "to each %{count} years"
             }
           },
           "first_n_order_free": {
@@ -748,14 +763,38 @@
           },
           "prepaid_order_no_cycle_delivery_not_included": {
             "few": "%{shipping_price} for %{count} deliveries (%{per_delivery_cost}), then %{recurring_order_shipping_price}"
-          }
+          },
+          "multiple_subscriptions_shipping_price_label": "%{shipping_price} for each delivery"
         },
         "shipping_method_first_shipment_group_title": {
           "few": "First shipments"
         },
         "shipping_method_recurring_shipments_group_title": {
           "few": "Recurring shipments"
-        }
+        },
+        "title": "Transportation",
+        "shipping_method_title": "Shipping method",
+        "waiting_on_rate_notice": "Getting available shipping prices…",
+        "waiting_on_pickup_location_notice": "Getting available pick-up locations…",
+        "no_rates_for_cart_or_destination_notice": "There is no shipping method available for your cart or address",
+        "no_pickup_location_notice": "At least one of your products is not available for pickup",
+        "no_rates_for_country_notice": "No shipping rate found for this address.",
+        "no_rates_contact_notice": "Contact us for more information",
+        "free_rate_label": "Free of charge",
+        "cheapest_rate_label": "The cheapest",
+        "estimated_delivery_date_range": "Between %{minimum} and %{maximum} working days",
+        "shipping_line_phone_label": "Mobile phone number (required)",
+        "shipping_line_phone": "The courier can use this number to contact you.",
+        "shipping_rate_discounted_amount": "It was: %{original_amount}. Now: %{amount}",
+        "optional_shipping_line_delivery_instructions_label": "Delivery instructions (optional)",
+        "shipping_line_delivery_phone": "You may be contacted to provide delivery updates.",
+        "shipping_line_delivery_phone_label": "Mobile phone number",
+        "shipping_line_delivery_instructions": "Enter required information such as intercom codes or handover instructions.",
+        "local_delivery": "Local delivery",
+        "subscription_shipping": "Subscription based shipping",
+        "shipping_method_one_time_purchase_group_title": "One time purchase",
+        "shipping_method_subscription_group_title": "Subscription",
+        "one_time_purchase_shipping": "Single shipment"
       },
       "general": {
         "map": {
@@ -1069,6 +1108,11 @@
       "search_results": {
         "few": "Search: %{count} results found for \"%{terms}\""
       }
+    },
+    "sentence": {
+      "words_connector": ", ",
+      "two_words_connector": " and ",
+      "last_word_connector": " and "
     }
   },
   "customer_accounts": {
