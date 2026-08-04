@@ -1265,7 +1265,69 @@
         },
         "full_price": "Plná cena:",
         "title": "Kompletní objednávka - {{shopName}}",
-        "full_title": "{{pageTitle}} – {{shopName}} – Dokončete objednávku"
+        "full_title": "{{pageTitle}} – {{shopName}} – Dokončete objednávku",
+        "loading_title": "Kompletní objednávka - {{shopName}}",
+        "display_name": "{{firstName}} {{lastName}}",
+        "google_map_title": "Google mapa",
+        "submit_order_button_label": "Odešlete objednávku",
+        "submit_for_review_button_label": "Odeslat ke kontrole",
+        "submit_for_review_notice_label": "Platba nebude splatná, dokud objednávku nezkontrolujeme",
+        "continue_to_payment_plans_button_label": "Pokračujte v platebních plánech",
+        "back_button_label": "Návraty",
+        "choose_delivery_strategy": "Vyberte způsob doručení",
+        "autocomplete_zero_item": "Nejsou k dispozici žádné položky",
+        "autocomplete_powered_by_google": "Na platformě {{brandName}}",
+        "submit": "Odeslat",
+        "processing": "Zpracovává se...",
+        "stepper": {
+          "increase": "Vyrůst {{type}}",
+          "decrease": "Snižuje se {{type}}",
+          "minimum_reached": "Bylo dosaženo minimálního limitu {{value}}",
+          "maximum_reached": "Bylo dosaženo maximálního limitu {{value}}"
+        },
+        "remove_item": "Eliminovat %{label}",
+        "remove_tag": "Odebrat značku",
+        "dates": {
+          "weekdays": {
+            "monday": "pondělí",
+            "tuesday": "úterý",
+            "wednesday": "středa",
+            "thursday": "čtvrtek",
+            "friday": "pátek",
+            "saturday": "sobota",
+            "sunday": "neděle"
+          },
+          "weekdays_abbreviation": {
+            "monday": "L",
+            "tuesday": "Ma",
+            "wednesday": "Mi",
+            "thursday": "J",
+            "friday": "V",
+            "saturday": "S",
+            "sunday": "d"
+          },
+          "months": {
+            "january": "ledna",
+            "february": "února",
+            "march": "března",
+            "april": "dubna",
+            "may": "května",
+            "june": "června",
+            "july": "července",
+            "august": "srpna",
+            "september": "září",
+            "october": "října",
+            "november": "listopadu",
+            "december": "prosince"
+          }
+        },
+        "datepicker": {
+          "show_previous_month": "Zobrazit předchozí měsíc, {{month}} {{year}}",
+          "show_next_month": "Zobrazit příští měsíc, {{month}} {{year}}",
+          "range_start": "Začátek intervalu",
+          "in_range": "V intervalu",
+          "range_end": "Konec intervalu"
+        }
       }
     }
   }
