@@ -4100,9 +4100,73 @@
             "due": "Date d'échéance du paiement {{date}}",
             "due_today": "Le paiement est dû aujourd'hui",
             "due_without_date": "Date d'échéance du paiement",
-            "due_on_fulfillment": "Paiement dû au moment de l'exécution de la commande"
+            "due_on_fulfillment": "Paiement dû au moment de l'exécution de la commande",
+            "pay_to_confirm": "Payer pour confirmer",
+            "payment_not_due": "Le paiement n'est pas encore dû"
           }
-        }
+        },
+        "sort_currently_sorted_by_accessibility_label": "Actuellement triés par : {{option}}",
+        "carousel": {
+          "one_products_accessibility_label": "Comana comprend : {{lineItemName1}}, quantité : {{lineItemQuantity1}}",
+          "two_products_accessibility_label": "La commande comprend : {{lineItemName1}}, quantité : {{lineItemQuantity1}}, {{lineItemName2}}, quantité : {{lineItemQuantity2}}",
+          "three_products_accessibility_label": "La commande comprend : {{lineItemName1}}, quantité : {{lineItemQuantity1}}, {{lineItemName2}}, quantité : {{lineItemQuantity2}}, {{lineItemName3}}, quantité : {{lineItemQuantity3}}",
+          "four_products_accessibility_label": "La commande comprend : {{lineItemName1}}, quantité : {{lineItemQuantity1}}, {{lineItemName2}}, quantité : {{lineItemQuantity2}}, {{lineItemName3}}, quantité : {{lineItemQuantity3}}, {{lineItemName4}}, quantité : {{lineItemQuantity4}}",
+          "five_products_accessibility_label": "La commande comprend : {{lineItemName1}}, quantité : {{lineItemQuantity1}}, {{lineItemName2}}, quantité : {{lineItemQuantity2}}, {{lineItemName3}}, quantité : {{lineItemQuantity3}}, {{lineItemName4}}, quantité : {{lineItemQuantity4}}, {{lineItemName5}}, quantité : {{lineItemQuantity5}}",
+          "six_products_accessibility_label": "La commande comprend : {{lineItemName1}}, quantité : {{lineItemQuantity1}}, {{lineItemName2}}, quantité : {{lineItemQuantity2}}, {{lineItemName3}}, quantité : {{lineItemQuantity3}}, {{lineItemName4}}, quantité : {{lineItemQuantity4}}, {{lineItemName5}}, quantité : {{lineItemQuantity5}}, {{lineItemName6}}, quantité : {{lineItemQuantity6}}",
+          "six_and_more_products_accessibility_label": "La commande comprend : {{lineItemName1}}, quantité : {{lineItemQuantity1}}, {{lineItemName2}}, quantité : {{lineItemQuantity2}}, {{lineItemName3}}, quantité : {{lineItemQuantity3}}, {{lineItemName4}}, quantité : {{lineItemQuantity4}}, {{lineItemName5}}, quantité : {{lineItemQuantity5}}, {{lineItemName6}}, quantité : {{lineItemQuantity6}} et d'autres",
+          "view_order_details": "Voir les détails de la commande",
+          "previous": "Retour",
+          "next": "Avant"
+        },
+        "show_order_actions_accessibility_label": "Afficher les actions pour la commande {{name}}",
+        "empty_state_title_for_pending_orders": "Aucune commande en attente",
+        "more_than_four_products_accessibility_label": "La commande comprend {{lineItemName1}}, {{lineItemName2}}, {{lineItemName3}} et encore {{numberOfAdditionalProducts}} (de produits)",
+        "plus_more_products": "Encore {{numberOfAdditionalProducts}} (de) produits",
+        "order_status_and_message": "{{orderStatus}} - {{message}}",
+        "order_status_message": {
+          "list_view": {
+            "view_order_for_details": "Pour plus de détails, voir la commande",
+            "estimated_delivery": "Date estimée : {{date}}",
+            "last_updated": "Dernière mise à jour à {{date}}"
+          },
+          "table_view": {
+            "estimated_delivery": "Livraison estimée : {{date}}",
+            "last_updated": "{{date}}"
+          }
+        },
+        "more_than_three_products_accessibility_label": "La commande comprend {{lineItemName1}}, {{lineItemName2}} et encore {{numberOfAdditionalProducts}} (de produits)",
+        "plus_more": "+{{numberOfAdditionalProducts}}",
+        "filter_title": "Filtrer",
+        "filter": {
+          "clear_section": "Vider la rubrique",
+          "clear_all": "Videz tout",
+          "apply": "Postuler",
+          "date": {
+            "start_date": "La date initiale",
+            "end_date": "Date finale",
+            "title": "Date de commande",
+            "today": "Aujourd'hui",
+            "last_7_days": "7 derniers jours",
+            "last_30_days": "30 derniers jours",
+            "last_90_days": "90 derniers jours",
+            "last_365_days": "12 derniers mois",
+            "custom": "Personnalisé"
+          },
+          "date_section_accessibility_label": "Filtrer par {{sectionTitle}}"
+        },
+        "no_order_banner": "Pour tester l'extension sur la page Statut de la commande, créez une commande.",
+        "location_filter_picker": {
+          "all_location": "Tous les emplacements",
+          "current_location": "Emplacement existant",
+          "switch_view": "Changer la vue"
+        },
+        "empty_state_with_location_title": "Aucune commande pour {{locationName}}",
+        "view_order": "Voir la commande",
+        "view_order_accessibility_label": "Voir la commande {{orderName}}",
+        "empty_state_redesign_cta": "Achetez maintenant",
+        "empty_state_redesign_subtitle": "Êtes-vous prêt à faire du shopping ?",
+        "empty_state_redesign_welcome": "bienvenue",
+        "empty_state_redesign_welcome_with_name": "bienvenue, {{firstName}}"
       },
       "order_status": {
         "delivered_description_gift_card": {
