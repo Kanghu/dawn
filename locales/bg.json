@@ -2915,8 +2915,75 @@
           "payment_method_title": "Начин на плащане",
           "change_link_label": "Променете",
           "change_contact_method_link_label": "Променете информацията за контакт",
-          "change_billing_address_link_label": "Променете адреса за фактуриране"
+          "change_billing_address_link_label": "Променете адреса за фактуриране",
+          "change_shipping_address_link_label": "Промяна на адреса за доставка",
+          "change_shipping_method_link_label": "Промяна на метода на доставка",
+          "change_payment_method_link_label": "Променете метода на плащане",
+          "pick_up_in_store_shipping_method_html": "Вземете от магазин · %{location_name}",
+          "purchase_order_number_title": "Номер на поръчката за покупка",
+          "change_purchase_order_number_label": "Променете номера на поръчката за покупка",
+          "change_delivery_method_link_label": "Промяна на метода на доставка",
+          "no_address": "(без адрес)",
+          "no_purchase_order_number": "(поръчка за покупка без номер)",
+          "due_after_order_reviewed_html": "След преглед на поръчката",
+          "review_title_free_order": "Прегледайте и завършете поръчката си",
+          "payment_method_saved_company_location": "Запазете картата за това място",
+          "company_location": "Местоположение на фирмата",
+          "change_company_location_link_label": "Промяна на адреса на фирмата",
+          "pickup_items_at": {
+            "one": "Повдигане %{count} статия от",
+            "other": "Повдигане %{count} статии от",
+            "few": "Повдигане %{count} статии от"
+          },
+          "ship_items_to": {
+            "one": "Доставка %{count} статия в",
+            "other": "Доставка %{count} статии в",
+            "few": "Доставка %{count} статии в"
+          },
+          "no_purchase_order_number_long": "Няма номер на поръчка за покупка"
+        },
+        "block_title": "Прегледайте информацията си",
+        "checkout_a_different_way": "Завършете поръчката по друг начин",
+        "item_header": {
+          "change_value": "Променете стойността",
+          "section": "Раздел",
+          "value": "Стойност"
+        },
+        "review_and_confirm_title": "Прегледайте и потвърдете",
+        "account_more_actions": "Още действия за този акаунт"
+      },
+      "marketing": {
+        "accept_marketing_checkbox_label": "Искам да получавам имейли с новини и оферти",
+        "unsubscribe": {
+          "title": "Отписахте се",
+          "description": "Вече няма да получавате маркетингови актуализации от нас."
+        },
+        "accept_sms_checkbox_label": "Искам да получавам текстови съобщения с новини и оферти",
+        "sms": {
+          "disclaimer": {
+            "privacy_policy": "Политика за поверителност",
+            "terms_of_service": "Условия за ползване",
+            "description_html": "Ако се регистрирате чрез текстово съобщение, вие се съгласявате да получавате редовни автоматизирани маркетингови съобщения, включително напомняния за количката, на предоставения телефонен номер. Съгласието не е условие за извършване на покупки. Отговорете със СТОП, за да се отпишете. Отговорете с ПОМОЩ за помощ. Честотата на съобщенията варира. Възможно е да бъдат начислени такси за съобщения и данни. Преглед %{privacy_policy_link} и %{terms_of_service_link}.",
+            "description_transactional_html": "Може да получавате текстови съобщения, свързани с потвърждение на поръчката и актуализации за доставка. Отговорете със СТОП, за да се отпишете. Отговорете с ПОМОЩ за помощ. Честотата на съобщенията варира. Възможно е да бъдат начислени такси за съобщения и данни. Вижте го %{privacy_policy_modal_link} и %{terms_of_service_modal_link}."
+          },
+          "mobile_phone_number": "Номер на мобилен телефон",
+          "get_offers_by_text": "Получавайте оферти чрез текстово съобщение"
+        },
+        "post_accept_marketing_checkbox_label": "Абонирани сте да получавате новини и оферти по имейл",
+        "pending_accept_marketing_checkbox_label": "Проверете своя имейл акаунт, за да потвърдите абонамента си за новини и оферти",
+        "accept_shop_pay_marketing_checkbox_label": "Абонирайте ме за новини и оферти от този магазин",
+        "disclaimer": {
+          "privacy_policy": "Политика за поверителност",
+          "terms_of_service": "Условия за ползване"
         }
+      },
+      "shop_policies": {
+        "refund_policy": "Политика за възстановяване на средства",
+        "privacy_policy": "Политика за поверителност",
+        "terms_of_service": "Условия за ползване",
+        "legal_notice": "Правна информация",
+        "shipping_policy": "Транспорт",
+        "terms_of_sale": "Условия за продажба"
       }
     },
     "notices": {
