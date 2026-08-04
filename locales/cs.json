@@ -3510,7 +3510,71 @@
         "generic_error": "Vaši objednávku nebylo možné zpracovat, protože váš slevový kód již není k dispozici. Zkontrolujte celkovou částku objednávky a zkuste to znovu."
       },
       "wallets": {
-        "return_to_store": "Vraťte se do obchodu"
+        "return_to_store": "Vraťte se do obchodu",
+        "redirect_hint": "Budete vyzváni k přihlášení pomocí {{walletName}}.",
+        "logged_in": "Připojeno k {{email}}",
+        "shipping_line_label": "Doprava",
+        "connect_shipping_methods": "{{method1}} a {{method2}}",
+        "payment_in_progress_title": "Probíhá platba",
+        "payment_in_progress_body": "Vaše platba se zpracovává. Vaše objednávka bude brzy dokončena.",
+        "call_to_action": "Platit pomocí {{walletName}}",
+        "errors": {
+          "unavailable": {
+            "title": "{{walletName}} není k dispozici",
+            "description": "{{walletName}} nebyl k dispozici. Použijte prosím jinou platební metodu nebo to zkuste znovu později.",
+            "instructions": "Vyskytl se problém s funkcí {{walletName}}. Vraťte se do obchodu a zkuste to znovu nebo dokončete objednávku jiným způsobem.",
+            "unavailable_for_country": "Způsob platby {{walletName}} není k dispozici v {{countryName}}. Pro dokončení nákupu vyberte jinou platební metodu"
+          },
+          "generic": "Vyskytl se problém s {{walletName}}. Zkuste to znovu nebo použijte jinou platební metodu.",
+          "terminal": "Vyskytl se problém v {{walletName}}. Použijte jiný způsob platby.",
+          "detour": {
+            "stock_problems": "Některé položky již nejsou dostupné. Zavřít {{walletName}} a zkuste to znovu.",
+            "price_change": "Ceny některých položek se změnily. Zavřít {{walletName}} zkontrolujte objednávku a zkuste to znovu.",
+            "queue": "Byli jste zařazeni do fronty k pokladně. Zavřít {{walletName}} pokračovat.",
+            "currency_change": "Nemůžete použít jinou adresu s {{walletName}}. Použijte prosím svou původní adresu nebo zkuste jiný způsob platby."
+          },
+          "unsupported": {
+            "address": "Obchodník nemůže doručit na vámi zvolenou dodací adresu.",
+            "postal_code": "Toto umístění není podporováno",
+            "wallet_is_unavailable": "{{walletName}} nelze s touto adresou použít. Vyberte jinou adresu nebo zavřete {{walletName}} k dokončení nákupu"
+          },
+          "outdated": {
+            "shipping_method": "Možnosti dopravy se u vaší objednávky změnily. Zkontrolujte svůj výběr.",
+            "payment_terms": "Platební podmínky se změnily. Zkontrolujte svou objednávku"
+          },
+          "invalid": {
+            "shipping_address": "Zadejte prosím platnou dodací adresu",
+            "billing_address": "Zadejte prosím platnou fakturační adresu",
+            "shipping_option": "Vyberte platnou možnost dopravy",
+            "email": "Zadejte prosím platný e-mail",
+            "zone": "Zadejte prosím platný stát/provincii",
+            "postal_code": "Zadejte prosím platné PSČ",
+            "reduction_code": "Zadejte platný slevový kód nebo dárkovou kartu",
+            "billing_must_match_shipping": "Musí odpovídat dodací adrese",
+            "phone": "Zadejte prosím platné telefonní číslo",
+            "emirate": "Zadejte prosím platný emirát",
+            "billing_zone": "Zadejte prosím platný stát/provincii pro vaši fakturační adresu",
+            "billing_phone": "Zadejte prosím platné telefonní číslo pro vaši fakturační adresu",
+            "billing_zip": "Zadejte prosím platné PSČ pro vaši fakturační adresu"
+          },
+          "missing": {
+            "first_name": "Zadejte křestní jméno",
+            "last_name": "Zadejte příjmení",
+            "address1": "Zadejte adresu",
+            "address2": "Vstupte do bytu, pokoje atd.",
+            "city": "Zadejte město",
+            "province": "Vyberte stát/provincii",
+            "country": "Vyberte zemi/oblast",
+            "zip": "Zadejte PSČ/PSČ",
+            "phone": "Zadejte telefonní číslo",
+            "billing_first_name": "Zadejte křestní jméno pro fakturační adresu",
+            "billing_address1": "Zadejte fakturační adresu",
+            "billing_address2": "Jako fakturační adresu zadejte byt, pokoj atd",
+            "billing_city": "Jako fakturační adresu zadejte město",
+            "billing_province": "Vyberte stát/provincii pro svou fakturační adresu",
+            "billing_zip": "Zadejte PSČ vaší fakturační adresy"
+          }
+        }
       }
     }
   }
