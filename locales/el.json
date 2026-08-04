@@ -3709,9 +3709,73 @@
             "due": "Ημερομηνία λήξης πληρωμής {{date}}",
             "due_today": "Η πληρωμή λήγει σήμερα",
             "due_without_date": "Ημερομηνία λήξης πληρωμής",
-            "due_on_fulfillment": "Πληρωμή που οφείλεται κατά την εκτέλεση της παραγγελίας"
+            "due_on_fulfillment": "Πληρωμή που οφείλεται κατά την εκτέλεση της παραγγελίας",
+            "pay_to_confirm": "Πληρώστε για επιβεβαίωση",
+            "payment_not_due": "Η πληρωμή δεν έχει ακόμη καταβληθεί"
           }
-        }
+        },
+        "sort_currently_sorted_by_accessibility_label": "Επί του παρόντος ταξινομημένο κατά: {{option}}",
+        "carousel": {
+          "one_products_accessibility_label": "Το Comana περιλαμβάνει: {{lineItemName1}}, ποσότητα: {{lineItemQuantity1}}",
+          "two_products_accessibility_label": "Η παραγγελία περιλαμβάνει: {{lineItemName1}}, ποσότητα: {{lineItemQuantity1}}, {{lineItemName2}}, ποσότητα: {{lineItemQuantity2}}",
+          "three_products_accessibility_label": "Η παραγγελία περιλαμβάνει: {{lineItemName1}}, ποσότητα: {{lineItemQuantity1}}, {{lineItemName2}}, ποσότητα: {{lineItemQuantity2}}, {{lineItemName3}}, ποσότητα: {{lineItemQuantity3}}",
+          "four_products_accessibility_label": "Η παραγγελία περιλαμβάνει: {{lineItemName1}}, ποσότητα: {{lineItemQuantity1}}, {{lineItemName2}}, ποσότητα: {{lineItemQuantity2}}, {{lineItemName3}}, ποσότητα: {{lineItemQuantity3}}, {{lineItemName4}}, ποσότητα: {{lineItemQuantity4}}",
+          "five_products_accessibility_label": "Η παραγγελία περιλαμβάνει: {{lineItemName1}}, ποσότητα: {{lineItemQuantity1}}, {{lineItemName2}}, ποσότητα: {{lineItemQuantity2}}, {{lineItemName3}}, ποσότητα: {{lineItemQuantity3}}, {{lineItemName4}}, ποσότητα: {{lineItemQuantity4}}, {{lineItemName5}}, ποσότητα: {{lineItemQuantity5}}",
+          "six_products_accessibility_label": "Η παραγγελία περιλαμβάνει: {{lineItemName1}}, ποσότητα: {{lineItemQuantity1}}, {{lineItemName2}}, ποσότητα: {{lineItemQuantity2}}, {{lineItemName3}}, ποσότητα: {{lineItemQuantity3}}, {{lineItemName4}}, ποσότητα: {{lineItemQuantity4}}, {{lineItemName5}}, ποσότητα: {{lineItemQuantity5}}, {{lineItemName6}}, ποσότητα: {{lineItemQuantity6}}",
+          "six_and_more_products_accessibility_label": "Η παραγγελία περιλαμβάνει: {{lineItemName1}}, ποσότητα: {{lineItemQuantity1}}, {{lineItemName2}}, ποσότητα: {{lineItemQuantity2}}, {{lineItemName3}}, ποσότητα: {{lineItemQuantity3}}, {{lineItemName4}}, ποσότητα: {{lineItemQuantity4}}, {{lineItemName5}}, ποσότητα: {{lineItemQuantity5}}, {{lineItemName6}}, ποσότητα: {{lineItemQuantity6}} και άλλοι",
+          "view_order_details": "Δείτε λεπτομέρειες παραγγελίας",
+          "previous": "Πίσω",
+          "next": "Πριν"
+        },
+        "show_order_actions_accessibility_label": "Εμφάνιση ενεργειών για την παραγγελία {{name}}",
+        "empty_state_title_for_pending_orders": "Δεν υπάρχουν παραγγελίες σε εκκρεμότητα",
+        "more_than_four_products_accessibility_label": "Η παραγγελία περιλαμβάνει {{lineItemName1}}, {{lineItemName2}}, {{lineItemName3}} και ακόμα {{numberOfAdditionalProducts}} (των προϊόντων)",
+        "plus_more_products": "Ακόμα {{numberOfAdditionalProducts}} (των) προϊόντων",
+        "order_status_and_message": "{{orderStatus}} - {{message}}",
+        "order_status_message": {
+          "list_view": {
+            "view_order_for_details": "Για λεπτομέρειες, δείτε την παραγγελία",
+            "estimated_delivery": "Εκτιμώμενη ημερομηνία: {{date}}",
+            "last_updated": "Τελευταία ενημέρωση στις {{date}}"
+          },
+          "table_view": {
+            "estimated_delivery": "Εκτιμώμενη παράδοση: {{date}}",
+            "last_updated": "{{date}}"
+          }
+        },
+        "more_than_three_products_accessibility_label": "Η παραγγελία περιλαμβάνει {{lineItemName1}}, {{lineItemName2}} και ακόμα {{numberOfAdditionalProducts}} (των προϊόντων)",
+        "plus_more": "+{{numberOfAdditionalProducts}}",
+        "filter_title": "Φίλτρο",
+        "filter": {
+          "clear_section": "Αδειάστε το τμήμα",
+          "clear_all": "Άδειασε τα πάντα",
+          "apply": "Εφαρμόστε",
+          "date": {
+            "start_date": "Η αρχική ημερομηνία",
+            "end_date": "Τελική ημερομηνία",
+            "title": "Ημερομηνία παραγγελίας",
+            "today": "Σήμερα",
+            "last_7_days": "Τελευταίες 7 μέρες",
+            "last_30_days": "Τελευταίες 30 ημέρες",
+            "last_90_days": "Τελευταίες 90 ημέρες",
+            "last_365_days": "Τελευταίοι 12 μήνες",
+            "custom": "Εξατομικευμένο"
+          },
+          "date_section_accessibility_label": "Φιλτράρισμα κατά {{sectionTitle}}"
+        },
+        "no_order_banner": "Για να δοκιμάσετε την επέκταση στη σελίδα Κατάσταση παραγγελίας, δημιουργήστε μια παραγγελία.",
+        "location_filter_picker": {
+          "all_location": "Όλες οι τοποθεσίες",
+          "current_location": "Υπάρχουσα τοποθεσία",
+          "switch_view": "Αλλάξτε την προβολή"
+        },
+        "empty_state_with_location_title": "Καμία παραγγελία για {{locationName}}",
+        "view_order": "Δείτε την παραγγελία",
+        "view_order_accessibility_label": "Δείτε την παραγγελία {{orderName}}",
+        "empty_state_redesign_cta": "Αγορά τώρα",
+        "empty_state_redesign_subtitle": "Είστε έτοιμοι να ψωνίσετε;",
+        "empty_state_redesign_welcome": "καλώς ήρθες",
+        "empty_state_redesign_welcome_with_name": "καλώς ήρθες, {{firstName}}"
       },
       "order_status": {
         "delivered_description_gift_card": {
