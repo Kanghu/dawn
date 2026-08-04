@@ -1631,7 +1631,75 @@
         "description_label": "Popis",
         "price_label": "Cena",
         "quantity_label": "množství",
-        "product_change_label": "Upravit"
+        "product_change_label": "Upravit",
+        "gift_card_masked": "•••• %{last_characters}",
+        "subscriptions": "Předplatné",
+        "duties_label": "Celní poplatky",
+        "duties_and_taxes_label": "Cla a daně",
+        "error_duties_tooltip": "Tato objednávka je odesílána z jiné země, takže při doručení může být účtováno clo a daně.",
+        "may_be_charged_on_delivery": "Mohou být účtovány při doručení",
+        "total_updated_label_with_price": "Aktualizovaná celková cena: %{totalPrice}",
+        "recurring_payments": "Opakující se platby",
+        "recurring_total_multiple_label": "Za několik položek v této objednávce je účtován opakovaný poplatek.",
+        "deferred_total_due_date_label": "Celkem kvůli {{date}}",
+        "full_price": "Plná cena: %{price}",
+        "custom_discount": "Vlastní sleva",
+        "expand_component_information": {
+          "one": "Displej %{count} článek",
+          "other": "Displej %{count} články",
+          "few": "Displej %{count} články"
+        },
+        "collapse_component_information": {
+          "one": "Skrýt %{count} článek",
+          "other": "Skrýt %{count} články",
+          "few": "Skrýt %{count} články"
+        },
+        "component_quantity_title": "%{quantity} × %{product_title}",
+        "discount_discovery": {
+          "add_code": "Přidejte slevu",
+          "merchandise_quantity_label": {
+            "one": "%{count} článek",
+            "other": "%{count} (z) článků",
+            "few": "%{count} (z) článků"
+          },
+          "back_to_finalize_order": "Zpět k pokladně"
+        },
+        "alternative_payment_currency_total": "Odepsaná částka: %{amount_due}",
+        "calculating": "Počítá se...",
+        "group_title_label": "Část \"%{group_title}”",
+        "discount_title_stacking": {
+          "one": "Sleva",
+          "other": "slevy",
+          "few": "slevy"
+        },
+        "discount_order_stacking": {
+          "one": "Objednávka sleva",
+          "other": "Objednávejte slevy",
+          "few": "Objednávejte slevy"
+        },
+        "price_per_item": {
+          "accessibility_label": "%{price} za článek",
+          "label": "%{price}/ pc"
+        },
+        "updated_shipping_method": "Aktualizovaná platební metoda: %{shipping_method}",
+        "discount_not_found": "Nebyla nalezena platná sleva odpovídající zadanému kódu",
+        "total_savings": "Celková úspora",
+        "return_restocking_fee_label": "Poplatek za naskladnění",
+        "return_shipping_fee_label": "Zpáteční zásilka",
+        "enter_shipping_address": "Zadejte dodací adresu",
+        "shipping_discount_title": "Sleva na dopravu",
+        "discount_code_applied": "Byl použit slevový kód",
+        "discount_code_applied_with_code": "Slevový kód %{code} byla aplikována",
+        "gift_card_applied": "Dárková karta byla použita",
+        "duties_included_label": "Celková částka zahrnuje všechny příslušné daně a cla. Neexistují žádné další náklady na doručení.",
+        "deferred_balance_info": {
+          "title": "Hodnota zůstatku {{amount_due}} má termín splatnosti {{due_at}}",
+          "due_on_fulfillment_title": "Hodnota zůstatku {{amount_due}} má datum splatnosti v době vyznamenání"
+        },
+        "eligible_customer_missing_notice": "Pro slevový kód <strong style=\"text-transform:uppercase\">%{code}</strong> je vyžadován oprávněný zákazník",
+        "subtotal_label_with_quantity": {
+          "one": "Mezisoučet · %{count} článek"
+        }
       }
     }
   }
