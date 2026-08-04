@@ -68,24 +68,24 @@
     "back": "Zpět"
   },
   "newsletter": {
-    "label": "E-mail",
-    "success": "Děkujeme za přihlášení k odběru",
-    "button_label": "Přihlásit k odběru"
+    "label": "Email",
+    "success": "Děkujeme, že jste se přihlásili k odběru",
+    "button_label": "Přihlásit se k odběru"
   },
   "accessibility": {
-    "skip_to_text": "Přejít k obsahu",
-    "close": "Zavřít",
-    "unit_price_separator": "za",
-    "vendor": "Vendor:",
+    "skip_to_text": "Přejít na obsah",
+    "close": "Zavřete to",
+    "unit_price_separator": "na",
+    "vendor": "prodejce:",
     "error": "Chyba",
-    "refresh_page": "Po volbě výběru se obnoví celá stránka.",
+    "refresh_page": "Výběrem výběru dojde k úplnému obnovení stránky.",
     "loading": "Načítání...",
     "link_messages": {
       "new_window": "Otevře se v novém okně.",
-      "external": "Otevře externí webovou stránku."
+      "external": "Otevřete externí web."
     },
     "skip_to_product_info": "Přejít na informace o produktu",
-    "total_reviews": "celkový počet recenzí",
+    "total_reviews": "celkové recenze",
     "star_reviews_info": "{{ rating_value }} z {{ rating_max }} hvězdiček",
     "collapsible_content_title": "Sbalitelný obsah",
     "complementary_products": "Doplňkové produkty"
@@ -495,8 +495,8 @@
       "previous_slideshow": "Předchozí snímek",
       "next_slideshow": "Další snímek",
       "pause_slideshow": "Pozastavit prezentaci",
-      "play_slideshow": "Přehrát prezentaci",
-      "carousel": "Karusel",
+      "play_slideshow": "Přehrajte prezentaci",
+      "carousel": "Kolotoč",
       "slide": "Snímek"
     },
     "page": {
@@ -505,42 +505,42 @@
     "announcements": {
       "previous_announcement": "Předchozí oznámení",
       "next_announcement": "Další oznámení",
-      "carousel": "Karusel",
+      "carousel": "Kolotoč",
       "announcement": "Oznámení",
       "announcement_bar": "Panel oznámení",
-      "black_friday_continues": "🎉 Black Friday pokračuje se slevami (až 80 %)",
-      "black_friday_lowest_prices": "🎉 Black Friday: nejnižší ceny roku u vybraných produktů",
-      "black_friday_delivery_delay": "⚠️ V tomto období mohou objednávky zaznamenat mírné výkyvy v odhadovaných dodacích lhůtách",
-      "holiday_closure": "Máme zavřeno 25.–28. 12., 31. 12.–4. 1., 6.–7. 1. V ostatní dny objednávky zpracováváme a doručujeme normálně."
+      "black_friday_continues": "🎉 BLACK FRIDAY pokračuje se slevami až 80 %",
+      "black_friday_lowest_prices": "🎉 BLACK FRIDAY: Nejnižší ceny v roce u většiny produktů",
+      "black_friday_delivery_delay": "⚠️ V tomto období mohou mít objednávky malé výkyvy v odhadované dodací lhůtě",
+      "holiday_closure": "Máme zavřeno 25.–28. prosince, 31. prosince–4. ledna, 6.–7. ledna. Ve zbývajících dnech zpracování objednávky a doručení pokračuje jako obvykle."
     },
     "quick_order_list": {
       "product_total": "Mezisoučet produktu",
-      "view_cart": "Zobrazit košík",
-      "each": "{{ money }} / ks",
+      "view_cart": "Prohlédněte si košík",
+      "each": "{{ money }}/ pc",
       "product": "Produkt",
       "variant": "Varianta",
-      "variant_total": "Varianta celkem",
+      "variant_total": "Celková varianta",
       "items_added": {
-        "one": "Byla přidána {{ quantity }} položka",
-        "other": "Byl přidán tento počet položek: {{ quantity }}",
-        "few": "Byl přidán tento počet položek: {{ quantity }}",
+        "one": "{{ quantity }} položka přidána",
+        "other": "{{ quantity }} přidaných položek",
+        "few": "{{ quantity }} přidaných položek",
         "many": "Byl přidán tento počet položek: {{ quantity }}"
       },
       "items_removed": {
-        "one": "Byla odebrána {{ quantity }} položka",
-        "other": "Byla odebrán tento počet položek: {{ quantity }}",
-        "few": "Byla odebrán tento počet položek: {{ quantity }}",
+        "one": "{{ quantity }} smazaný článek",
+        "other": "{{ quantity }} smazané položky",
+        "few": "{{ quantity }} smazané položky",
         "many": "Byla odebrán tento počet položek: {{ quantity }}"
       },
       "product_variants": "Varianty produktu",
-      "total_items": "Celkový počet položek",
-      "remove_all_items_confirmation": "Chcete z košíku odebrat všechny položky ({{ quantity }})?",
-      "remove_all": "Odebrat vše",
+      "total_items": "Celkem položek",
+      "remove_all_items_confirmation": "Odstraňte je všechny {{ quantity }} položky v košíku?",
+      "remove_all": "Odstraňte vše",
       "cancel": "Zrušit",
-      "remove_all_single_item_confirmation": "Chcete odebrat 1 položku z košíku?",
-      "min_error": "Tato položka vyžaduje minimum: {{ min }}",
-      "max_error": "Tato položka vyžaduje maximum: {{ max }}",
-      "step_error": "Tuto položku můžete přidat jen v přírůstcích hodnoty: {{ step }}"
+      "remove_all_single_item_confirmation": "Odebrat 1 položku z košíku?",
+      "min_error": "Pro tuto položku je minimální hodnota {{ min }}",
+      "max_error": "Pro tuto položku je maximální hodnota {{ max }}",
+      "step_error": "Tuto položku můžete zadat pouze po krocích {{ step }}"
     }
   },
   "localization": {
