@@ -2636,8 +2636,74 @@
         "picked_up_description_html": "Vaše objednávka byla vyzvednuta od %{location_name} na %{date}.",
         "shop_phone_description": "Obdržíte textovou zprávu s odkazem na aplikaci Obchod, která vám pomůže sledovat vaši objednávku.",
         "login_reorder_link_text": {
-          "one": "kupte si tento produkt také"
-        }
+          "one": "kupte si tento produkt také",
+          "other": "kupte si tyto produkty také",
+          "few": "kupte si tyto produkty také"
+        },
+        "marker": {
+          "current": "Aktuální místo odeslání",
+          "shipping": "Dodací adresa"
+        },
+        "pick_up_in_store_marker": {
+          "current": "Aktuální místo odeslání",
+          "shipping": "Místo vyzvednutí"
+        },
+        "fulfillment": {
+          "fulfilled_table_title": "Položky v této zásilce",
+          "unfulfilled_table_title": "Položky jsou připraveny k odeslání",
+          "product_image_label": "Obrázek produktu",
+          "description_label": "Popis",
+          "quantity_label": "množství"
+        },
+        "ready_for_delivery_title": "Vaše objednávka je připravena k doručení",
+        "ready_for_delivery_description": "Připravil jsem vaši objednávku.",
+        "order_status_confirmed_order_local": "Vaši objednávku připravujeme k doručení.",
+        "delivery_information_label": "Informace o doručení:",
+        "gift_card_sent_confirmation": "Dárkové poukazy byly odeslány",
+        "out_for_delivery_local_title": "Vaše objednávka se doručuje.",
+        "out_for_delivery_local_description_html": "Vaše objednávka brzy dorazí.",
+        "delivered_local_title": "Vaše objednávka byla doručena",
+        "delivered_local_description_html": "Neobdrželi jste, co jste si objednali? %{let_us_know}.",
+        "let_us_know": "Informujte nás",
+        "qr_code": {
+          "title": "Sledujte na svém telefonu",
+          "send_link_to_phone": "Nebo pošlete odkaz do telefonu"
+        },
+        "gift_card_confirmation_by_text": "Pokud jste ji neobdrželi, požádejte o opětovné zaslání textové zprávy nebo nás kontaktujte.",
+        "gift_card_confirmation_by_email": "Pokud jste jej neobdrželi, požádejte o opětovné zaslání e-mailu nebo nás kontaktujte.",
+        "gift_card_title": "Dárkové karty",
+        "resend_gift_cards": "Odešlete dárkové karty znovu",
+        "attempted_delivery_local_title": "Doručení se nezdařilo",
+        "attempted_delivery_local_description_html": "Vaši objednávku jsme nemohli doručit. Chcete-li naplánovat další doručení, %{contact_us}.",
+        "thank_you_title_payment": "Vaše platba je potvrzena",
+        "thank_you_confirmed_order_with_email_payment": "Provedli jste platbu za objednávku %{date}.",
+        "thank_you_confirmed_order_with_phone_payment": "Provedli jste platbu za objednávku %{date}.",
+        "thank_you_confirmed_order_with_email_and_phone_payment": "Provedli jste platbu za objednávku %{date}.",
+        "order_status_confirmed_order_with_email_payment": "Provedli jste platbu za objednávku %{date}.",
+        "order_status_confirmed_order_with_phone_payment": "Provedli jste platbu za objednávku %{date}.",
+        "order_status_confirmed_order_with_email_and_phone_payment": "Provedli jste platbu za objednávku %{date}.",
+        "shop_qr_with_sms_upsell": {
+          "qr_code": {
+            "title": "Skenujte pomocí telefonu"
+          },
+          "sms": {
+            "title": "Nebo pošlete odkaz do telefonu"
+          }
+        },
+        "estimated_delivery": "Aktuální odhad doručení: ",
+        "view_business_customer_account": "Zobrazit účet",
+        "company_location_title": "Umístění",
+        "thank_you_title_review": "Vaše objednávka byla odeslána ke kontrole",
+        "thank_you_confirmed_order_with_draft": "Budeme vás informovat, pokud budeme potřebovat další informace nebo až bude vaše objednávka potvrzena.",
+        "breadcrumbs_submitted": "Odesláno",
+        "breadcrumbs_in_review": "Probíhá kontrola",
+        "breadcrumbs_confirmed": "Potvrzeno",
+        "missing_shipping_address_banner": {
+          "title": "Objednávka neobsahuje doručovací adresu",
+          "text_html": "%{contact_us} pro přidání adresy",
+          "contact_us": "Kontaktujte nás"
+        },
+        "order_status_confirmed_with_installments_payment_return": "Vraťte svou pozornost na obchodního partnera."
       }
     }
   }
