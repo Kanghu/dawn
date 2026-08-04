@@ -2556,28 +2556,67 @@
             "other": "Nincs elérhető szállítási mód a következőhöz: %{count} cikkek"
           },
           "message": {
-            "few": "Ezeket a cikkeket eltávolítják a kosárból, mivel a címhez nem állnak rendelkezésre kézbesítési módszerek."
-          }
+            "few": "Ezeket a tételeket eltávolítjuk a kosarából, mert az Ön címére nem állnak rendelkezésre szállítási módok.",
+            "one": "Ezt a tételt eltávolítjuk a kosarából, mert az Ön címére nem állnak rendelkezésre szállítási módok.",
+            "other": "Ezeket a tételeket eltávolítjuk a kosarából, mert az Ön címére nem állnak rendelkezésre szállítási módok."
+          },
+          "label": "Nincs szállítási mód"
         }
       },
       "pickup_point": {
         "paginator": {
           "header": {
-            "few": "Megjelenik %{first} - %{last} TÓL %{count} szúrás"
+            "few": "Megjelenik %{first} - %{last} től %{count} pontokat",
+            "one": "Megjelenik %{first} - %{last} től %{count} pont",
+            "other": "Megjelenik %{first} - %{last} től %{count} pontokat"
           },
           "selected_pickup_point_label": {
-            "few": "%{pickup_point_index} TÓL %{count} szúrás"
+            "few": "%{pickup_point_index} től %{count} pontokat",
+            "one": "%{pickup_point_index} től %{count} pont",
+            "other": "%{pickup_point_index} től %{count} pontokat"
           },
           "selected_page": {
-            "few": "%{first} - %{last} TÓL %{count} szúrás"
-          }
+            "few": "%{first} - %{last} től %{count} pontokat",
+            "one": "%{first} - %{last} től %{count} pont",
+            "other": "%{first} - %{last} től %{count} pontokat"
+          },
+          "next_accessibility_label": "Következő oldal",
+          "previous_accessibility_label": "Előző oldal"
         },
         "number_of_pickup_points_near_location": {
-          "few": "%{count} Emelési pontok a helyed közelében"
+          "few": "%{count} átvételi pontok az Ön tartózkodási helye közelében",
+          "one": "%{count} átvételi pont az Ön tartózkodási helye közelében",
+          "other": "%{count} átvételi pontok az Ön tartózkodási helye közelében"
         },
         "pickup_unavailable_banner_title": {
-          "few": "Tételeit nem lehet felemelni az emelési pontoktól"
-        }
+          "few": "Tételeit nem lehet felemelni az emelési pontoktól",
+          "one": "A tételhez nem állnak rendelkezésre átvételi pontok"
+        },
+        "location_is_currently_closed": "Zárva",
+        "business_hours": "Ütemezés",
+        "title": "Felvételi pont",
+        "or": "vagy",
+        "search_button": "Keresés",
+        "selector_tabs": "Felvételi pont választó",
+        "selector_tab_map": "Térkép",
+        "selector_tab_list": "Lista",
+        "could_not_resolve_address": "Az Ön címe nem található. Kérjük, próbálja újra, vagy használjon másik címet",
+        "no_pickup_points_near_you": "A kiválasztott cím közelében nem található átvételi pont",
+        "no_pickup_points_near_location": "Nem található átvételi pont az Ön tartózkodási helye közelében",
+        "no_pickup_points_found": "Nem található átvételi pont",
+        "change": "Hely módosítása",
+        "waiting_on_pickup_point_location_notice": "Átvételi pontokat keresek...",
+        "geolocation": {
+          "shared_location_button": "Használd a helyemet",
+          "errors": {
+            "unsuported_by_browser": "Az Ön böngészője nem támogatja a földrajzi helymeghatározást. Próbálja újra, vagy használjon másik böngészőt.",
+            "permission_not_allowed": "Lehetővé teszi a tartózkodási hely megosztását.",
+            "permission_denied": "Nem sikerült lekérni a tartózkodási helyét. Próbáld újra."
+          }
+        },
+        "no_business_hours": "A program nem elérhető",
+        "open_twenty_four_hours": "Éjjel-nappal nyitva",
+        "address_label": "Cím"
       },
       "local_pickup": {
         "location_information": {
@@ -3137,6 +3176,22 @@
       },
       "cart_checkout_validation": {
         "runtime_error": "Hiba történt kérésének feldolgozása során. Vegye fel a kapcsolatot az üzlet tulajdonosával."
+      },
+      "no_address_location": {
+        "title": "Hely cím nélkül",
+        "header": "Ehhez a helyhez nincs szállítási címe",
+        "message": "Lépjen kapcsolatba velünk, hogy adjon meg egy címet ehhez a helyhez, és fejezze be rendelését.",
+        "email_us_button_label": "Küldjön nekünk egy e-mailt",
+        "alt_header": "Hiányzó szállítási cím"
+      },
+      "order_errors": {
+        "creation_failure": "Hiba történt a rendelés létrehozásakor. Kérjük, próbálja újra, vagy vegye fel velünk a kapcsolatot további részletekért.",
+        "network_failure": "Megrendelését hálózati hiba miatt nem lehetett elküldeni. Ellenőrizze a kapcsolatot, és próbálja újra.",
+        "inventory_reservation_failure": "Néhány elem már nem elérhető."
+      },
+      "session_errors": {
+        "session_not_unique": "Hiba történt a rendelés feldolgozása során. Az áruházba való visszatéréshez frissítse ezt az oldalt.",
+        "session_already_finished": "Ezt a rendelést már elküldték. Új rendelés indításához visszatérhet az üzletbe."
       }
     },
     "notices": {
