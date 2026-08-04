@@ -1202,17 +1202,24 @@
           "other": "Order discounts"
         },
         "subtotal_label_with_quantity": {
-          "few": "Subtotal · %{count} items",
-          "one": "Subtotal · %{count} article"
+          "few": "Subtotal · %{count} articles",
+          "one": "Subtotal · %{count} article",
+          "other": "Subtotal · %{count} articles"
         },
         "number_items": {
-          "few": "%{count} items"
+          "few": "%{count} articles",
+          "one": "%{count} article",
+          "other": "%{count} articles"
         },
         "view_all_items": {
-          "few": "See all %{count} articles"
+          "few": "See all of those %{count} articles",
+          "one": "see %{count} article",
+          "other": "See all of those %{count} articles"
         },
         "pickup_unavailable_banner_title": {
-          "few": "Your items cannot be picked up from the store."
+          "few": "There are no shops available with your items",
+          "one": "There are no stores available with your item",
+          "other": "There are no shops available with your items"
         },
         "unit_price": {
           "per_item": {
@@ -1229,7 +1236,9 @@
           }
         },
         "pickup_unavailable_banner_title_with_country": {
-          "few": "In %{country} there are no stores available with your items"
+          "few": "In %{country} there are no stores available with your items",
+          "one": "In %{country} there are no stores available with your item",
+          "other": "In %{country} there are no stores available with your items"
         },
         "title": "Order summary",
         "order_name_label": "Order %{name}",
@@ -1367,7 +1376,49 @@
           "title": "Balance worth {{amount_due}} has a due date {{due_at}}",
           "due_on_fulfillment_title": "Balance worth {{amount_due}} has the due date at the time of honoring"
         },
-        "eligible_customer_missing_notice": "For the discount code <strong style=\"text-transform:uppercase\">%{code}</strong> an eligible customer is required"
+        "eligible_customer_missing_notice": "For the discount code <strong style=\"text-transform:uppercase\">%{code}</strong> an eligible customer is required",
+        "cost_table_item_column_header": "Article",
+        "cost_table_value_column_header": "Value",
+        "product_image_quantity_label": "Quantity",
+        "more_items_modal": {
+          "clear_search": "Clear the search",
+          "empty_results": "No results found for \"%{searchText}\". Check your spelling or use a different word or phrase.",
+          "number_items_shown": "%{shownNumber} from %{totalNumber} articles",
+          "search_item": "Search"
+        },
+        "price_before_discount_aria_text": "Initial price",
+        "price_after_discount_aria_text": "Reduced price",
+        "discount_code_aria_text": "Discount code",
+        "pickup_unavailable_banner_body": {
+          "ship_to_address": "Shipping address",
+          "ship_to_address_instead_html": "%{link} instead"
+        },
+        "deposit_label": "Warehouse",
+        "total_due_today_label": "Total due today",
+        "total_due_later_label": "Total due later",
+        "discount_code_allocations_mismatch": "Your discount code <strong style=\"text-transform:uppercase\">%{code}</strong> has changed. Please review your shopping cart and try again.",
+        "deferred_total_due_date_label_next": "Deadline: %{date}",
+        "total_due_label": "Totally due",
+        "total_price_label": "Total price",
+        "for_add_on": "For: %{group_title}",
+        "unconfirmed_label": "Unconfirmed",
+        "total_paid_label": "Total paid",
+        "from_shop_heading": "From %{shop_name}",
+        "from_other_stores_heading": "From other stores",
+        "estimated_taxes_label_short": "Estimated",
+        "order_discounts_apply_to_local_shop": "In the case of orders, discounts are only applied to items from %{shop_name}",
+        "gift_cards_apply_to_local_shop": "Gift cards are only valid on items from %{shop_name}",
+        "discount_code_removed": "Discount code %{code} was removed",
+        "discount_code_replaced": "Discount code %{old_code} was removed and the code was applied %{code}",
+        "discount_code_replaced_multiple": "Several discount codes have been removed and the code has been applied %{code}",
+        "from_multiple_stores_heading": "From several stores",
+        "pay_merchant_label": "Pay up %{merchant_name}",
+        "discount_applies_to_subscription_items_only": "This discount is only valid for items included in the subscription",
+        "estimated_taxes_finalization_tooltip_content_short": "Charging takes place after payment",
+        "compare_at_sale": "Promotion (%{sale_amount})",
+        "discount_code_applied_count": {
+          "few": "Display %{count} discounts"
+        }
       },
       "payment": {
         "order_covered_by_gift_cards_notice": {
