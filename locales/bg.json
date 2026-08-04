@@ -1695,7 +1695,69 @@
         "change_currency_section_description": "Изберете опция за валута",
         "no_real_orders_dev_store": "Този магазин не може да приема реални поръчки или реални плащания.",
         "subscription_agreement_label_html": "Разбирам и съм съгласен с абонамент. Ще подновя на посочените цена и честота, докато приключи или приключи\n<a class=\"link--small\" data-modal=\"true\" data-title-text=\"%{subscription_policy}\" href=\"%{policy_href}\">отменен</a>.\n",
-        "waiting_on_payment_methods": "Получаваме наличните методи за плащане..."
+        "waiting_on_payment_methods": "Получаваме наличните методи за плащане...",
+        "apple_pay_payment_error": "Вашето плащане не можа да бъде извършено. Опитайте отново или използвайте друг метод на плащане.",
+        "subscription_card_update_agreement_label": "Промяната на вашия метод на плащане ще актуализира вашия абонамент и бъдещи повтарящи се плащания.",
+        "card_security_vault_notice": "Имаме нужда от вашите данни за бъдещи плащания. Всички транзакции са защитени и криптирани.",
+        "taxes_not_included": "Данъците не са включени",
+        "no_taxes_banner_content": "За тази поръчка няма да се начисляват такси. След като получите плащането, не могат да се добавят повече такси.",
+        "card_update_label": "Актуализирайте картата",
+        "paypal": {
+          "connect": "Щракнете, за да свържете своя PayPal акаунт"
+        },
+        "subscription_agreement_label": "Един или повече артикули във вашата количка са отложена покупка или покупка с абонамент. Продължавайки да плащате, вие се съгласявате, че вашият метод на плащане ще бъде таксуван автоматично на цената и честотата, посочени на тази страница, докато абонаментът ви приключи или не го анулирате. Всички анулации трябва да спазват %{cancelled}.",
+        "subscription_agreement_cancelled": "политика за анулиране",
+        "card_expired": "Изтекъл",
+        "card_verification_confirm": "За да потвърдите, въведете кода за сигурност на вашата карта.",
+        "different_credit_card_label": "Използвайте друга кредитна карта",
+        "delete_customer_mandate_modal_cancel": "Отказ",
+        "apple": {
+          "connect": "Щракнете, за да свържете вашия Apple Pay акаунт",
+          "not_available": "Apple Pay не се предлага в този браузър. За да свържете вашия акаунт в Apple Pay, ще трябва да използвате браузъра Safari на устройство на Apple."
+        },
+        "account_connected": "Свързан акаунт.",
+        "billing_address_associated_with_mandate": "Използвайте адреса, свързан с начина на плащане",
+        "billing_address_associated_with_mandate_info": "За да промените адреса си за фактуриране, премахнете и въведете отново данните за кредитната си карта",
+        "credit_card_vaulting_sign_in_banner_title": "Запазете кредитната си карта",
+        "credit_card_vaulting_sign_in_banner_info": "Влезте или създайте акаунт, за да запазите кредитната си карта за бъдещи покупки.",
+        "credit_card_vaulting_sign_in_banner_button_label": "Свържете се",
+        "expiry_long": "(Изтича през %{month}/%{year})",
+        "expiry_short": "(Експ. в %{month}/%{year})",
+        "ftd_vault_credit_card_label": "Искам да запазя тази кредитна карта в акаунта си за по-бързо плащане",
+        "delete_customer_mandate_modal_title": "Да се премахне ли тази платежна карта?",
+        "delete_customer_mandate_modal_body": "Ако премахнете тази карта, ще трябва да я добавите отново, преди да можете да я използвате за плащания.",
+        "delete_customer_mandate_modal_confirm": "Извадете картата",
+        "google": {
+          "connect": "Кликнете, за да влезете с вашия акаунт в Google Play",
+          "error_authorizing": "Грешка при разрешаване на плащането"
+        },
+        "klarna_label": "Кларна",
+        "mor_disclaimer_html": "Щраквайки по-долу и завършвайки поръчката си, вие се съгласявате да закупите артикула(ите) от Global-e като регистриран търговец\nза тази сделка, съгл <a class=\"link--small\" data-modal=\"true\" data-title-text=\"%{mor_terms}\" href=\"%{terms_href}\">Правила и условия</a>\nи с <a class=\"link--small\" data-modal=\"true\" data-title-text=\"%{privacy_policy}\" href=\"%{policy_href}\">Политика за поверителност</a> Това е глобално. Global-e е a\nмеждународен доставчик на хонорарни услуги за %{shop_name}\n",
+        "purchase_options_card_update_agreement_label_html": "Като актуализирате своя метод на плащане, вие разрешавате плащания за всякакви повтарящи се или отложени покупки в съответствие с <a class=\"link--small\" data-modal=\"true\" data-title-text=\"%{cancellation_policy}\" href=\"%{policy_href}\">политика за анулиране</a> на този магазин.",
+        "multibanco_label": "банкомат",
+        "receiver_payment_experience_hint": "След като направите поръчката, ще получите данни за плащане. Направете плащането в Multibanco или най-късно онлайн %{due_days} (на) дни.",
+        "pending_payment": {
+          "due_notice": "Вашата стойност на плащането %{amount_due} има падеж на %{due_date}",
+          "multibanco": {
+            "instruction_html": "Направете плащането в Multibanco или онлайн, като използвате данните по-долу. Ако имате въпроси или искате да актуализирате данните си за плащане, %{contact_us}.",
+            "entity": "Обект",
+            "reference": "справка",
+            "amount": "Сума",
+            "find_nearest_atm": "Намерете най-близкия банкомат",
+            "buyer_action_info": "Плащане в размер на %{amount_due} е достигнал зрялост."
+          }
+        },
+        "purchase_options_agreement_label": "Един или повече артикули във вашата количка представляват отложена или повтаряща се покупка. Продължавайки да плащате, вие се съгласявате, че вашият метод на плащане ще бъде таксуван автоматично на цената и честотата, показани на тази страница, докато не завършите или докато не анулирате. Всички анулации са предмет на условията на  %{cancellation_policy_label}.",
+        "update_payment_method": "Актуализирайте начина си на плащане",
+        "paypal_modal": {
+          "order_contains_subscriptions": "Абонамент",
+          "order_contains_fixed_selling_plans": "Общата сума може да не включва данък, доставка, отсрочен данък и някои отстъпки. Продължете към плащането, за да разберете колко се дължи днес."
+        },
+        "purchase_options_agreement_label_html": "Разбирам, че един или повече артикули в количката ми са отложена или повтаряща се покупка. Продължавам, съгласен съм с\n<a class=\"link--small\" data-modal=\"true\" data-title-text=\"%{subscription_policy}\" href=\"%{policy_href}\">политика за анулиране</a>\nи разрешавам моят метод на плащане да бъде таксуван по цените, честотата и датите, показани на тази страница до\nпоръчката ми е изпълнена или анулирам, ако е позволено.\n",
+        "payment_method_saved": "Запазен начин на плащане",
+        "card_vaulted_company_location": "Картата е запазена за това местоположение",
+        "order_covered_by_store_credit_notice": "Вашата поръчка е покрита от кредит от магазина.",
+        "order_covered_by_redeemables_notice": "Вашата поръчка е покрита."
       },
       "shipping_errors": {
         "shipping_method_not_available_generic": {
