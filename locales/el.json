@@ -863,7 +863,9 @@
       "general": {
         "map": {
           "cluster_title": {
-            "few": "Σχηματίστηκε σύμπλεγμα {{number}} Σφαίρες"
+            "few": "Συστάδα που αποτελείται από {{number}} μαρκαδόροι",
+            "one": "Συστάδα που αποτελείται από {{number}} δείκτης",
+            "other": "Συστάδα που αποτελείται από {{number}} μαρκαδόροι"
           }
         },
         "errors": {
@@ -1107,7 +1109,37 @@
         },
         "full_price": "Πλήρης τιμή:",
         "title": "Ολοκληρωμένη παραγγελία - {{shopName}}",
-        "full_title": "{{pageTitle}} – {{shopName}} – Ολοκληρώστε την παραγγελία"
+        "full_title": "{{pageTitle}} – {{shopName}} – Ολοκληρώστε την παραγγελία",
+        "list_formatter": {
+          "and": {
+            "wordConnector": "{{previousWords}}, {{anotherWord}}",
+            "lastWordConnector": "{{previousWords}} και {{lastWord}}",
+            "twoWordConnector": "{{firstWord}} και {{secondWord}}"
+          },
+          "or": {
+            "wordConnector": "{{previousWords}}, {{anotherWord}}",
+            "lastWordConnector": "{{previousWords}} ή {{lastWord}}",
+            "twoWordConnector": "{{firstWord}} ή {{secondWord}}"
+          },
+          "narrow": {
+            "wordConnector": "{{previousWords}}, {{anotherWord}}",
+            "lastWordConnector": "{{previousWords}}, {{lastWord}}",
+            "twoWordConnector": "{{firstWord}}, {{secondWord}}"
+          }
+        },
+        "sheet": {
+          "expand": "Ανάπτυξη"
+        },
+        "confirm_order_button_label": "Επιβεβαιώστε την παραγγελία",
+        "qr_code": "Κωδικός QR",
+        "dropzone": {
+          "add_file": "Προσθέστε ένα αρχείο",
+          "invalid_file_type": "Ο τύπος αρχείου δεν υποστηρίζεται",
+          "dragged_over": "Αφήστε το αρχείο για μεταφόρτωση"
+        },
+        "loading": "Φόρτωση...",
+        "remove_chip": "Αφαίρεση του αντικειμένου",
+        "finalize_order_accessibility_label": "Ολοκληρώστε την παραγγελία"
       },
       "customer_account": {
         "saved_address_option_description": {
@@ -1383,6 +1415,37 @@
         "change_currency_link": "Αλλαγή σε %{currency_name}",
         "card_provider_fx_charges_warning": "Ο εκδότης της κάρτας μπορεί να χρεώσει χρεώσεις για συναλλαγές σε %{currency_code}.",
         "currency_not_supported_by_shop": "Το νόμισμα που επιλέξατε δεν είναι πλέον διαθέσιμο. Όλες οι τιμές είναι τώρα μέσα %{currency_code}."
+      },
+      "contact": {
+        "title": "Πληροφορίες",
+        "address_title": "Διεύθυνση",
+        "delivery_option_title": "Τρόπος παράδοσης",
+        "contact_method_title": "Επικοινωνία",
+        "email_label": "Email",
+        "email_placeholder": "Email",
+        "email_or_phone_label": "Αριθμός email ή κινητού τηλεφώνου",
+        "email_or_phone_placeholder": "Αριθμός email ή κινητού τηλεφώνου",
+        "stored_addresses_label": "Αποθηκευμένες διευθύνσεις",
+        "new_address_label": "Χρησιμοποιήστε μια νέα διεύθυνση",
+        "first_name_label": "Όνομα",
+        "optional_first_name_label": "Όνομα (προαιρετικό)",
+        "last_name_label": "Οικογενειακό όνομα",
+        "company_label": "Εταιρεία",
+        "optional_company_label": "CUI εταιρείας (προαιρετικό)",
+        "address1_label": "Διεύθυνση",
+        "address2_label": "Διαμέρισμα, δωμάτιο κ.λπ.",
+        "optional_address2_label": "Αναφορές (προαιρετικά). Θα υποβληθούν σε επεξεργασία από έναν χειριστή πριν από την αποστολή.",
+        "city_label": "Πόλη",
+        "country_label": "Χώρα/Περιοχή",
+        "country_code": "Κωδικός χώρας/περιοχής",
+        "province_label": "επαρχία",
+        "province_placeholder": "επαρχία",
+        "county_label": "κομητεία",
+        "county_placeholder": "κομητεία",
+        "state_label": "κράτος",
+        "state_placeholder": "κράτος",
+        "region_label": "Περιφέρεια",
+        "region_placeholder": "Περιφέρεια"
       }
     },
     "notices": {
