@@ -1327,7 +1327,75 @@
           "range_start": "Začátek intervalu",
           "in_range": "V intervalu",
           "range_end": "Konec intervalu"
-        }
+        },
+        "list_formatter": {
+          "and": {
+            "wordConnector": "{{previousWords}}, {{anotherWord}}",
+            "lastWordConnector": "{{previousWords}} a {{lastWord}}",
+            "twoWordConnector": "{{firstWord}} a {{secondWord}}"
+          },
+          "or": {
+            "wordConnector": "{{previousWords}}, {{anotherWord}}",
+            "lastWordConnector": "{{previousWords}} nebo {{lastWord}}",
+            "twoWordConnector": "{{firstWord}} nebo {{secondWord}}"
+          },
+          "narrow": {
+            "wordConnector": "{{previousWords}}, {{anotherWord}}",
+            "lastWordConnector": "{{previousWords}}, {{lastWord}}",
+            "twoWordConnector": "{{firstWord}}, {{secondWord}}"
+          }
+        },
+        "map": {
+          "cluster_title": {
+            "one": "Cluster sestávající z {{number}} značka",
+            "other": "Cluster sestávající z {{number}} značky",
+            "few": "Cluster sestávající z {{number}} značky"
+          }
+        },
+        "sheet": {
+          "expand": "Rozbalit"
+        },
+        "confirm_order_button_label": "Potvrďte objednávku",
+        "qr_code": "QR kód",
+        "dropzone": {
+          "add_file": "Přidat soubor",
+          "invalid_file_type": "Typ souboru není podporován",
+          "dragged_over": "Uvolněte soubor k nahrání"
+        },
+        "loading": "Načítání...",
+        "remove_chip": "Odebírání položky",
+        "finalize_order_accessibility_label": "Dokončete objednávku"
+      },
+      "contact": {
+        "title": "Informace",
+        "address_title": "Adresa",
+        "delivery_option_title": "Způsob doručení",
+        "contact_method_title": "Kontakt",
+        "email_label": "Email",
+        "email_placeholder": "Email",
+        "email_or_phone_label": "Email nebo číslo mobilního telefonu",
+        "email_or_phone_placeholder": "Email nebo číslo mobilního telefonu",
+        "stored_addresses_label": "Uložené adresy",
+        "new_address_label": "Použijte novou adresu",
+        "first_name_label": "Křestní jméno",
+        "optional_first_name_label": "Jméno (volitelné)",
+        "last_name_label": "Příjmení",
+        "company_label": "Společnost",
+        "optional_company_label": "CUI společnosti (volitelné)",
+        "address1_label": "Adresa",
+        "address2_label": "Byt, pokoj atd.",
+        "optional_address2_label": "Zmínky (volitelné). Před odesláním je zpracuje operátor.",
+        "city_label": "město",
+        "country_label": "Země/oblast",
+        "country_code": "Kód země/oblasti",
+        "province_label": "provincie",
+        "province_placeholder": "provincie",
+        "county_label": "hrabství",
+        "county_placeholder": "hrabství",
+        "state_label": "stát",
+        "state_placeholder": "stát",
+        "region_label": "Region",
+        "region_placeholder": "Region"
       }
     }
   }
