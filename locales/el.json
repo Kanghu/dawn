@@ -3980,8 +3980,13 @@
     "order_details": {
       "image_gallery": {
         "load_more_items": {
-          "few": "Φορτώστε ακόμα {{count}} προϊόντα"
-        }
+          "few": "Εμφάνιση περισσότερων {{count}} άρθρα",
+          "one": "Εμφάνιση περισσότερων {{count}} άρθρο",
+          "other": "Εμφάνιση περισσότερων {{count}} άρθρα"
+        },
+        "product_name_and_quantity": "Προϊόν: {{productName}}, ποσότητα: {{quantity}}",
+        "next": "Δείξτε τα παρακάτω άρθρα",
+        "previous": "Εμφάνιση προηγούμενων άρθρων"
       },
       "addresses_section_title": "Χρέωση και αποστολή",
       "billing_address": "Διεύθυνση χρέωσης",
@@ -4044,7 +4049,61 @@
       },
       "show_items": "Εμφάνιση άρθρων",
       "subtitle": "Επιβεβαιώθηκε {{date}}",
-      "subtotal": "Υποσύνολο"
+      "subtotal": "Υποσύνολο",
+      "summary_list_title_accessibility_label": "Στοιχεία παραγγελίας",
+      "summary_title": "Περίληψη παραγγελίας",
+      "summary_totals_title_accessibility_label": "Σύνολο παραγγελίας",
+      "taxes": "Φόροι",
+      "title": "Παραγγελία {{name}}",
+      "total": "Εντελώς",
+      "unit_price": "{{price}}/ τεμ.",
+      "location": "Τοποθεσία",
+      "not_applicable": "Δεν ισχύει",
+      "fully_refunded_label": "ΕΠΙΣΤΡΟΦΗ ΧΡΗΜΑΤΩΝ",
+      "partially_refunded_label": "ΕΠΙΣΤΡΕΦΟΝΤΑΙ ΜΕΡΙΚΟΥ ΠΟΣΟ",
+      "refunded_amount": "Αποζημίωση",
+      "discount": "Έκπτωση",
+      "compare_at_sale": "προώθηση ({{saleAmount}})",
+      "no_data": "Χωρίς",
+      "pagination": {
+        "load_more": "Εμφάνιση περισσότερων",
+        "load_more_accessibility_label": "Εμφάνιση περισσότερων στοιχείων",
+        "loading_accessibility_label": "Φόρτωση άρθρων"
+      },
+      "returns": {
+        "expand_events_label": "Εμφάνιση λεπτομερειών",
+        "hide_events_label": "Απόκρυψη λεπτομερειών",
+        "print_shipping_label": "Εκτυπώστε την ετικέτα αποστολής",
+        "tracking_number": "Αριθμός παρακολούθησης:",
+        "return_and_refund_modal_header": "Πολιτική επιστροφής χρημάτων",
+        "ineligible_return_message": "Κανένα προϊόν σε αυτήν την παραγγελία δεν είναι κατάλληλο για επιστροφή.",
+        "ineligible_return_message_when_returned": "Κανένα επιπλέον στοιχείο σε αυτήν την παραγγελία δεν είναι κατάλληλο για επιστροφή.",
+        "exchange_header": "Ανταλλαγή αντικειμένων",
+        "exchange_subheader": "Η δυνατότητα \"Ανταλλαγή αντικειμένων\" θα προστεθεί στην παραγγελία μόλις ολοκληρωθεί η επιστροφή."
+      },
+      "request_return_failed": "Παρουσιάστηκε πρόβλημα κατά την επεξεργασία του αιτήματός σας. Προσπαθήστε ξανά.",
+      "mobile_summary_toggle_button": {
+        "open": "Εμφάνιση περίληψης παραγγελίας",
+        "closed": "Απόκρυψη περίληψης παραγγελίας"
+      },
+      "shipment_timeline": {
+        "expand_events_label": "Εμφάνιση λεπτομερειών",
+        "expand_events_accessibility_label": "Εμφανίζει τα στοιχεία αποστολής παραγγελίας",
+        "hide_events_label": "Απόκρυψη λεπτομερειών",
+        "hide_events_accessibility_label": "Απόκρυψη στοιχείων αποστολής παραγγελίας"
+      },
+      "show_order_summary": "Εμφάνιση περίληψης παραγγελίας",
+      "hide_order_summary": "Απόκρυψη περίληψης παραγγελίας",
+      "company": "Εταιρεία",
+      "no_data_provided": "-",
+      "no_data_provided_accessibility_label": "{{fieldName}} είναι κενό",
+      "marketing_section_title": "Νέα και προσφορές",
+      "marketing_checkbox_label": "Θέλω να λαμβάνω email με νέα και προσφορές",
+      "marketing_checkmark_label": "Έχετε εγγραφεί για να λαμβάνετε νέα και προσφορές μέσω email",
+      "shop_order_tracking": {
+        "download_shop_to_track": "Κατεβάστε το Shop για να παρακολουθείτε το πακέτο σας",
+        "track_order_with_shop": "Παρακολουθήστε την παραγγελία σας με το Shop"
+      }
     },
     "B2B": {
       "orders": {
