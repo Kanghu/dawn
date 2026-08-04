@@ -1226,7 +1226,69 @@
         },
         "full_price": "Teljes ár:",
         "title": "Teljes rendelés - {{shopName}}",
-        "full_title": "{{pageTitle}} – {{shopName}} – Töltse ki a rendelést"
+        "full_title": "{{pageTitle}} – {{shopName}} – Töltse ki a rendelést",
+        "loading_title": "Teljes rendelés - {{shopName}}",
+        "display_name": "{{firstName}} {{lastName}}",
+        "google_map_title": "Google térkép",
+        "submit_order_button_label": "Adja le a rendelést",
+        "submit_for_review_button_label": "Küldje el felülvizsgálatra",
+        "submit_for_review_notice_label": "Fizetés nem esedékes mindaddig, amíg a rendelést nem ellenőriztük",
+        "continue_to_payment_plans_button_label": "Folytassa a fizetési tervekkel",
+        "back_button_label": "Visszatér",
+        "choose_delivery_strategy": "Válasszon szállítási módot",
+        "autocomplete_zero_item": "Nincsenek elérhető tételek",
+        "autocomplete_powered_by_google": "Az emelvényen {{brandName}}",
+        "submit": "Küldés",
+        "processing": "Feldolgozás...",
+        "stepper": {
+          "increase": "Felnőni {{type}}",
+          "decrease": "Csökken {{type}}",
+          "minimum_reached": "Elérte a minimális korlátot {{value}}",
+          "maximum_reached": "Elérte a maximális korlátot {{value}}"
+        },
+        "remove_item": "Távolítsuk el %{label}",
+        "remove_tag": "Címke eltávolítása",
+        "dates": {
+          "weekdays": {
+            "monday": "hétfő",
+            "tuesday": "kedd",
+            "wednesday": "szerda",
+            "thursday": "csütörtök",
+            "friday": "péntek",
+            "saturday": "szombat",
+            "sunday": "vasárnap"
+          },
+          "weekdays_abbreviation": {
+            "monday": "L",
+            "tuesday": "Ma",
+            "wednesday": "Mi",
+            "thursday": "J",
+            "friday": "V",
+            "saturday": "S",
+            "sunday": "d"
+          },
+          "months": {
+            "january": "január",
+            "february": "február",
+            "march": "március",
+            "april": "április",
+            "may": "május",
+            "june": "június",
+            "july": "július",
+            "august": "augusztus",
+            "september": "szeptember",
+            "october": "október",
+            "november": "november",
+            "december": "december"
+          }
+        },
+        "datepicker": {
+          "show_previous_month": "Előző hónap megjelenítése, {{month}} {{year}}",
+          "show_next_month": "Mutasd a következő hónapban, {{month}} {{year}}",
+          "range_start": "Intervallum kezdete",
+          "in_range": "Az intervallumban",
+          "range_end": "Intervallum vége"
+        }
       },
       "customer_account": {
         "saved_address_option_description": {
