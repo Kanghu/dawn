@@ -1934,22 +1934,34 @@
           "other": "buy these products too"
         },
         "gift_card_confirmation_by_text_typ": {
-          "few": "You will receive a text message with your gift cards within a few minutes."
+          "few": "You will receive a text message with the gift cards in a few minutes.",
+          "one": "You will receive a text message with the gift card in a few minutes.",
+          "other": "You will receive a text message with the gift cards in a few minutes."
         },
         "gift_card_confirmation_by_email_typ": {
-          "few": "You will receive an email with your gift cards within a few minutes."
+          "few": "You will receive an email with the gift cards in a few minutes.",
+          "one": "You will receive an email with the gift card in a few minutes.",
+          "other": "You will receive an email with the gift cards in a few minutes."
         },
         "gift_card_email_title": {
-          "few": "Gift cards were sent via email"
+          "few": "Gift cards have been sent by email",
+          "one": "The gift card has been sent by email",
+          "other": "Gift cards have been sent by email"
         },
         "gift_card_text_title": {
-          "few": "Gift cards were sent via email"
+          "few": "Gift cards have been sent by email",
+          "one": "The gift card was sent via text message",
+          "other": "Gift cards have been sent by email"
         },
         "gift_card_resent_confirmation": {
-          "few": "The cadiu cards have been resent."
+          "few": "The gift cards have been sent back.",
+          "one": "The gift card has been resent.",
+          "other": "The gift cards have been sent back."
         },
         "gift_card_resend_failure": {
-          "few": "There was a problem resending gift cards. Please try again or contact us."
+          "few": "There was a problem resending gift cards. Try again or contact us.",
+          "one": "There was a problem resending the gift card. Try again or contact us.",
+          "other": "There was a problem resending gift cards. Try again or contact us."
         },
         "thank_you_unconfirmed_items_heading": {
           "few": "Some items are not confirmed"
@@ -2143,7 +2155,41 @@
           "text_html": "%{contact_us} to add the address",
           "contact_us": "Contact us"
         },
-        "order_status_confirmed_with_installments_payment_return": "Return your attention to the sales associate."
+        "order_status_confirmed_with_installments_payment_return": "Return your attention to the sales associate.",
+        "order_status_confirmed_with_installments_payment_confirm": "You will shortly receive a confirmation email with the order number and installment schedule details",
+        "first_payment_complete": "The first payment is complete",
+        "in_store_purchase": "In-store purchases",
+        "choose_payment_method_later": "Choose your payment method later",
+        "purchase_order_number_title": "Purchase order number: %{purchase_order_number}",
+        "thank_you_ready_for_picked_up": "Your order has been picked up at the address %{address}.",
+        "ready_for_delivery": "Ready for delivery",
+        "order_updates_subscribe_to_email_notifications_failed": "We cannot store this email address for updates. Please try again or use a different email address.",
+        "order_updates_subscribe_to_email_notifications_email_already_exists": "The email address you entered already exists.",
+        "subscriptions_management": {
+          "title": "Subscription",
+          "description": "Continue with your account to view and manage your subscriptions.",
+          "button_label": "Manage your subscription"
+        },
+        "manage_order_label": "Manage your order",
+        "resend_gift_cards_by_email": "I want to resend the email",
+        "resend_gift_cards_by_text": "I want to resend the text message",
+        "failed_pending_payment_page_title": "There is a problem with your payment",
+        "thank_you_title_payments_app_pending_default": "Your payment is being processed",
+        "thank_you_title_payments_app_pending_buyer_action_required": "Your order has been received",
+        "thank_you_title_payments_app_failed_pending_payment": "Your payment could not be processed",
+        "thank_you_payments_app_failed_pending_payment": "You have not been charged for your order. Return to the shopping cart to check the order and make the payment again.",
+        "order_status_payments_app_pending_payment_description_default_with_email_and_phone": "You will receive a confirmation email shortly. Track your order using the Shop app.",
+        "order_status_payments_app_pending_payment_description_default_with_email": "You will receive a confirmation email shortly. Track your order using the Shop app.",
+        "order_status_payments_app_pending_payment_description_default_with_phone": "You will receive a confirmation text message shortly. Track your order using the Shop app.",
+        "order_status_payments_app_pending_payment_description_buyer_action_required_with_email_and_phone": "After completing the payment, you will receive a confirmation email. Track your order using the Shop app.",
+        "order_status_payments_app_pending_payment_description_buyer_action_required_with_email": "After completing the payment, you will receive a confirmation email. Track your order using the Shop app.",
+        "order_status_payments_app_pending_payment_description_buyer_action_required_with_phone": "After completing the payment, you will receive a confirmation text message. Track your order using the Shop app.",
+        "order_status_payments_app_failed_pending_payment": "You have not been charged for your order. Return to the shopping cart to check the order and make the payment again.",
+        "order_status_payments_app_pending_payment_description_buyer_action_required_with_email_pick_up": "After completing the payment, you will receive a confirmation email. Track your order using the Shop app.",
+        "thank_you_confirmed_order_with_missing_payment": "Contact us by email or phone to receive an order confirmation.",
+        "thank_you_confirmed_order_with_missing_pick_up": "Contact us by email or phone to receive an order confirmation.",
+        "thank_you_confirmed_order_with_draft_payment": "We will let you know if we need more information or when your order is confirmed.",
+        "thank_you_confirmed_order_with_draft_pick_up": "We will let you know if we need more information or when your order is confirmed."
       },
       "order_payment_collection": {
         "changes_summary": {
