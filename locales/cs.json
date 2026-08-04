@@ -752,9 +752,79 @@
     "B2B": {
       "draft_order_details": {
         "payment_status": {
-          "due_date": "Splatné v {{date}}",
-          "total_balance": "Celková bilance"
+          "due_date": "Splatnost v {{date}}",
+          "total_balance": "Celková bilance",
+          "pending": {
+            "banner_overdue": {
+              "other": "Platba za vaši objednávku je po splatnosti o {{count}} dní",
+              "few": "Platba za vaši objednávku je po splatnosti o {{count}} dní"
+            },
+            "banner_due": {
+              "one": "Vaše platba je splatná v {{count}} den",
+              "other": "Vaše platba je splatná v {{count}} dní",
+              "few": "Vaše platba je splatná v {{count}} dní"
+            },
+            "banner_due_today": "Vaše platba je splatná dnes",
+            "title": "Datum splatnosti platby",
+            "title_with_date": "Datum splatnosti platby: {{date}}",
+            "description_overdue": "Vaše platba je opožděná.",
+            "description_partially_paid": "Tato objednávka byla částečně zaplacena. Máte nedoplatek.",
+            "description_authorized": "Platba bude naúčtována na váš způsob platby v den splatnosti nebo můžete zaplatit nyní.",
+            "title_due_on_receipt": "Platba ještě není splatná",
+            "description_due_on_receipt": "Po splatnosti obdržíte fakturu.",
+            "title_due_on_fulfillment": "Platba je splatná v době platby",
+            "description_due_on_fulfillment": "Platba je splatná po splnění všech položek v této objednávce.",
+            "description_waiting_for_manual_payment": "Tato objednávka má nevyřízenou platbu. Zůstatek bude aktualizován po obdržení platby.",
+            "description_due_on_receipt_partially_paid": "Tato objednávka byla částečně zaplacena. Máte nedoplatek. Po splatnosti obdržíte fakturu.",
+            "description_due_on_fulfillment_partially_paid": "Tato objednávka byla částečně zaplacena. Máte nedoplatek. Platba je splatná po splnění všech položek v této objednávce.",
+            "banner_due_today_for_single_fulfillment": "Platba ve výši {{amount}} je splatný dnes. {{link}}",
+            "banner_due_today_for_multiple_fulfillments": "Platba je splatná dnes za {{count}} řády dodrženy",
+            "banner_overdue_for_multiple_fulfillments": "Platba je splatná za {{count}} řády dodrženy",
+            "description_due_on_fulfillment_partially_paid_next": "Tato objednávka byla částečně zaplacena. Zbývá vám zůstatek.",
+            "banner_overdue_for_single_fulfillment": {
+              "one": "Platba ve výši {{amount}} po splatnosti s {{count}} den. {{link}}",
+              "other": "Platba ve výši {{amount}} po splatnosti s {{count}} dní. {{link}}",
+              "few": "Platba ve výši {{amount}} po splatnosti s {{count}} dní. {{link}}"
+            }
+          },
+          "refund": {
+            "title": "Proplaceno",
+            "title_with_date": "Datum vrácení peněz: {{date}}",
+            "description_full_refund": "Za tuto objednávku jste obdrželi plnou náhradu.",
+            "description_single_refund": "Za tuto objednávku jste obdrželi částečnou refundaci.",
+            "description_multiple_refunds": "Za tuto objednávku jste obdrželi částečné vrácení peněz."
+          },
+          "canceled": {
+            "title": "Platba zrušena",
+            "description": "Nebylo vám účtováno."
+          },
+          "pay_now_accessibility_label": "Zaplaťte nyní za svou objednávku {{orderName}}"
+        },
+        "subtitle": "Odesláno do {{date}}",
+        "title": "Objednat {{name}}",
+        "order_timeline": {
+          "expand_events_label": "Zobrazit podrobnosti",
+          "expand_events_accessibility_label": "Zobrazí podrobnosti o předobjednávkách",
+          "hide_events_label": "Skrýt podrobnosti",
+          "hide_events_accessibility_label": "Skrýt podrobnosti předobjednávky"
         }
+      },
+      "payment_methods": {
+        "payment_delete": {
+          "description_without_replacement": "Tato platební metoda již nebude k dispozici pro budoucí nákupy z tohoto místa.",
+          "description_with_replacement": "Smazání této platební metody ovlivní předem autorizované platby pro toto místo. Nahraďte jej jiným způsobem platby, abyste mohli nadále přijímat budoucí objednávky."
+        },
+        "payment_details": {
+          "order_label": "Objednat {{name}}",
+          "draft_label": "Předběžná objednávka {{name}}"
+        }
+      },
+      "purchase_order_number": {
+        "add_accessibility_label": "Přidejte číslo nákupní objednávky",
+        "add_modal_title": "Přidejte číslo nákupní objednávky",
+        "cancel": "Zrušit",
+        "close_modal_accessibility_label": "Zavřete modální okno s číslem objednávky",
+        "discard": "Opustit"
       }
     },
     "callback": {
