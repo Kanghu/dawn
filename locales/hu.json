@@ -1426,24 +1426,37 @@
       },
       "order_summary": {
         "expand_component_information": {
-          "few": "kijelző %{count} áru"
+          "few": "Kijelző %{count} cikkeket",
+          "one": "Kijelző %{count} cikket",
+          "other": "Kijelző %{count} cikkeket"
         },
         "collapse_component_information": {
-          "few": "Elrejt %{count} áru"
+          "few": "Elrejtés %{count} cikkeket",
+          "one": "Elrejtés %{count} cikket",
+          "other": "Elrejtés %{count} cikkeket"
         },
         "discount_discovery": {
           "merchandise_quantity_label": {
-            "few": "%{count} (OF) cikkek"
-          }
+            "few": "%{count} cikkek",
+            "one": "%{count} cikket",
+            "other": "%{count} cikkek"
+          },
+          "add_code": "Adjon hozzá kedvezményt",
+          "back_to_finalize_order": "Vissza a pénztárhoz"
         },
         "discount_title_stacking": {
-          "few": "Kedvezmények"
+          "few": "Kedvezmények",
+          "one": "Kedvezmény",
+          "other": "Kedvezmények"
         },
         "discount_order_stacking": {
-          "few": "Kedvezmények megrendelésre"
+          "few": "Rendelési kedvezmények",
+          "one": "Rendelési kedvezmény",
+          "other": "Rendelési kedvezmények"
         },
         "subtotal_label_with_quantity": {
-          "few": "Subtotal · %{count} áru"
+          "few": "Subtotal · %{count} áru",
+          "one": "Részösszeg · %{count} cikket"
         },
         "number_items": {
           "few": "%{count} áru"
@@ -1579,7 +1592,43 @@
         "maximum_discount_code_limit_reached": "Elérte a kedvezménykódok maximális számát. A kód használatához távolítson el egy meglévő kódot <strong style=\"text-transform:uppercase\">%{code}</strong>.",
         "order_total_label": "Rendelés összesen",
         "discount_code_application_failed": "<strong style=\"text-transform:uppercase\">%{code}</strong> jelenleg nem működik. Forduljon hozzánk segítségért.",
-        "due_on_fulfillment": "A kitüntetés időpontjában esedékes"
+        "due_on_fulfillment": "A kitüntetés időpontjában esedékes",
+        "gift_card_masked": "•••• %{last_characters}",
+        "subscriptions": "Előfizetések",
+        "duties_label": "Vámok",
+        "duties_and_taxes_label": "Vámok és adók",
+        "error_duties_tooltip": "Ezt a rendelést egy másik országból szállítják, így a kiszállításkor vámok és adók kerülhetnek felszámításra.",
+        "may_be_charged_on_delivery": "Kiszállításkor felszámíthatók",
+        "total_updated_label_with_price": "Frissített teljes ár: %{totalPrice}",
+        "recurring_payments": "Ismétlődő kifizetések",
+        "recurring_total_multiple_label": "Ebben a sorrendben több tételért ismétlődő díjat kell fizetni.",
+        "deferred_total_due_date_label": "Összesen miatt {{date}}",
+        "full_price": "Teljes ár: %{price}",
+        "custom_discount": "Egyedi kedvezmény",
+        "component_quantity_title": "%{quantity} × %{product_title}",
+        "alternative_payment_currency_total": "Terhelt összeg: %{amount_due}",
+        "calculating": "Ki van számolva...",
+        "group_title_label": "része a \"%{group_title}”",
+        "price_per_item": {
+          "accessibility_label": "%{price} cikkenként",
+          "label": "%{price}/ db."
+        },
+        "updated_shipping_method": "Fizetési mód frissítve: %{shipping_method}",
+        "discount_not_found": "Nem található a megadott kódnak megfelelő érvényes kedvezmény",
+        "total_savings": "Teljes megtakarítás",
+        "return_restocking_fee_label": "Újratelepítési díj",
+        "return_shipping_fee_label": "Visszaküldés",
+        "enter_shipping_address": "Adja meg a szállítási címet",
+        "shipping_discount_title": "Szállítási kedvezmény",
+        "discount_code_applied": "Kedvezmény kód alkalmazva",
+        "discount_code_applied_with_code": "Kedvezmény kód %{code} alkalmazták",
+        "gift_card_applied": "Az ajándékutalvány felhasználásra került",
+        "duties_included_label": "A végösszeg tartalmazza az összes vonatkozó adót és illetéket. A szállításnak nincs többletköltsége.",
+        "deferred_balance_info": {
+          "title": "Egyenleg érdemes {{amount_due}} esedékessége van {{due_at}}",
+          "due_on_fulfillment_title": "Egyenleg érdemes {{amount_due}} a kitüntetés időpontjában van esedékessége"
+        },
+        "eligible_customer_missing_notice": "A kedvezményes kódért <strong style=\"text-transform:uppercase\">%{code}</strong> jogosult ügyfél szükséges"
       },
       "payment": {
         "order_covered_by_gift_cards_notice": {
