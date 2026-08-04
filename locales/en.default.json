@@ -3436,13 +3436,48 @@
           "run_error": "An error occurred with your shopping cart."
         },
         "gift_card_price_must_be_greater_than_zero": "The product in the form of a set \"%{name}” cannot be added to cart.",
-        "cart_too_large": "The basket is too big."
+        "cart_too_large": "The basket is too big.",
+        "gift_card_recipient_validation_error": "The gift card recipient specified is not valid",
+        "invalid_input": "The parameter %{parameter} is invalid.",
+        "buyer_cannot_purchase_for_company_locations": "You cannot make purchases for this location",
+        "only_one_added_to_cart": "Only 1 item has been added to your cart due to availability.",
+        "only_n_added_to_cart": "Just %{quantity} items have been added to your cart due to availability.",
+        "maximum_available_quantity_reached": "The maximum quantity of this item is already in your cart.",
+        "cart_attributes_error": "Shopping cart attributes contain incorrect data.",
+        "merchandise_not_applicable": "This item cannot be purchased as configured.",
+        "not_found": "The basket was not found"
+      },
+      "storefront": {
+        "invalid_password": "Incorrect password, try again."
+      },
+      "tags": {
+        "add_articles": "Narrow your search to items that also have the tag %{tag}",
+        "add_products": "Narrow the selection to products that match the label %{tag}",
+        "remove_articles": "Expand your search to items that are not tagged %{tag}",
+        "remove_products": "Remove the label %{tag}"
+      },
+      "line_item": {
+        "item_status": {
+          "add_variant": "It was added %{delta}",
+          "increment_item": "It was added %{delta}",
+          "decrement_item": "They were eliminated %{delta} from %{total}",
+          "decrement_fulfilled_line_item": "They returned %{delta} from %{total}",
+          "decrement_return_line_item": "It has been removed %{delta} from the return"
+        }
       }
     },
     "page_titles": {
       "search_results": {
         "few": "Search: %{count} results found for \"%{terms}\""
-      }
+      },
+      "products": "Products",
+      "shopping_cart": "Your shopping cart",
+      "account": "account",
+      "create_account": "Create an account",
+      "reset_account": "Reset your account",
+      "addresses": "Addresses",
+      "order": "Order %{name}",
+      "search": "Search"
     },
     "sentence": {
       "words_connector": ", ",
@@ -3592,6 +3627,49 @@
           "caption": "Find out if there's an outage affecting other Shopify stores, not just this one.",
           "link_text": "View the status of your Shopify systems"
         }
+      }
+    },
+    "email_marketing": {
+      "subscribed": {
+        "confirmation": "Thank you for subscribing to our mailing list.",
+        "disclaimer": "You can unsubscribe at any time.",
+        "unsubscribe": "Unsubscribe"
+      },
+      "unsubscribed": {
+        "confirmation": "You have unsubscribed from our mailing list.",
+        "disclaimer": "You won't receive any more marketing updates from us. You can subscribe again at any time",
+        "preview": "Preview what customers will see when they unsubscribe."
+      },
+      "open_tracking": {
+        "opt_in": {
+          "opted_in_html": "<b>You have enabled email opening tracking.</b>",
+          "visibility": "Email open rates will be reported anonymously. We'll only see if you've opened an email, as part of an aggregated email open rate.",
+          "opt_out_html": "You can <a style='text-decoration:underline;' href='%{link}'>give up</a> when tracking email opens if you do not wish to share this information.",
+          "preview_bar": "Preview what customers will see when they choose to enable email open tracking."
+        },
+        "opt_out": {
+          "opted_out_html": "<b>You have opted out of tracking email opens.</b>",
+          "visibility": "We won't see if you've opened our emails.",
+          "opt_in_html": "Choose <a style='text-decoration:underline;' href='%{link}'>to activate</a> tracking email opens.",
+          "preview_bar": "Preview what customers will see when they choose to opt out of email open tracking."
+        },
+        "no_longer_track": {
+          "status_html": "<b>We no longer track any email opens.</b>",
+          "privacy_policy": "After sending this email, we updated our privacy policy and no longer track opens."
+        },
+        "track": {
+          "status_html": "<b>Email opening tracking is reported.</b>",
+          "visibility": "We will only see if you opened the email, within the overall email open rate."
+        },
+        "updated_policy": {
+          "status_html": "<b>Email opening tracking is reported.</b>",
+          "visibility": "We've updated our policy and now track email opens. Email open rates will be reported anonymously. We'll only see if you've opened an email, as part of your overall email open rate.",
+          "opt_out_html": "If you don't want to share this information, you can <a style='text-decoration:underline;' href='%{link}'>unsubscribe</a>"
+        }
+      },
+      "sms_unsubscribe_confirm": {
+        "message": "Are you sure you want to unsubscribe from SMS marketing?",
+        "button": "Unsubscribe"
       }
     }
   },
