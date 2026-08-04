@@ -1726,10 +1726,14 @@
         },
         "bank_account_missing": "A bankszámla összekapcsolása kötelező",
         "discount_show_more_warnings": {
-          "few": "Mutass többet %{count}"
+          "few": "Mutass többet %{count}",
+          "one": "Mutass többet %{count}",
+          "other": "Mutass többet %{count}"
         },
         "discount_codes_removed_summary": {
-          "few": "%{count} kedvezmény kódok eltávolítva"
+          "few": "%{count} kedvezmény kódok eltávolítva",
+          "one": "%{count} kedvezmény kódja eltávolítva",
+          "other": "%{count} kedvezmény kódok eltávolítva"
         },
         "amazon_payments_label": "Amazon Pay",
         "amazon_payments_login_hint": "A rendszer felkéri, hogy jelentkezzen be az Amazon-on.",
@@ -2012,7 +2016,61 @@
         "bank_account_connect_another": "Csatlakoztasson egy másik bankszámlát",
         "bank_account_connect": "Csatlakoztasson bankszámlát",
         "crypto_payment_method": {
-          "description": "Csatlakoztassa biztonságosan pénztárcáját. Egyenlegét és címét nem osztjuk meg."
+          "description": "Csatlakoztassa biztonságosan pénztárcáját. Egyenlegét és címét nem osztjuk meg.",
+          "tooltip": "Címét és pénztárcaegyenlegét nem osztjuk meg; csak a kért összeg vonható le",
+          "cashback_descriptor": {
+            "one": "Ezt követően visszakapja a visszatérítést %{count} napon",
+            "other": "Ezt követően visszakapja a visszatérítést %{count} napokon",
+            "few": "Ezt követően visszakapja a visszatérítést %{count} napokon"
+          }
+        },
+        "usdc_cashback_title": "%{incentive_percentage}% visszatérítés",
+        "usdc_cashback_additional_info": "Fizessen USDC-vel a Base-en, és kapjon %{incentive_percentage}% vissza a pénztárcához 30 napon belül.",
+        "usdc_cashback_terms": "Feltételek és korlátozások érvényesek",
+        "separate_payments_label": "Termékei több üzletből származnak. A befizetés összege benne lesz %{separate_payments_link}.",
+        "separate_payments_text": "külön kifizetések",
+        "payments": "Kifizetések",
+        "business_customer_with_bank_account_vaulting_payment_label": "Mentse el ezt a fizetési módot fizetéskor, és engedélyezze %{company} hogy megterhelje fiókját az erre a helyre engedélyezett jövőbeni vásárlásokért, az engedély visszavonásig érvényes. A fizetési módot az ehhez a helyhez rendelt összes kapcsolattartó használhatja.",
+        "new_bank_account_disclaimer": "A megrendelés teljesítése felhatalmazást von maga után %{shop_name} az alábbi számla megterhelésére ACH-n keresztül, a feltüntetett összegben és a feltüntetett időpontban.",
+        "bank_account_disclaimer": "Az ACH-kifizetések feldolgozása akár 4 munkanapot is igénybe vehet.",
+        "bank_account_vaulted_company_location": "Bankszámla mentve ehhez a helyhez",
+        "bank_account_generic_error": "Nem sikerült hozzáadni a bankszámlát. Próbálja újra később.",
+        "default": "Alapértelmezett",
+        "continue_to_guest_checkout": "Folytassa a fizetést látogatóként",
+        "add_payment_method": "Fizetési mód hozzáadása",
+        "choose_new_payment_method": "Válasszon új fizetési módot",
+        "add_new_payment_method": "Új fizetési mód hozzáadása",
+        "discount_codes_modified_summary": {
+          "one": "%{count} kedvezmény kód megváltozott",
+          "other": "%{count} kedvezmény kódok megváltoztak",
+          "few": "%{count} kedvezmény kódok megváltoztak"
+        },
+        "discount_codes_removed_or_modified_summary": {
+          "one": "%{count} A kedvezmény kódja eltávolítva vagy megváltozott",
+          "other": "%{count} kedvezménykódok eltávolítva vagy megváltoztak",
+          "few": "%{count} kedvezménykódok eltávolítva vagy megváltoztak"
+        },
+        "multiple_primary_payment_not_allowed": "Érvénytelen fizetési módok",
+        "purchase_options_subscription_agreement_label": "A kosara automatikusan megújuló előfizetést tartalmaz. A \" gombra kattintva%{button_label}”, %{consent_text} %{cancellation_instructions}",
+        "purchase_options_subscription_consent_text": "Ön kifejezetten és megerősítően beleegyezik abba, hogy automatikusan megterheljük a kosarában szereplő ismétlődő összeg(ek)et (plusz a szállítási költség és az adók), amíg előfizetése(i) meg nem szűnnek vagy le nem mondják.",
+        "purchase_options_subscription_cancellation_instructions": "%{cancel_text} Kérjük, konzultáljon %{cancellation_policy_label}.",
+        "purchase_options_subscription_cancel_text": "Bármikor lemondhatja fiókját, vagy kapcsolatba léphet az üzlettel.",
+        "vault_for_payment_later": {
+          "pay_button_label": "Adja le a rendelést",
+          "notice": "Most nem számítunk fel semmilyen összeget. A fizetés folytatásával Ön elfogadja, hogy a fizetési módot a megrendelés feldolgozása során terheljük meg."
+        },
+        "alipay_label": "Alipay",
+        "wechat_pay_label": "WeChat Pay",
+        "oxxo_label": "OXXO",
+        "pay_with_credit_card": "Fizetés hitelkártyával",
+        "pay_with_debit_card": "Fizetés bankkártyával",
+        "bogus_test_checkout": {
+          "title": "Vizsgálati utasítások",
+          "intro": "A fizetés teszteléséhez használja az alábbi értékeket:",
+          "approved_transaction": "{{card_number}} jóváhagyott tranzakció szimulálására",
+          "declined_transaction": "{{card_number}} elutasított tranzakció szimulálására",
+          "gateway_failure": "{{card_number}} átjáró meghibásodásának szimulálására",
+          "additional_instructions": "Használjon bármilyen jövőbeli lejárati dátumot és bármilyen 3 számjegyű biztonsági kódot."
         }
       },
       "shipping_errors": {
