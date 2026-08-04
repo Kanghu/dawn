@@ -68,24 +68,24 @@
     }
   },
   "newsletter": {
-    "label": "E-mail-cím",
-    "success": "Köszönjük a feliratkozást",
-    "button_label": "Feliratkozás"
+    "label": "E-mail",
+    "success": "Köszönjük az előfizetést",
+    "button_label": "Iratkozz fel"
   },
   "accessibility": {
     "skip_to_text": "Ugrás a tartalomhoz",
-    "close": "Bezárás",
-    "unit_price_separator": "/",
-    "vendor": "Forgalmazó:",
+    "close": "Zárd be",
+    "unit_price_separator": "be",
+    "vendor": "Eladó:",
     "error": "Hiba",
-    "refresh_page": "Ha kiválasztasz egy lehetőséget, a teljes oldal frissül.",
+    "refresh_page": "A kijelölés kiválasztása az oldal teljes frissítését eredményezi.",
     "link_messages": {
-      "new_window": "Tartalom megnyitása új ablakban.",
-      "external": "Külső webhelyet nyit meg."
+      "new_window": "Új ablakban nyílik meg.",
+      "external": "Nyissa meg a külső webhelyet."
     },
-    "loading": "Betöltés folyamatban…",
-    "skip_to_product_info": "Kihagyás, és ugrás a termékadatokra",
-    "total_reviews": "összes értékelés",
+    "loading": "Betöltés...",
+    "skip_to_product_info": "Ugrás a termékinformációkhoz",
+    "total_reviews": "összes vélemény",
     "star_reviews_info": "{{ rating_max }}/{{ rating_value }} csillag",
     "collapsible_content_title": "Összecsukható tartalom",
     "complementary_products": "Kiegészítő termékek"
@@ -484,51 +484,51 @@
       "load_slide": "Töltse be a csúszdát",
       "previous_slideshow": "Előző dia",
       "next_slideshow": "Következő dia",
-      "pause_slideshow": "Diavetítés megállítása",
-      "play_slideshow": "Diavetítés indítása",
-      "carousel": "Forgótár",
+      "pause_slideshow": "A diavetítés szüneteltetése",
+      "play_slideshow": "A diavetítés lejátszása",
+      "carousel": "Körhinta",
       "slide": "Dia"
     },
     "page": {
-      "title": "Oldal címe"
+      "title": "Az oldal címe"
     },
     "announcements": {
-      "previous_announcement": "Előző közlemény",
-      "next_announcement": "Következő közlemény",
-      "carousel": "Forgótár",
+      "previous_announcement": "Korábbi bejelentés",
+      "next_announcement": "Következő bejelentés",
+      "carousel": "Körhinta",
       "announcement": "Közlemény",
-      "announcement_bar": "Közleménysáv",
-      "black_friday_continues": "🎉 A Black Friday folytatódik kedvezményekkel (akár 80%)",
-      "black_friday_lowest_prices": "🎉 Black Friday: az év legalacsonyabb árai kiválasztott termékekre",
-      "black_friday_delivery_delay": "⚠️ Ebben az időszakban a rendeléseknél enyhe ingadozások lehetnek a becsült szállítási időkben",
-      "holiday_closure": "Zárva tartunk dec. 25–28., dec. 31–jan. 4., jan. 6–7. A többi napon a rendelések feldolgozása és kiszállítása normálisan folyik."
+      "announcement_bar": "Hirdetmények sáv",
+      "black_friday_continues": "🎉 A BLACK FRIDAY AKÁR 80%-os kedvezménnyel folytatódik",
+      "black_friday_lowest_prices": "🎉 BLACK FRIDAY: Az év legalacsonyabb árai a legtöbb terméknél",
+      "black_friday_delivery_delay": "⚠️ Ebben az időszakban a rendelések becsült szállítási ideje kis mértékben ingadozhat",
+      "holiday_closure": "December 25-28-ig, december 31-től január 4-ig, január 6-7-ig zárva tartunk. A többi napon a rendelés feldolgozása és kiszállítása a megszokott módon folytatódik."
     },
     "quick_order_list": {
-      "product_total": "Termék részösszege",
-      "view_cart": "Kosár megtekintése",
-      "each": "{{ money }}/db",
+      "product_total": "Termék részösszeg",
+      "view_cart": "Tekintse meg a kosarat",
+      "each": "{{ money }}/ db.",
       "product": "Termék",
       "variant": "Változat",
-      "variant_total": "Változat összesen",
+      "variant_total": "Teljes változat",
       "items_added": {
-        "one": "{{ quantity }} termék hozzáadva",
-        "other": "{{ quantity }} termék hozzáadva",
-        "few": "{{ quantity }} Hozzáadott tételek"
+        "one": "{{ quantity }} elem hozzáadva",
+        "other": "{{ quantity }} elemek hozzáadva",
+        "few": "{{ quantity }} elemek hozzáadva"
       },
       "items_removed": {
-        "one": "{{ quantity }} termék eltávolítva",
-        "other": "{{ quantity }} termék eltávolítva",
-        "few": "{{ quantity }} kiküszöbölt tételek"
+        "one": "{{ quantity }} törölt cikk",
+        "other": "{{ quantity }} törölt elemek",
+        "few": "{{ quantity }} törölt elemek"
       },
       "product_variants": "Termékváltozatok",
-      "total_items": "Összes termék",
-      "remove_all_items_confirmation": "Eltávolítod mind a(z) {{ quantity }} terméket a kosárból?",
-      "remove_all": "Az összes eltávolítása",
-      "cancel": "Mégse",
-      "remove_all_single_item_confirmation": "Eltávolítod ezt a(z) 1 terméket a kosárból?",
-      "min_error": "A termék minimális mennyisége {{ min }}",
-      "max_error": "A termék maximális mennyisége {{ max }}",
-      "step_error": "A termék mennyisége csak {{ step }} darabos lépésekben növelhető"
+      "total_items": "Összes tétel",
+      "remove_all_items_confirmation": "Távolítsa el ezeket {{ quantity }} termékek a kosárban?",
+      "remove_all": "Távolítson el mindent",
+      "cancel": "Mégsem",
+      "remove_all_single_item_confirmation": "Eltávolít 1 terméket a kosárból?",
+      "min_error": "Ennél az elemnél a minimális érték {{ min }}",
+      "max_error": "Ennél az elemnél a maximális érték {{ max }}",
+      "step_error": "Ezt az elemet csak lépésekben adhatja meg {{ step }}"
     }
   },
   "localization": {
