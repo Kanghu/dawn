@@ -3353,7 +3353,33 @@
       "order": {
         "cancel_reason": {
           "few": "Something else"
+        },
+        "not_available": "This command is not available",
+        "financial_status": {
+          "authorized": "Authorized",
+          "pending": "Waiting",
+          "paid": "Paid",
+          "unpaid": "Unpaid",
+          "voided": "Cancelled",
+          "partially_paid": "Partially paid"
         }
+      },
+      "customer": {
+        "password_reset_error": "Password reset error",
+        "no_account_found": "No account found with this email.",
+        "invalid_credentials": "Incorrect email address or password.",
+        "denylisted_reset_password": "Your account could not be accessed because the current password is not secure. You will receive an email to help you update your password.",
+        "signup_disabled": "The creation of customer accounts has been disabled.",
+        "subscribe_error": "Error during subscription",
+        "unsubscribe_error": "Error during unsubscribe"
+      },
+      "address": {
+        "updated": "Address successfully updated.",
+        "error_updating": "Error updating address",
+        "created": "Address successfully created",
+        "error_creating": "Error creating address.",
+        "deleted": "Address deleted successfully",
+        "error_deleting": "Error deleting address."
       }
     },
     "page_titles": {
@@ -3459,7 +3485,55 @@
       "shop_404": {
         "title": "Create an e-commerce site and sell online! Ecommerce software from Shopify",
         "heros": {
-          "store_unavailable": "This store is currently unavailable."
+          "store_unavailable": "This store is currently unavailable.",
+          "store_not_exist": "This store does not exist.",
+          "no_storefront": "This store does not have a website yet.",
+          "store_will_be_right_back": "This store will be back shortly"
+        },
+        "links": {
+          "explore_other_stores": "Explore other stores",
+          "start_free_trial": "A free trial begins",
+          "refresh_page": "Reload the page"
+        },
+        "owner_ctas": {
+          "header": "Are you the store owner?",
+          "fix_domain": "Finish configuring the new web address, access %{domain_settings_link}. Click \"Connect domain\" and enter: %{domain}.<br>If you have problems accessing the store, try the page %{forgot_your_store_link}.",
+          "fix_domain_link_text": "domain settings",
+          "forgot_your_store_link_text": "you forgot the store details",
+          "add_storefront": "You can set up your website by adding the online store channel to your account %{admin_link}. If you have problems accessing the store, try the page %{forgot_your_store_link}.",
+          "admin_link_text": "administrator"
+        },
+        "ctas": {
+          "sell_in_person": {
+            "header": "Sell in person",
+            "caption": "Get the features you need to manage your retail store, whether you're starting out or expanding.",
+            "link_text": "Free trial begins"
+          },
+          "open_a_store": {
+            "header": "Open a new Shopify store",
+            "caption": "Start a 3-day free trial, then continue for $1/month for the next 3 months.",
+            "link_text": "Sign up now"
+          },
+          "editions": {
+            "header": "Explore Shopify Editions",
+            "caption": "With over 100 product updates, you can be more productive, more creative and more powerful in commerce than you ever imagined.",
+            "link_text": "Explore the newest version of Editions"
+          },
+          "store_owner": {
+            "header": "Are you the store owner?",
+            "caption": "Having problems accessing the store? Try the function %{forgot_your_store_link}. If you want to reactivate the store's contact details, get in touch %{shopify_support_link}.",
+            "shopify_support_link_text": "Shopify Support"
+          }
+        },
+        "title_unavailable": "Store unavailable",
+        "subtitles": {
+          "store_will_be_right_back": "Shopify is working to bring it back online as soon as possible."
+        },
+        "status_card": {
+          "eyebrow": "Help for shop owners",
+          "header": "Check your Shopify status",
+          "caption": "Find out if there's an outage affecting other Shopify stores, not just this one.",
+          "link_text": "View the status of your Shopify systems"
         }
       }
     }
