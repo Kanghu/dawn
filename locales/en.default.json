@@ -1930,7 +1930,8 @@
       "thank_you": {
         "login_reorder_link_text": {
           "few": "buy these products too",
-          "one": "buy this product too"
+          "one": "buy this product too",
+          "other": "buy these products too"
         },
         "gift_card_confirmation_by_text_typ": {
           "few": "You will receive a text message with your gift cards within a few minutes."
@@ -2078,7 +2079,71 @@
         "other_options": "Other options",
         "picked_up_title": "Your order has been picked up",
         "picked_up_description_html": "Your order has been picked up from %{location_name} on %{date}.",
-        "shop_phone_description": "You will receive a text message with a link to the Shop app, which will help you track your order."
+        "shop_phone_description": "You will receive a text message with a link to the Shop app, which will help you track your order.",
+        "marker": {
+          "current": "Current shipping location",
+          "shipping": "Shipping address"
+        },
+        "pick_up_in_store_marker": {
+          "current": "Current shipping location",
+          "shipping": "Pick up location"
+        },
+        "fulfillment": {
+          "fulfilled_table_title": "The items in this shipment",
+          "unfulfilled_table_title": "Items are ready for shipping",
+          "product_image_label": "Product image",
+          "description_label": "Description",
+          "quantity_label": "Quantity"
+        },
+        "ready_for_delivery_title": "Your order is ready for delivery",
+        "ready_for_delivery_description": "I have prepared your order.",
+        "order_status_confirmed_order_local": "We are preparing your order for delivery.",
+        "delivery_information_label": "Delivery information:",
+        "gift_card_sent_confirmation": "Gift cards have been sent",
+        "out_for_delivery_local_title": "Your order is being delivered.",
+        "out_for_delivery_local_description_html": "Your order will arrive soon.",
+        "delivered_local_title": "Your order has been delivered",
+        "delivered_local_description_html": "Didn't receive what you ordered? %{let_us_know}.",
+        "let_us_know": "Inform us",
+        "qr_code": {
+          "title": "Watch on your phone",
+          "send_link_to_phone": "Or send a link to your phone"
+        },
+        "gift_card_confirmation_by_text": "If you didn't receive it, request a text message resend or contact us.",
+        "gift_card_confirmation_by_email": "If you did not receive it, request the resending of the email or contact us.",
+        "gift_card_title": "Gift cards",
+        "resend_gift_cards": "Resend the gift cards",
+        "attempted_delivery_local_title": "Delivery failed",
+        "attempted_delivery_local_description_html": "We could not deliver your order. To schedule another delivery, %{contact_us}.",
+        "thank_you_title_payment": "Your payment is confirmed",
+        "thank_you_confirmed_order_with_email_payment": "You have made a payment for your order %{date}.",
+        "thank_you_confirmed_order_with_phone_payment": "You have made a payment for your order %{date}.",
+        "thank_you_confirmed_order_with_email_and_phone_payment": "You have made a payment for your order %{date}.",
+        "order_status_confirmed_order_with_email_payment": "You have made a payment for your order %{date}.",
+        "order_status_confirmed_order_with_phone_payment": "You have made a payment for your order %{date}.",
+        "order_status_confirmed_order_with_email_and_phone_payment": "You have made a payment for your order %{date}.",
+        "shop_qr_with_sms_upsell": {
+          "qr_code": {
+            "title": "Scan with your phone"
+          },
+          "sms": {
+            "title": "Or send a link to your phone"
+          }
+        },
+        "estimated_delivery": "Current estimate for delivery: ",
+        "view_business_customer_account": "View the account",
+        "company_location_title": "Location",
+        "thank_you_title_review": "Your order has been sent for review",
+        "thank_you_confirmed_order_with_draft": "We will let you know if we need more information or when your order is confirmed.",
+        "breadcrumbs_submitted": "Sent",
+        "breadcrumbs_in_review": "Under review",
+        "breadcrumbs_confirmed": "Confirmed",
+        "missing_shipping_address_banner": {
+          "title": "The order does not include a delivery address",
+          "text_html": "%{contact_us} to add the address",
+          "contact_us": "Contact us"
+        },
+        "order_status_confirmed_with_installments_payment_return": "Return your attention to the sales associate."
       },
       "order_payment_collection": {
         "changes_summary": {
