@@ -1137,24 +1137,37 @@
       },
       "order_summary": {
         "expand_component_information": {
-          "few": "οθόνες %{count} προϊόντα"
+          "few": "Εμφάνιση %{count} άρθρα",
+          "one": "Εμφάνιση %{count} άρθρο",
+          "other": "Εμφάνιση %{count} άρθρα"
         },
         "collapse_component_information": {
-          "few": "Κρύβω %{count} προϊόντα"
+          "few": "Απόκρυψη %{count} άρθρα",
+          "one": "Απόκρυψη %{count} άρθρο",
+          "other": "Απόκρυψη %{count} άρθρα"
         },
         "discount_discovery": {
           "merchandise_quantity_label": {
-            "few": "%{count} (των) άρθρων"
-          }
+            "few": "%{count} (των) άρθρων",
+            "one": "%{count} άρθρο",
+            "other": "%{count} (των) άρθρων"
+          },
+          "add_code": "Προσθέστε έκπτωση",
+          "back_to_finalize_order": "Επιστροφή στο ταμείο"
         },
         "discount_title_stacking": {
-          "few": "Εκπτώσεις"
+          "few": "Εκπτώσεις",
+          "one": "Έκπτωση",
+          "other": "Εκπτώσεις"
         },
         "discount_order_stacking": {
-          "few": "Εκπτώσεις για παραγγελία"
+          "few": "Παραγγείλετε εκπτώσεις",
+          "one": "Παραγγείλετε έκπτωση",
+          "other": "Παραγγείλετε εκπτώσεις"
         },
         "subtotal_label_with_quantity": {
-          "few": "Υποταγή · %{count} προϊόντα"
+          "few": "Υποταγή · %{count} προϊόντα",
+          "one": "Μερικό σύνολο · %{count} άρθρο"
         },
         "number_items": {
           "few": "%{count} προϊόντα"
@@ -1227,7 +1240,43 @@
         "maximum_discount_code_limit_reached": "Έχετε συμπληρώσει τον μέγιστο αριθμό εκπτωτικών κωδικών. Καταργήστε έναν υπάρχοντα κωδικό για να χρησιμοποιήσετε τον κωδικό <strong style=\"text-transform:uppercase\">%{code}</strong>.",
         "order_total_label": "Σύνολο παραγγελίας",
         "discount_code_application_failed": "<strong style=\"text-transform:uppercase\">%{code}</strong> δεν λειτουργεί αυτή τη στιγμή. Επικοινωνήστε μαζί μας για βοήθεια.",
-        "due_on_fulfillment": "Οφειλόμενο την ώρα της τιμής"
+        "due_on_fulfillment": "Οφειλόμενο την ώρα της τιμής",
+        "gift_card_masked": "•••• %{last_characters}",
+        "subscriptions": "Συνδρομές",
+        "duties_label": "Τελωνειακοί δασμοί",
+        "duties_and_taxes_label": "Δασμοί και φόροι",
+        "error_duties_tooltip": "Αυτή η παραγγελία αποστέλλεται από άλλη χώρα, επομένως ενδέχεται να χρεωθούν δασμοί και φόροι κατά την παράδοση.",
+        "may_be_charged_on_delivery": "Μπορεί να χρεωθούν κατά την παράδοση",
+        "total_updated_label_with_price": "Ενημερωμένη συνολική τιμή: %{totalPrice}",
+        "recurring_payments": "Επαναλαμβανόμενες πληρωμές",
+        "recurring_total_multiple_label": "Υπάρχει μια επαναλαμβανόμενη χρέωση για πολλά είδη αυτής της παραγγελίας.",
+        "deferred_total_due_date_label": "Σύνολο λόγω {{date}}",
+        "full_price": "Πλήρης τιμή: %{price}",
+        "custom_discount": "Προσαρμοσμένη έκπτωση",
+        "component_quantity_title": "%{quantity} × %{product_title}",
+        "alternative_payment_currency_total": "Ποσό που χρεώθηκε: %{amount_due}",
+        "calculating": "Υπολογίζεται...",
+        "group_title_label": "μέρος του \"%{group_title}”",
+        "price_per_item": {
+          "accessibility_label": "%{price} ανά άρθρο",
+          "label": "%{price}/ τεμ."
+        },
+        "updated_shipping_method": "Ενημερώθηκε ο τρόπος πληρωμής: %{shipping_method}",
+        "discount_not_found": "Δεν βρέθηκε έγκυρη έκπτωση που να ταιριάζει με τον κωδικό που εισαγάγατε",
+        "total_savings": "Συνολική εξοικονόμηση",
+        "return_restocking_fee_label": "Τέλος ανεφοδιασμού",
+        "return_shipping_fee_label": "Αποστολή επιστροφής",
+        "enter_shipping_address": "Εισαγάγετε τη διεύθυνση αποστολής",
+        "shipping_discount_title": "Έκπτωση αποστολής",
+        "discount_code_applied": "Εφαρμόστηκε ο εκπτωτικός κωδικός",
+        "discount_code_applied_with_code": "Κωδικός έκπτωσης %{code} εφαρμόστηκε",
+        "gift_card_applied": "Η δωροκάρτα εφαρμόστηκε",
+        "duties_included_label": "Το σύνολο περιλαμβάνει όλους τους ισχύοντες φόρους και δασμούς. Δεν υπάρχει επιπλέον κόστος για την παράδοση.",
+        "deferred_balance_info": {
+          "title": "Αξία ισορροπίας {{amount_due}} έχει ημερομηνία λήξης {{due_at}}",
+          "due_on_fulfillment_title": "Αξία ισορροπίας {{amount_due}} έχει την ημερομηνία λήξης την ώρα της τιμής"
+        },
+        "eligible_customer_missing_notice": "Για τον εκπτωτικό κωδικό <strong style=\"text-transform:uppercase\">%{code}</strong> απαιτείται κατάλληλος πελάτης"
       },
       "payment": {
         "order_covered_by_gift_cards_notice": {
