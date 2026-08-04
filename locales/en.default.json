@@ -3238,6 +3238,66 @@
         "milliliter": "ml",
         "centiliter": "cl",
         "liter": "l"
+      },
+      "taxes": {
+        "vat_number": {
+          "status": {
+            "invalid_format": {
+              "cy": "Cyprus VAT numbers: CY and 9 characters",
+              "cz": "Czech Republic VAT numbers: CZ and 8-10 characters",
+              "dk": "Denmark VAT numbers: DK and 8 characters",
+              "ee": "Estonian VAT numbers: EE and 9 characters",
+              "fi": "Finland VAT numbers: FI and 8 characters",
+              "fr": "French VAT numbers: FR and 11 characters",
+              "de": "German VAT numbers: DE and 9 characters",
+              "gr": "Greek VAT numbers contain EL and 9 characters",
+              "hu": "Hungarian VAT numbers: HU and 8 characters",
+              "ie": "Irish VAT numbers: IE and 8-9 characters",
+              "it": "Italian VAT numbers: IT and 11 characters",
+              "lv": "Latvian VAT numbers: LV and 11 characters",
+              "lt": "Lithuania VAT numbers: LT and 9-12 characters",
+              "lu": "Luxembourg VAT numbers: LU and 8 characters",
+              "mt": "Malta VAT numbers: MT and 8 characters",
+              "nl": "Netherlands VAT numbers: NL and 12 characters",
+              "pl": "VAT numbers in Poland: PL and 10 characters",
+              "pt": "Portugal VAT numbers: PT and 9 characters",
+              "ro": "Romanian VAT numbers: RO and 10 characters",
+              "sk": "Slovakia VAT numbers: SK and 10 characters",
+              "si": "Slovenia VAT numbers: SI and 8 characters",
+              "es": "Spain VAT numbers: ES and 9 characters",
+              "se": "Swedish VAT numbers: SE and 12 characters",
+              "gb": "UK VAT numbers: GB or XI and 5-12 characters"
+            },
+            "invalid_number": {
+              "at": "Enter a valid Austrian VAT number",
+              "be": "Enter a valid Belgian VAT number",
+              "bg": "Enter a valid Bulgarian VAT number",
+              "hr": "Enter a valid Croatian VAT number",
+              "cy": "Enter a valid Cyprus VAT number",
+              "cz": "Enter a valid Czech VAT number",
+              "dk": "Enter a valid Danish VAT number",
+              "ee": "Enter a valid Estonian VAT number",
+              "fi": "Enter a valid Finnish VAT number",
+              "fr": "Enter a valid French VAT number",
+              "de": "Enter a valid German VAT number",
+              "gr": "Enter a valid Greek VAT number",
+              "hu": "Enter a valid Hungarian VAT number",
+              "ie": "Please enter a valid Irish VAT number",
+              "it": "Enter a valid Italian VAT number",
+              "lv": "Enter a valid Latvian VAT number",
+              "lt": "Enter a valid Lithuanian VAT number",
+              "lu": "Enter a valid Luxembourg VAT number",
+              "mt": "Enter a valid Malta VAT number",
+              "nl": "Enter a valid VAT number from the Netherlands",
+              "pl": "Enter a valid VAT number from Poland",
+              "pt": "Enter a valid Portuguese VAT number",
+              "ro": "Enter a valid Romanian VAT number",
+              "sk": "Enter a valid Slovak VAT number",
+              "si": "Enter a valid Slovenian VAT number",
+              "es": "Enter a valid Spanish VAT number"
+            }
+          }
+        }
       }
     },
     "notices": {
