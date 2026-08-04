@@ -228,12 +228,12 @@
         "increase": "Αυξήστε την ποσότητα για {{ product }}",
         "decrease": "Μειώστε την ποσότητα για {{ product }}",
         "minimum_of": "Ελάχιστο {{ quantity }}",
-        "maximum_of": "Ανώτατο όριο {{ quantity }}",
+        "maximum_of": "Μέγιστο {{ quantity }}",
         "multiples_of": "Αυξήσεις του {{ quantity }}",
         "in_cart_html": "<span class=\"quantity-cart\">{{ quantity }}</span> στο καλάθι",
         "note": "Δείτε τους κανόνες ποσότητας",
         "min_of": "Ελάχιστο {{ quantity }}",
-        "max_of": "Ανώτατο όριο {{ quantity }}"
+        "max_of": "Μέγιστο {{ quantity }}"
       },
       "price": {
         "from_price_html": "Ξεκινώντας με {{ price }}",
@@ -248,7 +248,7 @@
         "pick_up_available_at_html": "Διατίθεται παραλαβή στο <span class=\"color-foreground\">{{ location_name }}</span>",
         "pick_up_unavailable_at_html": "Η παραλαβή δεν είναι διαθέσιμη αυτήν τη στιγμή στις <span class=\"color-foreground\">{{ location_name }}</span>",
         "unavailable": "Δεν ήταν δυνατή η φόρτωση της διαθεσιμότητας για παραλαβή",
-        "refresh": "Φρεσκάρω"
+        "refresh": "Ανανέωση"
       },
       "media": {
         "open_media": "Ανοίξτε το περιεχόμενο πολυμέσων {{ index }} σε ένα τροπικό παράθυρο",
@@ -258,7 +258,7 @@
         "load_image": "Φορτώστε την εικόνα {{ index }} στην άποψη της γκαλερί",
         "load_model": "Φορτώστε το τρισδιάστατο μοντέλο {{ index }} στην άποψη της γκαλερί",
         "load_video": "Παίξτε το βίντεο {{ index }} στην άποψη της γκαλερί",
-        "image_available": "εικών {{ index }} είναι πλέον διαθέσιμο στην προβολή γκαλερί"
+        "image_available": "Η εικόνα {{ index }} είναι πλέον διαθέσιμο στην προβολή γκαλερί"
       },
       "view_full_details": "Δείτε πλήρεις λεπτομέρειες",
       "shipping_policy_html": "<a href=\"{{ link }}\">Έξοδα αποστολής</a> υπολογίζονται με την ολοκλήρωση της παραγγελίας.",
@@ -276,8 +276,8 @@
       "volume_pricing": {
         "title": "Τιμολόγηση ανά όγκο",
         "note": "Η τιμολόγηση όγκου είναι διαθέσιμη",
-        "minimum": "Ψάρι {{ quantity }}",
-        "price_at_each": "ΝΑ {{ price }}/ τεμ.",
+        "minimum": "Πάνω {{ quantity }}",
+        "price_at_each": "να {{ price }}/ τεμ.",
         "price_range": "{{ minimum }} - {{ maximum }}"
       },
       "taxes_included": "Συμπεριλαμβάνονται φόροι.",
