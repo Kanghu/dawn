@@ -732,27 +732,42 @@
     "checkout": {
       "shipping": {
         "estimated_delivery_date": {
-          "few": "%{count} εργάσιμες ημέρες"
+          "few": "%{count} εργάσιμες ημέρες",
+          "one": "%{count} εργάσιμη ημέρα",
+          "other": "%{count} εργάσιμες ημέρες"
         },
         "other_method": {
-          "few": "%{count} Άλλες μέθοδοι είναι διαθέσιμες ξεκινώντας από"
+          "few": "%{count} άλλες μέθοδοι είναι διαθέσιμες από",
+          "zero": "Δεν υπάρχουν άλλες διαθέσιμες μέθοδοι",
+          "one": "%{count} άλλη μέθοδος είναι διαθέσιμη στο",
+          "other": "%{count} άλλες μέθοδοι είναι διαθέσιμες από"
         },
         "subscription_delivery_description": {
           "prepaid_delivery_frequency": {
-            "few": "για %{count} διανομή"
+            "few": "για %{count} παραδόσεις",
+            "one": "για %{count} παράδοση",
+            "other": "για %{count} παραδόσεις"
           },
           "subscription_delivery_frequency": {
             "day": {
-              "few": "σε καθένα %{count} ημέρες"
+              "few": "στον καθένα %{count} ημέρες",
+              "one": "κάθε μέρα",
+              "other": "στον καθένα %{count} ημέρες"
             },
             "week": {
-              "few": "σε καθένα %{count} εβδομαδιαίος"
+              "few": "στον καθένα %{count} εβδομάδες",
+              "one": "κάθε εβδομάδα",
+              "other": "στον καθένα %{count} εβδομάδες"
             },
             "month": {
-              "few": "σε καθένα %{count} Δευτέρα"
+              "few": "στον καθένα %{count} μήνες",
+              "one": "κάθε μήνα",
+              "other": "στον καθένα %{count} μήνες"
             },
             "year": {
-              "few": "σε καθένα %{count} έτη"
+              "few": "στον καθένα %{count} χρόνια",
+              "one": "κάθε χρόνο",
+              "other": "στον καθένα %{count} χρόνια"
             }
           },
           "first_n_order_free": {
@@ -793,14 +808,38 @@
           },
           "prepaid_order_no_cycle_delivery_not_included": {
             "few": "%{shipping_price} για %{count} παραδόσεις (%{per_delivery_cost}), μετά από αυτό %{recurring_order_shipping_price}"
-          }
+          },
+          "multiple_subscriptions_shipping_price_label": "%{shipping_price} για κάθε παράδοση"
         },
         "shipping_method_first_shipment_group_title": {
           "few": "Πρώτες αποστολές"
         },
         "shipping_method_recurring_shipments_group_title": {
           "few": "Επαναλαμβανόμενες αποστολές"
-        }
+        },
+        "title": "Μεταφορές",
+        "shipping_method_title": "Τρόπος αποστολής",
+        "waiting_on_rate_notice": "Λήψη διαθέσιμων τιμών αποστολής…",
+        "waiting_on_pickup_location_notice": "Λήψη διαθέσιμων τοποθεσιών παραλαβής…",
+        "no_rates_for_cart_or_destination_notice": "Δεν υπάρχει διαθέσιμη μέθοδος αποστολής για το καλάθι ή τη διεύθυνσή σας",
+        "no_pickup_location_notice": "Τουλάχιστον ένα από τα προϊόντα σας δεν είναι διαθέσιμο για παραλαβή",
+        "no_rates_for_country_notice": "Δεν βρέθηκε τιμή αποστολής για αυτήν τη διεύθυνση.",
+        "no_rates_contact_notice": "Επικοινωνήστε μαζί μας για περισσότερες πληροφορίες",
+        "free_rate_label": "Δωρεάν",
+        "cheapest_rate_label": "Το φθηνότερο",
+        "estimated_delivery_date_range": "Μεταξύ %{minimum} και %{maximum} εργάσιμες ημέρες",
+        "shipping_line_phone_label": "Αριθμός κινητού τηλεφώνου (απαιτείται)",
+        "shipping_line_phone": "Ο courier μπορεί να χρησιμοποιήσει αυτόν τον αριθμό για να επικοινωνήσει μαζί σας.",
+        "shipping_rate_discounted_amount": "Ήταν: %{original_amount}. Τώρα: %{amount}",
+        "optional_shipping_line_delivery_instructions_label": "Οδηγίες παράδοσης (προαιρετικό)",
+        "shipping_line_delivery_phone": "Ενδέχεται να επικοινωνήσουμε μαζί σας για την παροχή ενημερώσεων παράδοσης.",
+        "shipping_line_delivery_phone_label": "Αριθμός κινητού τηλεφώνου",
+        "shipping_line_delivery_instructions": "Εισαγάγετε τις απαιτούμενες πληροφορίες, όπως κωδικούς ενδοεπικοινωνίας ή οδηγίες παράδοσης.",
+        "local_delivery": "Τοπική παράδοση",
+        "subscription_shipping": "Αποστολή βάσει συνδρομής",
+        "shipping_method_one_time_purchase_group_title": "Μία φορά αγορά",
+        "shipping_method_subscription_group_title": "Συνδρομή",
+        "one_time_purchase_shipping": "Ενιαία αποστολή"
       },
       "general": {
         "map": {
@@ -1108,6 +1147,11 @@
       "search_results": {
         "few": "Αναζήτηση: Βρέθηκαν %{count} Αποτελέσματα για \"%{terms}”"
       }
+    },
+    "sentence": {
+      "words_connector": ", ",
+      "two_words_connector": " και ",
+      "last_word_connector": " και "
     }
   },
   "customer_accounts": {
