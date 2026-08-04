@@ -2051,15 +2051,34 @@
       "processing": {
         "wait": {
           "medium": {
-            "few": "Вашата поръчка се обработва. Прогнозното време за изчакване е от %{count} минути."
-          }
+            "few": "Вашата поръчка се обработва. Очакваното време за изчакване е %{count} минути.",
+            "one": "Вашата поръчка се обработва. Очакваното време за изчакване е %{count} на минута.",
+            "other": "Вашата поръчка се обработва. Очакваното време за изчакване е %{count} минути."
+          },
+          "short": "Вашата поръчка се обработва.",
+          "long": "Ще получите имейл веднага щом поръчката ви бъде обработена. В момента има голям обем поръчки.",
+          "no_auto_refresh_html": "Ако не бъдете пренасочени автоматично, %{link}.",
+          "refresh_this_page": "обновете тази страница"
         },
         "redirecting_page_title": "Пренасочва се...",
         "redirecting_title": "Пренасочва се...",
         "redirecting_notice": "Моля, изчакайте, докато ви пренасочим.",
         "complete_your_purchase_title": "Завършете покупката",
         "continue_to_payment_gateway_notice": "Продължете към плащането, за да добавите вашата информация за плащане.",
-        "continue_to_payment_gateway_button_label": "Продължете към касата"
+        "continue_to_payment_gateway_button_label": "Продължете към касата",
+        "complete_your_purchase_title_error": "Коригирайте информацията си за плащане",
+        "continue_to_payment_gateway_notice_error": "Вашата информация за плащане не можа да бъде потвърдена.",
+        "continue_to_payment_gateway_button_label_error": "Актуализирайте информацията за плащане",
+        "page_title": "Поръчката се обработва",
+        "title": "Поръчката се обработва",
+        "your_order_has_been_received_title": "Благодаря ви за поръчката",
+        "you_will_receive_confirmation": "В момента получаваме много поръчки. Скоро трябва да получите потвърждение по имейл или текстово съобщение. Ако не го получите в следващия час, уведомете ни.",
+        "you_will_not_be_charged": "Засега няма да бъдете таксувани",
+        "action_required": "Изисква се действие",
+        "redirecting_to_bank": "Пренасочва към {{bank}}",
+        "modal_notice": "Ние се свързваме {{paymentMethod}}",
+        "remote_shops_payments_processing": "Плащанията се обработват",
+        "remote_checkout_count": "%{current} от %{total}"
       },
       "thank_you": {
         "login_reorder_link_text": {
@@ -2540,6 +2559,44 @@
         "or_pay_another_way": "Или платете по друг начин",
         "or_check_out_another_way": "Или завършете поръчката по друг начин",
         "or_pay_with_credit_card": "Или платете с кредитна карта"
+      },
+      "failed_payment": {
+        "page_title": "Плащането не можа да бъде обработено",
+        "title": "Плащането не можа да бъде обработено",
+        "payment_not_processed_title": "Вашето плащане не можа да бъде обработено",
+        "payment_not_processed_text": "Не сте таксувани. Върнете се в количката си, за да завършите покупката си.",
+        "return_to_cart_button_label": "Върнете се в количката"
+      },
+      "payment_gateway": {
+        "credit_card_label": "Кредитна карта",
+        "bank_deposit_label": "Банков депозит",
+        "cash_on_delivery_label": "Наложен платеж",
+        "money_order_label": "Платежно нареждане",
+        "debit_card_label": "Дебитна карта",
+        "deferred_payment_label": "Изберете вашия начин на плащане по-късно",
+        "generic_payment_terms": "Трябва да спазвате условията {{translatedName}}. Плащането е дължимо на {{dueDate}}.",
+        "login_prompt": {
+          "no_access": {
+            "message": "{{logIn}} към акаунт, който има достъп до това местоположение, за да добавите или използвате запазени методи на плащане.",
+            "link": "Свържете се"
+          }
+        },
+        "direct_payment_terms": "Трябва да спазвате условията {{translatedName}}. Вашата карта ще бъде таксувана {{dueDate}}.",
+        "order_due_on_fulfillment_choose_later": "Плащането ще бъде дължимо веднага щом поръчката бъде изпълнена.",
+        "order_due_on_fulfillment_payment": "Вашата карта ще бъде таксувана веднага щом поръчката бъде изпълнена.",
+        "draft_order_payment_due_later_no_terms": "Плащането ще бъде дължимо веднага след потвърждаване на поръчката.",
+        "draft_order_payment_due_later_no_terms_payment_selected": "Вашата карта ще бъде таксувана веднага щом поръчката бъде потвърдена.",
+        "draft_order_payment_due_later_terms": "Трябва да спазвате условията {{translatedName}} веднага щом поръчката бъде потвърдена.",
+        "draft_order_payment_due_on_fulfillment": "Плащането ще бъде дължимо веднага щом поръчката бъде потвърдена и изпълнена.",
+        "fixed_payment_label": "Вашето плащане ще бъде дължимо на {{dueDate}}.",
+        "fixed_direct_payment_terms": "Вашата карта ще бъде таксувана на {{dueDate}}.",
+        "order_deposit_due_now": "Количеството на {{depositAmount}} срокът е днес. Балансът е предмет на условия {{translatedName}} и се дължи на {{dueDate}}.",
+        "order_deposit_due_on_fulfillment": "Количеството на {{depositAmount}} срокът е днес. Остатъкът ще бъде дължим веднага щом поръчката бъде изпълнена.",
+        "order_due_on_receipt_choose_later": "Вашето плащане ще бъде дължимо при получаване.",
+        "draft_order_deposit_due_later": "Плащане в размер на {{depositAmount}} ще бъдат дължими веднага щом поръчката бъде потвърдена. Остатъкът ще бъде дължим в съответствие с условията {{translatedName}}.",
+        "draft_order_deposit_due_on_fulfillment": "Плащане в размер на {{depositAmount}} ще бъдат дължими веднага щом поръчката бъде потвърдена. Остатъкът ще бъде дължим веднага щом поръчката бъде изпълнена.",
+        "order_deposit_due_on_receipt": "Количеството на {{depositAmount}} срокът е днес. Остатъкът ще бъде дължим по-късно.",
+        "order_deposit_due_on_fixed_date": "Количеството на {{depositAmount}} срокът е днес. Остатъкът ще бъде дължим на {{dueDate}}."
       }
     },
     "notices": {
