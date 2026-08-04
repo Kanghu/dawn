@@ -771,45 +771,82 @@
             }
           },
           "first_n_order_free": {
-            "few": "Az első %{count} Ingyenes megrendelések"
+            "few": "Az elsők %{count} ingyenes rendelések",
+            "one": "Első rendelés ingyenes",
+            "other": "Az elsők %{count} ingyenes rendelések"
           },
           "free_for_first_n_order": {
-            "few": "Az elsőre %{count} megrendelés"
+            "few": "Az elsőknek %{count} parancsokat",
+            "one": "Az első rendelésre",
+            "other": "Az elsőknek %{count} parancsokat"
           },
           "free_shipping_cycles": {
-            "few": "Ingyenes szállítás még %{count} kézbesítés"
+            "few": "Ingyen kiszállítás az állóra %{count} szállítások",
+            "one": "Ingyen kiszállítás az állóra %{count} szállítás",
+            "other": "Ingyen kiszállítás az állóra %{count} szállítások"
           },
           "free_shipping_cycles_delivery_not_included": {
-            "few": "Ingyenes szállítás %{count} kézbesítés"
+            "few": "Ingyenes kiszállítás %{count} szállítások",
+            "one": "Ingyenes kiszállítás %{count} szállítás",
+            "other": "Ingyenes kiszállítás %{count} szállítások"
           },
           "first_n_order_free_with_cycle": {
-            "few": "Ingyenes szállítás még %{count} Szállítások akkor %{recurring_order_shipping_price}"
+            "few": "Ingyen kiszállítás az állóra %{count} szállítások, akkor %{recurring_order_shipping_price}",
+            "one": "Ingyen kiszállítás az állóra %{count} szállítás akkor %{recurring_order_shipping_price}",
+            "other": "Ingyen kiszállítás az állóra %{count} szállítások, akkor %{recurring_order_shipping_price}"
           },
           "first_n_order_free_with_cycle_delivery_not_included": {
-            "few": "Ingyenes szállítás %{count} Szállítások akkor %{recurring_order_shipping_price}"
+            "few": "Ingyenes kiszállítás %{count} szállítások, akkor %{recurring_order_shipping_price}",
+            "one": "Ingyenes kiszállítás %{count} szállítás akkor %{recurring_order_shipping_price}",
+            "other": "Ingyenes kiszállítás %{count} szállítások, akkor %{recurring_order_shipping_price}"
           },
           "max_cycles_base_shipping": {
-            "few": "Még mindig %{count} szállítás az árra %{shipping_price} minden"
+            "few": "Mégis %{count} áron szállítjuk %{shipping_price} mindegyik",
+            "one": "Mégis %{count} áron szállítjuk %{shipping_price}",
+            "other": "Mégis %{count} áron szállítjuk %{shipping_price} mindegyik"
           },
           "max_cycles_base_shipping_delivery_not_included": {
-            "few": "Még mindig %{count} szállítás az árra %{shipping_price} minden"
+            "few": "Mégis %{count} áron szállítjuk %{shipping_price} mindegyik",
+            "one": "%{count} áron szállítjuk %{shipping_price}",
+            "other": "Mégis %{count} áron szállítjuk %{shipping_price} mindegyik"
           },
           "prepaid_free_shipping_with_cycles": {
-            "few": "Ingyenes szállítás az első számára %{cycle}, utána %{recurring_order_shipping_price}"
+            "few": "Ingyenes kiszállítás elsőre %{cycle}, ami után %{recurring_order_shipping_price}",
+            "one": "Ingyenes szállítás az első alkalommal %{cycle}, ami után %{recurring_order_shipping_price}",
+            "other": "Ingyenes kiszállítás elsőre %{cycle}, ami után %{recurring_order_shipping_price}"
           },
           "prepaid_order_one_cycle": {
-            "few": "%{shipping_price} mert még %{count} Szállítások (%{per_delivery_cost})"
+            "few": "%{shipping_price} mert még %{count} szállítások (%{per_delivery_cost})",
+            "one": "%{shipping_price} mert még %{count} szállítás",
+            "other": "%{shipping_price} mert még %{count} szállítások (%{per_delivery_cost})"
           },
           "prepaid_order_one_cycle_delivery_not_included": {
-            "few": "%{shipping_price} -ra %{count} Szállítások (%{per_delivery_cost})"
+            "few": "%{shipping_price} számára %{count} szállítások (%{per_delivery_cost})",
+            "one": "%{shipping_price} számára %{count} szállítás",
+            "other": "%{shipping_price} számára %{count} szállítások (%{per_delivery_cost})"
           },
           "prepaid_order_no_cycle": {
-            "few": "%{shipping_price} mert még %{count} kézbesítés (%{per_delivery_cost}), utána %{recurring_order_shipping_price}"
+            "few": "%{shipping_price} mert még %{count} szállítás (%{per_delivery_cost}), amely után %{recurring_order_shipping_price}",
+            "one": "%{shipping_price} mert még %{count} szállítás, amely után %{recurring_order_shipping_price}",
+            "other": "%{shipping_price} mert még %{count} szállítás (%{per_delivery_cost}), amely után %{recurring_order_shipping_price}"
           },
           "prepaid_order_no_cycle_delivery_not_included": {
-            "few": "%{shipping_price} -ra %{count} Szállítások (%{per_delivery_cost}), utána %{recurring_order_shipping_price}"
+            "few": "%{shipping_price} számára %{count} szállítások (%{per_delivery_cost}), amely után %{recurring_order_shipping_price}",
+            "one": "%{shipping_price} számára %{count} szállítás, amely után %{recurring_order_shipping_price}",
+            "other": "%{shipping_price} számára %{count} szállítások (%{per_delivery_cost}), amely után %{recurring_order_shipping_price}"
           },
-          "multiple_subscriptions_shipping_price_label": "%{shipping_price} minden szállításhoz"
+          "multiple_subscriptions_shipping_price_label": "%{shipping_price} minden szállításhoz",
+          "prepaid_shipping_price_label": "%{shipping_price} minden szállításhoz x %{delivery_interval_count}",
+          "initial_order_discounted": "Az első szállítás költsége %{discounted_shipping_cost}, akkor %{frequency_description}",
+          "prepaid_initial_order_discounted": "Az első szállítás költsége %{discounted_shipping_price} %{prepaid_delivery_frequency}",
+          "prepaid_initial_order_discounted_with_per_delivery_price": "Az első szállítás költsége %{discounted_shipping_price} %{prepaid_delivery_frequency} (%{discounted_cost_per_delivery})",
+          "prepaid_initial_order_discounted_with_renewal": "Az első szállítás költsége %{discounted_shipping_price} %{prepaid_delivery_frequency}, akkor %{shipping_price} %{billing_cycle}",
+          "prepaid_initial_order_discounted_with_per_delivery_price_and_renewal": "Az első szállítás költsége %{discounted_shipping_price} %{prepaid_delivery_frequency} (%{discounted_cost_per_delivery}), akkor %{shipping_price} %{billing_cycle}",
+          "shipping_price_included": "Beleértve",
+          "recurring_order_shipping_price": "követi %{recurring_order_shipping_price}",
+          "first_order_shipping_price_included": "Az első parancsot tartalmazza, majd ezt követi %{recurring_order_shipping_price}",
+          "first_order_different_shipping_price": "%{first_order_shipping_price} (%{per_delivery_price} szállításonként), ezt követi %{recurring_order_shipping_price}",
+          "subscription_free_with_frequency_label": "Ingyenes szállítás %{delivery_frequency}"
         },
         "shipping_method_first_shipment_group_title": {
           "few": "Első szállítmányok"
