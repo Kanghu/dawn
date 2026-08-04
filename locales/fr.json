@@ -1694,7 +1694,69 @@
         "change_currency_section_description": "Sélectionnez une option de devise",
         "no_real_orders_dev_store": "Ce magasin ne peut pas accepter de vraies commandes ou de vrais paiements.",
         "subscription_agreement_label_html": "Je comprends et j'accepte un abonnement. Je renouvellerai au prix et à la fréquence indiqués jusqu'à ce qu'il se termine ou soit\n<a class=\"link--small\" data-modal=\"true\" data-title-text=\"%{subscription_policy}\" href=\"%{policy_href}\">annulé</a>.\n",
-        "waiting_on_payment_methods": "Nous obtenons les modes de paiement disponibles..."
+        "waiting_on_payment_methods": "Nous obtenons les modes de paiement disponibles...",
+        "apple_pay_payment_error": "Votre paiement n'a pas pu être finalisé. Réessayez ou utilisez un autre mode de paiement.",
+        "subscription_card_update_agreement_label": "La modification de votre mode de paiement mettra à jour votre abonnement et vos futurs paiements récurrents.",
+        "card_security_vault_notice": "Nous avons besoin de vos coordonnées pour les futurs paiements. Toutes les transactions sont sécurisées et cryptées.",
+        "taxes_not_included": "Les taxes ne sont pas incluses",
+        "no_taxes_banner_content": "Aucun frais ne sera facturé pour cette commande. Une fois le paiement encaissé, aucun frais ne peut être ajouté.",
+        "card_update_label": "Mettre à jour la carte",
+        "paypal": {
+          "connect": "Cliquez pour connecter votre compte PayPal"
+        },
+        "subscription_agreement_label": "Un ou plusieurs articles de votre panier constituent un achat différé ou un achat par abonnement. En continuant à payer, vous acceptez que votre mode de paiement soit automatiquement facturé au prix et à la fréquence spécifiés sur cette page jusqu'à la fin de votre abonnement ou jusqu'à ce que vous l'annuliez. Toutes les annulations doivent être conformes %{cancelled}.",
+        "subscription_agreement_cancelled": "politique d'annulation",
+        "card_expired": "Expiré",
+        "card_verification_confirm": "Pour vérifier, entrez le code de sécurité de votre carte.",
+        "different_credit_card_label": "Utiliser une autre carte de crédit",
+        "delete_customer_mandate_modal_cancel": "Annuler",
+        "apple": {
+          "connect": "Cliquez pour lier votre compte Apple Pay",
+          "not_available": "Apple Pay n'est pas disponible dans ce navigateur. Pour connecter votre compte Apple Pay, vous devrez utiliser le navigateur Safari sur un appareil Apple."
+        },
+        "account_connected": "Compte connecté.",
+        "billing_address_associated_with_mandate": "Utiliser l'adresse associée au mode de paiement",
+        "billing_address_associated_with_mandate_info": "Pour modifier votre adresse de facturation, supprimez et saisissez à nouveau les détails de votre carte de crédit.",
+        "credit_card_vaulting_sign_in_banner_title": "Enregistrez votre carte de crédit",
+        "credit_card_vaulting_sign_in_banner_info": "Connectez-vous ou créez un compte pour enregistrer votre carte de crédit pour de futurs achats.",
+        "credit_card_vaulting_sign_in_banner_button_label": "Connectez-vous",
+        "expiry_long": "(Expire dans %{month}/%{year})",
+        "expiry_short": "(Exp. dans %{month}/%{year})",
+        "ftd_vault_credit_card_label": "Je souhaite enregistrer cette carte de crédit sur mon compte pour un paiement plus rapide",
+        "delete_customer_mandate_modal_title": "Supprimer cette carte de paiement ?",
+        "delete_customer_mandate_modal_body": "Si vous supprimez cette carte, vous devrez l'ajouter à nouveau avant de pouvoir l'utiliser pour des paiements.",
+        "delete_customer_mandate_modal_confirm": "Retirez la carte",
+        "google": {
+          "connect": "Cliquez pour vous connecter avec votre compte Google Play",
+          "error_authorizing": "Erreur lors de l'autorisation du paiement"
+        },
+        "klarna_label": "Klarna",
+        "mor_disclaimer_html": "En cliquant ci-dessous et en complétant votre commande, vous acceptez d'acheter le ou les articles auprès de Global-e en tant que marchand enregistré.\npour cette transaction, conformément à <a class=\"link--small\" data-modal=\"true\" data-title-text=\"%{mor_terms}\" href=\"%{terms_href}\">Termes et conditions</a>\net avec <a class=\"link--small\" data-modal=\"true\" data-title-text=\"%{privacy_policy}\" href=\"%{policy_href}\">Politique de confidentialité</a> C'est mondial. Global-e est un\nfournisseur international de services d'honoraires pour %{shop_name}\n",
+        "purchase_options_card_update_agreement_label_html": "En mettant à jour votre moyen de paiement, vous autorisez les paiements pour tout achat récurrent ou différé conformément à <a class=\"link--small\" data-modal=\"true\" data-title-text=\"%{cancellation_policy}\" href=\"%{policy_href}\">politique d'annulation</a> de ce magasin.",
+        "multibanco_label": "Distributeur automatique de billets",
+        "receiver_payment_experience_hint": "Après avoir passé la commande, vous recevrez les détails du paiement. Effectuer le paiement chez Multibanco ou en ligne au plus tard %{due_days} (de) jours.",
+        "pending_payment": {
+          "due_notice": "La valeur de votre paiement %{amount_due} a une date d'échéance de %{due_date}",
+          "multibanco": {
+            "instruction_html": "Effectuez le paiement chez Multibanco ou en ligne en utilisant les détails ci-dessous. Si vous avez des questions ou souhaitez mettre à jour vos informations de paiement, %{contact_us}.",
+            "entity": "Entité",
+            "reference": "Référence",
+            "amount": "Montant",
+            "find_nearest_atm": "Trouver le guichet automatique le plus proche",
+            "buyer_action_info": "Paiement d'un montant de %{amount_due} a atteint sa maturité."
+          }
+        },
+        "purchase_options_agreement_label": "Un ou plusieurs articles dans votre panier représentent un achat différé ou récurrent. En continuant à payer, vous acceptez que votre mode de paiement soit automatiquement facturé au prix et à la fréquence indiqués sur cette page jusqu'à ce qu'il soit terminé ou jusqu'à votre annulation. Toutes les annulations sont soumises aux conditions de  %{cancellation_policy_label}.",
+        "update_payment_method": "Mettez à jour votre mode de paiement",
+        "paypal_modal": {
+          "order_contains_subscriptions": "Abonnement",
+          "order_contains_fixed_selling_plans": "Le total peut ne pas inclure les taxes, les frais d'expédition, les taxes différées et certaines réductions. Continuez à payer pour savoir combien est dû aujourd'hui."
+        },
+        "purchase_options_agreement_label_html": "Je comprends qu'un ou plusieurs articles de mon panier constituent un achat différé ou récurrent. Poursuivant, je suis d'accord avec\n<a class=\"link--small\" data-modal=\"true\" data-title-text=\"%{subscription_policy}\" href=\"%{policy_href}\">politique d'annulation</a>\net j'autorise que mon mode de paiement soit débité aux prix, fréquences et dates indiqués sur cette page jusqu'à\nma commande est exécutée ou je l'annule, si cela est autorisé.\n",
+        "payment_method_saved": "Mode de paiement enregistré",
+        "card_vaulted_company_location": "Carte enregistrée pour cet emplacement",
+        "order_covered_by_store_credit_notice": "Votre commande est couverte par un crédit en magasin.",
+        "order_covered_by_redeemables_notice": "Votre commande est couverte."
       },
       "shipping_errors": {
         "shipping_method_not_available_generic": {
