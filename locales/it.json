@@ -2142,15 +2142,34 @@
       "processing": {
         "wait": {
           "medium": {
-            "few": "Il tuo ordine è in elaborazione. Il tempo di attesa stimato è di %{count} minuti."
-          }
+            "few": "Il tuo ordine è in fase di elaborazione. Il tempo di attesa stimato è %{count} minuti.",
+            "one": "Il tuo ordine è in fase di elaborazione. Il tempo di attesa stimato è %{count} al minuto.",
+            "other": "Il tuo ordine è in fase di elaborazione. Il tempo di attesa stimato è %{count} minuti."
+          },
+          "short": "Il tuo ordine è in fase di elaborazione.",
+          "long": "Riceverai un'e-mail non appena il tuo ordine verrà elaborato. Attualmente il volume degli ordini è elevato.",
+          "no_auto_refresh_html": "Se non vieni reindirizzato automaticamente, %{link}.",
+          "refresh_this_page": "aggiorna questa pagina"
         },
         "redirecting_page_title": "Reindirizzamento...",
         "redirecting_title": "Reindirizzamento...",
         "redirecting_notice": "Per favore attendi mentre ti reindirizziamo.",
         "complete_your_purchase_title": "Completa l'acquisto",
         "continue_to_payment_gateway_notice": "Procedi al checkout per aggiungere le informazioni di pagamento.",
-        "continue_to_payment_gateway_button_label": "Continua alla cassa"
+        "continue_to_payment_gateway_button_label": "Continua alla cassa",
+        "complete_your_purchase_title_error": "Correggi i tuoi dati di pagamento",
+        "continue_to_payment_gateway_notice_error": "Non è stato possibile verificare i tuoi dati di pagamento.",
+        "continue_to_payment_gateway_button_label_error": "Aggiorna le informazioni di pagamento",
+        "page_title": "L'ordine è in fase di elaborazione",
+        "title": "L'ordine è in fase di elaborazione",
+        "your_order_has_been_received_title": "Grazie per l'ordine",
+        "you_will_receive_confirmation": "Attualmente stiamo ricevendo molti ordini. Dovresti ricevere conferma via email o SMS a breve. Se non lo ricevi entro la prossima ora, faccelo sapere.",
+        "you_will_not_be_charged": "Per il momento non ti verrà addebitato alcun costo",
+        "action_required": "Azione richiesta",
+        "redirecting_to_bank": "Reindirizza a {{bank}}",
+        "modal_notice": "Ci contattiamo {{paymentMethod}}",
+        "remote_shops_payments_processing": "I pagamenti vengono elaborati",
+        "remote_checkout_count": "%{current} da %{total}"
       },
       "thank_you": {
         "login_reorder_link_text": {
@@ -2654,6 +2673,44 @@
         "or_pay_another_way": "Oppure paga in altro modo",
         "or_check_out_another_way": "Oppure completa l'ordine in un altro modo",
         "or_pay_with_credit_card": "Oppure paga con carta di credito"
+      },
+      "failed_payment": {
+        "page_title": "Impossibile elaborare il pagamento",
+        "title": "Impossibile elaborare il pagamento",
+        "payment_not_processed_title": "Impossibile elaborare il pagamento",
+        "payment_not_processed_text": "Non ti è stato addebitato alcun importo. Ritorna al carrello per completare l'acquisto.",
+        "return_to_cart_button_label": "Ritorna al carrello"
+      },
+      "payment_gateway": {
+        "credit_card_label": "Carta di credito",
+        "bank_deposit_label": "Deposito bancario",
+        "cash_on_delivery_label": "Contrassegno",
+        "money_order_label": "Ordine di pagamento",
+        "debit_card_label": "Carta di debito",
+        "deferred_payment_label": "Scegli il tuo metodo di pagamento più tardi",
+        "generic_payment_terms": "È necessario rispettare le condizioni {{translatedName}}. Il pagamento è dovuto il {{dueDate}}.",
+        "login_prompt": {
+          "no_access": {
+            "message": "{{logIn}} a un account che ha accesso a questa posizione per aggiungere o utilizzare i metodi di pagamento salvati.",
+            "link": "Connettiti"
+          }
+        },
+        "direct_payment_terms": "È necessario rispettare le condizioni {{translatedName}}. L'addebito verrà effettuato sulla tua carta {{dueDate}}.",
+        "order_due_on_fulfillment_choose_later": "Il pagamento sarà dovuto non appena l'ordine sarà evaso.",
+        "order_due_on_fulfillment_payment": "L'addebito sulla tua carta verrà effettuato non appena l'ordine sarà evaso.",
+        "draft_order_payment_due_later_no_terms": "Il pagamento sarà dovuto non appena l'ordine sarà confermato.",
+        "draft_order_payment_due_later_no_terms_payment_selected": "L'addebito sulla tua carta verrà effettuato non appena l'ordine verrà confermato.",
+        "draft_order_payment_due_later_terms": "È necessario rispettare le condizioni {{translatedName}} non appena l'ordine sarà confermato.",
+        "draft_order_payment_due_on_fulfillment": "Il pagamento sarà dovuto non appena l'ordine sarà confermato ed evaso.",
+        "fixed_payment_label": "Il pagamento sarà dovuto il {{dueDate}}.",
+        "fixed_direct_payment_terms": "L'addebito verrà effettuato sulla tua carta {{dueDate}}.",
+        "order_deposit_due_now": "Importo di {{depositAmount}} è dovuto oggi. Il saldo è soggetto a termini {{translatedName}} e la scadenza è alle {{dueDate}}.",
+        "order_deposit_due_on_fulfillment": "Importo di {{depositAmount}} è dovuto oggi. Il saldo sarà dovuto non appena l'ordine sarà evaso.",
+        "order_due_on_receipt_choose_later": "Il pagamento sarà dovuto al ricevimento.",
+        "draft_order_deposit_due_later": "Pagamento per un importo di {{depositAmount}} sarà dovuto non appena l'ordine sarà confermato. Il saldo sarà dovuto secondo i termini {{translatedName}}.",
+        "draft_order_deposit_due_on_fulfillment": "Pagamento per un importo di {{depositAmount}} sarà dovuto non appena l'ordine sarà confermato. Il saldo sarà dovuto non appena l'ordine sarà evaso.",
+        "order_deposit_due_on_receipt": "Importo di {{depositAmount}} è dovuto oggi. Il saldo sarà dovuto più tardi.",
+        "order_deposit_due_on_fixed_date": "Importo di {{depositAmount}} è dovuto oggi. Il saldo sarà dovuto a {{dueDate}}."
       }
     },
     "notices": {
