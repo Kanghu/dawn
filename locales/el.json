@@ -4222,24 +4222,79 @@
         "draft_order_list": {
           "pending_tab_accessibility_label": {
             "pending_orders": {
-              "few": "εσείς {{count}} (των) παραγγελιών σε αναμονή"
-            }
-          }
-        }
+              "few": "Έχετε {{count}} (των) εκκρεμών παραγγελιών",
+              "one": "Έχετε {{count}} εκκρεμής παραγγελία",
+              "other": "Έχετε {{count}} (των) εκκρεμών παραγγελιών"
+            },
+            "no_pending_orders": "Δεν έχετε παραγγελίες σε εκκρεμότητα",
+            "more_than_pagination_length": "Έχετε περισσότερα από {{count}} (των) εκκρεμών παραγγελιών"
+          },
+          "hide_all": "Κρύψτε τα πάντα",
+          "show_all": "Εμφάνιση όλων",
+          "hide_all_accessibility_label": "Απόκρυψη όλων των παραγγελιών υπό εξέταση",
+          "show_all_accessibility_label": "Εμφανίζει όλες τις παραγγελίες υπό εξέταση",
+          "title": "Αναμονή",
+          "pagination": {
+            "nav_accessibility_label": "Κουμπιά πλοήγησης για παραγγελίες υπό εξέταση"
+          },
+          "show_all_orders_in_review": "Εμφανίζει όλες τις παραγγελίες υπό εξέταση",
+          "show_less_orders_in_review": "Εμφάνιση λιγότερων παραγγελιών υπό εξέταση",
+          "pending_orders_count_more_than_pagination_length": "Πάνω {{count}}"
+        },
+        "order_list_column_headers_location": "Τοποθεσία",
+        "order_list_column_headers_contact": "Επικοινωνία",
+        "removed_company_contact_tooltip": "Καταργήθηκε από την εταιρεία",
+        "order_list_column_headers_status": "Κατάσταση"
       },
       "draft_order_details": {
         "payment_status": {
           "pending": {
             "banner_overdue": {
-              "few": "Η πληρωμή για την παραγγελία σας έχει ξεπεράσει την ωριμότητα με {{count}} ημέρες"
+              "few": "Η πληρωμή για την παραγγελία σας έχει ξεπεράσει την ωριμότητα με {{count}} ημέρες",
+              "one": "Η πληρωμή της παραγγελίας σας έχει καθυστερήσει {{count}} ημέρα"
             },
             "banner_due": {
               "few": "Η πληρωμή σας οφείλεται {{count}} ημέρες"
             }
           },
           "due_date": "Οφειλόμενο στις {{date}}",
-          "total_balance": "Συνολικό υπόλοιπο"
-        }
+          "total_balance": "Συνολικό υπόλοιπο",
+          "draft": {
+            "description": "Τα στοιχεία πληρωμής ορίζονται κατά την επιβεβαίωση της παραγγελίας.",
+            "title": "Η πληρωμή δεν έχει ακόμη καταβληθεί",
+            "in_review": {
+              "description": "Τα στοιχεία πληρωμής ορίζονται κατά την επιβεβαίωση της παραγγελίας.",
+              "title": "Η πληρωμή δεν έχει ακόμη καταβληθεί"
+            },
+            "submitted": {
+              "description": "Αποστολή πληρωμής για επιβεβαίωση αυτής της παραγγελίας.",
+              "title": "Πληρώστε για επιβεβαίωση",
+              "deposit": {
+                "title": "Η πληρωμή οφείλεται",
+                "due_later": "Το υπόλοιπο υπόκειται σε όρους {{translatedName}} και οφείλεται στις {{dueDate}}.",
+                "due_on_fulfillment": "Το υπόλοιπο οφείλεται μετά την εκπλήρωση όλων των στοιχείων αυτής της παραγγελίας.",
+                "due_on_receipt": "Θα λάβετε ένα τιμολόγιο για το υπόλοιπο.",
+                "due_on_date": "Η ισορροπία οφείλεται σε {{dueDate}}."
+              }
+            },
+            "deposit": {
+              "due_later": "Πληρωμή στο ποσό των {{depositAmount}} θα εξοφληθεί μόλις επιβεβαιωθεί η παραγγελία. Το υπόλοιπο θα οφείλεται σύμφωνα με τους όρους {{translatedName}}.",
+              "due_on_fulfillment": "Πληρωμή στο ποσό των {{depositAmount}} θα εξοφληθεί μόλις επιβεβαιωθεί η παραγγελία. Το υπόλοιπο θα εξοφληθεί όταν ολοκληρωθεί η παραγγελία.",
+              "due_on_receipt": "Πληρωμή στο ποσό των {{depositAmount}} θα εξοφληθεί μόλις επιβεβαιωθεί η παραγγελία. Το υπόλοιπο θα καταβληθεί αργότερα.",
+              "due_on_date": "Πληρωμή στο ποσό των {{depositAmount}} θα εξοφληθεί μόλις επιβεβαιωθεί η παραγγελία. Το υπόλοιπο θα καταβληθεί στις {{dueDate}}."
+            }
+          },
+          "paid": {
+            "description": "Η παραγγελία σας εξοφλείται πλήρως.",
+            "title": "Πληρωμένη",
+            "title_with_date": "Ημερομηνία πληρωμής: {{date}}"
+          },
+          "pay_now": "Πληρώστε τώρα",
+          "title": "Κατάσταση πληρωμής"
+        },
+        "draft_order_subtitle": "Ημερομηνία επιβεβαίωσης: {{date}}, για την παραγγελία {{draftOrderName}}",
+        "loading": "Φόρτωση στοιχείων παραγγελίας",
+        "loading_finished_accessibility_message": "Τα στοιχεία παραγγελίας έχουν φορτωθεί"
       },
       "account_information": {
         "company_card_name_label": "Επωνυμία εταιρείας",
@@ -4306,7 +4361,15 @@
       "addresses": {
         "add_billing_address_button": "Προσθέστε μια διεύθυνση χρέωσης",
         "add_billing_address_section_accessibility_label": "Προσθέστε μια διεύθυνση χρέωσης",
-        "add_shipping_address_button": "Προσθέστε μια διεύθυνση αποστολής"
+        "add_shipping_address_button": "Προσθέστε μια διεύθυνση αποστολής",
+        "add_shipping_address_section_accessibility_label": "Προσθέστε μια διεύθυνση αποστολής",
+        "billing_address_card_title": "Διεύθυνση χρέωσης",
+        "cancel_adding_billing_address_accessibility_label": "Ακύρωση προσθήκης διεύθυνσης χρέωσης",
+        "cancel_adding_shipping_address_accessibility_label": "Ακύρωση προσθήκης διεύθυνσης αποστολής",
+        "save_new_billing_address_accessibility_label": "Αποθηκεύστε τη διεύθυνση χρέωσης",
+        "save_new_shipping_address_accessibility_label": "Αποθηκεύστε τη διεύθυνση αποστολής",
+        "shipping_address_card_title": "Διεύθυνση αποστολής",
+        "no_billing_address_banner": "Δεν προστέθηκε διεύθυνση χρέωσης"
       }
     },
     "errors": {
