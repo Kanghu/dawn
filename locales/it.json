@@ -1335,22 +1335,35 @@
       "stock": {
         "unshippable_product": {
           "header": {
-            "few": "Nessun metodo di consegna disponibile per %{count} (di) articoli"
+            "few": "Nessun metodo di consegna disponibile per %{count} (di) articoli",
+            "one": "Nessun metodo di consegna disponibile per %{count} articolo",
+            "other": "Nessun metodo di consegna disponibile per %{count} (di) articoli"
           },
           "message": {
-            "few": "Questi articoli verranno rimossi dal carrello, in quanto non sono disponibili metodi di consegna per il tuo indirizzo."
-          }
+            "few": "Questi articoli verranno rimossi dal tuo carrello perché non sono disponibili metodi di spedizione per il tuo indirizzo.",
+            "one": "Questo articolo verrà rimosso dal carrello perché non sono disponibili metodi di spedizione per il tuo indirizzo.",
+            "other": "Questi articoli verranno rimossi dal tuo carrello perché non sono disponibili metodi di spedizione per il tuo indirizzo."
+          },
+          "title": "Nessun metodo di consegna disponibile",
+          "status_column_header": "Nessun metodo di consegna"
         },
         "item_label": {
-          "few": "{{count}} articoli"
+          "few": "{{count}} articoli",
+          "one": "{{count}} articolo",
+          "other": "{{count}} articoli"
         },
         "unfulfillable_product": {
           "message": {
-            "few": "Metodo di consegna %{delivery_method} non è più disponibile per questi articoli."
+            "few": "Metodo di consegna %{delivery_method} non è più disponibile per questi articoli.",
+            "one": "Metodo di consegna %{delivery_method} non è più disponibile per questo articolo.",
+            "other": "Metodo di consegna %{delivery_method} non è più disponibile per questi articoli."
           },
           "default_message": {
-            "few": "Il metodo di consegna scelto non è più disponibile per questi articoli."
-          }
+            "few": "Il metodo di consegna scelto non è più disponibile per questi articoli.",
+            "one": "Il metodo di consegna scelto non è più disponibile per questo articolo.",
+            "other": "Il metodo di consegna scelto non è più disponibile per questi articoli."
+          },
+          "title": "La consegna non è disponibile"
         },
         "page_title": "Problemi di inventario",
         "title": "Non in magazzino",
@@ -1361,7 +1374,46 @@
         "status_column_header": "Condizione",
         "removed_from_cart_notice": "Rimosso dal carrello",
         "sold_out_label": "Esaurito",
-        "reduced_label": "Ridotto"
+        "reduced_label": "Ridotto",
+        "reduced_with_quantity_label": "Ne sono rimasti solo %{quantity_available}",
+        "remove_from_cart_button_label": "Rimuovi dal carrello",
+        "continue_shopping_button_label": "Continua",
+        "go_back_to_cart_button_label": "Ritorno al mio carrello",
+        "remove": "Eliminare",
+        "empty_cart_label": "Il tuo carrello è vuoto",
+        "quantity_update": {
+          "page_title": "Aggiorna quantità",
+          "title": "Aggiorna quantità",
+          "description": "Le quantità disponibili per questi articoli sono cambiate e sono state aggiornate nel carrello."
+        },
+        "unpurchasable_product": {
+          "title": "Prodotto non acquistabile",
+          "header": "Alcuni articoli sono stati rimossi dal tuo carrello",
+          "message": "Questi articoli non sono disponibili per gli ordini B2B.",
+          "status_column_header": "Non disponibile"
+        },
+        "unpurchasable_product_generic": {
+          "title": "Prodotto non acquistabile",
+          "header": "Alcuni articoli sono stati rimossi dal tuo carrello",
+          "message": "Questi articoli non sono disponibili.",
+          "status_column_header": "Non disponibile"
+        },
+        "price_update": {
+          "title": "Aggiornamento dei prezzi",
+          "description": "I prezzi di questi articoli sono cambiati e sono stati aggiornati nel carrello.",
+          "updated_price": "Prezzo aggiornato"
+        },
+        "return_to_store_label": "Torna al negozio",
+        "continue_cta_label": "Continua il pagamento",
+        "out_of_stock": {
+          "description": "Questi articoli non sono più disponibili e verranno rimossi dal carrello.",
+          "items_unavailable": "Alcuni articoli non sono più disponibili e verranno rimossi dal carrello."
+        },
+        "price_and_quantity_update": {
+          "title": "Aggiorna prezzi e quantità",
+          "description": "I prezzi e le quantità disponibili per questi articoli sono cambiati e sono stati aggiornati nel carrello."
+        },
+        "out_of_stock_in_context_label": "Questo prodotto non è disponibile nel tuo paese/regione."
       },
       "order_summary": {
         "expand_component_information": {
@@ -1400,7 +1452,12 @@
         },
         "pickup_unavailable_banner_title_with_country": {
           "few": "Dentro %{country} non ci sono negozi disponibili con i tuoi articoli"
-        }
+        },
+        "title": "Riepilogo dell'ordine",
+        "order_name_label": "Ordine %{name}",
+        "shopping_cart_label": "Il carrello della spesa",
+        "discount_title": "Sconto",
+        "discount_label": "Codice sconto"
       },
       "payment": {
         "order_covered_by_gift_cards_notice": {
