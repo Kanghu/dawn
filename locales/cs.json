@@ -4148,8 +4148,88 @@
           "run_error": "U vašeho nákupního košíku došlo k chybě."
         },
         "gift_card_price_must_be_greater_than_zero": "Produkt ve formě sady \"%{name}“ nelze přidat do košíku.",
-        "cart_too_large": "Košík je příliš velký."
+        "cart_too_large": "Košík je příliš velký.",
+        "gift_card_recipient_validation_error": "Zadaný příjemce dárkové karty není platný",
+        "invalid_input": "Parametr %{parameter} je neplatné.",
+        "buyer_cannot_purchase_for_company_locations": "V této lokalitě nemůžete nakupovat",
+        "only_one_added_to_cart": "Z důvodu dostupnosti byla do vašeho košíku přidána pouze 1 položka.",
+        "only_n_added_to_cart": "Jen %{quantity} položky byly přidány do vašeho košíku z důvodu dostupnosti.",
+        "maximum_available_quantity_reached": "Maximální množství tohoto zboží je již ve vašem košíku.",
+        "cart_attributes_error": "Atributy nákupního košíku obsahují nesprávné údaje.",
+        "merchandise_not_applicable": "Tuto položku nelze zakoupit podle konfigurace.",
+        "not_found": "Košík nebyl nalezen"
+      },
+      "storefront": {
+        "invalid_password": "Nesprávné heslo, zkuste to znovu."
+      },
+      "tags": {
+        "add_articles": "Zužte vyhledávání na položky, které také mají značku %{tag}",
+        "add_products": "Zúžit výběr na produkty, které odpovídají štítku %{tag}",
+        "remove_articles": "Rozšiřte vyhledávání na položky, které nejsou označeny %{tag}",
+        "remove_products": "Odstraňte štítek %{tag}"
+      },
+      "line_item": {
+        "item_status": {
+          "add_variant": "Bylo přidáno %{delta}",
+          "increment_item": "Bylo přidáno %{delta}",
+          "decrement_item": "Byli vyřazeni %{delta} od %{total}",
+          "decrement_fulfilled_line_item": "Vrátili se %{delta} od %{total}",
+          "decrement_return_line_item": "Bylo odstraněno %{delta} z návratu"
+        }
       }
+    },
+    "email_marketing": {
+      "subscribed": {
+        "confirmation": "Děkujeme, že jste se přihlásili k odběru našeho mailing listu.",
+        "disclaimer": "Z odběru se můžete kdykoli odhlásit.",
+        "unsubscribe": "Odhlásit odběr"
+      },
+      "unsubscribed": {
+        "confirmation": "Odhlásili jste se z našeho seznamu adresátů.",
+        "disclaimer": "Nebudete od nás dostávat žádné další marketingové novinky. Kdykoli se můžete znovu přihlásit",
+        "preview": "Náhled toho, co zákazníci uvidí, když se odhlásí."
+      },
+      "open_tracking": {
+        "opt_in": {
+          "opted_in_html": "<b>Povolili jste sledování otevírání e-mailů.</b>",
+          "visibility": "Ceny za otevření e-mailu budou hlášeny anonymně. To, zda jste otevřeli e-mail, uvidíme pouze v rámci souhrnné míry otevření e-mailu.",
+          "opt_out_html": "Můžete <a style='text-decoration:underline;' href='%{link}'>vzdát se</a> při sledování e-mailu se otevře, pokud si nepřejete tyto informace sdílet.",
+          "preview_bar": "Podívejte se, co zákazníci uvidí, když se rozhodnou povolit sledování otevřených e-mailů."
+        },
+        "opt_out": {
+          "opted_out_html": "<b>Odhlásili jste se z otevírání e-mailů se sledováním.</b>",
+          "visibility": "Neuvidíme, zda jste otevřeli naše e-maily.",
+          "opt_in_html": "Vyberte si <a style='text-decoration:underline;' href='%{link}'>aktivovat</a> otevře se sledovací e-mail.",
+          "preview_bar": "Podívejte se, co zákazníci uvidí, když se rozhodnou odhlásit se ze sledování otevřených e-mailů."
+        },
+        "no_longer_track": {
+          "status_html": "<b>Již nesledujeme žádné otevření e-mailu.</b>",
+          "privacy_policy": "Po odeslání tohoto e-mailu jsme aktualizovali naše zásady ochrany osobních údajů a již nesledujeme otevření."
+        },
+        "track": {
+          "status_html": "<b>Je hlášeno sledování otevření e-mailu.</b>",
+          "visibility": "Uvidíme pouze, zda jste e-mail otevřeli, v rámci celkové míry otevření e-mailu."
+        },
+        "updated_policy": {
+          "status_html": "<b>Je hlášeno sledování otevření e-mailu.</b>",
+          "visibility": "Aktualizovali jsme naše zásady a nyní se otevírá sledování e-mailů. Ceny za otevření e-mailu budou hlášeny anonymně. To, zda jste otevřeli e-mail, uvidíme pouze v rámci vaší celkové míry otevření e-mailu.",
+          "opt_out_html": "Pokud tyto informace nechcete sdílet, můžete <a style='text-decoration:underline;' href='%{link}'>odhlásit odběr</a>"
+        }
+      },
+      "sms_unsubscribe_confirm": {
+        "message": "Opravdu se chcete odhlásit z SMS marketingu?",
+        "button": "Odhlásit odběr"
+      }
+    },
+    "page_titles": {
+      "products": "Produkty",
+      "shopping_cart": "Váš nákupní košík",
+      "account": "účtu",
+      "create_account": "Vytvořte si účet",
+      "reset_account": "Resetujte svůj účet",
+      "addresses": "Adresy",
+      "order": "Objednat %{name}",
+      "search": "Hledat"
     }
   }
 }
