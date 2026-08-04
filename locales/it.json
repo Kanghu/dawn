@@ -1446,17 +1446,24 @@
           "other": "Sconti sugli ordini"
         },
         "subtotal_label_with_quantity": {
-          "few": "Subtotale · %{count} articoli",
-          "one": "Totale parziale · %{count} articolo"
+          "few": "Totale parziale · %{count} articoli",
+          "one": "Totale parziale · %{count} articolo",
+          "other": "Totale parziale · %{count} articoli"
         },
         "number_items": {
-          "few": "%{count} articoli"
+          "few": "%{count} articoli",
+          "one": "%{count} articolo",
+          "other": "%{count} articoli"
         },
         "view_all_items": {
-          "few": "Vedi tutto %{count} articoli"
+          "few": "Vedi tutti quelli %{count} articoli",
+          "one": "vedere %{count} articolo",
+          "other": "Vedi tutti quelli %{count} articoli"
         },
         "pickup_unavailable_banner_title": {
-          "few": "I tuoi articoli non possono essere sollevati dal negozio"
+          "few": "Non ci sono negozi disponibili con i tuoi articoli",
+          "one": "Non ci sono negozi disponibili con il tuo articolo",
+          "other": "Non ci sono negozi disponibili con i tuoi articoli"
         },
         "unit_price": {
           "per_item": {
@@ -1473,7 +1480,9 @@
           }
         },
         "pickup_unavailable_banner_title_with_country": {
-          "few": "Dentro %{country} non ci sono negozi disponibili con i tuoi articoli"
+          "few": "Dentro %{country} non ci sono negozi disponibili con i tuoi articoli",
+          "one": "Dentro %{country} non ci sono negozi disponibili con il tuo articolo",
+          "other": "Dentro %{country} non ci sono negozi disponibili con i tuoi articoli"
         },
         "title": "Riepilogo dell'ordine",
         "order_name_label": "Ordine %{name}",
@@ -1611,7 +1620,49 @@
           "title": "Valore del saldo {{amount_due}} ha una data di scadenza {{due_at}}",
           "due_on_fulfillment_title": "Valore del saldo {{amount_due}} ha la data di scadenza al momento dell'onore"
         },
-        "eligible_customer_missing_notice": "Per il codice sconto <strong style=\"text-transform:uppercase\">%{code}</strong> è richiesto un cliente idoneo"
+        "eligible_customer_missing_notice": "Per il codice sconto <strong style=\"text-transform:uppercase\">%{code}</strong> è richiesto un cliente idoneo",
+        "cost_table_item_column_header": "Articolo",
+        "cost_table_value_column_header": "Valore",
+        "product_image_quantity_label": "Quantità",
+        "more_items_modal": {
+          "clear_search": "Cancella la ricerca",
+          "empty_results": "Nessun risultato trovato per \"%{searchText}\". Controlla l'ortografia o utilizza una parola o una frase diversa.",
+          "number_items_shown": "%{shownNumber} da %{totalNumber} articoli",
+          "search_item": "Cerca"
+        },
+        "price_before_discount_aria_text": "Prezzo iniziale",
+        "price_after_discount_aria_text": "Prezzo ridotto",
+        "discount_code_aria_text": "Codice sconto",
+        "pickup_unavailable_banner_body": {
+          "ship_to_address": "Indirizzo di spedizione",
+          "ship_to_address_instead_html": "%{link} invece"
+        },
+        "deposit_label": "Magazzino",
+        "total_due_today_label": "Totale dovuto oggi",
+        "total_due_later_label": "Totale dovuto più tardi",
+        "discount_code_allocations_mismatch": "Il tuo codice sconto <strong style=\"text-transform:uppercase\">%{code}</strong> è cambiato. Controlla il tuo carrello e riprova.",
+        "deferred_total_due_date_label_next": "Scadenza: %{date}",
+        "total_due_label": "Totalmente dovuto",
+        "total_price_label": "Prezzo totale",
+        "for_add_on": "Per: %{group_title}",
+        "unconfirmed_label": "Non confermato",
+        "total_paid_label": "Totale pagato",
+        "from_shop_heading": "Da %{shop_name}",
+        "from_other_stores_heading": "Da altri negozi",
+        "estimated_taxes_label_short": "Stima",
+        "order_discounts_apply_to_local_shop": "In caso di ordini gli sconti vengono applicati solo agli articoli da %{shop_name}",
+        "gift_cards_apply_to_local_shop": "Le carte regalo sono valide solo sugli articoli di %{shop_name}",
+        "discount_code_removed": "Codice sconto %{code} è stato rimosso",
+        "discount_code_replaced": "Codice sconto %{old_code} è stato rimosso e il codice è stato applicato %{code}",
+        "discount_code_replaced_multiple": "Diversi codici sconto sono stati rimossi e il codice è stato applicato %{code}",
+        "from_multiple_stores_heading": "Da diversi negozi",
+        "pay_merchant_label": "Paga %{merchant_name}",
+        "discount_applies_to_subscription_items_only": "Questo sconto è valido solo per gli articoli inclusi nell'abbonamento",
+        "estimated_taxes_finalization_tooltip_content_short": "La ricarica avviene dopo il pagamento",
+        "compare_at_sale": "Promozione (%{sale_amount})",
+        "discount_code_applied_count": {
+          "few": "Visualizzazione %{count} sconti"
+        }
       },
       "payment": {
         "order_covered_by_gift_cards_notice": {
