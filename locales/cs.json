@@ -3335,8 +3335,85 @@
           },
           "errors_in_section": {
             "one": "{{count}} chyba v sekci {{section}}",
-            "other": "{{count}} chyby v sekci {{section}}"
+            "other": "{{count}} chyby v sekci {{section}}",
+            "few": "{{count}} chyby v sekci {{section}}"
           }
+        }
+      },
+      "review_address_modal": {
+        "title": "Zkontrolujte adresu",
+        "subtitle_no_match": "Tato adresa neodpovídá žádné z adres, které jste uložili.",
+        "subtitle_must_use": "Vaše objednávka bude odeslána na tuto adresu.",
+        "continue": "Pokračujte s touto adresou",
+        "use_saved_address": "Použijte jinou adresu",
+        "return_to_cart": "Návrat do košíku",
+        "subtitle": {
+          "one": "Tato objednávka bude odeslána na zadanou adresu {{merchant}}.",
+          "other": "Tato objednávka bude odeslána na adresu, kterou uvedl {{merchant}}. Vyberte dodací adresu.",
+          "few": "Tato objednávka bude odeslána na adresu, kterou uvedl {{merchant}}. Vyberte dodací adresu."
+        }
+      },
+      "marketplaces": {
+        "legal_notice": {
+          "legal_text": "Poraďte se",
+          "link_label": "Smluvní podmínky {{partnerDisplayName}}"
+        }
+      },
+      "online_store_chat": {
+        "title": "Máte otázky? Chatujte s námi"
+      },
+      "local_pickup": {
+        "location_information": {
+          "one": "jsem ti nablízku %{count} umístění se skladem",
+          "other": "jsem ti nablízku %{count} místa se skladem",
+          "few": "jsem ti nablízku %{count} místa se skladem"
+        },
+        "toggle_location": "Změnit místo",
+        "or": "NEBO",
+        "cancel": "Zrušit",
+        "your_location": "vaši polohu",
+        "search_button": "Najít obchody",
+        "no_stores_found": "Nebyly nalezeny žádné obchody",
+        "could_not_resolve_address": "Vaše adresa nebyla nalezena. Zkuste to znovu nebo použijte jinou adresu",
+        "paginator": {
+          "accessibility_label": "Stránkování místního vyhledávání",
+          "previous": "Předchozí stránka",
+          "next": "Další stránka",
+          "label": {
+            "one": "%{first} - %{last} od %{count} obchod",
+            "other": "%{first} - %{last} od %{count} obchody",
+            "few": "%{first} - %{last} od %{count} obchody"
+          }
+        },
+        "reveal_more_label": {
+          "one": "Zobrazit více %{count} umístění",
+          "other": "Zobrazit více %{count} (ze) míst",
+          "few": "Zobrazit více %{count} (ze) míst"
+        },
+        "location_address_search_label": "Adresa",
+        "all_stores_far_away": {
+          "title": "Nejbližší místa jsou ve větší vzdálenosti %{distance}",
+          "description": "Vyberte umístění nebo %{ship_to_address_link}",
+          "ship_to_address_link": "dodací adresu",
+          "title_with_location": "Nejbližší místo je u konce %{distance} proti %{location}",
+          "description_with_location": "%{change_location_link} nebo %{ship_to_address_link}",
+          "change_location_link": "Změňte svou polohu",
+          "title_with_specific_location": "Nejbližší místo s vaší položkou je daleko %{distance} z %{location}",
+          "title_with_item": {
+            "one": "Nejbližší místo s vaší položkou je více než %{distance} z %{location}",
+            "other": "Nejbližší místo s vašimi položkami je více než %{distance} z %{location}",
+            "few": "Nejbližší místo s vašimi položkami je více než %{distance} z %{location}"
+          }
+        },
+        "selected_pickup_option_no_longer_available": {
+          "title": "Místo, které jste dříve vybrali, již není k dispozici",
+          "description": "Vybrali jsme nejbližší místo s vaším zbožím skladem."
+        },
+        "pick_up_location": "Místo vyzvednutí",
+        "no_pickup_locations_found": "Nebyla nalezena žádná místa vyzvednutí",
+        "pickup_unavailable_banner_body": {
+          "try_different_location": "Zkuste jiné umístění",
+          "ship_to_address": "dodací adresu"
         }
       }
     }
