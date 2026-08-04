@@ -3413,7 +3413,85 @@
         "no_pickup_locations_found": "Nebyla nalezena žádná místa vyzvednutí",
         "pickup_unavailable_banner_body": {
           "try_different_location": "Zkuste jiné umístění",
-          "ship_to_address": "dodací adresu"
+          "ship_to_address": "dodací adresu",
+          "there_are_no_stores": "V blízkosti vaší adresy nejsou žádné obchody nebo vaše zboží není k dispozici k vyzvednutí.",
+          "ship_items": "Odešlete své položky",
+          "search_elsewhere": "hledat jinde",
+          "ship_items_or_search_elsewhere": "%{ship_items} nebo %{search_elsewhere}",
+          "search_elsewhere_standalone": "Hledej jinde"
+        },
+        "geolocation": {
+          "permission_not_allowed": "Povolit sdílení polohy nebo hledat jinak."
+        },
+        "location_address_search_placeholder": "%{postal_code_label} nebo adresu",
+        "location_closest": "Nejbližší místo s vaší položkou",
+        "toggle_multiple_locations": "jiné ryby %{count} umístění",
+        "location_information_far_away": {
+          "one": "Našel jsem %{count} umístění s vaším článkem",
+          "other": "Našel jsem %{count} místa s vaším článkem",
+          "few": "Našel jsem %{count} místa s vaším článkem"
+        },
+        "location_nearby": {
+          "one": "Existuje %{count} poblíž místa s vaší položkou",
+          "other": "Existuje %{count} místa v okolí s vaší položkou",
+          "few": "Existuje %{count} místa v okolí s vaší položkou"
+        },
+        "location_nearby_short": {
+          "one": "%{count} poblíž místa s vaší položkou",
+          "other": "%{count} místa v okolí s vaší položkou",
+          "few": "%{count} místa v okolí s vaší položkou"
+        },
+        "location_far_away": {
+          "one": "%{count} umístění s vaším článkem",
+          "other": "%{count} místa s vaším článkem",
+          "few": "%{count} místa s vaším článkem"
+        },
+        "toggle_more_locations": {
+          "one": "ještě %{count} umístění",
+          "other": "ještě %{count} umístění",
+          "few": "ještě %{count} umístění"
+        },
+        "pickup_unavailable_banner_title": {
+          "one": "U vaší položky nejsou žádná místa",
+          "other": "Neexistují žádná místa s vašimi položkami",
+          "few": "Neexistují žádná místa s vašimi položkami"
+        },
+        "pickup_unavailable_banner_title_with_country": {
+          "one": "v %{country} u vašeho článku nejsou žádná místa",
+          "other": "v %{country} nejsou žádná místa s vašimi položkami",
+          "few": "v %{country} nejsou žádná místa s vašimi položkami"
+        },
+        "title": "Umístění",
+        "location_closest_one_item": "Nejbližší místo s vaší položkou.",
+        "location_closest_other_items": "Nejbližší místo s vašimi položkami.",
+        "location_information_far_away_one_item": {
+          "one": "Existuje %{count} umístění s vaší položkou",
+          "other": "Existuje %{count} místa s vaším článkem",
+          "few": "Existuje %{count} místa s vaším článkem"
+        },
+        "location_information_far_away_other_items": {
+          "one": "Existuje %{count} umístění s vašimi položkami",
+          "other": "Existuje %{count} místa s vašimi položkami",
+          "few": "Existuje %{count} místa s vašimi položkami"
+        },
+        "location_nearby_one_item": {
+          "one": "Existuje %{count} poblíž místa s vaší položkou",
+          "other": "Existuje %{count} místa v okolí s vaší položkou",
+          "few": "Existuje %{count} místa v okolí s vaší položkou"
+        },
+        "location_nearby_other_items": {
+          "one": "Existuje %{count} poblíž místa s vašimi položkami",
+          "other": "Existuje %{count} místa v okolí s vašimi položkami",
+          "few": "Existuje %{count} místa v okolí s vašimi položkami"
+        },
+        "location_nearby_short_one_item": {
+          "one": "%{count} poblíž místa s vaší položkou",
+          "other": "%{count} místa v okolí s vaší položkou",
+          "few": "%{count} místa v okolí s vaší položkou"
+        },
+        "location_nearby_short_other_items": {
+          "one": "%{count} poblíž místa s vašimi položkami",
+          "other": "%{count} místa v okolí s vašimi položkami"
         }
       }
     }
