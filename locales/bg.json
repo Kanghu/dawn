@@ -2087,22 +2087,34 @@
           "other": "купете и тези продукти"
         },
         "gift_card_confirmation_by_text_typ": {
-          "few": "Ще получите текстово съобщение с картите за подаръци след няколко минути."
+          "few": "След няколко минути ще получите текстово съобщение с подаръчните карти.",
+          "one": "След няколко минути ще получите текстово съобщение с подаръчната карта.",
+          "other": "След няколко минути ще получите текстово съобщение с подаръчните карти."
         },
         "gift_card_confirmation_by_email_typ": {
-          "few": "Ще получите имейл с картите за подаръци след няколко минути."
+          "few": "След няколко минути ще получите имейл с подаръчните карти.",
+          "one": "След няколко минути ще получите имейл с подаръчната карта.",
+          "other": "След няколко минути ще получите имейл с подаръчните карти."
         },
         "gift_card_email_title": {
-          "few": "Картите за подаръци са изпратени по имейл"
+          "few": "Подаръчните карти са изпратени по имейл",
+          "one": "Подаръчната карта е изпратена по имейл",
+          "other": "Подаръчните карти са изпратени по имейл"
         },
         "gift_card_text_title": {
-          "few": "Картите за подаръци са изпратени по имейл"
+          "few": "Подаръчните карти са изпратени по имейл",
+          "one": "Подаръчната карта беше изпратена чрез текстово съобщение",
+          "other": "Подаръчните карти са изпратени по имейл"
         },
         "gift_card_resent_confirmation": {
-          "few": "Картите на Cadiu бяха изпратени отново."
+          "few": "Подаръчните карти са изпратени обратно.",
+          "one": "Картата за подарък е изпратена повторно.",
+          "other": "Подаръчните карти са изпратени обратно."
         },
         "gift_card_resend_failure": {
-          "few": "Проблем възникна при презареждане на подаръчни карти. Опитайте отново или се свържете с нас."
+          "few": "Възникна проблем при повторното изпращане на карти за подарък. Опитайте отново или се свържете с нас.",
+          "one": "Възникна проблем при повторното изпращане на картата за подарък. Опитайте отново или се свържете с нас.",
+          "other": "Възникна проблем при повторното изпращане на карти за подарък. Опитайте отново или се свържете с нас."
         },
         "thank_you_unconfirmed_items_heading": {
           "few": "Някои елементи не са потвърдени"
@@ -2296,7 +2308,41 @@
           "text_html": "%{contact_us} за да добавите адреса",
           "contact_us": "Свържете се с нас"
         },
-        "order_status_confirmed_with_installments_payment_return": "Върнете вниманието си към търговския сътрудник."
+        "order_status_confirmed_with_installments_payment_return": "Върнете вниманието си към търговския сътрудник.",
+        "order_status_confirmed_with_installments_payment_confirm": "Скоро ще получите имейл за потвърждение с номера на поръчката и подробности за графика на вноските",
+        "first_payment_complete": "Първото плащане е завършено",
+        "in_store_purchase": "Покупки в магазина",
+        "choose_payment_method_later": "Изберете вашия начин на плащане по-късно",
+        "purchase_order_number_title": "Номер на поръчката за покупка: %{purchase_order_number}",
+        "thank_you_ready_for_picked_up": "Вашата поръчка е взета на адреса %{address}.",
+        "ready_for_delivery": "Готов за доставка",
+        "order_updates_subscribe_to_email_notifications_failed": "Не можем да съхраняваме този имейл адрес за актуализации. Моля, опитайте отново или използвайте друг имейл адрес.",
+        "order_updates_subscribe_to_email_notifications_email_already_exists": "Имейл адресът, който сте въвели, вече съществува.",
+        "subscriptions_management": {
+          "title": "Абонамент",
+          "description": "Продължете с акаунта си, за да преглеждате и управлявате абонаментите си.",
+          "button_label": "Управлявайте абонамента си"
+        },
+        "manage_order_label": "Управлявайте поръчката си",
+        "resend_gift_cards_by_email": "Искам да изпратя отново имейла",
+        "resend_gift_cards_by_text": "Искам да изпратя отново текстовото съобщение",
+        "failed_pending_payment_page_title": "Има проблем с вашето плащане",
+        "thank_you_title_payments_app_pending_default": "Вашето плащане се обработва",
+        "thank_you_title_payments_app_pending_buyer_action_required": "Вашата поръчка е получена",
+        "thank_you_title_payments_app_failed_pending_payment": "Вашето плащане не можа да бъде обработено",
+        "thank_you_payments_app_failed_pending_payment": "Не сте таксувани за вашата поръчка. Върнете се в пазарската количка, за да проверите поръчката и да извършите плащането отново.",
+        "order_status_payments_app_pending_payment_description_default_with_email_and_phone": "Скоро ще получите имейл за потвърждение. Проследете поръчката си с помощта на приложението Магазин.",
+        "order_status_payments_app_pending_payment_description_default_with_email": "Скоро ще получите имейл за потвърждение. Проследете поръчката си с помощта на приложението Магазин.",
+        "order_status_payments_app_pending_payment_description_default_with_phone": "Скоро ще получите текстово съобщение за потвърждение. Проследете поръчката си с помощта на приложението Магазин.",
+        "order_status_payments_app_pending_payment_description_buyer_action_required_with_email_and_phone": "След извършване на плащането ще получите имейл за потвърждение. Проследете поръчката си с помощта на приложението Магазин.",
+        "order_status_payments_app_pending_payment_description_buyer_action_required_with_email": "След извършване на плащането ще получите имейл за потвърждение. Проследете поръчката си с помощта на приложението Магазин.",
+        "order_status_payments_app_pending_payment_description_buyer_action_required_with_phone": "След извършване на плащането ще получите текстово съобщение за потвърждение. Проследете поръчката си с помощта на приложението Магазин.",
+        "order_status_payments_app_failed_pending_payment": "Не сте таксувани за вашата поръчка. Върнете се в пазарската количка, за да проверите поръчката и да извършите плащането отново.",
+        "order_status_payments_app_pending_payment_description_buyer_action_required_with_email_pick_up": "След извършване на плащането ще получите имейл за потвърждение. Проследете поръчката си с помощта на приложението Магазин.",
+        "thank_you_confirmed_order_with_missing_payment": "Свържете се с нас по имейл или телефон, за да получите потвърждение на поръчката.",
+        "thank_you_confirmed_order_with_missing_pick_up": "Свържете се с нас по имейл или телефон, за да получите потвърждение на поръчката.",
+        "thank_you_confirmed_order_with_draft_payment": "Ще ви уведомим, ако имаме нужда от повече информация или когато поръчката ви бъде потвърдена.",
+        "thank_you_confirmed_order_with_draft_pick_up": "Ще ви уведомим, ако имаме нужда от повече информация или когато поръчката ви бъде потвърдена."
       },
       "order_payment_collection": {
         "changes_summary": {
