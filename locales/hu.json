@@ -2070,8 +2070,19 @@
           "approved_transaction": "{{card_number}} jóváhagyott tranzakció szimulálására",
           "declined_transaction": "{{card_number}} elutasított tranzakció szimulálására",
           "gateway_failure": "{{card_number}} átjáró meghibásodásának szimulálására",
-          "additional_instructions": "Használjon bármilyen jövőbeli lejárati dátumot és bármilyen 3 számjegyű biztonsági kódot."
-        }
+          "additional_instructions": "Használjon bármilyen jövőbeli lejárati dátumot és bármilyen 3 számjegyű biztonsági kódot.",
+          "support_link": "Szerezzen támogatást"
+        },
+        "order_edit_banner_single_item_updated": "Frissítve",
+        "order_edit_banner_previous_taxes_label": "Korábbi díjak:",
+        "order_edit_banner_new_taxes_label": "Új díjak:",
+        "order_edit_banner_no_taxes_label": "Egyik sem",
+        "satispay_label": "Satispay",
+        "wechat_app_label": "WeChat",
+        "alternative_payment_currency_total_notice_disclosure": "%{shop_name} feldolgozza a kifizetéseket %{shop_currency} (%{amount_due}).",
+        "alternative_payment_currency_total_manual_payment_notice_disclosure": "Fizessen %{shop_name} be %{shop_currency} (%{amount_due}).",
+        "mb_way_label": "MB WAY",
+        "bizum_label": "Bizum"
       },
       "shipping_errors": {
         "shipping_method_not_available_generic": {
@@ -2382,6 +2393,49 @@
         "pickup_point": "Felvételi pont",
         "pickup_point_map_title": "Az átvételi pontok térképe",
         "digital_product": "Digitális termék"
+      },
+      "payment_summary": {
+        "gift_card_current_balance_notice": "Jelenlegi egyenleg %{amount}",
+        "credit_card_expires_on_notice": "Lejár: %{month}/%{year}",
+        "express_payment_gateway_label": "kifejezni",
+        "manual_payment_gateway_label": "Kézikönyv",
+        "billing_address_title": "Számlázási cím",
+        "free_label": "ingyenes"
+      },
+      "field_errors": {
+        "handle_phone_invalid": "Kérjük, adjon meg egy érvényes telefonszámot",
+        "handle_email_invalid": "Kérjük, adjon meg egy érvényes e-mail-címet",
+        "email_invalid": "Kérjük, adjon meg egy érvényes e-mail-címet",
+        "email_or_phone_blank": "Adjon meg egy e-mail címet vagy telefonszámot",
+        "email_or_phone_invalid": "Kérjük, adjon meg egy érvényes e-mail- vagy mobiltelefonszámot",
+        "address_first_name_blank": "Adjon meg egy keresztnevet",
+        "address_last_name_blank": "Írjon be egy vezetéknevet",
+        "address_address1_blank": "Adjon meg egy címet",
+        "address_address2_blank": "Lépjen be egy lakásba, egy szobába stb.",
+        "address_city_blank": "Adjon meg egy várost",
+        "address_country_blank": "Válasszon országot/régiót",
+        "address_country_not_supported": "Nem szállítunk ebbe az országba/régióba. Kérjük, adjon meg egy új szállítási címet, és próbálja újra.",
+        "address_province_blank": "Válasszon ki egy államot/tartományt",
+        "address_company_blank": "Adja meg a cég nevét",
+        "address_phone_blank": "Kérjük, adjon meg egy érvényes telefonszámot",
+        "address_zip_blank": "Adjon meg egy irányítószámot/irányítószámot",
+        "address_zip_invalid_for_country": "Adjon meg egy érvényes irányítószámot a következőhöz: %{country}",
+        "address_zip_invalid_for_country_and_province": "Kérjük, adjon meg egy érvényes irányítószámot a következőhöz: %{province}, %{country}",
+        "credit_card_name_blank": "Adja meg a nevét pontosan úgy, ahogy az a kártyán van",
+        "credit_card_name_invalid": "Adja meg a nevét pontosan úgy, ahogy az a kártyán van",
+        "credit_card_number_invalid": "Kérjük, adjon meg egy érvényes kártyaszámot",
+        "credit_card_expiry_invalid": "Adjon meg egy érvényes lejárati dátumot",
+        "credit_card_month_invalid": "Adjon meg egy érvényes lejárati hónapot",
+        "credit_card_year_invalid": "Adjon meg egy érvényes lejárati évet",
+        "credit_card_start_invalid": "Adja meg a kártya érvényes kezdési dátumát",
+        "credit_card_start_month_invalid": "Adjon meg egy érvényes kártya kezdő hónapját",
+        "credit_card_start_year_invalid": "Adja meg az érvényes kártya kezdő évét",
+        "credit_card_verification_value_blank": "Írja be a CVV-t vagy a biztonsági kódot a kártyán",
+        "delivery_line_detail_changed": "Egyes szállítási adatok módosulhattak. Kérjük, ellenőrizze a szállítási módot, és próbálja újra.",
+        "reduction_code_code_not_found": "Adjon meg érvényes kedvezménykódot vagy ajándékkártyát",
+        "reduction_code_discount_not_found": "Adjon meg egy érvényes kedvezménykódot",
+        "reduction_code_gift_card_code_invalid": "Kérjük, adjon meg egy érvényes ajándékkártyát",
+        "reduction_code_gift_card_unusable": "Az ajándékutalvány nem használható fel másik ajándékutalvány vásárlására"
       }
     },
     "notices": {
