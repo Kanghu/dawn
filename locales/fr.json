@@ -2438,18 +2438,27 @@
       "subscriptions": {
         "recurring_totals_with_policies": {
           "first_cycles": {
-            "few": "Le premier %{count} Les paiements sont de %{total_price} chaque"
-          }
+            "few": "Les premiers %{count} les paiements sont de %{total_price} chacun",
+            "one": "Le premier paiement est %{total_price}",
+            "other": "Les premiers %{count} les paiements sont de %{total_price} chacun"
+          },
+          "following_cycles": ", alors tu paieras %{total_price} à chacun %{interval}"
         },
         "recurring_total_intervals": {
           "day": {
-            "few": "%{count} jours"
+            "few": "%{count} jours",
+            "one": "jour",
+            "other": "%{count} jours"
           },
           "week": {
-            "few": "%{count} hebdomadaire"
+            "few": "%{count} semaines",
+            "one": "semaine",
+            "other": "%{count} semaines"
           },
           "month": {
-            "few": "%{count} Lundi"
+            "few": "%{count} mois",
+            "one": "mois",
+            "other": "%{count} mois"
           },
           "year": {
             "few": "%{count} années"
@@ -2459,7 +2468,8 @@
           "first_cycles": {
             "few": ", alors ils seront %{count} paiements de combien de %{total_price}"
           }
-        }
+        },
+        "recurring_totals": "%{total_price} à chacun %{interval}"
       },
       "contextual_availability": {
         "title": {
@@ -3001,8 +3011,50 @@
           "tax_credential_co": "Cédula/TVA",
           "tax_credential_type_co": "Type cédule",
           "shipping_credential_co": "Cédula/TVA",
-          "shipping_credential_type_co": "Type cédule"
+          "shipping_credential_type_co": "Type cédule",
+          "tax_credential_cr": "Numéro d'identification/RUT",
+          "shipping_credential_cr": "Numéro d'identification/RUT",
+          "tax_credential_ec": "CI/RUC/TVA",
+          "shipping_credential_ec": "CI/RUC/TVA",
+          "tax_credential_gt": "NIT/TVA",
+          "shipping_credential_gt": "NIT/TVA",
+          "tax_credential_id": "NPWP",
+          "shipping_credential_id": "NPWP",
+          "tax_credential_my": "NIF/numéro d'enregistrement",
+          "shipping_credential_my": "NIF/numéro d'enregistrement",
+          "shipping_credential_mx": "RFC",
+          "tax_credential_mx": "RFC",
+          "tax_credential_type_mx": "Régime fiscal",
+          "tax_credential_use_mx": "Utilisation du CFDI",
+          "tax_credential_py": "CI/RUC/TVA",
+          "shipping_credential_py": "CI/RUC/TVA",
+          "tax_credential_pe": "DNI/RUC/CE",
+          "shipping_credential_pe": "DNI/RUC/CE",
+          "tax_credential_pt": "NIF/TVA",
+          "shipping_credential_pt": "NIF/TVA",
+          "tax_credential_es": "DNI/TIN",
+          "shipping_credential_es": "DNI/TIN",
+          "shipping_credential_tw": "Numéro d'identification national/Code fiscal",
+          "tax_credential_tr": "Türkiye Cumhuriyeti Kimlik Numarası/KDV",
+          "shipping_credential_tr": "Türkiye Cumhuriyeti Kimlik Numarası/KDV"
         }
+      },
+      "post_purchase": {
+        "page_title": "Après l'achat",
+        "title": "Après l'achat",
+        "escape_confirmation": "Vous avez payé la commande.",
+        "escape_action": "Afficher les informations de commande ›",
+        "components": {
+          "close": "Fermer",
+          "expand": "Voir plus",
+          "processing": "Traitement...",
+          "submit": "Envoyer"
+        }
+      },
+      "change_country": {
+        "cart_updated_based_on_country": "Votre panier a été mis à jour en fonction de votre pays de livraison.",
+        "cart_and_currency_updated_based_on_country": "Panier et devise mis à jour en fonction du pays d'expédition.",
+        "currency_updated_for_country": "Devise mise à jour pour %{country}"
       }
     },
     "notices": {
