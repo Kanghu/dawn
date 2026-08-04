@@ -597,28 +597,28 @@
     "order": {
       "title": "Order {{ name }}",
       "date_html": "Placed on {{ date }}",
-      "cancelled_html": "Order Cancelled on {{ date }}",
+      "cancelled_html": "Order canceled on {{ date }}",
       "cancelled_reason": "Reason: {{ reason }}",
-      "billing_address": "Billing Address",
-      "payment_status": "Payment Status",
-      "shipping_address": "Shipping Address",
-      "fulfillment_status": "Fulfillment Status",
+      "billing_address": "Billing address",
+      "payment_status": "Payment status",
+      "shipping_address": "Shipping address",
+      "fulfillment_status": "Order status",
       "discount": "Discount",
       "shipping": "Shipping",
-      "tax": "Tax",
+      "tax": "Taxes",
       "product": "Product",
       "sku": "SKU",
       "price": "Price",
       "quantity": "Quantity",
-      "total": "Total",
-      "total_refunded": "Refunded",
-      "fulfilled_at_html": "Fulfilled {{ date }}",
-      "track_shipment": "Track shipment",
+      "total": "Totally",
+      "total_refunded": "Reimbursed",
+      "fulfilled_at_html": "Order honored at {{ date }}",
+      "track_shipment": "Track the shipment",
       "tracking_url": "Tracking link",
-      "tracking_company": "Carrier",
+      "tracking_company": "Courier service",
       "tracking_number": "Tracking number",
       "subtotal": "Subtotal",
-      "total_duties": "Duties"
+      "total_duties": "Customs duties"
     },
     "orders": {
       "title": "Order history",
@@ -648,20 +648,20 @@
       "subtext": "Enter a new password",
       "password": "Password",
       "password_confirm": "Confirm password",
-      "submit": "Reset password"
+      "submit": "Reset your password"
     }
   },
   "gift_cards": {
     "issued": {
-      "how_to_use_gift_card": "Use the gift card code online or QR code in-store",
-      "title": "Here's your {{ value }} gift card balance for {{ shop }}!",
+      "how_to_use_gift_card": "Use gift card code online or QR code in store",
+      "title": "Here's your gift card balance, worth {{ value }}, for {{ shop }}!",
       "subtext": "Your gift card",
       "gift_card_code": "Gift card code",
-      "shop_link": "Visit online store",
+      "shop_link": "Visit the online store",
       "add_to_apple_wallet": "Add to Apple Wallet",
-      "qr_image_alt": "QR code — scan to redeem gift card",
-      "copy_code": "Copy gift card code",
-      "expiration_date": "Expires {{ expires_on }}",
+      "qr_image_alt": "QR code – scan it to redeem the gift card",
+      "copy_code": "Copy the gift card code",
+      "expiration_date": "Expires on {{ expires_on }}",
       "copy_code_success": "Code copied successfully",
       "expired": "Expired"
     }
@@ -671,16 +671,16 @@
       "checkbox": "I want to send this as a gift",
       "expanded": "Gift card recipient form expanded",
       "collapsed": "Gift card recipient form collapsed",
-      "email_label": "Recipient email",
-      "email_label_optional_for_no_js_behavior": "Recipient email (optional)",
-      "email": "Email",
-      "name_label": "Recipient name (optional)",
+      "email_label": "Recipient email address",
+      "email_label_optional_for_no_js_behavior": "Recipient email address (optional)",
+      "email": "Email address",
+      "name_label": "Recipient Name (optional)",
       "name": "Name",
       "message_label": "Message (optional)",
       "message": "Message",
-      "max_characters": "{{ max_chars }} characters max",
-      "send_on": "YYYY-MM-DD",
-      "send_on_label": "Send on (optional)"
+      "max_characters": "Maximum {{ max_chars }} (of) characters",
+      "send_on": "DD.MM.YYYY",
+      "send_on_label": "Send to (optional)"
     }
   },
   "shopify": {
