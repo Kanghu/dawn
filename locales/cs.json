@@ -1084,7 +1084,63 @@
         "errors": {
           "session_identifier_not_unique_error": "Vyskytl se problém s vaší objednávkou. Zkuste platbu provést znovu.",
           "line_item_limit_reached": "Bylo dosaženo maximálního počtu položek.",
-          "only_empty_terms_accepted": "Tato zásada přijímá pouze prázdné podmínky."
+          "only_empty_terms_accepted": "Tato zásada přijímá pouze prázdné podmínky.",
+          "session_is_already_finished": "Tato relace pokladny již byla dokončena.",
+          "merchandise": {
+            "only_value_constraint": "V sekci zadávání zboží jsou povoleny pouze přesné hodnoty.",
+            "merchandise_not_found": "Produkt nebyl nalezen.",
+            "merchandise_variant_not_found": "Varianta produktu nenalezena.",
+            "merchandise_not_applicable": "Variantu produktu nelze zakoupit.",
+            "bundle_products_not_supported_for_b2b": "Balíčkové položky nelze přidat do B2B objednávek pro toto místo.",
+            "gift_card_quantity_mismatch": "Při zadávání kódů dárkových karet se musí shodovat počet řádkových položek a počet kódů dárkových karet.",
+            "gift_card_not_supported": "U této pokladny nejsou přijímány dárkové karty.",
+            "gift_card_not_unique": "Dárkový poukaz s kódem {{code}} se pro tuto pokladnu zobrazí několikrát. Kódy jsou před porovnáním naformátovány.",
+            "gift_card_used": "Kód {{code}} je již přiřazeno k dárkové kartě. Kódy jsou před porovnáním naformátovány.",
+            "gift_card_invalid": "Kód dárkové karty {{code}} je neplatné.",
+            "gift_card_code_changed": "Kód dárkové karty {{proposed_code}} byl změněn na {{formatted_code}} aby vyhovovaly pravidlům formátování.",
+            "gift_card_with_attributes_not_supported": "Dárkové karty s vlastními atributy pro tuto pokladnu nepřijímáme.",
+            "gift_card_with_components_not_supported": "Dárkové poukazy s komponentami do této pokladny nepřijímáme.",
+            "selling_plan_mismatch": "Předplatné bylo aktualizováno.",
+            "selling_plan_not_supported": "Předplatné nejsou přijímány.",
+            "selling_plan_not_supported_b2b": "Předplatné pro B2B pokladnu nepřijímáme.",
+            "price_mismatch": "Dříve navrhovaná cena této položky byla neplatná a byla aktualizována.",
+            "inventory_not_found": "Pro tuto položku nebyl nalezen žádný inventář.",
+            "product_not_published": "Produkt není zveřejněn.",
+            "duplicated_stable_id": "Tato nákladní linka má stejné stabilní ID jako jiná linka.",
+            "minimum_quantity_not_met": "U některých položek množství nesplňuje minimální požadovanou hodnotu.",
+            "maximum_quantity_exceeded": "U některých položek množství překračuje maximální povolenou hodnotu.",
+            "quantity_increment_not_met": "U některých položek množství nesplňuje limity objednávky.",
+            "quantity_rules_not_met": "U některých položek množství nesplňuje limity objednávky.",
+            "bundle_requires_components": "Balené zboží nemá žádné součásti.",
+            "title_too_long": "Název položky je příliš dlouhý.",
+            "title_empty": "Název produktu nebyl dokončen.",
+            "mixed_currencies": "Pokladna zahrnuje položky, ke kterým jsou přiřazeny různé měny.",
+            "product_not_published_in_buyer_location": "Produkt není v aktuálním místě kupujícího dostupný.",
+            "combined_listing_parent_not_purchasable": "Nadřazené produkty v kombinovaném seznamu nelze zakoupit přímo."
+          },
+          "buyer_identity": {
+            "business_customer_does_not_match_company": "Kontaktní osoba společnosti nemá přístup ke společnosti.",
+            "customer_account_required": "Pro pokračování se musíte přihlásit.",
+            "contact_info_does_not_match_customer_account": "Kontaktní údaje se musí shodovat s účtem, ke kterému se přihlašujete.",
+            "phone_number_does_not_match_expected_pattern": "Uvedené telefonní číslo neodpovídá očekávanému modelu.",
+            "email_required": "při nákupu zboží pomocí předplatného je vyžadována e-mailová adresa.",
+            "email_domain_is_invalid": "Tuto zadanou doménu nelze vyřešit.",
+            "missing_contact_method": "Chybí platná metoda kontaktu.",
+            "checkout_completion_target_is_missing": "Chybí cíl pokladny.",
+            "invalid_customer_profile": "Byl poskytnut neplatný profil zákazníka.",
+            "customer_profile_access_restricted": "Služba Checkout nemá oprávnění pro přístup k profilu zákazníka.",
+            "checkout_completion_target_is_invalid_proc": "Neplatný cíl pokladny.",
+            "company_location_required": "Aby mohl zákazník pokračovat, musí si vybrat sídlo společnosti.",
+            "lost_access_to_company": "Zákazník ztratil přístup k jakékoli společnosti.",
+            "company_purchase_permission_required": "Zákazník nemá oprávnění zadávat objednávky pro společnost.",
+            "personal_order_not_allowed": "Osobní objednávky nejsou v tomto obchodě povoleny.",
+            "buyer_identity_presentment_currency_does_not_match": "Při zpracování vaší objednávky došlo k problému. Zkuste to prosím znovu za několik minut."
+          },
+          "delivery": {
+            "only_one_delivery_line_allowed": "Košík musí mít pouze jeden dodací řádek.",
+            "wrong_number_of_delivery_lines": "Pro každou skupinu zboží musí být uvedena dodací linka.",
+            "external_delivery_promise_error": "Při načítání příslibu externího doručení došlo k chybě."
+          }
         }
       }
     }
