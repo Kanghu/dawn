@@ -840,10 +840,14 @@
           "subscription_free_with_frequency_label": "Livraison gratuite %{delivery_frequency}"
         },
         "shipping_method_first_shipment_group_title": {
-          "few": "Premières expéditions"
+          "few": "Les premières expéditions",
+          "one": "Premier envoi",
+          "other": "Les premières expéditions"
         },
         "shipping_method_recurring_shipments_group_title": {
-          "few": "Expéditions récurrentes"
+          "few": "Expéditions récurrentes",
+          "one": "Expédition récurrente",
+          "other": "Expéditions récurrentes"
         },
         "title": "Transport",
         "shipping_method_title": "Méthode d'expédition",
@@ -867,7 +871,57 @@
         "subscription_shipping": "Expédition par abonnement",
         "shipping_method_one_time_purchase_group_title": "Achat unique",
         "shipping_method_subscription_group_title": "Abonnement",
-        "one_time_purchase_shipping": "Expédition unique"
+        "one_time_purchase_shipping": "Expédition unique",
+        "missing_shipping_address": "L'adresse de livraison est manquante",
+        "delivery_title": "Livraison",
+        "address_default": "Définir par défaut",
+        "split_shipping_merchandise_quantity_label_standard": "%{quantity} articles",
+        "split_shipping_merchandise_quantity_label_additional": "+ encore %{quantity}",
+        "split_shipping_merchandise_shipment_number": "Expédition %{number} de %{total}",
+        "pre_order_ships_now": "Expédition maintenant",
+        "pre_order_ships_later": "Sera expédié plus tard",
+        "pre_order_ships_date": "Il est expédié %{date}",
+        "split_shipping_shipped_by_shop": "Expédié par %{shop_name}",
+        "split_shipping_multiple_shipment_label": "Plus d'envois",
+        "split_shipping_shipping_label": "Méthode",
+        "split_shipping_multiple_shipment_quantity_label": "%{quantity} expéditions",
+        "split_shipping_multiple_shipment_notice": "Votre commande arrivera en plusieurs envois",
+        "split_shipping_multiple_shipment_notice_one_time_purchase": "Votre commande arrivera dans %{quantity} expéditions",
+        "split_shipping_more_shipping_options": "Plus d'options d'achat",
+        "split_shipping_shipment_number": "Expédition %{number}",
+        "split_shipping_merchandise_quantity_label_inline_primary": "Quantité : %{quantity}",
+        "split_shipping_merchandise_quantity_label_inline": "%{merchandise_title} ×%{quantity}",
+        "split_shipping_option_free": "Livraison gratuite",
+        "split_shipping_option_lowest_price": "Le prix le plus bas",
+        "split_shipping_option_fastest": "Le plus rapide",
+        "split_shipping_option_recommended": "Recommandé",
+        "split_shipping_option_custom": "Personnalisé",
+        "default_description": "Expédié en 1 jour ouvrable",
+        "split_shipping_shipment_notice": "Votre commande arrivera dans %{quantity_shipments}",
+        "unbranded_default_description": "Prêt à expédier",
+        "prime_not_available": {
+          "default": "L'expédition Prime n'est pas disponible pour votre commande. Vos options d'expédition ont été mises à jour."
+        },
+        "split_shipping_first_shipment_notice": "Votre première commande arrivera dans %{quantity_shipments}",
+        "shipping_method_rollup_accessibility_label": "Options de méthode d'expédition",
+        "shipping_address_rollup_accessibility_label": "Options d'adresse de livraison",
+        "back": "Retour",
+        "invalid_shipping_method_summary_selected": "Sélectionnez une autre adresse de livraison pour voir les méthodes d'expédition disponibles",
+        "third_party_address_timeout": "Échec du chargement des adresses. Veuillez réessayer ou utiliser une autre adresse.",
+        "third_party_address_error": "Une erreur s'est produite lors du chargement des adresses sélectionnées. Veuillez saisir l'adresse manuellement ci-dessous.",
+        "third_party_payment_timeout": "Échec du chargement des méthodes de paiement. Réessayez ou utilisez un autre mode de paiement.",
+        "third_party_payment_error": "Une erreur s'est produite lors du chargement du mode de paiement sélectionné. Utilisez un autre mode de paiement.",
+        "add_shipping_address": "Ajouter une adresse de livraison",
+        "choose_new_address": "Choisissez une nouvelle adresse",
+        "unbranded_description_same_day": "Expédié le jour même ouvrable",
+        "unbranded_description_with_fulfillment_days": {
+          "one": "Expédié le jour ouvrable suivant",
+          "other": "Expédié dans %{count} jours ouvrables",
+          "few": "Expédié dans %{count} jours ouvrables"
+        },
+        "unbranded_description_with_fulfillment_weeks": {
+          "one": "Expédié dans %{count} semaine"
+        }
       },
       "general": {
         "map": {
