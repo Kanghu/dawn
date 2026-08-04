@@ -3258,7 +3258,13 @@
     "notices": {
       "order": {
         "cancel_reason": {
-          "few": "Κάτι άλλο"
+          "few": "Κάτι άλλο",
+          "declined": "Η πληρωμή απορρίφθηκε",
+          "inventory": "Τα στοιχεία δεν είναι διαθέσιμα",
+          "fraud": "Δόλια παραγγελία",
+          "customer": "Ο πελάτης άλλαξε/ακύρωσε την παραγγελία",
+          "other": "Κάτι άλλο",
+          "staff": "Προσωπικό λάθος"
         },
         "not_available": "Αυτή η εντολή δεν είναι διαθέσιμη",
         "financial_status": {
@@ -3267,8 +3273,25 @@
           "paid": "Πληρωμένη",
           "unpaid": "Απλήρωτοι",
           "voided": "Ακυρώθηκε",
-          "partially_paid": "Μερικώς πληρωμένη"
-        }
+          "partially_paid": "Μερικώς πληρωμένη",
+          "partially_refunded": "Έγινε μερική επιστροφή χρημάτων",
+          "refunded": "Αποζημίωση",
+          "expired": "Λήξη"
+        },
+        "fulfillment_status": {
+          "fulfilled": "Ολοκληρώθηκε",
+          "complete": "Ολοκληρώθηκε",
+          "partial": "Εν μέρει",
+          "unfulfilled": "Ανεκπλήρωτο",
+          "restocked": "Με ανεφοδιασμένο απόθεμα"
+        },
+        "transaction_status": {
+          "success": "επιτυχία",
+          "pending": "Αναμονή",
+          "failure": "Αποτυχία",
+          "error": "Σφάλμα"
+        },
+        "cash_on_delivery": "Με αντικαταβολή"
       },
       "customer": {
         "password_reset_error": "Σφάλμα επαναφοράς κωδικού πρόσβασης",
@@ -3286,6 +3309,40 @@
         "error_creating": "Σφάλμα κατά τη δημιουργία διεύθυνσης.",
         "deleted": "Η διεύθυνση διαγράφηκε με επιτυχία",
         "error_deleting": "Σφάλμα κατά τη διαγραφή της διεύθυνσης."
+      },
+      "cart": {
+        "only_n_items_available": "Μπορείτε μόνο να προσθέσετε %{count} %{name} στο καλάθι.",
+        "too_many_items_in_cart": "Δεν μπορείτε να προσθέσετε περισσότερα %{name} στο καλάθι.",
+        "all_items_in_cart": "Όλα αυτά %{count} %{name} Είμαι στο καλάθι σας.",
+        "empty_update": "δεν είναι δυνατή η ενημέρωση του άδειου καλαθιού",
+        "missing_parameters": "δεν υπάρχει έγκυρη παράμετρος αναγνωριστικού ή γραμμής",
+        "generic_error": "Σφάλμα καλαθιού",
+        "too_many_line_items_error": "Το καλάθι σας δεν μπορεί να περιέχει ψάρια %{max} άρθρα.",
+        "link_expired": "Ο σύνδεσμος έχει λήξει",
+        "link_no_longer_exists": "Ο σύνδεσμος δεν υπάρχει πλέον.",
+        "stock_problems_html": "Ένα ή περισσότερα στοιχεία δεν είναι πλέον διαθέσιμα. Το έκανα διαθέσιμο <a href='%{link}'>ένα ενημερωμένο καλάθι</a>.",
+        "changed": "Τροποποιημένο καλάθι",
+        "items_changed": "Ένα ή περισσότερα στοιχεία έχουν αλλάξει.",
+        "product_sold_out": "Το προϊόν\"%{name}” είναι ήδη sold out.",
+        "variant_not_found": "Δεν είναι δυνατή η εύρεση της επιλογής",
+        "variant_requires_selling_plan": "Η παραλλαγή μπορεί να αγοραστεί μόνο με σχέδιο αγοράς.",
+        "shipping_address_not_required": "Αυτό το καλάθι δεν απαιτεί παράδοση",
+        "shipping_address_invalid": "Παρουσιάστηκε πρόβλημα με τον υπολογισμό των χρεώσεων αποστολής. Συνεχίστε στο ταμείο για να επιλέξετε μια χρέωση αποστολής πριν από την ολοκλήρωση της αγοράς.",
+        "selling_plan_not_applicable": "Το σχέδιο πωλήσεων δεν μπορεί να εφαρμοστεί στην παραλλαγή",
+        "selling_plan_not_available_for_company_locations": "Για παραγγελίες B2B, είναι διαθέσιμες μόνο μεμονωμένες αγορές.",
+        "digital_product_not_available_for_company_locations": "Αυτό το στοιχείο δεν μπορεί να προστεθεί σε μια παραγγελία B2B",
+        "product_not_available": "Το προϊόν δεν είναι διαθέσιμο",
+        "less_than_minimum": "Αυτό το στοιχείο έχει ελάχιστο %{min}.",
+        "more_than_maximum": "Αυτό το στοιχείο έχει το μέγιστο %{max}.",
+        "not_respect_step": "Μπορείτε να εισαγάγετε αυτό το στοιχείο μόνο σε προσαυξήσεις του %{step}.",
+        "bundle_requires_components": "Το προϊόν σε μορφή σετ \"%{name}” δεν μπορεί να προστεθεί στο καλάθι.",
+        "gift_card_with_components_not_supported": "Το προϊόν σε μορφή σετ \"%{name}” δεν μπορεί να προστεθεί στο καλάθι.",
+        "view_lines_limit_reached": "Ο αριθμός των σειρών πρέπει να είναι μικρότερος ή ίσος με %{limit}",
+        "merchandise_line_transformers": {
+          "run_error": "Παρουσιάστηκε σφάλμα με το καλάθι αγορών σας."
+        },
+        "gift_card_price_must_be_greater_than_zero": "Το προϊόν σε μορφή σετ \"%{name}” δεν μπορεί να προστεθεί στο καλάθι.",
+        "cart_too_large": "Το καλάθι είναι πολύ μεγάλο."
       }
     },
     "page_titles": {
