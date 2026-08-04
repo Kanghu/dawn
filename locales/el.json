@@ -2184,8 +2184,20 @@
         },
         "location_nearby_short_other_items": {
           "one": "%{count} κοντινή τοποθεσία με τα αντικείμενά σας",
-          "other": "%{count} κοντινές τοποθεσίες με τα αντικείμενά σας"
-        }
+          "other": "%{count} κοντινές τοποθεσίες με τα αντικείμενά σας",
+          "few": "%{count} κοντινές τοποθεσίες με τα αντικείμενά σας"
+        },
+        "location_far_away_one_item": {
+          "one": "%{count} τοποθεσία με το αντικείμενο σας",
+          "other": "%{count} τοποθεσίες με το άρθρο σας",
+          "few": "%{count} τοποθεσίες με το άρθρο σας"
+        },
+        "location_far_away_other_items": {
+          "one": "%{count} τοποθεσία με τα αντικείμενά σας",
+          "other": "%{count} τοποθεσίες με τα αντικείμενά σας",
+          "few": "%{count} τοποθεσίες με τα αντικείμενά σας"
+        },
+        "location_selected": "Η επιλεγμένη τοποθεσία"
       },
       "merchandise_unavailable_in_buyer_location": {
         "remove_items_action": {
@@ -2768,6 +2780,88 @@
       },
       "online_store_chat": {
         "title": "Έχετε ερωτήσεις; Συνομιλήστε μαζί μας"
+      },
+      "split_delivery": {
+        "pickup_all_items": "Πάρτε όλα τα αντικείμενα",
+        "items_for_pickup": "Είδη προς παραλαβή",
+        "delivery_method": "Μέθοδος παράδοσης ανάλυσης",
+        "delivery_method_menu": "Αναλυμένο μενού μεθόδων παράδοσης",
+        "inventory_issue_banner": {
+          "remove_items_or_ship": "%{ship_separately_link} ή %{remove_items_link}",
+          "remove_items_or_pickup": "%{pickup_in_store_link} ή %{remove_items_link}",
+          "heading": {
+            "cannot_be_picked_up": {
+              "one": "%{count} το αντικείμενο δεν μπορεί να παραληφθεί",
+              "other": "%{count} τα αντικείμενα δεν μπορούν να παραληφθούν",
+              "few": "%{count} τα αντικείμενα δεν μπορούν να παραληφθούν"
+            },
+            "cannot_be_shipped": {
+              "one": "%{count} το προϊόν δεν μπορεί να αποσταλεί",
+              "other": "%{count} τα αντικείμενα δεν μπορούν να αποσταλούν",
+              "few": "%{count} τα αντικείμενα δεν μπορούν να αποσταλούν"
+            }
+          },
+          "remove_item": {
+            "one": "αφαιρέστε το άρθρο",
+            "other": "αφαιρέστε αντικείμενα",
+            "few": "αφαιρέστε αντικείμενα"
+          },
+          "ship_separately": {
+            "one": "Αποστολή του χωριστά",
+            "other": "Αποστολή τους χωριστά",
+            "few": "Αποστολή τους χωριστά"
+          },
+          "pick_them_up_in_store": {
+            "one": "Πάρτε το από το κατάστημα",
+            "other": "Πάρτε τα από το κατάστημα",
+            "few": "Πάρτε τα από το κατάστημα"
+          },
+          "remove_item_only": {
+            "one": "Αφαιρέστε το στοιχείο",
+            "other": "Αφαιρέστε στοιχεία",
+            "few": "Αφαιρέστε στοιχεία"
+          },
+          "merchandise_line_with_quantity": "%{title} (×%{quantity})"
+        },
+        "items_for_shipping": "Είδη για αποστολή",
+        "pickup_items_count": {
+          "few": "Ανύψωση %{count} άρθρα"
+        },
+        "ship_items_count": {
+          "few": "Ναυτιλία %{count} άρθρα"
+        },
+        "items_moved_to_shipping_toast": "Τα αντικείμενα που δεν μπορούν να παραληφθούν έχουν μεταφερθεί στην αποστολή",
+        "cross_border": {
+          "modal": {
+            "heading": "Αλλάζει χώρα;",
+            "content": "Οι τοποθεσίες παραλαβής και αποστολής πρέπει να βρίσκονται στην ίδια χώρα. Η αλλαγή της χώρας θα επαναφέρει όλα τα είδη κατά την αποστολή.",
+            "change_country": "Αλλάξτε τη χώρα",
+            "country_changed_heading": "Η χώρα έχει αλλάξει"
+          },
+          "banner": "Η μέθοδος παράδοσης έχει ενημερωθεί"
+        },
+        "items_count": {
+          "few": "%{count} άρθρα"
+        },
+        "accessibility": {
+          "status": {
+            "ship_separately": "%{items} θα αποσταλεί χωριστά.",
+            "pickup_in_store": "%{items} θα παραληφθεί από το κατάστημα.",
+            "remove_items": "%{items} έχουν αφαιρεθεί από το καλάθι."
+          }
+        }
+      },
+      "captcha": {
+        "title": "Ολοκληρώστε την επαλήθευση CAPTCHA για να συνεχίσετε",
+        "errors": {
+          "not_solved": "Ολοκληρώστε την επαλήθευση CAPTCHA για να συνεχίσετε"
+        }
+      },
+      "discount_errors": {
+        "generic_error": "Δεν ήταν δυνατή η επεξεργασία της παραγγελίας σας επειδή ο εκπτωτικός σας κωδικός δεν είναι πλέον διαθέσιμος. Ελέγξτε το σύνολο της παραγγελίας σας και δοκιμάστε ξανά."
+      },
+      "wallets": {
+        "return_to_store": "Ελάτε πίσω στο κατάστημα"
       }
     },
     "notices": {
