@@ -3262,7 +3262,81 @@
         "open_twenty_four_hours": "Otevřeno nepřetržitě",
         "address_label": "Adresa",
         "pickup_unavailable_banner_title": {
-          "one": "Pro vaši položku nejsou k dispozici žádná místa vyzvednutí"
+          "one": "Pro vaši položku nejsou k dispozici žádná místa vyzvednutí",
+          "other": "Pro vaše položky nejsou k dispozici žádná místa vyzvednutí",
+          "few": "Pro vaše položky nejsou k dispozici žádná místa vyzvednutí"
+        }
+      },
+      "error_page": {
+        "terminal": {
+          "title": "Došlo k problému s dokončením objednávky",
+          "message": "Obnovte prosím tuto stránku nebo to zkuste znovu za několik minut",
+          "action": {
+            "cta": "Obnovte stránku"
+          },
+          "request_id": "ID požadavku: {{requestId}}"
+        },
+        "embed_errors": {
+          "storefront_password_required": "Tento obchod je chráněn heslem",
+          "customer_account_required": "Pro dokončení platby je vyžadován zákaznický účet",
+          "cart_completed": "Tato platba již byla dokončena",
+          "invalid_cart": "Tento košík již není platný",
+          "not_authorized": "Ověření platby se nezdařilo. Zkontrolujte přihlašovací údaje aplikace",
+          "killswitch_enabled": "Platba je dočasně nedostupná",
+          "policy_violation": "Dokončení platby není možné z důvodu omezení konfigurace zásad",
+          "unrecoverable_failure": "Nahrání platby se nezdařilo. Zkuste to znovu"
+        }
+      },
+      "notice_banner": {
+        "return_to_cart_link_text": "Návrat do košíku",
+        "return_to_cart_to_update_quantities": "%{return_to_cart_link_text} aktualizovat množství",
+        "subscription_changed": "Jedno z vašich předplatných se změnilo.",
+        "company_location_changed": "Váš košík byl aktualizován. Před odesláním objednávky zkontrolujte.",
+        "violations_title": "{{violation}} chybí nebo je neplatný",
+        "individual_violations_title": {
+          "DeliveryViolations": "Dodací adresa",
+          "PaymentViolations": "Fakturační adresa",
+          "OtherViolations": "Informace o objednávce",
+          "UnhandledViolations": "Informace o objednávce"
+        },
+        "all_violations_content": "Zavolejte nám popř {{emailLink}} pro aktualizaci těchto údajů a dokončení objednávky:",
+        "all_violations_email_link": "pošlete nám e-mail",
+        "editable_shipping_address_violations_message_title": "Pro dokončení objednávky přidejte tyto údaje:",
+        "editable_shipping_address_violations_message_footer": "Chcete-li trvale aktualizovat adresu tohoto místa, {{emailLink}}.",
+        "editable_shipping_address_violations_email_link": "kontaktujte nás",
+        "company_location_changed_product_removed": "Váš košík byl aktualizován, protože některé produkty nejsou na tomto místě dostupné. Před odesláním objednávky zkontrolujte.",
+        "shipping_address_incomplete_title": "Doručovací adresa je neúplná",
+        "calculating_shipping": "Poplatky za dopravu se stále počítají. Zkuste to znovu za několik sekund. Nebylo vám účtováno.",
+        "calculating_taxes": "Stále se vypočítávají daně. Zkuste to znovu za několik sekund. Nebylo vám účtováno.",
+        "generic_processing_error": {
+          "title": "Při zpracování vaší objednávky došlo k problému.",
+          "body": "Nebylo vám účtováno. Zkuste to znovu nebo použijte jinou platební metodu."
+        },
+        "contact_information": {
+          "title": "Kontaktní informace jsou nesprávné",
+          "header": "Chcete-li aktualizovat své údaje, {{emailLink}}.",
+          "email_link": "kontaktujte nás"
+        },
+        "payment_method_not_available_with_payment_terms": "Způsob platby, který jste vybrali, již není k dispozici, protože platba za tuto objednávku je nyní splatná {{paymentTerms}}",
+        "payment_method_not_available_with_fulfillment_terms": "Způsob platby, který jste vybrali, již není k dispozici, protože platba za tuto objednávku je nyní splatná v době plnění objednávky",
+        "payment_method_not_available_with_fixed_terms": "Vybraná platební metoda již není k dispozici, protože platba za tuto objednávku je nyní splatná později",
+        "payment_method_not_available_with_review_requirement": "Zvolený způsob platby není dostupný, protože platba bude splatná ihned po potvrzení objednávky.",
+        "validation_errors_banner": {
+          "section_label": {
+            "delivery": "Doprava",
+            "contact": "Kontakt",
+            "payment": "Platba",
+            "billing": "Fakturace"
+          },
+          "heading": {
+            "one": "Existuje {{count}} chyba:",
+            "other": "Existuje {{count}} chyby:",
+            "few": "Existuje {{count}} chyby:"
+          },
+          "errors_in_section": {
+            "one": "{{count}} chyba v sekci {{section}}",
+            "other": "{{count}} chyby v sekci {{section}}"
+          }
         }
       }
     }
