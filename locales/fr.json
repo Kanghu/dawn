@@ -2537,28 +2537,67 @@
             "other": "Aucun mode de livraison disponible pour %{count} (des) articles"
           },
           "message": {
-            "few": "Ces articles seront supprimés du panier, car il n'y a pas de méthodes de livraison disponibles pour votre adresse."
-          }
+            "few": "Ces articles seront supprimés de votre panier car aucun mode d'expédition n'est disponible pour votre adresse.",
+            "one": "Cet article sera supprimé de votre panier car aucun mode d'expédition n'est disponible pour votre adresse.",
+            "other": "Ces articles seront supprimés de votre panier car aucun mode d'expédition n'est disponible pour votre adresse."
+          },
+          "label": "Aucun mode de livraison"
         }
       },
       "pickup_point": {
         "paginator": {
           "header": {
-            "few": "Est affiché %{first} - %{last} DEPUIS %{count} ponction"
+            "few": "Il est affiché %{first} - %{last} de %{count} points",
+            "one": "Il est affiché %{first} - %{last} de %{count} pointe",
+            "other": "Il est affiché %{first} - %{last} de %{count} points"
           },
           "selected_pickup_point_label": {
-            "few": "%{pickup_point_index} DEPUIS %{count} ponction"
+            "few": "%{pickup_point_index} de %{count} points",
+            "one": "%{pickup_point_index} de %{count} pointe",
+            "other": "%{pickup_point_index} de %{count} points"
           },
           "selected_page": {
-            "few": "%{first} - %{last} DEPUIS %{count} ponction"
-          }
+            "few": "%{first} - %{last} de %{count} points",
+            "one": "%{first} - %{last} de %{count} pointe",
+            "other": "%{first} - %{last} de %{count} points"
+          },
+          "next_accessibility_label": "Page suivante",
+          "previous_accessibility_label": "Page précédente"
         },
         "number_of_pickup_points_near_location": {
-          "few": "%{count} Points de levage près de votre emplacement"
+          "few": "%{count} points de retrait à proximité de chez vous",
+          "one": "%{count} point de retrait près de chez vous",
+          "other": "%{count} points de retrait à proximité de chez vous"
         },
         "pickup_unavailable_banner_title": {
-          "few": "Vos articles ne peuvent pas être retirés des points de levage"
-        }
+          "few": "Vos articles ne peuvent pas être retirés des points de levage",
+          "one": "Il n'y a aucun point de retrait disponible pour votre article"
+        },
+        "location_is_currently_closed": "Fermé",
+        "business_hours": "Calendrier",
+        "title": "Point de retrait",
+        "or": "ou",
+        "search_button": "Rechercher",
+        "selector_tabs": "Sélecteur de point de retrait",
+        "selector_tab_map": "Carte",
+        "selector_tab_list": "Liste",
+        "could_not_resolve_address": "Votre adresse n'a pas pu être trouvée. Veuillez réessayer ou utiliser une autre adresse",
+        "no_pickup_points_near_you": "Aucun point de retrait n'a été trouvé à proximité de l'adresse sélectionnée",
+        "no_pickup_points_near_location": "Aucun point de retrait trouvé à proximité de chez vous",
+        "no_pickup_points_found": "Aucun point de retrait trouvé",
+        "change": "Changer d'emplacement",
+        "waiting_on_pickup_point_location_notice": "À la recherche de points de retrait...",
+        "geolocation": {
+          "shared_location_button": "Utiliser ma position",
+          "errors": {
+            "unsuported_by_browser": "Votre navigateur ne prend pas en charge l'obtention de géolocalisation. Réessayez ou utilisez un autre navigateur.",
+            "permission_not_allowed": "Permet le partage de votre position.",
+            "permission_denied": "Impossible d'obtenir votre position. Essayer à nouveau."
+          }
+        },
+        "no_business_hours": "Le programme n'est pas disponible",
+        "open_twenty_four_hours": "Ouvert 24 heures sur 24",
+        "address_label": "Adresse"
       },
       "local_pickup": {
         "location_information": {
@@ -3118,6 +3157,22 @@
       },
       "cart_checkout_validation": {
         "runtime_error": "Un problème est survenu lors du traitement de votre demande. Contactez le propriétaire du magasin."
+      },
+      "no_address_location": {
+        "title": "Localisation sans adresse",
+        "header": "Vous n'avez pas d'adresse de livraison pour cet emplacement",
+        "message": "Contactez-nous pour ajouter une adresse pour cet emplacement et finaliser votre commande.",
+        "email_us_button_label": "Envoyez-nous un email",
+        "alt_header": "Adresse de livraison manquante"
+      },
+      "order_errors": {
+        "creation_failure": "Un problème est survenu lors de la création de votre commande. Veuillez réessayer ou contactez-nous pour plus de détails.",
+        "network_failure": "Votre commande n'a pas pu être envoyée en raison d'une erreur réseau. Vérifiez votre connexion et réessayez.",
+        "inventory_reservation_failure": "Certains articles ne sont plus disponibles."
+      },
+      "session_errors": {
+        "session_not_unique": "Un problème est survenu lors du traitement de votre commande. Actualisez cette page pour revenir au magasin.",
+        "session_already_finished": "Cette commande a déjà été envoyée. Vous pouvez revenir au magasin pour démarrer une nouvelle commande."
       }
     },
     "notices": {
