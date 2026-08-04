@@ -3743,7 +3743,75 @@
           "order": "Order",
           "actions_accessibility_label": "Actions",
           "products_accessibility_label": "Products"
-        }
+        },
+        "payment_status": {
+          "gallery_view": {
+            "pay_to_confirm": "Pay to confirm",
+            "payment_not_due": "Payment is not yet due"
+          }
+        },
+        "sort_currently_sorted_by_accessibility_label": "Currently sorted by: {{option}}",
+        "carousel": {
+          "one_products_accessibility_label": "Comana includes: {{lineItemName1}}, quantity: {{lineItemQuantity1}}",
+          "two_products_accessibility_label": "The order includes: {{lineItemName1}}, quantity: {{lineItemQuantity1}}, {{lineItemName2}}, quantity: {{lineItemQuantity2}}",
+          "three_products_accessibility_label": "The order includes: {{lineItemName1}}, quantity: {{lineItemQuantity1}}, {{lineItemName2}}, quantity: {{lineItemQuantity2}}, {{lineItemName3}}, quantity: {{lineItemQuantity3}}",
+          "four_products_accessibility_label": "The order includes: {{lineItemName1}}, quantity: {{lineItemQuantity1}}, {{lineItemName2}}, quantity: {{lineItemQuantity2}}, {{lineItemName3}}, quantity: {{lineItemQuantity3}}, {{lineItemName4}}, quantity: {{lineItemQuantity4}}",
+          "five_products_accessibility_label": "The order includes: {{lineItemName1}}, quantity: {{lineItemQuantity1}}, {{lineItemName2}}, quantity: {{lineItemQuantity2}}, {{lineItemName3}}, quantity: {{lineItemQuantity3}}, {{lineItemName4}}, quantity: {{lineItemQuantity4}}, {{lineItemName5}}, quantity: {{lineItemQuantity5}}",
+          "six_products_accessibility_label": "The order includes: {{lineItemName1}}, quantity: {{lineItemQuantity1}}, {{lineItemName2}}, quantity: {{lineItemQuantity2}}, {{lineItemName3}}, quantity: {{lineItemQuantity3}}, {{lineItemName4}}, quantity: {{lineItemQuantity4}}, {{lineItemName5}}, quantity: {{lineItemQuantity5}}, {{lineItemName6}}, quantity: {{lineItemQuantity6}}",
+          "six_and_more_products_accessibility_label": "The order includes: {{lineItemName1}}, quantity: {{lineItemQuantity1}}, {{lineItemName2}}, quantity: {{lineItemQuantity2}}, {{lineItemName3}}, quantity: {{lineItemQuantity3}}, {{lineItemName4}}, quantity: {{lineItemQuantity4}}, {{lineItemName5}}, quantity: {{lineItemQuantity5}}, {{lineItemName6}}, quantity: {{lineItemQuantity6}} and others",
+          "view_order_details": "See order details",
+          "previous": "Back",
+          "next": "Before"
+        },
+        "show_order_actions_accessibility_label": "Show actions for the order {{name}}",
+        "empty_state_title_for_pending_orders": "No pending orders",
+        "more_than_four_products_accessibility_label": "The order includes {{lineItemName1}}, {{lineItemName2}}, {{lineItemName3}} and still {{numberOfAdditionalProducts}} (of products)",
+        "plus_more_products": "Still {{numberOfAdditionalProducts}} (of) products",
+        "order_status_and_message": "{{orderStatus}} - {{message}}",
+        "order_status_message": {
+          "list_view": {
+            "view_order_for_details": "For details, see the order",
+            "estimated_delivery": "Estimated date: {{date}}",
+            "last_updated": "Last update at {{date}}"
+          },
+          "table_view": {
+            "estimated_delivery": "Estimated Delivery: {{date}}",
+            "last_updated": "{{date}}"
+          }
+        },
+        "more_than_three_products_accessibility_label": "The order includes {{lineItemName1}}, {{lineItemName2}} and still {{numberOfAdditionalProducts}} (of products)",
+        "plus_more": "+{{numberOfAdditionalProducts}}",
+        "filter_title": "Filter",
+        "filter": {
+          "clear_section": "Empty the section",
+          "clear_all": "Empty everything",
+          "apply": "Apply",
+          "date": {
+            "start_date": "The initial date",
+            "end_date": "Final date",
+            "title": "Order date",
+            "today": "Today",
+            "last_7_days": "Last 7 days",
+            "last_30_days": "Last 30 days",
+            "last_90_days": "Last 90 days",
+            "last_365_days": "Last 12 months",
+            "custom": "Personalized"
+          },
+          "date_section_accessibility_label": "Filter by {{sectionTitle}}"
+        },
+        "no_order_banner": "To test the extension on the Order Status page, create an order.",
+        "location_filter_picker": {
+          "all_location": "All locations",
+          "current_location": "Existing location",
+          "switch_view": "Change the view"
+        },
+        "empty_state_with_location_title": "No order for {{locationName}}",
+        "view_order": "See the order",
+        "view_order_accessibility_label": "See the order {{orderName}}",
+        "empty_state_redesign_cta": "Shop now",
+        "empty_state_redesign_subtitle": "Are you ready to shop?",
+        "empty_state_redesign_welcome": "welcome",
+        "empty_state_redesign_welcome_with_name": "welcome, {{firstName}}"
       },
       "order_status": {
         "delivered_description_gift_card": {
