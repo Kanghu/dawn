@@ -1615,7 +1615,9 @@
           "other": "Il y a %{count} cartes expirées, que vous pouvez consulter et modifier dans votre compte."
         },
         "order_edit_banner_items_added": {
-          "few": "Ajouté (s): %{count}"
+          "few": "Ajouté(s) : %{count}",
+          "one": "Ajouté",
+          "other": "Ajouté(s) : %{count}"
         },
         "discount_show_more_warnings": {
           "few": "Afficher plus %{count}"
@@ -1820,7 +1822,74 @@
           "payment_tag": "Carte cadeau",
           "apply_another_gift_card_label": "Appliquer une autre carte cadeau",
           "gift_card_label": "%{identifier} pour la carte cadeau",
-          "add_label": "Ajouter une carte cadeau"
+          "add_label": "Ajouter une carte cadeau",
+          "manage_label": "Gérer les cartes cadeaux"
+        },
+        "custom_onsite_payment_method_modal": {
+          "title": "Confirmation de paiement personnalisée sur place"
+        },
+        "markets_pro_disclaimer_label": "En passant votre commande, vous acceptez d'acheter auprès de Global-e en tant que commerçant enregistré conformément à %{markets_pro_terms} et %{privacy_policy} C'est mondial, et partager vos informations avec %{shop_name}.",
+        "markets_pro_disclaimer_terms_and_conditions": "Termes et conditions",
+        "markets_pro_disclaimer_privacy_policy": "Politique de confidentialité",
+        "markets_pro_disclaimer_terms_and_conditions_title": "Conditions générales pour les marchands enregistrés",
+        "markets_pro_disclaimer_privacy_policy_title": "Politique de confidentialité des commerçants enregistrés",
+        "purchase_order_number": {
+          "title": "Numéro de bon de commande",
+          "label": "Numéro de bon de commande (facultatif)"
+        },
+        "alternative_payment_currency_total_notice": "Remarque : Votre mode de paiement sera débité de %{amount_due}.",
+        "waiting_on_taxes_message": "Si vos frais ne sont pas calculés dans les prochaines secondes, veuillez actualiser la page.",
+        "waiting_on_taxes_notice": "Les taxes sont calculées",
+        "order_edit_banner_single_item_returned": "Retourné",
+        "order_edit_banner_multiple_items_returned": "Retourné(s) : {{amount}}",
+        "shop_pay_installments_label": "Taux de paiement en magasin",
+        "add_credit_card_modal": {
+          "title": "Ajouter une carte",
+          "cancel": "Annuler",
+          "save": "Enregistrer"
+        },
+        "delete_credit_card_modal": {
+          "title": "Supprimer la carte",
+          "confirmation": "Bien sûr, vous souhaitez supprimer {{brandName}} qui se termine par {{lastDigits}}?",
+          "cancel": "Annuler",
+          "delete": "Supprimer"
+        },
+        "order_edit_banner_items_removed": {
+          "in_full": "Supprimé",
+          "with_quantities": "Supprimé(s) : {{delta}} de {{quantity}}"
+        },
+        "order_edit_banner_items_returned": {
+          "in_full": "Retourné(s) : {{quantity}}",
+          "with_quantities": "Retourné(s) : {{delta}} de {{quantity}}"
+        },
+        "saved_credit_card_actions": {
+          "edit": "Modifier",
+          "delete": "Supprimer"
+        },
+        "edit_credit_card_modal": {
+          "title": "Modifier la carte",
+          "done": "fait",
+          "cancel": "Annuler",
+          "description": "Vous pouvez uniquement modifier l'adresse de facturation de votre carte.",
+          "fields": {
+            "default": "Définir par défaut",
+            "card_number": "Numéro de carte",
+            "expiry": "Date d'expiration",
+            "security_code": "Code de sécurité",
+            "name": "Le nom sur la carte",
+            "billing": "Facturation à"
+          }
+        },
+        "payment_method": "Mode de paiement",
+        "expired_payment_method": "Le mode de paiement sélectionné a expiré",
+        "subscription_heading": "Contrat d'abonnement",
+        "use_order_billing_address_label": "Utiliser l'adresse de facturation pour la commande",
+        "use_location_billing_address_label": "Utiliser l'adresse de facturation pour l'emplacement",
+        "use_location_shipping_address_label": "Utiliser l'adresse de livraison pour l'emplacement",
+        "purchase_options_agreement_label_wallets": "En continuant à payer, vous acceptez les futurs frais mentionnés sur cette page et les conditions d'annulation.",
+        "gift_card_store_credit": {
+          "add_label": "Ajouter une carte-cadeau ou un crédit en magasin",
+          "manage_label": "Gérer les cartes cadeaux ou le crédit en magasin"
         }
       },
       "shipping_errors": {
