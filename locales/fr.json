@@ -1890,6 +1890,68 @@
         "gift_card_store_credit": {
           "add_label": "Ajouter une carte-cadeau ou un crédit en magasin",
           "manage_label": "Gérer les cartes cadeaux ou le crédit en magasin"
+        },
+        "saved_credit_card_cvv_verification": "Entrez le code de sécurité de votre carte à des fins de vérification.",
+        "order_edit_banner_updated_order_label": "Commande mise à jour",
+        "afterpay_label": "Après-paiement",
+        "cashapppay_label": "Paiement par application en espèces",
+        "card_nickname_label": "Pseudo (facultatif)",
+        "order_edit_banner_items_return_line_item_removed": {
+          "in_full": "Supprimé du retour",
+          "with_quantities": "Supprimé du retour : {{delta}}"
+        },
+        "order_edit_banner_single_item_return_line_item_removed": "Supprimé du retour",
+        "order_edit_banner_multiple_items_return_line_item_removed": "Supprimé du retour : {{amount}}",
+        "proposed_gateway_unavailable": "La passerelle de paiement proposée n'est pas disponible",
+        "pay_in_installments_split_pay_short": "4 paiements d'une valeur de %{amount}",
+        "payment_method_not_available_for_shipping_address_error": "Le mode de paiement n'est pas disponible pour l'adresse de livraison sélectionnée. Choisissez un autre mode de paiement.",
+        "shop_pay_ideal_unavailable_error": "idéal | Wero n'est pas disponible pour cette commande. Choisissez un autre mode de paiement.",
+        "paypal_disconnect": "Se déconnecter",
+        "paypal_wallet_label": "Portefeuille PayPal",
+        "payment_method_update_failed": "La mise à jour du mode de paiement a échoué.",
+        "alternative_payment_currency_total_manual_payment_notice": "Remarque : Le total converti est de %{amount_due}.",
+        "gift_cards_unavailable": "Votre carte cadeau ne peut plus être appliquée à cette commande et a été supprimée",
+        "network_card_payment_options": "Choisissez un réseau de cartes",
+        "payment_flexibility_terms_id_mismatch": "Inadéquation des identifiants pour des conditions de paiement flexibles",
+        "offsite_gateway_review_page_redirect_hint": "Après avoir examiné la commande, nous vous redirigerons vers %{gateway_label} pour finaliser votre achat.",
+        "przelewy24_label": "Przelewy24",
+        "twint_label": "TWINTE",
+        "mobilepay_label": "Paiement mobile",
+        "gift_card_checkbox_label": "Appliquer cette carte cadeau",
+        "blik_label": "CLIQUER",
+        "vipps_label": "Fouets",
+        "grabpay_label": "GrabPay",
+        "kcp_creditcard_label": "Carte de crédit KCP",
+        "simulated_express_checkout": "Votre région ou votre navigateur ne permet pas de prévisualiser vos portefeuilles dans l'éditeur.",
+        "offsite_gateway_redirect_hint_no_button_label": "Nous vous redirigerons vers %{gateway_label} pour finaliser votre achat.",
+        "swish_label": "Swish",
+        "network_card_persistence_description": "Le réseau sélectionné sera enregistré avec votre mode de paiement pour les transactions futures.",
+        "usdc_label": "USDC",
+        "payment_method_incompatible_with_payment_terms": "Le mode de paiement est incompatible avec les conditions de paiement.",
+        "payment_option": {
+          "accessibility_label": "Choisissez une option de paiement"
+        },
+        "billing_address_rollup_accessibility_label": "Options d'adresse de facturation",
+        "payment_method_rollup_accessibility_label": "Options de méthodes de paiement",
+        "crypto_modal": {
+          "header": "Paiement à %{shop_name} avec %{total_price} USDC",
+          "error": {
+            "refresh": "Rafraîchissement",
+            "close": "fermeture",
+            "sandbox_error": "Une erreur s'est produite",
+            "web_component_error": "Une erreur s'est produite lors du chargement de cette page"
+          }
+        },
+        "bank_account_type": {
+          "checking": "Vérification",
+          "savings": "Économies"
+        },
+        "bank_account_choose": "Choisissez un compte pour un paiement sécurisé",
+        "bank_account_connect_another": "Connecter un autre compte bancaire",
+        "bank_account_connect": "Connecter un compte bancaire",
+        "bank_account_missing": "La connexion du compte bancaire est obligatoire",
+        "crypto_payment_method": {
+          "description": "Connectez votre portefeuille en toute sécurité. Votre solde et votre adresse ne seront pas partagés."
         }
       },
       "shipping_errors": {
