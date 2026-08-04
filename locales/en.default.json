@@ -1418,6 +1418,32 @@
         "compare_at_sale": "Promotion (%{sale_amount})",
         "discount_code_applied_count": {
           "few": "Display %{count} discounts"
+        },
+        "tax_line": {
+          "hst": "HST",
+          "gst": "GST",
+          "pst": "PST",
+          "rst": "RST",
+          "qst": "QST",
+          "vpt": "VPT"
+        },
+        "automatic_discount_tooltip": "Automatically applied discounts cannot be removed",
+        "alternative_payment_currency_chinese_yuan": "Confirm the final total in CNY in the app %{wallet}.",
+        "alternative_payment_currency_total_disclosure": "%{shop_name} process payments in %{shop_currency} (%{amount_due}).",
+        "settlement_currency_note": "%{shop_name} process payments in %{processing_currency}. You shopped in %{original_currency}.",
+        "settlement_currency_note_wallet": "%{shop_name} process payments in %{processing_currency}. You shopped in %{original_currency} and you paid with %{wallet} in CNY. Check out the app %{wallet_app} for the final amount.",
+        "settlement_currency_note_wallet_no_conversion": "You paid with %{wallet} in CNY. Check out the app %{wallet_app} for the final amount.",
+        "lpm": {
+          "wechat_pay": {
+            "checkout_disclosure": "Confirm the final total in CNY in the WeChat app",
+            "post_purchase_disclosure": "View total in CNY in WeChat",
+            "checkout_disclosure_with_alternative_payment_currency": "%{shop_name} will process this payment in the amount of %{amount_due} %{processing_currency}, which WeChat converts to CNY"
+          },
+          "alipay": {
+            "checkout_disclosure": "Confirm the final total in CNY in the Alipay app",
+            "post_purchase_disclosure": "View the total in CNY in Alipay",
+            "checkout_disclosure_with_alternative_payment_currency": "%{shop_name} will process this payment in the amount of %{amount_due} %{processing_currency}, which Alipay converts to CNY"
+          }
         }
       },
       "payment": {
@@ -1438,7 +1464,37 @@
         },
         "discount_codes_removed_summary": {
           "few": "%{count} discount codes have been removed"
-        }
+        },
+        "amazon_payments_label": "Amazon Pay",
+        "amazon_payments_login_hint": "You will be prompted to sign in with Amazon.",
+        "amazon_payments_logout": "Sign out of Amazon Pay",
+        "amazon_payments_failed_mfa_challenge": "The selected payment method could not be used. Select a different method or contact your bank or card issuer.",
+        "amazon_payments_abandoned_mfa_challenge": "Your payment could not be completed. Select a different payment method or contact your bank or card issuer.",
+        "amazon_payments_could_not_enqueue_authorize": "There was a problem processing your payment. Try again or use a different payment method.",
+        "title": "Payment",
+        "amount_left_to_pay_label": "Payment deadline:",
+        "discount_button_action_label": "Apply discount code",
+        "gift_card_code_label": "Gift card code",
+        "apply_gift_card_button_label": "Apply",
+        "gift_card_balance_label": "Balance:",
+        "supported_card_brands_more_label": "and more...",
+        "detected_card_brand": "Card brand detected: {brand}",
+        "card_number_label": "Card number",
+        "card_number_placeholder": "Card number",
+        "card_pay_with": "Pay with:",
+        "card_security_notice": "All transactions are secure and encrypted.",
+        "card_information_notice": "All transactions are secure and encrypted. Credit card information is never stored.",
+        "name_on_card_label": "The name on the card",
+        "name_on_card_placeholder": "The name on the card",
+        "card_expiry_label": "Expiry Date (MM/YY)",
+        "card_expiry_placeholder": "Expiry Date (MM/YY)",
+        "credit_card_start_month": "Start month",
+        "credit_card_start_year": "Beginning year",
+        "card_verification_value_label": "Security code",
+        "card_verification_value_placeholder": "Security code",
+        "card_expiry_date_explanation": "Card expiry date in the format: month, month, year, year",
+        "card_expiration_month_label": "Month of expiration",
+        "card_expiration_year_label": "Expiry year"
       },
       "shipping_errors": {
         "shipping_method_not_available_generic": {
