@@ -2108,16 +2108,24 @@
           "other": "Un problème est survenu lors du renvoi des cartes cadeaux. Réessayez ou contactez-nous."
         },
         "thank_you_unconfirmed_items_heading": {
-          "few": "Certains éléments ne sont pas confirmés"
+          "few": "Certains éléments ne sont pas confirmés",
+          "one": "1 article n'est pas confirmé",
+          "other": "Certains éléments ne sont pas confirmés"
         },
         "thank_you_unconfirmed_items_description": {
-          "few": "Ces opérations ont été réalisées gratuitement"
+          "few": "Ces opérations ont été réalisées gratuitement",
+          "one": "Cette opération a été réalisée gratuitement",
+          "other": "Ces opérations ont été réalisées gratuitement"
         },
         "thank_you_item_label": {
-          "few": "%{count} articles"
+          "few": "%{count} articles",
+          "one": "%{count} article",
+          "other": "%{count} articles"
         },
         "items_fulfilled_by_store": {
-          "few": "Les articles achetés seront livrés depuis d'autres magasins."
+          "few": "Les articles achetés seront livrés depuis d'autres magasins.",
+          "one": "Les articles achetés seront expédiés de %{remote_shop_name}.",
+          "other": "Les articles achetés seront livrés depuis d'autres magasins."
         },
         "title": "Merci pour votre achat!",
         "confirmation_email_sent_text": "Un email de confirmation a été envoyé à %{email}",
@@ -2364,7 +2372,41 @@
           "title": "Factures avec TVA"
         },
         "thank_you_payments_app_pending_payment_description_provider_action_required_default": "Vous recevrez un e-mail lorsque le paiement sera confirmé.",
-        "verify_shop_account_title": "Vérifiez votre compte boutique"
+        "verify_shop_account_title": "Vérifiez votre compte boutique",
+        "verify_shop_account_message": "Vos informations ont été enregistrées dans la boutique. Vérifiez votre compte pour les utiliser automatiquement dans des millions de magasins.",
+        "verify_shop_account_cta": "Vérifiez votre compte",
+        "verify_shop_account_confirmation": "Les détails du paiement ont été enregistrés",
+        "company_location_section_title": "Entreprise et localisation",
+        "announcement": {
+          "close": "Fermer",
+          "expand": "Rallonge",
+          "collapse": "Restriction"
+        },
+        "confirmed_items_count": "%{confirmed_count} de %{total_count} les articles sont confirmés",
+        "thank_you_confirmed_orders_with_email": "Vous recevrez bientôt des e-mails de confirmation séparés avec les numéros de commande",
+        "thank_you_confirmed_orders_with_phone": "Vous recevrez bientôt des SMS de confirmation séparés avec les numéros de commande",
+        "thank_you_confirmed_orders_with_email_and_phone": "Vous recevrez bientôt des e-mails de confirmation séparés avec les numéros de commande",
+        "track_your_order_link_text": "Suivi des commandes",
+        "checkout_on_remote_shop_link_text": "Payer à %{remoteShopName}",
+        "confirmed_orders_title": "Vos commandes sont confirmées",
+        "thank_you_from_shop": "De %{shop_name}",
+        "payment_method_not_charged": "Sans frais",
+        "thank_you_from_other_store": "D'un autre magasin",
+        "checkout_on_another_store": "Payer dans un autre magasin",
+        "thank_you_confirmed_with_email_description": {
+          "single_store": "Vous recevrez un e-mail de confirmation sous peu",
+          "multi_store": "Vous recevrez bientôt des e-mails de confirmation distincts de chaque magasin"
+        },
+        "thank_you_confirmed_with_phone_description": {
+          "single_store": "Vous recevrez bientôt un SMS de confirmation",
+          "multi_store": "Vous recevrez bientôt des SMS de confirmation séparés de chaque magasin"
+        },
+        "thank_you_confirmed_with_email_and_phone_description": {
+          "single_store": "Vous recevrez un e-mail de confirmation sous peu",
+          "multi_store": "Vous recevrez bientôt des e-mails de confirmation distincts de chaque magasin"
+        },
+        "checkout_again": "Payer à nouveau",
+        "cashback_notice": "Vous recevrez votre remboursement après 30 jours"
       },
       "order_payment_collection": {
         "changes_summary": {
@@ -2823,6 +2865,21 @@
         "bank_account_label": "Compte bancaire",
         "credit_or_debit_card_label": "Crédit/débit",
         "bogus_label": "Tester la passerelle de paiement"
+      },
+      "review": {
+        "title": "Examen",
+        "review_title": "Complétez la commande",
+        "checkout_as_guest": "Complétez la commande en tant qu'invité",
+        "blocks": {
+          "contact_method_title": "Contacter",
+          "billing_address_title": "Facturation",
+          "shipping_address_title": "Expédier à",
+          "shipping_method_title": "Méthode d'expédition",
+          "payment_method_title": "Mode de paiement",
+          "change_link_label": "Modifier",
+          "change_contact_method_link_label": "Modifier les coordonnées",
+          "change_billing_address_link_label": "Changer l'adresse de facturation"
+        }
       }
     },
     "notices": {
