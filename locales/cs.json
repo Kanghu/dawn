@@ -1024,7 +1024,67 @@
           "few": "Lodě v %{count} pracovní dny"
         },
         "unbranded_description_with_fulfillment_weeks": {
-          "one": "Lodě v %{count} týden"
+          "one": "Lodě v %{count} týden",
+          "other": "Lodě v %{count} týdnů",
+          "few": "Lodě v %{count} týdnů"
+        },
+        "add_new_delivery_address": "Přidejte novou dodací adresu",
+        "delivery_to": "Doprava na adresu"
+      },
+      "change_currency": {
+        "credit_card_will_be_charged_html": "Budou vnímáni %{amount} z vaší karty",
+        "currency_button_label": "%{currency} (%{currency_symbol})",
+        "payment_total_label": "Celková platba",
+        "conversion_rate": "1 %{from_currency_code} = %{rate} %{to_currency_code}",
+        "change_currency_link": "Změnit na %{currency_name}",
+        "card_provider_fx_charges_warning": "Vydavatel karty může účtovat poplatky za transakce v %{currency_code}.",
+        "currency_not_supported_by_shop": "Vybraná měna již není k dispozici. Všechny ceny jsou nyní v %{currency_code}."
+      },
+      "general": {
+        "page_title": "Dokončete objednávku",
+        "error_page_title": "Chyba",
+        "skip_to_content": "Přejít na obsah",
+        "breadcrumb": "stopa",
+        "continue_button_label": "Pokračovat",
+        "complete_purchase_button_label": "Dokončete objednávku",
+        "pay_now_button_label": "Zaplať teď",
+        "authenticate_purchase_button_label": "Ověřit platbu",
+        "edit_link_label": "Upravit",
+        "all_rights_reserved": "Všechna práva vyhrazena %{shop_name}",
+        "print_policies_link_label": "Tisk",
+        "cart": "Košík",
+        "close_modal_label": "Zavřít",
+        "close_notice_label": "Zavřít",
+        "expand_notice_label": "Zobrazit více",
+        "continue_to_shipping_method": "Pokračujte v odeslání",
+        "continue_to_payment_method": "Pokračujte k pokladně",
+        "continue_to_review": "Zkontrolujte objednávku",
+        "back_to_cart": "Návrat do košíku",
+        "back_to_contact_information": "Vraťte se k informacím",
+        "back_to_shipping_method": "Návrat k odeslání",
+        "back_to_payment_method": "Návrat k platbě",
+        "choose_shipping_method": "Vyberte způsob dopravy",
+        "choose_payment_method": "Vyberte způsob platby",
+        "choose_billing_address": "Vyberte fakturační adresu",
+        "contact_us_html": "Kontaktujte nás pro více informací",
+        "autocomplete_title": "Návrhy",
+        "autocomplete_single_item": "1 položka k dispozici",
+        "autocomplete_multi_item": "{{number}} položky k dispozici",
+        "autocomplete_selection": "{{number}} od {{total}}",
+        "autocomplete_close": "Zavřete návrhy",
+        "tooltip_accessibility_label": "Více informací",
+        "forwarding_indicator": {
+          "new_window": "Otevře se v novém okně.",
+          "external": "Otevřete externí web.",
+          "external_and_new_window": "Otevřete externí web v novém okně."
+        },
+        "checkout_context": {
+          "step_one": "%{shop_name} – Dokončete objednávku"
+        },
+        "errors": {
+          "session_identifier_not_unique_error": "Vyskytl se problém s vaší objednávkou. Zkuste platbu provést znovu.",
+          "line_item_limit_reached": "Bylo dosaženo maximálního počtu položek.",
+          "only_empty_terms_accepted": "Tato zásada přijímá pouze prázdné podmínky."
         }
       }
     }
