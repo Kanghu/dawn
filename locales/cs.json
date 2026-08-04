@@ -756,6 +756,28 @@
           "total_balance": "Celková bilance"
         }
       }
+    },
+    "callback": {
+      "try_again": "Zkuste to znovu"
+    },
+    "navigation_and_structure": {
+      "account_menu": {
+        "hide_accessibility_label": "Skrýt nabídku Účet",
+        "show_accessibility_label": "Zobrazit nabídku Účet",
+        "nav_accessibility_label": "Navigace v účtu",
+        "open_menu_accessibility_label": "Otevřít navigaci v účtu",
+        "close_menu_accessibility_label": "Zavřete procházení účtu",
+        "loading_message": "Načítání navigace v účtu",
+        "label": "účtu"
+      },
+      "action_menu_accessibility_label": "Více akcí",
+      "close_menu_accessibility_label": "Zavřít hlavní navigaci",
+      "contact_email_subject": "Kontakt z internetového obchodu {{shopName}}",
+      "contact_link": "Kontaktní informace",
+      "delete_confirmation": {
+        "cancel": "Zrušit",
+        "delete": "Smazat"
+      }
     }
   },
   "shopify": {
@@ -4229,7 +4251,69 @@
       "reset_account": "Resetujte svůj účet",
       "addresses": "Adresy",
       "order": "Objednat %{name}",
-      "search": "Hledat"
+      "search": "Hledat",
+      "collections": "Sbírky",
+      "not_found": "404 nenalezeno",
+      "challenge": "Výzva",
+      "checkpoint": "Ověřovací bod",
+      "search_results": {
+        "one": "Hledat: nalezeno %{count} výsledek pro \"%{terms}”",
+        "other": "Hledat: nalezeno %{count} výsledky pro \"%{terms}”",
+        "few": "Hledat: nalezeno %{count} výsledky pro \"%{terms}”"
+      },
+      "blog_or_article_with_error": "Chyba – %{title}"
+    },
+    "cart": {
+      "discounts_with_count": "Byly aplikovány %{count} slevy"
+    },
+    "challenge": {
+      "message": "Chcete-li pokračovat, dokažte, že nejste robot.",
+      "error": "Vaše odpověď byla nesprávná, zkuste to znovu.",
+      "submit_button_text": "Odeslat"
+    },
+    "checkpoint": {
+      "message": "Chcete-li pokračovat, vyřešte captcha",
+      "error": "Ověření captcha se nezdařilo",
+      "submit_button_text": "Odeslat"
+    },
+    "store_availability": {
+      "pick_up_time": {
+        "one_hour": "Připraveno obvykle do hodiny",
+        "two_hours": "Hotové obvykle do dvou hodin",
+        "four_hours": "Obvykle hotové do 4 hodin",
+        "twenty_four_hours": "Obvykle připraveno do 24 hodin",
+        "two_to_four_days": "Obvykle připraveno za 2-4 dny",
+        "five_or_more_days": "Obvykle připraveno za více než 5 dní",
+        "zero_to_two_hours": "Hotové obvykle do dvou hodin",
+        "two_to_four_hours": "Obvykle hotové do 4 hodin",
+        "immediately": "Připraveno k vyzvednutí",
+        "next_day": "Připraveno k vyzvednutí další den"
+      }
+    },
+    "filters": {
+      "availability": {
+        "value": {
+          "in_stock": "Skladem",
+          "out_of_stock": "Není skladem"
+        }
+      },
+      "boolean": {
+        "true_label": "Ano",
+        "false_label": "Ne"
+      }
+    },
+    "search": {
+      "sorting": {
+        "relevance": "Relevance",
+        "price_ascending": "Cena, od nejnižší po vysokou",
+        "price_descending": "Cena, od nejvyšší po nejnižší"
+      },
+      "error": "Při načítání výsledků vyhledávání došlo k problému. Obnovte stránku nebo to zkuste znovu později."
+    },
+    "subscriptions": {
+      "buyer_consent_product": "Tato položka je opakovaný nebo odložený nákup. Pokračováním souhlasím s %{cancellationPolicyLink} a opravňuji vás k tomu, abyste automaticky účtovali můj způsob platby za uvedené ceny, frekvence a data, dokud nebude moje objednávka splněna nebo ji nezruším, je-li to povoleno.",
+      "buyer_consent_cart": "Jedna nebo více položek ve vašem košíku je opakovaný nebo odložený nákup. Pokračováním souhlasím s %{cancellationPolicyLink} a opravňuji vás k tomu, abyste automaticky účtovali můj způsob platby za uvedené ceny, frekvence a data, dokud nebude moje objednávka splněna nebo ji nezruším, je-li to povoleno.",
+      "cancellation_policy": "storno podmínky"
     }
   }
 }
