@@ -335,40 +335,40 @@
     },
     "search": {
       "no_results": "Nebyly nalezeny žádné výsledky pro „{{ terms }}\". Zkontrolujte pravopis nebo použijte jiné slovo či frázi.",
-      "title": "Výsledky hledání",
+      "title": "Výsledky vyhledávání",
       "results_with_count": {
         "one": "{{ count }} výsledek",
-        "other": "Výsledky: {{ count }}",
-        "few": "Výsledky: {{ count }}",
+        "other": "{{ count }} výsledky",
+        "few": "{{ count }} výsledky",
         "many": "Výsledky: {{ count }}"
       },
-      "page": "Stránka",
+      "page": "stránku",
       "products": "Produkty",
-      "search_for": "Vyhledat: {{ terms }}",
+      "search_for": "Hledat „{{ terms }}”",
       "results_with_count_and_term": {
-        "one": "Pro dotaz {{ terms }} byl nalezen {{ count }} výsledek",
-        "other": "Pro dotaz {{ terms }} byl nalezen tento počet výsledků: {{ count }}",
-        "few": "Pro dotaz {{ terms }} byl nalezen tento počet výsledků: {{ count }}",
+        "one": "Bylo to nalezeno {{ count }} výsledek pro \"{{ terms }}”",
+        "other": "Našli se {{ count }} výsledky pro \"{{ terms }}”",
+        "few": "Našli se {{ count }} výsledky pro \"{{ terms }}”",
         "many": "Pro dotaz {{ terms }} byl nalezen tento počet výsledků: {{ count }}"
       },
       "results_pages_with_count": {
-        "one": "{{ count }} stránka",
-        "other": "{{ count }} str.",
-        "few": "{{ count }} str.",
+        "one": "{{ count }} stránku",
+        "other": "{{ count }} stránky",
+        "few": "{{ count }} stránky",
         "many": "{{ count }} str."
       },
       "results_products_with_count": {
         "one": "{{ count }} produkt",
-        "other": "{{ count }} prod.",
-        "few": "{{ count }} prod.",
+        "other": "{{ count }} produkty",
+        "few": "{{ count }} produkty",
         "many": "{{ count }} prod."
       },
       "suggestions": "Návrhy",
       "pages": "Stránky",
       "results_suggestions_with_count": {
-        "one": "Počet návrhů: {{ count }}",
-        "other": "Počet návrhů: {{ count }}",
-        "few": "Počet návrhů: {{ count }}",
+        "one": "{{ count }} návrh",
+        "other": "{{ count }} návrhů",
+        "few": "{{ count }} návrhů",
         "many": "Počet návrhů: {{ count }}"
       }
     },
@@ -378,12 +378,12 @@
     "contact": {
       "form": {
         "name": "Jméno",
-        "email": "E-mail",
+        "email": "Email",
         "phone": "Telefonní číslo",
         "comment": "Komentář",
         "send": "Odeslat",
-        "post_success": "Děkujeme, že jste nás kontaktovali. Ozveme se vám co možná nejdříve.",
-        "error_heading": "Upravte prosím následující informace:",
+        "post_success": "děkujeme, že jste nás kontaktovali. Ozveme se vám co nejdříve.",
+        "error_heading": "Upravte prosím následující:",
         "title": "Kontaktní formulář"
       }
     }
@@ -546,29 +546,29 @@
   "localization": {
     "country_label": "Země/oblast",
     "language_label": "Jazyk",
-    "update_language": "Aktualizovat jazyk",
-    "update_country": "Aktualizovat zemi/oblast",
-    "search": "Začněte hledat",
+    "update_language": "Aktualizujte svůj jazyk",
+    "update_country": "Aktualizujte svou zemi/oblast",
+    "search": "Hledat",
     "popular_countries_regions": "Oblíbené země/oblasti",
-    "country_results_count": "Byl nalezen tento počet zemí/oblastí: {{ count }}"
+    "country_results_count": "{{ count }} nalezené země/oblasti"
   },
   "customer": {
     "account": {
-      "title": "Účet",
-      "details": "Podrobnosti účtu",
+      "title": "účtu",
+      "details": "Podrobnosti o účtu",
       "view_addresses": "Zobrazit adresy",
-      "return": "Vrátit se k podrobnostem účtu"
+      "return": "Zpět k podrobnostem účtu"
     },
-    "account_fallback": "Účet",
-    "log_in": "Přihlásit se",
-    "log_out": "Odhlásit se",
+    "account_fallback": "účtu",
+    "log_in": "Přihlaste se",
+    "log_out": "Odhlaste se",
     "activate_account": {
-      "title": "Aktivovat účet",
+      "title": "Aktivujte svůj účet",
       "subtext": "Vytvořte heslo pro aktivaci účtu.",
       "password": "Heslo",
-      "password_confirm": "Potvrdit heslo",
-      "submit": "Aktivovat účet",
-      "cancel": "Odmítnout pozvánku"
+      "password_confirm": "Potvrďte heslo",
+      "submit": "Aktivujte svůj účet",
+      "cancel": "Odmítněte pozvání"
     },
     "addresses": {
       "title": "Adresy",
