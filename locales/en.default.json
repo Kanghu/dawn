@@ -3948,8 +3948,13 @@
     "order_details": {
       "image_gallery": {
         "load_more_items": {
-          "few": "Load {{count}} more items"
-        }
+          "few": "Show more {{count}} articles",
+          "one": "Show more {{count}} article",
+          "other": "Show more {{count}} articles"
+        },
+        "product_name_and_quantity": "Product: {{productName}}, quantity: {{quantity}}",
+        "next": "Show the following articles",
+        "previous": "Show previous articles"
       },
       "addresses_section_title": "Billing and Shipping",
       "billing_address": "Billing address",
@@ -4012,7 +4017,61 @@
       },
       "show_items": "Show articles",
       "subtitle": "Confirmed {{date}}",
-      "subtotal": "Subtotal"
+      "subtotal": "Subtotal",
+      "summary_list_title_accessibility_label": "Order details",
+      "summary_title": "Order summary",
+      "summary_totals_title_accessibility_label": "Order total",
+      "taxes": "Taxes",
+      "title": "Order {{name}}",
+      "total": "Totally",
+      "unit_price": "{{price}}/ pc.",
+      "location": "Location",
+      "not_applicable": "Not applicable",
+      "fully_refunded_label": "REFUNDED",
+      "partially_refunded_label": "AMOUNT REFUNDED IN PART",
+      "refunded_amount": "Reimbursed",
+      "discount": "Discount",
+      "compare_at_sale": "Promotion ({{saleAmount}})",
+      "no_data": "Without",
+      "pagination": {
+        "load_more": "Show more",
+        "load_more_accessibility_label": "Show more items",
+        "loading_accessibility_label": "Loading articles"
+      },
+      "returns": {
+        "expand_events_label": "Show details",
+        "hide_events_label": "Hide details",
+        "print_shipping_label": "Print the shipping label",
+        "tracking_number": "Tracking Number:",
+        "return_and_refund_modal_header": "Refund Policy",
+        "ineligible_return_message": "No items in this order are eligible for return.",
+        "ineligible_return_message_when_returned": "No additional items in this order are eligible for return.",
+        "exchange_header": "Exchange items",
+        "exchange_subheader": "The \"Exchange Items\" feature will be added to the order once the return has been completed."
+      },
+      "request_return_failed": "There was a problem processing your request. Try again.",
+      "mobile_summary_toggle_button": {
+        "open": "Show order summary",
+        "closed": "Hide order summary"
+      },
+      "shipment_timeline": {
+        "expand_events_label": "Show details",
+        "expand_events_accessibility_label": "Displays order shipping details",
+        "hide_events_label": "Hide details",
+        "hide_events_accessibility_label": "Hide order shipping details"
+      },
+      "show_order_summary": "Show order summary",
+      "hide_order_summary": "Hide order summary",
+      "company": "Company",
+      "no_data_provided": "-",
+      "no_data_provided_accessibility_label": "{{fieldName}} is blank",
+      "marketing_section_title": "News and offers",
+      "marketing_checkbox_label": "I want to receive emails with news and offers",
+      "marketing_checkmark_label": "You are subscribed to receive news and offers by email",
+      "shop_order_tracking": {
+        "download_shop_to_track": "Download Shop to track your package",
+        "track_order_with_shop": "Track your order with Shop"
+      }
     },
     "B2B": {
       "orders": {
