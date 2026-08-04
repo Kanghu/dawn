@@ -796,23 +796,180 @@
           }
         },
         "shipping_method_first_shipment_group_title": {
-          "few": "Първи пратки"
+          "few": "Първите пратки",
+          "one": "Първа пратка",
+          "other": "Първите пратки"
         },
         "shipping_method_recurring_shipments_group_title": {
-          "few": "Повтарящи се пратки"
+          "few": "Повтарящи се пратки",
+          "one": "Повтаряща се пратка",
+          "other": "Повтарящи се пратки"
         },
         "unbranded_description_with_fulfillment_days": {
-          "few": "Доставя се %{count} работни дни"
+          "few": "Доставя се %{count} работни дни",
+          "one": "Изпраща се на следващия работен ден",
+          "other": "Доставя се %{count} работни дни"
         },
         "unbranded_description_with_fulfillment_weeks": {
-          "few": "Доставя се %{count} седмици"
-        }
+          "few": "Доставя се %{count} седмици",
+          "one": "Доставя се %{count} седмица",
+          "other": "Доставя се %{count} седмици"
+        },
+        "estimated_delivery_time": "Очаквана доставка: %{time}",
+        "estimated_delivery_time_range": "Очаквана доставка: %{min_time}–%{max_time}",
+        "arrives_time": "Час на пристигане: %{time}",
+        "arrives_time_range": "Диапазон на пристигане: %{min_time}–%{max_time}",
+        "estimated_time": "Очаквано: %{time}",
+        "estimated_time_range": "Очаквано: %{min_time}-%{max_time}",
+        "delivery_date_range": "%{min_time}–%{max_time}",
+        "subscription_local_delivery": "Доставка на място на базата на абонамент",
+        "subscription_pickup": "Вземане на базата на абонамент",
+        "delivery_today": "Доставка на същия ден, %{time}",
+        "delivery_tomorrow": "Доставка на следващия ден, %{time}",
+        "two_day_delivery": "Доставка за 2 дни %{time}",
+        "delivery": "Доставка %{time}",
+        "duties_and_taxes_title": "Мита и такси",
+        "shipping_information_required_notice": "Изисква се информация за доставка. {{link}}.",
+        "shipping_information_redirect_link": "Въведете информацията тук",
+        "loading_progressive_rates": "Търсите още цени...",
+        "no_other_methods_available": "Не са налични други методи",
+        "duties_and_taxes_options": {
+          "ddu_title": "Плащане при доставка",
+          "ddu_caption": "Възможни са допълнителни такси",
+          "ddp_title": "Платете сега",
+          "ddp_caption": "Не се начисляват допълнителни такси за доставка"
+        },
+        "shipping_method_combinations": {
+          "without_separator": "%{firstMethod}, %{secondMethod}",
+          "with_separator": "%{rest}, %{current},",
+          "combination": "%{rest} и %{current}"
+        },
+        "shipping_used_as_billing_notice": "Този адрес ще се използва и като адрес за фактуриране за тази поръчка.",
+        "address_update": "Актуализирайте адреса",
+        "shipping_address_title": "Изпратете до",
+        "add_address": "Използвайте различен адрес",
+        "add_delivery_instructions": "Добавете инструкции за доставка",
+        "edit": "Редактиране",
+        "delete": "Изтриване",
+        "address_more": "Още действия за този адрес",
+        "address_edit": "Редактиране на адреса",
+        "address_delete": "Изтрийте адреса",
+        "address_confirm": "Сигурни ли сте, че искате да изтриете този адрес от акаунта си?",
+        "address_form": {
+          "add_address": "Добавяне на адрес",
+          "save": "Запазване",
+          "cancel": "Отказ",
+          "generic_error": "Възникна проблем при запазването на вашия адрес. Опитайте отново.",
+          "one_time_address_subtitle": "Използвайте уникален адрес за тази поръчка",
+          "edit": "Редактиране на адреса",
+          "update": "Запазете промените"
+        },
+        "different_shipping_method_summary": "Въведете различен адрес за доставка, за да видите наличните методи за доставка",
+        "invalid_shipping_method_summary": "Моля, въведете валиден адрес за доставка, за да видите наличните методи за доставка",
+        "method_summary": {
+          "incomplete_address_entered": "Въведете пълен адрес за доставка, за да видите наличните методи за доставка",
+          "incomplete_address_selected": "Изберете пълен адрес за доставка, за да видите наличните методи за доставка"
+        },
+        "local_pickup": {
+          "search_address": "Потърсете адреса",
+          "rollup_title": "Вземете местоположение",
+          "rollup_accessibility_label": "Опции за местоположение на вземане"
+        },
+        "missing_shipping_address": "Адресът за доставка липсва",
+        "delivery_title": "Доставка",
+        "address_default": "Задайте по подразбиране",
+        "split_shipping_merchandise_quantity_label_standard": "%{quantity} статии",
+        "split_shipping_merchandise_quantity_label_additional": "+ още %{quantity}",
+        "split_shipping_merchandise_shipment_number": "Доставка %{number} от %{total}",
+        "pre_order_ships_now": "Изпраща се сега",
+        "pre_order_ships_later": "Ще бъде изпратен по-късно",
+        "pre_order_ships_date": "Изпраща се на %{date}",
+        "split_shipping_shipped_by_shop": "Изпратено от %{shop_name}",
+        "split_shipping_multiple_shipment_label": "Още пратки",
+        "split_shipping_shipping_label": "Метод",
+        "split_shipping_multiple_shipment_quantity_label": "%{quantity} пратки",
+        "split_shipping_multiple_shipment_notice": "Вашата поръчка ще пристигне в няколко пратки",
+        "split_shipping_multiple_shipment_notice_one_time_purchase": "Вашата поръчка ще пристигне %{quantity} пратки",
+        "split_shipping_more_shipping_options": "Още опции за пазаруване",
+        "split_shipping_shipment_number": "Доставка %{number}",
+        "split_shipping_merchandise_quantity_label_inline_primary": "Количество: %{quantity}",
+        "split_shipping_merchandise_quantity_label_inline": "%{merchandise_title} ×%{quantity}",
+        "split_shipping_option_free": "Безплатна доставка",
+        "split_shipping_option_lowest_price": "Най-ниската цена",
+        "split_shipping_option_fastest": "Най-бързият",
+        "split_shipping_option_recommended": "Препоръчва се",
+        "split_shipping_option_custom": "Персонализирани",
+        "default_description": "Изпраща се за 1 работен ден",
+        "split_shipping_shipment_notice": "Вашата поръчка ще пристигне %{quantity_shipments}",
+        "unbranded_default_description": "Готов за изпращане",
+        "prime_not_available": {
+          "default": "Основната доставка не е налична за вашата поръчка. Вашите опции за доставка са актуализирани."
+        },
+        "split_shipping_first_shipment_notice": "Първата ви поръчка ще пристигне %{quantity_shipments}",
+        "shipping_method_rollup_accessibility_label": "Опции за метод на доставка",
+        "shipping_address_rollup_accessibility_label": "Опции за адрес за доставка",
+        "back": "Назад",
+        "invalid_shipping_method_summary_selected": "Изберете различен адрес за доставка, за да видите наличните методи за доставка",
+        "third_party_address_timeout": "Неуспешно зареждане на адреси. Моля, опитайте отново или използвайте друг адрес.",
+        "third_party_address_error": "Възникна грешка при зареждането на избраните адреси. Моля, въведете адреса ръчно по-долу.",
+        "third_party_payment_timeout": "Неуспешно зареждане на методите на плащане. Опитайте отново или използвайте друг метод на плащане.",
+        "third_party_payment_error": "Възникна грешка при зареждането на избрания метод на плащане. Използвайте друг метод на плащане.",
+        "add_shipping_address": "Добавете адрес за доставка",
+        "choose_new_address": "Изберете нов адрес",
+        "unbranded_description_same_day": "Изпраща се същия работен ден",
+        "add_new_delivery_address": "Добавете нов адрес за доставка",
+        "delivery_to": "Доставка до адрес"
       },
       "general": {
         "map": {
           "cluster_title": {
             "few": "Образуван клъстер {{number}} Куршуми"
           }
+        },
+        "page_title": "Изпълнете поръчката",
+        "error_page_title": "Грешка",
+        "skip_to_content": "Преминете към съдържанието",
+        "breadcrumb": "следа",
+        "continue_button_label": "Продължи",
+        "complete_purchase_button_label": "Изпълнете поръчката",
+        "pay_now_button_label": "Платете сега",
+        "authenticate_purchase_button_label": "Удостоверете плащането",
+        "edit_link_label": "Редактиране",
+        "all_rights_reserved": "Всички права запазени %{shop_name}",
+        "print_policies_link_label": "Печат",
+        "cart": "Кошница",
+        "close_modal_label": "затвори",
+        "close_notice_label": "затвори",
+        "expand_notice_label": "Вижте повече",
+        "continue_to_shipping_method": "Продължете да изпращате",
+        "continue_to_payment_method": "Продължете към касата",
+        "continue_to_review": "Прегледайте поръчката",
+        "back_to_cart": "Върнете се в количката",
+        "back_to_contact_information": "Върнете се към информацията",
+        "back_to_shipping_method": "Връщане към доставката",
+        "back_to_payment_method": "Връщане към плащането",
+        "choose_shipping_method": "Изберете начин на доставка",
+        "choose_payment_method": "Изберете начин на плащане",
+        "choose_billing_address": "Изберете адрес за фактуриране",
+        "contact_us_html": "Свържете се с нас за повече информация",
+        "autocomplete_title": "Предложения",
+        "autocomplete_single_item": "Наличен 1 артикул",
+        "autocomplete_multi_item": "{{number}} налични артикули",
+        "autocomplete_selection": "{{number}} от {{total}}",
+        "autocomplete_close": "Затворете предложенията",
+        "tooltip_accessibility_label": "Повече информация",
+        "forwarding_indicator": {
+          "new_window": "Отваря се в нов прозорец.",
+          "external": "Отворете външен сайт.",
+          "external_and_new_window": "Отворете външния уебсайт в нов прозорец."
+        },
+        "checkout_context": {
+          "step_one": "%{shop_name} – Изпълнете поръчката"
+        },
+        "errors": {
+          "session_identifier_not_unique_error": "Имаше проблем с вашата поръчка. Моля, опитайте плащането отново.",
+          "line_item_limit_reached": "Максималният брой елементи е достигнат.",
+          "only_empty_terms_accepted": "Тази политика приема само празни условия."
         }
       },
       "customer_account": {
@@ -1092,6 +1249,15 @@
         "detail_item_label": {
           "few": "{{count}} фаянс"
         }
+      },
+      "change_currency": {
+        "credit_card_will_be_charged_html": "Те ще бъдат възприети %{amount} от вашата карта",
+        "currency_button_label": "%{currency} (%{currency_symbol})",
+        "payment_total_label": "Общо плащане",
+        "conversion_rate": "1 %{from_currency_code} = %{rate} %{to_currency_code}",
+        "change_currency_link": "Промяна на %{currency_name}",
+        "card_provider_fx_charges_warning": "Издателят на картата може да начислява такси за транзакции в %{currency_code}.",
+        "currency_not_supported_by_shop": "Избраната от вас валута вече не е налична. Всички цени вече са включени %{currency_code}."
       }
     },
     "notices": {
