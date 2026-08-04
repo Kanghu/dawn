@@ -3778,8 +3778,9 @@
           "other": "The gift cards have been returned"
         },
         "gift_resend_failure": {
-          "few": "There was a problem resending gift cards. Please try again or contact us.",
-          "one": "There was a problem resending the gift card. Try again or contact us."
+          "few": "There was a problem resending gift cards. Try again or contact us.",
+          "one": "There was a problem resending the gift card. Try again or contact us.",
+          "other": "There was a problem resending gift cards. Try again or contact us."
         },
         "delivered_description_digital": {
           "few": "These articles are completed."
@@ -3819,7 +3820,77 @@
         "confirmed_description_digital": "You will receive an email when your order is ready.",
         "ready_for_pickup_location": "Your order is ready for pickup",
         "confirmed_description_pickup": "We are preparing these items for pickup.",
-        "confirmed_description_gift_card_text": "You will receive a text message when your order is ready."
+        "confirmed_description_gift_card_text": "You will receive a text message when your order is ready.",
+        "amazon_buy_with_prime": {
+          "order_tracking_link": {
+            "text": "Manage with Amazon",
+            "new_window_disclaimer": "(opens a new window)"
+          }
+        },
+        "attempted_to_deliver_label": "Delivery attempted",
+        "there_was_a_problem_label": "A problem occurred",
+        "buy_with_prime_logo_accessibility_label": "Amazon Buy with Prime logo",
+        "delivered": "Delivered on {{date}}",
+        "complete_label": "Completed",
+        "multiple_statuses_label": "Statuses for multiple orders",
+        "status_timestamp": "Date of update: {{date}}",
+        "delivery_promise": {
+          "claim_shop_cash_cta": {
+            "no_shop_app_label": "{{appDownloadLink}} to claim Shop Cash",
+            "has_shop_app_label": "Claim Shop Cash",
+            "download_shop_app_label": "Download Shop"
+          },
+          "promise_line": {
+            "single_brand_label": "Delivery supported by",
+            "mixed_brands_label": "Guaranteed delivery",
+            "not_delivered_by_label": "Undelivered by {{date}}",
+            "modal_accessibility_button_label": "Details of the delivery promise"
+          },
+          "details_modal": {
+            "title": "Delivery supported by",
+            "modal_accessiblity_label": "Details of the delivery promise",
+            "delivery_by_label": "Delivery by {{date}}",
+            "delivery_guaranteed_by_label": "Guaranteed delivery by {{date}}",
+            "shop_cash_claim": {
+              "may_be_eligible_label": "Shop Promise guarantees fast and reliable delivery. Request Shop Cash if your order arrives late.",
+              "may_be_eligible_not_authorized_label": "You may be eligible to claim Shop Cash as this order arrived late. Log in to see details.",
+              "redeemed_label": "You have already claimed Shop Cash because this order arrived late.",
+              "expired_label": "This order is not eligible for a late delivery claim as the 30 day warranty has expired.",
+              "no_shop_cash_label": "This order is not eligible for a late delivery claim as it was not paid for with Shop Pay.",
+              "no_longer_guaranteed_label": "These items are no longer backed by a delivery guarantee.",
+              "claim_shop_cash_title": "Scan to claim {{amount}} in Shop Cash",
+              "claim_shop_cash_description": "You can use Shop Cash for future purchases in the Shop app."
+            },
+            "delivery_guarantee_label": "Guaranteed delivery"
+          }
+        },
+        "external_promise_manage_button_label": {
+          "buy_with_prime": "Manage on Amazon"
+        },
+        "delivery_promise_v2": {
+          "promise_line": {
+            "shop_promise_brand_label": "Guaranteed delivery by",
+            "external_promise_brand_label": "Delivery by",
+            "not_delivered_by_label": "Delivered after {{date}}",
+            "delivery_guarantee_expired_label": "The delivery guarantee has expired",
+            "modal_accessibility_button_label": "Details of the delivery promise",
+            "download_shop_app_button_label": "Download Shop to follow",
+            "track_with_shop_button_label": "Follow with Shop",
+            "claim_shop_cash_button_label": "Claim Shop Cash"
+          },
+          "details_modal": {
+            "title": "Delivery guarantee",
+            "active_delivery_guarantee_label": "Delivery by {{date}}",
+            "expired_delivery_guarantee_description": "Shop Promise's 30-day warranty for this order has expired.",
+            "expired_badge_label": "Expired",
+            "order_includes_guarantees_label": "Your order includes warranties {{deliveryAgreementsCount}}",
+            "order_includes_guarantees_description": "Shop Promise guarantees fast and reliable delivery. Claim Shop Cash if your order arrives after {{date}}.",
+            "delivered_after_label": "Delivered after {{date}}",
+            "delivered_after_description": "Because the order arrived late, you are eligible to claim {{amount}} Shop Cash.",
+            "claimed_shop_cash_description": "Because this order arrived late, you have claimed it {{amount}} Shop Cash.",
+            "eligible_to_claim_shop_cash_description": "Because the order arrived late, you are eligible to claim {{amount}} Shop Cash."
+          }
+        }
       },
       "list_layout_accessibility_label": "Appearance options",
       "list_title": "Orders"
