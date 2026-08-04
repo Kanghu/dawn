@@ -771,45 +771,82 @@
             }
           },
           "first_n_order_free": {
-            "few": "Ο πρώτος %{count} Δωρεάν παραγγελίες"
+            "few": "Τα πρώτα %{count} δωρεάν παραγγελίες",
+            "one": "Πρώτη παραγγελία δωρεάν",
+            "other": "Τα πρώτα %{count} δωρεάν παραγγελίες"
           },
           "free_for_first_n_order": {
-            "few": "Για το πρώτο %{count} διατάξεις"
+            "few": "Για τους πρώτους %{count} παραγγελίες",
+            "one": "Για την πρώτη παραγγελία",
+            "other": "Για τους πρώτους %{count} παραγγελίες"
           },
           "free_shipping_cycles": {
-            "few": "Δωρεάν αποστολή για ακόμη %{count} διανομή"
+            "few": "Δωρεάν αποστολή για ακόμα %{count} παραδόσεις",
+            "one": "Δωρεάν αποστολή για ακόμα %{count} παράδοση",
+            "other": "Δωρεάν αποστολή για ακόμα %{count} παραδόσεις"
           },
           "free_shipping_cycles_delivery_not_included": {
-            "few": "Δωρεάν αποστολή για %{count} διανομή"
+            "few": "Δωρεάν αποστολή για %{count} παραδόσεις",
+            "one": "Δωρεάν αποστολή για %{count} παράδοση",
+            "other": "Δωρεάν αποστολή για %{count} παραδόσεις"
           },
           "first_n_order_free_with_cycle": {
-            "few": "Δωρεάν αποστολή για ακόμη %{count} παραδόσεις, λοιπόν %{recurring_order_shipping_price}"
+            "few": "Δωρεάν αποστολή για ακόμα %{count} παραδόσεις λοιπόν %{recurring_order_shipping_price}",
+            "one": "Δωρεάν αποστολή για ακόμα %{count} παράδοση τότε %{recurring_order_shipping_price}",
+            "other": "Δωρεάν αποστολή για ακόμα %{count} παραδόσεις λοιπόν %{recurring_order_shipping_price}"
           },
           "first_n_order_free_with_cycle_delivery_not_included": {
-            "few": "Δωρεάν αποστολή για %{count} παραδόσεις, λοιπόν %{recurring_order_shipping_price}"
+            "few": "Δωρεάν αποστολή για %{count} παραδόσεις λοιπόν %{recurring_order_shipping_price}",
+            "one": "Δωρεάν αποστολή για %{count} παράδοση τότε %{recurring_order_shipping_price}",
+            "other": "Δωρεάν αποστολή για %{count} παραδόσεις λοιπόν %{recurring_order_shipping_price}"
           },
           "max_cycles_base_shipping": {
-            "few": "Ακόμη %{count} παραδόσεις στην τιμή του %{shipping_price} κάθε"
+            "few": "Ακόμα %{count} παραδόσεις στην τιμή του %{shipping_price} το καθένα",
+            "one": "Ακόμα %{count} παράδοση στην τιμή του %{shipping_price}",
+            "other": "Ακόμα %{count} παραδόσεις στην τιμή του %{shipping_price} το καθένα"
           },
           "max_cycles_base_shipping_delivery_not_included": {
-            "few": "Ακόμη %{count} παραδόσεις στην τιμή του %{shipping_price} κάθε"
+            "few": "Ακόμα %{count} παραδόσεις στην τιμή του %{shipping_price} το καθένα",
+            "one": "%{count} παράδοση στην τιμή του %{shipping_price}",
+            "other": "Ακόμα %{count} παραδόσεις στην τιμή του %{shipping_price} το καθένα"
           },
           "prepaid_free_shipping_with_cycles": {
-            "few": "Δωρεάν αποστολή για την πρώτη %{cycle}, μετά από αυτό %{recurring_order_shipping_price}"
+            "few": "Δωρεάν αποστολή με την πρώτη %{cycle}, μετά την οποία %{recurring_order_shipping_price}",
+            "one": "Δωρεάν αποστολή με την πρώτη σας %{cycle}, μετά την οποία %{recurring_order_shipping_price}",
+            "other": "Δωρεάν αποστολή με την πρώτη %{cycle}, μετά την οποία %{recurring_order_shipping_price}"
           },
           "prepaid_order_one_cycle": {
-            "few": "%{shipping_price} για ακόμα %{count} παραδόσεις (%{per_delivery_cost})"
+            "few": "%{shipping_price} για ακόμα %{count} παραδόσεις (%{per_delivery_cost})",
+            "one": "%{shipping_price} για ακόμα %{count} παράδοση",
+            "other": "%{shipping_price} για ακόμα %{count} παραδόσεις (%{per_delivery_cost})"
           },
           "prepaid_order_one_cycle_delivery_not_included": {
-            "few": "%{shipping_price} για %{count} παραδόσεις (%{per_delivery_cost})"
+            "few": "%{shipping_price} για %{count} παραδόσεις (%{per_delivery_cost})",
+            "one": "%{shipping_price} για %{count} παράδοση",
+            "other": "%{shipping_price} για %{count} παραδόσεις (%{per_delivery_cost})"
           },
           "prepaid_order_no_cycle": {
-            "few": "%{shipping_price} για ακόμα %{count} παράδοση (%{per_delivery_cost}), μετά από αυτό %{recurring_order_shipping_price}"
+            "few": "%{shipping_price} για ακόμα %{count} παράδοση (%{per_delivery_cost}), μετά την οποία %{recurring_order_shipping_price}",
+            "one": "%{shipping_price} για ακόμα %{count} παράδοση, μετά την οποία %{recurring_order_shipping_price}",
+            "other": "%{shipping_price} για ακόμα %{count} παράδοση (%{per_delivery_cost}), μετά την οποία %{recurring_order_shipping_price}"
           },
           "prepaid_order_no_cycle_delivery_not_included": {
-            "few": "%{shipping_price} για %{count} παραδόσεις (%{per_delivery_cost}), μετά από αυτό %{recurring_order_shipping_price}"
+            "few": "%{shipping_price} για %{count} παραδόσεις (%{per_delivery_cost}), μετά την οποία %{recurring_order_shipping_price}",
+            "one": "%{shipping_price} για %{count} παράδοση, μετά την οποία %{recurring_order_shipping_price}",
+            "other": "%{shipping_price} για %{count} παραδόσεις (%{per_delivery_cost}), μετά την οποία %{recurring_order_shipping_price}"
           },
-          "multiple_subscriptions_shipping_price_label": "%{shipping_price} για κάθε παράδοση"
+          "multiple_subscriptions_shipping_price_label": "%{shipping_price} για κάθε παράδοση",
+          "prepaid_shipping_price_label": "%{shipping_price} για κάθε παράδοση x %{delivery_interval_count}",
+          "initial_order_discounted": "Το κόστος της πρώτης αποστολής είναι %{discounted_shipping_cost}, τότε %{frequency_description}",
+          "prepaid_initial_order_discounted": "Το κόστος της πρώτης αποστολής είναι %{discounted_shipping_price} %{prepaid_delivery_frequency}",
+          "prepaid_initial_order_discounted_with_per_delivery_price": "Το κόστος της πρώτης αποστολής είναι %{discounted_shipping_price} %{prepaid_delivery_frequency} (%{discounted_cost_per_delivery})",
+          "prepaid_initial_order_discounted_with_renewal": "Το κόστος της πρώτης αποστολής είναι %{discounted_shipping_price} %{prepaid_delivery_frequency}, τότε %{shipping_price} %{billing_cycle}",
+          "prepaid_initial_order_discounted_with_per_delivery_price_and_renewal": "Το κόστος της πρώτης αποστολής είναι %{discounted_shipping_price} %{prepaid_delivery_frequency} (%{discounted_cost_per_delivery}), τότε %{shipping_price} %{billing_cycle}",
+          "shipping_price_included": "Περιλαμβάνεται",
+          "recurring_order_shipping_price": "ακολουθούμενη από %{recurring_order_shipping_price}",
+          "first_order_shipping_price_included": "Περιλαμβάνεται η πρώτη εντολή, ακολουθούμενη από %{recurring_order_shipping_price}",
+          "first_order_different_shipping_price": "%{first_order_shipping_price} (%{per_delivery_price} ανά παράδοση), ακολουθούμενη από %{recurring_order_shipping_price}",
+          "subscription_free_with_frequency_label": "Δωρεάν αποστολή %{delivery_frequency}"
         },
         "shipping_method_first_shipment_group_title": {
           "few": "Πρώτες αποστολές"
