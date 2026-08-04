@@ -3495,7 +3495,71 @@
         "generic_error": "Megrendelését nem tudtuk feldolgozni, mert a kedvezmény kódja már nem elérhető. Tekintse át rendelésének végösszegét, és próbálja újra."
       },
       "wallets": {
-        "return_to_store": "Gyere vissza a boltba"
+        "return_to_store": "Gyere vissza a boltba",
+        "redirect_hint": "A rendszer felkéri, hogy jelentkezzen be a következővel: {{walletName}}.",
+        "logged_in": "Csatlakozva a következőhöz {{email}}",
+        "shipping_line_label": "Szállítás",
+        "connect_shipping_methods": "{{method1}} és {{method2}}",
+        "payment_in_progress_title": "Fizetés folyamatban",
+        "payment_in_progress_body": "Befizetésének feldolgozása folyamatban van. Rendelése hamarosan elkészül.",
+        "call_to_action": "Fizessen ezzel {{walletName}}",
+        "errors": {
+          "unavailable": {
+            "title": "{{walletName}} nem elérhető",
+            "description": "{{walletName}} nem volt elérhető. Kérjük, használjon másik fizetési módot, vagy próbálja újra később.",
+            "instructions": "Probléma lépett fel a funkcióval {{walletName}}. Térjen vissza az üzletbe, és próbálja újra, vagy más módon fejezze be a rendelést.",
+            "unavailable_for_country": "Fizetési mód {{walletName}} ben nem elérhető {{countryName}}. Válasszon másik fizetési módot a vásárlás befejezéséhez"
+          },
+          "generic": "Probléma lépett fel a következővel: {{walletName}}. Próbálja újra, vagy használjon másik fizetési módot.",
+          "terminal": "Probléma történt itt: {{walletName}}. Használjon másik fizetési módot.",
+          "detour": {
+            "stock_problems": "Néhány elem már nem elérhető. Bezárás {{walletName}} és próbálja újra.",
+            "price_change": "Néhány termék ára megváltozott. Bezárás {{walletName}} hogy ellenőrizze a rendelést, és próbálkozzon újra.",
+            "queue": "Fizetési sorba került. Bezárás {{walletName}} folytatni.",
+            "currency_change": "Nem használhat másik címet a {{walletName}}. Kérjük, használja eredeti címét, vagy próbálkozzon másik fizetési móddal."
+          },
+          "unsupported": {
+            "address": "A kereskedő nem tud kiszállítani az Ön által kiválasztott szállítási címre.",
+            "postal_code": "Ez a hely nem támogatott",
+            "wallet_is_unavailable": "{{walletName}} nem használható ezzel a címmel. Válasszon másik címet, vagy zárja be {{walletName}} a vásárlás befejezéséhez"
+          },
+          "outdated": {
+            "shipping_method": "Megrendelésének szállítási lehetőségei megváltoztak. Tekintse át a választást.",
+            "payment_terms": "A fizetési feltételek megváltoztak. Ellenőrizze a rendelést"
+          },
+          "invalid": {
+            "shipping_address": "Kérjük, adjon meg egy érvényes szállítási címet",
+            "billing_address": "Kérjük, adjon meg egy érvényes számlázási címet",
+            "shipping_option": "Válasszon egy érvényes szállítási lehetőséget",
+            "email": "Kérjük, adjon meg egy érvényes e-mail-címet",
+            "zone": "Adjon meg egy érvényes államot/tartományt",
+            "postal_code": "Kérjük, adjon meg egy érvényes irányítószámot",
+            "reduction_code": "Adjon meg érvényes kedvezménykódot vagy ajándékkártyát",
+            "billing_must_match_shipping": "Meg kell egyeznie a szállítási címmel",
+            "phone": "Kérjük, adjon meg egy érvényes telefonszámot",
+            "emirate": "Adjon meg egy érvényes emírséget",
+            "billing_zone": "Kérjük, adjon meg egy érvényes államot/tartományt számlázási címének",
+            "billing_phone": "Kérjük, adjon meg egy érvényes telefonszámot számlázási címéhez",
+            "billing_zip": "Kérjük, adjon meg egy érvényes irányítószámot számlázási címéhez"
+          },
+          "missing": {
+            "first_name": "Adjon meg egy keresztnevet",
+            "last_name": "Írjon be egy vezetéknevet",
+            "address1": "Adjon meg egy címet",
+            "address2": "Lépjen be egy lakásba, egy szobába stb.",
+            "city": "Adjon meg egy várost",
+            "province": "Válasszon ki egy államot/tartományt",
+            "country": "Válasszon országot/régiót",
+            "zip": "Adjon meg egy irányítószámot/irányítószámot",
+            "phone": "Adjon meg egy telefonszámot",
+            "billing_first_name": "Adjon meg egy keresztnevet a számlázási címhez",
+            "billing_address1": "Adja meg a számlázási címet",
+            "billing_address2": "Számlázási címként adjon meg egy lakást, egy szobát stb",
+            "billing_city": "Számlázási címként adjon meg egy várost",
+            "billing_province": "Válasszon államot/tartományt számlázási címéhez",
+            "billing_zip": "Adja meg a számlázási címéhez tartozó irányítószámot"
+          }
+        }
       }
     },
     "notices": {
