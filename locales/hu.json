@@ -3842,7 +3842,13 @@
     "notices": {
       "order": {
         "cancel_reason": {
-          "few": "Valami más"
+          "few": "Valami mást",
+          "declined": "Fizetés elutasítva",
+          "inventory": "Elemek nem elérhetők",
+          "fraud": "Hamis megrendelés",
+          "customer": "Az ügyfél megváltoztatta/törölte a megrendelését",
+          "other": "Valami mást",
+          "staff": "Személyes hiba"
         },
         "not_available": "Ez a parancs nem érhető el",
         "financial_status": {
@@ -3851,8 +3857,25 @@
           "paid": "Fizetett",
           "unpaid": "Kifizetetlen",
           "voided": "Törölve",
-          "partially_paid": "Részben fizetve"
-        }
+          "partially_paid": "Részben fizetve",
+          "partially_refunded": "Részben visszafizetve",
+          "refunded": "Megtérített",
+          "expired": "Lejárt"
+        },
+        "fulfillment_status": {
+          "fulfilled": "Megvalósult",
+          "complete": "Befejezve",
+          "partial": "Részben",
+          "unfulfilled": "Beteljesítetlen",
+          "restocked": "Feltöltött raktárkészlettel"
+        },
+        "transaction_status": {
+          "success": "sikert",
+          "pending": "Várakozás",
+          "failure": "Kudarc",
+          "error": "Hiba"
+        },
+        "cash_on_delivery": "Utánvéttel"
       },
       "customer": {
         "password_reset_error": "Jelszó visszaállítási hiba",
@@ -3870,6 +3893,40 @@
         "error_creating": "Hiba a cím létrehozásakor.",
         "deleted": "A cím sikeresen törölve",
         "error_deleting": "Hiba a cím törlésekor."
+      },
+      "cart": {
+        "only_n_items_available": "Csak hozzá lehet adni %{count} %{name} a kosárhoz.",
+        "too_many_items_in_cart": "Nem adhat hozzá többet %{name} a kosárban.",
+        "all_items_in_cart": "Mindezek %{count} %{name} a kosaradban vagyok.",
+        "empty_update": "az üres kosarat nem tudja frissíteni",
+        "missing_parameters": "nincs érvényes azonosító vagy sorparaméter",
+        "generic_error": "Kosárhiba",
+        "too_many_line_items_error": "A kosara nem tartalmazhat halat %{max} cikkeket.",
+        "link_expired": "A link lejárt",
+        "link_no_longer_exists": "A link már nem létezik.",
+        "stock_problems_html": "Egy vagy több elem már nem elérhető. elérhetővé tettem <a href='%{link}'>frissített kosár</a>.",
+        "changed": "Módosított kosár",
+        "items_changed": "Egy vagy több elem megváltozott.",
+        "product_sold_out": "A termék\"%{name}” már elkelt.",
+        "variant_not_found": "Nem található opció",
+        "variant_requires_selling_plan": "A változat csak vásárlási tervvel vásárolható meg.",
+        "shipping_address_not_required": "Ez a kosár nem igényel szállítást",
+        "shipping_address_invalid": "Hiba történt a szállítási költségek kiszámításakor. Tovább a pénztárhoz, hogy a fizetés előtt válassza ki a szállítási díjat.",
+        "selling_plan_not_applicable": "Az értékesítési terv nem alkalmazható a változatra",
+        "selling_plan_not_available_for_company_locations": "B2B rendelés esetén csak egyedi vásárlás lehetséges.",
+        "digital_product_not_available_for_company_locations": "Ez a cikk nem adható hozzá egy B2B rendeléshez",
+        "product_not_available": "A termék nem elérhető",
+        "less_than_minimum": "Ennek az elemnek minimuma van %{min}.",
+        "more_than_maximum": "Ez az elem rendelkezik a maximummal %{max}.",
+        "not_respect_step": "Ezt az elemet csak lépésekben adhatja meg %{step}.",
+        "bundle_requires_components": "A termék készlet formájában\"%{name}” nem tehető a kosárba.",
+        "gift_card_with_components_not_supported": "A termék készlet formájában\"%{name}” nem tehető a kosárba.",
+        "view_lines_limit_reached": "A sorok számának kisebbnek vagy egyenlőnek kell lennie %{limit}",
+        "merchandise_line_transformers": {
+          "run_error": "Hiba történt a kosarával kapcsolatban."
+        },
+        "gift_card_price_must_be_greater_than_zero": "A termék készlet formájában\"%{name}” nem tehető a kosárba.",
+        "cart_too_large": "A kosár túl nagy."
       }
     },
     "page_titles": {
