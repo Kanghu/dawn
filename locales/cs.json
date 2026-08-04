@@ -2077,6 +2077,132 @@
         "gift_card_store_credit": {
           "add_label": "Přidejte dárkovou kartu nebo kredit obchodu",
           "manage_label": "Spravujte dárkové karty nebo kredit obchodu"
+        },
+        "saved_credit_card_cvv_verification": "Pro účely ověření zadejte bezpečnostní kód své karty.",
+        "order_edit_banner_updated_order_label": "Aktualizovaná objednávka",
+        "afterpay_label": "Doplatek",
+        "cashapppay_label": "Platba za aplikaci v hotovosti",
+        "card_nickname_label": "Přezdívka (volitelné)",
+        "order_edit_banner_items_return_line_item_removed": {
+          "in_full": "Odebráno z vrácení",
+          "with_quantities": "Odebráno z vrácení: {{delta}}"
+        },
+        "order_edit_banner_single_item_return_line_item_removed": "Odebráno z vrácení",
+        "order_edit_banner_multiple_items_return_line_item_removed": "Odebráno z vrácení: {{amount}}",
+        "proposed_gateway_unavailable": "Navrhovaná platební brána není k dispozici",
+        "pay_in_installments_split_pay_short": "4 platby v hodnotě %{amount}",
+        "payment_method_not_available_for_shipping_address_error": "Pro zvolenou dodací adresu není způsob platby dostupný. Vyberte jiný způsob platby.",
+        "shop_pay_ideal_unavailable_error": "iDEAL | Wero není pro tuto objednávku k dispozici. Vyberte jiný způsob platby.",
+        "paypal_disconnect": "Odhlaste se",
+        "paypal_wallet_label": "PayPal peněženka",
+        "payment_method_update_failed": "Aktualizace platební metody se nezdařila.",
+        "alternative_payment_currency_total_manual_payment_notice": "Poznámka: Převedený součet je z %{amount_due}.",
+        "gift_cards_unavailable": "Vaši dárkovou kartu již na tuto objednávku nelze použít a byla odstraněna",
+        "network_card_payment_options": "Vyberte síť karet",
+        "payment_flexibility_terms_id_mismatch": "Nesoulad ID pro flexibilní platební podmínky",
+        "offsite_gateway_review_page_redirect_hint": "Po kontrole objednávky Vás přesměrujeme na %{gateway_label} k dokončení nákupu.",
+        "przelewy24_label": "Przelewy24",
+        "twint_label": "TWINT",
+        "mobilepay_label": "MobilePay",
+        "gift_card_checkbox_label": "Použijte tuto dárkovou kartu",
+        "blik_label": "BLICK",
+        "vipps_label": "biče",
+        "grabpay_label": "GrabPay",
+        "kcp_creditcard_label": "Kreditní karta KCP",
+        "simulated_express_checkout": "Váš region nebo prohlížeč neumožňuje náhled vašich peněženek v editoru.",
+        "offsite_gateway_redirect_hint_no_button_label": "Přesměrujeme vás na %{gateway_label} k dokončení nákupu.",
+        "swish_label": "Swish",
+        "network_card_persistence_description": "Vybraná síť bude uložena s vaší platební metodou pro budoucí transakce.",
+        "usdc_label": "USDC",
+        "payment_method_incompatible_with_payment_terms": "Způsob platby není kompatibilní s platebními podmínkami.",
+        "payment_option": {
+          "accessibility_label": "Vyberte možnost platby"
+        },
+        "billing_address_rollup_accessibility_label": "Možnosti fakturační adresy",
+        "payment_method_rollup_accessibility_label": "Možnosti způsobu platby",
+        "crypto_modal": {
+          "header": "Platba do %{shop_name} s %{total_price} USDC",
+          "error": {
+            "refresh": "Občerstvení",
+            "close": "uzavření",
+            "sandbox_error": "Došlo k chybě",
+            "web_component_error": "Při načítání této stránky došlo k chybě"
+          }
+        },
+        "bank_account_type": {
+          "checking": "Ověření",
+          "savings": "Ekonomiky"
+        },
+        "bank_account_choose": "Vyberte si účet pro bezpečnou platbu",
+        "bank_account_connect_another": "Připojte jiný bankovní účet",
+        "bank_account_connect": "Připojte bankovní účet",
+        "bank_account_missing": "Připojení bankovního účtu je povinné",
+        "crypto_payment_method": {
+          "description": "Připojte bezpečně peněženku. Váš zůstatek a adresa nebudou sdíleny.",
+          "tooltip": "Vaše adresa a zůstatek v peněžence nebudou sdíleny; lze odečíst pouze požadovanou částku",
+          "cashback_descriptor": {
+            "one": "Poté obdržíte náhradu %{count} den",
+            "other": "Poté obdržíte náhradu %{count} dní",
+            "few": "Poté obdržíte náhradu %{count} dní"
+          }
+        },
+        "usdc_cashback_title": "%{incentive_percentage}% náhrady",
+        "usdc_cashback_additional_info": "Plaťte pomocí USDC na Base a získejte %{incentive_percentage}% zpět do peněženky za 30 dní.",
+        "usdc_cashback_terms": "Platí podmínky a limity",
+        "discount_show_more_warnings": {
+          "one": "Zobrazit více %{count}",
+          "other": "Zobrazit více %{count}",
+          "few": "Zobrazit více %{count}"
+        },
+        "separate_payments_label": "Vaše zboží pochází z více obchodů. Částka platby bude v %{separate_payments_link}.",
+        "separate_payments_text": "samostatné platby",
+        "payments": "Platby",
+        "business_customer_with_bank_account_vaulting_payment_label": "Uložte tento způsob platby při pokladně a autorizujte %{company} k účtování poplatků z vašeho účtu za budoucí nákupy, které autorizujete pro toto místo, autorizace platí do zrušení. Způsob platby mohou používat všechny kontakty přiřazené k tomuto místu.",
+        "new_bank_account_disclaimer": "Dokončení objednávky znamená autorizaci %{shop_name} odepsat z níže uvedeného účtu prostřednictvím ACH v uvedené výši a v uvedeném čase.",
+        "bank_account_disclaimer": "Zpracování plateb ACH může trvat až 4 pracovní dny.",
+        "bank_account_vaulted_company_location": "Bankovní účet uložený pro toto místo",
+        "bank_account_generic_error": "Nepodařilo se přidat bankovní účet. Zkuste to znovu později.",
+        "discount_codes_removed_summary": {
+          "one": "%{count} slevový kód byl odstraněn",
+          "other": "%{count} slevové kódy byly odstraněny",
+          "few": "%{count} slevové kódy byly odstraněny"
+        },
+        "default": "Výchozí",
+        "continue_to_guest_checkout": "Pokračujte k pokladně jako návštěvník",
+        "add_payment_method": "Přidat způsob platby",
+        "choose_new_payment_method": "Vyberte nový způsob platby",
+        "add_new_payment_method": "Přidejte novou platební metodu",
+        "discount_codes_modified_summary": {
+          "one": "%{count} slevový kód byl změněn",
+          "other": "%{count} slevové kódy byly změněny",
+          "few": "%{count} slevové kódy byly změněny"
+        },
+        "discount_codes_removed_or_modified_summary": {
+          "one": "%{count} slevový kód byl odstraněn nebo změněn",
+          "other": "%{count} slevové kódy byly odstraněny nebo změněny",
+          "few": "%{count} slevové kódy byly odstraněny nebo změněny"
+        },
+        "multiple_primary_payment_not_allowed": "Neplatné způsoby platby",
+        "purchase_options_subscription_agreement_label": "Váš košík obsahuje automatické obnovení předplatného. Kliknutím na \"%{button_label}”, %{consent_text} %{cancellation_instructions}",
+        "purchase_options_subscription_consent_text": "výslovně a jednoznačně souhlasíte s tím, že vám budou automaticky účtovány opakované částky uvedené v košíku (plus poštovné a daně), dokud vaše předplatné nebude ukončeno nebo zrušeno.",
+        "purchase_options_subscription_cancellation_instructions": "%{cancel_text} Prosím poraďte %{cancellation_policy_label}.",
+        "purchase_options_subscription_cancel_text": "Zrušit můžete kdykoli přístupem ke svému účtu nebo kontaktováním obchodu.",
+        "vault_for_payment_later": {
+          "pay_button_label": "Zadejte objednávku",
+          "notice": "Nyní vám nebude účtována žádná částka. Pokračováním v platbě souhlasíte s tím, že platba bude naúčtována na váš způsob platby při zpracování vaší objednávky."
+        },
+        "alipay_label": "Alipay",
+        "wechat_pay_label": "WeChat Pay",
+        "oxxo_label": "OXXO",
+        "pay_with_credit_card": "Plaťte kreditní kartou",
+        "pay_with_debit_card": "Platit debetní kartou",
+        "bogus_test_checkout": {
+          "title": "Pokyny pro testování",
+          "intro": "K otestování pokladny použijte tyto hodnoty:",
+          "approved_transaction": "{{card_number}} simulovat schválenou transakci",
+          "declined_transaction": "{{card_number}} simulovat odmítnutou transakci",
+          "gateway_failure": "{{card_number}} simulovat selhání brány",
+          "additional_instructions": "Použijte jakékoli budoucí datum vypršení platnosti a jakýkoli 3místný bezpečnostní kód."
         }
       }
     }
