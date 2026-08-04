@@ -3728,13 +3728,48 @@
           "run_error": "Une erreur s'est produite avec votre panier."
         },
         "gift_card_price_must_be_greater_than_zero": "Le produit sous forme d'ensemble \"%{name}» ne peut pas être ajouté au panier.",
-        "cart_too_large": "Le panier est trop grand."
+        "cart_too_large": "Le panier est trop grand.",
+        "gift_card_recipient_validation_error": "Le destinataire de la carte cadeau spécifié n'est pas valide",
+        "invalid_input": "Le paramètre %{parameter} est invalide.",
+        "buyer_cannot_purchase_for_company_locations": "Vous ne pouvez pas effectuer d'achats pour cet emplacement",
+        "only_one_added_to_cart": "Un seul article a été ajouté à votre panier en raison de la disponibilité.",
+        "only_n_added_to_cart": "Juste %{quantity} les articles ont été ajoutés à votre panier en raison de la disponibilité.",
+        "maximum_available_quantity_reached": "La quantité maximale de cet article est déjà dans votre panier.",
+        "cart_attributes_error": "Les attributs du panier contiennent des données incorrectes.",
+        "merchandise_not_applicable": "Cet article ne peut pas être acheté tel que configuré.",
+        "not_found": "Le panier n'a pas été trouvé"
+      },
+      "storefront": {
+        "invalid_password": "Mot de passe incorrect, réessayez."
+      },
+      "tags": {
+        "add_articles": "Affinez votre recherche aux articles qui portent également le tag %{tag}",
+        "add_products": "Limitez la sélection aux produits qui correspondent à l'étiquette %{tag}",
+        "remove_articles": "Élargissez votre recherche aux éléments qui ne sont pas étiquetés %{tag}",
+        "remove_products": "Supprimer l'étiquette %{tag}"
+      },
+      "line_item": {
+        "item_status": {
+          "add_variant": "Il a été ajouté %{delta}",
+          "increment_item": "Il a été ajouté %{delta}",
+          "decrement_item": "Ils ont été éliminés %{delta} de %{total}",
+          "decrement_fulfilled_line_item": "Ils sont revenus %{delta} de %{total}",
+          "decrement_return_line_item": "Il a été supprimé %{delta} du retour"
+        }
       }
     },
     "page_titles": {
       "search_results": {
         "few": "Recherche: ils ont été trouvés %{count} Résultats pour \"%{terms}”"
-      }
+      },
+      "products": "Produits",
+      "shopping_cart": "Votre panier",
+      "account": "compte",
+      "create_account": "Créer un compte",
+      "reset_account": "Réinitialisez votre compte",
+      "addresses": "Adresses",
+      "order": "Commande %{name}",
+      "search": "Rechercher"
     },
     "sentence": {
       "words_connector": ", ",
@@ -3884,6 +3919,49 @@
           "caption": "Découvrez s'il y a une panne affectant d'autres magasins Shopify, pas seulement celui-ci.",
           "link_text": "Afficher l'état de vos systèmes Shopify"
         }
+      }
+    },
+    "email_marketing": {
+      "subscribed": {
+        "confirmation": "Merci de vous être abonné à notre liste de diffusion.",
+        "disclaimer": "Vous pouvez vous désinscrire à tout moment.",
+        "unsubscribe": "Se désabonner"
+      },
+      "unsubscribed": {
+        "confirmation": "Vous vous êtes désabonné de notre liste de diffusion.",
+        "disclaimer": "Vous ne recevrez plus de mises à jour marketing de notre part. Vous pouvez vous réabonner à tout moment",
+        "preview": "Prévisualisez ce que les clients verront lorsqu’ils se désabonneront."
+      },
+      "open_tracking": {
+        "opt_in": {
+          "opted_in_html": "<b>Vous avez activé le suivi des ouvertures d'e-mails.</b>",
+          "visibility": "Les taux d'ouverture des e-mails seront signalés de manière anonyme. Nous verrons uniquement si vous avez ouvert un e-mail, dans le cadre d'un taux d'ouverture agrégé des e-mails.",
+          "opt_out_html": "Vous pouvez <a style='text-decoration:underline;' href='%{link}'>abandonner</a> lors du suivi, un e-mail s'ouvre si vous ne souhaitez pas partager ces informations.",
+          "preview_bar": "Prévisualisez ce que les clients verront lorsqu’ils choisiront d’activer le suivi des ouvertures d’e-mails."
+        },
+        "opt_out": {
+          "opted_out_html": "<b>Vous avez choisi de ne plus suivre les ouvertures d'e-mails.</b>",
+          "visibility": "Nous ne verrons pas si vous avez ouvert nos e-mails.",
+          "opt_in_html": "Choisissez <a style='text-decoration:underline;' href='%{link}'>pour activer</a> l'e-mail de suivi s'ouvre.",
+          "preview_bar": "Prévisualisez ce que les clients verront lorsqu'ils choisiront de désactiver le suivi des ouvertures de courrier électronique."
+        },
+        "no_longer_track": {
+          "status_html": "<b>Nous ne suivons plus les ouvertures d'e-mails.</b>",
+          "privacy_policy": "Après l'envoi de cet e-mail, nous avons mis à jour notre politique de confidentialité et ne suivons plus les ouvertures."
+        },
+        "track": {
+          "status_html": "<b>Le suivi de l’ouverture des emails est signalé.</b>",
+          "visibility": "Nous verrons uniquement si vous avez ouvert l'e-mail, dans les limites du taux d'ouverture global des e-mails."
+        },
+        "updated_policy": {
+          "status_html": "<b>Le suivi de l’ouverture des emails est signalé.</b>",
+          "visibility": "Nous avons mis à jour notre politique et suivons désormais les ouvertures d'e-mails. Les taux d'ouverture des e-mails seront signalés de manière anonyme. Nous verrons uniquement si vous avez ouvert un e-mail, dans le cadre de votre taux global d'ouverture d'e-mails.",
+          "opt_out_html": "Si vous ne souhaitez pas partager ces informations, vous pouvez <a style='text-decoration:underline;' href='%{link}'>se désabonner</a>"
+        }
+      },
+      "sms_unsubscribe_confirm": {
+        "message": "Êtes-vous sûr de vouloir vous désabonner du marketing par SMS ?",
+        "button": "Se désabonner"
       }
     }
   },
