@@ -1447,7 +1447,141 @@
       },
       "delivery_options": {
         "ship": "Odešlete to",
-        "pick_up": "vyzvednout"
+        "pick_up": "vyzvednout",
+        "pick_up_in_two_hours": "Hotové obvykle do dvou hodin",
+        "pick_up_in_four_hours": "Obvykle hotové do 4 hodin",
+        "pick_up_immediately": "Připraveno k vyzvednutí",
+        "pick_up_next_day": "Připraveno k vyzvednutí další den",
+        "pick_up_in_one_hour": "Připraveno obvykle do hodiny",
+        "pick_up_in_twenty_four_hours": "Obvykle připraveno do 24 hodin",
+        "pick_up_in_two_to_four_days": "Obvykle připraveno za 2-4 dny",
+        "pick_up_in_five_or_more_days": "Obvykle připraveno za více než 5 dní",
+        "pick_up_in_zero_to_two_hours": "Připraveno k vyzvednutí za 2 hodiny",
+        "pick_up_in_two_to_four_hours": "Připraveno k vyzvednutí za 4 hodiny",
+        "free_total_label": "Zdarma",
+        "shipping_address": "Dodací adresa",
+        "pick_up_locations": "Místa vyzvednutí",
+        "pickup_point_method_definition": "Odeslání na místo vyzvednutí",
+        "retail_method_definition": "Maloobchodní doprava",
+        "none_method_definition": "Žádná doprava",
+        "subscription_pickup_information": "Toto bude místo vyzvednutí pro všechny budoucí objednávky ve vašem předplatném.",
+        "ship_to_address": "Doprava na adresu",
+        "pick_up_from_store": "Vyzvedněte si z obchodu",
+        "company_location_no_address_banner": "Objednávky odeslané do míst bez adresy budou odeslány ke kontrole.",
+        "pickup": "Zvedání",
+        "pickup_store": "Vyzvednutí na prodejně",
+        "pickup_point": "Bod vyzvednutí",
+        "pickup_point_map_title": "Mapa odběrných míst",
+        "digital_product": "Digitální produkt"
+      },
+      "customer_account": {
+        "not_user_label": "nejsi %{first_name}?",
+        "have_an_account_label": "Máte účet?",
+        "sign_in_link_label": "Připojte se",
+        "sign_out_link_label": "Odhlaste se",
+        "save_my_information_label": "Tyto informace si uschovejte pro příště",
+        "invalid_address": "Vybraná adresa je neplatná. %{update_address_link} nebo vyberte jinou adresu.",
+        "incomplete_address": "Vybraná adresa je neúplná. %{update_address_link} nebo vyberte jinou adresu.",
+        "rollup_label": "účtu",
+        "invalid_shipping_method_summary": "Výběrem dodací adresy zobrazíte dostupné způsoby dopravy",
+        "saved_address_option_link": "Chci použít uloženou adresu",
+        "saved_address_modal_title": "Chci použít svou uloženou adresu",
+        "saved_address_option_description": {
+          "one": "máte {{count}} adresa uložena.",
+          "other": "máte {{count}} uložené adresy.",
+          "few": "máte {{count}} uložené adresy."
+        },
+        "rollup_accessibility_label": "Možnosti související s účtem"
+      },
+      "stock": {
+        "page_title": "Problémy se zásobami",
+        "title": "Není skladem",
+        "items_unavailable_notice": "Některé položky již nejsou dostupné.",
+        "product_column_header": "Produkty",
+        "quantity_column_header": "množství",
+        "price_column_header": "Cena",
+        "status_column_header": "Podmínka",
+        "removed_from_cart_notice": "Odebráno z košíku",
+        "sold_out_label": "Není skladem",
+        "reduced_label": "Snížená",
+        "reduced_with_quantity_label": "Zbývají pouze %{quantity_available}",
+        "remove_from_cart_button_label": "Odebrat z košíku",
+        "continue_shopping_button_label": "Pokračovat",
+        "go_back_to_cart_button_label": "Zpátky do mého košíku",
+        "remove": "Eliminovat",
+        "empty_cart_label": "Váš košík je prázdný",
+        "quantity_update": {
+          "page_title": "Aktualizujte množství",
+          "title": "Aktualizujte množství",
+          "description": "Dostupné množství pro tyto položky se změnilo a bylo aktualizováno v košíku."
+        },
+        "unpurchasable_product": {
+          "title": "Produkt, který nelze zakoupit",
+          "header": "Některé položky byly odstraněny z vašeho košíku",
+          "message": "Tyto položky nejsou dostupné pro objednávky B2B.",
+          "status_column_header": "Není k dispozici"
+        },
+        "unpurchasable_product_generic": {
+          "title": "Produkt, který nelze zakoupit",
+          "header": "Některé položky byly odstraněny z vašeho košíku",
+          "message": "Tyto položky nejsou k dispozici.",
+          "status_column_header": "Není k dispozici"
+        },
+        "unshippable_product": {
+          "title": "Není k dispozici žádný způsob doručení",
+          "header": {
+            "one": "Není k dispozici žádný způsob doručení %{count} článek",
+            "other": "Není k dispozici žádný způsob doručení %{count} (z) článků",
+            "few": "Není k dispozici žádný způsob doručení %{count} (z) článků"
+          },
+          "message": {
+            "one": "Tato položka bude odstraněna z vašeho košíku, protože pro vaši adresu nejsou k dispozici žádné způsoby dopravy.",
+            "other": "Tyto položky budou odstraněny z vašeho košíku, protože pro vaši adresu nejsou k dispozici žádné způsoby dopravy.",
+            "few": "Tyto položky budou odstraněny z vašeho košíku, protože pro vaši adresu nejsou k dispozici žádné způsoby dopravy."
+          },
+          "status_column_header": "Žádný způsob doručení"
+        },
+        "price_update": {
+          "title": "Aktualizace ceny",
+          "description": "Ceny těchto položek se změnily a byly aktualizovány v košíku.",
+          "updated_price": "Aktualizovaná cena"
+        },
+        "return_to_store_label": "Vraťte se do obchodu",
+        "item_label": {
+          "one": "{{count}} článek",
+          "other": "{{count}} články",
+          "few": "{{count}} články"
+        },
+        "continue_cta_label": "Pokračujte v pokladně",
+        "out_of_stock": {
+          "description": "Tyto položky již nejsou dostupné a budou odstraněny z vašeho košíku.",
+          "items_unavailable": "Některé položky již nejsou dostupné a budou odstraněny z vašeho košíku."
+        },
+        "unfulfillable_product": {
+          "title": "Doručení není k dispozici",
+          "message": {
+            "one": "Způsob doručení %{delivery_method} již není pro tuto položku k dispozici.",
+            "other": "Způsob doručení %{delivery_method} již není pro tyto položky k dispozici.",
+            "few": "Způsob doručení %{delivery_method} již není pro tyto položky k dispozici."
+          },
+          "default_message": {
+            "one": "Zvolený způsob doručení již není pro toto zboží dostupný.",
+            "other": "Zvolený způsob doručení již pro tyto položky není dostupný.",
+            "few": "Zvolený způsob doručení již pro tyto položky není dostupný."
+          }
+        },
+        "price_and_quantity_update": {
+          "title": "Aktualizujte ceny a množství",
+          "description": "Ceny a dostupné množství těchto položek se změnily a byly aktualizovány v košíku."
+        },
+        "out_of_stock_in_context_label": "Tento produkt není ve vaší zemi/oblasti dostupný."
+      },
+      "order_summary": {
+        "title": "Shrnutí objednávky",
+        "order_name_label": "Objednat %{name}",
+        "shopping_cart_label": "Nákupní košík",
+        "discount_title": "Sleva",
+        "discount_label": "Slevový kód"
       }
     }
   }
