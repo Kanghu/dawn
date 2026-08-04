@@ -876,7 +876,67 @@
         "subscription_shipping": "Előfizetés alapú szállítás",
         "shipping_method_one_time_purchase_group_title": "Egyszeri vásárlás",
         "shipping_method_subscription_group_title": "Előfizetés",
-        "one_time_purchase_shipping": "Egyetlen szállítmány"
+        "one_time_purchase_shipping": "Egyetlen szállítmány",
+        "estimated_delivery_time": "Becsült kézbesítés: %{time}",
+        "estimated_delivery_time_range": "Becsült kézbesítés: %{min_time}–%{max_time}",
+        "arrives_time": "Érkezési idő: %{time}",
+        "arrives_time_range": "Érkezési tartomány: %{min_time}–%{max_time}",
+        "estimated_time": "Becsült: %{time}",
+        "estimated_time_range": "Becsült: %{min_time}-%{max_time}",
+        "delivery_date_range": "%{min_time}–%{max_time}",
+        "subscription_local_delivery": "Helyi szállítás előfizetés alapján",
+        "subscription_pickup": "Átvétel előfizetés alapján",
+        "delivery_today": "Aznapi kiszállítás, %{time}",
+        "delivery_tomorrow": "Másnapi szállítás, %{time}",
+        "two_day_delivery": "Szállítás 2 napon belül %{time}",
+        "delivery": "Szállítás %{time}",
+        "duties_and_taxes_title": "Vámok és adók",
+        "shipping_information_required_notice": "A szállítási adatok megadása kötelező. {{link}}.",
+        "shipping_information_redirect_link": "Ide írja be az információkat",
+        "loading_progressive_rates": "További árakat keresünk…",
+        "no_other_methods_available": "Más módszerek nem állnak rendelkezésre",
+        "duties_and_taxes_options": {
+          "ddu_title": "Fizetés utánvéttel",
+          "ddu_caption": "További díjak merülhetnek fel",
+          "ddp_title": "Fizessen most",
+          "ddp_caption": "A szállításért nem számítanak fel további költségeket"
+        },
+        "shipping_method_combinations": {
+          "without_separator": "%{firstMethod}, %{secondMethod}",
+          "with_separator": "%{rest}, %{current},",
+          "combination": "%{rest} és %{current}"
+        },
+        "shipping_used_as_billing_notice": "Ez a cím lesz a megrendelés számlázási címe is.",
+        "address_update": "Frissítse a címet",
+        "shipping_address_title": "Szállítás ide",
+        "add_address": "Használjon másik címet",
+        "add_delivery_instructions": "Adja hozzá a szállítási utasításokat",
+        "edit": "Szerkesztés",
+        "delete": "Törölje",
+        "address_more": "További műveletek ehhez a címhez",
+        "address_edit": "Cím szerkesztése",
+        "address_delete": "Törölje a címet",
+        "address_confirm": "Biztosan törli ezt a címet a fiókjából?",
+        "address_form": {
+          "add_address": "Adjon hozzá egy címet",
+          "save": "Mentés",
+          "cancel": "Mégsem",
+          "generic_error": "Hiba történt a cím mentése során. Próbáld újra.",
+          "one_time_address_subtitle": "Ehhez a rendeléshez használjon egyedi címet",
+          "edit": "Cím szerkesztése",
+          "update": "Mentse el a változtatásokat"
+        },
+        "different_shipping_method_summary": "Adjon meg egy másik szállítási címet az elérhető szállítási módok megtekintéséhez",
+        "invalid_shipping_method_summary": "Kérjük, adjon meg egy érvényes szállítási címet az elérhető szállítási módok megtekintéséhez",
+        "method_summary": {
+          "incomplete_address_entered": "Adja meg a teljes szállítási címet az elérhető szállítási módok megtekintéséhez",
+          "incomplete_address_selected": "Válassza ki a teljes szállítási címet az elérhető szállítási módok megtekintéséhez"
+        },
+        "local_pickup": {
+          "search_address": "Keresse meg a címet",
+          "rollup_title": "Felvétel helye",
+          "rollup_accessibility_label": "Az átvétel helyének lehetőségei"
+        }
       },
       "general": {
         "map": {
