@@ -1357,10 +1357,14 @@
       },
       "payment": {
         "order_covered_by_gift_cards_notice": {
-          "few": "Η παραγγελία σας καλύπτεται από τις κάρτες δώρων σας."
+          "few": "Η παραγγελία σας καλύπτεται από τις δωροκάρτες σας.",
+          "one": "Η παραγγελία σας καλύπτεται από τη δωροκάρτα σας.",
+          "other": "Η παραγγελία σας καλύπτεται από τις δωροκάρτες σας."
         },
         "card_fields_unavailable_html": {
-          "few": "Οι πληρωμές με τραπεζικές κάρτες δεν είναι επί του παρόντος διαθέσιμες.<br><a href=\"%{current_url}\">Ανανεώστε τη σελίδα</a> ή δοκιμάστε μια διαφορετική μέθοδο πληρωμής."
+          "few": "Οι πληρωμές με τραπεζική κάρτα δεν είναι προς το παρόν διαθέσιμες.<br><a href=\"%{current_url}\">Ανανεώστε τη σελίδα</a> ή δοκιμάστε έναν διαφορετικό τρόπο πληρωμής.",
+          "one": "Οι πληρωμές με τραπεζική κάρτα δεν είναι προς το παρόν διαθέσιμες.<br><a href=\"%{current_url}\">Ανανεώστε τη σελίδα</a> ή δοκιμάστε ξανά αργότερα.",
+          "other": "Οι πληρωμές με τραπεζική κάρτα δεν είναι προς το παρόν διαθέσιμες.<br><a href=\"%{current_url}\">Ανανεώστε τη σελίδα</a> ή δοκιμάστε έναν διαφορετικό τρόπο πληρωμής."
         },
         "expired_cards_info": {
           "few": "Υπάρχω %{count} Έγινε κάρτες, τις οποίες μπορείτε να δείτε και να επεξεργαστείτε στο λογαριασμό σας."
@@ -1403,7 +1407,51 @@
         "card_verification_value_placeholder": "Κωδικός ασφαλείας",
         "card_expiry_date_explanation": "Ημερομηνία λήξης της κάρτας σε μορφή: μήνας, μήνας, έτος, έτος",
         "card_expiration_month_label": "Μήνας λήξης",
-        "card_expiration_year_label": "Έτος λήξης"
+        "card_expiration_year_label": "Έτος λήξης",
+        "card_verification_value_explanation": "Ο 3ψήφιος κωδικός ασφαλείας βρίσκεται συνήθως στο πίσω μέρος της κάρτας. Οι κάρτες American Express έχουν έναν 4ψήφιο κωδικό που βρίσκεται στο μπροστινό μέρος.",
+        "card_verification_value_explanation_amex": "Ο 4ψήφιος κωδικός ασφαλείας στην όψη της κάρτας",
+        "card_verification_value_explanation_other": "Ο 3ψήφιος κωδικός ασφαλείας στο πίσω μέρος της κάρτας",
+        "card_start_label": "Ημερομηνία έκδοσης (ΜΜ/ΕΕ)",
+        "card_start_placeholder": "Ημερομηνία έκδοσης (ΜΜ/ΕΕ)",
+        "card_issue_number_label": "Αριθμός τεύχους",
+        "card_issue_number_placeholder": "Αριθμός τεύχους",
+        "card_change_label": "Τροποποίηση",
+        "ends_with_label": "τελειώνει σε %{last_digits}",
+        "masked_digits_label": "•••• %{last_digits}",
+        "saved_by_payment_method": "Αποθηκεύτηκε από %{payment_method}",
+        "pay_with_payment_method": "Πληρώστε με %{payment_method}",
+        "same_billing_address_label": "Ίδιο με τη διεύθυνση αποστολής",
+        "different_billing_address_label": "Χρησιμοποιήστε διαφορετική διεύθυνση χρέωσης",
+        "free_order_notice_html": "Η παραγγελία σας είναι <strong>δωρεάν</strong>. Δεν απαιτείται πληρωμή.",
+        "express_checkout_free_order": "Δεν θα χρεωθείτε για μια δωρεάν παραγγελία",
+        "offsite_gateway_redirect_hint": "Θα σας ανακατευθύνουμε στο %{gateway_label} για να ολοκληρώσετε την αγορά σας.",
+        "offsite_gateway_redirect_hint_multi_currency_html": "%{gateway_label} σύνολο %{total_shop_price}",
+        "billing_address_title": "Διεύθυνση χρέωσης",
+        "billing_address_description": "Επιλέξτε τη διεύθυνση που αντιστοιχεί στην κάρτα ή τον τρόπο πληρωμής σας.",
+        "billing_address_description_no_shipping_address": "Εισαγάγετε τη διεύθυνση που αντιστοιχεί στην κάρτα ή τον τρόπο πληρωμής σας.",
+        "no_js_credit_card_fields_redirect_hint": "Θα ανακατευθυνθείτε για να προσθέσετε τα στοιχεία πληρωμής σας.",
+        "card_fields_container_prefix": "Πεδίο δοχείο για:",
+        "card_fields_processing_error": "Παρουσιάστηκε πρόβλημα κατά την επεξεργασία της πληρωμής σας. Δοκιμάστε να ανανεώσετε αυτήν τη σελίδα ή ελέγξτε τη σύνδεσή σας στο διαδίκτυο.",
+        "technical_error": "Δεν είναι δυνατή η επεξεργασία των πληρωμών αυτή τη στιγμή λόγω τεχνικού προβλήματος. Δοκιμάστε ξανά σε λίγα λεπτά.",
+        "no_method_error": "Αυτό το κατάστημα δεν μπορεί να δεχτεί πληρωμές αυτήν τη στιγμή.",
+        "not_configured_error": "Αυτό το κατάστημα δεν μπορεί να δεχτεί πληρωμές αυτήν τη στιγμή.",
+        "missing_credit_card_error": "Εισαγάγετε τα στοιχεία της κάρτας σας για να ολοκληρώσετε την πληρωμή",
+        "billing_address_not_supported_for_payment_method_error": "Αυτή η μέθοδος πληρωμής δεν είναι διαθέσιμη για τη διεύθυνση χρέωσης και το νόμισμά σας. Δοκιμάστε άλλη μέθοδο πληρωμής.",
+        "generic_incorrect_card_info": "Δεν ήταν δυνατή η επαλήθευση των στοιχείων πληρωμής σας. Ελέγξτε τα στοιχεία της κάρτας σας και δοκιμάστε ξανά.",
+        "sofort_label": "Εύκολη τραπεζική μεταφορά",
+        "paypal_label": "PayPal",
+        "klarna_pay_later_label": "Πληρώστε αργότερα με την Klarna",
+        "klarna_pay_now_label": "Πληρώστε τώρα με την Klarna",
+        "bancontact_label": "Bancontact",
+        "giropay_label": "Giropay",
+        "eps_label": "eps-Überweisung",
+        "klarna_slice_it_label": "Ταμείο με την Klarna",
+        "ideal_label": "ΙΔΑΝΙΚΟ | Wero",
+        "bank_picker_label": "Τράπεζα",
+        "change_currency_section_description": "Επιλέξτε μια επιλογή νομίσματος",
+        "no_real_orders_dev_store": "Αυτό το κατάστημα δεν δέχεται πραγματικές παραγγελίες ή πραγματικές πληρωμές.",
+        "subscription_agreement_label_html": "Κατανοώ και συμφωνώ με μια συνδρομή. Θα ανανεώσω στην τιμή και τη συχνότητα που αναγράφεται μέχρι να τελειώσει ή να είναι\n<a class=\"link--small\" data-modal=\"true\" data-title-text=\"%{subscription_policy}\" href=\"%{policy_href}\">ακυρώθηκε</a>.\n",
+        "waiting_on_payment_methods": "Λαμβάνουμε τους διαθέσιμους τρόπους πληρωμής..."
       },
       "shipping_errors": {
         "shipping_method_not_available_generic": {
