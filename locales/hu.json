@@ -3843,7 +3843,33 @@
       "order": {
         "cancel_reason": {
           "few": "Valami más"
+        },
+        "not_available": "Ez a parancs nem érhető el",
+        "financial_status": {
+          "authorized": "Engedélyezett",
+          "pending": "Várakozás",
+          "paid": "Fizetett",
+          "unpaid": "Kifizetetlen",
+          "voided": "Törölve",
+          "partially_paid": "Részben fizetve"
         }
+      },
+      "customer": {
+        "password_reset_error": "Jelszó visszaállítási hiba",
+        "no_account_found": "Nem található fiók ezzel az e-mail-címmel.",
+        "invalid_credentials": "Hibás email cím vagy jelszó.",
+        "denylisted_reset_password": "Fiókjához nem lehetett hozzáférni, mert a jelenlegi jelszó nem biztonságos. Kapni fog egy e-mailt, amely segít a jelszava frissítésében.",
+        "signup_disabled": "Az ügyfélfiókok létrehozása le van tiltva.",
+        "subscribe_error": "Hiba az előfizetés során",
+        "unsubscribe_error": "Hiba a leiratkozás során"
+      },
+      "address": {
+        "updated": "A cím sikeresen frissítve.",
+        "error_updating": "Hiba a cím frissítésekor",
+        "created": "A cím sikeresen létrehozva",
+        "error_creating": "Hiba a cím létrehozásakor.",
+        "deleted": "A cím sikeresen törölve",
+        "error_deleting": "Hiba a cím törlésekor."
       }
     },
     "page_titles": {
@@ -3949,7 +3975,55 @@
       "shop_404": {
         "title": "Hozzon létre egy e-kereskedelmi webhelyet, és értékesítsen online! E-kereskedelmi szoftver a Shopify-tól",
         "heros": {
-          "store_unavailable": "Ez az üzlet jelenleg nem elérhető."
+          "store_unavailable": "Ez az üzlet jelenleg nem elérhető.",
+          "store_not_exist": "Ez az üzlet nem létezik.",
+          "no_storefront": "Ennek az üzletnek még nincs weboldala.",
+          "store_will_be_right_back": "Ez az üzlet hamarosan visszatér"
+        },
+        "links": {
+          "explore_other_stores": "Fedezzen fel más üzleteket",
+          "start_free_trial": "Ingyenes próbaverzió kezdődik",
+          "refresh_page": "Töltse be újra az oldalt"
+        },
+        "owner_ctas": {
+          "header": "Ön az üzlet tulajdonosa?",
+          "fix_domain": "Fejezze be az új webcím beállítását, lépjen be %{domain_settings_link}. Kattintson a \"Csatlakozás domain\" gombra, és írja be: %{domain}.<br>Ha problémái vannak az áruház elérésével, próbálja ki az oldalt %{forgot_your_store_link}.",
+          "fix_domain_link_text": "domain beállításokat",
+          "forgot_your_store_link_text": "elfelejtette az üzlet adatait",
+          "add_storefront": "Webhelyét úgy állíthatja be, hogy hozzáadja az online áruház csatornáját a fiókjához %{admin_link}. Ha problémái vannak az áruház elérésével, próbálja ki az oldalt %{forgot_your_store_link}.",
+          "admin_link_text": "rendszergazda"
+        },
+        "ctas": {
+          "sell_in_person": {
+            "header": "Eladás személyesen",
+            "caption": "Szerezze meg a kiskereskedelmi üzletének kezeléséhez szükséges szolgáltatásokat, akár indul, akár terjeszkedik.",
+            "link_text": "Ingyenes próbaverzió kezdődik"
+          },
+          "open_a_store": {
+            "header": "Nyisson meg egy új Shopify áruházat",
+            "caption": "Kezdjen el egy 3 napos ingyenes próbaidőszakot, majd folytassa havi 1 USD áron a következő 3 hónapig.",
+            "link_text": "Regisztráljon most"
+          },
+          "editions": {
+            "header": "Fedezze fel a Shopify kiadásait",
+            "caption": "A több mint 100 termékfrissítéssel produktívabb, kreatívabb és erősebb lehet a kereskedelemben, mint azt valaha is képzelte.",
+            "link_text": "Fedezze fel az Editions legújabb verzióját"
+          },
+          "store_owner": {
+            "header": "Ön az üzlet tulajdonosa?",
+            "caption": "Problémái vannak az üzletbe való belépéssel? Próbáld ki a funkciót %{forgot_your_store_link}. Ha újra szeretné aktiválni az üzlet elérhetőségeit, vegye fel a kapcsolatot %{shopify_support_link}.",
+            "shopify_support_link_text": "Shopify támogatás"
+          }
+        },
+        "title_unavailable": "Az üzlet nem elérhető",
+        "subtitles": {
+          "store_will_be_right_back": "A Shopify azon dolgozik, hogy a lehető leghamarabb újra online legyen."
+        },
+        "status_card": {
+          "eyebrow": "Segítség az üzlettulajdonosoknak",
+          "header": "Ellenőrizze Shopify állapotát",
+          "caption": "Tudja meg, hogy nem csak ezt a Shopify üzleteket érinti-e leállás.",
+          "link_text": "Tekintse meg Shopify-rendszerei állapotát"
         }
       }
     }
