@@ -3352,7 +3352,13 @@
     "notices": {
       "order": {
         "cancel_reason": {
-          "few": "Something else"
+          "few": "Something else",
+          "declined": "Payment refused",
+          "inventory": "Items unavailable",
+          "fraud": "Fraudulent order",
+          "customer": "The customer has changed/cancelled the order",
+          "other": "Something else",
+          "staff": "Personal error"
         },
         "not_available": "This command is not available",
         "financial_status": {
@@ -3361,8 +3367,25 @@
           "paid": "Paid",
           "unpaid": "Unpaid",
           "voided": "Cancelled",
-          "partially_paid": "Partially paid"
-        }
+          "partially_paid": "Partially paid",
+          "partially_refunded": "Partially refunded",
+          "refunded": "Reimbursed",
+          "expired": "Expired"
+        },
+        "fulfillment_status": {
+          "fulfilled": "Accomplished",
+          "complete": "Completed",
+          "partial": "Partially",
+          "unfulfilled": "Unfulfilled",
+          "restocked": "With refueled stock"
+        },
+        "transaction_status": {
+          "success": "success",
+          "pending": "Waiting",
+          "failure": "Failure",
+          "error": "Error"
+        },
+        "cash_on_delivery": "Cash on delivery"
       },
       "customer": {
         "password_reset_error": "Password reset error",
@@ -3380,6 +3403,40 @@
         "error_creating": "Error creating address.",
         "deleted": "Address deleted successfully",
         "error_deleting": "Error deleting address."
+      },
+      "cart": {
+        "only_n_items_available": "You can only add %{count} %{name} to the basket.",
+        "too_many_items_in_cart": "You cannot add more %{name} in the basket.",
+        "all_items_in_cart": "All those %{count} %{name} I'm in your cart.",
+        "empty_update": "cannot update empty basket",
+        "missing_parameters": "there is no valid id or line parameter",
+        "generic_error": "Basket error",
+        "too_many_line_items_error": "Your basket cannot contain fish %{max} articles.",
+        "link_expired": "The link has expired",
+        "link_no_longer_exists": "Link no longer exists.",
+        "stock_problems_html": "One or more items are no longer available. I made it available <a href='%{link}'>an updated basket</a>.",
+        "changed": "Modified basket",
+        "items_changed": "One or more items have changed.",
+        "product_sold_out": "The product \"%{name}” is already sold out.",
+        "variant_not_found": "Cannot find option",
+        "variant_requires_selling_plan": "The variant can only be bought with a purchase plan.",
+        "shipping_address_not_required": "This cart does not require delivery",
+        "shipping_address_invalid": "There was a problem calculating your shipping charges. Continue to checkout to choose a shipping fee before checkout.",
+        "selling_plan_not_applicable": "The sales plan cannot be applied to the variant",
+        "selling_plan_not_available_for_company_locations": "For B2B orders, only individual purchases are available.",
+        "digital_product_not_available_for_company_locations": "This item cannot be added to a B2B order",
+        "product_not_available": "The product is not available",
+        "less_than_minimum": "This item has minimum %{min}.",
+        "more_than_maximum": "This item has the maximum %{max}.",
+        "not_respect_step": "You can only enter this item in increments of %{step}.",
+        "bundle_requires_components": "The product in the form of a set \"%{name}” cannot be added to cart.",
+        "gift_card_with_components_not_supported": "The product in the form of a set \"%{name}” cannot be added to cart.",
+        "view_lines_limit_reached": "The number of rows must be less than or equal to %{limit}",
+        "merchandise_line_transformers": {
+          "run_error": "An error occurred with your shopping cart."
+        },
+        "gift_card_price_must_be_greater_than_zero": "The product in the form of a set \"%{name}” cannot be added to cart.",
+        "cart_too_large": "The basket is too big."
       }
     },
     "page_titles": {
