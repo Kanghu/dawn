@@ -831,7 +831,67 @@
         "subscription_shipping": "Subscription based shipping",
         "shipping_method_one_time_purchase_group_title": "One time purchase",
         "shipping_method_subscription_group_title": "Subscription",
-        "one_time_purchase_shipping": "Single shipment"
+        "one_time_purchase_shipping": "Single shipment",
+        "estimated_delivery_time": "Estimated Delivery: %{time}",
+        "estimated_delivery_time_range": "Estimated Delivery: %{min_time}–%{max_time}",
+        "arrives_time": "Arrival time: %{time}",
+        "arrives_time_range": "Arrival range: %{min_time}–%{max_time}",
+        "estimated_time": "Estimated: %{time}",
+        "estimated_time_range": "Estimated: %{min_time}-%{max_time}",
+        "delivery_date_range": "%{min_time}–%{max_time}",
+        "subscription_local_delivery": "Local delivery based on subscription",
+        "subscription_pickup": "Pickup based on subscription",
+        "delivery_today": "Same day delivery, %{time}",
+        "delivery_tomorrow": "Next day delivery, %{time}",
+        "two_day_delivery": "Delivery in 2 days %{time}",
+        "delivery": "Delivery %{time}",
+        "duties_and_taxes_title": "Customs duties and taxes",
+        "shipping_information_required_notice": "Shipping information is required. {{link}}.",
+        "shipping_information_redirect_link": "Enter the information here",
+        "loading_progressive_rates": "Looking for more rates…",
+        "no_other_methods_available": "No other methods are available",
+        "duties_and_taxes_options": {
+          "ddu_title": "Pay on delivery",
+          "ddu_caption": "Additional fees may apply",
+          "ddp_title": "Pay now",
+          "ddp_caption": "No additional charges apply for delivery"
+        },
+        "shipping_method_combinations": {
+          "without_separator": "%{firstMethod}, %{secondMethod}",
+          "with_separator": "%{rest}, %{current},",
+          "combination": "%{rest} and %{current}"
+        },
+        "shipping_used_as_billing_notice": "This address will also be used as the billing address for this order.",
+        "address_update": "Update address",
+        "shipping_address_title": "Ship to",
+        "add_address": "Use a different address",
+        "add_delivery_instructions": "Add delivery instructions",
+        "edit": "Edit",
+        "delete": "Delete",
+        "address_more": "More actions for this address",
+        "address_edit": "Edit address",
+        "address_delete": "Delete the address",
+        "address_confirm": "Are you sure you want to delete this address from your account?",
+        "address_form": {
+          "add_address": "Add an address",
+          "save": "Save",
+          "cancel": "Cancel",
+          "generic_error": "There was a problem saving your address. Try again.",
+          "one_time_address_subtitle": "Use a unique address for this order",
+          "edit": "Edit address",
+          "update": "Save the changes"
+        },
+        "different_shipping_method_summary": "Enter a different shipping address to see available shipping methods",
+        "invalid_shipping_method_summary": "Please enter a valid shipping address to view available shipping methods",
+        "method_summary": {
+          "incomplete_address_entered": "Enter a full shipping address to see available shipping methods",
+          "incomplete_address_selected": "Select a full shipping address to view available shipping methods"
+        },
+        "local_pickup": {
+          "search_address": "Search for the address",
+          "rollup_title": "Pick up location",
+          "rollup_accessibility_label": "Pickup location options"
+        }
       },
       "general": {
         "map": {
