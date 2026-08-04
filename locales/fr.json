@@ -1610,7 +1610,9 @@
           "other": "Les paiements par carte bancaire ne sont actuellement pas disponibles.<br><a href=\"%{current_url}\">Actualiser la page</a> ou essayez un autre mode de paiement."
         },
         "expired_cards_info": {
-          "few": "Exister %{count} Cartes expirées, que vous pouvez voir et modifier dans votre compte."
+          "few": "Il y a %{count} cartes expirées, que vous pouvez consulter et modifier dans votre compte.",
+          "one": "Il y a %{count} carte expirée, que vous pouvez consulter et modifier dans votre compte.",
+          "other": "Il y a %{count} cartes expirées, que vous pouvez consulter et modifier dans votre compte."
         },
         "order_edit_banner_items_added": {
           "few": "Ajouté (s): %{count}"
@@ -1756,7 +1758,70 @@
         "payment_method_saved": "Mode de paiement enregistré",
         "card_vaulted_company_location": "Carte enregistrée pour cet emplacement",
         "order_covered_by_store_credit_notice": "Votre commande est couverte par un crédit en magasin.",
-        "order_covered_by_redeemables_notice": "Votre commande est couverte."
+        "order_covered_by_redeemables_notice": "Votre commande est couverte.",
+        "store_credit": {
+          "label": "Crédit en magasin",
+          "apply_label": "Appliquer un crédit en magasin",
+          "add_label": "Ajouter du crédit en magasin",
+          "manage_label": "Gérer le crédit du magasin",
+          "buying_gift_card": "Vous ne pouvez pas utiliser le crédit du magasin pour acheter une carte-cadeau",
+          "no_fixed_selling_plans": "Vous ne pouvez pas utiliser le crédit en magasin pour les options d'achat différé"
+        },
+        "clear": "Videz-le",
+        "billing_must_match_shipping_notice": "L'adresse de facturation associée à votre mode de paiement doit correspondre à l'adresse de livraison.",
+        "same_billing_address_checkbox_label": "Utilisez l'adresse de livraison comme adresse de facturation",
+        "location_billing_address_label": "L'adresse de facturation de l'emplacement",
+        "fact_billing_address_label": "Adresse de facturation",
+        "location_shipping_address_label": "L'adresse de livraison pour l'emplacement",
+        "no_working_method_error": "Ce magasin ne peut pas accepter de paiements pour le moment. Actualisez la page ou revenez plus tard.",
+        "brand_not_available": "Ce magasin n'accepte pas {{brand}}. Utilisez une autre carte pour payer.",
+        "shipping_rate_updated": "Les modes de livraison disponibles ont été mis à jour. Confirmez votre choix avant de finaliser votre achat.",
+        "billing_address_invalid_phone": "Pour continuer, mettez à jour le numéro de téléphone dans votre adresse de facturation pour {{label}} {{last_digits}}.",
+        "billing_address_invalid_phone_no_card": "Pour continuer, mettez à jour le numéro de téléphone dans votre adresse de facturation.",
+        "preview_not_available": {
+          "title": "Aperçu indisponible",
+          "content": "Ne vous inquiétez pas, cette méthode de paiement express fonctionne pour vos clients.",
+          "button": "D'accord"
+        },
+        "card_fields": {
+          "errors": {
+            "required": {
+              "issue_date": "Veuillez entrer une date d'émission valide",
+              "issue_number": "Veuillez entrer un numéro de problème valide"
+            },
+            "invalid": {
+              "verification_value": "Entrez un CVV ou un code de sécurité valide"
+            }
+          }
+        },
+        "simulated_checkout": "Un aperçu sera bientôt disponible",
+        "vaulting_agreement_label": "Je souhaite enregistrer les informations de paiement relatives à %{company}, pour une exécution plus rapide des commandes.",
+        "business_customer_vaulting_payment_label": "Enregistrez ce mode de paiement lors du paiement et autorisez %{company} pour effectuer des paiements sur de futurs achats pour cet emplacement. Tous les contacts affectés à cet emplacement peuvent utiliser le mode de paiement.",
+        "purchase_options_and_vaulting_agreement_label": "Un ou plusieurs articles de votre panier constituent un achat différé ou un achat par abonnement. En continuant à payer, vous acceptez que votre mode de paiement soit automatiquement facturé au prix et à la fréquence spécifiés sur cette page jusqu'à la fin de votre abonnement ou jusqu'à ce que vous l'annuliez. Toutes les annulations doivent être conformes %{cancellation_policy_label}.",
+        "purchase_options_cancellation_policy_label": "politique d'annulation",
+        "use_different_credit_card_label": "Utiliser une autre carte",
+        "saved_credit_card": "Votre carte de crédit enregistrée",
+        "saved_credit_card_info": "Les quatre derniers chiffres",
+        "saved_credit_cards_modal": {
+          "view_all_label": "Voir toutes les cartes enregistrées",
+          "done": "fait",
+          "cancel": "Annuler"
+        },
+        "local_payment_method_receiver_notice": "Après avoir passé la commande, vous recevrez les détails du paiement. Effectuer le paiement à un guichet automatique ou en ligne au maximum {{dueDays}} (de) jours.",
+        "order_edit_banner_title": "Il faut payer le montant de {{amount_owed}}",
+        "order_edit_banner_subtitle": "votre commande, {{order_number}}, a été mis à jour. Vérifiez ces modifications, puis payez pour confirmer votre commande.",
+        "order_edit_banner_single_item_added": "Ajouté",
+        "order_edit_banner_multiple_items_added": "Ajouté(s) : {{amount}}",
+        "order_edit_banner_single_item_removed": "Supprimé",
+        "order_edit_banner_multiple_items_removed": "Supprimé(s) : {{amount}}",
+        "gift_card_wrapper": {
+          "heading": "Carte cadeau",
+          "apply_gift_card_label": "Appliquer une carte cadeau",
+          "payment_tag": "Carte cadeau",
+          "apply_another_gift_card_label": "Appliquer une autre carte cadeau",
+          "gift_card_label": "%{identifier} pour la carte cadeau",
+          "add_label": "Ajouter une carte cadeau"
+        }
       },
       "shipping_errors": {
         "shipping_method_not_available_generic": {
