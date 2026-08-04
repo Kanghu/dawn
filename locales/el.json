@@ -1167,12 +1167,67 @@
         },
         "unit_price": {
           "per_item": {
-            "few": "%{price} για %{count} προϊόντα"
+            "few": "%{price} για %{count} άρθρα",
+            "single": "%{price} κάθε στοιχείο",
+            "one": "%{price} για %{count} άρθρο",
+            "other": "%{price} για %{count} άρθρα"
+          },
+          "accessible_separator": "επάνω",
+          "content_html": "%{price}%{accessible_separator}%{per_unit}",
+          "per_unit": {
+            "single": "%{price}/%{unit}",
+            "plural": "%{price}/%{count}%{unit}"
           }
         },
         "pickup_unavailable_banner_title_with_country": {
           "few": "Σε %{country} δεν υπάρχουν διαθέσιμα καταστήματα με τα προϊόντα σας"
-        }
+        },
+        "product_image_label": "Εικόνα προϊόντος",
+        "scroll_order_summary": "Κάντε κύλιση για περισσότερα άρθρα",
+        "expand_order_summary_short": "Εμφάνιση",
+        "collapse_order_summary_short": "Απόκρυψη",
+        "total_updated_label": "Ενημερωμένη συνολική τιμή:",
+        "order_total_updated_label": "Ενημερώθηκε συνολικά",
+        "total_already_paid_label": "Ποσό που καταβλήθηκε",
+        "estimated_taxes_label": "Εκτιμώμενα τέλη",
+        "information_estimated_taxes_label": "Χρεώσεις (εκτιμώμενες)",
+        "gift_card_ending": "Δωροκάρτα με κατάληξη %{last_characters}",
+        "estimated_tax_label": "Εκτιμώμενα τέλη",
+        "multiple_shipping_lines_label": "Σύνολο αποστολής",
+        "applied_free_shipping_discount_label": "Εφαρμόστηκε",
+        "original_price": "Η αρχική τιμή",
+        "sale_price": "Τιμή προσφοράς",
+        "recurring_subtotal_label": "Επαναλαμβανόμενο υποσύνολο",
+        "recurring_total_label": "Εντελώς επαναλαμβανόμενο",
+        "recurring_total_tooltip": "Δεν περιλαμβάνει μεταφορικά, φόρους, δασμούς ή ισχύουσες εκπτώσεις.",
+        "gift_card_subscriptions_notice": "Οι δωροκάρτες θα εφαρμοστούν μόνο στην πρώτη πληρωμή",
+        "confirmation_number_label": "Όχι επιβεβαίωση %{confirmation_number}",
+        "estimated_taxes_finalization_tooltip_content": "Οι τελικές χρεώσεις και το σύνολο θα επιβεβαιωθούν με email ή μήνυμα κειμένου μετά την τοποθέτηση της παραγγελίας.",
+        "deferred_payment_info": {
+          "title": "Πληρωμή στο ποσό των %{amount_due} έχει ημερομηνία λήξης %{due_at}",
+          "description_html": "Για ερωτήσεις σχετικά με την παραγγελία σας, %{contact_us}.",
+          "paid_today": "Συνολικά πληρώθηκε σήμερα",
+          "due_on_fulfillment_title": "Πληρωμή στο ποσό των %{amount_due} έχει την ημερομηνία λήξης την ώρα της τιμής",
+          "due_on_receipt_title": "Πληρωμή στο ποσό των %{amount_due} έχει ημερομηνία λήξης τη στιγμή της παραλαβής",
+          "paid_today_next": "Πληρώθηκε σήμερα"
+        },
+        "percent_off_shipping": "Έκπτωση του %{percent}% επί της αποστολής",
+        "amount_off_shipping": "Έκπτωση του %{amount} κατά την αποστολή",
+        "payment_terms_totals": {
+          "due_today": "Συνολικά ληξιπρόθεσμα σήμερα",
+          "due_later": "Σύνολο λόγω %{due_at}",
+          "due_later_checkout_to_draft": "Σύνολο ληξιπρόθεσμα",
+          "due_on_fulfillment": "Σύνολο οφειλόμενο κατά την ώρα της τιμής",
+          "due_on_receipt": "Σύνολο οφειλόμενο κατά την παραλαβή",
+          "total_paid": "Συνολικά πληρωμένα",
+          "due_today_next": "Λήγει σήμερα",
+          "due_on_fulfillment_next": "Λήγει τη στιγμή της εκτέλεσης της παραγγελίας"
+        },
+        "higher_value_discount_applied": "<strong style=\"text-transform:uppercase\">%{code}</strong> δεν θα μπορούσε να χρησιμοποιηθεί σε συνδυασμό με τις υπάρχουσες εκπτώσεις.",
+        "maximum_discount_code_limit_reached": "Έχετε συμπληρώσει τον μέγιστο αριθμό εκπτωτικών κωδικών. Καταργήστε έναν υπάρχοντα κωδικό για να χρησιμοποιήσετε τον κωδικό <strong style=\"text-transform:uppercase\">%{code}</strong>.",
+        "order_total_label": "Σύνολο παραγγελίας",
+        "discount_code_application_failed": "<strong style=\"text-transform:uppercase\">%{code}</strong> δεν λειτουργεί αυτή τη στιγμή. Επικοινωνήστε μαζί μας για βοήθεια.",
+        "due_on_fulfillment": "Οφειλόμενο την ώρα της τιμής"
       },
       "payment": {
         "order_covered_by_gift_cards_notice": {
