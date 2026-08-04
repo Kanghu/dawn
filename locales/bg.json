@@ -2776,8 +2776,23 @@
       },
       "merchandise_unavailable_in_buyer_location": {
         "remove_items_action": {
-          "few": "елиминира недостъпните предмети"
-        }
+          "few": "премахване на неналични елементи",
+          "one": "премахване на недостъпен елемент",
+          "other": "премахване на неналични елементи"
+        },
+        "banner_title": {
+          "some_products_one": "Този продукт не може да бъде доставен до %{location_name}.",
+          "some_products_other": "Тези продукти не могат да бъдат доставени до %{location_name}.",
+          "all_products_one": "Продуктът в кошницата не може да бъде доставен до %{location_name}.",
+          "all_products_other": "Продуктите от количката не могат да бъдат доставени до %{location_name}."
+        },
+        "missing_country_fallback": "вашата страна",
+        "indeterminate_location_fallback": "вашето местоположение",
+        "cart_updated": "Вашата количка е актуализирана.",
+        "change_address_only": "Променете адреса за доставка, за да продължите.",
+        "change_address_or_remove": "Промяна на адреса за доставка или %{remove_action}.",
+        "empty_cart_action": "изпразнете количката и се върнете в магазина",
+        "unavailable_line_item": "%{product_name}/%{variant_label}"
       },
       "review_address_modal": {
         "subtitle": {
@@ -3655,7 +3670,67 @@
           "checkout_has_expired": "Времето за плащане изтече. Затворете този прозорец и опитайте отново да завършите поръчката от {{shopName}}."
         },
         "return_to_store": "Върнете се към {{shopName}}",
-        "return_to_store_simple": "Върнете се в магазина"
+        "return_to_store_simple": "Върнете се в магазина",
+        "title": "Завършване на поръчката с Shop Pay"
+      },
+      "company_location": {
+        "location_title": "Местоположение на фирмата",
+        "location_rollup_accessibility_label": "Опции за местоположение на компанията"
+      },
+      "one": {
+        "errors": {
+          "merchandise": {
+            "gift_card_price_must_be_greater_than_zero": "Цената на подаръчната карта трябва да е по-голяма от 0.",
+            "subtotal_limit_reached": "Максималната стойност на елементите е достигната.",
+            "gift_card_price_must_not_exceed_limit": "Цената на подаръчната карта не трябва да надвишава %{gift_card_limit}.",
+            "signature_mismatch": "Подписът на продукта не съвпада с линията %{stable_id}."
+          }
+        }
+      },
+      "clipboard": {
+        "copied": "Копирано",
+        "failed_to_copy": "Не може да се копира"
+      },
+      "payment_challenge_modal": {
+        "instructions": "Завършете покупката с кода {{paymentMethod}}",
+        "timer_message": "Имате на ваше разположение {{timeLeft}} да плащам",
+        "copy_text": "Копирайте кода за {{paymentMethod}}",
+        "header": "Платете с {{paymentMethod}}",
+        "qr_code": {
+          "instructions": "Завършете покупката с кода {{paymentMethod}}",
+          "wechat_instructions": "Сканирайте този QR код с приложението WeChat на телефона си, за да завършите покупката си",
+          "wechat_instructions_mobile": "Сканирайте този QR код с приложението WeChat на друго устройство, за да завършите покупката си"
+        },
+        "external": {
+          "instructions": "Потвърдете плащането в приложението, за да завършите тази покупка"
+        },
+        "close": "Затворете предизвикателството",
+        "open_app_text": "Отворете приложението {{paymentMethod}}"
+      },
+      "artifact_errors": {
+        "artifact_dissatisfaction_without_violation": "Възникна проблем при обработката на вашата поръчка. Моля, опитайте отново след няколко минути."
+      },
+      "merchant_instruction_errors": {
+        "empty_stable_id": "Инструкции за стоки %{name} %{position} съдържат празен стабилен идентификатор.",
+        "invalid_stable_id_target": "Инструкции за стоки %{name} %{position} препраща към стабилен ID %{stable_id}, но тази стабилна идентификация не е в товарните линии.",
+        "duplicate_variant_id": "Инструкции за стоки %{name} %{position} съдържат дублиран идентификатор на вариант %{variant_id}.",
+        "invalid_variant_id_target": "Инструкции за стоки %{name} препращане към ИД на вариант %{variant_id}, но този вариант го няма в товарните линии.",
+        "invalid_price_override_target": "Инструкцията за замяна на цената на стоката за артикула %{stable_id} не е валиден, защото това е компонент в набор.",
+        "discount_not_supported": "Инструкциите на търговеца не включват прилагането на такива отстъпки."
+      },
+      "b2b_errors": {
+        "lost_b2b_purchasing_permissions": "Вече нямате право да правите B2B поръчки. %{logout_url} вместо това да направите лична поръчка.",
+        "log_out_link_text": "Излезте",
+        "lost_permissions_subtitle": "Вече нямате право да правите B2B поръчки. Излезте, за да направите лична поръчка.",
+        "lost_permissions_title": "Няма разрешения за местоположение"
+      },
+      "units": {
+        "milligram": "мг",
+        "gram": "г-н",
+        "kilogram": "кг",
+        "milliliter": "мл",
+        "centiliter": "кл",
+        "liter": "л"
       }
     },
     "notices": {
