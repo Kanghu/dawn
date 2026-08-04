@@ -2481,35 +2481,79 @@
             "few": "%{count} hétfő"
           },
           "year": {
-            "few": "%{count} évek"
+            "few": "%{count} év",
+            "one": "évben",
+            "other": "%{count} év"
           }
         },
         "recurring_totals_with_initial_order_shipping_discount_with_policies": {
           "first_cycles": {
-            "few": ", akkor lesznek %{count} kifizetések hány %{total_price}"
+            "few": ", akkor azok lesznek %{count} mennyi kifizetést %{total_price}",
+            "one": ", akkor az lesz %{count} fizetése %{total_price}",
+            "other": ", akkor azok lesznek %{count} mennyi kifizetést %{total_price}"
           }
-        }
+        },
+        "recurring_totals_with_initial_order_shipping_discount": "Az első fizetés az %{total_price_with_discount}, akkor %{recurring_total}"
       },
       "contextual_availability": {
         "title": {
-          "few": "Nem kapható termékek"
+          "few": "Nem elérhető termékek",
+          "one": "A termék nem elérhető",
+          "other": "Nem elérhető termékek"
         },
         "products_not_available": {
-          "few": "Ezeket a termékeket eltávolítják a kosárból, mert nem állnak rendelkezésre az Ön országában/régiójában."
+          "few": "Ezeket a termékeket eltávolítjuk a kosarából, mert nem érhetők el az Ön országában/régiójában.",
+          "one": "Ezt a terméket eltávolítjuk a kosarából, mert nem érhető el az Ön országában/régiójában.",
+          "other": "Ezeket a termékeket eltávolítjuk a kosarából, mert nem érhetők el az Ön országában/régiójában."
         },
         "all_products_in_cart_unavailable": {
-          "few": "Ezek a termékek nem érhetők el az Ön országában/régiójában."
-        }
+          "few": "Ezek a termékek nem érhetők el az Ön országában/régiójában.",
+          "one": "Ez a termék nem érhető el az Ön országában/régiójában.",
+          "other": "Ezek a termékek nem érhetők el az Ön országában/régiójában."
+        },
+        "unavailable_label": "Nem elérhető"
       },
       "throttle": {
         "estimated_wait_time": {
-          "few": "Becsült várakozási idő: {{count}} jegyzőkönyv"
+          "few": "Becsült várakozási idő: {{count}} percben",
+          "calculating": "A becsült várakozási idő kiszámításra kerül",
+          "less_than_one": "Becsült várakozási idő: kevesebb mint egy perc",
+          "one": "Becsült várakozási idő: {{count}} perc",
+          "other": "Becsült várakozási idő: {{count}} percben"
+        },
+        "line_to_check_out": "Ön a sorban áll a rendelés befejezéséhez",
+        "cart_summary_heading": "A kosarad",
+        "merchandise": {
+          "sold_out": "Elfogyott",
+          "available": "Elérhető"
+        },
+        "inventory": {
+          "partial_inventory_banner": "A kosárban lévő egyes termékek elfogytak, és nem vásárolhatók meg a pénztárnál.",
+          "sold_out": {
+            "heading": "A kosár elfogyott",
+            "storefront_body": "A vásárlás folytatásához térjen vissza az üzletbe",
+            "no_storefront_body": "Sajnos a megvásárolni kívánt termék már nem elérhető.",
+            "link": "Vissza a boltba"
+          }
+        },
+        "title": "Farok",
+        "time_to_checkout_title": "Ideje teljesíteni a rendelést – {{shopName}}",
+        "last_checked": "(Utolsó ellenőrzés itt: {{time}})",
+        "footer": {
+          "heading": "Ne frissítse ezt az oldalt, az automatikusan frissül.",
+          "body": "A kosárban lévő termékek nem kerülnek lefoglalásra mindaddig, amíg el nem fejezi a rendelést."
+        },
+        "too_many_attempts": {
+          "message": "Túl sok próbálkozás",
+          "description": "Kérjük, próbálja újra néhány perc múlva"
         }
       },
       "deliverability": {
         "not_deliverable": {
           "title": {
-            "few": "Nincs kézbesítési módszer %{count} (OF) cikkek"
+            "few": "Nincs elérhető szállítási mód a következőhöz: %{count} cikkek",
+            "one": "Nincs elérhető szállítási mód a következőhöz: %{count} cikket",
+            "other": "Nincs elérhető szállítási mód a következőhöz: %{count} cikkek"
           },
           "message": {
             "few": "Ezeket a cikkeket eltávolítják a kosárból, mivel a címhez nem állnak rendelkezésre kézbesítési módszerek."
@@ -3074,6 +3118,25 @@
           "shipping_credential_co": "Cédula/ÁFA",
           "shipping_credential_type_co": "Cédula típusú"
         }
+      },
+      "customer_payment_methods": {
+        "page_title": "Fizetési módok",
+        "title": "Fizetési módok",
+        "update_card_button_label": "Frissítse a kártyát",
+        "delete_customer_mandate": {
+          "generic_error": "Hiba történt kérésének feldolgozása során.",
+          "success_message": "A fizetési módot sikeresen töröltük"
+        }
+      },
+      "mor_policies": {
+        "terms_and_conditions": "Regisztrált kereskedő általános szerződési feltételei",
+        "privacy_policy": "Regisztrált kereskedő adatvédelmi szabályzata"
+      },
+      "change_cart_localization": {
+        "verify_shipping_address": "Országa/régiója frissült. Adja meg szállítási címét a fizetés folytatásához."
+      },
+      "cart_checkout_validation": {
+        "runtime_error": "Hiba történt kérésének feldolgozása során. Vegye fel a kapcsolatot az üzlet tulajdonosával."
       }
     },
     "notices": {
