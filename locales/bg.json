@@ -4028,7 +4028,9 @@
     },
     "page_titles": {
       "search_results": {
-        "few": "Търсене: Те бяха намерени %{count} Резултати за \"%{terms}”"
+        "few": "Търсене: намерено %{count} резултати за \"%{terms}”",
+        "one": "Търсене: намерено %{count} резултат за \"%{terms}”",
+        "other": "Търсене: намерено %{count} резултати за \"%{terms}”"
       },
       "products": "Продукти",
       "shopping_cart": "Вашата пазарска количка",
@@ -4037,7 +4039,12 @@
       "reset_account": "Нулирайте акаунта си",
       "addresses": "Адреси",
       "order": "ред %{name}",
-      "search": "Търсене"
+      "search": "Търсене",
+      "collections": "Колекции",
+      "not_found": "404 не е намерен",
+      "challenge": "Предизвикателство",
+      "checkpoint": "Точка за валидиране",
+      "blog_or_article_with_error": "грешка – %{title}"
     },
     "pagination": {
       "previous": "Назад",
@@ -4226,6 +4233,58 @@
         "message": "Сигурни ли сте, че искате да прекратите абонамента си за SMS маркетинг?",
         "button": "Отписване"
       }
+    },
+    "cart": {
+      "discounts_with_count": "Бяха приложени %{count} отстъпки"
+    },
+    "challenge": {
+      "message": "За да продължите, докажете, че не сте робот.",
+      "error": "Отговорът ви беше неправилен, опитайте отново.",
+      "submit_button_text": "Изпратете"
+    },
+    "checkpoint": {
+      "message": "Решете captcha, за да продължите",
+      "error": "Проверката на Captcha не бе успешна",
+      "submit_button_text": "Изпратете"
+    },
+    "store_availability": {
+      "pick_up_time": {
+        "one_hour": "Готови обикновено в рамките на час",
+        "two_hours": "Готови обикновено след два часа",
+        "four_hours": "Обикновено е готов за 4 часа",
+        "twenty_four_hours": "Обикновено е готов в рамките на 24 часа",
+        "two_to_four_days": "Обикновено е готов за 2-4 дни",
+        "five_or_more_days": "Обикновено е готов за повече от 5 дни",
+        "zero_to_two_hours": "Готови обикновено след два часа",
+        "two_to_four_hours": "Обикновено е готов за 4 часа",
+        "immediately": "Готов за вземане сега",
+        "next_day": "Готов за вземане на следващия ден"
+      }
+    },
+    "filters": {
+      "availability": {
+        "value": {
+          "in_stock": "В наличност",
+          "out_of_stock": "Изчерпана наличност"
+        }
+      },
+      "boolean": {
+        "true_label": "да",
+        "false_label": "не"
+      }
+    },
+    "search": {
+      "sorting": {
+        "relevance": "Уместност",
+        "price_ascending": "Цена, от ниска към висока",
+        "price_descending": "Цена, от висока към ниска"
+      },
+      "error": "Възникна проблем при зареждането на резултатите от търсенето. Моля, опреснете страницата или опитайте отново по-късно."
+    },
+    "subscriptions": {
+      "buyer_consent_product": "Този артикул е повтаряща се или отложена покупка. Продължавайки, съгласен съм с %{cancellationPolicyLink} и ви упълномощавам автоматично да таксувате моя метод на плащане на посочените цени, честоти и дати, докато поръчката ми бъде изпълнена или аз я анулирам, ако е разрешено.",
+      "buyer_consent_cart": "Един или повече от артикулите във вашата количка са повтарящи се или отложени покупки. Продължавайки, съгласен съм с %{cancellationPolicyLink} и ви упълномощавам автоматично да таксувате моя метод на плащане на посочените цени, честоти и дати, докато поръчката ми бъде изпълнена или аз я анулирам, ако е разрешено.",
+      "cancellation_policy": "политика за анулиране"
     }
   },
   "customer_accounts": {
@@ -4378,6 +4437,28 @@
       },
       "contracts_updated": {
         "few": "{{count}} абонаментите са актуализирани успешно"
+      }
+    },
+    "callback": {
+      "try_again": "Опитайте отново"
+    },
+    "navigation_and_structure": {
+      "account_menu": {
+        "hide_accessibility_label": "Скриване на менюто за акаунт",
+        "show_accessibility_label": "Показване на менюто Акаунт",
+        "nav_accessibility_label": "Навигация в акаунта",
+        "open_menu_accessibility_label": "Отворете навигацията в акаунта",
+        "close_menu_accessibility_label": "Затворете сърфирането в акаунта",
+        "loading_message": "Навигацията в акаунта се зарежда",
+        "label": "сметка"
+      },
+      "action_menu_accessibility_label": "Още действия",
+      "close_menu_accessibility_label": "Затворете основната навигация",
+      "contact_email_subject": "Контакт от онлайн магазина {{shopName}}",
+      "contact_link": "Информация за връзка",
+      "delete_confirmation": {
+        "cancel": "Отказ",
+        "delete": "Изтриване"
       }
     }
   },
