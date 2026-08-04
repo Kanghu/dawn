@@ -315,36 +315,36 @@
     "search": {
       "no_results": "Aucun résultat trouvé pour \"{{ terms }}\". Vérifiez votre orthographe ou utilisez un mot ou une expression différente.",
       "results_with_count": {
-        "one": "{{ count }} résultat",
-        "other": "{{ count }} résultats",
+        "one": "{{ count }} résultat",
+        "other": "{{ count }} résultats",
         "many": "{{ count }} résultats",
-        "few": "{{ count }} résultat"
+        "few": "{{ count }} résultats"
       },
       "title": "Résultats de la recherche",
-      "page": "Page",
+      "page": "Pages",
       "products": "Produits",
-      "search_for": "Rechercher « {{ terms }} »",
+      "search_for": "Rechercher \"{{ terms }}”",
       "results_with_count_and_term": {
-        "one": "{{ count }} résultat trouvé pour « {{ terms }} »",
-        "other": "{{ count }} résultats trouvés pour « {{ terms }} »",
+        "one": "On a trouvé {{ count }} résultat pour \"{{ terms }}”",
+        "other": "Ils se sont retrouvés {{ count }} résultats pour \"{{ terms }}”",
         "many": "{{ count }} résultats trouvés pour « {{ terms }} »",
-        "few": "Ont été trouvés {{ count }} Résultats pour \"{{ terms }}”"
+        "few": "Ils se sont retrouvés {{ count }} résultats pour \"{{ terms }}”"
       },
       "results_pages_with_count": {
-        "one": "Page {{ count }}",
-        "other": "Pages {{ count }}",
+        "one": "{{ count }} page",
+        "other": "{{ count }} pages",
         "many": "Pages {{ count }}",
-        "few": "{{ count }} page"
+        "few": "{{ count }} pages"
       },
       "results_suggestions_with_count": {
         "one": "{{ count }} suggestion",
-        "other": "{{ count }} suggestions",
+        "other": "{{ count }} de suggestions",
         "many": "{{ count }} suggestions",
-        "few": "{{ count }} des suggestions"
+        "few": "{{ count }} de suggestions"
       },
       "results_products_with_count": {
-        "one": "Produit {{ count }}",
-        "other": "Produits {{ count }}",
+        "one": "{{ count }} produit",
+        "other": "{{ count }} produits",
         "many": "Produits {{ count }}",
         "few": "{{ count }} produits"
       },
@@ -357,11 +357,11 @@
     "contact": {
       "form": {
         "name": "Nom",
-        "email": "E-mail",
+        "email": "Courriel",
         "phone": "Numéro de téléphone",
         "comment": "Commentaire",
-        "send": "Envoyer",
-        "post_success": "Merci de nous avoir contactés. Nous vous répondrons dès que possible.",
+        "send": "Soumettre",
+        "post_success": "Merci de nous avoir contactés. Nous vous répondrons dans les plus brefs délais.",
         "error_heading": "Veuillez ajuster les éléments suivants :",
         "title": "Formulaire de contact"
       }
@@ -523,29 +523,29 @@
     }
   },
   "localization": {
-    "country_label": "Pays/région",
+    "country_label": "Pays/Région",
     "language_label": "Langue",
-    "update_language": "Mettre à jour la langue",
-    "update_country": "Mettre à jour le pays/la région",
+    "update_language": "Mettez à jour votre langue",
+    "update_country": "Mettez à jour votre pays/région",
     "search": "Rechercher",
     "popular_countries_regions": "Pays/régions populaires",
-    "country_results_count": "{{ count }} pays/régions trouvés"
+    "country_results_count": "{{ count }} pays/régions trouvés"
   },
   "customer": {
     "account": {
-      "title": "Compte",
+      "title": "compte",
       "details": "Détails du compte",
-      "view_addresses": "Voir les adresses",
+      "view_addresses": "Afficher les adresses",
       "return": "Retour aux détails du compte"
     },
-    "account_fallback": "Compte",
+    "account_fallback": "compte",
     "activate_account": {
-      "title": "Activer le compte",
-      "subtext": "Créez votre mot de passe pour activer le compte.",
+      "title": "Activez votre compte",
+      "subtext": "Créez un mot de passe pour activer votre compte.",
       "password": "Mot de passe",
       "password_confirm": "Confirmer le mot de passe",
-      "submit": "Activer le compte",
-      "cancel": "Décliner l'invitation"
+      "submit": "Activez votre compte",
+      "cancel": "Refuser l'invitation"
     },
     "addresses": {
       "title": "Adresses",
@@ -570,8 +570,8 @@
       "delete": "Supprimer",
       "delete_confirm": "Êtes-vous certain(e) de vouloir supprimer cette adresse ?"
     },
-    "log_in": "Connexion",
-    "log_out": "Déconnexion",
+    "log_in": "Connectez-vous",
+    "log_out": "Se déconnecter",
     "login_page": {
       "cancel": "Annuler",
       "create_account": "Créer un compte",
