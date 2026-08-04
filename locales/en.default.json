@@ -1071,8 +1071,22 @@
       },
       "customer_account": {
         "saved_address_option_description": {
-          "few": "You have {{count}} saved addresses."
-        }
+          "few": "You have {{count}} saved addresses.",
+          "one": "You have {{count}} address saved.",
+          "other": "You have {{count}} saved addresses."
+        },
+        "not_user_label": "You are not %{first_name}?",
+        "have_an_account_label": "Do you have an account?",
+        "sign_in_link_label": "Connect yourself",
+        "sign_out_link_label": "Log out",
+        "save_my_information_label": "Save this information for next time",
+        "invalid_address": "The selected address is invalid. %{update_address_link} or select another address.",
+        "incomplete_address": "The selected address is incomplete. %{update_address_link} or select another address.",
+        "rollup_label": "account",
+        "invalid_shipping_method_summary": "Select a shipping address to view available shipping methods",
+        "saved_address_option_link": "I want to use a saved address",
+        "saved_address_modal_title": "I want to use my saved address",
+        "rollup_accessibility_label": "Account related options"
       },
       "stock": {
         "unshippable_product": {
@@ -1093,7 +1107,17 @@
           "default_message": {
             "few": "The chosen delivery method is no longer available for these items."
           }
-        }
+        },
+        "page_title": "Inventory issues",
+        "title": "Not in stock",
+        "items_unavailable_notice": "Some items are no longer available.",
+        "product_column_header": "Products",
+        "quantity_column_header": "Quantity",
+        "price_column_header": "Price",
+        "status_column_header": "Condition",
+        "removed_from_cart_notice": "Removed from cart",
+        "sold_out_label": "Out of stock",
+        "reduced_label": "Reduced"
       },
       "order_summary": {
         "expand_component_information": {
@@ -1371,6 +1395,33 @@
         "state_placeholder": "State",
         "region_label": "Region",
         "region_placeholder": "Region"
+      },
+      "delivery_options": {
+        "pick_up_in_two_hours": "Ready usually in two hours",
+        "pick_up_in_four_hours": "Usually ready in 4 hours",
+        "pick_up_immediately": "Ready to pick up now",
+        "pick_up_next_day": "Ready for next day pickup",
+        "pick_up_in_one_hour": "Ready usually within an hour",
+        "pick_up_in_twenty_four_hours": "Usually ready within 24 hours",
+        "pick_up_in_two_to_four_days": "Usually ready in 2-4 days",
+        "pick_up_in_five_or_more_days": "Usually ready in over 5 days",
+        "pick_up_in_zero_to_two_hours": "Ready for pickup in 2 hours",
+        "pick_up_in_two_to_four_hours": "Ready for pickup in 4 hours",
+        "free_total_label": "Free of charge",
+        "shipping_address": "Shipping address",
+        "pick_up_locations": "Pick up locations",
+        "pickup_point_method_definition": "Ship to pickup point",
+        "retail_method_definition": "Retail transport",
+        "none_method_definition": "No shipping",
+        "subscription_pickup_information": "This will be the pickup location for all future orders in your subscription.",
+        "ship_to_address": "Shipping to the address",
+        "pick_up_from_store": "Pick up from the store",
+        "company_location_no_address_banner": "Orders shipped to locations without an address will be submitted for review.",
+        "pickup": "Lifting",
+        "pickup_store": "Store pickup",
+        "pickup_point": "Pick up point",
+        "pickup_point_map_title": "Map of pickup points",
+        "digital_product": "Digital product"
       }
     },
     "notices": {
