@@ -3696,7 +3696,63 @@
     "collections": {
       "sorting": {
         "manual": "Recommandé",
-        "best_selling": "Le best-seller"
+        "best_selling": "Le best-seller",
+        "az": "Par ordre alphabétique, A-Z",
+        "za": "Par ordre alphabétique, ZA",
+        "price_ascending": "Prix, de bas en haut",
+        "price_descending": "Prix, du haut au bas",
+        "date_ascending": "Date, de l'ancien au nouveau",
+        "date_descending": "Date, du nouveau à l'ancien",
+        "most_relevant": "Le plus pertinent"
+      }
+    },
+    "errors": {
+      "blank": "ne peut pas être vide",
+      "credit_card_session_expired": "L'autorisation de carte de crédit a expiré, saisissez à nouveau les informations de paiement. Aucun montant ne sera débité sur votre carte.",
+      "empty": "ne peut pas être vide",
+      "invalid_email": "doit être une adresse e-mail valide",
+      "discount_disabled": "Cette réduction a été désactivée",
+      "discount_expired": "Cette remise n'est plus valable",
+      "discount_limit_reached": "Cette réduction a atteint sa limite d'utilisation",
+      "discount_not_found": "Impossible de trouver une réduction valide correspondant au code saisi",
+      "customer_already_used_once_per_customer_discount_notice": "Cette réduction a atteint sa limite d'utilisation",
+      "gift_card_already_applied": "Le code a déjà été appliqué lors du paiement",
+      "gift_card_code_invalid": "Le code n'est pas valide",
+      "gift_card_currency_mismatch": "Cette carte cadeau ne peut pas être utilisée pour cet achat. Contactez-nous %{shop_name} pour sa réédition.",
+      "gift_card_depleted": "Il n'y a plus de fonds sur cette carte cadeau",
+      "gift_card_disabled": "La carte cadeau est désactivée",
+      "gift_card_expired": "La carte cadeau a expiré",
+      "invalid": "n'est pas valide",
+      "bad_domain": "contient un nom de domaine invalide",
+      "taken": "c'était déjà pris",
+      "contains_html_tags": "ne peut pas contenir de balises HTML",
+      "too_short": "est trop court (la longueur minimale est %{count} personnages)",
+      "too_long": "est trop long (la longueur maximale est %{count} personnages)",
+      "password_mismatch": "doit correspondre au mot de passe fourni",
+      "contains_spaces": "commence ou se termine par des espaces.",
+      "invalid_for_country": "non valable pour %{country}",
+      "invalid_for_country_and_province": "non valable pour %{province} et %{country}",
+      "invalid_province_in_country": "n'est pas une province valide de %{country}",
+      "invalid_state_in_country": "n'est pas un état valide de %{country}",
+      "invalid_region_in_country": "n'est pas une région valide de %{country}",
+      "less_than_or_equal_to": "doit être inférieur ou égal à %{count}",
+      "not_supported": "n'est pas accepté",
+      "full_name_required": "Entrez un prénom et un nom",
+      "invalid_for_card_type": "n'est pas valide",
+      "invalid_type": "désolé, nous n'acceptons pas les cartes de ce type",
+      "invalid_format": "le format n'est pas valide",
+      "expired": "expiré",
+      "invalid_start_date_or_issue_number_for_debit": "une date de début ou un numéro de problème valide est requis",
+      "invalid_expiry_year": "n'est pas une année d'expiration valide",
+      "reset_password_html": "Cette adresse email est déjà associée à un compte. Si ce compte est le vôtre, vous pouvez <a href=\"/account/login#recover\">réinitialiser votre mot de passe</a>",
+      "verify_email": "J'ai envoyé un email à %{customer_email}, cliquez sur le lien inclus pour vérifier votre adresse e-mail.",
+      "blocked_address": "Cet emplacement n'est pas pris en charge",
+      "product_not_available": "le produit n'est pas publié pour ce client.",
+      "shop_404": {
+        "title": "Créez un site e-commerce et vendez en ligne ! Logiciel de commerce électronique de Shopify",
+        "heros": {
+          "store_unavailable": "Cette boutique est actuellement indisponible."
+        }
       }
     }
   },
