@@ -840,10 +840,14 @@
           "subscription_free_with_frequency_label": "Spedizione gratuita %{delivery_frequency}"
         },
         "shipping_method_first_shipment_group_title": {
-          "few": "Prime spedizioni"
+          "few": "Le prime spedizioni",
+          "one": "Prima spedizione",
+          "other": "Le prime spedizioni"
         },
         "shipping_method_recurring_shipments_group_title": {
-          "few": "Spedizioni ricorrenti"
+          "few": "Spedizioni ricorrenti",
+          "one": "Spedizione ricorrente",
+          "other": "Spedizioni ricorrenti"
         },
         "title": "Trasporti",
         "shipping_method_title": "Metodo di spedizione",
@@ -867,7 +871,117 @@
         "subscription_shipping": "Spedizione basata su abbonamento",
         "shipping_method_one_time_purchase_group_title": "Acquisto una tantum",
         "shipping_method_subscription_group_title": "Abbonamento",
-        "one_time_purchase_shipping": "Spedizione unica"
+        "one_time_purchase_shipping": "Spedizione unica",
+        "estimated_delivery_time": "Consegna stimata: %{time}",
+        "estimated_delivery_time_range": "Consegna stimata: %{min_time}–%{max_time}",
+        "arrives_time": "Orario di arrivo: %{time}",
+        "arrives_time_range": "Gamma di arrivo: %{min_time}–%{max_time}",
+        "estimated_time": "Stimato: %{time}",
+        "estimated_time_range": "Stimato: %{min_time}-%{max_time}",
+        "delivery_date_range": "%{min_time}–%{max_time}",
+        "subscription_local_delivery": "Consegna locale in base all'abbonamento",
+        "subscription_pickup": "Ritiro in base all'abbonamento",
+        "delivery_today": "Consegna lo stesso giorno, %{time}",
+        "delivery_tomorrow": "Consegna il giorno successivo, %{time}",
+        "two_day_delivery": "Consegna in 2 giorni %{time}",
+        "delivery": "Consegna %{time}",
+        "duties_and_taxes_title": "Dazi doganali e tasse",
+        "shipping_information_required_notice": "Sono necessarie informazioni sulla spedizione. {{link}}.",
+        "shipping_information_redirect_link": "Inserisci le informazioni qui",
+        "loading_progressive_rates": "Alla ricerca di più tariffe...",
+        "no_other_methods_available": "Non sono disponibili altri metodi",
+        "duties_and_taxes_options": {
+          "ddu_title": "Paga alla consegna",
+          "ddu_caption": "Potrebbero essere applicati costi aggiuntivi",
+          "ddp_title": "Paga adesso",
+          "ddp_caption": "Per la consegna non sono previsti costi aggiuntivi"
+        },
+        "shipping_method_combinations": {
+          "without_separator": "%{firstMethod}, %{secondMethod}",
+          "with_separator": "%{rest}, %{current},",
+          "combination": "%{rest} e %{current}"
+        },
+        "shipping_used_as_billing_notice": "Questo indirizzo verrà utilizzato anche come indirizzo di fatturazione per questo ordine.",
+        "address_update": "Aggiorna indirizzo",
+        "shipping_address_title": "Spedire a",
+        "add_address": "Utilizza un indirizzo diverso",
+        "add_delivery_instructions": "Aggiungi le istruzioni per la consegna",
+        "edit": "Modifica",
+        "delete": "Elimina",
+        "address_more": "Altre azioni per questo indirizzo",
+        "address_edit": "Modifica indirizzo",
+        "address_delete": "Elimina l'indirizzo",
+        "address_confirm": "Sei sicuro di voler eliminare questo indirizzo dal tuo account?",
+        "address_form": {
+          "add_address": "Aggiungi un indirizzo",
+          "save": "Salva",
+          "cancel": "Annulla",
+          "generic_error": "Si è verificato un problema durante il salvataggio del tuo indirizzo. Riprova.",
+          "one_time_address_subtitle": "Utilizza un indirizzo univoco per questo ordine",
+          "edit": "Modifica indirizzo",
+          "update": "Salva le modifiche"
+        },
+        "different_shipping_method_summary": "Inserisci un indirizzo di spedizione diverso per visualizzare i metodi di spedizione disponibili",
+        "invalid_shipping_method_summary": "Inserisci un indirizzo di spedizione valido per visualizzare i metodi di spedizione disponibili",
+        "method_summary": {
+          "incomplete_address_entered": "Inserisci un indirizzo di spedizione completo per visualizzare i metodi di spedizione disponibili",
+          "incomplete_address_selected": "Seleziona un indirizzo di spedizione completo per visualizzare i metodi di spedizione disponibili"
+        },
+        "local_pickup": {
+          "search_address": "Cerca l'indirizzo",
+          "rollup_title": "Luogo di ritiro",
+          "rollup_accessibility_label": "Opzioni del luogo di ritiro"
+        },
+        "missing_shipping_address": "Manca l'indirizzo di spedizione",
+        "delivery_title": "Consegna",
+        "address_default": "Imposta come predefinito",
+        "split_shipping_merchandise_quantity_label_standard": "%{quantity} articoli",
+        "split_shipping_merchandise_quantity_label_additional": "+ ancora %{quantity}",
+        "split_shipping_merchandise_shipment_number": "Spedizione %{number} da %{total}",
+        "pre_order_ships_now": "Spedizione adesso",
+        "pre_order_ships_later": "Spedirà più tardi",
+        "pre_order_ships_date": "Viene spedito %{date}",
+        "split_shipping_shipped_by_shop": "Spedito da %{shop_name}",
+        "split_shipping_multiple_shipment_label": "Più spedizioni",
+        "split_shipping_shipping_label": "Metodo",
+        "split_shipping_multiple_shipment_quantity_label": "%{quantity} spedizioni",
+        "split_shipping_multiple_shipment_notice": "Il tuo ordine arriverà in più spedizioni",
+        "split_shipping_multiple_shipment_notice_one_time_purchase": "Il tuo ordine arriverà %{quantity} spedizioni",
+        "split_shipping_more_shipping_options": "Più opzioni di acquisto",
+        "split_shipping_shipment_number": "Spedizione %{number}",
+        "split_shipping_merchandise_quantity_label_inline_primary": "Quantità: %{quantity}",
+        "split_shipping_merchandise_quantity_label_inline": "%{merchandise_title} ×%{quantity}",
+        "split_shipping_option_free": "Spedizione gratuita",
+        "split_shipping_option_lowest_price": "Il prezzo più basso",
+        "split_shipping_option_fastest": "Il più veloce",
+        "split_shipping_option_recommended": "Consigliato",
+        "split_shipping_option_custom": "Personalizzato",
+        "default_description": "Spedizione in 1 giorno lavorativo",
+        "split_shipping_shipment_notice": "Il tuo ordine arriverà %{quantity_shipments}",
+        "unbranded_default_description": "Pronto per la spedizione",
+        "prime_not_available": {
+          "default": "La spedizione Prime non è disponibile per il tuo ordine. Le tue opzioni di spedizione sono state aggiornate."
+        },
+        "split_shipping_first_shipment_notice": "Il tuo primo ordine arriverà %{quantity_shipments}",
+        "shipping_method_rollup_accessibility_label": "Opzioni del metodo di spedizione",
+        "shipping_address_rollup_accessibility_label": "Opzioni dell'indirizzo di consegna",
+        "back": "Indietro",
+        "invalid_shipping_method_summary_selected": "Seleziona un indirizzo di spedizione diverso per visualizzare i metodi di spedizione disponibili",
+        "third_party_address_timeout": "Impossibile caricare gli indirizzi. Riprova o utilizza un indirizzo diverso.",
+        "third_party_address_error": "Si è verificato un errore durante il caricamento degli indirizzi selezionati. Inserisci l'indirizzo manualmente qui sotto.",
+        "third_party_payment_timeout": "Impossibile caricare i metodi di pagamento. Riprova o utilizza un altro metodo di pagamento.",
+        "third_party_payment_error": "Si è verificato un errore durante il caricamento del metodo di pagamento selezionato. Utilizza un altro metodo di pagamento.",
+        "add_shipping_address": "Aggiungi l'indirizzo di consegna",
+        "choose_new_address": "Scegli un nuovo indirizzo",
+        "unbranded_description_same_day": "Spedizione lo stesso giorno lavorativo",
+        "unbranded_description_with_fulfillment_days": {
+          "one": "Spedizione il giorno lavorativo successivo",
+          "other": "Spedito in %{count} giorni lavorativi",
+          "few": "Spedito in %{count} giorni lavorativi"
+        },
+        "unbranded_description_with_fulfillment_weeks": {
+          "one": "Spedito in %{count} settimana"
+        }
       },
       "general": {
         "map": {
