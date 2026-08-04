@@ -2117,13 +2117,19 @@
           "other": "Възникна проблем при повторното изпращане на карти за подарък. Опитайте отново или се свържете с нас."
         },
         "thank_you_unconfirmed_items_heading": {
-          "few": "Някои елементи не са потвърдени"
+          "few": "Някои елементи не са потвърдени",
+          "one": "1 елемент не е потвърден",
+          "other": "Някои елементи не са потвърдени"
         },
         "thank_you_unconfirmed_items_description": {
-          "few": "Тези операции бяха извършени безплатно"
+          "few": "Тези операции бяха извършени безплатно",
+          "one": "Тази операция беше извършена безплатно",
+          "other": "Тези операции бяха извършени безплатно"
         },
         "thank_you_item_label": {
-          "few": "%{count} изделия"
+          "few": "%{count} статии",
+          "one": "%{count} статия",
+          "other": "%{count} статии"
         },
         "thank_you_confirmed_items_with_email": {
           "few": "Скоро ще получите имейл съобщения за потвърждение с номера на вашите поръчки"
@@ -2132,7 +2138,9 @@
           "few": "Скоро ще получите съобщения за потвърждение с имената на вашите поръчки"
         },
         "items_fulfilled_by_store": {
-          "few": "Закупените артикули ще бъдат доставени от други магазини."
+          "few": "Закупените артикули ще бъдат доставени от други магазини.",
+          "one": "Закупените артикули ще бъдат изпратени от %{remote_shop_name}.",
+          "other": "Закупените артикули ще бъдат доставени от други магазини."
         },
         "thank_you_confirmed_orders_with_email_description": {
           "one": "Скоро ще получите имейл за потвърждение",
@@ -2394,7 +2402,41 @@
           "title": "ДДС фактури"
         },
         "thank_you_payments_app_pending_payment_description_provider_action_required_default": "Ще получите имейл, когато плащането бъде потвърдено.",
-        "verify_shop_account_title": "Проверете акаунта си в магазина"
+        "verify_shop_account_title": "Проверете акаунта си в магазина",
+        "verify_shop_account_message": "Вашата информация е запазена в магазина. Потвърдете акаунта си, за да ги използвате автоматично в милиони магазини.",
+        "verify_shop_account_cta": "Проверете акаунта си",
+        "verify_shop_account_confirmation": "Данните за плащането са запазени",
+        "company_location_section_title": "Фирма и местоположение",
+        "announcement": {
+          "close": "затвори",
+          "expand": "Разширение",
+          "collapse": "Ограничение"
+        },
+        "confirmed_items_count": "%{confirmed_count} от %{total_count} артикулите са потвърдени",
+        "thank_you_confirmed_orders_with_email": "Скоро ще получите отделни имейли за потвърждение с номера на поръчките",
+        "thank_you_confirmed_orders_with_phone": "Скоро ще получите отделни SMS съобщения за потвърждение с номера на поръчките",
+        "thank_you_confirmed_orders_with_email_and_phone": "Скоро ще получите отделни имейли за потвърждение с номера на поръчките",
+        "track_your_order_link_text": "Проследяване на поръчки",
+        "checkout_on_remote_shop_link_text": "Платете на %{remoteShopName}",
+        "confirmed_orders_title": "Вашите поръчки са потвърдени",
+        "thank_you_from_shop": "от %{shop_name}",
+        "payment_method_not_charged": "Без такса",
+        "thank_you_from_other_store": "От друг магазин",
+        "checkout_on_another_store": "Платете в друг магазин",
+        "thank_you_confirmed_with_email_description": {
+          "single_store": "Скоро ще получите имейл за потвърждение",
+          "multi_store": "Скоро ще получите отделни имейли за потвърждение от всеки магазин"
+        },
+        "thank_you_confirmed_with_phone_description": {
+          "single_store": "Скоро ще получите SMS за потвърждение",
+          "multi_store": "Скоро ще получите отделен SMS за потвърждение от всеки магазин"
+        },
+        "thank_you_confirmed_with_email_and_phone_description": {
+          "single_store": "Скоро ще получите имейл за потвърждение",
+          "multi_store": "Скоро ще получите отделни имейли за потвърждение от всеки магазин"
+        },
+        "checkout_again": "Платете отново",
+        "cashback_notice": "Ще получите възстановяването си след 30 дни"
       },
       "order_payment_collection": {
         "changes_summary": {
@@ -2860,6 +2902,21 @@
         "bank_account_label": "Банкова сметка",
         "credit_or_debit_card_label": "Кредит/дебит",
         "bogus_label": "Тествайте шлюза за плащане"
+      },
+      "review": {
+        "title": "Преглед",
+        "review_title": "Изпълнете поръчката",
+        "checkout_as_guest": "Завършете поръчката като гост",
+        "blocks": {
+          "contact_method_title": "Контакт",
+          "billing_address_title": "Таксуване",
+          "shipping_address_title": "Изпратете до",
+          "shipping_method_title": "Метод на доставка",
+          "payment_method_title": "Начин на плащане",
+          "change_link_label": "Променете",
+          "change_contact_method_link_label": "Променете информацията за контакт",
+          "change_billing_address_link_label": "Променете адреса за фактуриране"
+        }
       }
     },
     "notices": {
