@@ -853,8 +853,12 @@
           "few": "Αποστέλλεται μέσα %{count} εργάσιμες ημέρες"
         },
         "unbranded_description_with_fulfillment_weeks": {
-          "one": "Αποστέλλεται μέσα %{count} εβδομάδα"
-        }
+          "one": "Αποστέλλεται μέσα %{count} εβδομάδα",
+          "other": "Αποστέλλεται μέσα %{count} εβδομάδες",
+          "few": "Αποστέλλεται μέσα %{count} εβδομάδες"
+        },
+        "add_new_delivery_address": "Προσθέστε μια νέα διεύθυνση αποστολής",
+        "delivery_to": "Αποστολή στη διεύθυνση"
       },
       "general": {
         "map": {
@@ -881,7 +885,50 @@
             "shop_cash_unsupported_currency": "Το Shop Cash δεν δέχεται αυτό το νόμισμα.",
             "shop_cash_not_available": "Η μέθοδος πληρωμής καταστημάτων με μετρητά δεν γίνεται αποδεκτή για αυτήν την αγορά.",
             "shop_cash_not_found": "Δεν ήταν δυνατή η εύρεση του Shop Cash."
-          }
+          },
+          "session_identifier_not_unique_error": "Παρουσιάστηκε πρόβλημα με την παραγγελία σας. Δοκιμάστε ξανά την πληρωμή.",
+          "line_item_limit_reached": "Ο μέγιστος αριθμός στοιχείων έχει συμπληρωθεί.",
+          "only_empty_terms_accepted": "Αυτή η πολιτική δέχεται μόνο κενούς όρους."
+        },
+        "page_title": "Ολοκληρώστε την παραγγελία",
+        "error_page_title": "Σφάλμα",
+        "skip_to_content": "Μετάβαση στο περιεχόμενο",
+        "breadcrumb": "ίχνος",
+        "continue_button_label": "Συνέχεια",
+        "complete_purchase_button_label": "Ολοκληρώστε την παραγγελία",
+        "pay_now_button_label": "Πληρώστε τώρα",
+        "authenticate_purchase_button_label": "Έλεγχος πληρωμής",
+        "edit_link_label": "Επεξεργασία",
+        "all_rights_reserved": "Με την επιφύλαξη παντός δικαιώματος %{shop_name}",
+        "print_policies_link_label": "Εκτύπωση",
+        "cart": "Καλάθι",
+        "close_modal_label": "Κλείσιμο",
+        "close_notice_label": "Κλείσιμο",
+        "expand_notice_label": "Δείτε περισσότερα",
+        "continue_to_shipping_method": "Συνεχίστε την αποστολή",
+        "continue_to_payment_method": "Συνεχίστε στο ταμείο",
+        "continue_to_review": "Ελέγξτε την παραγγελία",
+        "back_to_cart": "Επιστροφή στο καλάθι",
+        "back_to_contact_information": "Επιστρέψτε στις πληροφορίες",
+        "back_to_shipping_method": "Επιστροφή στη ναυτιλία",
+        "back_to_payment_method": "Επιστροφή στην πληρωμή",
+        "choose_shipping_method": "Επιλέξτε τρόπο αποστολής",
+        "choose_payment_method": "Επιλέξτε τρόπο πληρωμής",
+        "choose_billing_address": "Επιλέξτε μια διεύθυνση χρέωσης",
+        "contact_us_html": "Επικοινωνήστε μαζί μας για περισσότερες πληροφορίες",
+        "autocomplete_title": "Προτάσεις",
+        "autocomplete_single_item": "1 τεμάχιο διαθέσιμο",
+        "autocomplete_multi_item": "{{number}} διαθέσιμα στοιχεία",
+        "autocomplete_selection": "{{number}} από {{total}}",
+        "autocomplete_close": "Κλείστε τις προτάσεις",
+        "tooltip_accessibility_label": "Περισσότερες πληροφορίες",
+        "forwarding_indicator": {
+          "new_window": "Ανοίγει σε νέο παράθυρο.",
+          "external": "Ανοίξτε έναν εξωτερικό ιστότοπο.",
+          "external_and_new_window": "Ανοίξτε τον εξωτερικό ιστότοπο σε νέο παράθυρο."
+        },
+        "checkout_context": {
+          "step_one": "%{shop_name} – Ολοκληρώστε την παραγγελία"
         }
       },
       "customer_account": {
@@ -1149,6 +1196,15 @@
         "shop_cash": {
           "currency_mismatch": "Το νόμισμα έχει αλλάξει. Δείτε το Shop Cash και την προσφορά."
         }
+      },
+      "change_currency": {
+        "credit_card_will_be_charged_html": "Θα γίνουν αντιληπτοί %{amount} από την κάρτα σας",
+        "currency_button_label": "%{currency} (%{currency_symbol})",
+        "payment_total_label": "Συνολική πληρωμή",
+        "conversion_rate": "1 %{from_currency_code} = %{rate} %{to_currency_code}",
+        "change_currency_link": "Αλλαγή σε %{currency_name}",
+        "card_provider_fx_charges_warning": "Ο εκδότης της κάρτας μπορεί να χρεώσει χρεώσεις για συναλλαγές σε %{currency_code}.",
+        "currency_not_supported_by_shop": "Το νόμισμα που επιλέξατε δεν είναι πλέον διαθέσιμο. Όλες οι τιμές είναι τώρα μέσα %{currency_code}."
       }
     },
     "notices": {
