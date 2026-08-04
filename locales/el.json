@@ -1481,6 +1481,68 @@
         "gift_card_store_credit": {
           "add_label": "Προσθέστε μια δωροκάρτα ή μια πίστωση καταστήματος",
           "manage_label": "Διαχειριστείτε δωροκάρτες ή πίστωση καταστήματος"
+        },
+        "saved_credit_card_cvv_verification": "Εισαγάγετε τον κωδικό ασφαλείας της κάρτας σας για λόγους επαλήθευσης.",
+        "order_edit_banner_updated_order_label": "Ενημερωμένη παραγγελία",
+        "afterpay_label": "Μετά την πληρωμή",
+        "cashapppay_label": "Pay App με μετρητά",
+        "card_nickname_label": "Ψευδώνυμο (προαιρετικό)",
+        "order_edit_banner_items_return_line_item_removed": {
+          "in_full": "Αφαιρέθηκε από την επιστροφή",
+          "with_quantities": "Αφαιρέθηκε από την επιστροφή: {{delta}}"
+        },
+        "order_edit_banner_single_item_return_line_item_removed": "Αφαιρέθηκε από την επιστροφή",
+        "order_edit_banner_multiple_items_return_line_item_removed": "Αφαιρέθηκε από την επιστροφή: {{amount}}",
+        "proposed_gateway_unavailable": "Η προτεινόμενη πύλη πληρωμής δεν είναι διαθέσιμη",
+        "pay_in_installments_split_pay_short": "4 πληρωμές αξίας %{amount}",
+        "payment_method_not_available_for_shipping_address_error": "Ο τρόπος πληρωμής δεν είναι διαθέσιμος για την επιλεγμένη διεύθυνση αποστολής. Επιλέξτε άλλο τρόπο πληρωμής.",
+        "shop_pay_ideal_unavailable_error": "ΙΔΑΝΙΚΟ | Το Wero δεν είναι διαθέσιμο για αυτήν την παραγγελία. Επιλέξτε άλλο τρόπο πληρωμής.",
+        "paypal_disconnect": "Αποσυνδεθείτε",
+        "paypal_wallet_label": "Πορτοφόλι PayPal",
+        "payment_method_update_failed": "Η ενημέρωση του τρόπου πληρωμής απέτυχε.",
+        "alternative_payment_currency_total_manual_payment_notice": "Σημείωση: Το σύνολο που μετατράπηκε είναι του %{amount_due}.",
+        "gift_cards_unavailable": "Η δωροκάρτα σας δεν μπορεί πλέον να εφαρμοστεί σε αυτήν την παραγγελία και έχει καταργηθεί",
+        "network_card_payment_options": "Επιλέξτε ένα δίκτυο καρτών",
+        "payment_flexibility_terms_id_mismatch": "Αναντιστοιχία αναγνωριστικού για ευέλικτους όρους πληρωμής",
+        "offsite_gateway_review_page_redirect_hint": "Αφού ελέγξουμε την παραγγελία, θα σας ανακατευθύνουμε στο %{gateway_label} για να ολοκληρώσετε την αγορά σας.",
+        "przelewy24_label": "Przelewy24",
+        "twint_label": "TWINT",
+        "mobilepay_label": "MobilePay",
+        "gift_card_checkbox_label": "Εφαρμόστε αυτήν τη δωροκάρτα",
+        "blik_label": "BLICK",
+        "vipps_label": "Μαστίγια",
+        "grabpay_label": "GrabPay",
+        "kcp_creditcard_label": "Πιστωτική κάρτα KCP",
+        "simulated_express_checkout": "Η περιοχή ή το πρόγραμμα περιήγησής σας δεν επιτρέπει την προεπισκόπηση των πορτοφολιών σας στο πρόγραμμα επεξεργασίας.",
+        "offsite_gateway_redirect_hint_no_button_label": "Θα σας ανακατευθύνουμε στο %{gateway_label} για να ολοκληρώσετε την αγορά σας.",
+        "swish_label": "Swish",
+        "network_card_persistence_description": "Το επιλεγμένο δίκτυο θα αποθηκευτεί με τον τρόπο πληρωμής σας για μελλοντικές συναλλαγές.",
+        "usdc_label": "USDC",
+        "payment_method_incompatible_with_payment_terms": "Ο τρόπος πληρωμής δεν είναι συμβατός με τους όρους πληρωμής.",
+        "payment_option": {
+          "accessibility_label": "Επιλέξτε μια επιλογή πληρωμής"
+        },
+        "billing_address_rollup_accessibility_label": "Επιλογές διεύθυνσης χρέωσης",
+        "payment_method_rollup_accessibility_label": "Επιλογές μεθόδου πληρωμής",
+        "crypto_modal": {
+          "header": "Πληρωμή σε %{shop_name} με %{total_price} USDC",
+          "error": {
+            "refresh": "Αναψυκτικό",
+            "close": "κλείσιμο",
+            "sandbox_error": "Παρουσιάστηκε σφάλμα",
+            "web_component_error": "Παρουσιάστηκε σφάλμα κατά τη φόρτωση αυτής της σελίδας"
+          }
+        },
+        "bank_account_type": {
+          "checking": "Επαλήθευση",
+          "savings": "οικονομίες"
+        },
+        "bank_account_choose": "Επιλέξτε έναν λογαριασμό για ασφαλή ολοκλήρωση αγοράς",
+        "bank_account_connect_another": "Συνδέστε έναν άλλο τραπεζικό λογαριασμό",
+        "bank_account_connect": "Συνδέστε έναν τραπεζικό λογαριασμό",
+        "bank_account_missing": "Η σύνδεση του τραπεζικού λογαριασμού είναι υποχρεωτική",
+        "crypto_payment_method": {
+          "description": "Συνδέστε το πορτοφόλι σας με ασφάλεια. Το υπόλοιπο και η διεύθυνσή σας δεν θα κοινοποιηθούν."
         }
       },
       "shipping_errors": {
