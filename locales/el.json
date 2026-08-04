@@ -2263,8 +2263,75 @@
           "payment_method_title": "Τρόπος πληρωμής",
           "change_link_label": "Τροποποίηση",
           "change_contact_method_link_label": "Αλλαγή στοιχείων επικοινωνίας",
-          "change_billing_address_link_label": "Αλλαγή διεύθυνσης χρέωσης"
+          "change_billing_address_link_label": "Αλλαγή διεύθυνσης χρέωσης",
+          "change_shipping_address_link_label": "Αλλαγή διεύθυνσης αποστολής",
+          "change_shipping_method_link_label": "Αλλαγή τρόπου αποστολής",
+          "change_payment_method_link_label": "Αλλαγή τρόπου πληρωμής",
+          "pick_up_in_store_shipping_method_html": "Παραλαβή από το κατάστημα · %{location_name}",
+          "purchase_order_number_title": "Αριθμός παραγγελίας αγοράς",
+          "change_purchase_order_number_label": "Αλλάξτε τον αριθμό παραγγελίας αγοράς",
+          "change_delivery_method_link_label": "Αλλαγή τρόπου παράδοσης",
+          "no_address": "(Χωρίς διεύθυνση)",
+          "no_purchase_order_number": "(παραγγελία αγοράς χωρίς αριθμό)",
+          "due_after_order_reviewed_html": "Προθεσμία μετά από έλεγχο παραγγελίας",
+          "review_title_free_order": "Ελέγξτε και ολοκληρώστε την παραγγελία σας",
+          "payment_method_saved_company_location": "Αποθηκεύστε την κάρτα για αυτήν την τοποθεσία",
+          "company_location": "Τοποθεσία εταιρείας",
+          "change_company_location_link_label": "Αλλαγή διεύθυνσης εταιρείας",
+          "pickup_items_at": {
+            "one": "Ανύψωση %{count} άρθρο από",
+            "other": "Ανύψωση %{count} άρθρα από",
+            "few": "Ανύψωση %{count} άρθρα από"
+          },
+          "ship_items_to": {
+            "one": "Ναυτιλία %{count} άρθρο στο",
+            "other": "Ναυτιλία %{count} άρθρα στο",
+            "few": "Ναυτιλία %{count} άρθρα στο"
+          },
+          "no_purchase_order_number_long": "Δεν υπάρχει αριθμός παραγγελίας αγοράς"
+        },
+        "block_title": "Ελέγξτε τις πληροφορίες σας",
+        "checkout_a_different_way": "Ολοκληρώστε την παραγγελία με άλλο τρόπο",
+        "item_header": {
+          "change_value": "Αλλάξτε την τιμή",
+          "section": "Ενότητα",
+          "value": "Αξία"
+        },
+        "review_and_confirm_title": "Ελέγξτε και επιβεβαιώστε",
+        "account_more_actions": "Περισσότερες ενέργειες για αυτόν τον λογαριασμό"
+      },
+      "marketing": {
+        "accept_marketing_checkbox_label": "Θέλω να λαμβάνω email με νέα και προσφορές",
+        "unsubscribe": {
+          "title": "Έχετε καταργήσει την εγγραφή σας",
+          "description": "Δεν θα λαμβάνετε πλέον ενημερώσεις μάρκετινγκ από εμάς."
+        },
+        "accept_sms_checkbox_label": "Θέλω να λαμβάνω μηνύματα κειμένου με νέα και προσφορές",
+        "sms": {
+          "disclaimer": {
+            "privacy_policy": "Πολιτική Απορρήτου",
+            "terms_of_service": "Όροι Χρήσης",
+            "description_html": "Εάν εγγραφείτε μέσω κειμένου, συμφωνείτε να λαμβάνετε τακτικά αυτοματοποιημένα μηνύματα μάρκετινγκ, συμπεριλαμβανομένων υπενθυμίσεων καλαθιού, στον αριθμό τηλεφώνου που παρέχεται. Η συγκατάθεση δεν αποτελεί προϋπόθεση για την πραγματοποίηση αγορών. Απαντήστε με STOP για απεγγραφή. Απαντήστε με HELP για βοήθεια. Η συχνότητα των μηνυμάτων ποικίλλει. Ενδέχεται να ισχύουν χρεώσεις μηνυμάτων και δεδομένων. Προβολή %{privacy_policy_link} και %{terms_of_service_link}.",
+            "description_transactional_html": "Ενδέχεται να λαμβάνετε μηνύματα κειμένου σχετικά με την επιβεβαίωση της παραγγελίας και τις ενημερώσεις παράδοσης. Απαντήστε με STOP για απεγγραφή. Απαντήστε με HELP για βοήθεια. Η συχνότητα των μηνυμάτων ποικίλλει. Ενδέχεται να ισχύουν χρεώσεις μηνυμάτων και δεδομένων. Δείτε το %{privacy_policy_modal_link} και %{terms_of_service_modal_link}."
+          },
+          "mobile_phone_number": "Αριθμός κινητού τηλεφώνου",
+          "get_offers_by_text": "Λάβετε προσφορές με μήνυμα κειμένου"
+        },
+        "post_accept_marketing_checkbox_label": "Έχετε εγγραφεί για να λαμβάνετε νέα και προσφορές μέσω email",
+        "pending_accept_marketing_checkbox_label": "Ελέγξτε τον λογαριασμό email σας για να επιβεβαιώσετε τη συνδρομή σας σε ειδήσεις και προσφορές",
+        "accept_shop_pay_marketing_checkbox_label": "Εγγραφείτε σε νέα και προσφορές από αυτό το κατάστημα",
+        "disclaimer": {
+          "privacy_policy": "Πολιτική Απορρήτου",
+          "terms_of_service": "Όροι Χρήσης"
         }
+      },
+      "shop_policies": {
+        "refund_policy": "Πολιτική επιστροφής χρημάτων",
+        "privacy_policy": "Πολιτική Απορρήτου",
+        "terms_of_service": "Όροι Χρήσης",
+        "legal_notice": "Νομική ειδοποίηση",
+        "shipping_policy": "Μεταφορές",
+        "terms_of_sale": "Όροι πώλησης"
       }
     },
     "notices": {
