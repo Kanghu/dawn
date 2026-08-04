@@ -2101,8 +2101,19 @@
           "approved_transaction": "{{card_number}} per simulare una transazione approvata",
           "declined_transaction": "{{card_number}} per simulare una transazione rifiutata",
           "gateway_failure": "{{card_number}} per simulare un guasto del gateway",
-          "additional_instructions": "Utilizza qualsiasi data di scadenza futura e qualsiasi codice di sicurezza a 3 cifre."
-        }
+          "additional_instructions": "Utilizza qualsiasi data di scadenza futura e qualsiasi codice di sicurezza a 3 cifre.",
+          "support_link": "Ottieni supporto"
+        },
+        "order_edit_banner_single_item_updated": "Aggiornato",
+        "order_edit_banner_previous_taxes_label": "Commissioni precedenti:",
+        "order_edit_banner_new_taxes_label": "Nuove tariffe:",
+        "order_edit_banner_no_taxes_label": "Nessuno",
+        "satispay_label": "Satispay",
+        "wechat_app_label": "WeChat",
+        "alternative_payment_currency_total_notice_disclosure": "%{shop_name} elaborare i pagamenti in %{shop_currency} (%{amount_due}).",
+        "alternative_payment_currency_total_manual_payment_notice_disclosure": "Paga a %{shop_name} dentro %{shop_currency} (%{amount_due}).",
+        "mb_way_label": "MODO MB",
+        "bizum_label": "Bizum"
       },
       "shipping_errors": {
         "shipping_method_not_available_generic": {
@@ -2396,6 +2407,49 @@
         "pickup_point": "Punto di ritiro",
         "pickup_point_map_title": "Mappa dei punti di ritiro",
         "digital_product": "Prodotto digitale"
+      },
+      "payment_summary": {
+        "gift_card_current_balance_notice": "Saldo attuale %{amount}",
+        "credit_card_expires_on_notice": "Scade alle %{month}/%{year}",
+        "express_payment_gateway_label": "esprimere",
+        "manual_payment_gateway_label": "Manuale",
+        "billing_address_title": "Indirizzo di fatturazione",
+        "free_label": "Gratuito"
+      },
+      "field_errors": {
+        "handle_phone_invalid": "Inserisci un numero di telefono valido",
+        "handle_email_invalid": "Inserisci un'e-mail valida",
+        "email_invalid": "Inserisci un'e-mail valida",
+        "email_or_phone_blank": "Inserisci un indirizzo email o un numero di telefono",
+        "email_or_phone_invalid": "Inserisci un indirizzo email o un numero di cellulare valido",
+        "address_first_name_blank": "Inserisci un nome",
+        "address_last_name_blank": "Inserisci un cognome",
+        "address_address1_blank": "Inserisci un indirizzo",
+        "address_address2_blank": "Inserisci un appartamento, una stanza, ecc.",
+        "address_city_blank": "Inserisci una città",
+        "address_country_blank": "Seleziona un paese/regione",
+        "address_country_not_supported": "Non effettuiamo spedizioni in questo paese/regione. Inserisci un nuovo indirizzo di spedizione e riprova.",
+        "address_province_blank": "Seleziona uno stato/provincia",
+        "address_company_blank": "Inserisci il nome di un'azienda",
+        "address_phone_blank": "Inserisci un numero di telefono valido",
+        "address_zip_blank": "Inserisci un codice postale/codice postale",
+        "address_zip_invalid_for_country": "Inserisci un codice postale/codice postale valido per %{country}",
+        "address_zip_invalid_for_country_and_province": "Inserisci un codice postale/codice postale valido per %{province}, %{country}",
+        "credit_card_name_blank": "Inserisci il tuo nome esattamente come è scritto sulla carta",
+        "credit_card_name_invalid": "Inserisci il tuo nome esattamente come è scritto sulla carta",
+        "credit_card_number_invalid": "Inserisci un numero di carta valido",
+        "credit_card_expiry_invalid": "Inserisci una data di scadenza valida",
+        "credit_card_month_invalid": "Inserisci un mese di scadenza valido",
+        "credit_card_year_invalid": "Inserisci un anno di scadenza valido",
+        "credit_card_start_invalid": "Inserisci una data di inizio della carta valida",
+        "credit_card_start_month_invalid": "Inserisci un mese di inizio carta valido",
+        "credit_card_start_year_invalid": "Inserisci l'anno iniziale della carta valida",
+        "credit_card_verification_value_blank": "Inserisci il CVV o il codice di sicurezza presente sulla carta",
+        "delivery_line_detail_changed": "Alcuni dettagli di consegna potrebbero essere cambiati. Controlla il metodo di spedizione e riprova.",
+        "reduction_code_code_not_found": "Inserisci un codice sconto o una carta regalo valida",
+        "reduction_code_discount_not_found": "Inserisci un codice sconto valido",
+        "reduction_code_gift_card_code_invalid": "Inserisci una carta regalo valida",
+        "reduction_code_gift_card_unusable": "Non è possibile utilizzare una carta regalo per acquistare un'altra carta regalo"
       }
     },
     "notices": {
