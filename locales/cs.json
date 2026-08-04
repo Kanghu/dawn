@@ -832,7 +832,81 @@
         "save_accessibility_label": "Uložit profil",
         "title": "Profil",
         "no_name_provided_accessibility_label": "Nebylo přidáno žádné jméno",
-        "email": "Email"
+        "email": "Email",
+        "errors": {
+          "name_too_long": "Název pole {{fieldName}} je příliš dlouhý (maximálně 255 znaků)",
+          "name_cannot_contain_url": "Pole {{fieldName}} nemůže obsahovat URL",
+          "name_cannot_contain_html_tags": "Pole {{fieldName}} nemůže obsahovat HTML tagy",
+          "email_cant_be_blank": "Sdělení e-mailové adresy je povinné",
+          "invalid_email_format": "Zadejte prosím platnou e-mailovou adresu"
+        },
+        "editable_email_help_text": "Tuto e-mailovou adresu použijte k přihlášení a aktualizaci objednávek."
+      },
+      "profile_update_confirmation_message": "Aktualizovaný profil",
+      "title": "Profil",
+      "people": {
+        "pagination": {
+          "load_more": "Zobrazit více",
+          "load_more_accessibility_label": "Zobrazit více lidí",
+          "loading_accessibility_label": "Načítání lidí"
+        }
+      },
+      "add_button": "Přidat",
+      "verify_new_email_modal": {
+        "title": "Zkontrolujte svůj nový e-mail",
+        "description": "Nyní zadejte 6místný kód zaslaný na váš nový e-mail:",
+        "one_time_password_label": "6místný kód",
+        "email_resend_button": "Znovu odešlete kód",
+        "email_resend_button_accessibility_label": "Znovu odešlete ověřovací kód",
+        "verify_button": "Podívejte se na to",
+        "verify_button_accessibility_label": "Zkontrolujte své jedinečné heslo",
+        "cancel_button": "Zrušit",
+        "cancel_button_accessibility_label": "Zrušit úpravu profilu",
+        "email_resend_button_success_toast_message": "Ověřovací kód byl odeslán",
+        "email_resend_button_failure_banner_message": "Nelze odeslat ověřovací kód"
+      },
+      "email_update_success_modal": {
+        "title": "Zkontrolujte svůj e-mail",
+        "description": "Email byl úspěšně aktualizován. Přesměrování na přihlášení."
+      },
+      "email_update_confirmation_message": "E-mailová adresa byla aktualizována na {{email}}",
+      "verify_current_email_modal": {
+        "cancel_button": "Zrušit",
+        "cancel_button_accessibility_label": "Zrušit úpravu profilu",
+        "description": "Zadejte 6místný kód zaslaný na vaši původní e-mailovou adresu:",
+        "email_resend_button_accessibility_label": "Znovu odešlete ověřovací kód",
+        "title": "Potvrďte, že jste to vy",
+        "verify_button": "Další",
+        "verify_button_accessibility_label": "Zkontrolujte svůj aktuální e-mail"
+      },
+      "marketing_preferences": {
+        "email_label": "Email",
+        "pending_confirmation": "Potvrďte kliknutím na odkaz v e-mailu.",
+        "resend_email": "Odešlete e-mail znovu",
+        "resend_email_success": "Odkaz byl odeslán",
+        "title": "Marketingové preference",
+        "unsubscribe_confirmation": {
+          "cancel": "Zrušit",
+          "description": "Již nebudete dostávat e-mailový marketing od {{shopName}}",
+          "title": "Odhlásit odběr e-mailů?",
+          "unsubscribe": "Odhlásit odběr"
+        },
+        "update_error": {
+          "description": "Při aktualizaci vašich marketingových předvoleb došlo k problému. Zkuste obnovit tuto stránku nebo zkontrolujte připojení k internetu."
+        },
+        "update_success": "Vaše marketingové předvolby byly aktualizovány"
+      }
+    },
+    "orders": {
+      "list_layout_accessibility_label": "Možnosti vzhledu",
+      "list_title": "Objednávky",
+      "order_list": {
+        "column_headers": {
+          "total": "Naprosto",
+          "order": "Objednat",
+          "actions_accessibility_label": "Akce",
+          "products_accessibility_label": "Produkty"
+        }
       }
     }
   },
