@@ -2589,8 +2589,9 @@
           "other": "%{count} átvételi pontok az Ön tartózkodási helye közelében"
         },
         "pickup_unavailable_banner_title": {
-          "few": "Tételeit nem lehet felemelni az emelési pontoktól",
-          "one": "A tételhez nem állnak rendelkezésre átvételi pontok"
+          "few": "Nem állnak rendelkezésre átvételi pontok a tételekhez",
+          "one": "A tételhez nem állnak rendelkezésre átvételi pontok",
+          "other": "Nem állnak rendelkezésre átvételi pontok a tételekhez"
         },
         "location_is_currently_closed": "Zárva",
         "business_hours": "Ütemezés",
@@ -3192,6 +3193,78 @@
       "session_errors": {
         "session_not_unique": "Hiba történt a rendelés feldolgozása során. Az áruházba való visszatéréshez frissítse ezt az oldalt.",
         "session_already_finished": "Ezt a rendelést már elküldték. Új rendelés indításához visszatérhet az üzletbe."
+      },
+      "error_page": {
+        "terminal": {
+          "title": "Hiba történt a rendelés teljesítése során",
+          "message": "Kérjük, frissítse az oldalt, vagy próbálja újra néhány perc múlva",
+          "action": {
+            "cta": "Frissítse az oldalt"
+          },
+          "request_id": "Kérelem azonosítója: {{requestId}}"
+        },
+        "embed_errors": {
+          "storefront_password_required": "Ez az üzlet jelszóval védett",
+          "customer_account_required": "A fizetés teljesítéséhez ügyfélszámla szükséges",
+          "cart_completed": "Ez a fizetés már megtörtént",
+          "invalid_cart": "Ez a kosár már nem érvényes",
+          "not_authorized": "A fizetéshez való hitelesítés sikertelen. Ellenőrizze az alkalmazás hitelesítő adatait",
+          "killswitch_enabled": "A fizetés átmenetileg nem elérhető",
+          "policy_violation": "A fizetés teljesítése nem lehetséges a házirend-konfigurációs korlátozások miatt",
+          "unrecoverable_failure": "A fizetés feltöltése sikertelen. Próbáld újra"
+        }
+      },
+      "notice_banner": {
+        "return_to_cart_link_text": "Vissza a kosárba",
+        "return_to_cart_to_update_quantities": "%{return_to_cart_link_text} mennyiségek frissítéséhez",
+        "subscription_changed": "Az egyik előfizetésed megváltozott.",
+        "company_location_changed": "A kosara frissült. Mielőtt elküldené, ellenőrizze megrendelését.",
+        "violations_title": "{{violation}} hiányzik vagy érvénytelen",
+        "individual_violations_title": {
+          "DeliveryViolations": "Szállítási cím",
+          "PaymentViolations": "Számlázási cím",
+          "OtherViolations": "Rendelési információk",
+          "UnhandledViolations": "Rendelési információk"
+        },
+        "all_violations_content": "Hívjon minket ill {{emailLink}} az adatok frissítéséhez és a rendelés befejezéséhez:",
+        "all_violations_email_link": "küldjön nekünk egy e-mailt",
+        "editable_shipping_address_violations_message_title": "Adja meg ezt az információt a rendelés befejezéséhez:",
+        "editable_shipping_address_violations_message_footer": "A hely címének végleges frissítéséhez {{emailLink}}.",
+        "editable_shipping_address_violations_email_link": "lépjen kapcsolatba velünk",
+        "company_location_changed_product_removed": "Kosarát frissítettük, mert néhány termék nem érhető el ezen a helyen. Mielőtt elküldené, ellenőrizze megrendelését.",
+        "shipping_address_incomplete_title": "A szállítási cím hiányos",
+        "calculating_shipping": "A szállítási díjak számítása még folyamatban van. Próbálja újra néhány másodperc múlva. Önt nem terhelték meg.",
+        "calculating_taxes": "Az adók kiszámítása még folyamatban van. Próbálja újra néhány másodperc múlva. Önt nem terhelték meg.",
+        "generic_processing_error": {
+          "title": "Hiba történt a rendelés feldolgozása során.",
+          "body": "Önt nem terhelték meg. Próbálja újra, vagy használjon másik fizetési módot."
+        },
+        "contact_information": {
+          "title": "Az elérhetőségi adatok helytelenek",
+          "header": "Az adatok frissítéséhez {{emailLink}}.",
+          "email_link": "lépjen kapcsolatba velünk"
+        },
+        "payment_method_not_available_with_payment_terms": "A kiválasztott fizetési mód már nem érhető el, mert a rendelés kifizetése most esedékes {{paymentTerms}}",
+        "payment_method_not_available_with_fulfillment_terms": "A kiválasztott fizetési mód már nem elérhető, mert a rendelés kifizetése a megrendelés teljesítésének időpontjában esedékes",
+        "payment_method_not_available_with_fixed_terms": "A kiválasztott fizetési mód már nem érhető el, mert a rendelés kifizetése később esedékes",
+        "payment_method_not_available_with_review_requirement": "A kiválasztott fizetési mód nem elérhető, mivel a fizetés a megrendelés visszaigazolását követően azonnal esedékes.",
+        "validation_errors_banner": {
+          "section_label": {
+            "delivery": "Szállítás",
+            "contact": "Kapcsolatfelvétel",
+            "payment": "Fizetés",
+            "billing": "Számlázás"
+          },
+          "heading": {
+            "one": "Van {{count}} hiba:",
+            "other": "Van {{count}} hibák:",
+            "few": "Van {{count}} hibák:"
+          },
+          "errors_in_section": {
+            "one": "{{count}} hiba a szakaszban {{section}}",
+            "other": "{{count}} szakasz hibái {{section}}"
+          }
+        }
       }
     },
     "notices": {
