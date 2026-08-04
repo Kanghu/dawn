@@ -2651,7 +2651,85 @@
         "no_pickup_locations_found": "Aucun lieu de retrait trouvé",
         "pickup_unavailable_banner_body": {
           "try_different_location": "Essayez un autre emplacement",
-          "ship_to_address": "adresse de livraison"
+          "ship_to_address": "adresse de livraison",
+          "there_are_no_stores": "Il n'y a aucun magasin à proximité de votre adresse ou vos articles ne sont pas disponibles pour le retrait.",
+          "ship_items": "Expédiez vos articles",
+          "search_elsewhere": "regarde ailleurs",
+          "ship_items_or_search_elsewhere": "%{ship_items} ou %{search_elsewhere}",
+          "search_elsewhere_standalone": "Cherche ailleurs"
+        },
+        "geolocation": {
+          "permission_not_allowed": "Autorisez le partage de position ou effectuez une recherche autrement."
+        },
+        "location_address_search_placeholder": "%{postal_code_label} ou adresse",
+        "location_closest": "L'emplacement le plus proche de votre article",
+        "toggle_multiple_locations": "d'autres poissons %{count} emplacements",
+        "location_information_far_away": {
+          "one": "j'ai trouvé %{count} emplacement avec votre article",
+          "other": "j'ai trouvé %{count} emplacements avec votre article",
+          "few": "j'ai trouvé %{count} emplacements avec votre article"
+        },
+        "location_nearby": {
+          "one": "Il y a %{count} emplacement à proximité avec votre article",
+          "other": "Il y a %{count} emplacements à proximité avec votre article",
+          "few": "Il y a %{count} emplacements à proximité avec votre article"
+        },
+        "location_nearby_short": {
+          "one": "%{count} emplacement à proximité avec votre article",
+          "other": "%{count} emplacements à proximité avec votre article",
+          "few": "%{count} emplacements à proximité avec votre article"
+        },
+        "location_far_away": {
+          "one": "%{count} emplacement avec votre article",
+          "other": "%{count} emplacements avec votre article",
+          "few": "%{count} emplacements avec votre article"
+        },
+        "toggle_more_locations": {
+          "one": "encore %{count} emplacement",
+          "other": "encore %{count} emplacements",
+          "few": "encore %{count} emplacements"
+        },
+        "pickup_unavailable_banner_title": {
+          "one": "Il n'y a aucun emplacement avec votre article",
+          "other": "Il n'y a aucun emplacement avec vos articles",
+          "few": "Il n'y a aucun emplacement avec vos articles"
+        },
+        "pickup_unavailable_banner_title_with_country": {
+          "one": "Dans %{country} il n'y a aucun emplacement avec votre article",
+          "other": "Dans %{country} il n'y a aucun emplacement avec vos articles",
+          "few": "Dans %{country} il n'y a aucun emplacement avec vos articles"
+        },
+        "title": "Emplacement",
+        "location_closest_one_item": "L'emplacement le plus proche de votre article.",
+        "location_closest_other_items": "L'emplacement le plus proche avec vos articles.",
+        "location_information_far_away_one_item": {
+          "one": "Il y a %{count} emplacement avec votre article",
+          "other": "Il y a %{count} emplacements avec votre article",
+          "few": "Il y a %{count} emplacements avec votre article"
+        },
+        "location_information_far_away_other_items": {
+          "one": "Il y a %{count} emplacement avec vos articles",
+          "other": "Il y a %{count} emplacements avec vos articles",
+          "few": "Il y a %{count} emplacements avec vos articles"
+        },
+        "location_nearby_one_item": {
+          "one": "Il y a %{count} emplacement à proximité avec votre article",
+          "other": "Il y a %{count} emplacements à proximité avec votre article",
+          "few": "Il y a %{count} emplacements à proximité avec votre article"
+        },
+        "location_nearby_other_items": {
+          "one": "Il y a %{count} emplacement à proximité avec vos articles",
+          "other": "Il y a %{count} emplacements à proximité avec vos articles",
+          "few": "Il y a %{count} emplacements à proximité avec vos articles"
+        },
+        "location_nearby_short_one_item": {
+          "one": "%{count} emplacement à proximité avec votre article",
+          "other": "%{count} emplacements à proximité avec votre article",
+          "few": "%{count} emplacements à proximité avec votre article"
+        },
+        "location_nearby_short_other_items": {
+          "one": "%{count} emplacement à proximité avec vos articles",
+          "other": "%{count} emplacements à proximité avec vos articles"
         }
       },
       "merchandise_unavailable_in_buyer_location": {
