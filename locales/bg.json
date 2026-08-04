@@ -4292,6 +4292,12 @@
       "order_list": {
         "items": {
           "few": "{{count}} изделия"
+        },
+        "column_headers": {
+          "total": "Напълно",
+          "order": "ред",
+          "actions_accessibility_label": "Действия",
+          "products_accessibility_label": "Продукти"
         }
       },
       "order_status": {
@@ -4325,7 +4331,9 @@
         "gift_card_resend_button": {
           "few": "Изпратете карти за подаръци отново"
         }
-      }
+      },
+      "list_layout_accessibility_label": "Опции за външен вид",
+      "list_title": "Поръчки"
     },
     "order_details": {
       "image_gallery": {
@@ -4514,7 +4522,69 @@
         "save_accessibility_label": "Запазване на профила",
         "title": "Профил",
         "no_name_provided_accessibility_label": "Няма добавено име",
-        "email": "Имейл"
+        "email": "Имейл",
+        "errors": {
+          "name_too_long": "Името на полето {{fieldName}} е твърде дълъг (максимум 255 знака)",
+          "name_cannot_contain_url": "Полето {{fieldName}} не може да съдържа URL",
+          "name_cannot_contain_html_tags": "Полето {{fieldName}} не може да съдържа HTML тагове",
+          "email_cant_be_blank": "Съобщаването на имейл адреса е задължително",
+          "invalid_email_format": "Моля, въведете валиден имейл адрес"
+        },
+        "editable_email_help_text": "Използвайте този имейл адрес, за да влезете и актуализирате поръчките."
+      },
+      "profile_update_confirmation_message": "Актуализиран профил",
+      "title": "Профил",
+      "people": {
+        "pagination": {
+          "load_more": "Покажи повече",
+          "load_more_accessibility_label": "Покажи повече хора",
+          "loading_accessibility_label": "Зареждане на хора"
+        }
+      },
+      "add_button": "Добавете",
+      "verify_new_email_modal": {
+        "title": "Проверете новия си имейл",
+        "description": "Сега въведете 6-цифрения код, изпратен на новия ви имейл:",
+        "one_time_password_label": "6-цифрен код",
+        "email_resend_button": "Изпратете отново кода",
+        "email_resend_button_accessibility_label": "Изпратете отново кода за потвърждение",
+        "verify_button": "Проверете го",
+        "verify_button_accessibility_label": "Проверете вашата уникална парола",
+        "cancel_button": "Отказ",
+        "cancel_button_accessibility_label": "Отказ от редактирането на профил",
+        "email_resend_button_success_toast_message": "Кодът за потвърждение е изпратен",
+        "email_resend_button_failure_banner_message": "Не може да се изпрати код за потвърждение"
+      },
+      "email_update_success_modal": {
+        "title": "Проверете имейла си",
+        "description": "Имейлът е актуализиран успешно. Пренасочва към влизане."
+      },
+      "email_update_confirmation_message": "Имейл адресът е актуализиран на {{email}}",
+      "verify_current_email_modal": {
+        "cancel_button": "Отказ",
+        "cancel_button_accessibility_label": "Отказ от редактирането на профил",
+        "description": "Въведете 6-цифрения код, изпратен на първоначалния ви имейл адрес:",
+        "email_resend_button_accessibility_label": "Изпратете отново кода за потвърждение",
+        "title": "Потвърдете, че сте вие",
+        "verify_button": "Следваща",
+        "verify_button_accessibility_label": "Проверете текущия си имейл"
+      },
+      "marketing_preferences": {
+        "email_label": "Имейл",
+        "pending_confirmation": "Кликнете върху връзката в имейла, за да потвърдите.",
+        "resend_email": "Изпратете отново имейла",
+        "resend_email_success": "Линкът е изпратен",
+        "title": "Маркетингови предпочитания",
+        "unsubscribe_confirmation": {
+          "cancel": "Отказ",
+          "description": "Вече няма да получавате имейл маркетинг от {{shopName}}",
+          "title": "Отмяна на абонамента за имейли?",
+          "unsubscribe": "Отписване"
+        },
+        "update_error": {
+          "description": "Възникна проблем при актуализирането на вашите маркетингови предпочитания. Опитайте да обновите тази страница или проверете вашата интернет връзка."
+        },
+        "update_success": "Вашите маркетингови предпочитания са актуализирани"
       }
     }
   },
