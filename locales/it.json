@@ -1712,10 +1712,14 @@
           "other": "Aggiunto/i: %{count}"
         },
         "discount_show_more_warnings": {
-          "few": "Mostra di più %{count}"
+          "few": "Mostra di più %{count}",
+          "one": "Mostra di più %{count}",
+          "other": "Mostra di più %{count}"
         },
         "discount_codes_removed_summary": {
-          "few": "%{count} i codici sconto sono stati rimossi"
+          "few": "%{count} i codici sconto sono stati rimossi",
+          "one": "%{count} il codice sconto è stato rimosso",
+          "other": "%{count} i codici sconto sono stati rimossi"
         },
         "amazon_payments_label": "AmazonPaga",
         "amazon_payments_login_hint": "Ti verrà richiesto di accedere con Amazon.",
@@ -2043,7 +2047,61 @@
         "bank_account_connect": "Collega un conto bancario",
         "bank_account_missing": "Il collegamento del conto bancario è obbligatorio",
         "crypto_payment_method": {
-          "description": "Collega il tuo portafoglio in modo sicuro. Il tuo saldo e il tuo indirizzo non verranno condivisi."
+          "description": "Collega il tuo portafoglio in modo sicuro. Il tuo saldo e il tuo indirizzo non verranno condivisi.",
+          "tooltip": "Il tuo indirizzo e il saldo del tuo portafoglio non verranno condivisi; potrà essere detratto solo l'importo richiesto",
+          "cashback_descriptor": {
+            "one": "Riceverai il rimborso dopo %{count} giorno",
+            "other": "Riceverai il rimborso dopo %{count} giorni",
+            "few": "Riceverai il rimborso dopo %{count} giorni"
+          }
+        },
+        "usdc_cashback_title": "%{incentive_percentage}% di rimborso",
+        "usdc_cashback_additional_info": "Paga con USDC su Base e ricevi %{incentive_percentage}% di ritorno al portafoglio in 30 giorni.",
+        "usdc_cashback_terms": "Si applicano termini e limiti",
+        "separate_payments_label": "I tuoi articoli provengono da più negozi. L'importo del pagamento sarà inserito %{separate_payments_link}.",
+        "separate_payments_text": "pagamenti separati",
+        "payments": "Pagamenti",
+        "business_customer_with_bank_account_vaulting_payment_label": "Salva questo metodo di pagamento al momento del pagamento e autorizza %{company} per addebitare sul tuo conto gli acquisti futuri che autorizzi per questa località, autorizzazione valida fino all'annullamento. Il metodo di pagamento può essere utilizzato da tutti i contatti assegnati a questa sede.",
+        "new_bank_account_disclaimer": "Il completamento dell'ordine implica l'autorizzazione %{shop_name} ad addebitare il conto sottostante tramite ACH, nell'importo indicato e all'ora indicata.",
+        "bank_account_disclaimer": "L'elaborazione dei pagamenti ACH può richiedere fino a 4 giorni lavorativi.",
+        "bank_account_vaulted_company_location": "Conto bancario salvato per questa posizione",
+        "bank_account_generic_error": "Impossibile aggiungere il conto bancario. Riprova più tardi.",
+        "default": "Predefinito",
+        "continue_to_guest_checkout": "Procedi al checkout come visitatore",
+        "add_payment_method": "Aggiungi metodo di pagamento",
+        "choose_new_payment_method": "Scegli un nuovo metodo di pagamento",
+        "add_new_payment_method": "Aggiungi un nuovo metodo di pagamento",
+        "discount_codes_modified_summary": {
+          "one": "%{count} il codice sconto è stato modificato",
+          "other": "%{count} i codici sconto sono stati modificati",
+          "few": "%{count} i codici sconto sono stati modificati"
+        },
+        "discount_codes_removed_or_modified_summary": {
+          "one": "%{count} il codice sconto è stato rimosso o modificato",
+          "other": "%{count} i codici sconto sono stati rimossi o modificati",
+          "few": "%{count} i codici sconto sono stati rimossi o modificati"
+        },
+        "multiple_primary_payment_not_allowed": "Metodi di pagamento non validi",
+        "purchase_options_subscription_agreement_label": "Il tuo carrello contiene un abbonamento con rinnovo automatico. Cliccando su \"%{button_label}”, %{consent_text} %{cancellation_instructions}",
+        "purchase_options_subscription_consent_text": "accetti espressamente e affermativamente che ti verranno addebitati automaticamente gli importi ricorrenti indicati nel carrello (più spese di spedizione e tasse) fino alla risoluzione o all'annullamento dei tuoi abbonamenti.",
+        "purchase_options_subscription_cancellation_instructions": "%{cancel_text} Si prega di consultare %{cancellation_policy_label}.",
+        "purchase_options_subscription_cancel_text": "Puoi annullare in qualsiasi momento accedendo al tuo account o contattando il negozio.",
+        "vault_for_payment_later": {
+          "pay_button_label": "Effettua l'ordine",
+          "notice": "Al momento non ti verrà addebitato alcun importo. Continuando a pagare, accetti che il tuo metodo di pagamento venga addebitato al momento dell'elaborazione dell'ordine."
+        },
+        "alipay_label": "Alipay",
+        "wechat_pay_label": "WeChat paga",
+        "oxxo_label": "OXXO",
+        "pay_with_credit_card": "Paga con carta di credito",
+        "pay_with_debit_card": "Paga con carta di debito",
+        "bogus_test_checkout": {
+          "title": "Istruzioni per la prova",
+          "intro": "Utilizza questi valori per testare il checkout:",
+          "approved_transaction": "{{card_number}} per simulare una transazione approvata",
+          "declined_transaction": "{{card_number}} per simulare una transazione rifiutata",
+          "gateway_failure": "{{card_number}} per simulare un guasto del gateway",
+          "additional_instructions": "Utilizza qualsiasi data di scadenza futura e qualsiasi codice di sicurezza a 3 cifre."
         }
       },
       "shipping_errors": {
