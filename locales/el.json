@@ -4102,7 +4102,73 @@
       "marketing_checkmark_label": "Έχετε εγγραφεί για να λαμβάνετε νέα και προσφορές μέσω email",
       "shop_order_tracking": {
         "download_shop_to_track": "Κατεβάστε το Shop για να παρακολουθείτε το πακέτο σας",
-        "track_order_with_shop": "Παρακολουθήστε την παραγγελία σας με το Shop"
+        "track_order_with_shop": "Παρακολουθήστε την παραγγελία σας με το Shop",
+        "title_header": "Σάρωση με το τηλέφωνό σας",
+        "real_time_delivery_updates": "Μετά την αποστολή της παραγγελίας σας, το Shop θα σας στείλει ενημερώσεις σε πραγματικό χρόνο σχετικά με την παράδοση.",
+        "real_time_delivery_updates_with_gift": "Λάβετε ενημερώσεις αποστολής σε πραγματικό χρόνο και δώρο {{promoAmount}} να ξοδέψετε στην εφαρμογή Shop.",
+        "shop_app_promo_amount_off": "Πάρτε ένα δώρο από {{promoAmount}}",
+        "shop_app_promo_text": "{{amountOff}} να ξοδέψετε στην εφαρμογή Shop"
+      },
+      "shop_pay": {
+        "order_completed_with": "Η παραγγελία ολοκληρώθηκε με",
+        "learn_more": "Μάθετε περισσότερα",
+        "usdc_rewards_terms": "Δείτε τους Όρους Ανταμοιβών USDC"
+      },
+      "edit_summary": {
+        "added": "Προστέθηκε",
+        "added_with_quantity": "Προστέθηκαν: {{quantity}}",
+        "removed": "Καταργήθηκε",
+        "removed_with_quantity": "Καταργήθηκαν: {{quantity}}",
+        "updated_at": "Η παραγγελία σας ενημερώθηκε στις {{date}}",
+        "returned": "Επέστρεψε",
+        "returned_with_quantities": "Επιστράφηκε(ες): {{delta}} από {{total}}",
+        "removed_with_quantities": "Καταργήθηκαν: {{delta}} από {{total}}",
+        "return_line_item_removed": "Αφαιρέθηκε από την επιστροφή",
+        "return_line_item_removed_with_quantities": "Έχει αφαιρεθεί {{delta}} από την επιστροφή"
+      },
+      "pickup": {
+        "pickup": "Ανύψωση",
+        "pickup_location": "Τοποθεσία παραλαβής",
+        "pickup_point": "Σημείο παραλαβής"
+      },
+      "paid_with_shop_pay_installments_card": {
+        "paid_with_shop_pay_installments": "Πληρωμή με Rate Shop Pay",
+        "description": "Μείνετε ενημερωμένοι για το πρόγραμμα πληρωμών σας με υπενθυμίσεις στην εφαρμογή Αγορά.",
+        "payment_reminders_button": "Λάβετε υπενθυμίσεις πληρωμής",
+        "desktop_qr_code_content": {
+          "title": "Σάρωση για να βρείτε υπενθυμίσεις",
+          "description": "Λάβετε υπενθυμίσεις τιμών καταστήματος."
+        },
+        "title": "Υπενθυμίσεις πληρωμής για πληρωμές με δόσεις με Shop Pay"
+      },
+      "order_details": "Στοιχεία παραγγελίας",
+      "contact_information": "Στοιχεία επικοινωνίας",
+      "login_to_view_all_order_details": "Συνδεθείτε για να δείτε όλες τις λεπτομέρειες της παραγγελίας.",
+      "log_in": "Συνδέστε τον εαυτό σας",
+      "paid_amount": "Ποσό που καταβλήθηκε",
+      "remaining_amount": "Υπόλοιπο ποσό",
+      "order_details_skeleton_accessibility_label": "Συνδεθείτε για να δείτε όλες τις λεπτομέρειες της παραγγελίας.",
+      "tip": "Συμβουλές",
+      "logged_in_account_no_permission_to_order": "Έχετε συνδεθεί ως {{email}}. Αυτός ο λογαριασμός δεν έχει άδεια διαχείρισης αυτής της παραγγελίας.",
+      "log_in_to_a_different_account": "Συνδεθείτε σε άλλο λογαριασμό",
+      "duties": "Τελωνειακοί δασμοί",
+      "ok_duties_tooltip": "Αυτή η παραγγελία αποστέλλεται από άλλη χώρα, επομένως οι τελωνειακές χρεώσεις έχουν προστεθεί στο σύνολο της παραγγελίας.",
+      "error_duties_tooltip": "Αυτή η παραγγελία αποστέλλεται από άλλη χώρα, επομένως ενδέχεται να χρεωθούν δασμοί και φόροι κατά την παράδοση.",
+      "zero_duties_tooltip": "Αυτή η παραγγελία αποστέλλεται από άλλη χώρα. Δεν επιβάλλονται τελωνειακοί δασμοί για παραγγελίες αυτής της αξίας.",
+      "group_title_label": "Μέρος του: {{groupTitle}}",
+      "fees": {
+        "restocking_fee": "Τέλος ανεφοδιασμού",
+        "return_shipping_fee": "Αποστολή επιστροφής"
+      },
+      "vat_invoices": {
+        "title": "τιμολόγια ΦΠΑ",
+        "label": "ΦΠΑ"
+      },
+      "taxes_included": "Συμπεριλαμβανομένων {{amount}} που αντιπροσωπεύει φόρους",
+      "duties_and_taxes_included": "Το σύνολο περιλαμβάνει όλους τους δασμούς και άλλους φόρους. Δεν υπάρχει επιπλέον κόστος για την παράδοση.",
+      "grouped_view_components": {
+        "expand_line_items": "Εμφάνιση {{count}} άρθρα",
+        "collapse_line_items": "Απόκρυψη {{count}} άρθρα"
       }
     },
     "B2B": {
