@@ -1898,15 +1898,34 @@
       "processing": {
         "wait": {
           "medium": {
-            "few": "Your order is being processed. The estimated wait time is %{count} minutes."
-          }
+            "few": "Your order is being processed. Estimated waiting time is %{count} minutes.",
+            "one": "Your order is being processed. Estimated waiting time is %{count} per minute.",
+            "other": "Your order is being processed. Estimated waiting time is %{count} minutes."
+          },
+          "short": "Your order is being processed.",
+          "long": "You will receive an email as soon as your order is processed. There is currently a high volume of orders.",
+          "no_auto_refresh_html": "If you are not automatically redirected, %{link}.",
+          "refresh_this_page": "refresh this page"
         },
         "redirecting_page_title": "Redirecting...",
         "redirecting_title": "Redirecting...",
         "redirecting_notice": "Please wait while we redirect you.",
         "complete_your_purchase_title": "Complete the purchase",
         "continue_to_payment_gateway_notice": "Proceed to checkout to add your payment information.",
-        "continue_to_payment_gateway_button_label": "Continue to checkout"
+        "continue_to_payment_gateway_button_label": "Continue to checkout",
+        "complete_your_purchase_title_error": "Correct your payment information",
+        "continue_to_payment_gateway_notice_error": "Your payment information could not be verified.",
+        "continue_to_payment_gateway_button_label_error": "Update payment information",
+        "page_title": "The order is being processed",
+        "title": "The order is being processed",
+        "your_order_has_been_received_title": "Thank you for the order",
+        "you_will_receive_confirmation": "We are currently receiving many orders. You should receive confirmation by email or text shortly. If you don't receive it in the next hour, let us know.",
+        "you_will_not_be_charged": "You will not be charged for now",
+        "action_required": "Action required",
+        "redirecting_to_bank": "It redirects to {{bank}}",
+        "modal_notice": "We contact {{paymentMethod}}",
+        "remote_shops_payments_processing": "Payments are processed",
+        "remote_checkout_count": "%{current} from %{total}"
       },
       "thank_you": {
         "login_reorder_link_text": {
@@ -1962,7 +1981,54 @@
           "one": "You will soon receive a confirmation email",
           "other": "You will soon receive separate confirmation emails from each store",
           "few": "You will soon receive separate confirmation emails from each store"
-        }
+        },
+        "title": "Thank you for your purchase!",
+        "confirmation_email_sent_text": "A confirmation email has been sent to %{email}",
+        "return_to_store_link_label": "Continue shopping",
+        "print_link_label": "Print the receipt",
+        "payment_information_title": "Payment information",
+        "shipping_information_title": "Shipping information",
+        "page_title": "Thank you, %{display_name}!",
+        "page_title_no_name": "Thank you!",
+        "cancelled_page_title": "Order cancelled",
+        "customer_information_title": "Order details",
+        "contact_information_title": "Contact information",
+        "billing_address_title": "Billing address",
+        "shipping_address_title": "Shipping address",
+        "shipping_address_map_title": "Google Map shows the shipping address via a pin marker: %{address}",
+        "payment_method_title": "Payment method",
+        "shipping_method_title": "Shipping method",
+        "tracking_number": "Tracking Number:",
+        "company_tracking_number": "Tracking number %{company}:",
+        "estimated_arrival": "Estimated delivery date: ",
+        "re-order": "Order the same items again",
+        "confirmed": "Confirmed",
+        "thank_you_title": "Your order is confirmed",
+        "thank_you_confirmed_order_with_email": "You will receive a confirmation email with your order number shortly.",
+        "thank_you_confirmed_order_with_phone": "You will receive a confirmation text message with your order number shortly.",
+        "thank_you_confirmed_order_with_email_and_phone": "You will receive a confirmation email with your order number shortly.",
+        "thank_you_confirmed_order_with_email_pick_up": "You will receive an email when your order is ready for pickup.",
+        "thank_you_confirmed_order_with_phone_pick_up": "You will receive a text message when your order is ready for pickup.",
+        "thank_you_confirmed_order_with_email_and_phone_pick_up": "You will receive an email when your order is ready for pickup.",
+        "thank_you_confirmed_order_with_missing": "Contact us by email or phone to receive an order confirmation.",
+        "order_status_confirmed_order_with_email": "You will receive an email when your order is ready.",
+        "order_status_confirmed_order_with_phone": "You may receive a text message when your order is ready.",
+        "order_status_confirmed_order_with_email_and_phone": "You will receive an email when your order is ready.",
+        "order_status_confirmed_order_with_email_pick_up": "You will receive an email when your order is ready for pickup.",
+        "order_status_confirmed_order_with_phone_pick_up": "You will receive a text message when your order is ready for pickup.",
+        "order_status_confirmed_order_with_email_and_phone_pick_up": "You will receive an email and text message when your order is ready for pickup.",
+        "order_status_updates_with_email": "You will receive shipping and delivery updates by email.",
+        "order_status_updates_with_phone": "You may receive shipping and delivery updates via text messages.",
+        "order_status_updates_with_email_and_phone": "You will receive shipping and delivery updates by email.",
+        "order_status_updates_with_missing": "Choose how you want to receive shipping updates.",
+        "confirmed_title": "Your order is confirmed",
+        "confirmed_description": "We have accepted your order and are preparing it. Check back on this page for order status updates.",
+        "ready_for_pickup_title": "Your order is ready for pickup",
+        "ready_for_pickup_description": "Your order is ready for pickup. When picking up the order, it is necessary to present the order confirmation.",
+        "order_updates_title": "Order updates",
+        "order_updates_description_html": "Updates will be sent to %{customer_contact}",
+        "order_updates_current_step_prefix": "Current step: ",
+        "order_updates_past_step_prefix": "Previous step: "
       },
       "order_payment_collection": {
         "changes_summary": {
@@ -2312,6 +2378,47 @@
         "or_pay_another_way": "Or pay in another way",
         "or_check_out_another_way": "Or complete the order in another way",
         "or_pay_with_credit_card": "Or pay with a credit card"
+      },
+      "failed_payment": {
+        "page_title": "The payment could not be processed",
+        "title": "The payment could not be processed",
+        "payment_not_processed_title": "Your payment could not be processed",
+        "payment_not_processed_text": "You have not been charged. Return to your cart to complete your purchase.",
+        "return_to_cart_button_label": "Return to cart"
+      },
+      "payment_gateway": {
+        "credit_card_label": "Credit card",
+        "bank_deposit_label": "Bank deposit",
+        "cash_on_delivery_label": "Cash on delivery",
+        "money_order_label": "Payment order",
+        "debit_card_label": "Debit card",
+        "deferred_payment_label": "Choose your payment method later",
+        "generic_payment_terms": "You must comply with the conditions {{translatedName}}. Payment is due on {{dueDate}}.",
+        "login_prompt": {
+          "no_access": {
+            "message": "{{logIn}} to an account that has access to this location to add or use saved payment methods.",
+            "link": "Connect yourself"
+          }
+        },
+        "direct_payment_terms": "You must comply with the conditions {{translatedName}}. Your card will be charged in {{dueDate}}.",
+        "order_due_on_fulfillment_choose_later": "Payment will be due as soon as the order is fulfilled.",
+        "order_due_on_fulfillment_payment": "Your card will be charged as soon as the order is fulfilled.",
+        "draft_order_payment_due_later_no_terms": "Payment will be due as soon as the order is confirmed.",
+        "draft_order_payment_due_later_no_terms_payment_selected": "Your card will be charged as soon as the order is confirmed.",
+        "draft_order_payment_due_later_terms": "You must comply with the conditions {{translatedName}} as soon as the order is confirmed.",
+        "draft_order_payment_due_on_fulfillment": "Payment will be due as soon as the order is confirmed and fulfilled.",
+        "fixed_payment_label": "Your payment will be due on {{dueDate}}.",
+        "fixed_direct_payment_terms": "Your card will be charged on {{dueDate}}.",
+        "order_deposit_due_now": "Amount of {{depositAmount}} it is due today. Balance is subject to terms {{translatedName}} and is due at {{dueDate}}.",
+        "order_deposit_due_on_fulfillment": "Amount of {{depositAmount}} it is due today. The balance will be due as soon as the order is fulfilled.",
+        "order_due_on_receipt_choose_later": "Your payment will be due upon receipt.",
+        "draft_order_deposit_due_later": "Payment in the amount of {{depositAmount}} will be due as soon as the order is confirmed. The balance will be due in accordance with the terms {{translatedName}}.",
+        "draft_order_deposit_due_on_fulfillment": "Payment in the amount of {{depositAmount}} will be due as soon as the order is confirmed. The balance will be due as soon as the order is fulfilled.",
+        "order_deposit_due_on_receipt": "Amount of {{depositAmount}} it is due today. The balance will be due later.",
+        "order_deposit_due_on_fixed_date": "Amount of {{depositAmount}} it is due today. The balance will be due at {{dueDate}}.",
+        "bank_account_label": "Bank account",
+        "credit_or_debit_card_label": "Credit/debit",
+        "bogus_label": "Test payment gateway"
       }
     },
     "notices": {
