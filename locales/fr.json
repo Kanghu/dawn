@@ -2602,147 +2602,16 @@
       },
       "local_pickup": {
         "location_information": {
-          "few": "je suis proche de toi %{count} emplacements avec stock",
-          "one": "je suis proche de toi %{count} emplacement avec stock",
-          "other": "je suis proche de toi %{count} emplacements avec stock"
+          "few": "Exister %{count} magasins avec du stock à proximité de %{address}"
         },
         "paginator": {
           "label": {
-            "few": "%{first} - %{last} de %{count} magasins",
-            "one": "%{first} - %{last} de %{count} boutique",
-            "other": "%{first} - %{last} de %{count} magasins"
-          },
-          "accessibility_label": "Pagination de récupération locale",
-          "previous": "Page précédente",
-          "next": "Page suivante"
-        },
-        "reveal_more_label": {
-          "few": "Afficher plus %{count} (de) emplacements",
-          "one": "Afficher plus %{count} emplacement",
-          "other": "Afficher plus %{count} (de) emplacements"
-        },
-        "toggle_location": "Changer d'emplacement",
-        "or": "OU",
-        "cancel": "Annuler",
-        "your_location": "votre emplacement",
-        "search_button": "Trouver des magasins",
-        "no_stores_found": "Aucun magasin trouvé",
-        "could_not_resolve_address": "Votre adresse n'a pas pu être trouvée. Veuillez réessayer ou utiliser une autre adresse",
-        "location_address_search_label": "Adresse",
-        "all_stores_far_away": {
-          "title": "Les emplacements les plus proches se trouvent à une plus grande distance de %{distance}",
-          "description": "Sélectionnez un emplacement ou %{ship_to_address_link}",
-          "ship_to_address_link": "adresse de livraison",
-          "title_with_location": "L'emplacement le plus proche est terminé %{distance} contre %{location}",
-          "description_with_location": "%{change_location_link} ou %{ship_to_address_link}",
-          "change_location_link": "Changez votre emplacement",
-          "title_with_specific_location": "L'emplacement le plus proche avec votre article se trouve à une certaine distance %{distance} de %{location}",
-          "title_with_item": {
-            "one": "L'emplacement le plus proche de votre article est à plus de %{distance} de %{location}",
-            "other": "L'emplacement le plus proche avec vos articles est à plus de %{distance} de %{location}",
-            "few": "L'emplacement le plus proche avec vos articles est à plus de %{distance} de %{location}"
+            "few": "%{first} - %{last} DEPUIS %{count} boutique"
           }
         },
-        "selected_pickup_option_no_longer_available": {
-          "title": "L'emplacement que vous avez précédemment sélectionné n'est plus disponible",
-          "description": "Nous avons sélectionné l'emplacement le plus proche avec vos articles en stock."
-        },
-        "pick_up_location": "Lieu de prise en charge",
-        "no_pickup_locations_found": "Aucun lieu de retrait trouvé",
-        "pickup_unavailable_banner_body": {
-          "try_different_location": "Essayez un autre emplacement",
-          "ship_to_address": "adresse de livraison",
-          "there_are_no_stores": "Il n'y a aucun magasin à proximité de votre adresse ou vos articles ne sont pas disponibles pour le retrait.",
-          "ship_items": "Expédiez vos articles",
-          "search_elsewhere": "regarde ailleurs",
-          "ship_items_or_search_elsewhere": "%{ship_items} ou %{search_elsewhere}",
-          "search_elsewhere_standalone": "Cherche ailleurs"
-        },
-        "geolocation": {
-          "permission_not_allowed": "Autorisez le partage de position ou effectuez une recherche autrement."
-        },
-        "location_address_search_placeholder": "%{postal_code_label} ou adresse",
-        "location_closest": "L'emplacement le plus proche de votre article",
-        "toggle_multiple_locations": "d'autres poissons %{count} emplacements",
-        "location_information_far_away": {
-          "one": "j'ai trouvé %{count} emplacement avec votre article",
-          "other": "j'ai trouvé %{count} emplacements avec votre article",
-          "few": "j'ai trouvé %{count} emplacements avec votre article"
-        },
-        "location_nearby": {
-          "one": "Il y a %{count} emplacement à proximité avec votre article",
-          "other": "Il y a %{count} emplacements à proximité avec votre article",
-          "few": "Il y a %{count} emplacements à proximité avec votre article"
-        },
-        "location_nearby_short": {
-          "one": "%{count} emplacement à proximité avec votre article",
-          "other": "%{count} emplacements à proximité avec votre article",
-          "few": "%{count} emplacements à proximité avec votre article"
-        },
-        "location_far_away": {
-          "one": "%{count} emplacement avec votre article",
-          "other": "%{count} emplacements avec votre article",
-          "few": "%{count} emplacements avec votre article"
-        },
-        "toggle_more_locations": {
-          "one": "encore %{count} emplacement",
-          "other": "encore %{count} emplacements",
-          "few": "encore %{count} emplacements"
-        },
-        "pickup_unavailable_banner_title": {
-          "one": "Il n'y a aucun emplacement avec votre article",
-          "other": "Il n'y a aucun emplacement avec vos articles",
-          "few": "Il n'y a aucun emplacement avec vos articles"
-        },
-        "pickup_unavailable_banner_title_with_country": {
-          "one": "Dans %{country} il n'y a aucun emplacement avec votre article",
-          "other": "Dans %{country} il n'y a aucun emplacement avec vos articles",
-          "few": "Dans %{country} il n'y a aucun emplacement avec vos articles"
-        },
-        "title": "Emplacement",
-        "location_closest_one_item": "L'emplacement le plus proche de votre article.",
-        "location_closest_other_items": "L'emplacement le plus proche avec vos articles.",
-        "location_information_far_away_one_item": {
-          "one": "Il y a %{count} emplacement avec votre article",
-          "other": "Il y a %{count} emplacements avec votre article",
-          "few": "Il y a %{count} emplacements avec votre article"
-        },
-        "location_information_far_away_other_items": {
-          "one": "Il y a %{count} emplacement avec vos articles",
-          "other": "Il y a %{count} emplacements avec vos articles",
-          "few": "Il y a %{count} emplacements avec vos articles"
-        },
-        "location_nearby_one_item": {
-          "one": "Il y a %{count} emplacement à proximité avec votre article",
-          "other": "Il y a %{count} emplacements à proximité avec votre article",
-          "few": "Il y a %{count} emplacements à proximité avec votre article"
-        },
-        "location_nearby_other_items": {
-          "one": "Il y a %{count} emplacement à proximité avec vos articles",
-          "other": "Il y a %{count} emplacements à proximité avec vos articles",
-          "few": "Il y a %{count} emplacements à proximité avec vos articles"
-        },
-        "location_nearby_short_one_item": {
-          "one": "%{count} emplacement à proximité avec votre article",
-          "other": "%{count} emplacements à proximité avec votre article",
-          "few": "%{count} emplacements à proximité avec votre article"
-        },
-        "location_nearby_short_other_items": {
-          "one": "%{count} emplacement à proximité avec vos articles",
-          "other": "%{count} emplacements à proximité avec vos articles",
-          "few": "%{count} emplacements à proximité avec vos articles"
-        },
-        "location_far_away_one_item": {
-          "one": "%{count} emplacement avec votre article",
-          "other": "%{count} emplacements avec votre article",
-          "few": "%{count} emplacements avec votre article"
-        },
-        "location_far_away_other_items": {
-          "one": "%{count} emplacement avec vos articles",
-          "other": "%{count} emplacements avec vos articles",
-          "few": "%{count} emplacements avec vos articles"
-        },
-        "location_selected": "L'emplacement sélectionné"
+        "reveal_more_label": {
+          "few": "Affiche toujours %{count} (de) des emplacements"
+        }
       },
       "merchandise_unavailable_in_buyer_location": {
         "remove_items_action": {
@@ -2751,16 +2620,8 @@
       },
       "review_address_modal": {
         "subtitle": {
-          "few": "Cette commande sera expédiée à une adresse fournie par {{merchant}}. Sélectionnez une adresse de livraison.",
-          "one": "Cette commande sera expédiée à l'adresse fournie par {{merchant}}.",
-          "other": "Cette commande sera expédiée à une adresse fournie par {{merchant}}. Sélectionnez une adresse de livraison."
-        },
-        "title": "Vérifier l'adresse",
-        "subtitle_no_match": "Cette adresse ne correspond à aucune des adresses que vous avez enregistrées.",
-        "subtitle_must_use": "Votre commande sera expédiée à cette adresse.",
-        "continue": "Continuer avec cette adresse",
-        "use_saved_address": "Utiliser une autre adresse",
-        "return_to_cart": "Retour au panier"
+          "few": "Cette commande sera expédiée à une adresse fournie par {{merchant}}. Sélectionnez une adresse de livraison."
+        }
       },
       "remote_merchandise_only": {
         "detail_item_label": {
@@ -3382,101 +3243,75 @@
           },
           "errors_in_section": {
             "one": "{{count}} erreur dans la section {{section}}",
-            "other": "{{count}} erreurs de section {{section}}",
-            "few": "{{count}} erreurs de section {{section}}"
+            "other": "{{count}} erreurs de section {{section}}"
           }
         }
-      },
-      "marketplaces": {
-        "legal_notice": {
-          "legal_text": "Consulter",
-          "link_label": "Termes et conditions {{partnerDisplayName}}"
-        }
-      },
-      "online_store_chat": {
-        "title": "Avez-vous des questions? Discutez avec nous"
-      },
-      "split_delivery": {
-        "pickup_all_items": "Ramassez tous les objets",
-        "items_for_pickup": "Objets à récupérer",
-        "delivery_method": "Mode de livraison en cas de panne",
-        "delivery_method_menu": "Menu des modes de livraison détaillé",
-        "inventory_issue_banner": {
-          "remove_items_or_ship": "%{ship_separately_link} ou %{remove_items_link}",
-          "remove_items_or_pickup": "%{pickup_in_store_link} ou %{remove_items_link}",
-          "heading": {
-            "cannot_be_picked_up": {
-              "one": "%{count} l'article ne peut pas être récupéré",
-              "other": "%{count} les articles ne peuvent pas être récupérés",
-              "few": "%{count} les articles ne peuvent pas être récupérés"
-            },
-            "cannot_be_shipped": {
-              "one": "%{count} l'article ne peut pas être expédié",
-              "other": "%{count} les articles ne peuvent pas être expédiés",
-              "few": "%{count} les articles ne peuvent pas être expédiés"
-            }
-          },
-          "remove_item": {
-            "one": "supprimer l'article",
-            "other": "supprimer des éléments",
-            "few": "supprimer des éléments"
-          },
-          "ship_separately": {
-            "one": "Expédiez-le séparément",
-            "other": "Expédiez-les séparément",
-            "few": "Expédiez-les séparément"
-          },
-          "pick_them_up_in_store": {
-            "one": "Récupérez-le au magasin",
-            "other": "Récupérez-les au magasin",
-            "few": "Récupérez-les au magasin"
-          },
-          "remove_item_only": {
-            "one": "Supprimer l'élément",
-            "other": "Supprimer des éléments",
-            "few": "Supprimer des éléments"
-          },
-          "merchandise_line_with_quantity": "%{title} (×%{quantity})"
-        },
-        "items_for_shipping": "Articles à expédier",
-        "pickup_items_count": {
-          "few": "Levage %{count} articles"
-        },
-        "ship_items_count": {
-          "few": "Expédition %{count} articles"
-        },
-        "items_moved_to_shipping_toast": "Les articles qui ne peuvent pas être récupérés ont été déplacés vers l'expédition",
-        "cross_border": {
-          "modal": {
-            "heading": "Changer de pays ?",
-            "content": "Les lieux de retrait et d'expédition doivent être dans le même pays. Changer le pays réinitialisera tous les articles lors de l'expédition.",
-            "change_country": "Changer de pays",
-            "country_changed_heading": "Le pays a été changé"
-          },
-          "banner": "Votre mode de livraison a été mis à jour"
-        },
-        "items_count": {
-          "few": "%{count} articles"
-        },
-        "accessibility": {
-          "status": {
-            "ship_separately": "%{items} sera expédié séparément.",
-            "pickup_in_store": "%{items} sera récupéré au magasin.",
-            "remove_items": "%{items} ont été retirés du panier."
-          }
-        }
-      },
-      "captcha": {
-        "title": "Complétez la vérification CAPTCHA pour continuer",
-        "errors": {
-          "not_solved": "Complétez la vérification CAPTCHA pour continuer"
-        }
-      },
-      "discount_errors": {
-        "generic_error": "Votre commande n'a pas pu être traitée car votre code de réduction n'est plus disponible. Vérifiez le total de votre commande et réessayez."
       },
       "wallets": {
-        "return_to_store": "Revenez au magasin"
+        "redirect_hint": "Vous serez invité à vous connecter avec {{walletName}}.",
+        "logged_in": "Connecté à {{email}}",
+        "shipping_line_label": "Expédition",
+        "connect_shipping_methods": "{{method1}} et {{method2}}",
+        "payment_in_progress_title": "Paiement en cours",
+        "payment_in_progress_body": "Votre paiement est en cours de traitement. Votre commande sera finalisée sous peu.",
+        "call_to_action": "Payer avec {{walletName}}",
+        "errors": {
+          "unavailable": {
+            "title": "{{walletName}} n'est pas disponible",
+            "description": "{{walletName}} n'était pas disponible. Veuillez utiliser un autre mode de paiement ou réessayer plus tard.",
+            "instructions": "Un problème est survenu avec la fonction {{walletName}}. Retournez au magasin pour réessayer ou finalisez la commande d'une autre manière.",
+            "unavailable_for_country": "Mode de paiement {{walletName}} n'est pas disponible dans {{countryName}}. Sélectionnez un autre mode de paiement pour finaliser votre achat"
+          },
+          "generic": "Il y a eu un problème avec {{walletName}}. Réessayez ou utilisez un autre mode de paiement.",
+          "terminal": "Un problème est survenu à {{walletName}}. Utilisez un autre mode de paiement.",
+          "detour": {
+            "stock_problems": "Certains articles ne sont plus disponibles. Fermer {{walletName}} et réessayez.",
+            "price_change": "Les prix de certains articles ont changé. Fermer {{walletName}} pour revoir la commande et réessayer.",
+            "queue": "Vous avez été placé dans une file d'attente de paiement. Fermer {{walletName}} pour continuer.",
+            "currency_change": "Vous ne pouvez pas utiliser une autre adresse avec {{walletName}}. Veuillez utiliser votre adresse d'origine ou essayer un autre mode de paiement."
+          },
+          "unsupported": {
+            "address": "Le commerçant ne peut pas livrer à l'adresse de livraison que vous avez sélectionnée.",
+            "postal_code": "Cet emplacement n'est pas pris en charge",
+            "wallet_is_unavailable": "{{walletName}} ne peut pas être utilisé avec cette adresse. Sélectionnez une autre adresse ou fermez {{walletName}} pour finaliser l'achat"
+          },
+          "outdated": {
+            "shipping_method": "Les options d'expédition ont changé pour votre commande. Vérifiez votre sélection.",
+            "payment_terms": "Les conditions de paiement ont changé. Vérifiez votre commande"
+          },
+          "invalid": {
+            "shipping_address": "Veuillez entrer une adresse de livraison valide",
+            "billing_address": "Veuillez saisir une adresse de facturation valide",
+            "shipping_option": "Choisissez une option d'expédition valide",
+            "email": "Veuillez entrer un email valide",
+            "zone": "Veuillez entrer un état/province valide",
+            "postal_code": "Veuillez entrer un code postal valide",
+            "reduction_code": "Entrez un code de réduction ou une carte cadeau valide",
+            "billing_must_match_shipping": "Doit correspondre à l'adresse de livraison",
+            "phone": "Veuillez entrer un numéro de téléphone valide",
+            "emirate": "Veuillez entrer un émirat valide",
+            "billing_zone": "Veuillez saisir un état/une province valide pour votre adresse de facturation.",
+            "billing_phone": "Veuillez saisir un numéro de téléphone valide pour votre adresse de facturation",
+            "billing_zip": "Veuillez saisir un code postal valide pour votre adresse de facturation"
+          },
+          "missing": {
+            "first_name": "Entrez un prénom",
+            "last_name": "Entrez un nom de famille",
+            "address1": "Entrez une adresse",
+            "address2": "Entrez dans un appartement, une chambre, etc.",
+            "city": "Entrez une ville",
+            "province": "Sélectionnez un état/une province",
+            "country": "Sélectionnez un pays/une région",
+            "zip": "Entrez un code postal/code postal",
+            "phone": "Entrez un numéro de téléphone",
+            "billing_first_name": "Saisissez un prénom pour l'adresse de facturation",
+            "billing_address1": "Entrez l'adresse de facturation",
+            "billing_address2": "Saisissez un appartement, une chambre, etc. pour l'adresse de facturation",
+            "billing_city": "Saisissez une ville pour l'adresse de facturation",
+            "billing_province": "Sélectionnez un état/une province pour votre adresse de facturation",
+            "billing_zip": "Entrez un code postal pour votre adresse de facturation"
+          }
+        }
       }
     },
     "notices": {
