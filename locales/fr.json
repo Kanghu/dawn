@@ -1391,16 +1391,23 @@
           "few": "Remises pour la commande"
         },
         "subtotal_label_with_quantity": {
-          "few": "Sous-total · %{count} ware"
+          "few": "Sous-total · %{count} articles",
+          "other": "Sous-total · %{count} articles"
         },
         "number_items": {
-          "few": "%{count} ware"
+          "few": "%{count} articles",
+          "one": "%{count} article",
+          "other": "%{count} articles"
         },
         "view_all_items": {
-          "few": "Voir tout %{count} ware"
+          "few": "Voir tout cela %{count} articles",
+          "one": "voir %{count} article",
+          "other": "Voir tout cela %{count} articles"
         },
         "pickup_unavailable_banner_title": {
-          "few": "Vos articles ne peuvent pas être soulevés du magasin"
+          "few": "Il n'y a aucune boutique disponible avec vos articles",
+          "one": "Il n'y a aucun magasin disponible avec votre article",
+          "other": "Il n'y a aucune boutique disponible avec vos articles"
         },
         "unit_price": {
           "per_item": {
@@ -1417,7 +1424,9 @@
           }
         },
         "pickup_unavailable_banner_title_with_country": {
-          "few": "Dans %{country} il n'y a aucun magasin disponible avec vos articles"
+          "few": "Dans %{country} il n'y a aucun magasin disponible avec vos articles",
+          "one": "Dans %{country} il n'y a aucun magasin disponible avec votre article",
+          "other": "Dans %{country} il n'y a aucun magasin disponible avec vos articles"
         },
         "title": "Récapitulatif de la commande",
         "order_name_label": "Commande %{name}",
@@ -1519,7 +1528,49 @@
         "maximum_discount_code_limit_reached": "Vous avez atteint le nombre maximum de codes de réduction. Supprimer un code existant pour utiliser le code <strong style=\"text-transform:uppercase\">%{code}</strong>.",
         "order_total_label": "Total de la commande",
         "discount_code_application_failed": "<strong style=\"text-transform:uppercase\">%{code}</strong> ne fonctionne pas pour le moment. Contactez-nous pour obtenir de l'aide.",
-        "due_on_fulfillment": "Due au moment de l'honneur"
+        "due_on_fulfillment": "Due au moment de l'honneur",
+        "cost_table_item_column_header": "Articles",
+        "cost_table_value_column_header": "Valeur",
+        "product_image_quantity_label": "Quantité",
+        "more_items_modal": {
+          "clear_search": "Effacer la recherche",
+          "empty_results": "Aucun résultat trouvé pour \"%{searchText}\". Vérifiez votre orthographe ou utilisez un mot ou une expression différente.",
+          "number_items_shown": "%{shownNumber} de %{totalNumber} articles",
+          "search_item": "Rechercher"
+        },
+        "price_before_discount_aria_text": "Prix initial",
+        "price_after_discount_aria_text": "Prix réduit",
+        "discount_code_aria_text": "Code de réduction",
+        "pickup_unavailable_banner_body": {
+          "ship_to_address": "Adresse de livraison",
+          "ship_to_address_instead_html": "%{link} à la place"
+        },
+        "deposit_label": "Entrepôt",
+        "total_due_today_label": "Total dû aujourd'hui",
+        "total_due_later_label": "Total à payer plus tard",
+        "discount_code_allocations_mismatch": "Votre code de réduction <strong style=\"text-transform:uppercase\">%{code}</strong> a changé. Veuillez vérifier votre panier et réessayer.",
+        "deferred_total_due_date_label_next": "Date limite : %{date}",
+        "total_due_label": "Totalement dû",
+        "total_price_label": "Prix total",
+        "for_add_on": "Pour : %{group_title}",
+        "unconfirmed_label": "Non confirmé",
+        "total_paid_label": "Total payé",
+        "from_shop_heading": "De %{shop_name}",
+        "from_other_stores_heading": "D'autres magasins",
+        "estimated_taxes_label_short": "Estimé",
+        "order_discounts_apply_to_local_shop": "Dans le cas de commandes, les réductions ne sont appliquées que sur les articles de %{shop_name}",
+        "gift_cards_apply_to_local_shop": "Les cartes cadeaux ne sont valables que sur les articles de %{shop_name}",
+        "discount_code_removed": "Code de réduction %{code} a été supprimé",
+        "discount_code_replaced": "Code de réduction %{old_code} a été supprimé et le code a été appliqué %{code}",
+        "discount_code_replaced_multiple": "Plusieurs codes de réduction ont été supprimés et le code a été appliqué %{code}",
+        "from_multiple_stores_heading": "De plusieurs magasins",
+        "pay_merchant_label": "Payer %{merchant_name}",
+        "discount_applies_to_subscription_items_only": "Cette remise est valable uniquement sur les articles inclus dans l'abonnement",
+        "estimated_taxes_finalization_tooltip_content_short": "La recharge a lieu après le paiement",
+        "compare_at_sale": "Promotion (%{sale_amount})",
+        "discount_code_applied_count": {
+          "few": "Affichage %{count} réductions"
+        }
       },
       "payment": {
         "order_covered_by_gift_cards_notice": {
