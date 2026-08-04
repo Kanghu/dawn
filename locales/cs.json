@@ -3652,7 +3652,87 @@
           "checkout_has_expired": "Vypršel časový limit pokladny. Zavřete toto okno a zkuste objednávku dokončit znovu {{shopName}}."
         },
         "return_to_store": "Vraťte se k {{shopName}}",
-        "return_to_store_simple": "Vraťte se do obchodu"
+        "return_to_store_simple": "Vraťte se do obchodu",
+        "title": "Dokončení objednávky pomocí Shop Pay"
+      },
+      "company_location": {
+        "location_title": "Umístění společnosti",
+        "location_rollup_accessibility_label": "Možnosti umístění společnosti"
+      },
+      "one": {
+        "errors": {
+          "merchandise": {
+            "gift_card_price_must_be_greater_than_zero": "Cena dárkové karty musí být vyšší než 0.",
+            "subtotal_limit_reached": "Bylo dosaženo maximální hodnoty položek.",
+            "gift_card_price_must_not_exceed_limit": "Cena dárkového poukazu nesmí překročit %{gift_card_limit}.",
+            "signature_mismatch": "Podpis produktu neodpovídá řádku %{stable_id}."
+          }
+        }
+      },
+      "clipboard": {
+        "copied": "Zkopírováno",
+        "failed_to_copy": "Nelze kopírovat"
+      },
+      "payment_challenge_modal": {
+        "instructions": "Dokončete nákup pomocí kódu {{paymentMethod}}",
+        "timer_message": "Máte k dispozici {{timeLeft}} platit",
+        "copy_text": "Zkopírujte kód pro {{paymentMethod}}",
+        "header": "Platit pomocí {{paymentMethod}}",
+        "qr_code": {
+          "instructions": "Dokončete nákup pomocí kódu {{paymentMethod}}",
+          "wechat_instructions": "Naskenujte tento QR kód pomocí aplikace WeChat ve svém telefonu a dokončete nákup",
+          "wechat_instructions_mobile": "Naskenujte tento QR kód pomocí aplikace WeChat na jiném zařízení a dokončete nákup"
+        },
+        "external": {
+          "instructions": "Pro dokončení tohoto nákupu potvrďte platbu v aplikaci"
+        },
+        "close": "Uzavřete výzvu",
+        "open_app_text": "Otevřete aplikaci {{paymentMethod}}"
+      },
+      "artifact_errors": {
+        "artifact_dissatisfaction_without_violation": "Při zpracování vaší objednávky došlo k problému. Zkuste to prosím znovu za několik minut."
+      },
+      "merchant_instruction_errors": {
+        "empty_stable_id": "Pokyny ke zboží %{name} %{position} obsahovat prázdné stabilní ID.",
+        "invalid_stable_id_target": "Pokyny ke zboží %{name} %{position} odkazovat na stabilní ID %{stable_id}, ale toto stabilní ID není v nákladních linkách.",
+        "duplicate_variant_id": "Pokyny ke zboží %{name} %{position} obsahovat duplicitní ID varianty %{variant_id}.",
+        "invalid_variant_id_target": "Pokyny ke zboží %{name} odkazovat na ID varianty %{variant_id}, ale tato varianta není v nákladních linkách.",
+        "invalid_price_override_target": "Pokyn k nahrazení ceny zboží za položku %{stable_id} není platné, protože se jedná o komponentu v sadě.",
+        "discount_not_supported": "Pokyny obchodníka nezahrnují uplatnění takových slev."
+      },
+      "merchandise_unavailable_in_buyer_location": {
+        "banner_title": {
+          "some_products_one": "Tento produkt nelze doručit na %{location_name}.",
+          "some_products_other": "Tyto produkty nelze dodat na %{location_name}.",
+          "all_products_one": "Produkt v košíku nelze doručit %{location_name}.",
+          "all_products_other": "Produkty košíku nelze doručit %{location_name}."
+        },
+        "missing_country_fallback": "vaší zemi",
+        "indeterminate_location_fallback": "vaši polohu",
+        "cart_updated": "Váš košík byl aktualizován.",
+        "change_address_only": "Chcete-li pokračovat, změňte doručovací adresu.",
+        "change_address_or_remove": "Změňte doručovací adresu popř %{remove_action}.",
+        "empty_cart_action": "vyprázdněte vozík a vraťte se do obchodu",
+        "unavailable_line_item": "%{product_name}/%{variant_label}",
+        "remove_items_action": {
+          "one": "odstranit nedostupnou položku",
+          "other": "odstranit nedostupné položky",
+          "few": "odstranit nedostupné položky"
+        }
+      },
+      "b2b_errors": {
+        "lost_b2b_purchasing_permissions": "Již není povoleno zadávat B2B objednávky. %{logout_url} místo toho zadat osobní objednávku.",
+        "log_out_link_text": "Odhlaste se",
+        "lost_permissions_subtitle": "Již není povoleno zadávat B2B objednávky. Pro osobní objednávku se odhlaste.",
+        "lost_permissions_title": "Žádná oprávnění k poloze"
+      },
+      "units": {
+        "milligram": "mg",
+        "gram": "Mr",
+        "kilogram": "kg",
+        "milliliter": "ml",
+        "centiliter": "tř",
+        "liter": "l"
       }
     }
   }
