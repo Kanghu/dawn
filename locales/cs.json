@@ -757,5 +757,156 @@
         }
       }
     }
+  },
+  "shopify": {
+    "sentence": {
+      "words_connector": ", ",
+      "two_words_connector": " a ",
+      "last_word_connector": " a "
+    },
+    "checkout": {
+      "shipping": {
+        "title": "Doprava",
+        "shipping_method_title": "Způsob dopravy",
+        "waiting_on_rate_notice": "Zjišťování dostupných cen dopravy…",
+        "waiting_on_pickup_location_notice": "Zjišťování dostupných míst vyzvednutí…",
+        "no_rates_for_cart_or_destination_notice": "Pro váš košík nebo adresu není k dispozici žádný způsob dopravy",
+        "no_pickup_location_notice": "Minimálně jeden z vašich produktů není k dispozici k vyzvednutí",
+        "no_rates_for_country_notice": "Pro tuto adresu nebyla nalezena žádná sazba dopravy.",
+        "no_rates_contact_notice": "Kontaktujte nás pro více informací",
+        "free_rate_label": "Zdarma",
+        "cheapest_rate_label": "Nejlevnější",
+        "estimated_delivery_date_range": "Mezi %{minimum} a %{maximum} pracovní dny",
+        "shipping_line_phone_label": "Číslo mobilního telefonu (vyžadováno)",
+        "shipping_line_phone": "Toto číslo vás může kurýr kontaktovat.",
+        "shipping_rate_discounted_amount": "Bylo to: %{original_amount}. Nyní: %{amount}",
+        "optional_shipping_line_delivery_instructions_label": "Pokyny k doručení (volitelné)",
+        "estimated_delivery_date": {
+          "one": "%{count} pracovní den",
+          "other": "%{count} pracovní dny",
+          "few": "%{count} pracovní dny"
+        },
+        "other_method": {
+          "zero": "Žádné jiné metody nejsou k dispozici",
+          "one": "%{count} jiná metoda je k dispozici na",
+          "other": "%{count} další metody jsou dostupné od",
+          "few": "%{count} další metody jsou dostupné od"
+        },
+        "shipping_line_delivery_phone": "Můžete být kontaktováni za účelem poskytnutí aktualizací doručení.",
+        "shipping_line_delivery_phone_label": "Číslo mobilního telefonu",
+        "shipping_line_delivery_instructions": "Zadejte požadované informace, jako jsou kódy interkomu nebo pokyny k předání.",
+        "local_delivery": "Místní doručení",
+        "subscription_shipping": "Doprava založená na předplatném",
+        "shipping_method_one_time_purchase_group_title": "Jednorázový nákup",
+        "shipping_method_subscription_group_title": "Předplatné",
+        "one_time_purchase_shipping": "Jedna zásilka",
+        "subscription_delivery_description": {
+          "prepaid_delivery_frequency": {
+            "one": "pro %{count} doručení",
+            "other": "pro %{count} dodávky",
+            "few": "pro %{count} dodávky"
+          },
+          "subscription_delivery_frequency": {
+            "day": {
+              "one": "každý den",
+              "other": "každému %{count} dní",
+              "few": "každému %{count} dní"
+            },
+            "week": {
+              "one": "každý týden",
+              "other": "každému %{count} týdnů",
+              "few": "každému %{count} týdnů"
+            },
+            "month": {
+              "one": "každý měsíc",
+              "other": "každému %{count} měsíce",
+              "few": "každému %{count} měsíce"
+            },
+            "year": {
+              "one": "každý rok",
+              "other": "každému %{count} let",
+              "few": "každému %{count} let"
+            }
+          },
+          "multiple_subscriptions_shipping_price_label": "%{shipping_price} za každou dodávku",
+          "prepaid_shipping_price_label": "%{shipping_price} za každou dodávku x %{delivery_interval_count}",
+          "initial_order_discounted": "Cena první zásilky je %{discounted_shipping_cost}, pak %{frequency_description}",
+          "prepaid_initial_order_discounted": "Cena první zásilky je %{discounted_shipping_price} %{prepaid_delivery_frequency}",
+          "prepaid_initial_order_discounted_with_per_delivery_price": "Cena první zásilky je %{discounted_shipping_price} %{prepaid_delivery_frequency} (%{discounted_cost_per_delivery})",
+          "prepaid_initial_order_discounted_with_renewal": "Cena první zásilky je %{discounted_shipping_price} %{prepaid_delivery_frequency}, pak %{shipping_price} %{billing_cycle}",
+          "prepaid_initial_order_discounted_with_per_delivery_price_and_renewal": "Cena první zásilky je %{discounted_shipping_price} %{prepaid_delivery_frequency} (%{discounted_cost_per_delivery}), pak %{shipping_price} %{billing_cycle}",
+          "shipping_price_included": "V ceně",
+          "recurring_order_shipping_price": "následuje %{recurring_order_shipping_price}",
+          "first_order_shipping_price_included": "První příkaz je zahrnut, následovaný %{recurring_order_shipping_price}",
+          "first_order_different_shipping_price": "%{first_order_shipping_price} (%{per_delivery_price} za dodávku), následuje %{recurring_order_shipping_price}",
+          "first_n_order_free": {
+            "one": "První objednávka zdarma",
+            "other": "Ty první %{count} bezplatné objednávky",
+            "few": "Ty první %{count} bezplatné objednávky"
+          },
+          "free_for_first_n_order": {
+            "one": "Na první objednávku",
+            "other": "Pro ty první %{count} objednávky",
+            "few": "Pro ty první %{count} objednávky"
+          },
+          "subscription_free_with_frequency_label": "Doprava zdarma %{delivery_frequency}",
+          "free_shipping_cycles": {
+            "one": "Doprava zdarma pro stále %{count} doručení",
+            "other": "Doprava zdarma pro stále %{count} dodávky",
+            "few": "Doprava zdarma pro stále %{count} dodávky"
+          },
+          "free_shipping_cycles_delivery_not_included": {
+            "one": "Doprava zdarma pro %{count} doručení",
+            "other": "Doprava zdarma pro %{count} dodávky",
+            "few": "Doprava zdarma pro %{count} dodávky"
+          },
+          "first_n_order_free_with_cycle": {
+            "one": "Doprava zdarma pro stále %{count} doručení pak %{recurring_order_shipping_price}",
+            "other": "Doprava zdarma pro stále %{count} dodávky pak %{recurring_order_shipping_price}",
+            "few": "Doprava zdarma pro stále %{count} dodávky pak %{recurring_order_shipping_price}"
+          },
+          "first_n_order_free_with_cycle_delivery_not_included": {
+            "one": "Doprava zdarma pro %{count} doručení pak %{recurring_order_shipping_price}",
+            "other": "Doprava zdarma pro %{count} dodávky pak %{recurring_order_shipping_price}",
+            "few": "Doprava zdarma pro %{count} dodávky pak %{recurring_order_shipping_price}"
+          },
+          "max_cycles_base_shipping": {
+            "one": "Pořád %{count} dodání za cenu %{shipping_price}",
+            "other": "Pořád %{count} dodávky za cenu %{shipping_price} každý z nich",
+            "few": "Pořád %{count} dodávky za cenu %{shipping_price} každý z nich"
+          },
+          "max_cycles_base_shipping_delivery_not_included": {
+            "one": "%{count} dodání za cenu %{shipping_price}",
+            "other": "Pořád %{count} dodávky za cenu %{shipping_price} každý z nich",
+            "few": "Pořád %{count} dodávky za cenu %{shipping_price} každý z nich"
+          },
+          "prepaid_free_shipping_with_cycles": {
+            "one": "Doprava zdarma na první %{cycle}, po kterém %{recurring_order_shipping_price}",
+            "other": "Doprava zdarma na první %{cycle}, po kterém %{recurring_order_shipping_price}",
+            "few": "Doprava zdarma na první %{cycle}, po kterém %{recurring_order_shipping_price}"
+          },
+          "prepaid_order_one_cycle": {
+            "one": "%{shipping_price} pro ještě %{count} doručení",
+            "other": "%{shipping_price} pro ještě %{count} dodávky (%{per_delivery_cost})",
+            "few": "%{shipping_price} pro ještě %{count} dodávky (%{per_delivery_cost})"
+          },
+          "prepaid_order_one_cycle_delivery_not_included": {
+            "one": "%{shipping_price} pro %{count} doručení",
+            "other": "%{shipping_price} pro %{count} dodávky (%{per_delivery_cost})",
+            "few": "%{shipping_price} pro %{count} dodávky (%{per_delivery_cost})"
+          },
+          "prepaid_order_no_cycle": {
+            "one": "%{shipping_price} pro ještě %{count} doručení, po kterém %{recurring_order_shipping_price}",
+            "other": "%{shipping_price} pro ještě %{count} doručení (%{per_delivery_cost}), po kterém %{recurring_order_shipping_price}",
+            "few": "%{shipping_price} pro ještě %{count} doručení (%{per_delivery_cost}), po kterém %{recurring_order_shipping_price}"
+          },
+          "prepaid_order_no_cycle_delivery_not_included": {
+            "one": "%{shipping_price} pro %{count} doručení, po kterém %{recurring_order_shipping_price}",
+            "other": "%{shipping_price} pro %{count} dodávky (%{per_delivery_cost}), po kterém %{recurring_order_shipping_price}",
+            "few": "%{shipping_price} pro %{count} dodávky (%{per_delivery_cost}), po kterém %{recurring_order_shipping_price}"
+          }
+        }
+      }
+    }
   }
 }
