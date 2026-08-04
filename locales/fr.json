@@ -930,7 +930,9 @@
       "general": {
         "map": {
           "cluster_title": {
-            "few": "Cluster formé {{number}} Balles"
+            "few": "Cluster composé de {{number}} marqueurs",
+            "one": "Cluster composé de {{number}} marqueur",
+            "other": "Cluster composé de {{number}} marqueurs"
           }
         },
         "errors": {
@@ -1236,7 +1238,37 @@
           "range_start": "Début de l'intervalle",
           "in_range": "Dans l'intervalle",
           "range_end": "Fin de l'intervalle"
-        }
+        },
+        "list_formatter": {
+          "and": {
+            "wordConnector": "{{previousWords}}, {{anotherWord}}",
+            "lastWordConnector": "{{previousWords}} et {{lastWord}}",
+            "twoWordConnector": "{{firstWord}} et {{secondWord}}"
+          },
+          "or": {
+            "wordConnector": "{{previousWords}}, {{anotherWord}}",
+            "lastWordConnector": "{{previousWords}} ou {{lastWord}}",
+            "twoWordConnector": "{{firstWord}} ou {{secondWord}}"
+          },
+          "narrow": {
+            "wordConnector": "{{previousWords}}, {{anotherWord}}",
+            "lastWordConnector": "{{previousWords}}, {{lastWord}}",
+            "twoWordConnector": "{{firstWord}}, {{secondWord}}"
+          }
+        },
+        "sheet": {
+          "expand": "Développer"
+        },
+        "confirm_order_button_label": "Confirmer la commande",
+        "qr_code": "Code QR",
+        "dropzone": {
+          "add_file": "Ajouter un fichier",
+          "invalid_file_type": "Le type de fichier n'est pas pris en charge",
+          "dragged_over": "Libérez le fichier à télécharger"
+        },
+        "loading": "Chargement...",
+        "remove_chip": "Supprimer l'élément",
+        "finalize_order_accessibility_label": "Complétez la commande"
       },
       "customer_account": {
         "saved_address_option_description": {
@@ -1500,6 +1532,89 @@
         "change_currency_link": "Changer pour %{currency_name}",
         "card_provider_fx_charges_warning": "L'émetteur de la carte peut facturer des frais pour les transactions en %{currency_code}.",
         "currency_not_supported_by_shop": "La devise que vous avez sélectionnée n'est plus disponible. Tous les prix sont maintenant en %{currency_code}."
+      },
+      "contact": {
+        "title": "Informations",
+        "address_title": "Adresse",
+        "delivery_option_title": "Mode de livraison",
+        "contact_method_title": "Contacter",
+        "email_label": "Courriel",
+        "email_placeholder": "Courriel",
+        "email_or_phone_label": "Email ou numéro de téléphone portable",
+        "email_or_phone_placeholder": "Email ou numéro de téléphone portable",
+        "stored_addresses_label": "Adresses enregistrées",
+        "new_address_label": "Utiliser une nouvelle adresse",
+        "first_name_label": "Prénom",
+        "optional_first_name_label": "Prénom (facultatif)",
+        "last_name_label": "Nom de famille",
+        "company_label": "Entreprise",
+        "optional_company_label": "CUI de l’entreprise (facultatif)",
+        "address1_label": "Adresse",
+        "address2_label": "Appartement, chambre, etc.",
+        "optional_address2_label": "Mentions (facultatif). Ils seront traités par un opérateur avant expédition.",
+        "city_label": "Ville",
+        "country_label": "Pays/Région",
+        "country_code": "Code pays/région",
+        "province_label": "Province",
+        "province_placeholder": "Province",
+        "county_label": "Comté",
+        "county_placeholder": "Comté",
+        "state_label": "État",
+        "state_placeholder": "État",
+        "region_label": "Région",
+        "region_placeholder": "Région",
+        "prefecture_label": "Préfecture",
+        "prefecture_placeholder": "Préfecture",
+        "governorate_label": "Gouvernorat",
+        "governorate_placeholder": "Gouvernorat",
+        "emirate_label": "Émirat",
+        "emirate_placeholder": "Émirat",
+        "state_and_territory_label": "État/Territoire",
+        "state_and_territory_placeholder": "État/Territoire",
+        "phone_label": "Téléphone",
+        "optional_phone_label": "Téléphone (facultatif)",
+        "phone_placeholder": "Téléphone",
+        "phone_tooltip": "Si nous devons vous contacter au sujet de votre commande",
+        "zip_code_label": "Code postal",
+        "zip_code_placeholder": "Code postal",
+        "postal_code_label": "Code postal",
+        "postal_code_placeholder": "Code postal",
+        "postcode_label": "Code postal",
+        "postcode_placeholder": "Code postal",
+        "pincode_label": "Code PIN",
+        "pincode_placeholder": "Code PIN",
+        "region_none": "Aucun élément n'a été sélectionné",
+        "civic_number_warning": "Ajoutez un numéro de maison si vous en avez un",
+        "optional_last_name_label": "Nom de famille (facultatif)",
+        "company_contact_info": "{{companyName}} · {{contact}}",
+        "different_shipping_address_label": "Demander l'expédition à une autre adresse",
+        "different_shipping_address_text": "Utiliser une adresse unique pour cette commande",
+        "change_company_location_link_label": "Changer l'emplacement de l'entreprise",
+        "change_location_link_label": "Changer d'emplacement",
+        "ship_to_company": "Expédier à {{companyName}}",
+        "shipping_used_as_billing_notice": "Cette adresse sera également utilisée comme adresse de facturation pour cette commande.",
+        "company_attention_label": "Entreprise/Destinataire",
+        "optional_company_attention_label": "Entreprise/Attention (facultatif)",
+        "available_addresses_label": "Adresses disponibles",
+        "optional_zip_code_label": "Code postal (facultatif)",
+        "optional_postal_code_label": "Code postal (facultatif)",
+        "optional_postcode_label": "Code postal (facultatif)",
+        "optional_pincode_label": "Code PIN (facultatif)",
+        "email_rollup_accessibility_label": "Options de messagerie électronique",
+        "phone_rollup_accessibility_label": "Options de numéro de téléphone",
+        "phone_country_code_label": "L'indicatif pays du numéro de téléphone",
+        "storefront_link": "le site internet du commerçant",
+        "suburb_label": "Banlieue",
+        "subdistrict_label": "Sous-district",
+        "optional_subdistrict_label": "Sous-district (facultatif)",
+        "optional_street_name_label": "Rue (facultatif)",
+        "field_saved_label": "Enregistré",
+        "field_tooltip_helper_text": "Utilisé pour confirmer votre commande et les rappels de panier",
+        "field_tooltip_accessibility_label": "Plus d'informations sur la manière dont vos coordonnées sont utilisées"
+      },
+      "delivery_options": {
+        "ship": "Expédiez-le",
+        "pick_up": "ramasser"
       }
     },
     "notices": {
