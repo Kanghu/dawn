@@ -1763,7 +1763,65 @@
         "compare_at_sale": "Propagace (%{sale_amount})",
         "discount_code_applied_count": {
           "few": "Displej %{count} slevy"
+        },
+        "tax_line": {
+          "hst": "HST",
+          "gst": "GST",
+          "pst": "PST",
+          "rst": "RST",
+          "qst": "QST",
+          "vpt": "VPT"
+        },
+        "automatic_discount_tooltip": "Automaticky uplatněné slevy nelze odstranit",
+        "alternative_payment_currency_chinese_yuan": "Potvrďte konečný součet v CNY v aplikaci %{wallet}.",
+        "alternative_payment_currency_total_disclosure": "%{shop_name} zpracovat platby v %{shop_currency} (%{amount_due}).",
+        "settlement_currency_note": "%{shop_name} zpracovat platby v %{processing_currency}. Nakupoval jsi %{original_currency}.",
+        "settlement_currency_note_wallet": "%{shop_name} zpracovat platby v %{processing_currency}. Nakupoval jsi %{original_currency} a zaplatili jste s %{wallet} v CNY. Podívejte se na aplikaci %{wallet_app} za konečnou částku.",
+        "settlement_currency_note_wallet_no_conversion": "Zaplatili jste s %{wallet} v CNY. Podívejte se na aplikaci %{wallet_app} za konečnou částku.",
+        "lpm": {
+          "wechat_pay": {
+            "checkout_disclosure": "Potvrďte konečný součet v CNY v aplikaci WeChat",
+            "post_purchase_disclosure": "Zobrazit celkovou částku v CNY na WeChat",
+            "checkout_disclosure_with_alternative_payment_currency": "%{shop_name} zpracuje tuto platbu ve výši %{amount_due} %{processing_currency}, kterou WeChat převádí na CNY"
+          },
+          "alipay": {
+            "checkout_disclosure": "Potvrďte konečný součet v CNY v aplikaci Alipay",
+            "post_purchase_disclosure": "Podívejte se na součet v CNY na Alipay",
+            "checkout_disclosure_with_alternative_payment_currency": "%{shop_name} zpracuje tuto platbu ve výši %{amount_due} %{processing_currency}, které Alipay převádí na CNY"
+          }
         }
+      },
+      "payment": {
+        "amazon_payments_label": "Amazon Pay",
+        "amazon_payments_login_hint": "Budete vyzváni k přihlášení přes Amazon.",
+        "amazon_payments_logout": "Odhlaste se z Amazon Pay",
+        "amazon_payments_failed_mfa_challenge": "Vybranou platební metodu nelze použít. Vyberte jiný způsob nebo kontaktujte svou banku či vydavatele karty.",
+        "amazon_payments_abandoned_mfa_challenge": "Vaši platbu nebylo možné dokončit. Vyberte jinou platební metodu nebo kontaktujte svou banku či vydavatele karty.",
+        "amazon_payments_could_not_enqueue_authorize": "Při zpracování vaší platby došlo k problému. Zkuste to znovu nebo použijte jinou platební metodu.",
+        "title": "Platba",
+        "amount_left_to_pay_label": "Termín platby:",
+        "discount_button_action_label": "Uplatněte slevový kód",
+        "gift_card_code_label": "Kód dárkové karty",
+        "apply_gift_card_button_label": "Použít",
+        "gift_card_balance_label": "Zůstatek:",
+        "supported_card_brands_more_label": "a další...",
+        "detected_card_brand": "Zjištěna značka karty: {brand}",
+        "card_number_label": "Číslo karty",
+        "card_number_placeholder": "Číslo karty",
+        "card_pay_with": "Platit pomocí:",
+        "card_security_notice": "Všechny transakce jsou bezpečné a šifrované.",
+        "card_information_notice": "Všechny transakce jsou bezpečné a šifrované. Informace o kreditní kartě se nikdy neukládají.",
+        "name_on_card_label": "Jméno na kartě",
+        "name_on_card_placeholder": "Jméno na kartě",
+        "card_expiry_label": "Datum vypršení platnosti (MM/RR)",
+        "card_expiry_placeholder": "Datum vypršení platnosti (MM/RR)",
+        "credit_card_start_month": "Počáteční měsíc",
+        "credit_card_start_year": "Začátek roku",
+        "card_verification_value_label": "Bezpečnostní kód",
+        "card_verification_value_placeholder": "Bezpečnostní kód",
+        "card_expiry_date_explanation": "Datum vypršení platnosti karty ve formátu: měsíc, měsíc, rok, rok",
+        "card_expiration_month_label": "Měsíc expirace",
+        "card_expiration_year_label": "Rok expirace"
       }
     }
   }
