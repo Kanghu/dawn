@@ -1150,7 +1150,69 @@
         },
         "full_price": "Пълна цена:",
         "title": "Пълна поръчка – {{shopName}}",
-        "full_title": "{{pageTitle}} – {{shopName}} – Изпълнете поръчката"
+        "full_title": "{{pageTitle}} – {{shopName}} – Изпълнете поръчката",
+        "loading_title": "Пълна поръчка – {{shopName}}",
+        "display_name": "{{firstName}} {{lastName}}",
+        "google_map_title": "Google карта",
+        "submit_order_button_label": "Изпратете поръчката",
+        "submit_for_review_button_label": "Изпратете за преглед",
+        "submit_for_review_notice_label": "Плащането няма да бъде дължимо, докато не прегледаме поръчката",
+        "continue_to_payment_plans_button_label": "Продължете с плановете за плащане",
+        "back_button_label": "Връща се",
+        "choose_delivery_strategy": "Изберете начин на доставка",
+        "autocomplete_zero_item": "Няма налични артикули",
+        "autocomplete_powered_by_google": "На платформата {{brandName}}",
+        "submit": "Изпратете",
+        "processing": "Обработва се...",
+        "stepper": {
+          "increase": "Порасни {{type}}",
+          "decrease": "Намалява се {{type}}",
+          "minimum_reached": "Минималното ограничение от е достигнато {{value}}",
+          "maximum_reached": "Максималният лимит е достигнат {{value}}"
+        },
+        "remove_item": "Елиминирайте %{label}",
+        "remove_tag": "Премахване на етикет",
+        "dates": {
+          "weekdays": {
+            "monday": "понеделник",
+            "tuesday": "вторник",
+            "wednesday": "сряда",
+            "thursday": "четвъртък",
+            "friday": "петък",
+            "saturday": "Събота",
+            "sunday": "неделя"
+          },
+          "weekdays_abbreviation": {
+            "monday": "Л",
+            "tuesday": "мамо",
+            "wednesday": "Ми",
+            "thursday": "Дж",
+            "friday": "V",
+            "saturday": "С",
+            "sunday": "d"
+          },
+          "months": {
+            "january": "януари",
+            "february": "февруари",
+            "march": "март",
+            "april": "април",
+            "may": "май",
+            "june": "юни",
+            "july": "юли",
+            "august": "август",
+            "september": "септември",
+            "october": "октомври",
+            "november": "ноември",
+            "december": "декември"
+          }
+        },
+        "datepicker": {
+          "show_previous_month": "Показване на предишния месец, {{month}} {{year}}",
+          "show_next_month": "Покажи следващия месец, {{month}} {{year}}",
+          "range_start": "Начало на интервала",
+          "in_range": "В интервала",
+          "range_end": "Край на интервала"
+        }
       },
       "customer_account": {
         "saved_address_option_description": {
