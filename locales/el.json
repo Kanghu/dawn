@@ -69,23 +69,23 @@
   },
   "newsletter": {
     "label": "Email",
-    "success": "Ευχαριστούμε για την εγγραφή",
-    "button_label": "Εγγραφή"
+    "success": "Σας ευχαριστούμε για την εγγραφή σας",
+    "button_label": "Εγγραφείτε"
   },
   "accessibility": {
-    "skip_to_text": "Απευθείας μετάβαση στο περιεχόμενο",
-    "close": "Κλείσιμο",
-    "unit_price_separator": "ανά",
-    "vendor": "Προμηθευτής:",
+    "skip_to_text": "Μετάβαση στο περιεχόμενο",
+    "close": "Κλείστε το",
+    "unit_price_separator": "επάνω",
+    "vendor": "Πωλητής:",
     "error": "Σφάλμα",
-    "refresh_page": "Ο ορισμός μιας επιλογής έχει ως αποτέλεσμα την πλήρη ανανέωση της σελίδας.",
+    "refresh_page": "Η επιλογή μιας επιλογής έχει ως αποτέλεσμα μια πλήρη ανανέωση σελίδας.",
     "link_messages": {
       "new_window": "Ανοίγει σε νέο παράθυρο.",
-      "external": "Ανοίγει εξωτερικό ιστότοπο."
+      "external": "Ανοίξτε τον εξωτερικό ιστότοπο."
     },
     "loading": "Φόρτωση...",
     "skip_to_product_info": "Μετάβαση στις πληροφορίες προϊόντος",
-    "total_reviews": "σύνολο κριτικών",
+    "total_reviews": "συνολικές κριτικές",
     "star_reviews_info": "{{ rating_value }} από {{ rating_max }} αστέρια",
     "collapsible_content_title": "Περιεχόμενο με δυνατότητα σύμπτυξης",
     "complementary_products": "Συμπληρωματικά προϊόντα"
@@ -484,51 +484,51 @@
       "load_slide": "Φορτώστε τη διαφάνεια",
       "previous_slideshow": "Προηγούμενη διαφάνεια",
       "next_slideshow": "Επόμενη διαφάνεια",
-      "pause_slideshow": "Παύση παρουσίασης",
-      "play_slideshow": "Αναπαραγωγή παρουσίασης",
+      "pause_slideshow": "Παύση της παρουσίασης",
+      "play_slideshow": "Παίξτε το slideshow",
       "carousel": "Καρουζέλ",
       "slide": "Διαφάνεια"
     },
     "page": {
-      "title": "Τίτλος σελίδας"
+      "title": "Ο τίτλος της σελίδας"
     },
     "announcements": {
       "previous_announcement": "Προηγούμενη ανακοίνωση",
       "next_announcement": "Επόμενη ανακοίνωση",
       "carousel": "Καρουζέλ",
       "announcement": "Ανακοίνωση",
-      "announcement_bar": "Γραμμή ανακοινώσεων",
-      "black_friday_continues": "🎉 Η Black Friday συνεχίζεται με εκπτώσεις (έως 80%)",
-      "black_friday_lowest_prices": "🎉 Black Friday: οι χαμηλότερες τιμές του χρόνου σε επιλεγμένα προϊόντα",
-      "black_friday_delivery_delay": "⚠️ Κατά τη διάρκεια αυτής της περιόδου, οι παραγγελίες ενδέχεται να παρουσιάσουν μικρές διακυμάνσεις στους εκτιμώμενους χρόνους παράδοσης",
-      "holiday_closure": "Είμαστε κλειστά 25–28 Δεκ, 31 Δεκ–4 Ιαν, 6–7 Ιαν. Τις υπόλοιπες ημέρες οι παραγγελίες συνεχίζουν κανονικά."
+      "announcement_bar": "Μπάρα ανακοινώσεων",
+      "black_friday_continues": "🎉 Το BLACK FRIDAY συνεχίζεται με εκπτώσεις ΕΩΣ 80%",
+      "black_friday_lowest_prices": "🎉 BLACK FRIDAY: Οι χαμηλότερες τιμές του χρόνου στα περισσότερα προϊόντα",
+      "black_friday_delivery_delay": "⚠️ Κατά τη διάρκεια αυτής της περιόδου, οι παραγγελίες ενδέχεται να έχουν μικρές διακυμάνσεις στον εκτιμώμενο χρόνο παράδοσης",
+      "holiday_closure": "Είμαστε κλειστά 25–28 Δεκεμβρίου, 31 Δεκεμβρίου–4 Ιανουαρίου, 6–7 Ιανουαρίου. Τις υπόλοιπες ημέρες η επεξεργασία και η παράδοση των παραγγελιών συνεχίζονται κανονικά."
     },
     "quick_order_list": {
-      "product_total": "Υποσύνολο προϊόντων",
-      "view_cart": "Προβολή καλαθιού",
-      "each": "{{ money }}/έκαστο",
+      "product_total": "Μερικό σύνολο προϊόντος",
+      "view_cart": "Δείτε το καλάθι",
+      "each": "{{ money }}/ τεμ.",
       "product": "Προϊόν",
       "variant": "Παραλλαγή",
-      "variant_total": "Σύνολο παραλλαγών",
+      "variant_total": "Συνολική παραλλαγή",
       "items_added": {
-        "one": "Προστέθηκε {{ quantity }} προϊόν",
-        "other": "Προστέθηκαν {{ quantity }} προϊόντα",
-        "few": "{{ quantity }} Προστέθηκαν αντικείμενα"
+        "one": "{{ quantity }} στοιχείο προστέθηκε",
+        "other": "{{ quantity }} στοιχεία προστέθηκαν",
+        "few": "{{ quantity }} στοιχεία προστέθηκαν"
       },
       "items_removed": {
-        "one": "Καταργήθηκε {{ quantity }} προϊόν",
-        "other": "Καταργήθηκαν {{ quantity }} προϊόντα",
-        "few": "{{ quantity }} εξαλείφονται αντικείμενα"
+        "one": "{{ quantity }} διαγραμμένο άρθρο",
+        "other": "{{ quantity }} διαγραμμένα στοιχεία",
+        "few": "{{ quantity }} διαγραμμένα στοιχεία"
       },
-      "product_variants": "Παραλλαγές προϊόντος",
-      "total_items": "Σύνολο προϊόντων",
-      "remove_all_items_confirmation": "Να καταργηθούν και τα {{ quantity }} προϊόντα από το καλάθι σας;",
-      "remove_all": "Κατάργηση όλων",
+      "product_variants": "Παραλλαγές προϊόντων",
+      "total_items": "Σύνολο στοιχείων",
+      "remove_all_items_confirmation": "Αφαιρέστε όλα αυτά {{ quantity }} είδη στο καλάθι;",
+      "remove_all": "Αφαιρέστε τα πάντα",
       "cancel": "Ακύρωση",
-      "remove_all_single_item_confirmation": "Να καταργηθεί 1 προϊόν από το καλάθι σας;",
-      "min_error": "Αυτό το προϊόν έχει ελάχιστο όριο {{ min }}",
-      "max_error": "Αυτό το προϊόν έχει μέγιστο όριο {{ max }}",
-      "step_error": "Μπορείτε να προσθέσετε αυτό το προϊόν μόνο κατά βήματα των {{ step }}"
+      "remove_all_single_item_confirmation": "Κατάργηση 1 προϊόντος από το καλάθι;",
+      "min_error": "Για αυτό το στοιχείο, η ελάχιστη τιμή είναι {{ min }}",
+      "max_error": "Για αυτό το στοιχείο, η μέγιστη τιμή είναι {{ max }}",
+      "step_error": "Μπορείτε να εισαγάγετε αυτό το στοιχείο μόνο σε προσαυξήσεις του {{ step }}"
     }
   },
   "localization": {
