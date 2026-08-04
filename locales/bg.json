@@ -732,27 +732,42 @@
     "checkout": {
       "shipping": {
         "estimated_delivery_date": {
-          "few": "%{count} работни дни"
+          "few": "%{count} работни дни",
+          "one": "%{count} работен ден",
+          "other": "%{count} работни дни"
         },
         "other_method": {
-          "few": "%{count} Други методи са достъпни от началото на"
+          "few": "%{count} други методи са достъпни от",
+          "zero": "Не са налични други методи",
+          "one": "%{count} друг метод е наличен на",
+          "other": "%{count} други методи са достъпни от"
         },
         "subscription_delivery_description": {
           "prepaid_delivery_frequency": {
-            "few": "за %{count} доставка"
+            "few": "за %{count} доставки",
+            "one": "за %{count} доставка",
+            "other": "за %{count} доставки"
           },
           "subscription_delivery_frequency": {
             "day": {
-              "few": "на всеки %{count} дни"
+              "few": "на всеки %{count} дни",
+              "one": "всеки ден",
+              "other": "на всеки %{count} дни"
             },
             "week": {
-              "few": "на всеки %{count} седмично"
+              "few": "на всеки %{count} седмици",
+              "one": "всяка седмица",
+              "other": "на всеки %{count} седмици"
             },
             "month": {
-              "few": "на всеки %{count} Понеделник"
+              "few": "на всеки %{count} месеца",
+              "one": "всеки месец",
+              "other": "на всеки %{count} месеца"
             },
             "year": {
-              "few": "на всеки %{count} години"
+              "few": "на всеки %{count} години",
+              "one": "всяка година",
+              "other": "на всеки %{count} години"
             }
           },
           "first_n_order_free": {
@@ -793,7 +808,8 @@
           },
           "prepaid_order_no_cycle_delivery_not_included": {
             "few": "%{shipping_price} за %{count} доставки (%{per_delivery_cost}), след това %{recurring_order_shipping_price}"
-          }
+          },
+          "multiple_subscriptions_shipping_price_label": "%{shipping_price} за всяка доставка"
         },
         "shipping_method_first_shipment_group_title": {
           "few": "Първи пратки"
@@ -806,7 +822,30 @@
         },
         "unbranded_description_with_fulfillment_weeks": {
           "few": "Доставя се %{count} седмици"
-        }
+        },
+        "title": "Транспорт",
+        "shipping_method_title": "Метод на доставка",
+        "waiting_on_rate_notice": "Получаване на налични цени за доставка...",
+        "waiting_on_pickup_location_notice": "Получават се налични места за взимане...",
+        "no_rates_for_cart_or_destination_notice": "Няма наличен метод за доставка за вашата количка или адрес",
+        "no_pickup_location_notice": "Поне един от вашите продукти не е наличен за получаване",
+        "no_rates_for_country_notice": "Не е намерена тарифа за доставка за този адрес.",
+        "no_rates_contact_notice": "Свържете се с нас за повече информация",
+        "free_rate_label": "безплатно",
+        "cheapest_rate_label": "Най-евтиният",
+        "estimated_delivery_date_range": "Между %{minimum} и %{maximum} работни дни",
+        "shipping_line_phone_label": "Номер на мобилен телефон (задължително)",
+        "shipping_line_phone": "Куриерът може да използва този номер, за да се свърже с вас.",
+        "shipping_rate_discounted_amount": "Беше: %{original_amount}. Сега: %{amount}",
+        "optional_shipping_line_delivery_instructions_label": "Инструкции за доставка (по избор)",
+        "shipping_line_delivery_phone": "Може да се свържем с вас, за да предоставим актуализации за доставка.",
+        "shipping_line_delivery_phone_label": "Номер на мобилен телефон",
+        "shipping_line_delivery_instructions": "Въведете необходимата информация като интерком кодове или инструкции за предаване.",
+        "local_delivery": "Локална доставка",
+        "subscription_shipping": "Доставка въз основа на абонамент",
+        "shipping_method_one_time_purchase_group_title": "Еднократна покупка",
+        "shipping_method_subscription_group_title": "Абонамент",
+        "one_time_purchase_shipping": "Единична пратка"
       },
       "general": {
         "map": {
@@ -1105,6 +1144,11 @@
       "search_results": {
         "few": "Търсене: Те бяха намерени %{count} Резултати за \"%{terms}”"
       }
+    },
+    "sentence": {
+      "words_connector": ", ",
+      "two_words_connector": " и ",
+      "last_word_connector": " и "
     }
   },
   "customer_accounts": {
