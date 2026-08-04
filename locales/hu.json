@@ -2751,8 +2751,20 @@
         },
         "location_nearby_short_other_items": {
           "one": "%{count} közeli hely a tárgyakkal",
-          "other": "%{count} közeli helyekre a tételeivel"
-        }
+          "other": "%{count} közeli helyekre a tételeivel",
+          "few": "%{count} közeli helyekre a tételeivel"
+        },
+        "location_far_away_one_item": {
+          "one": "%{count} helyét a tételével",
+          "other": "%{count} helyeket a cikkével",
+          "few": "%{count} helyeket a cikkével"
+        },
+        "location_far_away_other_items": {
+          "one": "%{count} helyét a tételeivel",
+          "other": "%{count} helyeket a tételeivel",
+          "few": "%{count} helyeket a tételeivel"
+        },
+        "location_selected": "A kiválasztott hely"
       },
       "merchandise_unavailable_in_buyer_location": {
         "remove_items_action": {
@@ -3402,6 +3414,88 @@
       },
       "online_store_chat": {
         "title": "Kérdései vannak? Csevegés velünk"
+      },
+      "split_delivery": {
+        "pickup_all_items": "Vegyen fel minden elemet",
+        "items_for_pickup": "Felvehető tárgyak",
+        "delivery_method": "Lebontási kézbesítési mód",
+        "delivery_method_menu": "Szállítási mód menü lebontva",
+        "inventory_issue_banner": {
+          "remove_items_or_ship": "%{ship_separately_link} vagy %{remove_items_link}",
+          "remove_items_or_pickup": "%{pickup_in_store_link} vagy %{remove_items_link}",
+          "heading": {
+            "cannot_be_picked_up": {
+              "one": "%{count} az árut nem lehet átvenni",
+              "other": "%{count} a tárgyakat nem lehet átvenni",
+              "few": "%{count} a tárgyakat nem lehet átvenni"
+            },
+            "cannot_be_shipped": {
+              "one": "%{count} a tétel nem szállítható",
+              "other": "%{count} tételek nem szállíthatók",
+              "few": "%{count} tételek nem szállíthatók"
+            }
+          },
+          "remove_item": {
+            "one": "távolítsa el a cikket",
+            "other": "elemek eltávolítása",
+            "few": "elemek eltávolítása"
+          },
+          "ship_separately": {
+            "one": "Külön szállítsd",
+            "other": "Külön szállítsd őket",
+            "few": "Külön szállítsd őket"
+          },
+          "pick_them_up_in_store": {
+            "one": "Vedd fel a boltból",
+            "other": "Vedd fel őket a boltból",
+            "few": "Vedd fel őket a boltból"
+          },
+          "remove_item_only": {
+            "one": "Távolítsa el az elemet",
+            "other": "Elemek eltávolítása",
+            "few": "Elemek eltávolítása"
+          },
+          "merchandise_line_with_quantity": "%{title} (×%{quantity})"
+        },
+        "items_for_shipping": "Szállításra szánt cikkek",
+        "pickup_items_count": {
+          "few": "Emelés %{count} cikkeket"
+        },
+        "ship_items_count": {
+          "few": "Szállítás %{count} cikkeket"
+        },
+        "items_moved_to_shipping_toast": "Az átvehetetlen tételek átkerültek a kiszállításba",
+        "cross_border": {
+          "modal": {
+            "heading": "Országváltás?",
+            "content": "Az átvételi és szállítási helynek ugyanabban az országban kell lennie. Az ország megváltoztatása az összes tételt visszaállítja a kiszállításkor.",
+            "change_country": "Változtasd meg az országot",
+            "country_changed_heading": "Az ország megváltozott"
+          },
+          "banner": "A kézbesítési mód frissült"
+        },
+        "items_count": {
+          "few": "%{count} cikkeket"
+        },
+        "accessibility": {
+          "status": {
+            "ship_separately": "%{items} külön szállítjuk.",
+            "pickup_in_store": "%{items} átveszik az üzletből.",
+            "remove_items": "%{items} eltávolították a kosárból."
+          }
+        }
+      },
+      "captcha": {
+        "title": "A folytatáshoz fejezze be a CAPTCHA ellenőrzést",
+        "errors": {
+          "not_solved": "A folytatáshoz fejezze be a CAPTCHA ellenőrzést"
+        }
+      },
+      "discount_errors": {
+        "generic_error": "Megrendelését nem tudtuk feldolgozni, mert a kedvezmény kódja már nem elérhető. Tekintse át rendelésének végösszegét, és próbálja újra."
+      },
+      "wallets": {
+        "return_to_store": "Gyere vissza a boltba"
       }
     },
     "notices": {
