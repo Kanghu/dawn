@@ -1404,7 +1404,16 @@
         },
         "unit_price": {
           "per_item": {
-            "few": "%{price} pour %{count} articles"
+            "few": "%{price} pour %{count} articles",
+            "single": "%{price} chaque article",
+            "one": "%{price} pour %{count} article",
+            "other": "%{price} pour %{count} articles"
+          },
+          "accessible_separator": "sur",
+          "content_html": "%{price}%{accessible_separator}%{per_unit}",
+          "per_unit": {
+            "single": "%{price}/%{unit}",
+            "plural": "%{price}/%{count}%{unit}"
           }
         },
         "pickup_unavailable_banner_title_with_country": {
@@ -1464,7 +1473,53 @@
         "description_label": "Descriptif",
         "price_label": "Prix",
         "quantity_label": "Quantité",
-        "product_change_label": "Modifier"
+        "product_change_label": "Modifier",
+        "product_image_label": "Image du produit",
+        "scroll_order_summary": "Faites défiler pour plus d'articles",
+        "expand_order_summary_short": "Affichage",
+        "collapse_order_summary_short": "Masquer",
+        "total_updated_label": "Prix total mis à jour :",
+        "order_total_updated_label": "Total mis à jour",
+        "total_already_paid_label": "Montant payé",
+        "estimated_taxes_label": "Frais estimés",
+        "information_estimated_taxes_label": "Frais (estimés)",
+        "gift_card_ending": "Carte cadeau se terminant par %{last_characters}",
+        "estimated_tax_label": "Frais estimés",
+        "multiple_shipping_lines_label": "Total des frais d'expédition",
+        "applied_free_shipping_discount_label": "Appliqué",
+        "original_price": "Le prix d'origine",
+        "sale_price": "Prix de l'offre",
+        "recurring_subtotal_label": "Sous-total récurrent",
+        "recurring_total_label": "Totalement récurrent",
+        "recurring_total_tooltip": "N'inclut pas les frais d'expédition, les taxes, les droits ou les rabais applicables.",
+        "gift_card_subscriptions_notice": "Les cartes cadeaux ne seront appliquées qu'au premier paiement",
+        "confirmation_number_label": "N° de confirmation %{confirmation_number}",
+        "estimated_taxes_finalization_tooltip_content": "Les frais finaux et le total seront confirmés par e-mail ou par SMS après avoir passé la commande.",
+        "deferred_payment_info": {
+          "title": "Paiement d'un montant de %{amount_due} a une date d'échéance %{due_at}",
+          "description_html": "Pour des questions sur votre commande, %{contact_us}.",
+          "paid_today": "Total payé aujourd'hui",
+          "due_on_fulfillment_title": "Paiement d'un montant de %{amount_due} a la date d'échéance au moment de l'honneur",
+          "due_on_receipt_title": "Paiement d'un montant de %{amount_due} a une date d'échéance au moment de la réception",
+          "paid_today_next": "Payé aujourd'hui"
+        },
+        "percent_off_shipping": "Remise de %{percent}% sur l'expédition",
+        "amount_off_shipping": "Remise de %{amount} à l'expédition",
+        "payment_terms_totals": {
+          "due_today": "Total dû aujourd'hui",
+          "due_later": "Total dû à %{due_at}",
+          "due_later_checkout_to_draft": "Total à payer plus tard",
+          "due_on_fulfillment": "Total dû au moment de l'honneur",
+          "due_on_receipt": "Total dû à réception",
+          "total_paid": "Total payé",
+          "due_today_next": "À rendre aujourd'hui",
+          "due_on_fulfillment_next": "Expire au moment de l'exécution de l'ordre"
+        },
+        "higher_value_discount_applied": "<strong style=\"text-transform:uppercase\">%{code}</strong> ne peut pas être utilisé conjointement avec les réductions existantes.",
+        "maximum_discount_code_limit_reached": "Vous avez atteint le nombre maximum de codes de réduction. Supprimer un code existant pour utiliser le code <strong style=\"text-transform:uppercase\">%{code}</strong>.",
+        "order_total_label": "Total de la commande",
+        "discount_code_application_failed": "<strong style=\"text-transform:uppercase\">%{code}</strong> ne fonctionne pas pour le moment. Contactez-nous pour obtenir de l'aide.",
+        "due_on_fulfillment": "Due au moment de l'honneur"
       },
       "payment": {
         "order_covered_by_gift_cards_notice": {
