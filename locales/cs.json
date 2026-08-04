@@ -1937,7 +1937,147 @@
         "payment_method_saved": "Uložená platební metoda",
         "card_vaulted_company_location": "Karta uložena pro toto místo",
         "order_covered_by_store_credit_notice": "Vaše objednávka je kryta kreditem obchodu.",
-        "order_covered_by_redeemables_notice": "Vaše objednávka je pokryta."
+        "order_covered_by_redeemables_notice": "Vaše objednávka je pokryta.",
+        "store_credit": {
+          "label": "Prodejní kredit",
+          "apply_label": "Použijte kredit obchodu",
+          "add_label": "Přidejte kredit obchodu",
+          "manage_label": "Správa kreditu obchodu",
+          "buying_gift_card": "Kredit obchodu nelze použít k nákupu dárkové karty",
+          "no_fixed_selling_plans": "Kredit obchodu nelze použít pro možnosti odloženého nákupu"
+        },
+        "clear": "Vyprázdněte to",
+        "billing_must_match_shipping_notice": "Fakturační adresa spojená s vaší platební metodou se musí shodovat s dodací adresou.",
+        "same_billing_address_checkbox_label": "Jako fakturační adresu použijte dodací adresu",
+        "location_billing_address_label": "Fakturační adresa místa",
+        "fact_billing_address_label": "Fakturační adresa",
+        "location_shipping_address_label": "Doručovací adresa pro dané místo",
+        "no_working_method_error": "Tento obchod momentálně nemůže přijímat platby. Obnovte stránku nebo se vraťte později.",
+        "brand_not_available": "Tento obchod nepřijímá {{brand}}. K platbě použijte jinou kartu.",
+        "shipping_rate_updated": "Dostupné způsoby doručení byly aktualizovány. Před dokončením nákupu potvrďte svůj výběr.",
+        "billing_address_invalid_phone": "Chcete-li pokračovat, aktualizujte telefonní číslo ve fakturační adrese pro {{label}} {{last_digits}}.",
+        "billing_address_invalid_phone_no_card": "Chcete-li pokračovat, aktualizujte telefonní číslo ve své fakturační adrese.",
+        "preview_not_available": {
+          "title": "Náhled není k dispozici",
+          "content": "Nebojte se, tento způsob expresní platby pro vaše zákazníky funguje.",
+          "button": "Dobře"
+        },
+        "card_fields": {
+          "errors": {
+            "required": {
+              "issue_date": "Zadejte prosím platné datum vydání",
+              "issue_number": "Zadejte platné číslo vydání"
+            },
+            "invalid": {
+              "verification_value": "Zadejte platný CVV nebo bezpečnostní kód"
+            }
+          }
+        },
+        "simulated_checkout": "Náhled bude brzy k dispozici",
+        "vaulting_agreement_label": "Chci uložit platební údaje v souvislosti s %{company}, pro rychlejší dokončení objednávek.",
+        "business_customer_vaulting_payment_label": "Uložte tento způsob platby při pokladně a autorizujte %{company} pro provádění plateb za budoucí nákupy pro toto místo. Všechny kontakty přiřazené k tomuto místu mohou používat platební metodu.",
+        "purchase_options_and_vaulting_agreement_label": "Jedna nebo více položek ve vašem košíku je odložený nákup nebo nákup předplatného. Pokračováním v platbě souhlasíte s tím, že vaše platební metoda bude automaticky účtována za cenu a frekvenci uvedenou na této stránce, dokud vaše předplatné neskončí nebo je nezrušíte. Všechna zrušení musí být v souladu s %{cancellation_policy_label}.",
+        "purchase_options_cancellation_policy_label": "storno podmínky",
+        "use_different_credit_card_label": "Použijte jinou kartu",
+        "saved_credit_card": "Vaše kreditní karta byla uložena",
+        "saved_credit_card_info": "Poslední čtyři číslice",
+        "saved_credit_cards_modal": {
+          "view_all_label": "Zobrazit všechny uložené karty",
+          "done": "hotovo",
+          "cancel": "Zrušit"
+        },
+        "expired_cards_info": {
+          "one": "Existuje %{count} vypršela platnost karty, kterou můžete zobrazit a upravit ve svém účtu.",
+          "other": "Existuje %{count} karty s ukončenou platností, které si můžete prohlížet a upravovat ve svém účtu.",
+          "few": "Existuje %{count} karty s ukončenou platností, které si můžete prohlížet a upravovat ve svém účtu."
+        },
+        "local_payment_method_receiver_notice": "Po zadání objednávky obdržíte platební údaje. Platbu proveďte maximálně v bankomatu nebo online {{dueDays}} (ze) dnů.",
+        "order_edit_banner_title": "Je nutné uhradit částku {{amount_owed}}",
+        "order_edit_banner_subtitle": "vaši objednávku, {{order_number}}, byl aktualizován. Zkontrolujte tyto změny a poté zaplaťte za potvrzení objednávky.",
+        "order_edit_banner_single_item_added": "Přidáno",
+        "order_edit_banner_multiple_items_added": "Přidáno(y): {{amount}}",
+        "order_edit_banner_single_item_removed": "Odebráno",
+        "order_edit_banner_multiple_items_removed": "Odebráno(é): {{amount}}",
+        "gift_card_wrapper": {
+          "heading": "Dárkový poukaz",
+          "apply_gift_card_label": "Použijte dárkovou kartu",
+          "payment_tag": "Dárkový poukaz",
+          "apply_another_gift_card_label": "Použijte další dárkovou kartu",
+          "gift_card_label": "%{identifier} za dárkovou kartu",
+          "add_label": "Přidejte dárkovou kartu",
+          "manage_label": "Správa dárkových karet"
+        },
+        "custom_onsite_payment_method_modal": {
+          "title": "Personalizované potvrzení platby na místě"
+        },
+        "markets_pro_disclaimer_label": "Zadáním objednávky souhlasíte s nákupem od Global-e jako registrovaný obchodník v souladu s %{markets_pro_terms} a %{privacy_policy} Je globální a můžete s ním sdílet své informace %{shop_name}.",
+        "markets_pro_disclaimer_terms_and_conditions": "Smluvní podmínky",
+        "markets_pro_disclaimer_privacy_policy": "Zásady ochrany osobních údajů",
+        "markets_pro_disclaimer_terms_and_conditions_title": "Smluvní podmínky registrovaného obchodníka",
+        "markets_pro_disclaimer_privacy_policy_title": "Zásady ochrany osobních údajů registrovaného obchodníka",
+        "purchase_order_number": {
+          "title": "Číslo objednávky",
+          "label": "Číslo objednávky (volitelné)"
+        },
+        "alternative_payment_currency_total_notice": "Poznámka: Platba bude naúčtována na váš způsob platby %{amount_due}.",
+        "waiting_on_taxes_message": "Pokud se vaše poplatky během několika sekund nevypočítají, obnovte stránku.",
+        "waiting_on_taxes_notice": "Daně se počítají",
+        "order_edit_banner_single_item_returned": "Vráceno",
+        "order_edit_banner_multiple_items_returned": "Vráceno(y): {{amount}}",
+        "shop_pay_installments_label": "Sazba Shop Pay",
+        "add_credit_card_modal": {
+          "title": "Přidat kartu",
+          "cancel": "Zrušit",
+          "save": "Uložit"
+        },
+        "delete_credit_card_modal": {
+          "title": "Vymažte kartu",
+          "confirmation": "Jistě chcete smazat {{brandName}} která končí s {{lastDigits}}?",
+          "cancel": "Zrušit",
+          "delete": "Smazat"
+        },
+        "order_edit_banner_items_added": {
+          "one": "Přidáno",
+          "other": "Přidáno(y): %{count}",
+          "few": "Přidáno(y): %{count}"
+        },
+        "order_edit_banner_items_removed": {
+          "in_full": "Odebráno",
+          "with_quantities": "Odebráno(é): {{delta}} od {{quantity}}"
+        },
+        "order_edit_banner_items_returned": {
+          "in_full": "Vráceno(y): {{quantity}}",
+          "with_quantities": "Vráceno(y): {{delta}} od {{quantity}}"
+        },
+        "saved_credit_card_actions": {
+          "edit": "Upravit",
+          "delete": "Smazat"
+        },
+        "edit_credit_card_modal": {
+          "title": "Upravte kartu",
+          "done": "hotovo",
+          "cancel": "Zrušit",
+          "description": "Změnit můžete pouze fakturační adresu ke své kartě.",
+          "fields": {
+            "default": "Nastavit jako výchozí",
+            "card_number": "Číslo karty",
+            "expiry": "Datum vypršení platnosti",
+            "security_code": "Bezpečnostní kód",
+            "name": "Jméno na kartě",
+            "billing": "Fakturace na"
+          }
+        },
+        "payment_method": "Způsob platby",
+        "expired_payment_method": "Platnost vybrané platební metody vypršela",
+        "subscription_heading": "Smlouva o předplatném",
+        "use_order_billing_address_label": "Pro objednávku použijte fakturační adresu",
+        "use_location_billing_address_label": "Jako místo použijte fakturační adresu",
+        "use_location_shipping_address_label": "Pro umístění použijte dodací adresu",
+        "purchase_options_agreement_label_wallets": "Pokračováním v platbě souhlasíte s budoucími poplatky uvedenými na této stránce a se storno podmínkami.",
+        "gift_card_store_credit": {
+          "add_label": "Přidejte dárkovou kartu nebo kredit obchodu",
+          "manage_label": "Spravujte dárkové karty nebo kredit obchodu"
+        }
       }
     }
   }
