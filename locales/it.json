@@ -1692,10 +1692,14 @@
       },
       "payment": {
         "order_covered_by_gift_cards_notice": {
-          "few": "Il tuo ordine è coperto dalle tue carte regalo."
+          "few": "Il tuo ordine è coperto dalle tue carte regalo.",
+          "one": "Il tuo ordine è coperto dalla tua carta regalo.",
+          "other": "Il tuo ordine è coperto dalle tue carte regalo."
         },
         "card_fields_unavailable_html": {
-          "few": "I pagamenti con le carte bancarie non sono attualmente disponibili.<br><a href=\"%{current_url}\">Aggiorna la pagina</a> o provare un metodo di pagamento diverso."
+          "few": "I pagamenti con carta bancaria non sono attualmente disponibili.<br><a href=\"%{current_url}\">Aggiorna la pagina</a> oppure prova un metodo di pagamento diverso.",
+          "one": "I pagamenti con carta bancaria non sono attualmente disponibili.<br><a href=\"%{current_url}\">Aggiorna la pagina</a> o riprovare più tardi.",
+          "other": "I pagamenti con carta bancaria non sono attualmente disponibili.<br><a href=\"%{current_url}\">Aggiorna la pagina</a> oppure prova un metodo di pagamento diverso."
         },
         "expired_cards_info": {
           "few": "Esistere %{count} Carte scadute, che puoi vedere e modificare nel tuo account."
@@ -1738,7 +1742,51 @@
         "card_verification_value_placeholder": "Codice di sicurezza",
         "card_expiry_date_explanation": "Data di scadenza della carta nel formato: mese, mese, anno, anno",
         "card_expiration_month_label": "Mese di scadenza",
-        "card_expiration_year_label": "Anno di scadenza"
+        "card_expiration_year_label": "Anno di scadenza",
+        "card_verification_value_explanation": "Il codice di sicurezza a 3 cifre che solitamente si trova sul retro della carta. Le carte American Express hanno un codice di 4 cifre situato sul fronte.",
+        "card_verification_value_explanation_amex": "Il codice di sicurezza di 4 cifre sul lato anteriore della carta",
+        "card_verification_value_explanation_other": "Il codice di sicurezza a 3 cifre sul retro della carta",
+        "card_start_label": "Data di emissione (MM/AA)",
+        "card_start_placeholder": "Data di emissione (MM/AA)",
+        "card_issue_number_label": "Numero di emissione",
+        "card_issue_number_placeholder": "Numero di emissione",
+        "card_change_label": "Modifica",
+        "ends_with_label": "finisce dentro %{last_digits}",
+        "masked_digits_label": "•••• %{last_digits}",
+        "saved_by_payment_method": "Salvato da %{payment_method}",
+        "pay_with_payment_method": "Paga con %{payment_method}",
+        "same_billing_address_label": "Uguale all'indirizzo di spedizione",
+        "different_billing_address_label": "Utilizza un indirizzo di fatturazione diverso",
+        "free_order_notice_html": "Il tuo ordine è <strong>gratuitamente</strong>. Non è richiesto alcun pagamento.",
+        "express_checkout_free_order": "Non ti verrà addebitato un ordine gratuito",
+        "offsite_gateway_redirect_hint": "Ti reindirizzeremo a %{gateway_label} per completare il tuo acquisto.",
+        "offsite_gateway_redirect_hint_multi_currency_html": "%{gateway_label} totale %{total_shop_price}",
+        "billing_address_title": "Indirizzo di fatturazione",
+        "billing_address_description": "Seleziona l'indirizzo che corrisponde alla tua carta o al metodo di pagamento.",
+        "billing_address_description_no_shipping_address": "Inserisci l'indirizzo che corrisponde alla tua carta o al metodo di pagamento.",
+        "no_js_credit_card_fields_redirect_hint": "Verrai reindirizzato per aggiungere le informazioni di pagamento.",
+        "card_fields_container_prefix": "Contenitore da campo per:",
+        "card_fields_processing_error": "Si è verificato un problema durante l'elaborazione del pagamento. Prova ad aggiornare questa pagina o controlla la tua connessione Internet.",
+        "technical_error": "Al momento non è possibile elaborare i pagamenti a causa di un problema tecnico. Riprova tra qualche minuto.",
+        "no_method_error": "Questo negozio non può accettare pagamenti in questo momento.",
+        "not_configured_error": "Questo negozio non può accettare pagamenti in questo momento.",
+        "missing_credit_card_error": "Inserisci i dati della tua carta per completare il pagamento",
+        "billing_address_not_supported_for_payment_method_error": "Questo metodo di pagamento non è disponibile per il tuo indirizzo di fatturazione e la tua valuta. Prova un altro metodo di pagamento.",
+        "generic_incorrect_card_info": "Non è stato possibile verificare i dettagli del tuo pagamento. Controlla i dettagli della tua carta e riprova.",
+        "sofort_label": "Bonifico bancario facile",
+        "paypal_label": "PayPal",
+        "klarna_pay_later_label": "Paga più tardi con Klarna",
+        "klarna_pay_now_label": "Paga ora con Klarna",
+        "bancontact_label": "BanContact",
+        "giropay_label": "Giropay",
+        "eps_label": "eps-Überweisung",
+        "klarna_slice_it_label": "Finanzia con Klarna",
+        "ideal_label": "ideale | Wero",
+        "bank_picker_label": "Banca",
+        "change_currency_section_description": "Seleziona un'opzione di valuta",
+        "no_real_orders_dev_store": "Questo negozio non può accettare ordini reali o pagamenti reali.",
+        "subscription_agreement_label_html": "Comprendo e accetto l'abbonamento. Rinnoverò al prezzo e alla frequenza indicati fino alla fine o allo scadere del periodo\n<a class=\"link--small\" data-modal=\"true\" data-title-text=\"%{subscription_policy}\" href=\"%{policy_href}\">annullato</a>.\n",
+        "waiting_on_payment_methods": "Otteniamo i metodi di pagamento disponibili..."
       },
       "shipping_errors": {
         "shipping_method_not_available_generic": {
