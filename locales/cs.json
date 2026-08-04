@@ -2955,7 +2955,75 @@
         "terms_of_service": "Podmínky použití",
         "legal_notice": "Právní upozornění",
         "shipping_policy": "Doprava",
-        "terms_of_sale": "Podmínky prodeje"
+        "terms_of_sale": "Podmínky prodeje",
+        "subscription_policy": "Zrušení",
+        "purchase_options_policy": "Zásady nákupních možností",
+        "contact_information": "Kontakt",
+        "purchase_options_cancellation_policy": "Zrušení",
+        "cookie_preferences": "Soubory cookie",
+        "policy_label": "Politika",
+        "policies_label": "Politici",
+        "select_policy_label": "Vyberte zásadu",
+        "terms_and_policies": "Podmínky a zásady"
+      },
+      "notifications": {
+        "title": "Oznámení"
+      },
+      "order_payment_collection": {
+        "custom_line_item_description": "Částka platby za objednávku %{order_name}",
+        "additional_payment_requested": "Je nutné uhradit částku %{total_outstanding}",
+        "checkout_review_and_pay": "vaši objednávku, %{order_name} byl aktualizován. Zkontrolujte tyto změny a poté zaplaťte za potvrzení objednávky.",
+        "order_updated_on": "Vaše objednávka byla aktualizována dne %{last_edited_at}.",
+        "order_review_and_pay": "Vaše objednávka byla aktualizována. Zkontrolujte a zaplaťte pro potvrzení objednávky.",
+        "pay_now": "Zaplať teď",
+        "changes_summary": {
+          "added": {
+            "one": "Přidáno",
+            "other": "Přidáno(y): %{count}",
+            "few": "Přidáno(y): %{count}"
+          },
+          "removed": "Odebráno",
+          "subtracted": "Odebráno(é): %{count}",
+          "returned": "Vráceno(y): %{count}",
+          "return_line_item_removed": "Odebráno z vrácení: %{count}"
+        }
+      },
+      "tips": {
+        "title": "Přidejte tip",
+        "description": "Podpořte tým na %{shop_name}",
+        "presets_description": "Vyberte procento spropitného",
+        "custom_label": "Vlastní tip",
+        "add_tip": "Přidejte tip",
+        "update_tip": "Aktualizovat tip",
+        "message": "Děkujeme, vážíme si gesta.",
+        "preset_label": "%{tip_percent}%",
+        "no_tip_label": "Bez",
+        "not_available_with_spi": "Není k dispozici pro platby na splátky pomocí Shop Pay"
+      },
+      "open_graph_meta_tag": {
+        "title_with_products": {
+          "zero": "Kupte si to %{product_name}",
+          "one": "Kupte si to %{product_name} a stále %{count} článek",
+          "other": "Kupte si to %{product_name} a stále %{count} články",
+          "few": "Kupte si to %{product_name} a stále %{count} články"
+        }
+      },
+      "localized_fields": {
+        "additional_information": {
+          "title": "Další informace",
+          "tax_credential_br": "CPF/CNPJ",
+          "shipping_credential_br": "CPF/CNPJ",
+          "shipping_credential_kr": "Osobní celní kodex",
+          "shipping_credential_cn": "Identifikační číslo rezidenta",
+          "tax_credential_it": "Codice Fiscale (volitelné)",
+          "tax_email_it": "PEC (volitelné)",
+          "tax_credential_cl": "RUT",
+          "shipping_credential_cl": "RUT",
+          "tax_credential_co": "Cédula/DPH",
+          "tax_credential_type_co": "typ Cédula",
+          "shipping_credential_co": "Cédula/DPH",
+          "shipping_credential_type_co": "typ Cédula"
+        }
       }
     }
   }
