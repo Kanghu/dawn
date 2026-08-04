@@ -1616,13 +1616,19 @@
           "other": "Παρουσιάστηκε πρόβλημα με την εκ νέου αποστολή δωροκαρτών. Δοκιμάστε ξανά ή επικοινωνήστε μαζί μας."
         },
         "thank_you_unconfirmed_items_heading": {
-          "few": "Ορισμένα στοιχεία δεν επιβεβαιώνονται"
+          "few": "Ορισμένα στοιχεία δεν επιβεβαιώνονται",
+          "one": "1 στοιχείο δεν έχει επιβεβαιωθεί",
+          "other": "Ορισμένα στοιχεία δεν επιβεβαιώνονται"
         },
         "thank_you_unconfirmed_items_description": {
-          "few": "Οι επεμβάσεις αυτές πραγματοποιήθηκαν δωρεάν"
+          "few": "Οι επεμβάσεις αυτές πραγματοποιήθηκαν δωρεάν",
+          "one": "Αυτή η επέμβαση έγινε δωρεάν",
+          "other": "Οι επεμβάσεις αυτές πραγματοποιήθηκαν δωρεάν"
         },
         "thank_you_item_label": {
-          "few": "%{count} προϊόντα"
+          "few": "%{count} άρθρα",
+          "one": "%{count} άρθρο",
+          "other": "%{count} άρθρα"
         },
         "thank_you_confirmed_items_with_email": {
           "few": "Σύντομα θα λάβετε email επιβεβαίωσης"
@@ -1631,7 +1637,9 @@
           "few": "Σύντομα θα λάβετε μηνύματα επιβεβαίωσης"
         },
         "items_fulfilled_by_store": {
-          "few": "Τα αγορασμένα είδη θα παραδοθούν από άλλα καταστήματα."
+          "few": "Τα αγορασμένα είδη θα παραδοθούν από άλλα καταστήματα.",
+          "one": "Τα προϊόντα που αγοράζονται θα αποστέλλονται από %{remote_shop_name}.",
+          "other": "Τα αγορασμένα είδη θα παραδοθούν από άλλα καταστήματα."
         },
         "thank_you_confirmed_orders_with_email_description": {
           "few": "Σύντομα θα λάβετε ξεχωριστά email επιβεβαίωσης από κάθε κατάστημα"
@@ -1887,7 +1895,41 @@
           "title": "τιμολόγια ΦΠΑ"
         },
         "thank_you_payments_app_pending_payment_description_provider_action_required_default": "Θα λάβετε ένα email όταν επιβεβαιωθεί η πληρωμή.",
-        "verify_shop_account_title": "Ελέγξτε τον λογαριασμό σας στο κατάστημα"
+        "verify_shop_account_title": "Ελέγξτε τον λογαριασμό σας στο κατάστημα",
+        "verify_shop_account_message": "Οι πληροφορίες σας έχουν αποθηκευτεί στο Κατάστημα. Επαληθεύστε τον λογαριασμό σας για να τα χρησιμοποιείτε αυτόματα σε εκατομμύρια καταστήματα.",
+        "verify_shop_account_cta": "Ελέγξτε τον λογαριασμό σας",
+        "verify_shop_account_confirmation": "Τα στοιχεία πληρωμής έχουν αποθηκευτεί",
+        "company_location_section_title": "Εταιρεία και τοποθεσία",
+        "announcement": {
+          "close": "Κλείσιμο",
+          "expand": "Επέκταση",
+          "collapse": "Περιορισμός"
+        },
+        "confirmed_items_count": "%{confirmed_count} από %{total_count} στοιχεία επιβεβαιώνονται",
+        "thank_you_confirmed_orders_with_email": "Σύντομα θα λάβετε ξεχωριστά email επιβεβαίωσης με αριθμούς παραγγελίας",
+        "thank_you_confirmed_orders_with_phone": "Σύντομα θα λάβετε ξεχωριστά μηνύματα SMS επιβεβαίωσης με αριθμούς παραγγελίας",
+        "thank_you_confirmed_orders_with_email_and_phone": "Σύντομα θα λάβετε ξεχωριστά email επιβεβαίωσης με αριθμούς παραγγελίας",
+        "track_your_order_link_text": "Παρακολούθηση παραγγελιών",
+        "checkout_on_remote_shop_link_text": "Πληρώστε στο %{remoteShopName}",
+        "confirmed_orders_title": "Οι παραγγελίες σας επιβεβαιώνονται",
+        "thank_you_from_shop": "Από %{shop_name}",
+        "payment_method_not_charged": "Χωρίς χρέωση",
+        "thank_you_from_other_store": "Από άλλο κατάστημα",
+        "checkout_on_another_store": "Πληρώστε σε άλλο κατάστημα",
+        "thank_you_confirmed_with_email_description": {
+          "single_store": "Θα λάβετε σύντομα ένα email επιβεβαίωσης",
+          "multi_store": "Σύντομα θα λάβετε ξεχωριστά email επιβεβαίωσης από κάθε κατάστημα"
+        },
+        "thank_you_confirmed_with_phone_description": {
+          "single_store": "Σύντομα θα λάβετε ένα SMS επιβεβαίωσης",
+          "multi_store": "Σύντομα θα λάβετε ξεχωριστά SMS επιβεβαίωσης από κάθε κατάστημα"
+        },
+        "thank_you_confirmed_with_email_and_phone_description": {
+          "single_store": "Θα λάβετε σύντομα ένα email επιβεβαίωσης",
+          "multi_store": "Σύντομα θα λάβετε ξεχωριστά email επιβεβαίωσης από κάθε κατάστημα"
+        },
+        "checkout_again": "Πληρώστε ξανά",
+        "cashback_notice": "Θα λάβετε την επιστροφή χρημάτων σας μετά από 30 ημέρες"
       },
       "order_payment_collection": {
         "changes_summary": {
@@ -2208,6 +2250,21 @@
         "bank_account_label": "Τραπεζικός λογαριασμός",
         "credit_or_debit_card_label": "Πιστωτική/χρεωστική",
         "bogus_label": "Δοκιμαστική πύλη πληρωμής"
+      },
+      "review": {
+        "title": "Επανεξέταση",
+        "review_title": "Ολοκληρώστε την παραγγελία",
+        "checkout_as_guest": "Ολοκληρώστε την παραγγελία ως επισκέπτης",
+        "blocks": {
+          "contact_method_title": "Επικοινωνία",
+          "billing_address_title": "Χρέωση",
+          "shipping_address_title": "Αποστολή σε",
+          "shipping_method_title": "Τρόπος αποστολής",
+          "payment_method_title": "Τρόπος πληρωμής",
+          "change_link_label": "Τροποποίηση",
+          "change_contact_method_link_label": "Αλλαγή στοιχείων επικοινωνίας",
+          "change_billing_address_link_label": "Αλλαγή διεύθυνσης χρέωσης"
+        }
       }
     },
     "notices": {
