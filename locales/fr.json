@@ -723,27 +723,42 @@
     "checkout": {
       "shipping": {
         "estimated_delivery_date": {
-          "few": "%{count} jours ouvrables"
+          "few": "%{count} jours ouvrables",
+          "one": "%{count} journée de travail",
+          "other": "%{count} jours ouvrables"
         },
         "other_method": {
-          "few": "%{count} D'autres méthodes sont disponibles à partir de"
+          "few": "%{count} d'autres méthodes sont disponibles auprès de",
+          "zero": "Aucune autre méthode n'est disponible",
+          "one": "%{count} une autre méthode est disponible sur",
+          "other": "%{count} d'autres méthodes sont disponibles auprès de"
         },
         "subscription_delivery_description": {
           "prepaid_delivery_frequency": {
-            "few": "pour %{count} livraison"
+            "few": "pour %{count} livraisons",
+            "one": "pour %{count} livraison",
+            "other": "pour %{count} livraisons"
           },
           "subscription_delivery_frequency": {
             "day": {
-              "few": "à chaque %{count} jours"
+              "few": "à chacun %{count} jours",
+              "one": "tous les jours",
+              "other": "à chacun %{count} jours"
             },
             "week": {
-              "few": "à chaque %{count} hebdomadaire"
+              "few": "à chacun %{count} semaines",
+              "one": "chaque semaine",
+              "other": "à chacun %{count} semaines"
             },
             "month": {
-              "few": "à chaque %{count} Lundi"
+              "few": "à chacun %{count} mois",
+              "one": "chaque mois",
+              "other": "à chacun %{count} mois"
             },
             "year": {
-              "few": "à chaque %{count} années"
+              "few": "à chacun %{count} années",
+              "one": "chaque année",
+              "other": "à chacun %{count} années"
             }
           },
           "first_n_order_free": {
@@ -784,14 +799,38 @@
           },
           "prepaid_order_no_cycle_delivery_not_included": {
             "few": "%{shipping_price} pour %{count} livraisons (%{per_delivery_cost}), après cela %{recurring_order_shipping_price}"
-          }
+          },
+          "multiple_subscriptions_shipping_price_label": "%{shipping_price} pour chaque livraison"
         },
         "shipping_method_first_shipment_group_title": {
           "few": "Premières expéditions"
         },
         "shipping_method_recurring_shipments_group_title": {
           "few": "Expéditions récurrentes"
-        }
+        },
+        "title": "Transport",
+        "shipping_method_title": "Méthode d'expédition",
+        "waiting_on_rate_notice": "Obtenir les prix d’expédition disponibles…",
+        "waiting_on_pickup_location_notice": "Obtenir les lieux de prise en charge disponibles…",
+        "no_rates_for_cart_or_destination_notice": "Il n'y a aucun mode d'expédition disponible pour votre panier ou votre adresse",
+        "no_pickup_location_notice": "Au moins un de vos produits n'est pas disponible en retrait",
+        "no_rates_for_country_notice": "Aucun tarif d'expédition trouvé pour cette adresse.",
+        "no_rates_contact_notice": "Contactez-nous pour plus d'informations",
+        "free_rate_label": "Gratuitement",
+        "cheapest_rate_label": "Le moins cher",
+        "estimated_delivery_date_range": "Entre %{minimum} et %{maximum} jours ouvrables",
+        "shipping_line_phone_label": "Numéro de téléphone portable (obligatoire)",
+        "shipping_line_phone": "Le transporteur peut utiliser ce numéro pour vous contacter.",
+        "shipping_rate_discounted_amount": "C'était: %{original_amount}. Maintenant : %{amount}",
+        "optional_shipping_line_delivery_instructions_label": "Instructions de livraison (facultatif)",
+        "shipping_line_delivery_phone": "Vous pourriez être contacté pour fournir des mises à jour sur la livraison.",
+        "shipping_line_delivery_phone_label": "Numéro de téléphone portable",
+        "shipping_line_delivery_instructions": "Saisissez les informations requises telles que les codes d'interphone ou les instructions de transfert.",
+        "local_delivery": "Livraison locale",
+        "subscription_shipping": "Expédition par abonnement",
+        "shipping_method_one_time_purchase_group_title": "Achat unique",
+        "shipping_method_subscription_group_title": "Abonnement",
+        "one_time_purchase_shipping": "Expédition unique"
       },
       "general": {
         "map": {
@@ -1087,6 +1126,11 @@
       "search_results": {
         "few": "Recherche: ils ont été trouvés %{count} Résultats pour \"%{terms}”"
       }
+    },
+    "sentence": {
+      "words_connector": ", ",
+      "two_words_connector": " et ",
+      "last_word_connector": " et "
     }
   },
   "customer_accounts": {
