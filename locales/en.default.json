@@ -944,8 +944,12 @@
           "few": "Ships in %{count} working days"
         },
         "unbranded_description_with_fulfillment_weeks": {
-          "one": "Ships in %{count} week"
-        }
+          "one": "Ships in %{count} week",
+          "other": "Ships in %{count} weeks",
+          "few": "Ships in %{count} weeks"
+        },
+        "add_new_delivery_address": "Add a new shipping address",
+        "delivery_to": "Shipping to the address"
       },
       "general": {
         "map": {
@@ -972,7 +976,50 @@
             "shop_cash_unsupported_currency": "Shop Cash does not accept this currency.",
             "shop_cash_not_available": "The Shop Cash payment method is not accepted for this purchase.",
             "shop_cash_not_found": "Could not find Shop Cash."
-          }
+          },
+          "session_identifier_not_unique_error": "There was a problem with your order. Please try the payment again.",
+          "line_item_limit_reached": "The maximum number of items has been reached.",
+          "only_empty_terms_accepted": "This policy only accepts blank terms."
+        },
+        "page_title": "Complete the order",
+        "error_page_title": "Error",
+        "skip_to_content": "Skip to content",
+        "breadcrumb": "trace",
+        "continue_button_label": "Continue",
+        "complete_purchase_button_label": "Complete the order",
+        "pay_now_button_label": "Pay now",
+        "authenticate_purchase_button_label": "Authenticate payment",
+        "edit_link_label": "Edit",
+        "all_rights_reserved": "All rights reserved %{shop_name}",
+        "print_policies_link_label": "Print",
+        "cart": "Basket",
+        "close_modal_label": "Close",
+        "close_notice_label": "Close",
+        "expand_notice_label": "See more",
+        "continue_to_shipping_method": "Continue to ship",
+        "continue_to_payment_method": "Continue to checkout",
+        "continue_to_review": "Review the order",
+        "back_to_cart": "Return to cart",
+        "back_to_contact_information": "Come back to the information",
+        "back_to_shipping_method": "Return to shipping",
+        "back_to_payment_method": "Return to payment",
+        "choose_shipping_method": "Choose a shipping method",
+        "choose_payment_method": "Choose a payment method",
+        "choose_billing_address": "Choose a billing address",
+        "contact_us_html": "Contact us for more information",
+        "autocomplete_title": "Suggestions",
+        "autocomplete_single_item": "1 item available",
+        "autocomplete_multi_item": "{{number}} items available",
+        "autocomplete_selection": "{{number}} from {{total}}",
+        "autocomplete_close": "Close suggestions",
+        "tooltip_accessibility_label": "More information",
+        "forwarding_indicator": {
+          "new_window": "Opens in a new window.",
+          "external": "Open an external site.",
+          "external_and_new_window": "Open the external website in a new window."
+        },
+        "checkout_context": {
+          "step_one": "%{shop_name} – Complete the order"
         }
       },
       "customer_account": {
@@ -1246,6 +1293,15 @@
         "shop_cash": {
           "currency_mismatch": "The currency has changed. See Shop Cash and the offer."
         }
+      },
+      "change_currency": {
+        "credit_card_will_be_charged_html": "They will be perceived %{amount} from your card",
+        "currency_button_label": "%{currency} (%{currency_symbol})",
+        "payment_total_label": "Total payment",
+        "conversion_rate": "1 %{from_currency_code} = %{rate} %{to_currency_code}",
+        "change_currency_link": "Change to %{currency_name}",
+        "card_provider_fx_charges_warning": "The card issuer may charge fees for transactions in %{currency_code}.",
+        "currency_not_supported_by_shop": "The currency you selected is no longer available. All prices are now in %{currency_code}."
       }
     },
     "notices": {
