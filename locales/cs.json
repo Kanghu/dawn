@@ -2887,8 +2887,75 @@
           "payment_method_title": "Způsob platby",
           "change_link_label": "Upravit",
           "change_contact_method_link_label": "Změňte kontaktní údaje",
-          "change_billing_address_link_label": "Změňte fakturační adresu"
+          "change_billing_address_link_label": "Změňte fakturační adresu",
+          "change_shipping_address_link_label": "Změňte dodací adresu",
+          "change_shipping_method_link_label": "Změnit způsob dopravy",
+          "change_payment_method_link_label": "Změňte způsob platby",
+          "pick_up_in_store_shipping_method_html": "Vyzvednutí na prodejně · %{location_name}",
+          "purchase_order_number_title": "Číslo objednávky",
+          "change_purchase_order_number_label": "Změňte číslo nákupní objednávky",
+          "change_delivery_method_link_label": "Změnit způsob doručení",
+          "no_address": "(žádná adresa)",
+          "no_purchase_order_number": "(objednávka bez čísla)",
+          "due_after_order_reviewed_html": "Splatné po kontrole objednávky",
+          "review_title_free_order": "Zkontrolujte a dokončete svou objednávku",
+          "payment_method_saved_company_location": "Uložte kartu pro toto místo",
+          "company_location": "Umístění společnosti",
+          "change_company_location_link_label": "Změna adresy společnosti",
+          "pickup_items_at": {
+            "one": "Zvedání %{count} článek z",
+            "other": "Zvedání %{count} články z",
+            "few": "Zvedání %{count} články z"
+          },
+          "ship_items_to": {
+            "one": "Doprava %{count} článek na",
+            "other": "Doprava %{count} články na",
+            "few": "Doprava %{count} články na"
+          },
+          "no_purchase_order_number_long": "Žádné číslo objednávky"
+        },
+        "block_title": "Zkontrolujte své informace",
+        "checkout_a_different_way": "Dokončete objednávku jiným způsobem",
+        "item_header": {
+          "change_value": "Změňte hodnotu",
+          "section": "sekce",
+          "value": "Hodnota"
+        },
+        "review_and_confirm_title": "Zkontrolujte a potvrďte",
+        "account_more_actions": "Další akce pro tento účet"
+      },
+      "marketing": {
+        "accept_marketing_checkbox_label": "Chci dostávat e-maily s novinkami a nabídkami",
+        "unsubscribe": {
+          "title": "Odhlásili jste odběr",
+          "description": "Již od nás nebudete dostávat marketingové novinky."
+        },
+        "accept_sms_checkbox_label": "Chci dostávat SMS zprávy s novinkami a nabídkami",
+        "sms": {
+          "disclaimer": {
+            "privacy_policy": "Zásady ochrany osobních údajů",
+            "terms_of_service": "Podmínky použití",
+            "description_html": "Pokud se zaregistrujete prostřednictvím SMS, souhlasíte se zasíláním pravidelných automatických marketingových zpráv, včetně připomenutí košíku, na uvedené telefonní číslo. Souhlas není podmínkou pro uskutečnění nákupu. Chcete-li odběr odhlásit, odpovězte pomocí STOP. Pro pomoc odpovězte pomocí HELP. Frekvence zpráv se liší. Mohou být účtovány poplatky za zprávy a data. Zobrazit %{privacy_policy_link} a %{terms_of_service_link}.",
+            "description_transactional_html": "Můžete obdržet textové zprávy související s potvrzením objednávky a aktualizací doručení. Chcete-li odběr odhlásit, odpovězte pomocí STOP. Pro pomoc odpovězte pomocí HELP. Frekvence zpráv se liší. Mohou být účtovány poplatky za zprávy a data. Prohlédněte si to %{privacy_policy_modal_link} a %{terms_of_service_modal_link}."
+          },
+          "mobile_phone_number": "Číslo mobilního telefonu",
+          "get_offers_by_text": "Přijímejte nabídky prostřednictvím textových zpráv"
+        },
+        "post_accept_marketing_checkbox_label": "Jste přihlášeni k odběru novinek a nabídek e-mailem",
+        "pending_accept_marketing_checkbox_label": "Zkontrolujte svůj e-mailový účet a potvrďte odběr novinek a nabídek",
+        "accept_shop_pay_marketing_checkbox_label": "Přihlašte se k odběru novinek a nabídek z tohoto obchodu",
+        "disclaimer": {
+          "privacy_policy": "Zásady ochrany osobních údajů",
+          "terms_of_service": "Podmínky použití"
         }
+      },
+      "shop_policies": {
+        "refund_policy": "Zásady vrácení peněz",
+        "privacy_policy": "Zásady ochrany osobních údajů",
+        "terms_of_service": "Podmínky použití",
+        "legal_notice": "Právní upozornění",
+        "shipping_policy": "Doprava",
+        "terms_of_sale": "Podmínky prodeje"
       }
     }
   }
