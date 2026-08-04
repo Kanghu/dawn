@@ -1458,7 +1458,9 @@
           "other": "Bank card payments are currently not available.<br><a href=\"%{current_url}\">Refresh the page</a> or try a different payment method."
         },
         "expired_cards_info": {
-          "few": "There are %{count} expired cards, which you can view and edit in your account."
+          "few": "There is %{count} expired cards, which you can view and edit in your account.",
+          "one": "There is %{count} expired card, which you can view and edit in your account.",
+          "other": "There is %{count} expired cards, which you can view and edit in your account."
         },
         "order_edit_banner_items_added": {
           "few": "Added: %{count}"
@@ -1604,7 +1606,70 @@
         "payment_method_saved": "Saved payment method",
         "card_vaulted_company_location": "Card saved for this location",
         "order_covered_by_store_credit_notice": "Your order is covered by store credit.",
-        "order_covered_by_redeemables_notice": "Your order is covered."
+        "order_covered_by_redeemables_notice": "Your order is covered.",
+        "store_credit": {
+          "label": "Store credit",
+          "apply_label": "Apply store credit",
+          "add_label": "Add store credit",
+          "manage_label": "Manage store credit",
+          "buying_gift_card": "You cannot use store credit to purchase a gift card",
+          "no_fixed_selling_plans": "You cannot use store credit for deferred purchase options"
+        },
+        "clear": "Empty it",
+        "billing_must_match_shipping_notice": "The billing address associated with your payment method must match the shipping address.",
+        "same_billing_address_checkbox_label": "Use the shipping address as your billing address",
+        "location_billing_address_label": "The billing address for the location",
+        "fact_billing_address_label": "Billing address",
+        "location_shipping_address_label": "The shipping address for the location",
+        "no_working_method_error": "This store cannot accept payments at this time. Refresh the page or come back later.",
+        "brand_not_available": "This store does not accept {{brand}}. Use another card to pay.",
+        "shipping_rate_updated": "The available delivery methods have been updated. Confirm your choice before completing your purchase.",
+        "billing_address_invalid_phone": "To continue, update the phone number in your billing address for {{label}} {{last_digits}}.",
+        "billing_address_invalid_phone_no_card": "To continue, update the phone number in your billing address.",
+        "preview_not_available": {
+          "title": "Preview unavailable",
+          "content": "Don't worry, this express checkout method works for your customers.",
+          "button": "Okay"
+        },
+        "card_fields": {
+          "errors": {
+            "required": {
+              "issue_date": "Please enter a valid issue date",
+              "issue_number": "Please enter a valid issue number"
+            },
+            "invalid": {
+              "verification_value": "Enter a valid CVV or security code"
+            }
+          }
+        },
+        "simulated_checkout": "Preview will be available soon",
+        "vaulting_agreement_label": "I want to save payment information in relation to %{company}, for faster completion of orders.",
+        "business_customer_vaulting_payment_label": "Save this payment method at checkout and authorize %{company} for making payments on future purchases for this location. All contacts assigned to this location can use the payment method.",
+        "purchase_options_and_vaulting_agreement_label": "One or more items in your cart is a deferred purchase or subscription purchase. By continuing to pay, you agree that your payment method will be automatically charged at the price and frequency specified on this page until your subscription ends or you cancel it All cancellations must comply with %{cancellation_policy_label}.",
+        "purchase_options_cancellation_policy_label": "cancellation policy",
+        "use_different_credit_card_label": "Use another card",
+        "saved_credit_card": "Your credit card saved",
+        "saved_credit_card_info": "The last four digits",
+        "saved_credit_cards_modal": {
+          "view_all_label": "See all saved cards",
+          "done": "done",
+          "cancel": "Cancel"
+        },
+        "local_payment_method_receiver_notice": "After placing the order, you will receive payment details. Make the payment at an ATM or online at most {{dueDays}} (of) days.",
+        "order_edit_banner_title": "It is necessary to pay the amount of {{amount_owed}}",
+        "order_edit_banner_subtitle": "your order, {{order_number}}, has been updated. Review these changes, then pay to confirm your order.",
+        "order_edit_banner_single_item_added": "Added",
+        "order_edit_banner_multiple_items_added": "Added(s): {{amount}}",
+        "order_edit_banner_single_item_removed": "Removed",
+        "order_edit_banner_multiple_items_removed": "Removed(s): {{amount}}",
+        "gift_card_wrapper": {
+          "heading": "Gift card",
+          "apply_gift_card_label": "Apply a gift card",
+          "payment_tag": "Gift card",
+          "apply_another_gift_card_label": "Apply another gift card",
+          "gift_card_label": "%{identifier} for the gift card",
+          "add_label": "Add a gift card"
+        }
       },
       "shipping_errors": {
         "shipping_method_not_available_generic": {
