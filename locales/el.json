@@ -1934,13 +1934,28 @@
       "order_payment_collection": {
         "changes_summary": {
           "added": {
-            "few": "Προστέθηκαν: %{count}"
-          }
-        }
+            "few": "Προστέθηκαν: %{count}",
+            "one": "Προστέθηκε",
+            "other": "Προστέθηκαν: %{count}"
+          },
+          "removed": "Καταργήθηκε",
+          "subtracted": "Καταργήθηκαν: %{count}",
+          "returned": "Επιστράφηκε(ες): %{count}",
+          "return_line_item_removed": "Αφαιρέθηκε από την επιστροφή: %{count}"
+        },
+        "custom_line_item_description": "Ποσό πληρωμής για την παραγγελία %{order_name}",
+        "additional_payment_requested": "Είναι απαραίτητο να καταβληθεί το ποσό των %{total_outstanding}",
+        "checkout_review_and_pay": "η παραγγελία σας, %{order_name} έχει ενημερωθεί. Ελέγξτε αυτές τις αλλαγές και, στη συνέχεια, πληρώστε για να επιβεβαιώσετε την παραγγελία σας.",
+        "order_updated_on": "Η παραγγελία σας ενημερώθηκε στις %{last_edited_at}.",
+        "order_review_and_pay": "Η παραγγελία σας έχει ενημερωθεί. Ελέγξτε και πληρώστε για να επιβεβαιώσετε την παραγγελία σας.",
+        "pay_now": "Πληρώστε τώρα"
       },
       "open_graph_meta_tag": {
         "title_with_products": {
-          "few": "Αγορά %{product_name} Και όμως %{count} προϊόντα"
+          "few": "Αγοράστε το %{product_name} και ακόμα %{count} άρθρα",
+          "zero": "Αγοράστε το %{product_name}",
+          "one": "Αγοράστε το %{product_name} και ακόμα %{count} άρθρο",
+          "other": "Αγοράστε το %{product_name} και ακόμα %{count} άρθρα"
         }
       },
       "subscriptions": {
@@ -2331,7 +2346,48 @@
         "terms_of_service": "Όροι Χρήσης",
         "legal_notice": "Νομική ειδοποίηση",
         "shipping_policy": "Μεταφορές",
-        "terms_of_sale": "Όροι πώλησης"
+        "terms_of_sale": "Όροι πώλησης",
+        "subscription_policy": "Ακυρώσεις",
+        "purchase_options_policy": "Πολιτική Επιλογών Αγοράς",
+        "contact_information": "Επικοινωνία",
+        "purchase_options_cancellation_policy": "Ακυρώσεις",
+        "cookie_preferences": "Μπισκότα",
+        "policy_label": "Πολιτική",
+        "policies_label": "Πολιτικοί",
+        "select_policy_label": "Επιλέξτε μια πολιτική",
+        "terms_and_policies": "Όροι και Πολιτικές"
+      },
+      "notifications": {
+        "title": "Ειδοποιήσεις"
+      },
+      "tips": {
+        "title": "Προσθέστε μια συμβουλή",
+        "description": "Υποστηρίξτε την ομάδα στο %{shop_name}",
+        "presets_description": "Επιλέξτε ένα ποσοστό φιλοδωρήματος",
+        "custom_label": "Προσαρμοσμένη συμβουλή",
+        "add_tip": "Προσθέστε μια συμβουλή",
+        "update_tip": "Ενημέρωση συμβουλής",
+        "message": "Ευχαριστούμε, εκτιμούμε τη χειρονομία.",
+        "preset_label": "%{tip_percent}%",
+        "no_tip_label": "Χωρίς",
+        "not_available_with_spi": "Δεν διατίθεται για πληρωμές με δόσεις με Shop Pay"
+      },
+      "localized_fields": {
+        "additional_information": {
+          "title": "Πρόσθετες πληροφορίες",
+          "tax_credential_br": "CPF/CNPJ",
+          "shipping_credential_br": "CPF/CNPJ",
+          "shipping_credential_kr": "Προσωπικός τελωνειακός κωδικός",
+          "shipping_credential_cn": "Αριθμός ταυτότητας κατοίκου",
+          "tax_credential_it": "Codice Fiscale (προαιρετικό)",
+          "tax_email_it": "PEC (προαιρετικό)",
+          "tax_credential_cl": "RUT",
+          "shipping_credential_cl": "RUT",
+          "tax_credential_co": "Cédula/ΦΠΑ",
+          "tax_credential_type_co": "Τύπος Cédula",
+          "shipping_credential_co": "Cédula/ΦΠΑ",
+          "shipping_credential_type_co": "Τύπος Cédula"
+        }
       }
     },
     "notices": {
