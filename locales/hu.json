@@ -1724,7 +1724,7 @@
           "one": "Hozzáadva",
           "other": "Hozzáadott(ok): %{count}"
         },
-        "bank_account_missing": "A bankszámla kapcsolata kötelező",
+        "bank_account_missing": "A bankszámla összekapcsolása kötelező",
         "discount_show_more_warnings": {
           "few": "Mutass többet %{count}"
         },
@@ -1952,6 +1952,67 @@
         "gift_card_store_credit": {
           "add_label": "Adjon hozzá ajándékkártyát vagy bolti hitelt",
           "manage_label": "Ajándékkártyák vagy bolti hitel kezelése"
+        },
+        "saved_credit_card_cvv_verification": "Adja meg kártya biztonsági kódját ellenőrzés céljából.",
+        "order_edit_banner_updated_order_label": "Frissített rendelés",
+        "afterpay_label": "Utólagos fizetés",
+        "cashapppay_label": "Cash App Pay",
+        "card_nickname_label": "Becenév (nem kötelező)",
+        "order_edit_banner_items_return_line_item_removed": {
+          "in_full": "Eltávolítva a visszaküldésből",
+          "with_quantities": "Eltávolítva a visszaküldésből: {{delta}}"
+        },
+        "order_edit_banner_single_item_return_line_item_removed": "Eltávolítva a visszaküldésből",
+        "order_edit_banner_multiple_items_return_line_item_removed": "Eltávolítva a visszaküldésből: {{amount}}",
+        "proposed_gateway_unavailable": "A javasolt fizetési átjáró nem érhető el",
+        "pay_in_installments_split_pay_short": "4 befizetés értékben %{amount}",
+        "payment_method_not_available_for_shipping_address_error": "A fizetési mód nem elérhető a kiválasztott szállítási címhez. Válasszon másik fizetési módot.",
+        "shop_pay_ideal_unavailable_error": "IDEÁLIS | A Wero nem érhető el ehhez a rendeléshez. Válasszon másik fizetési módot.",
+        "paypal_disconnect": "Jelentkezzen ki",
+        "paypal_wallet_label": "PayPal pénztárca",
+        "payment_method_update_failed": "A fizetési mód frissítése nem sikerült.",
+        "alternative_payment_currency_total_manual_payment_notice": "Megjegyzés: Az átváltott végösszeg: %{amount_due}.",
+        "gift_cards_unavailable": "Ajándékutalványa már nem alkalmazható ehhez a rendeléshez, ezért eltávolítottuk",
+        "network_card_payment_options": "Válasszon kártyahálózatot",
+        "payment_flexibility_terms_id_mismatch": "Az azonosító eltérése a rugalmas fizetési feltételek között",
+        "offsite_gateway_review_page_redirect_hint": "A megrendelés áttekintése után átirányítjuk Önt ide %{gateway_label} a vásárlás befejezéséhez.",
+        "przelewy24_label": "Przelewy24",
+        "twint_label": "TWINT",
+        "mobilepay_label": "MobilePay",
+        "gift_card_checkbox_label": "Használja ezt az ajándékutalványt",
+        "blik_label": "BLICK",
+        "vipps_label": "Whipps",
+        "grabpay_label": "GrabPay",
+        "kcp_creditcard_label": "KCP hitelkártya",
+        "simulated_express_checkout": "Az Ön régiója vagy böngészője nem teszi lehetővé a pénztárcák előnézetének megtekintését a szerkesztőben.",
+        "offsite_gateway_redirect_hint_no_button_label": "Átirányítjuk ide %{gateway_label} a vásárlás befejezéséhez.",
+        "swish_label": "Swish",
+        "network_card_persistence_description": "A kiválasztott hálózat a fizetési móddal együtt mentésre kerül a jövőbeni tranzakciókhoz.",
+        "usdc_label": "USDC",
+        "payment_method_incompatible_with_payment_terms": "A fizetési mód nem kompatibilis a fizetési feltételekkel.",
+        "payment_option": {
+          "accessibility_label": "Válasszon fizetési módot"
+        },
+        "billing_address_rollup_accessibility_label": "Számlázási cím beállításai",
+        "payment_method_rollup_accessibility_label": "Fizetési mód opciók",
+        "crypto_modal": {
+          "header": "Fizetés a %{shop_name} -val %{total_price} USDC",
+          "error": {
+            "refresh": "Felüdülés",
+            "close": "lezárása",
+            "sandbox_error": "Hiba történt",
+            "web_component_error": "Hiba történt az oldal betöltésekor"
+          }
+        },
+        "bank_account_type": {
+          "checking": "Ellenőrzés",
+          "savings": "Gazdaságok"
+        },
+        "bank_account_choose": "Válasszon fiókot a biztonságos fizetéshez",
+        "bank_account_connect_another": "Csatlakoztasson egy másik bankszámlát",
+        "bank_account_connect": "Csatlakoztasson bankszámlát",
+        "crypto_payment_method": {
+          "description": "Csatlakoztassa biztonságosan pénztárcáját. Egyenlegét és címét nem osztjuk meg."
         }
       },
       "shipping_errors": {
