@@ -2810,8 +2810,15 @@
       },
       "remote_merchandise_only": {
         "detail_item_label": {
-          "few": "{{count}} áru"
-        }
+          "few": "{{count}} cikkeket",
+          "one": "{{count}} cikket",
+          "other": "{{count}} cikkeket"
+        },
+        "title": "Fejezze be a vásárlást",
+        "remote_only_notice": "Ezeket a termékeket más üzletek értékesítik és szállítják. Fizessen minden egyes üzletben a vásárlás befejezéséhez.",
+        "return_to_store_label": "Vissza a boltba",
+        "checkout_on_shop_label": "Fizetés at %{shop_name}",
+        "single_shop_transition": "Átirányítjuk ide %{advertiser} a vásárlás befejezéséhez."
       },
       "change_currency": {
         "credit_card_will_be_charged_html": "Érzékelve lesznek %{amount} a kártyájáról",
@@ -3710,7 +3717,75 @@
         "kilogram": "kg",
         "milliliter": "ml",
         "centiliter": "cl",
-        "liter": "l"
+        "liter": "l",
+        "cubic_meter": "m³",
+        "millimeter": "mm",
+        "centimeter": "cm",
+        "meter": "m",
+        "square_meter": "m²",
+        "ounce": "uncia",
+        "pound": "font",
+        "fluid_ounce": "folyadék uncia",
+        "pint": "pint",
+        "quart": "negyed gallon",
+        "gallon": "gallon",
+        "inch": "hüvelyk",
+        "foot": "lábbal",
+        "yard": "udvar",
+        "square_foot": "négyzetméter",
+        "item": "cikket"
+      },
+      "memberships": {
+        "delivery_promise_unfulfillable": "A jelenlegi előfizetéshez nem fogadott cím.",
+        "items_split_across_locations_unsupported": "A megrendeléshez nem áll rendelkezésre elsődleges szállítás. A szállítási lehetőségeket frissítettük."
+      },
+      "editor": {
+        "navigation": {
+          "store_logo_accessibility_label": "Lépjen be az online áruházba"
+        }
+      },
+      "tooltip": {
+        "accessibility_label_context": "További információ a %{context}",
+        "additional_payment_methods": "Egyéb fizetési módok"
+      },
+      "remote": {
+        "errors": {
+          "only_remote_merchandise_lines": "A fizetés csak a távoli szállítást tartalmazza. A fizetés befejezéséhez át kell irányítani a távoli áruházba.",
+          "currency_mismatch": "Ez a tétel nem helyezhető a kosárba, mert egy másik pénznemet használó üzletből származik.",
+          "max_remote_shops_exceeded": "A termék hozzáadása nem lehetséges, a kosár már tele van más üzletek termékeivel.",
+          "currency_mismatch_removal": "Egy tételt eltávolítottak a bevásárlókosárból, mert egy másik pénznemet használó üzletből érkezett."
+        }
+      },
+      "remote_policies": {
+        "unavailable_policy": "Ebben az üzletben nincs %{policy_name}. További információért forduljon közvetlenül az üzlethez %{shop_name}."
+      },
+      "offsite_payment_failed": {
+        "payment_not_processed_title": "Sikertelen fizetés",
+        "payment_not_processed_text": "Próbálja újra a QR-kód újbóli beolvasásával. Ha nem működik, forduljon munkatársainkhoz, és próbáljon ki másik fizetési módot.",
+        "payment_link_expired_title": "A fizetési link lejárt",
+        "payment_link_expired_text": "Próbálja újra a QR-kód újbóli beolvasásával.",
+        "title": "A távoli fizetés sikertelen"
+      },
+      "taxes": {
+        "tax_details": "További adózási adatok",
+        "vat_number": {
+          "field": {
+            "label": "ÁFA szám (nem kötelező)",
+            "tooltip": "Érvényesíti az áfaszámot, és automatikusan fordított adózást alkalmaz a jogosult rendelésekre"
+          },
+          "add": "Adjon meg egy adószámot",
+          "vaulted": "ÁFA szám: %{number}",
+          "badge": "ÁFA szám: %{number}",
+          "domestic_order": "A fordított adózás alóli mentesség csak az EU határon átnyúló megbízásaira vonatkozik. A helyi rendelések esetén standard ÁFA kerül felszámításra.",
+          "status": {
+            "invalid_format": {
+              "at": "Osztrák adószámok: AT és 9 karakter",
+              "be": "Belgium ÁFA számok: BE és 10 karakter",
+              "bg": "Bolgár adószámok: BG és 9-10 karakter",
+              "hr": "Horvátország ÁFA számok: HR és 11 karakter"
+            }
+          }
+        }
       }
     },
     "notices": {
