@@ -3959,7 +3959,63 @@
     "collections": {
       "sorting": {
         "manual": "Препоръчва се",
-        "best_selling": "Най-добрият продавач"
+        "best_selling": "Най-добрият продавач",
+        "az": "По азбучен ред, A-Z",
+        "za": "По азбучен ред Я-А",
+        "price_ascending": "Цена, от ниска към висока",
+        "price_descending": "Цена, от висока към ниска",
+        "date_ascending": "Дата, от старо към ново",
+        "date_descending": "Дата, от ново към старо",
+        "most_relevant": "Най-подходящото"
+      }
+    },
+    "errors": {
+      "blank": "не може да се попълни",
+      "credit_card_session_expired": "Оторизацията на кредитната карта е изтекла, въведете отново информацията за плащане. Вашата карта няма да бъде таксувана със сума.",
+      "empty": "не може да бъде празно",
+      "invalid_email": "трябва да е валиден имейл адрес",
+      "discount_disabled": "Тази отстъпка е деактивирана",
+      "discount_expired": "Тази отстъпка вече не е валидна",
+      "discount_limit_reached": "Тази отстъпка достигна лимита си за използване",
+      "discount_not_found": "Не може да се намери валидна отстъпка, съответстваща на въведения код",
+      "customer_already_used_once_per_customer_discount_notice": "Тази отстъпка достигна лимита си за използване",
+      "gift_card_already_applied": "Кодът вече е приложен при плащане",
+      "gift_card_code_invalid": "Кодът не е валиден",
+      "gift_card_currency_mismatch": "Тази подаръчна карта не може да се използва за тази покупка. Свържете се %{shop_name} за преиздаването му.",
+      "gift_card_depleted": "Няма останали средства по тази подаръчна карта",
+      "gift_card_disabled": "Картата за подарък е деактивирана",
+      "gift_card_expired": "Картата за подарък е изтекла",
+      "invalid": "е невалиден",
+      "bad_domain": "съдържа невалидно име на домейн",
+      "taken": "вече беше взето",
+      "contains_html_tags": "не може да съдържа HTML тагове",
+      "too_short": "е твърде къс (минималната дължина е %{count} герои)",
+      "too_long": "е твърде дълга (максималната дължина е %{count} герои)",
+      "password_mismatch": "трябва да съответства на предоставената парола",
+      "contains_spaces": "започва или завършва с интервали.",
+      "invalid_for_country": "не е валиден за %{country}",
+      "invalid_for_country_and_province": "не е валиден за %{province} и %{country}",
+      "invalid_province_in_country": "не е валидна провинция на %{country}",
+      "invalid_state_in_country": "не е валидно състояние на %{country}",
+      "invalid_region_in_country": "не е валиден регион от %{country}",
+      "less_than_or_equal_to": "трябва да е по-малко или равно на %{count}",
+      "not_supported": "не се приема",
+      "full_name_required": "Въведете име и фамилия",
+      "invalid_for_card_type": "не е валиден",
+      "invalid_type": "за съжаление не приемаме карти от този тип",
+      "invalid_format": "форматът не е валиден",
+      "expired": "изтекъл",
+      "invalid_start_date_or_issue_number_for_debit": "изисква се валидна начална дата или номер на издаване",
+      "invalid_expiry_year": "не е валидна година на изтичане",
+      "reset_password_html": "Този имейл адрес вече е свързан с акаунт. Ако този акаунт е ваш, можете <a href=\"/account/login#recover\">нулирайте паролата си</a>",
+      "verify_email": "Изпратих имейл до %{customer_email}, щракнете върху включената връзка, за да потвърдите своя имейл адрес.",
+      "blocked_address": "Това местоположение не се поддържа",
+      "product_not_available": "продуктът не е публикуван за този клиент.",
+      "shop_404": {
+        "title": "Създайте сайт за електронна търговия и продавайте онлайн! Софтуер за електронна търговия от Shopify",
+        "heros": {
+          "store_unavailable": "Този магазин в момента не е наличен."
+        }
       }
     }
   },
