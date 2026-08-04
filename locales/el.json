@@ -3200,9 +3200,58 @@
               "ro": "Εισαγάγετε έναν έγκυρο ρουμανικό ΑΦΜ",
               "sk": "Εισαγάγετε έναν έγκυρο Σλοβακικό ΑΦΜ",
               "si": "Εισαγάγετε έναν έγκυρο Σλοβενικό ΑΦΜ",
-              "es": "Εισαγάγετε έναν έγκυρο ισπανικό ΑΦΜ"
+              "es": "Εισαγάγετε έναν έγκυρο ισπανικό ΑΦΜ",
+              "se": "Εισαγάγετε έναν έγκυρο Σουηδικό ΑΦΜ",
+              "gb": "Εισαγάγετε έναν έγκυρο ΑΦΜ ΗΒ"
+            },
+            "service_unavailable": "Η υπηρεσία επικύρωσης δεν είναι διαθέσιμη",
+            "service_error": "Η υπηρεσία επικύρωσης δεν είναι διαθέσιμη"
+          },
+          "accessibility": {
+            "status": {
+              "validating": "Η επικύρωση του ΑΦΜ βρίσκεται σε εξέλιξη",
+              "valid": "The VAT number is valid",
+              "applied": "Εφαρμόστηκε η απαλλαγή από τον ΦΠΑ",
+              "domestic": "Δεν έχει εφαρμοστεί η απαλλαγή από τον ΦΠΑ",
+              "invalid_number": "VAT exemption failed",
+              "service_unavailable": "Η επαλήθευση απαλλαγής από τον ΦΠΑ απέτυχε",
+              "service_error": "Η επαλήθευση απαλλαγής από τον ΦΠΑ απέτυχε"
             }
           }
+        }
+      },
+      "payment_collection": {
+        "cancelled": "Αυτή η πληρωμή δεν απαιτείται πλέον. Επισκεφθείτε τη σελίδα παραγγελίας για λεπτομέρειες.",
+        "paid": "Αυτή η πληρωμή έχει ήδη σταλεί. Επισκεφθείτε τη σελίδα παραγγελίας για λεπτομέρειες."
+      },
+      "required_extensions": {
+        "errors": {
+          "interaction_required": "Απαιτείται αλληλεπίδραση με την επέκταση για την ολοκλήρωση της πληρωμής."
+        }
+      },
+      "embed": {
+        "header": {
+          "review_order": "Ελέγξτε την παραγγελία σας"
+        },
+        "shipping": {
+          "shipping_options": "Δείτε όλες τις επιλογές αποστολής"
+        },
+        "payment": {
+          "payment_options": "See all payment options"
+        }
+      },
+      "too_many_requests": {
+        "title": "Πάρα πολλές προσπάθειες πληρωμής",
+        "body": "Περιμένετε λίγα λεπτά και δοκιμάστε ξανά από το καλάθι.",
+        "return_to_cart": "Επιστροφή στο καλάθι",
+        "body_no_cart": "Περιμένετε λίγα λεπτά και δοκιμάστε ξανά."
+      },
+      "address_management": {
+        "saved_with_store": "Αποθηκεύτηκε σε αυτό το κατάστημα"
+      },
+      "ucp": {
+        "standard_errors": {
+          "item_unavailable": "Το προϊόν δεν μπορεί να αγοραστεί"
         }
       }
     },
@@ -3216,6 +3265,47 @@
     "page_titles": {
       "search_results": {
         "few": "Αναζήτηση: Βρέθηκαν %{count} Αποτελέσματα για \"%{terms}”"
+      }
+    },
+    "pagination": {
+      "previous": "Πίσω",
+      "next": "Πριν"
+    },
+    "links": {
+      "powered_by_shopify": "Powered by Shopify",
+      "learn_more": "Μάθετε περισσότερα"
+    },
+    "feed": {
+      "more": "Περισσότερα"
+    },
+    "attributes": {
+      "email": "e-mail",
+      "password": "password",
+      "password_confirmation": "Password confirmation",
+      "first_name": "όνομα",
+      "last_name": "surname",
+      "body": "σώμα",
+      "signature": "Διεύθυνση"
+    },
+    "addresses": {
+      "zip_code": "ταχυδρομικός κώδικας",
+      "postal_code": "Ταχυδρομικός κώδικας",
+      "postcode": "Ταχυδρομικός κώδικας",
+      "pincode": "Κωδικός pin",
+      "region": "Περιφέρεια",
+      "prefecture": "Νομαρχία",
+      "province": "επαρχία",
+      "state": "κράτος",
+      "state_and_territory": "Κράτος/Επικράτεια",
+      "county": "κομητεία",
+      "emirate": "Εμιράτο",
+      "governorate": "Κυβερνείο",
+      "confirm": "Είστε βέβαιοι ότι θέλετε να διαγράψετε αυτήν τη διεύθυνση;"
+    },
+    "collections": {
+      "sorting": {
+        "manual": "Συνιστάται",
+        "best_selling": "The best seller"
       }
     }
   },
