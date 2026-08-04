@@ -2768,8 +2768,23 @@
       },
       "merchandise_unavailable_in_buyer_location": {
         "remove_items_action": {
-          "few": "kiküszöböli a nem elérhető tételeket"
-        }
+          "few": "távolítsa el a nem elérhető elemeket",
+          "one": "távolítsa el a nem elérhető elemet",
+          "other": "távolítsa el a nem elérhető elemeket"
+        },
+        "banner_title": {
+          "some_products_one": "Ez a termék nem szállítható %{location_name}.",
+          "some_products_other": "Ezeket a termékeket nem lehet kiszállítani %{location_name}.",
+          "all_products_one": "A kosárban lévő termék nem szállítható %{location_name}.",
+          "all_products_other": "A kosártermékek nem szállíthatók %{location_name}."
+        },
+        "missing_country_fallback": "az országod",
+        "indeterminate_location_fallback": "az Ön tartózkodási helye",
+        "cart_updated": "A kosara frissült.",
+        "change_address_only": "A folytatáshoz módosítsa a szállítási címet.",
+        "change_address_or_remove": "Szállítási cím módosítása ill %{remove_action}.",
+        "empty_cart_action": "ürítse ki a kosarat és térjen vissza az üzletbe",
+        "unavailable_line_item": "%{product_name}/%{variant_label}"
       },
       "review_address_modal": {
         "subtitle": {
@@ -2785,7 +2800,13 @@
         "return_to_cart": "Vissza a kosárba"
       },
       "merchant_instruction_errors": {
-        "invalid_entrypoint_for_remote_negotiation": "A távolról nem zajló tárgyalási ülések esetén a távoli tárgyalási utasítások megadása nem lehetséges."
+        "invalid_entrypoint_for_remote_negotiation": "A távolról nem zajló tárgyalási ülések esetén a távoli tárgyalási utasítások megadása nem lehetséges.",
+        "empty_stable_id": "Az árucikkekkel kapcsolatos utasítások %{name} %{position} üres stabil azonosítót tartalmaznak.",
+        "invalid_stable_id_target": "Az árucikkekkel kapcsolatos utasítások %{name} %{position} stabil azonosítóra hivatkozik %{stable_id}, de az a stabil azonosító nincs a rakománysorokon.",
+        "duplicate_variant_id": "Az árucikkekkel kapcsolatos utasítások %{name} %{position} duplikált változatazonosítót tartalmaznak %{variant_id}.",
+        "invalid_variant_id_target": "Az árucikkekkel kapcsolatos utasítások %{name} változatazonosítóra hivatkozzon %{variant_id}, de ez a változat nem szerepel a rakománysorokon.",
+        "invalid_price_override_target": "Az árucikk árának cseréjére vonatkozó utasítás %{stable_id} nem érvényes, mert ez egy készlet egy összetevője.",
+        "discount_not_supported": "A kereskedői utasítások nem tartalmazzák az ilyen kedvezmények alkalmazását."
       },
       "remote_merchandise_only": {
         "detail_item_label": {
@@ -3637,7 +3658,59 @@
           "checkout_has_expired": "A fizetési idő lejárt. Zárja be ezt az ablakot, és próbálja meg újra végrehajtani a rendelést innen {{shopName}}."
         },
         "return_to_store": "Gyere vissza {{shopName}}",
-        "return_to_store_simple": "Gyere vissza a boltba"
+        "return_to_store_simple": "Gyere vissza a boltba",
+        "title": "A megrendelés teljesítése a Shop Pay szolgáltatással"
+      },
+      "company_location": {
+        "location_title": "A cég helye",
+        "location_rollup_accessibility_label": "A cég helyének lehetőségei"
+      },
+      "one": {
+        "errors": {
+          "merchandise": {
+            "gift_card_price_must_be_greater_than_zero": "Az ajándékkártya árának 0-nál nagyobbnak kell lennie.",
+            "subtotal_limit_reached": "Elérte a tételek maximális értékét.",
+            "gift_card_price_must_not_exceed_limit": "Az ajándékutalvány ára nem haladhatja meg %{gift_card_limit}.",
+            "signature_mismatch": "A termék aláírása nem egyezik a sorral %{stable_id}."
+          }
+        }
+      },
+      "clipboard": {
+        "copied": "Másolva",
+        "failed_to_copy": "Nem sikerült másolni"
+      },
+      "payment_challenge_modal": {
+        "instructions": "Fejezze be a vásárlást a kód segítségével {{paymentMethod}}",
+        "timer_message": "Rendelkezésedre áll {{timeLeft}} fizetni",
+        "copy_text": "Másolja ki a kódot {{paymentMethod}}",
+        "header": "Fizessen ezzel {{paymentMethod}}",
+        "qr_code": {
+          "instructions": "Fejezze be a vásárlást a kód segítségével {{paymentMethod}}",
+          "wechat_instructions": "A vásárlás befejezéséhez olvassa be ezt a QR-kódot a telefon WeChat alkalmazásával",
+          "wechat_instructions_mobile": "A vásárlás befejezéséhez olvassa be ezt a QR-kódot a WeChat alkalmazással egy másik eszközön"
+        },
+        "external": {
+          "instructions": "A vásárlás befejezéséhez erősítse meg az alkalmazáson belüli fizetést"
+        },
+        "close": "Zárja be a kihívást",
+        "open_app_text": "Nyissa meg az alkalmazást {{paymentMethod}}"
+      },
+      "artifact_errors": {
+        "artifact_dissatisfaction_without_violation": "Hiba történt a rendelés feldolgozása során. Kérjük, próbálja újra néhány perc múlva."
+      },
+      "b2b_errors": {
+        "lost_b2b_purchasing_permissions": "Többé nem adhat le B2B rendeléseket. %{logout_url} hogy helyette személyesen rendeljen.",
+        "log_out_link_text": "Jelentkezzen ki",
+        "lost_permissions_subtitle": "Többé nem adhat le B2B rendeléseket. Személyes rendelés leadásához jelentkezzen ki.",
+        "lost_permissions_title": "Nincs helyengedély"
+      },
+      "units": {
+        "milligram": "mg",
+        "gram": "Mr",
+        "kilogram": "kg",
+        "milliliter": "ml",
+        "centiliter": "cl",
+        "liter": "l"
       }
     },
     "notices": {
