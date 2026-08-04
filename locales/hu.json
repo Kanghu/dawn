@@ -2086,18 +2086,40 @@
       },
       "shipping_errors": {
         "shipping_method_not_available_generic": {
-          "few": "A kosár néhány cikke nem szállítható a megadott címre. Ellenőrizze a címet, hogy megbizonyosodjon arról, hogy helyes -e, és próbálkozzon újra, vagy válassza ki egy másik címet."
+          "few": "A kosárban lévő egyes tételek nem szállíthatók a megadott címre. Kérjük, ellenőrizze a címet, és győződjön meg arról, hogy helyes-e, és próbálja újra, vagy válasszon másik címet.",
+          "one": "Megrendelése nem szállítható a kiválasztott címre. Kérjük, ellenőrizze a címet, és győződjön meg arról, hogy helyes-e, és próbálja újra, vagy válasszon másik címet.",
+          "other": "A kosárban lévő egyes tételek nem szállíthatók a megadott címre. Kérjük, ellenőrizze a címet, és győződjön meg arról, hogy helyes-e, és próbálja újra, vagy válasszon másik címet."
         },
         "shipping_method_not_available_updated": {
-          "few": "Egy vagy több cikket, amelyet hozzáadott, nem szállítják az Ön helyére. Távolítsa el őket a megrendelés teljesítéséhez, vagy vegye fel a kapcsolatot a boltba."
-        }
+          "few": "Egy vagy több hozzáadott elemet nem szállítanak ki az Ön helyére. Távolítsa el őket a rendelés befejezéséhez, vagy lépjen kapcsolatba az üzlettel.",
+          "one": "A hozzáadott tételt nem szállítják ki az Ön helyére. Távolítsa el a rendelés befejezéséhez, vagy lépjen kapcsolatba az üzlettel.",
+          "other": "Egy vagy több hozzáadott elemet nem szállítanak ki az Ön helyére. Távolítsa el őket a rendelés befejezéséhez, vagy lépjen kapcsolatba az üzlettel."
+        },
+        "shipping_method": "Megrendelésének szállítási lehetőségei megváltoztak. Ellenőrizze a választást.",
+        "shipping_method_not_available": "Kosarát frissítettük, és a hozzáadott termékek nem szállíthatók az Ön címére. A rendelés befejezéséhez távolítsa el az elemeket.",
+        "payment_method_not_supported": "Az ország esetében ezzel a fizetési móddal %{country} ez nem lehetséges. Használjon másik fizetési módot az országba történő szállításhoz.",
+        "empty_state": "Adja meg szállítási címét az elérhető szállítási módok megtekintéséhez.",
+        "shipping_method_not_available_due_to_unsatisfied_conditions": "A kosárban lévő termékek nem felelnek meg a kiszállításhoz szükséges ár- vagy súlykövetelményeknek. Kérjük, frissítse a kosarát, és próbálja újra.",
+        "title": "Szállítás nem lehetséges",
+        "invalid_selected_address": "A kiválasztott szállítási cím nem érvényes",
+        "invalid_selected_address_with_update_link": "A kiválasztott szállítási cím érvénytelen. %{update_address_link} vagy válasszon másik címet",
+        "unavailable_selected_address": "A kiválasztott címre nem szállítható",
+        "unavailable_selected_address_for_region": "címre nem szállítható {{region}}. A folytatáshoz válasszon másik címet",
+        "unavailable_addresses_only_countries": "Megrendelését csak a következő címre tudjuk kiszállítani {{countriesList}}. A folytatáshoz adjon hozzá új címet.",
+        "unavailable_address_country": "A kiválasztott országba szállítás nem lehetséges. Kérjük, használjon másik címet a folytatáshoz"
       },
       "processing": {
         "wait": {
           "medium": {
             "few": "Megrendelése feldolgozás alatt áll. A becsült várakozási idő %{count} jegyzőkönyv."
           }
-        }
+        },
+        "redirecting_page_title": "Átirányítás...",
+        "redirecting_title": "Átirányítás...",
+        "redirecting_notice": "Kérjük, várjon, amíg átirányítjuk Önt.",
+        "complete_your_purchase_title": "Fejezze be a vásárlást",
+        "continue_to_payment_gateway_notice": "Folytassa a fizetéssel a fizetési adatok hozzáadásához.",
+        "continue_to_payment_gateway_button_label": "Tovább a pénztárhoz"
       },
       "thank_you": {
         "login_reorder_link_text": {
@@ -2587,7 +2609,37 @@
         "available_methods_updated": "Frissültek az elérhető fizetési módok.",
         "selected_payment_method": "Probléma lépett fel a kiválasztott fizetési móddal. A fizetési módot nem terhelték meg. Próbálja újra, vagy használjon másik fizetési módot.",
         "payment_method_billing_address": "Hiba történt a kiválasztott fizetési mód számlázási címével. Kérjük, ellenőrizze címét, és próbálja újra, vagy használjon másik fizetési módot.",
-        "processing_error_checkout_as_guest": "Hiba történt a fizetés feldolgozása során. Kérjük, próbálja újra egy másik fizetési móddal vagy {{checkout_as_guest_link}}."
+        "processing_error_checkout_as_guest": "Hiba történt a fizetés feldolgozása során. Kérjük, próbálja újra egy másik fizetési móddal vagy {{checkout_as_guest_link}}.",
+        "amount_too_small": "A minimális fizetési összegnek nagyobbnak kell lennie, mint 0,50 USD. Próbálja újra nagyobb mennyiséggel.",
+        "payment_above_threshold": "A kifizetés összege meghaladja az erre a régióra vonatkozó pénzbeli korlátot. Ismételje meg az összeget, és próbálja újra",
+        "risky": "Hiba történt a fizetés feldolgozása során. Próbálja újra, vagy használjon másik fizetési módot.",
+        "expired_buyer_action": "A fizetési mód lejárt. Próbáld újra.",
+        "three_d_secure_failed_payment_method": "Kártyáját nem sikerült ellenőrizni. Próbálja újra, vagy adjon hozzá egy másik kártyát.",
+        "name_mismatch": "Ellenőrizze a kártya adatait. A kártyán szereplő név és a számlázási cím nem egyezik.",
+        "payment_method_not_applicable": "Ez a fizetési mód nem alkalmazható. Használjon másik fizetési módot.",
+        "shop_pay_wallet_not_available": "A Shop Pay nem teszi lehetővé ezt a fizetést.",
+        "market_manager_blocks_wallet_payments": "A fizetési módot nem fogadják el az Ön országában.",
+        "paypal_over_capture": "A rendelés összértéke frissült. Fizessen ezzel {{walletName}} a megrendelés teljesítéséhez.",
+        "test_mode_enabled_only_test_cards": "A teszt mód engedélyezve van, csak teszthitelkártyák adhatók hozzá.",
+        "captcha_required": "Adja meg fizetési adatait, és oldja meg a captcha kódot a vásárlás befejezéséhez.",
+        "captcha_required_without_payment_information": "A vásárlás befejezéséhez oldja meg a captcha kódot.",
+        "shipping_company_required_error": "{{shopName}} a szállítási címhez cégnév szükséges.",
+        "payment_credential_delegation_error": "Hiba történt a fizetés feldolgozása során. Válasszon másik fizetési módot.",
+        "cancelled_payment": "A fizetést törölték. Kérjük, próbálja újra, vagy használjon másik fizetési módot.",
+        "currency": {
+          "no_longer_supported": "Az üzlet pénzneme már nem támogatott."
+        },
+        "installments_payment_method_incompatible": "A kiválasztott fizetési mód részletfizetésre nem használható. Válasszon másik fizetési módot.",
+        "missing_cvc": "Adjon meg egy biztonsági kódot"
+      },
+      "alternative_payment_method_banner": {
+        "express_checkout": "Expressz rendelés teljesítése",
+        "or": "VAGY",
+        "show_more_options": "További lehetőségek megjelenítése",
+        "hide_more_options": "További lehetőségek elrejtése",
+        "or_pay_another_way": "Vagy fizessen más módon",
+        "or_check_out_another_way": "Vagy más módon fejezze be a megrendelést",
+        "or_pay_with_credit_card": "Vagy fizessen hitelkártyával"
       }
     },
     "notices": {
