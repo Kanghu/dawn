@@ -1571,7 +1571,33 @@
         "pay_merchant_label": "Платете %{merchant_name}",
         "discount_applies_to_subscription_items_only": "Тази отстъпка е валидна само за артикули, включени в абонамента",
         "estimated_taxes_finalization_tooltip_content_short": "Таксуването става след плащане",
-        "compare_at_sale": "Промоция (%{sale_amount})"
+        "compare_at_sale": "Промоция (%{sale_amount})",
+        "tax_line": {
+          "hst": "HST",
+          "gst": "GST",
+          "pst": "PST",
+          "rst": "RST",
+          "qst": "QST",
+          "vpt": "VPT"
+        },
+        "automatic_discount_tooltip": "Автоматично прилаганите отстъпки не могат да бъдат премахнати",
+        "alternative_payment_currency_chinese_yuan": "Потвърдете крайната сума в CNY в приложението %{wallet}.",
+        "alternative_payment_currency_total_disclosure": "%{shop_name} обработва плащания в %{shop_currency} (%{amount_due}).",
+        "settlement_currency_note": "%{shop_name} обработва плащания в %{processing_currency}. Вие пазарувахте от %{original_currency}.",
+        "settlement_currency_note_wallet": "%{shop_name} обработва плащания в %{processing_currency}. Вие пазарувахте от %{original_currency} и сте платили с %{wallet} в CNY. Вижте приложението %{wallet_app} за крайната сума.",
+        "settlement_currency_note_wallet_no_conversion": "Платихте с %{wallet} в CNY. Вижте приложението %{wallet_app} за крайната сума.",
+        "lpm": {
+          "wechat_pay": {
+            "checkout_disclosure": "Потвърдете крайната сума в CNY в приложението WeChat",
+            "post_purchase_disclosure": "Вижте общо в CNY в WeChat",
+            "checkout_disclosure_with_alternative_payment_currency": "%{shop_name} ще обработи това плащане в размер на %{amount_due} %{processing_currency}, което WeChat преобразува в CNY"
+          },
+          "alipay": {
+            "checkout_disclosure": "Потвърдете крайната сума в CNY в приложението Alipay",
+            "post_purchase_disclosure": "Вижте общата сума в CNY в Alipay",
+            "checkout_disclosure_with_alternative_payment_currency": "%{shop_name} ще обработи това плащане в размер на %{amount_due} %{processing_currency}, които Alipay конвертира в CNY"
+          }
+        }
       },
       "payment": {
         "order_covered_by_gift_cards_notice": {
@@ -1591,7 +1617,37 @@
         },
         "discount_codes_removed_summary": {
           "few": "%{count} кодовете за отстъпка са премахнати"
-        }
+        },
+        "amazon_payments_label": "Amazon Pay",
+        "amazon_payments_login_hint": "Ще бъдете подканени да влезете с Amazon.",
+        "amazon_payments_logout": "Излезте от Amazon Pay",
+        "amazon_payments_failed_mfa_challenge": "Избраният метод на плащане не можа да бъде използван. Изберете друг метод или се свържете с вашата банка или издател на картата.",
+        "amazon_payments_abandoned_mfa_challenge": "Вашето плащане не можа да бъде извършено. Изберете друг метод на плащане или се свържете с вашата банка или издател на картата.",
+        "amazon_payments_could_not_enqueue_authorize": "Възникна проблем при обработката на вашето плащане. Опитайте отново или използвайте друг метод на плащане.",
+        "title": "Плащане",
+        "amount_left_to_pay_label": "Краен срок за плащане:",
+        "discount_button_action_label": "Приложете код за отстъпка",
+        "gift_card_code_label": "Код на подаръчна карта",
+        "apply_gift_card_button_label": "Кандидатствайте",
+        "gift_card_balance_label": "Баланс:",
+        "supported_card_brands_more_label": "и още...",
+        "detected_card_brand": "Разкрита марка на картата: {brand}",
+        "card_number_label": "Номер на картата",
+        "card_number_placeholder": "Номер на картата",
+        "card_pay_with": "Плащане с:",
+        "card_security_notice": "Всички транзакции са защитени и криптирани.",
+        "card_information_notice": "Всички транзакции са защитени и криптирани. Информацията за кредитната карта никога не се съхранява.",
+        "name_on_card_label": "Името на картата",
+        "name_on_card_placeholder": "Името на картата",
+        "card_expiry_label": "Срок на годност (ММ/ГГ)",
+        "card_expiry_placeholder": "Срок на годност (ММ/ГГ)",
+        "credit_card_start_month": "Начален месец",
+        "credit_card_start_year": "Начална година",
+        "card_verification_value_label": "Код за сигурност",
+        "card_verification_value_placeholder": "Код за сигурност",
+        "card_expiry_date_explanation": "Срок на валидност на картата във формат: месец, месец, година, година",
+        "card_expiration_month_label": "Месец на изтичане",
+        "card_expiration_year_label": "Година на годност"
       },
       "shipping_errors": {
         "shipping_method_not_available_generic": {
