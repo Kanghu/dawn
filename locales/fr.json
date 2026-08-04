@@ -4028,13 +4028,80 @@
     "orders": {
       "order_list": {
         "items": {
-          "few": "{{count}} ware"
+          "few": "{{count}} articles",
+          "one": "{{count}} article",
+          "other": "{{count}} articles"
         },
         "column_headers": {
           "total": "Totalement",
           "order": "Commande",
           "actions_accessibility_label": "Actions",
           "products_accessibility_label": "Produits"
+        },
+        "delivered": "Livré à : {{date}}",
+        "empty_state_order_source_description": "Seules les commandes passées par l'adresse e-mail apparaîtront ici {{email}}.",
+        "empty_state_subtitle": "Rendez-vous en magasin pour passer une commande.",
+        "empty_state_title": "Aucune commande pour l'instant",
+        "estimated_delivery": "Date estimée : {{date}}",
+        "order_link": "Voir la commande {{name}}",
+        "order_number": "Commande {{name}}",
+        "orders_title": "Confirmé",
+        "pagination": {
+          "nav_accessibility_label": "Boutons de navigation pour les commandes",
+          "next": "Avant",
+          "next_accessibility_label": "Prochaines commandes",
+          "previous": "Retour",
+          "previous_accessibility_label": "Commandes précédentes",
+          "load_more": "Afficher plus",
+          "load_more_accessibility_label": "Afficher plus de commandes"
+        },
+        "sort_by": "Trier par : {{option}}",
+        "sort_hide_options_accessibility_label": "Masque les options de tri pour les commandes confirmées.",
+        "sort_show_options_accessibility_label": "Affiche les options de tri pour les commandes confirmées.",
+        "sort_title": "Triez-le",
+        "sort": {
+          "date": {
+            "newest": "Du plus récent au plus ancien",
+            "oldest": "Du plus ancien au plus récent"
+          },
+          "location": {
+            "ascending": "Emplacement (A-Z)",
+            "descending": "Localisation (Z-A)"
+          },
+          "order_number": {
+            "ascending": "Numéro de commande (croissant)",
+            "descending": "Numéro de commande (descendant)"
+          },
+          "order_total": {
+            "ascending": "Total de la commande (croissant)",
+            "descending": "Total de la commande (décroissant)"
+          }
+        },
+        "one_images_accessibility_label": "La commande comprend {{lineItemName1}}",
+        "two_images_accessibility_label": "La commande comprend {{lineItemName1}}, {{lineItemName2}}",
+        "three_images_accessibility_label": "La commande comprend {{lineItemName1}}, {{lineItemName2}}, {{lineItemName3}}",
+        "four_images_accessibility_label": "La commande comprend {{lineItemName1}}, {{lineItemName2}}, {{lineItemName3}}, {{lineItemName4}}",
+        "no_filtered_results_description": "Supprimez ou ajustez les filtres pour afficher les commandes",
+        "no_filtered_results_title": "Aucun résultat filtré",
+        "estimated_shortform": "Est. : {{date}}",
+        "payment_status": {
+          "list_view": {
+            "overdue": "Expiré",
+            "due": "Maturité {{date}}",
+            "due_today": "À rendre aujourd'hui",
+            "due_without_date": "Maturité",
+            "due_on_fulfillment": "Expire au moment de l'exécution de l'ordre",
+            "pay_to_confirm": "Payer pour confirmer",
+            "payment_not_due": "Ce n'est pas encore dû",
+            "paid": "Payé"
+          },
+          "gallery_view": {
+            "overdue": "Paiement en retard",
+            "due": "Date d'échéance du paiement {{date}}",
+            "due_today": "Le paiement est dû aujourd'hui",
+            "due_without_date": "Date d'échéance du paiement",
+            "due_on_fulfillment": "Paiement dû au moment de l'exécution de la commande"
+          }
         }
       },
       "order_status": {
