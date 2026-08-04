@@ -3894,7 +3894,63 @@
     "collections": {
       "sorting": {
         "manual": "Ajánlott",
-        "best_selling": "A legjobb eladó"
+        "best_selling": "A legjobb eladó",
+        "az": "ABC sorrendben, A-Z",
+        "za": "ABC sorrendben Z-A",
+        "price_ascending": "Ár, az alacsonytól a magasig",
+        "price_descending": "Ár, a magastól az alacsonyig",
+        "date_ascending": "Dátum, a régitől az újig",
+        "date_descending": "Dátum, az újtól a régiig",
+        "most_relevant": "A legrelevánsabb"
+      }
+    },
+    "errors": {
+      "blank": "nem lehet üres",
+      "credit_card_session_expired": "A hitelkártya engedélyezése lejárt, adja meg újra a fizetési információkat. A kártyáját nem terheljük meg.",
+      "empty": "nem lehet üres",
+      "invalid_email": "érvényes e-mail címnek kell lennie",
+      "discount_disabled": "Ez a kedvezmény le van tiltva",
+      "discount_expired": "Ez a kedvezmény már nem érvényes",
+      "discount_limit_reached": "Ez a kedvezmény elérte a felhasználási korlátot",
+      "discount_not_found": "Nem található a megadott kódnak megfelelő érvényes kedvezmény",
+      "customer_already_used_once_per_customer_discount_notice": "Ez a kedvezmény elérte a felhasználási korlátot",
+      "gift_card_already_applied": "A kódot már alkalmazták a fizetéskor",
+      "gift_card_code_invalid": "A kód nem érvényes",
+      "gift_card_currency_mismatch": "Ez az ajándékkártya ehhez a vásárláshoz nem használható fel. Vegye fel a kapcsolatot %{shop_name} annak újrakiadásáért.",
+      "gift_card_depleted": "Ezen az ajándékutalványon nem maradt pénz",
+      "gift_card_disabled": "Az ajándékkártya le van tiltva",
+      "gift_card_expired": "Az ajándékutalvány lejárt",
+      "invalid": "érvénytelen",
+      "bad_domain": "érvénytelen domain nevet tartalmaz",
+      "taken": "már elvitték",
+      "contains_html_tags": "nem tartalmazhat HTML címkéket",
+      "too_short": "túl rövid (a minimális hossz %{count} karakterek)",
+      "too_long": "túl hosszú (a maximális hossz %{count} karakterek)",
+      "password_mismatch": "meg kell egyeznie a megadott jelszóval",
+      "contains_spaces": "szóközökkel kezdődik vagy végződik.",
+      "invalid_for_country": "nem érvényes %{country}",
+      "invalid_for_country_and_province": "nem érvényes %{province} és %{country}",
+      "invalid_province_in_country": "nem érvényes tartománya %{country}",
+      "invalid_state_in_country": "nem érvényes állapota %{country}",
+      "invalid_region_in_country": "nem érvényes régió innen %{country}",
+      "less_than_or_equal_to": "kisebbnek vagy egyenlőnek kell lennie %{count}",
+      "not_supported": "nem fogadják el",
+      "full_name_required": "Adjon meg egy kereszt- és vezetéknevet",
+      "invalid_for_card_type": "nem érvényes",
+      "invalid_type": "Sajnos az ilyen típusú kártyákat nem fogadjuk el",
+      "invalid_format": "a formátum nem érvényes",
+      "expired": "lejárt",
+      "invalid_start_date_or_issue_number_for_debit": "érvényes kezdési dátum vagy kiadási szám szükséges",
+      "invalid_expiry_year": "nem érvényes lejárati év",
+      "reset_password_html": "Ez az e-mail cím már társítva van egy fiókhoz. Ha ez a fiók a tiéd, megteheted <a href=\"/account/login#recover\">állítsa vissza jelszavát</a>",
+      "verify_email": "Küldtem emailt a címre %{customer_email}, kattintson a mellékelt linkre e-mail címének igazolásához.",
+      "blocked_address": "Ez a hely nem támogatott",
+      "product_not_available": "a termék nincs közzétéve ennek az ügyfélnek.",
+      "shop_404": {
+        "title": "Hozzon létre egy e-kereskedelmi webhelyet, és értékesítsen online! E-kereskedelmi szoftver a Shopify-tól",
+        "heros": {
+          "store_unavailable": "Ez az üzlet jelenleg nem elérhető."
+        }
       }
     }
   },
