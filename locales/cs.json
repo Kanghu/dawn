@@ -4009,7 +4009,85 @@
       "shop_404": {
         "title": "Vytvořte si e-shop a prodávejte online! Software pro elektronický obchod od Shopify",
         "heros": {
-          "store_unavailable": "Tento obchod je momentálně nedostupný."
+          "store_unavailable": "Tento obchod je momentálně nedostupný.",
+          "store_not_exist": "Tento obchod neexistuje.",
+          "no_storefront": "Tento obchod zatím nemá webové stránky.",
+          "store_will_be_right_back": "Tento obchod se brzy vrátí"
+        },
+        "links": {
+          "explore_other_stores": "Prozkoumejte další obchody",
+          "start_free_trial": "Bezplatná zkušební verze začíná",
+          "refresh_page": "Znovu načtěte stránku"
+        },
+        "owner_ctas": {
+          "header": "Jste majitelem obchodu?",
+          "fix_domain": "Dokončete konfiguraci nové webové adresy, přístup %{domain_settings_link}. Klikněte na „Připojit doménu“ a zadejte: %{domain}.<br>Pokud máte problémy s přístupem do obchodu, zkuste stránku %{forgot_your_store_link}.",
+          "fix_domain_link_text": "nastavení domény",
+          "forgot_your_store_link_text": "zapomněli jste detaily obchodu",
+          "add_storefront": "Svůj web můžete nastavit přidáním kanálu internetového obchodu do svého účtu %{admin_link}. Pokud máte problémy s přístupem do obchodu, zkuste stránku %{forgot_your_store_link}.",
+          "admin_link_text": "správce"
+        },
+        "ctas": {
+          "sell_in_person": {
+            "header": "Prodej osobně",
+            "caption": "Získejte funkce, které potřebujete ke správě své maloobchodní prodejny, ať už začínáte nebo expandujete.",
+            "link_text": "Bezplatná zkušební verze začíná"
+          },
+          "open_a_store": {
+            "header": "Otevřete nový obchod Shopify",
+            "caption": "Začněte 3denní bezplatnou zkušební verzi a poté pokračujte za 1 $ měsíčně další 3 měsíce.",
+            "link_text": "Zaregistrujte se nyní"
+          },
+          "editions": {
+            "header": "Prozkoumejte edice Shopify",
+            "caption": "S více než 100 aktualizacemi produktů můžete být produktivnější, kreativnější a výkonnější v oblasti obchodu, než jste si kdy představovali.",
+            "link_text": "Prozkoumejte nejnovější verzi Editions"
+          },
+          "store_owner": {
+            "header": "Jste majitelem obchodu?",
+            "caption": "Máte problémy s přístupem do obchodu? Vyzkoušejte funkci %{forgot_your_store_link}. Pokud chcete znovu aktivovat kontaktní údaje obchodu, ozvěte se %{shopify_support_link}.",
+            "shopify_support_link_text": "Podpora Shopify"
+          }
+        },
+        "title_unavailable": "Obchod nedostupný",
+        "subtitles": {
+          "store_will_be_right_back": "Shopify pracuje na tom, aby byl co nejdříve znovu online."
+        },
+        "status_card": {
+          "eyebrow": "Pomoc majitelům obchodů",
+          "header": "Zkontrolujte svůj stav Shopify",
+          "caption": "Zjistěte, zda nedošlo k výpadku ovlivňujícímu další obchody Shopify, nejen tento.",
+          "link_text": "Podívejte se na stav vašich systémů Shopify"
+        }
+      }
+    },
+    "notices": {
+      "customer": {
+        "password_reset_error": "Chyba resetování hesla",
+        "no_account_found": "Nebyl nalezen žádný účet s tímto e-mailem.",
+        "invalid_credentials": "Nesprávná e-mailová adresa nebo heslo.",
+        "denylisted_reset_password": "K vašemu účtu se nepodařilo získat přístup, protože aktuální heslo není bezpečné. Obdržíte e-mail, který vám pomůže s aktualizací hesla.",
+        "signup_disabled": "Vytváření zákaznických účtů bylo zakázáno.",
+        "subscribe_error": "Chyba během předplatného",
+        "unsubscribe_error": "Chyba při odhlašování"
+      },
+      "address": {
+        "updated": "Adresa byla úspěšně aktualizována.",
+        "error_updating": "Chyba při aktualizaci adresy",
+        "created": "Adresa byla úspěšně vytvořena",
+        "error_creating": "Chyba při vytváření adresy.",
+        "deleted": "Adresa byla úspěšně smazána",
+        "error_deleting": "Chyba při mazání adresy."
+      },
+      "order": {
+        "not_available": "Tento příkaz není k dispozici",
+        "financial_status": {
+          "authorized": "Autorizovaný",
+          "pending": "Čekání",
+          "paid": "Zaplaceno",
+          "unpaid": "Nezaplaceno",
+          "voided": "Zrušeno",
+          "partially_paid": "Částečně zaplaceno"
         }
       }
     }
