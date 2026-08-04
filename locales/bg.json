@@ -3854,9 +3854,58 @@
               "ro": "Въведете валиден румънски ДДС номер",
               "sk": "Въведете валиден словашки ДДС номер",
               "si": "Въведете валиден словенски ДДС номер",
-              "es": "Въведете валиден испански ДДС номер"
+              "es": "Въведете валиден испански ДДС номер",
+              "se": "Въведете валиден шведски ДДС номер",
+              "gb": "Introdu un număr de TVA valabil din Regatul Unit"
+            },
+            "service_unavailable": "Услугата за валидиране не е налична",
+            "service_error": "Услугата за валидиране не е налична"
+          },
+          "accessibility": {
+            "status": {
+              "validating": "Валидирането на ДДС номера е в ход",
+              "valid": "ДДС номерът е валиден",
+              "applied": "Приложено е освобождаване от ДДС",
+              "domestic": "Освобождаването от ДДС не е приложено",
+              "invalid_number": "Неуспешно освобождаване от ДДС",
+              "service_unavailable": "Проверката за освобождаване от ДДС не бе успешна",
+              "service_error": "Проверката за освобождаване от ДДС не бе успешна"
             }
           }
+        }
+      },
+      "payment_collection": {
+        "cancelled": "Това плащане вече не се изисква. Посетете страницата за поръчка за подробности.",
+        "paid": "Това плащане вече е изпратено. Посетете страницата за поръчка за подробности."
+      },
+      "required_extensions": {
+        "errors": {
+          "interaction_required": "За извършване на плащането е необходимо взаимодействие с разширението."
+        }
+      },
+      "embed": {
+        "header": {
+          "review_order": "Проверете поръчката си"
+        },
+        "shipping": {
+          "shipping_options": "Вижте всички опции за доставка"
+        },
+        "payment": {
+          "payment_options": "Вижте всички опции за плащане"
+        }
+      },
+      "too_many_requests": {
+        "title": "Твърде много опити за плащане",
+        "body": "Așteaptă câteva minute și încearcă din nou din coș.",
+        "return_to_cart": "Върнете се в количката",
+        "body_no_cart": "Vă rugăm să asteptați câteva minute și să încercacați din nou."
+      },
+      "address_management": {
+        "saved_with_store": "Запазено в този магазин"
+      },
+      "ucp": {
+        "standard_errors": {
+          "item_unavailable": "Артикулът не може да бъде закупен"
         }
       }
     },
@@ -3870,6 +3919,47 @@
     "page_titles": {
       "search_results": {
         "few": "Търсене: Те бяха намерени %{count} Резултати за \"%{terms}”"
+      }
+    },
+    "pagination": {
+      "previous": "Назад",
+      "next": "преди"
+    },
+    "links": {
+      "powered_by_shopify": "Осъществено от Shopify",
+      "learn_more": "Научете повече"
+    },
+    "feed": {
+      "more": "повече"
+    },
+    "attributes": {
+      "email": "електронна поща",
+      "password": "парола",
+      "password_confirmation": "Потвърждение на парола",
+      "first_name": "първо име",
+      "last_name": "фамилия",
+      "body": "тяло",
+      "signature": "Адрес"
+    },
+    "addresses": {
+      "zip_code": "пощенски код",
+      "postal_code": "Пощенски код",
+      "postcode": "Пощенски код",
+      "pincode": "ПИН код",
+      "region": "Регион",
+      "prefecture": "Префектура",
+      "province": "Провинция",
+      "state": "състояние",
+      "state_and_territory": "Държава/територия",
+      "county": "окръг",
+      "emirate": "Емирство",
+      "governorate": "Губернаторство",
+      "confirm": "Сигурни ли сте, че искате да изтриете този адрес?"
+    },
+    "collections": {
+      "sorting": {
+        "manual": "Препоръчва се",
+        "best_selling": "Най-добрият продавач"
       }
     }
   },
