@@ -1147,9 +1147,77 @@
             "missing_session_id": "Mancano i dati della carta di credito per la sessione.",
             "gateway_not_supported": "Il gateway di pagamento non supporta l'archiviazione dei metodi di pagamento.",
             "credit_card_last_name_required": "Il campo \"cognome\" non può assumere il valore zero.",
-            "credit_card_update_failed": "Aggiornamento della carta di credito non riuscito."
+            "credit_card_update_failed": "Aggiornamento della carta di credito non riuscito.",
+            "invalid_address_type": "Il tipo di indirizzo fornito non è valido per questo metodo di pagamento.",
+            "missing_retail_attributions": "Per i pagamenti con carta di credito immessi manualmente sono necessarie assegnazioni di vendita al dettaglio.",
+            "unexpected_retail_attributions": "Sono stati inaspettatamente forniti crediti al dettaglio per il pagamento con carta di credito.",
+            "invalid_card_source": "Questa sessione non dispone dell'autorizzazione per utilizzare questa origine carte.",
+            "wallet_content_missing": "Manca il contenuto del portafoglio.",
+            "payment_instrument_not_found": "Impossibile trovare il metodo di pagamento",
+            "unauthorized_capture_method": "Non è consentito impostare il metodo di acquisizione del pagamento.",
+            "saved_payment_methods_not_allowed": "I metodi di pagamento salvati non sono consentiti.",
+            "saved_payment_methods_not_enabled": "I metodi di pagamento salvati non sono abilitati per questo negozio.",
+            "store_credit_not_enabled": "Il credito negozio non è abilitato per questo negozio.",
+            "store_credit_account_not_found": "Conto di credito del negozio non trovato.",
+            "store_credit_account_mismatch": "Il conto del credito del negozio non corrisponde all'identità dell'acquirente.",
+            "store_credit_mismatched_currency": "La valuta del conto del credito del negozio non corrisponde alla valuta del pagamento.",
+            "store_credit_insufficient_funds": "I fondi non sono sufficienti nel tuo conto di credito del negozio.",
+            "store_credit_buying_gift_card": "Non è possibile utilizzare il credito del negozio per acquistare una carta regalo.",
+            "gift_cards_not_allowed_for_b2b": "Le carte regalo non sono consentite nei negozi B2B.",
+            "method_required": "È necessario proporre un metodo di pagamento.",
+            "paypal_express_address_invalid": "PayPal ha restituito un indirizzo non valido.",
+            "saved_payment_methods_cvv_verification_disabled": "Il metodo di pagamento selezionato richiede la verifica CVV, che non è abilitata per questo negozio. Seleziona un altro metodo di pagamento."
+          },
+          "tip": {
+            "not_accepted_by_shop": "Il negozio non accetta mance.",
+            "only_one_tip_line_allowed": "Non sono accettate più linee di punta.",
+            "tips_not_allowed_for_b2b": "La mancia non è consentita nei negozi B2B.",
+            "currency_change_reset": "La mancia è stata reimpostata a causa del cambio di valuta.",
+            "tips_not_allowed_for_deferred_purchase_options": "La mancia non è ancora accettata per le opzioni di acquisto differito."
+          },
+          "sale_attribution": {
+            "draft_order_not_exist": "Questo ordine in sospeso non esiste nel negozio corrente.",
+            "staff_member_not_exist": "Questo staff non esiste nel negozio attuale.",
+            "location_not_exist": "Questa posizione non esiste nel negozio corrente.",
+            "point_of_sale_device_not_exist": "Questo dispositivo punto vendita non esiste nel negozio attuale.",
+            "unresolvable_target_merchandise_lines": "Le proposte di cessione di vendita non sono risolvibili nell'attuale contesto della trattativa."
+          },
+          "non_negotiable": {
+            "missing_non_negotiable_terms": "La proposta dell'acquirente deve contenere termini non negoziabili.",
+            "invalid_signature": "Firma per {{target_terms}} non è valido."
+          },
+          "inventory": {
+            "missing_quantity_value": "Il campo della quantità manca dalle righe dell'inventario dell'acquirente.",
+            "changing_behavior_not_allowed": "Questo client non dispone dell'autorizzazione per modificare il comportamento dell'inventario.",
+            "only_one_inventory_behavior_allowed": "Attualmente è consentito un solo comportamento di inventario per pagamento."
+          },
+          "optional_duties": {
+            "optional_duties_not_permitted": "Il rifiuto dei dazi doganali non è consentito per questo pagamento."
+          },
+          "attribution": {
+            "retail_attribution_not_allowed": "L'attribuzione al dettaglio non è consentita per questo pagamento.",
+            "retail_attribution_required": "Per questo pagamento è richiesta l'assegnazione al dettaglio."
+          },
+          "captcha": {
+            "metadata_missing": "Per completare questo ordine è necessario completare una convalida captcha.",
+            "metadata_mismatch": "Il provider e il tipo di convalida captcha forniti non corrispondono ai valori previsti.",
+            "token_missing": "Per completare questo ordine è necessario fornire un token captcha.",
+            "job_enqueue_failed": "Impossibile mettere in coda l'attività di convalida captcha.",
+            "job_already_queued": "La convalida captcha è già stata messa in coda per questo token captcha.",
+            "token_expired": "Il token captcha fornito è scaduto. Esegui nuovamente la convalida del captcha per continuare la procedura di pagamento.",
+            "token_invalid": "Il token captcha fornito non è valido. Esegui nuovamente la convalida del captcha per continuare la procedura di pagamento.",
+            "token_not_valid_for_session": "La convalida captcha fornita non può essere utilizzata per questo pagamento."
+          },
+          "fx_reconciliation_override": {
+            "shop_currency_mismatch": "L'importo ricevuto deve essere nella valuta del negozio."
+          },
+          "checkout_source": {
+            "revoked": "Questo pagamento non è più disponibile."
           }
-        }
+        },
+        "full_price": "Prezzo intero:",
+        "title": "Completa l'ordine – {{shopName}}",
+        "full_title": "{{pageTitle}} – {{shopName}} – Completa l'ordine"
       },
       "customer_account": {
         "saved_address_option_description": {
