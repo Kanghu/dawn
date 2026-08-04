@@ -1875,7 +1875,69 @@
           "few": "Platby bankovní kartou v současné době nejsou k dispozici.<br><a href=\"%{current_url}\">Obnovte stránku</a> nebo zkuste jinou platební metodu."
         },
         "subscription_agreement_label_html": "Rozumím a souhlasím s odběrem. Budu obnovovat za uvedenou cenu a frekvenci, dokud to neskončí nebo bude\n<a class=\"link--small\" data-modal=\"true\" data-title-text=\"%{subscription_policy}\" href=\"%{policy_href}\">zrušeno</a>.\n",
-        "waiting_on_payment_methods": "Dostáváme dostupné způsoby platby..."
+        "waiting_on_payment_methods": "Dostáváme dostupné způsoby platby...",
+        "apple_pay_payment_error": "Vaši platbu nebylo možné dokončit. Zkuste to znovu nebo použijte jinou platební metodu.",
+        "subscription_card_update_agreement_label": "Změna způsobu platby aktualizuje vaše předplatné a budoucí opakované platby.",
+        "card_security_vault_notice": "Vaše údaje potřebujeme pro budoucí platby. Všechny transakce jsou bezpečné a šifrované.",
+        "taxes_not_included": "Daně nejsou zahrnuty",
+        "no_taxes_banner_content": "Za tuto objednávku nebudou účtovány žádné poplatky. Po vyzvednutí platby již nelze účtovat žádné další poplatky.",
+        "card_update_label": "Aktualizujte kartu",
+        "paypal": {
+          "connect": "Kliknutím propojíte svůj účet PayPal"
+        },
+        "subscription_agreement_label": "Jedna nebo více položek ve vašem košíku je odložený nákup nebo nákup předplatného. Pokračováním v platbě souhlasíte s tím, že vaše platební metoda bude automaticky účtována za cenu a frekvenci uvedenou na této stránce, dokud vaše předplatné neskončí nebo je nezrušíte. Všechna zrušení musí být v souladu s %{cancelled}.",
+        "subscription_agreement_cancelled": "storno podmínky",
+        "card_expired": "Platnost vypršela",
+        "card_verification_confirm": "Pro ověření zadejte bezpečnostní kód své karty.",
+        "different_credit_card_label": "Použijte jinou kreditní kartu",
+        "delete_customer_mandate_modal_cancel": "Zrušit",
+        "apple": {
+          "connect": "Kliknutím propojíte svůj účet Apple Pay",
+          "not_available": "Apple Pay není v tomto prohlížeči k dispozici. Chcete-li připojit svůj účet Apple Pay, budete muset na zařízení Apple použít prohlížeč Safari."
+        },
+        "account_connected": "Účet připojen.",
+        "billing_address_associated_with_mandate": "Použijte adresu spojenou s platební metodou",
+        "billing_address_associated_with_mandate_info": "Chcete-li změnit svou fakturační adresu, odstraňte a znovu zadejte údaje o své kreditní kartě",
+        "credit_card_vaulting_sign_in_banner_title": "Uložte svou kreditní kartu",
+        "credit_card_vaulting_sign_in_banner_info": "Přihlaste se nebo si vytvořte účet a uložte si svou kreditní kartu pro budoucí nákupy.",
+        "credit_card_vaulting_sign_in_banner_button_label": "Připojte se",
+        "expiry_long": "(Platnost vyprší za %{month}/%{year})",
+        "expiry_short": "(Exp. v %{month}/%{year})",
+        "ftd_vault_credit_card_label": "Chci si uložit tuto kreditní kartu do svého účtu pro rychlejší placení",
+        "delete_customer_mandate_modal_title": "Odebrat tuto platební kartu?",
+        "delete_customer_mandate_modal_body": "Pokud tuto kartu odeberete, budete ji muset znovu přidat, než ji budete moci používat k platbám.",
+        "delete_customer_mandate_modal_confirm": "Vyjměte kartu",
+        "google": {
+          "connect": "Kliknutím se přihlaste pomocí účtu Google Play",
+          "error_authorizing": "Chyba při autorizaci platby"
+        },
+        "klarna_label": "Klarna",
+        "mor_disclaimer_html": "Kliknutím níže a dokončením objednávky souhlasíte s nákupem položek od Global-e jako registrovaný obchodník\npro tuto transakci v souladu s <a class=\"link--small\" data-modal=\"true\" data-title-text=\"%{mor_terms}\" href=\"%{terms_href}\">Smluvní podmínky</a>\na s <a class=\"link--small\" data-modal=\"true\" data-title-text=\"%{privacy_policy}\" href=\"%{policy_href}\">Zásady ochrany osobních údajů</a> Je to globální. Global-e je a\nmezinárodní poskytovatel honorárních služeb pro %{shop_name}\n",
+        "purchase_options_card_update_agreement_label_html": "Aktualizací způsobu platby autorizujete platby za jakékoli opakované nebo odložené nákupy v souladu s <a class=\"link--small\" data-modal=\"true\" data-title-text=\"%{cancellation_policy}\" href=\"%{policy_href}\">storno podmínky</a> tohoto obchodu.",
+        "multibanco_label": "bankomat",
+        "receiver_payment_experience_hint": "Po zadání objednávky obdržíte platební údaje. Platbu proveďte nejpozději v Multibanco nebo online %{due_days} (ze) dnů.",
+        "pending_payment": {
+          "due_notice": "Hodnota vaší platby %{amount_due} má termín splatnosti %{due_date}",
+          "multibanco": {
+            "instruction_html": "Proveďte platbu v Multibanco nebo online pomocí níže uvedených údajů. Pokud máte nějaké dotazy nebo chcete aktualizovat své platební údaje, %{contact_us}.",
+            "entity": "Entita",
+            "reference": "Reference",
+            "amount": "Částka",
+            "find_nearest_atm": "Najděte nejbližší bankomat",
+            "buyer_action_info": "Platba ve výši %{amount_due} dosáhl zralosti."
+          }
+        },
+        "purchase_options_agreement_label": "Jedna nebo více položek ve vašem košíku představuje odložený nebo opakovaný nákup. Pokračováním v platbě souhlasíte s tím, že z vaší platební metody budou automaticky účtovány poplatky za cenu a frekvenci uvedenou na této stránce, dokud nebude dokončena nebo dokud ji nezrušíte. Všechna zrušení podléhají podmínkám  %{cancellation_policy_label}.",
+        "update_payment_method": "Aktualizujte svou platební metodu",
+        "paypal_modal": {
+          "order_contains_subscriptions": "Předplatné",
+          "order_contains_fixed_selling_plans": "Celková částka nemusí zahrnovat daň, dopravu, odloženou daň a některé slevy. Pokračujte v pokladně a zjistěte, kolik je dnes dluženo."
+        },
+        "purchase_options_agreement_label_html": "Beru na vědomí, že jedna nebo více položek v mém košíku je odložený nebo opakovaný nákup. Pokračování, souhlasím\n<a class=\"link--small\" data-modal=\"true\" data-title-text=\"%{subscription_policy}\" href=\"%{policy_href}\">storno podmínky</a>\na povoluji, aby můj způsob platby byl účtován za ceny, frekvenci a data uvedená na této stránce do\nmoje objednávka je provedena nebo ji zruším, pokud je to povoleno.\n",
+        "payment_method_saved": "Uložená platební metoda",
+        "card_vaulted_company_location": "Karta uložena pro toto místo",
+        "order_covered_by_store_credit_notice": "Vaše objednávka je kryta kreditem obchodu.",
+        "order_covered_by_redeemables_notice": "Vaše objednávka je pokryta."
       }
     }
   }
