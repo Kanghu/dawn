@@ -3638,6 +3638,12 @@
       "order_list": {
         "items": {
           "few": "{{count}} προϊόντα"
+        },
+        "column_headers": {
+          "total": "Εντελώς",
+          "order": "Παραγγελία",
+          "actions_accessibility_label": "Δράσεις",
+          "products_accessibility_label": "Προϊόντα"
         }
       },
       "order_status": {
@@ -3671,7 +3677,9 @@
         "gift_card_resend_button": {
           "few": "Στείλτε ξανά κάρτες δώρων"
         }
-      }
+      },
+      "list_layout_accessibility_label": "Επιλογές εμφάνισης",
+      "list_title": "Παραγγελίες"
     },
     "order_details": {
       "image_gallery": {
@@ -3825,7 +3833,69 @@
         "save_accessibility_label": "Αποθήκευση προφίλ",
         "title": "Προφίλ",
         "no_name_provided_accessibility_label": "Δεν προστέθηκε όνομα",
-        "email": "Email"
+        "email": "Email",
+        "errors": {
+          "name_too_long": "Το όνομα του χωραφιού {{fieldName}} είναι πολύ μεγάλο (μέγιστο 255 χαρακτήρες)",
+          "name_cannot_contain_url": "Το χωράφι {{fieldName}} δεν μπορεί να περιέχει URL",
+          "name_cannot_contain_html_tags": "Το χωράφι {{fieldName}} δεν μπορεί να περιέχει ετικέτες HTML",
+          "email_cant_be_blank": "Η επικοινωνία της διεύθυνσης e-mail είναι υποχρεωτική",
+          "invalid_email_format": "Πληκτρολογήστε μια έγκυρη διεύθυνση email"
+        },
+        "editable_email_help_text": "Χρησιμοποιήστε αυτήν τη διεύθυνση ηλεκτρονικού ταχυδρομείου για να συνδεθείτε και να ενημερώσετε παραγγελίες."
+      },
+      "profile_update_confirmation_message": "Ενημερωμένο προφίλ",
+      "title": "Προφίλ",
+      "people": {
+        "pagination": {
+          "load_more": "Εμφάνιση περισσότερων",
+          "load_more_accessibility_label": "Εμφάνιση περισσότερων ατόμων",
+          "loading_accessibility_label": "Φόρτωση ανθρώπων"
+        }
+      },
+      "add_button": "Προσθήκη",
+      "verify_new_email_modal": {
+        "title": "Ελέγξτε το νέο σας email",
+        "description": "Τώρα, εισαγάγετε τον 6ψήφιο κωδικό που στάλθηκε στο νέο σας email:",
+        "one_time_password_label": "6ψήφιος κωδικός",
+        "email_resend_button": "Στείλτε ξανά τον κωδικό",
+        "email_resend_button_accessibility_label": "Στείλτε ξανά τον κωδικό επαλήθευσης",
+        "verify_button": "Ελέγξτε το",
+        "verify_button_accessibility_label": "Ελέγξτε τον μοναδικό κωδικό πρόσβασής σας",
+        "cancel_button": "Ακύρωση",
+        "cancel_button_accessibility_label": "Ακύρωση επεξεργασίας προφίλ",
+        "email_resend_button_success_toast_message": "Ο κωδικός επαλήθευσης έχει σταλεί",
+        "email_resend_button_failure_banner_message": "Δεν ήταν δυνατή η αποστολή του κωδικού επαλήθευσης"
+      },
+      "email_update_success_modal": {
+        "title": "Ελέγξτε το email σας",
+        "description": "Το email ενημερώθηκε με επιτυχία. Ανακατευθύνσεις για σύνδεση."
+      },
+      "email_update_confirmation_message": "Η διεύθυνση email έχει ενημερωθεί σε {{email}}",
+      "verify_current_email_modal": {
+        "cancel_button": "Ακύρωση",
+        "cancel_button_accessibility_label": "Ακύρωση επεξεργασίας προφίλ",
+        "description": "Εισαγάγετε τον 6ψήφιο κωδικό που στάλθηκε στην αρχική σας διεύθυνση email:",
+        "email_resend_button_accessibility_label": "Στείλτε ξανά τον κωδικό επαλήθευσης",
+        "title": "Επιβεβαιώστε ότι είστε εσείς",
+        "verify_button": "Επόμενο",
+        "verify_button_accessibility_label": "Ελέγξτε το τρέχον email σας"
+      },
+      "marketing_preferences": {
+        "email_label": "Email",
+        "pending_confirmation": "Κάντε κλικ στον σύνδεσμο στο email για επιβεβαίωση.",
+        "resend_email": "Στείλτε ξανά το email",
+        "resend_email_success": "Ο σύνδεσμος έχει σταλεί",
+        "title": "Προτιμήσεις μάρκετινγκ",
+        "unsubscribe_confirmation": {
+          "cancel": "Ακύρωση",
+          "description": "Δεν θα λαμβάνετε πλέον email marketing από {{shopName}}",
+          "title": "Κατάργηση εγγραφής από μηνύματα ηλεκτρονικού ταχυδρομείου;",
+          "unsubscribe": "Απεγγραφή"
+        },
+        "update_error": {
+          "description": "Παρουσιάστηκε πρόβλημα κατά την ενημέρωση των προτιμήσεων μάρκετινγκ. Δοκιμάστε να ανανεώσετε αυτήν τη σελίδα ή ελέγξτε τη σύνδεσή σας στο διαδίκτυο."
+        },
+        "update_success": "Οι προτιμήσεις μάρκετινγκ σας έχουν ενημερωθεί"
       }
     }
   },
