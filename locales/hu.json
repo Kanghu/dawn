@@ -332,36 +332,36 @@
     "search": {
       "no_results": "Nincs találat a következőre: \"{{ terms }}\". Ellenőrizze a helyesírást, vagy használjon másik szót vagy kifejezést.",
       "results_with_count": {
-        "one": "{{ count }} találat",
-        "other": "{{ count }} találat",
-        "few": "{{ count }} eredmény"
+        "one": "{{ count }} eredményt",
+        "other": "{{ count }} eredményeket",
+        "few": "{{ count }} eredményeket"
       },
-      "title": "Találatok",
-      "page": "Oldal",
+      "title": "Keresési eredmények",
+      "page": "oldal",
       "products": "Termékek",
-      "search_for": "Keresés erre: {{ terms }}",
+      "search_for": "Keresés a következőre{{ terms }}”",
       "results_with_count_and_term": {
-        "one": "{{ count }} találat erre: {{ terms }}",
-        "other": "{{ count }} találat erre: {{ terms }}",
-        "few": "Találtak {{ count }} Eredmények \"{{ terms }}”"
+        "one": "Megtalálták {{ count }} eredmény erre: \"{{ terms }}”",
+        "other": "Egymásra találtak {{ count }} találatok erre: \"{{ terms }}”",
+        "few": "Egymásra találtak {{ count }} találatok erre: \"{{ terms }}”"
       },
       "results_pages_with_count": {
-        "one": "{{ count }} oldal",
-        "other": "{{ count }} oldal",
-        "few": "{{ count }} oldal"
+        "one": "{{ count }} oldalon",
+        "other": "{{ count }} oldalakat",
+        "few": "{{ count }} oldalakat"
       },
       "results_suggestions_with_count": {
-        "one": "{{ count }} javaslat",
-        "other": "{{ count }} javaslat",
+        "one": "{{ count }} javaslatot",
+        "other": "{{ count }} javaslatok",
         "few": "{{ count }} javaslatok"
       },
       "results_products_with_count": {
         "one": "{{ count }} termék",
-        "other": "{{ count }} termék",
+        "other": "{{ count }} termékek",
         "few": "{{ count }} termékek"
       },
       "suggestions": "Javaslatok",
-      "pages": "Oldal"
+      "pages": "Oldalak"
     },
     "cart": {
       "cart": "Kosár"
@@ -369,13 +369,13 @@
     "contact": {
       "form": {
         "name": "Név",
-        "email": "E-mail-cím",
+        "email": "E-mail",
         "phone": "Telefonszám",
-        "comment": "Hozzászólás",
-        "send": "Küldés",
-        "post_success": "Köszönjük, hogy írtál nekünk. A lehető legrövidebb időn belül válaszolni fogunk.",
-        "error_heading": "Kérjük, helyesbítsd a következőket:",
-        "title": "Kapcsolattartói űrlap"
+        "comment": "Megjegyzés",
+        "send": "Beküld",
+        "post_success": "Köszönjük, hogy felvette velünk a kapcsolatot. A lehető leghamarabb visszakeresünk.",
+        "error_heading": "Kérjük, állítsa be a következőket:",
+        "title": "Kapcsolatfelvételi űrlap"
       }
     }
   },
@@ -534,27 +534,27 @@
   "localization": {
     "country_label": "Ország/régió",
     "language_label": "Nyelv",
-    "update_language": "Nyelv módosítása",
-    "update_country": "Ország/régió frissítése",
+    "update_language": "Frissítse a nyelvet",
+    "update_country": "Frissítse országát/régióját",
     "search": "Keresés",
     "popular_countries_regions": "Népszerű országok/régiók",
-    "country_results_count": "{{ count }} ország/régió található"
+    "country_results_count": "{{ count }} országok/régiók találhatók"
   },
   "customer": {
     "account": {
-      "title": "Fiók",
-      "details": "Fiókadatok",
-      "view_addresses": "Címek megtekintése",
-      "return": "Vissza a fiókadatokhoz"
+      "title": "fiókot",
+      "details": "Számlaadatok",
+      "view_addresses": "Címek megjelenítése",
+      "return": "Vissza a fiók részleteihez"
     },
-    "account_fallback": "Fiók",
+    "account_fallback": "fiókot",
     "activate_account": {
-      "title": "Fiók aktiválása",
-      "subtext": "A fiók aktiválásához hozz létre egy jelszót.",
+      "title": "Aktiválja fiókját",
+      "subtext": "Hozzon létre egy jelszót fiókja aktiválásához.",
       "password": "Jelszó",
-      "password_confirm": "Jelszó megerősítése",
-      "submit": "Fiók aktiválása",
-      "cancel": "Meghívás elutasítása"
+      "password_confirm": "Erősítse meg a jelszót",
+      "submit": "Aktiválja fiókját",
+      "cancel": "A meghívás elutasítása"
     },
     "addresses": {
       "title": "Címek",
@@ -579,8 +579,8 @@
       "delete": "Törlés",
       "delete_confirm": "Biztos, hogy törlöd a címet?"
     },
-    "log_in": "Bejelentkezés",
-    "log_out": "Kijelentkezés",
+    "log_in": "Jelentkezzen be",
+    "log_out": "Jelentkezzen ki",
     "login_page": {
       "cancel": "Mégse",
       "create_account": "Fiók létrehozása",
