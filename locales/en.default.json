@@ -3294,9 +3294,58 @@
               "ro": "Enter a valid Romanian VAT number",
               "sk": "Enter a valid Slovak VAT number",
               "si": "Enter a valid Slovenian VAT number",
-              "es": "Enter a valid Spanish VAT number"
+              "es": "Enter a valid Spanish VAT number",
+              "se": "Enter a valid Swedish VAT number",
+              "gb": "Please enter a valid UK VAT number"
+            },
+            "service_unavailable": "The validation service is unavailable",
+            "service_error": "The validation service is unavailable"
+          },
+          "accessibility": {
+            "status": {
+              "validating": "Validation of the VAT number is in progress",
+              "valid": "The VAT number is valid",
+              "applied": "The VAT exemption has been applied",
+              "domestic": "The VAT exemption has not been applied",
+              "invalid_number": "VAT exemption failed",
+              "service_unavailable": "VAT exemption verification failed",
+              "service_error": "VAT exemption verification failed"
             }
           }
+        }
+      },
+      "payment_collection": {
+        "cancelled": "This payment is no longer required. Visit the order page for details.",
+        "paid": "This payment has already been sent. Visit the order page for details."
+      },
+      "required_extensions": {
+        "errors": {
+          "interaction_required": "An interaction with the extension is required to complete the payment."
+        }
+      },
+      "embed": {
+        "header": {
+          "review_order": "Check your order"
+        },
+        "shipping": {
+          "shipping_options": "See all shipping options"
+        },
+        "payment": {
+          "payment_options": "See all payment options"
+        }
+      },
+      "too_many_requests": {
+        "title": "Too many payment attempts",
+        "body": "Wait a few minutes and try again from the basket.",
+        "return_to_cart": "Return to cart",
+        "body_no_cart": "Please wait a few minutes and try again."
+      },
+      "address_management": {
+        "saved_with_store": "Saved in this store"
+      },
+      "ucp": {
+        "standard_errors": {
+          "item_unavailable": "The item cannot be purchased"
         }
       }
     },
@@ -3316,6 +3365,47 @@
       "words_connector": ", ",
       "two_words_connector": " and ",
       "last_word_connector": " and "
+    },
+    "pagination": {
+      "previous": "Back",
+      "next": "Before"
+    },
+    "links": {
+      "powered_by_shopify": "Powered by Shopify",
+      "learn_more": "Learn more"
+    },
+    "feed": {
+      "more": "More"
+    },
+    "attributes": {
+      "email": "e-mail",
+      "password": "password",
+      "password_confirmation": "Password confirmation",
+      "first_name": "first name",
+      "last_name": "surname",
+      "body": "body",
+      "signature": "Address"
+    },
+    "addresses": {
+      "zip_code": "zip code",
+      "postal_code": "Postal code",
+      "postcode": "Postal code",
+      "pincode": "Pin code",
+      "region": "Region",
+      "prefecture": "Prefecture",
+      "province": "Province",
+      "state": "State",
+      "state_and_territory": "State/Territory",
+      "county": "County",
+      "emirate": "Emirate",
+      "governorate": "Governorate",
+      "confirm": "Are you sure you want to delete this address?"
+    },
+    "collections": {
+      "sorting": {
+        "manual": "Recommended",
+        "best_selling": "The best seller"
+      }
     }
   },
   "customer_accounts": {
