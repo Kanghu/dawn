@@ -2703,7 +2703,71 @@
           "text_html": "%{contact_us} pro přidání adresy",
           "contact_us": "Kontaktujte nás"
         },
-        "order_status_confirmed_with_installments_payment_return": "Vraťte svou pozornost na obchodního partnera."
+        "order_status_confirmed_with_installments_payment_return": "Vraťte svou pozornost na obchodního partnera.",
+        "order_status_confirmed_with_installments_payment_confirm": "Brzy obdržíte potvrzovací e-mail s číslem objednávky a podrobnostmi splátkového kalendáře",
+        "first_payment_complete": "První platba je dokončena",
+        "in_store_purchase": "Nákupy v obchodě",
+        "choose_payment_method_later": "Vyberte si způsob platby později",
+        "purchase_order_number_title": "Číslo objednávky: %{purchase_order_number}",
+        "thank_you_ready_for_picked_up": "Vaše objednávka byla vyzvednuta na adrese %{address}.",
+        "ready_for_delivery": "Připraveno k dodání",
+        "order_updates_subscribe_to_email_notifications_failed": "Tuto e-mailovou adresu nemůžeme uložit pro aktualizace. Zkuste to znovu nebo použijte jinou e-mailovou adresu.",
+        "order_updates_subscribe_to_email_notifications_email_already_exists": "E-mailová adresa, kterou jste zadali, již existuje.",
+        "subscriptions_management": {
+          "title": "Předplatné",
+          "description": "Pokračujte ve svém účtu a prohlížejte a spravujte svá předplatná.",
+          "button_label": "Spravujte své předplatné"
+        },
+        "manage_order_label": "Spravujte svou objednávku",
+        "gift_card_confirmation_by_text_typ": {
+          "one": "Během několika minut obdržíte textovou zprávu s dárkovou kartou.",
+          "other": "Během několika minut obdržíte textovou zprávu s dárkovými kartami.",
+          "few": "Během několika minut obdržíte textovou zprávu s dárkovými kartami."
+        },
+        "gift_card_confirmation_by_email_typ": {
+          "one": "Během několika minut obdržíte e-mail s dárkovou kartou.",
+          "other": "Během několika minut obdržíte e-mail s dárkovými kartami.",
+          "few": "Během několika minut obdržíte e-mail s dárkovými kartami."
+        },
+        "gift_card_email_title": {
+          "one": "Dárková karta byla odeslána e-mailem",
+          "other": "Dárkové poukazy byly zaslány e-mailem",
+          "few": "Dárkové poukazy byly zaslány e-mailem"
+        },
+        "gift_card_text_title": {
+          "one": "Dárková karta byla odeslána prostřednictvím textové zprávy",
+          "other": "Dárkové poukazy byly zaslány e-mailem",
+          "few": "Dárkové poukazy byly zaslány e-mailem"
+        },
+        "resend_gift_cards_by_email": "Chci znovu poslat e-mail",
+        "resend_gift_cards_by_text": "Chci znovu odeslat textovou zprávu",
+        "gift_card_resent_confirmation": {
+          "one": "Dárková karta byla znovu odeslána.",
+          "other": "Dárkové karty byly odeslány zpět.",
+          "few": "Dárkové karty byly odeslány zpět."
+        },
+        "gift_card_resend_failure": {
+          "one": "Při opětovném odeslání dárkové karty došlo k problému. Zkuste to znovu nebo nás kontaktujte.",
+          "other": "Při opětovném odesílání dárkových karet došlo k problému. Zkuste to znovu nebo nás kontaktujte.",
+          "few": "Při opětovném odesílání dárkových karet došlo k problému. Zkuste to znovu nebo nás kontaktujte."
+        },
+        "failed_pending_payment_page_title": "Vyskytl se problém s vaší platbou",
+        "thank_you_title_payments_app_pending_default": "Vaše platba se zpracovává",
+        "thank_you_title_payments_app_pending_buyer_action_required": "Vaše objednávka byla přijata",
+        "thank_you_title_payments_app_failed_pending_payment": "Vaši platbu nebylo možné zpracovat",
+        "thank_you_payments_app_failed_pending_payment": "Objednávka vám nebyla účtována. Vraťte se do nákupního košíku, zkontrolujte objednávku a proveďte platbu znovu.",
+        "order_status_payments_app_pending_payment_description_default_with_email_and_phone": "Brzy obdržíte potvrzovací e-mail. Sledujte svou objednávku pomocí aplikace Obchod.",
+        "order_status_payments_app_pending_payment_description_default_with_email": "Brzy obdržíte potvrzovací e-mail. Sledujte svou objednávku pomocí aplikace Obchod.",
+        "order_status_payments_app_pending_payment_description_default_with_phone": "Brzy obdržíte potvrzovací textovou zprávu. Sledujte svou objednávku pomocí aplikace Obchod.",
+        "order_status_payments_app_pending_payment_description_buyer_action_required_with_email_and_phone": "Po dokončení platby obdržíte potvrzovací email. Sledujte svou objednávku pomocí aplikace Obchod.",
+        "order_status_payments_app_pending_payment_description_buyer_action_required_with_email": "Po dokončení platby obdržíte potvrzovací email. Sledujte svou objednávku pomocí aplikace Obchod.",
+        "order_status_payments_app_pending_payment_description_buyer_action_required_with_phone": "Po dokončení platby obdržíte potvrzovací textovou zprávu. Sledujte svou objednávku pomocí aplikace Obchod.",
+        "order_status_payments_app_failed_pending_payment": "Objednávka vám nebyla účtována. Vraťte se do nákupního košíku, zkontrolujte objednávku a proveďte platbu znovu.",
+        "order_status_payments_app_pending_payment_description_buyer_action_required_with_email_pick_up": "Po dokončení platby obdržíte potvrzovací email. Sledujte svou objednávku pomocí aplikace Obchod.",
+        "thank_you_confirmed_order_with_missing_payment": "Kontaktujte nás emailem nebo telefonicky pro obdržení potvrzení objednávky.",
+        "thank_you_confirmed_order_with_missing_pick_up": "Kontaktujte nás emailem nebo telefonicky pro obdržení potvrzení objednávky.",
+        "thank_you_confirmed_order_with_draft_payment": "Budeme vás informovat, pokud budeme potřebovat další informace nebo až bude vaše objednávka potvrzena.",
+        "thank_you_confirmed_order_with_draft_pick_up": "Budeme vás informovat, pokud budeme potřebovat další informace nebo až bude vaše objednávka potvrzena."
       }
     }
   }
