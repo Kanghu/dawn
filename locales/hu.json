@@ -1679,6 +1679,32 @@
         "compare_at_sale": "Promóció (%{sale_amount})",
         "discount_code_applied_count": {
           "few": "Kijelző %{count} kedvezmények"
+        },
+        "tax_line": {
+          "hst": "HST",
+          "gst": "GST",
+          "pst": "PST",
+          "rst": "RST",
+          "qst": "QST",
+          "vpt": "VPT"
+        },
+        "automatic_discount_tooltip": "Az automatikusan alkalmazott kedvezmények nem távolíthatók el",
+        "alternative_payment_currency_chinese_yuan": "Erősítse meg a végső összeget CNY-ban az alkalmazásban %{wallet}.",
+        "alternative_payment_currency_total_disclosure": "%{shop_name} feldolgozza a kifizetéseket %{shop_currency} (%{amount_due}).",
+        "settlement_currency_note": "%{shop_name} feldolgozza a kifizetéseket %{processing_currency}. Bevásároltál %{original_currency}.",
+        "settlement_currency_note_wallet": "%{shop_name} feldolgozza a kifizetéseket %{processing_currency}. Bevásároltál %{original_currency} és ezzel fizettél %{wallet} CNY-ban. Nézze meg az alkalmazást %{wallet_app} a végső összegért.",
+        "settlement_currency_note_wallet_no_conversion": "Ezzel fizettél %{wallet} CNY-ban. Nézze meg az alkalmazást %{wallet_app} a végső összegért.",
+        "lpm": {
+          "wechat_pay": {
+            "checkout_disclosure": "Erősítse meg a végső összeget CNY-ban a WeChat alkalmazásban",
+            "post_purchase_disclosure": "Tekintse meg a teljes összeget CNY-ban a WeChatban",
+            "checkout_disclosure_with_alternative_payment_currency": "%{shop_name} összegű kifizetését fogja feldolgozni %{amount_due} %{processing_currency}, amelyet a WeChat CNY-ra konvertál"
+          },
+          "alipay": {
+            "checkout_disclosure": "Erősítse meg a végső összeget CNY-ban az Alipay alkalmazásban",
+            "post_purchase_disclosure": "Tekintse meg a teljes összeget CNY-ban Alipayben",
+            "checkout_disclosure_with_alternative_payment_currency": "%{shop_name} összegű kifizetését fogja feldolgozni %{amount_due} %{processing_currency}, amelyet az Alipay CNY-ra vált át"
+          }
         }
       },
       "payment": {
@@ -1700,7 +1726,37 @@
         },
         "discount_codes_removed_summary": {
           "few": "%{count} kedvezmény kódok eltávolítva"
-        }
+        },
+        "amazon_payments_label": "Amazon Pay",
+        "amazon_payments_login_hint": "A rendszer felkéri, hogy jelentkezzen be az Amazon-on.",
+        "amazon_payments_logout": "Jelentkezzen ki az Amazon Pay alkalmazásból",
+        "amazon_payments_failed_mfa_challenge": "A kiválasztott fizetési mód nem használható. Válasszon másik módszert, vagy forduljon bankjához vagy kártyakibocsátójához.",
+        "amazon_payments_abandoned_mfa_challenge": "Fizetését nem sikerült végrehajtani. Válasszon másik fizetési módot, vagy forduljon bankjához vagy kártyakibocsátójához.",
+        "amazon_payments_could_not_enqueue_authorize": "Hiba történt a fizetés feldolgozása során. Próbálja újra, vagy használjon másik fizetési módot.",
+        "title": "Fizetés",
+        "amount_left_to_pay_label": "Fizetési határidő:",
+        "discount_button_action_label": "Alkalmazzon kedvezmény kódot",
+        "gift_card_code_label": "Ajándékkártya kódja",
+        "apply_gift_card_button_label": "Alkalmazni",
+        "gift_card_balance_label": "Egyenleg:",
+        "supported_card_brands_more_label": "és még több...",
+        "detected_card_brand": "A kártya márkája észlelve: {brand}",
+        "card_number_label": "Kártyaszám",
+        "card_number_placeholder": "Kártyaszám",
+        "card_pay_with": "Fizetés a következővel:",
+        "card_security_notice": "Minden tranzakció biztonságos és titkosított.",
+        "card_information_notice": "Minden tranzakció biztonságos és titkosított. A hitelkártyaadatokat soha nem tároljuk.",
+        "name_on_card_label": "A név a kártyán",
+        "name_on_card_placeholder": "A név a kártyán",
+        "card_expiry_label": "Lejárati dátum (HH/ÉÉ)",
+        "card_expiry_placeholder": "Lejárati dátum (HH/ÉÉ)",
+        "credit_card_start_month": "Kezdő hónap",
+        "credit_card_start_year": "Kezdő év",
+        "card_verification_value_label": "Biztonsági kód",
+        "card_verification_value_placeholder": "Biztonsági kód",
+        "card_expiry_date_explanation": "A kártya lejárati dátuma a következő formátumban: hónap, hónap, év, év",
+        "card_expiration_month_label": "A lejárat hónapja",
+        "card_expiration_year_label": "Lejárati év"
       },
       "shipping_errors": {
         "shipping_method_not_available_generic": {
