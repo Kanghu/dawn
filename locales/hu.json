@@ -999,7 +999,9 @@
       "general": {
         "map": {
           "cluster_title": {
-            "few": "Klaszter kialakult {{number}} Golyó"
+            "few": "Klaszter, amelyből áll {{number}} markerek",
+            "one": "Klaszter, amelyből áll {{number}} marker",
+            "other": "Klaszter, amelyből áll {{number}} markerek"
           }
         },
         "page_title": "Töltse ki a rendelést",
@@ -1288,7 +1290,37 @@
           "range_start": "Intervallum kezdete",
           "in_range": "Az intervallumban",
           "range_end": "Intervallum vége"
-        }
+        },
+        "list_formatter": {
+          "and": {
+            "wordConnector": "{{previousWords}}, {{anotherWord}}",
+            "lastWordConnector": "{{previousWords}} és {{lastWord}}",
+            "twoWordConnector": "{{firstWord}} és {{secondWord}}"
+          },
+          "or": {
+            "wordConnector": "{{previousWords}}, {{anotherWord}}",
+            "lastWordConnector": "{{previousWords}} vagy {{lastWord}}",
+            "twoWordConnector": "{{firstWord}} vagy {{secondWord}}"
+          },
+          "narrow": {
+            "wordConnector": "{{previousWords}}, {{anotherWord}}",
+            "lastWordConnector": "{{previousWords}}, {{lastWord}}",
+            "twoWordConnector": "{{firstWord}}, {{secondWord}}"
+          }
+        },
+        "sheet": {
+          "expand": "Bontsa ki"
+        },
+        "confirm_order_button_label": "Erősítse meg a rendelést",
+        "qr_code": "QR kód",
+        "dropzone": {
+          "add_file": "Adjon hozzá egy fájlt",
+          "invalid_file_type": "A fájltípus nem támogatott",
+          "dragged_over": "Engedje el a fájlt a feltöltéshez"
+        },
+        "loading": "Betöltés...",
+        "remove_chip": "Az elem eltávolítása",
+        "finalize_order_accessibility_label": "Töltse ki a rendelést"
       },
       "customer_account": {
         "saved_address_option_description": {
@@ -1585,6 +1617,37 @@
         "change_currency_link": "Váltás erre %{currency_name}",
         "card_provider_fx_charges_warning": "A kártyakibocsátó díjat számíthat fel a tranzakciókért %{currency_code}.",
         "currency_not_supported_by_shop": "A kiválasztott pénznem már nem elérhető. Az összes ár már benne van %{currency_code}."
+      },
+      "contact": {
+        "title": "Információ",
+        "address_title": "Cím",
+        "delivery_option_title": "Szállítási mód",
+        "contact_method_title": "Kapcsolatfelvétel",
+        "email_label": "E-mail",
+        "email_placeholder": "E-mail",
+        "email_or_phone_label": "E-mail vagy mobiltelefon szám",
+        "email_or_phone_placeholder": "E-mail vagy mobiltelefon szám",
+        "stored_addresses_label": "Mentett címek",
+        "new_address_label": "Használjon új címet",
+        "first_name_label": "Keresztnév",
+        "optional_first_name_label": "Keresztnév (nem kötelező)",
+        "last_name_label": "Családi név",
+        "company_label": "Társaság",
+        "optional_company_label": "Vállalati CUI (opcionális)",
+        "address1_label": "Cím",
+        "address2_label": "Lakás, szoba stb.",
+        "optional_address2_label": "Említések (nem kötelező). Szállítás előtt egy üzemeltető dolgozza fel őket.",
+        "city_label": "Város",
+        "country_label": "Ország/régió",
+        "country_code": "Ország/régió kód",
+        "province_label": "tartomány",
+        "province_placeholder": "tartomány",
+        "county_label": "megye",
+        "county_placeholder": "megye",
+        "state_label": "állam",
+        "state_placeholder": "állam",
+        "region_label": "Régió",
+        "region_placeholder": "Régió"
       }
     },
     "notices": {
