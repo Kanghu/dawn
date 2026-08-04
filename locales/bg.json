@@ -2681,7 +2681,85 @@
         "no_pickup_locations_found": "Няма намерени места за получаване",
         "pickup_unavailable_banner_body": {
           "try_different_location": "Опитайте с друго местоположение",
-          "ship_to_address": "адрес за доставка"
+          "ship_to_address": "адрес за доставка",
+          "there_are_no_stores": "Няма магазини близо до вашия адрес или артикулите ви не са налични за вземане.",
+          "ship_items": "Изпратете вашите артикули",
+          "search_elsewhere": "търси другаде",
+          "ship_items_or_search_elsewhere": "%{ship_items} или %{search_elsewhere}",
+          "search_elsewhere_standalone": "Потърсете другаде"
+        },
+        "geolocation": {
+          "permission_not_allowed": "Разрешете споделяне на местоположение или потърсете по друг начин."
+        },
+        "location_address_search_placeholder": "%{postal_code_label} или адрес",
+        "location_closest": "Най-близкото местоположение с вашия артикул",
+        "toggle_multiple_locations": "други риби %{count} местоположения",
+        "location_information_far_away": {
+          "one": "намерих %{count} местоположение с вашата статия",
+          "other": "намерих %{count} местоположения с вашата статия",
+          "few": "намерих %{count} местоположения с вашата статия"
+        },
+        "location_nearby": {
+          "one": "Има %{count} местоположение наблизо с вашия артикул",
+          "other": "Има %{count} близки местоположения с вашия артикул",
+          "few": "Има %{count} близки местоположения с вашия артикул"
+        },
+        "location_nearby_short": {
+          "one": "%{count} местоположение наблизо с вашия артикул",
+          "other": "%{count} близки местоположения с вашия артикул",
+          "few": "%{count} близки местоположения с вашия артикул"
+        },
+        "location_far_away": {
+          "one": "%{count} местоположение с вашата статия",
+          "other": "%{count} местоположения с вашата статия",
+          "few": "%{count} местоположения с вашата статия"
+        },
+        "toggle_more_locations": {
+          "one": "още %{count} местоположение",
+          "other": "още %{count} местоположения",
+          "few": "още %{count} местоположения"
+        },
+        "pickup_unavailable_banner_title": {
+          "one": "Няма местоположения с вашия артикул",
+          "other": "Няма местоположения с вашите артикули",
+          "few": "Няма местоположения с вашите артикули"
+        },
+        "pickup_unavailable_banner_title_with_country": {
+          "one": "в %{country} няма местоположения с вашата статия",
+          "other": "в %{country} няма местоположения с вашите артикули",
+          "few": "в %{country} няма местоположения с вашите артикули"
+        },
+        "title": "Местоположение",
+        "location_closest_one_item": "Най-близкото местоположение с вашия артикул.",
+        "location_closest_other_items": "Най-близкото местоположение с вашите артикули.",
+        "location_information_far_away_one_item": {
+          "one": "Има %{count} местоположение с вашия артикул",
+          "other": "Има %{count} местоположения с вашата статия",
+          "few": "Има %{count} местоположения с вашата статия"
+        },
+        "location_information_far_away_other_items": {
+          "one": "Има %{count} местоположение с вашите артикули",
+          "other": "Има %{count} места с вашите артикули",
+          "few": "Има %{count} места с вашите артикули"
+        },
+        "location_nearby_one_item": {
+          "one": "Има %{count} местоположение наблизо с вашия артикул",
+          "other": "Има %{count} близки местоположения с вашия артикул",
+          "few": "Има %{count} близки местоположения с вашия артикул"
+        },
+        "location_nearby_other_items": {
+          "one": "Има %{count} местоположение наблизо с вашите артикули",
+          "other": "Има %{count} близки места с вашите артикули",
+          "few": "Има %{count} близки места с вашите артикули"
+        },
+        "location_nearby_short_one_item": {
+          "one": "%{count} местоположение наблизо с вашия артикул",
+          "other": "%{count} близки местоположения с вашия артикул",
+          "few": "%{count} близки местоположения с вашия артикул"
+        },
+        "location_nearby_short_other_items": {
+          "one": "%{count} местоположение наблизо с вашите артикули",
+          "other": "%{count} близки места с вашите артикули"
         }
       },
       "merchandise_unavailable_in_buyer_location": {
