@@ -3954,7 +3954,63 @@
     "collections": {
       "sorting": {
         "manual": "Doporučeno",
-        "best_selling": "Nejprodávanější"
+        "best_selling": "Nejprodávanější",
+        "az": "Abecedně od A do Z",
+        "za": "Abecedně Z-A",
+        "price_ascending": "Cena, od nejnižší po vysokou",
+        "price_descending": "Cena, od nejvyšší po nejnižší",
+        "date_ascending": "Datum, od starého k novému",
+        "date_descending": "Datum, od nového po staré",
+        "most_relevant": "Nejrelevantnější"
+      }
+    },
+    "errors": {
+      "blank": "nemůže být prázdné",
+      "credit_card_session_expired": "Platnost autorizace kreditní karty vypršela, znovu zadejte platební údaje. Na vaši kartu nebude stržena žádná částka.",
+      "empty": "nemůže být prázdný",
+      "invalid_email": "musí být platná e-mailová adresa",
+      "discount_disabled": "Tato sleva byla deaktivována",
+      "discount_expired": "Tato sleva již není platná",
+      "discount_limit_reached": "Tato sleva dosáhla limitu využití",
+      "discount_not_found": "Nebyla nalezena platná sleva odpovídající zadanému kódu",
+      "customer_already_used_once_per_customer_discount_notice": "Tato sleva dosáhla limitu využití",
+      "gift_card_already_applied": "Kód již byl použit při placení",
+      "gift_card_code_invalid": "Kód není platný",
+      "gift_card_currency_mismatch": "Tuto dárkovou kartu nelze pro tento nákup použít. Ozvěte se %{shop_name} pro jeho znovuvydání.",
+      "gift_card_depleted": "Na této dárkové kartě nezbývají žádné prostředky",
+      "gift_card_disabled": "Dárková karta je zakázána",
+      "gift_card_expired": "Platnost dárkové karty vypršela",
+      "invalid": "je neplatné",
+      "bad_domain": "obsahuje neplatný název domény",
+      "taken": "už to bylo převzato",
+      "contains_html_tags": "nemůže obsahovat HTML tagy",
+      "too_short": "je příliš krátká (minimální délka je %{count} postavy)",
+      "too_long": "je příliš dlouhý (maximální délka je %{count} postavy)",
+      "password_mismatch": "musí odpovídat zadanému heslu",
+      "contains_spaces": "začíná nebo končí mezerami.",
+      "invalid_for_country": "neplatí pro %{country}",
+      "invalid_for_country_and_province": "neplatí pro %{province} a %{country}",
+      "invalid_province_in_country": "není platnou provincií %{country}",
+      "invalid_state_in_country": "není platným stavem %{country}",
+      "invalid_region_in_country": "není platný region z %{country}",
+      "less_than_or_equal_to": "musí být menší nebo rovno %{count}",
+      "not_supported": "není přijato",
+      "full_name_required": "Zadejte jméno a příjmení",
+      "invalid_for_card_type": "není platný",
+      "invalid_type": "omlouváme se, karty tohoto typu nepřijímáme",
+      "invalid_format": "formát není platný",
+      "expired": "platnost vypršela",
+      "invalid_start_date_or_issue_number_for_debit": "je vyžadováno platné datum zahájení nebo číslo vydání",
+      "invalid_expiry_year": "není platný rok vypršení platnosti",
+      "reset_password_html": "Tato e-mailová adresa je již přidružena k účtu. Pokud je tento účet váš, můžete <a href=\"/account/login#recover\">resetujte své heslo</a>",
+      "verify_email": "Poslal jsem email na %{customer_email}, kliknutím na uvedený odkaz ověřte svou e-mailovou adresu.",
+      "blocked_address": "Toto umístění není podporováno",
+      "product_not_available": "pro tohoto zákazníka není produkt zveřejněn.",
+      "shop_404": {
+        "title": "Vytvořte si e-shop a prodávejte online! Software pro elektronický obchod od Shopify",
+        "heros": {
+          "store_unavailable": "Tento obchod je momentálně nedostupný."
+        }
       }
     }
   }
