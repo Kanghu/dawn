@@ -1964,13 +1964,19 @@
           "other": "There was a problem resending gift cards. Try again or contact us."
         },
         "thank_you_unconfirmed_items_heading": {
-          "few": "Some items are not confirmed"
+          "few": "Some items are not confirmed",
+          "one": "1 item is not confirmed",
+          "other": "Some items are not confirmed"
         },
         "thank_you_unconfirmed_items_description": {
-          "few": "These operations were performed free of charge"
+          "few": "These operations were performed free of charge",
+          "one": "This operation was performed free of charge",
+          "other": "These operations were performed free of charge"
         },
         "thank_you_item_label": {
-          "few": "%{count} ware"
+          "few": "%{count} articles",
+          "one": "%{count} article",
+          "other": "%{count} articles"
         },
         "thank_you_confirmed_items_with_email": {
           "few": "You will soon receive confirmation emails"
@@ -1979,7 +1985,9 @@
           "few": "You will soon receive confirmation messages"
         },
         "items_fulfilled_by_store": {
-          "few": "Purchased items will be delivered from other stores."
+          "few": "Purchased items will be delivered from other stores.",
+          "one": "Purchased items will be shipped from %{remote_shop_name}.",
+          "other": "Purchased items will be delivered from other stores."
         },
         "thank_you_confirmed_orders_with_email_description": {
           "one": "You will soon receive a confirmation email",
@@ -2241,7 +2249,41 @@
           "title": "VAT invoices"
         },
         "thank_you_payments_app_pending_payment_description_provider_action_required_default": "You will receive an email when the payment is confirmed.",
-        "verify_shop_account_title": "Check your Shop account"
+        "verify_shop_account_title": "Check your Shop account",
+        "verify_shop_account_message": "Your information has been saved in the Shop. Verify your account to automatically use them in millions of stores.",
+        "verify_shop_account_cta": "Check your account",
+        "verify_shop_account_confirmation": "Payment details have been saved",
+        "company_location_section_title": "Company and location",
+        "announcement": {
+          "close": "Close",
+          "expand": "Extension",
+          "collapse": "Restriction"
+        },
+        "confirmed_items_count": "%{confirmed_count} from %{total_count} items are confirmed",
+        "thank_you_confirmed_orders_with_email": "You will soon receive separate confirmation emails with order numbers",
+        "thank_you_confirmed_orders_with_phone": "You will soon receive separate confirmation SMS messages with order numbers",
+        "thank_you_confirmed_orders_with_email_and_phone": "You will soon receive separate confirmation emails with order numbers",
+        "track_your_order_link_text": "Order tracking",
+        "checkout_on_remote_shop_link_text": "Pay at %{remoteShopName}",
+        "confirmed_orders_title": "Your orders are confirmed",
+        "thank_you_from_shop": "From %{shop_name}",
+        "payment_method_not_charged": "No charge",
+        "thank_you_from_other_store": "From another store",
+        "checkout_on_another_store": "Pay at another store",
+        "thank_you_confirmed_with_email_description": {
+          "single_store": "You will receive a confirmation email shortly",
+          "multi_store": "You will soon receive separate confirmation emails from each store"
+        },
+        "thank_you_confirmed_with_phone_description": {
+          "single_store": "You will soon receive a confirmation SMS",
+          "multi_store": "You will soon receive separate confirmation SMS from each store"
+        },
+        "thank_you_confirmed_with_email_and_phone_description": {
+          "single_store": "You will receive a confirmation email shortly",
+          "multi_store": "You will soon receive separate confirmation emails from each store"
+        },
+        "checkout_again": "Pay again",
+        "cashback_notice": "You will receive your refund after 30 days"
       },
       "order_payment_collection": {
         "changes_summary": {
@@ -2632,6 +2674,21 @@
         "bank_account_label": "Bank account",
         "credit_or_debit_card_label": "Credit/debit",
         "bogus_label": "Test payment gateway"
+      },
+      "review": {
+        "title": "Review",
+        "review_title": "Complete the order",
+        "checkout_as_guest": "Complete the order as a guest",
+        "blocks": {
+          "contact_method_title": "Contact",
+          "billing_address_title": "Billing",
+          "shipping_address_title": "Ship to",
+          "shipping_method_title": "Shipping method",
+          "payment_method_title": "Payment method",
+          "change_link_label": "Modify",
+          "change_contact_method_link_label": "Change contact information",
+          "change_billing_address_link_label": "Change billing address"
+        }
       }
     },
     "notices": {
