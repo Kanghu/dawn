@@ -2759,8 +2759,20 @@
         },
         "location_nearby_short_other_items": {
           "one": "%{count} местоположение наблизо с вашите артикули",
-          "other": "%{count} близки места с вашите артикули"
-        }
+          "other": "%{count} близки места с вашите артикули",
+          "few": "%{count} близки места с вашите артикули"
+        },
+        "location_far_away_one_item": {
+          "one": "%{count} местоположение с вашия артикул",
+          "other": "%{count} местоположения с вашата статия",
+          "few": "%{count} местоположения с вашата статия"
+        },
+        "location_far_away_other_items": {
+          "one": "%{count} местоположение с вашите артикули",
+          "other": "%{count} места с вашите артикули",
+          "few": "%{count} места с вашите артикули"
+        },
+        "location_selected": "Избраното местоположение"
       },
       "merchandise_unavailable_in_buyer_location": {
         "remove_items_action": {
@@ -3420,6 +3432,88 @@
       },
       "online_store_chat": {
         "title": "Имате ли въпроси Чат с нас"
+      },
+      "split_delivery": {
+        "pickup_all_items": "Вземете всички предмети",
+        "items_for_pickup": "Предмети за вземане",
+        "delivery_method": "Метод за доставка на разбивка",
+        "delivery_method_menu": "Разбито меню за начин на доставка",
+        "inventory_issue_banner": {
+          "remove_items_or_ship": "%{ship_separately_link} или %{remove_items_link}",
+          "remove_items_or_pickup": "%{pickup_in_store_link} или %{remove_items_link}",
+          "heading": {
+            "cannot_be_picked_up": {
+              "one": "%{count} артикулът не може да бъде взет",
+              "other": "%{count} артикулите не могат да бъдат взети",
+              "few": "%{count} артикулите не могат да бъдат взети"
+            },
+            "cannot_be_shipped": {
+              "one": "%{count} артикулът не може да бъде изпратен",
+              "other": "%{count} артикулите не могат да бъдат изпратени",
+              "few": "%{count} артикулите не могат да бъдат изпратени"
+            }
+          },
+          "remove_item": {
+            "one": "премахнете статията",
+            "other": "премахване на елементи",
+            "few": "премахване на елементи"
+          },
+          "ship_separately": {
+            "one": "Изпратете го отделно",
+            "other": "Изпратете ги отделно",
+            "few": "Изпратете ги отделно"
+          },
+          "pick_them_up_in_store": {
+            "one": "Вземете го от магазина",
+            "other": "Вземете ги от магазина",
+            "few": "Вземете ги от магазина"
+          },
+          "remove_item_only": {
+            "one": "Премахнете артикула",
+            "other": "Премахване на елементи",
+            "few": "Премахване на елементи"
+          },
+          "merchandise_line_with_quantity": "%{title} (×%{quantity})"
+        },
+        "items_for_shipping": "Артикули за изпращане",
+        "pickup_items_count": {
+          "few": "Повдигане %{count} статии"
+        },
+        "ship_items_count": {
+          "few": "Доставка %{count} статии"
+        },
+        "items_moved_to_shipping_toast": "Артикулите, които не могат да бъдат взети, са преместени в доставката",
+        "cross_border": {
+          "modal": {
+            "heading": "Смяна на държавата?",
+            "content": "Местата за получаване и доставка трябва да са в една и съща държава. Промяната на държавата ще нулира всички артикули при изпращане.",
+            "change_country": "Смени държавата",
+            "country_changed_heading": "Страната е сменена"
+          },
+          "banner": "Вашият начин на доставка е актуализиран"
+        },
+        "items_count": {
+          "few": "%{count} статии"
+        },
+        "accessibility": {
+          "status": {
+            "ship_separately": "%{items} ще бъдат изпратени отделно.",
+            "pickup_in_store": "%{items} ще бъдат взети от магазина.",
+            "remove_items": "%{items} са извадени от количката."
+          }
+        }
+      },
+      "captcha": {
+        "title": "Завършете проверката с CAPTCHA, за да продължите",
+        "errors": {
+          "not_solved": "Завършете проверката с CAPTCHA, за да продължите"
+        }
+      },
+      "discount_errors": {
+        "generic_error": "Вашата поръчка не може да бъде обработена, тъй като вашият код за отстъпка вече не е наличен. Прегледайте общата сума на поръчката си и опитайте отново."
+      },
+      "wallets": {
+        "return_to_store": "Върнете се в магазина"
       }
     },
     "notices": {
