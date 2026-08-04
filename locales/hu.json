@@ -3958,7 +3958,9 @@
     },
     "page_titles": {
       "search_results": {
-        "few": "Keresés: Megtalálták őket %{count} Eredmények \"%{terms}”"
+        "few": "Keresés: találtam %{count} találatok erre: \"%{terms}”",
+        "one": "Keresés: találtam %{count} eredmény erre: \"%{terms}”",
+        "other": "Keresés: találtam %{count} találatok erre: \"%{terms}”"
       },
       "products": "Termékek",
       "shopping_cart": "Az Ön bevásárlókosara",
@@ -3967,7 +3969,12 @@
       "reset_account": "Állítsa vissza fiókját",
       "addresses": "Címek",
       "order": "Rendeljen %{name}",
-      "search": "Keresés"
+      "search": "Keresés",
+      "collections": "Gyűjtemények",
+      "not_found": "404 nem található",
+      "challenge": "Kihívás",
+      "checkpoint": "Érvényesítési pont",
+      "blog_or_article_with_error": "Hiba – %{title}"
     },
     "sentence": {
       "words_connector": ", ",
@@ -4161,6 +4168,58 @@
         "message": "Biztosan le szeretne iratkozni az SMS marketingről?",
         "button": "Leiratkozás"
       }
+    },
+    "cart": {
+      "discounts_with_count": "Alkalmazták őket %{count} kedvezmények"
+    },
+    "challenge": {
+      "message": "A folytatáshoz bizonyítsd be, hogy nem vagy robot.",
+      "error": "A válasz hibás volt, próbálja újra.",
+      "submit_button_text": "Küldés"
+    },
+    "checkpoint": {
+      "message": "A folytatáshoz oldja meg a captcha-t",
+      "error": "A Captcha ellenőrzése nem sikerült",
+      "submit_button_text": "Küldés"
+    },
+    "store_availability": {
+      "pick_up_time": {
+        "one_hour": "Általában egy órán belül készen van",
+        "two_hours": "Általában két óra alatt készen van",
+        "four_hours": "Általában 4 óra alatt kész",
+        "twenty_four_hours": "Általában 24 órán belül kész",
+        "two_to_four_days": "Általában 2-4 nap alatt elkészül",
+        "five_or_more_days": "Általában több mint 5 napon belül készen van",
+        "zero_to_two_hours": "Általában két óra alatt készen van",
+        "two_to_four_hours": "Általában 4 óra alatt kész",
+        "immediately": "Készen áll az átvételre",
+        "next_day": "Másnapi átvételre készen"
+      }
+    },
+    "filters": {
+      "availability": {
+        "value": {
+          "in_stock": "Raktáron",
+          "out_of_stock": "Elfogyott"
+        }
+      },
+      "boolean": {
+        "true_label": "Igen",
+        "false_label": "Nem"
+      }
+    },
+    "search": {
+      "sorting": {
+        "relevance": "Relevancia",
+        "price_ascending": "Ár, az alacsonytól a magasig",
+        "price_descending": "Ár, a magastól az alacsonyig"
+      },
+      "error": "Hiba történt a keresési eredmények betöltésekor. Kérjük, frissítse az oldalt, vagy próbálja újra később."
+    },
+    "subscriptions": {
+      "buyer_consent_product": "Ez a tétel ismétlődő vagy halasztott vásárlás. A folytatással egyetértek %{cancellationPolicyLink} és felhatalmazom Önt arra, hogy a megadott árakon, gyakoriságon és dátumon automatikusan megterhelje a fizetési módomat, amíg a rendelésem teljesül, vagy ha engedélyezem, le nem mondom azt.",
+      "buyer_consent_cart": "A kosárban lévő tételek közül egy vagy több ismétlődő vagy halasztott vásárlás. A folytatással egyetértek %{cancellationPolicyLink} és felhatalmazom Önt arra, hogy a megadott árakon, gyakoriságon és dátumon automatikusan megterhelje a fizetési módomat, amíg a rendelésem teljesül, vagy ha engedélyezem, le nem mondom azt.",
+      "cancellation_policy": "lemondási feltételek"
     }
   },
   "customer_accounts": {
@@ -4314,6 +4373,28 @@
       },
       "contracts_updated": {
         "few": "{{count}} az előfizetések frissítése sikeresen megtörtént"
+      }
+    },
+    "callback": {
+      "try_again": "Próbáld újra"
+    },
+    "navigation_and_structure": {
+      "account_menu": {
+        "hide_accessibility_label": "Fiók menü elrejtése",
+        "show_accessibility_label": "Jelenítse meg a Fiók menüt",
+        "nav_accessibility_label": "Fióknavigáció",
+        "open_menu_accessibility_label": "Nyissa meg a fióknavigációt",
+        "close_menu_accessibility_label": "Zárja be a fiókböngészést",
+        "loading_message": "Fióknavigáció betöltése",
+        "label": "fiókot"
+      },
+      "action_menu_accessibility_label": "További műveletek",
+      "close_menu_accessibility_label": "Zárja be a fő navigációt",
+      "contact_email_subject": "Kapcsolatfelvétel az online áruházból {{shopName}}",
+      "contact_link": "Elérhetőségi adatok",
+      "delete_confirmation": {
+        "cancel": "Mégsem",
+        "delete": "Törölje"
       }
     }
   },
