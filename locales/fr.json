@@ -3644,7 +3644,13 @@
     "notices": {
       "order": {
         "cancel_reason": {
-          "few": "Autre chose"
+          "few": "Quelque chose d'autre",
+          "declined": "Paiement refusé",
+          "inventory": "Articles indisponibles",
+          "fraud": "Commande frauduleuse",
+          "customer": "Le client a modifié/annulé la commande",
+          "other": "Quelque chose d'autre",
+          "staff": "Erreur personnelle"
         },
         "not_available": "Cette commande n'est pas disponible",
         "financial_status": {
@@ -3653,8 +3659,25 @@
           "paid": "Payé",
           "unpaid": "Impayé",
           "voided": "Annulé",
-          "partially_paid": "Partiellement payé"
-        }
+          "partially_paid": "Partiellement payé",
+          "partially_refunded": "Partiellement remboursé",
+          "refunded": "Remboursé",
+          "expired": "Expiré"
+        },
+        "fulfillment_status": {
+          "fulfilled": "Accompli",
+          "complete": "Terminé",
+          "partial": "Partiellement",
+          "unfulfilled": "Insatisfait",
+          "restocked": "Avec du stock ravitaillé"
+        },
+        "transaction_status": {
+          "success": "succès",
+          "pending": "En attente",
+          "failure": "Échec",
+          "error": "Erreur"
+        },
+        "cash_on_delivery": "Paiement à la livraison"
       },
       "customer": {
         "password_reset_error": "Erreur de réinitialisation du mot de passe",
@@ -3672,6 +3695,40 @@
         "error_creating": "Erreur lors de la création de l'adresse.",
         "deleted": "Adresse supprimée avec succès",
         "error_deleting": "Erreur lors de la suppression de l'adresse."
+      },
+      "cart": {
+        "only_n_items_available": "Vous pouvez seulement ajouter %{count} %{name} au panier.",
+        "too_many_items_in_cart": "Vous ne pouvez pas en ajouter davantage %{name} dans le panier.",
+        "all_items_in_cart": "Tous ceux %{count} %{name} Je suis dans votre panier.",
+        "empty_update": "impossible de mettre à jour le panier vide",
+        "missing_parameters": "il n'y a pas d'identifiant ou de paramètre de ligne valide",
+        "generic_error": "Erreur de panier",
+        "too_many_line_items_error": "Votre panier ne peut pas contenir de poisson %{max} articles.",
+        "link_expired": "Le lien a expiré",
+        "link_no_longer_exists": "Le lien n'existe plus.",
+        "stock_problems_html": "Un ou plusieurs articles ne sont plus disponibles. Je l'ai mis à disposition <a href='%{link}'>un panier mis à jour</a>.",
+        "changed": "Panier modifié",
+        "items_changed": "Un ou plusieurs éléments ont changé.",
+        "product_sold_out": "Le produit \"%{name}» est déjà épuisé.",
+        "variant_not_found": "Impossible de trouver l'option",
+        "variant_requires_selling_plan": "La variante ne peut être achetée qu'avec un plan d'achat.",
+        "shipping_address_not_required": "Ce panier ne nécessite pas de livraison",
+        "shipping_address_invalid": "Un problème est survenu lors du calcul de vos frais d'expédition. Continuez à payer pour choisir les frais d'expédition avant de finaliser votre commande.",
+        "selling_plan_not_applicable": "Le plan de vente ne peut pas être appliqué à la variante",
+        "selling_plan_not_available_for_company_locations": "Pour les commandes B2B, seuls les achats individuels sont disponibles.",
+        "digital_product_not_available_for_company_locations": "Cet article ne peut pas être ajouté à une commande B2B",
+        "product_not_available": "Le produit n'est pas disponible",
+        "less_than_minimum": "Cet article a un minimum %{min}.",
+        "more_than_maximum": "Cet article a le maximum %{max}.",
+        "not_respect_step": "Vous ne pouvez saisir cet élément que par incréments de %{step}.",
+        "bundle_requires_components": "Le produit sous forme d'ensemble \"%{name}» ne peut pas être ajouté au panier.",
+        "gift_card_with_components_not_supported": "Le produit sous forme d'ensemble \"%{name}» ne peut pas être ajouté au panier.",
+        "view_lines_limit_reached": "Le nombre de lignes doit être inférieur ou égal à %{limit}",
+        "merchandise_line_transformers": {
+          "run_error": "Une erreur s'est produite avec votre panier."
+        },
+        "gift_card_price_must_be_greater_than_zero": "Le produit sous forme d'ensemble \"%{name}» ne peut pas être ajouté au panier.",
+        "cart_too_large": "Le panier est trop grand."
       }
     },
     "page_titles": {
