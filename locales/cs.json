@@ -3572,9 +3572,87 @@
             "billing_address2": "Jako fakturační adresu zadejte byt, pokoj atd",
             "billing_city": "Jako fakturační adresu zadejte město",
             "billing_province": "Vyberte stát/provincii pro svou fakturační adresu",
-            "billing_zip": "Zadejte PSČ vaší fakturační adresy"
-          }
+            "billing_zip": "Zadejte PSČ vaší fakturační adresy",
+            "contact_info": "Vyplňte kontaktní údaje"
+          },
+          "formatting": {
+            "name_contains_emojis": "Odstraňte emotikony ze svého jména",
+            "postal_code_contains_emoji": "Smažte emodži PSČ",
+            "first_name_too_long": "Křestní jméno obsahuje příliš mnoho písmen",
+            "last_name_too_long": "Příjmení obsahuje příliš mnoho písmen",
+            "address_too_long": "Informace v řádku adresy jsou příliš dlouhé"
+          },
+          "select_different_shipping_address_to_resolve_errors": "Dodací adresa je neplatná. Vyberte jinou adresu nebo použijte novou.",
+          "unavailable_terminal": {
+            "instructions": "Způsob platby {{walletName}} je momentálně pro vaši objednávku nedostupná. Chcete-li pokračovat v nákupu, vyberte jiný způsob platby."
+          },
+          "discount_code": "Uplatnění tohoto slevového kódu není možné. Zkontrolujte kód a zkuste to znovu.",
+          "processing_error_checkout_as_guest": "Při zpracování vaší platby došlo k problému. Zkuste to znovu nebo {{checkout_as_guest_link}}.",
+          "subscription_review_required": "Vaše objednávka zahrnuje předplatné. Před dokončením objednávky si musíte přečíst níže uvedené podmínky."
+        },
+        "redirection_notice": "Přesměrujeme vás na {{walletName}} k dokončení nákupu",
+        "return_to_checkout": "Vraťte se k dokončení objednávky",
+        "scrim": {
+          "continue_purchase_in_window": "Pokračujte v nákupu v okénku {{walletName}}",
+          "and_return_to_checkout": "a vrátit se k pokladně",
+          "cancel": "Zrušit"
+        },
+        "place_order": "Zadejte objednávku",
+        "recovery_notice": "Vyskytl se problém s podrobnostmi vaší objednávky. Pro dokončení platby aktualizujte své údaje.",
+        "deceleration": {
+          "one_more_step": "Ještě krok..."
         }
+      },
+      "markets": {
+        "invalid_market_manager_error": "Před dokončením platby zkontrolujte své kontaktní údaje"
+      },
+      "store_credit_errors": {
+        "generic_error": "Došlo k problému s kreditem vašeho obchodu. Zkuste to znovu nebo znovu načtěte stránku."
+      },
+      "note": {
+        "length_exceeds_maximum": "Zmenšete prosím velikost poznámky na maximálně 5000 znaků."
+      },
+      "billing": {
+        "billing_address_title": "Fakturace na",
+        "same_as_shipping": "Stejná jako dodací adresa",
+        "add_address": "Použijte jinou adresu",
+        "edit": "Upravit",
+        "delete": "Smazat",
+        "address_more": "Další akce pro tuto adresu",
+        "address_edit": "Upravit adresu",
+        "address_delete": "Smažte adresu",
+        "address_confirm": "Opravdu chcete smazat tuto adresu ze svého účtu?",
+        "address_form": {
+          "add_address": "Přidejte adresu",
+          "save": "Uložit",
+          "cancel": "Zrušit"
+        },
+        "billing_address_rollup_accessibility_label": "Možnosti fakturace"
+      },
+      "redeemable_errors": {
+        "gift_card": {
+          "duplicate": "Dárková karta již byla použita u vaší objednávky",
+          "insufficient_funds": "Na této dárkové kartě došly prostředky",
+          "expired": "Platnost této dárkové karty vypršela",
+          "not_available": "Tato dárková karta již není k dispozici",
+          "invalid": "Zadejte prosím platnou dárkovou kartu",
+          "currency_mismatch": "Přijímáme pouze dárkové karty %{shop_currency}",
+          "generic": "Dárkovou kartu nebylo možné přidat do sekce pokladny",
+          "throttle_limit_exceeded": "Překročili jste maximální počet pokusů. Zkuste to znovu později.",
+          "no_longer_available": "Tuto dárkovou kartu již pro tuto pokladnu nelze použít"
+        }
+      },
+      "vaulted": {
+        "change_button": "Změna"
+      },
+      "shop_pay_external": {
+        "errors": {
+          "problem_loading": "Při načítání Shop Pay došlo k problému",
+          "try_again_later": "Zkontrolujte připojení nebo zavřete toto okno a zkuste to znovu za chvíli.",
+          "checkout_has_expired": "Vypršel časový limit pokladny. Zavřete toto okno a zkuste objednávku dokončit znovu {{shopName}}."
+        },
+        "return_to_store": "Vraťte se k {{shopName}}",
+        "return_to_store_simple": "Vraťte se do obchodu"
       }
     }
   }
