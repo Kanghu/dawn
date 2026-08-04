@@ -2440,13 +2440,28 @@
       "order_payment_collection": {
         "changes_summary": {
           "added": {
-            "few": "Hozzáadva (ek): %{count}"
-          }
-        }
+            "few": "Hozzáadott(ok): %{count}",
+            "one": "Hozzáadva",
+            "other": "Hozzáadott(ok): %{count}"
+          },
+          "removed": "Eltávolítva",
+          "subtracted": "Eltávolított(ok): %{count}",
+          "returned": "Visszaküldve(k): %{count}",
+          "return_line_item_removed": "Eltávolítva a visszaküldésből: %{count}"
+        },
+        "custom_line_item_description": "Fizetési összeg a rendelésért %{order_name}",
+        "additional_payment_requested": "Az összeget ki kell fizetni %{total_outstanding}",
+        "checkout_review_and_pay": "a rendelésed, %{order_name} frissítve lett. Tekintse át ezeket a módosításokat, majd fizessen a rendelés megerősítéséhez.",
+        "order_updated_on": "Megrendelése frissítve lett: %{last_edited_at}.",
+        "order_review_and_pay": "Megrendelése frissítve lett. Tekintse át és fizessen a megrendelés megerősítéséhez.",
+        "pay_now": "Fizessen most"
       },
       "open_graph_meta_tag": {
         "title_with_products": {
-          "few": "Vétel %{product_name} És még %{count} áru"
+          "few": "Vedd meg %{product_name} és még mindig %{count} cikkeket",
+          "zero": "Vedd meg %{product_name}",
+          "one": "Vedd meg %{product_name} és még mindig %{count} cikket",
+          "other": "Vedd meg %{product_name} és még mindig %{count} cikkeket"
         }
       },
       "subscriptions": {
@@ -3017,7 +3032,48 @@
         "terms_of_service": "Felhasználási feltételek",
         "legal_notice": "Jogi nyilatkozat",
         "shipping_policy": "Közlekedés",
-        "terms_of_sale": "Eladási feltételek"
+        "terms_of_sale": "Eladási feltételek",
+        "subscription_policy": "Lemondások",
+        "purchase_options_policy": "Vásárlási opciókra vonatkozó szabályzat",
+        "contact_information": "Kapcsolatfelvétel",
+        "purchase_options_cancellation_policy": "Lemondások",
+        "cookie_preferences": "Cookie-k",
+        "policy_label": "Politika",
+        "policies_label": "Politikusok",
+        "select_policy_label": "Válasszon egy szabályzatot",
+        "terms_and_policies": "Feltételek és szabályzatok"
+      },
+      "notifications": {
+        "title": "Értesítések"
+      },
+      "tips": {
+        "title": "Adjon hozzá egy tippet",
+        "description": "Támogassa a csapatot a címen %{shop_name}",
+        "presets_description": "Válassza ki a borravaló százalékát",
+        "custom_label": "Egyedi tipp",
+        "add_tip": "Adjon hozzá egy tippet",
+        "update_tip": "Frissítési tipp",
+        "message": "Köszönjük, értékeljük a gesztust.",
+        "preset_label": "%{tip_percent}%",
+        "no_tip_label": "Anélkül",
+        "not_available_with_spi": "Nem áll rendelkezésre részletfizetés a Shop Pay szolgáltatással"
+      },
+      "localized_fields": {
+        "additional_information": {
+          "title": "További információk",
+          "tax_credential_br": "CPF/CNPJ",
+          "shipping_credential_br": "CPF/CNPJ",
+          "shipping_credential_kr": "Személyes vámkód",
+          "shipping_credential_cn": "Lakossági azonosító szám",
+          "tax_credential_it": "Codice Fiscale (opcionális)",
+          "tax_email_it": "PEC (opcionális)",
+          "tax_credential_cl": "RUT",
+          "shipping_credential_cl": "RUT",
+          "tax_credential_co": "Cédula/ÁFA",
+          "tax_credential_type_co": "Cédula típusú",
+          "shipping_credential_co": "Cédula/ÁFA",
+          "shipping_credential_type_co": "Cédula típusú"
+        }
       }
     },
     "notices": {
