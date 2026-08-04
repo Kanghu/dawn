@@ -1698,7 +1698,71 @@
         },
         "eligible_customer_missing_notice": "Pro slevový kód <strong style=\"text-transform:uppercase\">%{code}</strong> je vyžadován oprávněný zákazník",
         "subtotal_label_with_quantity": {
-          "one": "Mezisoučet · %{count} článek"
+          "one": "Mezisoučet · %{count} článek",
+          "other": "Mezisoučet · %{count} články",
+          "few": "Mezisoučet · %{count} články"
+        },
+        "cost_table_item_column_header": "Článek",
+        "cost_table_value_column_header": "Hodnota",
+        "product_image_quantity_label": "množství",
+        "more_items_modal": {
+          "clear_search": "Vymažte vyhledávání",
+          "empty_results": "Nebyly nalezeny žádné výsledky pro „%{searchText}\". Zkontrolujte pravopis nebo použijte jiné slovo či frázi.",
+          "number_items_shown": "%{shownNumber} od %{totalNumber} články",
+          "search_item": "Hledat"
+        },
+        "number_items": {
+          "one": "%{count} článek",
+          "other": "%{count} články",
+          "few": "%{count} články"
+        },
+        "view_all_items": {
+          "one": "viz %{count} článek",
+          "other": "Podívejte se na všechny z nich %{count} články",
+          "few": "Podívejte se na všechny z nich %{count} články"
+        },
+        "price_before_discount_aria_text": "Počáteční cena",
+        "price_after_discount_aria_text": "Snížená cena",
+        "discount_code_aria_text": "Slevový kód",
+        "pickup_unavailable_banner_body": {
+          "ship_to_address": "Dodací adresa",
+          "ship_to_address_instead_html": "%{link} místo toho"
+        },
+        "pickup_unavailable_banner_title": {
+          "one": "S vaší položkou nejsou dostupné žádné obchody",
+          "other": "Nejsou k dispozici žádné obchody s vašimi položkami",
+          "few": "Nejsou k dispozici žádné obchody s vašimi položkami"
+        },
+        "deposit_label": "Skladiště",
+        "total_due_today_label": "Celkem splatná dnes",
+        "total_due_later_label": "Celkem splatné později",
+        "discount_code_allocations_mismatch": "Váš slevový kód <strong style=\"text-transform:uppercase\">%{code}</strong> se změnil. Zkontrolujte svůj nákupní košík a zkuste to znovu.",
+        "deferred_total_due_date_label_next": "termín: %{date}",
+        "total_due_label": "Úplně kvůli",
+        "total_price_label": "Celková cena",
+        "for_add_on": "pro: %{group_title}",
+        "unconfirmed_label": "Nepotvrzeno",
+        "total_paid_label": "Celkem zaplaceno",
+        "from_shop_heading": "Od %{shop_name}",
+        "from_other_stores_heading": "Z jiných obchodů",
+        "estimated_taxes_label_short": "Odhadovaný",
+        "order_discounts_apply_to_local_shop": "V případě objednávek se slevy uplatňují pouze na zboží od %{shop_name}",
+        "gift_cards_apply_to_local_shop": "Dárkové poukazy platí pouze na zboží z %{shop_name}",
+        "discount_code_removed": "Slevový kód %{code} byl odstraněn",
+        "discount_code_replaced": "Slevový kód %{old_code} byl odstraněn a kód byl použit %{code}",
+        "discount_code_replaced_multiple": "Několik slevových kódů bylo odstraněno a kód byl použit %{code}",
+        "from_multiple_stores_heading": "Z několika obchodů",
+        "pay_merchant_label": "Zaplaťte %{merchant_name}",
+        "discount_applies_to_subscription_items_only": "Tato sleva platí pouze pro položky zahrnuté v předplatném",
+        "estimated_taxes_finalization_tooltip_content_short": "Nabíjení probíhá po zaplacení",
+        "pickup_unavailable_banner_title_with_country": {
+          "one": "v %{country} s vaší položkou nejsou dostupné žádné obchody",
+          "other": "v %{country} nejsou k dispozici žádné obchody s vašimi položkami",
+          "few": "v %{country} nejsou k dispozici žádné obchody s vašimi položkami"
+        },
+        "compare_at_sale": "Propagace (%{sale_amount})",
+        "discount_code_applied_count": {
+          "few": "Displej %{count} slevy"
         }
       }
     }
