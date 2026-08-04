@@ -1318,24 +1318,37 @@
       },
       "order_summary": {
         "expand_component_information": {
-          "few": "дисплеи %{count} изделия"
+          "few": "Дисплей %{count} статии",
+          "one": "Дисплей %{count} статия",
+          "other": "Дисплей %{count} статии"
         },
         "collapse_component_information": {
-          "few": "Скрий %{count} изделия"
+          "few": "Скрий се %{count} статии",
+          "one": "Скрий се %{count} статия",
+          "other": "Скрий се %{count} статии"
         },
         "discount_discovery": {
           "merchandise_quantity_label": {
-            "few": "%{count} (от) статии"
-          }
+            "few": "%{count} (от) статии",
+            "one": "%{count} статия",
+            "other": "%{count} (от) статии"
+          },
+          "add_code": "Добавете отстъпка",
+          "back_to_finalize_order": "Назад към касата"
         },
         "discount_title_stacking": {
-          "few": "Отстъпки"
+          "few": "Отстъпки",
+          "one": "Отстъпка",
+          "other": "Отстъпки"
         },
         "discount_order_stacking": {
-          "few": "Отстъпки за поръчка"
+          "few": "Поръчайте отстъпки",
+          "one": "Поръчайте отстъпка",
+          "other": "Поръчайте отстъпки"
         },
         "subtotal_label_with_quantity": {
-          "few": "Субтотален · %{count} изделия"
+          "few": "Субтотален · %{count} изделия",
+          "one": "Междинна сума · %{count} статия"
         },
         "number_items": {
           "few": "%{count} изделия"
@@ -1474,7 +1487,43 @@
         "maximum_discount_code_limit_reached": "Достигнахте максималния брой кодове за отстъпка. Премахнете съществуващ код, за да използвате кода <strong style=\"text-transform:uppercase\">%{code}</strong>.",
         "order_total_label": "Общо за поръчката",
         "discount_code_application_failed": "<strong style=\"text-transform:uppercase\">%{code}</strong> не работи в момента. Свържете се с нас за помощ.",
-        "due_on_fulfillment": "Дължими в момента на почитането"
+        "due_on_fulfillment": "Дължими в момента на почитането",
+        "gift_card_masked": "•••• %{last_characters}",
+        "subscriptions": "Абонаменти",
+        "duties_label": "Митнически такси",
+        "duties_and_taxes_label": "Мита и такси",
+        "error_duties_tooltip": "Тази поръчка се изпраща от друга държава, така че може да се начислят мита и данъци при доставката.",
+        "may_be_charged_on_delivery": "Те могат да бъдат таксувани при доставка",
+        "total_updated_label_with_price": "Актуализирана обща цена: %{totalPrice}",
+        "recurring_payments": "Периодични плащания",
+        "recurring_total_multiple_label": "Има периодично таксуване за няколко артикула в тази поръчка.",
+        "deferred_total_due_date_label": "Общо поради {{date}}",
+        "full_price": "Пълна цена: %{price}",
+        "custom_discount": "Персонализирана отстъпка",
+        "component_quantity_title": "%{quantity} × %{product_title}",
+        "alternative_payment_currency_total": "Дебитирана сума: %{amount_due}",
+        "calculating": "Изчислява се...",
+        "group_title_label": "част от \"%{group_title}”",
+        "price_per_item": {
+          "accessibility_label": "%{price} на статия",
+          "label": "%{price}/ бр."
+        },
+        "updated_shipping_method": "Методът на плащане е актуализиран: %{shipping_method}",
+        "discount_not_found": "Не може да се намери валидна отстъпка, съответстваща на въведения код",
+        "total_savings": "Пълни спестявания",
+        "return_restocking_fee_label": "Такса за възстановяване",
+        "return_shipping_fee_label": "Доставка за връщане",
+        "enter_shipping_address": "Въведете адреса за доставка",
+        "shipping_discount_title": "Отстъпка при доставка",
+        "discount_code_applied": "Приложен е код за отстъпка",
+        "discount_code_applied_with_code": "Код за отстъпка %{code} беше приложено",
+        "gift_card_applied": "Подаръчната карта е приложена",
+        "duties_included_label": "Общата сума включва всички приложими данъци и мита. Няма допълнителни разходи за доставка.",
+        "deferred_balance_info": {
+          "title": "Стойност на баланса {{amount_due}} има падеж {{due_at}}",
+          "due_on_fulfillment_title": "Стойност на баланса {{amount_due}} има датата на падежа към момента на уважаването"
+        },
+        "eligible_customer_missing_notice": "За кода за отстъпка <strong style=\"text-transform:uppercase\">%{code}</strong> изисква се отговарящ на условията клиент"
       },
       "payment": {
         "order_covered_by_gift_cards_notice": {
