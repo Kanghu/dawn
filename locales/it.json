@@ -1315,8 +1315,22 @@
       },
       "customer_account": {
         "saved_address_option_description": {
-          "few": "Voi {{count}} indirizzi salvati."
-        }
+          "few": "Sì {{count}} indirizzi salvati.",
+          "one": "Sì {{count}} indirizzo salvato.",
+          "other": "Sì {{count}} indirizzi salvati."
+        },
+        "not_user_label": "Non lo sei %{first_name}?",
+        "have_an_account_label": "Hai un conto?",
+        "sign_in_link_label": "Connettiti",
+        "sign_out_link_label": "Esci",
+        "save_my_information_label": "Salva queste informazioni per la prossima volta",
+        "invalid_address": "L'indirizzo selezionato non è valido. %{update_address_link} oppure seleziona un altro indirizzo.",
+        "incomplete_address": "L'indirizzo selezionato è incompleto. %{update_address_link} oppure seleziona un altro indirizzo.",
+        "rollup_label": "conto",
+        "invalid_shipping_method_summary": "Seleziona un indirizzo di spedizione per visualizzare i metodi di spedizione disponibili",
+        "saved_address_option_link": "Voglio utilizzare un indirizzo salvato",
+        "saved_address_modal_title": "Voglio utilizzare il mio indirizzo salvato",
+        "rollup_accessibility_label": "Opzioni relative all'account"
       },
       "stock": {
         "unshippable_product": {
@@ -1337,7 +1351,17 @@
           "default_message": {
             "few": "Il metodo di consegna scelto non è più disponibile per questi articoli."
           }
-        }
+        },
+        "page_title": "Problemi di inventario",
+        "title": "Non in magazzino",
+        "items_unavailable_notice": "Alcuni articoli non sono più disponibili.",
+        "product_column_header": "Prodotti",
+        "quantity_column_header": "Quantità",
+        "price_column_header": "Prezzo",
+        "status_column_header": "Condizione",
+        "removed_from_cart_notice": "Rimosso dal carrello",
+        "sold_out_label": "Esaurito",
+        "reduced_label": "Ridotto"
       },
       "order_summary": {
         "expand_component_information": {
@@ -1664,7 +1688,32 @@
       },
       "delivery_options": {
         "ship": "Spediscilo",
-        "pick_up": "raccogliere"
+        "pick_up": "raccogliere",
+        "pick_up_in_two_hours": "Pronto di solito in due ore",
+        "pick_up_in_four_hours": "Solitamente pronto in 4 ore",
+        "pick_up_immediately": "Pronti per il ritiro adesso",
+        "pick_up_next_day": "Pronto per il ritiro il giorno successivo",
+        "pick_up_in_one_hour": "Pronto di solito entro un'ora",
+        "pick_up_in_twenty_four_hours": "Solitamente pronto entro 24 ore",
+        "pick_up_in_two_to_four_days": "Solitamente pronto in 2-4 giorni",
+        "pick_up_in_five_or_more_days": "Solitamente pronto in più di 5 giorni",
+        "pick_up_in_zero_to_two_hours": "Pronto per il ritiro in 2 ore",
+        "pick_up_in_two_to_four_hours": "Pronto per il ritiro in 4 ore",
+        "free_total_label": "Gratuito",
+        "shipping_address": "Indirizzo di spedizione",
+        "pick_up_locations": "Raccogli le posizioni",
+        "pickup_point_method_definition": "Spedisci al punto di ritiro",
+        "retail_method_definition": "Trasporto al dettaglio",
+        "none_method_definition": "Nessuna spedizione",
+        "subscription_pickup_information": "Questo sarà il luogo di ritiro per tutti gli ordini futuri del tuo abbonamento.",
+        "ship_to_address": "Spedizione all'indirizzo",
+        "pick_up_from_store": "Ritiro dal negozio",
+        "company_location_no_address_banner": "Gli ordini spediti verso località senza indirizzo verranno sottoposti a revisione.",
+        "pickup": "Sollevamento",
+        "pickup_store": "Ritiro in negozio",
+        "pickup_point": "Punto di ritiro",
+        "pickup_point_map_title": "Mappa dei punti di ritiro",
+        "digital_product": "Prodotto digitale"
       }
     },
     "notices": {
