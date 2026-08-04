@@ -2631,6 +2631,17 @@
       "redeemable_errors": {
         "shop_cash": {
           "currency_mismatch": "La monnaie a changé. Voir Shop Cash et l'offre."
+        },
+        "gift_card": {
+          "duplicate": "La carte cadeau a déjà été appliquée à votre commande",
+          "insufficient_funds": "Cette carte cadeau est à court de fonds",
+          "expired": "Cette carte cadeau a expiré",
+          "not_available": "Cette carte cadeau n'est plus disponible",
+          "invalid": "Veuillez saisir une carte cadeau valide",
+          "currency_mismatch": "Seules les cartes cadeaux sont acceptées %{shop_currency}",
+          "generic": "La carte cadeau n'a pas pu être ajoutée à la section de paiement",
+          "throttle_limit_exceeded": "Vous avez dépassé le nombre maximum de tentatives. Réessayez plus tard.",
+          "no_longer_available": "Cette carte cadeau ne peut plus être utilisée pour ce paiement"
         }
       },
       "change_currency": {
@@ -3309,9 +3320,74 @@
             "billing_address2": "Saisissez un appartement, une chambre, etc. pour l'adresse de facturation",
             "billing_city": "Saisissez une ville pour l'adresse de facturation",
             "billing_province": "Sélectionnez un état/une province pour votre adresse de facturation",
-            "billing_zip": "Entrez un code postal pour votre adresse de facturation"
-          }
+            "billing_zip": "Entrez un code postal pour votre adresse de facturation",
+            "contact_info": "Remplissez les coordonnées"
+          },
+          "formatting": {
+            "name_contains_emojis": "Supprimez l'emoji de votre nom",
+            "postal_code_contains_emoji": "Supprimer l'emoji du code postal",
+            "first_name_too_long": "Le prénom contient trop de lettres",
+            "last_name_too_long": "Le nom de famille contient trop de lettres",
+            "address_too_long": "Les informations dans la ligne d'adresse sont trop longues"
+          },
+          "select_different_shipping_address_to_resolve_errors": "L'adresse de livraison n'est pas valide. Sélectionnez une autre adresse ou utilisez-en une nouvelle.",
+          "unavailable_terminal": {
+            "instructions": "Mode de paiement {{walletName}} n'est actuellement pas disponible pour votre commande. Pour poursuivre l'achat, choisissez un autre mode de paiement."
+          },
+          "discount_code": "L'application de ce code de réduction n'est pas possible. Vérifiez votre code et réessayez.",
+          "processing_error_checkout_as_guest": "Un problème est survenu lors du traitement de votre paiement. Réessayez ou {{checkout_as_guest_link}}.",
+          "subscription_review_required": "Votre commande comprend un abonnement. Vous devez consulter les conditions ci-dessous avant de finaliser votre commande."
+        },
+        "redirection_notice": "Nous vous redirigerons vers {{walletName}} pour finaliser votre achat",
+        "return_to_checkout": "Revenez pour finaliser la commande",
+        "scrim": {
+          "continue_purchase_in_window": "Continuer vos achats en vitrine {{walletName}}",
+          "and_return_to_checkout": "et retour à la caisse",
+          "cancel": "Annuler"
+        },
+        "place_order": "Passer la commande",
+        "recovery_notice": "Il y a eu un problème avec les détails de votre commande. Mettez à jour vos informations pour finaliser le paiement.",
+        "deceleration": {
+          "one_more_step": "Un pas de plus..."
         }
+      },
+      "markets": {
+        "invalid_market_manager_error": "Vérifiez vos coordonnées avant de finaliser votre paiement"
+      },
+      "store_credit_errors": {
+        "generic_error": "Il y a eu un problème avec votre crédit en magasin. Réessayez ou rechargez la page."
+      },
+      "note": {
+        "length_exceeds_maximum": "Veuillez réduire la taille de la note à un maximum de 5 000 caractères."
+      },
+      "billing": {
+        "billing_address_title": "Facturation à",
+        "same_as_shipping": "Identique à l'adresse de livraison",
+        "add_address": "Utiliser une autre adresse",
+        "edit": "Modifier",
+        "delete": "Supprimer",
+        "address_more": "Plus d'actions pour cette adresse",
+        "address_edit": "Modifier l'adresse",
+        "address_delete": "Supprimer l'adresse",
+        "address_confirm": "Êtes-vous sûr de vouloir supprimer cette adresse de votre compte ?",
+        "address_form": {
+          "add_address": "Ajouter une adresse",
+          "save": "Enregistrer",
+          "cancel": "Annuler"
+        },
+        "billing_address_rollup_accessibility_label": "Options de facturation"
+      },
+      "vaulted": {
+        "change_button": "Changement"
+      },
+      "shop_pay_external": {
+        "errors": {
+          "problem_loading": "Un problème est survenu lors du chargement de Shop Pay",
+          "try_again_later": "Vérifiez votre connexion ou fermez cette fenêtre et réessayez dans quelques instants.",
+          "checkout_has_expired": "Le délai de paiement a expiré. Fermez cette fenêtre et essayez à nouveau de terminer la commande {{shopName}}."
+        },
+        "return_to_store": "Revenez à {{shopName}}",
+        "return_to_store_simple": "Revenez au magasin"
       }
     },
     "notices": {
