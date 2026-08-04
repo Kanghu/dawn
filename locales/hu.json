@@ -1156,9 +1156,77 @@
             "missing_session_id": "A munkamenethez hiányoznak a hitelkártyaadatok.",
             "gateway_not_supported": "A fizetési átjáró nem támogatja a fizetési módok tárolását.",
             "credit_card_last_name_required": "A \"vezetéknév\" mező értéke nem lehet nulla.",
-            "credit_card_update_failed": "A hitelkártya frissítése nem sikerült."
+            "credit_card_update_failed": "A hitelkártya frissítése nem sikerült.",
+            "invalid_address_type": "A megadott címtípus érvénytelen ennél a fizetési módnál.",
+            "missing_retail_attributions": "A manuálisan megadott hitelkártyás fizetésekhez kiskereskedelmi hozzárendelések szükségesek.",
+            "unexpected_retail_attributions": "A bankkártyás fizetéshez váratlanul lakossági jóváírást biztosítottak.",
+            "invalid_card_source": "Ennek a munkamenetnek nincs engedélye ennek a kártyaforrásnak a használatára.",
+            "wallet_content_missing": "A pénztárca tartalma hiányzik.",
+            "payment_instrument_not_found": "A fizetési mód nem található",
+            "unauthorized_capture_method": "A fizetésrögzítési mód beállítása nem megengedett.",
+            "saved_payment_methods_not_allowed": "A mentett fizetési módok nem engedélyezettek.",
+            "saved_payment_methods_not_enabled": "A mentett fizetési módok nincsenek engedélyezve ebben az üzletben.",
+            "store_credit_not_enabled": "A bolti jóváírás nincs engedélyezve ehhez az üzlethez.",
+            "store_credit_account_not_found": "Bolti hitelszámla nem található.",
+            "store_credit_account_mismatch": "Az áruházi hitelszámla nem egyezik a vásárló személyazonosságával.",
+            "store_credit_mismatched_currency": "Az áruházi hitelszámla pénzneme nem egyezik a fizetés pénznemével.",
+            "store_credit_insufficient_funds": "Nincs elég pénz az üzlet hitelszámláján.",
+            "store_credit_buying_gift_card": "Ajándékkártya vásárlására nem használhatod fel a bolti hitelt.",
+            "gift_cards_not_allowed_for_b2b": "Az ajándékutalványok nem engedélyezettek a B2B üzletekben.",
+            "method_required": "Fizetési módot kell javasolni.",
+            "paypal_express_address_invalid": "A PayPal érvénytelen címet adott vissza.",
+            "saved_payment_methods_cvv_verification_disabled": "A kiválasztott fizetési módhoz CVV-ellenőrzés szükséges, amely nincs engedélyezve ennél az üzletnél. Válasszon másik fizetési módot."
+          },
+          "tip": {
+            "not_accepted_by_shop": "Az üzlet borravalót nem fogad el.",
+            "only_one_tip_line_allowed": "Több tippsort nem fogadunk el.",
+            "tips_not_allowed_for_b2b": "A B2B üzletekben nem lehet borravalót adni.",
+            "currency_change_reset": "A tipp vissza lett állítva a pénznemváltás miatt.",
+            "tips_not_allowed_for_deferred_purchase_options": "Halasztott vásárlási opciók esetén még nem fogadunk el borravalót."
+          },
+          "sale_attribution": {
+            "draft_order_not_exist": "Ez a függőben lévő rendelés nem létezik a jelenlegi üzletben.",
+            "staff_member_not_exist": "Ez a személyzet nem létezik a jelenlegi üzletben.",
+            "location_not_exist": "Ez a hely nem létezik a jelenlegi üzletben.",
+            "point_of_sale_device_not_exist": "Ez az értékesítési pont eszköz nem létezik a jelenlegi üzletben.",
+            "unresolvable_target_merchandise_lines": "A javasolt értékesítési megbízások a tárgyalás jelenlegi kontextusában nem oldhatók meg."
+          },
+          "non_negotiable": {
+            "missing_non_negotiable_terms": "A vevő ajánlatának nem alkuképes feltételeket kell tartalmaznia.",
+            "invalid_signature": "Aláírás a számára {{target_terms}} érvénytelen."
+          },
+          "inventory": {
+            "missing_quantity_value": "A mennyiség mező hiányzik a vevő készletsoraiból.",
+            "changing_behavior_not_allowed": "Ennek az ügyfélnek nincs engedélye a készletviselkedés megváltoztatására.",
+            "only_one_inventory_behavior_allowed": "Jelenleg fizetésenként csak egy készletviselkedés engedélyezett."
+          },
+          "optional_duties": {
+            "optional_duties_not_permitted": "Ennél a pénztárnál nem megengedett a vám visszautasítása."
+          },
+          "attribution": {
+            "retail_attribution_not_allowed": "A kiskereskedelmi hozzárendelés nem engedélyezett ennél a fizetésnél.",
+            "retail_attribution_required": "Ehhez a pénztárhoz kiskereskedelmi megbízás szükséges."
+          },
+          "captcha": {
+            "metadata_missing": "A rendelés befejezéséhez egy captcha-ellenőrzést kell végrehajtani.",
+            "metadata_mismatch": "A megadott szolgáltató és captcha ellenőrzési típus nem egyezik a várt értékekkel.",
+            "token_missing": "A rendelés teljesítéséhez meg kell adni egy captcha tokent.",
+            "job_enqueue_failed": "A captcha-ellenőrzési feladatot nem lehetett sorba helyezni.",
+            "job_already_queued": "A captcha-ellenőrzés már sorba került ehhez a captcha-tokenhez.",
+            "token_expired": "A megadott captcha token lejárt. A fizetési folyamat folytatásához hajtsa végre újra a captcha érvényesítését.",
+            "token_invalid": "A megadott captcha token érvénytelen. A fizetési folyamat folytatásához hajtsa végre újra a captcha érvényesítését.",
+            "token_not_valid_for_session": "A megadott captcha-ellenőrzés nem használható ehhez a fizetéshez."
+          },
+          "fx_reconciliation_override": {
+            "shop_currency_mismatch": "A kapott összegnek az üzlet pénznemében kell lennie."
+          },
+          "checkout_source": {
+            "revoked": "Ez a pénztár már nem elérhető."
           }
-        }
+        },
+        "full_price": "Teljes ár:",
+        "title": "Teljes rendelés - {{shopName}}",
+        "full_title": "{{pageTitle}} – {{shopName}} – Töltse ki a rendelést"
       },
       "customer_account": {
         "saved_address_option_description": {
