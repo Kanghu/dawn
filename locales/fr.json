@@ -2042,15 +2042,34 @@
       "processing": {
         "wait": {
           "medium": {
-            "few": "Votre commande est sous traitement. Le temps d'attente estimé est de %{count} minutes."
-          }
+            "few": "Votre commande est en cours de traitement. Le temps d'attente estimé est %{count} minutes.",
+            "one": "Votre commande est en cours de traitement. Le temps d'attente estimé est %{count} par minute.",
+            "other": "Votre commande est en cours de traitement. Le temps d'attente estimé est %{count} minutes."
+          },
+          "short": "Votre commande est en cours de traitement.",
+          "long": "Vous recevrez un e-mail dès que votre commande sera traitée. Il y a actuellement un volume de commandes élevé.",
+          "no_auto_refresh_html": "Si vous n'êtes pas automatiquement redirigé, %{link}.",
+          "refresh_this_page": "rafraîchir cette page"
         },
         "redirecting_page_title": "Redirection...",
         "redirecting_title": "Redirection...",
         "redirecting_notice": "Veuillez patienter pendant que nous vous redirigeons.",
         "complete_your_purchase_title": "Terminez l'achat",
         "continue_to_payment_gateway_notice": "Passez à la caisse pour ajouter vos informations de paiement.",
-        "continue_to_payment_gateway_button_label": "Continuer à payer"
+        "continue_to_payment_gateway_button_label": "Continuer à payer",
+        "complete_your_purchase_title_error": "Corrigez vos informations de paiement",
+        "continue_to_payment_gateway_notice_error": "Vos informations de paiement n'ont pas pu être vérifiées.",
+        "continue_to_payment_gateway_button_label_error": "Mettre à jour les informations de paiement",
+        "page_title": "La commande est en cours de traitement",
+        "title": "La commande est en cours de traitement",
+        "your_order_has_been_received_title": "Merci pour la commande",
+        "you_will_receive_confirmation": "Nous recevons actuellement de nombreuses commandes. Vous devriez recevoir une confirmation par e-mail ou par SMS sous peu. Si vous ne le recevez pas dans l'heure qui suit, faites-le-nous savoir.",
+        "you_will_not_be_charged": "Vous ne serez pas facturé pour l'instant",
+        "action_required": "Action requise",
+        "redirecting_to_bank": "Il redirige vers {{bank}}",
+        "modal_notice": "Nous contactons {{paymentMethod}}",
+        "remote_shops_payments_processing": "Les paiements sont traités",
+        "remote_checkout_count": "%{current} de %{total}"
       },
       "thank_you": {
         "login_reorder_link_text": {
@@ -2503,6 +2522,44 @@
         "or_pay_another_way": "Ou payer d'une autre manière",
         "or_check_out_another_way": "Ou complétez la commande d'une autre manière",
         "or_pay_with_credit_card": "Ou payez avec une carte de crédit"
+      },
+      "failed_payment": {
+        "page_title": "Le paiement n'a pas pu être traité",
+        "title": "Le paiement n'a pas pu être traité",
+        "payment_not_processed_title": "Votre paiement n'a pas pu être traité",
+        "payment_not_processed_text": "Vous n'avez pas été facturé. Retournez à votre panier pour finaliser votre achat.",
+        "return_to_cart_button_label": "Retour au panier"
+      },
+      "payment_gateway": {
+        "credit_card_label": "Carte de crédit",
+        "bank_deposit_label": "Dépôt bancaire",
+        "cash_on_delivery_label": "Paiement à la livraison",
+        "money_order_label": "Ordre de paiement",
+        "debit_card_label": "Carte de débit",
+        "deferred_payment_label": "Choisissez votre mode de paiement plus tard",
+        "generic_payment_terms": "Vous devez respecter les conditions {{translatedName}}. Le paiement est dû le {{dueDate}}.",
+        "login_prompt": {
+          "no_access": {
+            "message": "{{logIn}} à un compte ayant accès à cet emplacement pour ajouter ou utiliser des modes de paiement enregistrés.",
+            "link": "Connectez-vous"
+          }
+        },
+        "direct_payment_terms": "Vous devez respecter les conditions {{translatedName}}. Votre carte sera débitée en {{dueDate}}.",
+        "order_due_on_fulfillment_choose_later": "Le paiement sera dû dès que la commande sera exécutée.",
+        "order_due_on_fulfillment_payment": "Votre carte sera débitée dès que la commande sera exécutée.",
+        "draft_order_payment_due_later_no_terms": "Le paiement sera dû dès la confirmation de la commande.",
+        "draft_order_payment_due_later_no_terms_payment_selected": "Votre carte sera débitée dès que la commande sera confirmée.",
+        "draft_order_payment_due_later_terms": "Vous devez respecter les conditions {{translatedName}} dès que la commande est confirmée.",
+        "draft_order_payment_due_on_fulfillment": "Le paiement sera dû dès que la commande sera confirmée et exécutée.",
+        "fixed_payment_label": "Votre paiement sera dû le {{dueDate}}.",
+        "fixed_direct_payment_terms": "Votre carte sera débitée le {{dueDate}}.",
+        "order_deposit_due_now": "Montant de {{depositAmount}} c'est dû aujourd'hui. Le solde est soumis à des conditions {{translatedName}} et est dû à {{dueDate}}.",
+        "order_deposit_due_on_fulfillment": "Montant de {{depositAmount}} c'est dû aujourd'hui. Le solde sera dû dès que la commande sera exécutée.",
+        "order_due_on_receipt_choose_later": "Votre paiement sera dû dès réception.",
+        "draft_order_deposit_due_later": "Paiement d'un montant de {{depositAmount}} sera dû dès que la commande sera confirmée. Le solde sera dû selon les modalités {{translatedName}}.",
+        "draft_order_deposit_due_on_fulfillment": "Paiement d'un montant de {{depositAmount}} sera dû dès que la commande sera confirmée. Le solde sera dû dès que la commande sera exécutée.",
+        "order_deposit_due_on_receipt": "Montant de {{depositAmount}} c'est dû aujourd'hui. Le solde sera dû ultérieurement.",
+        "order_deposit_due_on_fixed_date": "Montant de {{depositAmount}} c'est dû aujourd'hui. Le solde sera dû au {{dueDate}}."
       }
     },
     "notices": {
