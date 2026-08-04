@@ -2111,15 +2111,34 @@
       "processing": {
         "wait": {
           "medium": {
-            "few": "Megrendelése feldolgozás alatt áll. A becsült várakozási idő %{count} jegyzőkönyv."
-          }
+            "few": "Megrendelése feldolgozás alatt áll. A becsült várakozási idő %{count} percben.",
+            "one": "Megrendelése feldolgozás alatt áll. A becsült várakozási idő %{count} percenként.",
+            "other": "Megrendelése feldolgozás alatt áll. A becsült várakozási idő %{count} percben."
+          },
+          "short": "Megrendelése feldolgozás alatt áll.",
+          "long": "A rendelés feldolgozása után e-mailt fog kapni. Jelenleg nagy a megrendelések száma.",
+          "no_auto_refresh_html": "Ha a rendszer nem irányítja át automatikusan, %{link}.",
+          "refresh_this_page": "frissítse ezt az oldalt"
         },
         "redirecting_page_title": "Átirányítás...",
         "redirecting_title": "Átirányítás...",
         "redirecting_notice": "Kérjük, várjon, amíg átirányítjuk Önt.",
         "complete_your_purchase_title": "Fejezze be a vásárlást",
         "continue_to_payment_gateway_notice": "Folytassa a fizetéssel a fizetési adatok hozzáadásához.",
-        "continue_to_payment_gateway_button_label": "Tovább a pénztárhoz"
+        "continue_to_payment_gateway_button_label": "Tovább a pénztárhoz",
+        "complete_your_purchase_title_error": "Javítsa ki fizetési adatait",
+        "continue_to_payment_gateway_notice_error": "Fizetési adatait nem sikerült ellenőrizni.",
+        "continue_to_payment_gateway_button_label_error": "Frissítse a fizetési információkat",
+        "page_title": "A megrendelés feldolgozása folyamatban van",
+        "title": "A megrendelés feldolgozása folyamatban van",
+        "your_order_has_been_received_title": "Köszönjük a rendelést",
+        "you_will_receive_confirmation": "Jelenleg sok megrendelés érkezik hozzánk. Hamarosan visszaigazolást kell kapnia e-mailben vagy SMS-ben. Ha a következő órán belül nem kapja meg, jelezze.",
+        "you_will_not_be_charged": "Egyelőre nem kell fizetnie",
+        "action_required": "Intézkedés szükséges",
+        "redirecting_to_bank": "Átirányít ide {{bank}}",
+        "modal_notice": "felvesszük a kapcsolatot {{paymentMethod}}",
+        "remote_shops_payments_processing": "A kifizetések feldolgozása megtörtént",
+        "remote_checkout_count": "%{current} től %{total}"
       },
       "thank_you": {
         "login_reorder_link_text": {
@@ -2640,6 +2659,44 @@
         "or_pay_another_way": "Vagy fizessen más módon",
         "or_check_out_another_way": "Vagy más módon fejezze be a megrendelést",
         "or_pay_with_credit_card": "Vagy fizessen hitelkártyával"
+      },
+      "failed_payment": {
+        "page_title": "A fizetést nem sikerült feldolgozni",
+        "title": "A fizetést nem sikerült feldolgozni",
+        "payment_not_processed_title": "Befizetését nem tudtuk feldolgozni",
+        "payment_not_processed_text": "Önt nem terhelték meg. Térjen vissza a kosárba a vásárlás befejezéséhez.",
+        "return_to_cart_button_label": "Vissza a kosárba"
+      },
+      "payment_gateway": {
+        "credit_card_label": "Hitelkártya",
+        "bank_deposit_label": "Bankbetét",
+        "cash_on_delivery_label": "Utánvéttel",
+        "money_order_label": "Fizetési megbízás",
+        "debit_card_label": "Betéti kártya",
+        "deferred_payment_label": "Később válassza ki a fizetési módot",
+        "generic_payment_terms": "Meg kell felelnie a feltételeknek {{translatedName}}. A fizetés esedékes {{dueDate}}.",
+        "login_prompt": {
+          "no_access": {
+            "message": "{{logIn}} olyan fiókba, amely hozzáféréssel rendelkezik ehhez a helyhez mentett fizetési módok hozzáadásához vagy használatához.",
+            "link": "Csatlakoztassa magát"
+          }
+        },
+        "direct_payment_terms": "Meg kell felelnie a feltételeknek {{translatedName}}. A kártyáját megterheljük {{dueDate}}.",
+        "order_due_on_fulfillment_choose_later": "A fizetés a megrendelés teljesítése után azonnal esedékes.",
+        "order_due_on_fulfillment_payment": "A kártyáját a megrendelés teljesítése után azonnal megterheljük.",
+        "draft_order_payment_due_later_no_terms": "A fizetés a megrendelés visszaigazolását követően azonnal esedékes.",
+        "draft_order_payment_due_later_no_terms_payment_selected": "A kártyáját a megrendelés visszaigazolása után azonnal megterheljük.",
+        "draft_order_payment_due_later_terms": "Meg kell felelnie a feltételeknek {{translatedName}} amint a rendelés visszaigazolásra kerül.",
+        "draft_order_payment_due_on_fulfillment": "A fizetés a megrendelés visszaigazolása és teljesítése után azonnal esedékes.",
+        "fixed_payment_label": "Befizetése esedékes lesz {{dueDate}}.",
+        "fixed_direct_payment_terms": "A kártyáját megterheljük {{dueDate}}.",
+        "order_deposit_due_now": "Összege {{depositAmount}} ma esedékes. Az egyenlegre feltételek vonatkoznak {{translatedName}} és esedékessége: {{dueDate}}.",
+        "order_deposit_due_on_fulfillment": "Összege {{depositAmount}} ma esedékes. Az egyenleg a megrendelés teljesítésekor azonnal esedékes lesz.",
+        "order_due_on_receipt_choose_later": "Fizetése kézhezvételekor esedékes.",
+        "draft_order_deposit_due_later": "Fizetés összegében {{depositAmount}} a megrendelés visszaigazolása után azonnal esedékes lesz. Az egyenleg a feltételeknek megfelelően esedékes {{translatedName}}.",
+        "draft_order_deposit_due_on_fulfillment": "Fizetés összegében {{depositAmount}} a megrendelés visszaigazolása után azonnal esedékes lesz. Az egyenleg a megrendelés teljesítésekor azonnal esedékes lesz.",
+        "order_deposit_due_on_receipt": "Összege {{depositAmount}} ma esedékes. Az egyenleg később esedékes.",
+        "order_deposit_due_on_fixed_date": "Összege {{depositAmount}} ma esedékes. Az egyenleg esedékessége: {{dueDate}}."
       }
     },
     "notices": {
