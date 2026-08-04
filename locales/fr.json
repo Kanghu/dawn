@@ -391,28 +391,28 @@
       "headings": {
         "product": "Produit",
         "price": "Prix",
-        "total": "Total",
+        "total": "Totalement",
         "quantity": "Quantité",
-        "image": "Image de produit"
+        "image": "Image du produit"
       },
       "update": "Mise à jour",
       "login": {
-        "title": "Vous possédez un compte ?",
-        "paragraph_html": "<a href=\"{{ link }}\" class=\"link underlined-link\">Connectez-vous</a> pour payer plus vite."
+        "title": "Avez-vous un compte ?",
+        "paragraph_html": "<a href=\"{{ link }}\" class=\"link underlined-link\">Connectez-vous</a> pour terminer la commande plus rapidement."
       },
       "estimated_total": "Total estimé",
-      "new_estimated_total": "Nouveau total estimé",
-      "duties_and_taxes_included_shipping_at_checkout_with_policy_html": "Frais de douane et taxes inclus. Réductions et <a href=\"{{ link }}\">frais d’expédition</a> calculés à l’étape du paiement.",
-      "duties_and_taxes_included_shipping_at_checkout_without_policy": "Frais de douane et taxes inclus. Réductions et frais d’expédition calculés à l’étape du paiement.",
-      "taxes_included_shipping_at_checkout_with_policy_html": "Taxes incluses. Réductions et <a href=\"{{ link }}\">frais d’expédition</a> calculés à l’étape du paiement.",
-      "taxes_included_shipping_at_checkout_without_policy": "Taxes incluses. Réductions et frais d’expédition calculés à l’étape du paiement.",
-      "duties_included_taxes_at_checkout_shipping_at_checkout_with_policy_html": "Frais de douane inclus. Taxes, réductions et <a href=\"{{ link }}\">frais d’expédition</a> calculés à l’étape du paiement.",
-      "duties_included_taxes_at_checkout_shipping_at_checkout_without_policy": "Frais de douane inclus. Taxes, réductions et frais d’expédition calculés à l’étape du paiement.",
-      "taxes_at_checkout_shipping_at_checkout_with_policy_html": "Taxes, réductions et <a href=\"{{ link }}\">frais d’expédition</a> calculés à l’étape du paiement.",
-      "taxes_at_checkout_shipping_at_checkout_without_policy": "Taxes, réductions et frais d’expédition calculés à l’étape du paiement."
+      "new_estimated_total": "Le nouveau total estimé",
+      "duties_and_taxes_included_shipping_at_checkout_with_policy_html": "Taxes et droits de douane inclus. Réductions et <a href=\"{{ link }}\">transport</a> sont calculés à la fin de la commande.",
+      "duties_and_taxes_included_shipping_at_checkout_without_policy": "Taxes et droits de douane inclus. Les réductions et les frais d'expédition sont calculés à la caisse.",
+      "taxes_included_shipping_at_checkout_with_policy_html": "Taxes incluses. Réductions et <a href=\"{{ link }}\">transport</a> sont calculés à la fin de la commande.",
+      "taxes_included_shipping_at_checkout_without_policy": "Taxes incluses. Les réductions et les frais d'expédition sont calculés à la caisse.",
+      "duties_included_taxes_at_checkout_shipping_at_checkout_with_policy_html": "Droits de douane inclus. Taxes, réductions et <a href=\"{{ link }}\">transport</a> sont calculés à la fin de la commande.",
+      "duties_included_taxes_at_checkout_shipping_at_checkout_without_policy": "Droits de douane inclus. Les taxes, les réductions et les frais d'expédition sont calculés à la caisse.",
+      "taxes_at_checkout_shipping_at_checkout_with_policy_html": "Taxes, réductions et <a href=\"{{ link }}\">transport</a> sont calculés à la fin de la commande.",
+      "taxes_at_checkout_shipping_at_checkout_without_policy": "Les taxes, les réductions et les frais d'expédition sont calculés à la caisse."
     },
     "footer": {
-      "payment": "Moyens de paiement",
+      "payment": "Modes de paiement",
       "about": "À propos de nous",
       "useful": "Utile",
       "contact": "Contacter",
@@ -450,24 +450,24 @@
       }
     },
     "featured_blog": {
-      "view_all": "Tout afficher",
+      "view_all": "Afficher tout",
       "onboarding_title": "Article de blog",
       "onboarding_content": "Donnez à vos clients un résumé de votre article de blog"
     },
     "featured_collection": {
-      "view_all": "Tout afficher",
+      "view_all": "Afficher tout",
       "view_all_label": "Afficher tous les produits de la collection {{ collection_name }}"
     },
     "collection_list": {
-      "view_all": "Tout afficher"
+      "view_all": "Afficher tout"
     },
     "collection_template": {
-      "title": "Collection",
+      "title": "Collecte",
       "empty": "Aucun produit trouvé",
-      "use_fewer_filters_html": "Utiliser moins de filtres ou <a class=\"{{ class }}\" href=\"{{ link }}\">tout supprimer</a>"
+      "use_fewer_filters_html": "Utilisez moins de filtres ou <a class=\"{{ class }}\" href=\"{{ link }}\">supprimez-les tous</a>"
     },
     "video": {
-      "load_video": "Charger la vidéo : {{ description }}"
+      "load_video": "Télécharger le clip vidéo : {{ description }}"
     },
     "slideshow": {
       "load_slide": "Charger la diapositive",
