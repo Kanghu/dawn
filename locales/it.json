@@ -1982,6 +1982,68 @@
         "gift_card_store_credit": {
           "add_label": "Aggiungi una carta regalo o un credito del negozio",
           "manage_label": "Gestisci carte regalo o credito del negozio"
+        },
+        "saved_credit_card_cvv_verification": "Inserisci il codice di sicurezza della tua carta a scopo di verifica.",
+        "order_edit_banner_updated_order_label": "Ordine aggiornato",
+        "afterpay_label": "Pagamento posticipato",
+        "cashapppay_label": "Pagamento tramite app in contanti",
+        "card_nickname_label": "Soprannome (facoltativo)",
+        "order_edit_banner_items_return_line_item_removed": {
+          "in_full": "Rimosso dal reso",
+          "with_quantities": "Rimosso dal reso: {{delta}}"
+        },
+        "order_edit_banner_single_item_return_line_item_removed": "Rimosso dal reso",
+        "order_edit_banner_multiple_items_return_line_item_removed": "Rimosso dal reso: {{amount}}",
+        "proposed_gateway_unavailable": "Il gateway di pagamento proposto non è disponibile",
+        "pay_in_installments_split_pay_short": "4 pagamenti del valore di %{amount}",
+        "payment_method_not_available_for_shipping_address_error": "Il metodo di pagamento non è disponibile per l'indirizzo di spedizione selezionato. Scegli un altro metodo di pagamento.",
+        "shop_pay_ideal_unavailable_error": "ideale | Wero non è disponibile per questo ordine. Scegli un altro metodo di pagamento.",
+        "paypal_disconnect": "Esci",
+        "paypal_wallet_label": "Portafoglio PayPal",
+        "payment_method_update_failed": "L'aggiornamento del metodo di pagamento non è riuscito.",
+        "alternative_payment_currency_total_manual_payment_notice": "Nota: il totale convertito è di %{amount_due}.",
+        "gift_cards_unavailable": "La tua carta regalo non può più essere applicata a questo ordine ed è stata rimossa",
+        "network_card_payment_options": "Scegli una rete di carte",
+        "payment_flexibility_terms_id_mismatch": "Mancata corrispondenza dell'ID per termini di pagamento flessibili",
+        "offsite_gateway_review_page_redirect_hint": "Dopo aver esaminato l'ordine ti reindirizzeremo a %{gateway_label} per completare il tuo acquisto.",
+        "przelewy24_label": "Przelewy24",
+        "twint_label": "TWINT",
+        "mobilepay_label": "MobilePay",
+        "gift_card_checkbox_label": "Applica questa carta regalo",
+        "blik_label": "BLIC",
+        "vipps_label": "Whipps",
+        "grabpay_label": "GrabPay",
+        "kcp_creditcard_label": "Carta di credito KCP",
+        "simulated_express_checkout": "La tua regione o browser non consente l'anteprima dei tuoi portafogli nell'editor.",
+        "offsite_gateway_redirect_hint_no_button_label": "Ti reindirizzeremo a %{gateway_label} per completare il tuo acquisto.",
+        "swish_label": "Swish",
+        "network_card_persistence_description": "La rete selezionata verrà salvata con il tuo metodo di pagamento per transazioni future.",
+        "usdc_label": "USDC",
+        "payment_method_incompatible_with_payment_terms": "Il metodo di pagamento è incompatibile con i termini di pagamento.",
+        "payment_option": {
+          "accessibility_label": "Scegli un'opzione di pagamento"
+        },
+        "billing_address_rollup_accessibility_label": "Opzioni indirizzo di fatturazione",
+        "payment_method_rollup_accessibility_label": "Opzioni del metodo di pagamento",
+        "crypto_modal": {
+          "header": "Pagamento a %{shop_name} con %{total_price} USDC",
+          "error": {
+            "refresh": "Rinfresco",
+            "close": "chiusura",
+            "sandbox_error": "Si è verificato un errore",
+            "web_component_error": "Si è verificato un errore durante il caricamento di questa pagina"
+          }
+        },
+        "bank_account_type": {
+          "checking": "Verifica",
+          "savings": "Economie"
+        },
+        "bank_account_choose": "Scegli un account per il pagamento sicuro",
+        "bank_account_connect_another": "Collega un altro conto bancario",
+        "bank_account_connect": "Collega un conto bancario",
+        "bank_account_missing": "Il collegamento del conto bancario è obbligatorio",
+        "crypto_payment_method": {
+          "description": "Collega il tuo portafoglio in modo sicuro. Il tuo saldo e il tuo indirizzo non verranno condivisi."
         }
       },
       "shipping_errors": {
