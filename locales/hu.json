@@ -1344,22 +1344,35 @@
       "stock": {
         "unshippable_product": {
           "header": {
-            "few": "Nincs kézbesítési módszer %{count} (OF) cikkek"
+            "few": "Nincs elérhető szállítási mód a következőhöz: %{count} cikkek",
+            "one": "Nincs elérhető szállítási mód a következőhöz: %{count} cikket",
+            "other": "Nincs elérhető szállítási mód a következőhöz: %{count} cikkek"
           },
           "message": {
-            "few": "Ezeket a cikkeket eltávolítják a kosárból, mivel a címhez nem állnak rendelkezésre kézbesítési módszerek."
-          }
+            "few": "Ezeket a tételeket eltávolítjuk a kosarából, mert az Ön címére nem állnak rendelkezésre szállítási módok.",
+            "one": "Ezt a tételt eltávolítjuk a kosarából, mert az Ön címére nem állnak rendelkezésre szállítási módok.",
+            "other": "Ezeket a tételeket eltávolítjuk a kosarából, mert az Ön címére nem állnak rendelkezésre szállítási módok."
+          },
+          "title": "Nem áll rendelkezésre szállítási mód",
+          "status_column_header": "Nincs szállítási mód"
         },
         "item_label": {
-          "few": "{{count}} áru"
+          "few": "{{count}} cikkeket",
+          "one": "{{count}} cikket",
+          "other": "{{count}} cikkeket"
         },
         "unfulfillable_product": {
           "message": {
-            "few": "Szállítási módszer %{delivery_method} már nem érhető el ezekhez az elemekhez."
+            "few": "Szállítási mód %{delivery_method} már nem érhető el ezekhez a tételekhez.",
+            "one": "Szállítási mód %{delivery_method} már nem elérhető ehhez az elemhez.",
+            "other": "Szállítási mód %{delivery_method} már nem érhető el ezekhez a tételekhez."
           },
           "default_message": {
-            "few": "A kiválasztott kézbesítési módszer már nem érhető el ezekhez az elemekhez."
-          }
+            "few": "A kiválasztott szállítási mód már nem elérhető ezeknél a tételeknél.",
+            "one": "A kiválasztott szállítási mód már nem elérhető ennél a tételnél.",
+            "other": "A kiválasztott szállítási mód már nem elérhető ezeknél a tételeknél."
+          },
+          "title": "Szállítás nem elérhető"
         },
         "page_title": "Leltári problémák",
         "title": "Nincs raktáron",
@@ -1370,7 +1383,46 @@
         "status_column_header": "Állapot",
         "removed_from_cart_notice": "Eltávolították a kosárból",
         "sold_out_label": "Elfogyott",
-        "reduced_label": "Csökkentett"
+        "reduced_label": "Csökkentett",
+        "reduced_with_quantity_label": "Már csak vannak hátra %{quantity_available}",
+        "remove_from_cart_button_label": "Távolítsa el a kosárból",
+        "continue_shopping_button_label": "Folytatás",
+        "go_back_to_cart_button_label": "Vissza a kosaramhoz",
+        "remove": "Távolítsuk el",
+        "empty_cart_label": "A kosara üres",
+        "quantity_update": {
+          "page_title": "Frissítse a mennyiségeket",
+          "title": "Frissítse a mennyiségeket",
+          "description": "Az ezekhez a termékekhez elérhető mennyiségek megváltoztak, és frissültek a kosárban."
+        },
+        "unpurchasable_product": {
+          "title": "Nem megvásárolható termék",
+          "header": "Néhány tételt eltávolítottunk a kosarából",
+          "message": "Ezek a tételek nem állnak rendelkezésre B2B rendelésekhez.",
+          "status_column_header": "Nem elérhető"
+        },
+        "unpurchasable_product_generic": {
+          "title": "Nem megvásárolható termék",
+          "header": "Néhány tételt eltávolítottunk a kosarából",
+          "message": "Ezek az elemek nem állnak rendelkezésre.",
+          "status_column_header": "Nem elérhető"
+        },
+        "price_update": {
+          "title": "Ár frissítés",
+          "description": "Ezeknek a termékeknek az árai megváltoztak és frissültek a kosárban.",
+          "updated_price": "Frissített ár"
+        },
+        "return_to_store_label": "Gyere vissza a boltba",
+        "continue_cta_label": "Folytassa a fizetést",
+        "out_of_stock": {
+          "description": "Ezek a termékek már nem elérhetők, és eltávolítjuk a kosárból.",
+          "items_unavailable": "Egyes tételek már nem elérhetők, ezért eltávolítjuk a kosárból."
+        },
+        "price_and_quantity_update": {
+          "title": "Frissítse az árakat és a mennyiségeket",
+          "description": "Ezen termékek árai és elérhető mennyiségei megváltoztak, és a kosárban frissültek."
+        },
+        "out_of_stock_in_context_label": "Ez a termék nem érhető el az Ön országában/régiójában."
       },
       "order_summary": {
         "expand_component_information": {
@@ -1417,7 +1469,12 @@
         },
         "pickup_unavailable_banner_title_with_country": {
           "few": "In %{country} nincsenek elérhető boltok az Ön termékeivel"
-        }
+        },
+        "title": "Megrendelés összefoglalója",
+        "order_name_label": "Rendeljen %{name}",
+        "shopping_cart_label": "A bevásárlókosár",
+        "discount_title": "Kedvezmény",
+        "discount_label": "Kedvezmény kód"
       },
       "payment": {
         "order_covered_by_gift_cards_notice": {
