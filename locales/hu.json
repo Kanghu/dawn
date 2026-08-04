@@ -3783,8 +3783,59 @@
               "be": "Belgium ÁFA számok: BE és 10 karakter",
               "bg": "Bolgár adószámok: BG és 9-10 karakter",
               "hr": "Horvátország ÁFA számok: HR és 11 karakter"
+            },
+            "invalid_number": {
+              "se": "Adjon meg egy érvényes svéd adószámot",
+              "gb": "Adjon meg egy érvényes egyesült királyságbeli adószámot"
+            },
+            "service_unavailable": "Az érvényesítési szolgáltatás nem érhető el",
+            "service_error": "Az érvényesítési szolgáltatás nem érhető el"
+          },
+          "accessibility": {
+            "status": {
+              "validating": "Az ÁFA szám érvényesítése folyamatban van",
+              "valid": "Az ÁFA szám érvényes",
+              "applied": "Az áfamentességet alkalmazták",
+              "domestic": "Az áfamentességet nem alkalmazták",
+              "invalid_number": "Az áfamentesség meghiúsult",
+              "service_unavailable": "Az áfamentesség ellenőrzése sikertelen",
+              "service_error": "Az áfamentesség ellenőrzése sikertelen"
             }
           }
+        }
+      },
+      "payment_collection": {
+        "cancelled": "Ez a fizetés már nem szükséges. A részletekért látogasson el a rendelési oldalra.",
+        "paid": "Ezt a fizetést már elküldték. A részletekért látogasson el a rendelési oldalra."
+      },
+      "required_extensions": {
+        "errors": {
+          "interaction_required": "A fizetés befejezéséhez interakcióra van szükség a bővítménnyel."
+        }
+      },
+      "embed": {
+        "header": {
+          "review_order": "Ellenőrizze a rendelést"
+        },
+        "shipping": {
+          "shipping_options": "Tekintse meg az összes szállítási lehetőséget"
+        },
+        "payment": {
+          "payment_options": "Tekintse meg az összes fizetési lehetőséget"
+        }
+      },
+      "too_many_requests": {
+        "title": "Túl sok fizetési kísérlet",
+        "body": "Várjon néhány percet, és próbálja újra a kosárból.",
+        "return_to_cart": "Vissza a kosárba",
+        "body_no_cart": "Kérjük, várjon néhány percet, és próbálja újra."
+      },
+      "address_management": {
+        "saved_with_store": "Mentve ebben az üzletben"
+      },
+      "ucp": {
+        "standard_errors": {
+          "item_unavailable": "A tétel nem vásárolható meg"
         }
       }
     },
@@ -3804,6 +3855,47 @@
       "words_connector": ", ",
       "two_words_connector": " és ",
       "last_word_connector": " és "
+    },
+    "pagination": {
+      "previous": "Vissza",
+      "next": "Azelőtt"
+    },
+    "links": {
+      "powered_by_shopify": "Powered by Shopify",
+      "learn_more": "További információ"
+    },
+    "feed": {
+      "more": "Többet"
+    },
+    "attributes": {
+      "email": "e-mailt",
+      "password": "jelszót",
+      "password_confirmation": "Jelszó megerősítése",
+      "first_name": "keresztnév",
+      "last_name": "vezetéknév",
+      "body": "test",
+      "signature": "Cím"
+    },
+    "addresses": {
+      "zip_code": "irányítószám",
+      "postal_code": "Irányítószám",
+      "postcode": "Irányítószám",
+      "pincode": "Pin kód",
+      "region": "Régió",
+      "prefecture": "prefektúra",
+      "province": "tartomány",
+      "state": "állam",
+      "state_and_territory": "állam/terület",
+      "county": "megye",
+      "emirate": "Emirátus",
+      "governorate": "Kormányzóság",
+      "confirm": "Biztosan törli ezt a címet?"
+    },
+    "collections": {
+      "sorting": {
+        "manual": "Ajánlott",
+        "best_selling": "A legjobb eladó"
+      }
     }
   },
   "customer_accounts": {
