@@ -2632,15 +2632,56 @@
       },
       "local_pickup": {
         "location_information": {
-          "few": "Съществуват %{count} Магазини със запаси, близки до %{address}"
+          "few": "Аз съм близо до теб %{count} места със склад",
+          "one": "Аз съм близо до теб %{count} местоположение със склад",
+          "other": "Аз съм близо до теб %{count} места със склад"
         },
         "paginator": {
           "label": {
-            "few": "%{first} - %{last} От %{count} Магазин"
-          }
+            "few": "%{first} - %{last} от %{count} магазини",
+            "one": "%{first} - %{last} от %{count} магазин",
+            "other": "%{first} - %{last} от %{count} магазини"
+          },
+          "accessibility_label": "Пагинация за локално извличане",
+          "previous": "Предишна страница",
+          "next": "Следваща страница"
         },
         "reveal_more_label": {
-          "few": "Все още показва %{count} (от) места"
+          "few": "Покажи повече %{count} (от) местоположения",
+          "one": "Покажи повече %{count} местоположение",
+          "other": "Покажи повече %{count} (от) местоположения"
+        },
+        "toggle_location": "Променете местоположението",
+        "or": "ИЛИ",
+        "cancel": "Отказ",
+        "your_location": "вашето местоположение",
+        "search_button": "Намерете магазини",
+        "no_stores_found": "Няма намерени магазини",
+        "could_not_resolve_address": "Вашият адрес не може да бъде намерен. Моля, опитайте отново или използвайте друг адрес",
+        "location_address_search_label": "Адрес",
+        "all_stores_far_away": {
+          "title": "Най-близките локации са на по-голямо разстояние от %{distance}",
+          "description": "Изберете местоположение или %{ship_to_address_link}",
+          "ship_to_address_link": "адрес за доставка",
+          "title_with_location": "Най-близкото местоположение свърши %{distance} срещу %{location}",
+          "description_with_location": "%{change_location_link} или %{ship_to_address_link}",
+          "change_location_link": "Променете местоположението си",
+          "title_with_specific_location": "Най-близкото място с вашия артикул е на голямо разстояние %{distance} на %{location}",
+          "title_with_item": {
+            "one": "Най-близкото местоположение с вашия артикул е повече от %{distance} на %{location}",
+            "other": "Най-близкото местоположение с вашите артикули е повече от %{distance} на %{location}",
+            "few": "Най-близкото местоположение с вашите артикули е повече от %{distance} на %{location}"
+          }
+        },
+        "selected_pickup_option_no_longer_available": {
+          "title": "Местоположението, което сте избрали преди, вече не е налично",
+          "description": "Избрахме най-близкото място с вашите артикули на склад."
+        },
+        "pick_up_location": "Вземете местоположение",
+        "no_pickup_locations_found": "Няма намерени места за получаване",
+        "pickup_unavailable_banner_body": {
+          "try_different_location": "Опитайте с друго местоположение",
+          "ship_to_address": "адрес за доставка"
         }
       },
       "merchandise_unavailable_in_buyer_location": {
@@ -2650,8 +2691,16 @@
       },
       "review_address_modal": {
         "subtitle": {
-          "few": "Тази команда ще бъде изпратена до адрес, предоставен от {{merchant}}. Изберете адрес за доставка."
-        }
+          "few": "Тази поръчка ще бъде изпратена до адрес, предоставен от {{merchant}}. Изберете адрес за доставка.",
+          "one": "Тази поръчка ще бъде изпратена до адреса, предоставен от {{merchant}}.",
+          "other": "Тази поръчка ще бъде изпратена до адрес, предоставен от {{merchant}}. Изберете адрес за доставка."
+        },
+        "title": "Прегледайте адреса",
+        "subtitle_no_match": "Този адрес не съответства на никой от адресите, които сте запазили.",
+        "subtitle_must_use": "Вашата поръчка ще бъде изпратена до този адрес.",
+        "continue": "Продължете с този адрес",
+        "use_saved_address": "Използвайте друг адрес",
+        "return_to_cart": "Върнете се в количката"
       },
       "remote_merchandise_only": {
         "detail_item_label": {
@@ -3280,9 +3329,19 @@
           },
           "errors_in_section": {
             "one": "{{count}} грешка в секцията {{section}}",
-            "other": "{{count}} грешки в раздела {{section}}"
+            "other": "{{count}} грешки в раздела {{section}}",
+            "few": "{{count}} грешки в раздела {{section}}"
           }
         }
+      },
+      "marketplaces": {
+        "legal_notice": {
+          "legal_text": "Консултирайте се",
+          "link_label": "Правила и условия {{partnerDisplayName}}"
+        }
+      },
+      "online_store_chat": {
+        "title": "Имате ли въпроси Чат с нас"
       }
     },
     "notices": {
