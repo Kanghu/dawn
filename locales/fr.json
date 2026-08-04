@@ -1620,10 +1620,14 @@
           "other": "Ajouté(s) : %{count}"
         },
         "discount_show_more_warnings": {
-          "few": "Afficher plus %{count}"
+          "few": "Afficher plus %{count}",
+          "one": "Afficher plus %{count}",
+          "other": "Afficher plus %{count}"
         },
         "discount_codes_removed_summary": {
-          "few": "%{count} les codes de réduction ont été supprimés"
+          "few": "%{count} les codes de réduction ont été supprimés",
+          "one": "%{count} le code de réduction a été supprimé",
+          "other": "%{count} les codes de réduction ont été supprimés"
         },
         "amazon_payments_label": "Amazon Payer",
         "amazon_payments_login_hint": "Vous serez invité à vous connecter avec Amazon.",
@@ -1951,7 +1955,61 @@
         "bank_account_connect": "Connecter un compte bancaire",
         "bank_account_missing": "La connexion du compte bancaire est obligatoire",
         "crypto_payment_method": {
-          "description": "Connectez votre portefeuille en toute sécurité. Votre solde et votre adresse ne seront pas partagés."
+          "description": "Connectez votre portefeuille en toute sécurité. Votre solde et votre adresse ne seront pas partagés.",
+          "tooltip": "Votre adresse et le solde de votre portefeuille ne seront pas partagés ; seul le montant demandé peut être déduit",
+          "cashback_descriptor": {
+            "one": "Vous recevrez votre remboursement après %{count} jour",
+            "other": "Vous recevrez votre remboursement après %{count} jours",
+            "few": "Vous recevrez votre remboursement après %{count} jours"
+          }
+        },
+        "usdc_cashback_title": "%{incentive_percentage}% de remboursement",
+        "usdc_cashback_additional_info": "Payez avec USDC sur la base et recevez %{incentive_percentage}% de retour au portefeuille dans 30 jours.",
+        "usdc_cashback_terms": "Des conditions et des limites s'appliquent",
+        "separate_payments_label": "Vos articles proviennent de plusieurs magasins. Le montant du paiement sera en %{separate_payments_link}.",
+        "separate_payments_text": "paiements séparés",
+        "payments": "Paiements",
+        "business_customer_with_bank_account_vaulting_payment_label": "Enregistrez ce mode de paiement lors du paiement et autorisez %{company} pour débiter votre compte des futurs achats que vous autorisez pour cet emplacement, autorisation valable jusqu'à annulation. Le mode de paiement peut être utilisé par tous les contacts affectés à cet emplacement.",
+        "new_bank_account_disclaimer": "L'exécution de la commande implique l'autorisation %{shop_name} de débiter le compte ci-dessous via ACH, du montant indiqué et à l'heure indiquée.",
+        "bank_account_disclaimer": "Le traitement des paiements ACH peut prendre jusqu'à 4 jours ouvrables.",
+        "bank_account_vaulted_company_location": "Compte bancaire enregistré pour cet emplacement",
+        "bank_account_generic_error": "Échec de l'ajout du compte bancaire. Réessayez plus tard.",
+        "default": "Par défaut",
+        "continue_to_guest_checkout": "Continuer à payer en tant que visiteur",
+        "add_payment_method": "Ajouter un mode de paiement",
+        "choose_new_payment_method": "Choisissez un nouveau mode de paiement",
+        "add_new_payment_method": "Ajouter un nouveau mode de paiement",
+        "discount_codes_modified_summary": {
+          "one": "%{count} le code de réduction a été modifié",
+          "other": "%{count} les codes de réduction ont été modifiés",
+          "few": "%{count} les codes de réduction ont été modifiés"
+        },
+        "discount_codes_removed_or_modified_summary": {
+          "one": "%{count} le code de réduction a été supprimé ou modifié",
+          "other": "%{count} les codes de réduction ont été supprimés ou modifiés",
+          "few": "%{count} les codes de réduction ont été supprimés ou modifiés"
+        },
+        "multiple_primary_payment_not_allowed": "Modes de paiement invalides",
+        "purchase_options_subscription_agreement_label": "Votre panier contient un abonnement à renouvellement automatique. En cliquant sur \"%{button_label}”, %{consent_text} %{cancellation_instructions}",
+        "purchase_options_subscription_consent_text": "vous acceptez expressément et affirmativement que le(s) montant(s) récurrent(s) indiqué(s) dans votre panier vous seront automatiquement facturés (plus les frais d'expédition et les taxes) jusqu'à ce que votre ou vos abonnements soient résiliés ou annulés.",
+        "purchase_options_subscription_cancellation_instructions": "%{cancel_text} Veuillez consulter %{cancellation_policy_label}.",
+        "purchase_options_subscription_cancel_text": "Vous pouvez annuler à tout moment en accédant à votre compte ou en contactant le magasin.",
+        "vault_for_payment_later": {
+          "pay_button_label": "Passer la commande",
+          "notice": "Aucun montant ne vous sera facturé pour le moment. En continuant à payer, vous acceptez que votre mode de paiement soit débité lors du traitement de votre commande."
+        },
+        "alipay_label": "Alipay",
+        "wechat_pay_label": "Paiement WeChat",
+        "oxxo_label": "OXXO",
+        "pay_with_credit_card": "Payer par carte de crédit",
+        "pay_with_debit_card": "Payer par carte de débit",
+        "bogus_test_checkout": {
+          "title": "Instructions pour les tests",
+          "intro": "Utilisez ces valeurs pour tester le paiement :",
+          "approved_transaction": "{{card_number}} pour simuler une transaction approuvée",
+          "declined_transaction": "{{card_number}} pour simuler une transaction refusée",
+          "gateway_failure": "{{card_number}} pour simuler une panne de passerelle",
+          "additional_instructions": "Utilisez n’importe quelle date d’expiration future et n’importe quel code de sécurité à 3 chiffres."
         }
       },
       "shipping_errors": {
