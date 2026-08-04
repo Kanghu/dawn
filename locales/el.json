@@ -1342,7 +1342,9 @@
           "other": "υπάρχει %{count} κάρτες που έχουν λήξει, τις οποίες μπορείτε να δείτε και να επεξεργαστείτε στον λογαριασμό σας."
         },
         "order_edit_banner_items_added": {
-          "few": "Προστέθηκαν: %{count}"
+          "few": "Προστέθηκαν: %{count}",
+          "one": "Προστέθηκε",
+          "other": "Προστέθηκαν: %{count}"
         },
         "discount_show_more_warnings": {
           "few": "Εμφάνιση περισσότερων %{count}"
@@ -1411,7 +1413,74 @@
           "payment_tag": "Δωροκάρτα",
           "apply_another_gift_card_label": "Εφαρμόστε μια άλλη δωροκάρτα",
           "gift_card_label": "%{identifier} για τη δωροκάρτα",
-          "add_label": "Προσθέστε μια δωροκάρτα"
+          "add_label": "Προσθέστε μια δωροκάρτα",
+          "manage_label": "Διαχειριστείτε δωροκάρτες"
+        },
+        "custom_onsite_payment_method_modal": {
+          "title": "Εξατομικευμένη επιβεβαίωση πληρωμής επί τόπου"
+        },
+        "markets_pro_disclaimer_label": "Κάνοντας την παραγγελία σας συμφωνείτε να αγοράσετε από την Global-e ως εγγεγραμμένος έμπορος σύμφωνα με %{markets_pro_terms} και %{privacy_policy} Είναι παγκόσμιο και για να μοιραστείτε τις πληροφορίες σας %{shop_name}.",
+        "markets_pro_disclaimer_terms_and_conditions": "Όροι και προϋποθέσεις",
+        "markets_pro_disclaimer_privacy_policy": "Πολιτική Απορρήτου",
+        "markets_pro_disclaimer_terms_and_conditions_title": "Όροι και προϋποθέσεις εγγεγραμμένου εμπόρου",
+        "markets_pro_disclaimer_privacy_policy_title": "Πολιτική απορρήτου εγγεγραμμένου εμπόρου",
+        "purchase_order_number": {
+          "title": "Αριθμός παραγγελίας αγοράς",
+          "label": "Αριθμός παραγγελίας αγοράς (προαιρετικό)"
+        },
+        "alternative_payment_currency_total_notice": "Σημείωση: Θα χρεωθεί ο τρόπος πληρωμής σας %{amount_due}.",
+        "waiting_on_taxes_message": "Εάν οι χρεώσεις σας δεν υπολογιστούν τα επόμενα δευτερόλεπτα, ανανεώστε τη σελίδα.",
+        "waiting_on_taxes_notice": "Οι φόροι υπολογίζονται",
+        "order_edit_banner_single_item_returned": "Επέστρεψε",
+        "order_edit_banner_multiple_items_returned": "Επιστράφηκε(ες): {{amount}}",
+        "shop_pay_installments_label": "Βαθμολογήστε την πληρωμή καταστήματος",
+        "add_credit_card_modal": {
+          "title": "Προσθήκη κάρτας",
+          "cancel": "Ακύρωση",
+          "save": "Αποθήκευση"
+        },
+        "delete_credit_card_modal": {
+          "title": "Διαγράψτε την κάρτα",
+          "confirmation": "Σίγουρα θέλετε να διαγράψετε {{brandName}} που τελειώνει με {{lastDigits}}?",
+          "cancel": "Ακύρωση",
+          "delete": "Διαγραφή"
+        },
+        "order_edit_banner_items_removed": {
+          "in_full": "Καταργήθηκε",
+          "with_quantities": "Καταργήθηκαν: {{delta}} από {{quantity}}"
+        },
+        "order_edit_banner_items_returned": {
+          "in_full": "Επιστράφηκε(ες): {{quantity}}",
+          "with_quantities": "Επιστράφηκε(ες): {{delta}} από {{quantity}}"
+        },
+        "saved_credit_card_actions": {
+          "edit": "Επεξεργασία",
+          "delete": "Διαγραφή"
+        },
+        "edit_credit_card_modal": {
+          "title": "Επεξεργαστείτε την κάρτα",
+          "done": "έγινε",
+          "cancel": "Ακύρωση",
+          "description": "Μπορείτε να αλλάξετε μόνο τη διεύθυνση χρέωσης για την κάρτα σας.",
+          "fields": {
+            "default": "Ορισμός ως προεπιλογή",
+            "card_number": "Αριθμός κάρτας",
+            "expiry": "Ημερομηνία λήξης",
+            "security_code": "Κωδικός ασφαλείας",
+            "name": "Το όνομα στην κάρτα",
+            "billing": "Χρέωση σε"
+          }
+        },
+        "payment_method": "Τρόπος πληρωμής",
+        "expired_payment_method": "Ο επιλεγμένος τρόπος πληρωμής έχει λήξει",
+        "subscription_heading": "Συμφωνητικό Συνδρομής",
+        "use_order_billing_address_label": "Χρησιμοποιήστε τη διεύθυνση χρέωσης για παραγγελία",
+        "use_location_billing_address_label": "Χρησιμοποιήστε τη διεύθυνση χρέωσης για την τοποθεσία",
+        "use_location_shipping_address_label": "Χρησιμοποιήστε τη διεύθυνση αποστολής για την τοποθεσία",
+        "purchase_options_agreement_label_wallets": "Συνεχίζοντας να πληρώνετε, συμφωνείτε με τις μελλοντικές χρεώσεις που αναφέρονται σε αυτήν τη σελίδα και με την πολιτική ακύρωσης.",
+        "gift_card_store_credit": {
+          "add_label": "Προσθέστε μια δωροκάρτα ή μια πίστωση καταστήματος",
+          "manage_label": "Διαχειριστείτε δωροκάρτες ή πίστωση καταστήματος"
         }
       },
       "shipping_errors": {
