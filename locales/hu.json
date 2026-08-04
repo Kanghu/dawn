@@ -2176,15 +2176,21 @@
           "other": "Hiba történt az ajándékutalványok újraküldésekor. Próbálja újra, vagy lépjen kapcsolatba velünk."
         },
         "thank_you_unconfirmed_items_heading": {
-          "few": "Bizonyos tételeket nem erősítenek meg"
+          "few": "Néhány tétel nincs megerősítve",
+          "one": "1 tétel nincs megerősítve",
+          "other": "Néhány tétel nincs megerősítve"
         },
         "thank_you_unconfirmed_items_description": {
-          "few": "Ezeket a műveleteket ingyen hajtották végre"
+          "few": "Ezeket a műveleteket ingyenesen elvégezték",
+          "one": "Ezt a műveletet ingyenesen elvégezték",
+          "other": "Ezeket a műveleteket ingyenesen elvégezték"
         },
         "thank_you_item_label": {
-          "few": "%{count} áru"
+          "few": "%{count} cikkeket",
+          "one": "%{count} cikket",
+          "other": "%{count} cikkeket"
         },
-        "payment_method_not_charged": "Adózás nélkül",
+        "payment_method_not_charged": "Nincs díj",
         "thank_you_confirmed_items_with_email": {
           "one": "Hamarosan megerősítő e -mailt kap a megrendelési számmal",
           "other": "Hamarosan visszaigazoló e -maileket kap a megrendelések számaival",
@@ -2196,7 +2202,9 @@
           "few": "Hamarosan megerősítő üzeneteket fog kapni a megrendelések nevével"
         },
         "items_fulfilled_by_store": {
-          "few": "A megvásárolt termékeket más üzletekből szállítjuk ki."
+          "few": "A megvásárolt termékeket más üzletekből szállítjuk ki.",
+          "one": "A megvásárolt tételek kiszállítása innen történik %{remote_shop_name}.",
+          "other": "A megvásárolt termékeket más üzletekből szállítjuk ki."
         },
         "thank_you_confirmed_orders_with_email_description": {
           "one": "Hamarosan kap egy megerősítő e-mailt",
@@ -2394,7 +2402,40 @@
           "title": "ÁFA-s számlák"
         },
         "thank_you_payments_app_pending_payment_description_provider_action_required_default": "A fizetés megerősítéséről e-mailt fog kapni.",
-        "verify_shop_account_title": "Ellenőrizze Shop-fiókját"
+        "verify_shop_account_title": "Ellenőrizze Shop-fiókját",
+        "verify_shop_account_message": "Adatait elmentettük a Shopba. Igazolja fiókját, hogy automatikusan használja őket több millió üzletben.",
+        "verify_shop_account_cta": "Ellenőrizze fiókját",
+        "verify_shop_account_confirmation": "A fizetési adatokat elmentettük",
+        "company_location_section_title": "Cég és hely",
+        "announcement": {
+          "close": "Bezárás",
+          "expand": "Kiterjesztés",
+          "collapse": "Korlátozás"
+        },
+        "confirmed_items_count": "%{confirmed_count} től %{total_count} tételek megerősítésre kerülnek",
+        "thank_you_confirmed_orders_with_email": "Hamarosan külön visszaigazoló e-maileket fog kapni a rendelési számokkal",
+        "thank_you_confirmed_orders_with_phone": "Hamarosan külön visszaigazoló SMS-eket kap a rendelési számokkal",
+        "thank_you_confirmed_orders_with_email_and_phone": "Hamarosan külön visszaigazoló e-maileket fog kapni a rendelési számokkal",
+        "track_your_order_link_text": "Megrendelés nyomon követése",
+        "checkout_on_remote_shop_link_text": "Fizetés at %{remoteShopName}",
+        "confirmed_orders_title": "Megrendeléseit visszaigazoltuk",
+        "thank_you_from_shop": "-tól %{shop_name}",
+        "thank_you_from_other_store": "Egy másik boltból",
+        "checkout_on_another_store": "Fizessen egy másik boltban",
+        "thank_you_confirmed_with_email_description": {
+          "single_store": "Hamarosan kap egy megerősítő e-mailt",
+          "multi_store": "Hamarosan minden üzlettől külön megerősítő e-mailt fog kapni"
+        },
+        "thank_you_confirmed_with_phone_description": {
+          "single_store": "Hamarosan kap egy megerősítő SMS-t",
+          "multi_store": "Hamarosan minden üzlettől külön visszaigazoló SMS-t kap"
+        },
+        "thank_you_confirmed_with_email_and_phone_description": {
+          "single_store": "Hamarosan kap egy megerősítő e-mailt",
+          "multi_store": "Hamarosan minden üzlettől külön megerősítő e-mailt fog kapni"
+        },
+        "checkout_again": "Fizessen újra",
+        "cashback_notice": "A visszatérítést 30 nap múlva kapja meg"
       },
       "order_payment_collection": {
         "changes_summary": {
@@ -2895,6 +2936,21 @@
         "bank_account_label": "Bankszámla",
         "credit_or_debit_card_label": "Jóváírás/terhelés",
         "bogus_label": "Fizetési átjáró tesztelése"
+      },
+      "review": {
+        "title": "Tekintse át",
+        "review_title": "Töltse ki a rendelést",
+        "checkout_as_guest": "Végezze el a rendelést vendégként",
+        "blocks": {
+          "contact_method_title": "Kapcsolatfelvétel",
+          "billing_address_title": "Számlázás",
+          "shipping_address_title": "Szállítás ide",
+          "shipping_method_title": "Szállítási mód",
+          "payment_method_title": "Fizetési mód",
+          "change_link_label": "Módosít",
+          "change_contact_method_link_label": "Módosítsa a kapcsolattartási adatokat",
+          "change_billing_address_link_label": "Számlázási cím módosítása"
+        }
       }
     },
     "notices": {
