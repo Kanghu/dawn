@@ -989,14 +989,63 @@
           "few": "Beszállítják %{count} munkanapokon"
         },
         "unbranded_description_with_fulfillment_weeks": {
-          "one": "Beszállítják %{count} héten"
-        }
+          "one": "Beszállítják %{count} héten",
+          "other": "Beszállítják %{count} hétig",
+          "few": "Beszállítják %{count} hétig"
+        },
+        "add_new_delivery_address": "Adjon hozzá új szállítási címet",
+        "delivery_to": "Szállítás a címre"
       },
       "general": {
         "map": {
           "cluster_title": {
             "few": "Klaszter kialakult {{number}} Golyó"
           }
+        },
+        "page_title": "Töltse ki a rendelést",
+        "error_page_title": "Hiba",
+        "skip_to_content": "Ugrás a tartalomhoz",
+        "breadcrumb": "nyoma",
+        "continue_button_label": "Folytatás",
+        "complete_purchase_button_label": "Töltse ki a rendelést",
+        "pay_now_button_label": "Fizessen most",
+        "authenticate_purchase_button_label": "Fizetés hitelesítése",
+        "edit_link_label": "Szerkesztés",
+        "all_rights_reserved": "Minden jog fenntartva %{shop_name}",
+        "print_policies_link_label": "Nyomtatás",
+        "cart": "Kosár",
+        "close_modal_label": "Bezárás",
+        "close_notice_label": "Bezárás",
+        "expand_notice_label": "Lásd még",
+        "continue_to_shipping_method": "Folytassa a szállítást",
+        "continue_to_payment_method": "Tovább a pénztárhoz",
+        "continue_to_review": "Tekintse át a rendelést",
+        "back_to_cart": "Vissza a kosárba",
+        "back_to_contact_information": "Térjen vissza az információkhoz",
+        "back_to_shipping_method": "Vissza a szállításhoz",
+        "back_to_payment_method": "Vissza a fizetéshez",
+        "choose_shipping_method": "Válasszon szállítási módot",
+        "choose_payment_method": "Válasszon fizetési módot",
+        "choose_billing_address": "Válasszon számlázási címet",
+        "contact_us_html": "További információért forduljon hozzánk",
+        "autocomplete_title": "Javaslatok",
+        "autocomplete_single_item": "1 darab elérhető",
+        "autocomplete_multi_item": "{{number}} elérhető tételek",
+        "autocomplete_selection": "{{number}} től {{total}}",
+        "autocomplete_close": "Javaslatok bezárása",
+        "tooltip_accessibility_label": "További információ",
+        "forwarding_indicator": {
+          "new_window": "Új ablakban nyílik meg.",
+          "external": "Nyisson meg egy külső webhelyet.",
+          "external_and_new_window": "Nyissa meg a külső webhelyet új ablakban."
+        },
+        "checkout_context": {
+          "step_one": "%{shop_name} – Töltse ki a rendelést"
+        },
+        "errors": {
+          "session_identifier_not_unique_error": "Probléma lépett fel a rendelésével. Kérjük, próbálja meg újra a fizetést.",
+          "line_item_limit_reached": "Elérte a tételek maximális számát.",
+          "only_empty_terms_accepted": "Ez a szabályzat csak üres feltételeket fogad el."
         }
       },
       "customer_account": {
@@ -1285,6 +1334,15 @@
         "detail_item_label": {
           "few": "{{count}} áru"
         }
+      },
+      "change_currency": {
+        "credit_card_will_be_charged_html": "Érzékelve lesznek %{amount} a kártyájáról",
+        "currency_button_label": "%{currency} (%{currency_symbol})",
+        "payment_total_label": "Teljes fizetés",
+        "conversion_rate": "1 %{from_currency_code} = %{rate} %{to_currency_code}",
+        "change_currency_link": "Váltás erre %{currency_name}",
+        "card_provider_fx_charges_warning": "A kártyakibocsátó díjat számíthat fel a tranzakciókért %{currency_code}.",
+        "currency_not_supported_by_shop": "A kiválasztott pénznem már nem elérhető. Az összes ár már benne van %{currency_code}."
       }
     },
     "notices": {
