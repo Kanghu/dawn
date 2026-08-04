@@ -3818,10 +3818,14 @@
           "few": "Αυτά τα στοιχεία έχουν ολοκληρωθεί."
         },
         "tracking_number": {
-          "few": "Αριθμοί παρακολούθησης"
+          "few": "Αριθμοί παρακολούθησης",
+          "one": "Αριθμός παρακολούθησης",
+          "other": "Αριθμοί παρακολούθησης"
         },
         "gift_card_resend_button": {
-          "few": "Στείλτε ξανά κάρτες δώρων"
+          "few": "Στείλτε ξανά τις δωροκάρτες",
+          "one": "Στείλτε ξανά τη δωροκάρτα",
+          "other": "Στείλτε ξανά τις δωροκάρτες"
         },
         "canceled_label": "Ακυρώθηκε",
         "canceled_title": "Η παραγγελία σας ακυρώθηκε",
@@ -3920,12 +3924,56 @@
             "delivered_after_label": "Παραδόθηκε μετά {{date}}",
             "delivered_after_description": "Επειδή η παραγγελία έφτασε αργά, μπορείτε να διεκδικήσετε {{amount}} Αγορά μετρητά.",
             "claimed_shop_cash_description": "Επειδή αυτή η παραγγελία έφτασε καθυστερημένα, τη διεκδίκησες {{amount}} Αγορά μετρητά.",
-            "eligible_to_claim_shop_cash_description": "Επειδή η παραγγελία έφτασε αργά, μπορείτε να διεκδικήσετε {{amount}} Αγορά μετρητά."
+            "eligible_to_claim_shop_cash_description": "Επειδή η παραγγελία έφτασε αργά, μπορείτε να διεκδικήσετε {{amount}} Αγορά μετρητά.",
+            "learn_more_button_label": "Μάθετε περισσότερα",
+            "claim_shop_cash_button_label": "Απαίτηση Κατάστημα Μετρητά",
+            "view_balance_in_shop_button_label": "Δείτε το υπόλοιπό σας στο Κατάστημα",
+            "scan_to_claim_shop_cash_label": "Σάρωση για αξίωση {{amount}} με τη μορφή Shop Cash"
           }
-        }
+        },
+        "expected_by": "Αναμένεται μέχρι την ημερομηνία της {{date}}",
+        "was_expected_by": "Αναμενόταν μέχρι την ημερομηνία του {{date}}",
+        "confirmed_description_shipping": "Ετοιμάζουμε αυτά τα είδη για αποστολή.",
+        "arrives": "Φτάνει επάνω {{date}}",
+        "delivery_estimate_backed_by": "Εγγύηση από",
+        "delivery_estimate_delayed_description": "Οι παραδόσεις στην περιοχή σας είναι πιο αργές από ό,τι συνήθως. Η παραγγελία σας μπορεί να καθυστερήσει.",
+        "delivery_estimate_delayed_title": "Καθυστέρησε",
+        "delivery_estimate_early_description": "Οι παραδόσεις στην περιοχή σας είναι πιο γρήγορες από ότι συνήθως. Αυτή η παραγγελία μπορεί να φτάσει νωρίτερα.",
+        "delivery_exception_action_required": "Απαιτείται ενέργεια",
+        "delivery_exception_attempted_action": "Προγραμματίστε μια νέα αποστολή",
+        "delivery_exception_attempted_description": "{{link}} με {{carrier}} ή ελέγξτε αν υπάρχει ειδοποίηση παράδοσης",
+        "delivery_exception_attempted_description_unknown": "{{link}} ή ελέγξτε αν υπάρχει ειδοποίηση παράδοσης",
+        "delivery_exception_attempted_title": "Προσπάθεια αποστολής",
+        "delivery_exception_delivery_failed": "Η παράδοση απέτυχε",
+        "delivery_exception_failed_action": "Ελέγξτε στο {{carrier}}",
+        "delivery_exception_failed_description": "{{link}} ή επικοινωνήστε μαζί μας για περισσότερες πληροφορίες",
+        "delivery_exception_failed_description_unknown": "Επικοινωνήστε με τον μεταφορέα για περισσότερες πληροφορίες",
+        "delivery_exception_failed_title": "Χωρίς παράδοση",
+        "delivery_exception_on_hold_action": "Ενημερώστε τα στοιχεία αποστολής",
+        "delivery_exception_on_hold_description": "{{link}} με {{carrier}} για να συνεχίσετε την αποστολή της παραγγελίας",
+        "delivery_exception_on_hold_description_unknown": "{{link}} για να συνεχίσετε την αποστολή της παραγγελίας",
+        "delivery_exception_on_hold_title": "Αναμονή",
+        "delivery_exception_returning_to_sender_action": "Ελάτε σε επαφή {{carrier}}",
+        "delivery_exception_returning_to_sender_description": "{{link}} για περισσότερες πληροφορίες",
+        "delivery_exception_returning_to_sender_description_unknown": "Επικοινωνήστε με τον μεταφορέα για περισσότερες πληροφορίες",
+        "delivery_exception_returning_to_sender_title": "Χωρίς παράδοση",
+        "delivery_exception_shop_promise_delivered_late_description": "Η παραγγελία σας είναι εγγυημένη από το Shop Promise. Επειδή έφτασε αργά, διεκδικήστε το {{amount}} στο Κατάστημα Μετρητά.",
+        "delivery_exception_shop_promise_delivered_late_title": "Παραδόθηκε καθυστερημένα",
+        "predicted_by_shop": "Εκτιμάται από το Shop"
       },
       "list_layout_accessibility_label": "Επιλογές εμφάνισης",
-      "list_title": "Παραγγελίες"
+      "list_title": "Παραγγελίες",
+      "status_mark_as_delivered": "Επισήμανση ως παράδοσης",
+      "buy_again": "Αγοράστε ξανά",
+      "buy_again_accessibility_label": "Αγοράστε ξανά για παραγγελία {{orderId}}",
+      "manage": "Διαχείριση",
+      "manage_accessiblity_label": "Διαχειριστείτε την παραγγελία {{orderId}}",
+      "fulfillment_status_title": "Κατάσταση τιμής: {{status}}",
+      "list_title_with_pending_orders": "Παραγγελίες:",
+      "list_title_confirmed_orders_accessibility_label": "Παραγγελίες: επιβεβαιώθηκαν",
+      "list_title_pending_orders_accessibility_label": "Παραγγελίες: σε εκκρεμότητα",
+      "switch_order_type_pending_orders_accessibility_label": "Αλλαγή τύπου παραγγελίας, προς το παρόν προβάλλονται παραγγελίες σε εκκρεμότητα",
+      "switch_order_type_confirmed_orders_accessibility_label": "Αλλαγή τύπου παραγγελίας, προς το παρόν προβάλλονται επιβεβαιωμένες παραγγελίες"
     },
     "order_details": {
       "image_gallery": {
