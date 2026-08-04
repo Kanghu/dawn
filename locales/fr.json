@@ -68,24 +68,24 @@
     "back": "Retour"
   },
   "newsletter": {
-    "label": "E-mail",
-    "success": "Merci de votre inscription",
-    "button_label": "S'inscrire"
+    "label": "Courriel",
+    "success": "Merci de vous être abonné",
+    "button_label": "Abonnez-vous"
   },
   "accessibility": {
-    "skip_to_text": "Ignorer et passer au contenu",
-    "close": "Fermer",
-    "unit_price_separator": "par",
-    "vendor": "Fournisseur :",
+    "skip_to_text": "Passer au contenu",
+    "close": "Fermez-le",
+    "unit_price_separator": "sur",
+    "vendor": "Vendeur :",
     "error": "Erreur",
-    "refresh_page": "Le choix d'une sélection entraîne l'actualisation de la page entière.",
+    "refresh_page": "Le choix d’une sélection entraîne une actualisation complète de la page.",
     "link_messages": {
-      "new_window": "S'ouvre dans une nouvelle fenêtre.",
-      "external": "Ouvre un site web externe."
+      "new_window": "Ouvre dans une nouvelle fenêtre.",
+      "external": "Ouvrez le site externe."
     },
-    "loading": "Chargement en cours...",
-    "skip_to_product_info": "Passer aux informations produits",
-    "total_reviews": "total des critiques",
+    "loading": "Chargement...",
+    "skip_to_product_info": "Accéder aux informations sur le produit",
+    "total_reviews": "avis totaux",
     "star_reviews_info": "{{ rating_value }} sur {{ rating_max }} étoiles",
     "collapsible_content_title": "Contenu réductible",
     "complementary_products": "Produits complémentaires"
@@ -473,53 +473,53 @@
       "load_slide": "Charger la diapositive",
       "previous_slideshow": "Diapositive précédente",
       "next_slideshow": "Diapositive suivante",
-      "pause_slideshow": "Interrompre le diaporama",
+      "pause_slideshow": "Mettre le diaporama en pause",
       "play_slideshow": "Lire le diaporama",
       "carousel": "Carrousel",
       "slide": "Diapositive"
     },
     "page": {
-      "title": "Titre de la page"
+      "title": "Le titre de la page"
     },
     "announcements": {
       "previous_announcement": "Annonce précédente",
-      "next_announcement": "Annonce suivante",
+      "next_announcement": "Prochaine annonce",
       "carousel": "Carrousel",
       "announcement": "Annonce",
-      "announcement_bar": "Barre d’annonces",
-      "black_friday_continues": "🎉 Le Black Friday continue avec des réductions (jusqu'à 80%)",
-      "black_friday_lowest_prices": "🎉 Black Friday : les prix les plus bas de l'année sur une sélection de produits",
-      "black_friday_delivery_delay": "⚠️ Pendant cette période, les commandes peuvent connaître de légères fluctuations dans les délais de livraison estimés",
-      "holiday_closure": "Nous sommes fermés du 25 au 28 déc, du 31 déc au 4 jan, du 6 au 7 jan. Les autres jours, les commandes sont traitées et livrées normalement."
+      "announcement_bar": "Barre d'annonces",
+      "black_friday_continues": "🎉 BLACK FRIDAY continue avec des réductions JUSQU'À 80%",
+      "black_friday_lowest_prices": "🎉 BLACK FRIDAY : Les prix les plus bas de l’année sur la plupart des produits",
+      "black_friday_delivery_delay": "⚠️ Pendant cette période, les commandes peuvent présenter de légères fluctuations dans le délai de livraison estimé",
+      "holiday_closure": "Nous sommes fermés du 25 au 28 décembre, du 31 décembre au 4 janvier et du 6 au 7 janvier. Le reste des jours, le traitement des commandes et la livraison se poursuivent normalement."
     },
     "quick_order_list": {
-      "product_total": "Sous-total des produits",
+      "product_total": "Sous-total du produit",
       "view_cart": "Voir le panier",
-      "each": "{{ money }}/pièce",
+      "each": "{{ money }}/pièce.",
       "product": "Produit",
       "variant": "Variante",
-      "variant_total": "Total des variantes",
+      "variant_total": "Variante totale",
       "items_added": {
-        "one": "{{ quantity }} article ajouté",
-        "other": "{{ quantity }} articles ajoutés",
+        "one": "{{ quantity }} élément ajouté",
+        "other": "{{ quantity }} éléments ajoutés",
         "many": "{{ quantity }} articles ajoutés",
-        "few": "{{ quantity }} Articles ajoutés"
+        "few": "{{ quantity }} éléments ajoutés"
       },
       "items_removed": {
-        "one": "{{ quantity }} article retiré",
-        "other": "{{ quantity }} articles retirés",
+        "one": "{{ quantity }} article supprimé",
+        "other": "{{ quantity }} éléments supprimés",
         "many": "{{ quantity }} articles retirés",
-        "few": "{{ quantity }} Articles éliminés"
+        "few": "{{ quantity }} éléments supprimés"
       },
       "product_variants": "Variantes de produits",
       "total_items": "Total des articles",
-      "remove_all_items_confirmation": "Retirer les {{ quantity }} articles de votre panier ?",
-      "remove_all": "Tout retirer",
+      "remove_all_items_confirmation": "Supprimez tous ceux {{ quantity }} articles dans le panier ?",
+      "remove_all": "Supprimer tout",
       "cancel": "Annuler",
-      "remove_all_single_item_confirmation": "Supprimer 1 article de votre panier ?",
-      "min_error": "Cet article a un minimum de {{ min }}",
-      "max_error": "Cet article a un maximum de {{ max }}",
-      "step_error": "Vous pouvez ajouter cet article uniquement par incréments de {{ step }}"
+      "remove_all_single_item_confirmation": "Supprimer 1 article du panier ?",
+      "min_error": "Pour cet élément, la valeur minimale est {{ min }}",
+      "max_error": "Pour cet élément, la valeur maximale est {{ max }}",
+      "step_error": "Vous ne pouvez saisir cet élément que par incréments de {{ step }}"
     }
   },
   "localization": {
