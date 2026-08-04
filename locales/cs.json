@@ -3186,7 +3186,83 @@
             "one": "Není k dispozici žádný způsob doručení %{count} článek",
             "other": "Není k dispozici žádný způsob doručení %{count} (z) článků",
             "few": "Není k dispozici žádný způsob doručení %{count} (z) článků"
+          },
+          "message": {
+            "one": "Tato položka bude odstraněna z vašeho košíku, protože pro vaši adresu nejsou k dispozici žádné způsoby dopravy.",
+            "other": "Tyto položky budou odstraněny z vašeho košíku, protože pro vaši adresu nejsou k dispozici žádné způsoby dopravy.",
+            "few": "Tyto položky budou odstraněny z vašeho košíku, protože pro vaši adresu nejsou k dispozici žádné způsoby dopravy."
+          },
+          "label": "Žádný způsob doručení"
+        }
+      },
+      "no_address_location": {
+        "title": "Místo bez adresy",
+        "header": "Pro toto místo nemáte žádnou dodací adresu",
+        "message": "Kontaktujte nás pro přidání adresy pro toto místo a dokončení objednávky.",
+        "email_us_button_label": "Pošlete nám e-mail",
+        "alt_header": "Chybí dodací adresa"
+      },
+      "order_errors": {
+        "creation_failure": "Při vytváření vaší objednávky došlo k problému. Zkuste to znovu nebo nás kontaktujte pro další podrobnosti.",
+        "network_failure": "Vaši objednávku nebylo možné odeslat kvůli chybě sítě. Zkontrolujte připojení a zkuste to znovu.",
+        "inventory_reservation_failure": "Některé položky již nejsou dostupné."
+      },
+      "session_errors": {
+        "session_not_unique": "Při zpracování vaší objednávky došlo k problému. Chcete-li se vrátit do obchodu, obnovte tuto stránku.",
+        "session_already_finished": "Tato objednávka již byla odeslána. Můžete se vrátit do obchodu a zahájit novou objednávku."
+      },
+      "pickup_point": {
+        "location_is_currently_closed": "Zavřeno",
+        "business_hours": "Rozvrh",
+        "title": "Bod vyzvednutí",
+        "or": "nebo",
+        "search_button": "Hledat",
+        "selector_tabs": "Volič místa odběru",
+        "selector_tab_map": "Mapa",
+        "selector_tab_list": "Seznam",
+        "could_not_resolve_address": "Vaše adresa nebyla nalezena. Zkuste to znovu nebo použijte jinou adresu",
+        "no_pickup_points_near_you": "V blízkosti zvolené adresy nebylo nalezeno žádné místo vyzvednutí",
+        "no_pickup_points_near_location": "V blízkosti vaší polohy nebylo nalezeno žádné místo vyzvednutí",
+        "no_pickup_points_found": "Nebylo nalezeno žádné odběrné místo",
+        "paginator": {
+          "next_accessibility_label": "Další stránka",
+          "previous_accessibility_label": "Předchozí stránka",
+          "header": {
+            "one": "Zobrazí se %{first} - %{last} od %{count} bod",
+            "other": "Zobrazí se %{first} - %{last} od %{count} body",
+            "few": "Zobrazí se %{first} - %{last} od %{count} body"
+          },
+          "selected_pickup_point_label": {
+            "one": "%{pickup_point_index} od %{count} bod",
+            "other": "%{pickup_point_index} od %{count} body",
+            "few": "%{pickup_point_index} od %{count} body"
+          },
+          "selected_page": {
+            "one": "%{first} - %{last} od %{count} bod",
+            "other": "%{first} - %{last} od %{count} body",
+            "few": "%{first} - %{last} od %{count} body"
           }
+        },
+        "number_of_pickup_points_near_location": {
+          "one": "%{count} místo vyzvednutí poblíž vaší polohy",
+          "other": "%{count} místa vyzvednutí poblíž vaší polohy",
+          "few": "%{count} místa vyzvednutí poblíž vaší polohy"
+        },
+        "change": "Změnit místo",
+        "waiting_on_pickup_point_location_notice": "Hledá se odběrná místa...",
+        "geolocation": {
+          "shared_location_button": "Použít moji polohu",
+          "errors": {
+            "unsuported_by_browser": "Váš prohlížeč nepodporuje získávání geolokace. Zkuste to znovu nebo použijte jiný prohlížeč.",
+            "permission_not_allowed": "Umožňuje sdílení vaší polohy.",
+            "permission_denied": "Nepodařilo se zjistit vaši polohu. Zkuste to znovu."
+          }
+        },
+        "no_business_hours": "Program není k dispozici",
+        "open_twenty_four_hours": "Otevřeno nepřetržitě",
+        "address_label": "Adresa",
+        "pickup_unavailable_banner_title": {
+          "one": "Pro vaši položku nejsou k dispozici žádná místa vyzvednutí"
         }
       }
     }
