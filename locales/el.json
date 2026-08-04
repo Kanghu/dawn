@@ -796,10 +796,64 @@
           }
         },
         "shipping_method_first_shipment_group_title": {
-          "few": "Πρώτες αποστολές"
+          "few": "Οι πρώτες αποστολές",
+          "one": "Πρώτη αποστολή",
+          "other": "Οι πρώτες αποστολές"
         },
         "shipping_method_recurring_shipments_group_title": {
-          "few": "Επαναλαμβανόμενες αποστολές"
+          "few": "Επαναλαμβανόμενες αποστολές",
+          "one": "Επαναλαμβανόμενη αποστολή",
+          "other": "Επαναλαμβανόμενες αποστολές"
+        },
+        "missing_shipping_address": "Η διεύθυνση αποστολής λείπει",
+        "delivery_title": "Παράδοση",
+        "address_default": "Ορισμός ως προεπιλογή",
+        "split_shipping_merchandise_quantity_label_standard": "%{quantity} άρθρα",
+        "split_shipping_merchandise_quantity_label_additional": "+ ακόμα %{quantity}",
+        "split_shipping_merchandise_shipment_number": "Ναυτιλία %{number} από %{total}",
+        "pre_order_ships_now": "Αποστολή τώρα",
+        "pre_order_ships_later": "Θα αποσταλεί αργότερα",
+        "pre_order_ships_date": "Αποστέλλεται %{date}",
+        "split_shipping_shipped_by_shop": "Αποστολή από %{shop_name}",
+        "split_shipping_multiple_shipment_label": "Περισσότερες αποστολές",
+        "split_shipping_shipping_label": "Μέθοδος",
+        "split_shipping_multiple_shipment_quantity_label": "%{quantity} αποστολές",
+        "split_shipping_multiple_shipment_notice": "Η παραγγελία σας θα φτάσει σε πολλαπλές αποστολές",
+        "split_shipping_multiple_shipment_notice_one_time_purchase": "Η παραγγελία σας θα φτάσει %{quantity} αποστολές",
+        "split_shipping_more_shipping_options": "Περισσότερες επιλογές αγορών",
+        "split_shipping_shipment_number": "Ναυτιλία %{number}",
+        "split_shipping_merchandise_quantity_label_inline_primary": "Ποσότητα: %{quantity}",
+        "split_shipping_merchandise_quantity_label_inline": "%{merchandise_title} ×%{quantity}",
+        "split_shipping_option_free": "Δωρεάν αποστολή",
+        "split_shipping_option_lowest_price": "Η χαμηλότερη τιμή",
+        "split_shipping_option_fastest": "Το πιο γρήγορο",
+        "split_shipping_option_recommended": "Συνιστάται",
+        "split_shipping_option_custom": "Εξατομικευμένο",
+        "default_description": "Αποστέλλεται σε 1 εργάσιμη ημέρα",
+        "split_shipping_shipment_notice": "Η παραγγελία σας θα φτάσει %{quantity_shipments}",
+        "unbranded_default_description": "Έτοιμο για αποστολή",
+        "prime_not_available": {
+          "default": "Η Prime αποστολή δεν είναι διαθέσιμη για την παραγγελία σας. Οι επιλογές αποστολής σας έχουν ενημερωθεί."
+        },
+        "split_shipping_first_shipment_notice": "Η πρώτη σας παραγγελία θα φτάσει %{quantity_shipments}",
+        "shipping_method_rollup_accessibility_label": "Επιλογές μεθόδου αποστολής",
+        "shipping_address_rollup_accessibility_label": "Επιλογές διεύθυνσης παράδοσης",
+        "back": "Πίσω",
+        "invalid_shipping_method_summary_selected": "Επιλέξτε μια διαφορετική διεύθυνση αποστολής για να δείτε τις διαθέσιμες μεθόδους αποστολής",
+        "third_party_address_timeout": "Αποτυχία φόρτωσης διευθύνσεων. Δοκιμάστε ξανά ή χρησιμοποιήστε διαφορετική διεύθυνση.",
+        "third_party_address_error": "Παρουσιάστηκε σφάλμα κατά τη φόρτωση των επιλεγμένων διευθύνσεων. Εισαγάγετε τη διεύθυνση χειροκίνητα παρακάτω.",
+        "third_party_payment_timeout": "Η φόρτωση των τρόπων πληρωμής απέτυχε. Δοκιμάστε ξανά ή χρησιμοποιήστε άλλη μέθοδο πληρωμής.",
+        "third_party_payment_error": "Παρουσιάστηκε σφάλμα κατά τη φόρτωση του επιλεγμένου τρόπου πληρωμής. Χρησιμοποιήστε άλλη μέθοδο πληρωμής.",
+        "add_shipping_address": "Προσθήκη διεύθυνσης παράδοσης",
+        "choose_new_address": "Επιλέξτε μια νέα διεύθυνση",
+        "unbranded_description_same_day": "Αποστέλλεται την ίδια εργάσιμη ημέρα",
+        "unbranded_description_with_fulfillment_days": {
+          "one": "Αποστέλλεται την επόμενη εργάσιμη ημέρα",
+          "other": "Αποστέλλεται μέσα %{count} εργάσιμες ημέρες",
+          "few": "Αποστέλλεται μέσα %{count} εργάσιμες ημέρες"
+        },
+        "unbranded_description_with_fulfillment_weeks": {
+          "one": "Αποστέλλεται μέσα %{count} εβδομάδα"
         }
       },
       "general": {
