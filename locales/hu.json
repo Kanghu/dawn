@@ -2621,18 +2621,59 @@
       },
       "local_pickup": {
         "location_information": {
-          "few": "Létezik %{count} tárolók, amelyek közelében állnak %{address}"
+          "few": "közel vagyok hozzád %{count} raktárkészlettel rendelkező helyek",
+          "one": "közel vagyok hozzád %{count} hely raktárkészlettel",
+          "other": "közel vagyok hozzád %{count} raktárkészlettel rendelkező helyek"
         },
         "paginator": {
           "label": {
-            "few": "%{first} - %{last} TÓL %{count} üzlet"
-          }
+            "few": "%{first} - %{last} től %{count} üzletek",
+            "one": "%{first} - %{last} től %{count} bolt",
+            "other": "%{first} - %{last} től %{count} üzletek"
+          },
+          "accessibility_label": "Helyi visszakeresés oldalszámozás",
+          "previous": "Előző oldal",
+          "next": "Következő oldal"
         },
         "reveal_more_label": {
-          "few": "Még mindig megjelenít %{count} (OF) helyek"
+          "few": "Mutass többet %{count} (a) helyekről",
+          "one": "Mutass többet %{count} helyen",
+          "other": "Mutass többet %{count} (a) helyekről"
         },
         "location_information_next": {
           "few": "Létezik %{count} Elhelyezkedés a közelben lévő készletekkel"
+        },
+        "toggle_location": "Hely módosítása",
+        "or": "VAGY",
+        "cancel": "Mégsem",
+        "your_location": "az Ön tartózkodási helye",
+        "search_button": "Keressen üzleteket",
+        "no_stores_found": "Nem található üzlet",
+        "could_not_resolve_address": "Az Ön címe nem található. Kérjük, próbálja újra, vagy használjon másik címet",
+        "location_address_search_label": "Cím",
+        "all_stores_far_away": {
+          "title": "A legközelebbi helyek nagyobb távolságra vannak ettől %{distance}",
+          "description": "Válasszon ki egy helyet, vagy %{ship_to_address_link}",
+          "ship_to_address_link": "szállítási cím",
+          "title_with_location": "A legközelebbi helyszín véget ért %{distance} szemben %{location}",
+          "description_with_location": "%{change_location_link} vagy %{ship_to_address_link}",
+          "change_location_link": "Módosítsa a tartózkodási helyét",
+          "title_with_specific_location": "A legközelebbi hely, ahol a tétel található, több távolságra van %{distance} a %{location}",
+          "title_with_item": {
+            "one": "A legközelebbi hely a tételhez több mint %{distance} a %{location}",
+            "other": "A legközelebbi hely a tételekkel több mint %{distance} a %{location}",
+            "few": "A legközelebbi hely a tételekkel több mint %{distance} a %{location}"
+          }
+        },
+        "selected_pickup_option_no_longer_available": {
+          "title": "A korábban kiválasztott hely már nem elérhető",
+          "description": "Kiválasztottuk a legközelebbi helyet, ahol raktáron lévő termékei vannak."
+        },
+        "pick_up_location": "Felvétel helye",
+        "no_pickup_locations_found": "Nem található átvételi hely",
+        "pickup_unavailable_banner_body": {
+          "try_different_location": "Próbálkozzon másik hellyel",
+          "ship_to_address": "szállítási cím"
         }
       },
       "merchandise_unavailable_in_buyer_location": {
@@ -2642,8 +2683,16 @@
       },
       "review_address_modal": {
         "subtitle": {
-          "few": "Ezt a parancsot a címre szállítják {{merchant}}. Válassza ki a szállítási címet."
-        }
+          "few": "Ezt a rendelést a megadott címre szállítjuk {{merchant}}. Válasszon egy szállítási címet.",
+          "one": "Ezt a rendelést a megadott címre szállítjuk {{merchant}}.",
+          "other": "Ezt a rendelést a megadott címre szállítjuk {{merchant}}. Válasszon egy szállítási címet."
+        },
+        "title": "Tekintse át a címet",
+        "subtitle_no_match": "Ez a cím nem egyezik az Ön által elmentett címek egyikével sem.",
+        "subtitle_must_use": "Megrendelését erre a címre szállítjuk.",
+        "continue": "Folytassa ezzel a címmel",
+        "use_saved_address": "Használjon másik címet",
+        "return_to_cart": "Vissza a kosárba"
       },
       "merchant_instruction_errors": {
         "invalid_entrypoint_for_remote_negotiation": "A távolról nem zajló tárgyalási ülések esetén a távoli tárgyalási utasítások megadása nem lehetséges."
@@ -3262,9 +3311,19 @@
           },
           "errors_in_section": {
             "one": "{{count}} hiba a szakaszban {{section}}",
-            "other": "{{count}} szakasz hibái {{section}}"
+            "other": "{{count}} szakasz hibái {{section}}",
+            "few": "{{count}} szakasz hibái {{section}}"
           }
         }
+      },
+      "marketplaces": {
+        "legal_notice": {
+          "legal_text": "Konzultáljon",
+          "link_label": "Feltételek {{partnerDisplayName}}"
+        }
+      },
+      "online_store_chat": {
+        "title": "Kérdései vannak? Csevegés velünk"
       }
     },
     "notices": {
