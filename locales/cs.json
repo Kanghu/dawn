@@ -1139,7 +1139,63 @@
           "delivery": {
             "only_one_delivery_line_allowed": "Košík musí mít pouze jeden dodací řádek.",
             "wrong_number_of_delivery_lines": "Pro každou skupinu zboží musí být uvedena dodací linka.",
-            "external_delivery_promise_error": "Při načítání příslibu externího doručení došlo k chybě."
+            "external_delivery_promise_error": "Při načítání příslibu externího doručení došlo k chybě.",
+            "options_instructions_invalid": "Zadané pokyny neodpovídají očekávanému vzoru.",
+            "destination_address_required": "Pro pokračování je vyžadována cílová adresa.",
+            "pickup_points_unavailable": "Výdejní místa jsou momentálně nedostupná.",
+            "local_pickup_delivery_line_detail_changed": "Aby bylo možné pokračovat, je třeba změnit aktuální strategii místního vyzvednutí.",
+            "local_pickup_no_delivery_strategy_available": "Nebyla nalezena žádná dostupná strategie místního vyzvednutí.",
+            "origin_location_id_required": "ID místa původu je vyžadováno, když je požadován způsob doručení MALOOBCHOD.",
+            "invalid_origin_location_id": "Nebylo nalezeno místo odpovídající původnímu ID umístění.",
+            "origin_location_id_not_allowed": "Požadované způsoby doručení nepodporují ID umístění původu.",
+            "auto_fulfill_not_allowed": "Tato relace není oprávněna zrušit chování plnění.",
+            "auto_fulfill_required": "Při požadavku na způsob dodání MALOOBCHOD je vyžadováno automatické plnění.",
+            "prefetch_shipping_rates_used": "Předem načtené sazby za dopravu by nikdy neměly vrátit sazby.",
+            "fulfillment_constraints_not_satisfied": "Jedno nebo více omezení plnění nebylo splněno.",
+            "must_fulfill_from_constraint_not_satisfied": "Omezení plnění nejsou splněna, protože položky nelze splnit z požadovaných umístění.",
+            "must_fulfill_from_same_location_constraint_not_satisfied": "Omezení plnění nejsou splněna, protože položky nelze splnit ze stejného místa.",
+            "delivery_strategy_conditions_not_satisfied": "Pro tuto lokalitu jsou k dispozici strategie doručení, ale jejich podmínky nejsou splněny.",
+            "out_of_stock_at_origin_location": "Žádné zásoby v místě původu.",
+            "invalid_signature": "Neplatný podpis slevy.",
+            "selected_pickup_option_no_longer_available": "Dříve vybraná možnost vyzvednutí již není k dispozici.",
+            "mixed_destination_countries": "Doprava není k dispozici, protože přepravní linky pokrývají více zemí."
+          },
+          "discount": {
+            "discounts_not_allowed_for_b2b": "V B2B obchodech nejsou povoleny slevy.",
+            "custom_discount_not_honoured": "Poskytnutá vlastní sleva nebyla dodržena.",
+            "unsupported_expectation": "Poskytnutý diskontní řádek obsahoval očekávání, které politika nemohla interpretovat.",
+            "additional_requested_discount_code_discarded": "{{code}} je platný, ale nepoužitelný. Viz ustanovení o slevách.",
+            "allocations_mismatch": "Váš slevový kód se změnil. Zkontrolujte svůj nákupní košík a zkuste to znovu.",
+            "discount_code_not_honoured": "%{discount_rejection_message}",
+            "discount_title_too_long": "Název slevy nesmí být delší než 255 znaků.",
+            "additional_requested_discount_discarded": "Vaše sleva je platná, ale nelze ji uplatnit. Viz ustanovení o slevách.",
+            "mixed_destination_countries": "Slevy nejsou dostupné, protože přepravní linky pokrývají více zemí."
+          },
+          "tax": {
+            "new_tax_must_be_accepted": "Poplatky spojené s vaší objednávkou se změnily. Zkontrolujte prosím a zkuste to znovu.",
+            "unresolvable_tax_terms": "Vzhledem k aktuálnímu kontextu vyjednávání nelze navržené podmínky vyřešit.",
+            "delivery_price_is_abstract": "Související cena dopravy je abstraktní.",
+            "tax_inclusivity_mismatch": "Znovu vyjednávejte s konkrétní hodnotou totalTaxAndDutyAmount nebo totalAmountIncludedInTarget.",
+            "tax_exemption_not_supported": "Prominutí poplatků není pro aktuální obchodní seanci akceptováno.",
+            "delivery_tax_exemption_not_supported": "Osvobození od daně není v současné době přijímáno pro dodací linky.",
+            "proposed_allocations_required": "Chybí pole „navrhované přidělení“.",
+            "merchandise_terms_must_be_defined": "Musí být definovány podmínky pro náklad.",
+            "delivery_terms_must_be_defined": "Musí být definovány podmínky dodání.",
+            "merchandise_discount_terms_must_be_defined": "Musí být definovány podmínky pro slevu související s komoditou.",
+            "delivery_discount_terms_must_be_defined": "Musí být definovány podmínky pro slevu za doručení.",
+            "allocated_required": "Chybí pole „přiřazeno“.",
+            "value_required": "Chybí pole \"hodnota\".",
+            "line_splits_not_supported": "Pole „Nákladní linky“ musí být rozděleno tak, aby každé mělo v nabídce prodejce jednu komponentu řádku."
+          },
+          "payment": {
+            "manual_payments_not_allowed_for_b2b": "Manuální platby nejsou v B2B obchodech povoleny.",
+            "positive_amount_expected": "Částka k zaplacení musí být větší než 0.",
+            "total_amount_mismatch": "Součet plateb neodpovídá součtu hodnot plateb.",
+            "subscription_terms_not_accepted": "Podmínky předplatného nebyly přijaty.",
+            "missing_session_id": "Pro relaci chybí informace o kreditní kartě.",
+            "gateway_not_supported": "Platební brána nepodporuje ukládání platebních metod.",
+            "credit_card_last_name_required": "Pole \"příjmení\" nemůže mít hodnotu nula.",
+            "credit_card_update_failed": "Aktualizace kreditní karty se nezdařila."
           }
         }
       }
