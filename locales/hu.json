@@ -1715,7 +1715,9 @@
           "few": "A bankkártyákkal történő fizetés jelenleg nem érhető el.<br><a href=\"%{current_url}\">Frissítse az oldalt</a> Vagy próbáljon ki egy másik fizetési módszert."
         },
         "expired_cards_info": {
-          "few": "Létezik %{count} Lejárt kártyák, amelyeket a fiókjában láthat és szerkeszthet."
+          "few": "Van %{count} lejárt kártyákat, amelyeket megtekinthet és szerkeszthet fiókjában.",
+          "one": "Van %{count} lejárt kártya, amelyet fiókjában tekinthet meg és szerkeszthet.",
+          "other": "Van %{count} lejárt kártyákat, amelyeket megtekinthet és szerkeszthet fiókjában."
         },
         "order_edit_banner_items_added": {
           "few": "Hozzáadva (ek): %{count}"
@@ -1818,7 +1820,70 @@
         "payment_method_saved": "Mentett fizetési mód",
         "card_vaulted_company_location": "A kártya mentve ehhez a helyhez",
         "order_covered_by_store_credit_notice": "Megrendelését bolti jóváírás fedezi.",
-        "order_covered_by_redeemables_notice": "Rendelése fedezve van."
+        "order_covered_by_redeemables_notice": "Rendelése fedezve van.",
+        "store_credit": {
+          "label": "Bolti hitel",
+          "apply_label": "Alkalmazzon bolti jóváírást",
+          "add_label": "Adjon hozzá bolti hitelt",
+          "manage_label": "Üzleti hitel kezelése",
+          "buying_gift_card": "Ajándékkártya vásárlására nem használhatod fel a bolti hitelt",
+          "no_fixed_selling_plans": "Halasztott vásárlási lehetőségekre nem használhat fel bolti jóváírást"
+        },
+        "clear": "Ürítse ki",
+        "billing_must_match_shipping_notice": "A fizetési módhoz társított számlázási címnek meg kell egyeznie a szállítási címmel.",
+        "same_billing_address_checkbox_label": "Számlázási címként használja a szállítási címet",
+        "location_billing_address_label": "A hely számlázási címe",
+        "fact_billing_address_label": "Számlázási cím",
+        "location_shipping_address_label": "A helyszín szállítási címe",
+        "no_working_method_error": "Ez az üzlet jelenleg nem fogad fizetést. Frissítse az oldalt, vagy térjen vissza később.",
+        "brand_not_available": "Ez az üzlet nem fogadja el {{brand}}. Használjon másik kártyát a fizetéshez.",
+        "shipping_rate_updated": "Frissültek az elérhető szállítási módok. A vásárlás befejezése előtt erősítse meg választását.",
+        "billing_address_invalid_phone": "A folytatáshoz frissítse a telefonszámot a számlázási címében {{label}} {{last_digits}}.",
+        "billing_address_invalid_phone_no_card": "A folytatáshoz frissítse a telefonszámot a számlázási címében.",
+        "preview_not_available": {
+          "title": "Az előnézet nem érhető el",
+          "content": "Ne aggódjon, ez az expressz fizetési mód az ügyfelek számára működik.",
+          "button": "oké"
+        },
+        "card_fields": {
+          "errors": {
+            "required": {
+              "issue_date": "Adjon meg egy érvényes kiadási dátumot",
+              "issue_number": "Adjon meg egy érvényes kiadási számot"
+            },
+            "invalid": {
+              "verification_value": "Adjon meg egy érvényes CVV-t vagy biztonsági kódot"
+            }
+          }
+        },
+        "simulated_checkout": "Az előzetes hamarosan elérhető lesz",
+        "vaulting_agreement_label": "Ezzel kapcsolatos fizetési információkat szeretnék menteni %{company}, a rendelések gyorsabb teljesítése érdekében.",
+        "business_customer_vaulting_payment_label": "Mentse el ezt a fizetési módot fizetéskor, és engedélyezze %{company} a jövőbeni vásárlások kifizetéséhez ezen a helyen. Az ehhez a helyhez rendelt összes kapcsolattartó használhatja a fizetési módot.",
+        "purchase_options_and_vaulting_agreement_label": "A kosárban lévő egy vagy több tétel halasztott vásárlás vagy előfizetéses vásárlás. A fizetés folytatásával Ön elfogadja, hogy fizetési módját automatikusan megterheljük az ezen az oldalon megadott áron és gyakorisággal mindaddig, amíg az előfizetése le nem jár, vagy le nem mondja. Minden lemondásnak meg kell felelnie a %{cancellation_policy_label}.",
+        "purchase_options_cancellation_policy_label": "lemondási feltételek",
+        "use_different_credit_card_label": "Használjon másik kártyát",
+        "saved_credit_card": "Hitelkártyája mentve",
+        "saved_credit_card_info": "Az utolsó négy számjegy",
+        "saved_credit_cards_modal": {
+          "view_all_label": "Az összes mentett kártya megtekintése",
+          "done": "kész",
+          "cancel": "Mégsem"
+        },
+        "local_payment_method_receiver_notice": "A rendelés leadása után megkapja a fizetési adatokat. Fizessen ATM-ben vagy legfeljebb online {{dueDays}} (a) napból.",
+        "order_edit_banner_title": "Az összeget ki kell fizetni {{amount_owed}}",
+        "order_edit_banner_subtitle": "a rendelésed, {{order_number}}, frissítve lett. Tekintse át ezeket a módosításokat, majd fizessen a rendelés megerősítéséhez.",
+        "order_edit_banner_single_item_added": "Hozzáadva",
+        "order_edit_banner_multiple_items_added": "Hozzáadott(ok): {{amount}}",
+        "order_edit_banner_single_item_removed": "Eltávolítva",
+        "order_edit_banner_multiple_items_removed": "Eltávolított(ok): {{amount}}",
+        "gift_card_wrapper": {
+          "heading": "Ajándékkártya",
+          "apply_gift_card_label": "Alkalmazzon ajándékutalványt",
+          "payment_tag": "Ajándékkártya",
+          "apply_another_gift_card_label": "Használjon másik ajándékutalványt",
+          "gift_card_label": "%{identifier} az ajándékutalványért",
+          "add_label": "Adjon hozzá ajándékutalványt"
+        }
       },
       "shipping_errors": {
         "shipping_method_not_available_generic": {
