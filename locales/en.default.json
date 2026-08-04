@@ -4206,6 +4206,17 @@
             }
           }
         }
+      },
+      "account_information": {
+        "company_card_name_label": "Company name",
+        "company_card_section_accessibility_label": "Company"
+      },
+      "locations": {
+        "contact_email": "Email",
+        "contact_list_title": "Persons",
+        "contact_name": "Name",
+        "contact_permissions": "Permissions",
+        "contact_phone_number": "Phone number"
       }
     },
     "errors": {
@@ -4459,7 +4470,56 @@
       "delete_confirmation_button": "Delete the address",
       "delete_confirmation_button_accessibility_label": "Delete the address {{address}}",
       "delete_confirmation_message": "Delete address? Existing orders will not be affected.",
-      "edit_button": "Edit"
+      "edit_button": "Edit",
+      "edit_button_accessibility_label": "Edit address {{address}}",
+      "edit_section_accessibility_label": "Edit address {{address}}",
+      "loading_accessibility_message": "Loading address",
+      "loading_addresses_accessibility_message": "Loading addresses",
+      "loading_billing_accessibility_message": "Loading billing address",
+      "loading_finished_accessibility_message": "The new address page has loaded",
+      "loading_shipping_accessibility_message": "Loading billing addresses",
+      "pagination": {
+        "load_more": "Show more",
+        "load_more_accessibility_label": "Show more addresses"
+      },
+      "save_new_address_accessibility_label": "Save the address",
+      "title": "Addresses",
+      "delete_confirmation_title": "Delete address?",
+      "delete_confirmation_description": "Existing orders will not be affected.",
+      "edit_modal_title": {
+        "default": "Edit address",
+        "billing": "Edit billing address",
+        "shipping": "Edit shipping address"
+      },
+      "add_address_banner": "Add addresses to use at checkout",
+      "billing_address_dropdown_placeholder": "Billing address",
+      "add_button_text": "Add",
+      "add_button_accessibility_label": "Add an address",
+      "back_button": "Back",
+      "back_button_accessibility_label": "Back to address editing {{address}}",
+      "no_addresses_banner": "No address added"
+    },
+    "address_form": {
+      "auto_complete_close_accessibility_label": "Close suggestions",
+      "auto_complete_title": "Suggestions",
+      "billing_address": "Use as billing address",
+      "cancel": "Cancel",
+      "cancel_accessibility_label": "Cancel address editing {{address}}",
+      "creation_success_notification": "Address added",
+      "default_address": "This is my default address",
+      "default_address_creation_success_notification": "Added default address",
+      "default_address_update_success_notification": "Updated default address",
+      "loading_add_form_accessibility_message": "Loading the form to add a new address",
+      "loading_edit_form_accessibility_message": "The form for editing an address is loading",
+      "loading_finished_accessibility_message": "The address form has been loaded",
+      "save": "Save",
+      "save_accessibility_label": "Save the address {{address}}",
+      "section_title_accessibility_label": "Add an address",
+      "update_success_notification": "Address updated",
+      "attention": "Attention",
+      "attention_help_text": "Name of a person or department",
+      "loading_form_accessibility_message": "Loading the address form",
+      "attention_company": "Company/attention"
     }
   },
   "pagefly": {
