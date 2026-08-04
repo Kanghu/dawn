@@ -1324,8 +1324,22 @@
       },
       "customer_account": {
         "saved_address_option_description": {
-          "few": "te {{count}} mentett címek."
-        }
+          "few": "Megvan {{count}} mentett címek.",
+          "one": "Megvan {{count}} cím mentve.",
+          "other": "Megvan {{count}} mentett címek."
+        },
+        "not_user_label": "Nem vagy az %{first_name}?",
+        "have_an_account_label": "Van fiókod?",
+        "sign_in_link_label": "Csatlakoztassa magát",
+        "sign_out_link_label": "Jelentkezzen ki",
+        "save_my_information_label": "Őrizze meg ezt az információt a következő alkalomra",
+        "invalid_address": "A kiválasztott cím érvénytelen. %{update_address_link} vagy válasszon másik címet.",
+        "incomplete_address": "A kiválasztott cím nem teljes. %{update_address_link} vagy válasszon másik címet.",
+        "rollup_label": "fiókot",
+        "invalid_shipping_method_summary": "Válassza ki a szállítási címet az elérhető szállítási módok megtekintéséhez",
+        "saved_address_option_link": "Mentett címet szeretnék használni",
+        "saved_address_modal_title": "A mentett címemet szeretném használni",
+        "rollup_accessibility_label": "Fiókhoz kapcsolódó lehetőségek"
       },
       "stock": {
         "unshippable_product": {
@@ -1346,7 +1360,17 @@
           "default_message": {
             "few": "A kiválasztott kézbesítési módszer már nem érhető el ezekhez az elemekhez."
           }
-        }
+        },
+        "page_title": "Leltári problémák",
+        "title": "Nincs raktáron",
+        "items_unavailable_notice": "Néhány elem már nem elérhető.",
+        "product_column_header": "Termékek",
+        "quantity_column_header": "Mennyiség",
+        "price_column_header": "Ár",
+        "status_column_header": "Állapot",
+        "removed_from_cart_notice": "Eltávolították a kosárból",
+        "sold_out_label": "Elfogyott",
+        "reduced_label": "Csökkentett"
       },
       "order_summary": {
         "expand_component_information": {
@@ -1699,7 +1723,32 @@
       },
       "delivery_options": {
         "ship": "Küldje el",
-        "pick_up": "felvenni"
+        "pick_up": "felvenni",
+        "pick_up_in_two_hours": "Általában két óra alatt készen van",
+        "pick_up_in_four_hours": "Általában 4 óra alatt kész",
+        "pick_up_immediately": "Készen áll az átvételre",
+        "pick_up_next_day": "Másnapi átvételre készen",
+        "pick_up_in_one_hour": "Általában egy órán belül készen van",
+        "pick_up_in_twenty_four_hours": "Általában 24 órán belül kész",
+        "pick_up_in_two_to_four_days": "Általában 2-4 nap alatt elkészül",
+        "pick_up_in_five_or_more_days": "Általában több mint 5 napon belül készen van",
+        "pick_up_in_zero_to_two_hours": "2 óra alatt átvehető",
+        "pick_up_in_two_to_four_hours": "4 óra alatt átvehető",
+        "free_total_label": "ingyenes",
+        "shipping_address": "Szállítási cím",
+        "pick_up_locations": "Helyek felvétele",
+        "pickup_point_method_definition": "Szállítás átvételi pontra",
+        "retail_method_definition": "Kiskereskedelmi szállítás",
+        "none_method_definition": "Nincs szállítás",
+        "subscription_pickup_information": "Ez lesz az előfizetésében szereplő összes jövőbeli rendelés átvételi helye.",
+        "ship_to_address": "Szállítás a címre",
+        "pick_up_from_store": "Vedd át az üzletből",
+        "company_location_no_address_banner": "A cím nélküli helyre szállított rendeléseket elbírálásra küldjük.",
+        "pickup": "Emelés",
+        "pickup_store": "Bolti átvétel",
+        "pickup_point": "Felvételi pont",
+        "pickup_point_map_title": "Az átvételi pontok térképe",
+        "digital_product": "Digitális termék"
       }
     },
     "notices": {
