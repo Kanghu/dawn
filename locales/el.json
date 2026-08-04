@@ -1166,17 +1166,24 @@
           "other": "Παραγγείλετε εκπτώσεις"
         },
         "subtotal_label_with_quantity": {
-          "few": "Υποταγή · %{count} προϊόντα",
-          "one": "Μερικό σύνολο · %{count} άρθρο"
+          "few": "Μερικό σύνολο · %{count} άρθρα",
+          "one": "Μερικό σύνολο · %{count} άρθρο",
+          "other": "Μερικό σύνολο · %{count} άρθρα"
         },
         "number_items": {
-          "few": "%{count} προϊόντα"
+          "few": "%{count} άρθρα",
+          "one": "%{count} άρθρο",
+          "other": "%{count} άρθρα"
         },
         "view_all_items": {
-          "few": "Δείτε όλα %{count} προϊόντα"
+          "few": "Δείτε όλα αυτά %{count} άρθρα",
+          "one": "δείτε %{count} άρθρο",
+          "other": "Δείτε όλα αυτά %{count} άρθρα"
         },
         "pickup_unavailable_banner_title": {
-          "few": "Τα αντικείμενά σας δεν μπορούν να αρθούν από το κατάστημα"
+          "few": "Δεν υπάρχουν διαθέσιμα καταστήματα με τα προϊόντα σας",
+          "one": "Δεν υπάρχουν διαθέσιμα καταστήματα με το προϊόν σας",
+          "other": "Δεν υπάρχουν διαθέσιμα καταστήματα με τα προϊόντα σας"
         },
         "unit_price": {
           "per_item": {
@@ -1193,7 +1200,9 @@
           }
         },
         "pickup_unavailable_banner_title_with_country": {
-          "few": "Σε %{country} δεν υπάρχουν διαθέσιμα καταστήματα με τα προϊόντα σας"
+          "few": "Σε %{country} δεν υπάρχουν διαθέσιμα καταστήματα με τα προϊόντα σας",
+          "one": "Σε %{country} δεν υπάρχουν διαθέσιμα καταστήματα με το προϊόν σας",
+          "other": "Σε %{country} δεν υπάρχουν διαθέσιμα καταστήματα με τα προϊόντα σας"
         },
         "product_image_label": "Εικόνα προϊόντος",
         "scroll_order_summary": "Κάντε κύλιση για περισσότερα άρθρα",
@@ -1276,7 +1285,49 @@
           "title": "Αξία ισορροπίας {{amount_due}} έχει ημερομηνία λήξης {{due_at}}",
           "due_on_fulfillment_title": "Αξία ισορροπίας {{amount_due}} έχει την ημερομηνία λήξης την ώρα της τιμής"
         },
-        "eligible_customer_missing_notice": "Για τον εκπτωτικό κωδικό <strong style=\"text-transform:uppercase\">%{code}</strong> απαιτείται κατάλληλος πελάτης"
+        "eligible_customer_missing_notice": "Για τον εκπτωτικό κωδικό <strong style=\"text-transform:uppercase\">%{code}</strong> απαιτείται κατάλληλος πελάτης",
+        "cost_table_item_column_header": "Άρθρο",
+        "cost_table_value_column_header": "Αξία",
+        "product_image_quantity_label": "Ποσότητα",
+        "more_items_modal": {
+          "clear_search": "Εκκαθαρίστε την αναζήτηση",
+          "empty_results": "Δεν βρέθηκαν αποτελέσματα για \"%{searchText}\". Ελέγξτε την ορθογραφία σας ή χρησιμοποιήστε διαφορετική λέξη ή φράση.",
+          "number_items_shown": "%{shownNumber} από %{totalNumber} άρθρα",
+          "search_item": "Αναζήτηση"
+        },
+        "price_before_discount_aria_text": "Αρχική τιμή",
+        "price_after_discount_aria_text": "Μειωμένη τιμή",
+        "discount_code_aria_text": "Κωδικός έκπτωσης",
+        "pickup_unavailable_banner_body": {
+          "ship_to_address": "Διεύθυνση αποστολής",
+          "ship_to_address_instead_html": "%{link} αντί"
+        },
+        "deposit_label": "Αποθήκη",
+        "total_due_today_label": "Συνολικά ληξιπρόθεσμα σήμερα",
+        "total_due_later_label": "Σύνολο ληξιπρόθεσμα",
+        "discount_code_allocations_mismatch": "Ο εκπτωτικός σας κωδικός <strong style=\"text-transform:uppercase\">%{code}</strong> έχει αλλάξει. Ελέγξτε το καλάθι αγορών σας και δοκιμάστε ξανά.",
+        "deferred_total_due_date_label_next": "Προθεσμία: %{date}",
+        "total_due_label": "Εντελώς οφειλόμενο",
+        "total_price_label": "Συνολική τιμή",
+        "for_add_on": "Για: %{group_title}",
+        "unconfirmed_label": "Ανεπιβεβαίωτο",
+        "total_paid_label": "Συνολικά πληρωμένα",
+        "from_shop_heading": "Από %{shop_name}",
+        "from_other_stores_heading": "Από άλλα καταστήματα",
+        "estimated_taxes_label_short": "Εκτιμώμενος",
+        "order_discounts_apply_to_local_shop": "Στην περίπτωση παραγγελιών, οι εκπτώσεις ισχύουν μόνο σε είδη από %{shop_name}",
+        "gift_cards_apply_to_local_shop": "Οι δωροκάρτες ισχύουν μόνο για είδη από %{shop_name}",
+        "discount_code_removed": "Κωδικός έκπτωσης %{code} αφαιρέθηκε",
+        "discount_code_replaced": "Κωδικός έκπτωσης %{old_code} αφαιρέθηκε και εφαρμόστηκε ο κωδικός %{code}",
+        "discount_code_replaced_multiple": "Αρκετοί εκπτωτικοί κωδικοί έχουν αφαιρεθεί και ο κωδικός έχει εφαρμοστεί %{code}",
+        "from_multiple_stores_heading": "Από πολλά καταστήματα",
+        "pay_merchant_label": "Πληρώστε %{merchant_name}",
+        "discount_applies_to_subscription_items_only": "Αυτή η έκπτωση ισχύει μόνο για είδη που περιλαμβάνονται στη συνδρομή",
+        "estimated_taxes_finalization_tooltip_content_short": "Η χρέωση πραγματοποιείται μετά την πληρωμή",
+        "compare_at_sale": "προώθηση (%{sale_amount})",
+        "discount_code_applied_count": {
+          "few": "Εμφάνιση %{count} εκπτώσεις"
+        }
       },
       "payment": {
         "order_covered_by_gift_cards_notice": {
