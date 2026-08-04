@@ -2615,8 +2615,23 @@
       },
       "merchandise_unavailable_in_buyer_location": {
         "remove_items_action": {
-          "few": "élimine les articles indisponibles"
-        }
+          "few": "supprimer les éléments indisponibles",
+          "one": "supprimer l'article indisponible",
+          "other": "supprimer les éléments indisponibles"
+        },
+        "banner_title": {
+          "some_products_one": "Ce produit ne peut pas être livré à %{location_name}.",
+          "some_products_other": "Ces produits ne peuvent pas être livrés à %{location_name}.",
+          "all_products_one": "Le produit dans le panier ne peut être livré à %{location_name}.",
+          "all_products_other": "Les produits du panier ne peuvent pas être livrés à %{location_name}."
+        },
+        "missing_country_fallback": "votre pays",
+        "indeterminate_location_fallback": "votre emplacement",
+        "cart_updated": "Votre panier a été mis à jour.",
+        "change_address_only": "Modifiez l'adresse de livraison pour continuer.",
+        "change_address_or_remove": "Changez l'adresse de livraison ou %{remove_action}.",
+        "empty_cart_action": "vider le panier et retourner au magasin",
+        "unavailable_line_item": "%{product_name}/%{variant_label}"
       },
       "review_address_modal": {
         "subtitle": {
@@ -3387,7 +3402,67 @@
           "checkout_has_expired": "Le délai de paiement a expiré. Fermez cette fenêtre et essayez à nouveau de terminer la commande {{shopName}}."
         },
         "return_to_store": "Revenez à {{shopName}}",
-        "return_to_store_simple": "Revenez au magasin"
+        "return_to_store_simple": "Revenez au magasin",
+        "title": "Finaliser la commande avec Shop Pay"
+      },
+      "company_location": {
+        "location_title": "Localisation de l'entreprise",
+        "location_rollup_accessibility_label": "Options d'emplacement de l'entreprise"
+      },
+      "one": {
+        "errors": {
+          "merchandise": {
+            "gift_card_price_must_be_greater_than_zero": "Le prix de la carte cadeau doit être supérieur à 0.",
+            "subtotal_limit_reached": "La valeur maximale des objets a été atteinte.",
+            "gift_card_price_must_not_exceed_limit": "Le prix de la carte cadeau ne doit pas dépasser %{gift_card_limit}.",
+            "signature_mismatch": "La signature du produit ne correspond pas à la ligne %{stable_id}."
+          }
+        }
+      },
+      "clipboard": {
+        "copied": "Copié",
+        "failed_to_copy": "Impossible de copier"
+      },
+      "payment_challenge_modal": {
+        "instructions": "Terminez l'achat en utilisant le code {{paymentMethod}}",
+        "timer_message": "Vous avez à votre disposition {{timeLeft}} payer",
+        "copy_text": "Copiez le code pour {{paymentMethod}}",
+        "header": "Payer avec {{paymentMethod}}",
+        "qr_code": {
+          "instructions": "Terminez l'achat en utilisant le code {{paymentMethod}}",
+          "wechat_instructions": "Scannez ce code QR avec l'application WeChat sur votre téléphone pour finaliser votre achat",
+          "wechat_instructions_mobile": "Scannez ce code QR avec l'application WeChat sur un autre appareil pour finaliser votre achat"
+        },
+        "external": {
+          "instructions": "Confirmez le paiement dans l'application pour finaliser cet achat"
+        },
+        "close": "Clôture le défi",
+        "open_app_text": "Ouvrez l'application {{paymentMethod}}"
+      },
+      "artifact_errors": {
+        "artifact_dissatisfaction_without_violation": "Un problème est survenu lors du traitement de votre commande. Veuillez réessayer dans quelques minutes."
+      },
+      "merchant_instruction_errors": {
+        "empty_stable_id": "Instructions de marchandise %{name} %{position} contiennent un identifiant stable vierge.",
+        "invalid_stable_id_target": "Instructions de marchandise %{name} %{position} faire référence à un identifiant stable %{stable_id}, mais cet identifiant stable n'est pas dans les lignes de fret.",
+        "duplicate_variant_id": "Instructions de marchandise %{name} %{position} contenir un identifiant de variante en double %{variant_id}.",
+        "invalid_variant_id_target": "Instructions de marchandise %{name} faire référence à un identifiant de variante %{variant_id}, mais cette variante n'est pas dans les lignes de fret.",
+        "invalid_price_override_target": "L'instruction pour remplacer le prix de la marchandise pour l'article %{stable_id} n'est pas valide car il s'agit d'un composant dans un ensemble.",
+        "discount_not_supported": "Les instructions du commerçant n'incluent pas l'application de telles réductions."
+      },
+      "b2b_errors": {
+        "lost_b2b_purchasing_permissions": "Vous n'êtes plus autorisé à passer des commandes B2B. %{logout_url} pour passer une commande personnelle à la place.",
+        "log_out_link_text": "Se déconnecter",
+        "lost_permissions_subtitle": "Vous n'êtes plus autorisé à passer des commandes B2B. Déconnectez-vous pour passer une commande personnelle.",
+        "lost_permissions_title": "Aucune autorisation de localisation"
+      },
+      "units": {
+        "milligram": "mg",
+        "gram": "Monsieur",
+        "kilogram": "kilos",
+        "milliliter": "ml",
+        "centiliter": "cl",
+        "liter": "je"
       }
     },
     "notices": {
