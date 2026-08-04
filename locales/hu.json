@@ -3926,13 +3926,48 @@
           "run_error": "Hiba történt a kosarával kapcsolatban."
         },
         "gift_card_price_must_be_greater_than_zero": "A termék készlet formájában\"%{name}” nem tehető a kosárba.",
-        "cart_too_large": "A kosár túl nagy."
+        "cart_too_large": "A kosár túl nagy.",
+        "gift_card_recipient_validation_error": "A megadott ajándékutalvány címzettje nem érvényes",
+        "invalid_input": "A paraméter %{parameter} érvénytelen.",
+        "buyer_cannot_purchase_for_company_locations": "Ezen a helyen nem vásárolhat",
+        "only_one_added_to_cart": "A rendelkezésre állás miatt csak 1 termék került a kosarába.",
+        "only_n_added_to_cart": "Csak %{quantity} A termékek a rendelkezésre állás miatt a kosaradba kerültek.",
+        "maximum_available_quantity_reached": "A termék maximális mennyisége már a kosárban van.",
+        "cart_attributes_error": "A bevásárlókosár attribútumok helytelen adatokat tartalmaznak.",
+        "merchandise_not_applicable": "Ez az elem nem vásárolható meg konfigurált állapotban.",
+        "not_found": "A kosár nem található"
+      },
+      "storefront": {
+        "invalid_password": "Hibás jelszó, próbálja újra."
+      },
+      "tags": {
+        "add_articles": "Szűkítse a keresést azokra az elemekre, amelyek szintén rendelkeznek a címkével %{tag}",
+        "add_products": "Szűkítse a választékot a címkének megfelelő termékekre %{tag}",
+        "remove_articles": "Bővítse ki a keresést olyan elemekre, amelyek nincsenek megcímkézve %{tag}",
+        "remove_products": "Távolítsa el a címkét %{tag}"
+      },
+      "line_item": {
+        "item_status": {
+          "add_variant": "Hozzáadták %{delta}",
+          "increment_item": "Hozzáadták %{delta}",
+          "decrement_item": "Kiestek %{delta} től %{total}",
+          "decrement_fulfilled_line_item": "Visszatértek %{delta} től %{total}",
+          "decrement_return_line_item": "El lett távolítva %{delta} a visszatéréstől"
+        }
       }
     },
     "page_titles": {
       "search_results": {
         "few": "Keresés: Megtalálták őket %{count} Eredmények \"%{terms}”"
-      }
+      },
+      "products": "Termékek",
+      "shopping_cart": "Az Ön bevásárlókosara",
+      "account": "fiókot",
+      "create_account": "Hozzon létre egy fiókot",
+      "reset_account": "Állítsa vissza fiókját",
+      "addresses": "Címek",
+      "order": "Rendeljen %{name}",
+      "search": "Keresés"
     },
     "sentence": {
       "words_connector": ", ",
@@ -4082,6 +4117,49 @@
           "caption": "Tudja meg, hogy nem csak ezt a Shopify üzleteket érinti-e leállás.",
           "link_text": "Tekintse meg Shopify-rendszerei állapotát"
         }
+      }
+    },
+    "email_marketing": {
+      "subscribed": {
+        "confirmation": "Köszönjük, hogy feliratkozott levelezőlistánkra.",
+        "disclaimer": "Bármikor leiratkozhat.",
+        "unsubscribe": "Leiratkozás"
+      },
+      "unsubscribed": {
+        "confirmation": "Leiratkozott a levelezőlistánkról.",
+        "disclaimer": "Nem fog több marketinges frissítést kapni tőlünk. Bármikor újra előfizethetsz",
+        "preview": "Tekintse meg, mit fognak látni az ügyfelek, amikor leiratkoznak."
+      },
+      "open_tracking": {
+        "opt_in": {
+          "opted_in_html": "<b>Engedélyezte az e-mail megnyitás követését.</b>",
+          "visibility": "Az e-mail megnyitási arányait névtelenül jelentik. Csak az összesített e-mail megnyitási arány részeként fogjuk látni, hogy megnyitott-e egy e-mailt.",
+          "opt_out_html": "Tudod <a style='text-decoration:underline;' href='%{link}'>feladni</a> amikor megnyílik a nyomkövető e-mail, ha nem kívánja megosztani ezeket az információkat.",
+          "preview_bar": "Tekintse meg, hogy mit fognak látni az ügyfelek, ha engedélyezik az e-mailek megnyitásának nyomon követését."
+        },
+        "opt_out": {
+          "opted_out_html": "<b>Leiratkozott az e-mailek megnyitásának nyomon követéséről.</b>",
+          "visibility": "Nem fogjuk látni, hogy megnyitotta-e az e-mailjeinket.",
+          "opt_in_html": "Válasszon <a style='text-decoration:underline;' href='%{link}'>aktiválásához</a> megnyílik a nyomkövető e-mail.",
+          "preview_bar": "Tekintse meg, mit fognak látni az ügyfelek, ha úgy döntenek, hogy leiratkoznak az e-mailek megnyitásának követéséről."
+        },
+        "no_longer_track": {
+          "status_html": "<b>Már nem követjük nyomon az e-mailek megnyitását.</b>",
+          "privacy_policy": "Miután elküldtük ezt az e-mailt, frissítettük adatvédelmi szabályzatunkat, és már nem nyitunk meg pályákat."
+        },
+        "track": {
+          "status_html": "<b>Az e-mail megnyitásának nyomon követése jelent meg.</b>",
+          "visibility": "Csak akkor fogjuk látni, ha megnyitotta az e-mailt, a teljes e-mail megnyitási arányon belül."
+        },
+        "updated_policy": {
+          "status_html": "<b>Az e-mail megnyitásának nyomon követése jelent meg.</b>",
+          "visibility": "Frissítettük irányelveinket, és most megnyílik az e-mailek nyomkövetése. Az e-mail megnyitási arányait névtelenül jelentik. Csak az e-mailek általános megnyitási arányának részeként fogjuk látni, hogy megnyitott-e egy e-mailt.",
+          "opt_out_html": "Ha nem szeretné megosztani ezt az információt, megteheti <a style='text-decoration:underline;' href='%{link}'>leiratkozás</a>"
+        }
+      },
+      "sms_unsubscribe_confirm": {
+        "message": "Biztosan le szeretne iratkozni az SMS marketingről?",
+        "button": "Leiratkozás"
       }
     }
   },
