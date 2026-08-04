@@ -980,13 +980,118 @@
           "few": "Spedito in %{count} giorni lavorativi"
         },
         "unbranded_description_with_fulfillment_weeks": {
-          "one": "Spedito in %{count} settimana"
-        }
+          "one": "Spedito in %{count} settimana",
+          "other": "Spedito in %{count} settimane",
+          "few": "Spedito in %{count} settimane"
+        },
+        "add_new_delivery_address": "Aggiungi un nuovo indirizzo di spedizione",
+        "delivery_to": "Spedizione all'indirizzo"
       },
       "general": {
         "map": {
           "cluster_title": {
             "few": "Cluster formato {{number}} Proiettili"
+          }
+        },
+        "page_title": "Completa l'ordine",
+        "error_page_title": "Errore",
+        "skip_to_content": "Vai al contenuto",
+        "breadcrumb": "traccia",
+        "continue_button_label": "Continua",
+        "complete_purchase_button_label": "Completa l'ordine",
+        "pay_now_button_label": "Paga adesso",
+        "authenticate_purchase_button_label": "Autenticare il pagamento",
+        "edit_link_label": "Modifica",
+        "all_rights_reserved": "Tutti i diritti riservati %{shop_name}",
+        "print_policies_link_label": "Stampa",
+        "cart": "Cestino",
+        "close_modal_label": "Chiudi",
+        "close_notice_label": "Chiudi",
+        "expand_notice_label": "Vedi di più",
+        "continue_to_shipping_method": "Continua a spedire",
+        "continue_to_payment_method": "Continua alla cassa",
+        "continue_to_review": "Rivedi l'ordine",
+        "back_to_cart": "Ritorna al carrello",
+        "back_to_contact_information": "Torniamo alle informazioni",
+        "back_to_shipping_method": "Ritorno alla spedizione",
+        "back_to_payment_method": "Ritorno al pagamento",
+        "choose_shipping_method": "Scegli un metodo di spedizione",
+        "choose_payment_method": "Scegli un metodo di pagamento",
+        "choose_billing_address": "Scegli un indirizzo di fatturazione",
+        "contact_us_html": "Contattaci per ulteriori informazioni",
+        "autocomplete_title": "Suggerimenti",
+        "autocomplete_single_item": "1 articolo disponibile",
+        "autocomplete_multi_item": "{{number}} articoli disponibili",
+        "autocomplete_selection": "{{number}} da {{total}}",
+        "autocomplete_close": "Chiudi suggerimenti",
+        "tooltip_accessibility_label": "Maggiori informazioni",
+        "forwarding_indicator": {
+          "new_window": "Si apre in una nuova finestra.",
+          "external": "Apri un sito esterno.",
+          "external_and_new_window": "Apri il sito web esterno in una nuova finestra."
+        },
+        "checkout_context": {
+          "step_one": "%{shop_name} – Completa l'ordine"
+        },
+        "errors": {
+          "session_identifier_not_unique_error": "Si è verificato un problema con il tuo ordine. Per favore riprova a effettuare il pagamento.",
+          "line_item_limit_reached": "È stato raggiunto il numero massimo di elementi.",
+          "only_empty_terms_accepted": "Questa politica accetta solo termini vuoti.",
+          "session_is_already_finished": "Questa sessione di pagamento è già stata completata.",
+          "merchandise": {
+            "only_value_constraint": "Nella sezione immissione merci sono ammessi solo valori esatti.",
+            "merchandise_not_found": "Il prodotto non è stato trovato.",
+            "merchandise_variant_not_found": "Variante del prodotto non trovata.",
+            "merchandise_not_applicable": "La variante del prodotto non può essere acquistata.",
+            "bundle_products_not_supported_for_b2b": "Gli articoli in bundle non possono essere aggiunti agli ordini B2B per questa sede.",
+            "gift_card_quantity_mismatch": "Quando specifichi i codici delle carte regalo, il numero di voci della riga e il numero di codici delle carte regalo devono corrispondere.",
+            "gift_card_not_supported": "Le carte regalo non sono accettate per questo pagamento.",
+            "gift_card_not_unique": "Carta regalo con codice {{code}} appare più volte per questo pagamento. I codici vengono formattati prima del confronto.",
+            "gift_card_used": "Il codice {{code}} è già assegnato a una carta regalo. I codici vengono formattati prima del confronto.",
+            "gift_card_invalid": "Codice della carta regalo {{code}} non è valido.",
+            "gift_card_code_changed": "Codice della carta regalo {{proposed_code}} è stato cambiato in {{formatted_code}} per conformarsi alle regole di formattazione.",
+            "gift_card_with_attributes_not_supported": "Le carte regalo con attributi personalizzati non sono accettate per questo pagamento.",
+            "gift_card_with_components_not_supported": "Per questo pagamento non sono accettate carte regalo con componenti.",
+            "selling_plan_mismatch": "L'abbonamento è stato aggiornato.",
+            "selling_plan_not_supported": "Non si accettano abbonamenti.",
+            "selling_plan_not_supported_b2b": "Non sono accettate iscrizioni per il pagamento B2B.",
+            "price_mismatch": "Il prezzo proposto in precedenza per questo articolo non è valido ed è stato aggiornato.",
+            "inventory_not_found": "Nessun inventario trovato per questo articolo.",
+            "product_not_published": "Il prodotto non è pubblicato.",
+            "duplicated_stable_id": "Questa linea di carico ha lo stesso ID stabile di un'altra linea.",
+            "minimum_quantity_not_met": "Per alcuni articoli, la quantità non soddisfa il valore minimo richiesto.",
+            "maximum_quantity_exceeded": "Per alcuni articoli, la quantità supera il valore massimo consentito.",
+            "quantity_increment_not_met": "Per alcuni articoli, la quantità non soddisfa i limiti dell'ordine.",
+            "quantity_rules_not_met": "Per alcuni articoli, la quantità non soddisfa i limiti dell'ordine.",
+            "bundle_requires_components": "Le merci in bundle non hanno componenti.",
+            "title_too_long": "Il titolo dell'articolo è troppo lungo.",
+            "title_empty": "Il titolo del prodotto non è stato completato.",
+            "mixed_currencies": "Il pagamento include articoli a cui sono associate valute diverse.",
+            "product_not_published_in_buyer_location": "Il prodotto non è disponibile nella posizione attuale dell'acquirente.",
+            "combined_listing_parent_not_purchasable": "I prodotti principali in un elenco combinato non possono essere acquistati direttamente."
+          },
+          "buyer_identity": {
+            "business_customer_does_not_match_company": "Il contatto aziendale non ha accesso all'azienda.",
+            "customer_account_required": "Devi effettuare il login per continuare.",
+            "contact_info_does_not_match_customer_account": "Le informazioni di contatto devono corrispondere all'account a cui stai accedendo.",
+            "phone_number_does_not_match_expected_pattern": "Il numero di telefono specificato non corrisponde al modello previsto.",
+            "email_required": "quando la merce viene acquistata utilizzando un abbonamento, è richiesto un indirizzo email.",
+            "email_domain_is_invalid": "Impossibile risolvere questo dominio specificato.",
+            "missing_contact_method": "Manca un metodo di contatto valido.",
+            "checkout_completion_target_is_missing": "Manca la destinazione del checkout.",
+            "invalid_customer_profile": "È stato fornito un profilo cliente non valido.",
+            "customer_profile_access_restricted": "Checkout non dispone dell'autorizzazione per accedere al profilo cliente.",
+            "checkout_completion_target_is_invalid_proc": "Target di pagamento non valido.",
+            "company_location_required": "Per continuare, il cliente deve scegliere la sede dell'azienda.",
+            "lost_access_to_company": "Il cliente ha perso l'accesso a qualsiasi azienda.",
+            "company_purchase_permission_required": "Il cliente non ha il permesso di effettuare ordini per l'azienda.",
+            "personal_order_not_allowed": "Per questo negozio non sono ammessi ordini personali.",
+            "buyer_identity_presentment_currency_does_not_match": "Si è verificato un problema durante l'elaborazione del tuo ordine. Riprova tra qualche minuto."
+          },
+          "delivery": {
+            "only_one_delivery_line_allowed": "Il carrello deve avere una sola riga di consegna.",
+            "wrong_number_of_delivery_lines": "È necessario specificare una riga di consegna per ciascun gruppo di merci.",
+            "external_delivery_promise_error": "Si è verificato un errore durante il recupero della promessa di consegna esterna."
           }
         }
       },
@@ -1250,6 +1355,15 @@
         "detail_item_label": {
           "few": "{{count}} articoli"
         }
+      },
+      "change_currency": {
+        "credit_card_will_be_charged_html": "Verranno percepiti %{amount} dalla tua carta",
+        "currency_button_label": "%{currency} (%{currency_symbol})",
+        "payment_total_label": "Pagamento totale",
+        "conversion_rate": "1 %{from_currency_code} = %{rate} %{to_currency_code}",
+        "change_currency_link": "Cambia in %{currency_name}",
+        "card_provider_fx_charges_warning": "L'emittente della carta può addebitare commissioni per le transazioni in %{currency_code}.",
+        "currency_not_supported_by_shop": "La valuta selezionata non è più disponibile. Tutti i prezzi sono ora presenti %{currency_code}."
       }
     },
     "notices": {
