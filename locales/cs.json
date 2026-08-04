@@ -3861,10 +3861,100 @@
               "ro": "Zadejte platné rumunské DIČ",
               "sk": "Zadejte platné slovenské DIČ",
               "si": "Zadejte platné slovenské DIČ",
-              "es": "Zadejte platné španělské DIČ"
+              "es": "Zadejte platné španělské DIČ",
+              "se": "Zadejte platné švédské DIČ",
+              "gb": "Zadejte prosím platné britské DIČ"
+            },
+            "service_unavailable": "Služba ověření není k dispozici",
+            "service_error": "Služba ověření není k dispozici"
+          },
+          "accessibility": {
+            "status": {
+              "validating": "Probíhá ověřování DIČ",
+              "valid": "DIČ je platné",
+              "applied": "Bylo uplatněno osvobození od DPH",
+              "domestic": "Osvobození od DPH nebylo uplatněno",
+              "invalid_number": "Osvobození od DPH se nezdařilo",
+              "service_unavailable": "Ověření osvobození od DPH se nezdařilo",
+              "service_error": "Ověření osvobození od DPH se nezdařilo"
             }
           }
         }
+      },
+      "payment_collection": {
+        "cancelled": "Tato platba již není vyžadována. Podrobnosti naleznete na stránce objednávky.",
+        "paid": "Tato platba již byla odeslána. Podrobnosti naleznete na stránce objednávky."
+      },
+      "required_extensions": {
+        "errors": {
+          "interaction_required": "K dokončení platby je nutná interakce s rozšířením."
+        }
+      },
+      "embed": {
+        "header": {
+          "review_order": "Zkontrolujte svou objednávku"
+        },
+        "shipping": {
+          "shipping_options": "Podívejte se na všechny možnosti dopravy"
+        },
+        "payment": {
+          "payment_options": "Zobrazit všechny možnosti platby"
+        }
+      },
+      "too_many_requests": {
+        "title": "Příliš mnoho pokusů o platbu",
+        "body": "Počkejte několik minut a zkuste to znovu z košíku.",
+        "return_to_cart": "Návrat do košíku",
+        "body_no_cart": "Počkejte prosím několik minut a zkuste to znovu."
+      },
+      "address_management": {
+        "saved_with_store": "Uloženo v tomto obchodě"
+      },
+      "ucp": {
+        "standard_errors": {
+          "item_unavailable": "Položku nelze zakoupit"
+        }
+      }
+    },
+    "pagination": {
+      "previous": "Zpět",
+      "next": "Předtím"
+    },
+    "links": {
+      "powered_by_shopify": "Běží na Shopify",
+      "learn_more": "Zjistěte více"
+    },
+    "feed": {
+      "more": "více"
+    },
+    "attributes": {
+      "email": "e-mail",
+      "password": "heslo",
+      "password_confirmation": "Potvrzení hesla",
+      "first_name": "křestní jméno",
+      "last_name": "příjmení",
+      "body": "tělo",
+      "signature": "Adresa"
+    },
+    "addresses": {
+      "zip_code": "PSČ",
+      "postal_code": "PSČ",
+      "postcode": "PSČ",
+      "pincode": "PIN kód",
+      "region": "Region",
+      "prefecture": "Prefektura",
+      "province": "provincie",
+      "state": "stát",
+      "state_and_territory": "Stát/Území",
+      "county": "hrabství",
+      "emirate": "Emirát",
+      "governorate": "gubernie",
+      "confirm": "Opravdu chcete smazat tuto adresu?"
+    },
+    "collections": {
+      "sorting": {
+        "manual": "Doporučeno",
+        "best_selling": "Nejprodávanější"
       }
     }
   }
