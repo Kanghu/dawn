@@ -413,34 +413,34 @@
       "headings": {
         "product": "Produkt",
         "price": "Cena",
-        "total": "Celkem",
-        "quantity": "Množství",
+        "total": "Naprosto",
+        "quantity": "množství",
         "image": "Obrázek produktu"
       },
       "login": {
         "title": "Máte účet?",
-        "paragraph_html": "<a href=\"{{ link }}\" class=\"link underlined-link\">Přihlaste se</a>, abyste si urychlili proces pokladny."
+        "paragraph_html": "<a href=\"{{ link }}\" class=\"link underlined-link\">Připojte se</a> pro rychlejší dokončení objednávky."
       },
       "estimated_total": "Odhadovaný součet",
       "new_estimated_total": "Nový odhadovaný součet",
-      "duties_and_taxes_included_shipping_at_checkout_with_policy_html": "Včetně cla a daní. Slevy a <a href=\"{{ link }}\">poštovné</a> se vypočítají na pokladně.",
-      "duties_and_taxes_included_shipping_at_checkout_without_policy": "Včetně cla a daní. Slevy a poštovné se vypočítají na pokladně.",
-      "taxes_included_shipping_at_checkout_with_policy_html": "Včetně daní. Slevy a <a href=\"{{ link }}\">poštovné</a> se vypočítají na pokladně.",
-      "taxes_included_shipping_at_checkout_without_policy": "Včetně daní. Slevy a poštovné se vypočítají na pokladně.",
-      "duties_included_taxes_at_checkout_shipping_at_checkout_with_policy_html": "Včetně cla. Daně, slevy a <a href=\"{{ link }}\">poštovné</a> se vypočítají na pokladně.",
-      "duties_included_taxes_at_checkout_shipping_at_checkout_without_policy": "Včetně cla. Daně, slevy a poštovné se vypočítají na pokladně.",
-      "taxes_at_checkout_shipping_at_checkout_with_policy_html": "Daně, slevy a <a href=\"{{ link }}\">poštovné</a> se vypočítají na pokladně.",
-      "taxes_at_checkout_shipping_at_checkout_without_policy": "Daně, slevy a poštovné se vypočítají na pokladně."
+      "duties_and_taxes_included_shipping_at_checkout_with_policy_html": "Včetně daní a cel. Slevy a <a href=\"{{ link }}\">doprava</a> se počítají po dokončení objednávky.",
+      "duties_and_taxes_included_shipping_at_checkout_without_policy": "Včetně daní a cel. Slevy a doprava se počítají při pokladně.",
+      "taxes_included_shipping_at_checkout_with_policy_html": "Včetně daní. Slevy a <a href=\"{{ link }}\">doprava</a> se počítají po dokončení objednávky.",
+      "taxes_included_shipping_at_checkout_without_policy": "Včetně daní. Slevy a doprava se počítají při pokladně.",
+      "duties_included_taxes_at_checkout_shipping_at_checkout_with_policy_html": "Včetně cla. Daně, slevy a <a href=\"{{ link }}\">doprava</a> se počítají po dokončení objednávky.",
+      "duties_included_taxes_at_checkout_shipping_at_checkout_without_policy": "Včetně cla. Daně, slevy a doprava se počítají při pokladně.",
+      "taxes_at_checkout_shipping_at_checkout_with_policy_html": "Daně, slevy a <a href=\"{{ link }}\">doprava</a> se počítají po dokončení objednávky.",
+      "taxes_at_checkout_shipping_at_checkout_without_policy": "Daně, slevy a doprava se počítají při pokladně."
     },
     "footer": {
       "payment": "Platební metody",
       "about": "O nás",
-      "useful": "Užitečný",
+      "useful": "Užitečné",
       "contact": "Kontakt",
       "terms": "Smluvní podmínky",
-      "privacy": "zásady ochrany osobních údajů",
+      "privacy": "Zásady ochrany osobních údajů",
       "cookies": "Zásady používání souborů cookie",
-      "sitemap": "Mapa stránek |",
+      "sitemap": "Sitemap",
       "business": "podnikání",
       "contact_info": {
         "cc_schedule": "Program vztahů se zákazníky: M-P: 10-18",
@@ -472,8 +472,8 @@
     },
     "featured_blog": {
       "view_all": "Zobrazit vše",
-      "onboarding_title": "Blogový příspěvek",
-      "onboarding_content": "Shrňte pro zákazníky obsah svého blogového příspěvku"
+      "onboarding_title": "Příspěvek na blogu",
+      "onboarding_content": "Poskytněte svým zákazníkům shrnutí vašeho příspěvku na blogu"
     },
     "featured_collection": {
       "view_all": "Zobrazit vše",
@@ -484,14 +484,14 @@
     },
     "collection_template": {
       "title": "Kolekce",
-      "empty": "Nenalezeny žádné produkty",
-      "use_fewer_filters_html": "Můžete použít méně filtrů nebo <a class=\"{{ class }}\" href=\"{{ link }}\">všechny odebrat</a>"
+      "empty": "Nebyly nalezeny žádné produkty",
+      "use_fewer_filters_html": "Použijte méně filtrů popř <a class=\"{{ class }}\" href=\"{{ link }}\">odstranit je všechny</a>"
     },
     "video": {
-      "load_video": "Načíst video: {{ description }}"
+      "load_video": "Nahrát videoklip: {{ description }}"
     },
     "slideshow": {
-      "load_slide": "Načíst snímek",
+      "load_slide": "Vložte snímek",
       "previous_slideshow": "Předchozí snímek",
       "next_slideshow": "Další snímek",
       "pause_slideshow": "Pozastavit prezentaci",
