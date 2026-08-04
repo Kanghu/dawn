@@ -2687,8 +2687,75 @@
           "payment_method_title": "Payment method",
           "change_link_label": "Modify",
           "change_contact_method_link_label": "Change contact information",
-          "change_billing_address_link_label": "Change billing address"
+          "change_billing_address_link_label": "Change billing address",
+          "change_shipping_address_link_label": "Change shipping address",
+          "change_shipping_method_link_label": "Change shipping method",
+          "change_payment_method_link_label": "Change payment method",
+          "pick_up_in_store_shipping_method_html": "Pick up from store · %{location_name}",
+          "purchase_order_number_title": "Purchase order number",
+          "change_purchase_order_number_label": "Change the purchase order number",
+          "change_delivery_method_link_label": "Change delivery method",
+          "no_address": "(No address)",
+          "no_purchase_order_number": "(purchase order without number)",
+          "due_after_order_reviewed_html": "Due after order review",
+          "review_title_free_order": "Review and complete your order",
+          "payment_method_saved_company_location": "Save the card for this location",
+          "company_location": "Company location",
+          "change_company_location_link_label": "Change of company address",
+          "pickup_items_at": {
+            "one": "Lifting %{count} article from",
+            "other": "Lifting %{count} articles from",
+            "few": "Lifting %{count} articles from"
+          },
+          "ship_items_to": {
+            "one": "Shipping %{count} article at",
+            "other": "Shipping %{count} articles at",
+            "few": "Shipping %{count} articles at"
+          },
+          "no_purchase_order_number_long": "No purchase order number"
+        },
+        "block_title": "Review your information",
+        "checkout_a_different_way": "Complete the order in another way",
+        "item_header": {
+          "change_value": "Change the value",
+          "section": "Section",
+          "value": "Value"
+        },
+        "review_and_confirm_title": "Review and confirm",
+        "account_more_actions": "More actions for this account"
+      },
+      "marketing": {
+        "accept_marketing_checkbox_label": "I want to receive emails with news and offers",
+        "unsubscribe": {
+          "title": "You have unsubscribed",
+          "description": "You will no longer receive marketing updates from us."
+        },
+        "accept_sms_checkbox_label": "I want to receive text messages with news and offers",
+        "sms": {
+          "disclaimer": {
+            "privacy_policy": "Privacy Policy",
+            "terms_of_service": "Terms of Use",
+            "description_html": "If you register by text, you agree to receive regular automated marketing messages, including cart reminders, to the phone number provided. Consent is not a condition for making purchases. Reply with STOP to unsubscribe. Reply with HELP for help. Message frequency varies. Message and data charges may apply. View %{privacy_policy_link} and %{terms_of_service_link}.",
+            "description_transactional_html": "You may receive text messages related to order confirmation and delivery updates. Reply with STOP to unsubscribe. Reply with HELP for help. Message frequency varies. Message and data charges may apply. View it %{privacy_policy_modal_link} and %{terms_of_service_modal_link}."
+          },
+          "mobile_phone_number": "Mobile phone number",
+          "get_offers_by_text": "Receive offers by text message"
+        },
+        "post_accept_marketing_checkbox_label": "You are subscribed to receive news and offers by email",
+        "pending_accept_marketing_checkbox_label": "Check your email account to confirm your subscription to news and offers",
+        "accept_shop_pay_marketing_checkbox_label": "Subscribe me to news and offers from this store",
+        "disclaimer": {
+          "privacy_policy": "Privacy Policy",
+          "terms_of_service": "Terms of Use"
         }
+      },
+      "shop_policies": {
+        "refund_policy": "Refund Policy",
+        "privacy_policy": "Privacy Policy",
+        "terms_of_service": "Terms of Use",
+        "legal_notice": "Legal notice",
+        "shipping_policy": "Transportation",
+        "terms_of_sale": "Terms of sale"
       }
     },
     "notices": {
