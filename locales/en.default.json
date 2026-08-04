@@ -2288,13 +2288,28 @@
       "order_payment_collection": {
         "changes_summary": {
           "added": {
-            "few": "Added: %{count}"
-          }
-        }
+            "few": "Added(s): %{count}",
+            "one": "Added",
+            "other": "Added(s): %{count}"
+          },
+          "removed": "Removed",
+          "subtracted": "Removed(s): %{count}",
+          "returned": "Returned(s): %{count}",
+          "return_line_item_removed": "Removed from return: %{count}"
+        },
+        "custom_line_item_description": "Payment amount for the order %{order_name}",
+        "additional_payment_requested": "It is necessary to pay the amount of %{total_outstanding}",
+        "checkout_review_and_pay": "your order, %{order_name} has been updated. Review these changes, then pay to confirm your order.",
+        "order_updated_on": "Your order was updated on %{last_edited_at}.",
+        "order_review_and_pay": "Your order has been updated. Review and pay to confirm your order.",
+        "pay_now": "Pay now"
       },
       "open_graph_meta_tag": {
         "title_with_products": {
-          "few": "Buy %{product_name} and %{count} more items"
+          "few": "Buy it %{product_name} and still %{count} articles",
+          "zero": "Buy it %{product_name}",
+          "one": "Buy it %{product_name} and still %{count} article",
+          "other": "Buy it %{product_name} and still %{count} articles"
         }
       },
       "subscriptions": {
@@ -2755,7 +2770,48 @@
         "terms_of_service": "Terms of Use",
         "legal_notice": "Legal notice",
         "shipping_policy": "Transportation",
-        "terms_of_sale": "Terms of sale"
+        "terms_of_sale": "Terms of sale",
+        "subscription_policy": "Cancellations",
+        "purchase_options_policy": "Purchase Options Policy",
+        "contact_information": "Contact",
+        "purchase_options_cancellation_policy": "Cancellations",
+        "cookie_preferences": "Cookies",
+        "policy_label": "Politics",
+        "policies_label": "Politicians",
+        "select_policy_label": "Select a policy",
+        "terms_and_policies": "Terms and Policies"
+      },
+      "notifications": {
+        "title": "Notifications"
+      },
+      "tips": {
+        "title": "Add a tip",
+        "description": "Support the team at %{shop_name}",
+        "presets_description": "Select a tip percentage",
+        "custom_label": "Custom tip",
+        "add_tip": "Add a tip",
+        "update_tip": "Update tip",
+        "message": "Thank you, we appreciate the gesture.",
+        "preset_label": "%{tip_percent}%",
+        "no_tip_label": "Without",
+        "not_available_with_spi": "Not available for Installment Payments with Shop Pay"
+      },
+      "localized_fields": {
+        "additional_information": {
+          "title": "Additional information",
+          "tax_credential_br": "CPF/CNPJ",
+          "shipping_credential_br": "CPF/CNPJ",
+          "shipping_credential_kr": "Personal customs code",
+          "shipping_credential_cn": "Resident ID number",
+          "tax_credential_it": "Codice Fiscale (optional)",
+          "tax_email_it": "PEC (optional)",
+          "tax_credential_cl": "RUT",
+          "shipping_credential_cl": "RUT",
+          "tax_credential_co": "Cédula/VAT",
+          "tax_credential_type_co": "Cédula type",
+          "shipping_credential_co": "Cédula/VAT",
+          "shipping_credential_type_co": "Cédula type"
+        }
       }
     },
     "notices": {
