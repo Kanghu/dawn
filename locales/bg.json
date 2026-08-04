@@ -1080,9 +1080,77 @@
             "missing_session_id": "Липсва информация за кредитната карта за сесията.",
             "gateway_not_supported": "Шлюзът за плащане не поддържа съхранение на начин на плащане.",
             "credit_card_last_name_required": "Полето \"фамилия\" не може да има нулева стойност.",
-            "credit_card_update_failed": "Неуспешна актуализация на кредитната карта."
+            "credit_card_update_failed": "Неуспешна актуализация на кредитната карта.",
+            "invalid_address_type": "Предоставеният тип адрес е невалиден за този метод на плащане.",
+            "missing_retail_attributions": "Присвояването на дребно се изисква за ръчно въведени плащания с кредитна карта.",
+            "unexpected_retail_attributions": "Неочаквано бяха предоставени кредити на дребно за плащане с кредитна карта.",
+            "invalid_card_source": "Тази сесия няма разрешение да използва този източник на карта.",
+            "wallet_content_missing": "Съдържанието на портфейла липсва.",
+            "payment_instrument_not_found": "Методът на плащане не може да бъде намерен",
+            "unauthorized_capture_method": "Настройването на метода за улавяне на плащане не е разрешено.",
+            "saved_payment_methods_not_allowed": "Запазените методи на плащане не са разрешени.",
+            "saved_payment_methods_not_enabled": "Запазените методи на плащане не са активирани за този магазин.",
+            "store_credit_not_enabled": "Кредитът за магазин не е активиран за този магазин.",
+            "store_credit_account_not_found": "Кредитната сметка на магазина не е намерена.",
+            "store_credit_account_mismatch": "Кредитната сметка на магазина не съответства на самоличността на купувача.",
+            "store_credit_mismatched_currency": "Валутата на кредитната сметка на магазина не съвпада с валутата на касата.",
+            "store_credit_insufficient_funds": "Няма достатъчно средства в кредитната ви сметка на магазина.",
+            "store_credit_buying_gift_card": "Не можете да използвате кредит от магазина за закупуване на карта за подарък.",
+            "gift_cards_not_allowed_for_b2b": "Подаръчните карти не са разрешени в B2B магазини.",
+            "method_required": "Трябва да се предложи начин на плащане.",
+            "paypal_express_address_invalid": "PayPal върна невалиден адрес.",
+            "saved_payment_methods_cvv_verification_disabled": "Избраният метод на плащане изисква CVV проверка, която не е активирана за този магазин. Изберете друг метод на плащане."
+          },
+          "tip": {
+            "not_accepted_by_shop": "Магазинът не приема бакшиши.",
+            "only_one_tip_line_allowed": "Няколко линии на върха не се приемат.",
+            "tips_not_allowed_for_b2b": "Даването на бакшиши не е разрешено в B2B магазини.",
+            "currency_change_reset": "Съветът е нулиран поради промяна на валутата.",
+            "tips_not_allowed_for_deferred_purchase_options": "Все още не се приемат бакшиши за опции за отложена покупка."
+          },
+          "sale_attribution": {
+            "draft_order_not_exist": "Тази чакаща поръчка не съществува в текущия магазин.",
+            "staff_member_not_exist": "Този персонал не съществува в текущия магазин.",
+            "location_not_exist": "Това местоположение не съществува в текущия магазин.",
+            "point_of_sale_device_not_exist": "Това устройство за продажба не съществува в текущия магазин.",
+            "unresolvable_target_merchandise_lines": "Предложените задачи за продажба не могат да бъдат разрешени в настоящия контекст на преговорите."
+          },
+          "non_negotiable": {
+            "missing_non_negotiable_terms": "Предложението на купувача трябва да съдържа условия, които не подлежат на договаряне.",
+            "invalid_signature": "Подпис за {{target_terms}} е невалиден."
+          },
+          "inventory": {
+            "missing_quantity_value": "Полето за количество липсва в редовете на инвентара на купувача.",
+            "changing_behavior_not_allowed": "Този клиент няма разрешение да променя поведението на инвентара.",
+            "only_one_inventory_behavior_allowed": "Понастоящем е разрешено само едно поведение на инвентара на плащане."
+          },
+          "optional_duties": {
+            "optional_duties_not_permitted": "Отказът за митническо плащане не е разрешен за тази каса."
+          },
+          "attribution": {
+            "retail_attribution_not_allowed": "Приписването на дребно не е разрешено за тази каса.",
+            "retail_attribution_required": "За тази каса се изисква присвояване на дребно."
+          },
+          "captcha": {
+            "metadata_missing": "За да завършите тази поръчка, е необходимо да завършите проверка на captcha.",
+            "metadata_mismatch": "Предоставеният доставчик и тип проверка на captcha не отговарят на очакваните стойности.",
+            "token_missing": "Captcha токен трябва да бъде предоставен, за да завършите тази поръчка.",
+            "job_enqueue_failed": "Задачата за проверка на captcha не можа да бъде поставена на опашка.",
+            "job_already_queued": "Проверката на Captcha вече е поставена на опашка за този captcha токен.",
+            "token_expired": "Предоставеният captcha токен е изтекъл. Преминете отново през проверката на captcha, за да продължите процеса на плащане.",
+            "token_invalid": "Предоставеният captcha токен е невалиден. Преминете отново през проверката на captcha, за да продължите процеса на плащане.",
+            "token_not_valid_for_session": "Предоставената проверка на captcha не може да се използва за това плащане."
+          },
+          "fx_reconciliation_override": {
+            "shop_currency_mismatch": "Получената сума трябва да е във валутата на магазина."
+          },
+          "checkout_source": {
+            "revoked": "Това плащане вече не е налично."
           }
-        }
+        },
+        "full_price": "Пълна цена:",
+        "title": "Пълна поръчка – {{shopName}}",
+        "full_title": "{{pageTitle}} – {{shopName}} – Изпълнете поръчката"
       },
       "customer_account": {
         "saved_address_option_description": {
