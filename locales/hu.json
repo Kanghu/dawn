@@ -4226,13 +4226,80 @@
     "orders": {
       "order_list": {
         "items": {
-          "few": "{{count}} áru"
+          "few": "{{count}} cikkeket",
+          "one": "{{count}} cikket",
+          "other": "{{count}} cikkeket"
         },
         "column_headers": {
           "total": "Teljesen",
           "order": "Rendeljen",
           "actions_accessibility_label": "Akciók",
           "products_accessibility_label": "Termékek"
+        },
+        "delivered": "Kézbesítve: {{date}}",
+        "empty_state_order_source_description": "Itt csak az e-mail címen leadott rendelések jelennek meg {{email}}.",
+        "empty_state_subtitle": "Rendelés leadásához menjen az üzletbe.",
+        "empty_state_title": "Még nincs rendelés",
+        "estimated_delivery": "Becsült dátum: {{date}}",
+        "order_link": "Lásd a sorrendet {{name}}",
+        "order_number": "Rendeljen {{name}}",
+        "orders_title": "Megerősítve",
+        "pagination": {
+          "nav_accessibility_label": "Navigációs gombok a parancsokhoz",
+          "next": "Azelőtt",
+          "next_accessibility_label": "Következő rendelések",
+          "previous": "Vissza",
+          "previous_accessibility_label": "Korábbi rendelések",
+          "load_more": "Mutass többet",
+          "load_more_accessibility_label": "További parancsok megjelenítése"
+        },
+        "sort_by": "Rendezés: {{option}}",
+        "sort_hide_options_accessibility_label": "Elrejti a visszaigazolt rendelések rendezési beállításait.",
+        "sort_show_options_accessibility_label": "Megjeleníti a visszaigazolt rendelések rendezési lehetőségeit.",
+        "sort_title": "Rendezze meg",
+        "sort": {
+          "date": {
+            "newest": "A legújabbtól a legrégebbiig",
+            "oldest": "A legrégebbitől a legújabbig"
+          },
+          "location": {
+            "ascending": "Helyszín (A-Z)",
+            "descending": "Helyszín (Z-A)"
+          },
+          "order_number": {
+            "ascending": "Rendelési szám (növekvő)",
+            "descending": "Rendelési szám (leszármazott)"
+          },
+          "order_total": {
+            "ascending": "Rendelés végösszege (növekvő)",
+            "descending": "Rendelés összesen (csökkenő)"
+          }
+        },
+        "one_images_accessibility_label": "A rendelés tartalmazza {{lineItemName1}}",
+        "two_images_accessibility_label": "A rendelés tartalmazza {{lineItemName1}}, {{lineItemName2}}",
+        "three_images_accessibility_label": "A rendelés tartalmazza {{lineItemName1}}, {{lineItemName2}}, {{lineItemName3}}",
+        "four_images_accessibility_label": "A rendelés tartalmazza {{lineItemName1}}, {{lineItemName2}}, {{lineItemName3}}, {{lineItemName4}}",
+        "no_filtered_results_description": "A vezérlők megtekintéséhez távolítsa el vagy állítsa be a szűrőket",
+        "no_filtered_results_title": "Nincsenek szűrt eredmények",
+        "estimated_shortform": "Becsl.: {{date}}",
+        "payment_status": {
+          "list_view": {
+            "overdue": "Lejárt",
+            "due": "Érettség {{date}}",
+            "due_today": "Ma esedékes",
+            "due_without_date": "Érettség",
+            "due_on_fulfillment": "A megrendelés teljesítésekor lejár",
+            "pay_to_confirm": "Fizessen a megerősítéshez",
+            "payment_not_due": "Még nem esedékes",
+            "paid": "Fizetett"
+          },
+          "gallery_view": {
+            "overdue": "Késedelmes fizetés",
+            "due": "Fizetés esedékessége {{date}}",
+            "due_today": "A fizetés ma esedékes",
+            "due_without_date": "Fizetés esedékessége",
+            "due_on_fulfillment": "Fizetés a megrendelés teljesítésekor esedékes"
+          }
         }
       },
       "order_status": {
