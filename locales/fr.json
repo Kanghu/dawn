@@ -4029,6 +4029,12 @@
       "order_list": {
         "items": {
           "few": "{{count}} ware"
+        },
+        "column_headers": {
+          "total": "Totalement",
+          "order": "Commande",
+          "actions_accessibility_label": "Actions",
+          "products_accessibility_label": "Produits"
         }
       },
       "order_status": {
@@ -4062,7 +4068,9 @@
         "gift_card_resend_button": {
           "few": "Envoyer à nouveau les cartes-cadeaux"
         }
-      }
+      },
+      "list_layout_accessibility_label": "Options d'apparence",
+      "list_title": "Commandes"
     },
     "order_details": {
       "image_gallery": {
@@ -4208,7 +4216,69 @@
         "save_accessibility_label": "Enregistrer le profil",
         "title": "Profil",
         "no_name_provided_accessibility_label": "Aucun nom ajouté",
-        "email": "Courriel"
+        "email": "Courriel",
+        "errors": {
+          "name_too_long": "Le nom du champ {{fieldName}} est trop long (maximum 255 caractères)",
+          "name_cannot_contain_url": "Le terrain {{fieldName}} ne peut pas contenir d'URL",
+          "name_cannot_contain_html_tags": "Le terrain {{fieldName}} ne peut pas contenir de balises HTML",
+          "email_cant_be_blank": "La communication de l'adresse e-mail est obligatoire",
+          "invalid_email_format": "Veuillez saisir une adresse e-mail valide"
+        },
+        "editable_email_help_text": "Utilisez cette adresse e-mail pour vous connecter et mettre à jour les commandes."
+      },
+      "profile_update_confirmation_message": "Profil mis à jour",
+      "title": "Profil",
+      "people": {
+        "pagination": {
+          "load_more": "Afficher plus",
+          "load_more_accessibility_label": "Afficher plus de personnes",
+          "loading_accessibility_label": "Chargement de personnes"
+        }
+      },
+      "add_button": "Ajouter",
+      "verify_new_email_modal": {
+        "title": "Vérifiez votre nouvel e-mail",
+        "description": "Maintenant, saisissez le code à 6 chiffres envoyé à votre nouvel e-mail :",
+        "one_time_password_label": "Code à 6 chiffres",
+        "email_resend_button": "Renvoyer le code",
+        "email_resend_button_accessibility_label": "Renvoyer le code de vérification",
+        "verify_button": "Vérifiez-le",
+        "verify_button_accessibility_label": "Vérifiez votre mot de passe unique",
+        "cancel_button": "Annuler",
+        "cancel_button_accessibility_label": "Annuler la modification du profil",
+        "email_resend_button_success_toast_message": "Le code de vérification a été envoyé",
+        "email_resend_button_failure_banner_message": "Impossible d'envoyer le code de vérification"
+      },
+      "email_update_success_modal": {
+        "title": "Vérifiez votre courrier électronique",
+        "description": "L'e-mail a été mis à jour avec succès. Redirige vers la connexion."
+      },
+      "email_update_confirmation_message": "L'adresse e-mail a été mise à jour pour {{email}}",
+      "verify_current_email_modal": {
+        "cancel_button": "Annuler",
+        "cancel_button_accessibility_label": "Annuler la modification du profil",
+        "description": "Saisissez le code à 6 chiffres envoyé à votre adresse e-mail d'origine :",
+        "email_resend_button_accessibility_label": "Renvoyer le code de vérification",
+        "title": "Confirme que c'est toi",
+        "verify_button": "Suivant",
+        "verify_button_accessibility_label": "Vérifiez votre email actuel"
+      },
+      "marketing_preferences": {
+        "email_label": "Courriel",
+        "pending_confirmation": "Cliquez sur le lien dans l'e-mail pour confirmer.",
+        "resend_email": "Renvoyer l'e-mail",
+        "resend_email_success": "Le lien a été envoyé",
+        "title": "Préférences marketing",
+        "unsubscribe_confirmation": {
+          "cancel": "Annuler",
+          "description": "Vous ne recevrez plus de marketing par e-mail de {{shopName}}",
+          "title": "Se désabonner des e-mails ?",
+          "unsubscribe": "Se désabonner"
+        },
+        "update_error": {
+          "description": "Un problème est survenu lors de la mise à jour de vos préférences marketing. Essayez d'actualiser cette page ou vérifiez votre connexion Internet."
+        },
+        "update_success": "Vos préférences marketing ont été mises à jour"
       }
     }
   },
