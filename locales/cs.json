@@ -3732,7 +3732,87 @@
         "kilogram": "kg",
         "milliliter": "ml",
         "centiliter": "tř",
-        "liter": "l"
+        "liter": "l",
+        "cubic_meter": "m³",
+        "millimeter": "mm",
+        "centimeter": "cm",
+        "meter": "m",
+        "square_meter": "m²",
+        "ounce": "unce",
+        "pound": "libra",
+        "fluid_ounce": "tekutá unce",
+        "pint": "půllitr",
+        "quart": "čtvrt galonu",
+        "gallon": "galon",
+        "inch": "palce",
+        "foot": "noha",
+        "yard": "dvoře",
+        "square_foot": "čtvereční stopa",
+        "item": "článek"
+      },
+      "memberships": {
+        "delivery_promise_unfulfillable": "Adresa není přijata pro aktuální předplatné.",
+        "items_split_across_locations_unsupported": "Primární doprava pro vaši objednávku není k dispozici. Vaše možnosti dopravy byly aktualizovány."
+      },
+      "editor": {
+        "navigation": {
+          "store_logo_accessibility_label": "Vstupte do internetového obchodu"
+        }
+      },
+      "tooltip": {
+        "accessibility_label_context": "Více informací o %{context}",
+        "additional_payment_methods": "Jiné způsoby platby"
+      },
+      "remote": {
+        "errors": {
+          "only_remote_merchandise_lines": "Platba zahrnuje pouze dopravu na dálku. K dokončení platby je nutné přesměrování do vzdáleného obchodu.",
+          "currency_mismatch": "Toto zboží nelze přidat do košíku, protože pochází z obchodu, který používá jinou měnu.",
+          "max_remote_shops_exceeded": "Přidání tohoto produktu není možné, košík je již plný zboží z jiných obchodů.",
+          "currency_mismatch_removal": "Položka byla odstraněna z nákupního košíku, protože pocházela z obchodu, který používá jinou měnu."
+        }
+      },
+      "remote_merchandise_only": {
+        "title": "Dokončete nákup",
+        "remote_only_notice": "Tyto položky prodávají a zasílají jiné obchody. Zaplaťte v každém jednotlivém obchodě, abyste dokončili nákup.",
+        "return_to_store_label": "Zpět do obchodu",
+        "checkout_on_shop_label": "Platit na %{shop_name}",
+        "single_shop_transition": "Přesměrujeme vás na %{advertiser} k dokončení nákupu.",
+        "detail_item_label": {
+          "one": "{{count}} článek",
+          "other": "{{count}} články",
+          "few": "{{count}} články"
+        }
+      },
+      "remote_policies": {
+        "unavailable_policy": "Tento obchod nemá %{policy_name}. Pro další informace kontaktujte přímo obchod %{shop_name}."
+      },
+      "offsite_payment_failed": {
+        "payment_not_processed_title": "Platba se nezdařila",
+        "payment_not_processed_text": "Zkuste to znovu naskenováním QR kódu. Pokud to nefunguje, kontaktujte naše pracovníky a vyzkoušejte jiný způsob platby.",
+        "payment_link_expired_title": "Platnost platebního odkazu vypršela",
+        "payment_link_expired_text": "Zkuste to znovu naskenováním QR kódu.",
+        "title": "Vzdálená platba se nezdařila"
+      },
+      "taxes": {
+        "tax_details": "Další daňové údaje",
+        "vat_number": {
+          "field": {
+            "label": "DIČ (volitelné)",
+            "tooltip": "Ověří DIČ a automaticky uplatní přenesení daňové povinnosti na způsobilé objednávky"
+          },
+          "add": "Přidejte DIČ",
+          "vaulted": "DIČ: %{number}",
+          "badge": "DIČ: %{number}",
+          "domestic_order": "Výjimka z přenesení daňové povinnosti se vztahuje pouze na přeshraniční příkazy z EU. Za místní objednávky se účtuje standardní DPH.",
+          "status": {
+            "invalid_format": {
+              "at": "Rakouská DIČ: AT a 9 znaků",
+              "be": "Belgická DIČ: BE a 10 znaků",
+              "bg": "Bulharská DIČ: BG a 9–10 znaků",
+              "hr": "Chorvatské DIČ: HR a 11 znaků"
+            }
+          }
+        }
       }
     }
   }
