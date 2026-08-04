@@ -804,10 +804,14 @@
           "subscription_free_with_frequency_label": "Free shipping %{delivery_frequency}"
         },
         "shipping_method_first_shipment_group_title": {
-          "few": "First shipments"
+          "few": "The first shipments",
+          "one": "First shipment",
+          "other": "The first shipments"
         },
         "shipping_method_recurring_shipments_group_title": {
-          "few": "Recurring shipments"
+          "few": "Recurring shipments",
+          "one": "Recurring shipment",
+          "other": "Recurring shipments"
         },
         "title": "Transportation",
         "shipping_method_title": "Shipping method",
@@ -891,6 +895,56 @@
           "search_address": "Search for the address",
           "rollup_title": "Pick up location",
           "rollup_accessibility_label": "Pickup location options"
+        },
+        "missing_shipping_address": "The shipping address is missing",
+        "delivery_title": "Delivery",
+        "address_default": "Set as default",
+        "split_shipping_merchandise_quantity_label_standard": "%{quantity} articles",
+        "split_shipping_merchandise_quantity_label_additional": "+ yet %{quantity}",
+        "split_shipping_merchandise_shipment_number": "Shipping %{number} from %{total}",
+        "pre_order_ships_now": "Shipping now",
+        "pre_order_ships_later": "Will ship later",
+        "pre_order_ships_date": "It ships on %{date}",
+        "split_shipping_shipped_by_shop": "Shipped by %{shop_name}",
+        "split_shipping_multiple_shipment_label": "More shipments",
+        "split_shipping_shipping_label": "Method",
+        "split_shipping_multiple_shipment_quantity_label": "%{quantity} shipments",
+        "split_shipping_multiple_shipment_notice": "Your order will arrive in multiple shipments",
+        "split_shipping_multiple_shipment_notice_one_time_purchase": "Your order will arrive in %{quantity} shipments",
+        "split_shipping_more_shipping_options": "More shopping options",
+        "split_shipping_shipment_number": "Shipping %{number}",
+        "split_shipping_merchandise_quantity_label_inline_primary": "Quantity: %{quantity}",
+        "split_shipping_merchandise_quantity_label_inline": "%{merchandise_title} ×%{quantity}",
+        "split_shipping_option_free": "Free shipping",
+        "split_shipping_option_lowest_price": "The lowest price",
+        "split_shipping_option_fastest": "The fastest",
+        "split_shipping_option_recommended": "Recommended",
+        "split_shipping_option_custom": "Personalized",
+        "default_description": "Ships in 1 business day",
+        "split_shipping_shipment_notice": "Your order will arrive in %{quantity_shipments}",
+        "unbranded_default_description": "Ready to ship",
+        "prime_not_available": {
+          "default": "Prime shipping is not available for your order. Your shipping options have been updated."
+        },
+        "split_shipping_first_shipment_notice": "Your first order will arrive in %{quantity_shipments}",
+        "shipping_method_rollup_accessibility_label": "Shipping Method Options",
+        "shipping_address_rollup_accessibility_label": "Delivery address options",
+        "back": "Back",
+        "invalid_shipping_method_summary_selected": "Select a different shipping address to see available shipping methods",
+        "third_party_address_timeout": "Failed to load addresses. Please try again or use a different address.",
+        "third_party_address_error": "An error occurred while loading the selected addresses. Please enter the address manually below.",
+        "third_party_payment_timeout": "Failed to load payment methods. Try again or use another payment method.",
+        "third_party_payment_error": "An error occurred while loading the selected payment method. Use another payment method.",
+        "add_shipping_address": "Add delivery address",
+        "choose_new_address": "Choose a new address",
+        "unbranded_description_same_day": "Ships same business day",
+        "unbranded_description_with_fulfillment_days": {
+          "one": "Ships next business day",
+          "other": "Ships in %{count} working days",
+          "few": "Ships in %{count} working days"
+        },
+        "unbranded_description_with_fulfillment_weeks": {
+          "one": "Ships in %{count} week"
         }
       },
       "general": {
