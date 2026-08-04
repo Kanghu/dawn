@@ -3468,7 +3468,9 @@
     },
     "page_titles": {
       "search_results": {
-        "few": "Search: %{count} results found for \"%{terms}\""
+        "few": "Search: found %{count} results for \"%{terms}”",
+        "one": "Search: found %{count} result for \"%{terms}”",
+        "other": "Search: found %{count} results for \"%{terms}”"
       },
       "products": "Products",
       "shopping_cart": "Your shopping cart",
@@ -3477,7 +3479,12 @@
       "reset_account": "Reset your account",
       "addresses": "Addresses",
       "order": "Order %{name}",
-      "search": "Search"
+      "search": "Search",
+      "collections": "Collections",
+      "not_found": "404 not found",
+      "challenge": "Challenge",
+      "checkpoint": "Validation point",
+      "blog_or_article_with_error": "Error – %{title}"
     },
     "sentence": {
       "words_connector": ", ",
@@ -3671,6 +3678,58 @@
         "message": "Are you sure you want to unsubscribe from SMS marketing?",
         "button": "Unsubscribe"
       }
+    },
+    "cart": {
+      "discounts_with_count": "They were applied %{count} discounts"
+    },
+    "challenge": {
+      "message": "To continue, prove you're not a robot.",
+      "error": "Your answer was incorrect, try again.",
+      "submit_button_text": "Send"
+    },
+    "checkpoint": {
+      "message": "Solve the captcha to continue",
+      "error": "Captcha validation failed",
+      "submit_button_text": "Send"
+    },
+    "store_availability": {
+      "pick_up_time": {
+        "one_hour": "Ready usually within an hour",
+        "two_hours": "Ready usually in two hours",
+        "four_hours": "Usually ready in 4 hours",
+        "twenty_four_hours": "Usually ready within 24 hours",
+        "two_to_four_days": "Usually ready in 2-4 days",
+        "five_or_more_days": "Usually ready in over 5 days",
+        "zero_to_two_hours": "Ready usually in two hours",
+        "two_to_four_hours": "Usually ready in 4 hours",
+        "immediately": "Ready to pick up now",
+        "next_day": "Ready for next day pickup"
+      }
+    },
+    "filters": {
+      "availability": {
+        "value": {
+          "in_stock": "In stock",
+          "out_of_stock": "Out of stock"
+        }
+      },
+      "boolean": {
+        "true_label": "Yes",
+        "false_label": "No"
+      }
+    },
+    "search": {
+      "sorting": {
+        "relevance": "Relevance",
+        "price_ascending": "Price, from low to high",
+        "price_descending": "Price, from high to low"
+      },
+      "error": "There was a problem loading the search results. Please refresh the page or try again later."
+    },
+    "subscriptions": {
+      "buyer_consent_product": "This item is a recurring or deferred purchase. By continuing, I agree with %{cancellationPolicyLink} and I authorize you to automatically charge my payment method at the specified prices, frequencies and dates until my order is fulfilled or I cancel it, if permitted.",
+      "buyer_consent_cart": "One or more of the items in your cart is a recurring or deferred purchase. By continuing, I agree with %{cancellationPolicyLink} and I authorize you to automatically charge my payment method at the specified prices, frequencies and dates until my order is fulfilled or I cancel it, if permitted.",
+      "cancellation_policy": "cancellation policy"
     }
   },
   "customer_accounts": {
@@ -3837,6 +3896,28 @@
       },
       "contracts_update_failed": "Some subscription contracts failed to update",
       "invalid_wallet_type_error": "The digital wallet type is invalid."
+    },
+    "callback": {
+      "try_again": "Try again"
+    },
+    "navigation_and_structure": {
+      "account_menu": {
+        "hide_accessibility_label": "Hide Account menu",
+        "show_accessibility_label": "Show the Account menu",
+        "nav_accessibility_label": "Account navigation",
+        "open_menu_accessibility_label": "Open account navigation",
+        "close_menu_accessibility_label": "Close account browsing",
+        "loading_message": "Loading account navigation",
+        "label": "account"
+      },
+      "action_menu_accessibility_label": "More actions",
+      "close_menu_accessibility_label": "Close main navigation",
+      "contact_email_subject": "Contact from the online store {{shopName}}",
+      "contact_link": "Contact information",
+      "delete_confirmation": {
+        "cancel": "Cancel",
+        "delete": "Delete"
+      }
     }
   },
   "pagefly": {
