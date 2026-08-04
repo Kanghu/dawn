@@ -4136,7 +4136,53 @@
       "duties_and_taxes_included": "The total includes all customs duties and other taxes. There are no additional costs for delivery.",
       "grouped_view_components": {
         "expand_line_items": "Display {{count}} articles",
-        "collapse_line_items": "Hide {{count}} articles"
+        "collapse_line_items": "Hide {{count}} articles",
+        "line_item_summary": "{{refundableQuantity}} x {{productTitle}}",
+        "line_item_summary_accessibility_label": "{{productTitle}}, quantity: {{refundableQuantity}}",
+        "line_item_summary_list_accessibility_label": "Items in the set {{productTitle}}"
+      },
+      "cash_rounding": "Cash rounding",
+      "adjusted_payment": "Adjusted payment",
+      "adjusted_total": "Totally adjusted",
+      "login_card": {
+        "log_in": "Connect yourself",
+        "link_expired": "The link has expired",
+        "resend_link_and_login": "To view order details, log in or send a new link to the email address or phone number used during checkout.",
+        "resend_link_only": "To see the details of your order, send a new link to the email address or phone number used when completing the order.",
+        "resend_link": "Submit a new link",
+        "title": "Go to order details"
+      },
+      "link_sent": "The link has been sent",
+      "view_controls": {
+        "gallery": "Gallery",
+        "list": "List"
+      },
+      "company_and_location": "Company and location",
+      "due_on_date": "Due at: {{date}}",
+      "due_on_fulfillment": "Due upon honoring",
+      "due_on_receipt": "Due at reception",
+      "group_title_label_with_parent": "For: {{groupTitle}}",
+      "payment_confirmation": {
+        "payment_received": "Thank you! Payment in the amount of {{amount}} was received",
+        "full_payment_received": "Thank you! Payment in the amount of {{amount}} has been received and this order is now paid in full.",
+        "dismiss_label": "Close payment confirmation",
+        "payment_authorized": "Thank you! Balance will be updated when payment is received."
+      },
+      "marketing_pending_confirmation": "Click on the link in the email to confirm.",
+      "marketing_resend_email": "Resend the email",
+      "marketing_resend_email_success": "The link has been sent",
+      "subtotal_label_with_quantity": {
+        "one": "Subtotal",
+        "other": "Subtotal · {{count}} articles",
+        "few": "Subtotal · {{count}} articles"
+      },
+      "total_savings": "Total savings",
+      "price_before_discount_accessibility_label": "Original price",
+      "price_after_discount_accessibility_label": "Reduced price",
+      "discount_order_stacking": {
+        "one": "Discount on order",
+        "other": "Discounts on orders",
+        "few": "Discounts on orders"
       }
     },
     "B2B": {
@@ -4396,6 +4442,24 @@
         },
         "update_success": "Your marketing preferences have been updated"
       }
+    },
+    "addresses": {
+      "add_button": "Add an address",
+      "address_deleted_notification": "The address has been deleted",
+      "cancel_adding_address_accessibility_label": "Cancel adding the address",
+      "cancel_deletion_button": "Cancel",
+      "cancel_deletion_button_accessibility_label": "Cancel address deletion {{address}}",
+      "default_address": {
+        "title": "Default address",
+        "title_accessibility_label": "Default address: {{address}}",
+        "badge_label": "Implicit"
+      },
+      "delete_button": "Delete",
+      "delete_button_accessibility_label": "Delete the address {{address}}",
+      "delete_confirmation_button": "Delete the address",
+      "delete_confirmation_button_accessibility_label": "Delete the address {{address}}",
+      "delete_confirmation_message": "Delete address? Existing orders will not be affected.",
+      "edit_button": "Edit"
     }
   },
   "pagefly": {
