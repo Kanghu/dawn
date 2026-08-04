@@ -2441,13 +2441,28 @@
       "order_payment_collection": {
         "changes_summary": {
           "added": {
-            "few": "Добавени (и): %{count}"
-          }
-        }
+            "few": "Добавено(и): %{count}",
+            "one": "Добавено",
+            "other": "Добавено(и): %{count}"
+          },
+          "removed": "Премахнато",
+          "subtracted": "Премахнато(и): %{count}",
+          "returned": "Върнати: %{count}",
+          "return_line_item_removed": "Премахнато от връщане: %{count}"
+        },
+        "custom_line_item_description": "Сума за плащане на поръчката %{order_name}",
+        "additional_payment_requested": "Необходимо е да заплатите сумата на %{total_outstanding}",
+        "checkout_review_and_pay": "вашата поръчка, %{order_name} е актуализиран. Прегледайте тези промени, след което платете, за да потвърдите поръчката си.",
+        "order_updated_on": "Вашата поръчка беше актуализирана на %{last_edited_at}.",
+        "order_review_and_pay": "Вашата поръчка е актуализирана. Прегледайте и платете, за да потвърдите поръчката си.",
+        "pay_now": "Платете сега"
       },
       "open_graph_meta_tag": {
         "title_with_products": {
-          "few": "Купете %{product_name} И все пак %{count} изделия"
+          "few": "Купете го %{product_name} и все още %{count} статии",
+          "zero": "Купете го %{product_name}",
+          "one": "Купете го %{product_name} и все още %{count} статия",
+          "other": "Купете го %{product_name} и все още %{count} статии"
         }
       },
       "subscriptions": {
@@ -2983,7 +2998,48 @@
         "terms_of_service": "Условия за ползване",
         "legal_notice": "Правна информация",
         "shipping_policy": "Транспорт",
-        "terms_of_sale": "Условия за продажба"
+        "terms_of_sale": "Условия за продажба",
+        "subscription_policy": "Анулации",
+        "purchase_options_policy": "Политика за опции за покупка",
+        "contact_information": "Контакт",
+        "purchase_options_cancellation_policy": "Анулации",
+        "cookie_preferences": "Бисквитки",
+        "policy_label": "Политика",
+        "policies_label": "политици",
+        "select_policy_label": "Изберете политика",
+        "terms_and_policies": "Условия и правила"
+      },
+      "notifications": {
+        "title": "Известия"
+      },
+      "tips": {
+        "title": "Добавете съвет",
+        "description": "Подкрепете отбора на %{shop_name}",
+        "presets_description": "Изберете процент на бакшиш",
+        "custom_label": "Персонализиран съвет",
+        "add_tip": "Добавете съвет",
+        "update_tip": "Съвет за актуализиране",
+        "message": "Благодарим ви, оценяваме жеста.",
+        "preset_label": "%{tip_percent}%",
+        "no_tip_label": "без",
+        "not_available_with_spi": "Не се предлага за плащания на вноски с Shop Pay"
+      },
+      "localized_fields": {
+        "additional_information": {
+          "title": "Допълнителна информация",
+          "tax_credential_br": "CPF/CNPJ",
+          "shipping_credential_br": "CPF/CNPJ",
+          "shipping_credential_kr": "Персонален митнически код",
+          "shipping_credential_cn": "Идентификационен номер на жител",
+          "tax_credential_it": "Codice Fiscale (по избор)",
+          "tax_email_it": "PEC (по избор)",
+          "tax_credential_cl": "RUT",
+          "shipping_credential_cl": "RUT",
+          "tax_credential_co": "Cédula/ДДС",
+          "tax_credential_type_co": "Тип Cédula",
+          "shipping_credential_co": "Cédula/ДДС",
+          "shipping_credential_type_co": "Тип Cédula"
+        }
       }
     },
     "notices": {
