@@ -1720,7 +1720,9 @@
           "other": "Van %{count} lejárt kártyákat, amelyeket megtekinthet és szerkeszthet fiókjában."
         },
         "order_edit_banner_items_added": {
-          "few": "Hozzáadva (ek): %{count}"
+          "few": "Hozzáadott(ok): %{count}",
+          "one": "Hozzáadva",
+          "other": "Hozzáadott(ok): %{count}"
         },
         "bank_account_missing": "A bankszámla kapcsolata kötelező",
         "discount_show_more_warnings": {
@@ -1882,7 +1884,74 @@
           "payment_tag": "Ajándékkártya",
           "apply_another_gift_card_label": "Használjon másik ajándékutalványt",
           "gift_card_label": "%{identifier} az ajándékutalványért",
-          "add_label": "Adjon hozzá ajándékutalványt"
+          "add_label": "Adjon hozzá ajándékutalványt",
+          "manage_label": "Ajándékkártyák kezelése"
+        },
+        "custom_onsite_payment_method_modal": {
+          "title": "Személyre szabott fizetési visszaigazolás a helyszínen"
+        },
+        "markets_pro_disclaimer_label": "A megrendelés leadásával Ön beleegyezik abba, hogy a Global-e-től, mint regisztrált kereskedőtől vásároljon, összhangban %{markets_pro_terms} és %{privacy_policy} Globális, és megoszthatja vele az adatait %{shop_name}.",
+        "markets_pro_disclaimer_terms_and_conditions": "Feltételek",
+        "markets_pro_disclaimer_privacy_policy": "Adatvédelmi szabályzat",
+        "markets_pro_disclaimer_terms_and_conditions_title": "Regisztrált kereskedő általános szerződési feltételei",
+        "markets_pro_disclaimer_privacy_policy_title": "Regisztrált kereskedő adatvédelmi szabályzata",
+        "purchase_order_number": {
+          "title": "Megrendelés száma",
+          "label": "Megrendelés száma (opcionális)"
+        },
+        "alternative_payment_currency_total_notice": "Megjegyzés: A fizetési módot megterheljük %{amount_due}.",
+        "waiting_on_taxes_message": "Ha a költségeket nem számítják ki a következő másodpercekben, kérjük, frissítse az oldalt.",
+        "waiting_on_taxes_notice": "Az adókat kiszámítják",
+        "order_edit_banner_single_item_returned": "Visszatért",
+        "order_edit_banner_multiple_items_returned": "Visszaküldve(k): {{amount}}",
+        "shop_pay_installments_label": "Rate Shop Pay",
+        "add_credit_card_modal": {
+          "title": "Kártya hozzáadása",
+          "cancel": "Mégsem",
+          "save": "Mentés"
+        },
+        "delete_credit_card_modal": {
+          "title": "Törölje a kártyát",
+          "confirmation": "Biztosan törölni akarod {{brandName}} ami azzal végződik {{lastDigits}}?",
+          "cancel": "Mégsem",
+          "delete": "Törölje"
+        },
+        "order_edit_banner_items_removed": {
+          "in_full": "Eltávolítva",
+          "with_quantities": "Eltávolított(ok): {{delta}} től {{quantity}}"
+        },
+        "order_edit_banner_items_returned": {
+          "in_full": "Visszaküldve(k): {{quantity}}",
+          "with_quantities": "Visszaküldve(k): {{delta}} től {{quantity}}"
+        },
+        "saved_credit_card_actions": {
+          "edit": "Szerkesztés",
+          "delete": "Törölje"
+        },
+        "edit_credit_card_modal": {
+          "title": "Szerkessze a kártyát",
+          "done": "kész",
+          "cancel": "Mégsem",
+          "description": "Csak a kártya számlázási címét módosíthatja.",
+          "fields": {
+            "default": "Beállítás alapértelmezettként",
+            "card_number": "Kártyaszám",
+            "expiry": "Lejárati dátum",
+            "security_code": "Biztonsági kód",
+            "name": "A név a kártyán",
+            "billing": "Számlázás erre"
+          }
+        },
+        "payment_method": "Fizetési mód",
+        "expired_payment_method": "A kiválasztott fizetési mód lejárt",
+        "subscription_heading": "Előfizetési Szerződés",
+        "use_order_billing_address_label": "A megrendeléshez használja a számlázási címet",
+        "use_location_billing_address_label": "Használja a számlázási címet a helyhez",
+        "use_location_shipping_address_label": "Helyszínként használja a szállítási címet",
+        "purchase_options_agreement_label_wallets": "A fizetés folytatásával Ön elfogadja az ezen az oldalon említett jövőbeni díjakat és a lemondási feltételeket.",
+        "gift_card_store_credit": {
+          "add_label": "Adjon hozzá ajándékkártyát vagy bolti hitelt",
+          "manage_label": "Ajándékkártyák vagy bolti hitel kezelése"
         }
       },
       "shipping_errors": {
