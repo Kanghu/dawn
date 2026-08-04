@@ -1662,6 +1662,32 @@
         "compare_at_sale": "Promozione (%{sale_amount})",
         "discount_code_applied_count": {
           "few": "Visualizzazione %{count} sconti"
+        },
+        "tax_line": {
+          "hst": "HST",
+          "gst": "GST",
+          "pst": "PST",
+          "rst": "RST",
+          "qst": "QST",
+          "vpt": "VPT"
+        },
+        "automatic_discount_tooltip": "Gli sconti applicati automaticamente non possono essere rimossi",
+        "alternative_payment_currency_chinese_yuan": "Conferma il totale finale in CNY nell'app %{wallet}.",
+        "alternative_payment_currency_total_disclosure": "%{shop_name} elaborare i pagamenti in %{shop_currency} (%{amount_due}).",
+        "settlement_currency_note": "%{shop_name} elaborare i pagamenti in %{processing_currency}. Hai fatto acquisti %{original_currency}.",
+        "settlement_currency_note_wallet": "%{shop_name} elaborare i pagamenti in %{processing_currency}. Hai fatto acquisti %{original_currency} e hai pagato con %{wallet} in CNY. Dai un'occhiata all'app %{wallet_app} per l'importo finale.",
+        "settlement_currency_note_wallet_no_conversion": "Hai pagato con %{wallet} in CNY. Dai un'occhiata all'app %{wallet_app} per l'importo finale.",
+        "lpm": {
+          "wechat_pay": {
+            "checkout_disclosure": "Conferma il totale finale in CNY nell'app WeChat",
+            "post_purchase_disclosure": "Visualizza il totale in CNY su WeChat",
+            "checkout_disclosure_with_alternative_payment_currency": "%{shop_name} elaborerà questo pagamento per un importo di %{amount_due} %{processing_currency}, che WeChat converte in CNY"
+          },
+          "alipay": {
+            "checkout_disclosure": "Conferma il totale finale in CNY nell'app Alipay",
+            "post_purchase_disclosure": "Visualizza il totale in CNY su Alipay",
+            "checkout_disclosure_with_alternative_payment_currency": "%{shop_name} elaborerà questo pagamento per un importo di %{amount_due} %{processing_currency}, che Alipay converte in CNY"
+          }
         }
       },
       "payment": {
@@ -1682,7 +1708,37 @@
         },
         "discount_codes_removed_summary": {
           "few": "%{count} i codici sconto sono stati rimossi"
-        }
+        },
+        "amazon_payments_label": "AmazonPaga",
+        "amazon_payments_login_hint": "Ti verrà richiesto di accedere con Amazon.",
+        "amazon_payments_logout": "Esci da Amazon Pay",
+        "amazon_payments_failed_mfa_challenge": "Non è stato possibile utilizzare il metodo di pagamento selezionato. Seleziona un metodo diverso o contatta la tua banca o l'emittente della carta.",
+        "amazon_payments_abandoned_mfa_challenge": "Non è stato possibile completare il pagamento. Seleziona un metodo di pagamento diverso o contatta la tua banca o l'emittente della carta.",
+        "amazon_payments_could_not_enqueue_authorize": "Si è verificato un problema durante l'elaborazione del pagamento. Riprova o utilizza un metodo di pagamento diverso.",
+        "title": "Pagamento",
+        "amount_left_to_pay_label": "Termine di pagamento:",
+        "discount_button_action_label": "Applica il codice sconto",
+        "gift_card_code_label": "Codice della carta regalo",
+        "apply_gift_card_button_label": "Applicare",
+        "gift_card_balance_label": "Saldo:",
+        "supported_card_brands_more_label": "e altro ancora...",
+        "detected_card_brand": "Marchio della carta rilevato: {brand}",
+        "card_number_label": "Numero della carta",
+        "card_number_placeholder": "Numero della carta",
+        "card_pay_with": "Paga con:",
+        "card_security_notice": "Tutte le transazioni sono sicure e crittografate.",
+        "card_information_notice": "Tutte le transazioni sono sicure e crittografate. I dati della carta di credito non vengono mai memorizzati.",
+        "name_on_card_label": "Il nome sulla carta",
+        "name_on_card_placeholder": "Il nome sulla carta",
+        "card_expiry_label": "Data di scadenza (MM/AA)",
+        "card_expiry_placeholder": "Data di scadenza (MM/AA)",
+        "credit_card_start_month": "Inizio mese",
+        "credit_card_start_year": "Inizio anno",
+        "card_verification_value_label": "Codice di sicurezza",
+        "card_verification_value_placeholder": "Codice di sicurezza",
+        "card_expiry_date_explanation": "Data di scadenza della carta nel formato: mese, mese, anno, anno",
+        "card_expiration_month_label": "Mese di scadenza",
+        "card_expiration_year_label": "Anno di scadenza"
       },
       "shipping_errors": {
         "shipping_method_not_available_generic": {
