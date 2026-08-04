@@ -2468,18 +2468,27 @@
       "subscriptions": {
         "recurring_totals_with_policies": {
           "first_cycles": {
-            "few": "Първият %{count} Плащанията са от %{total_price} всеки"
-          }
+            "few": "Първите %{count} плащанията са на %{total_price} всеки един",
+            "one": "Първото плащане е %{total_price}",
+            "other": "Първите %{count} плащанията са на %{total_price} всеки един"
+          },
+          "following_cycles": ", тогава ще платите %{total_price} на всеки %{interval}"
         },
         "recurring_total_intervals": {
           "day": {
-            "few": "%{count} дни"
+            "few": "%{count} дни",
+            "one": "ден",
+            "other": "%{count} дни"
           },
           "week": {
-            "few": "%{count} седмично"
+            "few": "%{count} седмици",
+            "one": "седмица",
+            "other": "%{count} седмици"
           },
           "month": {
-            "few": "%{count} Понеделник"
+            "few": "%{count} месеца",
+            "one": "месец",
+            "other": "%{count} месеца"
           },
           "year": {
             "few": "%{count} години"
@@ -2489,7 +2498,8 @@
           "first_cycles": {
             "few": ", тогава те ще бъдат %{count} Плащания за това колко %{total_price}"
           }
-        }
+        },
+        "recurring_totals": "%{total_price} на всеки %{interval}"
       },
       "contextual_availability": {
         "title": {
@@ -3038,8 +3048,50 @@
           "tax_credential_co": "Cédula/ДДС",
           "tax_credential_type_co": "Тип Cédula",
           "shipping_credential_co": "Cédula/ДДС",
-          "shipping_credential_type_co": "Тип Cédula"
+          "shipping_credential_type_co": "Тип Cédula",
+          "tax_credential_cr": "Идентификационен номер/RUT",
+          "shipping_credential_cr": "Идентификационен номер/RUT",
+          "tax_credential_ec": "CI/RUC/ДДС",
+          "shipping_credential_ec": "CI/RUC/ДДС",
+          "tax_credential_gt": "NIT/ДДС",
+          "shipping_credential_gt": "NIT/ДДС",
+          "tax_credential_id": "NPWP",
+          "shipping_credential_id": "NPWP",
+          "tax_credential_my": "TIN/Регистрационен номер",
+          "shipping_credential_my": "TIN/Регистрационен номер",
+          "shipping_credential_mx": "RFC",
+          "tax_credential_mx": "RFC",
+          "tax_credential_type_mx": "Фискален режим",
+          "tax_credential_use_mx": "Използване на CFDI",
+          "tax_credential_py": "CI/RUC/ДДС",
+          "shipping_credential_py": "CI/RUC/ДДС",
+          "tax_credential_pe": "DNI/RUC/CE",
+          "shipping_credential_pe": "DNI/RUC/CE",
+          "tax_credential_pt": "ТИН/ДДС",
+          "shipping_credential_pt": "ТИН/ДДС",
+          "tax_credential_es": "DNI/TIN",
+          "shipping_credential_es": "DNI/TIN",
+          "shipping_credential_tw": "Национален идентификационен номер/данъчен код",
+          "tax_credential_tr": "Türkiye Cumhuriyeti Kimlik Numarası/KDV",
+          "shipping_credential_tr": "Türkiye Cumhuriyeti Kimlik Numarası/KDV"
         }
+      },
+      "post_purchase": {
+        "page_title": "След закупуване",
+        "title": "След закупуване",
+        "escape_confirmation": "Платили сте поръчката.",
+        "escape_action": "Преглед на информация за поръчка ›",
+        "components": {
+          "close": "затвори",
+          "expand": "Вижте повече",
+          "processing": "Обработва се...",
+          "submit": "Изпратете"
+        }
+      },
+      "change_country": {
+        "cart_updated_based_on_country": "Вашата количка е актуализирана въз основа на държавата ви за доставка.",
+        "cart_and_currency_updated_based_on_country": "Количката и валутата са актуализирани въз основа на държавата на доставка.",
+        "currency_updated_for_country": "Актуализирана валута за %{country}"
       }
     },
     "notices": {
