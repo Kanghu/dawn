@@ -4070,7 +4070,73 @@
       "marketing_checkmark_label": "You are subscribed to receive news and offers by email",
       "shop_order_tracking": {
         "download_shop_to_track": "Download Shop to track your package",
-        "track_order_with_shop": "Track your order with Shop"
+        "track_order_with_shop": "Track your order with Shop",
+        "title_header": "Scan with your phone",
+        "real_time_delivery_updates": "After your order ships, Shop will send you real-time updates about the delivery.",
+        "real_time_delivery_updates_with_gift": "Receive real-time shipping updates and a gift of {{promoAmount}} to spend in the Shop app.",
+        "shop_app_promo_amount_off": "Get a gift of {{promoAmount}}",
+        "shop_app_promo_text": "{{amountOff}} to spend in the Shop app"
+      },
+      "shop_pay": {
+        "order_completed_with": "Order completed with",
+        "learn_more": "Learn more",
+        "usdc_rewards_terms": "View USDC Rewards Terms"
+      },
+      "edit_summary": {
+        "added": "Added",
+        "added_with_quantity": "Added(s): {{quantity}}",
+        "removed": "Removed",
+        "removed_with_quantity": "Removed(s): {{quantity}}",
+        "updated_at": "Your order was updated on {{date}}",
+        "returned": "Returned",
+        "returned_with_quantities": "Returned(s): {{delta}} from {{total}}",
+        "removed_with_quantities": "Removed(s): {{delta}} from {{total}}",
+        "return_line_item_removed": "Removed from return",
+        "return_line_item_removed_with_quantities": "It has been removed {{delta}} from the return"
+      },
+      "pickup": {
+        "pickup": "Lifting",
+        "pickup_location": "Pick up location",
+        "pickup_point": "Pick up point"
+      },
+      "paid_with_shop_pay_installments_card": {
+        "paid_with_shop_pay_installments": "Paid with Rate Shop Pay",
+        "description": "Stay on top of your payment schedule with reminders in the Shop app.",
+        "payment_reminders_button": "Receive payment reminders",
+        "desktop_qr_code_content": {
+          "title": "Scan to find reminders",
+          "description": "Receive Shop rate reminders."
+        },
+        "title": "Payment reminders for Installment Payments with Shop Pay"
+      },
+      "order_details": "Order details",
+      "contact_information": "Contact information",
+      "login_to_view_all_order_details": "Log in to view all order details.",
+      "log_in": "Connect yourself",
+      "paid_amount": "Amount paid",
+      "remaining_amount": "Remaining amount",
+      "order_details_skeleton_accessibility_label": "Log in to view all order details.",
+      "tip": "Advice",
+      "logged_in_account_no_permission_to_order": "You have logged in as {{email}}. This account does not have permission to manage this order.",
+      "log_in_to_a_different_account": "Sign in to another account",
+      "duties": "Customs duties",
+      "ok_duties_tooltip": "This order is being shipped from another country, so customs fees have been added to the order total.",
+      "error_duties_tooltip": "This order is being shipped from another country, so customs duties and taxes may be charged upon delivery.",
+      "zero_duties_tooltip": "This order is being shipped from another country. No customs duties are charged for orders of this value.",
+      "group_title_label": "Part of: {{groupTitle}}",
+      "fees": {
+        "restocking_fee": "Restocking fee",
+        "return_shipping_fee": "Return shipping"
+      },
+      "vat_invoices": {
+        "title": "VAT invoices",
+        "label": "VAT"
+      },
+      "taxes_included": "Including {{amount}} representing taxes",
+      "duties_and_taxes_included": "The total includes all customs duties and other taxes. There are no additional costs for delivery.",
+      "grouped_view_components": {
+        "expand_line_items": "Display {{count}} articles",
+        "collapse_line_items": "Hide {{count}} articles"
       }
     },
     "B2B": {
