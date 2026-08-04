@@ -2448,7 +2448,21 @@
         },
         "reveal_more_label": {
           "few": "Show %{count} more locations"
-        }
+        },
+        "location_nearby_short_other_items": {
+          "few": "%{count} nearby locations with your items"
+        },
+        "location_far_away_one_item": {
+          "one": "%{count} location with your item",
+          "other": "%{count} locations with your article",
+          "few": "%{count} locations with your article"
+        },
+        "location_far_away_other_items": {
+          "one": "%{count} location with your items",
+          "other": "%{count} locations with your items",
+          "few": "%{count} locations with your items"
+        },
+        "location_selected": "The selected location"
       },
       "merchandise_unavailable_in_buyer_location": {
         "remove_items_action": {
@@ -2927,6 +2941,88 @@
       },
       "cart_checkout_validation": {
         "runtime_error": "There was a problem processing your request. Contact the store owner."
+      },
+      "split_delivery": {
+        "pickup_all_items": "Pick up all items",
+        "items_for_pickup": "Items to pick up",
+        "delivery_method": "Breakdown delivery method",
+        "delivery_method_menu": "Delivery method menu broken down",
+        "inventory_issue_banner": {
+          "remove_items_or_ship": "%{ship_separately_link} or %{remove_items_link}",
+          "remove_items_or_pickup": "%{pickup_in_store_link} or %{remove_items_link}",
+          "heading": {
+            "cannot_be_picked_up": {
+              "one": "%{count} item cannot be picked up",
+              "other": "%{count} items cannot be picked up",
+              "few": "%{count} items cannot be picked up"
+            },
+            "cannot_be_shipped": {
+              "one": "%{count} item cannot be shipped",
+              "other": "%{count} items cannot be shipped",
+              "few": "%{count} items cannot be shipped"
+            }
+          },
+          "remove_item": {
+            "one": "remove the article",
+            "other": "remove items",
+            "few": "remove items"
+          },
+          "ship_separately": {
+            "one": "Ship it separately",
+            "other": "Ship them separately",
+            "few": "Ship them separately"
+          },
+          "pick_them_up_in_store": {
+            "one": "Pick it up from the store",
+            "other": "Pick them up from the store",
+            "few": "Pick them up from the store"
+          },
+          "remove_item_only": {
+            "one": "Remove the item",
+            "other": "Remove items",
+            "few": "Remove items"
+          },
+          "merchandise_line_with_quantity": "%{title} (×%{quantity})"
+        },
+        "items_for_shipping": "Items for shipment",
+        "pickup_items_count": {
+          "few": "Lifting %{count} articles"
+        },
+        "ship_items_count": {
+          "few": "Shipping %{count} articles"
+        },
+        "items_moved_to_shipping_toast": "Items that cannot be picked up have been moved to shipping",
+        "cross_border": {
+          "modal": {
+            "heading": "Changing country?",
+            "content": "The pickup and shipping locations must be in the same country. Changing the country will reset all items upon shipment.",
+            "change_country": "Change the country",
+            "country_changed_heading": "The country has been changed"
+          },
+          "banner": "Your delivery method has been updated"
+        },
+        "items_count": {
+          "few": "%{count} articles"
+        },
+        "accessibility": {
+          "status": {
+            "ship_separately": "%{items} will be shipped separately.",
+            "pickup_in_store": "%{items} will be picked up from the store.",
+            "remove_items": "%{items} have been removed from the cart."
+          }
+        }
+      },
+      "captcha": {
+        "title": "Complete the CAPTCHA verification to continue",
+        "errors": {
+          "not_solved": "Complete the CAPTCHA verification to continue"
+        }
+      },
+      "discount_errors": {
+        "generic_error": "Your order could not be processed because your discount code is no longer available. Review your order total and try again."
+      },
+      "wallets": {
+        "return_to_store": "Come back to the store"
       }
     },
     "notices": {
