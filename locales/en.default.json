@@ -3737,6 +3737,12 @@
       "order_list": {
         "items": {
           "few": "{{count}} articles"
+        },
+        "column_headers": {
+          "total": "Totally",
+          "order": "Order",
+          "actions_accessibility_label": "Actions",
+          "products_accessibility_label": "Products"
         }
       },
       "order_status": {
@@ -3770,7 +3776,9 @@
         "gift_card_resend_button": {
           "few": "Resend gift cards"
         }
-      }
+      },
+      "list_layout_accessibility_label": "Appearance options",
+      "list_title": "Orders"
     },
     "order_details": {
       "image_gallery": {
@@ -3972,7 +3980,69 @@
         "save_accessibility_label": "Save profile",
         "title": "Profile",
         "no_name_provided_accessibility_label": "No name added",
-        "email": "Email"
+        "email": "Email",
+        "errors": {
+          "name_too_long": "The name of the field {{fieldName}} is too long (maximum 255 characters)",
+          "name_cannot_contain_url": "The field {{fieldName}} cannot contain URL",
+          "name_cannot_contain_html_tags": "The field {{fieldName}} cannot contain HTML tags",
+          "email_cant_be_blank": "Communication of the e-mail address is mandatory",
+          "invalid_email_format": "Please type a valid email address"
+        },
+        "editable_email_help_text": "Use this email address to sign in and update orders."
+      },
+      "profile_update_confirmation_message": "Updated profile",
+      "title": "Profile",
+      "people": {
+        "pagination": {
+          "load_more": "Show more",
+          "load_more_accessibility_label": "Show more people",
+          "loading_accessibility_label": "Loading people"
+        }
+      },
+      "add_button": "Add",
+      "verify_new_email_modal": {
+        "title": "Check your new email",
+        "description": "Now, enter the 6-digit code sent to your new email:",
+        "one_time_password_label": "6-digit code",
+        "email_resend_button": "Resend the code",
+        "email_resend_button_accessibility_label": "Resend the verification code",
+        "verify_button": "Check it out",
+        "verify_button_accessibility_label": "Check your unique password",
+        "cancel_button": "Cancel",
+        "cancel_button_accessibility_label": "Cancel profile edit",
+        "email_resend_button_success_toast_message": "Verification code has been sent",
+        "email_resend_button_failure_banner_message": "Could not send verification code"
+      },
+      "email_update_success_modal": {
+        "title": "Check your email",
+        "description": "Email has been successfully updated. Redirects to login."
+      },
+      "email_update_confirmation_message": "Email address has been updated to {{email}}",
+      "verify_current_email_modal": {
+        "cancel_button": "Cancel",
+        "cancel_button_accessibility_label": "Cancel profile edit",
+        "description": "Enter the 6-digit code sent to your original email address:",
+        "email_resend_button_accessibility_label": "Resend the verification code",
+        "title": "Confirm it's you",
+        "verify_button": "Next",
+        "verify_button_accessibility_label": "Check your current email"
+      },
+      "marketing_preferences": {
+        "email_label": "Email",
+        "pending_confirmation": "Click the link in the email to confirm.",
+        "resend_email": "Resend the email",
+        "resend_email_success": "The link has been sent",
+        "title": "Marketing Preferences",
+        "unsubscribe_confirmation": {
+          "cancel": "Cancel",
+          "description": "You will no longer receive email marketing from {{shopName}}",
+          "title": "Unsubscribe from emails?",
+          "unsubscribe": "Unsubscribe"
+        },
+        "update_error": {
+          "description": "There was a problem updating your marketing preferences. Try refreshing this page or check your internet connection."
+        },
+        "update_success": "Your marketing preferences have been updated"
       }
     }
   },
