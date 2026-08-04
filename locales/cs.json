@@ -4087,8 +4087,68 @@
           "paid": "Zaplaceno",
           "unpaid": "Nezaplaceno",
           "voided": "Zrušeno",
-          "partially_paid": "Částečně zaplaceno"
-        }
+          "partially_paid": "Částečně zaplaceno",
+          "partially_refunded": "Částečně vráceno",
+          "refunded": "Proplaceno",
+          "expired": "Platnost vypršela"
+        },
+        "fulfillment_status": {
+          "fulfilled": "Splněno",
+          "complete": "Dokončeno",
+          "partial": "Částečně",
+          "unfulfilled": "Nesplněno",
+          "restocked": "S natankovanými zásobami"
+        },
+        "transaction_status": {
+          "success": "úspěch",
+          "pending": "Čekání",
+          "failure": "Selhání",
+          "error": "Chyba"
+        },
+        "cancel_reason": {
+          "declined": "Platba odmítnuta",
+          "inventory": "Položky nedostupné",
+          "fraud": "Podvodná objednávka",
+          "customer": "Zákazník změnil/zrušil objednávku",
+          "other": "Něco jiného",
+          "few": "Něco jiného",
+          "staff": "Osobní chyba"
+        },
+        "cash_on_delivery": "Na dobírku"
+      },
+      "cart": {
+        "only_n_items_available": "Můžete pouze přidat %{count} %{name} do košíku.",
+        "too_many_items_in_cart": "Více přidat nemůžete %{name} v košíku.",
+        "all_items_in_cart": "Všechny ty %{count} %{name} Jsem ve vašem košíku.",
+        "empty_update": "nelze aktualizovat prázdný košík",
+        "missing_parameters": "neexistuje žádné platné ID nebo parametr řádku",
+        "generic_error": "Chyba košíku",
+        "too_many_line_items_error": "Váš košík nemůže obsahovat ryby %{max} články.",
+        "link_expired": "Platnost odkazu vypršela",
+        "link_no_longer_exists": "Odkaz již neexistuje.",
+        "stock_problems_html": "Jedna nebo více položek již není k dispozici. Dal jsem to k dispozici <a href='%{link}'>aktualizovaný košík</a>.",
+        "changed": "Upravený košík",
+        "items_changed": "Jedna nebo více položek se změnilo.",
+        "product_sold_out": "produkt\"%{name}“ je již vyprodáno.",
+        "variant_not_found": "Nelze najít možnost",
+        "variant_requires_selling_plan": "Variantu lze koupit pouze s plánem nákupu.",
+        "shipping_address_not_required": "Tento vozík nevyžaduje doručení",
+        "shipping_address_invalid": "Při výpočtu poplatků za dopravu došlo k problému. Pokračujte k pokladně a před pokladnou vyberte poplatek za dopravu.",
+        "selling_plan_not_applicable": "Na variantu nelze použít plán prodeje",
+        "selling_plan_not_available_for_company_locations": "U B2B objednávek jsou dostupné pouze jednotlivé nákupy.",
+        "digital_product_not_available_for_company_locations": "Tuto položku nelze přidat do B2B objednávky",
+        "product_not_available": "Produkt není dostupný",
+        "less_than_minimum": "Tato položka má minimum %{min}.",
+        "more_than_maximum": "Tato položka má maximum %{max}.",
+        "not_respect_step": "Tuto položku můžete zadat pouze po krocích %{step}.",
+        "bundle_requires_components": "Produkt ve formě sady \"%{name}“ nelze přidat do košíku.",
+        "gift_card_with_components_not_supported": "Produkt ve formě sady \"%{name}“ nelze přidat do košíku.",
+        "view_lines_limit_reached": "Počet řádků musí být menší nebo roven %{limit}",
+        "merchandise_line_transformers": {
+          "run_error": "U vašeho nákupního košíku došlo k chybě."
+        },
+        "gift_card_price_must_be_greater_than_zero": "Produkt ve formě sady \"%{name}“ nelze přidat do košíku.",
+        "cart_too_large": "Košík je příliš velký."
       }
     }
   }
