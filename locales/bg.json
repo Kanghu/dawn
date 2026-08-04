@@ -2082,8 +2082,9 @@
       },
       "thank_you": {
         "login_reorder_link_text": {
-          "few": "Купете и тези продукти",
-          "one": "купете и този продукт"
+          "few": "купете и тези продукти",
+          "one": "купете и този продукт",
+          "other": "купете и тези продукти"
         },
         "gift_card_confirmation_by_text_typ": {
           "few": "Ще получите текстово съобщение с картите за подаръци след няколко минути."
@@ -2231,7 +2232,71 @@
         "other_options": "Други опции",
         "picked_up_title": "Вашата поръчка е взета",
         "picked_up_description_html": "Вашата поръчка е взета от %{location_name} на %{date}.",
-        "shop_phone_description": "Ще получите текстово съобщение с връзка към приложението Магазин, което ще ви помогне да проследите поръчката си."
+        "shop_phone_description": "Ще получите текстово съобщение с връзка към приложението Магазин, което ще ви помогне да проследите поръчката си.",
+        "marker": {
+          "current": "Текущо местоположение за доставка",
+          "shipping": "Адрес за доставка"
+        },
+        "pick_up_in_store_marker": {
+          "current": "Текущо местоположение за доставка",
+          "shipping": "Вземете местоположение"
+        },
+        "fulfillment": {
+          "fulfilled_table_title": "Артикулите в тази пратка",
+          "unfulfilled_table_title": "Артикулите са готови за изпращане",
+          "product_image_label": "Изображение на продукта",
+          "description_label": "Описание",
+          "quantity_label": "Количество"
+        },
+        "ready_for_delivery_title": "Вашата поръчка е готова за доставка",
+        "ready_for_delivery_description": "Подготвих вашата поръчка.",
+        "order_status_confirmed_order_local": "Подготвяме вашата поръчка за доставка.",
+        "delivery_information_label": "Информация за доставка:",
+        "gift_card_sent_confirmation": "Подаръчните карти са изпратени",
+        "out_for_delivery_local_title": "Вашата поръчка се доставя.",
+        "out_for_delivery_local_description_html": "Вашата поръчка ще пристигне скоро.",
+        "delivered_local_title": "Вашата поръчка е доставена",
+        "delivered_local_description_html": "Не получихте това, което поръчахте? %{let_us_know}.",
+        "let_us_know": "Информирайте ни",
+        "qr_code": {
+          "title": "Гледайте на телефона си",
+          "send_link_to_phone": "Или изпратете линк на телефона си"
+        },
+        "gift_card_confirmation_by_text": "Ако не сте го получили, поискайте повторно изпращане на текстово съобщение или се свържете с нас.",
+        "gift_card_confirmation_by_email": "Ако не сте го получили, поискайте повторно изпращане на имейла или се свържете с нас.",
+        "gift_card_title": "Подаръчни карти",
+        "resend_gift_cards": "Изпратете отново подаръчните карти",
+        "attempted_delivery_local_title": "Доставката е неуспешна",
+        "attempted_delivery_local_description_html": "Не можахме да доставим вашата поръчка. За да планирате друга доставка, %{contact_us}.",
+        "thank_you_title_payment": "Вашето плащане е потвърдено",
+        "thank_you_confirmed_order_with_email_payment": "Вие сте направили плащане за вашата поръчка %{date}.",
+        "thank_you_confirmed_order_with_phone_payment": "Вие сте направили плащане за вашата поръчка %{date}.",
+        "thank_you_confirmed_order_with_email_and_phone_payment": "Вие сте направили плащане за вашата поръчка %{date}.",
+        "order_status_confirmed_order_with_email_payment": "Вие сте направили плащане за вашата поръчка %{date}.",
+        "order_status_confirmed_order_with_phone_payment": "Вие сте направили плащане за вашата поръчка %{date}.",
+        "order_status_confirmed_order_with_email_and_phone_payment": "Вие сте направили плащане за вашата поръчка %{date}.",
+        "shop_qr_with_sms_upsell": {
+          "qr_code": {
+            "title": "Сканирайте с телефона си"
+          },
+          "sms": {
+            "title": "Или изпратете линк на телефона си"
+          }
+        },
+        "estimated_delivery": "Текуща оценка за доставка: ",
+        "view_business_customer_account": "Вижте акаунта",
+        "company_location_title": "Местоположение",
+        "thank_you_title_review": "Вашата поръчка е изпратена за преглед",
+        "thank_you_confirmed_order_with_draft": "Ще ви уведомим, ако имаме нужда от повече информация или когато поръчката ви бъде потвърдена.",
+        "breadcrumbs_submitted": "Изпратено",
+        "breadcrumbs_in_review": "В процес на преглед",
+        "breadcrumbs_confirmed": "Потвърдено",
+        "missing_shipping_address_banner": {
+          "title": "Поръчката не включва адрес за доставка",
+          "text_html": "%{contact_us} за да добавите адреса",
+          "contact_us": "Свържете се с нас"
+        },
+        "order_status_confirmed_with_installments_payment_return": "Върнете вниманието си към търговския сътрудник."
       },
       "order_payment_collection": {
         "changes_summary": {
