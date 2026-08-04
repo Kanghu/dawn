@@ -69,23 +69,23 @@
   },
   "newsletter": {
     "label": "Имейл",
-    "success": "Благодарим, че се абонирахте",
-    "button_label": "Абониране"
+    "success": "Благодаря ви, че се абонирахте",
+    "button_label": "Абонирайте се"
   },
   "accessibility": {
-    "skip_to_text": "Преминаване към съдържанието",
-    "close": "Затваряне",
-    "unit_price_separator": "за",
-    "vendor": "Доставчик:",
+    "skip_to_text": "Преминете към съдържанието",
+    "close": "Затворете го",
+    "unit_price_separator": "на",
+    "vendor": "Продавач:",
     "error": "Грешка",
-    "refresh_page": "При задаване на избор се опреснява цялата страница.",
+    "refresh_page": "Избирането на селекция води до пълно опресняване на страницата.",
     "link_messages": {
       "new_window": "Отваря се в нов прозорец.",
-      "external": "Отваря външен уебсайт."
+      "external": "Отворете външния сайт."
     },
     "loading": "Зареждане...",
-    "skip_to_product_info": "Прескочи към информацията за продукта",
-    "total_reviews": "общ брой мнения",
+    "skip_to_product_info": "Преминете към информация за продукта",
+    "total_reviews": "общо прегледи",
     "star_reviews_info": "{{ rating_value }} от {{ rating_max }} звезди",
     "collapsible_content_title": "Съдържание, което може да се свива",
     "complementary_products": "Допълващи продукти"
@@ -484,51 +484,51 @@
       "load_slide": "Заредете слайда",
       "previous_slideshow": "Предишен слайд",
       "next_slideshow": "Следващ слайд",
-      "pause_slideshow": "Пауза на слайдшоуто",
-      "play_slideshow": "Възпроизвеждане на слайдшоу",
+      "pause_slideshow": "Поставете на пауза слайдшоуто",
+      "play_slideshow": "Пуснете слайдшоуто",
       "carousel": "Въртележка",
-      "slide": "Слайд"
+      "slide": "слайд"
     },
     "page": {
-      "title": "Заглавие на страница"
+      "title": "Заглавието на страницата"
     },
     "announcements": {
-      "previous_announcement": "Предишно известие",
-      "next_announcement": "Следващо известие",
+      "previous_announcement": "Предишно съобщение",
+      "next_announcement": "Следващо съобщение",
       "carousel": "Въртележка",
-      "announcement": "Известие",
-      "announcement_bar": "Лента с известия",
-      "black_friday_continues": "🎉 Black Friday продължава с отстъпки (до 80%)",
-      "black_friday_lowest_prices": "🎉 Black Friday: най-ниските цени на годината за избрани продукти",
-      "black_friday_delivery_delay": "⚠️ През този период поръчките могат да имат леки колебания в очакваните срокове за доставка",
-      "holiday_closure": "Затворени сме 25–28 дек, 31 дек–4 ян, 6–7 ян. В останалите дни поръчките продължават да се обработват и доставят."
+      "announcement": "Съобщение",
+      "announcement_bar": "Лента за съобщения",
+      "black_friday_continues": "🎉 ЧЕРЕН ПЕТЪК продължава с отстъпки ДО 80%",
+      "black_friday_lowest_prices": "🎉 ЧЕРЕН ПЕТЪК: Най-ниските цени за годината на повечето продукти",
+      "black_friday_delivery_delay": "⚠️ През този период поръчките може да имат малки колебания в очакваното време за доставка",
+      "holiday_closure": "Затворени сме 25–28 декември, 31 декември–4 януари, 6–7 януари. През останалите дни обработката на поръчките и доставката продължава както обикновено."
     },
     "quick_order_list": {
-      "product_total": "Междинна сума за продукти",
-      "view_cart": "Покажи количката",
-      "each": "{{ money }}/бр.",
+      "product_total": "Продуктова междинна сума",
+      "view_cart": "Вижте кошницата",
+      "each": "{{ money }}/ бр.",
       "product": "Продукт",
       "variant": "Вариант",
-      "variant_total": "Обща сума за варианта",
+      "variant_total": "Тотален вариант",
       "items_added": {
-        "one": "{{ quantity }} артикул е добавен",
-        "other": "{{ quantity }} артикула са добавени",
-        "few": "{{ quantity }} Добавени елементи"
+        "one": "{{ quantity }} добавен елемент",
+        "other": "{{ quantity }} добавени елементи",
+        "few": "{{ quantity }} добавени елементи"
       },
       "items_removed": {
-        "one": "{{ quantity }} артикул е премахнат",
-        "other": "{{ quantity }} артикула са премахнати",
-        "few": "{{ quantity }} елиминирани предмети"
+        "one": "{{ quantity }} изтрита статия",
+        "other": "{{ quantity }} изтрити елементи",
+        "few": "{{ quantity }} изтрити елементи"
       },
       "product_variants": "Варианти на продукта",
-      "total_items": "Общо артикули",
-      "remove_all_items_confirmation": "Премахване на всички {{ quantity }} артикула от количката?",
-      "remove_all": "Премахване на всички",
+      "total_items": "Общо елементи",
+      "remove_all_items_confirmation": "Премахнете всички тези {{ quantity }} артикули в количката?",
+      "remove_all": "Премахнете всичко",
       "cancel": "Отказ",
       "remove_all_single_item_confirmation": "Премахване на 1 артикул от количката?",
-      "min_error": "За този артикул има минимум от {{ min }}",
-      "max_error": "За този артикул има максимум от {{ max }}",
-      "step_error": "Можете да добавяте този артикул само на групи от {{ step }}"
+      "min_error": "За този елемент минималната стойност е {{ min }}",
+      "max_error": "За този елемент максималната стойност е {{ max }}",
+      "step_error": "Можете да въведете този елемент само на стъпки от {{ step }}"
     }
   },
   "localization": {
