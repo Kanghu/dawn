@@ -2201,8 +2201,23 @@
       },
       "merchandise_unavailable_in_buyer_location": {
         "remove_items_action": {
-          "few": "εξαλείφει τα μη διαθέσιμα αντικείμενα"
-        }
+          "few": "αφαιρέστε τα μη διαθέσιμα στοιχεία",
+          "one": "αφαιρέστε το μη διαθέσιμο στοιχείο",
+          "other": "αφαιρέστε τα μη διαθέσιμα στοιχεία"
+        },
+        "banner_title": {
+          "some_products_one": "Αυτό το προϊόν δεν μπορεί να παραδοθεί σε %{location_name}.",
+          "some_products_other": "Δεν είναι δυνατή η παράδοση αυτών των προϊόντων %{location_name}.",
+          "all_products_one": "Δεν είναι δυνατή η παράδοση του προϊόντος στο καλάθι %{location_name}.",
+          "all_products_other": "Δεν είναι δυνατή η παράδοση προϊόντων στο καλάθι %{location_name}."
+        },
+        "missing_country_fallback": "χώρα σας",
+        "indeterminate_location_fallback": "την τοποθεσία σας",
+        "cart_updated": "Το καλάθι σας έχει ενημερωθεί.",
+        "change_address_only": "Αλλάξτε τη διεύθυνση παράδοσης για να συνεχίσετε.",
+        "change_address_or_remove": "Αλλάξτε τη διεύθυνση παράδοσης ή %{remove_action}.",
+        "empty_cart_action": "αδειάστε το καλάθι και επιστρέψτε στο κατάστημα",
+        "unavailable_line_item": "%{product_name}/%{variant_label}"
       },
       "contextual_availability": {
         "title": {
@@ -3001,7 +3016,67 @@
           "checkout_has_expired": "Ο χρόνος ολοκλήρωσης αγοράς έληξε. Κλείστε αυτό το παράθυρο και προσπαθήστε να ολοκληρώσετε ξανά την παραγγελία από {{shopName}}."
         },
         "return_to_store": "Ελάτε πίσω στο {{shopName}}",
-        "return_to_store_simple": "Ελάτε πίσω στο κατάστημα"
+        "return_to_store_simple": "Ελάτε πίσω στο κατάστημα",
+        "title": "Ολοκλήρωση της παραγγελίας με Shop Pay"
+      },
+      "company_location": {
+        "location_title": "Τοποθεσία εταιρείας",
+        "location_rollup_accessibility_label": "Επιλογές τοποθεσίας εταιρείας"
+      },
+      "one": {
+        "errors": {
+          "merchandise": {
+            "gift_card_price_must_be_greater_than_zero": "Η τιμή της δωροκάρτας πρέπει να είναι μεγαλύτερη από 0.",
+            "subtotal_limit_reached": "Έχει επιτευχθεί η μέγιστη τιμή των στοιχείων.",
+            "gift_card_price_must_not_exceed_limit": "Η τιμή της δωροκάρτας δεν πρέπει να υπερβαίνει %{gift_card_limit}.",
+            "signature_mismatch": "Η υπογραφή του προϊόντος δεν ταιριάζει με τη γραμμή %{stable_id}."
+          }
+        }
+      },
+      "clipboard": {
+        "copied": "Αντιγράφηκε",
+        "failed_to_copy": "Δεν ήταν δυνατή η αντιγραφή"
+      },
+      "payment_challenge_modal": {
+        "instructions": "Ολοκληρώστε την αγορά χρησιμοποιώντας τον κωδικό {{paymentMethod}}",
+        "timer_message": "Έχετε στη διάθεσή σας {{timeLeft}} να πληρώσει",
+        "copy_text": "Αντιγράψτε τον κωδικό για {{paymentMethod}}",
+        "header": "Πληρώστε με {{paymentMethod}}",
+        "qr_code": {
+          "instructions": "Ολοκληρώστε την αγορά χρησιμοποιώντας τον κωδικό {{paymentMethod}}",
+          "wechat_instructions": "Σαρώστε αυτόν τον κωδικό QR με την εφαρμογή WeChat στο τηλέφωνό σας για να ολοκληρώσετε την αγορά σας",
+          "wechat_instructions_mobile": "Σαρώστε αυτόν τον κωδικό QR με την εφαρμογή WeChat σε άλλη συσκευή για να ολοκληρώσετε την αγορά σας"
+        },
+        "external": {
+          "instructions": "Επιβεβαιώστε την πληρωμή εντός εφαρμογής για να ολοκληρώσετε αυτήν την αγορά"
+        },
+        "close": "Κλείστε την πρόκληση",
+        "open_app_text": "Ανοίξτε την εφαρμογή {{paymentMethod}}"
+      },
+      "artifact_errors": {
+        "artifact_dissatisfaction_without_violation": "Παρουσιάστηκε πρόβλημα κατά την επεξεργασία της παραγγελίας σας. Δοκιμάστε ξανά σε λίγα λεπτά."
+      },
+      "merchant_instruction_errors": {
+        "empty_stable_id": "Οδηγίες εμπορευμάτων %{name} %{position} περιέχουν ένα κενό σταθερό αναγνωριστικό.",
+        "invalid_stable_id_target": "Οδηγίες εμπορευμάτων %{name} %{position} ανατρέξτε σε μια σταθερή ταυτότητα %{stable_id}, αλλά αυτή η σταθερή ταυτότητα δεν βρίσκεται στις γραμμές φορτίου.",
+        "duplicate_variant_id": "Οδηγίες εμπορευμάτων %{name} %{position} περιέχει ένα διπλότυπο αναγνωριστικό παραλλαγής %{variant_id}.",
+        "invalid_variant_id_target": "Οδηγίες εμπορευμάτων %{name} ανατρέξτε σε ένα αναγνωριστικό παραλλαγής %{variant_id}, αλλά αυτή η παραλλαγή δεν είναι στις γραμμές φορτίου.",
+        "invalid_price_override_target": "Η οδηγία για την αντικατάσταση της τιμής εμπορεύματος για το είδος %{stable_id} δεν είναι έγκυρο επειδή αυτό είναι ένα στοιχείο σε ένα σύνολο.",
+        "discount_not_supported": "Οι οδηγίες του εμπόρου δεν περιλαμβάνουν την εφαρμογή τέτοιων εκπτώσεων."
+      },
+      "b2b_errors": {
+        "lost_b2b_purchasing_permissions": "Δεν επιτρέπεται πλέον να κάνετε παραγγελίες B2B. %{logout_url} για να κάνετε μια προσωπική παραγγελία.",
+        "log_out_link_text": "Αποσυνδεθείτε",
+        "lost_permissions_subtitle": "Δεν επιτρέπεται πλέον να κάνετε παραγγελίες B2B. Αποσυνδεθείτε για να κάνετε μια προσωπική παραγγελία.",
+        "lost_permissions_title": "Δεν υπάρχουν άδειες τοποθεσίας"
+      },
+      "units": {
+        "milligram": "mg",
+        "gram": "Mr",
+        "kilogram": "κιλά",
+        "milliliter": "ml",
+        "centiliter": "cl",
+        "liter": "λ"
       }
     },
     "notices": {
