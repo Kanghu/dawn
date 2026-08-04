@@ -920,8 +920,12 @@
           "few": "Expédié dans %{count} jours ouvrables"
         },
         "unbranded_description_with_fulfillment_weeks": {
-          "one": "Expédié dans %{count} semaine"
-        }
+          "one": "Expédié dans %{count} semaine",
+          "other": "Expédié dans %{count} semaines",
+          "few": "Expédié dans %{count} semaines"
+        },
+        "add_new_delivery_address": "Ajouter une nouvelle adresse de livraison",
+        "delivery_to": "Expédition à l'adresse"
       },
       "general": {
         "map": {
@@ -948,7 +952,106 @@
             "shop_cash_unsupported_currency": "Shop Cash n'accepte pas cette devise.",
             "shop_cash_not_available": "Le mode de paiement Shop Cash n’est pas accepté pour cet achat.",
             "shop_cash_not_found": "Impossible de trouver Shop Cash."
+          },
+          "session_identifier_not_unique_error": "Il y a eu un problème avec votre commande. Veuillez réessayer le paiement.",
+          "line_item_limit_reached": "Le nombre maximum d'éléments a été atteint.",
+          "only_empty_terms_accepted": "Cette politique n'accepte que les conditions vides.",
+          "session_is_already_finished": "Cette session de paiement est déjà terminée.",
+          "merchandise": {
+            "only_value_constraint": "Seules les valeurs exactes sont autorisées dans la section de saisie des marchandises.",
+            "merchandise_not_found": "Le produit n'a pas été trouvé.",
+            "merchandise_variant_not_found": "Variante de produit introuvable.",
+            "merchandise_not_applicable": "La variante du produit ne peut pas être achetée.",
+            "bundle_products_not_supported_for_b2b": "Les articles groupés ne peuvent pas être ajoutés aux commandes B2B pour cet emplacement.",
+            "gift_card_quantity_mismatch": "Lors de la spécification des codes de carte-cadeau, le nombre d'éléments de ligne et le nombre de codes de carte-cadeau doivent correspondre.",
+            "gift_card_not_supported": "Les cartes cadeaux ne sont pas acceptées pour cette commande.",
+            "gift_card_not_unique": "Carte cadeau avec code {{code}} apparaît plusieurs fois pour cette commande. Les codes sont formatés avant comparaison.",
+            "gift_card_used": "Le code {{code}} est déjà attribué à une carte cadeau. Les codes sont formatés avant comparaison.",
+            "gift_card_invalid": "Code de la carte cadeau {{code}} est invalide.",
+            "gift_card_code_changed": "Code de la carte cadeau {{proposed_code}} a été changé en {{formatted_code}} pour se conformer aux règles de formatage.",
+            "gift_card_with_attributes_not_supported": "Les cartes cadeaux avec des attributs personnalisés ne sont pas acceptées pour ce paiement.",
+            "gift_card_with_components_not_supported": "Les cartes cadeaux avec composants ne sont pas acceptées pour cette commande.",
+            "selling_plan_mismatch": "L'abonnement a été mis à jour.",
+            "selling_plan_not_supported": "Les abonnements ne sont pas acceptés.",
+            "selling_plan_not_supported_b2b": "Les abonnements ne sont pas acceptés pour le paiement B2B.",
+            "price_mismatch": "Le prix précédemment proposé pour cet article n'était pas valide et a été mis à jour.",
+            "inventory_not_found": "Aucun inventaire trouvé pour cet article.",
+            "product_not_published": "Le produit n'est pas publié.",
+            "duplicated_stable_id": "Cette ligne de fret a le même identifiant stable qu’une autre ligne.",
+            "minimum_quantity_not_met": "Pour certains articles, la quantité ne correspond pas à la valeur minimale requise.",
+            "maximum_quantity_exceeded": "Pour certains articles, la quantité dépasse la valeur maximale autorisée.",
+            "quantity_increment_not_met": "Pour certains articles, la quantité ne respecte pas les limites de commande.",
+            "quantity_rules_not_met": "Pour certains articles, la quantité ne respecte pas les limites de commande.",
+            "bundle_requires_components": "Les marchandises groupées ne contiennent aucun composant.",
+            "title_too_long": "Le titre de l'article est trop long.",
+            "title_empty": "Le titre du produit n'est pas complété.",
+            "mixed_currencies": "Le paiement inclut des articles auxquels sont associées différentes devises.",
+            "product_not_published_in_buyer_location": "Le produit n'est pas disponible dans la région actuelle de l'acheteur.",
+            "combined_listing_parent_not_purchasable": "Les produits parents d’une liste combinée ne peuvent pas être achetés directement."
+          },
+          "buyer_identity": {
+            "business_customer_does_not_match_company": "Le contact de l'entreprise n'a pas accès à l'entreprise.",
+            "customer_account_required": "Vous devez vous connecter pour continuer.",
+            "contact_info_does_not_match_customer_account": "Les informations de contact doivent correspondre au compte auquel vous vous connectez.",
+            "phone_number_does_not_match_expected_pattern": "Le numéro de téléphone indiqué ne correspond pas au modèle attendu.",
+            "email_required": "lorsque des biens sont achetés via un abonnement, une adresse e-mail est requise.",
+            "email_domain_is_invalid": "Ce domaine spécifié ne peut pas être résolu.",
+            "missing_contact_method": "Il manque une méthode de contact valide.",
+            "checkout_completion_target_is_missing": "La cible de paiement est manquante.",
+            "invalid_customer_profile": "Un profil client non valide a été fourni.",
+            "customer_profile_access_restricted": "Le paiement n'est pas autorisé à accéder au profil client.",
+            "checkout_completion_target_is_invalid_proc": "Cible de paiement non valide.",
+            "company_location_required": "Pour continuer, le client doit choisir un emplacement d'entreprise.",
+            "lost_access_to_company": "Le client a perdu l'accès à toute entreprise.",
+            "company_purchase_permission_required": "Le client n'a pas l'autorisation de passer des commandes pour la société.",
+            "personal_order_not_allowed": "Les commandes personnelles ne sont pas autorisées pour ce magasin.",
+            "buyer_identity_presentment_currency_does_not_match": "Un problème est survenu lors du traitement de votre commande. Veuillez réessayer dans quelques minutes."
+          },
+          "delivery": {
+            "only_one_delivery_line_allowed": "Le panier ne doit avoir qu’une seule ligne de livraison.",
+            "wrong_number_of_delivery_lines": "Une ligne de livraison doit être précisée pour chaque groupe de marchandises.",
+            "external_delivery_promise_error": "Une erreur s'est produite lors de la récupération de la promesse de livraison externe."
           }
+        },
+        "page_title": "Complétez la commande",
+        "error_page_title": "Erreur",
+        "skip_to_content": "Passer au contenu",
+        "breadcrumb": "trace",
+        "continue_button_label": "Continuer",
+        "complete_purchase_button_label": "Complétez la commande",
+        "pay_now_button_label": "Payez maintenant",
+        "authenticate_purchase_button_label": "Authentifier le paiement",
+        "edit_link_label": "Modifier",
+        "all_rights_reserved": "Tous droits réservés %{shop_name}",
+        "print_policies_link_label": "Imprimer",
+        "cart": "Panier",
+        "close_modal_label": "Fermer",
+        "close_notice_label": "Fermer",
+        "expand_notice_label": "Voir plus",
+        "continue_to_shipping_method": "Continuer à expédier",
+        "continue_to_payment_method": "Continuer à payer",
+        "continue_to_review": "Vérifier la commande",
+        "back_to_cart": "Retour au panier",
+        "back_to_contact_information": "Revenez aux informations",
+        "back_to_shipping_method": "Retour à l'expédition",
+        "back_to_payment_method": "Retour au paiement",
+        "choose_shipping_method": "Choisissez un mode d'expédition",
+        "choose_payment_method": "Choisissez un mode de paiement",
+        "choose_billing_address": "Choisissez une adresse de facturation",
+        "contact_us_html": "Contactez-nous pour plus d'informations",
+        "autocomplete_title": "Suggestions",
+        "autocomplete_single_item": "1 article disponible",
+        "autocomplete_multi_item": "{{number}} articles disponibles",
+        "autocomplete_selection": "{{number}} de {{total}}",
+        "autocomplete_close": "Fermer les suggestions",
+        "tooltip_accessibility_label": "Plus d'informations",
+        "forwarding_indicator": {
+          "new_window": "Ouvre dans une nouvelle fenêtre.",
+          "external": "Ouvrez un site externe.",
+          "external_and_new_window": "Ouvrez le site Web externe dans une nouvelle fenêtre."
+        },
+        "checkout_context": {
+          "step_one": "%{shop_name} – Compléter la commande"
         }
       },
       "customer_account": {
@@ -1204,6 +1307,15 @@
         "shop_cash": {
           "currency_mismatch": "La monnaie a changé. Voir Shop Cash et l'offre."
         }
+      },
+      "change_currency": {
+        "credit_card_will_be_charged_html": "Ils seront perçus %{amount} de votre carte",
+        "currency_button_label": "%{currency} (%{currency_symbol})",
+        "payment_total_label": "Paiement total",
+        "conversion_rate": "1 %{from_currency_code} = %{rate} %{to_currency_code}",
+        "change_currency_link": "Changer pour %{currency_name}",
+        "card_provider_fx_charges_warning": "L'émetteur de la carte peut facturer des frais pour les transactions en %{currency_code}.",
+        "currency_not_supported_by_shop": "La devise que vous avez sélectionnée n'est plus disponible. Tous les prix sont maintenant en %{currency_code}."
       }
     },
     "notices": {
