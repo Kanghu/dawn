@@ -86,41 +86,41 @@
     "loading": "Chargement...",
     "skip_to_product_info": "Accéder aux informations sur le produit",
     "total_reviews": "avis totaux",
-    "star_reviews_info": "{{ rating_value }} sur {{ rating_max }} étoiles",
-    "collapsible_content_title": "Contenu réductible",
+    "star_reviews_info": "{{ rating_value }} de {{ rating_max }} étoiles",
+    "collapsible_content_title": "Contenu pouvant être restreint",
     "complementary_products": "Produits complémentaires"
   },
   "blogs": {
     "article": {
-      "blog": "Blog",
-      "read_more_title": "Lire la suite : {{ title }}",
+      "blog": "Blogue",
+      "read_more_title": "En savoir plus : {{ title }}",
       "comments": {
-        "one": "{{ count }} commentaire",
-        "other": "{{ count }} commentaires",
+        "one": "{{ count }} commentaire",
+        "other": "{{ count }} commentaires",
         "many": "{{ count }} commentaires",
         "few": "{{ count }} commentaires"
       },
-      "moderated": "Veuillez noter que les commentaires doivent être approuvés avant d'être publiés.",
-      "comment_form_title": "Laisser un commentaire",
+      "moderated": "Remarque : Les commentaires doivent être approuvés avant la publication.",
+      "comment_form_title": "Écrivez un commentaire",
       "name": "Nom",
-      "email": "E-mail",
+      "email": "Courriel",
       "message": "Commentaire",
-      "post": "Publier le commentaire",
+      "post": "Postez le commentaire",
       "back_to_blog": "Retour au blog",
-      "share": "Partager cet article",
-      "success": "Votre commentaire a bien été publié ! Merci !",
-      "success_moderated": "Votre commentaire a bien été publié. Nous le publierons sous peu, conformément au processus de modération de notre blog."
+      "share": "Partagez cet article",
+      "success": "Commentaire posté avec succès ! Merci!",
+      "success_moderated": "Commentaire posté avec succès. Nous le publierons prochainement car notre blog est modéré."
     }
   },
   "onboarding": {
-    "product_title": "Titre du produit",
-    "collection_title": "Le nom de votre collection"
+    "product_title": "Exemple de titre de produit",
+    "collection_title": "Le nom de la collection"
   },
   "products": {
     "product": {
       "add_to_cart": "Ajouter au panier",
-      "description": "Description",
-      "on_sale": "Promotion",
+      "description": "Descriptif",
+      "on_sale": "Remise",
       "product_variants": "Variantes de produits",
       "quantity": {
         "label": "Quantité",
@@ -142,12 +142,12 @@
         "unit_price": "Prix unitaire"
       },
       "share": "Partager ce produit",
-      "sold_out": "Épuisé",
-      "unavailable": "Non disponible(s)",
-      "vendor": "Fournisseur",
-      "video_exit_message": "{{ title }} ouvre la vidéo en plein écran dans la même fenêtre.",
-      "xr_button": "Afficher dans son espace",
-      "xr_button_label": "Affichage dans votre espace, charge l'article dans une fenêtre de réalité augmentée",
+      "sold_out": "En rupture de stock",
+      "unavailable": "Non disponible",
+      "vendor": "Vendeur",
+      "video_exit_message": "{{ title }} ouvrez la vidéo en plein écran dans la même fenêtre.",
+      "xr_button": "Visualisez dans votre espace",
+      "xr_button_label": "Visualisez dans votre espace, l'article se charge dans la fenêtre de réalité augmentée",
       "pickup_availability": {
         "view_store_info": "Afficher les informations de la boutique",
         "check_other_stores": "Vérifier la disponibilité dans d'autres boutiques",
@@ -4541,7 +4541,7 @@
     "free_shipping_link": "/pages/livrare",
     "savings": "Vous économisez {{ amount }}",
     "delivery": "Livraison en 2 à 4 jours ouvrés",
-    "price_info": "Fabricant direct : ",
+    "price_info": "Producteur direct : ",
     "price_info_link": "/pages/fabrica-alessandro-design",
     "price_info_link_text": "voir l'usine Alessandro Design",
     "return_policy": "14 jours de retour gratuit",
