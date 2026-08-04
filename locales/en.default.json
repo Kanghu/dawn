@@ -3786,10 +3786,14 @@
           "few": "These articles are completed."
         },
         "tracking_number": {
-          "few": "Tracking numbers"
+          "few": "Tracking numbers",
+          "one": "Tracking number",
+          "other": "Tracking numbers"
         },
         "gift_card_resend_button": {
-          "few": "Resend gift cards"
+          "few": "Resend the gift cards",
+          "one": "Resend the gift card",
+          "other": "Resend the gift cards"
         },
         "canceled_label": "Cancelled",
         "canceled_title": "Your order has been cancelled",
@@ -3888,12 +3892,56 @@
             "delivered_after_label": "Delivered after {{date}}",
             "delivered_after_description": "Because the order arrived late, you are eligible to claim {{amount}} Shop Cash.",
             "claimed_shop_cash_description": "Because this order arrived late, you have claimed it {{amount}} Shop Cash.",
-            "eligible_to_claim_shop_cash_description": "Because the order arrived late, you are eligible to claim {{amount}} Shop Cash."
+            "eligible_to_claim_shop_cash_description": "Because the order arrived late, you are eligible to claim {{amount}} Shop Cash.",
+            "learn_more_button_label": "Learn more",
+            "claim_shop_cash_button_label": "Claim Shop Cash",
+            "view_balance_in_shop_button_label": "See your balance in the Shop",
+            "scan_to_claim_shop_cash_label": "Scan to claim {{amount}} in the form of Shop Cash"
           }
-        }
+        },
+        "expected_by": "Expected until the date of {{date}}",
+        "was_expected_by": "It was waited until the date of {{date}}",
+        "confirmed_description_shipping": "We are preparing these items for shipment.",
+        "arrives": "It arrives on {{date}}",
+        "delivery_estimate_backed_by": "Guaranteed by",
+        "delivery_estimate_delayed_description": "Deliveries in your area are slower than usual. Your order may be delayed.",
+        "delivery_estimate_delayed_title": "Delayed",
+        "delivery_estimate_early_description": "Deliveries to your area are faster than usual. This order may arrive early.",
+        "delivery_exception_action_required": "Action required",
+        "delivery_exception_attempted_action": "Schedule a new shipment",
+        "delivery_exception_attempted_description": "{{link}} with {{carrier}} or check if there is a delivery notice",
+        "delivery_exception_attempted_description_unknown": "{{link}} or check if there is a delivery notice",
+        "delivery_exception_attempted_title": "Attempt to send",
+        "delivery_exception_delivery_failed": "Delivery failed",
+        "delivery_exception_failed_action": "Check at {{carrier}}",
+        "delivery_exception_failed_description": "{{link}} or contact us for more information",
+        "delivery_exception_failed_description_unknown": "Contact the carrier for more information",
+        "delivery_exception_failed_title": "Undelivered",
+        "delivery_exception_on_hold_action": "Update shipping details",
+        "delivery_exception_on_hold_description": "{{link}} with {{carrier}} to resume shipping the order",
+        "delivery_exception_on_hold_description_unknown": "{{link}} to resume shipping the order",
+        "delivery_exception_on_hold_title": "Waiting",
+        "delivery_exception_returning_to_sender_action": "Get in touch {{carrier}}",
+        "delivery_exception_returning_to_sender_description": "{{link}} for more information",
+        "delivery_exception_returning_to_sender_description_unknown": "Contact the carrier for more information",
+        "delivery_exception_returning_to_sender_title": "Undelivered",
+        "delivery_exception_shop_promise_delivered_late_description": "Your order is guaranteed by Shop Promise. Because it arrived late, claim it {{amount}} in Shop Cash.",
+        "delivery_exception_shop_promise_delivered_late_title": "Delivered late",
+        "predicted_by_shop": "Estimated by Shop"
       },
       "list_layout_accessibility_label": "Appearance options",
-      "list_title": "Orders"
+      "list_title": "Orders",
+      "status_mark_as_delivered": "Mark as delivered",
+      "buy_again": "Buy again",
+      "buy_again_accessibility_label": "Buy again to order {{orderId}}",
+      "manage": "Manage",
+      "manage_accessiblity_label": "Manage the order {{orderId}}",
+      "fulfillment_status_title": "Honor Status: {{status}}",
+      "list_title_with_pending_orders": "Orders:",
+      "list_title_confirmed_orders_accessibility_label": "Orders: confirmed",
+      "list_title_pending_orders_accessibility_label": "Orders: pending",
+      "switch_order_type_pending_orders_accessibility_label": "Change order type, currently viewing pending orders",
+      "switch_order_type_confirmed_orders_accessibility_label": "Change order type, currently viewing confirmed orders"
     },
     "order_details": {
       "image_gallery": {
