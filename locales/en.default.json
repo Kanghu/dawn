@@ -950,7 +950,9 @@
       "general": {
         "map": {
           "cluster_title": {
-            "few": "Cluster consisting of {{number}} markers"
+            "few": "Cluster consisting of {{number}} markers",
+            "one": "Cluster consisting of {{number}} marker",
+            "other": "Cluster consisting of {{number}} markers"
           }
         },
         "errors": {
@@ -1035,7 +1037,37 @@
           "range_start": "Start of interval",
           "in_range": "In the interval",
           "range_end": "End of interval"
-        }
+        },
+        "list_formatter": {
+          "and": {
+            "wordConnector": "{{previousWords}}, {{anotherWord}}",
+            "lastWordConnector": "{{previousWords}} and {{lastWord}}",
+            "twoWordConnector": "{{firstWord}} and {{secondWord}}"
+          },
+          "or": {
+            "wordConnector": "{{previousWords}}, {{anotherWord}}",
+            "lastWordConnector": "{{previousWords}} or {{lastWord}}",
+            "twoWordConnector": "{{firstWord}} or {{secondWord}}"
+          },
+          "narrow": {
+            "wordConnector": "{{previousWords}}, {{anotherWord}}",
+            "lastWordConnector": "{{previousWords}}, {{lastWord}}",
+            "twoWordConnector": "{{firstWord}}, {{secondWord}}"
+          }
+        },
+        "sheet": {
+          "expand": "Expand"
+        },
+        "confirm_order_button_label": "Confirm the order",
+        "qr_code": "QR code",
+        "dropzone": {
+          "add_file": "Add a file",
+          "invalid_file_type": "The file type is not supported",
+          "dragged_over": "Release the file to upload"
+        },
+        "loading": "Loading...",
+        "remove_chip": "Removing the item",
+        "finalize_order_accessibility_label": "Complete the order"
       },
       "customer_account": {
         "saved_address_option_description": {
@@ -1308,6 +1340,37 @@
         "shop_cash": {
           "currency_mismatch": "The currency has changed. See Shop Cash and the offer."
         }
+      },
+      "contact": {
+        "title": "Information",
+        "address_title": "Address",
+        "delivery_option_title": "Delivery method",
+        "contact_method_title": "Contact",
+        "email_label": "Email",
+        "email_placeholder": "Email",
+        "email_or_phone_label": "Email or mobile phone number",
+        "email_or_phone_placeholder": "Email or mobile phone number",
+        "stored_addresses_label": "Saved addresses",
+        "new_address_label": "Use a new address",
+        "first_name_label": "First name",
+        "optional_first_name_label": "First name (optional)",
+        "last_name_label": "Family name",
+        "company_label": "Company",
+        "optional_company_label": "Company CUI (optional)",
+        "address1_label": "Address",
+        "address2_label": "Apartment, room, etc.",
+        "optional_address2_label": "Mentions (optional). They will be processed by an operator before shipping.",
+        "city_label": "City",
+        "country_label": "Country/Region",
+        "country_code": "Country/Region Code",
+        "province_label": "Province",
+        "province_placeholder": "Province",
+        "county_label": "County",
+        "county_placeholder": "County",
+        "state_label": "State",
+        "state_placeholder": "State",
+        "region_label": "Region",
+        "region_placeholder": "Region"
       }
     },
     "notices": {
