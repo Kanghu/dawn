@@ -4201,8 +4201,9 @@
           "other": "Les cartes cadeaux ont été retournées"
         },
         "gift_resend_failure": {
-          "few": "Un problème s'est posé lors de la soumission de cartes-cadeaux. Réessayez ou contactez-nous.",
-          "one": "Un problème est survenu lors du renvoi de la carte cadeau. Réessayez ou contactez-nous."
+          "few": "Un problème est survenu lors du renvoi des cartes cadeaux. Réessayez ou contactez-nous.",
+          "one": "Un problème est survenu lors du renvoi de la carte cadeau. Réessayez ou contactez-nous.",
+          "other": "Un problème est survenu lors du renvoi des cartes cadeaux. Réessayez ou contactez-nous."
         },
         "delivered_description_digital": {
           "few": "Ces articles sont terminés."
@@ -4242,7 +4243,77 @@
         "confirmed_description_digital": "Vous recevrez un e-mail lorsque votre commande sera prête.",
         "ready_for_pickup_location": "Votre commande est prête à être récupérée",
         "confirmed_description_pickup": "Nous préparons ces articles pour le ramassage.",
-        "confirmed_description_gift_card_text": "Vous recevrez un SMS lorsque votre commande sera prête."
+        "confirmed_description_gift_card_text": "Vous recevrez un SMS lorsque votre commande sera prête.",
+        "amazon_buy_with_prime": {
+          "order_tracking_link": {
+            "text": "Gérer avec Amazon",
+            "new_window_disclaimer": "(ouvre une nouvelle fenêtre)"
+          }
+        },
+        "attempted_to_deliver_label": "Tentative de livraison",
+        "there_was_a_problem_label": "Un problème est survenu",
+        "buy_with_prime_logo_accessibility_label": "Amazon Acheter avec le logo Prime",
+        "delivered": "Livré le {{date}}",
+        "complete_label": "Terminé",
+        "multiple_statuses_label": "Statuts pour plusieurs commandes",
+        "status_timestamp": "Date de mise à jour : {{date}}",
+        "delivery_promise": {
+          "claim_shop_cash_cta": {
+            "no_shop_app_label": "{{appDownloadLink}} pour réclamer du Shop Cash",
+            "has_shop_app_label": "Réclamez de l'argent en magasin",
+            "download_shop_app_label": "Télécharger la boutique"
+          },
+          "promise_line": {
+            "single_brand_label": "Livraison prise en charge par",
+            "mixed_brands_label": "Livraison garantie",
+            "not_delivered_by_label": "Non livré par {{date}}",
+            "modal_accessibility_button_label": "Détails de la promesse de livraison"
+          },
+          "details_modal": {
+            "title": "Livraison prise en charge par",
+            "modal_accessiblity_label": "Détails de la promesse de livraison",
+            "delivery_by_label": "Livraison par {{date}}",
+            "delivery_guaranteed_by_label": "Livraison garantie par {{date}}",
+            "shop_cash_claim": {
+              "may_be_eligible_label": "Shop Promise garantit une livraison rapide et fiable. Demandez Shop Cash si votre commande arrive en retard.",
+              "may_be_eligible_not_authorized_label": "Vous pourrez peut-être réclamer Shop Cash car cette commande est arrivée en retard. Connectez-vous pour voir les détails.",
+              "redeemed_label": "Vous avez déjà réclamé Shop Cash car cette commande est arrivée en retard.",
+              "expired_label": "Cette commande n'est pas éligible à une réclamation pour retard de livraison car la garantie de 30 jours a expiré.",
+              "no_shop_cash_label": "Cette commande n'est pas éligible à une réclamation pour retard de livraison car elle n'a pas été payée avec Shop Pay.",
+              "no_longer_guaranteed_label": "Ces articles ne bénéficient plus d'une garantie de livraison.",
+              "claim_shop_cash_title": "Scannez pour réclamer {{amount}} en caisse en magasin",
+              "claim_shop_cash_description": "Vous pouvez utiliser Shop Cash pour de futurs achats dans l'application Shop."
+            },
+            "delivery_guarantee_label": "Livraison garantie"
+          }
+        },
+        "external_promise_manage_button_label": {
+          "buy_with_prime": "Gérer sur Amazon"
+        },
+        "delivery_promise_v2": {
+          "promise_line": {
+            "shop_promise_brand_label": "Livraison garantie par",
+            "external_promise_brand_label": "Livraison par",
+            "not_delivered_by_label": "Livré après {{date}}",
+            "delivery_guarantee_expired_label": "La garantie de livraison a expiré",
+            "modal_accessibility_button_label": "Détails de la promesse de livraison",
+            "download_shop_app_button_label": "Télécharger Boutique à suivre",
+            "track_with_shop_button_label": "Suivez avec la boutique",
+            "claim_shop_cash_button_label": "Réclamez de l'argent en magasin"
+          },
+          "details_modal": {
+            "title": "Garantie de livraison",
+            "active_delivery_guarantee_label": "Livraison par {{date}}",
+            "expired_delivery_guarantee_description": "La garantie de 30 jours de Shop Promise pour cette commande a expiré.",
+            "expired_badge_label": "Expiré",
+            "order_includes_guarantees_label": "Votre commande comprend des garanties {{deliveryAgreementsCount}}",
+            "order_includes_guarantees_description": "Shop Promise garantit une livraison rapide et fiable. Réclamez Shop Cash si votre commande arrive après {{date}}.",
+            "delivered_after_label": "Livré après {{date}}",
+            "delivered_after_description": "Parce que la commande est arrivée en retard, vous pouvez réclamer {{amount}} Achetez de l'argent liquide.",
+            "claimed_shop_cash_description": "Parce que cette commande est arrivée en retard, vous l'avez réclamée {{amount}} Achetez de l'argent liquide.",
+            "eligible_to_claim_shop_cash_description": "Parce que la commande est arrivée en retard, vous pouvez réclamer {{amount}} Achetez de l'argent liquide."
+          }
+        }
       },
       "list_layout_accessibility_label": "Options d'apparence",
       "list_title": "Commandes"
