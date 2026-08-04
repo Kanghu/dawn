@@ -2878,8 +2878,75 @@
           "payment_method_title": "Mode de paiement",
           "change_link_label": "Modifier",
           "change_contact_method_link_label": "Modifier les coordonnées",
-          "change_billing_address_link_label": "Changer l'adresse de facturation"
+          "change_billing_address_link_label": "Changer l'adresse de facturation",
+          "change_shipping_address_link_label": "Changer l'adresse de livraison",
+          "change_shipping_method_link_label": "Changer le mode d'expédition",
+          "change_payment_method_link_label": "Changer de mode de paiement",
+          "pick_up_in_store_shipping_method_html": "Retrait en magasin · %{location_name}",
+          "purchase_order_number_title": "Numéro de bon de commande",
+          "change_purchase_order_number_label": "Changer le numéro de bon de commande",
+          "change_delivery_method_link_label": "Changer le mode de livraison",
+          "no_address": "(Pas d'adresse)",
+          "no_purchase_order_number": "(bon de commande sans numéro)",
+          "due_after_order_reviewed_html": "À payer après examen de la commande",
+          "review_title_free_order": "Vérifiez et complétez votre commande",
+          "payment_method_saved_company_location": "Enregistrez la carte pour cet emplacement",
+          "company_location": "Localisation de l'entreprise",
+          "change_company_location_link_label": "Changement d'adresse de l'entreprise",
+          "pickup_items_at": {
+            "one": "Levage %{count} article de",
+            "other": "Levage %{count} articles de",
+            "few": "Levage %{count} articles de"
+          },
+          "ship_items_to": {
+            "one": "Expédition %{count} article sur",
+            "other": "Expédition %{count} articles sur",
+            "few": "Expédition %{count} articles sur"
+          },
+          "no_purchase_order_number_long": "Pas de numéro de bon de commande"
+        },
+        "block_title": "Vérifiez vos informations",
+        "checkout_a_different_way": "Complétez la commande d'une autre manière",
+        "item_header": {
+          "change_value": "Changer la valeur",
+          "section": "Section",
+          "value": "Valeur"
+        },
+        "review_and_confirm_title": "Vérifier et confirmer",
+        "account_more_actions": "Plus d'actions pour ce compte"
+      },
+      "marketing": {
+        "accept_marketing_checkbox_label": "Je souhaite recevoir des e-mails avec des nouveautés et des offres",
+        "unsubscribe": {
+          "title": "Vous vous êtes désabonné",
+          "description": "Vous ne recevrez plus de mises à jour marketing de notre part."
+        },
+        "accept_sms_checkbox_label": "Je souhaite recevoir des SMS avec des actualités et des offres",
+        "sms": {
+          "disclaimer": {
+            "privacy_policy": "Politique de confidentialité",
+            "terms_of_service": "Conditions d'utilisation",
+            "description_html": "Si vous vous inscrivez par SMS, vous acceptez de recevoir régulièrement des messages marketing automatisés, y compris des rappels de panier, au numéro de téléphone fourni. Le consentement n’est pas une condition pour effectuer des achats. Répondez avec STOP pour vous désabonner. Répondez avec HELP pour obtenir de l'aide. La fréquence des messages varie. Des frais de message et de données peuvent s'appliquer. Voir %{privacy_policy_link} et %{terms_of_service_link}.",
+            "description_transactional_html": "Vous pouvez recevoir des messages texte liés à la confirmation de commande et aux mises à jour de livraison. Répondez avec STOP pour vous désabonner. Répondez avec HELP pour obtenir de l'aide. La fréquence des messages varie. Des frais de message et de données peuvent s'appliquer. Visualisez-le %{privacy_policy_modal_link} et %{terms_of_service_modal_link}."
+          },
+          "mobile_phone_number": "Numéro de téléphone portable",
+          "get_offers_by_text": "Recevoir des offres par SMS"
+        },
+        "post_accept_marketing_checkbox_label": "Vous êtes inscrit pour recevoir des actualités et des offres par email",
+        "pending_accept_marketing_checkbox_label": "Vérifiez votre compte de messagerie pour confirmer votre abonnement aux actualités et offres",
+        "accept_shop_pay_marketing_checkbox_label": "Abonnez-moi aux actualités et offres de ce magasin",
+        "disclaimer": {
+          "privacy_policy": "Politique de confidentialité",
+          "terms_of_service": "Conditions d'utilisation"
         }
+      },
+      "shop_policies": {
+        "refund_policy": "Politique de remboursement",
+        "privacy_policy": "Politique de confidentialité",
+        "terms_of_service": "Conditions d'utilisation",
+        "legal_notice": "Mentions légales",
+        "shipping_policy": "Transport",
+        "terms_of_sale": "Conditions de vente"
       }
     },
     "notices": {
