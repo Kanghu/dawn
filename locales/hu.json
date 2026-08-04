@@ -1455,17 +1455,24 @@
           "other": "Rendelési kedvezmények"
         },
         "subtotal_label_with_quantity": {
-          "few": "Subtotal · %{count} áru",
-          "one": "Részösszeg · %{count} cikket"
+          "few": "Részösszeg · %{count} cikkeket",
+          "one": "Részösszeg · %{count} cikket",
+          "other": "Részösszeg · %{count} cikkeket"
         },
         "number_items": {
-          "few": "%{count} áru"
+          "few": "%{count} cikkeket",
+          "one": "%{count} cikket",
+          "other": "%{count} cikkeket"
         },
         "view_all_items": {
-          "few": "Lásd az összeset %{count} áru"
+          "few": "Lásd mindezt %{count} cikkeket",
+          "one": "lásd %{count} cikket",
+          "other": "Lásd mindezt %{count} cikkeket"
         },
         "pickup_unavailable_banner_title": {
-          "few": "A tételeit nem lehet felemelni a boltból"
+          "few": "Nincsenek boltok az Ön termékeivel",
+          "one": "Nincsenek boltok az Ön termékével",
+          "other": "Nincsenek boltok az Ön termékeivel"
         },
         "unit_price": {
           "per_item": {
@@ -1490,7 +1497,9 @@
           }
         },
         "pickup_unavailable_banner_title_with_country": {
-          "few": "In %{country} nincsenek elérhető boltok az Ön termékeivel"
+          "few": "In %{country} nincsenek elérhető boltok az Ön termékeivel",
+          "one": "In %{country} nincs üzlet a termékével",
+          "other": "In %{country} nincsenek elérhető boltok az Ön termékeivel"
         },
         "title": "Megrendelés összefoglalója",
         "order_name_label": "Rendeljen %{name}",
@@ -1628,7 +1637,49 @@
           "title": "Egyenleg érdemes {{amount_due}} esedékessége van {{due_at}}",
           "due_on_fulfillment_title": "Egyenleg érdemes {{amount_due}} a kitüntetés időpontjában van esedékessége"
         },
-        "eligible_customer_missing_notice": "A kedvezményes kódért <strong style=\"text-transform:uppercase\">%{code}</strong> jogosult ügyfél szükséges"
+        "eligible_customer_missing_notice": "A kedvezményes kódért <strong style=\"text-transform:uppercase\">%{code}</strong> jogosult ügyfél szükséges",
+        "cost_table_item_column_header": "cikk",
+        "cost_table_value_column_header": "Érték",
+        "product_image_quantity_label": "Mennyiség",
+        "more_items_modal": {
+          "clear_search": "Törölje a keresést",
+          "empty_results": "Nincs találat a következőre: \"%{searchText}\". Ellenőrizze a helyesírást, vagy használjon másik szót vagy kifejezést.",
+          "number_items_shown": "%{shownNumber} től %{totalNumber} cikkeket",
+          "search_item": "Keresés"
+        },
+        "price_before_discount_aria_text": "Kezdeti ár",
+        "price_after_discount_aria_text": "Csökkentett ár",
+        "discount_code_aria_text": "Kedvezmény kód",
+        "pickup_unavailable_banner_body": {
+          "ship_to_address": "Szállítási cím",
+          "ship_to_address_instead_html": "%{link} helyette"
+        },
+        "deposit_label": "Raktár",
+        "total_due_today_label": "Összesen ma esedékes",
+        "total_due_later_label": "Összesen később esedékes",
+        "discount_code_allocations_mismatch": "Az Ön kedvezménykódja <strong style=\"text-transform:uppercase\">%{code}</strong> megváltozott. Kérjük, tekintse át bevásárlókosarát, és próbálja újra.",
+        "deferred_total_due_date_label_next": "Határidő: %{date}",
+        "total_due_label": "Teljesen esedékes",
+        "total_price_label": "Teljes ár",
+        "for_add_on": "A következőkhöz: %{group_title}",
+        "unconfirmed_label": "Meg nem erősített",
+        "total_paid_label": "Összesen fizetett",
+        "from_shop_heading": "-tól %{shop_name}",
+        "from_other_stores_heading": "Más üzletekből",
+        "estimated_taxes_label_short": "Becsült",
+        "order_discounts_apply_to_local_shop": "Megrendelés esetén a kedvezmény csak a től származó termékekre vonatkozik %{shop_name}",
+        "gift_cards_apply_to_local_shop": "Az ajándékutalványok csak a termékre érvényesek %{shop_name}",
+        "discount_code_removed": "Kedvezmény kód %{code} eltávolították",
+        "discount_code_replaced": "Kedvezmény kód %{old_code} eltávolították, és a kódot alkalmazták %{code}",
+        "discount_code_replaced_multiple": "Számos kedvezményes kódot eltávolítottak, és a kódot alkalmazták %{code}",
+        "from_multiple_stores_heading": "Több üzletből",
+        "pay_merchant_label": "Fizessen be %{merchant_name}",
+        "discount_applies_to_subscription_items_only": "Ez a kedvezmény csak az előfizetésben szereplő termékekre érvényes",
+        "estimated_taxes_finalization_tooltip_content_short": "A töltés fizetés után történik",
+        "compare_at_sale": "Promóció (%{sale_amount})",
+        "discount_code_applied_count": {
+          "few": "Kijelző %{count} kedvezmények"
+        }
       },
       "payment": {
         "order_covered_by_gift_cards_notice": {
