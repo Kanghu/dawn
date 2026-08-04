@@ -990,7 +990,9 @@
       "general": {
         "map": {
           "cluster_title": {
-            "few": "Cluster formato {{number}} Proiettili"
+            "few": "Gruppo composto da {{number}} marcatori",
+            "one": "Gruppo composto da {{number}} marcatore",
+            "other": "Gruppo composto da {{number}} marcatori"
           }
         },
         "page_title": "Completa l'ordine",
@@ -1279,7 +1281,37 @@
           "range_start": "Inizio dell'intervallo",
           "in_range": "Nell'intervallo",
           "range_end": "Fine dell'intervallo"
-        }
+        },
+        "list_formatter": {
+          "and": {
+            "wordConnector": "{{previousWords}}, {{anotherWord}}",
+            "lastWordConnector": "{{previousWords}} e {{lastWord}}",
+            "twoWordConnector": "{{firstWord}} e {{secondWord}}"
+          },
+          "or": {
+            "wordConnector": "{{previousWords}}, {{anotherWord}}",
+            "lastWordConnector": "{{previousWords}} o {{lastWord}}",
+            "twoWordConnector": "{{firstWord}} o {{secondWord}}"
+          },
+          "narrow": {
+            "wordConnector": "{{previousWords}}, {{anotherWord}}",
+            "lastWordConnector": "{{previousWords}}, {{lastWord}}",
+            "twoWordConnector": "{{firstWord}}, {{secondWord}}"
+          }
+        },
+        "sheet": {
+          "expand": "Espandi"
+        },
+        "confirm_order_button_label": "Conferma l'ordine",
+        "qr_code": "Codice QR",
+        "dropzone": {
+          "add_file": "Aggiungi un file",
+          "invalid_file_type": "Il tipo di file non è supportato",
+          "dragged_over": "Rilascia il file da caricare"
+        },
+        "loading": "Caricamento...",
+        "remove_chip": "Rimozione dell'articolo",
+        "finalize_order_accessibility_label": "Completa l'ordine"
       },
       "customer_account": {
         "saved_address_option_description": {
@@ -1550,6 +1582,37 @@
         "change_currency_link": "Cambia in %{currency_name}",
         "card_provider_fx_charges_warning": "L'emittente della carta può addebitare commissioni per le transazioni in %{currency_code}.",
         "currency_not_supported_by_shop": "La valuta selezionata non è più disponibile. Tutti i prezzi sono ora presenti %{currency_code}."
+      },
+      "contact": {
+        "title": "Informazioni",
+        "address_title": "Indirizzo",
+        "delivery_option_title": "Metodo di consegna",
+        "contact_method_title": "Contatto",
+        "email_label": "E-mail",
+        "email_placeholder": "E-mail",
+        "email_or_phone_label": "E-mail o numero di cellulare",
+        "email_or_phone_placeholder": "E-mail o numero di cellulare",
+        "stored_addresses_label": "Indirizzi salvati",
+        "new_address_label": "Utilizza un nuovo indirizzo",
+        "first_name_label": "Nome",
+        "optional_first_name_label": "Nome (facoltativo)",
+        "last_name_label": "Cognome",
+        "company_label": "Compagnia",
+        "optional_company_label": "CUI aziendale (facoltativo)",
+        "address1_label": "Indirizzo",
+        "address2_label": "Appartamento, camera, ecc.",
+        "optional_address2_label": "Menzioni (facoltativo). Verranno trattati da un operatore prima della spedizione.",
+        "city_label": "Città",
+        "country_label": "Paese/regione",
+        "country_code": "Codice paese/regione",
+        "province_label": "Provincia",
+        "province_placeholder": "Provincia",
+        "county_label": "Contea",
+        "county_placeholder": "Contea",
+        "state_label": "Stato",
+        "state_placeholder": "Stato",
+        "region_label": "Regione",
+        "region_placeholder": "Regione"
       }
     },
     "notices": {
