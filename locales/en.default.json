@@ -2466,8 +2466,23 @@
       },
       "merchandise_unavailable_in_buyer_location": {
         "remove_items_action": {
-          "few": "remove unavailable items"
-        }
+          "few": "remove unavailable items",
+          "one": "remove unavailable item",
+          "other": "remove unavailable items"
+        },
+        "banner_title": {
+          "some_products_one": "This product cannot be delivered to %{location_name}.",
+          "some_products_other": "These products cannot be delivered to %{location_name}.",
+          "all_products_one": "The product in the basket cannot be delivered to %{location_name}.",
+          "all_products_other": "Cart products cannot be delivered to %{location_name}."
+        },
+        "missing_country_fallback": "your country",
+        "indeterminate_location_fallback": "your location",
+        "cart_updated": "Your cart has been updated.",
+        "change_address_only": "Change the delivery address to continue.",
+        "change_address_or_remove": "Change the delivery address or %{remove_action}.",
+        "empty_cart_action": "empty the cart and return to the store",
+        "unavailable_line_item": "%{product_name}/%{variant_label}"
       },
       "review_address_modal": {
         "subtitle": {
@@ -3162,7 +3177,67 @@
           "checkout_has_expired": "Checkout timed out. Close this window and try to complete the order from again {{shopName}}."
         },
         "return_to_store": "Come back to {{shopName}}",
-        "return_to_store_simple": "Come back to the store"
+        "return_to_store_simple": "Come back to the store",
+        "title": "Completing the order with Shop Pay"
+      },
+      "company_location": {
+        "location_title": "Company location",
+        "location_rollup_accessibility_label": "Company location options"
+      },
+      "one": {
+        "errors": {
+          "merchandise": {
+            "gift_card_price_must_be_greater_than_zero": "Gift card price must be greater than 0.",
+            "subtotal_limit_reached": "The maximum value of items has been reached.",
+            "gift_card_price_must_not_exceed_limit": "The price of the gift card must not exceed %{gift_card_limit}.",
+            "signature_mismatch": "The product signature does not match the line %{stable_id}."
+          }
+        }
+      },
+      "clipboard": {
+        "copied": "Copied",
+        "failed_to_copy": "Could not copy"
+      },
+      "payment_challenge_modal": {
+        "instructions": "Complete the purchase using the code {{paymentMethod}}",
+        "timer_message": "You have at your disposal {{timeLeft}} to pay",
+        "copy_text": "Copy the code for {{paymentMethod}}",
+        "header": "Pay with {{paymentMethod}}",
+        "qr_code": {
+          "instructions": "Complete the purchase using the code {{paymentMethod}}",
+          "wechat_instructions": "Scan this QR code with the WeChat app on your phone to complete your purchase",
+          "wechat_instructions_mobile": "Scan this QR code with the WeChat app on another device to complete your purchase"
+        },
+        "external": {
+          "instructions": "Confirm the in-app payment to complete this purchase"
+        },
+        "close": "Close the challenge",
+        "open_app_text": "Open the app {{paymentMethod}}"
+      },
+      "artifact_errors": {
+        "artifact_dissatisfaction_without_violation": "There was a problem processing your order. Please try again in a few minutes."
+      },
+      "merchant_instruction_errors": {
+        "empty_stable_id": "Merchandise instructions %{name} %{position} contain a blank stable ID.",
+        "invalid_stable_id_target": "Merchandise instructions %{name} %{position} refer to a stable ID %{stable_id}, but that stable ID is not in the cargo lines.",
+        "duplicate_variant_id": "Merchandise instructions %{name} %{position} contain a duplicate variant ID %{variant_id}.",
+        "invalid_variant_id_target": "Merchandise instructions %{name} refer to a variant ID %{variant_id}, but that variant is not in the cargo lines.",
+        "invalid_price_override_target": "The instruction to replace the merchandise price for the item %{stable_id} is not valid because this is a component in a set.",
+        "discount_not_supported": "Merchant instructions do not include the application of such discounts."
+      },
+      "b2b_errors": {
+        "lost_b2b_purchasing_permissions": "You are no longer allowed to place B2B orders. %{logout_url} to place a personal order instead.",
+        "log_out_link_text": "Log out",
+        "lost_permissions_subtitle": "You are no longer allowed to place B2B orders. Log out to place a personal order.",
+        "lost_permissions_title": "No location permissions"
+      },
+      "units": {
+        "milligram": "mg",
+        "gram": "Mr",
+        "kilogram": "kg",
+        "milliliter": "ml",
+        "centiliter": "cl",
+        "liter": "l"
       }
     },
     "notices": {
