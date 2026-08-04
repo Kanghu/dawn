@@ -1616,7 +1616,9 @@
           "other": "Има %{count} изтекли карти, които можете да преглеждате и редактирате във вашия акаунт."
         },
         "order_edit_banner_items_added": {
-          "few": "Добавени (и): %{count}"
+          "few": "Добавено(и): %{count}",
+          "one": "Добавено",
+          "other": "Добавено(и): %{count}"
         },
         "discount_show_more_warnings": {
           "few": "Покажи повече %{count}"
@@ -1821,7 +1823,74 @@
           "payment_tag": "Подаръчна карта",
           "apply_another_gift_card_label": "Приложете друга подаръчна карта",
           "gift_card_label": "%{identifier} за подаръчната карта",
-          "add_label": "Добавете карта за подарък"
+          "add_label": "Добавете карта за подарък",
+          "manage_label": "Управлявайте подаръчни карти"
+        },
+        "custom_onsite_payment_method_modal": {
+          "title": "Персонализирано потвърждение на плащането на място"
+        },
+        "markets_pro_disclaimer_label": "Като направите поръчката си, вие се съгласявате да пазарувате от Global-e като регистриран търговец в съответствие с %{markets_pro_terms} и %{privacy_policy} Той е глобален и с него можете да споделяте вашата информация %{shop_name}.",
+        "markets_pro_disclaimer_terms_and_conditions": "Правила и условия",
+        "markets_pro_disclaimer_privacy_policy": "Политика за поверителност",
+        "markets_pro_disclaimer_terms_and_conditions_title": "Правила и условия на регистриран търговец",
+        "markets_pro_disclaimer_privacy_policy_title": "Правила за поверителност на регистриран търговец",
+        "purchase_order_number": {
+          "title": "Номер на поръчката за покупка",
+          "label": "Номер на поръчката за покупка (по избор)"
+        },
+        "alternative_payment_currency_total_notice": "Забележка: Вашият начин на плащане ще бъде таксуван с %{amount_due}.",
+        "waiting_on_taxes_message": "Ако таксите ви не бъдат изчислени през следващите няколко секунди, моля, опреснете страницата.",
+        "waiting_on_taxes_notice": "Данъците се изчисляват",
+        "order_edit_banner_single_item_returned": "Върнато",
+        "order_edit_banner_multiple_items_returned": "Върнати: {{amount}}",
+        "shop_pay_installments_label": "Оценете Магазин Платете",
+        "add_credit_card_modal": {
+          "title": "Добавете карта",
+          "cancel": "Отказ",
+          "save": "Запазване"
+        },
+        "delete_credit_card_modal": {
+          "title": "Изтрийте картата",
+          "confirmation": "Разбира се, че искате да изтриете {{brandName}} който завършва с {{lastDigits}}?",
+          "cancel": "Отказ",
+          "delete": "Изтриване"
+        },
+        "order_edit_banner_items_removed": {
+          "in_full": "Премахнато",
+          "with_quantities": "Премахнато(и): {{delta}} от {{quantity}}"
+        },
+        "order_edit_banner_items_returned": {
+          "in_full": "Върнати: {{quantity}}",
+          "with_quantities": "Върнати: {{delta}} от {{quantity}}"
+        },
+        "saved_credit_card_actions": {
+          "edit": "Редактиране",
+          "delete": "Изтриване"
+        },
+        "edit_credit_card_modal": {
+          "title": "Редактирайте картата",
+          "done": "готово",
+          "cancel": "Отказ",
+          "description": "Можете да промените само адреса за фактуриране на вашата карта.",
+          "fields": {
+            "default": "Задайте по подразбиране",
+            "card_number": "Номер на картата",
+            "expiry": "Срок на годност",
+            "security_code": "Код за сигурност",
+            "name": "Името на картата",
+            "billing": "Фактуриране на"
+          }
+        },
+        "payment_method": "Начин на плащане",
+        "expired_payment_method": "Избраният метод на плащане е изтекъл",
+        "subscription_heading": "Договор за абонамент",
+        "use_order_billing_address_label": "Използвайте адрес за фактуриране за поръчка",
+        "use_location_billing_address_label": "Използвайте адрес за фактуриране за местоположение",
+        "use_location_shipping_address_label": "Използвайте адрес за доставка за местоположение",
+        "purchase_options_agreement_label_wallets": "Продължавайки да плащате, вие се съгласявате с бъдещите такси, споменати на тази страница, и с правилата за анулиране.",
+        "gift_card_store_credit": {
+          "add_label": "Добавете карта за подарък или кредит в магазина",
+          "manage_label": "Управлявайте подаръчни карти или съхранявайте кредит"
         }
       },
       "shipping_errors": {
