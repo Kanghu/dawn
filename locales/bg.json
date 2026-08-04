@@ -2010,8 +2010,19 @@
           "approved_transaction": "{{card_number}} за симулиране на одобрена транзакция",
           "declined_transaction": "{{card_number}} за симулиране на отхвърлена транзакция",
           "gateway_failure": "{{card_number}} за симулиране на повреда на шлюза",
-          "additional_instructions": "Използвайте бъдеща дата на изтичане и всеки 3-цифрен код за сигурност."
-        }
+          "additional_instructions": "Използвайте бъдеща дата на изтичане и всеки 3-цифрен код за сигурност.",
+          "support_link": "Получете подкрепа"
+        },
+        "order_edit_banner_single_item_updated": "Актуализиран",
+        "order_edit_banner_previous_taxes_label": "Предишни такси:",
+        "order_edit_banner_new_taxes_label": "Нови такси:",
+        "order_edit_banner_no_taxes_label": "Няма",
+        "satispay_label": "Satispay",
+        "wechat_app_label": "WeChat",
+        "alternative_payment_currency_total_notice_disclosure": "%{shop_name} обработва плащания в %{shop_currency} (%{amount_due}).",
+        "alternative_payment_currency_total_manual_payment_notice_disclosure": "Платете на %{shop_name} в %{shop_currency} (%{amount_due}).",
+        "mb_way_label": "MB WAY",
+        "bizum_label": "Bizum"
       },
       "shipping_errors": {
         "shipping_method_not_available_generic": {
@@ -2282,6 +2293,49 @@
         "pickup_point": "Вземете точка",
         "pickup_point_map_title": "Карта на точките за взимане",
         "digital_product": "Дигитален продукт"
+      },
+      "payment_summary": {
+        "gift_card_current_balance_notice": "Текущ баланс %{amount}",
+        "credit_card_expires_on_notice": "Изтича на %{month}/%{year}",
+        "express_payment_gateway_label": "експресен",
+        "manual_payment_gateway_label": "Наръчник",
+        "billing_address_title": "Адрес за фактуриране",
+        "free_label": "безплатно"
+      },
+      "field_errors": {
+        "handle_phone_invalid": "Моля, въведете валиден телефонен номер",
+        "handle_email_invalid": "Моля, въведете валиден имейл",
+        "email_invalid": "Моля, въведете валиден имейл",
+        "email_or_phone_blank": "Въведете имейл адрес или телефонен номер",
+        "email_or_phone_invalid": "Моля, въведете валиден имейл или номер на мобилен телефон",
+        "address_first_name_blank": "Въведете собствено име",
+        "address_last_name_blank": "Въведете фамилно име",
+        "address_address1_blank": "Въведете адрес",
+        "address_address2_blank": "Влезте в апартамент, стая и др.",
+        "address_city_blank": "Въведете град",
+        "address_country_blank": "Изберете държава/регион",
+        "address_country_not_supported": "Ние не изпращаме до тази държава/регион. Моля, въведете нов адрес за доставка и опитайте отново.",
+        "address_province_blank": "Изберете щат/провинция",
+        "address_company_blank": "Въведете име на фирма",
+        "address_phone_blank": "Моля, въведете валиден телефонен номер",
+        "address_zip_blank": "Въведете пощенски код/пощенски код",
+        "address_zip_invalid_for_country": "Моля, въведете валиден пощенски код за %{country}",
+        "address_zip_invalid_for_country_and_province": "Моля, въведете валиден пощенски код за %{province}, %{country}",
+        "credit_card_name_blank": "Въведете името си точно както е написано на картата",
+        "credit_card_name_invalid": "Въведете името си точно както е написано на картата",
+        "credit_card_number_invalid": "Моля, въведете валиден номер на карта",
+        "credit_card_expiry_invalid": "Моля, въведете валидна дата на изтичане",
+        "credit_card_month_invalid": "Въведете валиден месец на изтичане",
+        "credit_card_year_invalid": "Въведете валидна година на изтичане",
+        "credit_card_start_invalid": "Въведете валидна начална дата на картата",
+        "credit_card_start_month_invalid": "Въведете начален месец на валидна карта",
+        "credit_card_start_year_invalid": "Въведете начална година на валидната карта",
+        "credit_card_verification_value_blank": "Въведете CVV или кода за сигурност на картата",
+        "delivery_line_detail_changed": "Някои подробности за доставката може да са променени. Моля, проверете начина си на доставка и опитайте отново.",
+        "reduction_code_code_not_found": "Въведете валиден код за отстъпка или карта за подарък",
+        "reduction_code_discount_not_found": "Въведете валиден код за отстъпка",
+        "reduction_code_gift_card_code_invalid": "Моля, въведете валидна карта за подарък",
+        "reduction_code_gift_card_unusable": "Не можете да използвате карта за подарък, за да закупите друга карта за подарък"
       }
     },
     "notices": {
