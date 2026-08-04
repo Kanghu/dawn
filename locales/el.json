@@ -4168,7 +4168,53 @@
       "duties_and_taxes_included": "Το σύνολο περιλαμβάνει όλους τους δασμούς και άλλους φόρους. Δεν υπάρχει επιπλέον κόστος για την παράδοση.",
       "grouped_view_components": {
         "expand_line_items": "Εμφάνιση {{count}} άρθρα",
-        "collapse_line_items": "Απόκρυψη {{count}} άρθρα"
+        "collapse_line_items": "Απόκρυψη {{count}} άρθρα",
+        "line_item_summary": "{{refundableQuantity}} x {{productTitle}}",
+        "line_item_summary_accessibility_label": "{{productTitle}}, ποσότητα: {{refundableQuantity}}",
+        "line_item_summary_list_accessibility_label": "Αντικείμενα στο σετ {{productTitle}}"
+      },
+      "cash_rounding": "Στρογγυλοποίηση μετρητών",
+      "adjusted_payment": "Προσαρμοσμένη πληρωμή",
+      "adjusted_total": "Πλήρως προσαρμοσμένο",
+      "login_card": {
+        "log_in": "Συνδέστε τον εαυτό σας",
+        "link_expired": "Ο σύνδεσμος έχει λήξει",
+        "resend_link_and_login": "Για να δείτε τις λεπτομέρειες της παραγγελίας, συνδεθείτε ή στείλτε έναν νέο σύνδεσμο στη διεύθυνση email ή τον αριθμό τηλεφώνου που χρησιμοποιήθηκε κατά την ολοκλήρωση αγοράς.",
+        "resend_link_only": "Για να δείτε τις λεπτομέρειες της παραγγελίας σας, στείλτε έναν νέο σύνδεσμο στη διεύθυνση email ή τον αριθμό τηλεφώνου που χρησιμοποιήσατε κατά την ολοκλήρωση της παραγγελίας.",
+        "resend_link": "Υποβολή νέου συνδέσμου",
+        "title": "Μεταβείτε στις λεπτομέρειες παραγγελίας"
+      },
+      "link_sent": "Ο σύνδεσμος έχει σταλεί",
+      "view_controls": {
+        "gallery": "Γκαλερί",
+        "list": "Λίστα"
+      },
+      "company_and_location": "Εταιρεία και τοποθεσία",
+      "due_on_date": "Προθεσμία στις: {{date}}",
+      "due_on_fulfillment": "Λόγω τιμής",
+      "due_on_receipt": "Οφείλονται στη ρεσεψιόν",
+      "group_title_label_with_parent": "Για: {{groupTitle}}",
+      "payment_confirmation": {
+        "payment_received": "Ευχαριστώ! Πληρωμή στο ποσό των {{amount}} παραλήφθηκε",
+        "full_payment_received": "Ευχαριστώ! Πληρωμή στο ποσό των {{amount}} έχει παραληφθεί και αυτή η παραγγελία έχει πλέον εξοφληθεί πλήρως.",
+        "dismiss_label": "Κλείστε την επιβεβαίωση πληρωμής",
+        "payment_authorized": "Ευχαριστώ! Το υπόλοιπο θα ενημερωθεί όταν ληφθεί η πληρωμή."
+      },
+      "marketing_pending_confirmation": "Κάντε κλικ στον σύνδεσμο στο email για επιβεβαίωση.",
+      "marketing_resend_email": "Στείλτε ξανά το email",
+      "marketing_resend_email_success": "Ο σύνδεσμος έχει σταλεί",
+      "subtotal_label_with_quantity": {
+        "one": "Υποσύνολο",
+        "other": "Μερικό σύνολο · {{count}} άρθρα",
+        "few": "Μερικό σύνολο · {{count}} άρθρα"
+      },
+      "total_savings": "Συνολική εξοικονόμηση",
+      "price_before_discount_accessibility_label": "Αρχική τιμή",
+      "price_after_discount_accessibility_label": "Μειωμένη τιμή",
+      "discount_order_stacking": {
+        "one": "Έκπτωση κατά παραγγελία",
+        "other": "Εκπτώσεις στις παραγγελίες",
+        "few": "Εκπτώσεις στις παραγγελίες"
       }
     },
     "B2B": {
@@ -4380,6 +4426,24 @@
         },
         "update_success": "Οι προτιμήσεις μάρκετινγκ σας έχουν ενημερωθεί"
       }
+    },
+    "addresses": {
+      "add_button": "Προσθέστε μια διεύθυνση",
+      "address_deleted_notification": "Η διεύθυνση έχει διαγραφεί",
+      "cancel_adding_address_accessibility_label": "Ακύρωση προσθήκης διεύθυνσης",
+      "cancel_deletion_button": "Ακύρωση",
+      "cancel_deletion_button_accessibility_label": "Ακύρωση διαγραφής διεύθυνσης {{address}}",
+      "default_address": {
+        "title": "Προεπιλεγμένη διεύθυνση",
+        "title_accessibility_label": "Προεπιλεγμένη διεύθυνση: {{address}}",
+        "badge_label": "Υπονοούμενο"
+      },
+      "delete_button": "Διαγραφή",
+      "delete_button_accessibility_label": "Διαγράψτε τη διεύθυνση {{address}}",
+      "delete_confirmation_button": "Διαγράψτε τη διεύθυνση",
+      "delete_confirmation_button_accessibility_label": "Διαγράψτε τη διεύθυνση {{address}}",
+      "delete_confirmation_message": "Διαγραφή διεύθυνσης; Οι υπάρχουσες παραγγελίες δεν θα επηρεαστούν.",
+      "edit_button": "Εκδίδω"
     }
   },
   "category_links": {
