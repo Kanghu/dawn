@@ -1756,7 +1756,69 @@
         "card_verification_value_placeholder": "Biztonsági kód",
         "card_expiry_date_explanation": "A kártya lejárati dátuma a következő formátumban: hónap, hónap, év, év",
         "card_expiration_month_label": "A lejárat hónapja",
-        "card_expiration_year_label": "Lejárati év"
+        "card_expiration_year_label": "Lejárati év",
+        "apple_pay_payment_error": "Fizetését nem sikerült végrehajtani. Próbálja újra, vagy használjon másik fizetési módot.",
+        "subscription_card_update_agreement_label": "A fizetési mód módosítása frissíti az előfizetést és a jövőbeni ismétlődő fizetéseket.",
+        "card_security_vault_notice": "Szükségünk van az Ön adataira a jövőbeni kifizetésekhez. Minden tranzakció biztonságos és titkosított.",
+        "taxes_not_included": "Az adókat nem tartalmazza",
+        "no_taxes_banner_content": "A megrendelésért nem számítunk fel díjat. Miután beszedte a befizetést, több díj nem adható hozzá.",
+        "card_update_label": "Frissítse a kártyát",
+        "paypal": {
+          "connect": "Kattintson a PayPal-fiók összekapcsolásához"
+        },
+        "subscription_agreement_label": "A kosárban lévő egy vagy több tétel halasztott vásárlás vagy előfizetéses vásárlás. A fizetés folytatásával Ön elfogadja, hogy fizetési módját automatikusan megterheljük az ezen az oldalon megadott áron és gyakorisággal mindaddig, amíg az előfizetése le nem jár, vagy le nem mondja. Minden lemondásnak meg kell felelnie a %{cancelled}.",
+        "subscription_agreement_cancelled": "lemondási feltételek",
+        "card_expired": "Lejárt",
+        "card_verification_confirm": "Az ellenőrzéshez írja be a kártya biztonsági kódját.",
+        "different_credit_card_label": "Használjon másik hitelkártyát",
+        "delete_customer_mandate_modal_cancel": "Mégsem",
+        "apple": {
+          "connect": "Kattintson az Apple Pay-fiók összekapcsolásához",
+          "not_available": "Az Apple Pay nem érhető el ebben a böngészőben. Apple Pay-fiókja csatlakoztatásához a Safari böngészőt kell használnia egy Apple-eszközön."
+        },
+        "account_connected": "Fiók csatlakoztatva.",
+        "billing_address_associated_with_mandate": "Használja a fizetési módhoz tartozó címet",
+        "billing_address_associated_with_mandate_info": "Számlázási címének megváltoztatásához távolítsa el, majd adja meg újra hitelkártyaadatait",
+        "credit_card_vaulting_sign_in_banner_title": "Mentse el a hitelkártyáját",
+        "credit_card_vaulting_sign_in_banner_info": "Jelentkezzen be, vagy hozzon létre egy fiókot, hogy elmentse hitelkártyáját a jövőbeni vásárlásokhoz.",
+        "credit_card_vaulting_sign_in_banner_button_label": "Csatlakoztassa magát",
+        "expiry_long": "(Lejár %{month}/%{year})",
+        "expiry_short": "(lejár %{month}/%{year})",
+        "ftd_vault_credit_card_label": "Szeretném elmenteni ezt a hitelkártyát a fiókomba a gyorsabb fizetés érdekében",
+        "delete_customer_mandate_modal_title": "Eltávolítja ezt a fizetési kártyát?",
+        "delete_customer_mandate_modal_body": "Ha eltávolítja ezt a kártyát, akkor újra hozzá kell adnia, mielőtt fizetésre használhatná.",
+        "delete_customer_mandate_modal_confirm": "Távolítsa el a kártyát",
+        "google": {
+          "connect": "Kattintson a Google Play-fiókjával való bejelentkezéshez",
+          "error_authorizing": "Hiba a fizetés engedélyezése során"
+        },
+        "klarna_label": "Klarna",
+        "mor_disclaimer_html": "Az alábbi kattintással és megrendelésének befejezésével beleegyezik, hogy regisztrált kereskedőként megvásárolja a terméket a Global-e-től.\nezen ügyletre vonatkozóan, összhangban <a class=\"link--small\" data-modal=\"true\" data-title-text=\"%{mor_terms}\" href=\"%{terms_href}\">Feltételek</a>\nés azzal <a class=\"link--small\" data-modal=\"true\" data-title-text=\"%{privacy_policy}\" href=\"%{policy_href}\">Adatvédelmi szabályzat</a> Ez globális. A Global-e a\nrészére nemzetközi tiszteletdíj szolgáltató %{shop_name}\n",
+        "purchase_options_card_update_agreement_label_html": "A fizetési mód frissítésével Ön engedélyezi a fizetést minden ismétlődő vagy halasztott vásárlás esetén <a class=\"link--small\" data-modal=\"true\" data-title-text=\"%{cancellation_policy}\" href=\"%{policy_href}\">lemondási feltételek</a> ebből az üzletből.",
+        "multibanco_label": "ATM",
+        "receiver_payment_experience_hint": "A rendelés leadása után megkapja a fizetési adatokat. Fizessen a Multibancóban vagy legkésőbb online %{due_days} (a) napból.",
+        "pending_payment": {
+          "due_notice": "Megéri a fizetésed %{amount_due} esedékessége van %{due_date}",
+          "multibanco": {
+            "instruction_html": "Fizessen a Multibancóban vagy online az alábbi adatok segítségével. Ha bármilyen kérdése van, vagy frissíteni szeretné fizetési adatait, %{contact_us}.",
+            "entity": "Entitás",
+            "reference": "Hivatkozás",
+            "amount": "Összeg",
+            "find_nearest_atm": "Keresse meg a legközelebbi ATM-et",
+            "buyer_action_info": "Fizetés összegében %{amount_due} elérte az érettséget."
+          }
+        },
+        "purchase_options_agreement_label": "A kosárban lévő egy vagy több tétel halasztott vagy ismétlődő vásárlást jelent. A fizetés folytatásával Ön beleegyezik, hogy fizetési módját automatikusan megterheljük az ezen az oldalon feltüntetett áron és gyakorisággal a teljesítésig vagy a lemondásig. Minden lemondásra a feltételek vonatkoznak  %{cancellation_policy_label}.",
+        "update_payment_method": "Frissítse fizetési módját",
+        "paypal_modal": {
+          "order_contains_subscriptions": "Előfizetés",
+          "order_contains_fixed_selling_plans": "A végösszeg nem tartalmazhatja az adót, a szállítást, a halasztott adót és bizonyos kedvezményeket. Folytassa a fizetést, hogy megtudja, mennyi tartozás van ma."
+        },
+        "purchase_options_agreement_label_html": "Megértettem, hogy a kosaramban egy vagy több tétel halasztott vagy ismétlődő vásárlás. Folytatva, egyetértek\n<a class=\"link--small\" data-modal=\"true\" data-title-text=\"%{subscription_policy}\" href=\"%{policy_href}\">lemondási feltételek</a>\nés engedélyezem, hogy a fizetési módomat az ezen az oldalon feltüntetett árakon, gyakorisággal és dátumokkal terheljük meg eddig\na rendelésem végrehajtásra kerül, vagy lemondok, ha megengedik.\n",
+        "payment_method_saved": "Mentett fizetési mód",
+        "card_vaulted_company_location": "A kártya mentve ehhez a helyhez",
+        "order_covered_by_store_credit_notice": "Megrendelését bolti jóváírás fedezi.",
+        "order_covered_by_redeemables_notice": "Rendelése fedezve van."
       },
       "shipping_errors": {
         "shipping_method_not_available_generic": {
