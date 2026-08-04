@@ -2673,7 +2673,85 @@
         "no_pickup_locations_found": "Nem található átvételi hely",
         "pickup_unavailable_banner_body": {
           "try_different_location": "Próbálkozzon másik hellyel",
-          "ship_to_address": "szállítási cím"
+          "ship_to_address": "szállítási cím",
+          "there_are_no_stores": "Nincsenek üzletek az Ön címe közelében, vagy a termékei nem vehetők át.",
+          "ship_items": "Küldje el tételeit",
+          "search_elsewhere": "nézz máshol",
+          "ship_items_or_search_elsewhere": "%{ship_items} vagy %{search_elsewhere}",
+          "search_elsewhere_standalone": "Nézz máshol"
+        },
+        "geolocation": {
+          "permission_not_allowed": "Engedélyezze a helymegosztást, vagy más módon keressen."
+        },
+        "location_address_search_placeholder": "%{postal_code_label} vagy címet",
+        "location_closest": "A legközelebbi hely a tételhez",
+        "toggle_multiple_locations": "más halak %{count} helyszíneken",
+        "location_information_far_away": {
+          "one": "találtam %{count} helyet a cikkével",
+          "other": "találtam %{count} helyeket a cikkével",
+          "few": "találtam %{count} helyeket a cikkével"
+        },
+        "location_nearby": {
+          "one": "Van %{count} közeli hely a tétellel",
+          "other": "Van %{count} közeli helyekre a tételével",
+          "few": "Van %{count} közeli helyekre a tételével"
+        },
+        "location_nearby_short": {
+          "one": "%{count} közeli hely a tétellel",
+          "other": "%{count} közeli helyekre a tételével",
+          "few": "%{count} közeli helyekre a tételével"
+        },
+        "location_far_away": {
+          "one": "%{count} helyet a cikkével",
+          "other": "%{count} helyeket a cikkével",
+          "few": "%{count} helyeket a cikkével"
+        },
+        "toggle_more_locations": {
+          "one": "mégis %{count} helyen",
+          "other": "mégis %{count} helyszíneken",
+          "few": "mégis %{count} helyszíneken"
+        },
+        "pickup_unavailable_banner_title": {
+          "one": "Az elemhez nem tartoznak helyek",
+          "other": "Az elemekhez nincsenek helyek",
+          "few": "Az elemekhez nincsenek helyek"
+        },
+        "pickup_unavailable_banner_title_with_country": {
+          "one": "In %{country} nincsenek helyek a cikkében",
+          "other": "In %{country} nincsenek helyek a tételeivel",
+          "few": "In %{country} nincsenek helyek a tételeivel"
+        },
+        "title": "Helyszín",
+        "location_closest_one_item": "A legközelebbi hely a tételhez.",
+        "location_closest_other_items": "A legközelebbi hely a tárgyakkal.",
+        "location_information_far_away_one_item": {
+          "one": "Van %{count} helyét a tételével",
+          "other": "Van %{count} helyeket a cikkével",
+          "few": "Van %{count} helyeket a cikkével"
+        },
+        "location_information_far_away_other_items": {
+          "one": "Van %{count} helyét a tételeivel",
+          "other": "Van %{count} helyeket a tételeivel",
+          "few": "Van %{count} helyeket a tételeivel"
+        },
+        "location_nearby_one_item": {
+          "one": "Van %{count} közeli hely a tétellel",
+          "other": "Van %{count} közeli helyekre a tételével",
+          "few": "Van %{count} közeli helyekre a tételével"
+        },
+        "location_nearby_other_items": {
+          "one": "Van %{count} közeli hely a tárgyakkal",
+          "other": "Van %{count} közeli helyekre a tételeivel",
+          "few": "Van %{count} közeli helyekre a tételeivel"
+        },
+        "location_nearby_short_one_item": {
+          "one": "%{count} közeli hely a tétellel",
+          "other": "%{count} közeli helyekre a tételével",
+          "few": "%{count} közeli helyekre a tételével"
+        },
+        "location_nearby_short_other_items": {
+          "one": "%{count} közeli hely a tárgyakkal",
+          "other": "%{count} közeli helyekre a tételeivel"
         }
       },
       "merchandise_unavailable_in_buyer_location": {
