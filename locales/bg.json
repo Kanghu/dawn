@@ -1891,6 +1891,68 @@
         "gift_card_store_credit": {
           "add_label": "Добавете карта за подарък или кредит в магазина",
           "manage_label": "Управлявайте подаръчни карти или съхранявайте кредит"
+        },
+        "saved_credit_card_cvv_verification": "Въведете кода за сигурност на вашата карта за целите на проверката.",
+        "order_edit_banner_updated_order_label": "Актуализиран ред",
+        "afterpay_label": "Доплащане",
+        "cashapppay_label": "Cash App Pay",
+        "card_nickname_label": "псевдоним (по избор)",
+        "order_edit_banner_items_return_line_item_removed": {
+          "in_full": "Отстранен от връщане",
+          "with_quantities": "Премахнато от връщане: {{delta}}"
+        },
+        "order_edit_banner_single_item_return_line_item_removed": "Отстранен от връщане",
+        "order_edit_banner_multiple_items_return_line_item_removed": "Премахнато от връщане: {{amount}}",
+        "proposed_gateway_unavailable": "Предложеният шлюз за плащане не е наличен",
+        "pay_in_installments_split_pay_short": "4 плащания на стойност %{amount}",
+        "payment_method_not_available_for_shipping_address_error": "Методът на плащане не е наличен за избрания адрес за доставка. Изберете друг начин на плащане.",
+        "shop_pay_ideal_unavailable_error": "идеален | Wero не е наличен за тази поръчка. Изберете друг начин на плащане.",
+        "paypal_disconnect": "Излезте",
+        "paypal_wallet_label": "Портфейл на PayPal",
+        "payment_method_update_failed": "Неуспешна актуализация на начина на плащане.",
+        "alternative_payment_currency_total_manual_payment_notice": "Забележка: Преобразуваната обща сума е от %{amount_due}.",
+        "gift_cards_unavailable": "Вашата карта за подарък вече не може да бъде приложена към тази поръчка и е премахната",
+        "network_card_payment_options": "Изберете мрежа от карти",
+        "payment_flexibility_terms_id_mismatch": "Несъответствие на ID за гъвкави условия на плащане",
+        "offsite_gateway_review_page_redirect_hint": "След преглед на поръчката ще ви пренасочим към %{gateway_label} за да завършите покупката си.",
+        "przelewy24_label": "Przelewy24",
+        "twint_label": "TWINT",
+        "mobilepay_label": "MobilePay",
+        "gift_card_checkbox_label": "Приложете тази подаръчна карта",
+        "blik_label": "БЛИК",
+        "vipps_label": "Уипс",
+        "grabpay_label": "GrabPay",
+        "kcp_creditcard_label": "KCP кредитна карта",
+        "simulated_express_checkout": "Вашият регион или браузър не позволява визуализиране на вашите портфейли в редактора.",
+        "offsite_gateway_redirect_hint_no_button_label": "Ще ви пренасочим към %{gateway_label} за да завършите покупката си.",
+        "swish_label": "замах",
+        "network_card_persistence_description": "Избраната мрежа ще бъде запазена с вашия метод на плащане за бъдещи транзакции.",
+        "usdc_label": "USDC",
+        "payment_method_incompatible_with_payment_terms": "Методът на плащане е несъвместим с условията за плащане.",
+        "payment_option": {
+          "accessibility_label": "Изберете опция за плащане"
+        },
+        "billing_address_rollup_accessibility_label": "Опции за адрес за фактуриране",
+        "payment_method_rollup_accessibility_label": "Опции за начин на плащане",
+        "crypto_modal": {
+          "header": "Плащане на %{shop_name} с %{total_price} USDC",
+          "error": {
+            "refresh": "Освежаване",
+            "close": "закриване",
+            "sandbox_error": "Възникна грешка",
+            "web_component_error": "Възникна грешка при зареждането на тази страница"
+          }
+        },
+        "bank_account_type": {
+          "checking": "Проверка",
+          "savings": "икономики"
+        },
+        "bank_account_choose": "Изберете акаунт за сигурно плащане",
+        "bank_account_connect_another": "Свържете друга банкова сметка",
+        "bank_account_connect": "Свържете банкова сметка",
+        "bank_account_missing": "Свързването на банковата сметка е задължително",
+        "crypto_payment_method": {
+          "description": "Свържете сигурно портфейла си. Вашият баланс и адрес няма да бъдат споделяни."
         }
       },
       "shipping_errors": {
