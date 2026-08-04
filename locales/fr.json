@@ -2073,8 +2073,9 @@
       },
       "thank_you": {
         "login_reorder_link_text": {
-          "few": "Achetez aussi ces produits",
-          "one": "achète aussi ce produit"
+          "few": "achète aussi ces produits",
+          "one": "achète aussi ce produit",
+          "other": "achète aussi ces produits"
         },
         "gift_card_confirmation_by_text_typ": {
           "few": "Vous recevrez un SMS avec les cartes-cadeaux en quelques minutes."
@@ -2201,7 +2202,71 @@
         "other_options": "Autres options",
         "picked_up_title": "Votre commande a été récupérée",
         "picked_up_description_html": "Votre commande a été récupérée chez %{location_name} sur %{date}.",
-        "shop_phone_description": "Vous recevrez un SMS avec un lien vers l'application Shop, qui vous aidera à suivre votre commande."
+        "shop_phone_description": "Vous recevrez un SMS avec un lien vers l'application Shop, qui vous aidera à suivre votre commande.",
+        "marker": {
+          "current": "Lieu d'expédition actuel",
+          "shipping": "Adresse de livraison"
+        },
+        "pick_up_in_store_marker": {
+          "current": "Lieu d'expédition actuel",
+          "shipping": "Lieu de prise en charge"
+        },
+        "fulfillment": {
+          "fulfilled_table_title": "Les articles de cet envoi",
+          "unfulfilled_table_title": "Les articles sont prêts à être expédiés",
+          "product_image_label": "Image du produit",
+          "description_label": "Descriptif",
+          "quantity_label": "Quantité"
+        },
+        "ready_for_delivery_title": "Votre commande est prête à être livrée",
+        "ready_for_delivery_description": "J'ai préparé votre commande.",
+        "order_status_confirmed_order_local": "Nous préparons votre commande pour la livraison.",
+        "delivery_information_label": "Informations de livraison :",
+        "gift_card_sent_confirmation": "Les cartes cadeaux ont été envoyées",
+        "out_for_delivery_local_title": "Votre commande est en cours de livraison.",
+        "out_for_delivery_local_description_html": "Votre commande arrivera bientôt.",
+        "delivered_local_title": "Votre commande a été livrée",
+        "delivered_local_description_html": "Vous n'avez pas reçu ce que vous avez commandé ? %{let_us_know}.",
+        "let_us_know": "Informez-nous",
+        "qr_code": {
+          "title": "Regardez sur votre téléphone",
+          "send_link_to_phone": "Ou envoyez un lien sur votre téléphone"
+        },
+        "gift_card_confirmation_by_text": "Si vous ne l'avez pas reçu, demandez le renvoi d'un SMS ou contactez-nous.",
+        "gift_card_confirmation_by_email": "Si vous ne l'avez pas reçu, demandez le renvoi de l'e-mail ou contactez-nous.",
+        "gift_card_title": "Cartes cadeaux",
+        "resend_gift_cards": "Renvoyer les cartes cadeaux",
+        "attempted_delivery_local_title": "La livraison a échoué",
+        "attempted_delivery_local_description_html": "Nous n'avons pas pu livrer votre commande. Pour programmer une autre livraison, %{contact_us}.",
+        "thank_you_title_payment": "Votre paiement est confirmé",
+        "thank_you_confirmed_order_with_email_payment": "Vous avez effectué un paiement pour votre commande %{date}.",
+        "thank_you_confirmed_order_with_phone_payment": "Vous avez effectué un paiement pour votre commande %{date}.",
+        "thank_you_confirmed_order_with_email_and_phone_payment": "Vous avez effectué un paiement pour votre commande %{date}.",
+        "order_status_confirmed_order_with_email_payment": "Vous avez effectué un paiement pour votre commande %{date}.",
+        "order_status_confirmed_order_with_phone_payment": "Vous avez effectué un paiement pour votre commande %{date}.",
+        "order_status_confirmed_order_with_email_and_phone_payment": "Vous avez effectué un paiement pour votre commande %{date}.",
+        "shop_qr_with_sms_upsell": {
+          "qr_code": {
+            "title": "Scannez avec votre téléphone"
+          },
+          "sms": {
+            "title": "Ou envoyez un lien sur votre téléphone"
+          }
+        },
+        "estimated_delivery": "Devis actuel pour la livraison : ",
+        "view_business_customer_account": "Voir le compte",
+        "company_location_title": "Emplacement",
+        "thank_you_title_review": "Votre commande a été envoyée pour examen",
+        "thank_you_confirmed_order_with_draft": "Nous vous ferons savoir si nous avons besoin de plus d'informations ou lorsque votre commande sera confirmée.",
+        "breadcrumbs_submitted": "Envoyé",
+        "breadcrumbs_in_review": "En cours de révision",
+        "breadcrumbs_confirmed": "Confirmé",
+        "missing_shipping_address_banner": {
+          "title": "La commande ne comprend pas d'adresse de livraison",
+          "text_html": "%{contact_us} pour ajouter l'adresse",
+          "contact_us": "Contactez-nous"
+        },
+        "order_status_confirmed_with_installments_payment_return": "Reportez votre attention sur le vendeur."
       },
       "order_payment_collection": {
         "changes_summary": {
