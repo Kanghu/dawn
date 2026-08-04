@@ -1456,7 +1456,16 @@
         },
         "unit_price": {
           "per_item": {
-            "few": "%{price} -ra %{count} áru"
+            "few": "%{price} számára %{count} cikkeket",
+            "single": "%{price} minden egyes elemet",
+            "one": "%{price} számára %{count} cikket",
+            "other": "%{price} számára %{count} cikkeket"
+          },
+          "accessible_separator": "be",
+          "content_html": "%{price}%{accessible_separator}%{per_unit}",
+          "per_unit": {
+            "single": "%{price}/%{unit}",
+            "plural": "%{price}/%{count}%{unit}"
           }
         },
         "return_rules_experiment": {
@@ -1524,7 +1533,53 @@
         "description_label": "Leírás",
         "price_label": "Ár",
         "quantity_label": "Mennyiség",
-        "product_change_label": "Módosít"
+        "product_change_label": "Módosít",
+        "product_image_label": "Termék kép",
+        "scroll_order_summary": "További cikkekért görgessen",
+        "expand_order_summary_short": "Kijelző",
+        "collapse_order_summary_short": "Elrejtés",
+        "total_updated_label": "Frissített teljes ár:",
+        "order_total_updated_label": "Összesen frissítve",
+        "total_already_paid_label": "Kifizetett összeg",
+        "estimated_taxes_label": "Becsült díjak",
+        "information_estimated_taxes_label": "Díjak (becsült)",
+        "gift_card_ending": "számra végződő ajándékkártya %{last_characters}",
+        "estimated_tax_label": "Becsült díjak",
+        "multiple_shipping_lines_label": "Szállítás összesen",
+        "applied_free_shipping_discount_label": "Alkalmazva",
+        "original_price": "Az eredeti ár",
+        "sale_price": "Ajánlati ár",
+        "recurring_subtotal_label": "Ismétlődő részösszeg",
+        "recurring_total_label": "Teljesen visszatérő",
+        "recurring_total_tooltip": "Nem tartalmazza a szállítást, az adókat, az illetékeket és a vonatkozó kedvezményeket.",
+        "gift_card_subscriptions_notice": "Az ajándékutalványok csak az első befizetésnél kerülnek felhasználásra",
+        "confirmation_number_label": "szám megerősítés %{confirmation_number}",
+        "estimated_taxes_finalization_tooltip_content": "A végső díjakat és a végösszeget a megrendelés leadása után e-mailben vagy SMS-ben visszaigazoljuk.",
+        "deferred_payment_info": {
+          "title": "Fizetés összegében %{amount_due} esedékessége van %{due_at}",
+          "description_html": "Ha kérdése van rendelésével kapcsolatban, %{contact_us}.",
+          "paid_today": "Ma fizetett összesen",
+          "due_on_fulfillment_title": "Fizetés összegében %{amount_due} a kitüntetés időpontjában van esedékessége",
+          "due_on_receipt_title": "Fizetés összegében %{amount_due} átvételkor van esedékessége",
+          "paid_today_next": "Ma fizetve"
+        },
+        "percent_off_shipping": "Kedvezmény a %{percent}% a szállításból",
+        "amount_off_shipping": "Kedvezmény a %{amount} szállításkor",
+        "payment_terms_totals": {
+          "due_today": "Összesen ma esedékes",
+          "due_later": "Összesen miatt %{due_at}",
+          "due_later_checkout_to_draft": "Összesen később esedékes",
+          "due_on_fulfillment": "A teljesítés időpontjában esedékes",
+          "due_on_receipt": "Az átvételkor esedékes teljes összeg",
+          "total_paid": "Összesen fizetett",
+          "due_today_next": "Ma esedékes",
+          "due_on_fulfillment_next": "A megrendelés teljesítésekor lejár"
+        },
+        "higher_value_discount_applied": "<strong style=\"text-transform:uppercase\">%{code}</strong> nem használhatók fel a meglévő kedvezményekkel.",
+        "maximum_discount_code_limit_reached": "Elérte a kedvezménykódok maximális számát. A kód használatához távolítson el egy meglévő kódot <strong style=\"text-transform:uppercase\">%{code}</strong>.",
+        "order_total_label": "Rendelés összesen",
+        "discount_code_application_failed": "<strong style=\"text-transform:uppercase\">%{code}</strong> jelenleg nem működik. Forduljon hozzánk segítségért.",
+        "due_on_fulfillment": "A kitüntetés időpontjában esedékes"
       },
       "payment": {
         "order_covered_by_gift_cards_notice": {
