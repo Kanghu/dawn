@@ -1347,17 +1347,24 @@
           "other": "Поръчайте отстъпки"
         },
         "subtotal_label_with_quantity": {
-          "few": "Субтотален · %{count} изделия",
-          "one": "Междинна сума · %{count} статия"
+          "few": "Междинна сума · %{count} статии",
+          "one": "Междинна сума · %{count} статия",
+          "other": "Междинна сума · %{count} статии"
         },
         "number_items": {
-          "few": "%{count} изделия"
+          "few": "%{count} статии",
+          "one": "%{count} статия",
+          "other": "%{count} статии"
         },
         "view_all_items": {
-          "few": "Вижте всички %{count} изделия"
+          "few": "Вижте всички тези %{count} статии",
+          "one": "виж %{count} статия",
+          "other": "Вижте всички тези %{count} статии"
         },
         "pickup_unavailable_banner_title": {
-          "few": "Вашите артикули не могат да бъдат отменени от магазина"
+          "few": "Няма налични магазини с вашите артикули",
+          "one": "Няма налични магазини с вашия артикул",
+          "other": "Няма налични магазини с вашите артикули"
         },
         "unit_price": {
           "per_item": {
@@ -1382,7 +1389,9 @@
           }
         },
         "pickup_unavailable_banner_title_with_country": {
-          "few": "в %{country} няма налични магазини с вашите артикули"
+          "few": "в %{country} няма налични магазини с вашите артикули",
+          "one": "в %{country} няма налични магазини с вашия артикул",
+          "other": "в %{country} няма налични магазини с вашите артикули"
         },
         "discount_code_applied_count": {
           "few": "Дисплей %{count} отстъпки"
@@ -1523,7 +1532,46 @@
           "title": "Стойност на баланса {{amount_due}} има падеж {{due_at}}",
           "due_on_fulfillment_title": "Стойност на баланса {{amount_due}} има датата на падежа към момента на уважаването"
         },
-        "eligible_customer_missing_notice": "За кода за отстъпка <strong style=\"text-transform:uppercase\">%{code}</strong> изисква се отговарящ на условията клиент"
+        "eligible_customer_missing_notice": "За кода за отстъпка <strong style=\"text-transform:uppercase\">%{code}</strong> изисква се отговарящ на условията клиент",
+        "cost_table_item_column_header": "статия",
+        "cost_table_value_column_header": "Стойност",
+        "product_image_quantity_label": "Количество",
+        "more_items_modal": {
+          "clear_search": "Изчистете търсенето",
+          "empty_results": "Няма намерени резултати за \"%{searchText}\". Проверете правописа си или използвайте друга дума или фраза.",
+          "number_items_shown": "%{shownNumber} от %{totalNumber} статии",
+          "search_item": "Търсене"
+        },
+        "price_before_discount_aria_text": "Начална цена",
+        "price_after_discount_aria_text": "Намалена цена",
+        "discount_code_aria_text": "Код за отстъпка",
+        "pickup_unavailable_banner_body": {
+          "ship_to_address": "Адрес за доставка",
+          "ship_to_address_instead_html": "%{link} вместо това"
+        },
+        "deposit_label": "Склад",
+        "total_due_today_label": "Общо дължимо днес",
+        "total_due_later_label": "Общо дължимо по-късно",
+        "discount_code_allocations_mismatch": "Вашият код за отстъпка <strong style=\"text-transform:uppercase\">%{code}</strong> се е променило. Моля, прегледайте пазарската си количка и опитайте отново.",
+        "deferred_total_due_date_label_next": "Краен срок: %{date}",
+        "total_due_label": "Напълно дължимо",
+        "total_price_label": "Обща цена",
+        "for_add_on": "за: %{group_title}",
+        "unconfirmed_label": "Непотвърдено",
+        "total_paid_label": "Общо платено",
+        "from_shop_heading": "от %{shop_name}",
+        "from_other_stores_heading": "От други магазини",
+        "estimated_taxes_label_short": "Приблизително",
+        "order_discounts_apply_to_local_shop": "При поръчки отстъпките се прилагат само за артикули от %{shop_name}",
+        "gift_cards_apply_to_local_shop": "Подаръчните карти са валидни само за артикули от %{shop_name}",
+        "discount_code_removed": "Код за отстъпка %{code} беше премахнат",
+        "discount_code_replaced": "Код за отстъпка %{old_code} беше премахнат и кодът беше приложен %{code}",
+        "discount_code_replaced_multiple": "Няколко кода за отстъпка са премахнати и кодът е приложен %{code}",
+        "from_multiple_stores_heading": "От няколко магазина",
+        "pay_merchant_label": "Платете %{merchant_name}",
+        "discount_applies_to_subscription_items_only": "Тази отстъпка е валидна само за артикули, включени в абонамента",
+        "estimated_taxes_finalization_tooltip_content_short": "Таксуването става след плащане",
+        "compare_at_sale": "Промоция (%{sale_amount})"
       },
       "payment": {
         "order_covered_by_gift_cards_notice": {
