@@ -2057,15 +2057,56 @@
       },
       "local_pickup": {
         "location_information": {
-          "few": "Υπάρχω %{count} καταστήματα με απόθεμα κοντά στο %{address}"
+          "few": "Είμαι κοντά σου %{count} τοποθεσίες με απόθεμα",
+          "one": "Είμαι κοντά σου %{count} τοποθεσία με απόθεμα",
+          "other": "Είμαι κοντά σου %{count} τοποθεσίες με απόθεμα"
         },
         "paginator": {
           "label": {
-            "few": "%{first} - %{last} ΑΠΟ %{count} κατάστημα"
-          }
+            "few": "%{first} - %{last} από %{count} καταστήματα",
+            "one": "%{first} - %{last} από %{count} κατάστημα",
+            "other": "%{first} - %{last} από %{count} καταστήματα"
+          },
+          "accessibility_label": "Τοπική σελιδοποίηση ανάκτησης",
+          "previous": "Προηγούμενη σελίδα",
+          "next": "Επόμενη σελίδα"
         },
         "reveal_more_label": {
-          "few": "Εμφανίζεται ακόμα %{count} (OF)"
+          "few": "Εμφάνιση περισσότερων %{count} (των) τοποθεσιών",
+          "one": "Εμφάνιση περισσότερων %{count} τοποθεσία",
+          "other": "Εμφάνιση περισσότερων %{count} (των) τοποθεσιών"
+        },
+        "toggle_location": "Αλλαγή τοποθεσίας",
+        "or": "Ή",
+        "cancel": "Ακύρωση",
+        "your_location": "την τοποθεσία σας",
+        "search_button": "Βρείτε καταστήματα",
+        "no_stores_found": "Δεν βρέθηκαν καταστήματα",
+        "could_not_resolve_address": "Δεν ήταν δυνατή η εύρεση της διεύθυνσής σας. Δοκιμάστε ξανά ή χρησιμοποιήστε διαφορετική διεύθυνση",
+        "location_address_search_label": "Διεύθυνση",
+        "all_stores_far_away": {
+          "title": "Οι πιο κοντινές τοποθεσίες βρίσκονται σε μεγαλύτερη απόσταση από %{distance}",
+          "description": "Επιλέξτε μια τοποθεσία ή %{ship_to_address_link}",
+          "ship_to_address_link": "διεύθυνση παράδοσης",
+          "title_with_location": "Η πλησιέστερη τοποθεσία έχει τελειώσει %{distance} έναντι %{location}",
+          "description_with_location": "%{change_location_link} ή %{ship_to_address_link}",
+          "change_location_link": "Αλλάξτε την τοποθεσία σας",
+          "title_with_specific_location": "Η πλησιέστερη τοποθεσία με το αντικείμενο σας βρίσκεται σε μεγάλη απόσταση %{distance} του %{location}",
+          "title_with_item": {
+            "one": "Η πλησιέστερη τοποθεσία με το αντικείμενο σας είναι περισσότερο από %{distance} του %{location}",
+            "other": "Η πλησιέστερη τοποθεσία με τα αντικείμενά σας είναι περισσότερο από %{distance} του %{location}",
+            "few": "Η πλησιέστερη τοποθεσία με τα αντικείμενά σας είναι περισσότερο από %{distance} του %{location}"
+          }
+        },
+        "selected_pickup_option_no_longer_available": {
+          "title": "Η τοποθεσία που επιλέξατε προηγουμένως δεν είναι πλέον διαθέσιμη",
+          "description": "Έχουμε επιλέξει την πλησιέστερη τοποθεσία με τα προϊόντα σας σε απόθεμα."
+        },
+        "pick_up_location": "Τοποθεσία παραλαβής",
+        "no_pickup_locations_found": "Δεν βρέθηκαν τοποθεσίες παραλαβής",
+        "pickup_unavailable_banner_body": {
+          "try_different_location": "Δοκιμάστε άλλη τοποθεσία",
+          "ship_to_address": "διεύθυνση παράδοσης"
         }
       },
       "merchandise_unavailable_in_buyer_location": {
@@ -2143,8 +2184,16 @@
       },
       "review_address_modal": {
         "subtitle": {
-          "few": "Αυτή η παραγγελία θα αποσταλεί σε διεύθυνση που παρέχεται από {{merchant}}. Επιλέξτε μια διεύθυνση αποστολής."
-        }
+          "few": "Αυτή η παραγγελία θα αποσταλεί σε διεύθυνση που παρέχεται από {{merchant}}. Επιλέξτε μια διεύθυνση αποστολής.",
+          "one": "Αυτή η παραγγελία θα αποσταλεί στη διεύθυνση που παρέχεται από {{merchant}}.",
+          "other": "Αυτή η παραγγελία θα αποσταλεί σε διεύθυνση που παρέχεται από {{merchant}}. Επιλέξτε μια διεύθυνση αποστολής."
+        },
+        "title": "Ελέγξτε τη διεύθυνση",
+        "subtitle_no_match": "Αυτή η διεύθυνση δεν ταιριάζει με καμία από τις διευθύνσεις που έχετε αποθηκεύσει.",
+        "subtitle_must_use": "Η παραγγελία σας θα αποσταλεί σε αυτή τη διεύθυνση.",
+        "continue": "Συνεχίστε με αυτή τη διεύθυνση",
+        "use_saved_address": "Χρησιμοποιήστε άλλη διεύθυνση",
+        "return_to_cart": "Επιστροφή στο καλάθι"
       },
       "remote_merchandise_only": {
         "detail_item_label": {
@@ -2628,9 +2677,19 @@
           },
           "errors_in_section": {
             "one": "{{count}} σφάλμα στην ενότητα {{section}}",
-            "other": "{{count}} σφάλματα ενότητας {{section}}"
+            "other": "{{count}} σφάλματα ενότητας {{section}}",
+            "few": "{{count}} σφάλματα ενότητας {{section}}"
           }
         }
+      },
+      "marketplaces": {
+        "legal_notice": {
+          "legal_text": "Συμβουλευτείτε",
+          "link_label": "Όροι και προϋποθέσεις {{partnerDisplayName}}"
+        }
+      },
+      "online_store_chat": {
+        "title": "Έχετε ερωτήσεις; Συνομιλήστε μαζί μας"
       }
     },
     "notices": {
