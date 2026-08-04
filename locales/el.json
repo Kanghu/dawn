@@ -2106,7 +2106,85 @@
         "no_pickup_locations_found": "Δεν βρέθηκαν τοποθεσίες παραλαβής",
         "pickup_unavailable_banner_body": {
           "try_different_location": "Δοκιμάστε άλλη τοποθεσία",
-          "ship_to_address": "διεύθυνση παράδοσης"
+          "ship_to_address": "διεύθυνση παράδοσης",
+          "there_are_no_stores": "Δεν υπάρχουν καταστήματα κοντά στη διεύθυνσή σας ή τα προϊόντα σας δεν είναι διαθέσιμα για παραλαβή.",
+          "ship_items": "Αποστολή των αντικειμένων σας",
+          "search_elsewhere": "κοίτα αλλού",
+          "ship_items_or_search_elsewhere": "%{ship_items} ή %{search_elsewhere}",
+          "search_elsewhere_standalone": "Κοίτα αλλού"
+        },
+        "geolocation": {
+          "permission_not_allowed": "Επιτρέψτε την κοινοποίηση τοποθεσίας ή την αναζήτηση με άλλο τρόπο."
+        },
+        "location_address_search_placeholder": "%{postal_code_label} ή διεύθυνση",
+        "location_closest": "Η πιο κοντινή τοποθεσία με το αντικείμενο σας",
+        "toggle_multiple_locations": "άλλα ψάρια %{count} τοποθεσίες",
+        "location_information_far_away": {
+          "one": "βρήκα %{count} τοποθεσία με το άρθρο σας",
+          "other": "βρήκα %{count} τοποθεσίες με το άρθρο σας",
+          "few": "βρήκα %{count} τοποθεσίες με το άρθρο σας"
+        },
+        "location_nearby": {
+          "one": "υπάρχει %{count} κοντινή τοποθεσία με το αντικείμενο σας",
+          "other": "υπάρχει %{count} κοντινές τοποθεσίες με το αντικείμενο σας",
+          "few": "υπάρχει %{count} κοντινές τοποθεσίες με το αντικείμενο σας"
+        },
+        "location_nearby_short": {
+          "one": "%{count} κοντινή τοποθεσία με το αντικείμενο σας",
+          "other": "%{count} κοντινές τοποθεσίες με το αντικείμενο σας",
+          "few": "%{count} κοντινές τοποθεσίες με το αντικείμενο σας"
+        },
+        "location_far_away": {
+          "one": "%{count} τοποθεσία με το άρθρο σας",
+          "other": "%{count} τοποθεσίες με το άρθρο σας",
+          "few": "%{count} τοποθεσίες με το άρθρο σας"
+        },
+        "toggle_more_locations": {
+          "one": "ακόμα %{count} τοποθεσία",
+          "other": "ακόμα %{count} τοποθεσίες",
+          "few": "ακόμα %{count} τοποθεσίες"
+        },
+        "pickup_unavailable_banner_title": {
+          "one": "Δεν υπάρχουν τοποθεσίες με το αντικείμενο σας",
+          "other": "Δεν υπάρχουν τοποθεσίες με τα στοιχεία σας",
+          "few": "Δεν υπάρχουν τοποθεσίες με τα στοιχεία σας"
+        },
+        "pickup_unavailable_banner_title_with_country": {
+          "one": "Σε %{country} δεν υπάρχουν τοποθεσίες με το άρθρο σας",
+          "other": "Σε %{country} δεν υπάρχουν τοποθεσίες με τα αντικείμενά σας",
+          "few": "Σε %{country} δεν υπάρχουν τοποθεσίες με τα αντικείμενά σας"
+        },
+        "title": "Τοποθεσία",
+        "location_closest_one_item": "Η πιο κοντινή τοποθεσία με το αντικείμενο σας.",
+        "location_closest_other_items": "Η πλησιέστερη τοποθεσία με τα αντικείμενά σας.",
+        "location_information_far_away_one_item": {
+          "one": "υπάρχει %{count} τοποθεσία με το αντικείμενο σας",
+          "other": "υπάρχει %{count} τοποθεσίες με το άρθρο σας",
+          "few": "υπάρχει %{count} τοποθεσίες με το άρθρο σας"
+        },
+        "location_information_far_away_other_items": {
+          "one": "υπάρχει %{count} τοποθεσία με τα αντικείμενά σας",
+          "other": "υπάρχει %{count} τοποθεσίες με τα αντικείμενά σας",
+          "few": "υπάρχει %{count} τοποθεσίες με τα αντικείμενά σας"
+        },
+        "location_nearby_one_item": {
+          "one": "υπάρχει %{count} κοντινή τοποθεσία με το αντικείμενο σας",
+          "other": "υπάρχει %{count} κοντινές τοποθεσίες με το αντικείμενο σας",
+          "few": "υπάρχει %{count} κοντινές τοποθεσίες με το αντικείμενο σας"
+        },
+        "location_nearby_other_items": {
+          "one": "υπάρχει %{count} κοντινή τοποθεσία με τα αντικείμενά σας",
+          "other": "υπάρχει %{count} κοντινές τοποθεσίες με τα αντικείμενά σας",
+          "few": "υπάρχει %{count} κοντινές τοποθεσίες με τα αντικείμενά σας"
+        },
+        "location_nearby_short_one_item": {
+          "one": "%{count} κοντινή τοποθεσία με το αντικείμενο σας",
+          "other": "%{count} κοντινές τοποθεσίες με το αντικείμενο σας",
+          "few": "%{count} κοντινές τοποθεσίες με το αντικείμενο σας"
+        },
+        "location_nearby_short_other_items": {
+          "one": "%{count} κοντινή τοποθεσία με τα αντικείμενά σας",
+          "other": "%{count} κοντινές τοποθεσίες με τα αντικείμενά σας"
         }
       },
       "merchandise_unavailable_in_buyer_location": {
