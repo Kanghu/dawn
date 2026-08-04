@@ -3973,14 +3973,78 @@
       "list_title_confirmed_orders_accessibility_label": "Παραγγελίες: επιβεβαιώθηκαν",
       "list_title_pending_orders_accessibility_label": "Παραγγελίες: σε εκκρεμότητα",
       "switch_order_type_pending_orders_accessibility_label": "Αλλαγή τύπου παραγγελίας, προς το παρόν προβάλλονται παραγγελίες σε εκκρεμότητα",
-      "switch_order_type_confirmed_orders_accessibility_label": "Αλλαγή τύπου παραγγελίας, προς το παρόν προβάλλονται επιβεβαιωμένες παραγγελίες"
+      "switch_order_type_confirmed_orders_accessibility_label": "Αλλαγή τύπου παραγγελίας, προς το παρόν προβάλλονται επιβεβαιωμένες παραγγελίες",
+      "group_title_label": "Μέρος του: {{groupTitle}}",
+      "group_title_label_with_parent": "Για: {{groupTitle}}"
     },
     "order_details": {
       "image_gallery": {
         "load_more_items": {
           "few": "Φορτώστε ακόμα {{count}} προϊόντα"
         }
-      }
+      },
+      "addresses_section_title": "Χρέωση και αποστολή",
+      "billing_address": "Διεύθυνση χρέωσης",
+      "card_ending_with": "τελειώνει με {{lastDigits}}",
+      "contact": "Επικοινωνία",
+      "hide_items": "Απόκρυψη άρθρων",
+      "loading": "Φόρτωση στοιχείων παραγγελίας",
+      "loading_finished_accessibility_message": "Τα στοιχεία παραγγελίας έχουν φορτωθεί",
+      "payment": {
+        "status_in_review": "Η πληρωμή οφείλεται μετά από έλεγχο",
+        "status_unpaid": "Η πληρωμή γίνεται στις {{date}}",
+        "title": "Πληρωμή",
+        "card_payment_details": "τελειώνει με {{lastDigits}} - {{formattedTransactionAmount}}",
+        "shop_pay_installments": {
+          "paid_in_installments": "Πληρωμή με Rate Shop Pay",
+          "view_schedule": "Δείτε το πρόγραμμα",
+          "summary": "Βαθμολογήστε το κατάστημα"
+        },
+        "gift_card_payment_details": "τελειώνει με {{lastDigits}} - {{formattedTransactionAmount}}",
+        "manual_payment_methods": {
+          "money_order": "Εντολή πληρωμής - {{formattedTransactionAmount}}",
+          "cash_on_delivery": "Αντικαταβολή - {{formattedTransactionAmount}}",
+          "bank_deposit": "Τραπεζική κατάθεση - {{formattedTransactionAmount}}",
+          "manual": "εγχειρίδιο - {{formattedTransactionAmount}}"
+        },
+        "store_credit_payment_details": "Πίστωση καταστήματος - {{formattedTransactionAmount}}",
+        "transactions": {
+          "show_all": "Εμφάνιση όλων",
+          "show_less": "Δείξτε λιγότερα",
+          "details": "Λεπτομέρειες",
+          "payment_details": "Στοιχεία πληρωμής"
+        },
+        "emv_details": {
+          "auth": "ΕΞΟΥΣΙΟΔΟΤΗΣΗ:",
+          "aid": "ΒΟΗΘΕΙΑ:",
+          "source": "ΠΗΓΗ:"
+        },
+        "card_payment_short_details": "{{paymentTypeLabel}} •••• {{lastDigits}}",
+        "payment_type": {
+          "gift_card": "Δωροκάρτα",
+          "store_credit": "Πίστωση καταστήματος",
+          "money_order": "Εντολή πληρωμής",
+          "cash_on_delivery": "Με αντικαταβολή",
+          "bank_deposit": "Τραπεζική κατάθεση",
+          "manual": "Εγχειρίδιο"
+        },
+        "bank_payment_short_details": "{{paymentTypeLabel}} •••• {{lastDigits}}"
+      },
+      "shipping": {
+        "address": "Διεύθυνση αποστολής",
+        "address_map_marker": "Διεύθυνση αποστολής",
+        "method": "Τρόπος αποστολής",
+        "summary": "Μεταφορές",
+        "free": "Δωρεάν",
+        "free_shipping_discount": "Δωρεάν αποστολή",
+        "one_time": "Ενιαία αποστολή",
+        "subscription": "Αποστολή βάσει συνδρομής",
+        "method_short": "Μέθοδος",
+        "ship_to": "Αποστολή σε"
+      },
+      "show_items": "Εμφάνιση άρθρων",
+      "subtitle": "Επιβεβαιώθηκε {{date}}",
+      "subtotal": "Υποσύνολο"
     },
     "B2B": {
       "orders": {
