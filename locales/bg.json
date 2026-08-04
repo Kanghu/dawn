@@ -1621,10 +1621,14 @@
           "other": "Добавено(и): %{count}"
         },
         "discount_show_more_warnings": {
-          "few": "Покажи повече %{count}"
+          "few": "Покажи повече %{count}",
+          "one": "Покажи повече %{count}",
+          "other": "Покажи повече %{count}"
         },
         "discount_codes_removed_summary": {
-          "few": "%{count} кодовете за отстъпка са премахнати"
+          "few": "%{count} кодовете за отстъпка са премахнати",
+          "one": "%{count} кодът за отстъпка е премахнат",
+          "other": "%{count} кодовете за отстъпка са премахнати"
         },
         "amazon_payments_label": "Amazon Pay",
         "amazon_payments_login_hint": "Ще бъдете подканени да влезете с Amazon.",
@@ -1952,7 +1956,61 @@
         "bank_account_connect": "Свържете банкова сметка",
         "bank_account_missing": "Свързването на банковата сметка е задължително",
         "crypto_payment_method": {
-          "description": "Свържете сигурно портфейла си. Вашият баланс и адрес няма да бъдат споделяни."
+          "description": "Свържете сигурно портфейла си. Вашият баланс и адрес няма да бъдат споделяни.",
+          "tooltip": "Вашият адрес и баланс в портфейла няма да бъдат споделени; може да бъде удържана само заявената сума",
+          "cashback_descriptor": {
+            "one": "Ще получите възстановяването си след това %{count} ден",
+            "other": "Ще получите възстановяването си след това %{count} дни",
+            "few": "Ще получите възстановяването си след това %{count} дни"
+          }
+        },
+        "usdc_cashback_title": "%{incentive_percentage}% възстановяване",
+        "usdc_cashback_additional_info": "Платете с USDC на Base и получете %{incentive_percentage}% обратно в портфейла след 30 дни.",
+        "usdc_cashback_terms": "Прилагат се условия и ограничения",
+        "separate_payments_label": "Вашите артикули идват от множество магазини. Сумата за плащане ще бъде вписана %{separate_payments_link}.",
+        "separate_payments_text": "отделни плащания",
+        "payments": "Плащания",
+        "business_customer_with_bank_account_vaulting_payment_label": "Запазете този метод на плащане при плащане и авторизирайте %{company} за таксуване на акаунта ви за бъдещи покупки, които оторизирате за това местоположение, оторизацията е валидна до анулиране. Начинът на плащане може да се използва от всички контакти, присвоени на това местоположение.",
+        "new_bank_account_disclaimer": "Завършването на поръчката предполага оторизация %{shop_name} да дебитирате сметката по-долу чрез ACH, в посочената сума и в посочения час.",
+        "bank_account_disclaimer": "Обработката на ACH плащанията може да отнеме до 4 работни дни.",
+        "bank_account_vaulted_company_location": "Банковата сметка е запазена за това местоположение",
+        "bank_account_generic_error": "Неуспешно добавяне на банкова сметка. Опитайте отново по-късно.",
+        "default": "По подразбиране",
+        "continue_to_guest_checkout": "Продължете към плащането като посетител",
+        "add_payment_method": "Добавете начин на плащане",
+        "choose_new_payment_method": "Изберете нов метод на плащане",
+        "add_new_payment_method": "Добавете нов метод на плащане",
+        "discount_codes_modified_summary": {
+          "one": "%{count} кодът за отстъпка е променен",
+          "other": "%{count} кодовете за отстъпка са променени",
+          "few": "%{count} кодовете за отстъпка са променени"
+        },
+        "discount_codes_removed_or_modified_summary": {
+          "one": "%{count} кодът за отстъпка е премахнат или променен",
+          "other": "%{count} кодовете за отстъпка са премахнати или променени",
+          "few": "%{count} кодовете за отстъпка са премахнати или променени"
+        },
+        "multiple_primary_payment_not_allowed": "Невалидни методи на плащане",
+        "purchase_options_subscription_agreement_label": "Вашата количка съдържа автоматично подновяващ се абонамент. Като щракнете върху \"%{button_label}”, %{consent_text} %{cancellation_instructions}",
+        "purchase_options_subscription_consent_text": "вие изрично и категорично се съгласявате, че автоматично ще бъдете таксувани с периодичните суми, показани във вашата количка (плюс доставка и данъци), докато вашият абонамент(и) не бъдат прекратени или анулирани.",
+        "purchase_options_subscription_cancellation_instructions": "%{cancel_text} Моля, консултирайте се %{cancellation_policy_label}.",
+        "purchase_options_subscription_cancel_text": "Можете да анулирате по всяко време, като влезете в акаунта си или се свържете с магазина.",
+        "vault_for_payment_later": {
+          "pay_button_label": "Направете поръчката",
+          "notice": "Сега няма да бъдете таксувани с никакви суми. Продължавайки да плащате, вие се съгласявате, че вашият метод на плащане ще бъде таксуван, когато поръчката ви бъде обработена."
+        },
+        "alipay_label": "Alipay",
+        "wechat_pay_label": "WeChat Pay",
+        "oxxo_label": "OXXO",
+        "pay_with_credit_card": "Плащане с кредитна карта",
+        "pay_with_debit_card": "Платете с дебитна карта",
+        "bogus_test_checkout": {
+          "title": "Инструкции за тестване",
+          "intro": "Използвайте тези стойности, за да тествате плащането:",
+          "approved_transaction": "{{card_number}} за симулиране на одобрена транзакция",
+          "declined_transaction": "{{card_number}} за симулиране на отхвърлена транзакция",
+          "gateway_failure": "{{card_number}} за симулиране на повреда на шлюза",
+          "additional_instructions": "Използвайте бъдеща дата на изтичане и всеки 3-цифрен код за сигурност."
         }
       },
       "shipping_errors": {
