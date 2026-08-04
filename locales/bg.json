@@ -1601,10 +1601,14 @@
       },
       "payment": {
         "order_covered_by_gift_cards_notice": {
-          "few": "Вашата поръчка е покрита от вашите карти за подаръци."
+          "few": "Вашата поръчка се покрива от вашите карти за подарък.",
+          "one": "Вашата поръчка се покрива от вашата подаръчна карта.",
+          "other": "Вашата поръчка се покрива от вашите карти за подарък."
         },
         "card_fields_unavailable_html": {
-          "few": "Понастоящем плащанията с банкови карти не са налични.<br><a href=\"%{current_url}\">Опреснява страницата</a> или опитайте различен начин на плащане."
+          "few": "Плащания с банкови карти в момента не се предлагат.<br><a href=\"%{current_url}\">Опреснете страницата</a> или опитайте друг метод на плащане.",
+          "one": "Плащания с банкови карти в момента не се предлагат.<br><a href=\"%{current_url}\">Опреснете страницата</a> или опитайте отново по-късно.",
+          "other": "Плащания с банкови карти в момента не се предлагат.<br><a href=\"%{current_url}\">Опреснете страницата</a> или опитайте друг метод на плащане."
         },
         "expired_cards_info": {
           "few": "Съществуват %{count} Карти с изтекъл срок на годност, които можете да видите и редактирате в акаунта си."
@@ -1647,7 +1651,51 @@
         "card_verification_value_placeholder": "Код за сигурност",
         "card_expiry_date_explanation": "Срок на валидност на картата във формат: месец, месец, година, година",
         "card_expiration_month_label": "Месец на изтичане",
-        "card_expiration_year_label": "Година на годност"
+        "card_expiration_year_label": "Година на годност",
+        "card_verification_value_explanation": "3-цифреният код за сигурност обикновено се намира на гърба на картата. Картите American Express имат 4-цифрен код, разположен отпред.",
+        "card_verification_value_explanation_amex": "4-цифрен код за сигурност на лицето на картата",
+        "card_verification_value_explanation_other": "3-цифрен код за сигурност на гърба на картата",
+        "card_start_label": "Дата на издаване (ММ/ГГ)",
+        "card_start_placeholder": "Дата на издаване (ММ/ГГ)",
+        "card_issue_number_label": "Номер на изданието",
+        "card_issue_number_placeholder": "Номер на изданието",
+        "card_change_label": "Променете",
+        "ends_with_label": "завършва в %{last_digits}",
+        "masked_digits_label": "•••• %{last_digits}",
+        "saved_by_payment_method": "Запазено от %{payment_method}",
+        "pay_with_payment_method": "Платете с %{payment_method}",
+        "same_billing_address_label": "Същият като адреса за доставка",
+        "different_billing_address_label": "Използвайте различен адрес за фактуриране",
+        "free_order_notice_html": "Вашата поръчка е <strong>безплатно</strong>. Не се изисква плащане.",
+        "express_checkout_free_order": "Няма да бъдете таксувани за безплатна поръчка",
+        "offsite_gateway_redirect_hint": "Ще ви пренасочим към %{gateway_label} за да завършите покупката си.",
+        "offsite_gateway_redirect_hint_multi_currency_html": "%{gateway_label} общо %{total_shop_price}",
+        "billing_address_title": "Адрес за фактуриране",
+        "billing_address_description": "Изберете адреса, който съответства на вашата карта или начин на плащане.",
+        "billing_address_description_no_shipping_address": "Въведете адреса, който съответства на вашата карта или начин на плащане.",
+        "no_js_credit_card_fields_redirect_hint": "Ще бъдете пренасочени, за да добавите вашата информация за плащане.",
+        "card_fields_container_prefix": "Полеви контейнер за:",
+        "card_fields_processing_error": "Възникна проблем при обработката на вашето плащане. Опитайте да обновите тази страница или проверете вашата интернет връзка.",
+        "technical_error": "Плащанията не могат да бъдат обработени в момента поради технически проблем. Моля, опитайте отново след няколко минути.",
+        "no_method_error": "Този магазин не може да приема плащания в момента.",
+        "not_configured_error": "Този магазин не може да приема плащания в момента.",
+        "missing_credit_card_error": "Въведете данните на вашата карта, за да завършите плащането",
+        "billing_address_not_supported_for_payment_method_error": "Този метод на плащане не е наличен за вашия адрес за фактуриране и валута. Опитайте друг метод на плащане.",
+        "generic_incorrect_card_info": "Вашите данни за плащане не можаха да бъдат потвърдени. Моля, проверете данните на вашата карта и опитайте отново.",
+        "sofort_label": "Лесен банков превод",
+        "paypal_label": "PayPal",
+        "klarna_pay_later_label": "Платете по-късно с Klarna",
+        "klarna_pay_now_label": "Платете сега с Klarna",
+        "bancontact_label": "Bancontact",
+        "giropay_label": "Giropay",
+        "eps_label": "eps-Überweisung",
+        "klarna_slice_it_label": "Финансирайте с Klarna",
+        "ideal_label": "идеален | Веро",
+        "bank_picker_label": "банка",
+        "change_currency_section_description": "Изберете опция за валута",
+        "no_real_orders_dev_store": "Този магазин не може да приема реални поръчки или реални плащания.",
+        "subscription_agreement_label_html": "Разбирам и съм съгласен с абонамент. Ще подновя на посочените цена и честота, докато приключи или приключи\n<a class=\"link--small\" data-modal=\"true\" data-title-text=\"%{subscription_policy}\" href=\"%{policy_href}\">отменен</a>.\n",
+        "waiting_on_payment_methods": "Получаваме наличните методи за плащане..."
       },
       "shipping_errors": {
         "shipping_method_not_available_generic": {
