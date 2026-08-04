@@ -1091,22 +1091,35 @@
       "stock": {
         "unshippable_product": {
           "header": {
-            "few": "No shipping method available for %{count} items"
+            "few": "No delivery method available for %{count} (of) articles",
+            "one": "No delivery method available for %{count} article",
+            "other": "No delivery method available for %{count} (of) articles"
           },
           "message": {
-            "few": "These items will be removed from your cart because there are no shipping methods available for your address."
-          }
+            "few": "These items will be removed from your cart because there are no shipping methods available for your address.",
+            "one": "This item will be removed from your cart because there are no shipping methods available for your address.",
+            "other": "These items will be removed from your cart because there are no shipping methods available for your address."
+          },
+          "title": "No delivery method available",
+          "status_column_header": "No delivery method"
         },
         "item_label": {
-          "few": "{{count}} articles"
+          "few": "{{count}} articles",
+          "one": "{{count}} article",
+          "other": "{{count}} articles"
         },
         "unfulfillable_product": {
           "message": {
-            "few": "The delivery method %{delivery_method} is no longer available for these items."
+            "few": "Delivery method %{delivery_method} is no longer available for these items.",
+            "one": "Delivery method %{delivery_method} is no longer available for this item.",
+            "other": "Delivery method %{delivery_method} is no longer available for these items."
           },
           "default_message": {
-            "few": "The chosen delivery method is no longer available for these items."
-          }
+            "few": "The chosen delivery method is no longer available for these items.",
+            "one": "The chosen delivery method is no longer available for this item.",
+            "other": "The chosen delivery method is no longer available for these items."
+          },
+          "title": "Delivery is not available"
         },
         "page_title": "Inventory issues",
         "title": "Not in stock",
@@ -1117,7 +1130,46 @@
         "status_column_header": "Condition",
         "removed_from_cart_notice": "Removed from cart",
         "sold_out_label": "Out of stock",
-        "reduced_label": "Reduced"
+        "reduced_label": "Reduced",
+        "reduced_with_quantity_label": "There are only left %{quantity_available}",
+        "remove_from_cart_button_label": "Remove from cart",
+        "continue_shopping_button_label": "Continue",
+        "go_back_to_cart_button_label": "Back to my basket",
+        "remove": "Eliminate",
+        "empty_cart_label": "Your basket is empty",
+        "quantity_update": {
+          "page_title": "Update quantities",
+          "title": "Update quantities",
+          "description": "The available quantities for these items have changed and have been updated in the cart."
+        },
+        "unpurchasable_product": {
+          "title": "Product that cannot be purchased",
+          "header": "Some items have been removed from your cart",
+          "message": "These items are not available for B2B orders.",
+          "status_column_header": "Not available"
+        },
+        "unpurchasable_product_generic": {
+          "title": "Product that cannot be purchased",
+          "header": "Some items have been removed from your cart",
+          "message": "These items are not available.",
+          "status_column_header": "Not available"
+        },
+        "price_update": {
+          "title": "Price update",
+          "description": "The prices for these items have changed and have been updated in the cart.",
+          "updated_price": "Updated price"
+        },
+        "return_to_store_label": "Come back to the store",
+        "continue_cta_label": "Continue checkout",
+        "out_of_stock": {
+          "description": "These items are no longer available and will be removed from your cart.",
+          "items_unavailable": "Some items are no longer available and will be removed from your cart."
+        },
+        "price_and_quantity_update": {
+          "title": "Update prices and quantities",
+          "description": "Prices and available quantities for these items have changed and have been updated in the cart."
+        },
+        "out_of_stock_in_context_label": "This product is not available in your country/region."
       },
       "order_summary": {
         "expand_component_information": {
@@ -1156,7 +1208,12 @@
         },
         "pickup_unavailable_banner_title_with_country": {
           "few": "In %{country} there are no stores available with your items"
-        }
+        },
+        "title": "Order summary",
+        "order_name_label": "Order %{name}",
+        "shopping_cart_label": "The shopping cart",
+        "discount_title": "Discount",
+        "discount_label": "Discount code"
       },
       "payment": {
         "order_covered_by_gift_cards_notice": {
