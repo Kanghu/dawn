@@ -849,10 +849,14 @@
           "subscription_free_with_frequency_label": "Ingyenes szállítás %{delivery_frequency}"
         },
         "shipping_method_first_shipment_group_title": {
-          "few": "Első szállítmányok"
+          "few": "Az első szállítmányok",
+          "one": "Első szállítmány",
+          "other": "Az első szállítmányok"
         },
         "shipping_method_recurring_shipments_group_title": {
-          "few": "Ismétlődő szállítmányok"
+          "few": "Ismétlődő szállítmányok",
+          "one": "Ismétlődő szállítás",
+          "other": "Ismétlődő szállítmányok"
         },
         "title": "Közlekedés",
         "shipping_method_title": "Szállítási mód",
@@ -936,6 +940,56 @@
           "search_address": "Keresse meg a címet",
           "rollup_title": "Felvétel helye",
           "rollup_accessibility_label": "Az átvétel helyének lehetőségei"
+        },
+        "missing_shipping_address": "A szállítási cím hiányzik",
+        "delivery_title": "Szállítás",
+        "address_default": "Beállítás alapértelmezettként",
+        "split_shipping_merchandise_quantity_label_standard": "%{quantity} cikkeket",
+        "split_shipping_merchandise_quantity_label_additional": "+ még %{quantity}",
+        "split_shipping_merchandise_shipment_number": "Szállítás %{number} től %{total}",
+        "pre_order_ships_now": "Szállítás most",
+        "pre_order_ships_later": "Később szállítjuk",
+        "pre_order_ships_date": "Tovább szállítják %{date}",
+        "split_shipping_shipped_by_shop": "szállította %{shop_name}",
+        "split_shipping_multiple_shipment_label": "További szállítmányok",
+        "split_shipping_shipping_label": "módszer",
+        "split_shipping_multiple_shipment_quantity_label": "%{quantity} szállítmányok",
+        "split_shipping_multiple_shipment_notice": "Megrendelése több szállítmányban érkezik",
+        "split_shipping_multiple_shipment_notice_one_time_purchase": "Megérkezik a rendelésed %{quantity} szállítmányok",
+        "split_shipping_more_shipping_options": "További vásárlási lehetőségek",
+        "split_shipping_shipment_number": "Szállítás %{number}",
+        "split_shipping_merchandise_quantity_label_inline_primary": "Mennyiség: %{quantity}",
+        "split_shipping_merchandise_quantity_label_inline": "%{merchandise_title} ×%{quantity}",
+        "split_shipping_option_free": "Ingyenes szállítás",
+        "split_shipping_option_lowest_price": "A legalacsonyabb ár",
+        "split_shipping_option_fastest": "A leggyorsabb",
+        "split_shipping_option_recommended": "Ajánlott",
+        "split_shipping_option_custom": "Személyre szabott",
+        "default_description": "Szállítás 1 munkanapon belül",
+        "split_shipping_shipment_notice": "Megérkezik a rendelésed %{quantity_shipments}",
+        "unbranded_default_description": "Szállításra kész",
+        "prime_not_available": {
+          "default": "A megrendeléshez nem áll rendelkezésre elsődleges szállítás. A szállítási lehetőségeket frissítettük."
+        },
+        "split_shipping_first_shipment_notice": "Megérkezik az első rendelésed %{quantity_shipments}",
+        "shipping_method_rollup_accessibility_label": "Szállítási mód opciók",
+        "shipping_address_rollup_accessibility_label": "Szállítási cím opciók",
+        "back": "Vissza",
+        "invalid_shipping_method_summary_selected": "Válasszon másik szállítási címet az elérhető szállítási módok megtekintéséhez",
+        "third_party_address_timeout": "Nem sikerült betölteni a címeket. Kérjük, próbálja újra, vagy használjon másik címet.",
+        "third_party_address_error": "Hiba történt a kiválasztott címek betöltése közben. Kérjük, adja meg manuálisan a címet alább.",
+        "third_party_payment_timeout": "Nem sikerült betölteni a fizetési módokat. Próbálja újra, vagy használjon másik fizetési módot.",
+        "third_party_payment_error": "Hiba történt a kiválasztott fizetési mód betöltésekor. Használjon másik fizetési módot.",
+        "add_shipping_address": "Szállítási cím hozzáadása",
+        "choose_new_address": "Válasszon új címet",
+        "unbranded_description_same_day": "Szállítás ugyanazon a munkanapon",
+        "unbranded_description_with_fulfillment_days": {
+          "one": "Kiszállítás a következő munkanapon",
+          "other": "Beszállítják %{count} munkanapokon",
+          "few": "Beszállítják %{count} munkanapokon"
+        },
+        "unbranded_description_with_fulfillment_weeks": {
+          "one": "Beszállítják %{count} héten"
         }
       },
       "general": {
