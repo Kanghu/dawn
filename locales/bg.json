@@ -87,60 +87,60 @@
     "skip_to_product_info": "Преминете към информация за продукта",
     "total_reviews": "общо прегледи",
     "star_reviews_info": "{{ rating_value }} от {{ rating_max }} звезди",
-    "collapsible_content_title": "Съдържание, което може да се свива",
+    "collapsible_content_title": "Съдържание, което може да бъде ограничено",
     "complementary_products": "Допълващи продукти"
   },
   "blogs": {
     "article": {
       "blog": "Блог",
-      "read_more_title": "Прочетете още: {{ title }}",
+      "read_more_title": "Научете повече: {{ title }}",
       "comments": {
         "one": "{{ count }} коментар",
-        "other": "{{ count }} коментара",
-        "few": "{{ count }} Коментари"
+        "other": "{{ count }} коментари",
+        "few": "{{ count }} коментари"
       },
-      "moderated": "Имайте предвид, че коментарите трябва да бъдат одобрени, преди да се публикуват.",
-      "comment_form_title": "Оставяне на коментар",
+      "moderated": "Забележка: Коментарите трябва да бъдат одобрени преди публикуване.",
+      "comment_form_title": "Напишете коментар",
       "name": "Име",
       "email": "Имейл",
-      "message": "Коментар",
-      "post": "Публикуване на коментар",
-      "back_to_blog": "Назад към блога",
-      "share": "Споделяне на тази статия",
-      "success": "Коментарът ви е публикуван успешно. Благодарим.",
-      "success_moderated": "Коментарът ви е изпратен успешно. Ще бъде публикуван след малко, тъй като блогът има модератор."
+      "message": "Коментирайте",
+      "post": "Публикувайте коментара",
+      "back_to_blog": "Обратно към блога",
+      "share": "Споделете тази статия",
+      "success": "Коментарът е публикуван успешно! благодаря ви",
+      "success_moderated": "Коментарът е публикуван успешно. Ще го публикуваме скоро, тъй като блогът ни се модерира."
     }
   },
   "onboarding": {
-    "collection_title": "Име на вашата колекция",
-    "product_title": "Примерно название на продукт"
+    "collection_title": "Името на колекцията",
+    "product_title": "Пример за заглавие на продукт"
   },
   "alc-benefits": {
     "stock": {
-      "in_stock": "В наличност",
-      "low_stock": "Остават само {{ count }} в наличност",
-      "out_of_stock": "Изчерпано количество",
-      "last_stock": "Остават само {{ count }} в наличност 🔥",
-      "last_piece": "Остава само 1 брой в наличност 🔥"
+      "in_stock": "в наличност",
+      "low_stock": "Просто {{ count }} останали на склад",
+      "out_of_stock": "Изчерпана наличност",
+      "last_stock": "Последните {{ count }} парчета 🔥",
+      "last_piece": "Последното парче 🔥"
     },
-    "savings": "Вие спестите {{ amount }}",
-    "delivery": "Доставка в рамките на 2 - 5 работни дни",
-    "price_info": "Цена на производителя",
+    "savings": "Вие спестявате {{ amount }}",
+    "delivery": "Доставка за 2 - 4 работни дни",
+    "price_info": "Директен продуцент: ",
     "price_info_link": "/pages/fabrica-alessandro-design",
-    "price_info_link_text": "вижте фабриката на Alessandro Design",
-    "return_policy": "14-дневна безплатна политика за връщане",
+    "price_info_link_text": "вижте фабриката Alessandro Design",
+    "return_policy": "14 дни безплатно право на връщане",
     "warranty": "Включена гаранция:",
-    "warranty_link_text": "вижте подробности",
-    "warranty_link": "/pages/garancia",
-    "free_shipping": "БЕЗПЛАТНА доставка ⚡ (2 - 5 работни дни)",
+    "warranty_link_text": "виж подробности",
+    "warranty_link": "/pages/garantie",
+    "free_shipping": "БЕЗПЛАТНА доставка ⚡ (2 - 4 работни дни)",
     "free_shipping_link_text": "виж подробности",
     "free_shipping_link": "/pages/livrare"
   },
   "products": {
     "product": {
-      "add_to_cart": "Добавяне към количката",
+      "add_to_cart": "Добавяне в количката",
       "description": "Описание",
-      "on_sale": "Разпродажба",
+      "on_sale": "Отстъпка",
       "quantity": {
         "label": "Количество",
         "input_label": "Количество за {{ product }}",
@@ -160,13 +160,13 @@
         "sale_price": "Цена при разпродажба",
         "unit_price": "Единична цена"
       },
-      "share": "Споделяне на този продукт",
-      "unavailable": "Неналично",
-      "vendor": "Доставчик",
-      "video_exit_message": "{{ title }} отваря видео на цял екран в същия прозорец.",
+      "share": "Споделете този продукт",
+      "unavailable": "Не е наличен",
+      "vendor": "Продавач",
+      "video_exit_message": "{{ title }} отворете видеоклипа на цял екран в същия прозорец.",
       "xr_button": "Преглед във вашето пространство",
-      "xr_button_label": "При „Преглед във вашето пространство“ елементът се зарежда в прозорец с обогатена реалност.",
-      "sold_out": "Изчерпано",
+      "xr_button_label": "Преглед във вашето пространство, статията се зарежда в прозореца с добавена реалност",
+      "sold_out": "Изчерпана наличност",
       "pickup_availability": {
         "view_store_info": "Вижте информация за магазина",
         "check_other_stores": "Проверка за наличност в други магазини",
