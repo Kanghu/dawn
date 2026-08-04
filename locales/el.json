@@ -384,21 +384,21 @@
       "announcement": "Ανακοίνωση",
       "menu": "Μενού",
       "cart_count": {
-        "one": "{{ count }} στοιχείο",
-        "other": "{{ count }} στοιχεία",
-        "few": "{{ count }} προϊόντα"
+        "one": "{{ count }} άρθρο",
+        "other": "{{ count }} άρθρα",
+        "few": "{{ count }} άρθρα"
       },
       "back_to_website": "Πίσω"
     },
     "cart": {
-      "title": "Το καλάθι σας",
-      "caption": "Στοιχεία στο καλάθι",
-      "remove_title": "Κατάργηση {{ title }}",
-      "note": "Ειδικές οδηγίες παραγγελίας",
-      "checkout": "Ολοκλήρωση αγοράς",
-      "empty": "Το καλάθι σας είναι κενό",
-      "cart_error": "Παρουσιάστηκε σφάλμα κατά την ενημέρωση του καλαθιού. Δοκιμάστε ξανά.",
-      "cart_quantity_error_html": "Μπορείτε να προσθέσετε μόνο {{ quantity }} από αυτό το προϊόν στο καλάθι σας.",
+      "title": "Το καλάθι σου",
+      "caption": "Είδη στο καλάθι",
+      "remove_title": "Αφαίρεση {{ title }}",
+      "note": "Ειδικές οδηγίες σχετικά με την παραγγελία",
+      "checkout": "Ολοκληρώστε την παραγγελία",
+      "empty": "Το καλάθι σας είναι άδειο",
+      "cart_error": "Παρουσιάστηκε σφάλμα κατά την ενημέρωση του καλαθιού. Προσπαθήστε ξανά.",
+      "cart_quantity_error_html": "Μέγιστη ποσότητα αυτού του προϊόντος που μπορείτε να προσθέσετε στο καλάθι σας: {{ quantity }}.",
       "headings": {
         "product": "Προϊόν",
         "price": "Τιμή",
@@ -4623,6 +4623,58 @@
       "attention_help_text": "Όνομα προσώπου ή τμήματος",
       "loading_form_accessibility_message": "Φόρτωση της φόρμας διεύθυνσης",
       "attention_company": "Εταιρεία/προσοχή"
+    },
+    "account_menu": {
+      "aria_labels": {
+        "sign_in_with_email": "Συνδεθείτε με τη διεύθυνση email σας",
+        "sign_in": "Συνδέστε τον εαυτό σας"
+      }
+    },
+    "intents": {
+      "subscription_replace_payment_method": {
+        "card_number": "Αριθμός κάρτας",
+        "title": "Αντικατάσταση τρόπου πληρωμής",
+        "replace_with": "Αντικατάσταση με",
+        "add_new_payment_method": "Προσθήκη νέου",
+        "save_button": "Αποθήκευση",
+        "close_button": "Κλείσιμο",
+        "loading": "Γίνεται φόρτωση του παραθύρου παράκαμψης τρόπου πληρωμής",
+        "success": "Ο τρόπος πληρωμής έχει ενημερωθεί",
+        "invalid_subscription_contract": "Η συνδρομή δεν βρέθηκε",
+        "expiry_date": "Ημερομηνία λήξης· {{expiryDate}}",
+        "edit_current_payment_method": "Επεξεργαστείτε τον τρέχοντα τρόπο πληρωμής",
+        "edit_selected_payment_method": "Επεξεργαστείτε τον επιλεγμένο τρόπο πληρωμής"
+      }
+    },
+    "sign_in": {
+      "brand_logo_alt_text": "Λογότυπο για %{shop_name}",
+      "step_one": {
+        "page_title": "συνδεθείτε - %{shop_name}",
+        "heading": "Συνδέστε τον εαυτό σας",
+        "subheading": "Εισαγάγετε τη διεύθυνση email σας και θα σας στείλουμε έναν κωδικό επαλήθευσης",
+        "input_field_label": "Διεύθυνση ηλεκτρονικού ταχυδρομείου",
+        "button": "Συνέχεια",
+        "or": "ή",
+        "subheading_with_sign_in_options": "Συνδεθείτε ή δημιουργήστε λογαριασμό",
+        "consent_agreement": "Συνεχίζοντας συμφωνείς %{terms}",
+        "last_used_pill": "Τελευταία χρήση"
+      },
+      "step_two": {
+        "page_title": "Εισαγάγετε τον κωδικό - %{shop_name}",
+        "heading": "Εισαγάγετε τον κωδικό",
+        "subheading": "Στάλθηκε σε %{email}",
+        "restart_link": "Συνδεθείτε με διαφορετική διεύθυνση email",
+        "input_field_label": "6ψήφιος κωδικός",
+        "button": "Αποστολή",
+        "change_email": "Αλλαγή"
+      },
+      "error": {
+        "invalid": {
+          "invalid_email": "Εισαγάγετε μια έγκυρη διεύθυνση email",
+          "invalid_code": "Εισαγάγετε σωστά τον 6ψήφιο κωδικό"
+        }
+      },
+      "processing": "Επεξεργασία..."
     }
   },
   "category_links": {
