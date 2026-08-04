@@ -1873,18 +1873,40 @@
       },
       "shipping_errors": {
         "shipping_method_not_available_generic": {
-          "few": "Some items in your cart cannot be shipped to the address you entered. Please check the address to make sure it is correct and try again or select a different address."
+          "few": "Some items in your cart cannot be shipped to the address you entered. Please check the address to make sure it is correct and try again or select a different address.",
+          "one": "Your order cannot be shipped to the selected address. Please check the address to make sure it is correct and try again or select a different address.",
+          "other": "Some items in your cart cannot be shipped to the address you entered. Please check the address to make sure it is correct and try again or select a different address."
         },
         "shipping_method_not_available_updated": {
-          "few": "One or more items you added do not ship to your location. Please remove them to complete your order or contact the store."
-        }
+          "few": "One or more items you have added are not shipping to your location. Remove them to complete your order or contact the store.",
+          "one": "The item you added does not ship to your location. Remove it to complete the order or contact the store.",
+          "other": "One or more items you have added are not shipping to your location. Remove them to complete your order or contact the store."
+        },
+        "shipping_method": "The shipping options for your order have changed. Check your selection.",
+        "shipping_method_not_available": "Your cart has been updated and the items you added cannot be shipped to your address. Remove items to complete your order.",
+        "payment_method_not_supported": "Using this payment method in the case of the country %{country} it is not possible. Use another payment method to ship to this country.",
+        "empty_state": "Enter your shipping address to see available shipping methods.",
+        "shipping_method_not_available_due_to_unsatisfied_conditions": "Items in your cart do not meet the price or weight requirements to be eligible for delivery. Please refresh your cart and try again.",
+        "title": "Shipping is not possible",
+        "invalid_selected_address": "The selected shipping address is not valid",
+        "invalid_selected_address_with_update_link": "The selected shipping address is not valid. %{update_address_link} or select another address",
+        "unavailable_selected_address": "Shipping is not available for the selected address",
+        "unavailable_selected_address_for_region": "It is not possible to ship to {{region}}. Select another address to continue",
+        "unavailable_addresses_only_countries": "Your order can only be shipped to {{countriesList}}. Add a new address to continue.",
+        "unavailable_address_country": "Shipping to the selected country is not possible. Please use another address to continue"
       },
       "processing": {
         "wait": {
           "medium": {
             "few": "Your order is being processed. The estimated wait time is %{count} minutes."
           }
-        }
+        },
+        "redirecting_page_title": "Redirecting...",
+        "redirecting_title": "Redirecting...",
+        "redirecting_notice": "Please wait while we redirect you.",
+        "complete_your_purchase_title": "Complete the purchase",
+        "continue_to_payment_gateway_notice": "Proceed to checkout to add your payment information.",
+        "continue_to_payment_gateway_button_label": "Continue to checkout"
       },
       "thank_you": {
         "login_reorder_link_text": {
@@ -2259,7 +2281,37 @@
         "available_methods_updated": "The available payment methods have been updated.",
         "selected_payment_method": "There was a problem with the selected payment method. Your payment method has not been charged. Try again or use another payment method.",
         "payment_method_billing_address": "There was a problem with the billing address of the selected payment method. Please check your address and try again or use another payment method.",
-        "processing_error_checkout_as_guest": "There was a problem processing your payment. Please try again with another payment method or {{checkout_as_guest_link}}."
+        "processing_error_checkout_as_guest": "There was a problem processing your payment. Please try again with another payment method or {{checkout_as_guest_link}}.",
+        "amount_too_small": "Minimum payment amount must be greater than $0.50. Try again with a larger amount.",
+        "payment_above_threshold": "The payment amount exceeds the monetary limit for this region. Redo the total and try again",
+        "risky": "There was a problem processing your payment. Try again or use another payment method.",
+        "expired_buyer_action": "The payment method has expired. Try again.",
+        "three_d_secure_failed_payment_method": "Your card could not be verified. Try again or add another card.",
+        "name_mismatch": "Check your card details. The name on the card and the billing address do not match.",
+        "payment_method_not_applicable": "This payment method is not applicable. Use another payment method.",
+        "shop_pay_wallet_not_available": "Shop Pay does not allow this payment.",
+        "market_manager_blocks_wallet_payments": "The payment method is not accepted in your country.",
+        "paypal_over_capture": "The total value of the order has been updated. Pay with {{walletName}} to complete the order.",
+        "test_mode_enabled_only_test_cards": "Test mode is enabled, only test credit cards can be added.",
+        "captcha_required": "Enter your payment information and solve the captcha to complete your purchase.",
+        "captcha_required_without_payment_information": "Solve the captcha to complete the purchase.",
+        "shipping_company_required_error": "{{shopName}} requires a business name for the shipping address.",
+        "payment_credential_delegation_error": "There was a problem processing your payment. Choose another payment method.",
+        "cancelled_payment": "The payment has been cancelled. Please try again or use another payment method.",
+        "currency": {
+          "no_longer_supported": "Store currency is no longer supported."
+        },
+        "installments_payment_method_incompatible": "The selected payment method cannot be used for installment payments. Choose another payment method.",
+        "missing_cvc": "Enter a security code"
+      },
+      "alternative_payment_method_banner": {
+        "express_checkout": "Express order completion",
+        "or": "OR",
+        "show_more_options": "Show more options",
+        "hide_more_options": "Hide additional options",
+        "or_pay_another_way": "Or pay in another way",
+        "or_check_out_another_way": "Or complete the order in another way",
+        "or_pay_with_credit_card": "Or pay with a credit card"
       }
     },
     "notices": {
