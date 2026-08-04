@@ -1702,7 +1702,9 @@
           "other": "I pagamenti con carta bancaria non sono attualmente disponibili.<br><a href=\"%{current_url}\">Aggiorna la pagina</a> oppure prova un metodo di pagamento diverso."
         },
         "expired_cards_info": {
-          "few": "Esistere %{count} Carte scadute, che puoi vedere e modificare nel tuo account."
+          "few": "C'è %{count} carte scadute, che puoi visualizzare e modificare nel tuo account.",
+          "one": "C'è %{count} carta scaduta, che puoi visualizzare e modificare nel tuo account.",
+          "other": "C'è %{count} carte scadute, che puoi visualizzare e modificare nel tuo account."
         },
         "order_edit_banner_items_added": {
           "few": "Aggiunto (s): %{count}"
@@ -1848,7 +1850,70 @@
         "payment_method_saved": "Metodo di pagamento salvato",
         "card_vaulted_company_location": "Carta salvata per questa posizione",
         "order_covered_by_store_credit_notice": "Il tuo ordine è coperto dal credito del negozio.",
-        "order_covered_by_redeemables_notice": "Il tuo ordine è coperto."
+        "order_covered_by_redeemables_notice": "Il tuo ordine è coperto.",
+        "store_credit": {
+          "label": "Credito negozio",
+          "apply_label": "Applicare il credito del negozio",
+          "add_label": "Aggiungi credito negozio",
+          "manage_label": "Gestire il credito del negozio",
+          "buying_gift_card": "Non è possibile utilizzare il credito del negozio per acquistare una carta regalo",
+          "no_fixed_selling_plans": "Non è possibile utilizzare il credito del negozio per le opzioni di acquisto differito"
+        },
+        "clear": "Svuotatelo",
+        "billing_must_match_shipping_notice": "L'indirizzo di fatturazione associato al tuo metodo di pagamento deve corrispondere all'indirizzo di spedizione.",
+        "same_billing_address_checkbox_label": "Utilizza l'indirizzo di spedizione come indirizzo di fatturazione",
+        "location_billing_address_label": "L'indirizzo di fatturazione per la sede",
+        "fact_billing_address_label": "Indirizzo di fatturazione",
+        "location_shipping_address_label": "L'indirizzo di spedizione per la posizione",
+        "no_working_method_error": "Questo negozio non può accettare pagamenti in questo momento. Aggiorna la pagina o torna più tardi.",
+        "brand_not_available": "Questo negozio non accetta {{brand}}. Usa un'altra carta per pagare.",
+        "shipping_rate_updated": "Le modalità di consegna disponibili sono state aggiornate. Conferma la tua scelta prima di completare l'acquisto.",
+        "billing_address_invalid_phone": "Per continuare, aggiorna il numero di telefono nel tuo indirizzo di fatturazione per {{label}} {{last_digits}}.",
+        "billing_address_invalid_phone_no_card": "Per continuare, aggiorna il numero di telefono nel tuo indirizzo di fatturazione.",
+        "preview_not_available": {
+          "title": "Anteprima non disponibile",
+          "content": "Non preoccuparti, questo metodo di pagamento rapido funziona per i tuoi clienti.",
+          "button": "Ok"
+        },
+        "card_fields": {
+          "errors": {
+            "required": {
+              "issue_date": "Inserisci una data di emissione valida",
+              "issue_number": "Inserisci un numero di emissione valido"
+            },
+            "invalid": {
+              "verification_value": "Inserisci un CVV o un codice di sicurezza valido"
+            }
+          }
+        },
+        "simulated_checkout": "L'anteprima sarà disponibile a breve",
+        "vaulting_agreement_label": "Desidero salvare le informazioni di pagamento in relazione a %{company}, per un completamento più rapido degli ordini.",
+        "business_customer_vaulting_payment_label": "Salva questo metodo di pagamento al momento del pagamento e autorizza %{company} per effettuare pagamenti su acquisti futuri per questa sede. Tutti i contatti assegnati a questa posizione possono utilizzare il metodo di pagamento.",
+        "purchase_options_and_vaulting_agreement_label": "Uno o più articoli nel carrello rappresentano un acquisto differito o un acquisto di abbonamento. Continuando a pagare, accetti che il tuo metodo di pagamento venga automaticamente addebitato al prezzo e alla frequenza specificati in questa pagina fino al termine dell'abbonamento o fino all'annullamento. Tutte le cancellazioni devono rispettare %{cancellation_policy_label}.",
+        "purchase_options_cancellation_policy_label": "politica di cancellazione",
+        "use_different_credit_card_label": "Usa un'altra carta",
+        "saved_credit_card": "La tua carta di credito salvata",
+        "saved_credit_card_info": "Le ultime quattro cifre",
+        "saved_credit_cards_modal": {
+          "view_all_label": "Visualizza tutte le carte salvate",
+          "done": "fatto",
+          "cancel": "Annulla"
+        },
+        "local_payment_method_receiver_notice": "Dopo aver effettuato l'ordine, riceverai i dettagli del pagamento. Effettua il pagamento allo sportello bancomat o al massimo online {{dueDays}} (di) giorni.",
+        "order_edit_banner_title": "È necessario pagare l'importo di {{amount_owed}}",
+        "order_edit_banner_subtitle": "il tuo ordine, {{order_number}}, è stato aggiornato. Controlla queste modifiche, quindi paga per confermare il tuo ordine.",
+        "order_edit_banner_single_item_added": "Aggiunto",
+        "order_edit_banner_multiple_items_added": "Aggiunto/i: {{amount}}",
+        "order_edit_banner_single_item_removed": "Rimosso",
+        "order_edit_banner_multiple_items_removed": "Rimosso/i: {{amount}}",
+        "gift_card_wrapper": {
+          "heading": "Carta regalo",
+          "apply_gift_card_label": "Applica una carta regalo",
+          "payment_tag": "Carta regalo",
+          "apply_another_gift_card_label": "Applica un'altra carta regalo",
+          "gift_card_label": "%{identifier} per la carta regalo",
+          "add_label": "Aggiungi una carta regalo"
+        }
       },
       "shipping_errors": {
         "shipping_method_not_available_generic": {
