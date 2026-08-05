@@ -1564,7 +1564,67 @@
         "description_label": "Opis",
         "price_label": "Cena",
         "quantity_label": "Ilość",
-        "product_change_label": "Modyfikuj"
+        "product_change_label": "Modyfikuj",
+        "product_image_label": "Obraz produktu",
+        "scroll_order_summary": "Przewiń, aby zobaczyć więcej artykułów",
+        "expand_order_summary_short": "Wyświetlacz",
+        "collapse_order_summary_short": "Ukryj",
+        "total_updated_label": "Zaktualizowana cena całkowita:",
+        "order_total_updated_label": "Zaktualizowano sumę",
+        "total_already_paid_label": "Kwota zapłacona",
+        "estimated_taxes_label": "Szacunkowe opłaty",
+        "information_estimated_taxes_label": "Opłaty (szacunkowe)",
+        "unit_price": {
+          "accessible_separator": "na",
+          "content_html": "%{price}%{accessible_separator}%{per_unit}",
+          "per_item": {
+            "single": "%{price} każdy przedmiot",
+            "one": "%{price} dla %{count} artykuł",
+            "other": "%{price} dla %{count} artykuły",
+            "few": "%{price} dla %{count} artykuły"
+          },
+          "per_unit": {
+            "single": "%{price}/%{unit}",
+            "plural": "%{price}/%{count}%{unit}"
+          }
+        },
+        "gift_card_ending": "Karta podarunkowa kończąca się na %{last_characters}",
+        "estimated_tax_label": "Szacunkowe opłaty",
+        "multiple_shipping_lines_label": "Łączna wysyłka",
+        "applied_free_shipping_discount_label": "Zastosowano",
+        "original_price": "Oryginalna cena",
+        "sale_price": "Oferta cenowa",
+        "recurring_subtotal_label": "Powtarzająca się suma częściowa",
+        "recurring_total_label": "Całkowicie powtarzające się",
+        "recurring_total_tooltip": "Nie obejmuje kosztów wysyłki, podatków, ceł ani obowiązujących zniżek.",
+        "gift_card_subscriptions_notice": "Karty podarunkowe zostaną wykorzystane wyłącznie przy pierwszej płatności",
+        "confirmation_number_label": "Nie. potwierdzenie %{confirmation_number}",
+        "estimated_taxes_finalization_tooltip_content": "Ostateczne opłaty i suma zostaną potwierdzone e-mailem lub SMS-em po złożeniu zamówienia.",
+        "deferred_payment_info": {
+          "title": "Płatność w wysokości %{amount_due} ma termin %{due_at}",
+          "description_html": "W przypadku pytań dotyczących zamówienia, %{contact_us}.",
+          "paid_today": "Całość zapłacona dzisiaj",
+          "due_on_fulfillment_title": "Płatność w wysokości %{amount_due} ma termin wymagalności w momencie honorowania",
+          "due_on_receipt_title": "Płatność w wysokości %{amount_due} ma termin wymagalności w chwili otrzymania",
+          "paid_today_next": "Zapłacono dzisiaj"
+        },
+        "percent_off_shipping": "Zniżka %{percent}% na wysyłkę",
+        "amount_off_shipping": "Zniżka %{amount} po wysyłce",
+        "payment_terms_totals": {
+          "due_today": "Całość należna dzisiaj",
+          "due_later": "Razem z powodu %{due_at}",
+          "due_later_checkout_to_draft": "Całość płatna później",
+          "due_on_fulfillment": "Całość należna w momencie uhonorowania",
+          "due_on_receipt": "Całość płatna przy odbiorze",
+          "total_paid": "Razem zapłacono",
+          "due_today_next": "Termin na dzisiaj",
+          "due_on_fulfillment_next": "Wygasa w momencie realizacji zamówienia"
+        },
+        "higher_value_discount_applied": "<strong style=\"text-transform:uppercase\">%{code}</strong> nie można łączyć z istniejącymi rabatami.",
+        "maximum_discount_code_limit_reached": "Osiągnąłeś maksymalną liczbę kodów rabatowych. Usuń istniejący kod, aby go użyć <strong style=\"text-transform:uppercase\">%{code}</strong>.",
+        "order_total_label": "Zamówienie ogółem",
+        "discount_code_application_failed": "<strong style=\"text-transform:uppercase\">%{code}</strong> w tej chwili nie działa. Skontaktuj się z nami, aby uzyskać pomoc.",
+        "due_on_fulfillment": "Wymagane w momencie uhonorowania"
       }
     },
     "sentence": {
