@@ -319,22 +319,22 @@
         "one": "{{ count }} risultato",
         "other": "{{ count }} risultati",
         "many": "{{ count }} risultati",
-        "few": "{{ count }} risultato"
+        "few": "{{ count }} risultati"
       },
       "title": "Risultati della ricerca",
       "products": "Prodotti",
-      "search_for": "Cerca \"{{ terms }}\"",
+      "search_for": "Cerca \"{{ terms }}”",
       "results_with_count_and_term": {
-        "one": "{{ count }} risultato trovato per \"{{ terms }}\"",
-        "other": "{{ count }} risultati trovati per \"{{ terms }}\"",
+        "one": "È stato trovato {{ count }} risultato per \"{{ terms }}”",
+        "other": "Si sono ritrovati {{ count }} risultati per \"{{ terms }}”",
         "many": "{{ count }} risultati trovati per \"{{ terms }}\"",
-        "few": "Sono stati trovati {{ count }} Risultati per \"{{ terms }}”"
+        "few": "Si sono ritrovati {{ count }} risultati per \"{{ terms }}”"
       },
       "results_pages_with_count": {
         "one": "{{ count }} pagina",
         "other": "{{ count }} pagine",
         "many": "{{ count }} pagine",
-        "few": "{{ count }} pagina"
+        "few": "{{ count }} pagine"
       },
       "results_products_with_count": {
         "one": "{{ count }} prodotto",
@@ -346,23 +346,23 @@
       "pages": "Pagine",
       "results_suggestions_with_count": {
         "one": "{{ count }} suggerimento",
-        "other": "{{ count }} suggerimenti",
+        "other": "{{ count }} di suggerimenti",
         "many": "{{ count }} suggerimenti",
         "few": "{{ count }} di suggerimenti"
       }
     },
     "cart": {
-      "cart": "Carrello"
+      "cart": "Cestino"
     },
     "contact": {
       "form": {
         "name": "Nome",
-        "email": "Indirizzo email",
+        "email": "E-mail",
         "phone": "Numero di telefono",
-        "comment": "Commenta",
+        "comment": "Commento",
         "send": "Invia",
-        "post_success": "Grazie per averci contattato. Risponderemo il prima possibile.",
-        "error_heading": "Correggi gli errori seguenti:",
+        "post_success": "Grazie per averci contattato. Ti risponderemo il prima possibile.",
+        "error_heading": "Si prega di modificare quanto segue:",
         "title": "Modulo di contatto"
       }
     }
@@ -523,29 +523,29 @@
     }
   },
   "localization": {
-    "country_label": "Paese/Area geografica",
+    "country_label": "Paese/regione",
     "language_label": "Lingua",
-    "update_language": "Aggiorna lingua",
-    "update_country": "Aggiorna paese/area geografica",
+    "update_language": "Aggiorna la tua lingua",
+    "update_country": "Aggiorna il tuo paese/regione",
     "search": "Cerca",
-    "popular_countries_regions": "Paesi/aree geografiche popolari",
-    "country_results_count": "{{ count }} paesi/aree geografiche trovati"
+    "popular_countries_regions": "Paesi/regioni popolari",
+    "country_results_count": "{{ count }} paesi/regioni trovati"
   },
   "customer": {
     "account": {
-      "title": "Account",
-      "details": "Dettagli account",
-      "view_addresses": "Visualizza indirizzi",
-      "return": "Ritorna ai dettagli dell'account"
+      "title": "conto",
+      "details": "Dettagli del conto",
+      "view_addresses": "Mostra indirizzi",
+      "return": "Torna ai dettagli dell'account"
     },
-    "account_fallback": "Account",
+    "account_fallback": "conto",
     "activate_account": {
-      "title": "Attiva l'account",
+      "title": "Attiva il tuo account",
       "subtext": "Crea una password per attivare il tuo account.",
-      "password": "Password",
-      "password_confirm": "Conferma password",
-      "submit": "Attiva l'account",
-      "cancel": "Rifiuta invito"
+      "password": "Parola d'ordine",
+      "password_confirm": "Conferma la password",
+      "submit": "Attiva il tuo account",
+      "cancel": "Rifiuta l'invito"
     },
     "addresses": {
       "title": "Indirizzi",
