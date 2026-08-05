@@ -2949,7 +2949,81 @@
         "open_twenty_four_hours": "Otwarte całą dobę",
         "address_label": "Adres",
         "pickup_unavailable_banner_title": {
-          "one": "Brak dostępnych punktów odbioru Twojego przedmiotu"
+          "one": "Brak dostępnych punktów odbioru Twojego przedmiotu",
+          "other": "Nie ma dostępnych punktów odbioru Twoich produktów",
+          "few": "Nie ma dostępnych punktów odbioru Twoich produktów"
+        }
+      },
+      "error_page": {
+        "terminal": {
+          "title": "Wystąpił problem z realizacją zamówienia",
+          "message": "Odśwież tę stronę lub spróbuj ponownie za kilka minut",
+          "action": {
+            "cta": "Odśwież stronę"
+          },
+          "request_id": "Identyfikator żądania: {{requestId}}"
+        },
+        "embed_errors": {
+          "storefront_password_required": "Ten sklep jest chroniony hasłem",
+          "customer_account_required": "Do realizacji płatności wymagane jest konto Klienta",
+          "cart_completed": "Ta płatność została już zrealizowana",
+          "invalid_cart": "Ten koszyk nie jest już ważny",
+          "not_authorized": "Uwierzytelnienie płatności nie powiodło się. Sprawdź dane uwierzytelniające aplikacji",
+          "killswitch_enabled": "Płatność jest chwilowo niedostępna",
+          "policy_violation": "Zakończenie płatności nie jest możliwe ze względu na ograniczenia konfiguracji polityki",
+          "unrecoverable_failure": "Przesyłanie płatności nie powiodło się. Spróbuj ponownie"
+        }
+      },
+      "notice_banner": {
+        "return_to_cart_link_text": "Wróć do koszyka",
+        "return_to_cart_to_update_quantities": "%{return_to_cart_link_text} aby zaktualizować ilości",
+        "subscription_changed": "Jedna z Twoich subskrypcji uległa zmianie.",
+        "company_location_changed": "Twój koszyk został zaktualizowany. Sprawdź swoje zamówienie przed jego wysłaniem.",
+        "violations_title": "{{violation}} brak lub jest nieprawidłowy",
+        "individual_violations_title": {
+          "DeliveryViolations": "Adres wysyłki",
+          "PaymentViolations": "Adres rozliczeniowy",
+          "OtherViolations": "Informacje o zamówieniu",
+          "UnhandledViolations": "Informacje o zamówieniu"
+        },
+        "all_violations_content": "Zadzwoń do nas lub {{emailLink}} aby zaktualizować te informacje i sfinalizować zamówienie:",
+        "all_violations_email_link": "wyślij nam e-mail",
+        "editable_shipping_address_violations_message_title": "Dodaj te informacje, aby sfinalizować zamówienie:",
+        "editable_shipping_address_violations_message_footer": "Aby trwale zaktualizować adres dla tej lokalizacji, {{emailLink}}.",
+        "editable_shipping_address_violations_email_link": "skontaktuj się z nami",
+        "company_location_changed_product_removed": "Twój koszyk został zaktualizowany, ponieważ niektóre produkty nie są dostępne w tej lokalizacji. Sprawdź swoje zamówienie przed jego wysłaniem.",
+        "shipping_address_incomplete_title": "Adres wysyłki jest niekompletny",
+        "calculating_shipping": "Koszty wysyłki są nadal obliczane. Spróbuj ponownie za kilka sekund. Nie postawiono Ci żadnych zarzutów.",
+        "calculating_taxes": "Podatki są nadal obliczane. Spróbuj ponownie za kilka sekund. Nie postawiono Ci żadnych zarzutów.",
+        "generic_processing_error": {
+          "title": "Wystąpił problem z przetwarzaniem Twojego zamówienia.",
+          "body": "Nie postawiono Ci żadnych zarzutów. Spróbuj ponownie lub użyj innej metody płatności."
+        },
+        "contact_information": {
+          "title": "Dane kontaktowe są nieprawidłowe",
+          "header": "Aby zaktualizować swoje dane, {{emailLink}}.",
+          "email_link": "skontaktuj się z nami"
+        },
+        "payment_method_not_available_with_payment_terms": "Wybrana metoda płatności nie jest już dostępna, ponieważ minął termin płatności za to zamówienie {{paymentTerms}}",
+        "payment_method_not_available_with_fulfillment_terms": "Wybrana metoda płatności nie jest już dostępna, ponieważ płatność za to zamówienie należy uregulować w momencie realizacji zamówienia",
+        "payment_method_not_available_with_fixed_terms": "Wybrana metoda płatności nie jest już dostępna, ponieważ płatność za to zamówienie należy uregulować w późniejszym terminie",
+        "payment_method_not_available_with_review_requirement": "Wybrana metoda płatności nie jest dostępna, gdyż płatność będzie wymagalna niezwłocznie po potwierdzeniu zamówienia.",
+        "validation_errors_banner": {
+          "section_label": {
+            "delivery": "Wysyłka",
+            "contact": "Kontakt",
+            "payment": "Płatność",
+            "billing": "Rozliczenia"
+          },
+          "heading": {
+            "one": "Jest {{count}} błąd:",
+            "other": "Jest {{count}} błędy:",
+            "few": "Jest {{count}} błędy:"
+          },
+          "errors_in_section": {
+            "one": "{{count}} błąd w dziale {{section}}",
+            "other": "{{count}} błędy sekcji {{section}}"
+          }
         }
       }
     },
