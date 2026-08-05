@@ -4093,7 +4093,81 @@
         "save_accessibility_label": "Zapisz profil",
         "title": "Profil",
         "no_name_provided_accessibility_label": "Nie dodano żadnego imienia",
-        "email": "E-mail"
+        "email": "E-mail",
+        "errors": {
+          "name_too_long": "Nazwa pola {{fieldName}} jest za długi (maksymalnie 255 znaków)",
+          "name_cannot_contain_url": "Pole {{fieldName}} nie może zawierać adresu URL",
+          "name_cannot_contain_html_tags": "Pole {{fieldName}} nie może zawierać znaczników HTML",
+          "email_cant_be_blank": "Podanie adresu e-mail jest obowiązkowe",
+          "invalid_email_format": "Proszę wpisać prawidłowy adres e-mail"
+        },
+        "editable_email_help_text": "Użyj tego adresu e-mail, aby zalogować się i zaktualizować zamówienia."
+      },
+      "profile_update_confirmation_message": "Zaktualizowany profil",
+      "title": "Profil",
+      "people": {
+        "pagination": {
+          "load_more": "Pokaż więcej",
+          "load_more_accessibility_label": "Pokaż więcej osób",
+          "loading_accessibility_label": "Ładowanie ludzi"
+        }
+      },
+      "add_button": "Dodaj",
+      "verify_new_email_modal": {
+        "title": "Sprawdź swój nowy e-mail",
+        "description": "Teraz wpisz 6-cyfrowy kod wysłany na Twój nowy e-mail:",
+        "one_time_password_label": "6-cyfrowy kod",
+        "email_resend_button": "Wyślij ponownie kod",
+        "email_resend_button_accessibility_label": "Wyślij ponownie kod weryfikacyjny",
+        "verify_button": "Sprawdź to",
+        "verify_button_accessibility_label": "Sprawdź swoje unikalne hasło",
+        "cancel_button": "Anuluj",
+        "cancel_button_accessibility_label": "Anuluj edycję profilu",
+        "email_resend_button_success_toast_message": "Kod weryfikacyjny został wysłany",
+        "email_resend_button_failure_banner_message": "Nie można wysłać kodu weryfikacyjnego"
+      },
+      "email_update_success_modal": {
+        "title": "Sprawdź swój e-mail",
+        "description": "E-mail został pomyślnie zaktualizowany. Przekierowuje do logowania."
+      },
+      "email_update_confirmation_message": "Adres e-mail został zaktualizowany do {{email}}",
+      "verify_current_email_modal": {
+        "cancel_button": "Anuluj",
+        "cancel_button_accessibility_label": "Anuluj edycję profilu",
+        "description": "Wpisz 6-cyfrowy kod wysłany na Twój oryginalny adres e-mail:",
+        "email_resend_button_accessibility_label": "Wyślij ponownie kod weryfikacyjny",
+        "title": "Potwierdź, że to Ty",
+        "verify_button": "Następny",
+        "verify_button_accessibility_label": "Sprawdź swój aktualny adres e-mail"
+      },
+      "marketing_preferences": {
+        "email_label": "E-mail",
+        "pending_confirmation": "Kliknij link w wiadomości e-mail, aby potwierdzić.",
+        "resend_email": "Wyślij ponownie e-mail",
+        "resend_email_success": "Link został wysłany",
+        "title": "Preferencje marketingowe",
+        "unsubscribe_confirmation": {
+          "cancel": "Anuluj",
+          "description": "Nie będziesz już otrzymywać e-maili marketingowych od {{shopName}}",
+          "title": "Wypisać się z e-maili?",
+          "unsubscribe": "Zrezygnuj z subskrypcji"
+        },
+        "update_error": {
+          "description": "Wystąpił problem z aktualizacją Twoich preferencji marketingowych. Spróbuj odświeżyć tę stronę lub sprawdź swoje połączenie internetowe."
+        },
+        "update_success": "Twoje preferencje marketingowe zostały zaktualizowane"
+      }
+    },
+    "orders": {
+      "list_layout_accessibility_label": "Opcje wyglądu",
+      "list_title": "Zamówienia",
+      "order_list": {
+        "column_headers": {
+          "total": "Całkowicie",
+          "order": "Zamów",
+          "actions_accessibility_label": "Działania",
+          "products_accessibility_label": "Produkty"
+        }
       }
     }
   },
