@@ -604,30 +604,30 @@
       "alternate_provider_separator": "lub"
     },
     "order": {
-      "title": "Zamówienie {{ name }}",
-      "date_html": "Umieszczone dnia {{ date }}",
-      "cancelled_html": "Zamówienie anulowane dnia {{ date }}",
+      "title": "Zamów {{ name }}",
+      "date_html": "Umieszczone {{ date }}",
+      "cancelled_html": "Zamówienie anulowane w dniu {{ date }}",
       "cancelled_reason": "Powód: {{ reason }}",
       "billing_address": "Adres rozliczeniowy",
-      "payment_status": "Status płatności",
+      "payment_status": "Stan płatności",
       "shipping_address": "Adres wysyłki",
-      "fulfillment_status": "Status realizacji",
+      "fulfillment_status": "Stan zamówienia",
       "discount": "Rabat",
       "shipping": "Wysyłka",
-      "tax": "Podatek",
+      "tax": "Podatki",
       "product": "Produkt",
       "sku": "SKU",
       "price": "Cena",
       "quantity": "Ilość",
-      "total": "Suma",
-      "fulfilled_at_html": "Zrealizowano {{ date }}",
+      "total": "Całkowicie",
+      "fulfilled_at_html": "Zamówienie honorowane o godz {{ date }}",
       "track_shipment": "Śledź przesyłkę",
       "tracking_url": "Link do śledzenia",
-      "tracking_company": "Przewoźnik",
+      "tracking_company": "Usługa kurierska",
       "tracking_number": "Numer śledzenia",
       "subtotal": "Suma częściowa",
       "total_duties": "Cła",
-      "total_refunded": "Zwrócono koszty"
+      "total_refunded": "Zwrócone"
     },
     "orders": {
       "title": "Historia zamówień",
@@ -657,84 +657,84 @@
       "subtext": "Wprowadź nowe hasło",
       "password": "Hasło",
       "password_confirm": "Potwierdź hasło",
-      "submit": "Zresetuj hasło"
+      "submit": "Zresetuj swoje hasło"
     }
   },
   "gift_cards": {
     "issued": {
-      "title": "Oto Twoja karta prezentowa o wartości {{ value }} do {{ shop }}!",
-      "subtext": "Twoja karta prezentowa",
-      "gift_card_code": "Kod karty prezentowej",
-      "shop_link": "Odwiedź sklep online",
-      "add_to_apple_wallet": "Dodaj do Apple Wallet",
-      "qr_image_alt": "Kod QR – zeskanuj, aby wykorzystać kartę prezentową",
-      "copy_code": "Kopiuj kod karty prezentowej",
-      "expired": "Utraciła ważność",
-      "copy_code_success": "Kod został skopiowany",
-      "how_to_use_gift_card": "Użyj kodu karty prezentowej online lub kodu QR w sklepie",
-      "expiration_date": "Wygasa {{ expires_on }}"
+      "title": "Oto saldo Twojej karty podarunkowej, warte {{ value }}, dla {{ shop }}!",
+      "subtext": "Twoja karta podarunkowa",
+      "gift_card_code": "Kod karty podarunkowej",
+      "shop_link": "Odwiedź sklep internetowy",
+      "add_to_apple_wallet": "Dodaj do portfela Apple",
+      "qr_image_alt": "Kod QR – zeskanuj go, aby zrealizować kartę podarunkową",
+      "copy_code": "Skopiuj kod karty podarunkowej",
+      "expired": "Wygasło",
+      "copy_code_success": "Kod skopiowany pomyślnie",
+      "how_to_use_gift_card": "Użyj kodu karty podarunkowej online lub kodu QR w sklepie",
+      "expiration_date": "Wygasa w dniu {{ expires_on }}"
     }
   },
   "recipient": {
     "form": {
       "checkbox": "Chcę to wysłać jako prezent",
-      "email_label": "E-mail odbiorcy",
-      "email": "E-mail",
+      "email_label": "Adres e-mail odbiorcy",
+      "email": "Adres e-mail",
       "name_label": "Nazwa odbiorcy (opcjonalnie)",
-      "name": "Nazwisko",
-      "message_label": "Wiadomość (opcjonalna)",
+      "name": "Imię",
+      "message_label": "Wiadomość (opcjonalnie)",
       "message": "Wiadomość",
-      "max_characters": "Maks. {{ max_chars }} znaki(-ów)",
+      "max_characters": "Maksymalnie {{ max_chars }} (z) znaków",
       "email_label_optional_for_no_js_behavior": "Adres e-mail odbiorcy (opcjonalnie)",
-      "send_on": "RRRR-MM-DD",
-      "send_on_label": "Wyślij dnia (opcjonalnie)",
-      "expanded": "Rozwinięty formularz odbiorcy karty prezentowej",
-      "collapsed": "Zwinięty formularz odbiorcy karty prezentowej"
+      "send_on": "DD.MM.RRRR",
+      "send_on_label": "Wyślij do (opcjonalnie)",
+      "expanded": "Formularz dla odbiorcy karty podarunkowej został rozszerzony",
+      "collapsed": "Formularz odbiorcy karty upominkowej jest ograniczony"
     }
   },
   "pagefly": {
     "products": {
       "product": {
-        "regular_price": "Regular price",
-        "sold_out": "Sold out",
-        "unavailable": "Unavailable",
-        "on_sale": "Sale",
-        "quantity": "Quantity",
-        "add_to_cart": "Add to cart",
-        "back_to_collection": "Back to {{ title }}",
-        "view_details": "View details"
+        "regular_price": "Normalna cena",
+        "sold_out": "Brak w magazynie",
+        "unavailable": "Niedostępne",
+        "on_sale": "Rabat",
+        "quantity": "Ilość",
+        "add_to_cart": "Dodaj do koszyka",
+        "back_to_collection": "Powrót do {{ title }}",
+        "view_details": "Zobacz szczegóły"
       }
     },
     "article": {
-      "tags": "Tags:",
-      "all_topics": "All topics",
-      "by_author": "by {{ author }}",
-      "posted_in": "Posted in",
-      "read_more": "Read more",
-      "back_to_blog": "Back to {{ title }}"
+      "tags": "Tagi:",
+      "all_topics": "Wszystkie tematy",
+      "by_author": "przez {{ author }}",
+      "posted_in": "Opublikowano w",
+      "read_more": "Przeczytaj więcej",
+      "back_to_blog": "Powrót do {{ title }}"
     },
     "comments": {
-      "title": "Leave a comment",
-      "name": "Name",
-      "email": "Email",
-      "message": "Message",
-      "post": "Post comment",
-      "moderated": "Please note, comments must be approved before they are published",
-      "success_moderated": "Your comment was posted successfully. We will publish it in a little while, as our blog is moderated.",
-      "success": "Your comment was posted successfully! Thank you!",
+      "title": "Dodaj komentarz",
+      "name": "Imię",
+      "email": "E-mail",
+      "message": "Wiadomość",
+      "post": "Dodaj komentarz",
+      "moderated": "Komentarze wymagają zatwierdzenia przed publikacją.",
+      "success_moderated": "Twój komentarz został zarejestrowany, zostanie sprawdzony, a następnie opublikowany!",
+      "success": "Komentarz został pomyślnie opublikowany!",
       "comments_with_count": {
-        "one": "{{ count }} comment",
-        "other": "{{ count }} comments"
+        "one": "{{ count }} komentarz",
+        "other": "{{ count }} komentarze"
       }
     },
     "password_page": {
-      "login_form_message": "Enter store using password:",
-      "login_form_password_label": "Password",
-      "login_form_password_placeholder": "Your password",
-      "login_form_submit": "Enter",
-      "signup_form_email_label": "Email",
-      "signup_form_success": "We will send you an email right before we open!",
-      "password_link": "Enter using password"
+      "login_form_message": "Wejdź używając hasła:",
+      "login_form_password_label": "Hasło",
+      "login_form_password_placeholder": "Twoje hasło",
+      "login_form_submit": "Wejdź",
+      "signup_form_email_label": "E-mail",
+      "signup_form_success": "Przed otwarciem wyślemy Ci e-mail!",
+      "password_link": "Wejdź używając swojego hasła!"
     }
   },
   "shopify": {
@@ -4502,7 +4502,7 @@
     "lighting": "Oświetlenie",
     "furniture": "Meble",
     "sinks": "Umywalki",
-    "faucets_showers": "Baterie & Kolumny prysznicowe",
-    "bf_outlet": "BF Outlet"
+    "faucets_showers": "Baterie i kolumny prysznicowe",
+    "bf_outlet": "Wylot BF"
   }
 }
