@@ -2729,8 +2729,15 @@
       },
       "remote_merchandise_only": {
         "detail_item_label": {
-          "few": "{{count}} waren"
-        }
+          "few": "{{count}} artikelen",
+          "one": "{{count}} artikel",
+          "other": "{{count}} artikelen"
+        },
+        "title": "Voltooi de aankoop",
+        "remote_only_notice": "Deze artikelen worden verkocht en verzonden door andere winkels. Betaal bij elke individuele winkel om uw aankoop te voltooien.",
+        "return_to_store_label": "Terug naar de winkel",
+        "checkout_on_shop_label": "Betaal bij %{shop_name}",
+        "single_shop_transition": "Wij verwijzen u door naar %{advertiser} om de aankoop te voltooien."
       },
       "redeemable_errors": {
         "shop_cash": {
@@ -3607,7 +3614,75 @@
         "kilogram": "kg",
         "milliliter": "ml",
         "centiliter": "kl",
-        "liter": "l"
+        "liter": "l",
+        "cubic_meter": "m³",
+        "millimeter": "mm",
+        "centimeter": "cm",
+        "meter": "m",
+        "square_meter": "m²",
+        "ounce": "ons",
+        "pound": "pond",
+        "fluid_ounce": "vloeibare ons",
+        "pint": "pint",
+        "quart": "kwart gallon",
+        "gallon": "gallon",
+        "inch": "inch",
+        "foot": "voet",
+        "yard": "tuin",
+        "square_foot": "vierkante voet",
+        "item": "artikel"
+      },
+      "memberships": {
+        "delivery_promise_unfulfillable": "Adres niet geaccepteerd voor huidig abonnement.",
+        "items_split_across_locations_unsupported": "Prime-verzending is niet beschikbaar voor uw bestelling. Uw verzendopties zijn bijgewerkt."
+      },
+      "editor": {
+        "navigation": {
+          "store_logo_accessibility_label": "Ga naar de online winkel"
+        }
+      },
+      "tooltip": {
+        "accessibility_label_context": "Meer informatie over %{context}",
+        "additional_payment_methods": "Andere betaalmethoden"
+      },
+      "remote": {
+        "errors": {
+          "only_remote_merchandise_lines": "De betaling omvat alleen vracht op afstand. Om de betaling te voltooien, is omleiding naar een externe winkel vereist.",
+          "currency_mismatch": "Dit artikel kan niet aan de winkelwagen worden toegevoegd omdat het afkomstig is uit een winkel die een andere valuta gebruikt.",
+          "max_remote_shops_exceeded": "Het toevoegen van dit product is niet mogelijk, de winkelwagen staat al vol met artikelen uit andere winkels.",
+          "currency_mismatch_removal": "Er is een artikel uit het winkelwagentje verwijderd omdat het afkomstig is uit een winkel die een andere valuta hanteert."
+        }
+      },
+      "remote_policies": {
+        "unavailable_policy": "Deze winkel heeft dat niet %{policy_name}. Voor meer informatie kunt u rechtstreeks contact opnemen met de winkel %{shop_name}."
+      },
+      "offsite_payment_failed": {
+        "payment_not_processed_title": "Betaling mislukt",
+        "payment_not_processed_text": "Probeer het opnieuw door de QR-code opnieuw te scannen. Als het niet werkt, neem dan contact op met onze medewerkers en probeer een andere betaalmethode.",
+        "payment_link_expired_title": "De betaallink is verlopen",
+        "payment_link_expired_text": "Probeer het opnieuw door de QR-code opnieuw te scannen.",
+        "title": "Betaling op afstand mislukt"
+      },
+      "taxes": {
+        "tax_details": "Aanvullende belastinggegevens",
+        "vat_number": {
+          "field": {
+            "label": "BTW-nummer (optioneel)",
+            "tooltip": "Het valideert het BTW-nummer en past automatisch verlegging toe op in aanmerking komende bestellingen"
+          },
+          "add": "Voeg een BTW-nummer toe",
+          "vaulted": "BTW-nummer: %{number}",
+          "badge": "BTW-nummer: %{number}",
+          "domestic_order": "De vrijstelling van verlegging geldt alleen voor grensoverschrijdende bestellingen in de EU. Voor lokale bestellingen wordt standaard BTW in rekening gebracht.",
+          "status": {
+            "invalid_format": {
+              "at": "Oostenrijkse BTW-nummers: AT en 9 tekens",
+              "be": "Belgische BTW-nummers: BE en 10 tekens",
+              "bg": "Bulgaarse BTW-nummers: BG en 9-10 tekens",
+              "hr": "BTW-nummers Kroatië: HR en 11 tekens"
+            }
+          }
+        }
       }
     },
     "notices": {
