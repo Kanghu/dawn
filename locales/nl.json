@@ -1887,6 +1887,68 @@
         "gift_card_store_credit": {
           "add_label": "Voeg een cadeaubon of winkeltegoed toe",
           "manage_label": "Beheer cadeaubonnen of winkeltegoed"
+        },
+        "saved_credit_card_cvv_verification": "Voer ter verificatie de beveiligingscode van uw kaart in.",
+        "order_edit_banner_updated_order_label": "Bijgewerkte bestelling",
+        "afterpay_label": "Achteraf betalen",
+        "cashapppay_label": "Contant App Betalen",
+        "card_nickname_label": "Bijnaam (optioneel)",
+        "order_edit_banner_items_return_line_item_removed": {
+          "in_full": "Uit retour verwijderd",
+          "with_quantities": "Uit retour verwijderd: {{delta}}"
+        },
+        "order_edit_banner_single_item_return_line_item_removed": "Uit retour verwijderd",
+        "order_edit_banner_multiple_items_return_line_item_removed": "Uit retour verwijderd: {{amount}}",
+        "proposed_gateway_unavailable": "De voorgestelde betalingsgateway is niet beschikbaar",
+        "pay_in_installments_split_pay_short": "4 betalingen ter waarde van %{amount}",
+        "payment_method_not_available_for_shipping_address_error": "De betaalmethode is niet beschikbaar voor het geselecteerde verzendadres. Kies een andere betaalmethode.",
+        "shop_pay_ideal_unavailable_error": "iDEAL | Wero is niet beschikbaar voor deze bestelling. Kies een andere betaalmethode.",
+        "paypal_disconnect": "Uitloggen",
+        "paypal_wallet_label": "PayPal-portemonnee",
+        "payment_method_update_failed": "Update van de betaalmethode is mislukt.",
+        "alternative_payment_currency_total_manual_payment_notice": "Opmerking: het omgerekende totaal is van %{amount_due}.",
+        "gift_cards_unavailable": "Je cadeaubon kan niet meer worden toegepast op deze bestelling en is verwijderd",
+        "network_card_payment_options": "Kies een kaartnetwerk",
+        "payment_flexibility_terms_id_mismatch": "ID-mismatch voor flexibele betalingsvoorwaarden",
+        "offsite_gateway_review_page_redirect_hint": "Na controle van de bestelling verwijzen wij u door naar %{gateway_label} om uw aankoop te voltooien.",
+        "przelewy24_label": "Przelewy24",
+        "twint_label": "TWEEL",
+        "mobilepay_label": "Mobiel betalen",
+        "gift_card_checkbox_label": "Pas deze cadeaubon toe",
+        "blik_label": "BLIK",
+        "vipps_label": "Whipps",
+        "grabpay_label": "GrijpPay",
+        "kcp_creditcard_label": "KCP-creditcard",
+        "simulated_express_checkout": "Uw regio of browser staat het bekijken van een voorbeeld van uw portefeuilles in de editor niet toe.",
+        "offsite_gateway_redirect_hint_no_button_label": "Wij verwijzen u door naar %{gateway_label} om uw aankoop te voltooien.",
+        "swish_label": "Swis",
+        "network_card_persistence_description": "Het geselecteerde netwerk wordt bij uw betaalmethode opgeslagen voor toekomstige transacties.",
+        "usdc_label": "USDC",
+        "payment_method_incompatible_with_payment_terms": "De betaalmethode is niet compatibel met de betalingsvoorwaarden.",
+        "payment_option": {
+          "accessibility_label": "Kies een betalingsoptie"
+        },
+        "billing_address_rollup_accessibility_label": "Factuuradresopties",
+        "payment_method_rollup_accessibility_label": "Betaalmethode Opties",
+        "crypto_modal": {
+          "header": "Betaling aan %{shop_name} met %{total_price} USDC",
+          "error": {
+            "refresh": "Verfrissing",
+            "close": "sluiting",
+            "sandbox_error": "Er is een fout opgetreden",
+            "web_component_error": "Er is een fout opgetreden bij het laden van deze pagina"
+          }
+        },
+        "bank_account_type": {
+          "checking": "Verificatie",
+          "savings": "Economieën"
+        },
+        "bank_account_choose": "Kies een account om veilig af te rekenen",
+        "bank_account_connect_another": "Koppel een andere bankrekening",
+        "bank_account_connect": "Koppel een bankrekening",
+        "bank_account_missing": "Het koppelen van de bankrekening is verplicht",
+        "crypto_payment_method": {
+          "description": "Verbind uw portemonnee veilig. Uw saldo en adres worden niet gedeeld."
         }
       },
       "shipping_errors": {
