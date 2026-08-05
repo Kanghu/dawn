@@ -3392,7 +3392,71 @@
         "generic_error": "Uw bestelling kan niet worden verwerkt omdat uw kortingscode niet meer beschikbaar is. Controleer het totaal van uw bestelling en probeer het opnieuw."
       },
       "wallets": {
-        "return_to_store": "Kom terug naar de winkel"
+        "return_to_store": "Kom terug naar de winkel",
+        "redirect_hint": "U wordt gevraagd om in te loggen met {{walletName}}.",
+        "logged_in": "Verbonden met {{email}}",
+        "shipping_line_label": "Verzending",
+        "connect_shipping_methods": "{{method1}} en {{method2}}",
+        "payment_in_progress_title": "Betaling in behandeling",
+        "payment_in_progress_body": "Uw betaling wordt verwerkt. Uw bestelling wordt binnenkort voltooid.",
+        "call_to_action": "Betaal met {{walletName}}",
+        "errors": {
+          "unavailable": {
+            "title": "{{walletName}} is niet beschikbaar",
+            "description": "{{walletName}} was niet beschikbaar. Gebruik een andere betaalmethode of probeer het later opnieuw.",
+            "instructions": "Er is een probleem opgetreden met de functie {{walletName}}. Keer terug naar de winkel om het opnieuw te proberen of rond de bestelling op een andere manier af.",
+            "unavailable_for_country": "Betaalmethode {{walletName}} is niet beschikbaar binnen {{countryName}}. Selecteer een andere betaalmethode om uw aankoop af te ronden"
+          },
+          "generic": "Er was een probleem met {{walletName}}. Probeer het opnieuw of gebruik een andere betaalmethode.",
+          "terminal": "Er is een probleem opgetreden bij {{walletName}}. Gebruik een andere betaalmethode.",
+          "detour": {
+            "stock_problems": "Sommige artikelen zijn niet meer leverbaar. Sluiten {{walletName}} en probeer het opnieuw.",
+            "price_change": "De prijzen van sommige artikelen zijn gewijzigd. Sluiten {{walletName}} om de bestelling te controleren en het opnieuw te proberen.",
+            "queue": "U bent in een wachtrij bij het afrekenen geplaatst. Sluiten {{walletName}} doorgaan.",
+            "currency_change": "U kunt geen ander adres gebruiken {{walletName}}. Gebruik uw oorspronkelijke adres of probeer een andere betaalmethode."
+          },
+          "unsupported": {
+            "address": "De verkoper kan niet leveren op het door u geselecteerde verzendadres.",
+            "postal_code": "Deze locatie wordt niet ondersteund",
+            "wallet_is_unavailable": "{{walletName}} kan niet worden gebruikt met dit adres. Selecteer een ander adres of sluit {{walletName}} om de aankoop te voltooien"
+          },
+          "outdated": {
+            "shipping_method": "De verzendopties voor uw bestelling zijn gewijzigd. Controleer uw selectie.",
+            "payment_terms": "De betalingsvoorwaarden zijn gewijzigd. Controleer uw bestelling"
+          },
+          "invalid": {
+            "shipping_address": "Voer een geldig verzendadres in",
+            "billing_address": "Voer een geldig factuuradres in",
+            "shipping_option": "Kies een geldige verzendoptie",
+            "email": "Voer een geldig e-mailadres in",
+            "zone": "Voer een geldige staat/provincie in",
+            "postal_code": "Voer een geldige postcode in",
+            "reduction_code": "Vul een geldige kortingscode of cadeaubon in",
+            "billing_must_match_shipping": "Moet overeenkomen met het verzendadres",
+            "phone": "Voer een geldig telefoonnummer in",
+            "emirate": "Voer een geldig emiraat in",
+            "billing_zone": "Voer een geldige staat/provincie in voor uw factuuradres",
+            "billing_phone": "Voer een geldig telefoonnummer in voor uw factuuradres",
+            "billing_zip": "Voer een geldige postcode in voor uw factuuradres"
+          },
+          "missing": {
+            "first_name": "Voer een voornaam in",
+            "last_name": "Voer een achternaam in",
+            "address1": "Voer een adres in",
+            "address2": "Betreed een appartement, een kamer, enz.",
+            "city": "Voer een stad in",
+            "province": "Selecteer een staat/provincie",
+            "country": "Selecteer een land/regio",
+            "zip": "Voer een postcode/postcode in",
+            "phone": "Voer een telefoonnummer in",
+            "billing_first_name": "Voer een voornaam in voor het factuuradres",
+            "billing_address1": "Voer het factuuradres in",
+            "billing_address2": "Voer als factuuradres een appartement, een kamer etc. in",
+            "billing_city": "Voer een stad in voor het factuuradres",
+            "billing_province": "Selecteer een staat/provincie voor uw factuuradres",
+            "billing_zip": "Voer een postcode in voor uw factuuradres"
+          }
+        }
       }
     },
     "notices": {
