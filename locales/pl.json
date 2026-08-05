@@ -1001,7 +1001,7 @@
         "bizum_label": "Bizum"
       },
       "thank_you": {
-        "payment_method_not_charged": "Bez opodatkowania",
+        "payment_method_not_charged": "Bez opłat",
         "thank_you_confirmed_items_with_email": {
           "one": "Wkrótce otrzymasz wiadomość e -mail z potwierdzeniem z numerem zamówienia",
           "other": "Wkrótce otrzymasz wiadomości e -mail potwierdzenia z numerami na zamówienia",
@@ -1307,7 +1307,60 @@
           "title": "Faktury VAT"
         },
         "thank_you_payments_app_pending_payment_description_provider_action_required_default": "Otrzymasz wiadomość e-mail, gdy płatność zostanie potwierdzona.",
-        "verify_shop_account_title": "Sprawdź swoje konto w Sklepie"
+        "verify_shop_account_title": "Sprawdź swoje konto w Sklepie",
+        "verify_shop_account_message": "Twoje dane zostały zapisane w Sklepie. Zweryfikuj swoje konto, aby automatycznie korzystać z nich w milionach sklepów.",
+        "verify_shop_account_cta": "Sprawdź swoje konto",
+        "verify_shop_account_confirmation": "Szczegóły płatności zostały zapisane",
+        "company_location_section_title": "Firma i lokalizacja",
+        "announcement": {
+          "close": "Zamknij",
+          "expand": "Rozszerzenie",
+          "collapse": "Ograniczenie"
+        },
+        "confirmed_items_count": "%{confirmed_count} od %{total_count} elementy zostały potwierdzone",
+        "thank_you_confirmed_orders_with_email": "Wkrótce otrzymasz osobne e-maile z potwierdzeniem i numerami zamówień",
+        "thank_you_confirmed_orders_with_phone": "Wkrótce otrzymasz osobne wiadomości SMS z potwierdzeniem i numerami zamówień",
+        "thank_you_confirmed_orders_with_email_and_phone": "Wkrótce otrzymasz osobne e-maile z potwierdzeniem i numerami zamówień",
+        "track_your_order_link_text": "Śledzenie zamówienia",
+        "checkout_on_remote_shop_link_text": "Zapłać o godz %{remoteShopName}",
+        "confirmed_orders_title": "Twoje zamówienia zostały potwierdzone",
+        "thank_you_unconfirmed_items_heading": {
+          "one": "1 pozycja nie została potwierdzona",
+          "other": "Niektóre elementy nie są potwierdzone",
+          "few": "Niektóre elementy nie są potwierdzone"
+        },
+        "thank_you_unconfirmed_items_description": {
+          "one": "Operację tę wykonano bezpłatnie",
+          "other": "Operacje te wykonano bezpłatnie",
+          "few": "Operacje te wykonano bezpłatnie"
+        },
+        "thank_you_from_shop": "Od %{shop_name}",
+        "thank_you_item_label": {
+          "one": "%{count} artykuł",
+          "other": "%{count} artykuły",
+          "few": "%{count} artykuły"
+        },
+        "items_fulfilled_by_store": {
+          "one": "Zakupione produkty zostaną wysłane z %{remote_shop_name}.",
+          "other": "Zakupione produkty zostaną dostarczone z innych sklepów.",
+          "few": "Zakupione produkty zostaną dostarczone z innych sklepów."
+        },
+        "thank_you_from_other_store": "Z innego sklepu",
+        "checkout_on_another_store": "Zapłać w innym sklepie",
+        "thank_you_confirmed_with_email_description": {
+          "single_store": "Wkrótce otrzymasz wiadomość e-mail z potwierdzeniem",
+          "multi_store": "Wkrótce otrzymasz osobne e-maile z potwierdzeniem z każdego sklepu"
+        },
+        "thank_you_confirmed_with_phone_description": {
+          "single_store": "Wkrótce otrzymasz SMS-a z potwierdzeniem",
+          "multi_store": "Wkrótce otrzymasz oddzielną wiadomość SMS z potwierdzeniem z każdego sklepu"
+        },
+        "thank_you_confirmed_with_email_and_phone_description": {
+          "single_store": "Wkrótce otrzymasz wiadomość e-mail z potwierdzeniem",
+          "multi_store": "Wkrótce otrzymasz osobne e-maile z potwierdzeniem z każdego sklepu"
+        },
+        "checkout_again": "Zapłać ponownie",
+        "cashback_notice": "Zwrot środków otrzymasz po 30 dniach"
       },
       "shipping": {
         "title": "Transport",
@@ -2508,6 +2561,21 @@
         "bank_account_label": "Konto bankowe",
         "credit_or_debit_card_label": "Kredyt/debet",
         "bogus_label": "Testuj bramkę płatniczą"
+      },
+      "review": {
+        "title": "Recenzja",
+        "review_title": "Dokończ zamówienie",
+        "checkout_as_guest": "Dokończ zamówienie jako gość",
+        "blocks": {
+          "contact_method_title": "Kontakt",
+          "billing_address_title": "Rozliczenia",
+          "shipping_address_title": "Wyślij do",
+          "shipping_method_title": "Sposób wysyłki",
+          "payment_method_title": "Metoda płatności",
+          "change_link_label": "Modyfikuj",
+          "change_contact_method_link_label": "Zmień dane kontaktowe",
+          "change_billing_address_link_label": "Zmień adres rozliczeniowy"
+        }
       }
     },
     "sentence": {
