@@ -1624,7 +1624,139 @@
         "maximum_discount_code_limit_reached": "Osiągnąłeś maksymalną liczbę kodów rabatowych. Usuń istniejący kod, aby go użyć <strong style=\"text-transform:uppercase\">%{code}</strong>.",
         "order_total_label": "Zamówienie ogółem",
         "discount_code_application_failed": "<strong style=\"text-transform:uppercase\">%{code}</strong> w tej chwili nie działa. Skontaktuj się z nami, aby uzyskać pomoc.",
-        "due_on_fulfillment": "Wymagane w momencie uhonorowania"
+        "due_on_fulfillment": "Wymagane w momencie uhonorowania",
+        "gift_card_masked": "•••• %{last_characters}",
+        "subscriptions": "Subskrypcje",
+        "duties_label": "Cła",
+        "duties_and_taxes_label": "Cła i podatki",
+        "error_duties_tooltip": "To zamówienie jest wysyłane z innego kraju, dlatego w momencie dostawy mogą zostać naliczone cła i podatki.",
+        "may_be_charged_on_delivery": "Mogą zostać naliczone w momencie dostawy",
+        "total_updated_label_with_price": "Zaktualizowana cena całkowita: %{totalPrice}",
+        "recurring_payments": "Płatności cykliczne",
+        "recurring_total_multiple_label": "Za kilka pozycji w tym zamówieniu pobierana jest opłata cykliczna.",
+        "deferred_total_due_date_label": "Razem z powodu {{date}}",
+        "full_price": "Pełna cena: %{price}",
+        "custom_discount": "Niestandardowy rabat",
+        "expand_component_information": {
+          "one": "Wyświetlacz %{count} artykuł",
+          "other": "Wyświetlacz %{count} artykuły",
+          "few": "Wyświetlacz %{count} artykuły"
+        },
+        "collapse_component_information": {
+          "one": "Ukryj %{count} artykuł",
+          "other": "Ukryj %{count} artykuły",
+          "few": "Ukryj %{count} artykuły"
+        },
+        "component_quantity_title": "%{quantity} × %{product_title}",
+        "discount_discovery": {
+          "add_code": "Dodaj zniżkę",
+          "merchandise_quantity_label": {
+            "one": "%{count} artykuł",
+            "other": "%{count} (z) artykułów",
+            "few": "%{count} (z) artykułów"
+          },
+          "back_to_finalize_order": "Powrót do kasy"
+        },
+        "alternative_payment_currency_total": "Pobrana kwota: %{amount_due}",
+        "calculating": "Oblicza się...",
+        "group_title_label": "Część „%{group_title}”",
+        "discount_title_stacking": {
+          "one": "Rabat",
+          "other": "Zniżki",
+          "few": "Zniżki"
+        },
+        "discount_order_stacking": {
+          "one": "Rabat na zamówienie",
+          "other": "Zamów zniżki",
+          "few": "Zamów zniżki"
+        },
+        "price_per_item": {
+          "accessibility_label": "%{price} za artykuł",
+          "label": "%{price}/ szt."
+        },
+        "updated_shipping_method": "Zaktualizowano metodę płatności: %{shipping_method}",
+        "discount_not_found": "Nie udało się znaleźć ważnego rabatu odpowiadającego wprowadzonemu kodowi",
+        "total_savings": "Całkowita oszczędność",
+        "return_restocking_fee_label": "Opłata za uzupełnienie zapasów",
+        "return_shipping_fee_label": "Wysyłka zwrotna",
+        "enter_shipping_address": "Wpisz adres wysyłki",
+        "shipping_discount_title": "Zniżka na wysyłkę",
+        "discount_code_applied": "Zastosowano kod rabatowy",
+        "discount_code_applied_with_code": "Kod rabatowy %{code} został zastosowany",
+        "gift_card_applied": "Karta podarunkowa została zastosowana",
+        "duties_included_label": "Suma obejmuje wszystkie obowiązujące podatki i cła. Nie ma żadnych dodatkowych kosztów za dostawę.",
+        "deferred_balance_info": {
+          "title": "Wartość równowagi {{amount_due}} ma termin {{due_at}}",
+          "due_on_fulfillment_title": "Wartość równowagi {{amount_due}} ma termin wymagalności w momencie honorowania"
+        },
+        "eligible_customer_missing_notice": "Za kod rabatowy <strong style=\"text-transform:uppercase\">%{code}</strong> wymagany jest uprawniony klient",
+        "subtotal_label_with_quantity": {
+          "one": "Suma częściowa · %{count} artykuł",
+          "other": "Suma częściowa · %{count} artykuły",
+          "few": "Suma częściowa · %{count} artykuły"
+        },
+        "cost_table_item_column_header": "Artykuł",
+        "cost_table_value_column_header": "Wartość",
+        "product_image_quantity_label": "Ilość",
+        "more_items_modal": {
+          "clear_search": "Wyczyść wyszukiwanie",
+          "empty_results": "Nie znaleziono wyników dla „%{searchText}„. Sprawdź pisownię lub użyj innego słowa lub wyrażenia.",
+          "number_items_shown": "%{shownNumber} od %{totalNumber} artykuły",
+          "search_item": "Szukaj"
+        },
+        "number_items": {
+          "one": "%{count} artykuł",
+          "other": "%{count} artykuły",
+          "few": "%{count} artykuły"
+        },
+        "view_all_items": {
+          "one": "zobacz %{count} artykuł",
+          "other": "Zobacz wszystkie %{count} artykuły",
+          "few": "Zobacz wszystkie %{count} artykuły"
+        },
+        "price_before_discount_aria_text": "Cena początkowa",
+        "price_after_discount_aria_text": "Obniżona cena",
+        "discount_code_aria_text": "Kod rabatowy",
+        "pickup_unavailable_banner_body": {
+          "ship_to_address": "Adres wysyłki",
+          "ship_to_address_instead_html": "%{link} zamiast tego"
+        },
+        "pickup_unavailable_banner_title": {
+          "one": "Brak dostępnych sklepów z Twoim przedmiotem",
+          "other": "Brak dostępnych sklepów z Twoimi produktami",
+          "few": "Brak dostępnych sklepów z Twoimi produktami"
+        },
+        "deposit_label": "Magazyn",
+        "total_due_today_label": "Całość należna dzisiaj",
+        "total_due_later_label": "Całość płatna później",
+        "discount_code_allocations_mismatch": "Twój kod rabatowy <strong style=\"text-transform:uppercase\">%{code}</strong> się zmieniło. Sprawdź swój koszyk i spróbuj ponownie.",
+        "deferred_total_due_date_label_next": "Termin: %{date}",
+        "total_due_label": "Całkowicie należne",
+        "total_price_label": "Całkowita cena",
+        "for_add_on": "Dla: %{group_title}",
+        "unconfirmed_label": "Niepotwierdzone",
+        "total_paid_label": "Razem zapłacono",
+        "from_shop_heading": "Od %{shop_name}",
+        "from_other_stores_heading": "Z innych sklepów",
+        "estimated_taxes_label_short": "Szacowany",
+        "order_discounts_apply_to_local_shop": "W przypadku zamówień rabaty naliczane są wyłącznie na pozycje z %{shop_name}",
+        "gift_cards_apply_to_local_shop": "Karty podarunkowe są ważne tylko na produkty z %{shop_name}",
+        "discount_code_removed": "Kod rabatowy %{code} został usunięty",
+        "discount_code_replaced": "Kod rabatowy %{old_code} został usunięty i kod został zastosowany %{code}",
+        "discount_code_replaced_multiple": "Kilka kodów rabatowych zostało usuniętych, a kod został zastosowany %{code}",
+        "from_multiple_stores_heading": "Z kilku sklepów",
+        "pay_merchant_label": "Zapłać %{merchant_name}",
+        "discount_applies_to_subscription_items_only": "Zniżka ta dotyczy wyłącznie artykułów objętych subskrypcją",
+        "estimated_taxes_finalization_tooltip_content_short": "Doładowanie następuje po dokonaniu płatności",
+        "pickup_unavailable_banner_title_with_country": {
+          "one": "w %{country} nie ma dostępnych sklepów z Twoim przedmiotem",
+          "other": "w %{country} nie ma dostępnych sklepów z Twoimi produktami",
+          "few": "w %{country} nie ma dostępnych sklepów z Twoimi produktami"
+        },
+        "compare_at_sale": "Promocja (%{sale_amount})",
+        "discount_code_applied_count": {
+          "few": "Wyświetlacz %{count} rabaty"
+        }
       }
     },
     "sentence": {
