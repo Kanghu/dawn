@@ -4167,6 +4167,76 @@
           "order": "Zamów",
           "actions_accessibility_label": "Działania",
           "products_accessibility_label": "Produkty"
+        },
+        "delivered": "Dostarczono do: {{date}}",
+        "empty_state_order_source_description": "Tutaj pojawią się tylko zamówienia złożone na adres e-mail {{email}}.",
+        "empty_state_subtitle": "Przejdź do sklepu, aby złożyć zamówienie.",
+        "empty_state_title": "Nie ma jeszcze żadnych zamówień",
+        "estimated_delivery": "Szacowana data: {{date}}",
+        "items": {
+          "one": "{{count}} artykuł",
+          "other": "{{count}} artykuły",
+          "few": "{{count}} artykuły"
+        },
+        "order_link": "Zobacz zamówienie {{name}}",
+        "order_number": "Zamów {{name}}",
+        "orders_title": "Potwierdzone",
+        "pagination": {
+          "nav_accessibility_label": "Przyciski nawigacyjne dla poleceń",
+          "next": "Przed",
+          "next_accessibility_label": "Kolejne zamówienia",
+          "previous": "Powrót",
+          "previous_accessibility_label": "Poprzednie zamówienia",
+          "load_more": "Pokaż więcej",
+          "load_more_accessibility_label": "Pokaż więcej poleceń"
+        },
+        "sort_by": "Sortuj według: {{option}}",
+        "sort_hide_options_accessibility_label": "Ukrywa opcje sortowania potwierdzonych zamówień.",
+        "sort_show_options_accessibility_label": "Pokazuje opcje sortowania potwierdzonych zamówień.",
+        "sort_title": "Posortuj to",
+        "sort": {
+          "date": {
+            "newest": "Od najnowszych do najstarszych",
+            "oldest": "Od najstarszych do najnowszych"
+          },
+          "location": {
+            "ascending": "Lokalizacja (A-Z)",
+            "descending": "Lokalizacja (Z-A)"
+          },
+          "order_number": {
+            "ascending": "Numer zamówienia (rosnąco)",
+            "descending": "Numer zamówienia (potomek)"
+          },
+          "order_total": {
+            "ascending": "Suma zamówienia (rosnąco)",
+            "descending": "Suma zamówienia (malejąco)"
+          }
+        },
+        "one_images_accessibility_label": "Zamówienie obejmuje {{lineItemName1}}",
+        "two_images_accessibility_label": "Zamówienie obejmuje {{lineItemName1}}, {{lineItemName2}}",
+        "three_images_accessibility_label": "Zamówienie obejmuje {{lineItemName1}}, {{lineItemName2}}, {{lineItemName3}}",
+        "four_images_accessibility_label": "Zamówienie obejmuje {{lineItemName1}}, {{lineItemName2}}, {{lineItemName3}}, {{lineItemName4}}",
+        "no_filtered_results_description": "Usuń lub dostosuj filtry, aby wyświetlić elementy sterujące",
+        "no_filtered_results_title": "Brak filtrowanych wyników",
+        "estimated_shortform": "Szac.: {{date}}",
+        "payment_status": {
+          "list_view": {
+            "overdue": "Wygasło",
+            "due": "Dojrzałość {{date}}",
+            "due_today": "Termin na dzisiaj",
+            "due_without_date": "Dojrzałość",
+            "due_on_fulfillment": "Wygasa w momencie realizacji zamówienia",
+            "pay_to_confirm": "Zapłać, aby potwierdzić",
+            "payment_not_due": "To jeszcze nie termin",
+            "paid": "Płatny"
+          },
+          "gallery_view": {
+            "overdue": "Zaległa płatność",
+            "due": "Termin płatności {{date}}",
+            "due_today": "Płatność należy uregulować dzisiaj",
+            "due_without_date": "Termin płatności",
+            "due_on_fulfillment": "Płatność płatna w momencie realizacji zamówienia"
+          }
         }
       }
     }
