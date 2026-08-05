@@ -902,7 +902,9 @@
       "general": {
         "map": {
           "cluster_title": {
-            "few": "Gevormd cluster {{number}} Kogels"
+            "few": "Cluster bestaande uit {{number}} markeringen",
+            "one": "Cluster bestaande uit {{number}} markering",
+            "other": "Cluster bestaande uit {{number}} markeringen"
           }
         },
         "errors": {
@@ -1208,7 +1210,37 @@
           "range_start": "Begin van de pauze",
           "in_range": "In de tussentijd",
           "range_end": "Einde interval"
-        }
+        },
+        "list_formatter": {
+          "and": {
+            "wordConnector": "{{previousWords}}, {{anotherWord}}",
+            "lastWordConnector": "{{previousWords}} en {{lastWord}}",
+            "twoWordConnector": "{{firstWord}} en {{secondWord}}"
+          },
+          "or": {
+            "wordConnector": "{{previousWords}}, {{anotherWord}}",
+            "lastWordConnector": "{{previousWords}} of {{lastWord}}",
+            "twoWordConnector": "{{firstWord}} of {{secondWord}}"
+          },
+          "narrow": {
+            "wordConnector": "{{previousWords}}, {{anotherWord}}",
+            "lastWordConnector": "{{previousWords}}, {{lastWord}}",
+            "twoWordConnector": "{{firstWord}}, {{secondWord}}"
+          }
+        },
+        "sheet": {
+          "expand": "Uitbreiden"
+        },
+        "confirm_order_button_label": "Bevestig de bestelling",
+        "qr_code": "QR-code",
+        "dropzone": {
+          "add_file": "Voeg een bestand toe",
+          "invalid_file_type": "Het bestandstype wordt niet ondersteund",
+          "dragged_over": "Geef het bestand vrij om te uploaden"
+        },
+        "loading": "Laden...",
+        "remove_chip": "Het artikel verwijderen",
+        "finalize_order_accessibility_label": "Voltooi de bestelling"
       },
       "customer_account": {
         "saved_address_option_description": {
@@ -1490,6 +1522,37 @@
         "change_currency_link": "Wijzig naar %{currency_name}",
         "card_provider_fx_charges_warning": "De kaartuitgever kan kosten in rekening brengen voor transacties in %{currency_code}.",
         "currency_not_supported_by_shop": "De door u geselecteerde valuta is niet langer beschikbaar. Alle prijzen zijn inmiddels binnen %{currency_code}."
+      },
+      "contact": {
+        "title": "Informatie",
+        "address_title": "Adres",
+        "delivery_option_title": "Leveringswijze",
+        "contact_method_title": "Contacteer",
+        "email_label": "E-mail",
+        "email_placeholder": "E-mail",
+        "email_or_phone_label": "E-mailadres of mobiel telefoonnummer",
+        "email_or_phone_placeholder": "E-mailadres of mobiel telefoonnummer",
+        "stored_addresses_label": "Opgeslagen adressen",
+        "new_address_label": "Gebruik een nieuw adres",
+        "first_name_label": "Voornaam",
+        "optional_first_name_label": "Voornaam (optioneel)",
+        "last_name_label": "Familienaam",
+        "company_label": "Bedrijf",
+        "optional_company_label": "Bedrijfs-CUI (optioneel)",
+        "address1_label": "Adres",
+        "address2_label": "Appartement, kamer, enz.",
+        "optional_address2_label": "Vermeldingen (optioneel). Ze worden vóór verzending door een operator verwerkt.",
+        "city_label": "Stad",
+        "country_label": "Land/regio",
+        "country_code": "Land-/regiocode",
+        "province_label": "Provincie",
+        "province_placeholder": "Provincie",
+        "county_label": "Provincie",
+        "county_placeholder": "Provincie",
+        "state_label": "Staat",
+        "state_placeholder": "Staat",
+        "region_label": "Regio",
+        "region_placeholder": "Regio"
       }
     },
     "notices": {
