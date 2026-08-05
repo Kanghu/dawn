@@ -3968,9 +3968,58 @@
               "ro": "Inserisci un numero di partita IVA rumeno valido",
               "sk": "Inserisci un numero di partita IVA slovacco valido",
               "si": "Inserisci un numero di partita IVA sloveno valido",
-              "es": "Inserisci un numero di partita IVA spagnolo valido"
+              "es": "Inserisci un numero di partita IVA spagnolo valido",
+              "se": "Inserisci un numero di partita IVA svedese valido",
+              "gb": "Inserisci un numero di partita IVA valido nel Regno Unito"
+            },
+            "service_unavailable": "Il servizio di convalida non è disponibile",
+            "service_error": "Il servizio di convalida non è disponibile"
+          },
+          "accessibility": {
+            "status": {
+              "validating": "È in corso la validazione della partita IVA",
+              "valid": "La partita IVA è valida",
+              "applied": "È stata applicata l'esenzione IVA",
+              "domestic": "Non è stata applicata l'esenzione IVA",
+              "invalid_number": "L'esenzione IVA è fallita",
+              "service_unavailable": "La verifica dell'esenzione IVA non è riuscita",
+              "service_error": "La verifica dell'esenzione IVA non è riuscita"
             }
           }
+        }
+      },
+      "payment_collection": {
+        "cancelled": "Questo pagamento non è più richiesto. Visita la pagina dell'ordine per i dettagli.",
+        "paid": "Questo pagamento è già stato inviato. Visita la pagina dell'ordine per i dettagli."
+      },
+      "required_extensions": {
+        "errors": {
+          "interaction_required": "Per completare il pagamento è necessaria un'interazione con l'estensione."
+        }
+      },
+      "embed": {
+        "header": {
+          "review_order": "Controlla il tuo ordine"
+        },
+        "shipping": {
+          "shipping_options": "Vedi tutte le opzioni di spedizione"
+        },
+        "payment": {
+          "payment_options": "Vedi tutte le opzioni di pagamento"
+        }
+      },
+      "too_many_requests": {
+        "title": "Troppi tentativi di pagamento",
+        "body": "Attendi qualche minuto e riprova dal cestino.",
+        "return_to_cart": "Ritorna al carrello",
+        "body_no_cart": "Attendi qualche minuto e riprova."
+      },
+      "address_management": {
+        "saved_with_store": "Salvato in questo negozio"
+      },
+      "ucp": {
+        "standard_errors": {
+          "item_unavailable": "L'articolo non può essere acquistato"
         }
       }
     },
@@ -3990,6 +4039,47 @@
       "words_connector": ", ",
       "two_words_connector": " e ",
       "last_word_connector": " e "
+    },
+    "pagination": {
+      "previous": "Indietro",
+      "next": "Prima"
+    },
+    "links": {
+      "powered_by_shopify": "Realizzato da Shopify",
+      "learn_more": "Scopri di più"
+    },
+    "feed": {
+      "more": "Di più"
+    },
+    "attributes": {
+      "email": "e-mail",
+      "password": "parola d'ordine",
+      "password_confirmation": "Conferma della password",
+      "first_name": "nome",
+      "last_name": "cognome",
+      "body": "corpo",
+      "signature": "Indirizzo"
+    },
+    "addresses": {
+      "zip_code": "codice postale",
+      "postal_code": "Codice postale",
+      "postcode": "Codice postale",
+      "pincode": "Codice PIN",
+      "region": "Regione",
+      "prefecture": "Prefettura",
+      "province": "Provincia",
+      "state": "Stato",
+      "state_and_territory": "Stato/Territorio",
+      "county": "Contea",
+      "emirate": "Emirato",
+      "governorate": "Governatorato",
+      "confirm": "Sei sicuro di voler eliminare questo indirizzo?"
+    },
+    "collections": {
+      "sorting": {
+        "manual": "Consigliato",
+        "best_selling": "Il miglior venditore"
+      }
     }
   },
   "customer_accounts": {
