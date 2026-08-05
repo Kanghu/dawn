@@ -892,8 +892,12 @@
           "few": "Schepen binnen %{count} werkdagen"
         },
         "unbranded_description_with_fulfillment_weeks": {
-          "one": "Schepen binnen %{count} week"
-        }
+          "one": "Schepen binnen %{count} week",
+          "other": "Schepen binnen %{count} weken",
+          "few": "Schepen binnen %{count} weken"
+        },
+        "add_new_delivery_address": "Voeg een nieuw verzendadres toe",
+        "delivery_to": "Verzending naar het adres"
       },
       "general": {
         "map": {
@@ -920,7 +924,106 @@
             "shop_cash_unsupported_currency": "Shop Cash accepteert deze valuta niet.",
             "shop_cash_not_available": "Voor deze aankoop wordt de betaalmethode Shop Cash niet geaccepteerd.",
             "shop_cash_not_found": "Kon Shop Cash niet vinden."
+          },
+          "session_identifier_not_unique_error": "Er is een probleem opgetreden met uw bestelling. Probeer de betaling opnieuw.",
+          "line_item_limit_reached": "Het maximale aantal artikelen is bereikt.",
+          "only_empty_terms_accepted": "Dit beleid accepteert alleen blanco termen.",
+          "session_is_already_finished": "Deze betaalsessie is al voltooid.",
+          "merchandise": {
+            "only_value_constraint": "In het goedereninvoergedeelte zijn alleen exacte waarden toegestaan.",
+            "merchandise_not_found": "Het product is niet gevonden.",
+            "merchandise_variant_not_found": "Productvariant niet gevonden.",
+            "merchandise_not_applicable": "De productvariant kan niet worden gekocht.",
+            "bundle_products_not_supported_for_b2b": "Gebundelde artikelen kunnen voor deze locatie niet worden toegevoegd aan B2B-bestellingen.",
+            "gift_card_quantity_mismatch": "Bij het opgeven van cadeauboncodes moeten het aantal regelitems en het aantal cadeauboncodes overeenkomen.",
+            "gift_card_not_supported": "Cadeaubonnen worden bij deze kassa niet geaccepteerd.",
+            "gift_card_not_unique": "Cadeaukaart met code {{code}} verschijnt meerdere keren voor deze kassa. Codes worden vóór vergelijking geformatteerd.",
+            "gift_card_used": "De code {{code}} is al toegewezen aan een cadeaubon. Codes worden vóór vergelijking geformatteerd.",
+            "gift_card_invalid": "Cadeaukaartcode {{code}} is ongeldig.",
+            "gift_card_code_changed": "Cadeaukaartcode {{proposed_code}} werd veranderd in {{formatted_code}} om te voldoen aan de opmaakregels.",
+            "gift_card_with_attributes_not_supported": "Cadeaubonnen met aangepaste kenmerken worden niet geaccepteerd voor deze kassa.",
+            "gift_card_with_components_not_supported": "Cadeaubonnen met componenten worden bij deze kassa niet geaccepteerd.",
+            "selling_plan_mismatch": "Abonnement is bijgewerkt.",
+            "selling_plan_not_supported": "Abonnementen worden niet geaccepteerd.",
+            "selling_plan_not_supported_b2b": "Abonnementen voor B2B-afrekenen worden niet geaccepteerd.",
+            "price_mismatch": "De eerder voorgestelde prijs voor dit artikel was ongeldig en is bijgewerkt.",
+            "inventory_not_found": "Er is geen voorraad gevonden voor dit artikel.",
+            "product_not_published": "Het product is niet gepubliceerd.",
+            "duplicated_stable_id": "Deze vrachtlijn heeft dezelfde stabiele ID als een andere lijn.",
+            "minimum_quantity_not_met": "Voor sommige artikelen voldoet de hoeveelheid niet aan de minimaal vereiste waarde.",
+            "maximum_quantity_exceeded": "Voor sommige artikelen overschrijdt de hoeveelheid de maximaal toegestane waarde.",
+            "quantity_increment_not_met": "Voor sommige artikelen voldoet het aantal niet aan de bestellimieten.",
+            "quantity_rules_not_met": "Voor sommige artikelen voldoet het aantal niet aan de bestellimieten.",
+            "bundle_requires_components": "Gebundelde goederen bevatten geen componenten.",
+            "title_too_long": "Titel van item is te lang.",
+            "title_empty": "De producttitel is niet voltooid.",
+            "mixed_currencies": "Afrekenen omvat artikelen waaraan verschillende valuta's zijn gekoppeld.",
+            "product_not_published_in_buyer_location": "Het product is niet beschikbaar op de huidige locatie van de koper.",
+            "combined_listing_parent_not_purchasable": "Bovenliggende producten in een gecombineerde aanbieding kunnen niet rechtstreeks worden gekocht."
+          },
+          "buyer_identity": {
+            "business_customer_does_not_match_company": "De bedrijfscontactpersoon heeft geen toegang tot het bedrijf.",
+            "customer_account_required": "U moet inloggen om door te gaan.",
+            "contact_info_does_not_match_customer_account": "De contactgegevens moeten overeenkomen met het account waarmee u inlogt.",
+            "phone_number_does_not_match_expected_pattern": "Het opgegeven telefoonnummer komt niet overeen met het verwachte model.",
+            "email_required": "wanneer goederen worden gekocht met behulp van een abonnement, is een e-mailadres vereist.",
+            "email_domain_is_invalid": "Dit opgegeven domein kan niet worden opgelost.",
+            "missing_contact_method": "Er ontbreekt een geldige contactmethode.",
+            "checkout_completion_target_is_missing": "Betaaldoel ontbreekt.",
+            "invalid_customer_profile": "Er is een ongeldig klantprofiel opgegeven.",
+            "customer_profile_access_restricted": "Checkout heeft geen toestemming om toegang te krijgen tot het klantprofiel.",
+            "checkout_completion_target_is_invalid_proc": "Ongeldig betaaldoel.",
+            "company_location_required": "Om verder te gaan, moet de klant een bedrijfslocatie kiezen.",
+            "lost_access_to_company": "De klant heeft geen toegang meer tot welk bedrijf dan ook.",
+            "company_purchase_permission_required": "De klant heeft geen toestemming om bestellingen voor het bedrijf te plaatsen.",
+            "personal_order_not_allowed": "Persoonlijke bestellingen zijn in deze winkel niet toegestaan.",
+            "buyer_identity_presentment_currency_does_not_match": "Er is een probleem opgetreden bij het verwerken van uw bestelling. Probeer het over een paar minuten opnieuw."
+          },
+          "delivery": {
+            "only_one_delivery_line_allowed": "Winkelwagen mag slechts één leveringsregel bevatten.",
+            "wrong_number_of_delivery_lines": "Voor elke goederengroep moet een leveringsregel worden opgegeven.",
+            "external_delivery_promise_error": "Er is een fout opgetreden bij het ophalen van de externe leveringsbelofte."
           }
+        },
+        "page_title": "Voltooi de bestelling",
+        "error_page_title": "Fout",
+        "skip_to_content": "Ga naar de inhoud",
+        "breadcrumb": "spoor",
+        "continue_button_label": "Ga door",
+        "complete_purchase_button_label": "Voltooi de bestelling",
+        "pay_now_button_label": "Betaal nu",
+        "authenticate_purchase_button_label": "Authenticeer de betaling",
+        "edit_link_label": "Bewerken",
+        "all_rights_reserved": "Alle rechten voorbehouden %{shop_name}",
+        "print_policies_link_label": "Afdrukken",
+        "cart": "Mand",
+        "close_modal_label": "Sluiten",
+        "close_notice_label": "Sluiten",
+        "expand_notice_label": "Zie meer",
+        "continue_to_shipping_method": "Ga door met verzenden",
+        "continue_to_payment_method": "Ga verder naar afrekenen",
+        "continue_to_review": "Controleer de bestelling",
+        "back_to_cart": "Terug naar winkelwagen",
+        "back_to_contact_information": "Kom terug naar de informatie",
+        "back_to_shipping_method": "Keer terug naar verzending",
+        "back_to_payment_method": "Terug naar betaling",
+        "choose_shipping_method": "Kies een verzendmethode",
+        "choose_payment_method": "Kies een betaalmethode",
+        "choose_billing_address": "Kies een factuuradres",
+        "contact_us_html": "Neem contact met ons op voor meer informatie",
+        "autocomplete_title": "Suggesties",
+        "autocomplete_single_item": "1 artikel beschikbaar",
+        "autocomplete_multi_item": "{{number}} artikelen beschikbaar",
+        "autocomplete_selection": "{{number}} van {{total}}",
+        "autocomplete_close": "Suggesties sluiten",
+        "tooltip_accessibility_label": "Meer informatie",
+        "forwarding_indicator": {
+          "new_window": "Opent in een nieuw venster.",
+          "external": "Open een externe site.",
+          "external_and_new_window": "Open de externe website in een nieuw venster."
+        },
+        "checkout_context": {
+          "step_one": "%{shop_name} – Voltooi de bestelling"
         }
       },
       "customer_account": {
@@ -1194,6 +1297,15 @@
         "shop_cash": {
           "currency_mismatch": "De munteenheid is veranderd. Zie Shop Cash en de aanbieding."
         }
+      },
+      "change_currency": {
+        "credit_card_will_be_charged_html": "Ze zullen worden waargenomen %{amount} van uw kaart",
+        "currency_button_label": "%{currency} (%{currency_symbol})",
+        "payment_total_label": "Totale betaling",
+        "conversion_rate": "1 %{from_currency_code} = %{rate} %{to_currency_code}",
+        "change_currency_link": "Wijzig naar %{currency_name}",
+        "card_provider_fx_charges_warning": "De kaartuitgever kan kosten in rekening brengen voor transacties in %{currency_code}.",
+        "currency_not_supported_by_shop": "De door u geselecteerde valuta is niet langer beschikbaar. Alle prijzen zijn inmiddels binnen %{currency_code}."
       }
     },
     "notices": {
