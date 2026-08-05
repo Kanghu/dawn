@@ -2720,6 +2720,17 @@
       "redeemable_errors": {
         "shop_cash": {
           "currency_mismatch": "De munteenheid is veranderd. Zie Shop Cash en de aanbieding."
+        },
+        "gift_card": {
+          "duplicate": "De cadeaubon is al toegepast op uw bestelling",
+          "insufficient_funds": "Er is geen saldo meer op deze cadeaubon",
+          "expired": "Deze cadeaukaart is verlopen",
+          "not_available": "Deze cadeaukaart is niet meer verkrijgbaar",
+          "invalid": "Vul een geldige cadeaubon in",
+          "currency_mismatch": "Er worden alleen cadeaubonnen geaccepteerd %{shop_currency}",
+          "generic": "De cadeaubon kon niet worden toegevoegd aan het afrekengedeelte",
+          "throttle_limit_exceeded": "Je hebt het maximale aantal pogingen overschreden. Probeer het later opnieuw.",
+          "no_longer_available": "Deze cadeaubon kan niet meer worden gebruikt voor deze kassa"
         }
       },
       "change_currency": {
@@ -3454,9 +3465,74 @@
             "billing_address2": "Voer als factuuradres een appartement, een kamer etc. in",
             "billing_city": "Voer een stad in voor het factuuradres",
             "billing_province": "Selecteer een staat/provincie voor uw factuuradres",
-            "billing_zip": "Voer een postcode in voor uw factuuradres"
-          }
+            "billing_zip": "Voer een postcode in voor uw factuuradres",
+            "contact_info": "Vul de contactgegevens in"
+          },
+          "formatting": {
+            "name_contains_emojis": "Verwijder de emoji uit je naam",
+            "postal_code_contains_emoji": "Verwijder de postcode-emoji",
+            "first_name_too_long": "De voornaam bevat te veel letters",
+            "last_name_too_long": "Achternaam bevat te veel letters",
+            "address_too_long": "De informatie in de adresregel is te lang"
+          },
+          "select_different_shipping_address_to_resolve_errors": "Verzendadres is ongeldig. Selecteer een ander adres of gebruik een nieuw adres.",
+          "unavailable_terminal": {
+            "instructions": "Betaalmethode {{walletName}} is momenteel niet beschikbaar voor uw bestelling. Om door te gaan met de aankoop, kiest u een andere betaalmethode."
+          },
+          "discount_code": "Toepassing van deze kortingscode is niet mogelijk. Controleer uw code en probeer het opnieuw.",
+          "processing_error_checkout_as_guest": "Er is een probleem opgetreden bij het verwerken van uw betaling. Probeer het opnieuw of {{checkout_as_guest_link}}.",
+          "subscription_review_required": "Bij uw bestelling is een abonnement inbegrepen. U moet de onderstaande voorwaarden lezen voordat u uw bestelling voltooit."
+        },
+        "redirection_notice": "Wij verwijzen u door naar {{walletName}} om uw aankoop te voltooien",
+        "return_to_checkout": "Kom terug om de bestelling af te ronden",
+        "scrim": {
+          "continue_purchase_in_window": "Ga verder met winkelen in de etalage {{walletName}}",
+          "and_return_to_checkout": "en ga terug naar de kassa",
+          "cancel": "Annuleer"
+        },
+        "place_order": "Plaats de bestelling",
+        "recovery_notice": "Er is een probleem opgetreden met uw bestelgegevens. Update uw gegevens om de betaling te voltooien.",
+        "deceleration": {
+          "one_more_step": "Nog een stap..."
         }
+      },
+      "markets": {
+        "invalid_market_manager_error": "Controleer uw contactgegevens voordat u uw betaling voltooit"
+      },
+      "store_credit_errors": {
+        "generic_error": "Er is een probleem opgetreden met uw winkeltegoed. Probeer het opnieuw of laad de pagina opnieuw."
+      },
+      "note": {
+        "length_exceeds_maximum": "Verklein de notitiegrootte tot maximaal 5000 tekens."
+      },
+      "billing": {
+        "billing_address_title": "Facturering aan",
+        "same_as_shipping": "Hetzelfde als verzendadres",
+        "add_address": "Gebruik een ander adres",
+        "edit": "Bewerken",
+        "delete": "Verwijderen",
+        "address_more": "Meer acties voor dit adres",
+        "address_edit": "Adres bewerken",
+        "address_delete": "Verwijder het adres",
+        "address_confirm": "Weet u zeker dat u dit adres uit uw account wilt verwijderen?",
+        "address_form": {
+          "add_address": "Voeg een adres toe",
+          "save": "Opslaan",
+          "cancel": "Annuleer"
+        },
+        "billing_address_rollup_accessibility_label": "Factureringsopties"
+      },
+      "vaulted": {
+        "change_button": "Verandering"
+      },
+      "shop_pay_external": {
+        "errors": {
+          "problem_loading": "Er is een probleem opgetreden bij het laden van Shop Pay",
+          "try_again_later": "Controleer uw verbinding of sluit dit venster en probeer het over enkele ogenblikken opnieuw.",
+          "checkout_has_expired": "Er is een time-out opgetreden bij het afrekenen. Sluit dit venster en probeer de bestelling opnieuw af te ronden {{shopName}}."
+        },
+        "return_to_store": "Kom terug naar {{shopName}}",
+        "return_to_store_simple": "Kom terug naar de winkel"
       }
     },
     "notices": {
