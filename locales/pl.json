@@ -4437,10 +4437,64 @@
             "delivered_after_label": "Dostarczone po {{date}}",
             "delivered_after_description": "Ponieważ zamówienie dotarło z opóźnieniem, masz prawo do reklamacji {{amount}} Kup gotówkę.",
             "claimed_shop_cash_description": "Ponieważ to zamówienie dotarło z opóźnieniem, odebrałeś je {{amount}} Kup gotówkę.",
-            "eligible_to_claim_shop_cash_description": "Ponieważ zamówienie dotarło z opóźnieniem, masz prawo do reklamacji {{amount}} Kup gotówkę."
+            "eligible_to_claim_shop_cash_description": "Ponieważ zamówienie dotarło z opóźnieniem, masz prawo do reklamacji {{amount}} Kup gotówkę.",
+            "learn_more_button_label": "Dowiedz się więcej",
+            "claim_shop_cash_button_label": "Odbierz gotówkę w sklepie",
+            "view_balance_in_shop_button_label": "Sprawdź swoje saldo w Sklepie",
+            "scan_to_claim_shop_cash_label": "Zeskanuj, aby zgłosić roszczenie {{amount}} w formie gotówki sklepowej"
           }
-        }
-      }
+        },
+        "tracking_number": {
+          "one": "Numer śledzenia",
+          "other": "Numery śledzenia",
+          "few": "Numery śledzenia"
+        },
+        "gift_card_resend_button": {
+          "one": "Wyślij ponownie kartę podarunkową",
+          "other": "Wyślij ponownie karty upominkowe",
+          "few": "Wyślij ponownie karty upominkowe"
+        },
+        "expected_by": "Oczekiwany do dnia {{date}}",
+        "was_expected_by": "Czekano do dnia {{date}}",
+        "confirmed_description_shipping": "Przygotowujemy te produkty do wysyłki.",
+        "arrives": "Nadchodzi {{date}}",
+        "delivery_estimate_backed_by": "Gwarantowane przez",
+        "delivery_estimate_delayed_description": "Dostawy w Twojej okolicy są wolniejsze niż zwykle. Twoje zamówienie może być opóźnione.",
+        "delivery_estimate_delayed_title": "Opóźniony",
+        "delivery_estimate_early_description": "Dostawy do Twojej okolicy są szybsze niż zwykle. To zamówienie może dotrzeć wcześniej.",
+        "delivery_exception_action_required": "Wymagane działanie",
+        "delivery_exception_attempted_action": "Zaplanuj nową wysyłkę",
+        "delivery_exception_attempted_description": "{{link}} z {{carrier}} lub sprawdź, czy jest powiadomienie o dostawie",
+        "delivery_exception_attempted_description_unknown": "{{link}} lub sprawdź, czy jest powiadomienie o dostawie",
+        "delivery_exception_attempted_title": "Spróbuj wysłać",
+        "delivery_exception_delivery_failed": "Dostawa nie powiodła się",
+        "delivery_exception_failed_action": "Sprawdź o godz {{carrier}}",
+        "delivery_exception_failed_description": "{{link}} lub skontaktuj się z nami, aby uzyskać więcej informacji",
+        "delivery_exception_failed_description_unknown": "Aby uzyskać więcej informacji, skontaktuj się z przewoźnikiem",
+        "delivery_exception_failed_title": "Niedostarczone",
+        "delivery_exception_on_hold_action": "Zaktualizuj szczegóły wysyłki",
+        "delivery_exception_on_hold_description": "{{link}} z {{carrier}} aby wznowić wysyłkę zamówienia",
+        "delivery_exception_on_hold_description_unknown": "{{link}} aby wznowić wysyłkę zamówienia",
+        "delivery_exception_on_hold_title": "Czekam",
+        "delivery_exception_returning_to_sender_action": "Skontaktuj się {{carrier}}",
+        "delivery_exception_returning_to_sender_description": "{{link}} aby uzyskać więcej informacji",
+        "delivery_exception_returning_to_sender_description_unknown": "Aby uzyskać więcej informacji, skontaktuj się z przewoźnikiem",
+        "delivery_exception_returning_to_sender_title": "Niedostarczone",
+        "delivery_exception_shop_promise_delivered_late_description": "Twoje zamówienie jest objęte gwarancją Shop Promise. Ponieważ przybył późno, zgłoś to {{amount}} w sklepie Cash.",
+        "delivery_exception_shop_promise_delivered_late_title": "Dostarczono z opóźnieniem",
+        "predicted_by_shop": "Szacowane przez sklep"
+      },
+      "status_mark_as_delivered": "Oznacz jako dostarczone",
+      "buy_again": "Kup ponownie",
+      "buy_again_accessibility_label": "Kup ponownie, aby zamówić {{orderId}}",
+      "manage": "Zarządzaj",
+      "manage_accessiblity_label": "Zarządzaj zamówieniem {{orderId}}",
+      "fulfillment_status_title": "Status honoru: {{status}}",
+      "list_title_with_pending_orders": "Zamówienia:",
+      "list_title_confirmed_orders_accessibility_label": "Zamówienia: potwierdzone",
+      "list_title_pending_orders_accessibility_label": "Zamówienia: oczekujące",
+      "switch_order_type_pending_orders_accessibility_label": "Zmień typ zamówienia, aktualnie przeglądasz zamówienia oczekujące",
+      "switch_order_type_confirmed_orders_accessibility_label": "Zmień typ zamówienia, aktualnie przeglądam potwierdzone zamówienia"
     }
   },
   "category_links": {
