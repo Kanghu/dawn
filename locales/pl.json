@@ -3335,9 +3335,87 @@
             "billing_address2": "Wpisz mieszkanie, pokój itp. jako adres rozliczeniowy",
             "billing_city": "Wprowadź miasto dla adresu rozliczeniowego",
             "billing_province": "Wybierz stan/prowincję dla swojego adresu rozliczeniowego",
-            "billing_zip": "Wprowadź kod pocztowy swojego adresu rozliczeniowego"
-          }
+            "billing_zip": "Wprowadź kod pocztowy swojego adresu rozliczeniowego",
+            "contact_info": "Wypełnij dane kontaktowe"
+          },
+          "formatting": {
+            "name_contains_emojis": "Usuń emoji ze swojego imienia i nazwiska",
+            "postal_code_contains_emoji": "Usuń emoji kodu pocztowego",
+            "first_name_too_long": "Imię zawiera za dużo liter",
+            "last_name_too_long": "Nazwisko zawiera za dużo liter",
+            "address_too_long": "Informacje w wierszu adresu są za długie"
+          },
+          "select_different_shipping_address_to_resolve_errors": "Adres wysyłki jest nieprawidłowy. Wybierz inny adres lub użyj nowego.",
+          "unavailable_terminal": {
+            "instructions": "Metoda płatności {{walletName}} jest obecnie niedostępny dla Twojego zamówienia. Aby kontynuować zakupy, wybierz inną formę płatności."
+          },
+          "discount_code": "Zastosowanie tego kodu rabatowego nie jest możliwe. Sprawdź swój kod i spróbuj ponownie.",
+          "processing_error_checkout_as_guest": "Wystąpił problem z przetwarzaniem Twojej płatności. Spróbuj ponownie lub {{checkout_as_guest_link}}.",
+          "subscription_review_required": "Twoje zamówienie obejmuje subskrypcję. Przed złożeniem zamówienia należy zapoznać się z poniższymi warunkami."
+        },
+        "redirection_notice": "Przekierujemy Cię do {{walletName}} aby sfinalizować zakup",
+        "return_to_checkout": "Wróć, aby dokończyć zamówienie",
+        "scrim": {
+          "continue_purchase_in_window": "Kontynuuj zakupy w oknie {{walletName}}",
+          "and_return_to_checkout": "i wróć do kasy",
+          "cancel": "Anuluj"
+        },
+        "place_order": "Złóż zamówienie",
+        "recovery_notice": "Wystąpił problem ze szczegółami zamówienia. Zaktualizuj swoje dane, aby dokończyć płatność.",
+        "deceleration": {
+          "one_more_step": "Jeszcze jeden krok..."
         }
+      },
+      "markets": {
+        "invalid_market_manager_error": "Przed dokonaniem płatności przejrzyj swoje dane kontaktowe"
+      },
+      "store_credit_errors": {
+        "generic_error": "Wystąpił problem ze środkami w Twoim sklepie. Spróbuj ponownie lub załaduj stronę ponownie."
+      },
+      "note": {
+        "length_exceeds_maximum": "Prosimy o zmniejszenie rozmiaru notatki do maksymalnie 5000 znaków."
+      },
+      "billing": {
+        "billing_address_title": "Rozliczenie do",
+        "same_as_shipping": "Taki sam jak adres wysyłki",
+        "add_address": "Użyj innego adresu",
+        "edit": "Edytuj",
+        "delete": "Usuń",
+        "address_more": "Więcej akcji dla tego adresu",
+        "address_edit": "Edytuj adres",
+        "address_delete": "Usuń adres",
+        "address_confirm": "Czy na pewno chcesz usunąć ten adres ze swojego konta?",
+        "address_form": {
+          "add_address": "Dodaj adres",
+          "save": "Zapisz",
+          "cancel": "Anuluj"
+        },
+        "billing_address_rollup_accessibility_label": "Opcje rozliczeń"
+      },
+      "redeemable_errors": {
+        "gift_card": {
+          "duplicate": "Karta podarunkowa została już zastosowana do Twojego zamówienia",
+          "insufficient_funds": "Na tej karcie upominkowej wyczerpały się środki",
+          "expired": "Ta karta podarunkowa utraciła ważność",
+          "not_available": "Ta karta podarunkowa nie jest już dostępna",
+          "invalid": "Proszę wprowadzić ważną kartę podarunkową",
+          "currency_mismatch": "W obiekcie akceptowane są wyłącznie karty podarunkowe %{shop_currency}",
+          "generic": "Nie można dodać karty podarunkowej do sekcji kasy",
+          "throttle_limit_exceeded": "Przekroczono maksymalną liczbę prób. Spróbuj ponownie później.",
+          "no_longer_available": "Tej karty podarunkowej nie można już wykorzystać do tej transakcji"
+        }
+      },
+      "vaulted": {
+        "change_button": "Zmień"
+      },
+      "shop_pay_external": {
+        "errors": {
+          "problem_loading": "Wystąpił problem z ładowaniem Shop Pay",
+          "try_again_later": "Sprawdź połączenie lub zamknij to okno i spróbuj ponownie za kilka chwil.",
+          "checkout_has_expired": "Upłynął limit czasu realizacji transakcji. Zamknij to okno i spróbuj ponownie dokończyć zamówienie {{shopName}}."
+        },
+        "return_to_store": "Wróć do {{shopName}}",
+        "return_to_store_simple": "Wróć do sklepu"
       }
     },
     "sentence": {
