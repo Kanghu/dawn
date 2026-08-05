@@ -1124,8 +1124,74 @@
         "picked_up_description_html": "Twoje zamówienie zostało odebrane z %{location_name} na %{date}.",
         "shop_phone_description": "Otrzymasz wiadomość SMS z linkiem do aplikacji Sklep, która ułatwi Ci śledzenie zamówienia.",
         "login_reorder_link_text": {
-          "one": "kup też ten produkt"
-        }
+          "one": "kup też ten produkt",
+          "other": "też kupuj te produkty",
+          "few": "też kupuj te produkty"
+        },
+        "marker": {
+          "current": "Aktualna lokalizacja wysyłki",
+          "shipping": "Adres wysyłki"
+        },
+        "pick_up_in_store_marker": {
+          "current": "Aktualna lokalizacja wysyłki",
+          "shipping": "Miejsce odbioru"
+        },
+        "fulfillment": {
+          "fulfilled_table_title": "Przedmioty w tej przesyłce",
+          "unfulfilled_table_title": "Przedmioty są gotowe do wysyłki",
+          "product_image_label": "Obraz produktu",
+          "description_label": "Opis",
+          "quantity_label": "Ilość"
+        },
+        "ready_for_delivery_title": "Twoje zamówienie jest gotowe do wysyłki",
+        "ready_for_delivery_description": "Przygotowałem Twoje zamówienie.",
+        "order_status_confirmed_order_local": "Przygotowujemy Twoje zamówienie do wysyłki.",
+        "delivery_information_label": "Informacje o dostawie:",
+        "gift_card_sent_confirmation": "Karty podarunkowe zostały wysłane",
+        "out_for_delivery_local_title": "Twoje zamówienie jest dostarczane.",
+        "out_for_delivery_local_description_html": "Twoje zamówienie dotrze wkrótce.",
+        "delivered_local_title": "Twoje zamówienie zostało dostarczone",
+        "delivered_local_description_html": "Nie otrzymałeś tego, co zamówiłeś? %{let_us_know}.",
+        "let_us_know": "Poinformuj nas",
+        "qr_code": {
+          "title": "Oglądaj na swoim telefonie",
+          "send_link_to_phone": "Lub wyślij link na swój telefon"
+        },
+        "gift_card_confirmation_by_text": "Jeśli go nie otrzymałeś, poproś o ponowne przesłanie wiadomości tekstowej lub skontaktuj się z nami.",
+        "gift_card_confirmation_by_email": "Jeśli go nie otrzymałeś, poproś o ponowne przesłanie wiadomości e-mail lub skontaktuj się z nami.",
+        "gift_card_title": "Karty podarunkowe",
+        "resend_gift_cards": "Wyślij ponownie karty upominkowe",
+        "attempted_delivery_local_title": "Dostawa nie powiodła się",
+        "attempted_delivery_local_description_html": "Nie mogliśmy dostarczyć Twojego zamówienia. Aby zaplanować kolejną dostawę, %{contact_us}.",
+        "thank_you_title_payment": "Twoja płatność została potwierdzona",
+        "thank_you_confirmed_order_with_email_payment": "Dokonałeś płatności za swoje zamówienie %{date}.",
+        "thank_you_confirmed_order_with_phone_payment": "Dokonałeś płatności za swoje zamówienie %{date}.",
+        "thank_you_confirmed_order_with_email_and_phone_payment": "Dokonałeś płatności za swoje zamówienie %{date}.",
+        "order_status_confirmed_order_with_email_payment": "Dokonałeś płatności za swoje zamówienie %{date}.",
+        "order_status_confirmed_order_with_phone_payment": "Dokonałeś płatności za swoje zamówienie %{date}.",
+        "order_status_confirmed_order_with_email_and_phone_payment": "Dokonałeś płatności za swoje zamówienie %{date}.",
+        "shop_qr_with_sms_upsell": {
+          "qr_code": {
+            "title": "Zeskanuj telefonem"
+          },
+          "sms": {
+            "title": "Lub wyślij link na swój telefon"
+          }
+        },
+        "estimated_delivery": "Aktualny kosztorys dostawy: ",
+        "view_business_customer_account": "Zobacz konto",
+        "company_location_title": "Lokalizacja",
+        "thank_you_title_review": "Twoje zamówienie zostało wysłane do sprawdzenia",
+        "thank_you_confirmed_order_with_draft": "Poinformujemy Cię, jeśli będziemy potrzebować więcej informacji lub gdy Twoje zamówienie zostanie potwierdzone.",
+        "breadcrumbs_submitted": "Wysłane",
+        "breadcrumbs_in_review": "W trakcie przeglądu",
+        "breadcrumbs_confirmed": "Potwierdzone",
+        "missing_shipping_address_banner": {
+          "title": "Zamówienie nie zawiera adresu dostawy",
+          "text_html": "%{contact_us} aby dodać adres",
+          "contact_us": "Skontaktuj się z nami"
+        },
+        "order_status_confirmed_with_installments_payment_return": "Zwróć swoją uwagę na sprzedawcę."
       },
       "shipping": {
         "title": "Transport",
