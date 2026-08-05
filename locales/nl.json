@@ -3873,13 +3873,48 @@
           "run_error": "Er is een fout opgetreden met uw winkelwagen."
         },
         "gift_card_price_must_be_greater_than_zero": "Het product in de vorm van een set \"%{name}” kan niet aan winkelwagen worden toegevoegd.",
-        "cart_too_large": "De mand is te groot."
+        "cart_too_large": "De mand is te groot.",
+        "gift_card_recipient_validation_error": "De opgegeven ontvanger van de cadeaukaart is niet geldig",
+        "invalid_input": "De parameter %{parameter} is ongeldig.",
+        "buyer_cannot_purchase_for_company_locations": "Voor deze locatie kunt u geen aankopen doen",
+        "only_one_added_to_cart": "Er is slechts 1 artikel aan uw winkelwagen toegevoegd vanwege beschikbaarheid.",
+        "only_n_added_to_cart": "Gewoon %{quantity} Er zijn artikelen aan uw winkelwagen toegevoegd vanwege beschikbaarheid.",
+        "maximum_available_quantity_reached": "Het maximale aantal van dit artikel bevindt zich al in uw winkelwagen.",
+        "cart_attributes_error": "Winkelwagenkenmerken bevatten onjuiste gegevens.",
+        "merchandise_not_applicable": "Dit artikel kan niet worden gekocht zoals geconfigureerd.",
+        "not_found": "De mand is niet gevonden"
+      },
+      "storefront": {
+        "invalid_password": "Onjuist wachtwoord, probeer het opnieuw."
+      },
+      "tags": {
+        "add_articles": "Beperk uw zoekopdracht tot items die ook de tag hebben %{tag}",
+        "add_products": "Beperk de selectie tot producten die overeenkomen met het label %{tag}",
+        "remove_articles": "Breid uw zoekopdracht uit naar items die niet zijn getagd %{tag}",
+        "remove_products": "Verwijder het etiket %{tag}"
+      },
+      "line_item": {
+        "item_status": {
+          "add_variant": "Het is toegevoegd %{delta}",
+          "increment_item": "Het is toegevoegd %{delta}",
+          "decrement_item": "Ze werden geëlimineerd %{delta} van %{total}",
+          "decrement_fulfilled_line_item": "Ze keerden terug %{delta} van %{total}",
+          "decrement_return_line_item": "Het is verwijderd %{delta} uit de terugkeer"
+        }
       }
     },
     "page_titles": {
       "search_results": {
         "few": "Zoeken: ze zijn gevonden %{count} Resultaten voor \"%{terms}”"
-      }
+      },
+      "products": "Producten",
+      "shopping_cart": "Uw winkelwagen",
+      "account": "rekening",
+      "create_account": "Maak een account aan",
+      "reset_account": "Reset uw account",
+      "addresses": "Adressen",
+      "order": "Bestel %{name}",
+      "search": "Zoeken"
     },
     "pagination": {
       "previous": "Terug",
@@ -4024,6 +4059,49 @@
           "caption": "Ontdek of er een storing is die andere Shopify-winkels treft, en niet alleen deze.",
           "link_text": "Bekijk de status van uw Shopify-systemen"
         }
+      }
+    },
+    "email_marketing": {
+      "subscribed": {
+        "confirmation": "Bedankt voor uw inschrijving op onze mailinglijst.",
+        "disclaimer": "U kunt zich op elk moment afmelden.",
+        "unsubscribe": "Afmelden"
+      },
+      "unsubscribed": {
+        "confirmation": "U heeft zich afgemeld van onze mailinglijst.",
+        "disclaimer": "U ontvangt geen marketingupdates meer van ons. U kunt zich op elk moment opnieuw abonneren",
+        "preview": "Bekijk een voorbeeld van wat klanten te zien krijgen als ze zich afmelden."
+      },
+      "open_tracking": {
+        "opt_in": {
+          "opted_in_html": "<b>Je hebt het volgen van het openen van e-mails ingeschakeld.</b>",
+          "visibility": "De openingspercentages van e-mails worden anoniem gerapporteerd. We zien alleen of u een e-mail heeft geopend, als onderdeel van het totale openingspercentage van e-mails.",
+          "opt_out_html": "Dat kan <a style='text-decoration:underline;' href='%{link}'>geef het op</a> wanneer de tracking-e-mail wordt geopend als u deze informatie niet wilt delen.",
+          "preview_bar": "Bekijk een voorbeeld van wat klanten te zien krijgen als ze ervoor kiezen om het volgen van geopende e-mails in te schakelen."
+        },
+        "opt_out": {
+          "opted_out_html": "<b>U heeft zich afgemeld voor het bijhouden van geopende e-mails.</b>",
+          "visibility": "We kunnen niet zien of je onze e-mails hebt geopend.",
+          "opt_in_html": "Kies <a style='text-decoration:underline;' href='%{link}'>activeren</a> tracking-e-mail wordt geopend.",
+          "preview_bar": "Bekijk een voorbeeld van wat klanten te zien krijgen als ze zich afmelden voor het volgen van geopende e-mails."
+        },
+        "no_longer_track": {
+          "status_html": "<b>We volgen niet langer het openen van e-mails.</b>",
+          "privacy_policy": "Na het verzenden van deze e-mail hebben we ons privacybeleid bijgewerkt en houden we geen openingen meer bij."
+        },
+        "track": {
+          "status_html": "<b>Het volgen van het openen van e-mails wordt gerapporteerd.</b>",
+          "visibility": "We zullen alleen zien of u de e-mail hebt geopend, binnen het algemene openingspercentage van de e-mail."
+        },
+        "updated_policy": {
+          "status_html": "<b>Het volgen van het openen van e-mails wordt gerapporteerd.</b>",
+          "visibility": "We hebben ons beleid bijgewerkt en houden nu het aantal geopende e-mails bij. De openingspercentages van e-mails worden anoniem gerapporteerd. We zien alleen of u een e-mail heeft geopend, als onderdeel van uw totale openingspercentage van e-mails.",
+          "opt_out_html": "Als u deze informatie niet wilt delen, kunt u dat doen <a style='text-decoration:underline;' href='%{link}'>afmelden</a>"
+        }
+      },
+      "sms_unsubscribe_confirm": {
+        "message": "Weet u zeker dat u zich wilt afmelden voor sms-marketing?",
+        "button": "Afmelden"
       }
     }
   },
