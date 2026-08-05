@@ -1617,10 +1617,14 @@
           "other": "Toegevoegd(en): %{count}"
         },
         "discount_show_more_warnings": {
-          "few": "Laat meer zien %{count}"
+          "few": "Laat meer zien %{count}",
+          "one": "Laat meer zien %{count}",
+          "other": "Laat meer zien %{count}"
         },
         "discount_codes_removed_summary": {
-          "few": "%{count} kortingscodes zijn verwijderd"
+          "few": "%{count} kortingscodes zijn verwijderd",
+          "one": "%{count} kortingscode is verwijderd",
+          "other": "%{count} kortingscodes zijn verwijderd"
         },
         "amazon_payments_label": "Amazon Betalen",
         "amazon_payments_login_hint": "U wordt gevraagd om u aan te melden bij Amazon.",
@@ -1948,7 +1952,61 @@
         "bank_account_connect": "Koppel een bankrekening",
         "bank_account_missing": "Het koppelen van de bankrekening is verplicht",
         "crypto_payment_method": {
-          "description": "Verbind uw portemonnee veilig. Uw saldo en adres worden niet gedeeld."
+          "description": "Verbind uw portemonnee veilig. Uw saldo en adres worden niet gedeeld.",
+          "tooltip": "Uw adres en portemonneesaldo worden niet gedeeld; Alleen het gevraagde bedrag kan worden afgetrokken",
+          "cashback_descriptor": {
+            "one": "U krijgt uw geld daarna terug %{count} dag",
+            "other": "U krijgt uw geld daarna terug %{count} dagen",
+            "few": "U krijgt uw geld daarna terug %{count} dagen"
+          }
+        },
+        "usdc_cashback_title": "%{incentive_percentage}% terugbetaling",
+        "usdc_cashback_additional_info": "Betaal met USDC op Base en ontvang %{incentive_percentage}% terug naar portemonnee over 30 dagen.",
+        "usdc_cashback_terms": "Er zijn voorwaarden en limieten van toepassing",
+        "separate_payments_label": "Je artikelen komen uit meerdere winkels. Het betalingsbedrag komt binnen %{separate_payments_link}.",
+        "separate_payments_text": "afzonderlijke betalingen",
+        "payments": "Betalingen",
+        "business_customer_with_bank_account_vaulting_payment_label": "Bewaar deze betaalmethode bij het afrekenen en autoriseer %{company} om toekomstige aankopen die u autoriseert voor deze locatie in rekening te brengen op uw account. Deze autorisatie is geldig totdat deze wordt geannuleerd. De betaalmethode kan worden gebruikt door alle contacten die aan deze locatie zijn toegewezen.",
+        "new_bank_account_disclaimer": "Het voltooien van de bestelling impliceert autorisatie %{shop_name} om onderstaande rekening af te schrijven via ACH, voor het aangegeven bedrag en op het aangegeven tijdstip.",
+        "bank_account_disclaimer": "Het kan tot vier werkdagen duren voordat ACH-betalingen zijn verwerkt.",
+        "bank_account_vaulted_company_location": "Bankrekening opgeslagen voor deze locatie",
+        "bank_account_generic_error": "Kan bankrekening niet toevoegen. Probeer het later opnieuw.",
+        "default": "Standaard",
+        "continue_to_guest_checkout": "Ga verder met afrekenen als bezoeker",
+        "add_payment_method": "Betaalmethode toevoegen",
+        "choose_new_payment_method": "Kies een nieuwe betaalmethode",
+        "add_new_payment_method": "Voeg een nieuwe betaalmethode toe",
+        "discount_codes_modified_summary": {
+          "one": "%{count} kortingscode is gewijzigd",
+          "other": "%{count} kortingscodes zijn gewijzigd",
+          "few": "%{count} kortingscodes zijn gewijzigd"
+        },
+        "discount_codes_removed_or_modified_summary": {
+          "one": "%{count} kortingscode is verwijderd of gewijzigd",
+          "other": "%{count} kortingscodes zijn verwijderd of gewijzigd",
+          "few": "%{count} kortingscodes zijn verwijderd of gewijzigd"
+        },
+        "multiple_primary_payment_not_allowed": "Ongeldige betaalmethoden",
+        "purchase_options_subscription_agreement_label": "Uw winkelwagen bevat een abonnement dat automatisch wordt verlengd. Door te klikken op \"%{button_label}”, %{consent_text} %{cancellation_instructions}",
+        "purchase_options_subscription_consent_text": "u gaat er uitdrukkelijk en bevestigend mee akkoord dat automatisch de terugkerende bedragen in uw winkelwagen in rekening worden gebracht (plus verzendkosten en belastingen) totdat uw abonnement(en) wordt beëindigd of geannuleerd.",
+        "purchase_options_subscription_cancellation_instructions": "%{cancel_text} Raadpleeg alstublieft %{cancellation_policy_label}.",
+        "purchase_options_subscription_cancel_text": "U kunt op elk moment annuleren door naar uw account te gaan of contact op te nemen met de winkel.",
+        "vault_for_payment_later": {
+          "pay_button_label": "Plaats de bestelling",
+          "notice": "Er wordt nu geen bedrag in rekening gebracht. Als u doorgaat met betalen, gaat u ermee akkoord dat het bedrag in rekening wordt gebracht via uw betaalmethode wanneer uw bestelling wordt verwerkt."
+        },
+        "alipay_label": "Alipay",
+        "wechat_pay_label": "WeChat Pay",
+        "oxxo_label": "OXXO",
+        "pay_with_credit_card": "Betaal met een creditcard",
+        "pay_with_debit_card": "Betaal met een pinpas",
+        "bogus_test_checkout": {
+          "title": "Testinstructies",
+          "intro": "Gebruik deze waarden om het afrekenen te testen:",
+          "approved_transaction": "{{card_number}} om een goedgekeurde transactie te simuleren",
+          "declined_transaction": "{{card_number}} om een geweigerde transactie te simuleren",
+          "gateway_failure": "{{card_number}} om een gatewayfout te simuleren",
+          "additional_instructions": "Gebruik een eventuele toekomstige vervaldatum en een eventuele driecijferige beveiligingscode."
         }
       },
       "shipping_errors": {
