@@ -1612,7 +1612,9 @@
           "other": "Er is %{count} verlopen kaarten, die u in uw account kunt bekijken en bewerken."
         },
         "order_edit_banner_items_added": {
-          "few": "Toegevoegd (s): %{count}"
+          "few": "Toegevoegd(en): %{count}",
+          "one": "Toegevoegd",
+          "other": "Toegevoegd(en): %{count}"
         },
         "discount_show_more_warnings": {
           "few": "Laat meer zien %{count}"
@@ -1817,7 +1819,74 @@
           "payment_tag": "Cadeaubon",
           "apply_another_gift_card_label": "Nog een cadeaukaart toepassen",
           "gift_card_label": "%{identifier} voor de cadeaubon",
-          "add_label": "Voeg een cadeaubon toe"
+          "add_label": "Voeg een cadeaubon toe",
+          "manage_label": "Beheer cadeaubonnen"
+        },
+        "custom_onsite_payment_method_modal": {
+          "title": "Gepersonaliseerde betalingsbevestiging ter plaatse"
+        },
+        "markets_pro_disclaimer_label": "Door uw bestelling te plaatsen, gaat u ermee akkoord om bij Global-e te kopen als een geregistreerde handelaar in overeenstemming met %{markets_pro_terms} en %{privacy_policy} Het is wereldwijd en om uw informatie mee te delen %{shop_name}.",
+        "markets_pro_disclaimer_terms_and_conditions": "Algemene voorwaarden",
+        "markets_pro_disclaimer_privacy_policy": "Privacybeleid",
+        "markets_pro_disclaimer_terms_and_conditions_title": "Algemene voorwaarden voor geregistreerde handelaren",
+        "markets_pro_disclaimer_privacy_policy_title": "Privacybeleid voor geregistreerde verkopers",
+        "purchase_order_number": {
+          "title": "Inkoopordernummer",
+          "label": "Inkoopordernummer (optioneel)"
+        },
+        "alternative_payment_currency_total_notice": "Let op: er worden kosten in rekening gebracht op uw betaalmethode %{amount_due}.",
+        "waiting_on_taxes_message": "Als uw kosten niet binnen enkele seconden worden berekend, vernieuw dan de pagina.",
+        "waiting_on_taxes_notice": "Belastingen worden berekend",
+        "order_edit_banner_single_item_returned": "Teruggegeven",
+        "order_edit_banner_multiple_items_returned": "Geretourneerd(en): {{amount}}",
+        "shop_pay_installments_label": "Tarief Winkel Betalen",
+        "add_credit_card_modal": {
+          "title": "Kaart toevoegen",
+          "cancel": "Annuleer",
+          "save": "Opslaan"
+        },
+        "delete_credit_card_modal": {
+          "title": "Verwijder de kaart",
+          "confirmation": "Natuurlijk wil je verwijderen {{brandName}} waarmee eindigt {{lastDigits}}?",
+          "cancel": "Annuleer",
+          "delete": "Verwijderen"
+        },
+        "order_edit_banner_items_removed": {
+          "in_full": "Verwijderd",
+          "with_quantities": "Verwijderd(en): {{delta}} van {{quantity}}"
+        },
+        "order_edit_banner_items_returned": {
+          "in_full": "Geretourneerd(en): {{quantity}}",
+          "with_quantities": "Geretourneerd(en): {{delta}} van {{quantity}}"
+        },
+        "saved_credit_card_actions": {
+          "edit": "Bewerken",
+          "delete": "Verwijderen"
+        },
+        "edit_credit_card_modal": {
+          "title": "Bewerk de kaart",
+          "done": "gedaan",
+          "cancel": "Annuleer",
+          "description": "U kunt alleen het factuuradres van uw kaart wijzigen.",
+          "fields": {
+            "default": "Als standaard instellen",
+            "card_number": "Kaartnummer",
+            "expiry": "Vervaldatum",
+            "security_code": "Beveiligingscode",
+            "name": "De naam op de kaart",
+            "billing": "Facturering aan"
+          }
+        },
+        "payment_method": "Betaalmethode",
+        "expired_payment_method": "De geselecteerde betaalmethode is verlopen",
+        "subscription_heading": "Abonnementsovereenkomst",
+        "use_order_billing_address_label": "Gebruik factuuradres voor bestelling",
+        "use_location_billing_address_label": "Gebruik factuuradres voor locatie",
+        "use_location_shipping_address_label": "Gebruik het verzendadres als locatie",
+        "purchase_options_agreement_label_wallets": "Door verder te betalen, gaat u akkoord met de toekomstige kosten vermeld op deze pagina en met de annuleringsvoorwaarden.",
+        "gift_card_store_credit": {
+          "add_label": "Voeg een cadeaubon of winkeltegoed toe",
+          "manage_label": "Beheer cadeaubonnen of winkeltegoed"
         }
       },
       "shipping_errors": {
