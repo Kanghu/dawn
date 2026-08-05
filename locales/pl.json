@@ -4366,7 +4366,79 @@
           "few": "Karty podarunkowe zostały zwrócone"
         },
         "gift_resend_failure": {
-          "one": "Wystąpił problem z ponownym wysłaniem karty upominkowej. Spróbuj ponownie lub skontaktuj się z nami."
+          "one": "Wystąpił problem z ponownym wysłaniem karty upominkowej. Spróbuj ponownie lub skontaktuj się z nami.",
+          "other": "Wystąpił problem z ponownym wysłaniem kart podarunkowych. Spróbuj ponownie lub skontaktuj się z nami.",
+          "few": "Wystąpił problem z ponownym wysłaniem kart podarunkowych. Spróbuj ponownie lub skontaktuj się z nami."
+        },
+        "amazon_buy_with_prime": {
+          "order_tracking_link": {
+            "text": "Zarządzaj z Amazonem",
+            "new_window_disclaimer": "(otwiera nowe okno)"
+          }
+        },
+        "attempted_to_deliver_label": "Próba dostarczenia",
+        "there_was_a_problem_label": "Wystąpił problem",
+        "buy_with_prime_logo_accessibility_label": "Amazon Kup z logo Prime",
+        "delivered": "Dostarczono {{date}}",
+        "complete_label": "Ukończono",
+        "multiple_statuses_label": "Statusy dla wielu zamówień",
+        "status_timestamp": "Data aktualizacji: {{date}}",
+        "delivery_promise": {
+          "claim_shop_cash_cta": {
+            "no_shop_app_label": "{{appDownloadLink}} aby ubiegać się o gotówkę sklepową",
+            "has_shop_app_label": "Odbierz gotówkę w sklepie",
+            "download_shop_app_label": "Pobierz sklep"
+          },
+          "promise_line": {
+            "single_brand_label": "Dostawa obsługiwana przez",
+            "mixed_brands_label": "Gwarantowana dostawa",
+            "not_delivered_by_label": "Niedostarczony przez {{date}}",
+            "modal_accessibility_button_label": "Szczegóły obietnicy dostawy"
+          },
+          "details_modal": {
+            "title": "Dostawa obsługiwana przez",
+            "modal_accessiblity_label": "Szczegóły obietnicy dostawy",
+            "delivery_by_label": "Dostawa przez {{date}}",
+            "delivery_guaranteed_by_label": "Gwarantowana dostawa do {{date}}",
+            "shop_cash_claim": {
+              "may_be_eligible_label": "Shop Promise gwarantuje szybką i niezawodną dostawę. Poproś o gotówkę w sklepie, jeśli Twoje zamówienie dotrze z opóźnieniem.",
+              "may_be_eligible_not_authorized_label": "Możesz kwalifikować się do otrzymania płatności Shop Cash, ponieważ zamówienie dotarło z opóźnieniem. Zaloguj się, aby zobaczyć szczegóły.",
+              "redeemed_label": "Odebrałeś już Shop Cash, ponieważ to zamówienie dotarło z opóźnieniem.",
+              "expired_label": "To zamówienie nie podlega reklamacji z tytułu opóźnienia w dostawie, ponieważ 30-dniowa gwarancja wygasła.",
+              "no_shop_cash_label": "Zamówienie to nie podlega reklamacji z tytułu opóźnienia w dostawie, ponieważ nie zostało opłacone za pomocą Shop Pay.",
+              "no_longer_guaranteed_label": "Przedmioty te nie są już objęte gwarancją dostawy.",
+              "claim_shop_cash_title": "Zeskanuj, aby zgłosić roszczenie {{amount}} w sklepie Cash",
+              "claim_shop_cash_description": "Możesz używać Shop Cash do przyszłych zakupów w aplikacji Shop."
+            },
+            "delivery_guarantee_label": "Gwarantowana dostawa"
+          }
+        },
+        "external_promise_manage_button_label": {
+          "buy_with_prime": "Zarządzaj na Amazonie"
+        },
+        "delivery_promise_v2": {
+          "promise_line": {
+            "shop_promise_brand_label": "Gwarantowana dostawa do",
+            "external_promise_brand_label": "Dostawa przez",
+            "not_delivered_by_label": "Dostarczone po {{date}}",
+            "delivery_guarantee_expired_label": "Gwarancja dostawy wygasła",
+            "modal_accessibility_button_label": "Szczegóły obietnicy dostawy",
+            "download_shop_app_button_label": "Pobierz Sklep, aby go śledzić",
+            "track_with_shop_button_label": "Śledź za pomocą Shop",
+            "claim_shop_cash_button_label": "Odbierz gotówkę w sklepie"
+          },
+          "details_modal": {
+            "title": "Gwarancja dostawy",
+            "active_delivery_guarantee_label": "Dostawa przez {{date}}",
+            "expired_delivery_guarantee_description": "30-dniowa gwarancja Shop Promise na to zamówienie wygasła.",
+            "expired_badge_label": "Wygasło",
+            "order_includes_guarantees_label": "Twoje zamówienie obejmuje gwarancje {{deliveryAgreementsCount}}",
+            "order_includes_guarantees_description": "Shop Promise gwarantuje szybką i niezawodną dostawę. Odbierz gotówkę w sklepie, jeśli Twoje zamówienie dotrze później {{date}}.",
+            "delivered_after_label": "Dostarczone po {{date}}",
+            "delivered_after_description": "Ponieważ zamówienie dotarło z opóźnieniem, masz prawo do reklamacji {{amount}} Kup gotówkę.",
+            "claimed_shop_cash_description": "Ponieważ to zamówienie dotarło z opóźnieniem, odebrałeś je {{amount}} Kup gotówkę.",
+            "eligible_to_claim_shop_cash_description": "Ponieważ zamówienie dotarło z opóźnieniem, masz prawo do reklamacji {{amount}} Kup gotówkę."
+          }
         }
       }
     }
