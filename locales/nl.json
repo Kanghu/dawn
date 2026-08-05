@@ -2596,8 +2596,9 @@
           "other": "%{count} ophaalpunten in de buurt van uw locatie"
         },
         "pickup_unavailable_banner_title": {
-          "few": "Uw items kunnen niet worden opgeheven door tilpunten",
-          "one": "Er zijn geen afhaalpunten beschikbaar voor uw artikel"
+          "few": "Er zijn geen afhaalpunten beschikbaar voor uw artikelen",
+          "one": "Er zijn geen afhaalpunten beschikbaar voor uw artikel",
+          "other": "Er zijn geen afhaalpunten beschikbaar voor uw artikelen"
         },
         "location_is_currently_closed": "Gesloten",
         "business_hours": "Schema",
@@ -3165,6 +3166,78 @@
       "session_errors": {
         "session_not_unique": "Er is een probleem opgetreden bij het verwerken van uw bestelling. Vernieuw deze pagina om terug te keren naar de winkel.",
         "session_already_finished": "Deze bestelling is al verzonden. U kunt terugkeren naar de winkel om een ​​nieuwe bestelling te starten."
+      },
+      "error_page": {
+        "terminal": {
+          "title": "Er is een probleem opgetreden bij het voltooien van de bestelling",
+          "message": "Vernieuw deze pagina of probeer het over een paar minuten opnieuw",
+          "action": {
+            "cta": "Vernieuw de pagina"
+          },
+          "request_id": "Aanvraag-ID: {{requestId}}"
+        },
+        "embed_errors": {
+          "storefront_password_required": "Deze winkel is beveiligd met een wachtwoord",
+          "customer_account_required": "Om de betaling te voltooien is een klantaccount vereist",
+          "cart_completed": "Deze betaling is al voltooid",
+          "invalid_cart": "Deze winkelwagen is niet langer geldig",
+          "not_authorized": "Authenticatie voor betaling mislukt. Controleer de inloggegevens van de app",
+          "killswitch_enabled": "Betaling is tijdelijk niet mogelijk",
+          "policy_violation": "Het voltooien van de betaling is niet mogelijk vanwege beperkingen in de beleidsconfiguratie",
+          "unrecoverable_failure": "Uploaden van betaling mislukt. Probeer het opnieuw"
+        }
+      },
+      "notice_banner": {
+        "return_to_cart_link_text": "Terug naar winkelwagen",
+        "return_to_cart_to_update_quantities": "%{return_to_cart_link_text} hoeveelheden bijwerken",
+        "subscription_changed": "Eén van uw abonnementen is gewijzigd.",
+        "company_location_changed": "Uw winkelwagen is bijgewerkt. Controleer uw bestelling voordat u deze verzendt.",
+        "violations_title": "{{violation}} ontbreekt of is ongeldig",
+        "individual_violations_title": {
+          "DeliveryViolations": "Verzendadres",
+          "PaymentViolations": "Factuuradres",
+          "OtherViolations": "Bestelinformatie",
+          "UnhandledViolations": "Bestelinformatie"
+        },
+        "all_violations_content": "Bel ons of {{emailLink}} om deze informatie bij te werken en uw bestelling af te ronden:",
+        "all_violations_email_link": "stuur ons een e-mail",
+        "editable_shipping_address_violations_message_title": "Voeg deze informatie toe om uw bestelling af te ronden:",
+        "editable_shipping_address_violations_message_footer": "Als u het adres voor deze locatie permanent wilt bijwerken, {{emailLink}}.",
+        "editable_shipping_address_violations_email_link": "neem contact met ons op",
+        "company_location_changed_product_removed": "Uw winkelwagen is bijgewerkt omdat sommige producten niet beschikbaar zijn op deze locatie. Controleer uw bestelling voordat u deze verzendt.",
+        "shipping_address_incomplete_title": "Verzendadres is onvolledig",
+        "calculating_shipping": "Verzendkosten worden nog berekend. Probeer het over een paar seconden opnieuw. Er zijn geen kosten in rekening gebracht.",
+        "calculating_taxes": "Er worden nog steeds belastingen berekend. Probeer het over een paar seconden opnieuw. Er zijn geen kosten in rekening gebracht.",
+        "generic_processing_error": {
+          "title": "Er is een probleem opgetreden bij het verwerken van uw bestelling.",
+          "body": "Er zijn geen kosten in rekening gebracht. Probeer het opnieuw of gebruik een andere betaalmethode."
+        },
+        "contact_information": {
+          "title": "De contactgegevens zijn onjuist",
+          "header": "Om uw gegevens bij te werken, {{emailLink}}.",
+          "email_link": "neem contact met ons op"
+        },
+        "payment_method_not_available_with_payment_terms": "De door u geselecteerde betaalmethode is niet langer beschikbaar omdat de betaling voor deze bestelling nu verschuldigd is {{paymentTerms}}",
+        "payment_method_not_available_with_fulfillment_terms": "De door u geselecteerde betaalmethode is niet langer beschikbaar omdat de betaling voor deze bestelling nu verschuldigd is op het moment dat de bestelling wordt uitgevoerd",
+        "payment_method_not_available_with_fixed_terms": "De door u geselecteerde betaalmethode is niet langer beschikbaar omdat de betaling voor deze bestelling nu later moet plaatsvinden",
+        "payment_method_not_available_with_review_requirement": "De geselecteerde betaalmethode is niet beschikbaar, aangezien de betaling onmiddellijk na de orderbevestiging verschuldigd is.",
+        "validation_errors_banner": {
+          "section_label": {
+            "delivery": "Verzending",
+            "contact": "Contacteer",
+            "payment": "Betaling",
+            "billing": "Facturering"
+          },
+          "heading": {
+            "one": "Er is {{count}} fout:",
+            "other": "Er is {{count}} fouten:",
+            "few": "Er is {{count}} fouten:"
+          },
+          "errors_in_section": {
+            "one": "{{count}} fout in de sectie {{section}}",
+            "other": "{{count}} sectiefouten {{section}}"
+          }
+        }
       }
     },
     "notices": {
