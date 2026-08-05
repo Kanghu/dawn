@@ -4014,7 +4014,7 @@
   },
   "customer_accounts": {
     "navigation_and_structure": {
-      "loading_policy_content_accessibility_label": "Treść polityki została załadowana.",
+      "loading_policy_content_accessibility_label": "Treść zasad została załadowana",
       "account_menu": {
         "hide_accessibility_label": "Ukryj menu konta",
         "show_accessibility_label": "Pokaż menu Konto",
@@ -4031,6 +4031,42 @@
       "delete_confirmation": {
         "cancel": "Anuluj",
         "delete": "Usuń"
+      },
+      "dismiss_toast": "Zamknij",
+      "document_title": "{{sectionName}} - {{shopName}} - Ciąg dalszy",
+      "generic_accessibility_label": "{{label}}: {{value}}",
+      "loading_message": "Ładowanie",
+      "log_out_link": "Wyloguj się",
+      "logout_overlay_label": "Rozłączanie...",
+      "nav_label_accessibility_label": "Główna nawigacja",
+      "navigation_accessibility_message": "Dotarłeś do {{sectionName}}",
+      "open_menu_accessibility_label": "Otwórz główną nawigację",
+      "shop_logo_accessibility_label": "Logo dla {{shopName}}",
+      "settings_link": "Ustawienia",
+      "country_switcher_toast_message": "Kraj został zmieniony na: {{countryName}}",
+      "switch_country": "Zmień kraj",
+      "search": "Szukaj",
+      "location_switcher_toast_message": "Lokalizacja została zmieniona na {{locationName}}",
+      "switch_location": "Zmień lokalizację",
+      "view_details": "Zobacz szczegóły",
+      "company_location": "Lokalizacja firmy",
+      "no_countries_found": "Nie znaleziono kraju",
+      "no_locations_found": "Nie znaleziono lokalizacji",
+      "try_new_search": "Spróbuj nowego wyszukiwania",
+      "skip_to_content": "Przejdź do treści",
+      "policy_load_error": "{{policyName}} nie udało się załadować",
+      "policy_try_again": "Spróbuj ponownie",
+      "loading_section_accessibility_label": "Ładowanie {{sectionName}}",
+      "back_button_accessibility_label": "Powrót",
+      "go_to_store_link": "Idź do sklepu",
+      "orders_link_label": "Zamówienia",
+      "subscriptions_link_label": "Subskrypcje",
+      "store_credit_accessibility_label": "Kredyt sklepowy {{formattedBalance}}",
+      "store_credit_balances_list_accessibility_label": "Przechowuj salda kredytowe",
+      "store_credit_multi_currency_accessibility_label": {
+        "one": "Kredyt sklepowy {{formattedBalance}} i nadal {{count}} waluta",
+        "other": "Kredyt sklepowy {{formattedBalance}} i inne {{count}} monety",
+        "few": "Kredyt sklepowy {{formattedBalance}} i inne {{count}} monety"
       }
     },
     "announcement_bar": {
@@ -4040,6 +4076,25 @@
     },
     "callback": {
       "try_again": "Spróbuj ponownie"
+    },
+    "account_information": {
+      "loading_accessibility_message": "Ładowanie informacji o koncie",
+      "loading_finished_accessibility_message": "Informacje o koncie zostały załadowane",
+      "profile_card": {
+        "cancel": "Anuluj",
+        "cancel_accessibility_label": "Anuluj edycję profilu",
+        "edit": "Edytuj",
+        "edit_accessibility_label": "Edytuj profil",
+        "email_help_text": "Adres e-mail nie może zostać zmieniony",
+        "first_name": "Imię",
+        "last_name": "Nazwisko rodzinne",
+        "phone_number_help_text": "Numeru telefonu nie można zmienić",
+        "save": "Zapisz",
+        "save_accessibility_label": "Zapisz profil",
+        "title": "Profil",
+        "no_name_provided_accessibility_label": "Nie dodano żadnego imienia",
+        "email": "E-mail"
+      }
     }
   },
   "category_links": {
