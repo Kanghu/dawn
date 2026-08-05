@@ -779,6 +779,66 @@
         },
         "shipping_method_recurring_shipments_group_title": {
           "few": "Terugkerende zendingen"
+        },
+        "estimated_delivery_time": "Geschatte levering: %{time}",
+        "estimated_delivery_time_range": "Geschatte levering: %{min_time}–%{max_time}",
+        "arrives_time": "Aankomsttijd: %{time}",
+        "arrives_time_range": "Aankomstbereik: %{min_time}–%{max_time}",
+        "estimated_time": "Geschat: %{time}",
+        "estimated_time_range": "Geschat: %{min_time}-%{max_time}",
+        "delivery_date_range": "%{min_time}–%{max_time}",
+        "subscription_local_delivery": "Lokale bezorging op basis van abonnement",
+        "subscription_pickup": "Afhalen op basis van abonnement",
+        "delivery_today": "Levering op dezelfde dag, %{time}",
+        "delivery_tomorrow": "Levering de volgende dag, %{time}",
+        "two_day_delivery": "Levering binnen 2 dagen %{time}",
+        "delivery": "Levering %{time}",
+        "duties_and_taxes_title": "Douanerechten en belastingen",
+        "shipping_information_required_notice": "Verzendinformatie is vereist. {{link}}.",
+        "shipping_information_redirect_link": "Voer hier de gegevens in",
+        "loading_progressive_rates": "Op zoek naar meer tarieven…",
+        "no_other_methods_available": "Er zijn geen andere methoden beschikbaar",
+        "duties_and_taxes_options": {
+          "ddu_title": "Betalen bij aflevering",
+          "ddu_caption": "Er kunnen extra kosten van toepassing zijn",
+          "ddp_title": "Betaal nu",
+          "ddp_caption": "Voor de bezorging gelden geen extra kosten"
+        },
+        "shipping_method_combinations": {
+          "without_separator": "%{firstMethod}, %{secondMethod}",
+          "with_separator": "%{rest}, %{current},",
+          "combination": "%{rest} en %{current}"
+        },
+        "shipping_used_as_billing_notice": "Dit adres wordt tevens gebruikt als factuuradres voor deze bestelling.",
+        "address_update": "Adres bijwerken",
+        "shipping_address_title": "Verzenden naar",
+        "add_address": "Gebruik een ander adres",
+        "add_delivery_instructions": "Voeg bezorginstructies toe",
+        "edit": "Bewerken",
+        "delete": "Verwijderen",
+        "address_more": "Meer acties voor dit adres",
+        "address_edit": "Adres bewerken",
+        "address_delete": "Verwijder het adres",
+        "address_confirm": "Weet u zeker dat u dit adres uit uw account wilt verwijderen?",
+        "address_form": {
+          "add_address": "Voeg een adres toe",
+          "save": "Opslaan",
+          "cancel": "Annuleer",
+          "generic_error": "Er is een probleem opgetreden bij het opslaan van uw adres. Probeer het opnieuw.",
+          "one_time_address_subtitle": "Gebruik een uniek adres voor deze bestelling",
+          "edit": "Adres bewerken",
+          "update": "Sla de wijzigingen op"
+        },
+        "different_shipping_method_summary": "Voer een ander verzendadres in om de beschikbare verzendmethoden te bekijken",
+        "invalid_shipping_method_summary": "Voer een geldig verzendadres in om de beschikbare verzendmethoden te bekijken",
+        "method_summary": {
+          "incomplete_address_entered": "Voer een volledig verzendadres in om de beschikbare verzendmethoden te bekijken",
+          "incomplete_address_selected": "Selecteer een volledig verzendadres om de beschikbare verzendmethoden te bekijken"
+        },
+        "local_pickup": {
+          "search_address": "Zoek het adres",
+          "rollup_title": "Ophaallocatie",
+          "rollup_accessibility_label": "Opties voor ophaallocatie"
         }
       },
       "general": {
