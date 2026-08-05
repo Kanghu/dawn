@@ -1191,7 +1191,71 @@
           "text_html": "%{contact_us} aby dodać adres",
           "contact_us": "Skontaktuj się z nami"
         },
-        "order_status_confirmed_with_installments_payment_return": "Zwróć swoją uwagę na sprzedawcę."
+        "order_status_confirmed_with_installments_payment_return": "Zwróć swoją uwagę na sprzedawcę.",
+        "order_status_confirmed_with_installments_payment_confirm": "Wkrótce otrzymasz wiadomość e-mail z potwierdzeniem zawierającą numer zamówienia i szczegóły harmonogramu rat",
+        "first_payment_complete": "Pierwsza płatność została ukończona",
+        "in_store_purchase": "Zakupy w sklepie",
+        "choose_payment_method_later": "Wybierz metodę płatności później",
+        "purchase_order_number_title": "Numer zamówienia: %{purchase_order_number}",
+        "thank_you_ready_for_picked_up": "Twoje zamówienie zostało odebrane pod wskazanym adresem %{address}.",
+        "ready_for_delivery": "Gotowe do dostawy",
+        "order_updates_subscribe_to_email_notifications_failed": "Nie możemy przechowywać tego adresu e-mail w celu aktualizacji. Spróbuj ponownie lub użyj innego adresu e-mail.",
+        "order_updates_subscribe_to_email_notifications_email_already_exists": "Wprowadzony adres e-mail już istnieje.",
+        "subscriptions_management": {
+          "title": "Subskrypcja",
+          "description": "Kontynuuj korzystanie ze swojego konta, aby przeglądać subskrypcje i zarządzać nimi.",
+          "button_label": "Zarządzaj swoją subskrypcją"
+        },
+        "manage_order_label": "Zarządzaj swoim zamówieniem",
+        "gift_card_confirmation_by_text_typ": {
+          "one": "W ciągu kilku minut otrzymasz wiadomość SMS z kartą podarunkową.",
+          "other": "W ciągu kilku minut otrzymasz wiadomość SMS z kartami podarunkowymi.",
+          "few": "W ciągu kilku minut otrzymasz wiadomość SMS z kartami podarunkowymi."
+        },
+        "gift_card_confirmation_by_email_typ": {
+          "one": "W ciągu kilku minut otrzymasz e-mail z kartą podarunkową.",
+          "other": "W ciągu kilku minut otrzymasz e-mail z kartami podarunkowymi.",
+          "few": "W ciągu kilku minut otrzymasz e-mail z kartami podarunkowymi."
+        },
+        "gift_card_email_title": {
+          "one": "Karta podarunkowa została wysłana e-mailem",
+          "other": "Karty podarunkowe zostały wysłane e-mailem",
+          "few": "Karty podarunkowe zostały wysłane e-mailem"
+        },
+        "gift_card_text_title": {
+          "one": "Karta podarunkowa została wysłana SMS-em",
+          "other": "Karty podarunkowe zostały wysłane e-mailem",
+          "few": "Karty podarunkowe zostały wysłane e-mailem"
+        },
+        "resend_gift_cards_by_email": "Chcę ponownie wysłać e-mail",
+        "resend_gift_cards_by_text": "Chcę ponownie wysłać wiadomość tekstową",
+        "gift_card_resent_confirmation": {
+          "one": "Karta podarunkowa została wysłana ponownie.",
+          "other": "Karty podarunkowe zostały odesłane.",
+          "few": "Karty podarunkowe zostały odesłane."
+        },
+        "gift_card_resend_failure": {
+          "one": "Wystąpił problem z ponownym wysłaniem karty upominkowej. Spróbuj ponownie lub skontaktuj się z nami.",
+          "other": "Wystąpił problem z ponownym wysłaniem kart podarunkowych. Spróbuj ponownie lub skontaktuj się z nami.",
+          "few": "Wystąpił problem z ponownym wysłaniem kart podarunkowych. Spróbuj ponownie lub skontaktuj się z nami."
+        },
+        "failed_pending_payment_page_title": "Wystąpił problem z Twoją płatnością",
+        "thank_you_title_payments_app_pending_default": "Twoja płatność jest przetwarzana",
+        "thank_you_title_payments_app_pending_buyer_action_required": "Twoje zamówienie zostało odebrane",
+        "thank_you_title_payments_app_failed_pending_payment": "Twoja płatność nie mogła zostać przetworzona",
+        "thank_you_payments_app_failed_pending_payment": "Nie pobrałeś opłaty za swoje zamówienie. Wróć do koszyka, aby sprawdzić zamówienie i ponownie dokonać płatności.",
+        "order_status_payments_app_pending_payment_description_default_with_email_and_phone": "Wkrótce otrzymasz wiadomość e-mail z potwierdzeniem. Śledź swoje zamówienie za pomocą aplikacji Shop.",
+        "order_status_payments_app_pending_payment_description_default_with_email": "Wkrótce otrzymasz wiadomość e-mail z potwierdzeniem. Śledź swoje zamówienie za pomocą aplikacji Shop.",
+        "order_status_payments_app_pending_payment_description_default_with_phone": "Wkrótce otrzymasz wiadomość tekstową z potwierdzeniem. Śledź swoje zamówienie za pomocą aplikacji Shop.",
+        "order_status_payments_app_pending_payment_description_buyer_action_required_with_email_and_phone": "Po zakończeniu płatności otrzymasz e-mail z potwierdzeniem. Śledź swoje zamówienie za pomocą aplikacji Shop.",
+        "order_status_payments_app_pending_payment_description_buyer_action_required_with_email": "Po zakończeniu płatności otrzymasz e-mail z potwierdzeniem. Śledź swoje zamówienie za pomocą aplikacji Shop.",
+        "order_status_payments_app_pending_payment_description_buyer_action_required_with_phone": "Po zakończeniu płatności otrzymasz wiadomość SMS z potwierdzeniem. Śledź swoje zamówienie za pomocą aplikacji Shop.",
+        "order_status_payments_app_failed_pending_payment": "Nie pobrałeś opłaty za swoje zamówienie. Wróć do koszyka, aby sprawdzić zamówienie i ponownie dokonać płatności.",
+        "order_status_payments_app_pending_payment_description_buyer_action_required_with_email_pick_up": "Po zakończeniu płatności otrzymasz e-mail z potwierdzeniem. Śledź swoje zamówienie za pomocą aplikacji Shop.",
+        "thank_you_confirmed_order_with_missing_payment": "Skontaktuj się z nami e-mailem lub telefonicznie, aby otrzymać potwierdzenie zamówienia.",
+        "thank_you_confirmed_order_with_missing_pick_up": "Skontaktuj się z nami e-mailem lub telefonicznie, aby otrzymać potwierdzenie zamówienia.",
+        "thank_you_confirmed_order_with_draft_payment": "Poinformujemy Cię, jeśli będziemy potrzebować więcej informacji lub gdy Twoje zamówienie zostanie potwierdzone.",
+        "thank_you_confirmed_order_with_draft_pick_up": "Poinformujemy Cię, jeśli będziemy potrzebować więcej informacji lub gdy Twoje zamówienie zostanie potwierdzone."
       },
       "shipping": {
         "title": "Transport",
