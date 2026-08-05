@@ -3805,8 +3805,68 @@
           "paid": "Płatny",
           "unpaid": "Niezapłacone",
           "voided": "Anulowano",
-          "partially_paid": "Częściowo płatne"
-        }
+          "partially_paid": "Częściowo płatne",
+          "partially_refunded": "Częściowo zwrócony",
+          "refunded": "Zwrócone",
+          "expired": "Wygasło"
+        },
+        "fulfillment_status": {
+          "fulfilled": "Osiągnięte",
+          "complete": "Ukończono",
+          "partial": "Częściowo",
+          "unfulfilled": "Niespełniony",
+          "restocked": "Z zatankowanym zapasem"
+        },
+        "transaction_status": {
+          "success": "sukces",
+          "pending": "Czekam",
+          "failure": "Niepowodzenie",
+          "error": "Błąd"
+        },
+        "cancel_reason": {
+          "declined": "Płatność odrzucona",
+          "inventory": "Elementy niedostępne",
+          "fraud": "Oszukańcze zamówienie",
+          "customer": "Klient zmienił/anulował zamówienie",
+          "other": "Coś innego",
+          "few": "Coś innego",
+          "staff": "Błąd osobisty"
+        },
+        "cash_on_delivery": "Gotówka przy odbiorze"
+      },
+      "cart": {
+        "only_n_items_available": "Możesz tylko dodać %{count} %{name} do kosza.",
+        "too_many_items_in_cart": "Nie możesz dodać więcej %{name} w koszyku.",
+        "all_items_in_cart": "Wszystkie te %{count} %{name} Jestem w twoim koszyku.",
+        "empty_update": "nie można zaktualizować pustego koszyka",
+        "missing_parameters": "nie ma prawidłowego identyfikatora ani parametru linii",
+        "generic_error": "Błąd koszyka",
+        "too_many_line_items_error": "Twój koszyk nie może zawierać ryb %{max} artykuły.",
+        "link_expired": "Link wygasł",
+        "link_no_longer_exists": "Link już nie istnieje.",
+        "stock_problems_html": "Jeden lub więcej artykułów nie jest już dostępnych. Udostępniłem to <a href='%{link}'>zaktualizowany koszyk</a>.",
+        "changed": "Zmodyfikowany koszyk",
+        "items_changed": "Zmieniono jeden lub więcej elementów.",
+        "product_sold_out": "Produkt”%{name}” jest już wyprzedany.",
+        "variant_not_found": "Nie można znaleźć opcji",
+        "variant_requires_selling_plan": "Wariant można kupić wyłącznie w ramach planu zakupowego.",
+        "shipping_address_not_required": "Ten wózek nie wymaga dostawy",
+        "shipping_address_invalid": "Wystąpił problem z obliczeniem opłat za wysyłkę. Kontynuuj realizację transakcji, aby wybrać opłatę za wysyłkę przed realizacją transakcji.",
+        "selling_plan_not_applicable": "Planu sprzedaży nie można zastosować do wariantu",
+        "selling_plan_not_available_for_company_locations": "W przypadku zamówień B2B możliwe są wyłącznie zakupy indywidualne.",
+        "digital_product_not_available_for_company_locations": "Tego artykułu nie można dodać do zamówienia B2B",
+        "product_not_available": "Produkt niedostępny",
+        "less_than_minimum": "Ten przedmiot ma minimum %{min}.",
+        "more_than_maximum": "Ten przedmiot ma maksimum %{max}.",
+        "not_respect_step": "Można wprowadzić tę pozycję tylko w przyrostach %{step}.",
+        "bundle_requires_components": "Produkt w formie zestawu”%{name}” nie można dodać do koszyka.",
+        "gift_card_with_components_not_supported": "Produkt w formie zestawu”%{name}” nie można dodać do koszyka.",
+        "view_lines_limit_reached": "Liczba wierszy musi być mniejsza lub równa %{limit}",
+        "merchandise_line_transformers": {
+          "run_error": "Wystąpił błąd w Twoim koszyku."
+        },
+        "gift_card_price_must_be_greater_than_zero": "Produkt w formie zestawu”%{name}” nie można dodać do koszyka.",
+        "cart_too_large": "Kosz jest za duży."
       }
     }
   },
