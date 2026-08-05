@@ -2628,15 +2628,56 @@
       },
       "local_pickup": {
         "location_information": {
-          "few": "Bestaan %{count} winkels met voorraad dichtbij %{address}"
+          "few": "Ik ben dicht bij jou %{count} vestigingen met voorraad",
+          "one": "Ik ben dicht bij jou %{count} locatie met voorraad",
+          "other": "Ik ben dicht bij jou %{count} vestigingen met voorraad"
         },
         "paginator": {
           "label": {
-            "few": "%{first} - %{last} VAN %{count} winkel"
-          }
+            "few": "%{first} - %{last} van %{count} winkels",
+            "one": "%{first} - %{last} van %{count} winkel",
+            "other": "%{first} - %{last} van %{count} winkels"
+          },
+          "accessibility_label": "Lokale ophaalpaginering",
+          "previous": "Vorige pagina",
+          "next": "Volgende pagina"
         },
         "reveal_more_label": {
-          "few": "Toont nog steeds %{count} (van) locaties"
+          "few": "Laat meer zien %{count} (van) locaties",
+          "one": "Laat meer zien %{count} locatie",
+          "other": "Laat meer zien %{count} (van) locaties"
+        },
+        "toggle_location": "Wijzig locatie",
+        "or": "OF",
+        "cancel": "Annuleer",
+        "your_location": "jouw locatie",
+        "search_button": "Vind winkels",
+        "no_stores_found": "Geen winkels gevonden",
+        "could_not_resolve_address": "Uw adres kon niet worden gevonden. Probeer het opnieuw of gebruik een ander adres",
+        "location_address_search_label": "Adres",
+        "all_stores_far_away": {
+          "title": "De dichtstbijzijnde locaties liggen op grotere afstand %{distance}",
+          "description": "Selecteer een locatie of %{ship_to_address_link}",
+          "ship_to_address_link": "afleveradres",
+          "title_with_location": "De dichtstbijzijnde locatie is voorbij %{distance} versus %{location}",
+          "description_with_location": "%{change_location_link} of %{ship_to_address_link}",
+          "change_location_link": "Wijzig uw locatie",
+          "title_with_specific_location": "De dichtstbijzijnde locatie met uw item bevindt zich op grotere afstand %{distance} van %{location}",
+          "title_with_item": {
+            "one": "De dichtstbijzijnde locatie met uw artikel is meer dan %{distance} van %{location}",
+            "other": "De dichtstbijzijnde locatie met uw artikelen is meer dan %{distance} van %{location}",
+            "few": "De dichtstbijzijnde locatie met uw artikelen is meer dan %{distance} van %{location}"
+          }
+        },
+        "selected_pickup_option_no_longer_available": {
+          "title": "De locatie die u eerder heeft geselecteerd, is niet langer beschikbaar",
+          "description": "Wij hebben de dichtstbijzijnde locatie geselecteerd waar uw artikelen op voorraad zijn."
+        },
+        "pick_up_location": "Ophaallocatie",
+        "no_pickup_locations_found": "Geen ophaallocaties gevonden",
+        "pickup_unavailable_banner_body": {
+          "try_different_location": "Probeer een andere locatie",
+          "ship_to_address": "afleveradres"
         }
       },
       "merchandise_unavailable_in_buyer_location": {
@@ -2646,8 +2687,16 @@
       },
       "review_address_modal": {
         "subtitle": {
-          "few": "Deze bestelling wordt verzonden naar een adres dat is opgegeven door {{merchant}}. Selecteer een verzendadres."
-        }
+          "few": "Deze bestelling wordt verzonden naar een adres dat is opgegeven door {{merchant}}. Selecteer een verzendadres.",
+          "one": "Deze bestelling wordt verzonden naar het door opgegeven adres {{merchant}}.",
+          "other": "Deze bestelling wordt verzonden naar een adres dat is opgegeven door {{merchant}}. Selecteer een verzendadres."
+        },
+        "title": "Controleer het adres",
+        "subtitle_no_match": "Dit adres komt niet overeen met de adressen die u heeft opgeslagen.",
+        "subtitle_must_use": "Uw bestelling wordt naar dit adres verzonden.",
+        "continue": "Ga verder met dit adres",
+        "use_saved_address": "Gebruik een ander adres",
+        "return_to_cart": "Terug naar winkelwagen"
       },
       "remote_merchandise_only": {
         "detail_item_label": {
@@ -3235,9 +3284,19 @@
           },
           "errors_in_section": {
             "one": "{{count}} fout in de sectie {{section}}",
-            "other": "{{count}} sectiefouten {{section}}"
+            "other": "{{count}} sectiefouten {{section}}",
+            "few": "{{count}} sectiefouten {{section}}"
           }
         }
+      },
+      "marketplaces": {
+        "legal_notice": {
+          "legal_text": "Raadpleeg",
+          "link_label": "Algemene voorwaarden {{partnerDisplayName}}"
+        }
+      },
+      "online_store_chat": {
+        "title": "Heeft u vragen? Chat met ons"
       }
     },
     "notices": {
