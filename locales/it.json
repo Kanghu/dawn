@@ -2208,13 +2208,19 @@
           "other": "Si è verificato un problema con il reinvio delle carte regalo. Riprova o contattaci."
         },
         "thank_you_unconfirmed_items_heading": {
-          "few": "Alcuni elementi non sono confermati"
+          "few": "Alcuni elementi non sono confermati",
+          "one": "1 articolo non è confermato",
+          "other": "Alcuni elementi non sono confermati"
         },
         "thank_you_unconfirmed_items_description": {
-          "few": "Tali operazioni sono state eseguite a titolo gratuito"
+          "few": "Tali operazioni sono state eseguite a titolo gratuito",
+          "one": "Questa operazione è stata eseguita gratuitamente",
+          "other": "Tali operazioni sono state eseguite a titolo gratuito"
         },
         "thank_you_item_label": {
-          "few": "%{count} articoli"
+          "few": "%{count} articoli",
+          "one": "%{count} articolo",
+          "other": "%{count} articoli"
         },
         "thank_you_confirmed_items_with_email": {
           "few": "A breve riceverai email di conferma"
@@ -2223,7 +2229,9 @@
           "few": "Riceverai presto messaggi di conferma"
         },
         "items_fulfilled_by_store": {
-          "few": "Gli articoli acquistati verranno consegnati da altri negozi."
+          "few": "Gli articoli acquistati verranno consegnati da altri negozi.",
+          "one": "Gli articoli acquistati verranno spediti da %{remote_shop_name}.",
+          "other": "Gli articoli acquistati verranno consegnati da altri negozi."
         },
         "thank_you_confirmed_orders_with_email_description": {
           "few": "Presto riceverai email di conferma separate da ciascun negozio"
@@ -2479,7 +2487,41 @@
           "title": "Fatture IVA"
         },
         "thank_you_payments_app_pending_payment_description_provider_action_required_default": "Riceverai un'e-mail quando il pagamento sarà confermato.",
-        "verify_shop_account_title": "Controlla il tuo account Negozio"
+        "verify_shop_account_title": "Controlla il tuo account Negozio",
+        "verify_shop_account_message": "Le tue informazioni sono state salvate nel Negozio. Verifica il tuo account per utilizzarli automaticamente in milioni di negozi.",
+        "verify_shop_account_cta": "Controlla il tuo conto",
+        "verify_shop_account_confirmation": "I dettagli del pagamento sono stati salvati",
+        "company_location_section_title": "Azienda e luogo",
+        "announcement": {
+          "close": "Chiudi",
+          "expand": "Estensione",
+          "collapse": "Restrizione"
+        },
+        "confirmed_items_count": "%{confirmed_count} da %{total_count} gli articoli sono confermati",
+        "thank_you_confirmed_orders_with_email": "Presto riceverai e-mail di conferma separate con i numeri dell'ordine",
+        "thank_you_confirmed_orders_with_phone": "Presto riceverai SMS di conferma separati con i numeri dell'ordine",
+        "thank_you_confirmed_orders_with_email_and_phone": "Presto riceverai e-mail di conferma separate con i numeri dell'ordine",
+        "track_your_order_link_text": "Tracciamento degli ordini",
+        "checkout_on_remote_shop_link_text": "Paga a %{remoteShopName}",
+        "confirmed_orders_title": "I tuoi ordini sono confermati",
+        "thank_you_from_shop": "Da %{shop_name}",
+        "payment_method_not_charged": "Nessun addebito",
+        "thank_you_from_other_store": "Da un altro negozio",
+        "checkout_on_another_store": "Paga in un altro negozio",
+        "thank_you_confirmed_with_email_description": {
+          "single_store": "A breve riceverai un'e-mail di conferma",
+          "multi_store": "Presto riceverai email di conferma separate da ciascun negozio"
+        },
+        "thank_you_confirmed_with_phone_description": {
+          "single_store": "Riceverai presto un SMS di conferma",
+          "multi_store": "Presto riceverai SMS di conferma separati da ciascun negozio"
+        },
+        "thank_you_confirmed_with_email_and_phone_description": {
+          "single_store": "A breve riceverai un'e-mail di conferma",
+          "multi_store": "Presto riceverai email di conferma separate da ciascun negozio"
+        },
+        "checkout_again": "Paga di nuovo",
+        "cashback_notice": "Riceverai il rimborso dopo 30 giorni"
       },
       "order_payment_collection": {
         "changes_summary": {
@@ -2974,6 +3016,21 @@
         "bank_account_label": "Conto bancario",
         "credit_or_debit_card_label": "Credito/debito",
         "bogus_label": "Testare il gateway di pagamento"
+      },
+      "review": {
+        "title": "Recensione",
+        "review_title": "Completa l'ordine",
+        "checkout_as_guest": "Completa l'ordine come ospite",
+        "blocks": {
+          "contact_method_title": "Contatto",
+          "billing_address_title": "Fatturazione",
+          "shipping_address_title": "Spedire a",
+          "shipping_method_title": "Metodo di spedizione",
+          "payment_method_title": "Metodo di pagamento",
+          "change_link_label": "Modifica",
+          "change_contact_method_link_label": "Modificare le informazioni di contatto",
+          "change_billing_address_link_label": "Modifica indirizzo di fatturazione"
+        }
       }
     },
     "notices": {
