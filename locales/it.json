@@ -2717,15 +2717,56 @@
       },
       "local_pickup": {
         "location_information": {
-          "few": "Esistere %{count} negozi con stock vicino a %{address}"
+          "few": "Ti sono vicino %{count} posizioni con magazzino",
+          "one": "Ti sono vicino %{count} posizione con magazzino",
+          "other": "Ti sono vicino %{count} posizioni con magazzino"
         },
         "paginator": {
           "label": {
-            "few": "%{first} - %{last} DA %{count} negozio"
-          }
+            "few": "%{first} - %{last} da %{count} negozi",
+            "one": "%{first} - %{last} da %{count} negozio",
+            "other": "%{first} - %{last} da %{count} negozi"
+          },
+          "accessibility_label": "Impaginazione di recupero locale",
+          "previous": "Pagina precedente",
+          "next": "Pagina successiva"
         },
         "reveal_more_label": {
-          "few": "Visualizza ancora %{count} (di) posizioni"
+          "few": "Mostra di più %{count} (di) luoghi",
+          "one": "Mostra di più %{count} posizione",
+          "other": "Mostra di più %{count} (di) luoghi"
+        },
+        "toggle_location": "Cambia posizione",
+        "or": "O",
+        "cancel": "Annulla",
+        "your_location": "la tua posizione",
+        "search_button": "Trova negozi",
+        "no_stores_found": "Nessun negozio trovato",
+        "could_not_resolve_address": "Impossibile trovare il tuo indirizzo. Riprova o utilizza un indirizzo diverso",
+        "location_address_search_label": "Indirizzo",
+        "all_stores_far_away": {
+          "title": "Le località più vicine sono a una distanza maggiore da %{distance}",
+          "description": "Seleziona una posizione o %{ship_to_address_link}",
+          "ship_to_address_link": "indirizzo di consegna",
+          "title_with_location": "La posizione più vicina è finita %{distance} contro %{location}",
+          "description_with_location": "%{change_location_link} o %{ship_to_address_link}",
+          "change_location_link": "Cambia la tua posizione",
+          "title_with_specific_location": "La posizione più vicina con il tuo articolo è a una certa distanza %{distance} di %{location}",
+          "title_with_item": {
+            "one": "La posizione più vicina con il tuo articolo è superiore a %{distance} di %{location}",
+            "other": "La posizione più vicina con i tuoi articoli è più di %{distance} di %{location}",
+            "few": "La posizione più vicina con i tuoi articoli è più di %{distance} di %{location}"
+          }
+        },
+        "selected_pickup_option_no_longer_available": {
+          "title": "La località selezionata in precedenza non è più disponibile",
+          "description": "Abbiamo selezionato la sede più vicina con i tuoi articoli in magazzino."
+        },
+        "pick_up_location": "Luogo di ritiro",
+        "no_pickup_locations_found": "Nessuna località di ritiro trovata",
+        "pickup_unavailable_banner_body": {
+          "try_different_location": "Prova un'altra posizione",
+          "ship_to_address": "indirizzo di consegna"
         }
       },
       "merchandise_unavailable_in_buyer_location": {
@@ -2735,8 +2776,16 @@
       },
       "review_address_modal": {
         "subtitle": {
-          "few": "Questo ordine verrà spedito a un indirizzo fornito da {{merchant}}. Seleziona un indirizzo di spedizione."
-        }
+          "few": "Questo ordine verrà spedito a un indirizzo fornito da {{merchant}}. Seleziona un indirizzo di spedizione.",
+          "one": "Questo ordine verrà spedito all'indirizzo fornito da {{merchant}}.",
+          "other": "Questo ordine verrà spedito a un indirizzo fornito da {{merchant}}. Seleziona un indirizzo di spedizione."
+        },
+        "title": "Controlla l'indirizzo",
+        "subtitle_no_match": "Questo indirizzo non corrisponde a nessuno degli indirizzi che hai salvato.",
+        "subtitle_must_use": "Il tuo ordine verrà spedito a questo indirizzo.",
+        "continue": "Continua con questo indirizzo",
+        "use_saved_address": "Utilizza un altro indirizzo",
+        "return_to_cart": "Ritorna al carrello"
       },
       "remote_merchandise_only": {
         "detail_item_label": {
@@ -3394,9 +3443,19 @@
           },
           "errors_in_section": {
             "one": "{{count}} errore nella sezione {{section}}",
-            "other": "{{count}} errori di sezione {{section}}"
+            "other": "{{count}} errori di sezione {{section}}",
+            "few": "{{count}} errori di sezione {{section}}"
           }
         }
+      },
+      "marketplaces": {
+        "legal_notice": {
+          "legal_text": "Consultare",
+          "link_label": "Termini e condizioni {{partnerDisplayName}}"
+        }
+      },
+      "online_store_chat": {
+        "title": "Hai domande? Chatta con noi"
       }
     },
     "notices": {
