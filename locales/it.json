@@ -2685,8 +2685,9 @@
           "other": "%{count} punti di ritiro vicino alla tua posizione"
         },
         "pickup_unavailable_banner_title": {
-          "few": "I tuoi articoli non possono essere sollevati dai punti di sollevamento",
-          "one": "Non ci sono punti di ritiro disponibili per il tuo articolo"
+          "few": "Non ci sono punti di ritiro disponibili per i tuoi articoli",
+          "one": "Non ci sono punti di ritiro disponibili per il tuo articolo",
+          "other": "Non ci sono punti di ritiro disponibili per i tuoi articoli"
         },
         "location_is_currently_closed": "Chiuso",
         "business_hours": "Programma",
@@ -3324,6 +3325,78 @@
       "session_errors": {
         "session_not_unique": "Si è verificato un problema durante l'elaborazione del tuo ordine. Aggiorna questa pagina per tornare al negozio.",
         "session_already_finished": "Questo ordine è già stato inviato. Puoi tornare in negozio per iniziare un nuovo ordine."
+      },
+      "error_page": {
+        "terminal": {
+          "title": "Si è verificato un problema durante il completamento dell'ordine",
+          "message": "Aggiorna questa pagina o riprova tra qualche minuto",
+          "action": {
+            "cta": "Aggiorna la pagina"
+          },
+          "request_id": "ID richiesta: {{requestId}}"
+        },
+        "embed_errors": {
+          "storefront_password_required": "Questo negozio è protetto da password",
+          "customer_account_required": "Per completare il pagamento è necessario l'account cliente",
+          "cart_completed": "Questo pagamento è già stato completato",
+          "invalid_cart": "Questo carrello non è più valido",
+          "not_authorized": "Autenticazione per il pagamento non riuscita. Controlla le credenziali dell'app",
+          "killswitch_enabled": "Il pagamento è temporaneamente non disponibile",
+          "policy_violation": "Il completamento del pagamento non è possibile a causa delle restrizioni sulla configurazione delle policy",
+          "unrecoverable_failure": "Caricamento del pagamento non riuscito. Riprova"
+        }
+      },
+      "notice_banner": {
+        "return_to_cart_link_text": "Ritorna al carrello",
+        "return_to_cart_to_update_quantities": "%{return_to_cart_link_text} per aggiornare le quantità",
+        "subscription_changed": "Uno dei tuoi abbonamenti è cambiato.",
+        "company_location_changed": "Il tuo carrello è stato aggiornato. Controlla il tuo ordine prima di inviarlo.",
+        "violations_title": "{{violation}} mancante o non valido",
+        "individual_violations_title": {
+          "DeliveryViolations": "Indirizzo di spedizione",
+          "PaymentViolations": "Indirizzo di fatturazione",
+          "OtherViolations": "Informazioni sull'ordine",
+          "UnhandledViolations": "Informazioni sull'ordine"
+        },
+        "all_violations_content": "Chiamaci o {{emailLink}} per aggiornare queste informazioni e completare il tuo ordine:",
+        "all_violations_email_link": "inviaci un'e-mail",
+        "editable_shipping_address_violations_message_title": "Aggiungi queste informazioni per completare il tuo ordine:",
+        "editable_shipping_address_violations_message_footer": "Per aggiornare in modo permanente l'indirizzo di questa posizione, {{emailLink}}.",
+        "editable_shipping_address_violations_email_link": "contattaci",
+        "company_location_changed_product_removed": "Il tuo carrello è stato aggiornato perché alcuni prodotti non sono disponibili in questa località. Controlla il tuo ordine prima di inviarlo.",
+        "shipping_address_incomplete_title": "L'indirizzo di spedizione è incompleto",
+        "calculating_shipping": "Le spese di spedizione sono ancora in fase di calcolo. Riprova tra qualche secondo. Non ti è stato addebitato alcun importo.",
+        "calculating_taxes": "Le tasse sono ancora in fase di calcolo. Riprova tra qualche secondo. Non ti è stato addebitato alcun importo.",
+        "generic_processing_error": {
+          "title": "Si è verificato un problema durante l'elaborazione del tuo ordine.",
+          "body": "Non ti è stato addebitato alcun importo. Riprova o utilizza un altro metodo di pagamento."
+        },
+        "contact_information": {
+          "title": "Le informazioni di contatto non sono corrette",
+          "header": "Per aggiornare le tue informazioni, {{emailLink}}.",
+          "email_link": "contattaci"
+        },
+        "payment_method_not_available_with_payment_terms": "Il metodo di pagamento selezionato non è più disponibile perché il pagamento per questo ordine è scaduto {{paymentTerms}}",
+        "payment_method_not_available_with_fulfillment_terms": "Il metodo di pagamento selezionato non è più disponibile perché il pagamento per questo ordine è ora dovuto al momento dell'evasione dell'ordine",
+        "payment_method_not_available_with_fixed_terms": "Il metodo di pagamento selezionato non è più disponibile perché il pagamento per questo ordine è ora dovuto in un secondo momento",
+        "payment_method_not_available_with_review_requirement": "Il metodo di pagamento selezionato non è disponibile poiché il pagamento sarà dovuto immediatamente dopo la conferma dell'ordine.",
+        "validation_errors_banner": {
+          "section_label": {
+            "delivery": "Spedizione",
+            "contact": "Contatto",
+            "payment": "Pagamento",
+            "billing": "Fatturazione"
+          },
+          "heading": {
+            "one": "C'è {{count}} errore:",
+            "other": "C'è {{count}} errori:",
+            "few": "C'è {{count}} errori:"
+          },
+          "errors_in_section": {
+            "one": "{{count}} errore nella sezione {{section}}",
+            "other": "{{count}} errori di sezione {{section}}"
+          }
+        }
       }
     },
     "notices": {
