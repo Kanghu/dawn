@@ -3947,17 +3947,99 @@
       "reset_account": "Zresetuj swoje konto",
       "addresses": "Adresy",
       "order": "Zamów %{name}",
-      "search": "Szukaj"
+      "search": "Szukaj",
+      "collections": "Kolekcje",
+      "not_found": "Nie znaleziono 404",
+      "challenge": "Wyzwanie",
+      "checkpoint": "Punkt walidacji",
+      "search_results": {
+        "one": "Szukaj: znaleziono %{count} wynik dla \"%{terms}”",
+        "other": "Szukaj: znaleziono %{count} wyniki dla „%{terms}”",
+        "few": "Szukaj: znaleziono %{count} wyniki dla „%{terms}”"
+      },
+      "blog_or_article_with_error": "Błąd – %{title}"
+    },
+    "cart": {
+      "discounts_with_count": "Zostały zastosowane %{count} rabaty"
+    },
+    "challenge": {
+      "message": "Aby kontynuować, udowodnij, że nie jesteś robotem.",
+      "error": "Twoja odpowiedź była błędna, spróbuj ponownie.",
+      "submit_button_text": "Wyślij"
+    },
+    "checkpoint": {
+      "message": "Rozwiąż captcha, aby kontynuować",
+      "error": "Weryfikacja Captcha nie powiodła się",
+      "submit_button_text": "Wyślij"
+    },
+    "store_availability": {
+      "pick_up_time": {
+        "one_hour": "Gotowe zwykle w ciągu godziny",
+        "two_hours": "Gotowe zwykle w dwie godziny",
+        "four_hours": "Zwykle gotowe w ciągu 4 godzin",
+        "twenty_four_hours": "Zwykle gotowy w ciągu 24 godzin",
+        "two_to_four_days": "Zwykle gotowy w ciągu 2-4 dni",
+        "five_or_more_days": "Zwykle gotowe w ciągu 5 dni",
+        "zero_to_two_hours": "Gotowe zwykle w dwie godziny",
+        "two_to_four_hours": "Zwykle gotowe w ciągu 4 godzin",
+        "immediately": "Gotowe do odbioru już teraz",
+        "next_day": "Gotowe do odbioru następnego dnia"
+      }
+    },
+    "filters": {
+      "availability": {
+        "value": {
+          "in_stock": "W magazynie",
+          "out_of_stock": "Brak w magazynie"
+        }
+      },
+      "boolean": {
+        "true_label": "Tak",
+        "false_label": "Nie"
+      }
+    },
+    "search": {
+      "sorting": {
+        "relevance": "Trafność",
+        "price_ascending": "Cena od najniższej do najwyższej",
+        "price_descending": "Cena od najwyższej do najniższej"
+      },
+      "error": "Wystąpił problem podczas ładowania wyników wyszukiwania. Odśwież stronę lub spróbuj ponownie później."
+    },
+    "subscriptions": {
+      "buyer_consent_product": "Ten przedmiot jest zakupem cyklicznym lub odroczonym. Kontynuując, zgadzam się z %{cancellationPolicyLink} i upoważniam Cię do automatycznego obciążania mojej metody płatności według określonych cen, częstotliwości i terminów do czasu realizacji mojego zamówienia lub anulowania go, jeśli jest to dozwolone.",
+      "buyer_consent_cart": "Co najmniej jeden przedmiot w Twoim koszyku jest zakupem cyklicznym lub odroczonym. Kontynuując, zgadzam się z %{cancellationPolicyLink} i upoważniam Cię do automatycznego obciążania mojej metody płatności według określonych cen, częstotliwości i terminów do czasu realizacji mojego zamówienia lub anulowania go, jeśli jest to dozwolone.",
+      "cancellation_policy": "zasady anulowania"
     }
   },
   "customer_accounts": {
     "navigation_and_structure": {
-      "loading_policy_content_accessibility_label": "Treść polityki została załadowana."
+      "loading_policy_content_accessibility_label": "Treść polityki została załadowana.",
+      "account_menu": {
+        "hide_accessibility_label": "Ukryj menu konta",
+        "show_accessibility_label": "Pokaż menu Konto",
+        "nav_accessibility_label": "Nawigacja po koncie",
+        "open_menu_accessibility_label": "Otwórz nawigację po koncie",
+        "close_menu_accessibility_label": "Zamknij przeglądanie konta",
+        "loading_message": "Ładuję nawigację po koncie",
+        "label": "konto"
+      },
+      "action_menu_accessibility_label": "Więcej akcji",
+      "close_menu_accessibility_label": "Zamknij główną nawigację",
+      "contact_email_subject": "Kontakt ze sklepu internetowego {{shopName}}",
+      "contact_link": "Informacje kontaktowe",
+      "delete_confirmation": {
+        "cancel": "Anuluj",
+        "delete": "Usuń"
+      }
     },
     "announcement_bar": {
       "expand_label": "Rozszerzanie paska powiadomień",
       "collapse_label": "Zwiń pasek reklam",
       "close_label": "Zamykanie paska powiadomień"
+    },
+    "callback": {
+      "try_again": "Spróbuj ponownie"
     }
   },
   "category_links": {
