@@ -3789,7 +3789,13 @@
     "notices": {
       "order": {
         "cancel_reason": {
-          "few": "Iets anders"
+          "few": "Iets anders",
+          "declined": "Betaling geweigerd",
+          "inventory": "Artikelen niet beschikbaar",
+          "fraud": "Frauduleuze bestelling",
+          "customer": "De klant heeft de bestelling gewijzigd/geannuleerd",
+          "other": "Iets anders",
+          "staff": "Persoonlijke fout"
         },
         "not_available": "Deze opdracht is niet beschikbaar",
         "financial_status": {
@@ -3798,8 +3804,25 @@
           "paid": "Betaald",
           "unpaid": "Onbetaald",
           "voided": "Geannuleerd",
-          "partially_paid": "Gedeeltelijk betaald"
-        }
+          "partially_paid": "Gedeeltelijk betaald",
+          "partially_refunded": "Gedeeltelijk terugbetaald",
+          "refunded": "Terugbetaald",
+          "expired": "Verlopen"
+        },
+        "fulfillment_status": {
+          "fulfilled": "Voltooid",
+          "complete": "Voltooid",
+          "partial": "Gedeeltelijk",
+          "unfulfilled": "Onvervuld",
+          "restocked": "Met bijgetankte voorraad"
+        },
+        "transaction_status": {
+          "success": "succes",
+          "pending": "Wachten",
+          "failure": "Mislukking",
+          "error": "Fout"
+        },
+        "cash_on_delivery": "Contant bij levering"
       },
       "customer": {
         "password_reset_error": "Fout bij opnieuw instellen van wachtwoord",
@@ -3817,6 +3840,40 @@
         "error_creating": "Fout bij aanmaken van adres.",
         "deleted": "Adres succesvol verwijderd",
         "error_deleting": "Fout bij verwijderen adres."
+      },
+      "cart": {
+        "only_n_items_available": "Je kunt alleen maar toevoegen %{count} %{name} naar de mand.",
+        "too_many_items_in_cart": "Je kunt niet meer toevoegen %{name} in de mand.",
+        "all_items_in_cart": "Al die %{count} %{name} Ik zit in je winkelwagen.",
+        "empty_update": "kan een leeg winkelmandje niet bijwerken",
+        "missing_parameters": "er is geen geldige ID of lijnparameter",
+        "generic_error": "Winkelwagenfout",
+        "too_many_line_items_error": "Uw mandje mag geen vis bevatten %{max} artikelen.",
+        "link_expired": "De koppeling is verlopen",
+        "link_no_longer_exists": "Link bestaat niet meer.",
+        "stock_problems_html": "Eén of meerdere artikelen zijn niet meer leverbaar. Ik heb het beschikbaar gesteld <a href='%{link}'>een bijgewerkt mandje</a>.",
+        "changed": "Gewijzigde mand",
+        "items_changed": "Eén of meerdere artikelen zijn gewijzigd.",
+        "product_sold_out": "Het product \"%{name}’ is al uitverkocht.",
+        "variant_not_found": "Kan optie niet vinden",
+        "variant_requires_selling_plan": "De variant is alleen te koop met een aankoopplan.",
+        "shipping_address_not_required": "Voor deze winkelwagen is geen bezorging vereist",
+        "shipping_address_invalid": "Er is een probleem opgetreden bij het berekenen van uw verzendkosten. Ga door naar afrekenen om een ​​verzendkosten te kiezen voordat u afrekent.",
+        "selling_plan_not_applicable": "Het verkoopplan kan niet op de variant worden toegepast",
+        "selling_plan_not_available_for_company_locations": "Voor B2B-bestellingen zijn alleen individuele aankopen mogelijk.",
+        "digital_product_not_available_for_company_locations": "Dit artikel kan niet worden toegevoegd aan een B2B-bestelling",
+        "product_not_available": "Het product is niet beschikbaar",
+        "less_than_minimum": "Dit artikel heeft een minimum %{min}.",
+        "more_than_maximum": "Dit artikel heeft het maximum %{max}.",
+        "not_respect_step": "U kunt dit artikel alleen in stappen van invoeren %{step}.",
+        "bundle_requires_components": "Het product in de vorm van een set \"%{name}” kan niet aan winkelwagen worden toegevoegd.",
+        "gift_card_with_components_not_supported": "Het product in de vorm van een set \"%{name}” kan niet aan winkelwagen worden toegevoegd.",
+        "view_lines_limit_reached": "Het aantal rijen moet kleiner dan of gelijk zijn aan %{limit}",
+        "merchandise_line_transformers": {
+          "run_error": "Er is een fout opgetreden met uw winkelwagen."
+        },
+        "gift_card_price_must_be_greater_than_zero": "Het product in de vorm van een set \"%{name}” kan niet aan winkelwagen worden toegevoegd.",
+        "cart_too_large": "De mand is te groot."
       }
     },
     "page_titles": {
