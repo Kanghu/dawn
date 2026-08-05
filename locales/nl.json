@@ -1567,6 +1567,32 @@
         "compare_at_sale": "Promotie (%{sale_amount})",
         "discount_code_applied_count": {
           "few": "Weergave %{count} kortingen"
+        },
+        "tax_line": {
+          "hst": "HST",
+          "gst": "BTW",
+          "pst": "PST",
+          "rst": "RST",
+          "qst": "QST",
+          "vpt": "VPT"
+        },
+        "automatic_discount_tooltip": "Automatisch toegepaste kortingen kunnen niet worden verwijderd",
+        "alternative_payment_currency_chinese_yuan": "Bevestig het eindtotaal in CNY in de app %{wallet}.",
+        "alternative_payment_currency_total_disclosure": "%{shop_name} betalingen verwerken %{shop_currency} (%{amount_due}).",
+        "settlement_currency_note": "%{shop_name} betalingen verwerken %{processing_currency}. Jij hebt gewinkeld %{original_currency}.",
+        "settlement_currency_note_wallet": "%{shop_name} betalingen verwerken %{processing_currency}. Jij hebt gewinkeld %{original_currency} en je hebt betaald met %{wallet} in CNY. Bekijk de app %{wallet_app} voor het eindbedrag.",
+        "settlement_currency_note_wallet_no_conversion": "Je hebt betaald met %{wallet} in CNY. Bekijk de app %{wallet_app} voor het eindbedrag.",
+        "lpm": {
+          "wechat_pay": {
+            "checkout_disclosure": "Bevestig het uiteindelijke totaal in CNY in de WeChat-app",
+            "post_purchase_disclosure": "Bekijk het totaal in CNY in WeChat",
+            "checkout_disclosure_with_alternative_payment_currency": "%{shop_name} zal deze betaling verwerken voor een bedrag van %{amount_due} %{processing_currency}, die WeChat omzet naar CNY"
+          },
+          "alipay": {
+            "checkout_disclosure": "Bevestig het uiteindelijke totaal in CNY in de Alipay-app",
+            "post_purchase_disclosure": "Bekijk het totaal in CNY in Alipay",
+            "checkout_disclosure_with_alternative_payment_currency": "%{shop_name} zal deze betaling verwerken voor een bedrag van %{amount_due} %{processing_currency}, die Alipay omzet naar CNY"
+          }
         }
       },
       "payment": {
@@ -1587,7 +1613,37 @@
         },
         "discount_codes_removed_summary": {
           "few": "%{count} kortingscodes zijn verwijderd"
-        }
+        },
+        "amazon_payments_label": "Amazon Betalen",
+        "amazon_payments_login_hint": "U wordt gevraagd om u aan te melden bij Amazon.",
+        "amazon_payments_logout": "Meld u af bij Amazon Pay",
+        "amazon_payments_failed_mfa_challenge": "De geselecteerde betaalmethode kan niet worden gebruikt. Selecteer een andere methode of neem contact op met uw bank of kaartuitgever.",
+        "amazon_payments_abandoned_mfa_challenge": "Uw betaling kon niet worden voltooid. Selecteer een andere betaalmethode of neem contact op met uw bank of kaartuitgever.",
+        "amazon_payments_could_not_enqueue_authorize": "Er is een probleem opgetreden bij het verwerken van uw betaling. Probeer het opnieuw of gebruik een andere betaalmethode.",
+        "title": "Betaling",
+        "amount_left_to_pay_label": "Betalingstermijn:",
+        "discount_button_action_label": "Kortingscode toepassen",
+        "gift_card_code_label": "Cadeaukaartcode",
+        "apply_gift_card_button_label": "Toepassen",
+        "gift_card_balance_label": "Saldo:",
+        "supported_card_brands_more_label": "en meer...",
+        "detected_card_brand": "Kaartmerk gedetecteerd: {brand}",
+        "card_number_label": "Kaartnummer",
+        "card_number_placeholder": "Kaartnummer",
+        "card_pay_with": "Betaal met:",
+        "card_security_notice": "Alle transacties zijn veilig en gecodeerd.",
+        "card_information_notice": "Alle transacties zijn veilig en gecodeerd. Creditcardgegevens worden nooit opgeslagen.",
+        "name_on_card_label": "De naam op de kaart",
+        "name_on_card_placeholder": "De naam op de kaart",
+        "card_expiry_label": "Vervaldatum (MM/JJ)",
+        "card_expiry_placeholder": "Vervaldatum (MM/JJ)",
+        "credit_card_start_month": "Begin maand",
+        "credit_card_start_year": "Beginjaar",
+        "card_verification_value_label": "Beveiligingscode",
+        "card_verification_value_placeholder": "Beveiligingscode",
+        "card_expiry_date_explanation": "Vervaldatum van de kaart in het formaat: maand, maand, jaar, jaar",
+        "card_expiration_month_label": "Maand van vervaldatum",
+        "card_expiration_year_label": "Vervaldatum jaar"
       },
       "shipping_errors": {
         "shipping_method_not_available_generic": {
