@@ -4235,9 +4235,73 @@
             "due": "Termin płatności {{date}}",
             "due_today": "Płatność należy uregulować dzisiaj",
             "due_without_date": "Termin płatności",
-            "due_on_fulfillment": "Płatność płatna w momencie realizacji zamówienia"
+            "due_on_fulfillment": "Płatność płatna w momencie realizacji zamówienia",
+            "pay_to_confirm": "Zapłać, aby potwierdzić",
+            "payment_not_due": "Płatność nie jest jeszcze wymagalna"
           }
-        }
+        },
+        "sort_currently_sorted_by_accessibility_label": "Obecnie posortowane według: {{option}}",
+        "carousel": {
+          "one_products_accessibility_label": "Comana zawiera: {{lineItemName1}}, ilość: {{lineItemQuantity1}}",
+          "two_products_accessibility_label": "Zamówienie obejmuje: {{lineItemName1}}, ilość: {{lineItemQuantity1}}, {{lineItemName2}}, ilość: {{lineItemQuantity2}}",
+          "three_products_accessibility_label": "Zamówienie obejmuje: {{lineItemName1}}, ilość: {{lineItemQuantity1}}, {{lineItemName2}}, ilość: {{lineItemQuantity2}}, {{lineItemName3}}, ilość: {{lineItemQuantity3}}",
+          "four_products_accessibility_label": "Zamówienie obejmuje: {{lineItemName1}}, ilość: {{lineItemQuantity1}}, {{lineItemName2}}, ilość: {{lineItemQuantity2}}, {{lineItemName3}}, ilość: {{lineItemQuantity3}}, {{lineItemName4}}, ilość: {{lineItemQuantity4}}",
+          "five_products_accessibility_label": "Zamówienie obejmuje: {{lineItemName1}}, ilość: {{lineItemQuantity1}}, {{lineItemName2}}, ilość: {{lineItemQuantity2}}, {{lineItemName3}}, ilość: {{lineItemQuantity3}}, {{lineItemName4}}, ilość: {{lineItemQuantity4}}, {{lineItemName5}}, ilość: {{lineItemQuantity5}}",
+          "six_products_accessibility_label": "Zamówienie obejmuje: {{lineItemName1}}, ilość: {{lineItemQuantity1}}, {{lineItemName2}}, ilość: {{lineItemQuantity2}}, {{lineItemName3}}, ilość: {{lineItemQuantity3}}, {{lineItemName4}}, ilość: {{lineItemQuantity4}}, {{lineItemName5}}, ilość: {{lineItemQuantity5}}, {{lineItemName6}}, ilość: {{lineItemQuantity6}}",
+          "six_and_more_products_accessibility_label": "Zamówienie obejmuje: {{lineItemName1}}, ilość: {{lineItemQuantity1}}, {{lineItemName2}}, ilość: {{lineItemQuantity2}}, {{lineItemName3}}, ilość: {{lineItemQuantity3}}, {{lineItemName4}}, ilość: {{lineItemQuantity4}}, {{lineItemName5}}, ilość: {{lineItemQuantity5}}, {{lineItemName6}}, ilość: {{lineItemQuantity6}} i inne",
+          "view_order_details": "Zobacz szczegóły zamówienia",
+          "previous": "Powrót",
+          "next": "Przed"
+        },
+        "show_order_actions_accessibility_label": "Pokaż działania dla zamówienia {{name}}",
+        "empty_state_title_for_pending_orders": "Brak oczekujących zamówień",
+        "more_than_four_products_accessibility_label": "Zamówienie obejmuje {{lineItemName1}}, {{lineItemName2}}, {{lineItemName3}} i nadal {{numberOfAdditionalProducts}} (z produktów)",
+        "plus_more_products": "Wciąż {{numberOfAdditionalProducts}} (z) produktów",
+        "order_status_and_message": "{{orderStatus}} - {{message}}",
+        "order_status_message": {
+          "list_view": {
+            "view_order_for_details": "Szczegóły znajdziesz w zamówieniu",
+            "estimated_delivery": "Szacowana data: {{date}}",
+            "last_updated": "Ostatnia aktualizacja o godz {{date}}"
+          },
+          "table_view": {
+            "estimated_delivery": "Szacowana dostawa: {{date}}",
+            "last_updated": "{{date}}"
+          }
+        },
+        "more_than_three_products_accessibility_label": "Zamówienie obejmuje {{lineItemName1}}, {{lineItemName2}} i nadal {{numberOfAdditionalProducts}} (z produktów)",
+        "plus_more": "+{{numberOfAdditionalProducts}}",
+        "filter_title": "Filtruj",
+        "filter": {
+          "clear_section": "Opróżnij sekcję",
+          "clear_all": "Opróżnij wszystko",
+          "apply": "Zastosuj",
+          "date": {
+            "start_date": "Początkowa data",
+            "end_date": "Ostateczna data",
+            "title": "Data zamówienia",
+            "today": "Dzisiaj",
+            "last_7_days": "Ostatnie 7 dni",
+            "last_30_days": "Ostatnie 30 dni",
+            "last_90_days": "Ostatnie 90 dni",
+            "last_365_days": "Ostatnie 12 miesięcy",
+            "custom": "Spersonalizowane"
+          },
+          "date_section_accessibility_label": "Filtruj według {{sectionTitle}}"
+        },
+        "no_order_banner": "Aby przetestować rozszerzenie na stronie Status zamówienia, utwórz zamówienie.",
+        "location_filter_picker": {
+          "all_location": "Wszystkie lokalizacje",
+          "current_location": "Istniejąca lokalizacja",
+          "switch_view": "Zmień widok"
+        },
+        "empty_state_with_location_title": "Brak zamówienia {{locationName}}",
+        "view_order": "Zobacz zamówienie",
+        "view_order_accessibility_label": "Zobacz zamówienie {{orderName}}",
+        "empty_state_redesign_cta": "Kup teraz",
+        "empty_state_redesign_subtitle": "Czy jesteś gotowy na zakupy?",
+        "empty_state_redesign_welcome": "Witamy",
+        "empty_state_redesign_welcome_with_name": "witaj, {{firstName}}"
       }
     }
   },
