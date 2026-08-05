@@ -2526,13 +2526,28 @@
       "order_payment_collection": {
         "changes_summary": {
           "added": {
-            "few": "Aggiunto (s): %{count}"
-          }
-        }
+            "few": "Aggiunto/i: %{count}",
+            "one": "Aggiunto",
+            "other": "Aggiunto/i: %{count}"
+          },
+          "removed": "Rimosso",
+          "subtracted": "Rimosso/i: %{count}",
+          "returned": "Resi: %{count}",
+          "return_line_item_removed": "Rimosso dal reso: %{count}"
+        },
+        "custom_line_item_description": "Importo del pagamento dell'ordine %{order_name}",
+        "additional_payment_requested": "È necessario pagare l'importo di %{total_outstanding}",
+        "checkout_review_and_pay": "il tuo ordine, %{order_name} è stato aggiornato. Controlla queste modifiche, quindi paga per confermare il tuo ordine.",
+        "order_updated_on": "Il tuo ordine è stato aggiornato il %{last_edited_at}.",
+        "order_review_and_pay": "Il tuo ordine è stato aggiornato. Controlla e paga per confermare il tuo ordine.",
+        "pay_now": "Paga adesso"
       },
       "open_graph_meta_tag": {
         "title_with_products": {
-          "few": "Acquistare %{product_name} Eppure %{count} articoli"
+          "few": "Compralo %{product_name} e ancora %{count} articoli",
+          "zero": "Compralo %{product_name}",
+          "one": "Compralo %{product_name} e ancora %{count} articolo",
+          "other": "Compralo %{product_name} e ancora %{count} articoli"
         }
       },
       "subscriptions": {
@@ -3097,7 +3112,48 @@
         "terms_of_service": "Condizioni d'uso",
         "legal_notice": "Avviso legale",
         "shipping_policy": "Trasporti",
-        "terms_of_sale": "Condizioni di vendita"
+        "terms_of_sale": "Condizioni di vendita",
+        "subscription_policy": "Cancellazioni",
+        "purchase_options_policy": "Politica sulle opzioni di acquisto",
+        "contact_information": "Contatto",
+        "purchase_options_cancellation_policy": "Cancellazioni",
+        "cookie_preferences": "Biscotti",
+        "policy_label": "Politica",
+        "policies_label": "Politici",
+        "select_policy_label": "Seleziona una politica",
+        "terms_and_policies": "Termini e politiche"
+      },
+      "notifications": {
+        "title": "Notifiche"
+      },
+      "tips": {
+        "title": "Aggiungi un suggerimento",
+        "description": "Sostieni la squadra di %{shop_name}",
+        "presets_description": "Seleziona una percentuale di mancia",
+        "custom_label": "Suggerimento personalizzato",
+        "add_tip": "Aggiungi un suggerimento",
+        "update_tip": "Suggerimento di aggiornamento",
+        "message": "Grazie, apprezziamo il gesto.",
+        "preset_label": "%{tip_percent}%",
+        "no_tip_label": "Senza",
+        "not_available_with_spi": "Non disponibile per i pagamenti rateali con Shop Pay"
+      },
+      "localized_fields": {
+        "additional_information": {
+          "title": "Ulteriori informazioni",
+          "tax_credential_br": "CPF/CNPJ",
+          "shipping_credential_br": "CPF/CNPJ",
+          "shipping_credential_kr": "Codice doganale personale",
+          "shipping_credential_cn": "Numero identificativo residente",
+          "tax_credential_it": "Codice Fiscale (facoltativo)",
+          "tax_email_it": "PEC (facoltativo)",
+          "tax_credential_cl": "RUT",
+          "shipping_credential_cl": "RUT",
+          "tax_credential_co": "Cédula/IVA",
+          "tax_credential_type_co": "Tipo Cédula",
+          "shipping_credential_co": "Cédula/IVA",
+          "shipping_credential_type_co": "Tipo Cédula"
+        }
       }
     },
     "notices": {
