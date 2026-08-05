@@ -744,7 +744,81 @@
         "market_manager_blocks_wallet_payments": "Ta metoda płatności nie jest obsługiwana w Twoim kraju."
       },
       "payment": {
-        "bank_account_missing": "Połączenie rachunku bankowego jest obowiązkowe"
+        "bank_account_missing": "Połączenie rachunku bankowego jest obowiązkowe",
+        "gift_card_wrapper": {
+          "manage_label": "Zarządzaj kartami podarunkowymi"
+        },
+        "custom_onsite_payment_method_modal": {
+          "title": "Spersonalizowane potwierdzenie płatności na miejscu"
+        },
+        "markets_pro_disclaimer_label": "Składając zamówienie wyrażasz zgodę na zakupy od Global-e jako zarejestrowany sprzedawca zgodnie z %{markets_pro_terms} i %{privacy_policy} Ma charakter globalny i umożliwia udostępnianie informacji %{shop_name}.",
+        "markets_pro_disclaimer_terms_and_conditions": "Warunki",
+        "markets_pro_disclaimer_privacy_policy": "Polityka prywatności",
+        "markets_pro_disclaimer_terms_and_conditions_title": "Regulamin zarejestrowanego sprzedawcy",
+        "markets_pro_disclaimer_privacy_policy_title": "Polityka prywatności zarejestrowanego sprzedawcy",
+        "purchase_order_number": {
+          "title": "Numer zamówienia",
+          "label": "Numer zamówienia zakupu (opcjonalnie)"
+        },
+        "alternative_payment_currency_total_notice": "Uwaga: Twoja metoda płatności zostanie obciążona %{amount_due}.",
+        "waiting_on_taxes_message": "Jeśli w ciągu kilku sekund Twoje opłaty nie zostaną naliczone, odśwież stronę.",
+        "waiting_on_taxes_notice": "Podatki są obliczane",
+        "order_edit_banner_single_item_returned": "Wrócił",
+        "order_edit_banner_multiple_items_returned": "Zwrócony(e): {{amount}}",
+        "shop_pay_installments_label": "Oceń sklep Zapłać",
+        "add_credit_card_modal": {
+          "title": "Dodaj kartę",
+          "cancel": "Anuluj",
+          "save": "Zapisz"
+        },
+        "delete_credit_card_modal": {
+          "title": "Usuń kartę",
+          "confirmation": "Jasne, że chcesz usunąć {{brandName}} co kończy się {{lastDigits}}?",
+          "cancel": "Anuluj",
+          "delete": "Usuń"
+        },
+        "order_edit_banner_items_added": {
+          "one": "Dodano",
+          "other": "Dodano: %{count}",
+          "few": "Dodano: %{count}"
+        },
+        "order_edit_banner_items_removed": {
+          "in_full": "Usunięto",
+          "with_quantities": "Usunięto: {{delta}} od {{quantity}}"
+        },
+        "order_edit_banner_items_returned": {
+          "in_full": "Zwrócony(e): {{quantity}}",
+          "with_quantities": "Zwrócony(e): {{delta}} od {{quantity}}"
+        },
+        "saved_credit_card_actions": {
+          "edit": "Edytuj",
+          "delete": "Usuń"
+        },
+        "edit_credit_card_modal": {
+          "title": "Edytuj kartę",
+          "done": "zrobione",
+          "cancel": "Anuluj",
+          "description": "Możesz zmienić jedynie adres rozliczeniowy swojej karty.",
+          "fields": {
+            "default": "Ustaw jako domyślny",
+            "card_number": "Numer karty",
+            "expiry": "Data ważności",
+            "security_code": "Kod zabezpieczający",
+            "name": "Imię i nazwisko na karcie",
+            "billing": "Rozliczenie do"
+          }
+        },
+        "payment_method": "Metoda płatności",
+        "expired_payment_method": "Wybrana metoda płatności wygasła",
+        "subscription_heading": "Umowa Subskrypcyjna",
+        "use_order_billing_address_label": "Użyj adresu rozliczeniowego do zamówienia",
+        "use_location_billing_address_label": "Użyj adresu rozliczeniowego dla lokalizacji",
+        "use_location_shipping_address_label": "Użyj adresu wysyłki dla lokalizacji",
+        "purchase_options_agreement_label_wallets": "Kontynuując płatność, wyrażasz zgodę na przyszłe opłaty wymienione na tej stronie oraz na zasady anulowania.",
+        "gift_card_store_credit": {
+          "add_label": "Dodaj kartę podarunkową lub kredyt sklepowy",
+          "manage_label": "Zarządzaj kartami podarunkowymi lub środkami sklepowymi"
+        }
       },
       "thank_you": {
         "payment_method_not_charged": "Bez opodatkowania",
