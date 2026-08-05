@@ -775,10 +775,14 @@
           }
         },
         "shipping_method_first_shipment_group_title": {
-          "few": "Eerste zendingen"
+          "few": "De eerste zendingen",
+          "one": "Eerste verzending",
+          "other": "De eerste zendingen"
         },
         "shipping_method_recurring_shipments_group_title": {
-          "few": "Terugkerende zendingen"
+          "few": "Terugkerende zendingen",
+          "one": "Terugkerende verzending",
+          "other": "Terugkerende zendingen"
         },
         "estimated_delivery_time": "Geschatte levering: %{time}",
         "estimated_delivery_time_range": "Geschatte levering: %{min_time}–%{max_time}",
@@ -839,6 +843,56 @@
           "search_address": "Zoek het adres",
           "rollup_title": "Ophaallocatie",
           "rollup_accessibility_label": "Opties voor ophaallocatie"
+        },
+        "missing_shipping_address": "Het verzendadres ontbreekt",
+        "delivery_title": "Levering",
+        "address_default": "Als standaard instellen",
+        "split_shipping_merchandise_quantity_label_standard": "%{quantity} artikelen",
+        "split_shipping_merchandise_quantity_label_additional": "+ nog %{quantity}",
+        "split_shipping_merchandise_shipment_number": "Verzending %{number} van %{total}",
+        "pre_order_ships_now": "Verzending nu",
+        "pre_order_ships_later": "Wordt later verzonden",
+        "pre_order_ships_date": "Het wordt verzonden %{date}",
+        "split_shipping_shipped_by_shop": "Verzonden door %{shop_name}",
+        "split_shipping_multiple_shipment_label": "Meer zendingen",
+        "split_shipping_shipping_label": "Methode",
+        "split_shipping_multiple_shipment_quantity_label": "%{quantity} zendingen",
+        "split_shipping_multiple_shipment_notice": "Uw bestelling komt in meerdere zendingen aan",
+        "split_shipping_multiple_shipment_notice_one_time_purchase": "Uw bestelling komt binnen %{quantity} zendingen",
+        "split_shipping_more_shipping_options": "Meer winkelmogelijkheden",
+        "split_shipping_shipment_number": "Verzending %{number}",
+        "split_shipping_merchandise_quantity_label_inline_primary": "Hoeveelheid: %{quantity}",
+        "split_shipping_merchandise_quantity_label_inline": "%{merchandise_title} ×%{quantity}",
+        "split_shipping_option_free": "Gratis verzending",
+        "split_shipping_option_lowest_price": "De laagste prijs",
+        "split_shipping_option_fastest": "De snelste",
+        "split_shipping_option_recommended": "Aanbevolen",
+        "split_shipping_option_custom": "Gepersonaliseerd",
+        "default_description": "Verzending binnen 1 werkdag",
+        "split_shipping_shipment_notice": "Uw bestelling komt binnen %{quantity_shipments}",
+        "unbranded_default_description": "Klaar om te verzenden",
+        "prime_not_available": {
+          "default": "Prime-verzending is niet beschikbaar voor uw bestelling. Uw verzendopties zijn bijgewerkt."
+        },
+        "split_shipping_first_shipment_notice": "Je eerste bestelling komt binnen %{quantity_shipments}",
+        "shipping_method_rollup_accessibility_label": "Verzendmethode Opties",
+        "shipping_address_rollup_accessibility_label": "Opties voor afleveradres",
+        "back": "Terug",
+        "invalid_shipping_method_summary_selected": "Selecteer een ander verzendadres om de beschikbare verzendmethoden te bekijken",
+        "third_party_address_timeout": "Kan adressen niet laden. Probeer het opnieuw of gebruik een ander adres.",
+        "third_party_address_error": "Er is een fout opgetreden tijdens het laden van de geselecteerde adressen. Voer hieronder het adres handmatig in.",
+        "third_party_payment_timeout": "Kan betalingsmethoden niet laden. Probeer het opnieuw of gebruik een andere betaalmethode.",
+        "third_party_payment_error": "Er is een fout opgetreden tijdens het laden van de geselecteerde betaalmethode. Gebruik een andere betaalmethode.",
+        "add_shipping_address": "Afleveradres toevoegen",
+        "choose_new_address": "Kies een nieuw adres",
+        "unbranded_description_same_day": "Wordt dezelfde werkdag verzonden",
+        "unbranded_description_with_fulfillment_days": {
+          "one": "Wordt de volgende werkdag verzonden",
+          "other": "Schepen binnen %{count} werkdagen",
+          "few": "Schepen binnen %{count} werkdagen"
+        },
+        "unbranded_description_with_fulfillment_weeks": {
+          "one": "Schepen binnen %{count} week"
         }
       },
       "general": {
