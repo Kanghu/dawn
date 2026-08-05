@@ -1597,10 +1597,14 @@
       },
       "payment": {
         "order_covered_by_gift_cards_notice": {
-          "few": "Uw bestelling wordt gedekt door uw cadeaubonnen."
+          "few": "Uw bestelling wordt gedekt door uw cadeaubonnen.",
+          "one": "Uw bestelling wordt gedekt door uw cadeaubon.",
+          "other": "Uw bestelling wordt gedekt door uw cadeaubonnen."
         },
         "card_fields_unavailable_html": {
-          "few": "Betalingen met bankkaarten zijn momenteel niet beschikbaar.<br><a href=\"%{current_url}\">Vernieuw de pagina</a> of probeer een andere betaalmethode."
+          "few": "Betalingen met bankkaart zijn momenteel niet beschikbaar.<br><a href=\"%{current_url}\">Vernieuw de pagina</a> of probeer een andere betaalmethode.",
+          "one": "Betalingen met bankkaart zijn momenteel niet beschikbaar.<br><a href=\"%{current_url}\">Vernieuw de pagina</a> of probeer het later opnieuw.",
+          "other": "Betalingen met bankkaart zijn momenteel niet beschikbaar.<br><a href=\"%{current_url}\">Vernieuw de pagina</a> of probeer een andere betaalmethode."
         },
         "expired_cards_info": {
           "few": "Bestaan %{count} Verlopen kaarten, die u kunt zien en bewerken in uw account."
@@ -1643,7 +1647,51 @@
         "card_verification_value_placeholder": "Beveiligingscode",
         "card_expiry_date_explanation": "Vervaldatum van de kaart in het formaat: maand, maand, jaar, jaar",
         "card_expiration_month_label": "Maand van vervaldatum",
-        "card_expiration_year_label": "Vervaldatum jaar"
+        "card_expiration_year_label": "Vervaldatum jaar",
+        "card_verification_value_explanation": "De 3-cijferige beveiligingscode vindt u meestal op de achterkant van de kaart. American Express-kaarten hebben een 4-cijferige code op de voorkant.",
+        "card_verification_value_explanation_amex": "De 4-cijferige beveiligingscode op de voorkant van de kaart",
+        "card_verification_value_explanation_other": "De 3-cijferige beveiligingscode op de achterkant van de kaart",
+        "card_start_label": "Datum van uitgifte (MM/JJ)",
+        "card_start_placeholder": "Datum van uitgifte (MM/JJ)",
+        "card_issue_number_label": "Uitgiftenummer",
+        "card_issue_number_placeholder": "Uitgiftenummer",
+        "card_change_label": "Wijzigen",
+        "ends_with_label": "eindigt op %{last_digits}",
+        "masked_digits_label": "•••• %{last_digits}",
+        "saved_by_payment_method": "Bewaard door %{payment_method}",
+        "pay_with_payment_method": "Betaal met %{payment_method}",
+        "same_billing_address_label": "Hetzelfde als verzendadres",
+        "different_billing_address_label": "Gebruik een ander factuuradres",
+        "free_order_notice_html": "Je bestelling is <strong>gratis</strong>. Er is geen betaling vereist.",
+        "express_checkout_free_order": "Voor een gratis bestelling worden geen kosten in rekening gebracht",
+        "offsite_gateway_redirect_hint": "Wij verwijzen u door naar %{gateway_label} om uw aankoop te voltooien.",
+        "offsite_gateway_redirect_hint_multi_currency_html": "%{gateway_label} totaal %{total_shop_price}",
+        "billing_address_title": "Factuuradres",
+        "billing_address_description": "Selecteer het adres dat overeenkomt met uw kaart of betaalmethode.",
+        "billing_address_description_no_shipping_address": "Voer het adres in dat overeenkomt met uw kaart of betaalmethode.",
+        "no_js_credit_card_fields_redirect_hint": "U wordt doorgestuurd om uw betalingsgegevens toe te voegen.",
+        "card_fields_container_prefix": "Veldcontainer voor:",
+        "card_fields_processing_error": "Er is een probleem opgetreden bij het verwerken van uw betaling. Probeer deze pagina te vernieuwen of controleer uw internetverbinding.",
+        "technical_error": "Vanwege een technisch probleem kunnen betalingen momenteel niet worden verwerkt. Probeer het over een paar minuten opnieuw.",
+        "no_method_error": "Deze winkel kan momenteel geen betalingen accepteren.",
+        "not_configured_error": "Deze winkel kan momenteel geen betalingen accepteren.",
+        "missing_credit_card_error": "Voer uw kaartgegevens in om de betaling af te ronden",
+        "billing_address_not_supported_for_payment_method_error": "Deze betaalmethode is niet beschikbaar voor uw factuuradres en valuta. Probeer een andere betaalmethode.",
+        "generic_incorrect_card_info": "Uw betalingsgegevens konden niet worden geverifieerd. Controleer uw kaartgegevens en probeer het opnieuw.",
+        "sofort_label": "Gemakkelijke bankoverschrijving",
+        "paypal_label": "PayPal",
+        "klarna_pay_later_label": "Betaal later met Klarna",
+        "klarna_pay_now_label": "Betaal nu met Klarna",
+        "bancontact_label": "Bancontact",
+        "giropay_label": "Giropay",
+        "eps_label": "eps-Überweisung",
+        "klarna_slice_it_label": "Fonds met Klarna",
+        "ideal_label": "iDEAL | Wero",
+        "bank_picker_label": "Bank",
+        "change_currency_section_description": "Selecteer een valutaoptie",
+        "no_real_orders_dev_store": "Deze winkel kan geen echte bestellingen of echte betalingen accepteren.",
+        "subscription_agreement_label_html": "Ik begrijp het en ga akkoord met een abonnement. Ik verleng tegen de vermelde prijs en frequentie totdat de looptijd eindigt of afloopt\n<a class=\"link--small\" data-modal=\"true\" data-title-text=\"%{subscription_policy}\" href=\"%{policy_href}\">geannuleerd</a>.\n",
+        "waiting_on_payment_methods": "We krijgen de beschikbare betaalmethoden..."
       },
       "shipping_errors": {
         "shipping_method_not_available_generic": {
