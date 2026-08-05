@@ -3022,8 +3022,163 @@
           },
           "errors_in_section": {
             "one": "{{count}} błąd w dziale {{section}}",
-            "other": "{{count}} błędy sekcji {{section}}"
+            "other": "{{count}} błędy sekcji {{section}}",
+            "few": "{{count}} błędy sekcji {{section}}"
           }
+        }
+      },
+      "review_address_modal": {
+        "title": "Przejrzyj adres",
+        "subtitle_no_match": "Ten adres nie pasuje do żadnego z zapisanych adresów.",
+        "subtitle_must_use": "Twoje zamówienie zostanie wysłane pod ten adres.",
+        "continue": "Kontynuuj z tym adresem",
+        "use_saved_address": "Użyj innego adresu",
+        "return_to_cart": "Wróć do koszyka",
+        "subtitle": {
+          "one": "Zamówienie zostanie wysłane na adres podany przez {{merchant}}.",
+          "other": "Zamówienie zostanie wysłane na adres podany przez {{merchant}}. Wybierz adres wysyłki.",
+          "few": "Zamówienie zostanie wysłane na adres podany przez {{merchant}}. Wybierz adres wysyłki."
+        }
+      },
+      "marketplaces": {
+        "legal_notice": {
+          "legal_text": "Skonsultuj się",
+          "link_label": "Warunki {{partnerDisplayName}}"
+        }
+      },
+      "online_store_chat": {
+        "title": "Czy masz pytania? Porozmawiaj z nami"
+      },
+      "local_pickup": {
+        "location_information": {
+          "one": "Jestem blisko ciebie %{count} lokalizacja z zapasami",
+          "other": "Jestem blisko ciebie %{count} lokalizacje z zapasami",
+          "few": "Jestem blisko ciebie %{count} lokalizacje z zapasami"
+        },
+        "toggle_location": "Zmień lokalizację",
+        "or": "LUB",
+        "cancel": "Anuluj",
+        "your_location": "Twoja lokalizacja",
+        "search_button": "Znajdź sklepy",
+        "no_stores_found": "Nie znaleziono sklepów",
+        "could_not_resolve_address": "Nie udało się znaleźć Twojego adresu. Spróbuj ponownie lub użyj innego adresu",
+        "paginator": {
+          "accessibility_label": "Lokalna paginacja wyszukiwania",
+          "previous": "Poprzednia strona",
+          "next": "Następna strona",
+          "label": {
+            "one": "%{first} - %{last} od %{count} sklep",
+            "other": "%{first} - %{last} od %{count} sklepy",
+            "few": "%{first} - %{last} od %{count} sklepy"
+          }
+        },
+        "reveal_more_label": {
+          "one": "Pokaż więcej %{count} lokalizacja",
+          "other": "Pokaż więcej %{count} (z) lokalizacji",
+          "few": "Pokaż więcej %{count} (z) lokalizacji"
+        },
+        "location_address_search_label": "Adres",
+        "all_stores_far_away": {
+          "title": "Najbliższe lokalizacje znajdują się w większej odległości od %{distance}",
+          "description": "Wybierz lokalizację lub %{ship_to_address_link}",
+          "ship_to_address_link": "adres dostawy",
+          "title_with_location": "Najbliższa lokalizacja się skończyła %{distance} kontra %{location}",
+          "description_with_location": "%{change_location_link} lub %{ship_to_address_link}",
+          "change_location_link": "Zmień swoją lokalizację",
+          "title_with_specific_location": "Najbliższa lokalizacja z Twoim przedmiotem znajduje się w dużej odległości %{distance} z %{location}",
+          "title_with_item": {
+            "one": "Najbliższa lokalizacja z Twoim przedmiotem to ponad %{distance} z %{location}",
+            "other": "Najbliższa lokalizacja z Twoimi przedmiotami to ponad %{distance} z %{location}",
+            "few": "Najbliższa lokalizacja z Twoimi przedmiotami to ponad %{distance} z %{location}"
+          }
+        },
+        "selected_pickup_option_no_longer_available": {
+          "title": "Wybrana wcześniej lokalizacja nie jest już dostępna",
+          "description": "Wybraliśmy najbliższą lokalizację, w której znajdują się Twoje produkty w magazynie."
+        },
+        "pick_up_location": "Miejsce odbioru",
+        "no_pickup_locations_found": "Nie znaleziono miejsc odbioru",
+        "pickup_unavailable_banner_body": {
+          "try_different_location": "Spróbuj innej lokalizacji",
+          "ship_to_address": "adres dostawy",
+          "there_are_no_stores": "W pobliżu Twojego adresu nie ma sklepów lub Twoje produkty nie są dostępne do odbioru.",
+          "ship_items": "Wyślij swoje przedmioty",
+          "search_elsewhere": "poszukaj gdzie indziej",
+          "ship_items_or_search_elsewhere": "%{ship_items} lub %{search_elsewhere}",
+          "search_elsewhere_standalone": "Poszukaj gdzie indziej"
+        },
+        "geolocation": {
+          "permission_not_allowed": "Zezwól na udostępnianie lokalizacji lub wyszukaj w inny sposób."
+        },
+        "location_address_search_placeholder": "%{postal_code_label} lub adres",
+        "location_closest": "Najbliższa lokalizacja z Twoim przedmiotem",
+        "toggle_multiple_locations": "inne ryby %{count} lokalizacje",
+        "location_information_far_away": {
+          "one": "znalazłem %{count} lokalizację z Twoim artykułem",
+          "other": "znalazłem %{count} lokalizacje z Twoim artykułem",
+          "few": "znalazłem %{count} lokalizacje z Twoim artykułem"
+        },
+        "location_nearby": {
+          "one": "Jest %{count} pobliską lokalizację ze swoim przedmiotem",
+          "other": "Jest %{count} pobliskie lokalizacje ze swoim przedmiotem",
+          "few": "Jest %{count} pobliskie lokalizacje ze swoim przedmiotem"
+        },
+        "location_nearby_short": {
+          "one": "%{count} pobliską lokalizację ze swoim przedmiotem",
+          "other": "%{count} pobliskie lokalizacje ze swoim przedmiotem",
+          "few": "%{count} pobliskie lokalizacje ze swoim przedmiotem"
+        },
+        "location_far_away": {
+          "one": "%{count} lokalizację z Twoim artykułem",
+          "other": "%{count} lokalizacje z Twoim artykułem",
+          "few": "%{count} lokalizacje z Twoim artykułem"
+        },
+        "toggle_more_locations": {
+          "one": "jeszcze %{count} lokalizacja",
+          "other": "jeszcze %{count} lokalizacje",
+          "few": "jeszcze %{count} lokalizacje"
+        },
+        "pickup_unavailable_banner_title": {
+          "one": "Brak lokalizacji z Twoim przedmiotem",
+          "other": "Brak lokalizacji z Twoimi przedmiotami",
+          "few": "Brak lokalizacji z Twoimi przedmiotami"
+        },
+        "pickup_unavailable_banner_title_with_country": {
+          "one": "w %{country} nie ma lokalizacji z Twoim artykułem",
+          "other": "w %{country} nie ma lokalizacji z Twoimi przedmiotami",
+          "few": "w %{country} nie ma lokalizacji z Twoimi przedmiotami"
+        },
+        "title": "Lokalizacja",
+        "location_closest_one_item": "Najbliższa lokalizacja z Twoim przedmiotem.",
+        "location_closest_other_items": "Najbliższa lokalizacja z Twoimi przedmiotami.",
+        "location_information_far_away_one_item": {
+          "one": "Jest %{count} lokalizację ze swoim przedmiotem",
+          "other": "Jest %{count} lokalizacje z Twoim artykułem",
+          "few": "Jest %{count} lokalizacje z Twoim artykułem"
+        },
+        "location_information_far_away_other_items": {
+          "one": "Jest %{count} lokalizację ze swoimi przedmiotami",
+          "other": "Jest %{count} lokalizacje ze swoimi przedmiotami",
+          "few": "Jest %{count} lokalizacje ze swoimi przedmiotami"
+        },
+        "location_nearby_one_item": {
+          "one": "Jest %{count} pobliską lokalizację ze swoim przedmiotem",
+          "other": "Jest %{count} pobliskie lokalizacje ze swoim przedmiotem",
+          "few": "Jest %{count} pobliskie lokalizacje ze swoim przedmiotem"
+        },
+        "location_nearby_other_items": {
+          "one": "Jest %{count} pobliską lokalizację ze swoimi przedmiotami",
+          "other": "Jest %{count} pobliskie lokalizacje ze swoimi przedmiotami",
+          "few": "Jest %{count} pobliskie lokalizacje ze swoimi przedmiotami"
+        },
+        "location_nearby_short_one_item": {
+          "one": "%{count} pobliską lokalizację ze swoim przedmiotem",
+          "other": "%{count} pobliskie lokalizacje ze swoim przedmiotem",
+          "few": "%{count} pobliskie lokalizacje ze swoim przedmiotem"
+        },
+        "location_nearby_short_other_items": {
+          "one": "%{count} pobliską lokalizację ze swoimi przedmiotami",
+          "other": "%{count} pobliskie lokalizacje ze swoimi przedmiotami"
         }
       }
     },
