@@ -2576,36 +2576,80 @@
             "other": "%{count} mesi"
           },
           "year": {
-            "few": "%{count} anni"
+            "few": "%{count} anni",
+            "one": "anno",
+            "other": "%{count} anni"
           }
         },
         "recurring_totals_with_initial_order_shipping_discount_with_policies": {
           "first_cycles": {
-            "few": ", allora lo saranno %{count} pagamenti di quanti %{total_price}"
+            "few": ", allora lo saranno %{count} pagamenti di quanto %{total_price}",
+            "one": ", allora lo sarà %{count} pagamento di %{total_price}",
+            "other": ", allora lo saranno %{count} pagamenti di quanto %{total_price}"
           }
         },
-        "recurring_totals": "%{total_price} a ciascuno %{interval}"
+        "recurring_totals": "%{total_price} a ciascuno %{interval}",
+        "recurring_totals_with_initial_order_shipping_discount": "Il primo pagamento è %{total_price_with_discount}, quindi %{recurring_total}"
       },
       "contextual_availability": {
         "title": {
-          "few": "Prodotti non disponibili"
+          "few": "Prodotti non disponibili",
+          "one": "Prodotto non disponibile",
+          "other": "Prodotti non disponibili"
         },
         "products_not_available": {
-          "few": "Questi prodotti saranno rimossi dal paniere perché non sono disponibili nel tuo paese/regione."
+          "few": "Questi prodotti verranno rimossi dal carrello perché non sono disponibili nel tuo Paese/regione.",
+          "one": "Questo prodotto verrà rimosso dal carrello perché non è disponibile nel tuo Paese/regione.",
+          "other": "Questi prodotti verranno rimossi dal carrello perché non sono disponibili nel tuo Paese/regione."
         },
         "all_products_in_cart_unavailable": {
-          "few": "Questi prodotti non sono disponibili nel tuo paese/regione."
-        }
+          "few": "Questi prodotti non sono disponibili nel tuo paese/regione.",
+          "one": "Questo prodotto non è disponibile nel tuo paese/regione.",
+          "other": "Questi prodotti non sono disponibili nel tuo paese/regione."
+        },
+        "unavailable_label": "Non disponibile"
       },
       "throttle": {
         "estimated_wait_time": {
-          "few": "Tempo di attesa stimato: {{count}} minuti"
+          "few": "Tempo di attesa stimato: {{count}} minuti",
+          "calculating": "Viene calcolato il tempo di attesa stimato",
+          "less_than_one": "Tempo di attesa stimato: meno di un minuto",
+          "one": "Tempo di attesa stimato: {{count}} minuto",
+          "other": "Tempo di attesa stimato: {{count}} minuti"
+        },
+        "line_to_check_out": "Sei in fila per completare il tuo ordine",
+        "cart_summary_heading": "Il tuo cestino",
+        "merchandise": {
+          "sold_out": "Esaurito",
+          "available": "Disponibile"
+        },
+        "inventory": {
+          "partial_inventory_banner": "Alcuni articoli nel carrello sono esauriti e non saranno disponibili per l'acquisto al momento del pagamento.",
+          "sold_out": {
+            "heading": "Il carrello è esaurito",
+            "storefront_body": "Torna in negozio per continuare lo shopping",
+            "no_storefront_body": "Purtroppo l'articolo che desideri acquistare non è più disponibile.",
+            "link": "Ritorno al negozio"
+          }
+        },
+        "title": "Coda",
+        "time_to_checkout_title": "È ora di completare il tuo ordine – {{shopName}}",
+        "last_checked": "(Ultimo controllo alle: {{time}})",
+        "footer": {
+          "heading": "Non aggiornare questa pagina, si aggiornerà automaticamente.",
+          "body": "Gli articoli nel tuo carrello non verranno prenotati finché non completerai l'ordine."
+        },
+        "too_many_attempts": {
+          "message": "Troppi tentativi",
+          "description": "Riprova tra qualche minuto"
         }
       },
       "deliverability": {
         "not_deliverable": {
           "title": {
-            "few": "Nessun metodo di consegna disponibile per %{count} (di) articoli"
+            "few": "Nessun metodo di consegna disponibile per %{count} (di) articoli",
+            "one": "Nessun metodo di consegna disponibile per %{count} articolo",
+            "other": "Nessun metodo di consegna disponibile per %{count} (di) articoli"
           },
           "message": {
             "few": "Questi articoli verranno rimossi dal carrello, in quanto non sono disponibili metodi di consegna per il tuo indirizzo."
@@ -3206,6 +3250,25 @@
         "cart_updated_based_on_country": "Il tuo carrello è stato aggiornato in base al Paese di spedizione.",
         "cart_and_currency_updated_based_on_country": "Carrello e valuta aggiornati in base al paese di spedizione.",
         "currency_updated_for_country": "Valuta aggiornata per %{country}"
+      },
+      "customer_payment_methods": {
+        "page_title": "Metodi di pagamento",
+        "title": "Metodi di pagamento",
+        "update_card_button_label": "Aggiorna la carta",
+        "delete_customer_mandate": {
+          "generic_error": "Si è verificato un problema durante l'elaborazione della tua richiesta.",
+          "success_message": "Il tuo metodo di pagamento è stato eliminato con successo"
+        }
+      },
+      "mor_policies": {
+        "terms_and_conditions": "Termini e condizioni del commerciante registrato",
+        "privacy_policy": "Informativa sulla privacy del commerciante registrato"
+      },
+      "change_cart_localization": {
+        "verify_shipping_address": "Il tuo paese/regione è stato aggiornato. Inserisci il tuo indirizzo di spedizione per continuare il pagamento."
+      },
+      "cart_checkout_validation": {
+        "runtime_error": "Si è verificato un problema durante l'elaborazione della tua richiesta. Contatta il proprietario del negozio."
       }
     },
     "notices": {
