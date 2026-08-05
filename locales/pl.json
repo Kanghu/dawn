@@ -2574,8 +2574,75 @@
           "payment_method_title": "Metoda płatności",
           "change_link_label": "Modyfikuj",
           "change_contact_method_link_label": "Zmień dane kontaktowe",
-          "change_billing_address_link_label": "Zmień adres rozliczeniowy"
+          "change_billing_address_link_label": "Zmień adres rozliczeniowy",
+          "change_shipping_address_link_label": "Zmień adres wysyłki",
+          "change_shipping_method_link_label": "Zmień metodę wysyłki",
+          "change_payment_method_link_label": "Zmień metodę płatności",
+          "pick_up_in_store_shipping_method_html": "Odbiór ze sklepu · %{location_name}",
+          "purchase_order_number_title": "Numer zamówienia",
+          "change_purchase_order_number_label": "Zmień numer zamówienia",
+          "change_delivery_method_link_label": "Zmień metodę dostawy",
+          "no_address": "(Brak adresu)",
+          "no_purchase_order_number": "(zamówienie bez numeru)",
+          "due_after_order_reviewed_html": "Termin po sprawdzeniu zamówienia",
+          "review_title_free_order": "Przejrzyj i sfinalizuj swoje zamówienie",
+          "payment_method_saved_company_location": "Zapisz kartę dla tej lokalizacji",
+          "company_location": "Lokalizacja firmy",
+          "change_company_location_link_label": "Zmiana adresu firmy",
+          "pickup_items_at": {
+            "one": "Podnoszenie %{count} artykuł z",
+            "other": "Podnoszenie %{count} artykuły z",
+            "few": "Podnoszenie %{count} artykuły z"
+          },
+          "ship_items_to": {
+            "one": "Wysyłka %{count} artykuł o godz",
+            "other": "Wysyłka %{count} artykuły na",
+            "few": "Wysyłka %{count} artykuły na"
+          },
+          "no_purchase_order_number_long": "Brak numeru zamówienia"
+        },
+        "block_title": "Przejrzyj swoje informacje",
+        "checkout_a_different_way": "Zrealizuj zamówienie w inny sposób",
+        "item_header": {
+          "change_value": "Zmień wartość",
+          "section": "Sekcja",
+          "value": "Wartość"
+        },
+        "review_and_confirm_title": "Przejrzyj i potwierdź",
+        "account_more_actions": "Więcej działań dla tego konta"
+      },
+      "marketing": {
+        "accept_marketing_checkbox_label": "Chcę otrzymywać e-maile z aktualnościami i ofertami",
+        "unsubscribe": {
+          "title": "Zrezygnowałeś z subskrypcji",
+          "description": "Nie będziesz już otrzymywać od nas aktualizacji marketingowych."
+        },
+        "accept_sms_checkbox_label": "Chcę otrzymywać SMS-y z aktualnościami i ofertami",
+        "sms": {
+          "disclaimer": {
+            "privacy_policy": "Polityka prywatności",
+            "terms_of_service": "Warunki użytkowania",
+            "description_html": "Rejestrując się SMS-em, wyrażasz zgodę na regularne otrzymywanie automatycznych wiadomości marketingowych, w tym przypomnień o koszyku, na podany numer telefonu. Wyrażenie zgody nie jest warunkiem dokonania zakupów. Odpowiedz STOP, aby anulować subskrypcję. Odpowiedz HELP, aby uzyskać pomoc. Częstotliwość wiadomości jest różna. Mogą obowiązywać opłaty za wiadomości i dane. Zobacz %{privacy_policy_link} i %{terms_of_service_link}.",
+            "description_transactional_html": "Możesz otrzymywać wiadomości tekstowe związane z potwierdzeniem zamówienia i aktualizacjami dostawy. Odpowiedz STOP, aby anulować subskrypcję. Odpowiedz HELP, aby uzyskać pomoc. Częstotliwość wiadomości jest różna. Mogą obowiązywać opłaty za wiadomości i dane. Zobacz to %{privacy_policy_modal_link} i %{terms_of_service_modal_link}."
+          },
+          "mobile_phone_number": "Numer telefonu komórkowego",
+          "get_offers_by_text": "Otrzymuj oferty SMS-em"
+        },
+        "post_accept_marketing_checkbox_label": "Masz subskrypcję otrzymywania wiadomości i ofert e-mailem",
+        "pending_accept_marketing_checkbox_label": "Sprawdź swoje konto e-mail, aby potwierdzić subskrypcję wiadomości i ofert",
+        "accept_shop_pay_marketing_checkbox_label": "Subskrybuj mnie, aby otrzymywać wiadomości i oferty z tego sklepu",
+        "disclaimer": {
+          "privacy_policy": "Polityka prywatności",
+          "terms_of_service": "Warunki użytkowania"
         }
+      },
+      "shop_policies": {
+        "refund_policy": "Polityka zwrotów",
+        "privacy_policy": "Polityka prywatności",
+        "terms_of_service": "Warunki użytkowania",
+        "legal_notice": "Nota prawna",
+        "shipping_policy": "Transport",
+        "terms_of_sale": "Warunki sprzedaży"
       }
     },
     "sentence": {
