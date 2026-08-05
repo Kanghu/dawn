@@ -2437,13 +2437,28 @@
       "order_payment_collection": {
         "changes_summary": {
           "added": {
-            "few": "Toegevoegd (s): %{count}"
-          }
-        }
+            "few": "Toegevoegd(en): %{count}",
+            "one": "Toegevoegd",
+            "other": "Toegevoegd(en): %{count}"
+          },
+          "removed": "Verwijderd",
+          "subtracted": "Verwijderd(en): %{count}",
+          "returned": "Geretourneerd(en): %{count}",
+          "return_line_item_removed": "Uit retour verwijderd: %{count}"
+        },
+        "custom_line_item_description": "Betalingsbedrag voor de bestelling %{order_name}",
+        "additional_payment_requested": "Het is noodzakelijk om het bedrag van te betalen %{total_outstanding}",
+        "checkout_review_and_pay": "uw bestelling, %{order_name} is bijgewerkt. Controleer deze wijzigingen en betaal vervolgens om uw bestelling te bevestigen.",
+        "order_updated_on": "Uw bestelling is bijgewerkt op %{last_edited_at}.",
+        "order_review_and_pay": "Uw bestelling is bijgewerkt. Controleer en betaal om uw bestelling te bevestigen.",
+        "pay_now": "Betaal nu"
       },
       "open_graph_meta_tag": {
         "title_with_products": {
-          "few": "Kopen %{product_name} En toch %{count} ware"
+          "few": "Koop het %{product_name} en nog steeds %{count} artikelen",
+          "zero": "Koop het %{product_name}",
+          "one": "Koop het %{product_name} en nog steeds %{count} artikel",
+          "other": "Koop het %{product_name} en nog steeds %{count} artikelen"
         }
       },
       "subscriptions": {
@@ -2938,7 +2953,48 @@
         "terms_of_service": "Gebruiksvoorwaarden",
         "legal_notice": "Juridische mededeling",
         "shipping_policy": "Vervoer",
-        "terms_of_sale": "Verkoopvoorwaarden"
+        "terms_of_sale": "Verkoopvoorwaarden",
+        "subscription_policy": "Annuleringen",
+        "purchase_options_policy": "Aankoopoptiesbeleid",
+        "contact_information": "Contacteer",
+        "purchase_options_cancellation_policy": "Annuleringen",
+        "cookie_preferences": "Koekjes",
+        "policy_label": "Politiek",
+        "policies_label": "Politici",
+        "select_policy_label": "Selecteer een beleid",
+        "terms_and_policies": "Voorwaarden en beleid"
+      },
+      "notifications": {
+        "title": "Meldingen"
+      },
+      "tips": {
+        "title": "Voeg een fooi toe",
+        "description": "Steun het team van %{shop_name}",
+        "presets_description": "Selecteer een fooipercentage",
+        "custom_label": "Aangepaste tip",
+        "add_tip": "Voeg een fooi toe",
+        "update_tip": "Tip bijwerken",
+        "message": "Bedankt, wij waarderen het gebaar.",
+        "preset_label": "%{tip_percent}%",
+        "no_tip_label": "Zonder",
+        "not_available_with_spi": "Niet beschikbaar voor termijnbetalingen met Shop Pay"
+      },
+      "localized_fields": {
+        "additional_information": {
+          "title": "Aanvullende informatie",
+          "tax_credential_br": "CPF/CNPJ",
+          "shipping_credential_br": "CPF/CNPJ",
+          "shipping_credential_kr": "Persoonlijke douanecode",
+          "shipping_credential_cn": "Bewoners-ID-nummer",
+          "tax_credential_it": "Codice Fiscale (optioneel)",
+          "tax_email_it": "PEC (optioneel)",
+          "tax_credential_cl": "RUT",
+          "shipping_credential_cl": "RUT",
+          "tax_credential_co": "Cédula/BTW",
+          "tax_credential_type_co": "Cédula-type",
+          "shipping_credential_co": "Cédula/BTW",
+          "shipping_credential_type_co": "Cédula-type"
+        }
       }
     },
     "notices": {
