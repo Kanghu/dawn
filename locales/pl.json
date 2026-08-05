@@ -798,7 +798,69 @@
           "few": "Płatności kartą bankową nie są obecnie dostępne.<br><a href=\"%{current_url}\">Odśwież stronę</a> lub wypróbuj inną metodę płatności."
         },
         "subscription_agreement_label_html": "Rozumiem i zgadzam się na subskrypcję. Odnowię po podanej cenie i częstotliwości do momentu zakończenia lub zakończenia\n<a class=\"link--small\" data-modal=\"true\" data-title-text=\"%{subscription_policy}\" href=\"%{policy_href}\">anulowane</a>.\n",
-        "waiting_on_payment_methods": "Pobieramy dostępne metody płatności..."
+        "waiting_on_payment_methods": "Pobieramy dostępne metody płatności...",
+        "apple_pay_payment_error": "Twoja płatność nie mogła zostać zrealizowana. Spróbuj ponownie lub użyj innej metody płatności.",
+        "subscription_card_update_agreement_label": "Zmiana metody płatności spowoduje aktualizację Twojej subskrypcji i przyszłych płatności cyklicznych.",
+        "card_security_vault_notice": "Potrzebujemy Twoich danych do przyszłych płatności. Wszystkie transakcje są bezpieczne i szyfrowane.",
+        "taxes_not_included": "Podatki nie są wliczone w cenę",
+        "no_taxes_banner_content": "Za to zamówienie nie zostaną pobrane żadne opłaty. Po pobraniu płatności nie można już dodawać żadnych opłat.",
+        "card_update_label": "Zaktualizuj kartę",
+        "paypal": {
+          "connect": "Kliknij, aby połączyć swoje konto PayPal"
+        },
+        "subscription_agreement_label": "Co najmniej jeden przedmiot w Twoim koszyku to zakup odroczony lub zakup w ramach subskrypcji. Kontynuując płatność, zgadzasz się, że Twoja metoda płatności będzie automatycznie obciążana ceną i częstotliwością określoną na tej stronie do momentu zakończenia subskrypcji lub jej anulowania. Wszystkie anulowania muszą być zgodne z %{cancelled}.",
+        "subscription_agreement_cancelled": "zasady anulowania",
+        "card_expired": "Wygasło",
+        "card_verification_confirm": "Aby zweryfikować, wprowadź kod zabezpieczający swojej karty.",
+        "different_credit_card_label": "Użyj innej karty kredytowej",
+        "delete_customer_mandate_modal_cancel": "Anuluj",
+        "apple": {
+          "connect": "Kliknij, aby połączyć swoje konto Apple Pay",
+          "not_available": "Usługa Apple Pay nie jest dostępna w tej przeglądarce. Aby połączyć swoje konto Apple Pay, musisz użyć przeglądarki Safari na urządzeniu Apple."
+        },
+        "account_connected": "Konto połączone.",
+        "billing_address_associated_with_mandate": "Użyj adresu powiązanego z metodą płatności",
+        "billing_address_associated_with_mandate_info": "Aby zmienić adres rozliczeniowy, usuń i wprowadź ponownie dane swojej karty kredytowej",
+        "credit_card_vaulting_sign_in_banner_title": "Zapisz swoją kartę kredytową",
+        "credit_card_vaulting_sign_in_banner_info": "Zaloguj się lub utwórz konto, aby zapisać kartę kredytową na potrzeby przyszłych zakupów.",
+        "credit_card_vaulting_sign_in_banner_button_label": "Połącz się",
+        "expiry_long": "(Wygasa w %{month}/%{year})",
+        "expiry_short": "(Wyśw. w %{month}/%{year})",
+        "ftd_vault_credit_card_label": "Chcę zapisać tę kartę kredytową na swoim koncie, aby przyspieszyć realizację transakcji",
+        "delete_customer_mandate_modal_title": "Usunąć tę kartę płatniczą?",
+        "delete_customer_mandate_modal_body": "Jeśli usuniesz tę kartę, konieczne będzie dodanie jej ponownie, zanim będzie można jej używać do płatności.",
+        "delete_customer_mandate_modal_confirm": "Wyjmij kartę",
+        "google": {
+          "connect": "Kliknij, aby zalogować się na swoje konto Google Play",
+          "error_authorizing": "Błąd autoryzacji płatności"
+        },
+        "klarna_label": "Klarna",
+        "mor_disclaimer_html": "Klikając poniżej i realizując zamówienie, wyrażasz zgodę na zakup przedmiotu(ów) od Global-e jako zarejestrowany sprzedawca\ndla tej transakcji, zgodnie z <a class=\"link--small\" data-modal=\"true\" data-title-text=\"%{mor_terms}\" href=\"%{terms_href}\">Warunki</a>\ni z <a class=\"link--small\" data-modal=\"true\" data-title-text=\"%{privacy_policy}\" href=\"%{policy_href}\">Polityka prywatności</a> To globalne. Global-e to a\nmiędzynarodowy dostawca usług honorarium dla %{shop_name}\n",
+        "purchase_options_card_update_agreement_label_html": "Aktualizując metodę płatności, autoryzujesz płatności za wszelkie zakupy cykliczne lub odroczone zgodnie z <a class=\"link--small\" data-modal=\"true\" data-title-text=\"%{cancellation_policy}\" href=\"%{policy_href}\">zasady anulowania</a> tego sklepu.",
+        "multibanco_label": "bankomat",
+        "receiver_payment_experience_hint": "Po złożeniu zamówienia otrzymasz dane do płatności. Dokonaj płatności w Multibanco lub najpóźniej online %{due_days} (z) dni.",
+        "pending_payment": {
+          "due_notice": "Twoja wartość płatności %{amount_due} ma termin %{due_date}",
+          "multibanco": {
+            "instruction_html": "Dokonaj płatności w Multibanco lub online, korzystając z poniższych danych. Jeśli masz jakieś pytania lub chcesz zaktualizować dane dotyczące płatności, %{contact_us}.",
+            "entity": "Jednostka",
+            "reference": "Odniesienie",
+            "amount": "Kwota",
+            "find_nearest_atm": "Znajdź najbliższy bankomat",
+            "buyer_action_info": "Płatność w wysokości %{amount_due} osiągnął dojrzałość."
+          }
+        },
+        "purchase_options_agreement_label": "Co najmniej jeden przedmiot w Twoim koszyku stanowi zakup odroczony lub cykliczny. Kontynuując płatność, zgadzasz się, że Twoja metoda płatności będzie automatycznie obciążana według ceny i częstotliwości pokazanej na tej stronie do momentu zakończenia płatności lub do momentu anulowania płatności. Wszelkie anulacje podlegają warunkom  %{cancellation_policy_label}.",
+        "update_payment_method": "Zaktualizuj swoją metodę płatności",
+        "paypal_modal": {
+          "order_contains_subscriptions": "Subskrypcja",
+          "order_contains_fixed_selling_plans": "Suma może nie obejmować podatku, kosztów wysyłki, podatku odroczonego i niektórych rabatów. Kontynuuj realizację transakcji, aby dowiedzieć się, jaka kwota jest dzisiaj należna."
+        },
+        "purchase_options_agreement_label_html": "Rozumiem, że co najmniej jeden przedmiot w moim koszyku jest zakupem odroczonym lub cyklicznym. Kontynuując, zgadzam się z\n<a class=\"link--small\" data-modal=\"true\" data-title-text=\"%{subscription_policy}\" href=\"%{policy_href}\">zasady anulowania</a>\ni wyrażam zgodę na obciążanie mojej metody płatności według cen, częstotliwości i terminów podanych na tej stronie do dnia\nmoje zamówienie zostaje zrealizowane lub anuluję, jeśli jest to dozwolone.\n",
+        "payment_method_saved": "Zapisana metoda płatności",
+        "card_vaulted_company_location": "Karta zapisana dla tej lokalizacji",
+        "order_covered_by_store_credit_notice": "Twoje zamówienie jest objęte kredytem sklepowym.",
+        "order_covered_by_redeemables_notice": "Twoje zamówienie jest objęte gwarancją."
       },
       "thank_you": {
         "payment_method_not_charged": "Bez opodatkowania",
