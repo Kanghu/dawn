@@ -4026,7 +4026,13 @@
     "notices": {
       "order": {
         "cancel_reason": {
-          "few": "Qualcos'altro"
+          "few": "Qualcos'altro",
+          "declined": "Pagamento rifiutato",
+          "inventory": "Articoli non disponibili",
+          "fraud": "Ordine fraudolento",
+          "customer": "Il cliente ha modificato/annullato l'ordine",
+          "other": "Qualcos'altro",
+          "staff": "Errore personale"
         },
         "not_available": "Questo comando non è disponibile",
         "financial_status": {
@@ -4035,8 +4041,25 @@
           "paid": "Pagato",
           "unpaid": "Non pagato",
           "voided": "Annullato",
-          "partially_paid": "Parzialmente pagato"
-        }
+          "partially_paid": "Parzialmente pagato",
+          "partially_refunded": "Parzialmente rimborsato",
+          "refunded": "Rimborsato",
+          "expired": "Scaduto"
+        },
+        "fulfillment_status": {
+          "fulfilled": "Compiuto",
+          "complete": "Completato",
+          "partial": "Parzialmente",
+          "unfulfilled": "Insoddisfatto",
+          "restocked": "Con scorta rifornita"
+        },
+        "transaction_status": {
+          "success": "successo",
+          "pending": "In attesa",
+          "failure": "Fallimento",
+          "error": "Errore"
+        },
+        "cash_on_delivery": "Contrassegno"
       },
       "customer": {
         "password_reset_error": "Errore di reimpostazione della password",
@@ -4054,6 +4077,40 @@
         "error_creating": "Errore durante la creazione dell'indirizzo.",
         "deleted": "Indirizzo eliminato con successo",
         "error_deleting": "Errore durante l'eliminazione dell'indirizzo."
+      },
+      "cart": {
+        "only_n_items_available": "Puoi solo aggiungere %{count} %{name} al canestro.",
+        "too_many_items_in_cart": "Non puoi aggiungere altro %{name} nel cestino.",
+        "all_items_in_cart": "Tutti quelli %{count} %{name} Sono nel tuo carrello.",
+        "empty_update": "impossibile aggiornare il carrello vuoto",
+        "missing_parameters": "non esiste un ID o un parametro di linea valido",
+        "generic_error": "Errore nel carrello",
+        "too_many_line_items_error": "Il tuo carrello non può contenere pesce %{max} articoli.",
+        "link_expired": "Il collegamento è scaduto",
+        "link_no_longer_exists": "Il collegamento non esiste più.",
+        "stock_problems_html": "Uno o più articoli non sono più disponibili. L'ho reso disponibile <a href='%{link}'>un carrello aggiornato</a>.",
+        "changed": "Cestino modificato",
+        "items_changed": "Uno o più elementi sono cambiati.",
+        "product_sold_out": "Il prodotto\"%{name}\" è già esaurito.",
+        "variant_not_found": "Impossibile trovare l'opzione",
+        "variant_requires_selling_plan": "La variante è acquistabile solo con un piano di acquisto.",
+        "shipping_address_not_required": "Questo carrello non necessita di consegna",
+        "shipping_address_invalid": "Si è verificato un problema nel calcolo delle spese di spedizione. Continua al checkout per scegliere una tariffa di spedizione prima del checkout.",
+        "selling_plan_not_applicable": "Il piano di vendita non può essere applicato alla variante",
+        "selling_plan_not_available_for_company_locations": "Per gli ordini B2B sono disponibili solo acquisti individuali.",
+        "digital_product_not_available_for_company_locations": "Questo articolo non può essere aggiunto a un ordine B2B",
+        "product_not_available": "Il prodotto non è disponibile",
+        "less_than_minimum": "Questo articolo ha un minimo %{min}.",
+        "more_than_maximum": "Questo articolo ha il massimo %{max}.",
+        "not_respect_step": "Puoi inserire questo elemento solo con incrementi di %{step}.",
+        "bundle_requires_components": "Il prodotto sotto forma di set \"%{name}\" non può essere aggiunto al carrello.",
+        "gift_card_with_components_not_supported": "Il prodotto sotto forma di set \"%{name}\" non può essere aggiunto al carrello.",
+        "view_lines_limit_reached": "Il numero di righe deve essere inferiore o uguale a %{limit}",
+        "merchandise_line_transformers": {
+          "run_error": "Si è verificato un errore con il tuo carrello."
+        },
+        "gift_card_price_must_be_greater_than_zero": "Il prodotto sotto forma di set \"%{name}\" non può essere aggiunto al carrello.",
+        "cart_too_large": "Il cestino è troppo grande."
       }
     },
     "page_titles": {
