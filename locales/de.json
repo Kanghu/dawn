@@ -188,7 +188,8 @@
       "product_variants": "Produktvarianten",
       "taxes_included": "Inkl. Steuern.",
       "duties_included": "Inkl. Zollgebühren.",
-      "duties_and_taxes_included": "Inkl. Zollgebühren und Steuern."
+      "duties_and_taxes_included": "Inkl. Zollgebühren und Steuern.",
+      "super_price": "Toller Preis"
     },
     "modal": {
       "label": "Medien-Galerie"
@@ -214,7 +215,8 @@
       },
       "product_count_simple": {
         "one": "{{ count }} Produkt",
-        "other": "{{ count }} Produkte"
+        "other": "{{ count }} Produkte",
+        "few": "{{ count }} Produkte"
       },
       "reset": "Zurücksetzen",
       "sort_button": "Sortieren",
@@ -225,6 +227,32 @@
       "show_more": "Mehr anzeigen",
       "show_less": "Weniger anzeigen",
       "filter_and_operator_subtitle": "Allen entsprechen"
+    },
+    "metaobjects": {
+      "specification_groups": {
+        "tip_produs_": "Produkttyp",
+        "nr_surse_iluminat_": "Die Anzahl der Lichtquellen",
+        "forma_": "Formular",
+        "constructie_": "Bau",
+        "design_": "Design",
+        "dimabil_": "Dimmbar",
+        "tip_bec_": "Lampentyp",
+        "tip_soclu_": "Sockeltyp",
+        "utilizare_": "Nutzung",
+        "recomandare_": "Empfehlung",
+        "pozitionare_": "Positionierung",
+        "autonomie_": "Autonomie",
+        "putere_w_": "Leistung (W)",
+        "tensiune_alimentare_": "Versorgungsspannung",
+        "tip_lumina_": "Leichter Typ",
+        "kelvin_": "Kelvin",
+        "flux_de_lumina_lm_": "Lichtstrom (lm)",
+        "clasa_de_protectie_": "Schutzklasse",
+        "tip_intrerupator_": "Schaltertyp",
+        "tip_alimentare_": "Lebensmitteltyp",
+        "tip_comanda_": "Auftragstyp",
+        "numar_functii_": "Die Anzahl der Funktionen"
+      }
     }
   },
   "templates": {
@@ -1136,26 +1164,5 @@
         }
       }
     }
-  },
-  "alc-benefits": {
-    "stock": {
-      "in_stock": "auf Lager",
-      "low_stock": "Einfach {{ count }} noch auf Lager",
-      "last_stock": "Die Letzten {{ count }} Stücke 🔥",
-      "last_piece": "Das letzte Stück 🔥",
-      "out_of_stock": "Ausverkauft"
-    },
-    "free_shipping": "KOSTENLOSER Versand ⚡ (2 - 4 Werktage)",
-    "free_shipping_link_text": "siehe Details",
-    "free_shipping_link": "/pages/livrare",
-    "savings": "Sie sparen {{ amount }}",
-    "delivery": "Lieferung in 2 - 4 Werktagen",
-    "price_info": "Direkter Produzent: ",
-    "price_info_link": "/pages/fabrica-alessandro-design",
-    "price_info_link_text": "Sehen Sie sich die Alessandro Design-Fabrik an",
-    "return_policy": "14 Tage kostenloses Rückgaberecht",
-    "warranty": "Garantie inklusive:",
-    "warranty_link_text": "siehe Details",
-    "warranty_link": "/pages/garantie"
   }
 }
