@@ -3624,9 +3624,58 @@
               "ro": "Wprowadź prawidłowy rumuński numer VAT",
               "sk": "Wprowadź prawidłowy słowacki numer VAT",
               "si": "Wprowadź prawidłowy słoweński numer VAT",
-              "es": "Wprowadź prawidłowy hiszpański numer VAT"
+              "es": "Wprowadź prawidłowy hiszpański numer VAT",
+              "se": "Wprowadź prawidłowy szwedzki numer VAT",
+              "gb": "Proszę wprowadzić prawidłowy numer VAT w Wielkiej Brytanii"
+            },
+            "service_unavailable": "Usługa sprawdzania poprawności jest niedostępna",
+            "service_error": "Usługa sprawdzania poprawności jest niedostępna"
+          },
+          "accessibility": {
+            "status": {
+              "validating": "Trwa weryfikacja numeru VAT",
+              "valid": "Numer VAT jest ważny",
+              "applied": "Zastosowano zwolnienie z podatku VAT",
+              "domestic": "Nie zastosowano zwolnienia z podatku VAT",
+              "invalid_number": "Zwolnienie z podatku VAT nie powiodło się",
+              "service_unavailable": "Weryfikacja zwolnienia z podatku VAT nie powiodła się",
+              "service_error": "Weryfikacja zwolnienia z podatku VAT nie powiodła się"
             }
           }
+        }
+      },
+      "payment_collection": {
+        "cancelled": "Ta płatność nie jest już wymagana. Odwiedź stronę zamówienia, aby poznać szczegóły.",
+        "paid": "Ta płatność została już wysłana. Odwiedź stronę zamówienia, aby poznać szczegóły."
+      },
+      "required_extensions": {
+        "errors": {
+          "interaction_required": "Do realizacji płatności wymagana jest interakcja z rozszerzeniem."
+        }
+      },
+      "embed": {
+        "header": {
+          "review_order": "Sprawdź swoje zamówienie"
+        },
+        "shipping": {
+          "shipping_options": "Zobacz wszystkie opcje wysyłki"
+        },
+        "payment": {
+          "payment_options": "Zobacz wszystkie opcje płatności"
+        }
+      },
+      "too_many_requests": {
+        "title": "Zbyt wiele prób płatności",
+        "body": "Poczekaj kilka minut i spróbuj ponownie z koszyka.",
+        "return_to_cart": "Wróć do koszyka",
+        "body_no_cart": "Poczekaj kilka minut i spróbuj ponownie."
+      },
+      "address_management": {
+        "saved_with_store": "Zapisano w tym sklepie"
+      },
+      "ucp": {
+        "standard_errors": {
+          "item_unavailable": "Przedmiotu nie można kupić"
         }
       }
     },
@@ -3634,6 +3683,47 @@
       "words_connector": ", ",
       "two_words_connector": " i ",
       "last_word_connector": " i "
+    },
+    "pagination": {
+      "previous": "Powrót",
+      "next": "Przed"
+    },
+    "links": {
+      "powered_by_shopify": "Obsługiwane przez Shopify",
+      "learn_more": "Dowiedz się więcej"
+    },
+    "feed": {
+      "more": "Więcej"
+    },
+    "attributes": {
+      "email": "e-mail",
+      "password": "hasło",
+      "password_confirmation": "Potwierdzenie hasła",
+      "first_name": "imię",
+      "last_name": "nazwisko",
+      "body": "ciało",
+      "signature": "Adres"
+    },
+    "addresses": {
+      "zip_code": "kod pocztowy",
+      "postal_code": "Kod pocztowy",
+      "postcode": "Kod pocztowy",
+      "pincode": "Kod PIN",
+      "region": "Region",
+      "prefecture": "Prefektura",
+      "province": "Prowincja",
+      "state": "Stan",
+      "state_and_territory": "Stan/terytorium",
+      "county": "Hrabstwo",
+      "emirate": "Emirat",
+      "governorate": "Gubernatorstwo",
+      "confirm": "Czy na pewno chcesz usunąć ten adres?"
+    },
+    "collections": {
+      "sorting": {
+        "manual": "Zalecane",
+        "best_selling": "Najlepszy sprzedawca"
+      }
     }
   },
   "customer_accounts": {
