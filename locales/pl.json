@@ -942,8 +942,19 @@
           "approved_transaction": "{{card_number}} symulować zatwierdzoną transakcję",
           "declined_transaction": "{{card_number}} symulować odrzuconą transakcję",
           "gateway_failure": "{{card_number}} symulować awarię bramy",
-          "additional_instructions": "Użyj dowolnej przyszłej daty ważności i dowolnego 3-cyfrowego kodu zabezpieczającego."
-        }
+          "additional_instructions": "Użyj dowolnej przyszłej daty ważności i dowolnego 3-cyfrowego kodu zabezpieczającego.",
+          "support_link": "Uzyskaj wsparcie"
+        },
+        "order_edit_banner_single_item_updated": "Zaktualizowano",
+        "order_edit_banner_previous_taxes_label": "Poprzednie opłaty:",
+        "order_edit_banner_new_taxes_label": "Nowe opłaty:",
+        "order_edit_banner_no_taxes_label": "Żadne",
+        "satispay_label": "Zaspokoić",
+        "wechat_app_label": "WeChat",
+        "alternative_payment_currency_total_notice_disclosure": "%{shop_name} przetwarzać płatności w %{shop_currency} (%{amount_due}).",
+        "alternative_payment_currency_total_manual_payment_notice_disclosure": "Zapłać %{shop_name} w %{shop_currency} (%{amount_due}).",
+        "mb_way_label": "MB SPOSÓB",
+        "bizum_label": "Bizum"
       },
       "thank_you": {
         "payment_method_not_charged": "Bez opodatkowania",
@@ -1956,6 +1967,49 @@
         "discount_code_applied_count": {
           "few": "Wyświetlacz %{count} rabaty"
         }
+      },
+      "payment_summary": {
+        "gift_card_current_balance_notice": "Aktualne saldo %{amount}",
+        "credit_card_expires_on_notice": "Wygasa o godz %{month}/%{year}",
+        "express_payment_gateway_label": "ekspresowy",
+        "manual_payment_gateway_label": "Instrukcja",
+        "billing_address_title": "Adres rozliczeniowy",
+        "free_label": "Bezpłatnie"
+      },
+      "field_errors": {
+        "handle_phone_invalid": "Proszę wprowadzić prawidłowy numer telefonu",
+        "handle_email_invalid": "Proszę podać prawidłowy adres e-mail",
+        "email_invalid": "Proszę podać prawidłowy adres e-mail",
+        "email_or_phone_blank": "Wpisz adres e-mail lub numer telefonu",
+        "email_or_phone_invalid": "Proszę wprowadzić prawidłowy adres e-mail lub numer telefonu komórkowego",
+        "address_first_name_blank": "Wpisz imię",
+        "address_last_name_blank": "Wpisz nazwisko",
+        "address_address1_blank": "Wpisz adres",
+        "address_address2_blank": "Wejdź do mieszkania, pokoju itp.",
+        "address_city_blank": "Wpisz miasto",
+        "address_country_blank": "Wybierz kraj/region",
+        "address_country_not_supported": "Nie wysyłamy do tego kraju/regionu. Wprowadź nowy adres wysyłki i spróbuj ponownie.",
+        "address_province_blank": "Wybierz stan/prowincję",
+        "address_company_blank": "Wpisz nazwę firmy",
+        "address_phone_blank": "Proszę wprowadzić prawidłowy numer telefonu",
+        "address_zip_blank": "Wprowadź kod pocztowy",
+        "address_zip_invalid_for_country": "Proszę wprowadzić prawidłowy kod pocztowy/kod pocztowy dla %{country}",
+        "address_zip_invalid_for_country_and_province": "Proszę wprowadzić prawidłowy kod pocztowy/kod pocztowy dla %{province}, %{country}",
+        "credit_card_name_blank": "Wpisz swoje imię i nazwisko dokładnie tak, jak jest zapisane na karcie",
+        "credit_card_name_invalid": "Wpisz swoje imię i nazwisko dokładnie tak, jak jest zapisane na karcie",
+        "credit_card_number_invalid": "Proszę podać prawidłowy numer karty",
+        "credit_card_expiry_invalid": "Proszę wprowadzić prawidłową datę ważności",
+        "credit_card_month_invalid": "Wprowadź prawidłowy miesiąc ważności",
+        "credit_card_year_invalid": "Wprowadź prawidłowy rok ważności",
+        "credit_card_start_invalid": "Wprowadź prawidłową datę początkową karty",
+        "credit_card_start_month_invalid": "Wprowadź prawidłowy miesiąc rozpoczęcia korzystania z karty",
+        "credit_card_start_year_invalid": "Wprowadź rok początkowy ważnej karty",
+        "credit_card_verification_value_blank": "Wprowadź kod CVV lub kod zabezpieczający znajdujący się na karcie",
+        "delivery_line_detail_changed": "Niektóre szczegóły dostawy mogły ulec zmianie. Sprawdź metodę wysyłki i spróbuj ponownie.",
+        "reduction_code_code_not_found": "Wpisz ważny kod rabatowy lub kartę podarunkową",
+        "reduction_code_discount_not_found": "Wpisz ważny kod rabatowy",
+        "reduction_code_gift_card_code_invalid": "Proszę wprowadzić ważną kartę podarunkową",
+        "reduction_code_gift_card_unusable": "Karty podarunkowej nie można wykorzystać do zakupu kolejnej karty podarunkowej"
       }
     },
     "sentence": {
