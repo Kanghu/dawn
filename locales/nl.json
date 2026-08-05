@@ -4240,9 +4240,73 @@
             "due": "Vervaldatum van betaling {{date}}",
             "due_today": "De betaling moet vandaag plaatsvinden",
             "due_without_date": "Vervaldatum van betaling",
-            "due_on_fulfillment": "Betaling verschuldigd op het moment van uitvoering van de bestelling"
+            "due_on_fulfillment": "Betaling verschuldigd op het moment van uitvoering van de bestelling",
+            "pay_to_confirm": "Betaal om te bevestigen",
+            "payment_not_due": "De betaling is nog niet verschuldigd"
           }
-        }
+        },
+        "sort_currently_sorted_by_accessibility_label": "Momenteel gesorteerd op: {{option}}",
+        "carousel": {
+          "one_products_accessibility_label": "Comana omvat: {{lineItemName1}}, hoeveelheid: {{lineItemQuantity1}}",
+          "two_products_accessibility_label": "De bestelling omvat: {{lineItemName1}}, hoeveelheid: {{lineItemQuantity1}}, {{lineItemName2}}, hoeveelheid: {{lineItemQuantity2}}",
+          "three_products_accessibility_label": "De bestelling omvat: {{lineItemName1}}, hoeveelheid: {{lineItemQuantity1}}, {{lineItemName2}}, hoeveelheid: {{lineItemQuantity2}}, {{lineItemName3}}, hoeveelheid: {{lineItemQuantity3}}",
+          "four_products_accessibility_label": "De bestelling omvat: {{lineItemName1}}, hoeveelheid: {{lineItemQuantity1}}, {{lineItemName2}}, hoeveelheid: {{lineItemQuantity2}}, {{lineItemName3}}, hoeveelheid: {{lineItemQuantity3}}, {{lineItemName4}}, hoeveelheid: {{lineItemQuantity4}}",
+          "five_products_accessibility_label": "De bestelling omvat: {{lineItemName1}}, hoeveelheid: {{lineItemQuantity1}}, {{lineItemName2}}, hoeveelheid: {{lineItemQuantity2}}, {{lineItemName3}}, hoeveelheid: {{lineItemQuantity3}}, {{lineItemName4}}, hoeveelheid: {{lineItemQuantity4}}, {{lineItemName5}}, hoeveelheid: {{lineItemQuantity5}}",
+          "six_products_accessibility_label": "De bestelling omvat: {{lineItemName1}}, hoeveelheid: {{lineItemQuantity1}}, {{lineItemName2}}, hoeveelheid: {{lineItemQuantity2}}, {{lineItemName3}}, hoeveelheid: {{lineItemQuantity3}}, {{lineItemName4}}, hoeveelheid: {{lineItemQuantity4}}, {{lineItemName5}}, hoeveelheid: {{lineItemQuantity5}}, {{lineItemName6}}, hoeveelheid: {{lineItemQuantity6}}",
+          "six_and_more_products_accessibility_label": "De bestelling omvat: {{lineItemName1}}, hoeveelheid: {{lineItemQuantity1}}, {{lineItemName2}}, hoeveelheid: {{lineItemQuantity2}}, {{lineItemName3}}, hoeveelheid: {{lineItemQuantity3}}, {{lineItemName4}}, hoeveelheid: {{lineItemQuantity4}}, {{lineItemName5}}, hoeveelheid: {{lineItemQuantity5}}, {{lineItemName6}}, hoeveelheid: {{lineItemQuantity6}} en anderen",
+          "view_order_details": "Zie bestelgegevens",
+          "previous": "Terug",
+          "next": "Voor"
+        },
+        "show_order_actions_accessibility_label": "Toon acties voor de bestelling {{name}}",
+        "empty_state_title_for_pending_orders": "Geen openstaande bestellingen",
+        "more_than_four_products_accessibility_label": "De bestelling omvat {{lineItemName1}}, {{lineItemName2}}, {{lineItemName3}} en nog steeds {{numberOfAdditionalProducts}} (van producten)",
+        "plus_more_products": "Nog steeds {{numberOfAdditionalProducts}} (van) producten",
+        "order_status_and_message": "{{orderStatus}} - {{message}}",
+        "order_status_message": {
+          "list_view": {
+            "view_order_for_details": "Voor details, zie de bestelling",
+            "estimated_delivery": "Geschatte datum: {{date}}",
+            "last_updated": "Laatste update om {{date}}"
+          },
+          "table_view": {
+            "estimated_delivery": "Geschatte levering: {{date}}",
+            "last_updated": "{{date}}"
+          }
+        },
+        "more_than_three_products_accessibility_label": "De bestelling omvat {{lineItemName1}}, {{lineItemName2}} en nog steeds {{numberOfAdditionalProducts}} (van producten)",
+        "plus_more": "+{{numberOfAdditionalProducts}}",
+        "filter_title": "Filteren",
+        "filter": {
+          "clear_section": "Maak de sectie leeg",
+          "clear_all": "Maak alles leeg",
+          "apply": "Toepassen",
+          "date": {
+            "start_date": "De initiële datum",
+            "end_date": "Laatste datum",
+            "title": "Besteldatum",
+            "today": "Vandaag",
+            "last_7_days": "Laatste 7 dagen",
+            "last_30_days": "Laatste 30 dagen",
+            "last_90_days": "Laatste 90 dagen",
+            "last_365_days": "Laatste 12 maanden",
+            "custom": "Gepersonaliseerd"
+          },
+          "date_section_accessibility_label": "Filter op {{sectionTitle}}"
+        },
+        "no_order_banner": "Als u de extensie op de pagina Bestelstatus wilt testen, maakt u een bestelling aan.",
+        "location_filter_picker": {
+          "all_location": "Alle locaties",
+          "current_location": "Bestaande locatie",
+          "switch_view": "Verander de weergave"
+        },
+        "empty_state_with_location_title": "Geen bestelling voor {{locationName}}",
+        "view_order": "Zie de bestelling",
+        "view_order_accessibility_label": "Zie de bestelling {{orderName}}",
+        "empty_state_redesign_cta": "Winkel nu",
+        "empty_state_redesign_subtitle": "Ben je klaar om te winkelen?",
+        "empty_state_redesign_welcome": "welkom",
+        "empty_state_redesign_welcome_with_name": "welkom, {{firstName}}"
       },
       "order_status": {
         "delivered_description_gift_card": {
