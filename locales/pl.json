@@ -1204,8 +1204,138 @@
             "missing_session_id": "Brak danych karty kredytowej dla sesji.",
             "gateway_not_supported": "Bramka płatnicza nie obsługuje przechowywania metod płatności.",
             "credit_card_last_name_required": "Pole „nazwisko” nie może mieć wartości zero.",
-            "credit_card_update_failed": "Aktualizacja karty kredytowej nie powiodła się."
+            "credit_card_update_failed": "Aktualizacja karty kredytowej nie powiodła się.",
+            "invalid_address_type": "Podany typ adresu jest nieprawidłowy dla tej metody płatności.",
+            "missing_retail_attributions": "Przypisania detaliczne są wymagane w przypadku ręcznie wprowadzanych płatności kartą kredytową.",
+            "unexpected_retail_attributions": "Nieoczekiwanie udostępniono kredyty detaliczne na potrzeby płatności kartą kredytową.",
+            "invalid_card_source": "Ta sesja nie ma uprawnień do korzystania z tego źródła karty.",
+            "wallet_content_missing": "Brakuje zawartości portfela.",
+            "payment_instrument_not_found": "Nie można znaleźć metody płatności",
+            "unauthorized_capture_method": "Konfigurowanie metody przechwytywania płatności jest niedozwolone.",
+            "saved_payment_methods_not_allowed": "Zapisane metody płatności są niedozwolone.",
+            "saved_payment_methods_not_enabled": "Zapisane metody płatności nie są włączone dla tego sklepu.",
+            "store_credit_not_enabled": "Kredyt sklepowy nie jest włączony dla tego sklepu.",
+            "store_credit_account_not_found": "Nie znaleziono konta kredytowego sklepu.",
+            "store_credit_account_mismatch": "Konto kredytowe sklepu nie jest zgodne z tożsamością kupującego.",
+            "store_credit_mismatched_currency": "Waluta konta kredytowego sklepu nie jest zgodna z walutą realizacji transakcji.",
+            "store_credit_insufficient_funds": "Na koncie kredytowym sklepu nie ma wystarczających środków.",
+            "store_credit_buying_gift_card": "Nie możesz użyć środków sklepowych do zakupu karty podarunkowej.",
+            "gift_cards_not_allowed_for_b2b": "Karty podarunkowe nie są akceptowane w sklepach B2B.",
+            "method_required": "Należy zaproponować sposób płatności.",
+            "paypal_express_address_invalid": "PayPal zwrócił nieprawidłowy adres.",
+            "saved_payment_methods_cvv_verification_disabled": "Wybrana metoda płatności wymaga weryfikacji CVV, która nie jest włączona w tym sklepie. Wybierz inną metodę płatności."
+          },
+          "tip": {
+            "not_accepted_by_shop": "Sklep nie przyjmuje napiwków.",
+            "only_one_tip_line_allowed": "Wiele linii napiwków nie jest akceptowanych.",
+            "tips_not_allowed_for_b2b": "W sklepach B2B nie można dawać napiwków.",
+            "currency_change_reset": "Napiwek został zresetowany ze względu na zmianę waluty.",
+            "tips_not_allowed_for_deferred_purchase_options": "W przypadku opcji zakupu z odroczonym terminem napiwki nie są jeszcze akceptowane."
+          },
+          "sale_attribution": {
+            "draft_order_not_exist": "To oczekujące zamówienie nie istnieje w bieżącym sklepie.",
+            "staff_member_not_exist": "Ten personel nie istnieje w obecnym sklepie.",
+            "location_not_exist": "Ta lokalizacja nie istnieje w bieżącym sklepie.",
+            "point_of_sale_device_not_exist": "To urządzenie punktu sprzedaży nie istnieje w bieżącym sklepie.",
+            "unresolvable_target_merchandise_lines": "Proponowane przypisania sprzedaży nie mogą zostać rozwiązane w bieżącym kontekście negocjacji."
+          },
+          "non_negotiable": {
+            "missing_non_negotiable_terms": "Oferta kupującego musi zawierać warunki niepodlegające negocjacjom.",
+            "invalid_signature": "Podpis za {{target_terms}} jest nieważne."
+          },
+          "inventory": {
+            "missing_quantity_value": "W wierszach zapasów kupującego brakuje pola ilości.",
+            "changing_behavior_not_allowed": "Ten klient nie ma uprawnień do zmiany zachowania zasobów.",
+            "only_one_inventory_behavior_allowed": "Obecnie na każdą płatność dozwolone jest tylko jedno zachowanie zapasów."
+          },
+          "optional_duties": {
+            "optional_duties_not_permitted": "W przypadku tej kasy nie jest dozwolona odmowa odprawy celnej."
+          },
+          "attribution": {
+            "retail_attribution_not_allowed": "W przypadku tej transakcji atrybucja detaliczna nie jest dozwolona.",
+            "retail_attribution_required": "Dla tej transakcji wymagane jest przypisanie sprzedaży detalicznej."
+          },
+          "captcha": {
+            "metadata_missing": "Aby zrealizować to zamówienie, konieczne jest przeprowadzenie weryfikacji captcha.",
+            "metadata_mismatch": "Podany typ weryfikacji dostawcy i captcha nie odpowiada oczekiwanym wartościom.",
+            "token_missing": "Aby zrealizować to zamówienie, należy dostarczyć token captcha.",
+            "job_enqueue_failed": "Nie można ustawić w kolejce zadania sprawdzania poprawności captcha.",
+            "job_already_queued": "Weryfikacja Captcha została już umieszczona w kolejce dla tego tokena captcha.",
+            "token_expired": "Podany token captcha wygasł. Przejdź ponownie weryfikację captcha, aby kontynuować proces realizacji transakcji.",
+            "token_invalid": "Podany token captcha był nieprawidłowy. Przejdź ponownie weryfikację captcha, aby kontynuować proces realizacji transakcji.",
+            "token_not_valid_for_session": "Dostarczona weryfikacja captcha nie może zostać użyta w przypadku tej transakcji."
+          },
+          "fx_reconciliation_override": {
+            "shop_currency_mismatch": "Otrzymana kwota musi być wyrażona w walucie sklepu."
+          },
+          "checkout_source": {
+            "revoked": "Ta płatność nie jest już dostępna."
           }
+        },
+        "full_price": "Pełna cena:",
+        "title": "Kompletne zamówienie – {{shopName}}",
+        "full_title": "{{pageTitle}} – {{shopName}} – Dokończ zamówienie",
+        "loading_title": "Kompletne zamówienie – {{shopName}}",
+        "display_name": "{{firstName}} {{lastName}}",
+        "google_map_title": "Mapa Google'a",
+        "submit_order_button_label": "Prześlij zamówienie",
+        "submit_for_review_button_label": "Prześlij do sprawdzenia",
+        "submit_for_review_notice_label": "Płatność nie będzie należna do czasu sprawdzenia zamówienia",
+        "continue_to_payment_plans_button_label": "Kontynuuj plany płatności",
+        "back_button_label": "Powroty",
+        "choose_delivery_strategy": "Wybierz metodę dostawy",
+        "autocomplete_zero_item": "Brak dostępnych elementów",
+        "autocomplete_powered_by_google": "Na platformie {{brandName}}",
+        "submit": "Wyślij",
+        "processing": "Przetwarzanie...",
+        "stepper": {
+          "increase": "Dorośnij {{type}}",
+          "decrease": "Zmniejsza się {{type}}",
+          "minimum_reached": "Osiągnięto minimalny limit {{value}}",
+          "maximum_reached": "Osiągnięto maksymalny limit {{value}}"
+        },
+        "remove_item": "Wyeliminuj %{label}",
+        "remove_tag": "Usuń znacznik",
+        "dates": {
+          "weekdays": {
+            "monday": "poniedziałek",
+            "tuesday": "wtorek",
+            "wednesday": "środa",
+            "thursday": "czwartek",
+            "friday": "piątek",
+            "saturday": "sobota",
+            "sunday": "niedziela"
+          },
+          "weekdays_abbreviation": {
+            "monday": "L",
+            "tuesday": "Mam",
+            "wednesday": "Mi",
+            "thursday": "J",
+            "friday": "V",
+            "saturday": "S",
+            "sunday": "d"
+          },
+          "months": {
+            "january": "Styczeń",
+            "february": "luty",
+            "march": "Marzec",
+            "april": "kwiecień",
+            "may": "Maj",
+            "june": "Czerwiec",
+            "july": "Lipiec",
+            "august": "sierpień",
+            "september": "Wrzesień",
+            "october": "Październik",
+            "november": "Listopad",
+            "december": "Grudzień"
+          }
+        },
+        "datepicker": {
+          "show_previous_month": "Pokaż poprzedni miesiąc, {{month}} {{year}}",
+          "show_next_month": "Pokaż w przyszłym miesiącu, {{month}} {{year}}",
+          "range_start": "Początek interwału",
+          "in_range": "W przerwie",
+          "range_end": "Koniec przerwy"
         }
       }
     },
