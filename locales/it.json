@@ -2178,22 +2178,34 @@
           "other": "acquista anche questi prodotti"
         },
         "gift_card_confirmation_by_text_typ": {
-          "few": "Riceverai un messaggio di testo con le carte regalo in pochi minuti."
+          "few": "Riceverai entro pochi minuti un SMS con le carte regalo.",
+          "one": "Riceverai entro pochi minuti un SMS con la carta regalo.",
+          "other": "Riceverai entro pochi minuti un SMS con le carte regalo."
         },
         "gift_card_confirmation_by_email_typ": {
-          "few": "Riceverai un'e -mail con le carte regalo in pochi minuti."
+          "few": "Riceverai un'email con le carte regalo entro pochi minuti.",
+          "one": "Riceverai entro pochi minuti un'e-mail con la carta regalo.",
+          "other": "Riceverai un'email con le carte regalo entro pochi minuti."
         },
         "gift_card_email_title": {
-          "few": "Le carte regalo sono state inviate via e -mail"
+          "few": "Le carte regalo sono state inviate via e-mail",
+          "one": "La carta regalo è stata inviata via e-mail",
+          "other": "Le carte regalo sono state inviate via e-mail"
         },
         "gift_card_text_title": {
-          "few": "Le carte regalo sono state inviate via e -mail"
+          "few": "Le carte regalo sono state inviate via e-mail",
+          "one": "La carta regalo è stata inviata tramite SMS",
+          "other": "Le carte regalo sono state inviate via e-mail"
         },
         "gift_card_resent_confirmation": {
-          "few": "Le carte CADIU sono state reinviate."
+          "few": "Le carte regalo sono state rispedite.",
+          "one": "La carta regalo è stata reinviata.",
+          "other": "Le carte regalo sono state rispedite."
         },
         "gift_card_resend_failure": {
-          "few": "Un problema si è verificato quando si sono inoltrati le carte regalo. Riprova o contattaci."
+          "few": "Si è verificato un problema con il reinvio delle carte regalo. Riprova o contattaci.",
+          "one": "Si è verificato un problema con il reinvio della carta regalo. Riprova o contattaci.",
+          "other": "Si è verificato un problema con il reinvio delle carte regalo. Riprova o contattaci."
         },
         "thank_you_unconfirmed_items_heading": {
           "few": "Alcuni elementi non sono confermati"
@@ -2381,7 +2393,41 @@
           "text_html": "%{contact_us} per aggiungere l'indirizzo",
           "contact_us": "Contattaci"
         },
-        "order_status_confirmed_with_installments_payment_return": "Riporta la tua attenzione all'addetto alle vendite."
+        "order_status_confirmed_with_installments_payment_return": "Riporta la tua attenzione all'addetto alle vendite.",
+        "order_status_confirmed_with_installments_payment_confirm": "A breve riceverai un'e-mail di conferma con il numero dell'ordine e i dettagli della pianificazione della rata",
+        "first_payment_complete": "Il primo pagamento è completo",
+        "in_store_purchase": "Acquisti in negozio",
+        "choose_payment_method_later": "Scegli il tuo metodo di pagamento più tardi",
+        "purchase_order_number_title": "Numero dell'ordine di acquisto: %{purchase_order_number}",
+        "thank_you_ready_for_picked_up": "Il tuo ordine è stato ritirato all'indirizzo %{address}.",
+        "ready_for_delivery": "Pronto per la consegna",
+        "order_updates_subscribe_to_email_notifications_failed": "Non possiamo memorizzare questo indirizzo email per gli aggiornamenti. Riprova o utilizza un indirizzo email diverso.",
+        "order_updates_subscribe_to_email_notifications_email_already_exists": "L'indirizzo email che hai inserito esiste già.",
+        "subscriptions_management": {
+          "title": "Abbonamento",
+          "description": "Continua con il tuo account per visualizzare e gestire i tuoi abbonamenti.",
+          "button_label": "Gestisci il tuo abbonamento"
+        },
+        "manage_order_label": "Gestisci il tuo ordine",
+        "resend_gift_cards_by_email": "Voglio inviare nuovamente l'e-mail",
+        "resend_gift_cards_by_text": "Voglio inviare nuovamente il messaggio di testo",
+        "failed_pending_payment_page_title": "C'è un problema con il tuo pagamento",
+        "thank_you_title_payments_app_pending_default": "Il tuo pagamento è in fase di elaborazione",
+        "thank_you_title_payments_app_pending_buyer_action_required": "Il tuo ordine è stato ricevuto",
+        "thank_you_title_payments_app_failed_pending_payment": "Impossibile elaborare il pagamento",
+        "thank_you_payments_app_failed_pending_payment": "Non ti è stato addebitato il tuo ordine. Ritorna al carrello per verificare l'ordine ed effettuare nuovamente il pagamento.",
+        "order_status_payments_app_pending_payment_description_default_with_email_and_phone": "A breve riceverai un'e-mail di conferma. Tieni traccia del tuo ordine utilizzando l'app Shop.",
+        "order_status_payments_app_pending_payment_description_default_with_email": "A breve riceverai un'e-mail di conferma. Tieni traccia del tuo ordine utilizzando l'app Shop.",
+        "order_status_payments_app_pending_payment_description_default_with_phone": "A breve riceverai un SMS di conferma. Tieni traccia del tuo ordine utilizzando l'app Shop.",
+        "order_status_payments_app_pending_payment_description_buyer_action_required_with_email_and_phone": "Dopo aver completato il pagamento, riceverai un'e-mail di conferma. Tieni traccia del tuo ordine utilizzando l'app Shop.",
+        "order_status_payments_app_pending_payment_description_buyer_action_required_with_email": "Dopo aver completato il pagamento, riceverai un'e-mail di conferma. Tieni traccia del tuo ordine utilizzando l'app Shop.",
+        "order_status_payments_app_pending_payment_description_buyer_action_required_with_phone": "Dopo aver completato il pagamento riceverai un SMS di conferma. Tieni traccia del tuo ordine utilizzando l'app Shop.",
+        "order_status_payments_app_failed_pending_payment": "Non ti è stato addebitato il tuo ordine. Ritorna al carrello per verificare l'ordine ed effettuare nuovamente il pagamento.",
+        "order_status_payments_app_pending_payment_description_buyer_action_required_with_email_pick_up": "Dopo aver completato il pagamento, riceverai un'e-mail di conferma. Tieni traccia del tuo ordine utilizzando l'app Shop.",
+        "thank_you_confirmed_order_with_missing_payment": "Contattaci via email o telefono per ricevere una conferma d'ordine.",
+        "thank_you_confirmed_order_with_missing_pick_up": "Contattaci via email o telefono per ricevere una conferma d'ordine.",
+        "thank_you_confirmed_order_with_draft_payment": "Ti faremo sapere se avremo bisogno di ulteriori informazioni o quando il tuo ordine sarà confermato.",
+        "thank_you_confirmed_order_with_draft_pick_up": "Ti faremo sapere se avremo bisogno di ulteriori informazioni o quando il tuo ordine sarà confermato."
       },
       "order_payment_collection": {
         "changes_summary": {
