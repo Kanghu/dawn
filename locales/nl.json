@@ -2022,18 +2022,40 @@
       },
       "shipping_errors": {
         "shipping_method_not_available_generic": {
-          "few": "Sommige artikelen in uw winkelwagen kunnen niet worden verzonden naar het adres dat u hebt ingevoerd. Controleer het adres om te controleren of het correct is en probeer het opnieuw of selecteer een ander adres."
+          "few": "Sommige artikelen in uw winkelwagen kunnen niet naar het door u ingevoerde adres worden verzonden. Controleer het adres om er zeker van te zijn dat het correct is en probeer het opnieuw of selecteer een ander adres.",
+          "one": "Uw bestelling kan niet naar het geselecteerde adres worden verzonden. Controleer het adres om er zeker van te zijn dat het correct is en probeer het opnieuw of selecteer een ander adres.",
+          "other": "Sommige artikelen in uw winkelwagen kunnen niet naar het door u ingevoerde adres worden verzonden. Controleer het adres om er zeker van te zijn dat het correct is en probeer het opnieuw of selecteer een ander adres."
         },
         "shipping_method_not_available_updated": {
-          "few": "Een of meer artikelen die u hebt toegevoegd, worden niet naar uw locatie verzonden. Verwijder ze om de bestelling te voltooien of neem contact op met de winkel."
-        }
+          "few": "Een of meer artikelen die u heeft toegevoegd, worden niet naar uw locatie verzonden. Verwijder ze om uw bestelling af te ronden of neem contact op met de winkel.",
+          "one": "Het door u toegevoegde artikel wordt niet naar uw locatie verzonden. Verwijder het om de bestelling af te ronden of neem contact op met de winkel.",
+          "other": "Een of meer artikelen die u heeft toegevoegd, worden niet naar uw locatie verzonden. Verwijder ze om uw bestelling af te ronden of neem contact op met de winkel."
+        },
+        "shipping_method": "De verzendopties voor uw bestelling zijn gewijzigd. Controleer uw selectie.",
+        "shipping_method_not_available": "Uw winkelwagen is bijgewerkt en de door u toegevoegde artikelen kunnen niet naar uw adres worden verzonden. Verwijder artikelen om uw bestelling af te ronden.",
+        "payment_method_not_supported": "Gebruik deze betaalmethode in het geval van het land %{country} het is niet mogelijk. Gebruik een andere betaalmethode om naar dit land te verzenden.",
+        "empty_state": "Voer uw verzendadres in om de beschikbare verzendmethoden te bekijken.",
+        "shipping_method_not_available_due_to_unsatisfied_conditions": "Artikelen in uw winkelwagen voldoen niet aan de prijs- of gewichtsvereisten om in aanmerking te komen voor bezorging. Vernieuw uw winkelwagen en probeer het opnieuw.",
+        "title": "Verzending is niet mogelijk",
+        "invalid_selected_address": "Het geselecteerde verzendadres is niet geldig",
+        "invalid_selected_address_with_update_link": "Het geselecteerde verzendadres is niet geldig. %{update_address_link} of selecteer een ander adres",
+        "unavailable_selected_address": "Verzending is niet mogelijk voor het geselecteerde adres",
+        "unavailable_selected_address_for_region": "Het is niet mogelijk om naar te verzenden {{region}}. Selecteer een ander adres om door te gaan",
+        "unavailable_addresses_only_countries": "Uw bestelling kan alleen verzonden worden naar {{countriesList}}. Voeg een nieuw adres toe om door te gaan.",
+        "unavailable_address_country": "Verzending naar het geselecteerde land is niet mogelijk. Gebruik een ander adres om door te gaan"
       },
       "processing": {
         "wait": {
           "medium": {
             "few": "Uw bestelling wordt verwerkt. Geschatte wachttijd is van %{count} notulen."
           }
-        }
+        },
+        "redirecting_page_title": "Omleiden...",
+        "redirecting_title": "Omleiden...",
+        "redirecting_notice": "Even geduld a.u.b. terwijl wij u doorverwijzen.",
+        "complete_your_purchase_title": "Voltooi de aankoop",
+        "continue_to_payment_gateway_notice": "Ga naar afrekenen om uw betalingsgegevens toe te voegen.",
+        "continue_to_payment_gateway_button_label": "Ga verder naar afrekenen"
       },
       "thank_you": {
         "login_reorder_link_text": {
@@ -2441,6 +2463,38 @@
         "address_subdistrict_contains_emojis": "Kantonrechter mag geen emoji’s bevatten",
         "address_subdistrict_contains_html_tags": "Kantonrechter mag geen HTML-tags bevatten.",
         "address_subdistrict_contains_mathematical_symbols": "Kantonrechter mag geen wiskundige symbolen bevatten"
+      },
+      "payment_errors": {
+        "amount_too_small": "Het minimale betalingsbedrag moet groter zijn dan $ 0,50. Probeer het opnieuw met een grotere hoeveelheid.",
+        "payment_above_threshold": "Het betalingsbedrag overschrijdt de geldlimiet voor deze regio. Voer het totaal opnieuw uit en probeer het opnieuw",
+        "risky": "Er is een probleem opgetreden bij het verwerken van uw betaling. Probeer het opnieuw of gebruik een andere betaalmethode.",
+        "expired_buyer_action": "De betaalmethode is verlopen. Probeer het opnieuw.",
+        "three_d_secure_failed_payment_method": "Uw kaart kan niet worden geverifieerd. Probeer het opnieuw of voeg nog een kaart toe.",
+        "name_mismatch": "Controleer uw kaartgegevens. De naam op de kaart en het factuuradres komen niet overeen.",
+        "payment_method_not_applicable": "Deze betaalmethode is niet van toepassing. Gebruik een andere betaalmethode.",
+        "shop_pay_wallet_not_available": "Shop Pay staat deze betaling niet toe.",
+        "market_manager_blocks_wallet_payments": "De betaalmethode wordt in uw land niet geaccepteerd.",
+        "paypal_over_capture": "De totale waarde van de bestelling is bijgewerkt. Betaal met {{walletName}} om de bestelling af te ronden.",
+        "test_mode_enabled_only_test_cards": "De testmodus is ingeschakeld, alleen testcreditcards kunnen worden toegevoegd.",
+        "captcha_required": "Voer uw betalingsgegevens in en los de captcha op om uw aankoop af te ronden.",
+        "captcha_required_without_payment_information": "Los de captcha op om de aankoop te voltooien.",
+        "shipping_company_required_error": "{{shopName}} vereist een bedrijfsnaam voor het verzendadres.",
+        "payment_credential_delegation_error": "Er is een probleem opgetreden bij het verwerken van uw betaling. Kies een andere betaalmethode.",
+        "cancelled_payment": "De betaling is geannuleerd. Probeer het opnieuw of gebruik een andere betaalmethode.",
+        "currency": {
+          "no_longer_supported": "Winkelvaluta wordt niet langer ondersteund."
+        },
+        "installments_payment_method_incompatible": "De geselecteerde betaalmethode kan niet worden gebruikt voor betaling in termijnen. Kies een andere betaalmethode.",
+        "missing_cvc": "Voer een beveiligingscode in"
+      },
+      "alternative_payment_method_banner": {
+        "express_checkout": "Snelle voltooiing van de bestelling",
+        "or": "OF",
+        "show_more_options": "Toon meer opties",
+        "hide_more_options": "Verberg aanvullende opties",
+        "or_pay_another_way": "Of betaal op een andere manier",
+        "or_check_out_another_way": "Of rond de bestelling op een andere manier af",
+        "or_pay_with_credit_card": "Of betaal met een creditcard"
       }
     },
     "notices": {
