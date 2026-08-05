@@ -573,7 +573,7 @@
       "add_new": "Dodaj nowy adres",
       "edit_address": "Edytuj adres",
       "first_name": "Imię",
-      "last_name": "Nazwisko",
+      "last_name": "Nazwisko rodzinne",
       "company": "Firma",
       "address1": "Adres 1",
       "address2": "Adres 2",
@@ -581,10 +581,10 @@
       "country": "Kraj/region",
       "province": "Prowincja",
       "zip": "Kod pocztowy",
-      "phone": "Telefon",
+      "phone": "Numer telefonu",
       "set_default": "Ustaw jako adres domyślny",
       "add": "Dodaj adres",
-      "update": "Zaktualizuj adres",
+      "update": "Zaktualizuj swój adres",
       "cancel": "Anuluj",
       "edit": "Edytuj",
       "delete": "Usuń",
@@ -594,11 +594,11 @@
       "cancel": "Anuluj",
       "create_account": "Utwórz konto",
       "email": "E-mail",
-      "forgot_password": "Nie pamiętasz hasła?",
+      "forgot_password": "Zapomniałeś hasła?",
       "guest_continue": "Kontynuuj",
       "guest_title": "Kontynuuj jako gość",
       "password": "Hasło",
-      "title": "Login",
+      "title": "Zaloguj się",
       "sign_in": "Zaloguj się",
       "submit": "Prześlij",
       "alternate_provider_separator": "lub"
@@ -631,23 +631,23 @@
     },
     "orders": {
       "title": "Historia zamówień",
-      "order_number": "Zamówienie",
-      "order_number_link": "Nr zamówienia {{ number }}",
+      "order_number": "Zamów",
+      "order_number_link": "Numer zamówienia: {{ number }}",
       "date": "Data",
-      "payment_status": "Status płatności",
-      "fulfillment_status": "Status realizacji",
-      "total": "Suma",
-      "none": "Nie złożyłeś(-aś) jeszcze żadnych zamówień."
+      "payment_status": "Stan płatności",
+      "fulfillment_status": "Stan zamówienia",
+      "total": "Całkowicie",
+      "none": "Nie złożyłeś jeszcze zamówień."
     },
     "recover_password": {
       "title": "Zresetuj swoje hasło",
-      "subtext": "Wyślemy Ci e-mail, aby zresetować Twoje hasło",
-      "success": "Wysłaliśmy do Ciebie e-mail z linkiem do aktualizacji hasła."
+      "subtext": "Wyślemy Ci wiadomość e-mail z prośbą o zresetowanie hasła",
+      "success": "Wysłaliśmy do Ciebie e-mail z linkiem umożliwiającym aktualizację hasła."
     },
     "register": {
       "title": "Utwórz konto",
       "first_name": "Imię",
-      "last_name": "Nazwisko",
+      "last_name": "Nazwisko rodzinne",
       "email": "E-mail",
       "password": "Hasło",
       "submit": "Utwórz"
