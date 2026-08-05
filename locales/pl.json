@@ -1148,7 +1148,63 @@
           "delivery": {
             "only_one_delivery_line_allowed": "Koszyk musi mieć tylko jedną linię dostawy.",
             "wrong_number_of_delivery_lines": "Dla każdej grupy towarów należy określić linię dostawy.",
-            "external_delivery_promise_error": "Wystąpił błąd podczas pobierania obietnicy dostawy zewnętrznej."
+            "external_delivery_promise_error": "Wystąpił błąd podczas pobierania obietnicy dostawy zewnętrznej.",
+            "options_instructions_invalid": "Podane instrukcje nie odpowiadają oczekiwanemu wzorowi.",
+            "destination_address_required": "Aby kontynuować, wymagany jest adres docelowy.",
+            "pickup_points_unavailable": "Punkty odbioru są obecnie niedostępne.",
+            "local_pickup_delivery_line_detail_changed": "Aby móc kontynuować, należy zmienić obecną strategię dostaw z odbiorem lokalnym.",
+            "local_pickup_no_delivery_strategy_available": "Nie znaleziono dostępnej strategii dostawy z odbiorem lokalnym.",
+            "origin_location_id_required": "Jeśli żądana jest metoda dostawy DETALICZNA, wymagany jest identyfikator lokalizacji pochodzenia.",
+            "invalid_origin_location_id": "Nie można znaleźć lokalizacji odpowiadającej identyfikatorowi lokalizacji początkowej.",
+            "origin_location_id_not_allowed": "Żądane metody dostawy nie obsługują identyfikatora lokalizacji pochodzenia.",
+            "auto_fulfill_not_allowed": "Ta sesja nie jest autoryzowana do anulowania realizacji.",
+            "auto_fulfill_required": "W przypadku żądania metody dostawy DETALICZNEJ wymagana jest automatyczna realizacja.",
+            "prefetch_shipping_rates_used": "Wstępnie załadowane stawki wysyłki nigdy nie powinny zwracać stawek.",
+            "fulfillment_constraints_not_satisfied": "Co najmniej jedno ograniczenie spełnienia nie zostało spełnione.",
+            "must_fulfill_from_constraint_not_satisfied": "Ograniczenia realizacji nie są spełnione, ponieważ nie można zrealizować pozycji z wymaganych lokalizacji.",
+            "must_fulfill_from_same_location_constraint_not_satisfied": "Ograniczenia realizacji nie są spełnione, ponieważ pozycji nie można zrealizować z tej samej lokalizacji.",
+            "delivery_strategy_conditions_not_satisfied": "Strategie dostawy są dostępne dla tej lokalizacji, ale ich warunki nie są spełnione.",
+            "out_of_stock_at_origin_location": "Brak zapasów w lokalizacji początkowej.",
+            "invalid_signature": "Nieprawidłowy podpis rabatu.",
+            "selected_pickup_option_no_longer_available": "Wybrana wcześniej opcja odbioru nie jest już dostępna.",
+            "mixed_destination_countries": "Wysyłka jest niedostępna, ponieważ linie wysyłkowe obejmują wiele krajów."
+          },
+          "discount": {
+            "discounts_not_allowed_for_b2b": "Rabaty nie obowiązują w sklepach B2B.",
+            "custom_discount_not_honoured": "Podany niestandardowy rabat nie został honorowany.",
+            "unsupported_expectation": "Podana linia rabatu zawierała oczekiwania, których polityka nie mogła zinterpretować.",
+            "additional_requested_discount_code_discarded": "{{code}} jest ważny, ale nie ma zastosowania. Zapoznaj się z postanowieniami dotyczącymi rabatów.",
+            "allocations_mismatch": "Twój kod rabatowy uległ zmianie. Sprawdź swój koszyk i spróbuj ponownie.",
+            "discount_code_not_honoured": "%{discount_rejection_message}",
+            "discount_title_too_long": "Tytuł rabatu nie może mieć więcej niż 255 znaków.",
+            "additional_requested_discount_discarded": "Twoja zniżka jest ważna, ale nie dotyczy. Zapoznaj się z postanowieniami dotyczącymi rabatów.",
+            "mixed_destination_countries": "Zniżki nie są dostępne, ponieważ linie żeglugowe obejmują wiele krajów."
+          },
+          "tax": {
+            "new_tax_must_be_accepted": "Opłaty związane z Twoim zamówieniem uległy zmianie. Sprawdź i spróbuj ponownie.",
+            "unresolvable_tax_terms": "Biorąc pod uwagę obecny kontekst negocjacji, proponowane warunki nie mogą zostać rozstrzygnięte.",
+            "delivery_price_is_abstract": "Powiązana cena wysyłki jest abstrakcyjna.",
+            "tax_inclusivity_mismatch": "Negocjuj ponownie, używając konkretnej wartości totalTaxAndDutyAmount lub totalAmountIncludedInTarget.",
+            "tax_exemption_not_supported": "Zwolnienia z opłat nie są akceptowane w przypadku bieżącej sesji giełdowej.",
+            "delivery_tax_exemption_not_supported": "Zwolnienia podatkowe nie są obecnie akceptowane w przypadku linii dostaw.",
+            "proposed_allocations_required": "Brakuje pola „proponowane przydziały”.",
+            "merchandise_terms_must_be_defined": "Należy określić warunki ładunku.",
+            "delivery_terms_must_be_defined": "Należy określić warunki dostawy.",
+            "merchandise_discount_terms_must_be_defined": "Należy określić warunki rabatu związanego z towarem.",
+            "delivery_discount_terms_must_be_defined": "Należy określić warunki rabatu na dostawę.",
+            "allocated_required": "Brak pola „przypisane”.",
+            "value_required": "Brakuje pola „wartość”.",
+            "line_splits_not_supported": "Pole „linie frachtowe” musi zostać podzielone tak, aby każde z nich zawierało pojedynczy element wiersza w ofercie sprzedawcy."
+          },
+          "payment": {
+            "manual_payments_not_allowed_for_b2b": "Płatności ręczne nie są dozwolone w sklepach B2B.",
+            "positive_amount_expected": "Kwota do zapłaty musi być większa niż 0.",
+            "total_amount_mismatch": "Suma płatności nie odpowiada sumie wartości płatności.",
+            "subscription_terms_not_accepted": "Warunki subskrypcji nie zostały zaakceptowane.",
+            "missing_session_id": "Brak danych karty kredytowej dla sesji.",
+            "gateway_not_supported": "Bramka płatnicza nie obsługuje przechowywania metod płatności.",
+            "credit_card_last_name_required": "Pole „nazwisko” nie może mieć wartości zero.",
+            "credit_card_update_failed": "Aktualizacja karty kredytowej nie powiodła się."
           }
         }
       }
