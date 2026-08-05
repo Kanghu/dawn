@@ -1351,17 +1351,24 @@
           "other": "Bestel kortingen"
         },
         "subtotal_label_with_quantity": {
-          "few": "Subtotaal · %{count} ware",
-          "one": "Subtotaal · %{count} artikel"
+          "few": "Subtotaal · %{count} artikelen",
+          "one": "Subtotaal · %{count} artikel",
+          "other": "Subtotaal · %{count} artikelen"
         },
         "number_items": {
-          "few": "%{count} ware"
+          "few": "%{count} artikelen",
+          "one": "%{count} artikel",
+          "other": "%{count} artikelen"
         },
         "view_all_items": {
-          "few": "Zie alles %{count} ware"
+          "few": "Bekijk ze allemaal %{count} artikelen",
+          "one": "zie %{count} artikel",
+          "other": "Bekijk ze allemaal %{count} artikelen"
         },
         "pickup_unavailable_banner_title": {
-          "few": "Uw items kunnen niet uit de winkel worden gehaald"
+          "few": "Er zijn geen winkels beschikbaar met uw artikelen",
+          "one": "Er zijn geen winkels beschikbaar met uw artikel",
+          "other": "Er zijn geen winkels beschikbaar met uw artikelen"
         },
         "unit_price": {
           "per_item": {
@@ -1378,7 +1385,9 @@
           }
         },
         "pickup_unavailable_banner_title_with_country": {
-          "few": "In %{country} er zijn geen winkels beschikbaar met uw artikelen"
+          "few": "In %{country} er zijn geen winkels beschikbaar met uw artikelen",
+          "one": "In %{country} er zijn geen winkels beschikbaar met uw artikel",
+          "other": "In %{country} er zijn geen winkels beschikbaar met uw artikelen"
         },
         "title": "Besteloverzicht",
         "order_name_label": "Bestel %{name}",
@@ -1516,7 +1525,49 @@
           "title": "Saldo waard {{amount_due}} heeft een vervaldatum {{due_at}}",
           "due_on_fulfillment_title": "Saldo waard {{amount_due}} heeft de vervaldatum op het moment van honorering"
         },
-        "eligible_customer_missing_notice": "Voor de kortingscode <strong style=\"text-transform:uppercase\">%{code}</strong> een in aanmerking komende klant is vereist"
+        "eligible_customer_missing_notice": "Voor de kortingscode <strong style=\"text-transform:uppercase\">%{code}</strong> een in aanmerking komende klant is vereist",
+        "cost_table_item_column_header": "Artikel",
+        "cost_table_value_column_header": "Waarde",
+        "product_image_quantity_label": "Hoeveelheid",
+        "more_items_modal": {
+          "clear_search": "Wis de zoekopdracht",
+          "empty_results": "Er zijn geen resultaten gevonden voor \"%{searchText}\". Controleer uw spelling of gebruik een ander woord of een andere zin.",
+          "number_items_shown": "%{shownNumber} van %{totalNumber} artikelen",
+          "search_item": "Zoeken"
+        },
+        "price_before_discount_aria_text": "Initiële prijs",
+        "price_after_discount_aria_text": "Verlaagde prijs",
+        "discount_code_aria_text": "Kortingscode",
+        "pickup_unavailable_banner_body": {
+          "ship_to_address": "Verzendadres",
+          "ship_to_address_instead_html": "%{link} in plaats daarvan"
+        },
+        "deposit_label": "Magazijn",
+        "total_due_today_label": "Totaal vandaag verschuldigd",
+        "total_due_later_label": "Totaal later te betalen",
+        "discount_code_allocations_mismatch": "Jouw kortingscode <strong style=\"text-transform:uppercase\">%{code}</strong> is veranderd. Controleer uw winkelwagen en probeer het opnieuw.",
+        "deferred_total_due_date_label_next": "Deadline: %{date}",
+        "total_due_label": "Helemaal verschuldigd",
+        "total_price_label": "Totale prijs",
+        "for_add_on": "Voor: %{group_title}",
+        "unconfirmed_label": "Onbevestigd",
+        "total_paid_label": "Totaal betaald",
+        "from_shop_heading": "Van %{shop_name}",
+        "from_other_stores_heading": "Van andere winkels",
+        "estimated_taxes_label_short": "Geschat",
+        "order_discounts_apply_to_local_shop": "Bij bestellingen worden kortingen alleen toegepast op artikelen van %{shop_name}",
+        "gift_cards_apply_to_local_shop": "Cadeaubonnen zijn alleen geldig op artikelen van %{shop_name}",
+        "discount_code_removed": "Kortingscode %{code} werd verwijderd",
+        "discount_code_replaced": "Kortingscode %{old_code} verwijderd en de code toegepast %{code}",
+        "discount_code_replaced_multiple": "Er zijn diverse kortingscodes verwijderd en de code is toegepast %{code}",
+        "from_multiple_stores_heading": "Uit meerdere winkels",
+        "pay_merchant_label": "Betaal %{merchant_name}",
+        "discount_applies_to_subscription_items_only": "Deze korting is alleen geldig op artikelen die bij het abonnement zijn inbegrepen",
+        "estimated_taxes_finalization_tooltip_content_short": "Het opladen vindt plaats na betaling",
+        "compare_at_sale": "Promotie (%{sale_amount})",
+        "discount_code_applied_count": {
+          "few": "Weergave %{count} kortingen"
+        }
       },
       "payment": {
         "order_covered_by_gift_cards_notice": {
