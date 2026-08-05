@@ -3731,9 +3731,58 @@
               "ro": "Voer een geldig Roemeens BTW-nummer in",
               "sk": "Voer een geldig Slowaaks BTW-nummer in",
               "si": "Voer een geldig Sloveens BTW-nummer in",
-              "es": "Voer een geldig Spaans BTW-nummer in"
+              "es": "Voer een geldig Spaans BTW-nummer in",
+              "se": "Voer een geldig Zweeds BTW-nummer in",
+              "gb": "Voer een geldig Brits BTW-nummer in"
+            },
+            "service_unavailable": "De validatieservice is niet beschikbaar",
+            "service_error": "De validatieservice is niet beschikbaar"
+          },
+          "accessibility": {
+            "status": {
+              "validating": "Validatie van het BTW-nummer is bezig",
+              "valid": "Het BTW-nummer is geldig",
+              "applied": "De BTW-vrijstelling is toegepast",
+              "domestic": "De BTW-vrijstelling is niet toegepast",
+              "invalid_number": "Btw-vrijstelling mislukt",
+              "service_unavailable": "Verificatie van btw-vrijstelling mislukt",
+              "service_error": "Verificatie van btw-vrijstelling mislukt"
             }
           }
+        }
+      },
+      "payment_collection": {
+        "cancelled": "Deze betaling is niet langer vereist. Bezoek de bestelpagina voor meer informatie.",
+        "paid": "Deze betaling is al verzonden. Bezoek de bestelpagina voor meer informatie."
+      },
+      "required_extensions": {
+        "errors": {
+          "interaction_required": "Om de betaling te voltooien is interactie met de extensie vereist."
+        }
+      },
+      "embed": {
+        "header": {
+          "review_order": "Controleer uw bestelling"
+        },
+        "shipping": {
+          "shipping_options": "Bekijk alle verzendopties"
+        },
+        "payment": {
+          "payment_options": "Bekijk alle betalingsmogelijkheden"
+        }
+      },
+      "too_many_requests": {
+        "title": "Te veel betalingspogingen",
+        "body": "Wacht een paar minuten en probeer het opnieuw vanuit het winkelmandje.",
+        "return_to_cart": "Terug naar winkelwagen",
+        "body_no_cart": "Wacht een paar minuten en probeer het opnieuw."
+      },
+      "address_management": {
+        "saved_with_store": "Opgeslagen in deze winkel"
+      },
+      "ucp": {
+        "standard_errors": {
+          "item_unavailable": "Het artikel kan niet worden gekocht"
         }
       }
     },
@@ -3747,6 +3796,47 @@
     "page_titles": {
       "search_results": {
         "few": "Zoeken: ze zijn gevonden %{count} Resultaten voor \"%{terms}”"
+      }
+    },
+    "pagination": {
+      "previous": "Terug",
+      "next": "Voor"
+    },
+    "links": {
+      "powered_by_shopify": "Mogelijk gemaakt door Shopify",
+      "learn_more": "Meer informatie"
+    },
+    "feed": {
+      "more": "Meer"
+    },
+    "attributes": {
+      "email": "e-mail",
+      "password": "wachtwoord",
+      "password_confirmation": "Wachtwoordbevestiging",
+      "first_name": "voornaam",
+      "last_name": "achternaam",
+      "body": "lichaam",
+      "signature": "Adres"
+    },
+    "addresses": {
+      "zip_code": "postcode",
+      "postal_code": "Postcode",
+      "postcode": "Postcode",
+      "pincode": "Pincode",
+      "region": "Regio",
+      "prefecture": "Prefectuur",
+      "province": "Provincie",
+      "state": "Staat",
+      "state_and_territory": "Staat/territoria",
+      "county": "Provincie",
+      "emirate": "Emiraat",
+      "governorate": "Gouvernement",
+      "confirm": "Weet u zeker dat u dit adres wilt verwijderen?"
+    },
+    "collections": {
+      "sorting": {
+        "manual": "Aanbevolen",
+        "best_selling": "De bestseller"
       }
     }
   },
