@@ -2078,8 +2078,9 @@
       },
       "thank_you": {
         "login_reorder_link_text": {
-          "few": "Koop deze producten ook",
-          "one": "koop dit product ook"
+          "few": "koop deze producten ook",
+          "one": "koop dit product ook",
+          "other": "koop deze producten ook"
         },
         "gift_card_confirmation_by_text_typ": {
           "few": "U ontvangt over enkele minuten een sms met de cadeaubonnen."
@@ -2227,7 +2228,71 @@
         "other_options": "Andere opties",
         "picked_up_title": "Uw bestelling is opgehaald",
         "picked_up_description_html": "Uw bestelling is opgehaald bij %{location_name} op %{date}.",
-        "shop_phone_description": "Je ontvangt een sms-bericht met een link naar de Shop-app, waarmee je je bestelling kunt volgen."
+        "shop_phone_description": "Je ontvangt een sms-bericht met een link naar de Shop-app, waarmee je je bestelling kunt volgen.",
+        "marker": {
+          "current": "Huidige verzendlocatie",
+          "shipping": "Verzendadres"
+        },
+        "pick_up_in_store_marker": {
+          "current": "Huidige verzendlocatie",
+          "shipping": "Ophaallocatie"
+        },
+        "fulfillment": {
+          "fulfilled_table_title": "De artikelen in deze zending",
+          "unfulfilled_table_title": "Artikelen zijn klaar voor verzending",
+          "product_image_label": "Productafbeelding",
+          "description_label": "Beschrijving",
+          "quantity_label": "Hoeveelheid"
+        },
+        "ready_for_delivery_title": "Uw bestelling is klaar voor bezorging",
+        "ready_for_delivery_description": "Ik heb uw bestelling klaargemaakt.",
+        "order_status_confirmed_order_local": "Wij maken uw bestelling klaar voor bezorging.",
+        "delivery_information_label": "Leveringsinformatie:",
+        "gift_card_sent_confirmation": "Cadeaubonnen zijn verzonden",
+        "out_for_delivery_local_title": "Uw bestelling wordt afgeleverd.",
+        "out_for_delivery_local_description_html": "Uw bestelling zal spoedig arriveren.",
+        "delivered_local_title": "Uw bestelling is afgeleverd",
+        "delivered_local_description_html": "Niet ontvangen wat je besteld hebt? %{let_us_know}.",
+        "let_us_know": "Informeer ons",
+        "qr_code": {
+          "title": "Kijk op je telefoon",
+          "send_link_to_phone": "Of stuur een link naar je telefoon"
+        },
+        "gift_card_confirmation_by_text": "Als u deze niet heeft ontvangen, vraag dan een sms-bericht opnieuw te verzenden of neem contact met ons op.",
+        "gift_card_confirmation_by_email": "Als u deze niet heeft ontvangen, vraag dan om een ​​nieuwe verzending van de e-mail of neem contact met ons op.",
+        "gift_card_title": "Cadeaubonnen",
+        "resend_gift_cards": "Verstuur de cadeaubonnen opnieuw",
+        "attempted_delivery_local_title": "Levering mislukt",
+        "attempted_delivery_local_description_html": "Wij konden uw bestelling niet bezorgen. Om een nieuwe levering te plannen, %{contact_us}.",
+        "thank_you_title_payment": "Uw betaling is bevestigd",
+        "thank_you_confirmed_order_with_email_payment": "U heeft een betaling voor uw bestelling gedaan %{date}.",
+        "thank_you_confirmed_order_with_phone_payment": "U heeft een betaling voor uw bestelling gedaan %{date}.",
+        "thank_you_confirmed_order_with_email_and_phone_payment": "U heeft een betaling voor uw bestelling gedaan %{date}.",
+        "order_status_confirmed_order_with_email_payment": "U heeft een betaling voor uw bestelling gedaan %{date}.",
+        "order_status_confirmed_order_with_phone_payment": "U heeft een betaling voor uw bestelling gedaan %{date}.",
+        "order_status_confirmed_order_with_email_and_phone_payment": "U heeft een betaling voor uw bestelling gedaan %{date}.",
+        "shop_qr_with_sms_upsell": {
+          "qr_code": {
+            "title": "Scannen met uw telefoon"
+          },
+          "sms": {
+            "title": "Of stuur een link naar je telefoon"
+          }
+        },
+        "estimated_delivery": "Huidige schatting voor levering: ",
+        "view_business_customer_account": "Bekijk de rekening",
+        "company_location_title": "Locatie",
+        "thank_you_title_review": "Uw bestelling is ter beoordeling verzonden",
+        "thank_you_confirmed_order_with_draft": "We laten het u weten als we meer informatie nodig hebben of wanneer uw bestelling is bevestigd.",
+        "breadcrumbs_submitted": "Verzonden",
+        "breadcrumbs_in_review": "Wordt beoordeeld",
+        "breadcrumbs_confirmed": "Bevestigd",
+        "missing_shipping_address_banner": {
+          "title": "De bestelling bevat geen afleveradres",
+          "text_html": "%{contact_us} om het adres toe te voegen",
+          "contact_us": "Neem contact met ons op"
+        },
+        "order_status_confirmed_with_installments_payment_return": "Richt uw aandacht weer op de verkoopmedewerker."
       },
       "order_payment_collection": {
         "changes_summary": {
