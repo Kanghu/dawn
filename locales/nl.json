@@ -711,42 +711,27 @@
     "checkout": {
       "shipping": {
         "estimated_delivery_date": {
-          "few": "%{count} werkdagen",
-          "one": "%{count} werkdag",
-          "other": "%{count} werkdagen"
+          "few": "%{count} werkdagen"
         },
         "other_method": {
-          "few": "%{count} andere methoden zijn beschikbaar vanaf",
-          "zero": "Er zijn geen andere methoden beschikbaar",
-          "one": "%{count} een andere methode is beschikbaar op",
-          "other": "%{count} andere methoden zijn beschikbaar vanaf"
+          "few": "%{count} Andere methoden zijn beschikbaar vanaf vanaf"
         },
         "subscription_delivery_description": {
           "prepaid_delivery_frequency": {
-            "few": "voor %{count} leveringen",
-            "one": "voor %{count} levering",
-            "other": "voor %{count} leveringen"
+            "few": "voor %{count} levering"
           },
           "subscription_delivery_frequency": {
             "day": {
-              "few": "aan elk %{count} dagen",
-              "one": "elke dag",
-              "other": "aan elk %{count} dagen"
+              "few": "aan elk %{count} dagen"
             },
             "week": {
-              "few": "aan elk %{count} weken",
-              "one": "elke week",
-              "other": "aan elk %{count} weken"
+              "few": "aan elk %{count} wekelijks"
             },
             "month": {
-              "few": "aan elk %{count} maanden",
-              "one": "elke maand",
-              "other": "aan elk %{count} maanden"
+              "few": "aan elk %{count} Maandag"
             },
             "year": {
-              "few": "aan elk %{count} jaren",
-              "one": "elk jaar",
-              "other": "aan elk %{count} jaren"
+              "few": "aan elk %{count} jaar"
             }
           },
           "first_n_order_free": {
@@ -787,38 +772,14 @@
           },
           "prepaid_order_no_cycle_delivery_not_included": {
             "few": "%{shipping_price} voor %{count} leveringen (%{per_delivery_cost}), daarna %{recurring_order_shipping_price}"
-          },
-          "multiple_subscriptions_shipping_price_label": "%{shipping_price} voor elke levering"
+          }
         },
         "shipping_method_first_shipment_group_title": {
           "few": "Eerste zendingen"
         },
         "shipping_method_recurring_shipments_group_title": {
           "few": "Terugkerende zendingen"
-        },
-        "title": "Vervoer",
-        "shipping_method_title": "Verzendmethode",
-        "waiting_on_rate_notice": "Beschikbare verzendkosten ophalen...",
-        "waiting_on_pickup_location_notice": "Beschikbare ophaallocaties verkrijgen…",
-        "no_rates_for_cart_or_destination_notice": "Er is geen verzendmethode beschikbaar voor uw winkelwagen of adres",
-        "no_pickup_location_notice": "Minimaal één van uw producten kan niet worden opgehaald",
-        "no_rates_for_country_notice": "Geen verzendtarief gevonden voor dit adres.",
-        "no_rates_contact_notice": "Neem contact met ons op voor meer informatie",
-        "free_rate_label": "Gratis",
-        "cheapest_rate_label": "De goedkoopste",
-        "estimated_delivery_date_range": "Tussen %{minimum} en %{maximum} werkdagen",
-        "shipping_line_phone_label": "Mobiel telefoonnummer (verplicht)",
-        "shipping_line_phone": "Via dit nummer kan de koerier contact met u opnemen.",
-        "shipping_rate_discounted_amount": "Het was: %{original_amount}. Nu: %{amount}",
-        "optional_shipping_line_delivery_instructions_label": "Leveringsinstructies (optioneel)",
-        "shipping_line_delivery_phone": "Er kan contact met u worden opgenomen om updates over de levering door te geven.",
-        "shipping_line_delivery_phone_label": "Mobiel telefoonnummer",
-        "shipping_line_delivery_instructions": "Voer de vereiste informatie in, zoals intercomcodes of overdrachtsinstructies.",
-        "local_delivery": "Lokale bezorging",
-        "subscription_shipping": "Verzending op abonnementsbasis",
-        "shipping_method_one_time_purchase_group_title": "Eenmalige aankoop",
-        "shipping_method_subscription_group_title": "Abonnement",
-        "one_time_purchase_shipping": "Enkele verzending"
+        }
       },
       "general": {
         "map": {
@@ -1132,11 +1093,6 @@
       "search_results": {
         "few": "Zoeken: ze zijn gevonden %{count} Resultaten voor \"%{terms}”"
       }
-    },
-    "sentence": {
-      "words_connector": ", ",
-      "two_words_connector": " en ",
-      "last_word_connector": " en "
     }
   },
   "customer_accounts": {
