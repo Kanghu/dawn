@@ -2563,28 +2563,67 @@
             "other": "Geen bezorgmethode beschikbaar voor %{count} (van) artikelen"
           },
           "message": {
-            "few": "Deze artikelen worden uit de kar verwijderd, omdat er geen leveringsmethoden beschikbaar zijn voor uw adres."
-          }
+            "few": "Deze artikelen worden uit uw winkelwagen verwijderd omdat er geen verzendmethoden beschikbaar zijn voor uw adres.",
+            "one": "Dit artikel wordt uit uw winkelwagen verwijderd omdat er geen verzendmethoden beschikbaar zijn voor uw adres.",
+            "other": "Deze artikelen worden uit uw winkelwagen verwijderd omdat er geen verzendmethoden beschikbaar zijn voor uw adres."
+          },
+          "label": "Geen bezorgmethode"
         }
       },
       "pickup_point": {
         "paginator": {
           "header": {
-            "few": "Wordt weergegeven %{first} - %{last} VAN %{count} prik"
+            "few": "Het wordt weergegeven %{first} - %{last} van %{count} punten",
+            "one": "Het wordt weergegeven %{first} - %{last} van %{count} punt",
+            "other": "Het wordt weergegeven %{first} - %{last} van %{count} punten"
           },
           "selected_pickup_point_label": {
-            "few": "%{pickup_point_index} VAN %{count} prik"
+            "few": "%{pickup_point_index} van %{count} punten",
+            "one": "%{pickup_point_index} van %{count} punt",
+            "other": "%{pickup_point_index} van %{count} punten"
           },
           "selected_page": {
-            "few": "%{first} - %{last} VAN %{count} prik"
-          }
+            "few": "%{first} - %{last} van %{count} punten",
+            "one": "%{first} - %{last} van %{count} punt",
+            "other": "%{first} - %{last} van %{count} punten"
+          },
+          "next_accessibility_label": "Volgende pagina",
+          "previous_accessibility_label": "Vorige pagina"
         },
         "number_of_pickup_points_near_location": {
-          "few": "%{count} Tilpunten in de buurt van uw locatie"
+          "few": "%{count} ophaalpunten in de buurt van uw locatie",
+          "one": "%{count} ophaalpunt in de buurt van uw locatie",
+          "other": "%{count} ophaalpunten in de buurt van uw locatie"
         },
         "pickup_unavailable_banner_title": {
-          "few": "Uw items kunnen niet worden opgeheven door tilpunten"
-        }
+          "few": "Uw items kunnen niet worden opgeheven door tilpunten",
+          "one": "Er zijn geen afhaalpunten beschikbaar voor uw artikel"
+        },
+        "location_is_currently_closed": "Gesloten",
+        "business_hours": "Schema",
+        "title": "Ophaalpunt",
+        "or": "of",
+        "search_button": "Zoeken",
+        "selector_tabs": "Ophaalpuntkiezer",
+        "selector_tab_map": "Kaart",
+        "selector_tab_list": "Lijst",
+        "could_not_resolve_address": "Uw adres kon niet worden gevonden. Probeer het opnieuw of gebruik een ander adres",
+        "no_pickup_points_near_you": "Er is geen afhaalpunt gevonden in de buurt van het geselecteerde adres",
+        "no_pickup_points_near_location": "Geen ophaalpunt gevonden in de buurt van jouw locatie",
+        "no_pickup_points_found": "Geen ophaalpunt gevonden",
+        "change": "Wijzig locatie",
+        "waiting_on_pickup_point_location_notice": "Afhaalpunten gezocht...",
+        "geolocation": {
+          "shared_location_button": "Gebruik mijn locatie",
+          "errors": {
+            "unsuported_by_browser": "Uw browser ondersteunt het verkrijgen van geolocatie niet. Probeer het opnieuw of gebruik een andere browser.",
+            "permission_not_allowed": "Maakt het delen van uw locatie mogelijk.",
+            "permission_denied": "Kan uw locatie niet ophalen. Probeer het opnieuw."
+          }
+        },
+        "no_business_hours": "Het programma is niet beschikbaar",
+        "open_twenty_four_hours": "De klok rond geopend",
+        "address_label": "Adres"
       },
       "local_pickup": {
         "location_information": {
@@ -3110,6 +3149,22 @@
       },
       "cart_checkout_validation": {
         "runtime_error": "Er is een probleem opgetreden bij het verwerken van uw verzoek. Neem contact op met de winkeleigenaar."
+      },
+      "no_address_location": {
+        "title": "Locatie zonder adres",
+        "header": "U heeft geen verzendadres voor deze locatie",
+        "message": "Neem contact met ons op om een adres voor deze locatie toe te voegen en uw bestelling af te ronden.",
+        "email_us_button_label": "Stuur ons een e-mail",
+        "alt_header": "Ontbrekend verzendadres"
+      },
+      "order_errors": {
+        "creation_failure": "Er is een probleem opgetreden bij het maken van uw bestelling. Probeer het opnieuw of neem contact met ons op voor meer informatie.",
+        "network_failure": "Uw bestelling kon niet worden verzonden vanwege een netwerkfout. Controleer uw verbinding en probeer het opnieuw.",
+        "inventory_reservation_failure": "Sommige artikelen zijn niet meer leverbaar."
+      },
+      "session_errors": {
+        "session_not_unique": "Er is een probleem opgetreden bij het verwerken van uw bestelling. Vernieuw deze pagina om terug te keren naar de winkel.",
+        "session_already_finished": "Deze bestelling is al verzonden. U kunt terugkeren naar de winkel om een ​​nieuwe bestelling te starten."
       }
     },
     "notices": {
