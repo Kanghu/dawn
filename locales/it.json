@@ -2894,8 +2894,15 @@
       },
       "remote_merchandise_only": {
         "detail_item_label": {
-          "few": "{{count}} articoli"
-        }
+          "few": "{{count}} articoli",
+          "one": "{{count}} articolo",
+          "other": "{{count}} articoli"
+        },
+        "title": "Completa l'acquisto",
+        "remote_only_notice": "Questi articoli sono venduti e spediti da altri negozi. Paga in ogni singolo negozio per completare il tuo acquisto.",
+        "return_to_store_label": "Ritorno al negozio",
+        "checkout_on_shop_label": "Paga a %{shop_name}",
+        "single_shop_transition": "Ti reindirizziamo a %{advertiser} per completare l'acquisto."
       },
       "change_currency": {
         "credit_card_will_be_charged_html": "Verranno percepiti %{amount} dalla tua carta",
@@ -3844,7 +3851,75 @@
         "kilogram": "kg",
         "milliliter": "ml",
         "centiliter": "cl",
-        "liter": "l"
+        "liter": "l",
+        "cubic_meter": "m³",
+        "millimeter": "mm",
+        "centimeter": "cm",
+        "meter": "m",
+        "square_meter": "mq",
+        "ounce": "oncia",
+        "pound": "sterlina",
+        "fluid_ounce": "oncia fluida",
+        "pint": "pinta",
+        "quart": "quarto di gallone",
+        "gallon": "gallone",
+        "inch": "pollici",
+        "foot": "piede",
+        "yard": "cortile",
+        "square_foot": "piede quadrato",
+        "item": "articolo"
+      },
+      "memberships": {
+        "delivery_promise_unfulfillable": "Indirizzo non accettato per l'abbonamento corrente.",
+        "items_split_across_locations_unsupported": "La spedizione Prime non è disponibile per il tuo ordine. Le tue opzioni di spedizione sono state aggiornate."
+      },
+      "editor": {
+        "navigation": {
+          "store_logo_accessibility_label": "Accedi al negozio online"
+        }
+      },
+      "tooltip": {
+        "accessibility_label_context": "Maggiori informazioni su %{context}",
+        "additional_payment_methods": "Altri metodi di pagamento"
+      },
+      "remote": {
+        "errors": {
+          "only_remote_merchandise_lines": "Il pagamento include solo il trasporto a distanza. Per completare il pagamento è necessario il reindirizzamento al negozio remoto.",
+          "currency_mismatch": "Questo articolo non può essere aggiunto al carrello perché proviene da un negozio che utilizza una valuta diversa.",
+          "max_remote_shops_exceeded": "Non è possibile aggiungere questo prodotto, il carrello è già pieno di articoli di altri negozi.",
+          "currency_mismatch_removal": "Un articolo è stato rimosso dal carrello perché proviene da un negozio che utilizza una valuta diversa."
+        }
+      },
+      "remote_policies": {
+        "unavailable_policy": "Questo negozio non ha %{policy_name}. Per ulteriori informazioni contattare direttamente il negozio %{shop_name}."
+      },
+      "offsite_payment_failed": {
+        "payment_not_processed_title": "Pagamento non riuscito",
+        "payment_not_processed_text": "Riprova eseguendo nuovamente la scansione del codice QR. Se non funziona, contatta il nostro staff e prova un altro metodo di pagamento.",
+        "payment_link_expired_title": "Il link di pagamento è scaduto",
+        "payment_link_expired_text": "Riprova eseguendo nuovamente la scansione del codice QR.",
+        "title": "Pagamento remoto non riuscito"
+      },
+      "taxes": {
+        "tax_details": "Ulteriori dati fiscali",
+        "vat_number": {
+          "field": {
+            "label": "Partita IVA (facoltativa)",
+            "tooltip": "Convalida il numero di partita IVA e applica automaticamente l'inversione contabile agli ordini idonei"
+          },
+          "add": "Aggiungi una partita IVA",
+          "vaulted": "Partita IVA: %{number}",
+          "badge": "Partita IVA: %{number}",
+          "domestic_order": "L’esenzione dall’inversione contabile si applica solo agli ordini transfrontalieri dell’UE. Per gli ordini locali viene addebitata l'IVA standard.",
+          "status": {
+            "invalid_format": {
+              "at": "Partite IVA austriache: AT e 9 caratteri",
+              "be": "Partite IVA belghe: BE e 10 caratteri",
+              "bg": "Partite IVA bulgare: BG e 9-10 caratteri",
+              "hr": "Partite IVA croate: HR e 11 caratteri"
+            }
+          }
+        }
       }
     },
     "notices": {
