@@ -2709,7 +2709,77 @@
           "tax_credential_co": "Cédula/VAT",
           "tax_credential_type_co": "Typ Céduli",
           "shipping_credential_co": "Cédula/VAT",
-          "shipping_credential_type_co": "Typ Céduli"
+          "shipping_credential_type_co": "Typ Céduli",
+          "tax_credential_cr": "Numer identyfikacyjny/RUT",
+          "shipping_credential_cr": "Numer identyfikacyjny/RUT",
+          "tax_credential_ec": "CI/RUC/VAT",
+          "shipping_credential_ec": "CI/RUC/VAT",
+          "tax_credential_gt": "NIT/VAT",
+          "shipping_credential_gt": "NIT/VAT",
+          "tax_credential_id": "NPWP",
+          "shipping_credential_id": "NPWP",
+          "tax_credential_my": "NIP/Numer rejestracyjny",
+          "shipping_credential_my": "NIP/Numer rejestracyjny",
+          "shipping_credential_mx": "RFC",
+          "tax_credential_mx": "RFC",
+          "tax_credential_type_mx": "Reżim fiskalny",
+          "tax_credential_use_mx": "Użyj CFDI",
+          "tax_credential_py": "CI/RUC/VAT",
+          "shipping_credential_py": "CI/RUC/VAT",
+          "tax_credential_pe": "DNI/RUC/CE",
+          "shipping_credential_pe": "DNI/RUC/CE",
+          "tax_credential_pt": "NIP/VAT",
+          "shipping_credential_pt": "NIP/VAT",
+          "tax_credential_es": "DNI/NIP",
+          "shipping_credential_es": "DNI/NIP",
+          "shipping_credential_tw": "Krajowy numer identyfikacyjny/kod podatkowy",
+          "tax_credential_tr": "Türkiye Cumhuriyeti Kimlik Numarası/KDV",
+          "shipping_credential_tr": "Türkiye Cumhuriyeti Kimlik Numarası/KDV"
+        }
+      },
+      "post_purchase": {
+        "page_title": "Po zakupie",
+        "title": "Po zakupie",
+        "escape_confirmation": "Zapłaciłeś za zamówienie.",
+        "escape_action": "Wyświetl informacje o zamówieniu ›",
+        "components": {
+          "close": "Zamknij",
+          "expand": "Zobacz więcej",
+          "processing": "Przetwarzanie...",
+          "submit": "Wyślij"
+        }
+      },
+      "change_country": {
+        "cart_updated_based_on_country": "Twój koszyk został zaktualizowany w oparciu o kraj wysyłki.",
+        "cart_and_currency_updated_based_on_country": "Koszyk i waluta zaktualizowane w oparciu o kraj wysyłki.",
+        "currency_updated_for_country": "Zaktualizowano walutę dla %{country}"
+      },
+      "subscriptions": {
+        "recurring_totals": "%{total_price} do każdego %{interval}",
+        "recurring_totals_with_policies": {
+          "first_cycles": {
+            "one": "Pierwsza płatność to %{total_price}",
+            "other": "Pierwsi %{count} płatności są %{total_price} każdy",
+            "few": "Pierwsi %{count} płatności są %{total_price} każdy"
+          },
+          "following_cycles": ", wtedy zapłacisz %{total_price} do każdego %{interval}"
+        },
+        "recurring_total_intervals": {
+          "day": {
+            "one": "dzień",
+            "other": "%{count} dni",
+            "few": "%{count} dni"
+          },
+          "week": {
+            "one": "tydzień",
+            "other": "%{count} tygodnie",
+            "few": "%{count} tygodnie"
+          },
+          "month": {
+            "one": "miesiąc",
+            "other": "%{count} miesiące",
+            "few": "%{count} miesiące"
+          }
         }
       }
     },
