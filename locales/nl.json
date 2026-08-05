@@ -931,7 +931,26 @@
             "missing_session_id": "Er ontbreken creditcardgegevens voor de sessie.",
             "gateway_not_supported": "De betalingsgateway ondersteunt geen opslag van betalingsmethoden.",
             "credit_card_last_name_required": "Het veld \"achternaam\" mag niet de waarde nul hebben.",
-            "credit_card_update_failed": "Creditcardupdate mislukt."
+            "credit_card_update_failed": "Creditcardupdate mislukt.",
+            "invalid_address_type": "Het opgegeven adrestype is ongeldig voor deze betaalmethode.",
+            "missing_retail_attributions": "Voor handmatig ingevoerde creditcardbetalingen zijn retailtoewijzingen vereist.",
+            "unexpected_retail_attributions": "Er werden onverwacht retailkredieten verstrekt voor creditcardbetalingen.",
+            "invalid_card_source": "Deze sessie heeft geen toestemming om deze kaartbron te gebruiken.",
+            "wallet_content_missing": "De inhoud van de portemonnee ontbreekt.",
+            "payment_instrument_not_found": "De betaalmethode kon niet worden gevonden",
+            "unauthorized_capture_method": "Het instellen van de betalingsregistratiemethode is niet toegestaan.",
+            "saved_payment_methods_not_allowed": "Opgeslagen betaalmethoden zijn niet toegestaan.",
+            "saved_payment_methods_not_enabled": "Opgeslagen betaalmethoden zijn niet ingeschakeld voor deze winkel.",
+            "store_credit_not_enabled": "Winkeltegoed is niet ingeschakeld voor deze winkel.",
+            "store_credit_account_not_found": "Winkeltegoedaccount niet gevonden.",
+            "store_credit_account_mismatch": "De winkeltegoedrekening komt niet overeen met de identiteit van de koper.",
+            "store_credit_mismatched_currency": "De valuta van de winkeltegoedrekening komt niet overeen met de betaalvaluta.",
+            "store_credit_insufficient_funds": "Er staat onvoldoende saldo op uw winkeltegoedrekening.",
+            "store_credit_buying_gift_card": "U kunt geen winkeltegoed gebruiken om een ​​cadeaubon te kopen.",
+            "gift_cards_not_allowed_for_b2b": "Cadeaubonnen zijn niet toegestaan ​​in B2B-winkels.",
+            "method_required": "Er moet een betalingsmethode worden voorgesteld.",
+            "paypal_express_address_invalid": "PayPal heeft een ongeldig adres geretourneerd.",
+            "saved_payment_methods_cvv_verification_disabled": "Voor de geselecteerde betaalmethode is CVV-verificatie vereist, wat niet is ingeschakeld voor deze winkel. Selecteer een andere betaalmethode."
           },
           "session_identifier_not_unique_error": "Er is een probleem opgetreden met uw bestelling. Probeer de betaling opnieuw.",
           "line_item_limit_reached": "Het maximale aantal artikelen is bereikt.",
@@ -1037,6 +1056,52 @@
             "allocated_required": "Ontbrekend veld 'toegewezen'.",
             "value_required": "Het veld 'waarde' ontbreekt.",
             "line_splits_not_supported": "Het veld 'vrachtregels' moet worden opgesplitst, zodat elk veld één regelcomponent bevat in het voorstel van de verkoper."
+          },
+          "tip": {
+            "not_accepted_by_shop": "De winkel accepteert geen fooien.",
+            "only_one_tip_line_allowed": "Meerdere tiplijnen worden niet geaccepteerd.",
+            "tips_not_allowed_for_b2b": "In B2B-winkels is het geven van fooien niet toegestaan.",
+            "currency_change_reset": "De fooi is gereset vanwege valutawijziging.",
+            "tips_not_allowed_for_deferred_purchase_options": "Fooien worden nog niet geaccepteerd voor uitgestelde aankoopopties."
+          },
+          "sale_attribution": {
+            "draft_order_not_exist": "Deze lopende bestelling bestaat niet in de huidige winkel.",
+            "staff_member_not_exist": "Dit personeel bestaat niet in de huidige winkel.",
+            "location_not_exist": "Deze locatie bestaat niet in de huidige winkel.",
+            "point_of_sale_device_not_exist": "Dit kassaapparaat bestaat niet in de huidige winkel.",
+            "unresolvable_target_merchandise_lines": "De voorgestelde verkoopopdrachten kunnen in de huidige context van de onderhandelingen niet worden opgelost."
+          },
+          "non_negotiable": {
+            "missing_non_negotiable_terms": "Het voorstel van de koper moet niet-onderhandelbare voorwaarden bevatten.",
+            "invalid_signature": "Handtekening voor {{target_terms}} is ongeldig."
+          },
+          "inventory": {
+            "missing_quantity_value": "Het hoeveelheidsveld ontbreekt in de voorraadregels van de koper.",
+            "changing_behavior_not_allowed": "Deze klant heeft geen toestemming om het voorraadgedrag te wijzigen.",
+            "only_one_inventory_behavior_allowed": "Momenteel is er slechts één voorraadgedrag per betaling toegestaan."
+          },
+          "optional_duties": {
+            "optional_duties_not_permitted": "Weigering van douanerechten is niet toegestaan ​​voor deze kassa."
+          },
+          "attribution": {
+            "retail_attribution_not_allowed": "Toeschrijving aan de detailhandel is niet toegestaan ​​voor deze betaling.",
+            "retail_attribution_required": "Voor deze kassa is een detailhandelstoewijzing vereist."
+          },
+          "captcha": {
+            "metadata_missing": "Om deze bestelling te voltooien, is het noodzakelijk om een ​​captcha-validatie uit te voeren.",
+            "metadata_mismatch": "Het opgegeven provider- en captcha-validatietype komen niet overeen met de verwachte waarden.",
+            "token_missing": "Om deze bestelling te voltooien, moet een captcha-token worden opgegeven.",
+            "job_enqueue_failed": "De captcha-validatietaak kan niet in de wachtrij worden geplaatst.",
+            "job_already_queued": "Captcha-validatie is al in de wachtrij geplaatst voor dit captcha-token.",
+            "token_expired": "Het opgegeven captcha-token is verlopen. Doorloop de captcha-validatie opnieuw om door te gaan met het afrekenproces.",
+            "token_invalid": "Het opgegeven captcha-token is ongeldig. Doorloop de captcha-validatie opnieuw om door te gaan met het afrekenproces.",
+            "token_not_valid_for_session": "De opgegeven captcha-validatie kan niet worden gebruikt voor dit afrekenen."
+          },
+          "fx_reconciliation_override": {
+            "shop_currency_mismatch": "Het ontvangen bedrag moet in de valuta van de winkel zijn."
+          },
+          "checkout_source": {
+            "revoked": "Deze kassa is niet meer beschikbaar."
           }
         },
         "page_title": "Voltooi de bestelling",
@@ -1078,7 +1143,10 @@
         },
         "checkout_context": {
           "step_one": "%{shop_name} – Voltooi de bestelling"
-        }
+        },
+        "full_price": "Volledige prijs:",
+        "title": "Bestelling voltooien – {{shopName}}",
+        "full_title": "{{pageTitle}} – {{shopName}} – Voltooi de bestelling"
       },
       "customer_account": {
         "saved_address_option_description": {
