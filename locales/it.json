@@ -3029,8 +3029,75 @@
           "payment_method_title": "Metodo di pagamento",
           "change_link_label": "Modifica",
           "change_contact_method_link_label": "Modificare le informazioni di contatto",
-          "change_billing_address_link_label": "Modifica indirizzo di fatturazione"
+          "change_billing_address_link_label": "Modifica indirizzo di fatturazione",
+          "change_shipping_address_link_label": "Cambia indirizzo di spedizione",
+          "change_shipping_method_link_label": "Cambia metodo di spedizione",
+          "change_payment_method_link_label": "Cambia metodo di pagamento",
+          "pick_up_in_store_shipping_method_html": "Ritiro in negozio · %{location_name}",
+          "purchase_order_number_title": "Numero dell'ordine di acquisto",
+          "change_purchase_order_number_label": "Modificare il numero dell'ordine di acquisto",
+          "change_delivery_method_link_label": "Cambia metodo di consegna",
+          "no_address": "(Nessun indirizzo)",
+          "no_purchase_order_number": "(ordine d'acquisto senza numero)",
+          "due_after_order_reviewed_html": "Scadenza dopo la revisione dell'ordine",
+          "review_title_free_order": "Controlla e completa il tuo ordine",
+          "payment_method_saved_company_location": "Salva la carta per questa posizione",
+          "company_location": "Ubicazione dell'azienda",
+          "change_company_location_link_label": "Cambio di indirizzo aziendale",
+          "pickup_items_at": {
+            "one": "Sollevamento %{count} articolo da",
+            "other": "Sollevamento %{count} articoli da",
+            "few": "Sollevamento %{count} articoli da"
+          },
+          "ship_items_to": {
+            "one": "Spedizione %{count} articolo a",
+            "other": "Spedizione %{count} articoli a",
+            "few": "Spedizione %{count} articoli a"
+          },
+          "no_purchase_order_number_long": "Nessun numero dell'ordine di acquisto"
+        },
+        "block_title": "Controlla le tue informazioni",
+        "checkout_a_different_way": "Completa l'ordine in un altro modo",
+        "item_header": {
+          "change_value": "Modificare il valore",
+          "section": "Sezione",
+          "value": "Valore"
+        },
+        "review_and_confirm_title": "Rivedi e conferma",
+        "account_more_actions": "Altre azioni per questo account"
+      },
+      "marketing": {
+        "accept_marketing_checkbox_label": "Desidero ricevere email con novità e offerte",
+        "unsubscribe": {
+          "title": "Hai annullato l'iscrizione",
+          "description": "Non riceverai più aggiornamenti di marketing da parte nostra."
+        },
+        "accept_sms_checkbox_label": "Desidero ricevere SMS con novità e offerte",
+        "sms": {
+          "disclaimer": {
+            "privacy_policy": "Informativa sulla privacy",
+            "terms_of_service": "Condizioni d'uso",
+            "description_html": "Se ti registri tramite SMS, accetti di ricevere regolari messaggi di marketing automatizzati, inclusi promemoria del carrello, al numero di telefono fornito. Il consenso non è condizione per effettuare acquisti. Rispondi con STOP per annullare l'iscrizione. Rispondi con AIUTO per chiedere aiuto. La frequenza dei messaggi varia. Potrebbero essere applicati costi per messaggi e dati. Visualizza %{privacy_policy_link} e %{terms_of_service_link}.",
+            "description_transactional_html": "Potresti ricevere messaggi di testo relativi alla conferma dell'ordine e agli aggiornamenti sulla consegna. Rispondi con STOP per annullare l'iscrizione. Rispondi con AIUTO per chiedere aiuto. La frequenza dei messaggi varia. Potrebbero essere applicati costi per messaggi e dati. Visualizzalo %{privacy_policy_modal_link} e %{terms_of_service_modal_link}."
+          },
+          "mobile_phone_number": "Numero di cellulare",
+          "get_offers_by_text": "Ricevi offerte tramite SMS"
+        },
+        "post_accept_marketing_checkbox_label": "Sei iscritto per ricevere novità e offerte via email",
+        "pending_accept_marketing_checkbox_label": "Controlla il tuo account email per confermare la tua iscrizione a novità e offerte",
+        "accept_shop_pay_marketing_checkbox_label": "Iscrivimi alle novità e alle offerte di questo negozio",
+        "disclaimer": {
+          "privacy_policy": "Informativa sulla privacy",
+          "terms_of_service": "Condizioni d'uso"
         }
+      },
+      "shop_policies": {
+        "refund_policy": "Politica di rimborso",
+        "privacy_policy": "Informativa sulla privacy",
+        "terms_of_service": "Condizioni d'uso",
+        "legal_notice": "Avviso legale",
+        "shipping_policy": "Trasporti",
+        "terms_of_sale": "Condizioni di vendita"
       }
     },
     "notices": {
