@@ -68,23 +68,23 @@
     "back": "Indietro"
   },
   "newsletter": {
-    "label": "Indirizzo email",
-    "success": "Grazie per l'iscrizione",
+    "label": "E-mail",
+    "success": "Grazie per esserti iscritto",
     "button_label": "Iscriviti"
   },
   "accessibility": {
-    "skip_to_text": "Vai direttamente ai contenuti",
-    "close": "Chiudi",
-    "unit_price_separator": "per",
-    "vendor": "Produttore:",
+    "skip_to_text": "Vai al contenuto",
+    "close": "Chiudilo",
+    "unit_price_separator": "su",
+    "vendor": "Venditore:",
     "error": "Errore",
-    "refresh_page": "Scegliendo una selezione si ottiene un aggiornamento completo della pagina.",
+    "refresh_page": "La scelta di una selezione comporta l'aggiornamento dell'intera pagina.",
     "link_messages": {
       "new_window": "Si apre in una nuova finestra.",
-      "external": "Apre un sito web esterno."
+      "external": "Apri il sito esterno."
     },
-    "loading": "Caricamento in corso...",
-    "skip_to_product_info": "Passa alle informazioni sul prodotto",
+    "loading": "Caricamento...",
+    "skip_to_product_info": "Vai alle informazioni sul prodotto",
     "total_reviews": "recensioni totali",
     "star_reviews_info": "{{ rating_value }} stelle su {{ rating_max }}",
     "collapsible_content_title": "Contenuto comprimibile",
@@ -472,54 +472,54 @@
     "slideshow": {
       "load_slide": "Caricare la diapositiva",
       "previous_slideshow": "Diapositiva precedente",
-      "next_slideshow": "Slide successiva",
-      "pause_slideshow": "Metti in pausa presentazione",
-      "play_slideshow": "Avvia presentazione",
-      "carousel": "Carousel",
-      "slide": "Scorrimento"
+      "next_slideshow": "Diapositiva successiva",
+      "pause_slideshow": "Metti in pausa la presentazione",
+      "play_slideshow": "Riproduci la presentazione",
+      "carousel": "Carosello",
+      "slide": "Scivolo"
     },
     "page": {
-      "title": "Titolo pagina"
+      "title": "Il titolo della pagina"
     },
     "announcements": {
       "previous_announcement": "Annuncio precedente",
-      "next_announcement": "Annuncio successivo",
-      "carousel": "Carousel",
+      "next_announcement": "Prossimo annuncio",
+      "carousel": "Carosello",
       "announcement": "Annuncio",
       "announcement_bar": "Barra degli annunci",
-      "black_friday_continues": "🎉 Black Friday continua con sconti (fino all'80%)",
-      "black_friday_lowest_prices": "🎉 Black Friday: i prezzi più bassi dell'anno su alcuni prodotti",
-      "black_friday_delivery_delay": "⚠️ In questo periodo, gli ordini potrebbero avere lievi fluttuazioni nei tempi di consegna stimati",
-      "holiday_closure": "Siamo chiusi 25–28 dic, 31 dic–4 gen, 6–7 gen. Negli altri giorni gli ordini vengono elaborati e consegnati normalmente."
+      "black_friday_continues": "🎉 IL BLACK FRIDAY continua con sconti FINO ALL'80%",
+      "black_friday_lowest_prices": "🎉 BLACK FRIDAY: i prezzi più bassi dell'anno sulla maggior parte dei prodotti",
+      "black_friday_delivery_delay": "⚠️ Durante questo periodo, gli ordini potrebbero subire piccole fluttuazioni nei tempi di consegna stimati",
+      "holiday_closure": "Siamo chiusi dal 25 al 28 dicembre, dal 31 dicembre al 4 gennaio, dal 6 al 7 gennaio. Negli altri giorni l'elaborazione degli ordini e la consegna continuano normalmente."
     },
     "quick_order_list": {
-      "product_total": "Subtotale prodotto",
-      "view_cart": "Visualizza carrello",
-      "each": "{{ money }}/ciascuno",
+      "product_total": "Totale parziale del prodotto",
+      "view_cart": "Visualizza il carrello",
+      "each": "{{ money }}/pz.",
       "product": "Prodotto",
       "variant": "Variante",
-      "variant_total": "Totale varianti",
+      "variant_total": "Variante totale",
       "items_added": {
-        "one": "{{ quantity }} articolo aggiunto",
-        "other": "{{ quantity }} articoli aggiunti",
+        "one": "{{ quantity }} elemento aggiunto",
+        "other": "{{ quantity }} elementi aggiunti",
         "many": "{{ quantity }} articoli aggiunti",
-        "few": "{{ quantity }} Articoli aggiunti"
+        "few": "{{ quantity }} elementi aggiunti"
       },
       "items_removed": {
-        "one": "{{ quantity }} articolo rimosso",
-        "other": "{{ quantity }} articoli rimossi",
+        "one": "{{ quantity }} articolo cancellato",
+        "other": "{{ quantity }} elementi eliminati",
         "many": "{{ quantity }} articoli rimossi",
-        "few": "{{ quantity }} oggetti eliminati"
+        "few": "{{ quantity }} elementi eliminati"
       },
-      "product_variants": "Varianti di prodotto",
+      "product_variants": "Varianti del prodotto",
       "total_items": "Articoli totali",
-      "remove_all_items_confirmation": "Rimuovere tutti i {{ quantity }} articoli dal tuo carrello?",
+      "remove_all_items_confirmation": "Rimuovi tutti quelli {{ quantity }} articoli nel carrello?",
       "remove_all": "Rimuovi tutto",
       "cancel": "Annulla",
-      "remove_all_single_item_confirmation": "Rimuovere un articolo dal carrello?",
-      "min_error": "Questo articolo ha un minimo di {{ min }}",
-      "max_error": "Questo articolo ha un massimo di {{ max }}",
-      "step_error": "Puoi aggiungere questo articolo solo in incrementi di {{ step }}"
+      "remove_all_single_item_confirmation": "Rimuovere 1 articolo dal carrello?",
+      "min_error": "Per questo articolo, il valore minimo è {{ min }}",
+      "max_error": "Per questo articolo, il valore massimo è {{ max }}",
+      "step_error": "Puoi inserire questo elemento solo con incrementi di {{ step }}"
     }
   },
   "localization": {
