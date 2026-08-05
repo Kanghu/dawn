@@ -1336,7 +1336,127 @@
           "range_start": "Początek interwału",
           "in_range": "W przerwie",
           "range_end": "Koniec przerwy"
-        }
+        },
+        "list_formatter": {
+          "and": {
+            "wordConnector": "{{previousWords}}, {{anotherWord}}",
+            "lastWordConnector": "{{previousWords}} i {{lastWord}}",
+            "twoWordConnector": "{{firstWord}} i {{secondWord}}"
+          },
+          "or": {
+            "wordConnector": "{{previousWords}}, {{anotherWord}}",
+            "lastWordConnector": "{{previousWords}} lub {{lastWord}}",
+            "twoWordConnector": "{{firstWord}} lub {{secondWord}}"
+          },
+          "narrow": {
+            "wordConnector": "{{previousWords}}, {{anotherWord}}",
+            "lastWordConnector": "{{previousWords}}, {{lastWord}}",
+            "twoWordConnector": "{{firstWord}}, {{secondWord}}"
+          }
+        },
+        "map": {
+          "cluster_title": {
+            "one": "Klaster składający się z {{number}} znacznik",
+            "other": "Klaster składający się z {{number}} znaczniki",
+            "few": "Klaster składający się z {{number}} znaczniki"
+          }
+        },
+        "sheet": {
+          "expand": "Rozwiń"
+        },
+        "confirm_order_button_label": "Potwierdź zamówienie",
+        "qr_code": "Kod QR",
+        "dropzone": {
+          "add_file": "Dodaj plik",
+          "invalid_file_type": "Typ pliku nie jest obsługiwany",
+          "dragged_over": "Zwolnij plik do przesłania"
+        },
+        "loading": "Ładowanie...",
+        "remove_chip": "Usuwanie przedmiotu",
+        "finalize_order_accessibility_label": "Dokończ zamówienie"
+      },
+      "contact": {
+        "title": "Informacje",
+        "address_title": "Adres",
+        "delivery_option_title": "Sposób dostawy",
+        "contact_method_title": "Kontakt",
+        "email_label": "E-mail",
+        "email_placeholder": "E-mail",
+        "email_or_phone_label": "E-mail lub numer telefonu komórkowego",
+        "email_or_phone_placeholder": "E-mail lub numer telefonu komórkowego",
+        "stored_addresses_label": "Zapisane adresy",
+        "new_address_label": "Użyj nowego adresu",
+        "first_name_label": "Imię",
+        "optional_first_name_label": "Imię (opcjonalnie)",
+        "last_name_label": "Nazwisko rodzinne",
+        "company_label": "Firma",
+        "optional_company_label": "Firmowy CUI (opcjonalnie)",
+        "address1_label": "Adres",
+        "address2_label": "Mieszkanie, pokój itp.",
+        "optional_address2_label": "Wzmianki (opcjonalnie). Zostaną one przetworzone przez operatora przed wysyłką.",
+        "city_label": "Miasto",
+        "country_label": "Kraj/region",
+        "country_code": "Kod kraju/regionu",
+        "province_label": "Prowincja",
+        "province_placeholder": "Prowincja",
+        "county_label": "Hrabstwo",
+        "county_placeholder": "Hrabstwo",
+        "state_label": "Stan",
+        "state_placeholder": "Stan",
+        "region_label": "Region",
+        "region_placeholder": "Region",
+        "prefecture_label": "Prefektura",
+        "prefecture_placeholder": "Prefektura",
+        "governorate_label": "Gubernatorstwo",
+        "governorate_placeholder": "Gubernatorstwo",
+        "emirate_label": "Emirat",
+        "emirate_placeholder": "Emirat",
+        "state_and_territory_label": "Stan/terytorium",
+        "state_and_territory_placeholder": "Stan/terytorium",
+        "phone_label": "Telefon",
+        "optional_phone_label": "Telefon (opcjonalnie)",
+        "phone_placeholder": "Telefon",
+        "phone_tooltip": "Jeśli będziemy musieli skontaktować się z Tobą w sprawie Twojego zamówienia",
+        "zip_code_label": "Kod pocztowy",
+        "zip_code_placeholder": "Kod pocztowy",
+        "postal_code_label": "Kod pocztowy",
+        "postal_code_placeholder": "Kod pocztowy",
+        "postcode_label": "Kod pocztowy",
+        "postcode_placeholder": "Kod pocztowy",
+        "pincode_label": "Kod PIN",
+        "pincode_placeholder": "Kod PIN",
+        "region_none": "Nie wybrano żadnych elementów",
+        "civic_number_warning": "Dodaj numer domu, jeśli go posiadasz",
+        "optional_last_name_label": "Nazwisko (opcjonalnie)",
+        "company_contact_info": "{{companyName}} · {{contact}}",
+        "different_shipping_address_label": "Poproś o wysyłkę na inny adres",
+        "different_shipping_address_text": "Użyj unikalnego adresu dla tego zamówienia",
+        "change_company_location_link_label": "Zmień lokalizację firmy",
+        "change_location_link_label": "Zmień lokalizację",
+        "ship_to_company": "Wyślij do {{companyName}}",
+        "shipping_used_as_billing_notice": "Adres ten będzie również używany jako adres rozliczeniowy dla tego zamówienia.",
+        "company_attention_label": "Firma/Odbiorca",
+        "optional_company_attention_label": "Firma/Uwaga (opcjonalnie)",
+        "available_addresses_label": "Dostępne adresy",
+        "optional_zip_code_label": "Kod pocztowy (opcjonalnie)",
+        "optional_postal_code_label": "Kod pocztowy (opcjonalnie)",
+        "optional_postcode_label": "Kod pocztowy (opcjonalnie)",
+        "optional_pincode_label": "Kod PIN (opcjonalnie)",
+        "email_rollup_accessibility_label": "Opcje wiadomości e-mail",
+        "phone_rollup_accessibility_label": "Opcje numeru telefonu",
+        "phone_country_code_label": "Kod kraju numeru telefonu",
+        "storefront_link": "stronie internetowej sprzedawcy",
+        "suburb_label": "Przedmieścia",
+        "subdistrict_label": "Podokręg",
+        "optional_subdistrict_label": "Podokręg (opcjonalnie)",
+        "optional_street_name_label": "Ulica (opcjonalnie)",
+        "field_saved_label": "Zapisano",
+        "field_tooltip_helper_text": "Służy do potwierdzania zamówienia i przypomnień o koszyku",
+        "field_tooltip_accessibility_label": "Więcej informacji o tym, jak wykorzystywane są Twoje dane kontaktowe"
+      },
+      "delivery_options": {
+        "ship": "Wyślij to",
+        "pick_up": "odebrać"
       }
     },
     "sentence": {
