@@ -3836,7 +3836,63 @@
     "collections": {
       "sorting": {
         "manual": "Aanbevolen",
-        "best_selling": "De bestseller"
+        "best_selling": "De bestseller",
+        "az": "Alfabetisch, A-Z",
+        "za": "Alfabetisch, Z-A",
+        "price_ascending": "Prijs, van laag naar hoog",
+        "price_descending": "Prijs, van hoog naar laag",
+        "date_ascending": "Datum, van oud naar nieuw",
+        "date_descending": "Datum, van nieuw naar oud",
+        "most_relevant": "Het meest relevante"
+      }
+    },
+    "errors": {
+      "blank": "kan niet leeg zijn",
+      "credit_card_session_expired": "Creditcardautorisatie is verlopen. Voer de betalingsgegevens opnieuw in. Er wordt geen bedrag van uw kaart afgeschreven.",
+      "empty": "kan niet leeg zijn",
+      "invalid_email": "moet een geldig e-mailadres zijn",
+      "discount_disabled": "Deze korting is uitgeschakeld",
+      "discount_expired": "Deze korting is niet meer geldig",
+      "discount_limit_reached": "Deze korting heeft de gebruikslimiet bereikt",
+      "discount_not_found": "Kon geen geldige korting vinden die overeenkomt met de ingevoerde code",
+      "customer_already_used_once_per_customer_discount_notice": "Deze korting heeft de gebruikslimiet bereikt",
+      "gift_card_already_applied": "De code is al toegepast bij het afrekenen",
+      "gift_card_code_invalid": "De code is niet geldig",
+      "gift_card_currency_mismatch": "Deze cadeaubon kan niet worden gebruikt voor deze aankoop. Neem contact op %{shop_name} voor de heruitgave ervan.",
+      "gift_card_depleted": "Er staat geen saldo meer op deze cadeaukaart",
+      "gift_card_disabled": "De cadeaukaart is uitgeschakeld",
+      "gift_card_expired": "De cadeaukaart is verlopen",
+      "invalid": "is ongeldig",
+      "bad_domain": "bevat een ongeldige domeinnaam",
+      "taken": "het was al ingenomen",
+      "contains_html_tags": "kunnen geen HTML-tags bevatten",
+      "too_short": "is te kort (minimale lengte is %{count} karakters)",
+      "too_long": "is te lang (de maximale lengte is %{count} karakters)",
+      "password_mismatch": "moet overeenkomen met het opgegeven wachtwoord",
+      "contains_spaces": "begint of eindigt met spaties.",
+      "invalid_for_country": "niet geldig voor %{country}",
+      "invalid_for_country_and_province": "niet geldig voor %{province} en %{country}",
+      "invalid_province_in_country": "is geen geldige provincie van %{country}",
+      "invalid_state_in_country": "is geen geldige staat van %{country}",
+      "invalid_region_in_country": "is geen geldige regio van %{country}",
+      "less_than_or_equal_to": "moet kleiner zijn dan of gelijk zijn aan %{count}",
+      "not_supported": "wordt niet geaccepteerd",
+      "full_name_required": "Voer een voor- en achternaam in",
+      "invalid_for_card_type": "is niet geldig",
+      "invalid_type": "Sorry, we accepteren geen kaarten van dit type",
+      "invalid_format": "het formaat is niet geldig",
+      "expired": "verlopen",
+      "invalid_start_date_or_issue_number_for_debit": "een geldige startdatum of uitgiftenummer is vereist",
+      "invalid_expiry_year": "is geen geldig vervaljaar",
+      "reset_password_html": "Dit e-mailadres is al aan een account gekoppeld. Als dit account van jou is, kan dat <a href=\"/account/login#recover\">reset uw wachtwoord</a>",
+      "verify_email": "Ik heb een e-mail gestuurd naar %{customer_email}, klik op de meegeleverde link om uw e-mailadres te verifiëren.",
+      "blocked_address": "Deze locatie wordt niet ondersteund",
+      "product_not_available": "het product is niet gepubliceerd voor deze klant.",
+      "shop_404": {
+        "title": "Creëer een e-commercesite en verkoop online! E-commercesoftware van Shopify",
+        "heros": {
+          "store_unavailable": "Deze winkel is momenteel niet beschikbaar."
+        }
       }
     }
   },
