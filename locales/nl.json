@@ -86,43 +86,43 @@
     "loading": "Laden...",
     "skip_to_product_info": "Ga naar productinformatie",
     "total_reviews": "totaal beoordelingen",
-    "star_reviews_info": "{{ rating_value }} van de {{ rating_max }} sterren",
-    "collapsible_content_title": "Inklapbare content",
+    "star_reviews_info": "{{ rating_value }} van {{ rating_max }} sterren",
+    "collapsible_content_title": "Inhoud die mogelijk beperkt is",
     "complementary_products": "Aanvullende producten"
   },
   "blogs": {
     "article": {
-      "blog": "Blog",
-      "read_more_title": "Lees verder: {{ title }}",
+      "blog": "Bloggen",
+      "read_more_title": "Meer informatie: {{ title }}",
       "comments": {
-        "one": "{{ count }} reactie",
-        "other": "{{ count }} reacties",
+        "one": "{{ count }} commentaar",
+        "other": "{{ count }} opmerkingen",
         "few": "{{ count }} opmerkingen"
       },
-      "moderated": "Let op: opmerkingen moeten worden goedgekeurd voordat ze worden gepubliceerd.",
-      "comment_form_title": "Reactie plaatsen",
+      "moderated": "Let op: Reacties moeten vóór publicatie worden goedgekeurd.",
+      "comment_form_title": "Schrijf een reactie",
       "name": "Naam",
-      "email": "E‑mail",
-      "message": "Reactie",
-      "post": "Plaats een reactie",
-      "back_to_blog": "Terug naar blog",
-      "share": "Dit artikelen delen",
-      "success": "Je reactie is geplaatst! Bedankt!",
-      "success_moderated": "Je reactie is geplaatst. Wij publiceren het zo; onze blog wordt gemodereerd."
+      "email": "E-mail",
+      "message": "Commentaar",
+      "post": "Plaats de reactie",
+      "back_to_blog": "Terug naar de blog",
+      "share": "Deel dit artikel",
+      "success": "Reactie succesvol geplaatst! Bedankt!",
+      "success_moderated": "Reactie geplaatst. We zullen het binnenkort publiceren als onze blog wordt gemodereerd."
     }
   },
   "onboarding": {
-    "product_title": "Voorbeeld producttitel",
-    "collection_title": "De naam van je collectie"
+    "product_title": "Voorbeeld van een producttitel",
+    "collection_title": "De naam van de collectie"
   },
   "products": {
     "product": {
-      "add_to_cart": "Aan winkelwagen toevoegen",
+      "add_to_cart": "Voeg toe aan winkelwagen",
       "description": "Beschrijving",
-      "on_sale": "Aanbieding",
+      "on_sale": "Korting",
       "quantity": {
-        "label": "Aantal",
-        "input_label": "Aantal voor {{ product }}",
+        "label": "Hoeveelheid",
+        "input_label": "Hoeveelheid voor {{ product }}",
         "increase": "Aantal verhogen voor {{ product }}",
         "decrease": "Aantal verlagen voor {{ product }}",
         "minimum_of": "Minimum van {{ quantity }}",
@@ -139,13 +139,13 @@
         "sale_price": "Aanbiedingsprijs",
         "unit_price": "Eenheidsprijs"
       },
-      "share": "Dit product delen",
-      "sold_out": "Uitverkocht",
+      "share": "Deel dit product",
+      "sold_out": "Niet op voorraad",
       "unavailable": "Niet beschikbaar",
       "vendor": "Verkoper",
-      "video_exit_message": "{{ title }} opent een video op volledig scherm in hetzelfde venster.",
-      "xr_button": "Bekijk in je ruimte",
-      "xr_button_label": "Bekijk in je ruimte, laadt artikel in augmented reality-venster",
+      "video_exit_message": "{{ title }} open de video op volledig scherm in hetzelfde venster.",
+      "xr_button": "Bekijk in uw ruimte",
+      "xr_button_label": "Bekijk in uw ruimte, het artikel wordt geladen in het augmented reality-venster",
       "pickup_availability": {
         "view_store_info": "Winkelgegevens bekijken",
         "check_other_stores": "Controleer de beschikbaarheid bij andere winkels",
@@ -4570,17 +4570,17 @@
   "alc-benefits": {
     "stock": {
       "in_stock": "op voorraad",
-      "low_stock": "Alleen {{ count }} nog op voorraad",
-      "last_stock": "Nieuwste {{ count }} in stukken 🔥",
+      "low_stock": "Gewoon {{ count }} nog op voorraad",
+      "last_stock": "De laatste {{ count }} stukken 🔥",
       "last_piece": "Het laatste stuk 🔥",
       "out_of_stock": "Niet op voorraad"
     },
-    "free_shipping": "GRATIS verzending ⚡ (1 - 3 werkdagen)",
+    "free_shipping": "GRATIS verzending ⚡ (2 - 4 werkdagen)",
     "free_shipping_link_text": "zie details",
     "free_shipping_link": "/pages/livrare",
-    "savings": "redden {{ amount }}",
-    "delivery": "Levering binnen 1 - 3 werkdagen",
-    "price_info": "Directe fabrikant: ",
+    "savings": "Jij bespaart {{ amount }}",
+    "delivery": "Levering binnen 2 - 4 werkdagen",
+    "price_info": "Directe producent: ",
     "price_info_link": "/pages/fabrica-alessandro-design",
     "price_info_link_text": "zie de Alessandro Design-fabriek",
     "return_policy": "14 dagen gratis retourrecht",
