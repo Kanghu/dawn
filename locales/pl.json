@@ -773,7 +773,78 @@
           "other": "Wkrótce otrzymasz osobne e-maile z potwierdzeniem z każdego sklepu",
           "few": "Wkrótce otrzymasz osobne e-maile z potwierdzeniem z każdego sklepu"
         }
+      },
+      "shipping": {
+        "title": "Transport",
+        "shipping_method_title": "Sposób wysyłki",
+        "waiting_on_rate_notice": "Uzyskiwanie dostępnych cen wysyłki…",
+        "waiting_on_pickup_location_notice": "Uzyskiwanie dostępnych miejsc odbioru…",
+        "no_rates_for_cart_or_destination_notice": "Dla Twojego koszyka lub adresu nie jest dostępna żadna metoda wysyłki",
+        "no_pickup_location_notice": "Co najmniej jeden z Twoich produktów nie jest dostępny do odbioru",
+        "no_rates_for_country_notice": "Nie znaleziono stawki wysyłki dla tego adresu.",
+        "no_rates_contact_notice": "Skontaktuj się z nami, aby uzyskać więcej informacji",
+        "free_rate_label": "Bezpłatnie",
+        "cheapest_rate_label": "Najtańszy",
+        "estimated_delivery_date_range": "Pomiędzy %{minimum} i %{maximum} dni robocze",
+        "shipping_line_phone_label": "Numer telefonu komórkowego (wymagane)",
+        "shipping_line_phone": "Kurier może skorzystać z tego numeru, aby się z Tobą skontaktować.",
+        "shipping_rate_discounted_amount": "To było: %{original_amount}. Teraz: %{amount}",
+        "optional_shipping_line_delivery_instructions_label": "Instrukcje dotyczące dostawy (opcjonalnie)",
+        "estimated_delivery_date": {
+          "one": "%{count} dzień pracy",
+          "other": "%{count} dni robocze",
+          "few": "%{count} dni robocze"
+        },
+        "other_method": {
+          "zero": "Nie ma innych metod",
+          "one": "%{count} inna metoda jest dostępna pod adresem",
+          "other": "%{count} dostępne są inne metody",
+          "few": "%{count} dostępne są inne metody"
+        },
+        "shipping_line_delivery_phone": "Możemy się z Tobą skontaktować w celu przekazania aktualnych informacji o dostawie.",
+        "shipping_line_delivery_phone_label": "Numer telefonu komórkowego",
+        "shipping_line_delivery_instructions": "Wprowadź wymagane informacje, takie jak kody interkomu lub instrukcje przekazania.",
+        "local_delivery": "Dostawa lokalna",
+        "subscription_shipping": "Wysyłka oparta na subskrypcji",
+        "shipping_method_one_time_purchase_group_title": "Jednorazowy zakup",
+        "shipping_method_subscription_group_title": "Subskrypcja",
+        "one_time_purchase_shipping": "Pojedyncza przesyłka",
+        "subscription_delivery_description": {
+          "prepaid_delivery_frequency": {
+            "one": "dla %{count} dostawa",
+            "other": "dla %{count} dostawy",
+            "few": "dla %{count} dostawy"
+          },
+          "subscription_delivery_frequency": {
+            "day": {
+              "one": "każdego dnia",
+              "other": "do każdego %{count} dni",
+              "few": "do każdego %{count} dni"
+            },
+            "week": {
+              "one": "co tydzień",
+              "other": "do każdego %{count} tygodnie",
+              "few": "do każdego %{count} tygodnie"
+            },
+            "month": {
+              "one": "co miesiąc",
+              "other": "do każdego %{count} miesiące",
+              "few": "do każdego %{count} miesiące"
+            },
+            "year": {
+              "one": "co roku",
+              "other": "do każdego %{count} lata",
+              "few": "do każdego %{count} lata"
+            }
+          },
+          "multiple_subscriptions_shipping_price_label": "%{shipping_price} za każdą dostawę"
+        }
       }
+    },
+    "sentence": {
+      "words_connector": ", ",
+      "two_words_connector": " i ",
+      "last_word_connector": " i "
     }
   },
   "customer_accounts": {
