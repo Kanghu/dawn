@@ -4110,13 +4110,48 @@
           "run_error": "Si è verificato un errore con il tuo carrello."
         },
         "gift_card_price_must_be_greater_than_zero": "Il prodotto sotto forma di set \"%{name}\" non può essere aggiunto al carrello.",
-        "cart_too_large": "Il cestino è troppo grande."
+        "cart_too_large": "Il cestino è troppo grande.",
+        "gift_card_recipient_validation_error": "Il destinatario della carta regalo specificato non è valido",
+        "invalid_input": "Il parametro %{parameter} non è valido.",
+        "buyer_cannot_purchase_for_company_locations": "Non puoi effettuare acquisti per questa posizione",
+        "only_one_added_to_cart": "Solo 1 articolo è stato aggiunto al carrello a causa della disponibilità.",
+        "only_n_added_to_cart": "Solo %{quantity} gli articoli sono stati aggiunti al carrello a causa della disponibilità.",
+        "maximum_available_quantity_reached": "La quantità massima di questo articolo è già nel tuo carrello.",
+        "cart_attributes_error": "Gli attributi del carrello acquisti contengono dati errati.",
+        "merchandise_not_applicable": "Questo articolo non può essere acquistato come configurato.",
+        "not_found": "Il cestino non è stato trovato"
+      },
+      "storefront": {
+        "invalid_password": "Password errata, riprova."
+      },
+      "tags": {
+        "add_articles": "Restringi la ricerca agli articoli che hanno anche il tag %{tag}",
+        "add_products": "Restringi la selezione ai prodotti che corrispondono all'etichetta %{tag}",
+        "remove_articles": "Espandi la tua ricerca agli elementi non taggati %{tag}",
+        "remove_products": "Rimuovere l'etichetta %{tag}"
+      },
+      "line_item": {
+        "item_status": {
+          "add_variant": "È stato aggiunto %{delta}",
+          "increment_item": "È stato aggiunto %{delta}",
+          "decrement_item": "Sono stati eliminati %{delta} da %{total}",
+          "decrement_fulfilled_line_item": "Sono tornati %{delta} da %{total}",
+          "decrement_return_line_item": "È stato rimosso %{delta} dal ritorno"
+        }
       }
     },
     "page_titles": {
       "search_results": {
         "few": "Cerca: sono stati trovati %{count} Risultati per \"%{terms}”"
-      }
+      },
+      "products": "Prodotti",
+      "shopping_cart": "Il tuo carrello",
+      "account": "conto",
+      "create_account": "Crea un account",
+      "reset_account": "Reimposta il tuo account",
+      "addresses": "Indirizzi",
+      "order": "Ordine %{name}",
+      "search": "Cerca"
     },
     "sentence": {
       "words_connector": ", ",
@@ -4266,6 +4301,49 @@
           "caption": "Scopri se si è verificata un'interruzione che interessa altri negozi Shopify, non solo questo.",
           "link_text": "Visualizza lo stato dei tuoi sistemi Shopify"
         }
+      }
+    },
+    "email_marketing": {
+      "subscribed": {
+        "confirmation": "Grazie per esserti iscritto alla nostra mailing list.",
+        "disclaimer": "Puoi annullare l'iscrizione in qualsiasi momento.",
+        "unsubscribe": "Annulla l'iscrizione"
+      },
+      "unsubscribed": {
+        "confirmation": "Hai annullato l'iscrizione alla nostra mailing list.",
+        "disclaimer": "Non riceverai più aggiornamenti di marketing da parte nostra. Puoi iscriverti nuovamente in qualsiasi momento",
+        "preview": "Visualizza in anteprima ciò che i clienti vedranno quando annulleranno l'iscrizione."
+      },
+      "open_tracking": {
+        "opt_in": {
+          "opted_in_html": "<b>Hai abilitato il monitoraggio dell'apertura delle email.</b>",
+          "visibility": "I tassi di apertura delle e-mail verranno segnalati in modo anonimo. Vedremo solo se hai aperto un'e-mail, come parte di un tasso di apertura e-mail aggregato.",
+          "opt_out_html": "Puoi <a style='text-decoration:underline;' href='%{link}'>arrendersi</a> all'apertura dell'e-mail di monitoraggio se non desideri condividere queste informazioni.",
+          "preview_bar": "Visualizza in anteprima ciò che i clienti vedranno quando sceglieranno di abilitare il monitoraggio dell'apertura delle email."
+        },
+        "opt_out": {
+          "opted_out_html": "<b>Hai disattivato il monitoraggio delle aperture delle email.</b>",
+          "visibility": "Non vedremo se hai aperto le nostre email.",
+          "opt_in_html": "Scegli <a style='text-decoration:underline;' href='%{link}'>per attivare</a> si apre l'e-mail di tracciamento.",
+          "preview_bar": "Visualizza in anteprima ciò che i clienti vedranno quando sceglieranno di disattivare il monitoraggio dell'apertura delle email."
+        },
+        "no_longer_track": {
+          "status_html": "<b>Non teniamo più traccia delle aperture di posta elettronica.</b>",
+          "privacy_policy": "Dopo aver inviato questa email, abbiamo aggiornato la nostra politica sulla privacy e non tracciamo più le aperture."
+        },
+        "track": {
+          "status_html": "<b>Viene segnalato il monitoraggio dell'apertura delle email.</b>",
+          "visibility": "Vedremo solo se hai aperto l'e-mail, entro il tasso di apertura generale dell'e-mail."
+        },
+        "updated_policy": {
+          "status_html": "<b>Viene segnalato il monitoraggio dell'apertura delle email.</b>",
+          "visibility": "Abbiamo aggiornato la nostra politica e ora monitoriamo l'apertura delle email. I tassi di apertura delle e-mail verranno segnalati in modo anonimo. Vedremo solo se hai aperto un'e-mail, come parte della percentuale di apertura complessiva delle e-mail.",
+          "opt_out_html": "Se non vuoi condividere queste informazioni, puoi farlo <a style='text-decoration:underline;' href='%{link}'>annullare l'iscrizione</a>"
+        }
+      },
+      "sms_unsubscribe_confirm": {
+        "message": "Sei sicuro di voler annullare l'iscrizione al marketing via SMS?",
+        "button": "Annulla l'iscrizione"
       }
     }
   },
