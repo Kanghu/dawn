@@ -3905,7 +3905,9 @@
     },
     "page_titles": {
       "search_results": {
-        "few": "Zoeken: ze zijn gevonden %{count} Resultaten voor \"%{terms}”"
+        "few": "Zoeken: gevonden %{count} resultaten voor \"%{terms}”",
+        "one": "Zoeken: gevonden %{count} resultaat voor \"%{terms}”",
+        "other": "Zoeken: gevonden %{count} resultaten voor \"%{terms}”"
       },
       "products": "Producten",
       "shopping_cart": "Uw winkelwagen",
@@ -3914,7 +3916,12 @@
       "reset_account": "Reset uw account",
       "addresses": "Adressen",
       "order": "Bestel %{name}",
-      "search": "Zoeken"
+      "search": "Zoeken",
+      "collections": "Collecties",
+      "not_found": "404 niet gevonden",
+      "challenge": "Uitdaging",
+      "checkpoint": "Validatie punt",
+      "blog_or_article_with_error": "Fout – %{title}"
     },
     "pagination": {
       "previous": "Terug",
@@ -4103,6 +4110,58 @@
         "message": "Weet u zeker dat u zich wilt afmelden voor sms-marketing?",
         "button": "Afmelden"
       }
+    },
+    "cart": {
+      "discounts_with_count": "Ze werden toegepast %{count} kortingen"
+    },
+    "challenge": {
+      "message": "Om verder te gaan, bewijs dat je geen robot bent.",
+      "error": "Je antwoord was onjuist. Probeer het opnieuw.",
+      "submit_button_text": "Verzenden"
+    },
+    "checkpoint": {
+      "message": "Los de captcha op om door te gaan",
+      "error": "Captcha-validatie mislukt",
+      "submit_button_text": "Verzenden"
+    },
+    "store_availability": {
+      "pick_up_time": {
+        "one_hour": "Meestal binnen een uur klaar",
+        "two_hours": "Meestal binnen twee uur klaar",
+        "four_hours": "Meestal klaar in 4 uur",
+        "twenty_four_hours": "Meestal binnen 24 uur klaar",
+        "two_to_four_days": "Meestal klaar in 2-4 dagen",
+        "five_or_more_days": "Meestal klaar in meer dan 5 dagen",
+        "zero_to_two_hours": "Meestal binnen twee uur klaar",
+        "two_to_four_hours": "Meestal klaar in 4 uur",
+        "immediately": "Klaar om nu op te halen",
+        "next_day": "Klaar voor afhaling de volgende dag"
+      }
+    },
+    "filters": {
+      "availability": {
+        "value": {
+          "in_stock": "Op voorraad",
+          "out_of_stock": "Niet op voorraad"
+        }
+      },
+      "boolean": {
+        "true_label": "Ja",
+        "false_label": "Nee"
+      }
+    },
+    "search": {
+      "sorting": {
+        "relevance": "Relevantie",
+        "price_ascending": "Prijs, van laag naar hoog",
+        "price_descending": "Prijs, van hoog naar laag"
+      },
+      "error": "Er is een probleem opgetreden bij het laden van de zoekresultaten. Vernieuw de pagina of probeer het later opnieuw."
+    },
+    "subscriptions": {
+      "buyer_consent_product": "Dit artikel is een terugkerende of uitgestelde aankoop. Door verder te gaan, ben ik het ermee eens %{cancellationPolicyLink} en ik machtig u om mijn betaalmethode automatisch in rekening te brengen tegen de opgegeven prijzen, frequenties en data totdat mijn bestelling is uitgevoerd of ik deze annuleer, indien toegestaan.",
+      "buyer_consent_cart": "Een of meer artikelen in uw winkelwagen zijn een terugkerende of uitgestelde aankoop. Door verder te gaan, ben ik het ermee eens %{cancellationPolicyLink} en ik machtig u om mijn betaalmethode automatisch in rekening te brengen tegen de opgegeven prijzen, frequenties en data totdat mijn bestelling is uitgevoerd of ik deze annuleer, indien toegestaan.",
+      "cancellation_policy": "annuleringsbeleid"
     }
   },
   "customer_accounts": {
@@ -4227,6 +4286,28 @@
       },
       "contracts_update_failed": "Sommige abonnementscontracten konden niet worden bijgewerkt",
       "invalid_wallet_type_error": "Het type digitale portemonnee is ongeldig."
+    },
+    "callback": {
+      "try_again": "Probeer het opnieuw"
+    },
+    "navigation_and_structure": {
+      "account_menu": {
+        "hide_accessibility_label": "Accountmenu verbergen",
+        "show_accessibility_label": "Toon het Accountmenu",
+        "nav_accessibility_label": "Accountnavigatie",
+        "open_menu_accessibility_label": "Open accountnavigatie",
+        "close_menu_accessibility_label": "Sluit het bladeren door accounts",
+        "loading_message": "Accountnavigatie laden",
+        "label": "rekening"
+      },
+      "action_menu_accessibility_label": "Meer acties",
+      "close_menu_accessibility_label": "Sluit de hoofdnavigatie",
+      "contact_email_subject": "Neem contact op met de online winkel {{shopName}}",
+      "contact_link": "Contactgegevens",
+      "delete_confirmation": {
+        "cancel": "Annuleer",
+        "delete": "Verwijderen"
+      }
     }
   },
   "alc-benefits": {
