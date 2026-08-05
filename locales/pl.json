@@ -3178,7 +3178,165 @@
         },
         "location_nearby_short_other_items": {
           "one": "%{count} pobliską lokalizację ze swoimi przedmiotami",
-          "other": "%{count} pobliskie lokalizacje ze swoimi przedmiotami"
+          "other": "%{count} pobliskie lokalizacje ze swoimi przedmiotami",
+          "few": "%{count} pobliskie lokalizacje ze swoimi przedmiotami"
+        },
+        "location_far_away_one_item": {
+          "one": "%{count} lokalizację ze swoim przedmiotem",
+          "other": "%{count} lokalizacje z Twoim artykułem",
+          "few": "%{count} lokalizacje z Twoim artykułem"
+        },
+        "location_far_away_other_items": {
+          "one": "%{count} lokalizację ze swoimi przedmiotami",
+          "other": "%{count} lokalizacje ze swoimi przedmiotami",
+          "few": "%{count} lokalizacje ze swoimi przedmiotami"
+        },
+        "location_selected": "Wybrana lokalizacja"
+      },
+      "split_delivery": {
+        "pickup_all_items": "Podnieś wszystkie przedmioty",
+        "items_for_pickup": "Przedmioty do odebrania",
+        "delivery_method": "Sposób dostarczenia awarii",
+        "delivery_method_menu": "Rozbite menu metod dostawy",
+        "inventory_issue_banner": {
+          "remove_items_or_ship": "%{ship_separately_link} lub %{remove_items_link}",
+          "remove_items_or_pickup": "%{pickup_in_store_link} lub %{remove_items_link}",
+          "heading": {
+            "cannot_be_picked_up": {
+              "one": "%{count} przedmiotu nie można odebrać",
+              "other": "%{count} przedmiotów nie można odebrać",
+              "few": "%{count} przedmiotów nie można odebrać"
+            },
+            "cannot_be_shipped": {
+              "one": "%{count} przedmiot nie może zostać wysłany",
+              "other": "%{count} Przedmioty nie mogą zostać wysłane",
+              "few": "%{count} Przedmioty nie mogą zostać wysłane"
+            }
+          },
+          "remove_item": {
+            "one": "usuń artykuł",
+            "other": "usuń elementy",
+            "few": "usuń elementy"
+          },
+          "ship_separately": {
+            "one": "Wyślij osobno",
+            "other": "Wyślij je osobno",
+            "few": "Wyślij je osobno"
+          },
+          "pick_them_up_in_store": {
+            "one": "Odbierz go ze sklepu",
+            "other": "Odbierz je ze sklepu",
+            "few": "Odbierz je ze sklepu"
+          },
+          "remove_item_only": {
+            "one": "Usuń element",
+            "other": "Usuń elementy",
+            "few": "Usuń elementy"
+          },
+          "merchandise_line_with_quantity": "%{title} (×%{quantity})"
+        },
+        "items_for_shipping": "Przedmioty do wysyłki",
+        "pickup_items_count": {
+          "few": "Podnoszenie %{count} artykuły"
+        },
+        "ship_items_count": {
+          "few": "Wysyłka %{count} artykuły"
+        },
+        "items_moved_to_shipping_toast": "Przedmioty, których nie można odebrać, zostały przeniesione do wysyłki",
+        "cross_border": {
+          "modal": {
+            "heading": "Zmiana kraju?",
+            "content": "Miejsca odbioru i wysyłki muszą znajdować się w tym samym kraju. Zmiana kraju spowoduje zresetowanie wszystkich pozycji po wysyłce.",
+            "change_country": "Zmień kraj",
+            "country_changed_heading": "Kraj został zmieniony"
+          },
+          "banner": "Twoja metoda dostawy została zaktualizowana"
+        },
+        "items_count": {
+          "few": "%{count} artykuły"
+        },
+        "accessibility": {
+          "status": {
+            "ship_separately": "%{items} zostaną wysłane osobno.",
+            "pickup_in_store": "%{items} zostanie odebrany ze sklepu.",
+            "remove_items": "%{items} zostały usunięte z koszyka."
+          }
+        }
+      },
+      "captcha": {
+        "title": "Aby kontynuować, dokończ weryfikację CAPTCHA",
+        "errors": {
+          "not_solved": "Aby kontynuować, dokończ weryfikację CAPTCHA"
+        }
+      },
+      "discount_errors": {
+        "generic_error": "Twoje zamówienie nie mogło zostać przetworzone, ponieważ Twój kod rabatowy nie jest już dostępny. Sprawdź sumę zamówienia i spróbuj ponownie."
+      },
+      "wallets": {
+        "return_to_store": "Wróć do sklepu",
+        "redirect_hint": "Zostaniesz poproszony o zalogowanie się za pomocą {{walletName}}.",
+        "logged_in": "Połączony z {{email}}",
+        "shipping_line_label": "Wysyłka",
+        "connect_shipping_methods": "{{method1}} i {{method2}}",
+        "payment_in_progress_title": "Płatność w toku",
+        "payment_in_progress_body": "Twoja płatność jest przetwarzana. Twoje zamówienie zostanie wkrótce zrealizowane.",
+        "call_to_action": "Zapłać za pomocą {{walletName}}",
+        "errors": {
+          "unavailable": {
+            "title": "{{walletName}} nie jest dostępny",
+            "description": "{{walletName}} nie był dostępny. Użyj innej metody płatności lub spróbuj ponownie później.",
+            "instructions": "Wystąpił problem z funkcją {{walletName}}. Wróć do sklepu, aby spróbować ponownie lub sfinalizować zamówienie w inny sposób.",
+            "unavailable_for_country": "Metoda płatności {{walletName}} nie jest dostępny w {{countryName}}. Wybierz inną metodę płatności, aby sfinalizować zakup"
+          },
+          "generic": "Wystąpił problem {{walletName}}. Spróbuj ponownie lub użyj innej metody płatności.",
+          "terminal": "Wystąpił problem o godz {{walletName}}. Użyj innej metody płatności.",
+          "detour": {
+            "stock_problems": "Niektóre pozycje nie są już dostępne. Zamknij {{walletName}} i spróbuj ponownie.",
+            "price_change": "Ceny niektórych artykułów uległy zmianie. Zamknij {{walletName}} aby sprawdzić zamówienie i spróbować ponownie.",
+            "queue": "Zostałeś umieszczony w kolejce do kasy. Zamknij {{walletName}} kontynuować.",
+            "currency_change": "Nie można użyć innego adresu z {{walletName}}. Użyj oryginalnego adresu lub wypróbuj inną metodę płatności."
+          },
+          "unsupported": {
+            "address": "Sprzedawca nie może dostarczyć przesyłki na wybrany adres wysyłki.",
+            "postal_code": "Ta lokalizacja nie jest obsługiwana",
+            "wallet_is_unavailable": "{{walletName}} nie można używać z tym adresem. Wybierz inny adres lub zamknij {{walletName}} aby sfinalizować zakup"
+          },
+          "outdated": {
+            "shipping_method": "Opcje wysyłki Twojego zamówienia uległy zmianie. Przejrzyj swój wybór.",
+            "payment_terms": "Warunki płatności uległy zmianie. Sprawdź swoje zamówienie"
+          },
+          "invalid": {
+            "shipping_address": "Proszę podać prawidłowy adres wysyłki",
+            "billing_address": "Proszę wprowadzić prawidłowy adres rozliczeniowy",
+            "shipping_option": "Wybierz prawidłową opcję wysyłki",
+            "email": "Proszę podać prawidłowy adres e-mail",
+            "zone": "Proszę podać prawidłowy stan/prowincję",
+            "postal_code": "Proszę wprowadzić prawidłowy kod pocztowy",
+            "reduction_code": "Wpisz ważny kod rabatowy lub kartę podarunkową",
+            "billing_must_match_shipping": "Musi odpowiadać adresowi wysyłki",
+            "phone": "Proszę wprowadzić prawidłowy numer telefonu",
+            "emirate": "Proszę wprowadzić prawidłowy emirat",
+            "billing_zone": "Wprowadź prawidłowy stan/prowincję dla swojego adresu rozliczeniowego",
+            "billing_phone": "Wprowadź prawidłowy numer telefonu dla swojego adresu rozliczeniowego",
+            "billing_zip": "Wprowadź prawidłowy kod pocztowy dla swojego adresu rozliczeniowego"
+          },
+          "missing": {
+            "first_name": "Wpisz imię",
+            "last_name": "Wpisz nazwisko",
+            "address1": "Wpisz adres",
+            "address2": "Wejdź do mieszkania, pokoju itp.",
+            "city": "Wpisz miasto",
+            "province": "Wybierz stan/prowincję",
+            "country": "Wybierz kraj/region",
+            "zip": "Wprowadź kod pocztowy",
+            "phone": "Wpisz numer telefonu",
+            "billing_first_name": "Wprowadź imię adresu rozliczeniowego",
+            "billing_address1": "Wprowadź adres rozliczeniowy",
+            "billing_address2": "Wpisz mieszkanie, pokój itp. jako adres rozliczeniowy",
+            "billing_city": "Wprowadź miasto dla adresu rozliczeniowego",
+            "billing_province": "Wybierz stan/prowincję dla swojego adresu rozliczeniowego",
+            "billing_zip": "Wprowadź kod pocztowy swojego adresu rozliczeniowego"
+          }
         }
       }
     },
