@@ -1322,24 +1322,37 @@
       },
       "order_summary": {
         "expand_component_information": {
-          "few": "displays %{count} ware"
+          "few": "Weergave %{count} artikelen",
+          "one": "Weergave %{count} artikel",
+          "other": "Weergave %{count} artikelen"
         },
         "collapse_component_information": {
-          "few": "Verbergen %{count} ware"
+          "few": "Verbergen %{count} artikelen",
+          "one": "Verbergen %{count} artikel",
+          "other": "Verbergen %{count} artikelen"
         },
         "discount_discovery": {
           "merchandise_quantity_label": {
-            "few": "%{count} (van) artikelen"
-          }
+            "few": "%{count} (van) artikelen",
+            "one": "%{count} artikel",
+            "other": "%{count} (van) artikelen"
+          },
+          "add_code": "Voeg een korting toe",
+          "back_to_finalize_order": "Terug naar afrekenen"
         },
         "discount_title_stacking": {
-          "few": "Kortingen"
+          "few": "Kortingen",
+          "one": "Korting",
+          "other": "Kortingen"
         },
         "discount_order_stacking": {
-          "few": "Kortingen voor bestelling"
+          "few": "Bestel kortingen",
+          "one": "Korting bestellen",
+          "other": "Bestel kortingen"
         },
         "subtotal_label_with_quantity": {
-          "few": "Subtotaal · %{count} ware"
+          "few": "Subtotaal · %{count} ware",
+          "one": "Subtotaal · %{count} artikel"
         },
         "number_items": {
           "few": "%{count} ware"
@@ -1467,7 +1480,43 @@
         "maximum_discount_code_limit_reached": "Je hebt het maximale aantal kortingscodes bereikt. Verwijder een bestaande code om de code te gebruiken <strong style=\"text-transform:uppercase\">%{code}</strong>.",
         "order_total_label": "Totaal bestelling",
         "discount_code_application_failed": "<strong style=\"text-transform:uppercase\">%{code}</strong> werkt momenteel niet. Neem contact met ons op voor hulp.",
-        "due_on_fulfillment": "Verschuldigd op het moment van honorering"
+        "due_on_fulfillment": "Verschuldigd op het moment van honorering",
+        "gift_card_masked": "•••• %{last_characters}",
+        "subscriptions": "Abonnementen",
+        "duties_label": "Douanerechten",
+        "duties_and_taxes_label": "Douanerechten en belastingen",
+        "error_duties_tooltip": "Deze bestelling wordt verzonden vanuit een ander land, dus er kunnen douanerechten en belastingen in rekening worden gebracht bij levering.",
+        "may_be_charged_on_delivery": "Deze kunnen bij levering in rekening worden gebracht",
+        "total_updated_label_with_price": "Bijgewerkte totaalprijs: %{totalPrice}",
+        "recurring_payments": "Terugkerende betalingen",
+        "recurring_total_multiple_label": "Voor meerdere artikelen in deze bestelling geldt een terugkerende toeslag.",
+        "deferred_total_due_date_label": "Totaal vanwege {{date}}",
+        "full_price": "Volledige prijs: %{price}",
+        "custom_discount": "Aangepaste korting",
+        "component_quantity_title": "%{quantity} × %{product_title}",
+        "alternative_payment_currency_total": "Afgeschreven bedrag: %{amount_due}",
+        "calculating": "Er wordt berekend...",
+        "group_title_label": "Onderdeel van \"%{group_title}”",
+        "price_per_item": {
+          "accessibility_label": "%{price} per artikel",
+          "label": "%{price}/ st."
+        },
+        "updated_shipping_method": "Betaalmethode bijgewerkt: %{shipping_method}",
+        "discount_not_found": "Kon geen geldige korting vinden die overeenkomt met de ingevoerde code",
+        "total_savings": "Totale besparingen",
+        "return_restocking_fee_label": "Herbevoorradingskosten",
+        "return_shipping_fee_label": "Retourzending",
+        "enter_shipping_address": "Voer het verzendadres in",
+        "shipping_discount_title": "Verzendkorting",
+        "discount_code_applied": "Kortingscode toegepast",
+        "discount_code_applied_with_code": "Kortingscode %{code} werd toegepast",
+        "gift_card_applied": "De cadeaukaart is toegepast",
+        "duties_included_label": "Totaal omvat alle toepasselijke belastingen en heffingen. Er zijn geen extra kosten verbonden aan de bezorging.",
+        "deferred_balance_info": {
+          "title": "Saldo waard {{amount_due}} heeft een vervaldatum {{due_at}}",
+          "due_on_fulfillment_title": "Saldo waard {{amount_due}} heeft de vervaldatum op het moment van honorering"
+        },
+        "eligible_customer_missing_notice": "Voor de kortingscode <strong style=\"text-transform:uppercase\">%{code}</strong> een in aanmerking komende klant is vereist"
       },
       "payment": {
         "order_covered_by_gift_cards_notice": {
