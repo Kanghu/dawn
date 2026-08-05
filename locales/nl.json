@@ -2696,8 +2696,23 @@
       },
       "merchandise_unavailable_in_buyer_location": {
         "remove_items_action": {
-          "few": "elimineert niet -beschikbare items"
-        }
+          "few": "verwijder niet-beschikbare items",
+          "one": "verwijder het niet-beschikbare item",
+          "other": "verwijder niet-beschikbare items"
+        },
+        "banner_title": {
+          "some_products_one": "Dit product kan niet worden bezorgd %{location_name}.",
+          "some_products_other": "Deze producten kunnen niet bezorgd worden %{location_name}.",
+          "all_products_one": "Het product in het winkelmandje kan niet worden afgeleverd %{location_name}.",
+          "all_products_other": "Winkelwagenproducten kunnen niet worden afgeleverd %{location_name}."
+        },
+        "missing_country_fallback": "jouw land",
+        "indeterminate_location_fallback": "jouw locatie",
+        "cart_updated": "Uw winkelwagen is bijgewerkt.",
+        "change_address_only": "Wijzig het afleveradres om door te gaan.",
+        "change_address_or_remove": "Wijzig het afleveradres of %{remove_action}.",
+        "empty_cart_action": "Maak de winkelwagen leeg en ga terug naar de winkel",
+        "unavailable_line_item": "%{product_name}/%{variant_label}"
       },
       "review_address_modal": {
         "subtitle": {
@@ -3532,7 +3547,67 @@
           "checkout_has_expired": "Er is een time-out opgetreden bij het afrekenen. Sluit dit venster en probeer de bestelling opnieuw af te ronden {{shopName}}."
         },
         "return_to_store": "Kom terug naar {{shopName}}",
-        "return_to_store_simple": "Kom terug naar de winkel"
+        "return_to_store_simple": "Kom terug naar de winkel",
+        "title": "De bestelling afronden met Shop Pay"
+      },
+      "company_location": {
+        "location_title": "Bedrijfslocatie",
+        "location_rollup_accessibility_label": "Bedrijfslocatie mogelijkheden"
+      },
+      "one": {
+        "errors": {
+          "merchandise": {
+            "gift_card_price_must_be_greater_than_zero": "De prijs van de cadeaukaart moet groter zijn dan 0.",
+            "subtotal_limit_reached": "De maximale waarde van items is bereikt.",
+            "gift_card_price_must_not_exceed_limit": "De prijs van de cadeaukaart mag niet hoger zijn dan %{gift_card_limit}.",
+            "signature_mismatch": "De productsignatuur komt niet overeen met de lijn %{stable_id}."
+          }
+        }
+      },
+      "clipboard": {
+        "copied": "Gekopieerd",
+        "failed_to_copy": "Kan niet kopiëren"
+      },
+      "payment_challenge_modal": {
+        "instructions": "Rond de aankoop af met de code {{paymentMethod}}",
+        "timer_message": "Je hebt tot je beschikking {{timeLeft}} betalen",
+        "copy_text": "Kopieer de code voor {{paymentMethod}}",
+        "header": "Betaal met {{paymentMethod}}",
+        "qr_code": {
+          "instructions": "Rond de aankoop af met de code {{paymentMethod}}",
+          "wechat_instructions": "Scan deze QR-code met de WeChat-app op uw telefoon om uw aankoop te voltooien",
+          "wechat_instructions_mobile": "Scan deze QR-code met de WeChat-app op een ander apparaat om uw aankoop te voltooien"
+        },
+        "external": {
+          "instructions": "Bevestig de in-app-betaling om deze aankoop te voltooien"
+        },
+        "close": "Sluit de uitdaging",
+        "open_app_text": "Open de app {{paymentMethod}}"
+      },
+      "artifact_errors": {
+        "artifact_dissatisfaction_without_violation": "Er is een probleem opgetreden bij het verwerken van uw bestelling. Probeer het over een paar minuten opnieuw."
+      },
+      "merchant_instruction_errors": {
+        "empty_stable_id": "Instructies voor koopwaar %{name} %{position} een blanco stabiele ID bevatten.",
+        "invalid_stable_id_target": "Instructies voor koopwaar %{name} %{position} verwijzen naar een stabiele ID %{stable_id}, maar die stabiele ID zit niet in de vrachtlijnen.",
+        "duplicate_variant_id": "Instructies voor koopwaar %{name} %{position} een dubbele variant-ID bevatten %{variant_id}.",
+        "invalid_variant_id_target": "Instructies voor koopwaar %{name} verwijzen naar een variant-ID %{variant_id}, maar die variant zit niet in de vrachtlijnen.",
+        "invalid_price_override_target": "De instructie om de merchandiseprijs voor het artikel te vervangen %{stable_id} is niet geldig omdat dit een component in een set is.",
+        "discount_not_supported": "In de instructies van de handelaar is de toepassing van dergelijke kortingen niet opgenomen."
+      },
+      "b2b_errors": {
+        "lost_b2b_purchasing_permissions": "U mag geen B2B-bestellingen meer plaatsen. %{logout_url} om in plaats daarvan een persoonlijke bestelling te plaatsen.",
+        "log_out_link_text": "Uitloggen",
+        "lost_permissions_subtitle": "U mag geen B2B-bestellingen meer plaatsen. Log uit om een ​​persoonlijke bestelling te plaatsen.",
+        "lost_permissions_title": "Geen locatierechten"
+      },
+      "units": {
+        "milligram": "mg",
+        "gram": "Dhr",
+        "kilogram": "kg",
+        "milliliter": "ml",
+        "centiliter": "kl",
+        "liter": "l"
       }
     },
     "notices": {
