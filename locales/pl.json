@@ -2160,6 +2160,70 @@
         "address_line2_contains_emojis": "Druga linia adresu nie może zawierać emotikonów",
         "address_line2_contains_html_tags": "Druga linia adresu nie może zawierać znaczników HTML.",
         "address_line2_contains_mathematical_symbols": "Druga linia adresu nie może zawierać symboli matematycznych"
+      },
+      "processing": {
+        "complete_your_purchase_title_error": "Popraw swoje dane dotyczące płatności",
+        "continue_to_payment_gateway_notice_error": "Nie udało się zweryfikować Twoich informacji o płatności.",
+        "continue_to_payment_gateway_button_label_error": "Zaktualizuj informacje o płatności",
+        "page_title": "Zamówienie jest przetwarzane",
+        "title": "Zamówienie jest przetwarzane",
+        "your_order_has_been_received_title": "Dziękuję za zamówienie",
+        "you_will_receive_confirmation": "Obecnie otrzymujemy wiele zamówień. Wkrótce powinieneś otrzymać potwierdzenie e-mailem lub SMS-em. Jeśli nie otrzymasz go w ciągu najbliższej godziny, daj nam znać.",
+        "you_will_not_be_charged": "Na razie nie poniesiesz żadnych opłat",
+        "wait": {
+          "short": "Twoje zamówienie jest przetwarzane.",
+          "long": "Otrzymasz wiadomość e-mail zaraz po przetworzeniu zamówienia. Aktualnie jest duża ilość zamówień.",
+          "no_auto_refresh_html": "Jeżeli nie nastąpi automatyczne przekierowanie, %{link}.",
+          "refresh_this_page": "odśwież tę stronę",
+          "medium": {
+            "one": "Twoje zamówienie jest przetwarzane. Szacowany czas oczekiwania to %{count} na minutę.",
+            "other": "Twoje zamówienie jest przetwarzane. Szacowany czas oczekiwania to %{count} minuty.",
+            "few": "Twoje zamówienie jest przetwarzane. Szacowany czas oczekiwania to %{count} minuty."
+          }
+        },
+        "action_required": "Wymagane działanie",
+        "redirecting_to_bank": "Przekierowuje do {{bank}}",
+        "modal_notice": "Kontaktujemy się {{paymentMethod}}",
+        "remote_shops_payments_processing": "Płatności są przetwarzane",
+        "remote_checkout_count": "%{current} od %{total}"
+      },
+      "failed_payment": {
+        "page_title": "Płatność nie mogła zostać przetworzona",
+        "title": "Płatność nie mogła zostać przetworzona",
+        "payment_not_processed_title": "Twoja płatność nie mogła zostać przetworzona",
+        "payment_not_processed_text": "Nie postawiono Ci żadnych zarzutów. Wróć do koszyka, aby dokończyć zakup.",
+        "return_to_cart_button_label": "Wróć do koszyka"
+      },
+      "payment_gateway": {
+        "credit_card_label": "Karta kredytowa",
+        "bank_deposit_label": "Depozyt bankowy",
+        "cash_on_delivery_label": "Gotówka przy odbiorze",
+        "money_order_label": "Nakaz zapłaty",
+        "debit_card_label": "Karta debetowa",
+        "deferred_payment_label": "Wybierz metodę płatności później",
+        "generic_payment_terms": "Musisz przestrzegać warunków {{translatedName}}. Termin płatności przypada na {{dueDate}}.",
+        "login_prompt": {
+          "no_access": {
+            "message": "{{logIn}} na konto, które ma dostęp do tej lokalizacji, aby dodać lub skorzystać z zapisanych metod płatności.",
+            "link": "Połącz się"
+          }
+        },
+        "direct_payment_terms": "Musisz przestrzegać warunków {{translatedName}}. Twoja karta zostanie obciążona w {{dueDate}}.",
+        "order_due_on_fulfillment_choose_later": "Płatność zostanie dokonana niezwłocznie po zrealizowaniu zamówienia.",
+        "order_due_on_fulfillment_payment": "Twoja karta zostanie obciążona natychmiast po zrealizowaniu zamówienia.",
+        "draft_order_payment_due_later_no_terms": "Płatność zostanie dokonana natychmiast po potwierdzeniu zamówienia.",
+        "draft_order_payment_due_later_no_terms_payment_selected": "Twoja karta zostanie obciążona natychmiast po potwierdzeniu zamówienia.",
+        "draft_order_payment_due_later_terms": "Musisz przestrzegać warunków {{translatedName}} zaraz po potwierdzeniu zamówienia.",
+        "draft_order_payment_due_on_fulfillment": "Płatność zostanie dokonana natychmiast po potwierdzeniu i zrealizowaniu zamówienia.",
+        "fixed_payment_label": "Termin płatności przypada na {{dueDate}}.",
+        "fixed_direct_payment_terms": "Twoja karta zostanie obciążona dnia {{dueDate}}.",
+        "order_deposit_due_now": "Ilość {{depositAmount}} termin przypada na dzisiaj. Saldo podlega warunkom {{translatedName}} i ma nastąpić o godz {{dueDate}}.",
+        "order_deposit_due_on_fulfillment": "Ilość {{depositAmount}} termin przypada na dzisiaj. Pozostała kwota zostanie uregulowana niezwłocznie po zrealizowaniu zamówienia.",
+        "order_due_on_receipt_choose_later": "Płatność będzie wymagalna po otrzymaniu.",
+        "draft_order_deposit_due_later": "Płatność w wysokości {{depositAmount}} będzie wymagalna niezwłocznie po potwierdzeniu zamówienia. Pozostała kwota będzie należna zgodnie z warunkami {{translatedName}}.",
+        "draft_order_deposit_due_on_fulfillment": "Płatność w wysokości {{depositAmount}} będzie wymagalna niezwłocznie po potwierdzeniu zamówienia. Pozostała kwota zostanie uregulowana niezwłocznie po zrealizowaniu zamówienia.",
+        "order_deposit_due_on_receipt": "Ilość {{depositAmount}} termin przypada na dzisiaj. Saldo zostanie spłacone później.",
+        "order_deposit_due_on_fixed_date": "Ilość {{depositAmount}} termin przypada na dzisiaj. Pozostała część będzie płatna o godz {{dueDate}}."
       }
     },
     "sentence": {
