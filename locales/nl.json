@@ -313,25 +313,25 @@
       "results_with_count": {
         "one": "{{ count }} resultaat",
         "other": "{{ count }} resultaten",
-        "few": "{{ count }} resultaat"
+        "few": "{{ count }} resultaten"
       },
       "title": "Zoekresultaten",
       "page": "Pagina",
       "products": "Producten",
-      "search_for": "Zoeken naar '{{ terms }}'",
+      "search_for": "Zoeken naar \"{{ terms }}”",
       "results_with_count_and_term": {
-        "one": "{{ count }} resultaat gevonden voor “{{ terms }}”",
-        "other": "{{ count }} resultaten gevonden voor “{{ terms }}”",
+        "one": "Het werd gevonden {{ count }} resultaat voor \"{{ terms }}”",
+        "other": "Ze hebben elkaar gevonden {{ count }} resultaten voor \"{{ terms }}”",
         "few": "Ze hebben elkaar gevonden {{ count }} resultaten voor \"{{ terms }}”"
       },
       "results_pages_with_count": {
         "one": "{{ count }} pagina",
         "other": "{{ count }} pagina's",
-        "few": "{{ count }} pagina"
+        "few": "{{ count }} pagina's"
       },
       "results_suggestions_with_count": {
         "one": "{{ count }} suggestie",
-        "other": "{{ count }} suggesties",
+        "other": "{{ count }} van suggesties",
         "few": "{{ count }} van suggesties"
       },
       "results_products_with_count": {
@@ -343,16 +343,16 @@
       "pages": "Pagina's"
     },
     "cart": {
-      "cart": "Winkelwagen"
+      "cart": "Mand"
     },
     "contact": {
       "form": {
         "name": "Naam",
-        "email": "E‑mail",
+        "email": "E-mail",
         "phone": "Telefoonnummer",
-        "comment": "Reactie",
-        "send": "Sturen",
-        "post_success": "Bedankt dat je contact met ons hebt opgenomen. Je hoort zo snel mogelijk van ons.",
+        "comment": "Commentaar",
+        "send": "Verzenden",
+        "post_success": "Bedankt dat u contact met ons opneemt. Wij nemen zo snel mogelijk contact met u op.",
         "error_heading": "Pas het volgende aan:",
         "title": "Contactformulier"
       }
@@ -513,27 +513,27 @@
   "localization": {
     "country_label": "Land/regio",
     "language_label": "Taal",
-    "update_language": "Taal bijwerken",
-    "update_country": "Land/regio bijwerken",
+    "update_language": "Update uw taal",
+    "update_country": "Update uw land/regio",
     "search": "Zoeken",
     "popular_countries_regions": "Populaire landen/regio's",
     "country_results_count": "{{ count }} landen/regio's gevonden"
   },
   "customer": {
     "account": {
-      "title": "Account",
+      "title": "rekening",
       "details": "Accountgegevens",
-      "view_addresses": "Adressen bekijken",
-      "return": "Terug naar Accountgegevens"
+      "view_addresses": "Toon adressen",
+      "return": "Terug naar accountgegevens"
     },
-    "account_fallback": "Account",
+    "account_fallback": "rekening",
     "activate_account": {
-      "title": "Account activeren",
-      "subtext": "Maak je wachtwoord aan om je account te activeren.",
+      "title": "Activeer uw account",
+      "subtext": "Maak een wachtwoord aan om uw account te activeren.",
       "password": "Wachtwoord",
-      "password_confirm": "Wachtwoord bevestigen",
-      "submit": "Account activeren",
-      "cancel": "Uitnodiging afwijzen"
+      "password_confirm": "Bevestig wachtwoord",
+      "submit": "Activeer uw account",
+      "cancel": "Wijs de uitnodiging af"
     },
     "addresses": {
       "title": "Adressen",
@@ -559,7 +559,7 @@
       "delete_confirm": "Weet je zeker dat je dit adres wilt verwijderen?"
     },
     "log_in": "Inloggen",
-    "log_out": "Uitloggen",
+    "log_out": "Meld u af",
     "login_page": {
       "cancel": "Annuleren",
       "create_account": "Account aanmaken",
