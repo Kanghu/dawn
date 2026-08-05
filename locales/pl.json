@@ -3866,8 +3866,88 @@
           "run_error": "Wystąpił błąd w Twoim koszyku."
         },
         "gift_card_price_must_be_greater_than_zero": "Produkt w formie zestawu”%{name}” nie można dodać do koszyka.",
-        "cart_too_large": "Kosz jest za duży."
+        "cart_too_large": "Kosz jest za duży.",
+        "gift_card_recipient_validation_error": "Podany odbiorca karty upominkowej jest nieprawidłowy",
+        "invalid_input": "Parametr %{parameter} jest nieważne.",
+        "buyer_cannot_purchase_for_company_locations": "Nie możesz dokonywać zakupów w tej lokalizacji",
+        "only_one_added_to_cart": "Tylko 1 artykuł został dodany do Twojego koszyka ze względu na dostępność.",
+        "only_n_added_to_cart": "Po prostu %{quantity} pozycje zostały dodane do Twojego koszyka ze względu na dostępność.",
+        "maximum_available_quantity_reached": "Maksymalna ilość tego artykułu znajduje się już w Twoim koszyku.",
+        "cart_attributes_error": "Atrybuty koszyka zawierają nieprawidłowe dane.",
+        "merchandise_not_applicable": "Tego elementu nie można kupić w konfiguracji.",
+        "not_found": "Kosza nie znaleziono"
+      },
+      "storefront": {
+        "invalid_password": "Nieprawidłowe hasło, spróbuj ponownie."
+      },
+      "tags": {
+        "add_articles": "Zawęź wyszukiwanie do elementów, które również posiadają znacznik %{tag}",
+        "add_products": "Zawęź wybór do produktów zgodnych z etykietą %{tag}",
+        "remove_articles": "Rozszerz wyszukiwanie na elementy, które nie są oznaczone %{tag}",
+        "remove_products": "Usuń etykietę %{tag}"
+      },
+      "line_item": {
+        "item_status": {
+          "add_variant": "Zostało dodane %{delta}",
+          "increment_item": "Zostało dodane %{delta}",
+          "decrement_item": "Zostali wyeliminowani %{delta} od %{total}",
+          "decrement_fulfilled_line_item": "Wrócili %{delta} od %{total}",
+          "decrement_return_line_item": "Zostało usunięte %{delta} od powrotu"
+        }
       }
+    },
+    "email_marketing": {
+      "subscribed": {
+        "confirmation": "Dziękujemy za zapisanie się na naszą listę mailingową.",
+        "disclaimer": "Możesz zrezygnować z subskrypcji w dowolnym momencie.",
+        "unsubscribe": "Zrezygnuj z subskrypcji"
+      },
+      "unsubscribed": {
+        "confirmation": "Wypisałeś się z naszej listy mailingowej.",
+        "disclaimer": "Nie będziesz już otrzymywać od nas żadnych aktualizacji marketingowych. Możesz zapisać się ponownie w dowolnym momencie",
+        "preview": "Podgląd tego, co zobaczą klienci, gdy zrezygnują z subskrypcji."
+      },
+      "open_tracking": {
+        "opt_in": {
+          "opted_in_html": "<b>Włączyłeś śledzenie otwierania wiadomości e-mail.</b>",
+          "visibility": "Wskaźniki otwarć e-maili będą zgłaszane anonimowo. W ramach zagregowanego współczynnika otwarć e-maili sprawdzimy tylko, czy otworzyłeś wiadomość e-mail.",
+          "opt_out_html": "Możesz <a style='text-decoration:underline;' href='%{link}'>poddaj się</a> po otwarciu wiadomości e-mail śledzącej, jeśli nie chcesz udostępniać tych informacji.",
+          "preview_bar": "Podgląd tego, co zobaczą klienci, gdy zdecydują się włączyć śledzenie otwarcia e-maili."
+        },
+        "opt_out": {
+          "opted_out_html": "<b>Zrezygnowałeś ze śledzenia otwieranych wiadomości e-mail.</b>",
+          "visibility": "Nie zobaczymy, czy otworzyłeś nasze e-maile.",
+          "opt_in_html": "Wybierz <a style='text-decoration:underline;' href='%{link}'>aktywować</a> otwiera się e-mail śledzący.",
+          "preview_bar": "Podgląd tego, co zobaczą klienci, gdy zdecydują się zrezygnować ze śledzenia otwarcia e-maili."
+        },
+        "no_longer_track": {
+          "status_html": "<b>Nie śledzimy już otwarcia żadnych e-maili.</b>",
+          "privacy_policy": "Po wysłaniu tego e-maila zaktualizowaliśmy naszą politykę prywatności i nie śledzimy już otwarć."
+        },
+        "track": {
+          "status_html": "<b>Zgłaszane jest śledzenie otwierania wiadomości e-mail.</b>",
+          "visibility": "Zobaczymy tylko, czy otworzyłeś wiadomość e-mail, w ramach ogólnego współczynnika otwarć wiadomości e-mail."
+        },
+        "updated_policy": {
+          "status_html": "<b>Zgłaszane jest śledzenie otwierania wiadomości e-mail.</b>",
+          "visibility": "Zaktualizowaliśmy nasze zasady i teraz monitorujemy otwarcia e-maili. Wskaźniki otwarć e-maili będą zgłaszane anonimowo. W ramach ogólnego współczynnika otwarć e-maili sprawdzimy tylko, czy otworzyłeś wiadomość e-mail.",
+          "opt_out_html": "Jeśli nie chcesz udostępniać tych informacji, możesz to zrobić <a style='text-decoration:underline;' href='%{link}'>wypisz się</a>"
+        }
+      },
+      "sms_unsubscribe_confirm": {
+        "message": "Czy na pewno chcesz zrezygnować z marketingu SMS?",
+        "button": "Zrezygnuj z subskrypcji"
+      }
+    },
+    "page_titles": {
+      "products": "Produkty",
+      "shopping_cart": "Twój koszyk",
+      "account": "konto",
+      "create_account": "Utwórz konto",
+      "reset_account": "Zresetuj swoje konto",
+      "addresses": "Adresy",
+      "order": "Zamów %{name}",
+      "search": "Szukaj"
     }
   },
   "customer_accounts": {
