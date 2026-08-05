@@ -4142,7 +4142,9 @@
     },
     "page_titles": {
       "search_results": {
-        "few": "Cerca: sono stati trovati %{count} Risultati per \"%{terms}”"
+        "few": "Cerca: trovato %{count} risultati per \"%{terms}”",
+        "one": "Cerca: trovato %{count} risultato per \"%{terms}”",
+        "other": "Cerca: trovato %{count} risultati per \"%{terms}”"
       },
       "products": "Prodotti",
       "shopping_cart": "Il tuo carrello",
@@ -4151,7 +4153,12 @@
       "reset_account": "Reimposta il tuo account",
       "addresses": "Indirizzi",
       "order": "Ordine %{name}",
-      "search": "Cerca"
+      "search": "Cerca",
+      "collections": "Collezioni",
+      "not_found": "404 non trovato",
+      "challenge": "Sfida",
+      "checkpoint": "Punto di convalida",
+      "blog_or_article_with_error": "Errore – %{title}"
     },
     "sentence": {
       "words_connector": ", ",
@@ -4345,6 +4352,58 @@
         "message": "Sei sicuro di voler annullare l'iscrizione al marketing via SMS?",
         "button": "Annulla l'iscrizione"
       }
+    },
+    "cart": {
+      "discounts_with_count": "Sono stati applicati %{count} sconti"
+    },
+    "challenge": {
+      "message": "Per continuare, dimostra che non sei un robot.",
+      "error": "La tua risposta non era corretta, riprova.",
+      "submit_button_text": "Invia"
+    },
+    "checkpoint": {
+      "message": "Risolvi il captcha per continuare",
+      "error": "La convalida del captcha non è riuscita",
+      "submit_button_text": "Invia"
+    },
+    "store_availability": {
+      "pick_up_time": {
+        "one_hour": "Pronto di solito entro un'ora",
+        "two_hours": "Pronto di solito in due ore",
+        "four_hours": "Solitamente pronto in 4 ore",
+        "twenty_four_hours": "Solitamente pronto entro 24 ore",
+        "two_to_four_days": "Solitamente pronto in 2-4 giorni",
+        "five_or_more_days": "Solitamente pronto in più di 5 giorni",
+        "zero_to_two_hours": "Pronto di solito in due ore",
+        "two_to_four_hours": "Solitamente pronto in 4 ore",
+        "immediately": "Pronti per il ritiro adesso",
+        "next_day": "Pronto per il ritiro il giorno successivo"
+      }
+    },
+    "filters": {
+      "availability": {
+        "value": {
+          "in_stock": "Disponibile",
+          "out_of_stock": "Esaurito"
+        }
+      },
+      "boolean": {
+        "true_label": "Sì",
+        "false_label": "No"
+      }
+    },
+    "search": {
+      "sorting": {
+        "relevance": "Rilevanza",
+        "price_ascending": "Prezzo, dal basso all'alto",
+        "price_descending": "Prezzo, dal più alto al più basso"
+      },
+      "error": "Si è verificato un problema durante il caricamento dei risultati della ricerca. Aggiorna la pagina o riprova più tardi."
+    },
+    "subscriptions": {
+      "buyer_consent_product": "Questo articolo è un acquisto ricorrente o differito. Continuando sono d'accordo %{cancellationPolicyLink} e ti autorizzo ad addebitare automaticamente il mio metodo di pagamento ai prezzi, alle frequenze e alle date specificate fino all'evasione del mio ordine o fino all'annullamento, se consentito.",
+      "buyer_consent_cart": "Uno o più articoli nel carrello rappresentano un acquisto ricorrente o posticipato. Continuando sono d'accordo %{cancellationPolicyLink} e ti autorizzo ad addebitare automaticamente il mio metodo di pagamento ai prezzi, alle frequenze e alle date specificate fino all'evasione del mio ordine o fino all'annullamento, se consentito.",
+      "cancellation_policy": "politica di cancellazione"
     }
   },
   "customer_accounts": {
@@ -4456,6 +4515,28 @@
       },
       "contracts_updated": {
         "few": "{{count}} gli abbonamenti sono stati aggiornati con successo"
+      }
+    },
+    "callback": {
+      "try_again": "Riprova"
+    },
+    "navigation_and_structure": {
+      "account_menu": {
+        "hide_accessibility_label": "Nascondi il menu Account",
+        "show_accessibility_label": "Mostra il menu Account",
+        "nav_accessibility_label": "Navigazione dell'account",
+        "open_menu_accessibility_label": "Apri la navigazione dell'account",
+        "close_menu_accessibility_label": "Chiudi la navigazione dell'account",
+        "loading_message": "Caricamento della navigazione dell'account",
+        "label": "conto"
+      },
+      "action_menu_accessibility_label": "Più azioni",
+      "close_menu_accessibility_label": "Chiudi la navigazione principale",
+      "contact_email_subject": "Contatto dal negozio online {{shopName}}",
+      "contact_link": "Informazioni di contatto",
+      "delete_confirmation": {
+        "cancel": "Annulla",
+        "delete": "Elimina"
       }
     }
   },
