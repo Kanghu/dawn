@@ -2870,8 +2870,75 @@
           "payment_method_title": "Betaalmethode",
           "change_link_label": "Wijzigen",
           "change_contact_method_link_label": "Contactgegevens wijzigen",
-          "change_billing_address_link_label": "Factuuradres wijzigen"
+          "change_billing_address_link_label": "Factuuradres wijzigen",
+          "change_shipping_address_link_label": "Verzendadres wijzigen",
+          "change_shipping_method_link_label": "Wijzig de verzendmethode",
+          "change_payment_method_link_label": "Betaalmethode wijzigen",
+          "pick_up_in_store_shipping_method_html": "Ophalen in winkel · %{location_name}",
+          "purchase_order_number_title": "Inkoopordernummer",
+          "change_purchase_order_number_label": "Wijzig het inkoopordernummer",
+          "change_delivery_method_link_label": "Wijzig de bezorgmethode",
+          "no_address": "(Geen adres)",
+          "no_purchase_order_number": "(bestelling zonder nummer)",
+          "due_after_order_reviewed_html": "Te betalen na beoordeling van de bestelling",
+          "review_title_free_order": "Controleer en voltooi uw bestelling",
+          "payment_method_saved_company_location": "Bewaar de kaart voor deze locatie",
+          "company_location": "Bedrijfslocatie",
+          "change_company_location_link_label": "Wijziging bedrijfsadres",
+          "pickup_items_at": {
+            "one": "Heffen %{count} artikel uit",
+            "other": "Heffen %{count} artikelen uit",
+            "few": "Heffen %{count} artikelen uit"
+          },
+          "ship_items_to": {
+            "one": "Verzending %{count} artikel op",
+            "other": "Verzending %{count} artikelen bij",
+            "few": "Verzending %{count} artikelen bij"
+          },
+          "no_purchase_order_number_long": "Geen inkoopordernummer"
+        },
+        "block_title": "Controleer uw gegevens",
+        "checkout_a_different_way": "Rond de bestelling op een andere manier af",
+        "item_header": {
+          "change_value": "Wijzig de waarde",
+          "section": "Sectie",
+          "value": "Waarde"
+        },
+        "review_and_confirm_title": "Controleer en bevestig",
+        "account_more_actions": "Meer acties voor dit account"
+      },
+      "marketing": {
+        "accept_marketing_checkbox_label": "Ik wil e-mails ontvangen met nieuws en aanbiedingen",
+        "unsubscribe": {
+          "title": "Je hebt je afgemeld",
+          "description": "U ontvangt geen marketingupdates meer van ons."
+        },
+        "accept_sms_checkbox_label": "Ik wil sms-berichten ontvangen met nieuws en aanbiedingen",
+        "sms": {
+          "disclaimer": {
+            "privacy_policy": "Privacybeleid",
+            "terms_of_service": "Gebruiksvoorwaarden",
+            "description_html": "Als u zich per sms registreert, gaat u ermee akkoord regelmatig geautomatiseerde marketingberichten, inclusief winkelwagenherinneringen, te ontvangen op het opgegeven telefoonnummer. Toestemming is geen voorwaarde voor het doen van aankopen. Reageer met STOP om je af te melden. Reageer met HELP voor hulp. De frequentie van berichten varieert. Er kunnen bericht- en datakosten van toepassing zijn. Bekijk %{privacy_policy_link} en %{terms_of_service_link}.",
+            "description_transactional_html": "Mogelijk ontvangt u sms-berichten met betrekking tot orderbevestiging en leveringsupdates. Reageer met STOP om je af te melden. Reageer met HELP voor hulp. De frequentie van berichten varieert. Er kunnen bericht- en datakosten van toepassing zijn. Bekijk het %{privacy_policy_modal_link} en %{terms_of_service_modal_link}."
+          },
+          "mobile_phone_number": "Mobiel telefoonnummer",
+          "get_offers_by_text": "Ontvang aanbiedingen per sms"
+        },
+        "post_accept_marketing_checkbox_label": "U bent geabonneerd om nieuws en aanbiedingen per e-mail te ontvangen",
+        "pending_accept_marketing_checkbox_label": "Controleer uw e-mailaccount om uw abonnement op nieuws en aanbiedingen te bevestigen",
+        "accept_shop_pay_marketing_checkbox_label": "Abonneer mij op nieuws en aanbiedingen van deze winkel",
+        "disclaimer": {
+          "privacy_policy": "Privacybeleid",
+          "terms_of_service": "Gebruiksvoorwaarden"
         }
+      },
+      "shop_policies": {
+        "refund_policy": "Terugbetalingsbeleid",
+        "privacy_policy": "Privacybeleid",
+        "terms_of_service": "Gebruiksvoorwaarden",
+        "legal_notice": "Juridische mededeling",
+        "shipping_policy": "Vervoer",
+        "terms_of_sale": "Verkoopvoorwaarden"
       }
     },
     "notices": {
