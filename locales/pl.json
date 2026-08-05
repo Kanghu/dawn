@@ -3724,6 +3724,90 @@
         "manual": "Zalecane",
         "best_selling": "Najlepszy sprzedawca"
       }
+    },
+    "errors": {
+      "shop_404": {
+        "heros": {
+          "store_not_exist": "Ten sklep nie istnieje.",
+          "no_storefront": "Sklep ten nie posiada jeszcze strony internetowej.",
+          "store_will_be_right_back": "Ten sklep powróci wkrótce"
+        },
+        "links": {
+          "explore_other_stores": "Przeglądaj inne sklepy",
+          "start_free_trial": "Rozpoczyna się bezpłatny okres próbny",
+          "refresh_page": "Załaduj ponownie stronę"
+        },
+        "owner_ctas": {
+          "header": "Czy jesteś właścicielem sklepu?",
+          "fix_domain": "Zakończ konfigurowanie nowego adresu internetowego, uzyskaj dostęp %{domain_settings_link}. Kliknij „Połącz domenę” i wpisz: %{domain}.<br>Jeśli masz problemy z dostępem do sklepu, wypróbuj stronę %{forgot_your_store_link}.",
+          "fix_domain_link_text": "ustawienia domeny",
+          "forgot_your_store_link_text": "zapomniałeś szczegółów sklepu",
+          "add_storefront": "Możesz skonfigurować swoją stronę internetową dodając do swojego konta kanał sklepu internetowego %{admin_link}. Jeśli masz problemy z dostępem do sklepu, wypróbuj stronę %{forgot_your_store_link}.",
+          "admin_link_text": "administratora"
+        },
+        "ctas": {
+          "sell_in_person": {
+            "header": "Sprzedaj osobiście",
+            "caption": "Uzyskaj funkcje potrzebne do zarządzania sklepem detalicznym, niezależnie od tego, czy dopiero zaczynasz, czy rozwijasz się.",
+            "link_text": "Rozpoczyna się bezpłatny okres próbny"
+          },
+          "open_a_store": {
+            "header": "Otwórz nowy sklep Shopify",
+            "caption": "Rozpocznij 3-dniowy bezpłatny okres próbny, a następnie kontynuuj za 1 USD miesięcznie przez następne 3 miesiące.",
+            "link_text": "Zarejestruj się teraz"
+          },
+          "editions": {
+            "header": "Poznaj edycje Shopify",
+            "caption": "Dzięki ponad 100 aktualizacjom produktów możesz być bardziej produktywny, bardziej kreatywny i potężniejszy w handlu, niż kiedykolwiek sobie wyobrażałeś.",
+            "link_text": "Poznaj najnowszą wersję Editions"
+          },
+          "store_owner": {
+            "header": "Czy jesteś właścicielem sklepu?",
+            "caption": "Masz problemy z dostępem do sklepu? Wypróbuj tę funkcję %{forgot_your_store_link}. Jeżeli chcesz reaktywować dane kontaktowe sklepu skontaktuj się z nami %{shopify_support_link}.",
+            "shopify_support_link_text": "Wsparcie Shopify"
+          }
+        },
+        "title_unavailable": "Sklep niedostępny",
+        "subtitles": {
+          "store_will_be_right_back": "Shopify pracuje nad jak najszybszym przywróceniem go do trybu online."
+        },
+        "status_card": {
+          "eyebrow": "Pomoc dla właścicieli sklepów",
+          "header": "Sprawdź swój status Shopify",
+          "caption": "Dowiedz się, czy wystąpiła awaria wpływająca na inne sklepy Shopify, a nie tylko na ten.",
+          "link_text": "Przeglądaj status swoich systemów Shopify"
+        }
+      }
+    },
+    "notices": {
+      "customer": {
+        "password_reset_error": "Błąd resetowania hasła",
+        "no_account_found": "Nie znaleziono konta z tym adresem e-mail.",
+        "invalid_credentials": "Nieprawidłowy adres e-mail lub hasło.",
+        "denylisted_reset_password": "Nie można uzyskać dostępu do Twojego konta, ponieważ bieżące hasło nie jest bezpieczne. Otrzymasz wiadomość e-mail, która pomoże Ci zaktualizować hasło.",
+        "signup_disabled": "Tworzenie kont klientów zostało wyłączone.",
+        "subscribe_error": "Błąd podczas subskrypcji",
+        "unsubscribe_error": "Błąd podczas anulowania subskrypcji"
+      },
+      "address": {
+        "updated": "Adres został pomyślnie zaktualizowany.",
+        "error_updating": "Błąd aktualizacji adresu",
+        "created": "Adres został pomyślnie utworzony",
+        "error_creating": "Błąd podczas tworzenia adresu.",
+        "deleted": "Adres został pomyślnie usunięty",
+        "error_deleting": "Błąd podczas usuwania adresu."
+      },
+      "order": {
+        "not_available": "To polecenie nie jest dostępne",
+        "financial_status": {
+          "authorized": "Autoryzowane",
+          "pending": "Czekam",
+          "paid": "Płatny",
+          "unpaid": "Niezapłacone",
+          "voided": "Anulowano",
+          "partially_paid": "Częściowo płatne"
+        }
+      }
     }
   },
   "customer_accounts": {
