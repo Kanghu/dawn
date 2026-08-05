@@ -3415,7 +3415,87 @@
           "checkout_has_expired": "Upłynął limit czasu realizacji transakcji. Zamknij to okno i spróbuj ponownie dokończyć zamówienie {{shopName}}."
         },
         "return_to_store": "Wróć do {{shopName}}",
-        "return_to_store_simple": "Wróć do sklepu"
+        "return_to_store_simple": "Wróć do sklepu",
+        "title": "Kompletowanie zamówienia za pomocą Shop Pay"
+      },
+      "company_location": {
+        "location_title": "Lokalizacja firmy",
+        "location_rollup_accessibility_label": "Opcje lokalizacji firmy"
+      },
+      "one": {
+        "errors": {
+          "merchandise": {
+            "gift_card_price_must_be_greater_than_zero": "Cena karty podarunkowej musi być większa niż 0.",
+            "subtotal_limit_reached": "Osiągnięto maksymalną wartość przedmiotów.",
+            "gift_card_price_must_not_exceed_limit": "Cena karty podarunkowej nie może przekraczać %{gift_card_limit}.",
+            "signature_mismatch": "Sygnatura produktu nie jest zgodna z linią %{stable_id}."
+          }
+        }
+      },
+      "clipboard": {
+        "copied": "Skopiowano",
+        "failed_to_copy": "Nie udało się skopiować"
+      },
+      "payment_challenge_modal": {
+        "instructions": "Dokończ zakup korzystając z kodu {{paymentMethod}}",
+        "timer_message": "Masz do dyspozycji {{timeLeft}} zapłacić",
+        "copy_text": "Skopiuj kod dla {{paymentMethod}}",
+        "header": "Zapłać za pomocą {{paymentMethod}}",
+        "qr_code": {
+          "instructions": "Dokończ zakup korzystając z kodu {{paymentMethod}}",
+          "wechat_instructions": "Zeskanuj ten kod QR za pomocą aplikacji WeChat na swoim telefonie, aby sfinalizować zakup",
+          "wechat_instructions_mobile": "Zeskanuj ten kod QR za pomocą aplikacji WeChat na innym urządzeniu, aby sfinalizować zakup"
+        },
+        "external": {
+          "instructions": "Potwierdź płatność w aplikacji, aby sfinalizować ten zakup"
+        },
+        "close": "Zamknij wyzwanie",
+        "open_app_text": "Otwórz aplikację {{paymentMethod}}"
+      },
+      "artifact_errors": {
+        "artifact_dissatisfaction_without_violation": "Wystąpił problem z przetwarzaniem Twojego zamówienia. Spróbuj ponownie za kilka minut."
+      },
+      "merchant_instruction_errors": {
+        "empty_stable_id": "Instrukcje dotyczące towaru %{name} %{position} zawierają pusty stabilny identyfikator.",
+        "invalid_stable_id_target": "Instrukcje dotyczące towaru %{name} %{position} patrz stabilny identyfikator %{stable_id}, ale tego stabilnego identyfikatora nie ma w liniach ładunkowych.",
+        "duplicate_variant_id": "Instrukcje dotyczące towaru %{name} %{position} zawierają zduplikowany identyfikator wariantu %{variant_id}.",
+        "invalid_variant_id_target": "Instrukcje dotyczące towaru %{name} zobacz identyfikator wariantu %{variant_id}, ale tego wariantu nie ma w liniach cargo.",
+        "invalid_price_override_target": "Dyspozycja zamiany ceny towaru na towar %{stable_id} nie jest poprawny, ponieważ jest to komponent w zestawie.",
+        "discount_not_supported": "Instrukcje Sprzedawcy nie obejmują stosowania takich rabatów."
+      },
+      "merchandise_unavailable_in_buyer_location": {
+        "banner_title": {
+          "some_products_one": "Do tego produktu nie można dostarczyć %{location_name}.",
+          "some_products_other": "Do tych produktów nie można dostarczyć %{location_name}.",
+          "all_products_one": "Produkt znajdujący się w koszyku nie może zostać dostarczony %{location_name}.",
+          "all_products_other": "Nie ma możliwości dostarczenia produktów z koszyka %{location_name}."
+        },
+        "missing_country_fallback": "twój kraj",
+        "indeterminate_location_fallback": "Twoja lokalizacja",
+        "cart_updated": "Twój koszyk został zaktualizowany.",
+        "change_address_only": "Aby kontynuować, zmień adres dostawy.",
+        "change_address_or_remove": "Zmień adres dostawy lub %{remove_action}.",
+        "empty_cart_action": "opróżnij koszyk i wróć do sklepu",
+        "unavailable_line_item": "%{product_name}/%{variant_label}",
+        "remove_items_action": {
+          "one": "usuń niedostępny element",
+          "other": "usuń niedostępne elementy",
+          "few": "usuń niedostępne elementy"
+        }
+      },
+      "b2b_errors": {
+        "lost_b2b_purchasing_permissions": "Nie można już składać zamówień B2B. %{logout_url} zamiast tego złożyć osobiste zamówienie.",
+        "log_out_link_text": "Wyloguj się",
+        "lost_permissions_subtitle": "Nie można już składać zamówień B2B. Wyloguj się, aby złożyć zamówienie osobiste.",
+        "lost_permissions_title": "Brak uprawnień do lokalizacji"
+      },
+      "units": {
+        "milligram": "mg",
+        "gram": "Pan",
+        "kilogram": "kg",
+        "milliliter": "ml",
+        "centiliter": "kl",
+        "liter": "l"
       }
     },
     "sentence": {
