@@ -2113,13 +2113,19 @@
           "other": "Er is een probleem opgetreden bij het opnieuw verzenden van cadeaubonnen. Probeer het opnieuw of neem contact met ons op."
         },
         "thank_you_unconfirmed_items_heading": {
-          "few": "Sommige items zijn niet bevestigd"
+          "few": "Sommige items zijn niet bevestigd",
+          "one": "1 artikel is niet bevestigd",
+          "other": "Sommige items zijn niet bevestigd"
         },
         "thank_you_unconfirmed_items_description": {
-          "few": "Deze operaties werden gratis uitgevoerd"
+          "few": "Deze operaties werden gratis uitgevoerd",
+          "one": "Deze operatie werd kosteloos uitgevoerd",
+          "other": "Deze operaties werden gratis uitgevoerd"
         },
         "thank_you_item_label": {
-          "few": "%{count} waren"
+          "few": "%{count} artikelen",
+          "one": "%{count} artikel",
+          "other": "%{count} artikelen"
         },
         "thank_you_confirmed_items_with_email": {
           "few": "U ontvangt binnenkort bevestigingsmails"
@@ -2128,7 +2134,9 @@
           "few": "U ontvangt binnenkort bevestigingsberichten"
         },
         "items_fulfilled_by_store": {
-          "few": "Gekochte artikelen worden vanuit andere winkels geleverd."
+          "few": "Gekochte artikelen worden vanuit andere winkels geleverd.",
+          "one": "Gekochte artikelen worden verzonden vanaf %{remote_shop_name}.",
+          "other": "Gekochte artikelen worden vanuit andere winkels geleverd."
         },
         "thank_you_confirmed_orders_with_email_description": {
           "one": "Je ontvangt binnenkort een bevestigingsmail",
@@ -2390,7 +2398,41 @@
           "title": "BTW facturen"
         },
         "thank_you_payments_app_pending_payment_description_provider_action_required_default": "U ontvangt een e-mail wanneer de betaling is bevestigd.",
-        "verify_shop_account_title": "Controleer uw winkelaccount"
+        "verify_shop_account_title": "Controleer uw winkelaccount",
+        "verify_shop_account_message": "Uw gegevens zijn opgeslagen in de Winkel. Verifieer uw account om ze automatisch in miljoenen winkels te gebruiken.",
+        "verify_shop_account_cta": "Controleer uw rekening",
+        "verify_shop_account_confirmation": "Betaalgegevens zijn opgeslagen",
+        "company_location_section_title": "Bedrijf en locatie",
+        "announcement": {
+          "close": "Sluiten",
+          "expand": "Verlenging",
+          "collapse": "Beperking"
+        },
+        "confirmed_items_count": "%{confirmed_count} van %{total_count} artikelen zijn bevestigd",
+        "thank_you_confirmed_orders_with_email": "Binnenkort ontvang je aparte bevestigingsmails met bestelnummers",
+        "thank_you_confirmed_orders_with_phone": "Binnenkort ontvang je aparte bevestigings-SMS-berichten met bestelnummers",
+        "thank_you_confirmed_orders_with_email_and_phone": "Binnenkort ontvang je aparte bevestigingsmails met bestelnummers",
+        "track_your_order_link_text": "Volgen van bestellingen",
+        "checkout_on_remote_shop_link_text": "Betaal bij %{remoteShopName}",
+        "confirmed_orders_title": "Uw bestellingen zijn bevestigd",
+        "thank_you_from_shop": "Van %{shop_name}",
+        "payment_method_not_charged": "Geen kosten",
+        "thank_you_from_other_store": "Van een andere winkel",
+        "checkout_on_another_store": "Betaal bij een andere winkel",
+        "thank_you_confirmed_with_email_description": {
+          "single_store": "U ontvangt binnenkort een bevestigingsmail",
+          "multi_store": "Binnenkort ontvang je van elke winkel een aparte bevestigingsmail"
+        },
+        "thank_you_confirmed_with_phone_description": {
+          "single_store": "Je ontvangt binnenkort een bevestigings-sms",
+          "multi_store": "Binnenkort ontvang je van elke winkel een aparte bevestigings-sms"
+        },
+        "thank_you_confirmed_with_email_and_phone_description": {
+          "single_store": "U ontvangt binnenkort een bevestigingsmail",
+          "multi_store": "Binnenkort ontvang je van elke winkel een aparte bevestigingsmail"
+        },
+        "checkout_again": "Betaal opnieuw",
+        "cashback_notice": "U ontvangt uw terugbetaling na 30 dagen"
       },
       "order_payment_collection": {
         "changes_summary": {
@@ -2815,6 +2857,21 @@
         "bank_account_label": "Bankrekening",
         "credit_or_debit_card_label": "Credit/debet",
         "bogus_label": "Betalingsgateway testen"
+      },
+      "review": {
+        "title": "Beoordeling",
+        "review_title": "Voltooi de bestelling",
+        "checkout_as_guest": "Rond de bestelling af als gast",
+        "blocks": {
+          "contact_method_title": "Contacteer",
+          "billing_address_title": "Facturering",
+          "shipping_address_title": "Verzenden naar",
+          "shipping_method_title": "Verzendmethode",
+          "payment_method_title": "Betaalmethode",
+          "change_link_label": "Wijzigen",
+          "change_contact_method_link_label": "Contactgegevens wijzigen",
+          "change_billing_address_link_label": "Factuuradres wijzigen"
+        }
       }
     },
     "notices": {
