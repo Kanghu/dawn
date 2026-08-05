@@ -3689,9 +3689,87 @@
             "billing_address2": "Inserisci un appartamento, una stanza, ecc. come indirizzo di fatturazione",
             "billing_city": "Inserisci una città per l'indirizzo di fatturazione",
             "billing_province": "Seleziona uno stato/provincia per il tuo indirizzo di fatturazione",
-            "billing_zip": "Inserisci un codice postale per il tuo indirizzo di fatturazione"
-          }
+            "billing_zip": "Inserisci un codice postale per il tuo indirizzo di fatturazione",
+            "contact_info": "Compila le informazioni di contatto"
+          },
+          "formatting": {
+            "name_contains_emojis": "Elimina l'emoji dal tuo nome",
+            "postal_code_contains_emoji": "Elimina l'emoji del codice postale",
+            "first_name_too_long": "Il nome contiene troppe lettere",
+            "last_name_too_long": "Il cognome contiene troppe lettere",
+            "address_too_long": "Le informazioni nella riga dell'indirizzo sono troppo lunghe"
+          },
+          "select_different_shipping_address_to_resolve_errors": "L'indirizzo di spedizione non è valido. Seleziona un altro indirizzo o utilizzane uno nuovo.",
+          "unavailable_terminal": {
+            "instructions": "Metodo di pagamento {{walletName}} non è attualmente disponibile per il tuo ordine. Per proseguire l'acquisto scegli un'altra modalità di pagamento."
+          },
+          "discount_code": "L'applicazione di questo codice sconto non è possibile. Controlla il tuo codice e riprova.",
+          "processing_error_checkout_as_guest": "Si è verificato un problema durante l'elaborazione del pagamento. Riprova o {{checkout_as_guest_link}}.",
+          "subscription_review_required": "Il tuo ordine include un abbonamento. È necessario rivedere i termini seguenti prima di completare l'ordine."
+        },
+        "redirection_notice": "Ti reindirizzeremo a {{walletName}} per completare il tuo acquisto",
+        "return_to_checkout": "Torna per completare l'ordine",
+        "scrim": {
+          "continue_purchase_in_window": "Continua a fare acquisti in vetrina {{walletName}}",
+          "and_return_to_checkout": "e torna alla cassa",
+          "cancel": "Annulla"
+        },
+        "place_order": "Effettua l'ordine",
+        "recovery_notice": "Si è verificato un problema con i dettagli del tuo ordine. Aggiorna i tuoi dati per completare il pagamento.",
+        "deceleration": {
+          "one_more_step": "Un altro passo..."
         }
+      },
+      "markets": {
+        "invalid_market_manager_error": "Controlla le tue informazioni di contatto prima di completare il pagamento"
+      },
+      "store_credit_errors": {
+        "generic_error": "Si è verificato un problema con il credito del tuo negozio. Riprova o ricarica la pagina."
+      },
+      "note": {
+        "length_exceeds_maximum": "Riduci la dimensione della nota a un massimo di 5000 caratteri."
+      },
+      "billing": {
+        "billing_address_title": "Fatturazione a",
+        "same_as_shipping": "Uguale all'indirizzo di spedizione",
+        "add_address": "Utilizza un indirizzo diverso",
+        "edit": "Modifica",
+        "delete": "Elimina",
+        "address_more": "Altre azioni per questo indirizzo",
+        "address_edit": "Modifica indirizzo",
+        "address_delete": "Elimina l'indirizzo",
+        "address_confirm": "Sei sicuro di voler eliminare questo indirizzo dal tuo account?",
+        "address_form": {
+          "add_address": "Aggiungi un indirizzo",
+          "save": "Salva",
+          "cancel": "Annulla"
+        },
+        "billing_address_rollup_accessibility_label": "Opzioni di fatturazione"
+      },
+      "redeemable_errors": {
+        "gift_card": {
+          "duplicate": "La carta regalo è già stata applicata al tuo ordine",
+          "insufficient_funds": "Questa carta regalo ha esaurito i fondi",
+          "expired": "Questa carta regalo è scaduta",
+          "not_available": "Questa carta regalo non è più disponibile",
+          "invalid": "Inserisci una carta regalo valida",
+          "currency_mismatch": "Sono accettate solo carte regalo %{shop_currency}",
+          "generic": "Non è stato possibile aggiungere la carta regalo alla sezione di pagamento",
+          "throttle_limit_exceeded": "Hai superato il numero massimo di tentativi. Riprova più tardi.",
+          "no_longer_available": "Questa carta regalo non può più essere utilizzata per questo pagamento"
+        }
+      },
+      "vaulted": {
+        "change_button": "Cambiare"
+      },
+      "shop_pay_external": {
+        "errors": {
+          "problem_loading": "Si è verificato un problema durante il caricamento di Shop Pay",
+          "try_again_later": "Controlla la tua connessione o chiudi questa finestra e riprova tra qualche istante.",
+          "checkout_has_expired": "Checkout scaduto. Chiudi questa finestra e prova a completare nuovamente l'ordine {{shopName}}."
+        },
+        "return_to_store": "Torna a {{shopName}}",
+        "return_to_store_simple": "Torna al negozio"
       }
     },
     "notices": {
