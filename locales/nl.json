@@ -2047,15 +2047,34 @@
       "processing": {
         "wait": {
           "medium": {
-            "few": "Uw bestelling wordt verwerkt. Geschatte wachttijd is van %{count} notulen."
-          }
+            "few": "Uw bestelling wordt verwerkt. Geschatte wachttijd is %{count} minuten.",
+            "one": "Uw bestelling wordt verwerkt. Geschatte wachttijd is %{count} per minuut.",
+            "other": "Uw bestelling wordt verwerkt. Geschatte wachttijd is %{count} minuten."
+          },
+          "short": "Uw bestelling wordt verwerkt.",
+          "long": "U ontvangt een e-mail zodra uw bestelling is verwerkt. Momenteel is er sprake van een hoog volume aan bestellingen.",
+          "no_auto_refresh_html": "Als u niet automatisch wordt doorgestuurd, %{link}.",
+          "refresh_this_page": "ververs deze pagina"
         },
         "redirecting_page_title": "Omleiden...",
         "redirecting_title": "Omleiden...",
         "redirecting_notice": "Even geduld a.u.b. terwijl wij u doorverwijzen.",
         "complete_your_purchase_title": "Voltooi de aankoop",
         "continue_to_payment_gateway_notice": "Ga naar afrekenen om uw betalingsgegevens toe te voegen.",
-        "continue_to_payment_gateway_button_label": "Ga verder naar afrekenen"
+        "continue_to_payment_gateway_button_label": "Ga verder naar afrekenen",
+        "complete_your_purchase_title_error": "Corrigeer uw betalingsgegevens",
+        "continue_to_payment_gateway_notice_error": "Uw betalingsgegevens kunnen niet worden geverifieerd.",
+        "continue_to_payment_gateway_button_label_error": "Betalingsgegevens bijwerken",
+        "page_title": "De bestelling wordt verwerkt",
+        "title": "De bestelling wordt verwerkt",
+        "your_order_has_been_received_title": "Bedankt voor de bestelling",
+        "you_will_receive_confirmation": "Momenteel ontvangen wij veel bestellingen. U ontvangt binnenkort een bevestiging per e-mail of sms. Als u het binnen een uur niet ontvangt, laat het ons dan weten.",
+        "you_will_not_be_charged": "Er worden voorlopig geen kosten in rekening gebracht",
+        "action_required": "Actie vereist",
+        "redirecting_to_bank": "Het verwijst door naar {{bank}}",
+        "modal_notice": "Wij contacteren {{paymentMethod}}",
+        "remote_shops_payments_processing": "Betalingen worden verwerkt",
+        "remote_checkout_count": "%{current} van %{total}"
       },
       "thank_you": {
         "login_reorder_link_text": {
@@ -2495,6 +2514,44 @@
         "or_pay_another_way": "Of betaal op een andere manier",
         "or_check_out_another_way": "Of rond de bestelling op een andere manier af",
         "or_pay_with_credit_card": "Of betaal met een creditcard"
+      },
+      "failed_payment": {
+        "page_title": "De betaling kon niet worden verwerkt",
+        "title": "De betaling kon niet worden verwerkt",
+        "payment_not_processed_title": "Uw betaling kon niet worden verwerkt",
+        "payment_not_processed_text": "Er zijn geen kosten in rekening gebracht. Keer terug naar uw winkelwagen om uw aankoop af te ronden.",
+        "return_to_cart_button_label": "Terug naar winkelwagen"
+      },
+      "payment_gateway": {
+        "credit_card_label": "Creditcard",
+        "bank_deposit_label": "Bankdeposito",
+        "cash_on_delivery_label": "Contant bij levering",
+        "money_order_label": "Betaalopdracht",
+        "debit_card_label": "Debetkaart",
+        "deferred_payment_label": "Kies later uw betaalmethode",
+        "generic_payment_terms": "U dient aan de voorwaarden te voldoen {{translatedName}}. Betaling is verschuldigd op {{dueDate}}.",
+        "login_prompt": {
+          "no_access": {
+            "message": "{{logIn}} naar een account dat toegang heeft tot deze locatie om opgeslagen betaalmethoden toe te voegen of te gebruiken.",
+            "link": "Verbind jezelf"
+          }
+        },
+        "direct_payment_terms": "U dient aan de voorwaarden te voldoen {{translatedName}}. Uw kaart wordt belast {{dueDate}}.",
+        "order_due_on_fulfillment_choose_later": "De betaling is verschuldigd zodra de bestelling is voltooid.",
+        "order_due_on_fulfillment_payment": "Het bedrag wordt van uw kaart afgeschreven zodra de bestelling is voltooid.",
+        "draft_order_payment_due_later_no_terms": "De betaling is verschuldigd zodra de bestelling is bevestigd.",
+        "draft_order_payment_due_later_no_terms_payment_selected": "Het bedrag wordt van uw kaart afgeschreven zodra de bestelling is bevestigd.",
+        "draft_order_payment_due_later_terms": "U dient aan de voorwaarden te voldoen {{translatedName}} zodra de bestelling is bevestigd.",
+        "draft_order_payment_due_on_fulfillment": "De betaling is verschuldigd zodra de bestelling is bevestigd en uitgevoerd.",
+        "fixed_payment_label": "Uw betaling is verschuldigd op {{dueDate}}.",
+        "fixed_direct_payment_terms": "Uw kaart wordt belast {{dueDate}}.",
+        "order_deposit_due_now": "Hoeveelheid van {{depositAmount}} het moet vandaag gebeuren. Voor het saldo gelden voorwaarden {{translatedName}} en is verschuldigd op {{dueDate}}.",
+        "order_deposit_due_on_fulfillment": "Hoeveelheid van {{depositAmount}} het moet vandaag gebeuren. Het saldo is verschuldigd zodra de bestelling is uitgevoerd.",
+        "order_due_on_receipt_choose_later": "Uw betaling is verschuldigd bij ontvangst.",
+        "draft_order_deposit_due_later": "Betaling ter hoogte van {{depositAmount}} zal verschuldigd zijn zodra de bestelling is bevestigd. Het saldo zal worden betaald in overeenstemming met de voorwaarden {{translatedName}}.",
+        "draft_order_deposit_due_on_fulfillment": "Betaling ter hoogte van {{depositAmount}} zal verschuldigd zijn zodra de bestelling is bevestigd. Het saldo is verschuldigd zodra de bestelling is uitgevoerd.",
+        "order_deposit_due_on_receipt": "Hoeveelheid van {{depositAmount}} het moet vandaag gebeuren. Het saldo wordt later betaald.",
+        "order_deposit_due_on_fixed_date": "Hoeveelheid van {{depositAmount}} het moet vandaag gebeuren. Het saldo zal betaalbaar zijn op {{dueDate}}."
       }
     },
     "notices": {
