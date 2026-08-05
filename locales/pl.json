@@ -336,51 +336,51 @@
       "title": "Wyniki wyszukiwania",
       "results_with_count": {
         "one": "{{ count }} wynik",
-        "other": "{{ count }} wyniki(-ów)",
-        "few": "{{ count }} wyniki(-ów)",
+        "other": "{{ count }} wyniki",
+        "few": "{{ count }} wyniki",
         "many": "{{ count }} wyniki(-ów)"
       },
       "products": "Produkty",
-      "search_for": "Szukaj „{{ terms }}”",
+      "search_for": "Wyszukaj „{{ terms }}”",
       "results_with_count_and_term": {
-        "one": "Znaleziono {{ count }} wynik dla \"{{ terms }}\"",
-        "other": "Znaleziono {{ count }} wyniki(-ów) dla \"{{ terms }}\"",
-        "few": "Znaleziono {{ count }} wyniki(-ów) dla \"{{ terms }}\"",
+        "one": "Znaleziono {{ count }} wynik dla \"{{ terms }}”",
+        "other": "Odnaleźli się {{ count }} wyniki dla „{{ terms }}”",
+        "few": "Odnaleźli się {{ count }} wyniki dla „{{ terms }}”",
         "many": "Znaleziono {{ count }} wyniki(-ów) dla \"{{ terms }}\""
       },
       "results_pages_with_count": {
         "one": "{{ count }} strona",
-        "other": "{{ count }} stron(y)",
-        "few": "{{ count }} stron(y)",
+        "other": "{{ count }} strony",
+        "few": "{{ count }} strony",
         "many": "{{ count }} stron(y)"
       },
       "results_suggestions_with_count": {
-        "one": "{{ count }} podpowiedź",
-        "other": "Sugestie: {{ count }}",
-        "few": "Sugestie: {{ count }}",
+        "one": "{{ count }} sugestia",
+        "other": "{{ count }} sugestii",
+        "few": "{{ count }} sugestii",
         "many": "Sugestie: {{ count }}"
       },
       "results_products_with_count": {
         "one": "{{ count }} produkt",
-        "other": "{{ count }} produkty(-ów)",
-        "few": "{{ count }} produkty(-ów)",
+        "other": "{{ count }} produkty",
+        "few": "{{ count }} produkty",
         "many": "{{ count }} produkty(-ów)"
       },
       "suggestions": "Sugestie",
       "pages": "Strony"
     },
     "cart": {
-      "cart": "Koszyk"
+      "cart": "Kosz"
     },
     "contact": {
       "form": {
-        "name": "Nazwa",
+        "name": "Imię",
         "email": "E-mail",
         "phone": "Numer telefonu",
         "comment": "Komentarz",
-        "send": "Wyślij",
+        "send": "Prześlij",
         "post_success": "Dziękujemy za skontaktowanie się z nami. Skontaktujemy się z Tobą tak szybko, jak to możliwe.",
-        "error_heading": "Dostosuj następujące dane:",
+        "error_heading": "Dostosuj następujące elementy:",
         "title": "Formularz kontaktowy"
       }
     }
@@ -543,28 +543,28 @@
   "localization": {
     "country_label": "Kraj/region",
     "language_label": "Język",
-    "update_language": "Aktualizuj język",
-    "update_country": "Aktualizuj kraj/region",
+    "update_language": "Zaktualizuj swój język",
+    "update_country": "Zaktualizuj swój kraj/region",
     "search": "Szukaj",
     "popular_countries_regions": "Popularne kraje/regiony",
-    "country_results_count": "Liczba znalezionych krajów/regionów: {{ count }}"
+    "country_results_count": "{{ count }} znalezione kraje/regiony"
   },
   "customer": {
     "account": {
-      "title": "Konto",
+      "title": "konto",
       "details": "Szczegóły konta",
-      "view_addresses": "Wyświetl adresy",
-      "return": "Wróć do szczegółów konta"
+      "view_addresses": "Pokaż adresy",
+      "return": "Powrót do szczegółów konta"
     },
-    "account_fallback": "Konto",
+    "account_fallback": "konto",
     "log_in": "Zaloguj się",
-    "log_out": "Wyloguj",
+    "log_out": "Wyloguj się",
     "activate_account": {
-      "title": "Aktywuj konto",
-      "subtext": "Utwórz hasło, aby aktywować konto.",
+      "title": "Aktywuj swoje konto",
+      "subtext": "Utwórz hasło, aby aktywować swoje konto.",
       "password": "Hasło",
       "password_confirm": "Potwierdź hasło",
-      "submit": "Aktywuj konto",
+      "submit": "Aktywuj swoje konto",
       "cancel": "Odrzuć zaproszenie"
     },
     "addresses": {
