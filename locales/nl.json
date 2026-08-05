@@ -1250,23 +1250,75 @@
       "stock": {
         "unshippable_product": {
           "header": {
-            "few": "Geen leveringsmethode beschikbaar voor %{count} (van) artikelen"
+            "few": "Geen bezorgmethode beschikbaar voor %{count} (van) artikelen",
+            "one": "Geen bezorgmethode beschikbaar voor %{count} artikel",
+            "other": "Geen bezorgmethode beschikbaar voor %{count} (van) artikelen"
           },
           "message": {
-            "few": "Deze artikelen worden uit de kar verwijderd, omdat er geen leveringsmethoden beschikbaar zijn voor uw adres."
-          }
+            "few": "Deze artikelen worden uit uw winkelwagen verwijderd omdat er geen verzendmethoden beschikbaar zijn voor uw adres.",
+            "one": "Dit artikel wordt uit uw winkelwagen verwijderd omdat er geen verzendmethoden beschikbaar zijn voor uw adres.",
+            "other": "Deze artikelen worden uit uw winkelwagen verwijderd omdat er geen verzendmethoden beschikbaar zijn voor uw adres."
+          },
+          "title": "Geen bezorgmethode beschikbaar",
+          "status_column_header": "Geen bezorgmethode"
         },
         "item_label": {
-          "few": "{{count}} ware"
+          "few": "{{count}} artikelen",
+          "one": "{{count}} artikel",
+          "other": "{{count}} artikelen"
         },
         "unfulfillable_product": {
           "message": {
-            "few": "Leveringsmethode %{delivery_method} is niet langer beschikbaar voor deze items."
+            "few": "Leveringswijze %{delivery_method} is niet langer beschikbaar voor deze artikelen.",
+            "one": "Leveringswijze %{delivery_method} is niet langer beschikbaar voor dit artikel.",
+            "other": "Leveringswijze %{delivery_method} is niet langer beschikbaar voor deze artikelen."
           },
           "default_message": {
-            "few": "De gekozen leveringsmethode is niet langer beschikbaar voor deze items."
-          }
-        }
+            "few": "Voor deze artikelen is de gekozen bezorgmethode niet meer beschikbaar.",
+            "one": "De gekozen bezorgmethode is voor dit artikel niet meer beschikbaar.",
+            "other": "Voor deze artikelen is de gekozen bezorgmethode niet meer beschikbaar."
+          },
+          "title": "Levering is niet mogelijk"
+        },
+        "reduced_with_quantity_label": "Er zijn er nog maar %{quantity_available}",
+        "remove_from_cart_button_label": "Uit winkelwagen verwijderen",
+        "continue_shopping_button_label": "Ga door",
+        "go_back_to_cart_button_label": "Terug naar mijn mandje",
+        "remove": "Elimineer",
+        "empty_cart_label": "Uw winkelmandje is leeg",
+        "quantity_update": {
+          "page_title": "Hoeveelheden bijwerken",
+          "title": "Hoeveelheden bijwerken",
+          "description": "De beschikbare hoeveelheden voor deze artikelen zijn gewijzigd en bijgewerkt in de winkelwagen."
+        },
+        "unpurchasable_product": {
+          "title": "Product dat niet kan worden gekocht",
+          "header": "Sommige artikelen zijn uit uw winkelwagen verwijderd",
+          "message": "Deze artikelen zijn niet beschikbaar voor B2B-bestellingen.",
+          "status_column_header": "Niet beschikbaar"
+        },
+        "unpurchasable_product_generic": {
+          "title": "Product dat niet kan worden gekocht",
+          "header": "Sommige artikelen zijn uit uw winkelwagen verwijderd",
+          "message": "Deze artikelen zijn niet beschikbaar.",
+          "status_column_header": "Niet beschikbaar"
+        },
+        "price_update": {
+          "title": "Prijs-update",
+          "description": "De prijzen voor deze artikelen zijn gewijzigd en zijn bijgewerkt in de winkelwagen.",
+          "updated_price": "Bijgewerkte prijs"
+        },
+        "return_to_store_label": "Kom terug naar de winkel",
+        "continue_cta_label": "Ga door met afrekenen",
+        "out_of_stock": {
+          "description": "Deze artikelen zijn niet langer beschikbaar en worden uit uw winkelwagen verwijderd.",
+          "items_unavailable": "Sommige artikelen zijn niet langer beschikbaar en worden uit uw winkelwagen verwijderd."
+        },
+        "price_and_quantity_update": {
+          "title": "Update prijzen en hoeveelheden",
+          "description": "Prijzen en beschikbare hoeveelheden voor deze artikelen zijn gewijzigd en bijgewerkt in de winkelwagen."
+        },
+        "out_of_stock_in_context_label": "Dit product is niet beschikbaar in uw land/regio."
       },
       "order_summary": {
         "expand_component_information": {
@@ -1305,7 +1357,12 @@
         },
         "pickup_unavailable_banner_title_with_country": {
           "few": "In %{country} er zijn geen winkels beschikbaar met uw artikelen"
-        }
+        },
+        "title": "Besteloverzicht",
+        "order_name_label": "Bestel %{name}",
+        "shopping_cart_label": "Het winkelwagentje",
+        "discount_title": "Korting",
+        "discount_label": "Kortingscode"
       },
       "payment": {
         "order_covered_by_gift_cards_notice": {
