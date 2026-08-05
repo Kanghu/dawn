@@ -381,36 +381,36 @@
       "headings": {
         "product": "Product",
         "price": "Prijs",
-        "total": "Totaal",
-        "quantity": "Aantal",
+        "total": "Helemaal",
+        "quantity": "Hoeveelheid",
         "image": "Productafbeelding"
       },
       "update": "Bijwerken",
       "login": {
-        "title": "Heb je een account?",
-        "paragraph_html": "<a href=\"{{ link }}\" class=\"link underlined-link\">Log in</a> om sneller af te rekenen."
+        "title": "Heeft u een account?",
+        "paragraph_html": "<a href=\"{{ link }}\" class=\"link underlined-link\">Verbind jezelf</a> om de bestelling sneller af te ronden."
       },
       "estimated_total": "Geschat totaal",
-      "new_estimated_total": "Nieuw geschat totaal",
-      "duties_and_taxes_included_shipping_at_checkout_with_policy_html": "Douanerechten en belastingen inbegrepen. Kortingen en <a href=\"{{ link }}\">verzending</a> worden bij de checkout berekend.",
-      "duties_and_taxes_included_shipping_at_checkout_without_policy": "Douanerechten en belastingen inbegrepen. Kortingen en verzending worden bij de checkout berekend.",
-      "taxes_included_shipping_at_checkout_with_policy_html": "Belastingen inbegrepen. Kortingen en <a href=\"{{ link }}\">verzending</a> worden bij de checkout berekend.",
-      "taxes_included_shipping_at_checkout_without_policy": "Belastingen inbegrepen. Kortingen en verzending worden bij de checkout berekend.",
-      "duties_included_taxes_at_checkout_shipping_at_checkout_with_policy_html": "Douanerechten inbegrepen. Belastingen, kortingen en <a href=\"{{ link }}\">verzending</a> worden bij de checkout berekend.",
-      "duties_included_taxes_at_checkout_shipping_at_checkout_without_policy": "Douanerechten inbegrepen. Belastingen, kortingen en verzending worden bij de checkout berekend.",
-      "taxes_at_checkout_shipping_at_checkout_with_policy_html": "Belastingen, kortingen en <a href=\"{{ link }}\">verzending</a> worden bij de checkout berekend.",
-      "taxes_at_checkout_shipping_at_checkout_without_policy": "Belastingen, kortingen en verzending worden bij de checkout berekend."
+      "new_estimated_total": "Het nieuwe geschatte totaal",
+      "duties_and_taxes_included_shipping_at_checkout_with_policy_html": "Belastingen en douanerechten inbegrepen. Kortingen en <a href=\"{{ link }}\">vervoer</a> worden berekend bij voltooiing van de bestelling.",
+      "duties_and_taxes_included_shipping_at_checkout_without_policy": "Belastingen en douanerechten inbegrepen. Kortingen en verzendkosten worden berekend bij het afrekenen.",
+      "taxes_included_shipping_at_checkout_with_policy_html": "Belastingen inbegrepen. Kortingen en <a href=\"{{ link }}\">vervoer</a> worden berekend bij voltooiing van de bestelling.",
+      "taxes_included_shipping_at_checkout_without_policy": "Belastingen inbegrepen. Kortingen en verzendkosten worden berekend bij het afrekenen.",
+      "duties_included_taxes_at_checkout_shipping_at_checkout_with_policy_html": "Douanerechten inbegrepen. Belastingen, kortingen en <a href=\"{{ link }}\">vervoer</a> worden berekend bij voltooiing van de bestelling.",
+      "duties_included_taxes_at_checkout_shipping_at_checkout_without_policy": "Douanerechten inbegrepen. Belastingen, kortingen en verzendkosten worden berekend bij het afrekenen.",
+      "taxes_at_checkout_shipping_at_checkout_with_policy_html": "Belastingen, kortingen en <a href=\"{{ link }}\">vervoer</a> worden berekend bij voltooiing van de bestelling.",
+      "taxes_at_checkout_shipping_at_checkout_without_policy": "Belastingen, kortingen en verzendkosten worden berekend bij het afrekenen."
     },
     "footer": {
       "payment": "Betaalmethoden",
       "about": "Over ons",
-      "useful": "Bruikbaar",
-      "contact": "Contact",
+      "useful": "Nuttig",
+      "contact": "Contacteer",
       "terms": "Algemene voorwaarden",
-      "privacy": "privacybeleid",
+      "privacy": "Privacybeleid",
       "cookies": "Cookiebeleid",
-      "sitemap": "Sitemap |",
-      "business": "Bedrijf",
+      "sitemap": "Sitemap",
+      "business": "Zakelijk",
       "contact_info": {
         "cc_schedule": "Klantrelatieprogramma: M-V: 10-18",
         "showroom_schedule_1": "Showroomvrijwilligers: M-V: 9-18; S: 9-15",
@@ -422,7 +422,7 @@
           "url": "https://help.alessandrodesign.ro/"
         },
         "return_warranty": {
-          "title": "Retour en garantie",
+          "title": "Retour & Garantie",
           "url": "https://help.alessandrodesign.ro/hc/alessandro-design/ro/categories/retur-si-sesizri"
         },
         "order_status": {
@@ -440,27 +440,27 @@
       }
     },
     "featured_blog": {
-      "view_all": "Alles bekijken",
+      "view_all": "Toon alles",
       "onboarding_title": "Blogpost",
-      "onboarding_content": "Geef je klanten een overzicht van je blogpost"
+      "onboarding_content": "Geef uw klanten een samenvatting van uw blogpost"
     },
     "featured_collection": {
-      "view_all": "Alles bekijken",
-      "view_all_label": "Bekijk alle producten in de collectie {{ collection_name }}"
+      "view_all": "Toon alles",
+      "view_all_label": "Toon alle producten uit de collectie {{ collection_name }}"
     },
     "collection_list": {
-      "view_all": "Alles bekijken"
+      "view_all": "Toon alles"
     },
     "collection_template": {
       "title": "Collectie",
       "empty": "Geen producten gevonden",
-      "use_fewer_filters_html": "Minder filters gebruiken of <a class=\"{{ class }}\" href=\"{{ link }}\">alles verwijderen</a>"
+      "use_fewer_filters_html": "Gebruik minder filters of <a class=\"{{ class }}\" href=\"{{ link }}\">verwijder ze allemaal</a>"
     },
     "video": {
-      "load_video": "Video laden: {{ description }}"
+      "load_video": "Videoclip uploaden: {{ description }}"
     },
     "slideshow": {
-      "load_slide": "Dia laden",
+      "load_slide": "Laad de dia",
       "previous_slideshow": "Vorige dia",
       "next_slideshow": "Volgende dia",
       "pause_slideshow": "Diavoorstelling pauzeren",
