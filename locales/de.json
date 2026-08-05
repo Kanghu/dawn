@@ -290,7 +290,8 @@
         "one": "{{ count }} Artikel",
         "other": "{{ count }} Artikel",
         "few": "{{ count }} Ware"
-      }
+      },
+      "back_to_website": "Zurück"
     },
     "cart": {
       "title": "Dein Warenkorb",
@@ -1126,6 +1127,12 @@
           "product_count": {
             "few": "{{count}} Produkte"
           }
+        },
+        "updating_contracts": {
+          "few": "{{count}} Abonnements werden aktualisiert..."
+        },
+        "contracts_updated": {
+          "few": "{{count}} Abonnements wurden erfolgreich aktualisiert"
         }
       }
     }
