@@ -2006,8 +2006,19 @@
           "approved_transaction": "{{card_number}} om een goedgekeurde transactie te simuleren",
           "declined_transaction": "{{card_number}} om een geweigerde transactie te simuleren",
           "gateway_failure": "{{card_number}} om een gatewayfout te simuleren",
-          "additional_instructions": "Gebruik een eventuele toekomstige vervaldatum en een eventuele driecijferige beveiligingscode."
-        }
+          "additional_instructions": "Gebruik een eventuele toekomstige vervaldatum en een eventuele driecijferige beveiligingscode.",
+          "support_link": "Krijg ondersteuning"
+        },
+        "order_edit_banner_single_item_updated": "Bijgewerkt",
+        "order_edit_banner_previous_taxes_label": "Vorige kosten:",
+        "order_edit_banner_new_taxes_label": "Nieuwe tarieven:",
+        "order_edit_banner_no_taxes_label": "Geen",
+        "satispay_label": "Satispay",
+        "wechat_app_label": "WeChat",
+        "alternative_payment_currency_total_notice_disclosure": "%{shop_name} betalingen verwerken %{shop_currency} (%{amount_due}).",
+        "alternative_payment_currency_total_manual_payment_notice_disclosure": "Betalen aan %{shop_name} binnen %{shop_currency} (%{amount_due}).",
+        "mb_way_label": "MB MANIER",
+        "bizum_label": "Bizum"
       },
       "shipping_errors": {
         "shipping_method_not_available_generic": {
@@ -2287,6 +2298,49 @@
       "delivery_options": {
         "ship": "Verzend het",
         "pick_up": "ophalen"
+      },
+      "payment_summary": {
+        "gift_card_current_balance_notice": "Huidig saldo %{amount}",
+        "credit_card_expires_on_notice": "Verloopt op %{month}/%{year}",
+        "express_payment_gateway_label": "uitdrukken",
+        "manual_payment_gateway_label": "Handmatig",
+        "billing_address_title": "Factuuradres",
+        "free_label": "Gratis"
+      },
+      "field_errors": {
+        "handle_phone_invalid": "Voer een geldig telefoonnummer in",
+        "handle_email_invalid": "Voer een geldig e-mailadres in",
+        "email_invalid": "Voer een geldig e-mailadres in",
+        "email_or_phone_blank": "Voer een e-mailadres of telefoonnummer in",
+        "email_or_phone_invalid": "Voer een geldig e-mailadres of mobiel telefoonnummer in",
+        "address_first_name_blank": "Voer een voornaam in",
+        "address_last_name_blank": "Voer een achternaam in",
+        "address_address1_blank": "Voer een adres in",
+        "address_address2_blank": "Betreed een appartement, een kamer, enz.",
+        "address_city_blank": "Voer een stad in",
+        "address_country_blank": "Selecteer een land/regio",
+        "address_country_not_supported": "Wij verzenden niet naar dit land/regio. Voer een nieuw verzendadres in en probeer het opnieuw.",
+        "address_province_blank": "Selecteer een staat/provincie",
+        "address_company_blank": "Voer een bedrijfsnaam in",
+        "address_phone_blank": "Voer een geldig telefoonnummer in",
+        "address_zip_blank": "Voer een postcode/postcode in",
+        "address_zip_invalid_for_country": "Voer een geldige postcode/postcode in voor %{country}",
+        "address_zip_invalid_for_country_and_province": "Voer een geldige postcode/postcode in voor %{province}, %{country}",
+        "credit_card_name_blank": "Vul uw naam precies in zoals deze op de kaart staat",
+        "credit_card_name_invalid": "Vul uw naam precies in zoals deze op de kaart staat",
+        "credit_card_number_invalid": "Voer een geldig kaartnummer in",
+        "credit_card_expiry_invalid": "Voer een geldige vervaldatum in",
+        "credit_card_month_invalid": "Voer een geldige vervalmaand in",
+        "credit_card_year_invalid": "Voer een geldig vervaljaar in",
+        "credit_card_start_invalid": "Voer een geldige startdatum van de kaart in",
+        "credit_card_start_month_invalid": "Voer een geldige kaartbeginmaand in",
+        "credit_card_start_year_invalid": "Vul een startjaar van de geldige kaart in",
+        "credit_card_verification_value_blank": "Voer de CVV- of beveiligingscode op de kaart in",
+        "delivery_line_detail_changed": "Sommige leveringsgegevens zijn mogelijk gewijzigd. Controleer uw verzendmethode en probeer het opnieuw.",
+        "reduction_code_code_not_found": "Vul een geldige kortingscode of cadeaubon in",
+        "reduction_code_discount_not_found": "Vul een geldige kortingscode in",
+        "reduction_code_gift_card_code_invalid": "Vul een geldige cadeaubon in",
+        "reduction_code_gift_card_unusable": "Je kunt een cadeaubon niet gebruiken om een andere cadeaubon te kopen"
       }
     },
     "notices": {
