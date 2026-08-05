@@ -2642,7 +2642,75 @@
         "terms_of_service": "Warunki użytkowania",
         "legal_notice": "Nota prawna",
         "shipping_policy": "Transport",
-        "terms_of_sale": "Warunki sprzedaży"
+        "terms_of_sale": "Warunki sprzedaży",
+        "subscription_policy": "Anulacje",
+        "purchase_options_policy": "Zasady dotyczące opcji zakupu",
+        "contact_information": "Kontakt",
+        "purchase_options_cancellation_policy": "Anulacje",
+        "cookie_preferences": "Pliki cookie",
+        "policy_label": "Polityka",
+        "policies_label": "Politycy",
+        "select_policy_label": "Wybierz politykę",
+        "terms_and_policies": "Warunki i zasady"
+      },
+      "notifications": {
+        "title": "Powiadomienia"
+      },
+      "order_payment_collection": {
+        "custom_line_item_description": "Kwota płatności za zamówienie %{order_name}",
+        "additional_payment_requested": "Należy zapłacić kwotę %{total_outstanding}",
+        "checkout_review_and_pay": "twoje zamówienie, %{order_name} został zaktualizowany. Przejrzyj te zmiany, a następnie zapłać, aby potwierdzić zamówienie.",
+        "order_updated_on": "Twoje zamówienie zostało zaktualizowane dnia %{last_edited_at}.",
+        "order_review_and_pay": "Twoje zamówienie zostało zaktualizowane. Sprawdź i zapłać, aby potwierdzić zamówienie.",
+        "pay_now": "Zapłać teraz",
+        "changes_summary": {
+          "added": {
+            "one": "Dodano",
+            "other": "Dodano: %{count}",
+            "few": "Dodano: %{count}"
+          },
+          "removed": "Usunięto",
+          "subtracted": "Usunięto: %{count}",
+          "returned": "Zwrócony(e): %{count}",
+          "return_line_item_removed": "Usunięto ze zwrotu: %{count}"
+        }
+      },
+      "tips": {
+        "title": "Dodaj wskazówkę",
+        "description": "Wspieraj drużynę o godz %{shop_name}",
+        "presets_description": "Wybierz procent napiwku",
+        "custom_label": "Niestandardowa wskazówka",
+        "add_tip": "Dodaj wskazówkę",
+        "update_tip": "Zaktualizuj wskazówkę",
+        "message": "Dziękujemy, doceniamy ten gest.",
+        "preset_label": "%{tip_percent}%",
+        "no_tip_label": "Bez",
+        "not_available_with_spi": "Niedostępne w przypadku płatności ratalnych za pomocą Shop Pay"
+      },
+      "open_graph_meta_tag": {
+        "title_with_products": {
+          "zero": "Kup to %{product_name}",
+          "one": "Kup to %{product_name} i nadal %{count} artykuł",
+          "other": "Kup to %{product_name} i nadal %{count} artykuły",
+          "few": "Kup to %{product_name} i nadal %{count} artykuły"
+        }
+      },
+      "localized_fields": {
+        "additional_information": {
+          "title": "Dodatkowe informacje",
+          "tax_credential_br": "CPF/CNPJ",
+          "shipping_credential_br": "CPF/CNPJ",
+          "shipping_credential_kr": "Osobisty kod celny",
+          "shipping_credential_cn": "Numer identyfikacyjny rezydenta",
+          "tax_credential_it": "Kod Fiskala (opcjonalnie)",
+          "tax_email_it": "PEC (opcjonalnie)",
+          "tax_credential_cl": "RUT",
+          "shipping_credential_cl": "RUT",
+          "tax_credential_co": "Cédula/VAT",
+          "tax_credential_type_co": "Typ Céduli",
+          "shipping_credential_co": "Cédula/VAT",
+          "shipping_credential_type_co": "Typ Céduli"
+        }
       }
     },
     "sentence": {
