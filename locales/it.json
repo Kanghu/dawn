@@ -2861,8 +2861,23 @@
       },
       "merchandise_unavailable_in_buyer_location": {
         "remove_items_action": {
-          "few": "Elimina gli oggetti non disponibili"
-        }
+          "few": "rimuovere gli articoli non disponibili",
+          "one": "rimuovere l'articolo non disponibile",
+          "other": "rimuovere gli articoli non disponibili"
+        },
+        "banner_title": {
+          "some_products_one": "Questo prodotto non può essere consegnato a %{location_name}.",
+          "some_products_other": "Questi prodotti non possono essere consegnati a %{location_name}.",
+          "all_products_one": "Il prodotto nel carrello non può essere consegnato a %{location_name}.",
+          "all_products_other": "I prodotti del carrello non possono essere consegnati a %{location_name}."
+        },
+        "missing_country_fallback": "il tuo paese",
+        "indeterminate_location_fallback": "la tua posizione",
+        "cart_updated": "Il tuo carrello è stato aggiornato.",
+        "change_address_only": "Modifica l'indirizzo di consegna per continuare.",
+        "change_address_or_remove": "Modificare l'indirizzo di consegna oppure %{remove_action}.",
+        "empty_cart_action": "svuota il carrello e torna in negozio",
+        "unavailable_line_item": "%{product_name}/%{variant_label}"
       },
       "review_address_modal": {
         "subtitle": {
@@ -3769,7 +3784,67 @@
           "checkout_has_expired": "Checkout scaduto. Chiudi questa finestra e prova a completare nuovamente l'ordine {{shopName}}."
         },
         "return_to_store": "Torna a {{shopName}}",
-        "return_to_store_simple": "Torna al negozio"
+        "return_to_store_simple": "Torna al negozio",
+        "title": "Completare l'ordine con Shop Pay"
+      },
+      "company_location": {
+        "location_title": "Ubicazione dell'azienda",
+        "location_rollup_accessibility_label": "Opzioni di localizzazione dell'azienda"
+      },
+      "one": {
+        "errors": {
+          "merchandise": {
+            "gift_card_price_must_be_greater_than_zero": "Il prezzo della carta regalo deve essere maggiore di 0.",
+            "subtotal_limit_reached": "È stato raggiunto il valore massimo degli articoli.",
+            "gift_card_price_must_not_exceed_limit": "Il prezzo della carta regalo non deve superare %{gift_card_limit}.",
+            "signature_mismatch": "La firma del prodotto non corrisponde alla riga %{stable_id}."
+          }
+        }
+      },
+      "clipboard": {
+        "copied": "Copiato",
+        "failed_to_copy": "Impossibile copiare"
+      },
+      "payment_challenge_modal": {
+        "instructions": "Completa l'acquisto utilizzando il codice {{paymentMethod}}",
+        "timer_message": "Hai a tua disposizione {{timeLeft}} pagare",
+        "copy_text": "Copia il codice per {{paymentMethod}}",
+        "header": "Paga con {{paymentMethod}}",
+        "qr_code": {
+          "instructions": "Completa l'acquisto utilizzando il codice {{paymentMethod}}",
+          "wechat_instructions": "Scansiona questo codice QR con l'app WeChat sul tuo telefono per completare l'acquisto",
+          "wechat_instructions_mobile": "Scansiona questo codice QR con l'app WeChat su un altro dispositivo per completare l'acquisto"
+        },
+        "external": {
+          "instructions": "Conferma il pagamento in-app per completare l'acquisto"
+        },
+        "close": "Chiudi la sfida",
+        "open_app_text": "Apri l'applicazione {{paymentMethod}}"
+      },
+      "artifact_errors": {
+        "artifact_dissatisfaction_without_violation": "Si è verificato un problema durante l'elaborazione del tuo ordine. Riprova tra qualche minuto."
+      },
+      "merchant_instruction_errors": {
+        "empty_stable_id": "Istruzioni sulla merce %{name} %{position} contenere un ID stabile vuoto.",
+        "invalid_stable_id_target": "Istruzioni sulla merce %{name} %{position} fare riferimento a un ID stabile %{stable_id}, ma quell'ID stabile non è nelle linee di carico.",
+        "duplicate_variant_id": "Istruzioni sulla merce %{name} %{position} contenere un ID variante duplicato %{variant_id}.",
+        "invalid_variant_id_target": "Istruzioni sulla merce %{name} fare riferimento a un ID variante %{variant_id}, ma quella variante non è nelle linee di carico.",
+        "invalid_price_override_target": "Le istruzioni per sostituire il prezzo della merce per l'articolo %{stable_id} non è valido perché questo è un componente di un set.",
+        "discount_not_supported": "Le istruzioni del commerciante non includono l'applicazione di tali sconti."
+      },
+      "b2b_errors": {
+        "lost_b2b_purchasing_permissions": "Non è più consentito effettuare ordini B2B. %{logout_url} per effettuare invece un ordine personale.",
+        "log_out_link_text": "Esci",
+        "lost_permissions_subtitle": "Non è più consentito effettuare ordini B2B. Esci per effettuare un ordine personale.",
+        "lost_permissions_title": "Nessuna autorizzazione alla posizione"
+      },
+      "units": {
+        "milligram": "mg",
+        "gram": "Sig",
+        "kilogram": "kg",
+        "milliliter": "ml",
+        "centiliter": "cl",
+        "liter": "l"
       }
     },
     "notices": {
