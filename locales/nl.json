@@ -2464,18 +2464,27 @@
       "subscriptions": {
         "recurring_totals_with_policies": {
           "first_cycles": {
-            "few": "De eerste %{count} Betalingen zijn van %{total_price} elk"
-          }
+            "few": "De eersten %{count} betalingen zijn van %{total_price} elk",
+            "one": "De eerste betaling is %{total_price}",
+            "other": "De eersten %{count} betalingen zijn van %{total_price} elk"
+          },
+          "following_cycles": ", dan betaal je %{total_price} aan elk %{interval}"
         },
         "recurring_total_intervals": {
           "day": {
-            "few": "%{count} dagen"
+            "few": "%{count} dagen",
+            "one": "dag",
+            "other": "%{count} dagen"
           },
           "week": {
-            "few": "%{count} wekelijks"
+            "few": "%{count} weken",
+            "one": "week",
+            "other": "%{count} weken"
           },
           "month": {
-            "few": "%{count} Maandag"
+            "few": "%{count} maanden",
+            "one": "maand",
+            "other": "%{count} maanden"
           },
           "year": {
             "few": "%{count} jaar"
@@ -2485,7 +2494,8 @@
           "first_cycles": {
             "few": ", dan zullen ze dat zijn %{count} Betalingen van hoeveel %{total_price}"
           }
-        }
+        },
+        "recurring_totals": "%{total_price} aan elk %{interval}"
       },
       "contextual_availability": {
         "title": {
@@ -2993,8 +3003,50 @@
           "tax_credential_co": "Cédula/BTW",
           "tax_credential_type_co": "Cédula-type",
           "shipping_credential_co": "Cédula/BTW",
-          "shipping_credential_type_co": "Cédula-type"
+          "shipping_credential_type_co": "Cédula-type",
+          "tax_credential_cr": "Identificatienummer/RUT",
+          "shipping_credential_cr": "Identificatienummer/RUT",
+          "tax_credential_ec": "CI/RUC/BTW",
+          "shipping_credential_ec": "CI/RUC/BTW",
+          "tax_credential_gt": "NIT/BTW",
+          "shipping_credential_gt": "NIT/BTW",
+          "tax_credential_id": "NPWP",
+          "shipping_credential_id": "NPWP",
+          "tax_credential_my": "TIN/registratienummer",
+          "shipping_credential_my": "TIN/registratienummer",
+          "shipping_credential_mx": "RFC",
+          "tax_credential_mx": "RFC",
+          "tax_credential_type_mx": "Fiscaal regime",
+          "tax_credential_use_mx": "Gebruik CFDI",
+          "tax_credential_py": "CI/RUC/BTW",
+          "shipping_credential_py": "CI/RUC/BTW",
+          "tax_credential_pe": "DNI/RUC/CE",
+          "shipping_credential_pe": "DNI/RUC/CE",
+          "tax_credential_pt": "FIN/BTW",
+          "shipping_credential_pt": "FIN/BTW",
+          "tax_credential_es": "DNI/TIN",
+          "shipping_credential_es": "DNI/TIN",
+          "shipping_credential_tw": "Nationaal identificatienummer/belastingcode",
+          "tax_credential_tr": "Türkiye Cumhuriyeti Kimlik Numarası/KDV",
+          "shipping_credential_tr": "Türkiye Cumhuriyeti Kimlik Numarası/KDV"
         }
+      },
+      "post_purchase": {
+        "page_title": "Na aankoop",
+        "title": "Na aankoop",
+        "escape_confirmation": "U heeft voor de bestelling betaald.",
+        "escape_action": "Bekijk bestelinformatie ›",
+        "components": {
+          "close": "Sluiten",
+          "expand": "Zie meer",
+          "processing": "Verwerken...",
+          "submit": "Verzenden"
+        }
+      },
+      "change_country": {
+        "cart_updated_based_on_country": "Uw winkelwagen is bijgewerkt op basis van uw verzendland.",
+        "cart_and_currency_updated_based_on_country": "Winkelwagen en valuta bijgewerkt op basis van het land van verzending.",
+        "currency_updated_for_country": "Bijgewerkte valuta voor %{country}"
       }
     },
     "notices": {
