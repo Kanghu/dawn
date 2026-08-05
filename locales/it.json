@@ -2844,8 +2844,20 @@
         },
         "location_nearby_short_other_items": {
           "one": "%{count} posizione vicina con i tuoi articoli",
-          "other": "%{count} posizioni vicine con i tuoi articoli"
-        }
+          "other": "%{count} posizioni vicine con i tuoi articoli",
+          "few": "%{count} posizioni vicine con i tuoi articoli"
+        },
+        "location_far_away_one_item": {
+          "one": "%{count} posizione con il tuo articolo",
+          "other": "%{count} posizioni con il tuo articolo",
+          "few": "%{count} posizioni con il tuo articolo"
+        },
+        "location_far_away_other_items": {
+          "one": "%{count} posizione con i tuoi articoli",
+          "other": "%{count} posizioni con i tuoi articoli",
+          "few": "%{count} posizioni con i tuoi articoli"
+        },
+        "location_selected": "La posizione selezionata"
       },
       "merchandise_unavailable_in_buyer_location": {
         "remove_items_action": {
@@ -3534,6 +3546,88 @@
       },
       "online_store_chat": {
         "title": "Hai domande? Chatta con noi"
+      },
+      "split_delivery": {
+        "pickup_all_items": "Raccogli tutti gli oggetti",
+        "items_for_pickup": "Oggetti da ritirare",
+        "delivery_method": "Metodo di consegna per guasto",
+        "delivery_method_menu": "Menu dei metodi di consegna suddiviso",
+        "inventory_issue_banner": {
+          "remove_items_or_ship": "%{ship_separately_link} o %{remove_items_link}",
+          "remove_items_or_pickup": "%{pickup_in_store_link} o %{remove_items_link}",
+          "heading": {
+            "cannot_be_picked_up": {
+              "one": "%{count} l'oggetto non può essere ritirato",
+              "other": "%{count} gli oggetti non possono essere ritirati",
+              "few": "%{count} gli oggetti non possono essere ritirati"
+            },
+            "cannot_be_shipped": {
+              "one": "%{count} l'articolo non può essere spedito",
+              "other": "%{count} gli articoli non possono essere spediti",
+              "few": "%{count} gli articoli non possono essere spediti"
+            }
+          },
+          "remove_item": {
+            "one": "rimuovere l'articolo",
+            "other": "rimuovere gli elementi",
+            "few": "rimuovere gli elementi"
+          },
+          "ship_separately": {
+            "one": "Spedirlo separatamente",
+            "other": "Spedirli separatamente",
+            "few": "Spedirli separatamente"
+          },
+          "pick_them_up_in_store": {
+            "one": "Ritiralo dal negozio",
+            "other": "Ritirali dal negozio",
+            "few": "Ritirali dal negozio"
+          },
+          "remove_item_only": {
+            "one": "Rimuovi l'oggetto",
+            "other": "Rimuovi elementi",
+            "few": "Rimuovi elementi"
+          },
+          "merchandise_line_with_quantity": "%{title} (×%{quantity})"
+        },
+        "items_for_shipping": "Articoli per la spedizione",
+        "pickup_items_count": {
+          "few": "Sollevamento %{count} articoli"
+        },
+        "ship_items_count": {
+          "few": "Spedizione %{count} articoli"
+        },
+        "items_moved_to_shipping_toast": "Gli articoli che non possono essere ritirati sono stati spostati nella sezione Spedizione",
+        "cross_border": {
+          "modal": {
+            "heading": "Cambiare paese?",
+            "content": "I luoghi di ritiro e spedizione devono essere nello stesso Paese. La modifica del Paese ripristinerà tutti gli articoli al momento della spedizione.",
+            "change_country": "Cambia il paese",
+            "country_changed_heading": "Il paese è stato cambiato"
+          },
+          "banner": "Il tuo metodo di consegna è stato aggiornato"
+        },
+        "items_count": {
+          "few": "%{count} articoli"
+        },
+        "accessibility": {
+          "status": {
+            "ship_separately": "%{items} verranno spediti separatamente.",
+            "pickup_in_store": "%{items} verrà ritirato dal negozio.",
+            "remove_items": "%{items} sono stati rimossi dal carrello."
+          }
+        }
+      },
+      "captcha": {
+        "title": "Completa la verifica CAPTCHA per continuare",
+        "errors": {
+          "not_solved": "Completa la verifica CAPTCHA per continuare"
+        }
+      },
+      "discount_errors": {
+        "generic_error": "Non è stato possibile elaborare il tuo ordine perché il tuo codice sconto non è più disponibile. Controlla il totale dell'ordine e riprova."
+      },
+      "wallets": {
+        "return_to_store": "Torna al negozio"
       }
     },
     "notices": {
