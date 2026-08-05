@@ -3495,7 +3495,87 @@
         "kilogram": "kg",
         "milliliter": "ml",
         "centiliter": "kl",
-        "liter": "l"
+        "liter": "l",
+        "cubic_meter": "m³",
+        "millimeter": "mm",
+        "centimeter": "cm",
+        "meter": "m",
+        "square_meter": "m²",
+        "ounce": "uncja",
+        "pound": "funt",
+        "fluid_ounce": "uncja płynu",
+        "pint": "kufel",
+        "quart": "ćwierć galona",
+        "gallon": "galon",
+        "inch": "cale",
+        "foot": "stopa",
+        "yard": "podwórko",
+        "square_foot": "stopa kwadratowa",
+        "item": "artykuł"
+      },
+      "memberships": {
+        "delivery_promise_unfulfillable": "Adres nie został zaakceptowany w przypadku bieżącej subskrypcji.",
+        "items_split_across_locations_unsupported": "Wysyłka Prime nie jest dostępna dla Twojego zamówienia. Twoje opcje wysyłki zostały zaktualizowane."
+      },
+      "editor": {
+        "navigation": {
+          "store_logo_accessibility_label": "Uzyskaj dostęp do sklepu internetowego"
+        }
+      },
+      "tooltip": {
+        "accessibility_label_context": "Więcej informacji nt %{context}",
+        "additional_payment_methods": "Inne metody płatności"
+      },
+      "remote": {
+        "errors": {
+          "only_remote_merchandise_lines": "Płatność obejmuje wyłącznie transport zdalny. Do realizacji płatności wymagane jest przekierowanie do sklepu zdalnego.",
+          "currency_mismatch": "Tego artykułu nie można dodać do koszyka, ponieważ pochodzi ze sklepu posługującego się inną walutą.",
+          "max_remote_shops_exceeded": "Dodanie tego produktu nie jest możliwe, koszyk jest już pełen pozycji z innych sklepów.",
+          "currency_mismatch_removal": "Artykuł został usunięty z koszyka, ponieważ pochodził ze sklepu, który używa innej waluty."
+        }
+      },
+      "remote_merchandise_only": {
+        "title": "Dokończ zakup",
+        "remote_only_notice": "Te produkty są sprzedawane i wysyłane przez inne sklepy. Zapłać w każdym sklepie, aby sfinalizować zakup.",
+        "return_to_store_label": "Powrót do sklepu",
+        "checkout_on_shop_label": "Zapłać o godz %{shop_name}",
+        "single_shop_transition": "Przekierowujemy Cię do %{advertiser} aby sfinalizować zakup.",
+        "detail_item_label": {
+          "one": "{{count}} artykuł",
+          "other": "{{count}} artykuły",
+          "few": "{{count}} artykuły"
+        }
+      },
+      "remote_policies": {
+        "unavailable_policy": "Ten sklep nie ma %{policy_name}. Dodatkowe informacje można uzyskać bezpośrednio kontaktując się ze sklepem %{shop_name}."
+      },
+      "offsite_payment_failed": {
+        "payment_not_processed_title": "Płatność nie powiodła się",
+        "payment_not_processed_text": "Spróbuj ponownie, skanując ponownie kod QR. Jeśli to nie zadziała, skontaktuj się z naszym personelem i wypróbuj inną metodę płatności.",
+        "payment_link_expired_title": "Link do płatności wygasł",
+        "payment_link_expired_text": "Spróbuj ponownie, skanując ponownie kod QR.",
+        "title": "Płatność zdalna nie powiodła się"
+      },
+      "taxes": {
+        "tax_details": "Dodatkowe dane podatkowe",
+        "vat_number": {
+          "field": {
+            "label": "Numer VAT (opcjonalnie)",
+            "tooltip": "Weryfikuje numer VAT i automatycznie stosuje odwrotne obciążenie do kwalifikujących się zamówień"
+          },
+          "add": "Dodaj numer VAT",
+          "vaulted": "Numer NIP: %{number}",
+          "badge": "Numer NIP: %{number}",
+          "domestic_order": "Zwolnienie z tytułu odwrotnego obciążenia ma zastosowanie wyłącznie do zamówień transgranicznych z UE. W przypadku zamówień lokalnych naliczany jest standardowy podatek VAT.",
+          "status": {
+            "invalid_format": {
+              "at": "Austriackie numery VAT: AT i 9 znaków",
+              "be": "Numery VAT w Belgii: BE i 10 znaków",
+              "bg": "Bułgarskie numery VAT: BG i 9-10 znaków",
+              "hr": "Numery VAT w Chorwacji: HR i 11 znaków"
+            }
+          }
+        }
       }
     },
     "sentence": {
