@@ -3790,7 +3790,33 @@
       "order": {
         "cancel_reason": {
           "few": "Iets anders"
+        },
+        "not_available": "Deze opdracht is niet beschikbaar",
+        "financial_status": {
+          "authorized": "Geautoriseerd",
+          "pending": "Wachten",
+          "paid": "Betaald",
+          "unpaid": "Onbetaald",
+          "voided": "Geannuleerd",
+          "partially_paid": "Gedeeltelijk betaald"
         }
+      },
+      "customer": {
+        "password_reset_error": "Fout bij opnieuw instellen van wachtwoord",
+        "no_account_found": "Er is geen account gevonden met dit e-mailadres.",
+        "invalid_credentials": "Onjuist e-mailadres of wachtwoord.",
+        "denylisted_reset_password": "Er is geen toegang tot uw account verkregen omdat het huidige wachtwoord niet veilig is. U ontvangt een e-mail waarmee u uw wachtwoord kunt bijwerken.",
+        "signup_disabled": "Het aanmaken van klantaccounts is uitgeschakeld.",
+        "subscribe_error": "Fout tijdens abonnement",
+        "unsubscribe_error": "Fout tijdens het afmelden"
+      },
+      "address": {
+        "updated": "Adres succesvol bijgewerkt.",
+        "error_updating": "Fout bij updaten van adres",
+        "created": "Adres succesvol aangemaakt",
+        "error_creating": "Fout bij aanmaken van adres.",
+        "deleted": "Adres succesvol verwijderd",
+        "error_deleting": "Fout bij verwijderen adres."
       }
     },
     "page_titles": {
@@ -3891,7 +3917,55 @@
       "shop_404": {
         "title": "Creëer een e-commercesite en verkoop online! E-commercesoftware van Shopify",
         "heros": {
-          "store_unavailable": "Deze winkel is momenteel niet beschikbaar."
+          "store_unavailable": "Deze winkel is momenteel niet beschikbaar.",
+          "store_not_exist": "Deze winkel bestaat niet.",
+          "no_storefront": "Deze winkel heeft nog geen website.",
+          "store_will_be_right_back": "Deze winkel komt binnenkort weer terug"
+        },
+        "links": {
+          "explore_other_stores": "Ontdek andere winkels",
+          "start_free_trial": "Er begint een gratis proefperiode",
+          "refresh_page": "Laad de pagina opnieuw"
+        },
+        "owner_ctas": {
+          "header": "Bent u de winkeleigenaar?",
+          "fix_domain": "Voltooi het configureren van het nieuwe webadres, open %{domain_settings_link}. Klik op ‘Domein koppelen’ en voer het volgende in: %{domain}.<br>Als u problemen ondervindt bij de toegang tot de winkel, probeer dan de pagina %{forgot_your_store_link}.",
+          "fix_domain_link_text": "domein instellingen",
+          "forgot_your_store_link_text": "je bent de winkelgegevens vergeten",
+          "add_storefront": "U kunt uw website instellen door het online winkelkanaal aan uw account toe te voegen %{admin_link}. Als u problemen ondervindt bij de toegang tot de winkel, probeer dan de pagina %{forgot_your_store_link}.",
+          "admin_link_text": "beheerder"
+        },
+        "ctas": {
+          "sell_in_person": {
+            "header": "Persoonlijk verkopen",
+            "caption": "Ontvang de functies die u nodig heeft om uw winkel te beheren, of u nu begint of uitbreidt.",
+            "link_text": "De gratis proefperiode begint"
+          },
+          "open_a_store": {
+            "header": "Open een nieuwe Shopify-winkel",
+            "caption": "Start een gratis proefperiode van drie dagen en ga vervolgens de komende drie maanden door voor $ 1/maand.",
+            "link_text": "Meld u nu aan"
+          },
+          "editions": {
+            "header": "Ontdek Shopify-edities",
+            "caption": "Met meer dan 100 productupdates kunt u productiever, creatiever en krachtiger zijn in de commercie dan u ooit had gedacht.",
+            "link_text": "Ontdek de nieuwste versie van Editions"
+          },
+          "store_owner": {
+            "header": "Bent u de winkeleigenaar?",
+            "caption": "Heeft u problemen met de toegang tot de winkel? Probeer de functie %{forgot_your_store_link}. Als u de contactgegevens van de winkel opnieuw wilt activeren, neem dan contact met ons op %{shopify_support_link}.",
+            "shopify_support_link_text": "Shopify-ondersteuning"
+          }
+        },
+        "title_unavailable": "Winkel niet beschikbaar",
+        "subtitles": {
+          "store_will_be_right_back": "Shopify werkt eraan om het zo snel mogelijk weer online te brengen."
+        },
+        "status_card": {
+          "eyebrow": "Hulp voor winkeleigenaren",
+          "header": "Controleer uw Shopify-status",
+          "caption": "Ontdek of er een storing is die andere Shopify-winkels treft, en niet alleen deze.",
+          "link_text": "Bekijk de status van uw Shopify-systemen"
         }
       }
     }
