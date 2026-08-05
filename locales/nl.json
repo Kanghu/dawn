@@ -2678,7 +2678,21 @@
         "pickup_unavailable_banner_body": {
           "try_different_location": "Probeer een andere locatie",
           "ship_to_address": "afleveradres"
-        }
+        },
+        "location_nearby_short_other_items": {
+          "few": "%{count} locaties in de buurt met uw items"
+        },
+        "location_far_away_one_item": {
+          "one": "%{count} locatie bij uw artikel",
+          "other": "%{count} locaties bij uw artikel",
+          "few": "%{count} locaties bij uw artikel"
+        },
+        "location_far_away_other_items": {
+          "one": "%{count} locatie met uw artikelen",
+          "other": "%{count} locaties met uw artikelen",
+          "few": "%{count} locaties met uw artikelen"
+        },
+        "location_selected": "De geselecteerde locatie"
       },
       "merchandise_unavailable_in_buyer_location": {
         "remove_items_action": {
@@ -3297,6 +3311,88 @@
       },
       "online_store_chat": {
         "title": "Heeft u vragen? Chat met ons"
+      },
+      "split_delivery": {
+        "pickup_all_items": "Haal alle spullen op",
+        "items_for_pickup": "Op te halen spullen",
+        "delivery_method": "Uitsplitsing leveringsmethode",
+        "delivery_method_menu": "Menu voor bezorgmethode uitgesplitst",
+        "inventory_issue_banner": {
+          "remove_items_or_ship": "%{ship_separately_link} of %{remove_items_link}",
+          "remove_items_or_pickup": "%{pickup_in_store_link} of %{remove_items_link}",
+          "heading": {
+            "cannot_be_picked_up": {
+              "one": "%{count} artikel kan niet worden opgehaald",
+              "other": "%{count} artikelen kunnen niet worden afgehaald",
+              "few": "%{count} artikelen kunnen niet worden afgehaald"
+            },
+            "cannot_be_shipped": {
+              "one": "%{count} artikel kan niet worden verzonden",
+              "other": "%{count} artikelen kunnen niet worden verzonden",
+              "few": "%{count} artikelen kunnen niet worden verzonden"
+            }
+          },
+          "remove_item": {
+            "one": "verwijder het artikel",
+            "other": "verwijder artikelen",
+            "few": "verwijder artikelen"
+          },
+          "ship_separately": {
+            "one": "Verstuur het apart",
+            "other": "Verstuur ze apart",
+            "few": "Verstuur ze apart"
+          },
+          "pick_them_up_in_store": {
+            "one": "Haal het op in de winkel",
+            "other": "Haal ze op in de winkel",
+            "few": "Haal ze op in de winkel"
+          },
+          "remove_item_only": {
+            "one": "Verwijder het artikel",
+            "other": "Artikelen verwijderen",
+            "few": "Artikelen verwijderen"
+          },
+          "merchandise_line_with_quantity": "%{title} (×%{quantity})"
+        },
+        "items_for_shipping": "Artikelen voor verzending",
+        "pickup_items_count": {
+          "few": "Heffen %{count} artikelen"
+        },
+        "ship_items_count": {
+          "few": "Verzending %{count} artikelen"
+        },
+        "items_moved_to_shipping_toast": "Artikelen die niet afgehaald kunnen worden zijn verplaatst naar de verzending",
+        "cross_border": {
+          "modal": {
+            "heading": "Van land veranderen?",
+            "content": "De ophaal- en verzendlocaties moeten zich in hetzelfde land bevinden. Als u het land wijzigt, worden alle artikelen bij verzending gereset.",
+            "change_country": "Verander het land",
+            "country_changed_heading": "Het land is veranderd"
+          },
+          "banner": "Uw bezorgmethode is bijgewerkt"
+        },
+        "items_count": {
+          "few": "%{count} artikelen"
+        },
+        "accessibility": {
+          "status": {
+            "ship_separately": "%{items} wordt apart verzonden.",
+            "pickup_in_store": "%{items} wordt opgehaald in de winkel.",
+            "remove_items": "%{items} zijn uit de winkelwagen verwijderd."
+          }
+        }
+      },
+      "captcha": {
+        "title": "Voltooi de CAPTCHA-verificatie om door te gaan",
+        "errors": {
+          "not_solved": "Voltooi de CAPTCHA-verificatie om door te gaan"
+        }
+      },
+      "discount_errors": {
+        "generic_error": "Uw bestelling kan niet worden verwerkt omdat uw kortingscode niet meer beschikbaar is. Controleer het totaal van uw bestelling en probeer het opnieuw."
+      },
+      "wallets": {
+        "return_to_store": "Kom terug naar de winkel"
       }
     },
     "notices": {
