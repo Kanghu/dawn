@@ -925,6 +925,15 @@
         },
         "reveal_more_label": {
           "few": "Immer noch Anzeigen %{count} (von) Orten"
+        },
+        "location_nearby_short_other_items": {
+          "few": "%{count} nahegelegene Standorte mit Ihren Artikeln"
+        },
+        "location_far_away_one_item": {
+          "few": "%{count} Standorte mit Ihrem Artikel"
+        },
+        "location_far_away_other_items": {
+          "few": "%{count} Standorte mit Ihren Artikeln"
         }
       },
       "merchandise_unavailable_in_buyer_location": {
@@ -947,6 +956,39 @@
           "heading": {
             "few": "Es gibt {{count}} Fehler:"
           }
+        }
+      },
+      "split_delivery": {
+        "inventory_issue_banner": {
+          "heading": {
+            "cannot_be_picked_up": {
+              "few": "%{count} Artikel können nicht abgeholt werden"
+            },
+            "cannot_be_shipped": {
+              "few": "%{count} Artikel können nicht versendet werden"
+            }
+          },
+          "remove_item": {
+            "few": "Elemente entfernen"
+          },
+          "ship_separately": {
+            "few": "Versenden Sie sie separat"
+          },
+          "pick_them_up_in_store": {
+            "few": "Holen Sie sie im Laden ab"
+          },
+          "remove_item_only": {
+            "few": "Elemente entfernen"
+          }
+        },
+        "pickup_items_count": {
+          "few": "Heben %{count} Artikel"
+        },
+        "ship_items_count": {
+          "few": "Versand %{count} Artikel"
+        },
+        "items_count": {
+          "few": "%{count} Artikel"
         }
       }
     },
