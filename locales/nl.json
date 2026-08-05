@@ -2083,22 +2083,34 @@
           "other": "koop deze producten ook"
         },
         "gift_card_confirmation_by_text_typ": {
-          "few": "U ontvangt over enkele minuten een sms met de cadeaubonnen."
+          "few": "Je ontvangt binnen enkele minuten een sms met de cadeaubonnen.",
+          "one": "Je ontvangt binnen enkele minuten een sms met de cadeaukaart.",
+          "other": "Je ontvangt binnen enkele minuten een sms met de cadeaubonnen."
         },
         "gift_card_confirmation_by_email_typ": {
-          "few": "U ontvangt over enkele minuten een e -mail met de cadeaubonnen."
+          "few": "Je ontvangt binnen enkele minuten een e-mail met de cadeaubonnen.",
+          "one": "Je ontvangt binnen enkele minuten een e-mail met de cadeaubon.",
+          "other": "Je ontvangt binnen enkele minuten een e-mail met de cadeaubonnen."
         },
         "gift_card_email_title": {
-          "few": "Cadeaubonnen zijn per e -mail verzonden"
+          "few": "Cadeaubonnen zijn per e-mail verzonden",
+          "one": "De cadeaubon is per e-mail verzonden",
+          "other": "Cadeaubonnen zijn per e-mail verzonden"
         },
         "gift_card_text_title": {
-          "few": "Cadeaubonnen zijn per e -mail verzonden"
+          "few": "Cadeaubonnen zijn per e-mail verzonden",
+          "one": "De cadeaubon werd per sms verzonden",
+          "other": "Cadeaubonnen zijn per e-mail verzonden"
         },
         "gift_card_resent_confirmation": {
-          "few": "De CADIU -kaarten werden opnieuw ingediend."
+          "few": "De cadeaubonnen zijn teruggestuurd.",
+          "one": "De cadeaukaart is opnieuw verzonden.",
+          "other": "De cadeaubonnen zijn teruggestuurd."
         },
         "gift_card_resend_failure": {
-          "few": "Er ontstond een probleem bij het opnieuw indienen van cadeaubonnen. Probeer het opnieuw of neem contact met ons op."
+          "few": "Er is een probleem opgetreden bij het opnieuw verzenden van cadeaubonnen. Probeer het opnieuw of neem contact met ons op.",
+          "one": "Er is een probleem opgetreden bij het opnieuw verzenden van de cadeaukaart. Probeer het opnieuw of neem contact met ons op.",
+          "other": "Er is een probleem opgetreden bij het opnieuw verzenden van cadeaubonnen. Probeer het opnieuw of neem contact met ons op."
         },
         "thank_you_unconfirmed_items_heading": {
           "few": "Sommige items zijn niet bevestigd"
@@ -2292,7 +2304,41 @@
           "text_html": "%{contact_us} om het adres toe te voegen",
           "contact_us": "Neem contact met ons op"
         },
-        "order_status_confirmed_with_installments_payment_return": "Richt uw aandacht weer op de verkoopmedewerker."
+        "order_status_confirmed_with_installments_payment_return": "Richt uw aandacht weer op de verkoopmedewerker.",
+        "order_status_confirmed_with_installments_payment_confirm": "U ontvangt binnenkort een bevestigingsmail met het bestelnummer en de details van het afbetalingsschema",
+        "first_payment_complete": "De eerste betaling is voltooid",
+        "in_store_purchase": "Aankopen in de winkel",
+        "choose_payment_method_later": "Kies later uw betaalmethode",
+        "purchase_order_number_title": "Bestelnummer: %{purchase_order_number}",
+        "thank_you_ready_for_picked_up": "Uw bestelling is opgehaald op het adres %{address}.",
+        "ready_for_delivery": "Klaar voor levering",
+        "order_updates_subscribe_to_email_notifications_failed": "We kunnen dit e-mailadres niet opslaan voor updates. Probeer het opnieuw of gebruik een ander e-mailadres.",
+        "order_updates_subscribe_to_email_notifications_email_already_exists": "Het door u ingevoerde e-mailadres bestaat al.",
+        "subscriptions_management": {
+          "title": "Abonnement",
+          "description": "Ga verder met uw account om uw abonnementen te bekijken en te beheren.",
+          "button_label": "Beheer uw abonnement"
+        },
+        "manage_order_label": "Beheer uw bestelling",
+        "resend_gift_cards_by_email": "Ik wil de e-mail opnieuw verzenden",
+        "resend_gift_cards_by_text": "Ik wil het sms-bericht opnieuw verzenden",
+        "failed_pending_payment_page_title": "Er is een probleem met uw betaling",
+        "thank_you_title_payments_app_pending_default": "Uw betaling wordt verwerkt",
+        "thank_you_title_payments_app_pending_buyer_action_required": "Uw bestelling is ontvangen",
+        "thank_you_title_payments_app_failed_pending_payment": "Uw betaling kon niet worden verwerkt",
+        "thank_you_payments_app_failed_pending_payment": "Er zijn geen kosten in rekening gebracht voor uw bestelling. Ga terug naar de winkelwagen om de bestelling te controleren en voer de betaling opnieuw uit.",
+        "order_status_payments_app_pending_payment_description_default_with_email_and_phone": "U ontvangt binnenkort een bevestigingsmail. Volg uw bestelling via de Shop-app.",
+        "order_status_payments_app_pending_payment_description_default_with_email": "U ontvangt binnenkort een bevestigingsmail. Volg uw bestelling via de Shop-app.",
+        "order_status_payments_app_pending_payment_description_default_with_phone": "U ontvangt binnenkort een bevestigings-sms. Volg uw bestelling via de Shop-app.",
+        "order_status_payments_app_pending_payment_description_buyer_action_required_with_email_and_phone": "Na voltooiing van de betaling ontvangt u een bevestigingsmail. Volg uw bestelling via de Shop-app.",
+        "order_status_payments_app_pending_payment_description_buyer_action_required_with_email": "Na voltooiing van de betaling ontvangt u een bevestigingsmail. Volg uw bestelling via de Shop-app.",
+        "order_status_payments_app_pending_payment_description_buyer_action_required_with_phone": "Na voltooiing van de betaling ontvangt u een bevestigings-sms. Volg uw bestelling via de Shop-app.",
+        "order_status_payments_app_failed_pending_payment": "Er zijn geen kosten in rekening gebracht voor uw bestelling. Ga terug naar de winkelwagen om de bestelling te controleren en voer de betaling opnieuw uit.",
+        "order_status_payments_app_pending_payment_description_buyer_action_required_with_email_pick_up": "Na voltooiing van de betaling ontvangt u een bevestigingsmail. Volg uw bestelling via de Shop-app.",
+        "thank_you_confirmed_order_with_missing_payment": "Neem contact met ons op via e-mail of telefoon om een ​​orderbevestiging te ontvangen.",
+        "thank_you_confirmed_order_with_missing_pick_up": "Neem contact met ons op via e-mail of telefoon om een ​​orderbevestiging te ontvangen.",
+        "thank_you_confirmed_order_with_draft_payment": "We laten het u weten als we meer informatie nodig hebben of wanneer uw bestelling is bevestigd.",
+        "thank_you_confirmed_order_with_draft_pick_up": "We laten het u weten als we meer informatie nodig hebben of wanneer uw bestelling is bevestigd."
       },
       "order_payment_collection": {
         "changes_summary": {
