@@ -4168,13 +4168,80 @@
     "orders": {
       "order_list": {
         "items": {
-          "few": "{{count}} ware"
+          "few": "{{count}} artikelen",
+          "one": "{{count}} artikel",
+          "other": "{{count}} artikelen"
         },
         "column_headers": {
           "total": "Helemaal",
           "order": "Bestel",
           "actions_accessibility_label": "Acties",
           "products_accessibility_label": "Producten"
+        },
+        "delivered": "Geleverd aan: {{date}}",
+        "empty_state_order_source_description": "Alleen bestellingen die via het e-mailadres zijn geplaatst, worden hier weergegeven {{email}}.",
+        "empty_state_subtitle": "Ga naar de winkel om een bestelling te plaatsen.",
+        "empty_state_title": "Nog geen bestellingen",
+        "estimated_delivery": "Geschatte datum: {{date}}",
+        "order_link": "Zie de bestelling {{name}}",
+        "order_number": "Bestel {{name}}",
+        "orders_title": "Bevestigd",
+        "pagination": {
+          "nav_accessibility_label": "Navigatieknoppen voor opdrachten",
+          "next": "Voor",
+          "next_accessibility_label": "Volgende bestellingen",
+          "previous": "Terug",
+          "previous_accessibility_label": "Eerdere bestellingen",
+          "load_more": "Laat meer zien",
+          "load_more_accessibility_label": "Toon meer commando's"
+        },
+        "sort_by": "Sorteer op: {{option}}",
+        "sort_hide_options_accessibility_label": "Verbergt de sorteeropties voor bevestigde bestellingen.",
+        "sort_show_options_accessibility_label": "Toont sorteeropties voor bevestigde bestellingen.",
+        "sort_title": "Sorteer het",
+        "sort": {
+          "date": {
+            "newest": "Van de nieuwste tot de oudste",
+            "oldest": "Van de oudste tot de nieuwste"
+          },
+          "location": {
+            "ascending": "Locatie (A-Z)",
+            "descending": "Locatie (Z-A)"
+          },
+          "order_number": {
+            "ascending": "Bestelnummer (oplopend)",
+            "descending": "Bestelnummer (nakomeling)"
+          },
+          "order_total": {
+            "ascending": "Totaal bestelling (oplopend)",
+            "descending": "Totaal bestelling (aflopend)"
+          }
+        },
+        "one_images_accessibility_label": "De bestelling omvat {{lineItemName1}}",
+        "two_images_accessibility_label": "De bestelling omvat {{lineItemName1}}, {{lineItemName2}}",
+        "three_images_accessibility_label": "De bestelling omvat {{lineItemName1}}, {{lineItemName2}}, {{lineItemName3}}",
+        "four_images_accessibility_label": "De bestelling omvat {{lineItemName1}}, {{lineItemName2}}, {{lineItemName3}}, {{lineItemName4}}",
+        "no_filtered_results_description": "Verwijder of pas filters aan om bedieningselementen te bekijken",
+        "no_filtered_results_title": "Geen gefilterde resultaten",
+        "estimated_shortform": "Geschat.: {{date}}",
+        "payment_status": {
+          "list_view": {
+            "overdue": "Verlopen",
+            "due": "Volwassenheid {{date}}",
+            "due_today": "Vandaag verschuldigd",
+            "due_without_date": "Volwassenheid",
+            "due_on_fulfillment": "Verloopt op het moment dat de order wordt uitgevoerd",
+            "pay_to_confirm": "Betaal om te bevestigen",
+            "payment_not_due": "Het is nog niet verschuldigd",
+            "paid": "Betaald"
+          },
+          "gallery_view": {
+            "overdue": "Achterstallige betaling",
+            "due": "Vervaldatum van betaling {{date}}",
+            "due_today": "De betaling moet vandaag plaatsvinden",
+            "due_without_date": "Vervaldatum van betaling",
+            "due_on_fulfillment": "Betaling verschuldigd op het moment van uitvoering van de bestelling"
+          }
         }
       },
       "order_status": {
