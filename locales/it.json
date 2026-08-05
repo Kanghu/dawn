@@ -86,41 +86,41 @@
     "loading": "Caricamento...",
     "skip_to_product_info": "Vai alle informazioni sul prodotto",
     "total_reviews": "recensioni totali",
-    "star_reviews_info": "{{ rating_value }} stelle su {{ rating_max }}",
-    "collapsible_content_title": "Contenuto comprimibile",
+    "star_reviews_info": "{{ rating_value }} da {{ rating_max }} stelle",
+    "collapsible_content_title": "Contenuti che potrebbero essere limitati",
     "complementary_products": "Prodotti complementari"
   },
   "blogs": {
     "article": {
       "blog": "Blog",
-      "read_more_title": "Leggi di più: {{ title }}",
+      "read_more_title": "Scopri di più: {{ title }}",
       "comments": {
         "one": "{{ count }} commento",
         "other": "{{ count }} commenti",
         "many": "{{ count }} commenti",
         "few": "{{ count }} commenti"
       },
-      "moderated": "Si prega di notare che, prima di essere pubblicati, i commenti devono essere approvati.",
-      "comment_form_title": "Lascia un commento",
+      "moderated": "Nota: i commenti devono essere approvati prima della pubblicazione.",
+      "comment_form_title": "Scrivi un commento",
       "name": "Nome",
-      "email": "Indirizzo email",
-      "message": "Commenta",
-      "post": "Pubblica commento",
-      "back_to_blog": "Torna al blog",
+      "email": "E-mail",
+      "message": "Commento",
+      "post": "Pubblica il commento",
+      "back_to_blog": "Torniamo al blog",
       "share": "Condividi questo articolo",
-      "success": "Il tuo commento è stato pubblicato! Grazie!",
-      "success_moderated": "Il tuo commento è stato pubblicato. Lo pubblicheremo fra poco, il nostro blog è soggetto a moderazione."
+      "success": "Commento pubblicato con successo! Grazie!",
+      "success_moderated": "Commento pubblicato con successo. Lo pubblicheremo a breve poiché il nostro blog è moderato."
     }
   },
   "onboarding": {
-    "product_title": "Esempio di titolo del prodotto",
-    "collection_title": "Nome della collezione"
+    "product_title": "Esempio di titolo di un prodotto",
+    "collection_title": "Il nome della collezione"
   },
   "products": {
     "product": {
       "add_to_cart": "Aggiungi al carrello",
       "description": "Descrizione",
-      "on_sale": "In offerta",
+      "on_sale": "Sconto",
       "quantity": {
         "label": "Quantità",
         "input_label": "Quantità per {{ product }}",
@@ -143,10 +143,10 @@
       "share": "Condividi questo prodotto",
       "sold_out": "Esaurito",
       "unavailable": "Non disponibile",
-      "vendor": "Fornitore",
-      "video_exit_message": "{{ title }} apre un video a schermo intero nella stessa finestra.",
+      "vendor": "Venditore",
+      "video_exit_message": "{{ title }} aprire il video a schermo intero nella stessa finestra.",
       "xr_button": "Visualizza nel tuo spazio",
-      "xr_button_label": "Visualizza nel tuo spazio, carica l'articolo nella finestra della realtà aumentata",
+      "xr_button_label": "Visualizza nel tuo spazio, l'articolo si carica nella finestra della realtà aumentata",
       "pickup_availability": {
         "view_store_info": "Visualizza i dettagli del negozio",
         "check_other_stores": "Verifica la disponibilità in altri negozi",
@@ -186,7 +186,7 @@
         "price_at_each": "a {{ price }}/ciascuno",
         "price_range": "{{ minimum }} - {{ maximum }}"
       },
-      "product_variants": "Varianti di prodotto",
+      "product_variants": "Varianti del prodotto",
       "taxes_included": "Imposte incluse.",
       "duties_included": "Dazi inclusi.",
       "duties_and_taxes_included": "Dazi e imposte inclusi.",
@@ -4543,16 +4543,16 @@
   "alc-benefits": {
     "stock": {
       "in_stock": "in magazzino",
-      "low_stock": "Soltanto {{ count }} lasciato in magazzino",
-      "last_stock": "Ultimo {{ count }} a pezzi 🔥",
+      "low_stock": "Solo {{ count }} lasciato in magazzino",
+      "last_stock": "Gli ultimi {{ count }} pezzi 🔥",
       "last_piece": "L'ultimo pezzo 🔥",
       "out_of_stock": "Esaurito"
     },
-    "free_shipping": "Spedizione gratuita ⚡ (1 - 3 giorni lavorativi)",
+    "free_shipping": "Spedizione GRATUITA ⚡ (2 - 4 giorni lavorativi)",
     "free_shipping_link_text": "vedere i dettagli",
     "free_shipping_link": "/pages/livrare",
-    "savings": "salva {{ amount }}",
-    "delivery": "Consegna in 1 - 3 giorni lavorativi",
+    "savings": "Risparmia {{ amount }}",
+    "delivery": "Consegna in 2 - 4 giorni lavorativi",
     "price_info": "Produttore diretto: ",
     "price_info_link": "/pages/fabrica-alessandro-design",
     "price_info_link_text": "vedere la fabbrica di Alessandro Design",
