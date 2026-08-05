@@ -4169,6 +4169,12 @@
       "order_list": {
         "items": {
           "few": "{{count}} ware"
+        },
+        "column_headers": {
+          "total": "Helemaal",
+          "order": "Bestel",
+          "actions_accessibility_label": "Acties",
+          "products_accessibility_label": "Producten"
         }
       },
       "order_status": {
@@ -4202,7 +4208,9 @@
         "gift_card_resend_button": {
           "few": "Stuur opnieuw cadeaubonnen"
         }
-      }
+      },
+      "list_layout_accessibility_label": "Uiterlijk opties",
+      "list_title": "Bestellingen"
     },
     "order_details": {
       "image_gallery": {
@@ -4362,7 +4370,69 @@
         "save_accessibility_label": "Profiel opslaan",
         "title": "Profiel",
         "no_name_provided_accessibility_label": "Geen naam toegevoegd",
-        "email": "E-mail"
+        "email": "E-mail",
+        "errors": {
+          "name_too_long": "De naam van het veld {{fieldName}} is te lang (maximaal 255 tekens)",
+          "name_cannot_contain_url": "Het veld {{fieldName}} kan geen URL bevatten",
+          "name_cannot_contain_html_tags": "Het veld {{fieldName}} kunnen geen HTML-tags bevatten",
+          "email_cant_be_blank": "Het doorgeven van het e-mailadres is verplicht",
+          "invalid_email_format": "Typ een geldig e-mailadres"
+        },
+        "editable_email_help_text": "Gebruik dit e-mailadres om in te loggen en bestellingen bij te werken."
+      },
+      "profile_update_confirmation_message": "Bijgewerkt profiel",
+      "title": "Profiel",
+      "people": {
+        "pagination": {
+          "load_more": "Laat meer zien",
+          "load_more_accessibility_label": "Laat meer mensen zien",
+          "loading_accessibility_label": "Mensen laden"
+        }
+      },
+      "add_button": "Toevoegen",
+      "verify_new_email_modal": {
+        "title": "Controleer uw nieuwe e-mail",
+        "description": "Voer nu de 6-cijferige code in die naar uw nieuwe e-mailadres is verzonden:",
+        "one_time_password_label": "6-cijferige code",
+        "email_resend_button": "Verstuur de code opnieuw",
+        "email_resend_button_accessibility_label": "Verstuur de verificatiecode opnieuw",
+        "verify_button": "Bekijk het eens",
+        "verify_button_accessibility_label": "Controleer uw unieke wachtwoord",
+        "cancel_button": "Annuleer",
+        "cancel_button_accessibility_label": "Profielbewerking annuleren",
+        "email_resend_button_success_toast_message": "Verificatiecode is verzonden",
+        "email_resend_button_failure_banner_message": "Kan verificatiecode niet verzenden"
+      },
+      "email_update_success_modal": {
+        "title": "Controleer uw e-mail",
+        "description": "E-mail is succesvol bijgewerkt. Omleiding om in te loggen."
+      },
+      "email_update_confirmation_message": "E-mailadres is bijgewerkt naar {{email}}",
+      "verify_current_email_modal": {
+        "cancel_button": "Annuleer",
+        "cancel_button_accessibility_label": "Profielbewerking annuleren",
+        "description": "Voer de 6-cijferige code in die naar uw oorspronkelijke e-mailadres is verzonden:",
+        "email_resend_button_accessibility_label": "Verstuur de verificatiecode opnieuw",
+        "title": "Bevestig dat jij het bent",
+        "verify_button": "Volgende",
+        "verify_button_accessibility_label": "Controleer uw huidige e-mail"
+      },
+      "marketing_preferences": {
+        "email_label": "E-mail",
+        "pending_confirmation": "Klik op de link in de e-mail om te bevestigen.",
+        "resend_email": "Verstuur de e-mail opnieuw",
+        "resend_email_success": "De link is verzonden",
+        "title": "Marketingvoorkeuren",
+        "unsubscribe_confirmation": {
+          "cancel": "Annuleer",
+          "description": "U ontvangt geen e-mailmarketing meer van {{shopName}}",
+          "title": "Afmelden voor e-mails?",
+          "unsubscribe": "Afmelden"
+        },
+        "update_error": {
+          "description": "Er is een probleem opgetreden bij het bijwerken van uw marketingvoorkeuren. Probeer deze pagina te vernieuwen of controleer uw internetverbinding."
+        },
+        "update_success": "Uw marketingvoorkeuren zijn bijgewerkt"
       }
     }
   },
