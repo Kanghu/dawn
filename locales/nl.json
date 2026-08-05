@@ -1352,7 +1352,16 @@
         },
         "unit_price": {
           "per_item": {
-            "few": "%{price} voor %{count} waren"
+            "few": "%{price} voor %{count} artikelen",
+            "single": "%{price} elk artikel",
+            "one": "%{price} voor %{count} artikel",
+            "other": "%{price} voor %{count} artikelen"
+          },
+          "accessible_separator": "op",
+          "content_html": "%{price}%{accessible_separator}%{per_unit}",
+          "per_unit": {
+            "single": "%{price}/%{unit}",
+            "plural": "%{price}/%{count}%{unit}"
           }
         },
         "pickup_unavailable_banner_title_with_country": {
@@ -1412,7 +1421,53 @@
         "description_label": "Beschrijving",
         "price_label": "Prijs",
         "quantity_label": "Hoeveelheid",
-        "product_change_label": "Wijzigen"
+        "product_change_label": "Wijzigen",
+        "product_image_label": "Productafbeelding",
+        "scroll_order_summary": "Scroll voor meer artikelen",
+        "expand_order_summary_short": "Weergave",
+        "collapse_order_summary_short": "Verbergen",
+        "total_updated_label": "Bijgewerkte totaalprijs:",
+        "order_total_updated_label": "Totaal bijgewerkt",
+        "total_already_paid_label": "Bedrag betaald",
+        "estimated_taxes_label": "Geschatte kosten",
+        "information_estimated_taxes_label": "Kosten (geschat)",
+        "gift_card_ending": "Cadeaukaart eindigend op %{last_characters}",
+        "estimated_tax_label": "Geschatte kosten",
+        "multiple_shipping_lines_label": "Verzending totaal",
+        "applied_free_shipping_discount_label": "Toegepast",
+        "original_price": "De originele prijs",
+        "sale_price": "Aanbiedingsprijs",
+        "recurring_subtotal_label": "Terugkerend subtotaal",
+        "recurring_total_label": "Volledig terugkerend",
+        "recurring_total_tooltip": "Omvat geen verzendkosten, belastingen, heffingen of toepasselijke kortingen.",
+        "gift_card_subscriptions_notice": "Cadeaubonnen worden alleen toegepast op de eerste betaling",
+        "confirmation_number_label": "Nr. bevestiging %{confirmation_number}",
+        "estimated_taxes_finalization_tooltip_content": "De definitieve kosten en het totaalbedrag worden na het plaatsen van de bestelling per e-mail of sms bevestigd.",
+        "deferred_payment_info": {
+          "title": "Betaling ter hoogte van %{amount_due} heeft een vervaldatum %{due_at}",
+          "description_html": "Voor vragen over uw bestelling, %{contact_us}.",
+          "paid_today": "Totaal betaald vandaag",
+          "due_on_fulfillment_title": "Betaling ter hoogte van %{amount_due} heeft de vervaldatum op het moment van honorering",
+          "due_on_receipt_title": "Betaling ter hoogte van %{amount_due} heeft een vervaldatum op het moment van ontvangst",
+          "paid_today_next": "Vandaag betaald"
+        },
+        "percent_off_shipping": "Korting van %{percent}% op verzendkosten",
+        "amount_off_shipping": "Korting van %{amount} bij verzending",
+        "payment_terms_totals": {
+          "due_today": "Totaal vandaag verschuldigd",
+          "due_later": "Totaal vanwege %{due_at}",
+          "due_later_checkout_to_draft": "Totaal later te betalen",
+          "due_on_fulfillment": "Totaal verschuldigd op het moment van honorering",
+          "due_on_receipt": "Totaal verschuldigd bij ontvangst",
+          "total_paid": "Totaal betaald",
+          "due_today_next": "Vandaag verschuldigd",
+          "due_on_fulfillment_next": "Verloopt op het moment dat de order wordt uitgevoerd"
+        },
+        "higher_value_discount_applied": "<strong style=\"text-transform:uppercase\">%{code}</strong> kan niet worden gebruikt in combinatie met bestaande kortingen.",
+        "maximum_discount_code_limit_reached": "Je hebt het maximale aantal kortingscodes bereikt. Verwijder een bestaande code om de code te gebruiken <strong style=\"text-transform:uppercase\">%{code}</strong>.",
+        "order_total_label": "Totaal bestelling",
+        "discount_code_application_failed": "<strong style=\"text-transform:uppercase\">%{code}</strong> werkt momenteel niet. Neem contact met ons op voor hulp.",
+        "due_on_fulfillment": "Verschuldigd op het moment van honorering"
       },
       "payment": {
         "order_covered_by_gift_cards_notice": {
