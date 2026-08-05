@@ -744,7 +744,7 @@
         "market_manager_blocks_wallet_payments": "Ta metoda płatności nie jest obsługiwana w Twoim kraju."
       },
       "payment": {
-        "bank_account_missing": "Połączenie rachunku bankowego jest obowiązkowe",
+        "bank_account_missing": "Podłączenie rachunku bankowego jest obowiązkowe",
         "gift_card_wrapper": {
           "manage_label": "Zarządzaj kartami podarunkowymi"
         },
@@ -818,6 +818,131 @@
         "gift_card_store_credit": {
           "add_label": "Dodaj kartę podarunkową lub kredyt sklepowy",
           "manage_label": "Zarządzaj kartami podarunkowymi lub środkami sklepowymi"
+        },
+        "saved_credit_card_cvv_verification": "Wprowadź kod bezpieczeństwa swojej karty w celu weryfikacji.",
+        "order_edit_banner_updated_order_label": "Zaktualizowane zamówienie",
+        "afterpay_label": "Dopłata",
+        "cashapppay_label": "Płatność za aplikację gotówkową",
+        "card_nickname_label": "Pseudonim (opcjonalnie)",
+        "order_edit_banner_items_return_line_item_removed": {
+          "in_full": "Usunięto ze zwrotu",
+          "with_quantities": "Usunięto ze zwrotu: {{delta}}"
+        },
+        "order_edit_banner_single_item_return_line_item_removed": "Usunięto ze zwrotu",
+        "order_edit_banner_multiple_items_return_line_item_removed": "Usunięto ze zwrotu: {{amount}}",
+        "proposed_gateway_unavailable": "Proponowana bramka płatnicza nie jest dostępna",
+        "pay_in_installments_split_pay_short": "Wartość 4 płatności %{amount}",
+        "payment_method_not_available_for_shipping_address_error": "Metoda płatności nie jest dostępna dla wybranego adresu wysyłki. Wybierz inną metodę płatności.",
+        "shop_pay_ideal_unavailable_error": "idealny | Wero nie jest dostępne dla tego zamówienia. Wybierz inną metodę płatności.",
+        "paypal_disconnect": "Wyloguj się",
+        "paypal_wallet_label": "Portfel PayPal",
+        "payment_method_update_failed": "Aktualizacja formy płatności nie powiodła się.",
+        "alternative_payment_currency_total_manual_payment_notice": "Uwaga: przeliczona suma wynosi %{amount_due}.",
+        "gift_cards_unavailable": "Twojej karty podarunkowej nie można już zastosować do tego zamówienia i została usunięta",
+        "network_card_payment_options": "Wybierz sieć kart",
+        "payment_flexibility_terms_id_mismatch": "Niezgodność identyfikatora w przypadku elastycznych warunków płatności",
+        "offsite_gateway_review_page_redirect_hint": "Po sprawdzeniu zamówienia przekierujemy Cię do %{gateway_label} aby sfinalizować zakup.",
+        "przelewy24_label": "Przelewy24",
+        "twint_label": "TWINT",
+        "mobilepay_label": "MobilePay",
+        "gift_card_checkbox_label": "Zastosuj tę kartę podarunkową",
+        "blik_label": "KLIKNIJ",
+        "vipps_label": "Bicze",
+        "grabpay_label": "GrabPay",
+        "kcp_creditcard_label": "Karta kredytowa KCP",
+        "simulated_express_checkout": "Twój region lub przeglądarka nie pozwala na podgląd portfeli w edytorze.",
+        "offsite_gateway_redirect_hint_no_button_label": "Przekierujemy Cię do %{gateway_label} aby sfinalizować zakup.",
+        "swish_label": "świst",
+        "network_card_persistence_description": "Wybrana sieć zostanie zapisana z Twoją metodą płatności na potrzeby przyszłych transakcji.",
+        "usdc_label": "USDC",
+        "payment_method_incompatible_with_payment_terms": "Sposób płatności jest niezgodny z warunkami płatności.",
+        "payment_option": {
+          "accessibility_label": "Wybierz opcję płatności"
+        },
+        "billing_address_rollup_accessibility_label": "Opcje adresu rozliczeniowego",
+        "payment_method_rollup_accessibility_label": "Opcje metod płatności",
+        "crypto_modal": {
+          "header": "Płatność do %{shop_name} z %{total_price} USDC",
+          "error": {
+            "refresh": "Orzeźwienie",
+            "close": "zamknięcie",
+            "sandbox_error": "Wystąpił błąd",
+            "web_component_error": "Wystąpił błąd podczas ładowania tej strony"
+          }
+        },
+        "bank_account_type": {
+          "checking": "Weryfikacja",
+          "savings": "Gospodarki"
+        },
+        "bank_account_choose": "Wybierz konto do bezpiecznej płatności",
+        "bank_account_connect_another": "Podłącz inne konto bankowe",
+        "bank_account_connect": "Podłącz konto bankowe",
+        "crypto_payment_method": {
+          "description": "Podłącz bezpiecznie swój portfel. Twoje saldo i adres nie zostaną udostępnione.",
+          "tooltip": "Twój adres i saldo portfela nie zostaną udostępnione; można odliczyć tylko żądaną kwotę",
+          "cashback_descriptor": {
+            "one": "Zwrot pieniędzy otrzymasz po %{count} dzień",
+            "other": "Zwrot pieniędzy otrzymasz po %{count} dni",
+            "few": "Zwrot pieniędzy otrzymasz po %{count} dni"
+          }
+        },
+        "usdc_cashback_title": "%{incentive_percentage}% zwrotu",
+        "usdc_cashback_additional_info": "Zapłać USDC w bazie i odbierz %{incentive_percentage}% zwrotu do portfela w ciągu 30 dni.",
+        "usdc_cashback_terms": "Obowiązują warunki i ograniczenia",
+        "discount_show_more_warnings": {
+          "one": "Pokaż więcej %{count}",
+          "other": "Pokaż więcej %{count}",
+          "few": "Pokaż więcej %{count}"
+        },
+        "separate_payments_label": "Twoje produkty pochodzą z wielu sklepów. Kwota płatności zostanie uwzględniona %{separate_payments_link}.",
+        "separate_payments_text": "oddzielne płatności",
+        "payments": "Płatności",
+        "business_customer_with_bank_account_vaulting_payment_label": "Zapisz tę metodę płatności przy kasie i autoryzuj %{company} aby obciążyć Twoje konto przyszłymi zakupami, które autoryzowałeś dla tej lokalizacji, autoryzacja jest ważna do anulowania. Z tej metody płatności mogą korzystać wszystkie kontakty przypisane do tej lokalizacji.",
+        "new_bank_account_disclaimer": "Realizacja zamówienia oznacza autoryzację %{shop_name} obciążyć poniższy rachunek za pośrednictwem ACH, we wskazanej kwocie i we wskazanym czasie.",
+        "bank_account_disclaimer": "Przetworzenie płatności ACH może zająć do 4 dni roboczych.",
+        "bank_account_vaulted_company_location": "Konto bankowe zapisane dla tej lokalizacji",
+        "bank_account_generic_error": "Nie udało się dodać konta bankowego. Spróbuj ponownie później.",
+        "discount_codes_removed_summary": {
+          "one": "%{count} kod rabatowy został usunięty",
+          "other": "%{count} kody rabatowe zostały usunięte",
+          "few": "%{count} kody rabatowe zostały usunięte"
+        },
+        "default": "Domyślne",
+        "continue_to_guest_checkout": "Kontynuuj realizację transakcji jako gość",
+        "add_payment_method": "Dodaj metodę płatności",
+        "choose_new_payment_method": "Wybierz nową metodę płatności",
+        "add_new_payment_method": "Dodaj nową metodę płatności",
+        "discount_codes_modified_summary": {
+          "one": "%{count} kod rabatowy został zmieniony",
+          "other": "%{count} kody rabatowe zostały zmienione",
+          "few": "%{count} kody rabatowe zostały zmienione"
+        },
+        "discount_codes_removed_or_modified_summary": {
+          "one": "%{count} kod rabatowy został usunięty lub zmieniony",
+          "other": "%{count} kody rabatowe zostały usunięte lub zmienione",
+          "few": "%{count} kody rabatowe zostały usunięte lub zmienione"
+        },
+        "multiple_primary_payment_not_allowed": "Nieprawidłowe metody płatności",
+        "purchase_options_subscription_agreement_label": "Twój koszyk zawiera automatycznie odnawiającą się subskrypcję. Klikając na \"%{button_label}”, %{consent_text} %{cancellation_instructions}",
+        "purchase_options_subscription_consent_text": "wyraźnie i potwierdzasz, że będziesz automatycznie obciążany powtarzającą się kwotą (kwotami) pokazaną w Twoim koszyku (plus koszty wysyłki i podatki) do czasu zakończenia lub anulowania subskrypcji.",
+        "purchase_options_subscription_cancellation_instructions": "%{cancel_text} Proszę skonsultować %{cancellation_policy_label}.",
+        "purchase_options_subscription_cancel_text": "Możesz zrezygnować w dowolnym momencie wchodząc na swoje konto lub kontaktując się ze sklepem.",
+        "vault_for_payment_later": {
+          "pay_button_label": "Złóż zamówienie",
+          "notice": "Teraz nie zostaniesz obciążony żadną kwotą. Kontynuując płatność, zgadzasz się, że Twoja metoda płatności zostanie obciążona podczas przetwarzania Twojego zamówienia."
+        },
+        "alipay_label": "Alipay",
+        "wechat_pay_label": "Płatność WeChat",
+        "oxxo_label": "OXXO",
+        "pay_with_credit_card": "Zapłać kartą kredytową",
+        "pay_with_debit_card": "Zapłać kartą debetową",
+        "bogus_test_checkout": {
+          "title": "Instrukcje testowe",
+          "intro": "Użyj tych wartości, aby przetestować realizację transakcji:",
+          "approved_transaction": "{{card_number}} symulować zatwierdzoną transakcję",
+          "declined_transaction": "{{card_number}} symulować odrzuconą transakcję",
+          "gateway_failure": "{{card_number}} symulować awarię bramy",
+          "additional_instructions": "Użyj dowolnej przyszłej daty ważności i dowolnego 3-cyfrowego kodu zabezpieczającego."
         }
       },
       "thank_you": {
