@@ -68,24 +68,24 @@
     "back": "Terug"
   },
   "newsletter": {
-    "label": "E‑mail",
+    "label": "E-mail",
     "success": "Bedankt voor het abonneren",
-    "button_label": "Abonneren"
+    "button_label": "Abonneer je"
   },
   "accessibility": {
-    "skip_to_text": "Meteen naar de content",
-    "close": "Sluiten",
-    "unit_price_separator": "per",
+    "skip_to_text": "Ga naar de inhoud",
+    "close": "Sluit het",
+    "unit_price_separator": "op",
     "vendor": "Verkoper:",
     "error": "Fout",
-    "refresh_page": "Een selectie kiezen resulteert in het geheel verversen van de pagina.",
+    "refresh_page": "Het kiezen van een selectie resulteert in een volledige paginavernieuwing.",
     "link_messages": {
       "new_window": "Opent in een nieuw venster.",
-      "external": "Opent externe website."
+      "external": "Open de externe site."
     },
-    "loading": "Bezig met laden...",
-    "skip_to_product_info": "Ga direct naar productinformatie",
-    "total_reviews": "totaal aantal recensies",
+    "loading": "Laden...",
+    "skip_to_product_info": "Ga naar productinformatie",
+    "total_reviews": "totaal beoordelingen",
     "star_reviews_info": "{{ rating_value }} van de {{ rating_max }} sterren",
     "collapsible_content_title": "Inklapbare content",
     "complementary_products": "Aanvullende producten"
@@ -463,51 +463,51 @@
       "load_slide": "Laad de dia",
       "previous_slideshow": "Vorige dia",
       "next_slideshow": "Volgende dia",
-      "pause_slideshow": "Diavoorstelling pauzeren",
-      "play_slideshow": "Diavoorstelling afspelen",
+      "pause_slideshow": "Pauzeer de diavoorstelling",
+      "play_slideshow": "Speel de diavoorstelling af",
       "carousel": "Carrousel",
       "slide": "Dia"
     },
     "page": {
-      "title": "Paginatitel"
+      "title": "De titel van de pagina"
     },
     "announcements": {
       "previous_announcement": "Vorige aankondiging",
       "next_announcement": "Volgende aankondiging",
       "carousel": "Carrousel",
       "announcement": "Aankondiging",
-      "announcement_bar": "Aankondigingsbalk",
-      "black_friday_continues": "🎉 Black Friday gaat door met kortingen (tot 80%)",
-      "black_friday_lowest_prices": "🎉 Black Friday: de laagste prijzen van het jaar op geselecteerde producten",
-      "black_friday_delivery_delay": "⚠️ Gedurende deze periode kunnen bestellingen lichte schommelingen in de geschatte levertijden ondervinden",
-      "holiday_closure": "We zijn gesloten 25–28 dec, 31 dec–4 jan, 6–7 jan. Op de overige dagen worden bestellingen normaal verwerkt en geleverd."
+      "announcement_bar": "Mededelingenbalk",
+      "black_friday_continues": "🎉 BLACK FRIDAY gaat door met kortingen TOT 80%",
+      "black_friday_lowest_prices": "🎉 BLACK FRIDAY: De laagste prijzen van het jaar voor de meeste producten",
+      "black_friday_delivery_delay": "⚠‼ Gedurende deze periode kunnen bestellingen kleine schommelingen hebben in de geschatte levertijd",
+      "holiday_closure": "Wij zijn gesloten van 25 t/m 28 december, 31 december t/m 4 januari en 6 t/m 7 januari. Op de overige dagen gaat de orderverwerking en levering gewoon door."
     },
     "quick_order_list": {
-      "product_total": "Productsubtotaal",
-      "view_cart": "Winkelwagen bekijken",
-      "each": "{{ money }}/st",
+      "product_total": "Subtotaal van product",
+      "view_cart": "Bekijk de mand",
+      "each": "{{ money }}/ st.",
       "product": "Product",
       "variant": "Variant",
-      "variant_total": "Totaal variant",
+      "variant_total": "Totale variant",
       "items_added": {
         "one": "{{ quantity }} artikel toegevoegd",
         "other": "{{ quantity }} artikelen toegevoegd",
-        "few": "{{ quantity }} Toegevoegde items"
+        "few": "{{ quantity }} artikelen toegevoegd"
       },
       "items_removed": {
-        "one": "{{ quantity }} artikel verwijderd",
-        "other": "{{ quantity }} artikelen verwijderd",
-        "few": "{{ quantity }} geëlimineerde items"
+        "one": "{{ quantity }} verwijderd artikel",
+        "other": "{{ quantity }} verwijderde items",
+        "few": "{{ quantity }} verwijderde items"
       },
       "product_variants": "Productvarianten",
       "total_items": "Totaal aantal artikelen",
-      "remove_all_items_confirmation": "Alle {{ quantity }} artikelen uit je winkelwagen verwijderen?",
-      "remove_all": "Alles verwijderen",
-      "cancel": "Annuleren",
-      "remove_all_single_item_confirmation": "1 artikel uit je winkelwagen verwijderen?",
-      "min_error": "Voor dit artikel geldt een minimum van {{ min }}.",
-      "max_error": "Voor dit artikel geldt een maximum van {{ max }}.",
-      "step_error": "Je kunt dit artikel alleen toevoegen in stappen van {{ step }}"
+      "remove_all_items_confirmation": "Verwijder deze allemaal {{ quantity }} artikelen in winkelwagen?",
+      "remove_all": "Verwijder alles",
+      "cancel": "Annuleer",
+      "remove_all_single_item_confirmation": "1 artikel uit winkelwagen verwijderen?",
+      "min_error": "Voor dit artikel is de minimumwaarde {{ min }}",
+      "max_error": "Voor dit artikel is de maximale waarde {{ max }}",
+      "step_error": "U kunt dit artikel alleen in stappen van invoeren {{ step }}"
     }
   },
   "localization": {
