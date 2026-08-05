@@ -2487,36 +2487,80 @@
             "other": "%{count} maanden"
           },
           "year": {
-            "few": "%{count} jaar"
+            "few": "%{count} jaren",
+            "one": "jaar",
+            "other": "%{count} jaren"
           }
         },
         "recurring_totals_with_initial_order_shipping_discount_with_policies": {
           "first_cycles": {
-            "few": ", dan zullen ze dat zijn %{count} Betalingen van hoeveel %{total_price}"
+            "few": ", dan zullen ze dat zijn %{count} betalingen van hoeveel %{total_price}",
+            "one": ", dan zal het zo zijn %{count} betaling van %{total_price}",
+            "other": ", dan zullen ze dat zijn %{count} betalingen van hoeveel %{total_price}"
           }
         },
-        "recurring_totals": "%{total_price} aan elk %{interval}"
+        "recurring_totals": "%{total_price} aan elk %{interval}",
+        "recurring_totals_with_initial_order_shipping_discount": "De eerste betaling is %{total_price_with_discount}, dan %{recurring_total}"
       },
       "contextual_availability": {
         "title": {
-          "few": "Niet -beschikbare producten"
+          "few": "Niet beschikbare producten",
+          "one": "Product niet beschikbaar",
+          "other": "Niet beschikbare producten"
         },
         "products_not_available": {
-          "few": "Deze producten worden uit de mand verwijderd omdat ze niet beschikbaar zijn in uw land/regio."
+          "few": "Deze producten worden uit uw winkelwagen verwijderd omdat ze niet beschikbaar zijn in uw land/regio.",
+          "one": "Dit product wordt uit uw winkelwagen verwijderd omdat het niet beschikbaar is in uw land/regio.",
+          "other": "Deze producten worden uit uw winkelwagen verwijderd omdat ze niet beschikbaar zijn in uw land/regio."
         },
         "all_products_in_cart_unavailable": {
-          "few": "Deze producten zijn niet beschikbaar in uw land/regio."
-        }
+          "few": "Deze producten zijn niet beschikbaar in uw land/regio.",
+          "one": "Dit product is niet beschikbaar in uw land/regio.",
+          "other": "Deze producten zijn niet beschikbaar in uw land/regio."
+        },
+        "unavailable_label": "Niet beschikbaar"
       },
       "throttle": {
         "estimated_wait_time": {
-          "few": "Geschatte wachttijd: {{count}} notulen"
+          "few": "Geschatte wachttijd: {{count}} minuten",
+          "calculating": "De geschatte wachttijd wordt berekend",
+          "less_than_one": "Geschatte wachttijd: minder dan een minuut",
+          "one": "Geschatte wachttijd: {{count}} minuut",
+          "other": "Geschatte wachttijd: {{count}} minuten"
+        },
+        "line_to_check_out": "U staat in de rij om uw bestelling af te ronden",
+        "cart_summary_heading": "Jouw mandje",
+        "merchandise": {
+          "sold_out": "Niet op voorraad",
+          "available": "Beschikbaar"
+        },
+        "inventory": {
+          "partial_inventory_banner": "Sommige artikelen in uw winkelwagen zijn niet op voorraad en kunnen niet worden gekocht bij het afrekenen.",
+          "sold_out": {
+            "heading": "Winkelwagen is niet op voorraad",
+            "storefront_body": "Keer terug naar de winkel om verder te winkelen",
+            "no_storefront_body": "Helaas is het artikel dat u wilt kopen niet meer beschikbaar.",
+            "link": "Terug naar de winkel"
+          }
+        },
+        "title": "Staart",
+        "time_to_checkout_title": "Tijd om uw bestelling af te ronden – {{shopName}}",
+        "last_checked": "(Laatste controle bij: {{time}})",
+        "footer": {
+          "heading": "Vernieuw deze pagina niet, deze wordt automatisch bijgewerkt.",
+          "body": "Artikelen in uw winkelwagen worden pas gereserveerd nadat u uw bestelling heeft voltooid."
+        },
+        "too_many_attempts": {
+          "message": "Te veel pogingen",
+          "description": "Probeer het over een paar minuten opnieuw"
         }
       },
       "deliverability": {
         "not_deliverable": {
           "title": {
-            "few": "Geen leveringsmethode beschikbaar voor %{count} (van) artikelen"
+            "few": "Geen bezorgmethode beschikbaar voor %{count} (van) artikelen",
+            "one": "Geen bezorgmethode beschikbaar voor %{count} artikel",
+            "other": "Geen bezorgmethode beschikbaar voor %{count} (van) artikelen"
           },
           "message": {
             "few": "Deze artikelen worden uit de kar verwijderd, omdat er geen leveringsmethoden beschikbaar zijn voor uw adres."
@@ -3047,6 +3091,25 @@
         "cart_updated_based_on_country": "Uw winkelwagen is bijgewerkt op basis van uw verzendland.",
         "cart_and_currency_updated_based_on_country": "Winkelwagen en valuta bijgewerkt op basis van het land van verzending.",
         "currency_updated_for_country": "Bijgewerkte valuta voor %{country}"
+      },
+      "customer_payment_methods": {
+        "page_title": "Betaalmethoden",
+        "title": "Betaalmethoden",
+        "update_card_button_label": "Werk de kaart bij",
+        "delete_customer_mandate": {
+          "generic_error": "Er is een probleem opgetreden bij het verwerken van uw verzoek.",
+          "success_message": "Uw betaalmethode is succesvol verwijderd"
+        }
+      },
+      "mor_policies": {
+        "terms_and_conditions": "Algemene voorwaarden voor geregistreerde handelaren",
+        "privacy_policy": "Privacybeleid voor geregistreerde verkopers"
+      },
+      "change_cart_localization": {
+        "verify_shipping_address": "Uw land/regio is bijgewerkt. Voer uw verzendadres in om door te gaan met afrekenen."
+      },
+      "cart_checkout_validation": {
+        "runtime_error": "Er is een probleem opgetreden bij het verwerken van uw verzoek. Neem contact op met de winkeleigenaar."
       }
     },
     "notices": {
