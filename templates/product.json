@@ -137,7 +137,7 @@
       ],
       "settings": {
         "enable_sticky_info": true,
-        "color_scheme": "scheme-15b3ebfc-72e7-42d0-af22-57c8d007abe9",
+        "color_scheme": "scheme-1",
         "media_size": "medium",
         "constrain_to_viewport": true,
         "media_fit": "contain",
@@ -278,7 +278,9 @@
       "blocks": {
         "vitals_product_reviews_XaVEAf": {
           "type": "shopify://apps/vitals/blocks/product-reviews/aeb48102-2a5a-4f39-bdbd-d8d49f4e20b8",
-          "settings": {}
+          "settings": {
+            "hide_mock_data": false
+          }
         }
       },
       "block_order": [
@@ -337,7 +339,9 @@
       "blocks": {
         "vitals_product_reviews_XXiFQy": {
           "type": "shopify://apps/vitals/blocks/product-reviews/aeb48102-2a5a-4f39-bdbd-d8d49f4e20b8",
-          "settings": {}
+          "settings": {
+            "hide_mock_data": false
+          }
         }
       },
       "block_order": [
@@ -373,7 +377,9 @@
       "blocks": {
         "vitals_recently_viewed_tNLaUb": {
           "type": "shopify://apps/vitals/blocks/recently-viewed/aeb48102-2a5a-4f39-bdbd-d8d49f4e20b8",
-          "settings": {}
+          "settings": {
+            "hide_mock_data": false
+          }
         }
       },
       "block_order": [
