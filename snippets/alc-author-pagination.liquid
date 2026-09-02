@@ -1,0 +1,89 @@
+{% comment %}
+  Pagination for the author archive.
+
+  Shopify's `pagination` snippet only works inside a `{% paginate %}` block, and the
+  author archive paginates a filtered array by hand — so the links are built here from
+  the page number instead. Page 1 links to the bare URL rather than `?page=1`, so the
+  archive keeps a single canonical entry point.
+
+  Accepts:
+  - current: {Number} the page being rendered
+  - total_pages: {Number}
+  - base_url: {String} the author page URL, without a query string
+{% endcomment %}
+
+{{ 'component-pagination.css' | asset_url | stylesheet_tag }}
+
+{%- if total_pages > 1 -%}
+  <div class="pagination-wrapper">
+    <nav class="pagination flex-col" role="navigation" aria-label="{{ 'general.pagination.label' | t }}">
+      <ul class="pagination__list flex flex-row list-unstyled" role="list">
+        {%- if current > 1 -%}
+          {%- liquid
+            assign previous_page = current | minus: 1
+            assign previous_url = base_url
+            if previous_page > 1
+              assign previous_url = base_url | append: '?page=' | append: previous_page
+            endif
+          -%}
+          <li>
+            <a
+              href="{{ previous_url }}"
+              class="pagination__item pagination__item--next pagination__item-arrow link motion-reduce"
+              aria-label="{{ 'general.pagination.previous' | t }}"
+            >
+              <span class="svg-wrapper">
+                {{- 'icon-caret.svg' | inline_asset_content -}}
+              </span>
+            </a>
+          </li>
+        {%- endif -%}
+
+        {%- for index in (1..total_pages) -%}
+          {%- liquid
+            assign item_url = base_url
+            if index > 1
+              assign item_url = base_url | append: '?page=' | append: index
+            endif
+          -%}
+          <li>
+            {%- if index == current -%}
+              <a
+                role="link"
+                aria-disabled="true"
+                class="pagination__item pagination__item--current light"
+                aria-current="page"
+                aria-label="{{ 'general.pagination.page' | t: number: index }}"
+              >
+                {{- index -}}
+              </a>
+            {%- else -%}
+              <a
+                href="{{ item_url }}"
+                class="pagination__item link"
+                aria-label="{{ 'general.pagination.page' | t: number: index }}"
+              >
+                {{- index -}}
+              </a>
+            {%- endif -%}
+          </li>
+        {%- endfor -%}
+
+        {%- if current < total_pages -%}
+          {%- assign next_page = current | plus: 1 -%}
+          <li>
+            <a
+              href="{{ base_url }}?page={{ next_page }}"
+              class="pagination__item pagination__item--prev pagination__item-arrow link motion-reduce"
+              aria-label="{{ 'general.pagination.next' | t }}"
+            >
+              <span class="svg-wrapper">
+                {{- 'icon-caret.svg' | inline_asset_content -}}
+              </span>
+            </a>
+          </li>
+        {%- endif -%}
+      </ul>
+    </nav>
+  </div>
+{%- endif -%}

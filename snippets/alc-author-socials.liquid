@@ -1,0 +1,54 @@
+{% comment %}
+  Renders an author's social profile links.
+
+  These double as schema.org `sameAs` signals, which is what Google's E-E-A-T guidance
+  leans on to tie a byline to a real, verifiable person.
+
+  Accepts:
+  - author: {Object} an `author` metaobject entry
+{% endcomment %}
+
+{%- liquid
+  assign has_socials = false
+  if author.website.value != blank or author.linkedin.value != blank
+    assign has_socials = true
+  endif
+  if author.facebook.value != blank or author.instagram.value != blank
+    assign has_socials = true
+  endif
+  if author.youtube.value != blank
+    assign has_socials = true
+  endif
+-%}
+
+{%- if has_socials -%}
+  <ul class="alc-author-socials list-unstyled" role="list">
+    {%- if author.website.value != blank -%}
+      <li>
+        <a href="{{ author.website.value }}" rel="me noopener" target="_blank" itemprop="sameAs">
+          {{- 'blogs.article.author_website' | t -}}
+        </a>
+      </li>
+    {%- endif -%}
+    {%- if author.linkedin.value != blank -%}
+      <li>
+        <a href="{{ author.linkedin.value }}" rel="me noopener" target="_blank" itemprop="sameAs">LinkedIn</a>
+      </li>
+    {%- endif -%}
+    {%- if author.facebook.value != blank -%}
+      <li>
+        <a href="{{ author.facebook.value }}" rel="me noopener" target="_blank" itemprop="sameAs">Facebook</a>
+      </li>
+    {%- endif -%}
+    {%- if author.instagram.value != blank -%}
+      <li>
+        <a href="{{ author.instagram.value }}" rel="me noopener" target="_blank" itemprop="sameAs">Instagram</a>
+      </li>
+    {%- endif -%}
+    {%- if author.youtube.value != blank -%}
+      <li>
+        <a href="{{ author.youtube.value }}" rel="me noopener" target="_blank" itemprop="sameAs">YouTube</a>
+      </li>
+    {%- endif -%}
+  </ul>
+{%- endif -%}

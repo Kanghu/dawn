@@ -108,7 +108,18 @@
       "back_to_blog": "Back to the blog",
       "share": "Share this article",
       "success": "Comment successfully posted! Thank you!",
-      "success_moderated": "Comment posted successfully. We will publish it shortly as our blog is moderated."
+      "success_moderated": "Comment posted successfully. We will publish it shortly as our blog is moderated.",
+      "author_more_posts": "All posts by {{ name }}",
+      "author_website": "Website"
+    },
+    "author": {
+      "articles_heading": {
+        "one": "{{ count }} article",
+        "other": "{{ count }} articles"
+      },
+      "no_articles": "This author has no published articles yet.",
+      "no_match_warning": "No articles matched the author name \"{{ name }}\". The name field on the author metaobject must match the Author value on the articles exactly.",
+      "posts_by": "Posts by {{ name }}"
     }
   },
   "onboarding": {

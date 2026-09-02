@@ -41,6 +41,8 @@
 
     {% render 'meta-tags' %}
 
+    {% render 'alc-author-head' %}
+
     {{ 'style.css' | asset_url | stylesheet_tag }}
 
     <script src="{{ 'constants.js' | asset_url }}" defer="defer"></script>

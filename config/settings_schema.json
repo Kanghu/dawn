@@ -1554,5 +1554,29 @@
         "default": "scheme-1"
       }
     ]
+  },
+  {
+    "name": "Author pages",
+    "settings": [
+      {
+        "type": "paragraph",
+        "content": "Blogs searched when building an author's post list. Author archive pages (page.author template) and the rel=prev/next tags in <head> both read this, so it has to live here rather than on the section. Defaults to the 'news' blog when nothing is selected."
+      },
+      {
+        "type": "blog",
+        "id": "author_blog_1",
+        "label": "Blog 1"
+      },
+      {
+        "type": "blog",
+        "id": "author_blog_2",
+        "label": "Blog 2"
+      },
+      {
+        "type": "blog",
+        "id": "author_blog_3",
+        "label": "Blog 3"
+      }
+    ]
   }
 ]
