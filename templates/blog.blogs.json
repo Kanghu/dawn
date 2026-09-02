@@ -41,15 +41,16 @@
       }
     },
     "main": {
-      "type": "main-blog",
+      "type": "alc-blog-grid",
       "settings": {
-        "layout": "grid",
+        "posts_per_page": 12,
+        "columns": "3",
         "show_image": true,
-        "image_height": "adapt",
         "show_date": true,
         "show_author": true,
-        "padding_top": 36,
-        "padding_bottom": 36
+        "show_excerpt": true,
+        "padding_top": 40,
+        "padding_bottom": 52
       }
     }
   },

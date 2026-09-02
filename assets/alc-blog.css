@@ -1,0 +1,211 @@
+/* Blog index grid — sections/alc-blog-grid.liquid */
+
+.alc-blog__header {
+  max-width: 62rem;
+  margin-bottom: 4rem;
+}
+
+.alc-blog__header--compact {
+  margin-bottom: 3rem;
+}
+
+.alc-blog__title {
+  margin: 0;
+  font-size: clamp(2.8rem, 1.8rem + 2vw, 4.4rem);
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+}
+
+.alc-blog__title--compact {
+  font-size: clamp(2.2rem, 1.6rem + 1.2vw, 3rem);
+}
+
+.alc-blog__page-number {
+  color: rgba(var(--color-foreground), 0.5);
+  font-weight: 400;
+}
+
+.alc-blog__intro {
+  margin-top: 1.4rem;
+  font-size: 1.7rem;
+  line-height: 1.6;
+  color: rgba(var(--color-foreground), 0.72);
+}
+
+.alc-blog__intro > :first-child {
+  margin-top: 0;
+}
+
+.alc-blog__intro > :last-child {
+  margin-bottom: 0;
+}
+
+.alc-blog__empty {
+  color: rgba(var(--color-foreground), 0.7);
+}
+
+/* --- grid --- */
+
+.alc-blog__grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 4rem 2.4rem;
+}
+
+@media screen and (min-width: 750px) {
+  .alc-blog__grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media screen and (min-width: 990px) {
+  .alc-blog__grid--3 {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .alc-blog__grid--4 {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+}
+
+/* --- card --- */
+
+.alc-article-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 1.4rem;
+  min-width: 0;
+}
+
+.alc-article-card__media {
+  display: block;
+  overflow: hidden;
+  border-radius: 0.8rem;
+  background-color: rgba(var(--color-foreground), 0.05);
+  aspect-ratio: 3 / 2;
+}
+
+.alc-article-card__media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.5s cubic-bezier(0.2, 0.6, 0.2, 1);
+}
+
+.alc-article-card__body {
+  display: flex;
+  flex-direction: column;
+  gap: 0.9rem;
+  min-width: 0;
+}
+
+.alc-article-card__meta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 0.6rem;
+  margin: 0;
+  font-size: 1.3rem;
+  letter-spacing: 0.03em;
+  color: rgba(var(--color-foreground), 0.6);
+}
+
+.alc-article-card__sep {
+  opacity: 0.5;
+}
+
+/* The byline sits above the title's card-wide click target so it stays clickable. */
+.alc-article-card__meta .alc-author-link {
+  position: relative;
+  z-index: 1;
+  color: inherit;
+  text-decoration: none;
+  border-bottom: 0.1rem solid rgba(var(--color-foreground), 0.28);
+}
+
+.alc-article-card__meta .alc-author-link:hover {
+  color: rgb(var(--color-foreground));
+  border-bottom-color: currentColor;
+}
+
+.alc-article-card__title {
+  margin: 0;
+  font-size: 1.9rem;
+  line-height: 1.32;
+  letter-spacing: -0.01em;
+}
+
+.alc-article-card__title a {
+  color: rgb(var(--color-foreground));
+  text-decoration: none;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+/* Stretched link: the whole card is one target, without nesting anchors. */
+.alc-article-card__title a::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+}
+
+.alc-article-card__excerpt {
+  margin: 0;
+  font-size: 1.5rem;
+  line-height: 1.6;
+  color: rgba(var(--color-foreground), 0.7);
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.alc-article-card__cta {
+  margin-top: 0.2rem;
+  font-size: 1.4rem;
+  font-weight: 600;
+  color: rgb(var(--color-foreground));
+}
+
+.alc-article-card__cta::after {
+  content: "\2192";
+  display: inline-block;
+  margin-left: 0.5rem;
+  transition: transform 0.25s ease;
+}
+
+/* --- interaction --- */
+
+.alc-article-card:hover .alc-article-card__media img {
+  transform: scale(1.045);
+}
+
+.alc-article-card:hover .alc-article-card__title a {
+  text-decoration: underline;
+  text-underline-offset: 0.3rem;
+}
+
+.alc-article-card:hover .alc-article-card__cta::after {
+  transform: translateX(0.4rem);
+}
+
+.alc-article-card__title a:focus-visible {
+  outline: 0.2rem solid rgb(var(--color-foreground));
+  outline-offset: 0.4rem;
+  border-radius: 0.2rem;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .alc-article-card__media img,
+  .alc-article-card__cta::after {
+    transition: none;
+  }
+
+  .alc-article-card:hover .alc-article-card__media img {
+    transform: none;
+  }
+}

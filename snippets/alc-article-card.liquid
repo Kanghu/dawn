@@ -1,0 +1,74 @@
+{% comment %}
+  Article card for the blog listing.
+
+  Replaces Dawn's `article-card` on the blog index. The differences that matter:
+  the image is served at the size it is actually displayed at (Dawn's collage layout
+  stretched 575px source images across 1235px, upscaling them 2x), titles and excerpts
+  are clamped by CSS rather than cut mid-word by `truncate`, and the byline links to
+  the author page.
+
+  Accepts:
+  - article: {Object}
+  - show_image: {Boolean}
+  - show_date: {Boolean}
+  - show_author: {Boolean}
+  - show_excerpt: {Boolean}
+  - read_more_label: {String} CTA text. A section setting rather than a locale string:
+    locales/en.default.json sits on Shopify's 3400-key ceiling and cannot take another.
+  - eager: {Boolean} skip lazy loading — pass true for cards above the fold
+{% endcomment %}
+
+<article class="alc-article-card">
+  {%- if show_image and article.image -%}
+    <a class="alc-article-card__media" href="{{ article.url }}" tabindex="-1" aria-hidden="true">
+      <img
+        srcset="
+          {% if article.image.width >= 300 %}{{ article.image | image_url: width: 300 }} 300w,{% endif %}
+          {% if article.image.width >= 450 %}{{ article.image | image_url: width: 450 }} 450w,{% endif %}
+          {% if article.image.width >= 600 %}{{ article.image | image_url: width: 600 }} 600w,{% endif %}
+          {% if article.image.width >= 900 %}{{ article.image | image_url: width: 900 }} 900w,{% endif %}
+          {{ article.image | image_url }} {{ article.image.width }}w
+        "
+        sizes="(min-width: 990px) calc((100vw - 10rem) / 3), (min-width: 750px) calc((100vw - 10rem) / 2), calc(100vw - 3rem)"
+        src="{{ article.image | image_url: width: 600 }}"
+        alt="{{ article.image.alt | escape }}"
+        width="{{ article.image.width }}"
+        height="{{ article.image.height }}"
+        loading="{% if eager %}eager{% else %}lazy{% endif %}"
+      >
+    </a>
+  {%- endif -%}
+
+  <div class="alc-article-card__body">
+    {%- if show_date or show_author -%}
+      <p class="alc-article-card__meta">
+        {%- if show_date -%}
+          {{ article.published_at | time_tag: format: 'date' }}
+        {%- endif -%}
+        {%- if show_date and show_author and article.author != blank -%}
+          <span class="alc-article-card__sep" aria-hidden="true">&middot;</span>
+        {%- endif -%}
+        {%- if show_author -%}
+          {%- render 'alc-author-link', author_name: article.author -%}
+        {%- endif -%}
+      </p>
+    {%- endif -%}
+
+    <h3 class="alc-article-card__title">
+      <a href="{{ article.url }}">{{ article.title | escape }}</a>
+    </h3>
+
+    {%- if show_excerpt -%}
+      {%- assign card_excerpt = article.excerpt | default: article.content -%}
+      {%- if card_excerpt != blank -%}
+        <p class="alc-article-card__excerpt">
+          {{- card_excerpt | strip_html | truncatewords: 28 -}}
+        </p>
+      {%- endif -%}
+    {%- endif -%}
+
+    {%- if read_more_label != blank -%}
+      <span class="alc-article-card__cta" aria-hidden="true">{{ read_more_label | escape }}</span>
+    {%- endif -%}
+  </div>
+</article>

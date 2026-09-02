@@ -1,0 +1,181 @@
+{% comment %}
+  Blog index listing.
+
+  Replaces Dawn's `main-blog` on the blog templates. Dawn's "collage" layout made every
+  third card full-bleed, which upscaled 575px source images to 1235px, and it showed
+  only 6 posts per page — 20 pages for a 116-post blog. This is a uniform grid at the
+  image's real size, 12 posts per page.
+{% endcomment %}
+
+{{ 'alc-blog.css' | asset_url | stylesheet_tag }}
+
+{%- style -%}
+  .section-{{ section.id }}-padding {
+    padding-top: {{ section.settings.padding_top | times: 0.75 | round: 0 }}px;
+    padding-bottom: {{ section.settings.padding_bottom | times: 0.75 | round: 0 }}px;
+  }
+
+  @media screen and (min-width: 750px) {
+    .section-{{ section.id }}-padding {
+      padding-top: {{ section.settings.padding_top }}px;
+      padding-bottom: {{ section.settings.padding_bottom }}px;
+    }
+  }
+{%- endstyle -%}
+
+{%- paginate blog.articles by section.settings.posts_per_page -%}
+  {%- liquid
+    assign heading = section.settings.heading | default: blog.title
+    assign columns_class = 'alc-blog__grid--' | append: section.settings.columns
+  -%}
+
+  <div class="alc-blog page-width section-{{ section.id }}-padding">
+    {%- if paginate.current_page == 1 -%}
+      <header class="alc-blog__header">
+        <h1 class="alc-blog__title">{{ heading | escape }}</h1>
+        {%- if section.settings.intro != blank -%}
+          <div class="alc-blog__intro rte">{{ section.settings.intro }}</div>
+        {%- endif -%}
+      </header>
+    {%- else -%}
+      <header class="alc-blog__header alc-blog__header--compact">
+        <h1 class="alc-blog__title alc-blog__title--compact">
+          {{- heading | escape }}
+          <span class="alc-blog__page-number">
+            &mdash; {{ 'general.pagination.page' | t: number: paginate.current_page }}
+          </span>
+        </h1>
+      </header>
+    {%- endif -%}
+
+    {%- if blog.articles.size > 0 -%}
+      <div class="alc-blog__grid {{ columns_class }}">
+        {%- for article in blog.articles -%}
+          {%- render 'alc-article-card',
+            article: article,
+            show_image: section.settings.show_image,
+            show_date: section.settings.show_date,
+            show_author: section.settings.show_author,
+            show_excerpt: section.settings.show_excerpt,
+            read_more_label: section.settings.read_more_label,
+            eager: forloop.first
+          -%}
+        {%- endfor -%}
+      </div>
+
+      {%- if paginate.pages > 1 -%}
+        {%- render 'pagination', paginate: paginate -%}
+      {%- endif -%}
+    {%- else -%}
+      <p class="alc-blog__empty">{{ 'blogs.author.no_articles' | t }}</p>
+    {%- endif -%}
+  </div>
+{%- endpaginate -%}
+
+{% schema %}
+{
+  "name": "t:sections.alc-blog-grid.name",
+  "tag": "section",
+  "class": "section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "t:sections.alc-blog-grid.settings.heading.label",
+      "info": "t:sections.alc-blog-grid.settings.heading.info"
+    },
+    {
+      "type": "richtext",
+      "id": "intro",
+      "label": "t:sections.alc-blog-grid.settings.intro.label"
+    },
+    {
+      "type": "range",
+      "id": "posts_per_page",
+      "min": 6,
+      "max": 24,
+      "step": 3,
+      "default": 12,
+      "label": "t:sections.alc-blog-grid.settings.posts_per_page.label"
+    },
+    {
+      "type": "select",
+      "id": "columns",
+      "options": [
+        {
+          "value": "2",
+          "label": "t:sections.alc-blog-grid.settings.columns.options__1.label"
+        },
+        {
+          "value": "3",
+          "label": "t:sections.alc-blog-grid.settings.columns.options__2.label"
+        },
+        {
+          "value": "4",
+          "label": "t:sections.alc-blog-grid.settings.columns.options__3.label"
+        }
+      ],
+      "default": "3",
+      "label": "t:sections.alc-blog-grid.settings.columns.label"
+    },
+    {
+      "type": "header",
+      "content": "t:sections.alc-blog-grid.settings.card_heading.content"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_image",
+      "default": true,
+      "label": "t:sections.alc-blog-grid.settings.show_image.label"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_date",
+      "default": true,
+      "label": "t:sections.alc-blog-grid.settings.show_date.label"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_author",
+      "default": true,
+      "label": "t:sections.alc-blog-grid.settings.show_author.label"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_excerpt",
+      "default": true,
+      "label": "t:sections.alc-blog-grid.settings.show_excerpt.label"
+    },
+    {
+      "type": "text",
+      "id": "read_more_label",
+      "label": "t:sections.alc-blog-grid.settings.read_more_label.label",
+      "default": "t:sections.alc-blog-grid.settings.read_more_label.default"
+    },
+    {
+      "type": "header",
+      "content": "t:sections.all.padding.section_padding_heading"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "t:sections.all.padding.padding_top",
+      "default": 40
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "t:sections.all.padding.padding_bottom",
+      "default": 52
+    }
+  ]
+}
+{% endschema %}

@@ -3481,6 +3481,52 @@
           }
         }
       }
+    },
+    "alc-blog-grid": {
+      "name": "Blog posts grid",
+      "settings": {
+        "heading": {
+          "label": "Heading",
+          "info": "Leave empty to use the blog's own title."
+        },
+        "intro": {
+          "label": "Intro text"
+        },
+        "posts_per_page": {
+          "label": "Posts per page"
+        },
+        "columns": {
+          "label": "Columns on desktop",
+          "options__1": {
+            "label": "2"
+          },
+          "options__2": {
+            "label": "3"
+          },
+          "options__3": {
+            "label": "4"
+          }
+        },
+        "card_heading": {
+          "content": "Card"
+        },
+        "show_image": {
+          "label": "Show featured image"
+        },
+        "show_date": {
+          "label": "Show date"
+        },
+        "show_author": {
+          "label": "Show author"
+        },
+        "show_excerpt": {
+          "label": "Show excerpt"
+        },
+        "read_more_label": {
+          "label": "Read more link",
+          "default": "Read article"
+        }
+      }
     }
   }
 }
