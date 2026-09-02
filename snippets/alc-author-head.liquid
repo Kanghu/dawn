@@ -1,0 +1,101 @@
+{% comment %}
+  Emits rel="prev" / rel="next" for the paginated author archive.
+
+  These have to live in <head>, and sections cannot write there, so the author's post
+  count is recomputed here. The page size MUST stay in sync with `per_page` in
+  sections/alc-author-page.liquid.
+
+  The self-referencing canonical is already correct without any help: Shopify's
+  `canonical_url` appends `?page=N` on these URLs, so theme.liquid's existing
+  <link rel="canonical"> resolves to the right paginated URL on its own.
+{% endcomment %}
+
+{%- if template.name == 'page' and template.suffix == 'author' -%}
+  {%- liquid
+    assign per_page = 10
+
+    assign author_handle = page.handle
+    assign author = shop.metaobjects.author[author_handle]
+    if author == blank
+      assign stripped_handle = page.handle | remove_first: 'autor-'
+      assign lookup = shop.metaobjects.author[stripped_handle]
+      if lookup != blank
+        assign author = lookup
+      endif
+    endif
+
+    assign author_name = author.name.value | default: page.title
+
+    comment
+      Same blog list as sections/alc-author-page.liquid. `blogs` cannot be iterated,
+      so the blogs come from Theme settings > Author pages.
+    endcomment
+    assign blog_keys = ''
+    if settings.author_blog_1 != blank
+      assign blog_keys = blog_keys | append: settings.author_blog_1 | append: ','
+    endif
+    if settings.author_blog_2 != blank
+      assign blog_keys = blog_keys | append: settings.author_blog_2 | append: ','
+    endif
+    if settings.author_blog_3 != blank
+      assign blog_keys = blog_keys | append: settings.author_blog_3 | append: ','
+    endif
+    if blog_keys == blank
+      assign blog_keys = 'news,'
+    endif
+    assign blog_key_list = blog_keys | split: ','
+    assign blog_keys_used = ''
+
+    assign total_articles = 0
+    for blog_key in blog_key_list
+      assign dedupe_token = '|' | append: blog_key | append: '|'
+      unless blog_keys_used contains dedupe_token
+        assign blog_keys_used = blog_keys_used | append: dedupe_token
+        assign matched = blogs[blog_key].articles | where: 'author', author_name
+        assign total_articles = total_articles | plus: matched.size
+      endunless
+    endfor
+
+    assign total_pages = total_articles | divided_by: per_page
+    assign remainder = total_articles | modulo: per_page
+    if remainder > 0
+      assign total_pages = total_pages | plus: 1
+    endif
+    comment
+      Must match the clamp in sections/alc-author-page.liquid: an author with no matching
+      posts still has one real page, and without this it would be marked noindex.
+    endcomment
+    if total_pages < 1
+      assign total_pages = 1
+    endif
+
+    assign active_page = current_page | default: 1
+  -%}
+
+  {%- comment -%}
+    The section clamps an out-of-range ?page= back to the last real page, so those URLs
+    answer 200 with duplicated content under their own canonical. Keep them out of the
+    index; `follow` still lets the links on them be crawled.
+  {%- endcomment -%}
+  {%- if active_page > total_pages -%}
+    <meta name="robots" content="noindex, follow">
+  {%- endif -%}
+
+  {%- if total_pages > 1 -%}
+    {%- if active_page > 1 -%}
+      {%- liquid
+        assign previous_page = active_page | minus: 1
+        assign previous_url = page.url
+        if previous_page > 1
+          assign previous_url = page.url | append: '?page=' | append: previous_page
+        endif
+      -%}
+      <link rel="prev" href="{{ request.origin }}{{ previous_url }}">
+    {%- endif -%}
+
+    {%- if active_page < total_pages -%}
+      {%- assign next_page = active_page | plus: 1 -%}
+      <link rel="next" href="{{ request.origin }}{{ page.url }}?page={{ next_page }}">
+    {%- endif -%}
+  {%- endif -%}
+{%- endif -%}

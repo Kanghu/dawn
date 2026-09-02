@@ -34,13 +34,32 @@
         "content": {
           "type": "content",
           "settings": {}
+        },
+        "author_byline": {
+          "type": "author_box",
+          "settings": {
+            "heading": "",
+            "show_image": true,
+            "show_bio": false,
+            "show_link": false
+          }
+        },
+        "author_box": {
+          "type": "author_box",
+          "settings": {
+            "show_image": true,
+            "show_bio": true,
+            "show_link": true
+          }
         }
       },
       "block_order": [
         "featured_image",
         "title",
+        "author_byline",
         "share",
-        "content"
+        "content",
+        "author_box"
       ],
       "settings": {}
     }

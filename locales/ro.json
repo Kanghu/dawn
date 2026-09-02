@@ -108,7 +108,19 @@
         "one": "{{ count }} comentariu",
         "other": "{{ count }} comentarii",
         "few": "{{ count }} comentarii"
-      }
+      },
+      "author_more_posts": "Toate articolele de {{ name }}",
+      "author_website": "Site web"
+    },
+    "author": {
+      "articles_heading": {
+        "one": "{{ count }} articol",
+        "other": "{{ count }} articole",
+        "few": "{{ count }} articole"
+      },
+      "no_articles": "Acest autor nu are inca articole publicate.",
+      "no_match_warning": "Niciun articol nu corespunde autorului \"{{ name }}\". Campul name din metaobiectul author trebuie sa fie identic cu valoarea Author de pe articole.",
+      "posts_by": "Articole de {{ name }}"
     }
   },
   "onboarding": {
@@ -121,11 +133,11 @@
       "low_stock": "Doar {{ count }} rămase in stoc",
       "last_stock": "Ultimele {{ count }} bucăți 🔥",
       "last_piece": "Ultima bucată 🔥",
-      "out_of_stock": "Stoc epuizat",
+      "out_of_stock": "Stoc epuizat"
     },
-      "free_shipping": "Livrare GRATUITĂ ⚡ (2 - 4 zile lucratoare)",
-      "free_shipping_link_text": "vezi detalii",
-      "free_shipping_link": "/pages/livrare",
+    "free_shipping": "Livrare GRATUITĂ ⚡ (2 - 4 zile lucratoare)",
+    "free_shipping_link_text": "vezi detalii",
+    "free_shipping_link": "/pages/livrare",
     "savings": "Economisesti {{ amount }}",
     "delivery": "Livrare în 2 - 4 zile lucratoare",
     "price_info": "Producator direct: ",

@@ -1,0 +1,107 @@
+{% comment %}
+  Renders the author box shown on blog articles (E-E-A-T author attribution).
+
+  The author is resolved from the plain `article.author` string: it is handleized and
+  used to look up an `author` metaobject entry. Nothing is stored on the article itself,
+  so every existing article works without being re-saved.
+
+  Resolution order for the author page link:
+    1. the `page` field on the author metaobject (a page reference)
+    2. /pages/<handleized-author-name>
+    3. /pages/autor-<handleized-author-name>
+  If none of those exist the name is rendered as plain text rather than a broken link.
+
+  Accepts:
+  - author_name: {String} usually `article.author`
+  - show_bio: {Boolean} render the short bio (default: true)
+  - show_image: {Boolean} render the author photo (default: true)
+  - show_link: {Boolean} render the trailing "all posts by" link (default: true)
+  - heading: {String} optional label above the box, e.g. "Despre autor"
+{% endcomment %}
+
+{%- liquid
+  assign author_name = author_name | default: blank
+  assign author_handle = author_name | handle
+  assign author = shop.metaobjects.author[author_handle]
+
+  assign author_display_name = author.name.value | default: author_name
+
+  assign author_page = author.page.value
+  assign author_url = author_page.url
+  if author_url == blank
+    assign author_url = pages[author_handle].url
+  endif
+  if author_url == blank
+    assign prefixed_handle = 'autor-' | append: author_handle
+    assign author_url = pages[prefixed_handle].url
+  endif
+
+  if show_bio == nil
+    assign show_bio = true
+  endif
+  if show_image == nil
+    assign show_image = true
+  endif
+  if show_link == nil
+    assign show_link = true
+  endif
+-%}
+
+{%- if author_name != blank -%}
+  <div class="alc-author-box" itemscope itemtype="https://schema.org/Person">
+    {%- if heading != blank -%}
+      <h2 class="alc-author-box__heading">{{ heading }}</h2>
+    {%- endif -%}
+
+    <div class="alc-author-box__inner">
+      {%- if show_image and author.photo.value != blank -%}
+        <div class="alc-author-box__media">
+          {{
+            author.photo.value
+            | image_url: width: 160
+            | image_tag:
+              loading: 'lazy',
+              width: 80,
+              height: 80,
+              class: 'alc-author-box__avatar',
+              alt: author_display_name,
+              itemprop: 'image'
+          }}
+        </div>
+      {%- endif -%}
+
+      <div class="alc-author-box__body">
+        <p class="alc-author-box__name">
+          {%- if author_url != blank -%}
+            <a href="{{ author_url }}" rel="author" itemprop="url">
+              <span itemprop="name">{{ author_display_name | escape }}</span>
+            </a>
+          {%- else -%}
+            <span itemprop="name">{{ author_display_name | escape }}</span>
+          {%- endif -%}
+        </p>
+
+        {%- if author.job_title.value != blank -%}
+          <p class="alc-author-box__role" itemprop="jobTitle">{{ author.job_title.value | escape }}</p>
+        {%- endif -%}
+
+        {%- if show_bio and author.bio.value != blank -%}
+          <div class="alc-author-box__bio rte" itemprop="description">
+            {{ author.bio | metafield_tag }}
+          </div>
+        {%- endif -%}
+
+        {%- render 'alc-author-socials', author: author -%}
+
+        {%- if show_link and author_url != blank -%}
+          <a class="alc-author-box__more link animate-arrow" href="{{ author_url }}" rel="author">
+            {{ 'blogs.article.author_more_posts' | t: name: author_display_name }}
+            <span class="icon-wrap">
+              <span class="svg-wrapper">{{- 'icon-arrow.svg' | inline_asset_content -}}</span>
+            </span>
+          </a>
+        {%- endif -%}
+      </div>
+    </div>
+  </div>
+{%- endif -%}

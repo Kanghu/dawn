@@ -1731,6 +1731,27 @@
               "content": "A store title and description are included with the preview image. [Learn more](https://help.shopify.com/manual/promoting-marketing/seo/adding-keywords#set-a-title-and-description-for-your-online-store)."
             }
           }
+        },
+        "author_box": {
+          "name": "Author box",
+          "settings": {
+            "info": {
+              "content": "Reads the article Author field and looks up a matching entry in the author metaobject. Add it twice to show a short byline near the title and a full box at the end."
+            },
+            "heading": {
+              "label": "Heading",
+              "default": "About the author"
+            },
+            "show_image": {
+              "label": "Show author photo"
+            },
+            "show_bio": {
+              "label": "Show biography"
+            },
+            "show_link": {
+              "label": "Show link to the author page"
+            }
+          }
         }
       }
     },
@@ -3427,6 +3448,38 @@
       },
       "presets": {
         "name": "Collapsible content"
+      }
+    },
+    "alc-author-page": {
+      "name": "Author page",
+      "settings": {
+        "setup_info": {
+          "content": "Give this page a handle matching an author metaobject entry, e.g. autor-nume-autor. Lists 10 posts per page; the biography only shows on page 1."
+        },
+        "show_image": {
+          "label": "Show author photo"
+        },
+        "show_socials": {
+          "label": "Show social links"
+        },
+        "show_image_in_card": {
+          "label": "Show featured images in the post list"
+        },
+        "image_height": {
+          "label": "Featured image height",
+          "options__1": {
+            "label": "Adapt to image"
+          },
+          "options__2": {
+            "label": "Small"
+          },
+          "options__3": {
+            "label": "Medium"
+          },
+          "options__4": {
+            "label": "Large"
+          }
+        }
       }
     }
   }

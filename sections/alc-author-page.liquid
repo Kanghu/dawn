@@ -1,0 +1,321 @@
+{% comment %}
+  Author archive page.
+
+  Assigned to a Shopify page via the `page.author` template. The page handle selects the
+  `author` metaobject entry — either `kanghu-shi` or `autor-kanghu-shi`, so the page can
+  keep an SEO-friendly Romanian URL while the metaobject stays keyed on the plain name.
+
+  Articles are matched on `article.author`, which means the author's `name` field must be
+  spelled exactly as it appears on the articles. Liquid caps `blog.articles` at 50 entries
+  per blog outside a paginate tag, so an author with more than 50 posts lists their 50
+  most recent ones.
+
+  Pagination is manual (driven by the global `current_page`) because Liquid cannot
+  paginate a filtered array. Ten posts per page, per the SEO audit; the bio block is
+  suppressed on pages 2+ so the paginated URLs stay thin-content free. `rel=prev/next`
+  lives in snippets/alc-author-head.liquid, which must use the same page size.
+{% endcomment %}
+
+{{ 'alc-author.css' | asset_url | stylesheet_tag }}
+{{ 'component-article-card.css' | asset_url | stylesheet_tag }}
+{{ 'component-card.css' | asset_url | stylesheet_tag }}
+
+{%- liquid
+  assign per_page = 10
+
+  assign author_handle = page.handle
+  assign author = shop.metaobjects.author[author_handle]
+  if author == blank
+    assign stripped_handle = page.handle | remove_first: 'autor-'
+    assign lookup = shop.metaobjects.author[stripped_handle]
+    if lookup != blank
+      assign author = lookup
+      assign author_handle = stripped_handle
+    endif
+  endif
+
+  assign author_name = author.name.value | default: page.title
+
+  comment
+    `blogs` is a lookup object, not a list: iterating it yields nothing. The blogs to
+    search are therefore named explicitly in Theme settings > Author pages, which is
+    also the only place snippets/alc-author-head.liquid can read them from.
+  endcomment
+  assign blog_keys = ''
+  if settings.author_blog_1 != blank
+    assign blog_keys = blog_keys | append: settings.author_blog_1 | append: ','
+  endif
+  if settings.author_blog_2 != blank
+    assign blog_keys = blog_keys | append: settings.author_blog_2 | append: ','
+  endif
+  if settings.author_blog_3 != blank
+    assign blog_keys = blog_keys | append: settings.author_blog_3 | append: ','
+  endif
+  if blog_keys == blank
+    assign blog_keys = 'news,'
+  endif
+  assign blog_key_list = blog_keys | split: ','
+  assign blog_keys_used = ''
+
+  assign author_articles = '' | split: ''
+  for blog_key in blog_key_list
+    assign dedupe_token = '|' | append: blog_key | append: '|'
+    unless blog_keys_used contains dedupe_token
+      assign blog_keys_used = blog_keys_used | append: dedupe_token
+      assign matched = blogs[blog_key].articles | where: 'author', author_name
+      assign author_articles = author_articles | concat: matched
+    endunless
+  endfor
+  assign author_articles = author_articles | sort: 'published_at' | reverse
+
+  assign total_articles = author_articles.size
+  assign total_pages = total_articles | divided_by: per_page
+  assign remainder = total_articles | modulo: per_page
+  if remainder > 0
+    assign total_pages = total_pages | plus: 1
+  endif
+  if total_pages < 1
+    assign total_pages = 1
+  endif
+
+  assign active_page = current_page | default: 1
+  if active_page > total_pages
+    assign active_page = total_pages
+  endif
+  if active_page < 1
+    assign active_page = 1
+  endif
+  assign offset = active_page | minus: 1 | times: per_page
+  assign page_articles = author_articles | slice: offset, per_page
+-%}
+
+{%- style -%}
+  .section-{{ section.id }}-padding {
+    padding-top: {{ section.settings.padding_top | times: 0.75 | round: 0 }}px;
+    padding-bottom: {{ section.settings.padding_bottom | times: 0.75 | round: 0 }}px;
+  }
+
+  @media screen and (min-width: 750px) {
+    .section-{{ section.id }}-padding {
+      padding-top: {{ section.settings.padding_top }}px;
+      padding-bottom: {{ section.settings.padding_bottom }}px;
+    }
+  }
+{%- endstyle -%}
+
+<div class="alc-author-page page-width section-{{ section.id }}-padding">
+  {%- comment -%}
+    The bio only renders on page 1. Pages 2+ are a plain post list, which keeps the
+    paginated URLs from duplicating the biography across the archive.
+  {%- endcomment -%}
+  {%- if active_page == 1 -%}
+    <header class="alc-author-page__header">
+      {%- if section.settings.show_image and author.photo.value != blank -%}
+        <div class="alc-author-page__media">
+          {{
+            author.photo.value
+            | image_url: width: 320
+            | image_tag:
+              loading: 'eager',
+              width: 160,
+              height: 160,
+              class: 'alc-author-page__avatar',
+              alt: author_name
+          }}
+        </div>
+      {%- endif -%}
+
+      <div class="alc-author-page__intro">
+        <h1 class="alc-author-page__name">{{ author_name | escape }}</h1>
+
+        {%- if author.job_title.value != blank -%}
+          <p class="alc-author-page__role">{{ author.job_title.value | escape }}</p>
+        {%- endif -%}
+
+        <div class="alc-author-page__bio rte">
+          {%- if author.bio.value != blank -%}
+            {{ author.bio | metafield_tag }}
+          {%- else -%}
+            {{ page.content }}
+          {%- endif -%}
+        </div>
+
+        {%- if section.settings.show_socials -%}
+          {%- render 'alc-author-socials', author: author -%}
+        {%- endif -%}
+      </div>
+    </header>
+  {%- else -%}
+    <h1 class="alc-author-page__name alc-author-page__name--compact">
+      {{- 'blogs.author.posts_by' | t: name: author_name -}}
+    </h1>
+  {%- endif -%}
+
+  {%- if request.design_mode and total_articles == 0 -%}
+    <div class="alc-author-page__notice">
+      {{ 'blogs.author.no_match_warning' | t: name: author_name }}
+    </div>
+  {%- endif -%}
+
+  {%- if total_articles > 0 -%}
+    <h2 class="alc-author-page__list-heading">
+      {{- 'blogs.author.articles_heading' | t: count: total_articles -}}
+    </h2>
+
+    <div class="blog-articles blog-articles--collage">
+      {%- for article in page_articles -%}
+        <div class="blog-articles__article article">
+          {%- render 'article-card',
+            article: article,
+            media_height: section.settings.image_height,
+            media_aspect_ratio: article.image.aspect_ratio,
+            show_image: section.settings.show_image_in_card,
+            show_date: true,
+            show_author: false,
+            show_excerpt: true
+          -%}
+        </div>
+      {%- endfor -%}
+    </div>
+
+    {%- if total_pages > 1 -%}
+      {%- render 'alc-author-pagination',
+        current: active_page,
+        total_pages: total_pages,
+        base_url: page.url
+      -%}
+    {%- endif -%}
+  {%- else -%}
+    <p class="alc-author-page__empty">{{ 'blogs.author.no_articles' | t }}</p>
+  {%- endif -%}
+</div>
+
+{%- comment -%}
+  ProfilePage/Person markup. The visible byline links carry rel="author"; this gives
+  search engines the machine-readable half of the same relationship.
+{%- endcomment -%}
+{%- if active_page == 1 -%}
+  {%- liquid
+    assign same_as = ''
+    if author.website.value != blank
+      assign same_as = same_as | append: author.website.value | append: '||'
+    endif
+    if author.linkedin.value != blank
+      assign same_as = same_as | append: author.linkedin.value | append: '||'
+    endif
+    if author.facebook.value != blank
+      assign same_as = same_as | append: author.facebook.value | append: '||'
+    endif
+    if author.instagram.value != blank
+      assign same_as = same_as | append: author.instagram.value | append: '||'
+    endif
+    if author.youtube.value != blank
+      assign same_as = same_as | append: author.youtube.value | append: '||'
+    endif
+    assign same_as_list = same_as | split: '||'
+  -%}
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "ProfilePage",
+      "url": {{ canonical_url | json }},
+      "mainEntity": {
+        "@type": "Person",
+        "name": {{ author_name | json }},
+        "url": {{ canonical_url | json }}
+        {%- if author.job_title.value != blank -%}
+          , "jobTitle": {{ author.job_title.value | json }}
+        {%- endif -%}
+        {%- if author.bio.value != blank -%}
+          , "description": {{ author.bio.value | strip_html | strip | json }}
+        {%- endif -%}
+        {%- if author.photo.value != blank -%}
+          , "image": {{ author.photo.value | image_url: width: 512 | prepend: 'https:' | json }}
+        {%- endif -%}
+        {%- if same_as_list.size > 0 -%}
+          , "sameAs": {{ same_as_list | json }}
+        {%- endif -%}
+      }
+    }
+  </script>
+{%- endif -%}
+
+{% schema %}
+{
+  "name": "t:sections.alc-author-page.name",
+  "tag": "section",
+  "class": "section",
+  "settings": [
+    {
+      "type": "paragraph",
+      "content": "t:sections.alc-author-page.settings.setup_info.content"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_image",
+      "default": true,
+      "label": "t:sections.alc-author-page.settings.show_image.label"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_socials",
+      "default": true,
+      "label": "t:sections.alc-author-page.settings.show_socials.label"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_image_in_card",
+      "default": true,
+      "label": "t:sections.alc-author-page.settings.show_image_in_card.label"
+    },
+    {
+      "type": "select",
+      "id": "image_height",
+      "options": [
+        {
+          "value": "adapt",
+          "label": "t:sections.alc-author-page.settings.image_height.options__1.label"
+        },
+        {
+          "value": "small",
+          "label": "t:sections.alc-author-page.settings.image_height.options__2.label"
+        },
+        {
+          "value": "medium",
+          "label": "t:sections.alc-author-page.settings.image_height.options__3.label"
+        },
+        {
+          "value": "large",
+          "label": "t:sections.alc-author-page.settings.image_height.options__4.label"
+        }
+      ],
+      "default": "medium",
+      "label": "t:sections.alc-author-page.settings.image_height.label"
+    },
+    {
+      "type": "header",
+      "content": "t:sections.all.padding.section_padding_heading"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "t:sections.all.padding.padding_top",
+      "default": 36
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "t:sections.all.padding.padding_bottom",
+      "default": 36
+    }
+  ]
+}
+{% endschema %}

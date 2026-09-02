@@ -33,6 +33,63 @@
                     }
                 }
             }
+        },
+        "main-article": {
+            "blocks": {
+                "author_box": {
+                    "name": "Casetă autor",
+                    "settings": {
+                        "info": {
+                            "content": "Citește câmpul Author al articolului și caută intrarea corespunzătoare în metaobiectul author. Adaugă blocul de două ori pentru o semnătură scurtă lângă titlu și o casetă completă la final."
+                        },
+                        "heading": {
+                            "label": "Titlu",
+                            "default": "Despre autor"
+                        },
+                        "show_image": {
+                            "label": "Afișează poza autorului"
+                        },
+                        "show_bio": {
+                            "label": "Afișează biografia"
+                        },
+                        "show_link": {
+                            "label": "Afișează linkul către pagina autorului"
+                        }
+                    }
+                }
+            }
+        },
+        "alc-author-page": {
+            "name": "Pagină autor",
+            "settings": {
+                "setup_info": {
+                    "content": "Dă paginii un handle care corespunde unei intrări din metaobiectul author, ex. autor-nume-autor. Afișează 10 articole pe pagină; biografia apare doar pe pagina 1."
+                },
+                "show_image": {
+                    "label": "Afișează poza autorului"
+                },
+                "show_socials": {
+                    "label": "Afișează linkurile sociale"
+                },
+                "show_image_in_card": {
+                    "label": "Afișează imaginile în lista de articole"
+                },
+                "image_height": {
+                    "label": "Înălțimea imaginii",
+                    "options__1": {
+                        "label": "Adaptată la imagine"
+                    },
+                    "options__2": {
+                        "label": "Mică"
+                    },
+                    "options__3": {
+                        "label": "Medie"
+                    },
+                    "options__4": {
+                        "label": "Mare"
+                    }
+                }
+            }
         }
     }
 }
