@@ -12,6 +12,6 @@
   "scripts": {
     "dev": "concurrently  -c \"auto\" \"npm:dev:*\"",
     "dev:tailwind": "npx tailwindcss -i ./style.css -o ./assets/style.css --watch",
-    "dev:shopify": "shopify theme dev"
+    "dev:shopify": "shopify theme dev --store=d8cgqq-8s.myshopify.com"
   }
 }
