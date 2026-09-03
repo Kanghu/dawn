@@ -20,6 +20,7 @@
       {% assign subcollections = collection.metafields.custom.slider_subcollections.value %}
       {%- comment -%} Collects the handles of every product rendered below, for the ItemList schema {%- endcomment -%}
       {% assign itemlist_handles = '' %}
+      {% assign itemlist_names = '' %}
 
       {% for subcollection in subcollections %}
         {% if subcollection.products_count > 0 %}
@@ -138,6 +139,7 @@
                       </li>
                       {% assign skip_card_product_styles = true %}
                       {% assign itemlist_handles = itemlist_handles | append: product.handle | append: ',' %}
+                      {% assign itemlist_names = itemlist_names | append: product.title | append: '|||' %}
                     {% endif %}
                   {% endif %}
                 {% endfor %}
@@ -172,8 +174,10 @@
 
       {%- comment -%} ItemList (carousel) structured data for the products shown above {%- endcomment -%}
       {%- assign itemlist_handle_array = itemlist_handles | split: ',' -%}
+      {%- assign itemlist_name_array = itemlist_names | split: '|||' -%}
       {% render 'alc-collection-itemlist-schema'
         , handles: itemlist_handle_array
+        , names: itemlist_name_array
         , list_name: collection.title
       %}
 

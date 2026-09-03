@@ -477,9 +477,8 @@
     endif
   -%}
 
-  <script type="application/ld+json">
-    {{ product | structured_data }}
-  </script>
+  {%- comment -%} Product JSON-LD incl. aggregateRating + reviews (replaces product | structured_data) {%- endcomment -%}
+{% render 'alc-product-schema', product: product %}
 
   {% if product.media.size > 0 %}
     <script src="{{ 'product-modal.js' | asset_url }}" defer="defer"></script>

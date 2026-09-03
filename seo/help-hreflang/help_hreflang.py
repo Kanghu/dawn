@@ -1,0 +1,183 @@
+#!/usr/bin/env python3
+"""
+Generate hreflang data for the Chatwoot Help Center at help.alessandrodesign.ro.
+
+Reads the public Chatwoot JSON endpoints (no auth needed), groups every article
+with its translations (Chatwoot's `associated_articles`) and writes, next to
+this script:
+
+  help-hreflang-sitemap.xml  - sitemap with <xhtml:link rel="alternate" hreflang> entries
+  help-hreflang-map.json     - { "/hc/.../articles/<slug>": { "ro-RO": url, ... , "x-default": url } }
+  help-hreflang-gtm.html     - GTM "Custom HTML" tag that injects <link rel="alternate"> client-side
+  help-hreflang-report.txt   - coverage report (groups missing a locale, conflicts)
+
+Usage:  python help_hreflang.py [output_dir]
+Re-run whenever articles are added, renamed (slug changes) or translated.
+"""
+import json
+import os
+import sys
+import urllib.request
+from collections import defaultdict
+from xml.sax.saxutils import escape
+
+BASE = "https://help.alessandrodesign.ro"
+PORTAL = "alessandro-design"
+ARTICLE_PREFIX = f"/hc/{PORTAL}/articles/"
+# Chatwoot locale -> hreflang value (language-REGION, as requested by the SEO audit)
+LOCALES = {"ro": "ro-RO", "hu": "hu-HU", "bg": "bg-BG", "pl": "pl-PL"}
+X_DEFAULT = "ro"  # portal default locale
+
+
+def get_json(url):
+    req = urllib.request.Request(url, headers={"Accept": "application/json", "User-Agent": "hreflang-gen/1.0"})
+    with urllib.request.urlopen(req, timeout=30) as r:
+        return json.load(r)
+
+
+def fetch_articles(locale):
+    """All published articles of a locale (follows pagination)."""
+    out, page = [], 1
+    while True:
+        d = get_json(f"{BASE}/hc/{PORTAL}/{locale}/articles.json?per_page=100&page={page}")
+        payload = d.get("payload", [])
+        out += payload
+        total = d.get("meta", {}).get("articles_count", 0)
+        if not payload or len(out) >= total:
+            break
+        page += 1
+    return [a for a in out if a.get("status") == "published"]
+
+
+def build_groups():
+    """Return (by_id, groups) where groups is a list of lists of article ids."""
+    by_id = {}
+    for loc in LOCALES:
+        for a in fetch_articles(loc):
+            by_id[a["id"]] = {
+                "locale": loc,
+                "slug": a["slug"],
+                "title": a["title"],
+                "assoc": [x["id"] for x in a.get("associated_articles", []) if x.get("status") == "published"],
+            }
+
+    parent = {i: i for i in by_id}
+
+    def find(i):
+        while parent[i] != i:
+            parent[i] = parent[parent[i]]
+            i = parent[i]
+        return i
+
+    for i, a in by_id.items():
+        for j in a["assoc"]:
+            if j in parent:
+                parent[find(i)] = find(j)
+
+    groups = defaultdict(list)
+    for i in by_id:
+        groups[find(i)].append(i)
+    return by_id, list(groups.values())
+
+
+def main():
+    out_dir = sys.argv[1] if len(sys.argv) > 1 else os.path.dirname(os.path.abspath(__file__))
+    os.makedirs(out_dir, exist_ok=True)
+
+    by_id, groups = build_groups()
+
+    def url(slug):
+        return BASE + ARTICLE_PREFIX + slug
+
+    mapping = {}       # path -> {hreflang: absolute url}
+    compact_groups = []  # [{locale: slug}] for the GTM tag
+    report = []
+    conflicts = []
+    for members in groups:
+        alts = {}  # locale -> slug
+        for i in members:
+            a = by_id[i]
+            if a["locale"] in alts:
+                conflicts.append((a["locale"], alts[a["locale"]], a["slug"]))
+                continue
+            alts[a["locale"]] = a["slug"]
+        compact_groups.append(dict(sorted(alts.items())))
+        entry = {LOCALES[l]: url(s) for l, s in sorted(alts.items())}
+        if X_DEFAULT in alts:
+            entry["x-default"] = url(alts[X_DEFAULT])
+        for l, s in alts.items():
+            mapping[ARTICLE_PREFIX + s] = entry
+        report.append((sorted(alts), by_id[members[0]]["title"]))
+
+    # --- sitemap with hreflang annotations ---
+    lines = ['<?xml version="1.0" encoding="UTF-8"?>',
+             '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" '
+             'xmlns:xhtml="http://www.w3.org/1999/xhtml">']
+    for path in sorted(mapping):
+        lines.append("  <url>")
+        lines.append(f"    <loc>{escape(BASE + path)}</loc>")
+        for hl, href in mapping[path].items():
+            lines.append(f'    <xhtml:link rel="alternate" hreflang="{hl}" href="{escape(href)}"/>')
+        lines.append("  </url>")
+    lines.append("</urlset>")
+    with open(os.path.join(out_dir, "help-hreflang-sitemap.xml"), "w", encoding="utf-8") as f:
+        f.write("\n".join(lines) + "\n")
+
+    # --- JSON map ---
+    with open(os.path.join(out_dir, "help-hreflang-map.json"), "w", encoding="utf-8") as f:
+        json.dump(mapping, f, ensure_ascii=False, indent=1)
+
+    # --- GTM custom HTML tag (compact: one entry per translation group) ---
+    gtm = f"""<script>
+(function () {{
+  // hreflang for help.alessandrodesign.ro (Chatwoot Help Center). Generated by seo/help-hreflang/help_hreflang.py.
+  // GTM trigger: "All Pages" + "History Change" (Chatwoot navigates with Turbo, without full reloads).
+  var BASE = "{BASE}{ARTICLE_PREFIX}";
+  var HREFLANG = {json.dumps(LOCALES, separators=(",", ":"))};
+  var X_DEFAULT = "{X_DEFAULT}";
+  var GROUPS = {json.dumps(compact_groups, ensure_ascii=False, separators=(",", ":"))};
+  var BY_SLUG = {{}};
+  for (var g = 0; g < GROUPS.length; g++) {{
+    for (var loc in GROUPS[g]) BY_SLUG[GROUPS[g][loc]] = GROUPS[g];
+  }}
+  function add(hl, slug) {{
+    var l = document.createElement("link");
+    l.rel = "alternate";
+    l.hreflang = hl;
+    l.href = BASE + slug;
+    document.head.appendChild(l);
+  }}
+  function apply() {{
+    var old = document.querySelectorAll('link[rel="alternate"][hreflang]');
+    for (var i = 0; i < old.length; i++) old[i].parentNode.removeChild(old[i]);
+    var m = location.pathname.match(/\\/articles\\/([^\\/?#]+)/);
+    var group = m && BY_SLUG[decodeURIComponent(m[1])];
+    if (!group) return;
+    for (var loc in group) if (HREFLANG[loc]) add(HREFLANG[loc], group[loc]);
+    if (group[X_DEFAULT]) add("x-default", group[X_DEFAULT]);
+  }}
+  apply();
+  document.addEventListener("turbo:load", apply);
+}})();
+</script>
+"""
+    with open(os.path.join(out_dir, "help-hreflang-gtm.html"), "w", encoding="utf-8") as f:
+        f.write(gtm)
+
+    # --- report ---
+    full = sum(1 for locs, _ in report if len(locs) == len(LOCALES))
+    rep = [f"articles: {len(by_id)}  translation groups: {len(report)}  "
+           f"groups with all {len(LOCALES)} locales: {full}",
+           f"conflicts (two articles of the same locale in one group): {len(conflicts)}"]
+    rep += [f"  CONFLICT {c}" for c in conflicts]
+    rep.append("groups missing a locale:")
+    for locs, title in sorted(report, key=lambda r: (len(r[0]), r[1])):
+        if len(locs) < len(LOCALES):
+            rep.append(f"  [{','.join(locs)}] missing {sorted(set(LOCALES) - set(locs))}: {title}")
+    with open(os.path.join(out_dir, "help-hreflang-report.txt"), "w", encoding="utf-8") as f:
+        f.write("\n".join(rep) + "\n")
+    print("\n".join(rep))
+
+
+if __name__ == "__main__":
+    main()

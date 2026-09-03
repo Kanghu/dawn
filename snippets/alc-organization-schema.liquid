@@ -1,0 +1,81 @@
+{%- comment -%}
+  Renders the Organization JSON-LD, but ONLY on the pages where it belongs:
+  the homepage plus a short list of "about"-style pages (about us, contact).
+
+  Everywhere else (collections, products, articles, ...) the page already has
+  its own primary entity (CollectionPage, Product, Article) and Google
+  recommends not repeating Organization on those pages.
+
+  Accepts:
+  - page_handles: {String} comma-separated page handles allowed to carry the
+    Organization schema. Default: "companie,contact"
+{%- endcomment -%}
+
+{%- liquid
+  assign allowed_handles = page_handles | default: 'companie,contact' | downcase | remove: ' ' | split: ','
+  assign show_organization = false
+
+  if request.page_type == 'index'
+    assign show_organization = true
+  elsif request.page_type == 'page' and page.handle != blank
+    assign current_handle = page.handle | downcase
+    if allowed_handles contains current_handle
+      assign show_organization = true
+    endif
+  endif
+
+  if show_organization
+    assign same_as = ''
+    assign social_links = settings.social_facebook_link | append: '|' | append: settings.social_instagram_link | append: '|' | append: settings.social_tiktok_link | append: '|' | append: settings.social_youtube_link | append: '|' | append: settings.social_pinterest_link | append: '|' | append: settings.social_twitter_link | append: '|' | append: settings.social_tumblr_link | append: '|' | append: settings.social_snapchat_link | append: '|' | append: settings.social_vimeo_link
+    assign social_links = social_links | split: '|'
+    for link in social_links
+      if link != blank
+        assign link_json = link | strip | json
+        unless same_as == ''
+          assign same_as = same_as | append: ','
+        endunless
+        assign same_as = same_as | append: link_json
+      endif
+    endfor
+  endif
+-%}
+
+{%- if show_organization -%}
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "@id": {{ request.origin | append: '/#organization' | json }},
+      "url": {{ request.origin | json }},
+      {%- if settings.logo %}
+      "logo": {{ settings.logo | image_url: width: 500 | prepend: "https:" | json }},
+      {%- endif %}
+      {%- if shop.email != blank %}
+      "email": {{ shop.email | json }},
+      {%- endif %}
+      {%- if shop.phone != blank %}
+      "telephone": {{ shop.phone | json }},
+      {%- endif %}
+      {%- if same_as != '' %}
+      "sameAs": [{{ same_as }}],
+      {%- endif %}
+      {%- if shop.address.city != blank %}
+      "address": {
+        "@type": "PostalAddress",
+        {%- if shop.address.street != blank %}
+        "streetAddress": {{ shop.address.street | json }},
+        {%- endif %}
+        "addressLocality": {{ shop.address.city | json }},
+        {%- if shop.address.province != blank %}
+        "addressRegion": {{ shop.address.province | json }},
+        {%- endif %}
+        {%- if shop.address.zip != blank %}
+        "postalCode": {{ shop.address.zip | json }},
+        {%- endif %}
+        "addressCountry": {{ shop.address.country_code | json }}
+      },
+      {%- endif %}
+      "name": {{ shop.name | json }}
+    }
+  </script>
+{%- endif -%}
