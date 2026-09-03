@@ -1,0 +1,286 @@
+{% comment %}
+  Related articles for the article page — sections/main-article.liquid, related_articles block.
+
+  SEO audit (31 Mar 2025): every post should link to 3-6 related posts, or failing that to
+  3 published before and 3 published after it. The posts carry no topic tags (only the
+  `autor-*` author tags), so relatedness is computed from the titles instead.
+
+  Selection order, deduplicated, stopping at `limit`:
+  1. Curated: `article.metafields.custom.related_articles` (list.article_reference), if the
+     merchant has defined it and filled it in. Editorial override, no definition required
+     until it is wanted.
+  2. Title similarity. The current title is split into words, stopwords and short words are
+     dropped and each word is cut to a 5-letter stem so Romanian inflections match
+     (lustra/lustre/lustrei -> lustr, oglinda/oglinzi -> oglin). Every post in the pool is
+     scored by how many stems open one of its words; 3+ shared stems rank first, then 2, then 1.
+  3. Neighbours by publish date: the 3 newer and 3 older posts around the current one,
+     alternating, so a post with no title matches still gets the audit's fallback.
+  4. `blog.previous_article` / `blog.next_article`, which work even when the current post is
+     outside the pool.
+  5. Newest posts in the pool, to guarantee `limit` links.
+
+  The pool is `blog.articles` (capped at 50 by Liquid outside `paginate`), plus the articles of
+  `extra_blog` when set, so a 2-post blog can borrow from the main one.
+
+  Layout mirrors the homepage teaser (alc-featured-blog.css): `lead` puts the best match as
+  a wide feature card with the rest stacked as compact cards beside it; `grid` is the blog
+  index's uniform 3-column grid.
+
+  Accepts:
+  - article: {Object}
+  - blog: {Object}
+  - limit: {Number} 3-6
+  - eyebrow: {String} small label above the heading, optional
+  - heading: {String}
+  - layout: {String} 'lead' or 'grid'
+  - show_view_all: {Boolean} link to the blog index in the header row
+  - extra_blog: {String} blog handle, optional
+  - show_image, show_date, show_author, show_excerpt: {Boolean} excerpt applies to the lead card
+  - read_more_label: {String}
+{% endcomment %}
+
+{%- liquid
+  assign limit = limit | default: 6
+  if limit > 6
+    assign limit = 6
+  endif
+
+  assign pool = blog.articles
+  if extra_blog != blank and extra_blog != blog.handle
+    assign extra_articles = blogs[extra_blog].articles
+    if extra_articles.size > 0
+      assign pool = pool | concat: extra_articles
+    endif
+  endif
+
+  assign queue = ''
+
+  comment
+    1. Curated list
+  endcomment
+  assign curated = article.metafields.custom.related_articles.value
+  if curated != blank
+    for related in curated
+      assign queue = queue | append: related.handle | append: ','
+    endfor
+  endif
+
+  comment
+    2. Title similarity
+  endcomment
+  assign stopwords = ' cum ce sa in de un una unui unei pentru care este sunt cand cateva fiecare trebuie alegi alege alegem ale ai la pe cu din intr tot toate tale tau iti ti sau si nu mai fara prin ca cat cati cate top ghid idei sfaturi simplu simple complet complete practice practic pas evita cel cea cele mult multe dintre despre acasa totul trucuri sfat inainte dupa fata poti potrivit potrivita potrivite ideal ideale corect corecta corecte functie destinatie tipuri tine casa casei '
+  assign norm_title = article.title | downcase | replace: 'ă', 'a' | replace: 'â', 'a' | replace: 'î', 'i' | replace: 'ș', 's' | replace: 'ş', 's' | replace: 'ț', 't' | replace: 'ţ', 't' | handleize
+  assign words = norm_title | split: '-'
+  assign stems = ','
+  for word in words
+    if word.size < 4
+      continue
+    endif
+    assign word_token = ' ' | append: word | append: ' '
+    if stopwords contains word_token
+      continue
+    endif
+    if word.size >= 6
+      assign stem = word | slice: 0, 5
+    else
+      assign stem = word
+    endif
+    assign stem_token = ',-' | append: stem | append: ','
+    unless stems contains stem_token
+      assign stems = stems | append: '-' | append: stem | append: ','
+    endunless
+  endfor
+  assign stem_list = stems | split: ','
+
+  assign bucket_3 = ''
+  assign bucket_2 = ''
+  assign bucket_1 = ''
+  if stem_list.size > 1
+    for candidate in pool
+      if candidate.id == article.id
+        continue
+      endif
+      assign candidate_title = candidate.title | downcase | replace: 'ă', 'a' | replace: 'â', 'a' | replace: 'î', 'i' | replace: 'ș', 's' | replace: 'ş', 's' | replace: 'ț', 't' | replace: 'ţ', 't' | handleize | prepend: '-' | append: '-'
+      assign score = 0
+      for stem in stem_list
+        if stem == blank
+          continue
+        endif
+        if candidate_title contains stem
+          assign score = score | plus: 1
+        endif
+      endfor
+      if score >= 3
+        assign bucket_3 = bucket_3 | append: candidate.handle | append: ','
+      elsif score == 2
+        assign bucket_2 = bucket_2 | append: candidate.handle | append: ','
+      elsif score == 1
+        assign bucket_1 = bucket_1 | append: candidate.handle | append: ','
+      endif
+    endfor
+  endif
+  assign queue = queue | append: bucket_3 | append: bucket_2 | append: bucket_1
+
+  comment
+    3. Neighbours by publish date; blog.articles is newest first
+  endcomment
+  assign current_index = -1
+  for candidate in blog.articles
+    if candidate.id == article.id
+      assign current_index = forloop.index0
+      break
+    endif
+  endfor
+  if current_index >= 0
+    assign last_index = blog.articles.size | minus: 1
+    for step in (1..3)
+      assign newer_index = current_index | minus: step
+      if newer_index >= 0
+        assign queue = queue | append: blog.articles[newer_index].handle | append: ','
+      endif
+      assign older_index = current_index | plus: step
+      if older_index <= last_index
+        assign queue = queue | append: blog.articles[older_index].handle | append: ','
+      endif
+    endfor
+  endif
+
+  comment
+    4. Adjacent posts, available even when the current post is outside the 50-post pool
+  endcomment
+  if blog.previous_article != blank
+    assign queue = queue | append: blog.previous_article.handle | append: ','
+  endif
+  if blog.next_article != blank
+    assign queue = queue | append: blog.next_article.handle | append: ','
+  endif
+
+  comment
+    5. Newest posts, to fill up to the limit
+  endcomment
+  for candidate in pool
+    assign queue = queue | append: candidate.handle | append: ','
+  endfor
+
+  comment
+    Deduplicate, drop the current post, cut at limit
+  endcomment
+  assign queue_list = queue | split: ','
+  assign picked = ',' | append: article.handle | append: ','
+  assign picked_count = 0
+  for key in queue_list
+    if picked_count >= limit
+      break
+    endif
+    if key == blank
+      continue
+    endif
+    assign key_token = ',' | append: key | append: ','
+    if picked contains key_token
+      continue
+    endif
+    assign picked = picked | append: key | append: ','
+    assign picked_count = picked_count | plus: 1
+  endfor
+  assign picked_list = picked | split: ','
+-%}
+
+{%- if picked_count > 0 -%}
+  {%- liquid
+    if picked_count < 2
+      assign layout = 'grid'
+    endif
+  -%}
+  <aside class="alc-related alc-featured-blog" aria-labelledby="RelatedArticles-{{ article.id }}">
+    <div class="alc-featured-blog__head">
+      <div class="alc-featured-blog__titles">
+        {%- if eyebrow != blank -%}
+          <p class="alc-featured-blog__eyebrow">{{ eyebrow | escape }}</p>
+        {%- endif -%}
+        <h2 id="RelatedArticles-{{ article.id }}" class="alc-featured-blog__heading alc-related__heading">
+          {{- heading | escape -}}
+        </h2>
+      </div>
+      {%- if show_view_all -%}
+        <a href="{{ blog.url }}" class="alc-featured-blog__all link animate-arrow small-hide">
+          {{ 'sections.featured_blog.view_all' | t }}
+          <span class="icon-wrap">
+            <span class="svg-wrapper">{{- 'icon-arrow.svg' | inline_asset_content -}}</span>
+          </span>
+        </a>
+      {%- endif -%}
+    </div>
+
+    {%- if layout == 'lead' -%}
+      {%- liquid
+        assign lead_key = ''
+        for key in picked_list
+          if key == blank or key == article.handle
+            continue
+          endif
+          if articles[key] != blank
+            assign lead_key = key
+            break
+          endif
+        endfor
+      -%}
+      <div class="alc-featured-blog__lead-layout">
+        <div class="alc-featured-blog__lead">
+          {%- render 'alc-article-card',
+            article: articles[lead_key],
+            show_image: show_image,
+            show_date: show_date,
+            show_author: show_author,
+            show_excerpt: show_excerpt,
+            read_more_label: read_more_label
+          -%}
+        </div>
+        <div class="alc-featured-blog__stack">
+          {%- for key in picked_list -%}
+            {%- if key == blank or key == article.handle or key == lead_key -%}
+              {%- continue -%}
+            {%- endif -%}
+            {%- assign related = articles[key] -%}
+            {%- if related == blank -%}
+              {%- continue -%}
+            {%- endif -%}
+            {%- render 'alc-article-card-compact',
+              article: related,
+              show_image: show_image,
+              show_date: show_date,
+              show_author: show_author
+            -%}
+          {%- endfor -%}
+        </div>
+      </div>
+    {%- else -%}
+      <div class="alc-blog__grid alc-blog__grid--3">
+        {%- for key in picked_list -%}
+          {%- if key == blank or key == article.handle -%}
+            {%- continue -%}
+          {%- endif -%}
+          {%- assign related = articles[key] -%}
+          {%- if related == blank -%}
+            {%- continue -%}
+          {%- endif -%}
+          {%- render 'alc-article-card',
+            article: related,
+            show_image: show_image,
+            show_date: show_date,
+            show_author: show_author,
+            show_excerpt: show_excerpt,
+            read_more_label: read_more_label
+          -%}
+        {%- endfor -%}
+      </div>
+    {%- endif -%}
+
+    {%- if show_view_all -%}
+      <div class="alc-featured-blog__all-mobile medium-hide large-up-hide">
+        <a href="{{ blog.url }}" class="button button--secondary">
+          {{ 'sections.featured_blog.view_all' | t }}
+        </a>
+      </div>
+    {%- endif -%}
+  </aside>
+{%- endif -%}

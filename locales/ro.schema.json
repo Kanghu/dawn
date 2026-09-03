@@ -56,6 +56,32 @@
                             "label": "Afișează linkul către pagina autorului"
                         }
                     }
+                },
+                "related_articles": {
+                    "name": "Articole similare",
+                    "settings": {
+                        "info": {
+                            "content": "Afișează 3-6 articole legate de cel curent. Sunt alese după similaritatea titlurilor, apoi după data publicării (3 mai noi și 3 mai vechi), astfel încât fiecare articol primește linkuri. Pentru alegere manuală, creează un metafield de articol custom.related_articles (listă de articole): are prioritate când e completat."
+                        },
+                        "eyebrow": {
+                            "label": "Etichetă deasupra titlului",
+                            "default": "Continuă lectura"
+                        },
+                        "heading": {
+                            "label": "Titlu",
+                            "default": "Articole similare"
+                        },
+                        "show_view_all": {
+                            "label": "Afișează linkul către blog"
+                        },
+                        "limit": {
+                            "label": "Număr de articole"
+                        },
+                        "extra_blog": {
+                            "label": "Completează și din blogul",
+                            "info": "Opțional. Adaugă articole din alt blog când cel curent are prea puține."
+                        }
+                    }
                 }
             }
         },
@@ -90,6 +116,10 @@
                 },
                 "show_card_images": {
                     "label": "Afișează imaginile pe carduri"
+                },
+                "archive_label": {
+                    "label": "Link către arhiva completă",
+                    "default": "Vezi toate articolele"
                 }
             }
         },
@@ -136,6 +166,16 @@
                 "read_more_label": {
                     "label": "Text link articol",
                     "default": "Citește articolul"
+                },
+                "author_heading": {
+                    "content": "Arhive de autor"
+                },
+                "author_info": {
+                    "content": "Se afișează când blogul e filtrat după eticheta de autor (autor-nume-prenume, ex. /blogs/news/tagged/autor-kanghu-shi). Acel URL este arhiva completă a autorului."
+                },
+                "author_other_label": {
+                    "label": "Titlu pentru articolele din alte bloguri",
+                    "default": "Tot de același autor"
                 }
             }
         },

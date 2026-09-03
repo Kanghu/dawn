@@ -1752,6 +1752,32 @@
               "label": "Show link to the author page"
             }
           }
+        },
+        "related_articles": {
+          "name": "Related articles",
+          "settings": {
+            "info": {
+              "content": "Links 3-6 posts related to the current one. Related posts are picked by title similarity, then by publish date (3 newer and 3 older), so every post gets links. To hand-pick them, create an article metafield custom.related_articles (list of articles): it takes priority when filled in."
+            },
+            "eyebrow": {
+              "label": "Label above the heading",
+              "default": "Keep reading"
+            },
+            "heading": {
+              "label": "Heading",
+              "default": "Related articles"
+            },
+            "show_view_all": {
+              "label": "Show link to the blog"
+            },
+            "limit": {
+              "label": "Number of posts"
+            },
+            "extra_blog": {
+              "label": "Also pick posts from",
+              "info": "Optional. Fills in from another blog when the current one has too few posts."
+            }
+          }
         }
       }
     },
