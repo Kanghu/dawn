@@ -1,0 +1,61 @@
+{% comment %}
+  One slide of the dynamic related-products grid.
+
+  Accepts:
+  - card_product: {Object} product to render
+  - section: {Object} the calling section (reads its display settings)
+  - source: {String} which rule picked the product (manual, collection-type, collection, fallback)
+  - position: {Number} 1-based position in the list
+{% endcomment %}
+{%- liquid
+  case source
+    when 'manual'
+      assign reason = section.settings.reason_manual
+    when 'collection-type'
+      assign reason = section.settings.reason_collection_type
+    when 'collection'
+      assign reason = section.settings.reason_collection
+    when 'recent'
+      assign reason = section.settings.reason_recent
+    else
+      assign reason = section.settings.reason_fallback
+  endcase
+-%}
+<li
+  class="alc-recs__item grid__item slider__slide"
+  style="margin-left: 0 !important;"
+  data-source="{{ source }}"
+  data-position="{{ position }}"
+  data-product-id="{{ card_product.id }}"
+>
+  {%- if section.settings.show_reason_labels and reason != blank -%}
+    <span class="alc-recs__reason alc-recs__reason--{{ source }}"{% if source == 'recent' %} data-reason{% endif %}>{{ reason }}</span>
+  {%- endif -%}
+  {%- if section.settings.use_mobile_card -%}
+    {% render 'alc-tw-product-card-mobile',
+      card_product: card_product,
+      media_aspect_ratio: section.settings.image_ratio,
+      image_shape: section.settings.image_shape,
+      show_secondary_image: section.settings.show_secondary_image,
+      show_vendor: section.settings.show_vendor,
+      show_rating: false,
+      lazy_load: true,
+      skip_styles: true,
+      quick_add: 'standard',
+      section_id: section.id
+    %}
+  {%- else -%}
+    {% render 'alc-card-product',
+      card_product: card_product,
+      media_aspect_ratio: section.settings.image_ratio,
+      image_shape: section.settings.image_shape,
+      show_secondary_image: section.settings.show_secondary_image,
+      show_vendor: section.settings.show_vendor,
+      show_rating: section.settings.show_rating,
+      lazy_load: true,
+      skip_styles: true,
+      quick_add: 'standard',
+      section_id: section.id
+    %}
+  {%- endif -%}
+</li>

@@ -1,0 +1,40 @@
+{% comment %}
+  Static section used only through the Section Rendering API by assets/alc-recently-viewed.js:
+    /search?type=product&q=id:123 OR id:456&section_id=alc-recently-viewed-results
+  It renders the matching products as the same cards used by the other recommendation
+  sections. Order is fixed client-side (most recently viewed first). Not meant to be added
+  to a template from the editor, so it has no presets.
+{% endcomment %}
+{%- if search.performed and search.results_count > 0 -%}
+  <slider-component class="slider-mobile-gutter">
+    <ul
+      class="alc-recs__grid grid product-grid grid--2-col-tablet-down grid--3-col-tablet grid--4-col-desktop slider slider--mobile grid--peek"
+      id="Slider-{{ section.id }}"
+      role="list"
+    >
+      {%- for item in search.results -%}
+        {%- if item.object_type == 'product' and item.available -%}
+          {%- render 'alc-related-products-dynamic-card', card_product: item, section: section, source: 'recent', position: forloop.index -%}
+        {%- endif -%}
+      {%- endfor -%}
+    </ul>
+  </slider-component>
+{%- endif -%}
+
+{% schema %}
+{
+  "name": "Recently viewed results",
+  "settings": [
+    { "type": "select", "id": "image_ratio", "label": "Image ratio", "default": "square", "options": [
+      { "value": "adapt", "label": "Adapt" }, { "value": "portrait", "label": "Portrait" }, { "value": "square", "label": "Square" } ] },
+    { "type": "select", "id": "image_shape", "label": "Image shape", "default": "default", "options": [
+      { "value": "default", "label": "Default" } ] },
+    { "type": "checkbox", "id": "show_secondary_image", "label": "Show secondary image", "default": true },
+    { "type": "checkbox", "id": "show_vendor", "label": "Show vendor", "default": false },
+    { "type": "checkbox", "id": "show_rating", "label": "Show rating", "default": false },
+    { "type": "checkbox", "id": "use_mobile_card", "label": "Use compact mobile cards", "default": false },
+    { "type": "checkbox", "id": "show_reason_labels", "label": "Render label placeholder", "default": true },
+    { "type": "text", "id": "reason_recent", "label": "Placeholder label", "default": "recent" }
+  ]
+}
+{% endschema %}

@@ -357,23 +357,60 @@
         "include_margins": true
       }
     },
-    "17382403506a4b872b": {
-      "type": "apps",
-      "blocks": {
-        "vitals_related_products_D6pzRj": {
-          "type": "shopify://apps/vitals/blocks/related-products/aeb48102-2a5a-4f39-bdbd-d8d49f4e20b8",
-          "settings": {}
-        }
-      },
-      "block_order": [
-        "vitals_related_products_D6pzRj"
-      ],
+    "alc_related_products_dynamic": {
+      "type": "alc-related-products-dynamic",
       "settings": {
-        "include_margins": true
+        "title": "Te-ar putea interesa și următoarele",
+        "heading_size": "h2",
+        "eyebrow_text": "Din categoria [category]",
+        "subtitle_text": "[count] produse în stoc, alese din aceeași categorie și gamă ca produsul de mai sus.",
+        "view_all_text": "Vezi toate produsele din [category]",
+        "show_category": true,
+        "show_subtitle": true,
+        "show_reason_labels": true,
+        "reason_manual": "Recomandarea noastră",
+        "reason_collection_type": "Aceeași categorie",
+        "reason_collection": "Din aceeași gamă",
+        "reason_fallback": "Îți mai recomandăm",
+        "enable_json_ld": true,
+        "products_to_show": 8,
+        "scan_limit": 30,
+        "columns_desktop": 4,
+        "columns_mobile": "2",
+        "image_ratio": "square",
+        "image_shape": "default",
+        "show_secondary_image": true,
+        "show_vendor": false,
+        "show_rating": false,
+        "use_mobile_card": false,
+        "accent_color": "#03bad6",
+        "color_scheme": "scheme-1",
+        "padding_top": 48,
+        "padding_bottom": 48
+      }
+    },
+    "alc_recently_viewed": {
+      "type": "alc-recently-viewed",
+      "settings": {
+        "eyebrow_text": "Istoricul tău",
+        "title": "Vizualizate recent",
+        "heading_size": "h2",
+        "subtitle_text": "Produsele pe care le-ai deschis recent, păstrate doar în browserul tău.",
+        "clear_text": "Șterge istoricul",
+        "show_reason_labels": true,
+        "reason_latest": "Ultimul vizualizat",
+        "reason_recent": "Vizualizat recent",
+        "products_to_show": 8,
+        "columns_desktop": 4,
+        "accent_color": "#03bad6",
+        "color_scheme": "scheme-1",
+        "padding_top": 48,
+        "padding_bottom": 48
       }
     },
     "1738240867ea0a657c": {
       "type": "apps",
+      "disabled": true,
       "blocks": {
         "vitals_recently_viewed_tNLaUb": {
           "type": "shopify://apps/vitals/blocks/recently-viewed/aeb48102-2a5a-4f39-bdbd-d8d49f4e20b8",
@@ -401,7 +438,8 @@
     "17344485676cd9137d",
     "1734705383ce5c5048",
     "1734705789523688e8",
-    "17382403506a4b872b",
+    "alc_related_products_dynamic",
+    "alc_recently_viewed",
     "1738240867ea0a657c"
   ]
 }
