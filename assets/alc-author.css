@@ -84,70 +84,217 @@
   font-size: 1.4rem;
 }
 
+/* --- Social links: pills, shared by the box and the archive hero --- */
+
 .alc-author-socials {
   display: flex;
   flex-wrap: wrap;
-  gap: 1.2rem;
-  margin: 1.2rem 0 0;
+  gap: 0.8rem;
+  margin: 1.6rem 0 0;
   padding: 0;
-  font-size: 1.4rem;
+  font-size: 1.3rem;
 }
 
 .alc-author-socials a {
-  color: rgba(var(--color-foreground), 0.75);
+  display: inline-flex;
+  align-items: center;
+  padding: 0.5rem 1.2rem;
+  border: 0.1rem solid rgba(var(--color-foreground), 0.25);
+  border-radius: 999px;
+  color: rgb(var(--color-foreground));
+  text-decoration: none;
+  letter-spacing: 0.02em;
+  transition: background-color 0.2s ease, border-color 0.2s ease;
 }
 
-/* --- Author archive page --- */
+.alc-author-socials a:hover {
+  border-color: rgb(var(--color-foreground));
+  background-color: rgba(var(--color-foreground), 0.06);
+}
 
-.alc-author-page__header {
+/* --- Placeholder avatar, shown until an author photo is uploaded --- */
+
+.alc-author-box__avatar--placeholder,
+.alc-author-hero__avatar--placeholder {
+  display: block;
+  color: rgb(var(--color-foreground));
+  border-radius: 50%;
+  overflow: hidden;
+}
+
+.alc-author-box__avatar--placeholder svg,
+.alc-author-hero__avatar--placeholder svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+/* --- Archive hero (page 1) --- */
+
+.alc-author-hero {
+  background-color: rgba(var(--color-foreground), 0.035);
+  border-bottom: 0.1rem solid rgba(var(--color-foreground), 0.08);
+}
+
+.alc-author-hero__inner {
   display: flex;
-  gap: 2.4rem;
-  align-items: flex-start;
-  padding-bottom: 2.4rem;
-  margin-bottom: 3.2rem;
-  border-bottom: 0.1rem solid rgba(var(--color-foreground), 0.1);
+  gap: 4rem;
+  align-items: center;
+  padding-top: 5.6rem;
+  padding-bottom: 5.6rem;
 }
 
-.alc-author-page__media {
+.alc-author-hero__media {
   flex: 0 0 auto;
 }
 
-.alc-author-page__avatar {
-  width: 16rem;
-  height: 16rem;
+.alc-author-hero__avatar {
+  width: 18rem;
+  height: 18rem;
+  border-radius: 50%;
+  object-fit: cover;
+  /* Ring: a gap of page background, then a hairline — reads as "framed", not pasted on. */
+  box-shadow:
+    0 0 0 0.5rem rgb(var(--color-background)),
+    0 0 0 0.6rem rgba(var(--color-foreground), 0.15);
+}
+
+.alc-author-hero__body {
+  flex: 1 1 auto;
+  min-width: 0;
+  max-width: 72rem;
+}
+
+.alc-author-hero__eyebrow {
+  margin: 0 0 1rem;
+  font-size: 1.2rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: rgba(var(--color-foreground), 0.6);
+}
+
+.alc-author-hero__name {
+  margin: 0;
+  font-size: clamp(3.2rem, 2.2rem + 2vw, 4.8rem);
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+}
+
+.alc-author-hero__bio {
+  margin-top: 1.6rem;
+  font-size: 1.7rem;
+  line-height: 1.6;
+  color: rgba(var(--color-foreground), 0.78);
+}
+
+.alc-author-hero__bio > :first-child {
+  margin-top: 0;
+}
+
+.alc-author-hero__bio > :last-child {
+  margin-bottom: 0;
+}
+
+.alc-author-hero__stats {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0 3.2rem;
+  margin: 2.4rem 0 0;
+  padding: 0;
+}
+
+.alc-author-hero__stat {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+}
+
+.alc-author-hero__stat strong {
+  font-size: 2.4rem;
+  font-weight: 600;
+  line-height: 1.1;
+  letter-spacing: -0.01em;
+  font-variant-numeric: tabular-nums;
+}
+
+.alc-author-hero__stat span {
+  font-size: 1.2rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: rgba(var(--color-foreground), 0.55);
+}
+
+/* --- Compact strip (pages 2+) --- */
+
+.alc-author-strip {
+  border-bottom: 0.1rem solid rgba(var(--color-foreground), 0.08);
+}
+
+.alc-author-strip__inner {
+  display: flex;
+  gap: 1.6rem;
+  align-items: center;
+  padding-top: 2.4rem;
+  padding-bottom: 2.4rem;
+}
+
+.alc-author-strip__avatar {
+  flex: 0 0 auto;
+  width: 6rem;
+  height: 6rem;
   border-radius: 50%;
   object-fit: cover;
 }
 
-.alc-author-page__intro {
-  flex: 1 1 auto;
-  min-width: 0;
-}
-
-.alc-author-page__name {
+.alc-author-strip__name {
   margin: 0;
-  font-size: 3.2rem;
+  font-size: 2.2rem;
   line-height: 1.2;
 }
 
-.alc-author-page__name--compact {
-  margin-bottom: 2.4rem;
-  font-size: 2.4rem;
+.alc-author-strip__name a {
+  color: rgb(var(--color-foreground));
+  text-decoration: none;
 }
 
-.alc-author-page__role {
-  margin: 0.6rem 0 0;
-  font-size: 1.6rem;
-  color: rgba(var(--color-foreground), 0.7);
+.alc-author-strip__name a:hover {
+  text-decoration: underline;
 }
 
-.alc-author-page__bio {
-  margin-top: 1.6rem;
+.alc-author-strip__meta {
+  margin: 0.3rem 0 0;
+  font-size: 1.3rem;
+  color: rgba(var(--color-foreground), 0.6);
+}
+
+.alc-author-strip__meta span {
+  margin: 0 0.4rem;
+}
+
+/* --- Article list --- */
+
+.alc-author-page__list-head {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 1.6rem;
+  margin-bottom: 2.8rem;
 }
 
 .alc-author-page__list-heading {
-  margin: 0 0 2rem;
-  font-size: 2rem;
+  margin: 0;
+  font-size: 2.2rem;
+  letter-spacing: -0.01em;
+}
+
+.alc-author-page__list-count {
+  margin: 0;
+  font-size: 1.3rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: rgba(var(--color-foreground), 0.55);
+  font-variant-numeric: tabular-nums;
 }
 
 .alc-author-page__empty,
@@ -162,39 +309,83 @@
   background-color: rgba(var(--color-foreground), 0.05);
 }
 
+/* --- Pagination: Dawn's is a bare number with a hairline; make it read as controls --- */
+
+.alc-author-page .pagination-wrapper {
+  margin-top: 4.8rem;
+}
+
+.alc-author-page .pagination__list > li {
+  flex: 0 0 auto;
+  max-width: none;
+}
+
+.alc-author-page .pagination__list > li:not(:last-child) {
+  margin-right: 0.8rem;
+}
+
+.alc-author-page .pagination__item {
+  min-width: 4.4rem;
+  height: 4.4rem;
+  padding: 0 1.4rem;
+  border: 0.1rem solid rgba(var(--color-foreground), 0.25);
+  border-radius: 999px;
+  font-size: 1.4rem;
+  font-variant-numeric: tabular-nums;
+  transition: background-color 0.2s ease, border-color 0.2s ease;
+}
+
+.alc-author-page a.pagination__item:hover {
+  border-color: rgb(var(--color-foreground));
+  background-color: rgba(var(--color-foreground), 0.06);
+}
+
+.alc-author-page .pagination__item--current {
+  background-color: rgb(var(--color-foreground));
+  border-color: rgb(var(--color-foreground));
+  color: rgb(var(--color-background));
+}
+
+.alc-author-page .pagination__item--current::after,
+.alc-author-page .pagination__item:hover::after {
+  display: none;
+}
+
+.alc-author-page .pagination__item-arrow {
+  padding: 0;
+}
+
+/* --- Responsive --- */
+
 @media screen and (max-width: 749px) {
   .alc-author-box {
     padding: 1.6rem;
   }
 
-  .alc-author-box__inner,
-  .alc-author-page__header {
+  .alc-author-box__inner {
     flex-direction: column;
     gap: 1.2rem;
   }
 
-  .alc-author-page__avatar {
-    width: 11rem;
-    height: 11rem;
+  .alc-author-hero__inner {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 2.4rem;
+    padding-top: 3.6rem;
+    padding-bottom: 3.6rem;
   }
 
-  .alc-author-page__name {
-    font-size: 2.6rem;
+  .alc-author-hero__avatar {
+    width: 12rem;
+    height: 12rem;
   }
-}
 
-/* Placeholder avatar shown until an author photo is uploaded. */
-.alc-author-box__avatar--placeholder,
-.alc-author-page__avatar--placeholder {
-  display: block;
-  color: rgb(var(--color-foreground));
-  border-radius: 50%;
-  overflow: hidden;
-}
+  .alc-author-hero__stats {
+    gap: 0 2.4rem;
+  }
 
-.alc-author-box__avatar--placeholder svg,
-.alc-author-page__avatar--placeholder svg {
-  display: block;
-  width: 100%;
-  height: 100%;
+  .alc-author-page__list-head {
+    flex-direction: column;
+    gap: 0.4rem;
+  }
 }

@@ -14,11 +14,13 @@
   paginate a filtered array. Ten posts per page, per the SEO audit; the bio block is
   suppressed on pages 2+ so the paginated URLs stay thin-content free. `rel=prev/next`
   lives in snippets/alc-author-head.liquid, which must use the same page size.
+
+  Labels that would normally be locale strings are section settings instead:
+  locales/en.default.json sits on Shopify's 3400-key ceiling.
 {% endcomment %}
 
 {{ 'alc-author.css' | asset_url | stylesheet_tag }}
-{{ 'component-article-card.css' | asset_url | stylesheet_tag }}
-{{ 'component-card.css' | asset_url | stylesheet_tag }}
+{{ 'alc-blog.css' | asset_url | stylesheet_tag }}
 
 {%- liquid
   assign per_page = 10
@@ -87,6 +89,16 @@
   endif
   assign offset = active_page | minus: 1 | times: per_page
   assign page_articles = author_articles | slice: offset, per_page
+
+  comment
+    Activity span from the newest and oldest post we can see. The list is newest-first,
+    so `first` is the latest and `last` the earliest. Real data, not copy to be written.
+  endcomment
+  assign newest_year = author_articles.first.published_at | date: '%Y'
+  assign oldest_year = author_articles.last.published_at | date: '%Y'
+
+  assign eyebrow = author.job_title.value | default: section.settings.eyebrow
+  assign count_label = 'blogs.author.articles_heading' | t: count: total_articles | remove_first: total_articles | strip
 -%}
 
 {%- style -%}
@@ -103,42 +115,42 @@
   }
 {%- endstyle -%}
 
-<div class="alc-author-page page-width section-{{ section.id }}-padding">
-  {%- comment -%}
-    The bio only renders on page 1. Pages 2+ are a plain post list, which keeps the
-    paginated URLs from duplicating the biography across the archive.
-  {%- endcomment -%}
-  {%- if active_page == 1 -%}
-    <header class="alc-author-page__header">
+{%- comment -%}
+  The bio only renders on page 1. Pages 2+ get a compact strip, which keeps the
+  paginated URLs from duplicating the biography across the archive.
+{%- endcomment -%}
+{%- if active_page == 1 -%}
+  <header class="alc-author-hero">
+    <div class="alc-author-hero__inner page-width">
       {%- if section.settings.show_image -%}
-        <div class="alc-author-page__media">
+        <div class="alc-author-hero__media">
           {%- if author.photo.value != blank -%}
             {{
               author.photo.value
-              | image_url: width: 320
+              | image_url: width: 360
               | image_tag:
                 loading: 'eager',
-                width: 160,
-                height: 160,
-                class: 'alc-author-page__avatar',
+                width: 180,
+                height: 180,
+                class: 'alc-author-hero__avatar',
                 alt: author_name
             }}
           {%- else -%}
-            <span class="alc-author-page__avatar alc-author-page__avatar--placeholder">
+            <span class="alc-author-hero__avatar alc-author-hero__avatar--placeholder">
               {{- 'icon-author-placeholder.svg' | inline_asset_content -}}
             </span>
           {%- endif -%}
         </div>
       {%- endif -%}
 
-      <div class="alc-author-page__intro">
-        <h1 class="alc-author-page__name">{{ author_name | escape }}</h1>
-
-        {%- if author.job_title.value != blank -%}
-          <p class="alc-author-page__role">{{ author.job_title.value | escape }}</p>
+      <div class="alc-author-hero__body">
+        {%- if eyebrow != blank -%}
+          <p class="alc-author-hero__eyebrow">{{ eyebrow | escape }}</p>
         {%- endif -%}
 
-        <div class="alc-author-page__bio rte">
+        <h1 class="alc-author-hero__name">{{ author_name | escape }}</h1>
+
+        <div class="alc-author-hero__bio rte">
           {%- if author.bio.value != blank -%}
             {{ author.bio | metafield_tag }}
           {%- elsif page.content != blank -%}
@@ -148,17 +160,65 @@
           {%- endif -%}
         </div>
 
+        {%- if total_articles > 0 -%}
+          <ul class="alc-author-hero__stats list-unstyled" role="list">
+            <li class="alc-author-hero__stat">
+              <strong>{{ total_articles }}</strong>
+              <span>{{ count_label }}</span>
+            </li>
+            <li class="alc-author-hero__stat">
+              {%- if oldest_year == newest_year -%}
+                <strong>{{ newest_year }}</strong>
+              {%- else -%}
+                <strong>{{ oldest_year }}&thinsp;&ndash;&thinsp;{{ newest_year }}</strong>
+              {%- endif -%}
+              <span>{{ section.settings.years_label | escape }}</span>
+            </li>
+          </ul>
+        {%- endif -%}
+
         {%- if section.settings.show_socials -%}
           {%- render 'alc-author-socials', author: author -%}
         {%- endif -%}
       </div>
-    </header>
-  {%- else -%}
-    <h1 class="alc-author-page__name alc-author-page__name--compact">
-      {{- 'blogs.author.posts_by' | t: name: author_name -}}
-    </h1>
-  {%- endif -%}
+    </div>
+  </header>
+{%- else -%}
+  <header class="alc-author-strip">
+    <div class="alc-author-strip__inner page-width">
+      {%- if section.settings.show_image -%}
+        {%- if author.photo.value != blank -%}
+          {{
+            author.photo.value
+            | image_url: width: 120
+            | image_tag:
+              loading: 'eager',
+              width: 60,
+              height: 60,
+              class: 'alc-author-strip__avatar',
+              alt: author_name
+          }}
+        {%- else -%}
+          <span class="alc-author-strip__avatar alc-author-hero__avatar--placeholder">
+            {{- 'icon-author-placeholder.svg' | inline_asset_content -}}
+          </span>
+        {%- endif -%}
+      {%- endif -%}
+      <div>
+        <h1 class="alc-author-strip__name">
+          <a href="{{ page.url }}">{{ author_name | escape }}</a>
+        </h1>
+        <p class="alc-author-strip__meta">
+          {{ 'blogs.author.articles_heading' | t: count: total_articles }}
+          <span aria-hidden="true">&middot;</span>
+          {{ 'general.pagination.page' | t: number: active_page }}
+        </p>
+      </div>
+    </div>
+  </header>
+{%- endif -%}
 
+<div class="alc-author-page page-width section-{{ section.id }}-padding">
   {%- if request.design_mode and total_articles == 0 -%}
     <div class="alc-author-page__notice">
       {{ 'blogs.author.no_match_warning' | t: name: author_name }}
@@ -166,23 +226,28 @@
   {%- endif -%}
 
   {%- if total_articles > 0 -%}
-    <h2 class="alc-author-page__list-heading">
-      {{- 'blogs.author.articles_heading' | t: count: total_articles -}}
-    </h2>
+    <div class="alc-author-page__list-head">
+      <h2 class="alc-author-page__list-heading">
+        {{- 'blogs.author.posts_by' | t: name: author_name -}}
+      </h2>
+      {%- if total_pages > 1 -%}
+        <p class="alc-author-page__list-count">
+          {{ 'general.pagination.page' | t: number: active_page }} / {{ total_pages }}
+        </p>
+      {%- endif -%}
+    </div>
 
-    <div class="blog-articles blog-articles--collage">
+    <div class="alc-blog__grid alc-blog__grid--3">
       {%- for article in page_articles -%}
-        <div class="blog-articles__article article">
-          {%- render 'article-card',
-            article: article,
-            media_height: section.settings.image_height,
-            media_aspect_ratio: article.image.aspect_ratio,
-            show_image: section.settings.show_image_in_card,
-            show_date: true,
-            show_author: false,
-            show_excerpt: true
-          -%}
-        </div>
+        {%- render 'alc-article-card',
+          article: article,
+          show_image: section.settings.show_card_images,
+          show_date: true,
+          show_author: false,
+          show_excerpt: true,
+          read_more_label: section.settings.read_more_label,
+          eager: forloop.first
+        -%}
       {%- endfor -%}
     </div>
 
@@ -265,11 +330,24 @@
       "label": "t:sections.alc-author-page.settings.show_image.label"
     },
     {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "t:sections.alc-author-page.settings.eyebrow.label",
+      "info": "t:sections.alc-author-page.settings.eyebrow.info",
+      "default": "t:sections.alc-author-page.settings.eyebrow.default"
+    },
+    {
       "type": "richtext",
       "id": "default_bio",
       "label": "t:sections.alc-author-page.settings.default_bio.label",
       "info": "t:sections.alc-author-page.settings.default_bio.info",
       "default": "t:sections.alc-author-page.settings.default_bio.default"
+    },
+    {
+      "type": "text",
+      "id": "years_label",
+      "label": "t:sections.alc-author-page.settings.years_label.label",
+      "default": "t:sections.alc-author-page.settings.years_label.default"
     },
     {
       "type": "checkbox",
@@ -278,34 +356,20 @@
       "label": "t:sections.alc-author-page.settings.show_socials.label"
     },
     {
-      "type": "checkbox",
-      "id": "show_image_in_card",
-      "default": true,
-      "label": "t:sections.alc-author-page.settings.show_image_in_card.label"
+      "type": "header",
+      "content": "t:sections.alc-author-page.settings.list_heading.content"
     },
     {
-      "type": "select",
-      "id": "image_height",
-      "options": [
-        {
-          "value": "adapt",
-          "label": "t:sections.alc-author-page.settings.image_height.options__1.label"
-        },
-        {
-          "value": "small",
-          "label": "t:sections.alc-author-page.settings.image_height.options__2.label"
-        },
-        {
-          "value": "medium",
-          "label": "t:sections.alc-author-page.settings.image_height.options__3.label"
-        },
-        {
-          "value": "large",
-          "label": "t:sections.alc-author-page.settings.image_height.options__4.label"
-        }
-      ],
-      "default": "medium",
-      "label": "t:sections.alc-author-page.settings.image_height.label"
+      "type": "checkbox",
+      "id": "show_card_images",
+      "default": true,
+      "label": "t:sections.alc-author-page.settings.show_card_images.label"
+    },
+    {
+      "type": "text",
+      "id": "read_more_label",
+      "label": "t:sections.alc-blog-grid.settings.read_more_label.label",
+      "default": "t:sections.alc-blog-grid.settings.read_more_label.default"
     },
     {
       "type": "header",
@@ -319,7 +383,7 @@
       "step": 4,
       "unit": "px",
       "label": "t:sections.all.padding.padding_top",
-      "default": 36
+      "default": 40
     },
     {
       "type": "range",
@@ -329,7 +393,7 @@
       "step": 4,
       "unit": "px",
       "label": "t:sections.all.padding.padding_bottom",
-      "default": 36
+      "default": 52
     }
   ]
 }
