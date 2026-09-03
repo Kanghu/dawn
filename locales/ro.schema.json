@@ -71,28 +71,25 @@
                 "show_socials": {
                     "label": "Afișează linkurile sociale"
                 },
-                "show_image_in_card": {
-                    "label": "Afișează imaginile în lista de articole"
-                },
-                "image_height": {
-                    "label": "Înălțimea imaginii",
-                    "options__1": {
-                        "label": "Adaptată la imagine"
-                    },
-                    "options__2": {
-                        "label": "Mică"
-                    },
-                    "options__3": {
-                        "label": "Medie"
-                    },
-                    "options__4": {
-                        "label": "Mare"
-                    }
-                },
                 "default_bio": {
                     "label": "Biografie implicită",
                     "info": "Se afișează când metaobiectul autorului nu are biografie și conținutul paginii e gol.",
                     "default": "<p>Scrie despre iluminat și amenajări interioare pentru Alessandro Design.</p>"
+                },
+                "eyebrow": {
+                    "label": "Etichetă deasupra numelui",
+                    "info": "Folosită când metaobiectul autorului nu are funcție.",
+                    "default": "Autor, Alessandro Design"
+                },
+                "years_label": {
+                    "label": "Etichetă sub anii de activitate",
+                    "default": "activitate"
+                },
+                "list_heading": {
+                    "content": "Lista de articole"
+                },
+                "show_card_images": {
+                    "label": "Afișează imaginile pe carduri"
                 }
             }
         },

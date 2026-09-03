@@ -3462,28 +3462,25 @@
         "show_socials": {
           "label": "Show social links"
         },
-        "show_image_in_card": {
-          "label": "Show featured images in the post list"
-        },
-        "image_height": {
-          "label": "Featured image height",
-          "options__1": {
-            "label": "Adapt to image"
-          },
-          "options__2": {
-            "label": "Small"
-          },
-          "options__3": {
-            "label": "Medium"
-          },
-          "options__4": {
-            "label": "Large"
-          }
-        },
         "default_bio": {
           "label": "Default biography",
           "info": "Shown when the author metaobject has no bio and the page body is empty.",
           "default": "<p>Scrie despre iluminat si amenajari interioare pentru Alessandro Design.</p>"
+        },
+        "eyebrow": {
+          "label": "Label above the name",
+          "info": "Used when the author metaobject has no job title.",
+          "default": "Author, Alessandro Design"
+        },
+        "years_label": {
+          "label": "Label under the active years",
+          "default": "active"
+        },
+        "list_heading": {
+          "content": "Post list"
+        },
+        "show_card_images": {
+          "label": "Show featured images on cards"
         }
       }
     },
