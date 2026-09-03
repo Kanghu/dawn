@@ -1,0 +1,52 @@
+{%- comment -%}
+  Renders ItemList (Google carousel) structured data for a product listing page.
+
+  Only the products actually rendered on the current page are included, so the
+  markup always matches the visible content (pagination + active filters).
+
+  Accepts:
+  - products: {Array} the products rendered on the current page (already paginated)
+  - handles: {Array} alternative to `products` - the product handles rendered, in display order
+  - list_name: {String} optional name of the list. Default: collection.title
+  - list_url: {String} optional canonical URL of the list page. Default: canonical_url
+
+  Usage:
+  {% render 'alc-collection-itemlist-schema', products: collection.products, list_name: collection.title %}
+{%- endcomment -%}
+
+{%- liquid
+  assign root_url = routes.root_url | remove_last: '/'
+
+  if handles == blank and products != blank
+    assign handles = products | map: 'handle'
+  endif
+
+  unless list_name
+    assign list_name = collection.title
+  endunless
+
+  unless list_url
+    assign list_url = canonical_url
+  endunless
+-%}
+
+{%- if handles != blank and handles.size > 0 -%}
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "ItemList",
+      "name": {{ list_name | strip_html | json }},
+      "url": {{ list_url | json }},
+      "numberOfItems": {{ handles.size }},
+      "itemListElement": [
+        {%- for handle in handles -%}
+          {
+            "@type": "ListItem",
+            "position": {{ forloop.index }},
+            "url": {{ handle | prepend: '/products/' | prepend: root_url | prepend: shop.secure_url | json }}
+          }{%- unless forloop.last -%},{%- endunless -%}
+        {%- endfor -%}
+      ]
+    }
+  </script>
+{%- endif -%}

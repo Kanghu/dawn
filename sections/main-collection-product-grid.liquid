@@ -105,6 +105,12 @@
 
 <div class="section-{{ section.id }}-padding pt-1 gradient color-{{ section.settings.color_scheme }}">
   {%- paginate collection.products by section.settings.products_per_page -%}
+    {%- comment -%} ItemList (carousel) structured data for the products shown on this page {%- endcomment -%}
+    {% render 'alc-collection-itemlist-schema'
+      , products: collection.products
+      , list_name: collection.title
+    %}
+
     <div class="{% if section.settings.filter_type == 'vertical' %} facets-vertical page-width{% endif %}">
       {{ 'component-facets.css' | asset_url | stylesheet_tag }}
       <script src="{{ 'facets.js' | asset_url }}" defer="defer"></script>
