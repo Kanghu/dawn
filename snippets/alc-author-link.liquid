@@ -16,13 +16,22 @@
 
   assign author_display_name = author.name.value | default: author_name
 
-  assign author_url = author.page.value.url
-  if author_url == blank
-    assign author_url = pages[author_handle].url
+  comment
+    The author page is the tag archive: every article carries an autor-<handle> tag and
+    Shopify paginates the archive with no cap, so it is the only URL that lists an
+    author's complete work. The /pages/<author> profile stays as a fallback.
+  endcomment
+  assign archive_blog_handle = settings.author_blog_1 | default: 'news'
+  assign archive_blog = blogs[archive_blog_handle]
+  assign author_url = blank
+  if archive_blog.url != blank
+    assign author_url = archive_blog.url | append: '/tagged/autor-' | append: author_handle
   endif
   if author_url == blank
-    assign prefixed_handle = 'autor-' | append: author_handle
-    assign author_url = pages[prefixed_handle].url
+    assign author_url = author.page.value.url
+  endif
+  if author_url == blank
+    assign author_url = pages[author_handle].url
   endif
 -%}
 

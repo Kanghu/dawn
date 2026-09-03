@@ -1,0 +1,96 @@
+{% comment %}
+  Author hero: photo, eyebrow, name, biography, stats, social links.
+
+  Shared by the author page (sections/alc-author-page.liquid) and the tag archive
+  (sections/alc-blog-grid.liquid in author mode), so the two never drift apart.
+
+  Accepts:
+  - author: {Object} the `author` metaobject entry (may be blank)
+  - author_name: {String}
+  - total_articles: {Number}
+  - oldest_year / newest_year: {String} optional; the years stat is skipped when blank
+  - fallback_bio: {String} rich text shown when the metaobject has no bio
+  - eyebrow: {String} shown when the metaobject has no job title
+  - years_label: {String}
+  - show_image / show_socials: {Boolean}
+  - archive_url: {String} optional link to the complete archive, shown with archive_label
+  - archive_label: {String}
+{% endcomment %}
+
+{%- liquid
+  assign hero_eyebrow = author.job_title.value | default: eyebrow
+  assign count_label = 'blogs.author.articles_heading' | t: count: total_articles | remove_first: total_articles | strip
+-%}
+
+<header class="alc-author-hero">
+  <div class="alc-author-hero__inner page-width">
+    {%- if show_image -%}
+      <div class="alc-author-hero__media">
+        {%- if author.photo.value != blank -%}
+          {{
+            author.photo.value
+            | image_url: width: 360
+            | image_tag:
+              loading: 'eager',
+              width: 180,
+              height: 180,
+              class: 'alc-author-hero__avatar',
+              alt: author_name
+          }}
+        {%- else -%}
+          <span class="alc-author-hero__avatar alc-author-hero__avatar--placeholder">
+            {{- 'icon-author-placeholder.svg' | inline_asset_content -}}
+          </span>
+        {%- endif -%}
+      </div>
+    {%- endif -%}
+
+    <div class="alc-author-hero__body">
+      {%- if hero_eyebrow != blank -%}
+        <p class="alc-author-hero__eyebrow">{{ hero_eyebrow | escape }}</p>
+      {%- endif -%}
+
+      <h1 class="alc-author-hero__name">{{ author_name | escape }}</h1>
+
+      <div class="alc-author-hero__bio rte">
+        {%- if author.bio.value != blank -%}
+          {{ author.bio | metafield_tag }}
+        {%- elsif fallback_bio != blank -%}
+          {{ fallback_bio }}
+        {%- endif -%}
+      </div>
+
+      {%- if total_articles > 0 -%}
+        <ul class="alc-author-hero__stats list-unstyled" role="list">
+          <li class="alc-author-hero__stat">
+            <strong>{{ total_articles }}</strong>
+            <span>{{ count_label }}</span>
+          </li>
+          {%- if newest_year != blank -%}
+            <li class="alc-author-hero__stat">
+              {%- if oldest_year == blank or oldest_year == newest_year -%}
+                <strong>{{ newest_year }}</strong>
+              {%- else -%}
+                <strong>{{ oldest_year }}&thinsp;&ndash;&thinsp;{{ newest_year }}</strong>
+              {%- endif -%}
+              <span>{{ years_label | escape }}</span>
+            </li>
+          {%- endif -%}
+        </ul>
+      {%- endif -%}
+
+      {%- if show_socials -%}
+        {%- render 'alc-author-socials', author: author -%}
+      {%- endif -%}
+
+      {%- if archive_url != blank and archive_label != blank -%}
+        <a class="alc-author-hero__archive link animate-arrow" href="{{ archive_url }}">
+          {{ archive_label | escape }}
+          <span class="icon-wrap">
+            <span class="svg-wrapper">{{- 'icon-arrow.svg' | inline_asset_content -}}</span>
+          </span>
+        </a>
+      {%- endif -%}
+    </div>
+  </div>
+</header>

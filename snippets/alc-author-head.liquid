@@ -10,6 +10,32 @@
   <link rel="canonical"> resolves to the right paginated URL on its own.
 {% endcomment %}
 
+{%- comment -%}
+  Tag archive (/blogs/<blog>/tagged/autor-<handle>): the complete author archive.
+  `paginate` works in the layout, so prev/next come straight from Shopify here.
+{%- endcomment -%}
+{%- if template.name == 'blog' -%}
+  {%- liquid
+    assign author_tag = ''
+    for tag in current_tags
+      if tag contains 'autor-'
+        assign author_tag = tag
+      endif
+    endfor
+  -%}
+  {%- if author_tag != blank -%}
+    {%- comment -%}
+      Shopify already writes rel="prev"/"next" for paginated blog pages through
+      content_for_header, so only the out-of-range guard is needed here.
+    {%- endcomment -%}
+    {%- paginate blog.articles by 10 -%}
+      {%- if paginate.current_page > paginate.pages -%}
+        <meta name="robots" content="noindex, follow">
+      {%- endif -%}
+    {%- endpaginate -%}
+  {%- endif -%}
+{%- endif -%}
+
 {%- if template.name == 'page' and template.suffix == 'author' -%}
   {%- liquid
     assign per_page = 10
@@ -81,7 +107,11 @@
     <meta name="robots" content="noindex, follow">
   {%- endif -%}
 
-  {%- if total_pages > 1 -%}
+  {%- comment -%}
+    Only real pages get prev/next. An out-of-range page is noindex already; pointing
+    it at a neighbour that does not exist either would just be noise for crawlers.
+  {%- endcomment -%}
+  {%- if total_pages > 1 and active_page <= total_pages -%}
     {%- if active_page > 1 -%}
       {%- liquid
         assign previous_page = active_page | minus: 1
