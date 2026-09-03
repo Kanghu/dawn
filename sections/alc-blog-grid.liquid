@@ -1,13 +1,43 @@
 {% comment %}
-  Blog index listing.
+  Blog index listing — and, on an `autor-*` tag archive, the author archive.
 
   Replaces Dawn's `main-blog` on the blog templates. Dawn's "collage" layout made every
   third card full-bleed, which upscaled 575px source images to 1235px, and it showed
   only 6 posts per page — 20 pages for a 116-post blog. This is a uniform grid at the
   image's real size, 12 posts per page.
+
+  Author mode. Every article carries an `autor-<handle>` tag, so Shopify's native tag
+  archive (/blogs/news/tagged/autor-kanghu-shi) filters `blog.articles` inside
+  `paginate` with no cap — the only way in Liquid to list an author's complete work.
+  A page template can never see more than 50 posts of a blog, which is why the
+  /pages/<author> profile could only show 22 of Kanghu Shi's 89. In author mode this
+  section renders the author hero on page 1, paginates at 10 (the SEO audit's limit),
+  and on page 1 also lists the author's posts from the other configured blogs, since a
+  tag archive is per blog and two posts live in `sfaturi-de-amenajare`.
 {% endcomment %}
 
 {{ 'alc-blog.css' | asset_url | stylesheet_tag }}
+
+{%- liquid
+  assign author_tag = ''
+  for tag in current_tags
+    if tag contains 'autor-'
+      assign author_tag = tag
+    endif
+  endfor
+
+  assign per_page = section.settings.posts_per_page
+  if author_tag != blank
+    assign per_page = 10
+    assign author_handle = author_tag | remove_first: 'autor-'
+    assign author = shop.metaobjects.author[author_handle]
+    assign author_name = author.name.value | default: blog.articles.first.author
+  endif
+-%}
+
+{%- if author_tag != blank -%}
+  {{ 'alc-author.css' | asset_url | stylesheet_tag }}
+{%- endif -%}
 
 {%- style -%}
   .section-{{ section.id }}-padding {
@@ -23,14 +53,97 @@
   }
 {%- endstyle -%}
 
-{%- paginate blog.articles by section.settings.posts_per_page -%}
+{%- paginate blog.articles by per_page -%}
   {%- liquid
     assign heading = section.settings.heading | default: blog.title
     assign columns_class = 'alc-blog__grid--' | append: section.settings.columns
   -%}
 
-  <div class="alc-blog page-width section-{{ section.id }}-padding">
+  {%- if author_tag != blank -%}
+    {%- comment -%}
+      Author archive. The bio only renders on page 1; pages 2+ get the compact strip,
+      so the paginated URLs stay thin-content free.
+    {%- endcomment -%}
     {%- if paginate.current_page == 1 -%}
+      {%- liquid
+        assign newest_year = blog.articles.first.published_at | date: '%Y'
+        assign total_here = paginate.items
+        assign extra_articles = '' | split: ''
+        assign blog_keys = ''
+        if settings.author_blog_1 != blank
+          assign blog_keys = blog_keys | append: settings.author_blog_1 | append: ','
+        endif
+        if settings.author_blog_2 != blank
+          assign blog_keys = blog_keys | append: settings.author_blog_2 | append: ','
+        endif
+        if settings.author_blog_3 != blank
+          assign blog_keys = blog_keys | append: settings.author_blog_3 | append: ','
+        endif
+        assign blog_key_list = blog_keys | split: ','
+        assign blog_keys_used = '|' | append: blog.handle | append: '|'
+        for blog_key in blog_key_list
+          assign dedupe_token = '|' | append: blog_key | append: '|'
+          unless blog_keys_used contains dedupe_token
+            assign blog_keys_used = blog_keys_used | append: dedupe_token
+            assign matched = blogs[blog_key].articles | where: 'author', author_name
+            assign extra_articles = extra_articles | concat: matched
+          endunless
+        endfor
+        assign total_all = total_here | plus: extra_articles.size
+      -%}
+      {%- render 'alc-author-hero',
+        author: author,
+        author_name: author_name,
+        total_articles: total_all,
+        newest_year: newest_year,
+        fallback_bio: section.settings.author_default_bio,
+        eyebrow: section.settings.author_eyebrow,
+        years_label: section.settings.author_years_label,
+        show_image: true,
+        show_socials: true
+      -%}
+    {%- else -%}
+      <header class="alc-author-strip">
+        <div class="alc-author-strip__inner page-width">
+          {%- if author.photo.value != blank -%}
+            {{
+              author.photo.value
+              | image_url: width: 120
+              | image_tag: loading: 'eager', width: 60, height: 60, class: 'alc-author-strip__avatar', alt: author_name
+            }}
+          {%- else -%}
+            <span class="alc-author-strip__avatar alc-author-hero__avatar--placeholder">
+              {{- 'icon-author-placeholder.svg' | inline_asset_content -}}
+            </span>
+          {%- endif -%}
+          <div>
+            <h1 class="alc-author-strip__name">
+              <a href="{{ blog.url }}/tagged/{{ author_tag }}">{{ author_name | escape }}</a>
+            </h1>
+            <p class="alc-author-strip__meta">
+              {{ 'blogs.author.articles_heading' | t: count: paginate.items }}
+              <span aria-hidden="true">&middot;</span>
+              {{ 'general.pagination.page' | t: number: paginate.current_page }}
+            </p>
+          </div>
+        </div>
+      </header>
+    {%- endif -%}
+  {%- endif -%}
+
+  <div class="alc-blog alc-author-page page-width section-{{ section.id }}-padding">
+    {%- if author_tag != blank -%}
+      <div class="alc-author-page__list-head">
+        <h2 class="alc-author-page__list-heading">
+          {{- 'blogs.author.posts_by' | t: name: author_name -}}
+        </h2>
+        {%- if paginate.pages > 1 -%}
+          <p class="alc-author-page__list-count">
+            {{ 'general.pagination.page' | t: number: paginate.current_page }} / {{ paginate.pages }}
+          </p>
+        {%- endif -%}
+      </div>
+    {%- elsif paginate.current_page == 1 -%}
       <header class="alc-blog__header">
         <h1 class="alc-blog__title">{{ heading | escape }}</h1>
         {%- if section.settings.intro != blank -%}
@@ -66,10 +179,54 @@
       {%- if paginate.pages > 1 -%}
         {%- render 'pagination', paginate: paginate -%}
       {%- endif -%}
+
+      {%- if author_tag != blank and paginate.current_page == 1 and extra_articles.size > 0 -%}
+        <div class="alc-author-page__extra">
+          <h2 class="alc-author-page__list-heading">
+            {{ section.settings.author_other_label | escape }}
+          </h2>
+          <div class="alc-blog__grid {{ columns_class }}">
+            {%- for article in extra_articles -%}
+              {%- render 'alc-article-card',
+                article: article,
+                show_image: section.settings.show_image,
+                show_date: section.settings.show_date,
+                show_author: false,
+                show_excerpt: section.settings.show_excerpt,
+                read_more_label: section.settings.read_more_label
+              -%}
+            {%- endfor -%}
+          </div>
+        </div>
+      {%- endif -%}
     {%- else -%}
       <p class="alc-blog__empty">{{ 'blogs.author.no_articles' | t }}</p>
     {%- endif -%}
   </div>
+
+  {%- if author_tag != blank and paginate.current_page == 1 -%}
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "ProfilePage",
+        "url": {{ canonical_url | json }},
+        "mainEntity": {
+          "@type": "Person",
+          "name": {{ author_name | json }},
+          "url": {{ canonical_url | json }}
+          {%- if author.job_title.value != blank -%}
+            , "jobTitle": {{ author.job_title.value | json }}
+          {%- endif -%}
+          {%- if author.bio.value != blank -%}
+            , "description": {{ author.bio.value | strip_html | strip | json }}
+          {%- endif -%}
+          {%- if author.photo.value != blank -%}
+            , "image": {{ author.photo.value | image_url: width: 512 | prepend: 'https:' | json }}
+          {%- endif -%}
+        }
+      }
+    </script>
+  {%- endif -%}
 {%- endpaginate -%}
 
 {% schema %}
@@ -102,18 +259,9 @@
       "type": "select",
       "id": "columns",
       "options": [
-        {
-          "value": "2",
-          "label": "t:sections.alc-blog-grid.settings.columns.options__1.label"
-        },
-        {
-          "value": "3",
-          "label": "t:sections.alc-blog-grid.settings.columns.options__2.label"
-        },
-        {
-          "value": "4",
-          "label": "t:sections.alc-blog-grid.settings.columns.options__3.label"
-        }
+        { "value": "2", "label": "t:sections.alc-blog-grid.settings.columns.options__1.label" },
+        { "value": "3", "label": "t:sections.alc-blog-grid.settings.columns.options__2.label" },
+        { "value": "4", "label": "t:sections.alc-blog-grid.settings.columns.options__3.label" }
       ],
       "default": "3",
       "label": "t:sections.alc-blog-grid.settings.columns.label"
@@ -151,6 +299,38 @@
       "id": "read_more_label",
       "label": "t:sections.alc-blog-grid.settings.read_more_label.label",
       "default": "t:sections.alc-blog-grid.settings.read_more_label.default"
+    },
+    {
+      "type": "header",
+      "content": "t:sections.alc-blog-grid.settings.author_heading.content"
+    },
+    {
+      "type": "paragraph",
+      "content": "t:sections.alc-blog-grid.settings.author_info.content"
+    },
+    {
+      "type": "text",
+      "id": "author_eyebrow",
+      "label": "t:sections.alc-author-page.settings.eyebrow.label",
+      "default": "t:sections.alc-author-page.settings.eyebrow.default"
+    },
+    {
+      "type": "richtext",
+      "id": "author_default_bio",
+      "label": "t:sections.alc-author-page.settings.default_bio.label",
+      "default": "t:sections.alc-author-page.settings.default_bio.default"
+    },
+    {
+      "type": "text",
+      "id": "author_years_label",
+      "label": "t:sections.alc-author-page.settings.years_label.label",
+      "default": "t:sections.alc-author-page.settings.years_label.default"
+    },
+    {
+      "type": "text",
+      "id": "author_other_label",
+      "label": "t:sections.alc-blog-grid.settings.author_other_label.label",
+      "default": "t:sections.alc-blog-grid.settings.author_other_label.default"
     },
     {
       "type": "header",

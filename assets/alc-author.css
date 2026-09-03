@@ -389,3 +389,38 @@
     gap: 0.4rem;
   }
 }
+
+/* --- Links to the complete archive (tag archive) --- */
+
+.alc-author-hero__archive {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  margin-top: 2rem;
+  font-size: 1.4rem;
+  font-weight: 600;
+}
+
+.alc-author-page__archive-link {
+  margin: 3.2rem 0 0;
+  text-align: center;
+  font-size: 1.5rem;
+  font-weight: 600;
+}
+
+.alc-author-page__archive-link a {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+/* Posts from the author's other blogs, appended under the archive on page 1. */
+.alc-author-page__extra {
+  margin-top: 5.6rem;
+  padding-top: 3.2rem;
+  border-top: 0.1rem solid rgba(var(--color-foreground), 0.12);
+}
+
+.alc-author-page__extra .alc-author-page__list-heading {
+  margin-bottom: 2.4rem;
+}

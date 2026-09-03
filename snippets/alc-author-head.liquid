@@ -10,6 +10,32 @@
   <link rel="canonical"> resolves to the right paginated URL on its own.
 {% endcomment %}
 
+{%- comment -%}
+  Tag archive (/blogs/<blog>/tagged/autor-<handle>): the complete author archive.
+  `paginate` works in the layout, so prev/next come straight from Shopify here.
+{%- endcomment -%}
+{%- if template.name == 'blog' -%}
+  {%- liquid
+    assign author_tag = ''
+    for tag in current_tags
+      if tag contains 'autor-'
+        assign author_tag = tag
+      endif
+    endfor
+  -%}
+  {%- if author_tag != blank -%}
+    {%- comment -%}
+      Shopify already writes rel="prev"/"next" for paginated blog pages through
+      content_for_header, so only the out-of-range guard is needed here.
+    {%- endcomment -%}
+    {%- paginate blog.articles by 10 -%}
+      {%- if paginate.current_page > paginate.pages -%}
+        <meta name="robots" content="noindex, follow">
+      {%- endif -%}
+    {%- endpaginate -%}
+  {%- endif -%}
+{%- endif -%}
+
 {%- if template.name == 'page' and template.suffix == 'author' -%}
   {%- liquid
     assign per_page = 10
