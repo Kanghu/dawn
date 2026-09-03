@@ -99,44 +99,12 @@
               </div>
               <div class="alc-featured-blog__stack">
             {%- else -%}
-              <article class="alc-featured-blog__compact">
-                {%- if section.settings.show_image and article.image -%}
-                  <a class="alc-featured-blog__compact-media" href="{{ article.url }}" tabindex="-1" aria-hidden="true">
-                    <img
-                      srcset="
-                        {% if article.image.width >= 200 %}{{ article.image | image_url: width: 200 }} 200w,{% endif %}
-                        {% if article.image.width >= 300 %}{{ article.image | image_url: width: 300 }} 300w,{% endif %}
-                        {% if article.image.width >= 400 %}{{ article.image | image_url: width: 400 }} 400w,{% endif %}
-                        {{ article.image | image_url }} {{ article.image.width }}w
-                      "
-                      sizes="(min-width: 990px) 14rem, (min-width: 750px) 30vw, 40vw"
-                      src="{{ article.image | image_url: width: 300 }}"
-                      alt="{{ article.image.alt | escape }}"
-                      width="{{ article.image.width }}"
-                      height="{{ article.image.height }}"
-                      loading="lazy"
-                    >
-                  </a>
-                {%- endif -%}
-                <div class="alc-featured-blog__compact-body">
-                  {%- if section.settings.show_date or section.settings.show_author -%}
-                    <p class="alc-article-card__meta">
-                      {%- if section.settings.show_date -%}
-                        {{ article.published_at | time_tag: format: 'date' }}
-                      {%- endif -%}
-                      {%- if section.settings.show_date and section.settings.show_author and article.author != blank -%}
-                        <span class="alc-article-card__sep" aria-hidden="true">&middot;</span>
-                      {%- endif -%}
-                      {%- if section.settings.show_author -%}
-                        {%- render 'alc-author-link', author_name: article.author -%}
-                      {%- endif -%}
-                    </p>
-                  {%- endif -%}
-                  <h3 class="alc-featured-blog__compact-title">
-                    <a href="{{ article.url }}">{{ article.title | escape }}</a>
-                  </h3>
-                </div>
-              </article>
+              {%- render 'alc-article-card-compact',
+                article: article,
+                show_image: section.settings.show_image,
+                show_date: section.settings.show_date,
+                show_author: section.settings.show_author
+              -%}
             {%- endif -%}
             {%- if forloop.last and forloop.length > 1 -%}
               </div>

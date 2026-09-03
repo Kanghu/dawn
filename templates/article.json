@@ -51,6 +51,22 @@
             "show_bio": true,
             "show_link": true
           }
+        },
+        "related_articles": {
+          "type": "related_articles",
+          "settings": {
+            "eyebrow": "Continuă lectura",
+            "heading": "Articole similare",
+            "layout": "lead",
+            "show_view_all": true,
+            "limit": 6,
+            "extra_blog": "news",
+            "show_image": true,
+            "show_date": true,
+            "show_author": true,
+            "show_excerpt": true,
+            "read_more_label": "Citește articolul"
+          }
         }
       },
       "block_order": [
@@ -59,7 +75,8 @@
         "author_byline",
         "share",
         "content",
-        "author_box"
+        "author_box",
+        "related_articles"
       ],
       "settings": {}
     }

@@ -56,6 +56,32 @@
                             "label": "Afișează linkul către pagina autorului"
                         }
                     }
+                },
+                "related_articles": {
+                    "name": "Articole similare",
+                    "settings": {
+                        "info": {
+                            "content": "Afișează 3-6 articole legate de cel curent. Sunt alese după similaritatea titlurilor, apoi după data publicării (3 mai noi și 3 mai vechi), astfel încât fiecare articol primește linkuri. Pentru alegere manuală, creează un metafield de articol custom.related_articles (listă de articole): are prioritate când e completat."
+                        },
+                        "eyebrow": {
+                            "label": "Etichetă deasupra titlului",
+                            "default": "Continuă lectura"
+                        },
+                        "heading": {
+                            "label": "Titlu",
+                            "default": "Articole similare"
+                        },
+                        "show_view_all": {
+                            "label": "Afișează linkul către blog"
+                        },
+                        "limit": {
+                            "label": "Număr de articole"
+                        },
+                        "extra_blog": {
+                            "label": "Completează și din blogul",
+                            "info": "Opțional. Adaugă articole din alt blog când cel curent are prea puține."
+                        }
+                    }
                 }
             }
         },

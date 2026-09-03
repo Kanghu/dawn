@@ -51,3 +51,31 @@
     max-height: none;
   }
 }
+
+/* Related articles — snippets/alc-related-articles.liquid.
+   Header row, lead layout and compact cards come from alc-featured-blog.css, the
+   grid and the cards from alc-blog.css; this only places the block on the page. */
+
+.article-template__related {
+  margin-top: 6rem;
+}
+
+.alc-related__heading {
+  font-size: clamp(2.4rem, 1.8rem + 1.2vw, 3.2rem);
+  line-height: 1.2;
+}
+
+/* Square corners on the lead card too, matching the compact ones beside it. */
+.alc-related .alc-article-card__media {
+  border-radius: 0;
+}
+
+.alc-related .alc-featured-blog__all-mobile {
+  margin-top: 2.8rem;
+}
+
+@media screen and (max-width: 749px) {
+  .article-template__related {
+    margin-top: 4rem;
+  }
+}
