@@ -88,6 +88,57 @@
                     "options__4": {
                         "label": "Mare"
                     }
+                },
+                "default_bio": {
+                    "label": "Biografie implicită",
+                    "info": "Se afișează când metaobiectul autorului nu are biografie și conținutul paginii e gol.",
+                    "default": "<p>Scrie despre iluminat și amenajări interioare pentru Alessandro Design.</p>"
+                }
+            }
+        },
+        "alc-blog-grid": {
+            "name": "Grilă articole blog",
+            "settings": {
+                "heading": {
+                    "label": "Titlu",
+                    "info": "Lasă gol pentru a folosi titlul blogului."
+                },
+                "intro": {
+                    "label": "Text introductiv"
+                },
+                "posts_per_page": {
+                    "label": "Articole pe pagină"
+                },
+                "columns": {
+                    "label": "Coloane pe desktop",
+                    "options__1": {
+                        "label": "2"
+                    },
+                    "options__2": {
+                        "label": "3"
+                    },
+                    "options__3": {
+                        "label": "4"
+                    }
+                },
+                "card_heading": {
+                    "content": "Card"
+                },
+                "show_image": {
+                    "label": "Afișează imaginea"
+                },
+                "show_date": {
+                    "label": "Afișează data"
+                },
+                "show_author": {
+                    "label": "Afișează autorul"
+                },
+                "show_excerpt": {
+                    "label": "Afișează rezumatul"
+                },
+                "read_more_label": {
+                    "label": "Text link articol",
+                    "default": "Citește articolul"
                 }
             }
         }
