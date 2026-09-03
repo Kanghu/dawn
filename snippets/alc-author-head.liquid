@@ -81,7 +81,11 @@
     <meta name="robots" content="noindex, follow">
   {%- endif -%}
 
-  {%- if total_pages > 1 -%}
+  {%- comment -%}
+    Only real pages get prev/next. An out-of-range page is noindex already; pointing
+    it at a neighbour that does not exist either would just be noise for crawlers.
+  {%- endcomment -%}
+  {%- if total_pages > 1 and active_page <= total_pages -%}
     {%- if active_page > 1 -%}
       {%- liquid
         assign previous_page = active_page | minus: 1
