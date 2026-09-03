@@ -138,6 +138,35 @@
                     "default": "Citește articolul"
                 }
             }
+        },
+        "alc-featured-blog": {
+            "name": "Teaser blog",
+            "settings": {
+                "eyebrow": {
+                    "label": "Etichetă deasupra titlului",
+                    "default": "Blog"
+                },
+                "heading": {
+                    "label": "Titlu",
+                    "info": "Lasă gol pentru a folosi titlul blogului."
+                },
+                "layout": {
+                    "label": "Așezare",
+                    "info": "Principal: primul articol ocupă două coloane, restul se stivuiesc alături. Grilă: coloane egale, ca pe pagina de blog.",
+                    "options__1": {
+                        "label": "Articol principal + listă"
+                    },
+                    "options__2": {
+                        "label": "Grilă uniformă"
+                    }
+                },
+                "columns_desktop": {
+                    "info": "Folosit doar de așezarea Grilă uniformă."
+                },
+                "cards_heading": {
+                    "content": "Carduri"
+                }
+            }
         }
     }
 }

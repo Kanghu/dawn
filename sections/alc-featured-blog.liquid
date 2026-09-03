@@ -1,0 +1,308 @@
+{% comment %}
+  Homepage blog teaser.
+
+  Replaces Dawn's `featured-blog` on the index. That section rendered the customised
+  `article-card`, whose hover "Vezi articol" button is absolutely positioned over the
+  excerpt and had nothing reserving space for it — hence the overlap. This one shares
+  `alc-article-card` and `alc-blog.css` with the blog index and the author pages, so the
+  three surfaces finally look like one site.
+
+  Setting ids match the old section (`heading`, `blog`, `post_limit`, `show_*`,
+  `padding_*`), so the values already in templates/index.json carry over unchanged.
+
+  Layouts:
+  - lead: first post as a wide feature (2 of 3 columns, 16:9), the rest stacked as
+    compact horizontal cards in the third column. The default — it is what makes the
+    block read as editorial rather than as three identical tiles.
+  - grid: the same uniform 3-column grid as the blog index.
+
+  Labels are section settings rather than locale strings: locales/en.default.json is
+  at Shopify's 3400-key ceiling. "View all" reuses the existing featured_blog key.
+{% endcomment %}
+
+{{ 'alc-blog.css' | asset_url | stylesheet_tag }}
+{{ 'alc-featured-blog.css' | asset_url | stylesheet_tag }}
+
+{%- style -%}
+  .section-{{ section.id }}-padding {
+    padding-top: {{ section.settings.padding_top | times: 0.75 | round: 0 }}px;
+    padding-bottom: {{ section.settings.padding_bottom | times: 0.75 | round: 0 }}px;
+  }
+
+  @media screen and (min-width: 750px) {
+    .section-{{ section.id }}-padding {
+      padding-top: {{ section.settings.padding_top }}px;
+      padding-bottom: {{ section.settings.padding_bottom }}px;
+    }
+  }
+{%- endstyle -%}
+
+{%- liquid
+  assign blog = section.settings.blog
+  assign limit = section.settings.post_limit
+  assign show_view_all = false
+  if section.settings.show_view_all and blog != blank and blog.articles_count > limit
+    assign show_view_all = true
+  endif
+  assign layout = section.settings.layout
+  if limit < 2
+    assign layout = 'grid'
+  endif
+-%}
+
+<div class="alc-featured-blog color-{{ section.settings.color_scheme }} gradient">
+  <div class="page-width section-{{ section.id }}-padding">
+    <div class="alc-featured-blog__head">
+      <div class="alc-featured-blog__titles">
+        {%- if section.settings.eyebrow != blank -%}
+          <p class="alc-featured-blog__eyebrow">{{ section.settings.eyebrow | escape }}</p>
+        {%- endif -%}
+        {%- if section.settings.heading != blank -%}
+          <h2
+            id="SectionHeading-{{ section.id }}"
+            class="alc-featured-blog__heading title inline-richtext {{ section.settings.heading_size }}"
+          >
+            {{ section.settings.heading }}
+          </h2>
+        {%- elsif blog != blank -%}
+          <h2 id="SectionHeading-{{ section.id }}" class="alc-featured-blog__heading title {{ section.settings.heading_size }}">
+            {{ blog.title | escape }}
+          </h2>
+        {%- endif -%}
+      </div>
+
+      {%- if show_view_all -%}
+        <a href="{{ blog.url }}" class="alc-featured-blog__all link animate-arrow small-hide">
+          {{ 'sections.featured_blog.view_all' | t }}
+          <span class="icon-wrap">
+            <span class="svg-wrapper">{{- 'icon-arrow.svg' | inline_asset_content -}}</span>
+          </span>
+        </a>
+      {%- endif -%}
+    </div>
+
+    {%- if blog != blank and blog.articles_count > 0 -%}
+      {%- if layout == 'lead' -%}
+        <div class="alc-featured-blog__lead-layout">
+          {%- for article in blog.articles limit: limit -%}
+            {%- if forloop.first -%}
+              <div class="alc-featured-blog__lead">
+                {%- render 'alc-article-card',
+                  article: article,
+                  show_image: section.settings.show_image,
+                  show_date: section.settings.show_date,
+                  show_author: section.settings.show_author,
+                  show_excerpt: true,
+                  read_more_label: section.settings.read_more_label,
+                  eager: false
+                -%}
+              </div>
+              <div class="alc-featured-blog__stack">
+            {%- else -%}
+              <article class="alc-featured-blog__compact">
+                {%- if section.settings.show_image and article.image -%}
+                  <a class="alc-featured-blog__compact-media" href="{{ article.url }}" tabindex="-1" aria-hidden="true">
+                    <img
+                      srcset="
+                        {% if article.image.width >= 200 %}{{ article.image | image_url: width: 200 }} 200w,{% endif %}
+                        {% if article.image.width >= 300 %}{{ article.image | image_url: width: 300 }} 300w,{% endif %}
+                        {% if article.image.width >= 400 %}{{ article.image | image_url: width: 400 }} 400w,{% endif %}
+                        {{ article.image | image_url }} {{ article.image.width }}w
+                      "
+                      sizes="(min-width: 990px) 14rem, (min-width: 750px) 30vw, 40vw"
+                      src="{{ article.image | image_url: width: 300 }}"
+                      alt="{{ article.image.alt | escape }}"
+                      width="{{ article.image.width }}"
+                      height="{{ article.image.height }}"
+                      loading="lazy"
+                    >
+                  </a>
+                {%- endif -%}
+                <div class="alc-featured-blog__compact-body">
+                  {%- if section.settings.show_date or section.settings.show_author -%}
+                    <p class="alc-article-card__meta">
+                      {%- if section.settings.show_date -%}
+                        {{ article.published_at | time_tag: format: 'date' }}
+                      {%- endif -%}
+                      {%- if section.settings.show_date and section.settings.show_author and article.author != blank -%}
+                        <span class="alc-article-card__sep" aria-hidden="true">&middot;</span>
+                      {%- endif -%}
+                      {%- if section.settings.show_author -%}
+                        {%- render 'alc-author-link', author_name: article.author -%}
+                      {%- endif -%}
+                    </p>
+                  {%- endif -%}
+                  <h3 class="alc-featured-blog__compact-title">
+                    <a href="{{ article.url }}">{{ article.title | escape }}</a>
+                  </h3>
+                </div>
+              </article>
+            {%- endif -%}
+            {%- if forloop.last and forloop.length > 1 -%}
+              </div>
+            {%- endif -%}
+          {%- endfor -%}
+        </div>
+      {%- else -%}
+        <div class="alc-blog__grid alc-blog__grid--{{ section.settings.columns_desktop }}">
+          {%- for article in blog.articles limit: limit -%}
+            {%- render 'alc-article-card',
+              article: article,
+              show_image: section.settings.show_image,
+              show_date: section.settings.show_date,
+              show_author: section.settings.show_author,
+              show_excerpt: true,
+              read_more_label: section.settings.read_more_label,
+              eager: false
+            -%}
+          {%- endfor -%}
+        </div>
+      {%- endif -%}
+    {%- endif -%}
+
+    {%- if show_view_all -%}
+      <div class="alc-featured-blog__all-mobile medium-hide large-up-hide">
+        <a href="{{ blog.url }}" class="button button--secondary" id="ViewAll-{{ section.id }}" aria-labelledby="ViewAll-{{ section.id }} SectionHeading-{{ section.id }}">
+          {{ 'sections.featured_blog.view_all' | t }}
+        </a>
+      </div>
+    {%- endif -%}
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "t:sections.alc-featured-blog.name",
+  "tag": "section",
+  "class": "section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "t:sections.alc-featured-blog.settings.eyebrow.label",
+      "default": "t:sections.alc-featured-blog.settings.eyebrow.default"
+    },
+    {
+      "type": "inline_richtext",
+      "id": "heading",
+      "label": "t:sections.alc-featured-blog.settings.heading.label",
+      "info": "t:sections.alc-featured-blog.settings.heading.info"
+    },
+    {
+      "type": "select",
+      "id": "heading_size",
+      "options": [
+        { "value": "h2", "label": "t:sections.all.heading_size.options__1.label" },
+        { "value": "h1", "label": "t:sections.all.heading_size.options__2.label" },
+        { "value": "h0", "label": "t:sections.all.heading_size.options__3.label" }
+      ],
+      "default": "h1",
+      "label": "t:sections.all.heading_size.label"
+    },
+    {
+      "type": "blog",
+      "id": "blog",
+      "label": "t:sections.featured-blog.settings.blog.label"
+    },
+    {
+      "type": "range",
+      "id": "post_limit",
+      "min": 2,
+      "max": 6,
+      "step": 1,
+      "default": 3,
+      "label": "t:sections.featured-blog.settings.post_limit.label"
+    },
+    {
+      "type": "select",
+      "id": "layout",
+      "options": [
+        { "value": "lead", "label": "t:sections.alc-featured-blog.settings.layout.options__1.label" },
+        { "value": "grid", "label": "t:sections.alc-featured-blog.settings.layout.options__2.label" }
+      ],
+      "default": "lead",
+      "label": "t:sections.alc-featured-blog.settings.layout.label",
+      "info": "t:sections.alc-featured-blog.settings.layout.info"
+    },
+    {
+      "type": "range",
+      "id": "columns_desktop",
+      "min": 2,
+      "max": 4,
+      "step": 1,
+      "default": 3,
+      "label": "t:sections.featured-blog.settings.columns_desktop.label",
+      "info": "t:sections.alc-featured-blog.settings.columns_desktop.info"
+    },
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "t:sections.all.colors.label",
+      "default": "scheme-1"
+    },
+    {
+      "type": "header",
+      "content": "t:sections.alc-featured-blog.settings.cards_heading.content"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_image",
+      "default": true,
+      "label": "t:sections.featured-blog.settings.show_image.label"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_date",
+      "default": true,
+      "label": "t:sections.featured-blog.settings.show_date.label"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_author",
+      "default": true,
+      "label": "t:sections.featured-blog.settings.show_author.label"
+    },
+    {
+      "type": "text",
+      "id": "read_more_label",
+      "label": "t:sections.alc-blog-grid.settings.read_more_label.label",
+      "default": "t:sections.alc-blog-grid.settings.read_more_label.default"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_view_all",
+      "default": true,
+      "label": "t:sections.featured-blog.settings.show_view_all.label"
+    },
+    {
+      "type": "header",
+      "content": "t:sections.all.padding.section_padding_heading"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "t:sections.all.padding.padding_top",
+      "default": 48
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "t:sections.all.padding.padding_bottom",
+      "default": 56
+    }
+  ],
+  "presets": [
+    {
+      "name": "t:sections.alc-featured-blog.name"
+    }
+  ]
+}
+{% endschema %}
