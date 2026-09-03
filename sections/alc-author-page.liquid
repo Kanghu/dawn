@@ -110,18 +110,24 @@
   {%- endcomment -%}
   {%- if active_page == 1 -%}
     <header class="alc-author-page__header">
-      {%- if section.settings.show_image and author.photo.value != blank -%}
+      {%- if section.settings.show_image -%}
         <div class="alc-author-page__media">
-          {{
-            author.photo.value
-            | image_url: width: 320
-            | image_tag:
-              loading: 'eager',
-              width: 160,
-              height: 160,
-              class: 'alc-author-page__avatar',
-              alt: author_name
-          }}
+          {%- if author.photo.value != blank -%}
+            {{
+              author.photo.value
+              | image_url: width: 320
+              | image_tag:
+                loading: 'eager',
+                width: 160,
+                height: 160,
+                class: 'alc-author-page__avatar',
+                alt: author_name
+            }}
+          {%- else -%}
+            <span class="alc-author-page__avatar alc-author-page__avatar--placeholder">
+              {{- 'icon-author-placeholder.svg' | inline_asset_content -}}
+            </span>
+          {%- endif -%}
         </div>
       {%- endif -%}
 
@@ -135,8 +141,10 @@
         <div class="alc-author-page__bio rte">
           {%- if author.bio.value != blank -%}
             {{ author.bio | metafield_tag }}
-          {%- else -%}
+          {%- elsif page.content != blank -%}
             {{ page.content }}
+          {%- elsif section.settings.default_bio != blank -%}
+            {{ section.settings.default_bio }}
           {%- endif -%}
         </div>
 
@@ -255,6 +263,13 @@
       "id": "show_image",
       "default": true,
       "label": "t:sections.alc-author-page.settings.show_image.label"
+    },
+    {
+      "type": "richtext",
+      "id": "default_bio",
+      "label": "t:sections.alc-author-page.settings.default_bio.label",
+      "info": "t:sections.alc-author-page.settings.default_bio.info",
+      "default": "t:sections.alc-author-page.settings.default_bio.default"
     },
     {
       "type": "checkbox",

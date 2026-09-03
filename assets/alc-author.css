@@ -182,3 +182,19 @@
     font-size: 2.6rem;
   }
 }
+
+/* Placeholder avatar shown until an author photo is uploaded. */
+.alc-author-box__avatar--placeholder,
+.alc-author-page__avatar--placeholder {
+  display: block;
+  color: rgb(var(--color-foreground));
+  border-radius: 50%;
+  overflow: hidden;
+}
+
+.alc-author-box__avatar--placeholder svg,
+.alc-author-page__avatar--placeholder svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+}

@@ -54,19 +54,29 @@
     {%- endif -%}
 
     <div class="alc-author-box__inner">
-      {%- if show_image and author.photo.value != blank -%}
+      {%- if show_image -%}
         <div class="alc-author-box__media">
-          {{
-            author.photo.value
-            | image_url: width: 160
-            | image_tag:
-              loading: 'lazy',
-              width: 80,
-              height: 80,
-              class: 'alc-author-box__avatar',
-              alt: author_display_name,
-              itemprop: 'image'
-          }}
+          {%- if author.photo.value != blank -%}
+            {{
+              author.photo.value
+              | image_url: width: 160
+              | image_tag:
+                loading: 'lazy',
+                width: 80,
+                height: 80,
+                class: 'alc-author-box__avatar',
+                alt: author_display_name,
+                itemprop: 'image'
+            }}
+          {%- else -%}
+            {%- comment -%}
+              No photo on the metaobject yet — and an author page with a blank hole where
+              a face should be looks broken. A neutral silhouette reads as deliberate.
+            {%- endcomment -%}
+            <span class="alc-author-box__avatar alc-author-box__avatar--placeholder">
+              {{- 'icon-author-placeholder.svg' | inline_asset_content -}}
+            </span>
+          {%- endif -%}
         </div>
       {%- endif -%}
 
