@@ -1,0 +1,498 @@
+{% comment %}
+  Server-rendered "related products" for the product page (replaces the Vitals app block).
+
+  Products are selected per product, in this priority order, until the limit is filled:
+    1. Manual list from Shopify Search & Discovery
+       (metafield shopify--discovery--product_recommendation.related_products)
+    2. Same collection AND same product type
+    3. Same collection, any product type
+    4. Fallback collection chosen in the section settings
+
+  Collections are scanned once, in this order: the collection whose handle or title matches the
+  product type (if it exists), the primary collection (product.metafields.custom.collection,
+  same rule as the "Vezi alte produse din gama" slider), then the product's own collections.
+  At most 3 distinct collections and at most `scan_limit` products per collection are read,
+  which keeps the Liquid work small and predictable.
+
+  Rules applied to every candidate: not the current product, in stock, no duplicates.
+  Everything is rendered in Liquid, so the links exist in the HTML without JavaScript.
+
+  SEO: <section aria-labelledby>, one H2, a descriptive internal link to the category collection,
+  and an optional ItemList JSON-LD describing the rendered products.
+{% endcomment %}
+
+{{ 'component-card.css' | asset_url | stylesheet_tag }}
+{{ 'component-price.css' | asset_url | stylesheet_tag }}
+{{ 'component-rating.css' | asset_url | stylesheet_tag }}
+{{ 'component-slider.css' | asset_url | stylesheet_tag }}
+{{ 'section-alc-recs.css' | asset_url | stylesheet_tag }}
+
+{%- liquid
+  assign limit = section.settings.products_to_show
+  assign scan_limit = section.settings.scan_limit
+  assign max_collections = 3
+
+  assign picked = ',' | append: product.handle | append: ','
+  assign count = 0
+  assign current_type = product.type
+
+  assign queued = ','
+  assign queued_handles = ''
+  assign queued_count = 0
+
+  assign scanned = ','
+  assign scanned_count = 0
+
+  assign ld_items = ''
+  assign ld_sep = ''
+
+  assign discovery = product.metafields['shopify--discovery--product_recommendation']
+  assign manual_list = discovery.related_products.value
+
+  # Collection whose handle matches the product type (e.g. "Plafoniere LED" -> plafoniere-led).
+  # Most product types in this store have such a collection, which makes tier 2 accurate
+  # without querying the whole catalogue. Falls back to a collection titled like the type.
+  assign type_collection = nil
+  if current_type != blank
+    assign type_handle = current_type | handleize
+    assign type_collection = collections[type_handle]
+    if type_collection.handle != type_handle
+      assign type_collection = collections | where: 'title', current_type | first
+    endif
+  endif
+
+  assign primary_collection = nil
+  if product.metafields.custom.collection != blank
+    assign primary_title = product.metafields.custom.collection.value[0]
+    assign primary_collection = collections | where: 'title', primary_title | first
+  endif
+
+  # Category shown in the header and linked for internal linking.
+  assign category_collection = type_collection
+  if category_collection == nil
+    assign category_collection = primary_collection
+  endif
+  if category_collection == nil and product.collections.size > 0
+    assign category_collection = product.collections.first
+  endif
+  assign category_name = category_collection.title
+  if category_name == blank
+    assign category_name = current_type
+  endif
+-%}
+
+{%- capture cards -%}
+  {%- comment -%} 1. Manual list from Search & Discovery {%- endcomment -%}
+  {%- if manual_list.size > 0 -%}
+    {%- for candidate in manual_list -%}
+      {%- if count >= limit -%}{%- break -%}{%- endif -%}
+      {%- assign key = ',' | append: candidate.handle | append: ',' -%}
+      {%- if candidate.available -%}
+        {%- unless picked contains key -%}
+          {%- assign picked = picked | append: candidate.handle | append: ',' -%}
+          {%- assign count = count | plus: 1 -%}
+          {%- assign ld_name = candidate.title | json -%}
+          {%- assign ld_items = ld_items | append: ld_sep | append: '{"@type":"ListItem","position":' | append: count | append: ',"url":"' | append: shop.url | append: candidate.url | append: '","name":' | append: ld_name | append: '}' -%}
+          {%- assign ld_sep = ',' -%}
+          {%- render 'alc-related-products-dynamic-card', card_product: candidate, section: section, source: 'manual', position: count -%}
+        {%- endunless -%}
+      {%- endif -%}
+    {%- endfor -%}
+  {%- endif -%}
+
+  {%- comment -%}
+    2 + 3. One scan per collection. Same type renders immediately (tier 2);
+    other types are queued by handle and used afterwards (tier 3).
+  {%- endcomment -%}
+  {%- for slot in (0..4) -%}
+    {%- if count >= limit or scanned_count >= max_collections -%}{%- break -%}{%- endif -%}
+    {%- if slot == 0 -%}
+      {%- assign coll = type_collection -%}
+    {%- elsif slot == 1 -%}
+      {%- assign coll = primary_collection -%}
+    {%- else -%}
+      {%- assign idx = slot | minus: 2 -%}
+      {%- assign coll = product.collections[idx] -%}
+    {%- endif -%}
+    {%- unless coll -%}{%- continue -%}{%- endunless -%}
+    {%- assign coll_key = ',' | append: coll.handle | append: ',' -%}
+    {%- if scanned contains coll_key -%}{%- continue -%}{%- endif -%}
+    {%- assign scanned = scanned | append: coll.handle | append: ',' -%}
+    {%- assign scanned_count = scanned_count | plus: 1 -%}
+
+    {%- for candidate in coll.products limit: scan_limit -%}
+      {%- if count >= limit -%}{%- break -%}{%- endif -%}
+      {%- unless candidate.available -%}{%- continue -%}{%- endunless -%}
+      {%- assign key = ',' | append: candidate.handle | append: ',' -%}
+      {%- if picked contains key -%}{%- continue -%}{%- endif -%}
+      {%- if candidate.type == current_type -%}
+        {%- assign picked = picked | append: candidate.handle | append: ',' -%}
+        {%- assign count = count | plus: 1 -%}
+        {%- assign ld_name = candidate.title | json -%}
+        {%- assign ld_items = ld_items | append: ld_sep | append: '{"@type":"ListItem","position":' | append: count | append: ',"url":"' | append: shop.url | append: candidate.url | append: '","name":' | append: ld_name | append: '}' -%}
+        {%- assign ld_sep = ',' -%}
+        {%- render 'alc-related-products-dynamic-card', card_product: candidate, section: section, source: 'collection-type', position: count -%}
+      {%- elsif queued_count < limit -%}
+        {%- unless queued contains key -%}
+          {%- assign queued = queued | append: candidate.handle | append: ',' -%}
+          {%- assign queued_handles = queued_handles | append: candidate.handle | append: ',' -%}
+          {%- assign queued_count = queued_count | plus: 1 -%}
+        {%- endunless -%}
+      {%- endif -%}
+    {%- endfor -%}
+  {%- endfor -%}
+
+  {%- if count < limit and queued_count > 0 -%}
+    {%- assign queued_list = queued_handles | split: ',' -%}
+    {%- for handle in queued_list -%}
+      {%- if count >= limit -%}{%- break -%}{%- endif -%}
+      {%- if handle == blank -%}{%- continue -%}{%- endif -%}
+      {%- assign key = ',' | append: handle | append: ',' -%}
+      {%- if picked contains key -%}{%- continue -%}{%- endif -%}
+      {%- assign candidate = all_products[handle] -%}
+      {%- if candidate == blank -%}{%- continue -%}{%- endif -%}
+      {%- assign picked = picked | append: handle | append: ',' -%}
+      {%- assign count = count | plus: 1 -%}
+      {%- assign ld_name = candidate.title | json -%}
+      {%- assign ld_items = ld_items | append: ld_sep | append: '{"@type":"ListItem","position":' | append: count | append: ',"url":"' | append: shop.url | append: candidate.url | append: '","name":' | append: ld_name | append: '}' -%}
+      {%- assign ld_sep = ',' -%}
+      {%- render 'alc-related-products-dynamic-card', card_product: candidate, section: section, source: 'collection', position: count -%}
+    {%- endfor -%}
+  {%- endif -%}
+
+  {%- comment -%} 4. Fallback collection {%- endcomment -%}
+  {%- if count < limit and section.settings.fallback_collection != blank -%}
+    {%- for candidate in section.settings.fallback_collection.products limit: scan_limit -%}
+      {%- if count >= limit -%}{%- break -%}{%- endif -%}
+      {%- unless candidate.available -%}{%- continue -%}{%- endunless -%}
+      {%- assign key = ',' | append: candidate.handle | append: ',' -%}
+      {%- if picked contains key -%}{%- continue -%}{%- endif -%}
+      {%- assign picked = picked | append: candidate.handle | append: ',' -%}
+      {%- assign count = count | plus: 1 -%}
+      {%- assign ld_name = candidate.title | json -%}
+      {%- assign ld_items = ld_items | append: ld_sep | append: '{"@type":"ListItem","position":' | append: count | append: ',"url":"' | append: shop.url | append: candidate.url | append: '","name":' | append: ld_name | append: '}' -%}
+      {%- assign ld_sep = ',' -%}
+      {%- render 'alc-related-products-dynamic-card', card_product: candidate, section: section, source: 'fallback', position: count -%}
+    {%- endfor -%}
+  {%- endif -%}
+{%- endcapture -%}
+
+{%- if count > 0 -%}
+  {%- style -%}
+    #section-{{ section.id }} {
+      --alc-recs-accent: {{ section.settings.accent_color | default: '#03bad6' }};
+      padding-top: {{ section.settings.padding_top | times: 0.75 | round: 0 }}px;
+      padding-bottom: {{ section.settings.padding_bottom | times: 0.75 | round: 0 }}px;
+    }
+
+    @media screen and (min-width: 750px) {
+      #section-{{ section.id }} {
+        padding-top: {{ section.settings.padding_top }}px;
+        padding-bottom: {{ section.settings.padding_bottom }}px;
+      }
+    }
+  {%- endstyle -%}
+
+  <section
+    id="section-{{ section.id }}"
+    class="alc-recs color-{{ section.settings.color_scheme }} gradient"
+    aria-labelledby="Heading-{{ section.id }}"
+    data-related-products-count="{{ count }}"
+  >
+    <div class="page-width">
+      <header class="alc-recs__header">
+        <div class="alc-recs__text">
+          {%- if section.settings.show_category and category_name != blank and section.settings.eyebrow_text != blank -%}
+            <p class="alc-recs__eyebrow">
+              {{ section.settings.eyebrow_text | replace: '[category]', category_name }}
+            </p>
+          {%- endif -%}
+          <h2 id="Heading-{{ section.id }}" class="alc-recs__title {{ section.settings.heading_size }}">
+            {{ section.settings.title }}
+          </h2>
+          {%- if section.settings.show_subtitle and section.settings.subtitle_text != blank -%}
+            <p class="alc-recs__subtitle">
+              {{ section.settings.subtitle_text | replace: '[count]', count }}
+            </p>
+          {%- endif -%}
+        </div>
+        {%- if section.settings.show_category and category_collection and category_collection.url != blank and section.settings.view_all_text != blank -%}
+          <a class="alc-recs__link" href="{{ category_collection.url }}">
+            {{ section.settings.view_all_text | replace: '[category]', category_name }}
+            {{- 'icon-arrow.svg' | inline_asset_content -}}
+          </a>
+        {%- endif -%}
+      </header>
+
+      <slider-component class="slider-mobile-gutter">
+        <ul
+          class="alc-recs__grid grid product-grid grid--{{ section.settings.columns_mobile }}-col-tablet-down grid--3-col-tablet grid--{{ section.settings.columns_desktop }}-col-desktop slider slider--mobile grid--peek"
+          id="Slider-{{ section.id }}"
+          role="list"
+        >
+          {{ cards }}
+        </ul>
+      </slider-component>
+    </div>
+
+    {%- if section.settings.enable_json_ld -%}
+      <script type="application/ld+json">
+        {
+          "@context": "https://schema.org",
+          "@type": "ItemList",
+          "name": {{ section.settings.title | json }},
+          "numberOfItems": {{ count }},
+          "itemListElement": [{{ ld_items }}]
+        }
+      </script>
+    {%- endif -%}
+  </section>
+{%- endif -%}
+
+{% schema %}
+{
+  "name": "Related products SSR",
+  "tag": "section",
+  "class": "section",
+  "enabled_on": {
+    "templates": ["product"]
+  },
+  "settings": [
+    {
+      "type": "paragraph",
+      "content": "Server-rendered. Selection order per product: 1) manual list from Search & Discovery, 2) same collection and same product type, 3) same collection, 4) fallback collection. Only in-stock products, no duplicates, current product excluded. At most 3 collections are scanned."
+    },
+    {
+      "type": "header",
+      "content": "Content"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Heading",
+      "default": "Te-ar putea interesa și următoarele"
+    },
+    {
+      "type": "select",
+      "id": "heading_size",
+      "options": [
+        { "value": "h2", "label": "t:sections.all.heading_size.options__1.label" },
+        { "value": "h1", "label": "t:sections.all.heading_size.options__2.label" },
+        { "value": "h0", "label": "t:sections.all.heading_size.options__3.label" }
+      ],
+      "default": "h2",
+      "label": "t:sections.all.heading_size.label"
+    },
+    {
+      "type": "text",
+      "id": "eyebrow_text",
+      "label": "Eyebrow text",
+      "info": "[category] is replaced with the category name.",
+      "default": "Din categoria [category]"
+    },
+    {
+      "type": "text",
+      "id": "subtitle_text",
+      "label": "Subtitle",
+      "info": "[count] is replaced with the number of products shown.",
+      "default": "[count] produse în stoc, alese din aceeași categorie și gamă ca produsul de mai sus."
+    },
+    {
+      "type": "text",
+      "id": "view_all_text",
+      "label": "'View all' link text",
+      "info": "[category] is replaced with the category name.",
+      "default": "Vezi toate produsele din [category]"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_category",
+      "default": true,
+      "label": "Show category eyebrow and 'view all' link",
+      "info": "Links to the collection matching the product type. Good for internal linking."
+    },
+    {
+      "type": "checkbox",
+      "id": "show_subtitle",
+      "default": true,
+      "label": "Show subtitle with product count"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_reason_labels",
+      "default": true,
+      "label": "Show 'why this product' labels on cards"
+    },
+    {
+      "type": "text",
+      "id": "reason_manual",
+      "label": "Label: manual recommendation",
+      "default": "Recomandarea noastră"
+    },
+    {
+      "type": "text",
+      "id": "reason_collection_type",
+      "label": "Label: same category",
+      "default": "Aceeași categorie"
+    },
+    {
+      "type": "text",
+      "id": "reason_collection",
+      "label": "Label: same range",
+      "default": "Din aceeași gamă"
+    },
+    {
+      "type": "text",
+      "id": "reason_fallback",
+      "label": "Label: fallback collection",
+      "default": "Îți mai recomandăm"
+    },
+    {
+      "type": "checkbox",
+      "id": "enable_json_ld",
+      "default": true,
+      "label": "Output ItemList structured data (JSON-LD)"
+    },
+    {
+      "type": "header",
+      "content": "Selection"
+    },
+    {
+      "type": "range",
+      "id": "products_to_show",
+      "min": 2,
+      "max": 12,
+      "step": 1,
+      "default": 8,
+      "label": "Maximum products to show"
+    },
+    {
+      "type": "range",
+      "id": "scan_limit",
+      "min": 10,
+      "max": 50,
+      "step": 5,
+      "default": 30,
+      "label": "Products scanned per collection",
+      "info": "Lower is faster. Raise it only if sections often come out short."
+    },
+    {
+      "type": "collection",
+      "id": "fallback_collection",
+      "label": "Fallback collection",
+      "info": "Used only when the rules above do not fill the maximum."
+    },
+    {
+      "type": "header",
+      "content": "Layout"
+    },
+    {
+      "type": "range",
+      "id": "columns_desktop",
+      "min": 2,
+      "max": 6,
+      "step": 1,
+      "default": 4,
+      "label": "t:sections.related-products.settings.columns_desktop.label"
+    },
+    {
+      "type": "select",
+      "id": "columns_mobile",
+      "default": "2",
+      "label": "t:sections.related-products.settings.columns_mobile.label",
+      "options": [
+        { "value": "1", "label": "t:sections.related-products.settings.columns_mobile.options__1.label" },
+        { "value": "2", "label": "t:sections.related-products.settings.columns_mobile.options__2.label" }
+      ]
+    },
+    {
+      "type": "select",
+      "id": "image_ratio",
+      "options": [
+        { "value": "adapt", "label": "t:sections.related-products.settings.image_ratio.options__1.label" },
+        { "value": "portrait", "label": "t:sections.related-products.settings.image_ratio.options__2.label" },
+        { "value": "square", "label": "t:sections.related-products.settings.image_ratio.options__3.label" }
+      ],
+      "default": "square",
+      "label": "t:sections.related-products.settings.image_ratio.label"
+    },
+    {
+      "type": "select",
+      "id": "image_shape",
+      "options": [
+        { "value": "default", "label": "t:sections.all.image_shape.options__1.label" },
+        { "value": "arch", "label": "t:sections.all.image_shape.options__2.label" },
+        { "value": "circle", "label": "t:sections.all.image_shape.options__3.label" }
+      ],
+      "default": "default",
+      "label": "t:sections.all.image_shape.label"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_secondary_image",
+      "default": true,
+      "label": "t:sections.related-products.settings.show_secondary_image.label"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_vendor",
+      "default": false,
+      "label": "t:sections.related-products.settings.show_vendor.label"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_rating",
+      "default": false,
+      "label": "t:sections.related-products.settings.show_rating.label"
+    },
+    {
+      "type": "checkbox",
+      "id": "use_mobile_card",
+      "label": "Use compact mobile cards",
+      "default": false
+    },
+    {
+      "type": "header",
+      "content": "Style"
+    },
+    {
+      "type": "color",
+      "id": "accent_color",
+      "label": "Accent color",
+      "default": "#03bad6",
+      "info": "Used for the top marker, eyebrow, labels and link hover."
+    },
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "t:sections.all.colors.label",
+      "default": "scheme-1"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "t:sections.all.padding.padding_top",
+      "default": 48
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "t:sections.all.padding.padding_bottom",
+      "default": 48
+    }
+  ],
+  "presets": [
+    {
+      "name": "Related products SSR"
+    }
+  ]
+}
+{% endschema %}

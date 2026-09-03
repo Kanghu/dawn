@@ -570,13 +570,33 @@
                   </div>
                 {%- endif -%}
               {%- when 'complementary' -%}
+                {%- liquid
+                  # Complementary products are set manually in Shopify Search & Discovery and stored in a
+                  # product metafield. When that list exists we render it on the server (crawlable without
+                  # JavaScript) and tell global.js (data-ssr) not to fetch the recommendations endpoint.
+                  # Otherwise we keep Dawn's default: an empty element filled by the recommendations API.
+                  assign complementary_ssr = false
+                  assign complementary_count = 0
+                  if recommendations.performed
+                    assign complementary_products = recommendations.products
+                    assign complementary_count = recommendations.products_count
+                  else
+                    assign complementary_products = product.metafields['shopify--discovery--product_recommendation'].complementary_products.value | where: 'available'
+                    if complementary_products.size > 0
+                      assign complementary_ssr = true
+                      assign complementary_count = complementary_products.size | at_most: block.settings.product_list_limit
+                    endif
+                  endif
+                  assign complementary_rendered = 0
+                -%}
                 <product-recommendations
                   class="complementary-products quick-add-hidden{% if block.settings.make_collapsible_row %} is-accordion{% endif %}{% if block.settings.enable_quick_add %} complementary-products-contains-quick-add{% endif %}"
                   data-url="{{ routes.product_recommendations_url }}?limit={{ block.settings.product_list_limit }}&intent=complementary"
                   data-section-id="{{ section.id }}"
                   data-product-id="{{ product.id }}"
+                  {% if complementary_ssr %}data-ssr="true"{% endif %}
                 >
-                  {%- if recommendations.performed and recommendations.products_count > 0 -%}
+                  {%- if complementary_count > 0 -%}
                     <aside
                       aria-label="{{ 'accessibility.complementary_products' | t }}"
                       {{ block.shopify_attributes -}}
@@ -602,7 +622,7 @@
                           </summary>
                         {%- endif -%}
                         <slideshow-component class="slider-mobile-gutter">
-                          {%- assign number_of_slides = recommendations.products_count
+                          {%- assign number_of_slides = complementary_count
                             | plus: 0.0
                             | divided_by: block.settings.products_per_page
                             | ceil
@@ -628,10 +648,12 @@
                                 {% endif %}
                               >
                                 <ul class="list-unstyled" role="list">
-                                  {%- for product in recommendations.products
+                                  {%- for product in complementary_products
                                     limit: block.settings.products_per_page
                                     offset: continue
                                   -%}
+                                    {%- if complementary_rendered >= complementary_count -%}{%- break -%}{%- endif -%}
+                                    {%- assign complementary_rendered = complementary_rendered | plus: 1 -%}
                                     <li>
                                       {%- if block.settings.enable_quick_add -%}
                                         {% assign quick_add = 'standard' %}

@@ -1,0 +1,212 @@
+{% comment %}
+  "Recently viewed" products for the product page (replaces the Vitals app block).
+
+  The history is private to the visitor's browser (localStorage), so this section is filled
+  client-side: assets/alc-recently-viewed.js asks the storefront search for the stored product
+  ids and inserts the cards rendered by sections/alc-recently-viewed-results.liquid.
+  The server renders only the header shell, hidden, so there is no layout shift and nothing
+  is requested when the visitor has no history.
+
+  Not meant for crawlers (the content depends on the visitor), unlike
+  sections/alc-related-products-dynamic.liquid which is fully server-rendered.
+{% endcomment %}
+
+{{ 'component-card.css' | asset_url | stylesheet_tag }}
+{{ 'component-price.css' | asset_url | stylesheet_tag }}
+{{ 'component-rating.css' | asset_url | stylesheet_tag }}
+{{ 'component-slider.css' | asset_url | stylesheet_tag }}
+{{ 'section-alc-recs.css' | asset_url | stylesheet_tag }}
+<script src="{{ 'alc-recently-viewed.js' | asset_url }}" defer="defer"></script>
+
+{%- style -%}
+  #section-{{ section.id }} {
+    --alc-recs-accent: {{ section.settings.accent_color | default: '#03bad6' }};
+    padding-top: {{ section.settings.padding_top | times: 0.75 | round: 0 }}px;
+    padding-bottom: {{ section.settings.padding_bottom | times: 0.75 | round: 0 }}px;
+  }
+
+  @media screen and (min-width: 750px) {
+    #section-{{ section.id }} {
+      padding-top: {{ section.settings.padding_top }}px;
+      padding-bottom: {{ section.settings.padding_bottom }}px;
+    }
+  }
+{%- endstyle -%}
+
+<alc-recently-viewed
+  id="section-{{ section.id }}"
+  class="alc-recs alc-recs--recent color-{{ section.settings.color_scheme }} gradient"
+  aria-labelledby="Heading-{{ section.id }}"
+  data-product-id="{{ product.id }}"
+  data-search-url="{{ routes.search_url }}"
+  data-section="alc-recently-viewed-results"
+  data-limit="{{ section.settings.products_to_show }}"
+  data-storage-limit="12"
+  data-columns="{{ section.settings.columns_desktop }}"
+  data-show-labels="{{ section.settings.show_reason_labels }}"
+  data-label-latest="{{ section.settings.reason_latest | escape }}"
+  data-label-recent="{{ section.settings.reason_recent | escape }}"
+  hidden
+>
+  <div class="page-width">
+    <header class="alc-recs__header">
+      <div class="alc-recs__text">
+        {%- if section.settings.eyebrow_text != blank -%}
+          <p class="alc-recs__eyebrow">{{ section.settings.eyebrow_text }}</p>
+        {%- endif -%}
+        <h2 id="Heading-{{ section.id }}" class="alc-recs__title {{ section.settings.heading_size }}">
+          {{ section.settings.title }}
+        </h2>
+        {%- if section.settings.subtitle_text != blank -%}
+          <p class="alc-recs__subtitle">{{ section.settings.subtitle_text }}</p>
+        {%- endif -%}
+      </div>
+      {%- if section.settings.clear_text != blank -%}
+        <button type="button" class="alc-recs__link alc-recs__link--muted" data-clear>
+          {{ section.settings.clear_text }}
+          {{- 'icon-close-small.svg' | inline_asset_content -}}
+        </button>
+      {%- endif -%}
+    </header>
+
+    <div class="alc-recs__results" data-results aria-live="polite"></div>
+  </div>
+</alc-recently-viewed>
+
+{% schema %}
+{
+  "name": "Recently viewed",
+  "tag": "section",
+  "class": "section",
+  "enabled_on": {
+    "templates": ["product"]
+  },
+  "settings": [
+    {
+      "type": "paragraph",
+      "content": "Shows the products this visitor opened before, newest first. The history lives only in the visitor's browser; the section stays hidden until there is something to show."
+    },
+    {
+      "type": "header",
+      "content": "Content"
+    },
+    {
+      "type": "text",
+      "id": "eyebrow_text",
+      "label": "Eyebrow text",
+      "default": "Istoricul tău"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Heading",
+      "default": "Vizualizate recent"
+    },
+    {
+      "type": "select",
+      "id": "heading_size",
+      "options": [
+        { "value": "h2", "label": "t:sections.all.heading_size.options__1.label" },
+        { "value": "h1", "label": "t:sections.all.heading_size.options__2.label" },
+        { "value": "h0", "label": "t:sections.all.heading_size.options__3.label" }
+      ],
+      "default": "h2",
+      "label": "t:sections.all.heading_size.label"
+    },
+    {
+      "type": "text",
+      "id": "subtitle_text",
+      "label": "Subtitle",
+      "default": "Produsele pe care le-ai deschis recent, păstrate doar în browserul tău."
+    },
+    {
+      "type": "text",
+      "id": "clear_text",
+      "label": "'Clear history' button text",
+      "info": "Leave empty to hide the button.",
+      "default": "Șterge istoricul"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_reason_labels",
+      "default": true,
+      "label": "Show labels on cards"
+    },
+    {
+      "type": "text",
+      "id": "reason_latest",
+      "label": "Label: most recent product",
+      "default": "Ultimul vizualizat"
+    },
+    {
+      "type": "text",
+      "id": "reason_recent",
+      "label": "Label: other products",
+      "default": "Vizualizat recent"
+    },
+    {
+      "type": "header",
+      "content": "Layout"
+    },
+    {
+      "type": "range",
+      "id": "products_to_show",
+      "min": 2,
+      "max": 12,
+      "step": 1,
+      "default": 8,
+      "label": "Maximum products to show"
+    },
+    {
+      "type": "range",
+      "id": "columns_desktop",
+      "min": 2,
+      "max": 6,
+      "step": 1,
+      "default": 4,
+      "label": "t:sections.related-products.settings.columns_desktop.label"
+    },
+    {
+      "type": "header",
+      "content": "Style"
+    },
+    {
+      "type": "color",
+      "id": "accent_color",
+      "label": "Accent color",
+      "default": "#03bad6"
+    },
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "t:sections.all.colors.label",
+      "default": "scheme-1"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "t:sections.all.padding.padding_top",
+      "default": 48
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "t:sections.all.padding.padding_bottom",
+      "default": 48
+    }
+  ],
+  "presets": [
+    {
+      "name": "Recently viewed"
+    }
+  ]
+}
+{% endschema %}

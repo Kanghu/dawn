@@ -1143,6 +1143,8 @@ class ProductRecommendations extends HTMLElement {
   }
 
   connectedCallback() {
+    // Rendered on the server from the Search & Discovery metafield: nothing to fetch.
+    if (this.dataset.ssr === 'true') return;
     this.initializeRecommendations(this.dataset.productId);
   }
 
