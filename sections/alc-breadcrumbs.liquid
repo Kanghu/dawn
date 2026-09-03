@@ -130,7 +130,7 @@
                     "@type": "ListItem",
                     "position": {{ position }},
                     "name": "{{ col.title | escape }}",
-                    "item": "{{ shop.secure_url }} {{ col.url }}"
+                    "item": "{{ shop.secure_url }}{{ col.url }}"
                   }
                   {%- assign position = position | plus: 1 -%}
                   {%- endfor -%},
@@ -138,7 +138,7 @@
                     "@type": "ListItem",
                     "position": {{ position }},
                     "name": "{{ product.selected_or_first_available_variant.sku | default: product.variants.first.sku | escape }}",
-                    "item": "{{ shop.secure_url }} {{ product.url }}"
+                    "item": "{{ shop.secure_url }}{{ product.url }}"
                   }
 
                 {%- when 'collection' and collection.handle -%}
@@ -161,14 +161,14 @@
                             "@type": "ListItem",
                             "position": {{ position }},
                             "name": "{{ col.title | escape }}",
-                            "item": "{{ shop.secure_url }} {{ col.url }}"
+                            "item": "{{ shop.secure_url }}{{ col.url }}"
                           }
                         {%- else -%},
                           {
                             "@type": "ListItem",
                             "position": {{ position }},
                             "name": "{{ col.title | escape }}",
-                            "item": "{{ shop.secure_url }} {{ col.url }}"
+                            "item": "{{ shop.secure_url }}{{ col.url }}"
                           }
                           {%- endif -%}
                           {%- assign position = position | plus: 1 -%}
@@ -178,7 +178,7 @@
                               "@type": "ListItem",
                               "position": {{ position }},
                               "name": "{{ current_tags | join: ' + ' | escape }}",
-                              "item": "{{ shop.secure_url }} {{ collection.url }}/{{ current_tags | join: '+' }}"
+                              "item": "{{ shop.secure_url }}{{ collection.url }}/{{ current_tags | join: '+' }}"
                             }
                             {%- endif -%}
 
@@ -187,7 +187,7 @@
                               "@type": "ListItem",
                               "position": 2,
                               "name": "{{ page.title | escape }}",
-                              "item": "{{ shop.secure_url }} {{ page.url }}"
+                              "item": "{{ shop.secure_url }}{{ page.url }}"
                             }
 
                           {%- when 'article' -%},
@@ -195,13 +195,13 @@
                               "@type": "ListItem",
                               "position": 2,
                               "name": "{{ blog.title | escape }}",
-                              "item": "{{ shop.secure_url }} {{ blog.url }}"
+                              "item": "{{ shop.secure_url }}{{ blog.url }}"
                             },
                             {
                               "@type": "ListItem",
                               "position": 3,
                               "name": "{{ article.title | escape }}",
-                              "item": "{{ shop.secure_url }} {{ article.url }}"
+                              "item": "{{ shop.secure_url }}{{ article.url }}"
                             }
 
                           {%- when 'blog' -%},
@@ -209,7 +209,7 @@
                               "@type": "ListItem",
                               "position": 2,
                               "name": "{{ blog.title | escape }}",
-                              "item": "{{ shop.secure_url }} {{ blog.url }}"
+                              "item": "{{ shop.secure_url }}{{ blog.url }}"
                             }
 
                           {%- else -%},
@@ -217,7 +217,7 @@
                               "@type": "ListItem",
                               "position": 2,
                               "name": "{{ page_title | escape }}",
-                              "item": "{{ shop.secure_url }} {{ request.path }}"
+                              "item": "{{ shop.secure_url }}{{ request.path }}"
                             }
                             {%- endcase -%}
                           ]

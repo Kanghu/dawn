@@ -6,6 +6,7 @@
 
   Accepts:
   - products: {Array} the products rendered on the current page (already paginated)
+  - handles: {Array} alternative to `products` - the product handles rendered, in display order
   - list_name: {String} optional name of the list. Default: collection.title
   - list_url: {String} optional canonical URL of the list page. Default: canonical_url
 
@@ -16,6 +17,10 @@
 {%- liquid
   assign root_url = routes.root_url | remove_last: '/'
 
+  if handles == blank and products != blank
+    assign handles = products | map: 'handle'
+  endif
+
   unless list_name
     assign list_name = collection.title
   endunless
@@ -25,20 +30,20 @@
   endunless
 -%}
 
-{%- if products != blank and products.size > 0 -%}
+{%- if handles != blank and handles.size > 0 -%}
   <script type="application/ld+json">
     {
       "@context": "https://schema.org",
       "@type": "ItemList",
       "name": {{ list_name | strip_html | json }},
       "url": {{ list_url | json }},
-      "numberOfItems": {{ products.size }},
+      "numberOfItems": {{ handles.size }},
       "itemListElement": [
-        {%- for product in products -%}
+        {%- for handle in handles -%}
           {
             "@type": "ListItem",
             "position": {{ forloop.index }},
-            "url": {{ product.handle | prepend: '/products/' | prepend: root_url | prepend: shop.secure_url | json }}
+            "url": {{ handle | prepend: '/products/' | prepend: root_url | prepend: shop.secure_url | json }}
           }{%- unless forloop.last -%},{%- endunless -%}
         {%- endfor -%}
       ]
