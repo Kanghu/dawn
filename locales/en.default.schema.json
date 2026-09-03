@@ -3529,6 +3529,32 @@
           "default": "Read article"
         }
       }
+    },
+    "alc-featured-blog": {
+      "name": "Blog teaser",
+      "settings": {
+        "eyebrow": {
+          "label": "Label above the heading",
+          "default": "Blog"
+        },
+        "heading": {
+          "label": "Heading",
+          "info": "Leave empty to use the blog's own title."
+        },
+        "layout": {
+          "label": "Layout",
+          "info": "Lead: the first post spans two columns, the rest stack beside it. Grid: uniform columns, like the blog page.",
+          "options__1": {
+            "label": "Lead post + stack"
+          },
+          "options__2": {
+            "label": "Uniform grid"
+          }
+        },
+        "columns_desktop": {
+          "info": "Only used by the Uniform grid layout."
+        }
+      }
     }
   }
 }
