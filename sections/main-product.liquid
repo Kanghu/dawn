@@ -800,9 +800,8 @@
       endif
     -%}
 
-    <script type="application/ld+json">
-      {{ product | structured_data }}
-    </script>
+    {%- comment -%} Product JSON-LD incl. aggregateRating + reviews (replaces product | structured_data) {%- endcomment -%}
+{% render 'alc-product-schema', product: product %}
   </div>
 </product-info>
 

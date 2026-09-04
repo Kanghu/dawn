@@ -1,5 +1,6 @@
 {%- comment -%}
-  Renders ItemList (Google carousel) structured data for a product listing page.
+  Renders CollectionPage structured data (with an ItemList as mainEntity) for a
+  product listing page.
 
   Only the products actually rendered on the current page are included, so the
   markup always matches the visible content (pagination + active filters).
@@ -7,8 +8,10 @@
   Accepts:
   - products: {Array} the products rendered on the current page (already paginated)
   - handles: {Array} alternative to `products` - the product handles rendered, in display order
+  - names: {Array} optional, used together with `handles` - the product titles, same order
   - list_name: {String} optional name of the list. Default: collection.title
   - list_url: {String} optional canonical URL of the list page. Default: canonical_url
+  - description: {String} optional description of the page. Default: collection.description
 
   Usage:
   {% render 'alc-collection-itemlist-schema', products: collection.products, list_name: collection.title %}
@@ -16,9 +19,12 @@
 
 {%- liquid
   assign root_url = routes.root_url | remove_last: '/'
+  assign item_count = 0
 
-  if handles == blank and products != blank
-    assign handles = products | map: 'handle'
+  if products != blank
+    assign item_count = products.size
+  elsif handles != blank
+    assign item_count = handles.size
   endif
 
   unless list_name
@@ -28,25 +34,61 @@
   unless list_url
     assign list_url = canonical_url
   endunless
+
+  unless description
+    assign description = collection.description
+  endunless
+  assign description = description | strip_html | strip_newlines | strip | truncate: 500
 -%}
 
-{%- if handles != blank and handles.size > 0 -%}
+{%- if item_count > 0 -%}
   <script type="application/ld+json">
     {
       "@context": "https://schema.org",
-      "@type": "ItemList",
-      "name": {{ list_name | strip_html | json }},
+      "@type": "CollectionPage",
+      "@id": {{ list_url | append: '#collectionpage' | json }},
       "url": {{ list_url | json }},
-      "numberOfItems": {{ handles.size }},
-      "itemListElement": [
-        {%- for handle in handles -%}
-          {
-            "@type": "ListItem",
-            "position": {{ forloop.index }},
-            "url": {{ handle | prepend: '/products/' | prepend: root_url | prepend: shop.secure_url | json }}
-          }{%- unless forloop.last -%},{%- endunless -%}
-        {%- endfor -%}
-      ]
+      "name": {{ list_name | strip_html | json }},
+      {%- if description != blank %}
+      "description": {{ description | json }},
+      {%- endif %}
+      {%- if collection.image %}
+      "image": {{ collection.image | image_url: width: 1200 | prepend: 'https:' | json }},
+      {%- endif %}
+      "isPartOf": {
+        "@type": "WebSite",
+        "name": {{ shop.name | json }},
+        "url": {{ request.origin | json }}
+      },
+      "mainEntity": {
+        "@type": "ItemList",
+        "name": {{ list_name | strip_html | json }},
+        "numberOfItems": {{ item_count }},
+        "itemListElement": [
+          {%- if products != blank -%}
+            {%- for item in products -%}
+              {
+                "@type": "ListItem",
+                "position": {{ forloop.index }},
+                "url": {{ item.url | prepend: request.origin | json }},
+                "name": {{ item.title | strip_html | json }}
+              }{%- unless forloop.last -%},{%- endunless -%}
+            {%- endfor -%}
+          {%- else -%}
+            {%- for handle in handles -%}
+              {%- assign name_index = forloop.index0 -%}
+              {
+                "@type": "ListItem",
+                "position": {{ forloop.index }},
+                "url": {{ handle | prepend: '/products/' | prepend: root_url | prepend: request.origin | json }}
+                {%- if names != blank and names[name_index] != blank -%}
+                , "name": {{ names[name_index] | strip_html | json }}
+                {%- endif -%}
+              }{%- unless forloop.last -%},{%- endunless -%}
+            {%- endfor -%}
+          {%- endif -%}
+        ]
+      }
     }
   </script>
 {%- endif -%}
