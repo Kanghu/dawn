@@ -241,7 +241,7 @@
 
               {% if collection.metafields.custom.useful_links != blank %}
                 <div class="mt-12">
-                  <h3>Link-uri utile</h3>
+                  <div class="alc-h3">Link-uri utile</div>
                   <div class="flex flex-wrap gap-3 mt-4">
                     {% for link in collection.metafields.custom.useful_links.value %}
                       <a href="{{ link.url }}" class="inline-flex text-base no-underline text-black px-4 py-2 border border-gray-200 rounded-full bg-[#06BAD5] text-white hover:bg-[#058ea2] transition-colors">

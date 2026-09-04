@@ -63,7 +63,7 @@
       <!-- Display product from the dynamic product metafield -->
       <div class="related-products__slider">
         <div class="related-products__slider-item">
-          {% render 'alc-card-product',
+          {% render 'alc-card-product', heading_tag: 'div',
             card_product: product_item,
             media_aspect_ratio: section.settings.image_ratio,
             image_shape: section.settings.image_shape,
@@ -83,7 +83,7 @@
               {% assign product_item = all_products[block.settings.product] %}
               {% if product_item %}
                 <div class="related-products__slider-item">
-                  {% render 'alc-card-product',
+                  {% render 'alc-card-product', heading_tag: 'div',
                     card_product: product_item,
                     media_aspect_ratio: section.settings.image_ratio,
                     image_shape: section.settings.image_shape,
@@ -114,7 +114,7 @@
             {% assign product_item = all_products[block.settings.product] %}
             {% if product_item %}
               <div class="related-products__slider-item">
-                {% render 'alc-card-product',
+                {% render 'alc-card-product', heading_tag: 'div',
                   card_product: product_item,
                   media_aspect_ratio: section.settings.image_ratio,
                   image_shape: section.settings.image_shape,

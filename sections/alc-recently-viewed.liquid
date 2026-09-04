@@ -54,9 +54,9 @@
         {%- if section.settings.eyebrow_text != blank -%}
           <p class="alc-recs__eyebrow">{{ section.settings.eyebrow_text }}</p>
         {%- endif -%}
-        <h2 id="Heading-{{ section.id }}" class="alc-recs__title {{ section.settings.heading_size }}">
+        <div id="Heading-{{ section.id }}" class="alc-recs__title alc-h2 {{ section.settings.heading_size }}">
           {{ section.settings.title }}
-        </h2>
+        </div>
         {%- if section.settings.subtitle_text != blank -%}
           <p class="alc-recs__subtitle">{{ section.settings.subtitle_text }}</p>
         {%- endif -%}

@@ -161,7 +161,7 @@
         </div>
 
         {%- if request.page_type == 'index' -%}
-          <h1 class="header__heading">
+          <div class="header__heading alc-h1">
         {%- endif -%}
         <a href="{{ routes.root_url }}" class="link link--text focus-inset">
           {%- if settings.logo != blank -%}
@@ -178,7 +178,7 @@
           {%- endif -%}
         </a>
         {%- if request.page_type == 'index' -%}
-          </h1>
+          </div>
         {%- endif -%}
 
         <div class="hidden md:!flex w-3/5 h-24 flex-initial items-center">
@@ -195,7 +195,7 @@
                   <localization-form class="small-hide medium-hide" data-prevent-hide>
                     {%- form 'localization', id: 'HeaderCountryForm', class: 'localization-form' -%}
                       <div>
-                        <h2 class="visually-hidden" id="HeaderCountryLabel">{{ 'localization.country_label' | t }}</h2>
+                        <div class="visually-hidden alc-h2" id="HeaderCountryLabel">{{ 'localization.country_label' | t }}</div>
                         {%- render 'alc-country-localization', localPosition: 'HeaderCountry' -%}
                       </div>
                     {%- endform -%}
@@ -206,7 +206,7 @@
                   <localization-form class="small-hide medium-hide" data-prevent-hide>
                     {%- form 'localization', id: 'HeaderLanguageForm', class: 'localization-form' -%}
                       <div>
-                        <h2 class="visually-hidden" id="HeaderLanguageLabel">{{ 'localization.language_label' | t }}</h2>
+                        <div class="visually-hidden alc-h2" id="HeaderLanguageLabel">{{ 'localization.language_label' | t }}</div>
                         {%- render 'language-localization', localPosition: 'HeaderLanguage' -%}
                       </div>
                     {%- endform -%}
@@ -222,7 +222,7 @@
                   <localization-form data-prevent-hide>
                     {%- form 'localization', id: 'MobileHeaderCountryForm', class: 'localization-form' -%}
                       <div>
-                        <h2 class="visually-hidden" id="MobileHeaderCountryLabel">{{ 'localization.country_label' | t }}</h2>
+                        <div class="visually-hidden alc-h2" id="MobileHeaderCountryLabel">{{ 'localization.country_label' | t }}</div>
                         {%- render 'alc-country-localization', localPosition: 'MobileHeaderCountry' -%}
                       </div>
                     {%- endform -%}
@@ -233,7 +233,7 @@
                   <localization-form data-prevent-hide>
                     {%- form 'localization', id: 'MobileHeaderLanguageForm', class: 'localization-form' -%}
                       <div>
-                        <h2 class="visually-hidden" id="MobileHeaderLanguageLabel">{{ 'localization.language_label' | t }}</h2>
+                        <div class="visually-hidden alc-h2" id="MobileHeaderLanguageLabel">{{ 'localization.language_label' | t }}</div>
                         {%- render 'language-localization', localPosition: 'MobileHeaderLanguage' -%}
                       </div>
                     {%- endform -%}
@@ -441,28 +441,8 @@
   customElements.define('sticky-header', StickyHeader);
 {% endjavascript %}
 
-<script type="application/ld+json">
-  {
-      "@context": "http://schema.org",
-      "@type": "Organization",
-      "name": {{ shop.name | json }},
-      {% if settings.logo %}
-      "logo": {{ settings.logo | image_url: width: 500 | prepend: "https:" | json }},
-      {% endif %}
-      "sameAs": [
-        {{ settings.social_twitter_link | json }},
-        {{ settings.social_facebook_link | json }},
-        {{ settings.social_pinterest_link | json }},
-        {{ settings.social_instagram_link | json }},
-        {{ settings.social_tiktok_link | json }},
-        {{ settings.social_tumblr_link | json }},
-        {{ settings.social_snapchat_link | json }},
-        {{ settings.social_youtube_link | json }},
-        {{ settings.social_vimeo_link | json }}
-      ],
-      "url": {{ request.origin | append: page.url | json }}
-    }
-</script>
+{%- comment -%} Organization JSON-LD: only on homepage / about / contact (see snippet) {%- endcomment -%}
+{% render 'alc-organization-schema', page_handles: section.settings.organization_schema_pages %}
 
 {%- if request.page_type == 'index' -%}
   {% assign potential_action_target = request.origin | append: routes.search_url | append: "?q={search_term_string}" %}
@@ -487,6 +467,13 @@
     "class": "section-header",
     "max_blocks": 10,
     "settings": [
+      {
+        "type": "text",
+        "id": "organization_schema_pages",
+        "label": "Organization schema: page handles",
+        "info": "Comma-separated handles of the pages (besides the homepage) that should carry the Organization structured data, e.g. about us and contact.",
+        "default": "companie,contact"
+      },
       {
         "type": "select",
         "id": "logo_position",
