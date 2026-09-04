@@ -15,6 +15,7 @@
     margin-bottom: {{ block.settings.header_spacing }}px;
   }
 
+  .ai-collections-header-{{ ai_gen_id }} h1,
   .ai-collections-header-{{ ai_gen_id }} h2 {
     font-size: {{ block.settings.heading_size }}px;
     font-weight: {{ block.settings.heading_weight }};
@@ -241,6 +242,7 @@
       height: {{ block.settings.card_height_mobile }}px;
     }
 
+    .ai-collections-header-{{ ai_gen_id }} h1,
     .ai-collections-header-{{ ai_gen_id }} h2 {
       font-size: {{ block.settings.heading_size_mobile }}px;
     }
@@ -265,11 +267,20 @@
     assign go_to_slide_label = 'sections.collections_slider.go_to_slide' | t
   %}
 
+  {%- liquid
+    comment
+      The home page has no other h1 (the logo h1 was dropped for SEO), so this block's heading is the document h1 there. Elsewhere it stays an h2.
+    endcomment
+    assign heading_tag = 'h2'
+    if request.page_type == 'index'
+      assign heading_tag = 'h1'
+    endif
+  -%}
   <div class="ai-collections-header-{{ ai_gen_id }}">
     {% if block.settings.heading != blank %}
-      <h2>{{ block.settings.heading }}</h2>
+      <{{ heading_tag }}>{{ block.settings.heading }}</{{ heading_tag }}>
     {% else %}
-      <h2>{{ default_heading }}</h2>
+      <{{ heading_tag }}>{{ default_heading }}</{{ heading_tag }}>
     {% endif %}
 
     {% if block.settings.subheading != blank %}
