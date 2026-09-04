@@ -32,7 +32,7 @@
     <span class="alc-recs__reason alc-recs__reason--{{ source }}"{% if source == 'recent' %} data-reason{% endif %}>{{ reason }}</span>
   {%- endif -%}
   {%- if section.settings.use_mobile_card -%}
-    {% render 'alc-tw-product-card-mobile',
+    {% render 'alc-tw-product-card-mobile', heading_tag: 'div',
       card_product: card_product,
       media_aspect_ratio: section.settings.image_ratio,
       image_shape: section.settings.image_shape,
@@ -45,7 +45,7 @@
       section_id: section.id
     %}
   {%- else -%}
-    {% render 'alc-card-product',
+    {% render 'alc-card-product', heading_tag: 'div',
       card_product: card_product,
       media_aspect_ratio: section.settings.image_ratio,
       image_shape: section.settings.image_shape,

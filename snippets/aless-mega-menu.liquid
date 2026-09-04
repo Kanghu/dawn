@@ -158,9 +158,9 @@
                                               height="120"
                                               loading="lazy">
                                           {% endif %}
-                                          <h4 class="absolute top-28 left-0 right-0 text-xl font-semibold pt-4">
+                                          <div class="alc-h4 absolute top-28 left-0 right-0 text-xl font-semibold pt-4">
                                             {{ grandchildlink.title | escape }}
-                                          </h4>
+                                          </div>
                                         </a>
                                       </div>
 
@@ -273,7 +273,7 @@
                                   class="mega-menu__grid-image w-full h-full object-cover hover:scale-110 transition-transform duration-300"
                                   loading="lazy">
                               {% endif %}
-                              <h4>{{ childlink.title | escape }}</h4>
+                              <div class="alc-h4">{{ childlink.title | escape }}</div>
                             </a>
                           </li>
                         {% endfor %}

@@ -165,7 +165,7 @@
         {%- for product in collection.products limit: section.settings.products_to_show -%}
           <li class="grid__item slider__slide" style="margin-left: 0 !important;">
             {%- if section.settings.use_mobile_card -%}
-              {% render 'alc-tw-product-card-mobile'
+              {% render 'alc-tw-product-card-mobile', heading_tag: 'div'
                 , card_product: product
                 , media_aspect_ratio: section.settings.image_ratio
                 , image_shape: section.settings.image_shape
@@ -178,7 +178,7 @@
                 , section_id: section.id
               %}
             {%- else -%}
-              {% render 'alc-card-product'
+              {% render 'alc-card-product', heading_tag: 'div'
                 , card_product: product
                 , media_aspect_ratio: section.settings.image_ratio
                 , image_shape: section.settings.image_shape

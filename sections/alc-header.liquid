@@ -161,7 +161,7 @@
         </div>
 
         {%- if request.page_type == 'index' -%}
-          <h1 class="header__heading">
+          <div class="header__heading alc-h1">
         {%- endif -%}
         <a href="{{ routes.root_url }}" class="link link--text focus-inset">
           {%- if settings.logo != blank -%}
@@ -178,7 +178,7 @@
           {%- endif -%}
         </a>
         {%- if request.page_type == 'index' -%}
-          </h1>
+          </div>
         {%- endif -%}
 
         <div class="hidden md:!flex w-3/5 h-24 flex-initial items-center">
@@ -195,7 +195,7 @@
                   <localization-form class="small-hide medium-hide" data-prevent-hide>
                     {%- form 'localization', id: 'HeaderCountryForm', class: 'localization-form' -%}
                       <div>
-                        <h2 class="visually-hidden" id="HeaderCountryLabel">{{ 'localization.country_label' | t }}</h2>
+                        <div class="visually-hidden alc-h2" id="HeaderCountryLabel">{{ 'localization.country_label' | t }}</div>
                         {%- render 'alc-country-localization', localPosition: 'HeaderCountry' -%}
                       </div>
                     {%- endform -%}
@@ -206,7 +206,7 @@
                   <localization-form class="small-hide medium-hide" data-prevent-hide>
                     {%- form 'localization', id: 'HeaderLanguageForm', class: 'localization-form' -%}
                       <div>
-                        <h2 class="visually-hidden" id="HeaderLanguageLabel">{{ 'localization.language_label' | t }}</h2>
+                        <div class="visually-hidden alc-h2" id="HeaderLanguageLabel">{{ 'localization.language_label' | t }}</div>
                         {%- render 'language-localization', localPosition: 'HeaderLanguage' -%}
                       </div>
                     {%- endform -%}
@@ -222,7 +222,7 @@
                   <localization-form data-prevent-hide>
                     {%- form 'localization', id: 'MobileHeaderCountryForm', class: 'localization-form' -%}
                       <div>
-                        <h2 class="visually-hidden" id="MobileHeaderCountryLabel">{{ 'localization.country_label' | t }}</h2>
+                        <div class="visually-hidden alc-h2" id="MobileHeaderCountryLabel">{{ 'localization.country_label' | t }}</div>
                         {%- render 'alc-country-localization', localPosition: 'MobileHeaderCountry' -%}
                       </div>
                     {%- endform -%}
@@ -233,7 +233,7 @@
                   <localization-form data-prevent-hide>
                     {%- form 'localization', id: 'MobileHeaderLanguageForm', class: 'localization-form' -%}
                       <div>
-                        <h2 class="visually-hidden" id="MobileHeaderLanguageLabel">{{ 'localization.language_label' | t }}</h2>
+                        <div class="visually-hidden alc-h2" id="MobileHeaderLanguageLabel">{{ 'localization.language_label' | t }}</div>
                         {%- render 'language-localization', localPosition: 'MobileHeaderLanguage' -%}
                       </div>
                     {%- endform -%}

@@ -32,12 +32,12 @@
                   {% assign top_menu = linklists[menu_handle] %}
 
                   <li class="first-level-group border-gray-200" id="menu-group-{{ block_item.id }}">
-                    <h2 class="first-level-title px-4 py-3 text-lg font-semibold flex items-center justify-between">
+                    <div class="first-level-title alc-h2 px-4 py-3 text-lg font-semibold flex items-center justify-between">
                       <span>{{ label }}</span>
                     {%- comment -%}
                       Optional: link to a landing page for this menu if you have one
                     {%- endcomment -%}
-                    </h2>
+                    </div>
 
                     {% if top_menu.links.size > 0 %}
                       <ul class="menu-drawer__menu has-submenu flex flex-col space-y-2 pb-4" role="list">

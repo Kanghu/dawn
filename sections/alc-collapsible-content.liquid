@@ -34,7 +34,7 @@
               {{ section.settings.heading }}
             </h2>
           {%- else -%}
-            <h2 class="visually-hidden">{{ 'accessibility.collapsible_content_title' | t }}</h2>
+            <div class="visually-hidden alc-h2">{{ 'accessibility.collapsible_content_title' | t }}</div>
           {% endif %}
         </div>
         <div class="grid grid--1-col grid--2-col-tablet collapsible-content__grid{% if section.settings.desktop_layout == 'image_second' %} collapsible-content__grid--reverse{% endif %}{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}">
@@ -95,7 +95,7 @@
                     <summary id="Summary-{{ block.id }}-{{ section.id }}">
                       {% render 'icon-accordion', icon: block.settings.icon %}
                       <h3 class="accordion__title inline-richtext h4">
-                        {{ block.settings.heading | default: block.settings.page.title | escape }}
+                        {{ block.settings.heading | default: block.settings.page.title | escape }}{%- if product.title != blank %} {{ product.title | escape }}{% endif -%}
                       </h3>
                       {{- 'icon-caret.svg' | inline_asset_content -}}
                     </summary>
@@ -134,7 +134,7 @@
       <summary id="Summary-{{ block.id }}-{{ section.id }}">
         {% render 'icon-accordion', icon: block.settings.icon %}
         <h3 class="accordion__title inline-richtext h4">
-          {{ block.settings.heading }}
+          {{ block.settings.heading }}{%- if product.title != blank %} {{ product.title | escape }}{% endif -%}
         </h3>
         {{- 'icon-caret.svg' | inline_asset_content -}}
       </summary>
@@ -162,7 +162,7 @@
                 {% assign spec_group_metaobj = spec_group | metaobject %}
 
               <div class="mb-16 w-100 md:w-50">
-                  <h3 class="mt-4 font-semibold" style="color: #EF1188;">{{ spec_group_metaobj.name }}:</h3>
+                  <div class="alc-h3 mt-4 font-semibold" style="color: #EF1188;">{{ spec_group_metaobj.name }}:</div>
                   {%- assign counter = 0 -%}
                   {%- for spec in spec_group_metaobj.specifications.value -%}
                       {%- if spec contains '.' -%}
@@ -430,9 +430,9 @@
                   <details id="Details-{{ block.id }}-{{ section.id }}">
                     <summary id="Summary-{{ block.id }}-{{ section.id }}">
                       {% render 'icon-accordion', icon: block.settings.icon %}
-                      <h3 class="accordion__title inline-richtext h4">
+                      <span class="accordion__title inline-richtext h4">
                         {{ block.settings.heading }}
-                      </h3>
+                      </span>
                       {{- 'icon-caret.svg' | inline_asset_content -}}
                     </summary>
                     <div

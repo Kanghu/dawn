@@ -37,7 +37,7 @@
 
 <!-- The count component is constantly hidden; this is required to retrieve the count from the AJAX section response -->
 <div class="product-count light hidden" role="status">
-  <h2 class="product-count__text text-body">
+  <div class="product-count__text alc-h2 text-body">
     <span id="ProductCount">
       {%- if results.results_count -%}
         {{ 'templates.search.results_with_count' | t: terms: results.terms, count: results.results_count }}
@@ -49,7 +49,7 @@
         }}
       {%- endif -%}
     </span>
-  </h2>
+  </div>
   {%- render 'loading-spinner' -%}
 </div>
 
@@ -122,12 +122,12 @@
             class="facets__wrapper"
             {% endif %}>
             {%- if filter_type == 'horizontal' and results.filters != empty -%}
-              <h2
-                class="facets__heading caption-large text-body"
+              <div
+                class="facets__heading alc-h2 caption-large text-body"
                 id="verticalTitle"
                 tabindex="-1">
                 {{ 'products.facets.filter_by_label' | t }}
-              </h2>
+              </div>
             {%- endif -%}
             {% comment %} Pills are right below the title for filter type vertical {% endcomment %}
             {%- if filter_type == 'vertical' -%}
@@ -445,9 +445,9 @@
           {%- if enable_sorting -%}
             <div class="facet-filters sorting caption">
               <div class="facet-filters__field">
-                <h2 class="facet-filters__label caption-large text-body">
+                <div class="facet-filters__label alc-h2 caption-large text-body">
                   <label for="SortBy">{{ 'products.facets.sort_by_label' | t }}</label>
-                </h2>
+                </div>
                 <div class="select">
                   {%- assign sort_by = results.sort_by | default: results.default_sort_by -%}
                   <select
@@ -518,14 +518,14 @@
                 <div class="mobile-facets__inner gradient">
                   <div class="mobile-facets__header">
                     <div class="mobile-facets__header-inner">
-                      <h2 class="mobile-facets__heading medium-hide large-up-hide">
+                      <div class="mobile-facets__heading alc-h2 medium-hide large-up-hide">
                         {{ 'products.facets.sort_button' | t }}
-                      </h2>
-                      <h2 class="mobile-facets__heading small-hide">
+                      </div>
+                      <div class="mobile-facets__heading alc-h2 small-hide">
                         {%- if enable_filtering -%}
                           {{ 'products.facets.filter_button' | t }}
                         {%- endif -%}
-                      </h2>
+                      </div>
                       <p class="mobile-facets__count">
                         {%- if results.results_count -%}
                           {{ 'templates.search.results_with_count' | t: terms: results.terms, count: results.results_count }}
@@ -646,14 +646,14 @@
               <div class="mobile-facets__inner gradient">
                 <div class="mobile-facets__header">
                   <div class="mobile-facets__header-inner">
-                    <h2 class="mobile-facets__heading medium-hide large-up-hide">
+                    <div class="mobile-facets__heading alc-h2 medium-hide large-up-hide">
                       {{ 'products.facets.filter_button' | t }}
-                    </h2>
-                    <h2 class="mobile-facets__heading small-hide">
+                    </div>
+                    <div class="mobile-facets__heading alc-h2 small-hide">
                       {%- if enable_filtering -%}
                         {{ 'products.facets.filter_button' | t }}
                       {%- endif -%}
-                    </h2>
+                    </div>
                     <p class="mobile-facets__count">
                       {%- if results.results_count -%}
                         {{ 'templates.search.results_with_count' | t: terms: results.terms, count: results.results_count }}
@@ -971,9 +971,9 @@
         <form id="FacetSortDrawerForm" class="facets__form">
           <div class="facet-filters sorting caption small-hide">
             <div class="facet-filters__field">
-              <h2 class="facet-filters__label caption-large text-body">
+              <div class="facet-filters__label alc-h2 caption-large text-body">
                 <label for="SortBy">{{ 'products.facets.sort_by_label' | t }}</label>
-              </h2>
+              </div>
               <div class="select">
                 {%- assign sort_by = results.sort_by | default: results.default_sort_by -%}
                 <select

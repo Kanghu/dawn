@@ -30,6 +30,7 @@
 {%- endunless -%}
 {%- if card_product and card_product != empty -%}
   {%- liquid
+    assign card_title_tag = heading_tag | default: 'h3'
     assign ratio = 1
     if card_product.featured_media and media_aspect_ratio == 'portrait'
       assign ratio = 0.8
@@ -353,8 +354,8 @@
         {%- endif -%}
         <div class="card__content">
           <div class="card__information">
-            <h3
-              class="card__heading"
+            <{{ card_title_tag }}
+              class="card__heading alc-h3"
               {% if card_product.featured_media == null and settings.card_style == 'standard' %}
                 id="title-{{ section_id }}-{{ card_product.id }}"
               {% endif %}
@@ -367,7 +368,7 @@
               >
                 {{ card_product.title | escape }}
               </a>
-            </h3>
+            </{{ card_title_tag }}>
           </div>
           <div class="card__badge {{ settings.badge_position }}" style="gap: 0.25rem; display: flex; flex-direction: column; align-items: flex-start;">
             {%- if card_product.compare_at_price > card_product.price and card_product.available -%}
@@ -389,8 +390,8 @@
         class="flex flex-col justify-between h-full"
       >
         <div class="card__information">
-          <h3
-            class="card__heading{% if card_product.featured_media or settings.card_style == 'standard' %} h5{% endif %}"
+          <{{ card_title_tag }}
+            class="card__heading alc-h3{% if card_product.featured_media or settings.card_style == 'standard' %} h5{% endif %}"
             {% if card_product.featured_media or settings.card_style == 'card' %}
               id="title-{{ section_id }}-{{ card_product.id }}"
             {% endif %}
@@ -403,7 +404,7 @@
             >
               {{ card_product.title | escape }}
             </a>
-          </h3>
+          </{{ card_title_tag }}>
           <div class="card-information flex flex-col justify-between h-full">
             {%- if show_vendor -%}
               <span class="visually-hidden">{{ 'accessibility.vendor' | t }}</span>
@@ -908,11 +909,11 @@
       </div>
       <div class="card__content">
         <div class="card__information">
-          <h3 class="card__heading card__heading--placeholder{% if settings.card_style == 'standard' %} h5{% endif %}">
+          <{{ card_title_tag }} class="card__heading alc-h3 card__heading--placeholder{% if settings.card_style == 'standard' %} h5{% endif %}">
             <a role="link" aria-disabled="true" class="full-unstyled-link">
               {{ 'onboarding.product_title' | t }}
             </a>
-          </h3>
+          </{{ card_title_tag }}>
           <div class="card-information">
             {%- if show_vendor -%}
               <span class="visually-hidden">{{ 'accessibility.vendor' | t }}</span>
