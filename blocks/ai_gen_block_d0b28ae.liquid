@@ -5,7 +5,7 @@
     display: block;
     max-width: {{ settings.page_width }}px;
     margin: {{ block.settings.section_spacing }}px auto;
-    font-family: 'Roboto', sans-serif;
+    font-family: var(--font-body-family);
     width: {{ block.settings.desktop_width_percent }}%;
     position: relative;
   }
@@ -15,12 +15,13 @@
     margin-bottom: {{ block.settings.header_spacing }}px;
   }
 
+  .ai-collections-header-{{ ai_gen_id }} h1,
   .ai-collections-header-{{ ai_gen_id }} h2 {
     font-size: {{ block.settings.heading_size }}px;
     font-weight: {{ block.settings.heading_weight }};
     margin: 0 0 {{ block.settings.subheading_spacing }}px;
     color: {{ block.settings.heading_color }};
-    font-family: 'Roboto', sans-serif;
+    font-family: var(--font-body-family);
     line-height: 1.2;
   }
 
@@ -241,6 +242,7 @@
       height: {{ block.settings.card_height_mobile }}px;
     }
 
+    .ai-collections-header-{{ ai_gen_id }} h1,
     .ai-collections-header-{{ ai_gen_id }} h2 {
       font-size: {{ block.settings.heading_size_mobile }}px;
     }
@@ -255,8 +257,6 @@
   }
 {% endstyle %}
 
-<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-
 <collections-slider-{{ ai_gen_id }} class="ai-collections-slider-{{ ai_gen_id }}" {{ block.shopify_attributes }}>
   {% liquid
     assign default_heading = 'sections.collections_slider.heading' | t
@@ -267,11 +267,20 @@
     assign go_to_slide_label = 'sections.collections_slider.go_to_slide' | t
   %}
 
+  {%- liquid
+    comment
+      The home page has no other h1 (the logo h1 was dropped for SEO), so this block's heading is the document h1 there. Elsewhere it stays an h2.
+    endcomment
+    assign heading_tag = 'h2'
+    if request.page_type == 'index'
+      assign heading_tag = 'h1'
+    endif
+  -%}
   <div class="ai-collections-header-{{ ai_gen_id }}">
     {% if block.settings.heading != blank %}
-      <h2>{{ block.settings.heading }}</h2>
+      <{{ heading_tag }}>{{ block.settings.heading }}</{{ heading_tag }}>
     {% else %}
-      <h2>{{ default_heading }}</h2>
+      <{{ heading_tag }}>{{ default_heading }}</{{ heading_tag }}>
     {% endif %}
 
     {% if block.settings.subheading != blank %}
@@ -406,6 +415,10 @@
 
 <script>
   (() => {
+    // Reworked for performance: every layout read (widths, scrollWidth, offsets)
+    // happens in a single measure() pass, is cached, and is refreshed only when
+    // the track actually resizes. Scroll and drag handlers never read layout,
+    // they only write, so the browser is never forced into a synchronous reflow.
     class CollectionsSlider{{ ai_gen_id }} extends HTMLElement {
       constructor() {
         super();
@@ -415,161 +428,167 @@
         this.dotsWrap = this.querySelector('[data-dots]');
         this.cards = Array.from(this.querySelectorAll('[data-card]'));
 
+        this.dots = [];
+        this.step = 0;
+        this.maxScrollLeft = 0;
+        this.maxIndex = 0;
+        this.currentIndex = -1;
+        this.trackScrollLeft = 0;
+
         this.isDown = false;
         this.startX = 0;
-        this.scrollLeft = 0;
+        this.dragStartScroll = 0;
         this.hasMoved = false;
-        this.resizeTimer = null;
+
+        this.scrollFrame = 0;
+        this.measureFrame = 0;
+        this.resizeObserver = null;
+
+        this.onScroll = this.onScroll.bind(this);
+        this.scheduleMeasure = this.scheduleMeasure.bind(this);
       }
 
       connectedCallback() {
         if (!this.track || !this.cards.length) return;
-        this.buildDots();
         this.bindEvents();
-        this.updateUI();
+        this.scheduleMeasure();
+      }
 
-        requestAnimationFrame(() => {
-          this.updateUI();
+      disconnectedCallback() {
+        if (this.resizeObserver) this.resizeObserver.disconnect();
+        else window.removeEventListener('resize', this.scheduleMeasure);
+        cancelAnimationFrame(this.scrollFrame);
+        cancelAnimationFrame(this.measureFrame);
+      }
+
+      // Coalesce measurement requests into one per frame.
+      scheduleMeasure() {
+        if (this.measureFrame) return;
+        this.measureFrame = requestAnimationFrame(() => {
+          this.measureFrame = 0;
+          this.measure();
         });
       }
 
-      getCardStep() {
-        const firstCard = this.cards[0];
-        if (!firstCard) return this.track.clientWidth;
+      // The only place that reads layout. All reads first, all writes after.
+      measure() {
+        const track = this.track;
+        const first = this.cards[0];
+        const second = this.cards[1];
 
-        const styles = window.getComputedStyle(this.track);
-        const gap = parseFloat(styles.columnGap || styles.gap || 0);
-        return firstCard.getBoundingClientRect().width + gap;
+        const clientWidth = track.clientWidth;
+        const scrollWidth = track.scrollWidth;
+        const scrollLeft = track.scrollLeft;
+        let step = second ? second.offsetLeft - first.offsetLeft : first.offsetWidth;
+        if (!step || step < 0) step = clientWidth || 1;
+
+        this.step = step;
+        this.trackScrollLeft = scrollLeft;
+        this.maxScrollLeft = Math.max(0, scrollWidth - clientWidth);
+        this.maxIndex = Math.max(0, Math.round(this.maxScrollLeft / step));
+
+        this.syncDots();
+        this.render();
       }
 
-      getMaxIndex() {
-        const step = this.getCardStep();
-        return Math.max(0, Math.round((this.track.scrollWidth - this.track.clientWidth) / step));
-      }
-
-      getCurrentIndex() {
-        const step = this.getCardStep();
-        if (!step) return 0;
-        return Math.round(this.track.scrollLeft / step);
-      }
-
-      scrollToIndex(index) {
-        const step = this.getCardStep();
-        const maxIndex = this.getMaxIndex();
-        const safeIndex = Math.max(0, Math.min(index, maxIndex));
-
-        this.track.scrollTo({
-          left: safeIndex * step,
-          behavior: 'smooth'
-        });
-      }
-
-      buildDots() {
+      // Rebuild the dots only when their count changes.
+      syncDots() {
         if (!this.dotsWrap) return;
+        const total = this.maxIndex + 1;
+        if (this.dots.length === total) return;
 
-        const totalDots = this.getMaxIndex() + 1;
-        this.dotsWrap.innerHTML = '';
-
-        if (totalDots <= 1) {
-          this.dotsWrap.style.display = 'none';
-          return;
-        }
-
-        this.dotsWrap.style.display = 'flex';
-
-        for (let i = 0; i < totalDots; i++) {
+        const frag = document.createDocumentFragment();
+        for (let i = 0; i < total; i++) {
           const dot = document.createElement('button');
           dot.type = 'button';
           dot.className = 'ai-collections-dot-{{ ai_gen_id }}';
           dot.setAttribute('aria-label', '{{ go_to_slide_label }} ' + (i + 1));
           dot.addEventListener('click', () => this.scrollToIndex(i));
-          this.dotsWrap.appendChild(dot);
+          frag.appendChild(dot);
+        }
+        this.dotsWrap.replaceChildren(frag);
+        this.dots = Array.from(this.dotsWrap.children);
+        this.dotsWrap.style.display = total <= 1 ? 'none' : 'flex';
+        this.currentIndex = -1;
+      }
+
+      // Pure writes, driven by the cached scroll position.
+      render() {
+        const index = this.step ? Math.round(this.trackScrollLeft / this.step) : 0;
+
+        if (index !== this.currentIndex) {
+          this.currentIndex = index;
+          for (let i = 0; i < this.dots.length; i++) {
+            this.dots[i].classList.toggle('is-active', i === index);
+          }
+        }
+
+        if (this.prevBtn && this.nextBtn) {
+          const canScroll = this.maxIndex > 0;
+          this.prevBtn.disabled = !canScroll || index <= 0;
+          this.nextBtn.disabled = !canScroll || index >= this.maxIndex;
         }
       }
 
-      updateDots() {
-        if (!this.dotsWrap) return;
-        const dots = Array.from(this.dotsWrap.children);
-        const current = this.getCurrentIndex();
-
-        dots.forEach((dot, index) => {
-          dot.classList.toggle('is-active', index === current);
+      onScroll() {
+        if (this.scrollFrame) return;
+        this.scrollFrame = requestAnimationFrame(() => {
+          this.scrollFrame = 0;
+          this.trackScrollLeft = this.track.scrollLeft;
+          this.render();
         });
       }
 
-      updateArrows() {
-        if (!this.prevBtn || !this.nextBtn) return;
-
-        const maxScrollLeft = this.track.scrollWidth - this.track.clientWidth;
-        const canScroll = maxScrollLeft > 4;
-
-        if (!canScroll) {
-          this.prevBtn.disabled = true;
-          this.nextBtn.disabled = true;
-          return;
-        }
-
-        this.prevBtn.disabled = this.track.scrollLeft <= 4;
-        this.nextBtn.disabled = this.track.scrollLeft >= (maxScrollLeft - 4);
-      }
-
-      updateUI() {
-        this.buildDots();
-        this.updateDots();
-        this.updateArrows();
+      scrollToIndex(index) {
+        const safeIndex = Math.max(0, Math.min(index, this.maxIndex));
+        this.track.scrollTo({ left: safeIndex * this.step, behavior: 'smooth' });
       }
 
       bindEvents() {
+        const track = this.track;
+
         if (this.prevBtn) {
-          this.prevBtn.addEventListener('click', () => {
-            this.scrollToIndex(this.getCurrentIndex() - 1);
-          });
+          this.prevBtn.addEventListener('click', () => this.scrollToIndex(this.currentIndex - 1));
         }
-
         if (this.nextBtn) {
-          this.nextBtn.addEventListener('click', () => {
-            this.scrollToIndex(this.getCurrentIndex() + 1);
-          });
+          this.nextBtn.addEventListener('click', () => this.scrollToIndex(this.currentIndex + 1));
         }
 
-        this.track.addEventListener('scroll', () => {
-          this.updateDots();
-          this.updateArrows();
-        }, { passive: true });
+        track.addEventListener('scroll', this.onScroll, { passive: true });
 
-        window.addEventListener('resize', () => {
-          clearTimeout(this.resizeTimer);
-          this.resizeTimer = setTimeout(() => this.updateUI(), 150);
-        });
+        if ('ResizeObserver' in window) {
+          this.resizeObserver = new ResizeObserver(this.scheduleMeasure);
+          this.resizeObserver.observe(track);
+        } else {
+          window.addEventListener('resize', this.scheduleMeasure);
+        }
 
-        this.track.addEventListener('mousedown', (e) => {
+        // Mouse drag: read the position once on mousedown, write only on move.
+        track.addEventListener('mousedown', (e) => {
           this.isDown = true;
           this.hasMoved = false;
-          this.track.classList.add('is-dragging');
-          this.startX = e.pageX - this.track.offsetLeft;
-          this.scrollLeft = this.track.scrollLeft;
+          this.startX = e.pageX;
+          this.dragStartScroll = track.scrollLeft;
+          track.classList.add('is-dragging');
         });
 
-        this.track.addEventListener('mouseleave', () => {
+        const endDrag = () => {
+          if (!this.isDown) return;
           this.isDown = false;
-          this.track.classList.remove('is-dragging');
-        });
+          track.classList.remove('is-dragging');
+        };
+        track.addEventListener('mouseleave', endDrag);
+        track.addEventListener('mouseup', endDrag);
 
-        this.track.addEventListener('mouseup', () => {
-          this.isDown = false;
-          this.track.classList.remove('is-dragging');
-        });
-
-        this.track.addEventListener('mousemove', (e) => {
+        track.addEventListener('mousemove', (e) => {
           if (!this.isDown) return;
           e.preventDefault();
-          const x = e.pageX - this.track.offsetLeft;
-          const walk = (x - this.startX) * 1.2;
+          const walk = (e.pageX - this.startX) * 1.2;
           if (Math.abs(walk) > 4) this.hasMoved = true;
-          this.track.scrollLeft = this.scrollLeft - walk;
+          track.scrollLeft = this.dragStartScroll - walk;
         });
 
-        this.track.addEventListener('click', (e) => {
+        track.addEventListener('click', (e) => {
           if (this.hasMoved) {
             e.preventDefault();
             e.stopPropagation();
@@ -577,13 +596,10 @@
           }
         }, true);
 
-        this.track.addEventListener('wheel', (e) => {
-          if (window.innerWidth > 749 && Math.abs(e.deltaY) > Math.abs(e.deltaX)) {
-            const canScrollHorizontally = this.track.scrollWidth > this.track.clientWidth;
-            if (canScrollHorizontally) {
-              e.preventDefault();
-              this.track.scrollLeft += e.deltaY;
-            }
+        track.addEventListener('wheel', (e) => {
+          if (this.maxScrollLeft > 0 && window.innerWidth > 749 && Math.abs(e.deltaY) > Math.abs(e.deltaX)) {
+            e.preventDefault();
+            track.scrollLeft += e.deltaY;
           }
         }, { passive: false });
       }
