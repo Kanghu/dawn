@@ -158,6 +158,16 @@
       }
 
       :root {
+        {%- if settings.campaign_badge_gradient -%}
+        --alc-campaign-badge-bg-color: transparent;
+        --alc-campaign-badge-bg-image: linear-gradient(135deg, {{ settings.campaign_badge_bg_start }}, {{ settings.campaign_badge_bg_end }});
+        {%- else -%}
+        --alc-campaign-badge-bg-color: {{ settings.campaign_badge_bg_start }};
+        --alc-campaign-badge-bg-image: none;
+        {%- endif -%}
+        --alc-campaign-badge-text: {{ settings.campaign_badge_text }};
+        --alc-discount-badge-bg: {{ settings.discount_badge_bg }};
+        --alc-discount-badge-text: {{ settings.discount_badge_text }};
         --font-body-family: {{ settings.type_body_font.family }}, 
         {{ settings.type_body_font.fallback_families }};
         --font-body-style: {{ settings.type_body_font.style }};

@@ -90,6 +90,7 @@
                 <span class="country-flag-wrapper" style="display: inline-block; margin-right: 8px;">
                   <img 
                     src="{{ 'flag-1x1-' | append: country.iso_code | downcase | append: '.svg' | asset_url }}"
+                    loading="lazy"
                     onerror="this.src='{{ 'flag-1x1-xx.svg' | asset_url }}'; this.onerror=null;"
                     width="40" 
                     height="30" 
@@ -129,6 +130,7 @@
               <span class="country-flag-wrapper" style="display: inline-block; margin-right: 8px;">
                 <img 
                   src="{{ 'flag-1x1-' | append: country.iso_code | downcase | append: '.svg' | asset_url }}"
+                  loading="lazy"
                   onerror="this.src='{{ 'flag-1x1-xx.svg' | asset_url }}'; this.onerror=null;"
                   width="20" 
                   height="15" 
