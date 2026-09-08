@@ -1,0 +1,132 @@
+{%- comment -%}
+  Campaign product picker
+  ------------------------------------------------------------------
+  Chooses which products a campaign landing page block should show, so
+  the grid stays full of discounted, in-stock merchandise instead of
+  whatever happens to sit first in the collection's own sort order.
+
+  Renders no markup. It prints an ordered, comma separated list of
+  product ids and lets the caller own the HTML and the structured data.
+
+  Accepts:
+    source   - collection to pick from (required)
+    campaign - collection whose products rank first, so a hand curated
+               campaign selection survives as long as it still qualifies
+               (optional; omit to ignore curation entirely)
+    slots    - how many products to return (default 12)
+    exclude  - comma wrapped ids already shown elsewhere on the page,
+               e.g. ',123,456,' (optional)
+    no_fill  - pass true to leave slots empty rather than topping up with
+               full price products
+
+  Ranking, best first:
+    1. curated + on sale, by stock descending
+    2. on sale, by stock descending
+    3. newest in-stock products, only to fill leftover slots
+
+  Out of stock products never qualify. Ordering is done by building one
+  sortable key per product, because Liquid cannot sort objects by a
+  computed property.
+
+  Usage:
+    {%- capture picked -%}
+      {%- render 'alc-campaign-picker', source: subcollection, campaign: collection, slots: 15, exclude: shown_ids -%}
+    {%- endcapture -%}
+    {%- assign picked_ids = picked | strip | split: ',' -%}
+{%- endcomment -%}
+
+{%- liquid
+  assign pick_slots = slots | default: 12
+  assign pick_exclude = exclude | default: ''
+
+  # Variants with inventory tracking switched off are always purchasable.
+  # They rank high but stay beatable by genuinely deep stock.
+  assign untracked_stock = 999
+
+  assign rows = ''
+-%}
+
+{%- if source != blank -%}
+  {%- for candidate in source.products -%}
+    {%- liquid
+      assign id_token = ',' | append: candidate.id | append: ','
+      assign skip = false
+
+      unless candidate.available
+        assign skip = true
+      endunless
+
+      if pick_exclude contains id_token
+        assign skip = true
+      endif
+    -%}
+
+    {%- unless skip -%}
+      {%- liquid
+        # Stock across every variant, not just the first one, which is what
+        # the product cards read and what misreports multi variant products.
+        assign stock = 0
+        for variant in candidate.variants
+          if variant.inventory_management == blank
+            assign stock = stock | plus: untracked_stock
+          elsif variant.inventory_quantity > 0
+            assign stock = stock | plus: variant.inventory_quantity
+          endif
+        endfor
+        if stock > 999999
+          assign stock = 999999
+        endif
+
+        # Same on-sale test the product cards already use for the badge.
+        assign on_sale = false
+        if candidate.compare_at_price > candidate.price
+          assign on_sale = true
+        endif
+
+        assign curated = false
+        if campaign != blank and candidate.collections contains campaign
+          assign curated = true
+        endif
+
+        # Sort key: tier digit first, then a fixed width secondary key, so a
+        # plain lexicographic sort puts the best candidate last and `reverse`
+        # brings it to the front. Widths are constant within a tier, and unix
+        # timestamps stay 10 digits, so string order matches numeric order.
+        assign key = ''
+        if on_sale
+          assign padded_stock = stock | plus: 1000000 | append: '' | slice: 1, 6
+          if curated
+            assign key = '2' | append: padded_stock
+          else
+            assign key = '1' | append: padded_stock
+          endif
+        elsif no_fill != true
+          assign created_stamp = candidate.created_at | date: '%s'
+          assign key = '0' | append: created_stamp
+        endif
+
+        if key != ''
+          assign rows = rows | append: key | append: '~' | append: candidate.id | append: ','
+        endif
+      -%}
+    {%- endunless -%}
+  {%- endfor -%}
+{%- endif -%}
+
+{%- liquid
+  assign ranked = rows | split: ',' | sort | reverse
+  assign taken = 0
+  assign output = ''
+
+  for row in ranked
+    if taken >= pick_slots
+      break
+    endif
+    assign parts = row | split: '~'
+    if parts[1] != blank
+      assign output = output | append: parts[1] | append: ','
+      assign taken = taken | plus: 1
+    endif
+  endfor
+-%}
+{{- output -}}
