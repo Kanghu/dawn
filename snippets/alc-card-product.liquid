@@ -321,6 +321,17 @@
             {% endif %}
 
             {% render 'price', product: card_product, price_class: '', show_compare_at_price: true %}
+            {%- comment -%}
+              Opt-in saving line. Only callers that pass show_savings get it, so
+              every existing caller renders exactly as before. A saving in lei
+              lands harder than a percentage on a 3.000 lei chandelier.
+            {%- endcomment -%}
+            {%- if show_savings and card_product.available and card_product.compare_at_price > card_product.price -%}
+              {%- assign card_saving = card_product.compare_at_price | minus: card_product.price -%}
+              <div class="alc-card-savings">
+                {{- savings_label | default: 'Economisesti' }} {{ card_saving | money -}}
+              </div>
+            {%- endif -%}
             {%- if card_product.quantity_price_breaks_configured? -%}
               {% if card_product.variants.size == 1 and quick_add == 'bulk' %}
                 {% liquid
