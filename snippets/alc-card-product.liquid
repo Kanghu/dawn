@@ -31,9 +31,11 @@
   {{ 'quantity-popover.css' | asset_url | stylesheet_tag }}
   {{ 'component-alc-card.css' | asset_url | stylesheet_tag }}
 {%- endunless -%}
+{%- liquid
+  assign card_title_tag = heading_tag | default: 'h3'
+-%}
 {%- if card_product and card_product != empty -%}
   {%- liquid
-    assign card_title_tag = heading_tag | default: 'h3'
     assign ratio = 1
     if card_product.featured_media and media_aspect_ratio == 'portrait'
       assign ratio = 0.8
@@ -321,6 +323,17 @@
             {% endif %}
 
             {% render 'price', product: card_product, price_class: '', show_compare_at_price: true %}
+            {%- comment -%}
+              Opt-in saving line. Only callers that pass show_savings get it, so
+              every existing caller renders exactly as before. A saving in lei
+              lands harder than a percentage on a 3.000 lei chandelier.
+            {%- endcomment -%}
+            {%- if show_savings and card_product.available and card_product.compare_at_price > card_product.price -%}
+              {%- assign card_saving = card_product.compare_at_price | minus: card_product.price -%}
+              <div class="alc-card-savings">
+                {{- savings_label | default: 'Economisesti' }} {{ card_saving | money -}}
+              </div>
+            {%- endif -%}
             {%- if card_product.quantity_price_breaks_configured? -%}
               {% if card_product.variants.size == 1 and quick_add == 'bulk' %}
                 {% liquid

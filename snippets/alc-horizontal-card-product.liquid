@@ -15,6 +15,7 @@
   - section_id: {String} The ID of the section that contains this card.
   - horizontal_class: {Boolean} Add a card--horizontal class if set to true. Default: false (optional)
   - horizontal_quick_add: {Boolean} Changes the quick add button styles when set to true. Default: false (optional)
+  - heading_tag: {String} HTML tag for the product title. Default: 'div', so the carousel titles stay out of the page outline. Pass 'h3' only where the card really is a section heading (optional)
   - placeholder_image: {String} The placeholder image to use when no product exists. Default: 'product-apparel-2' (optional)
 
   Usage:
@@ -29,6 +30,9 @@
   {{ 'quantity-popover.css' | asset_url | stylesheet_tag }}
   {{ 'component-alc-card-horizontal.css' | asset_url | stylesheet_tag }}
 {%- endunless -%}
+{%- liquid
+  assign card_title_tag = heading_tag | default: 'div'
+-%}
 {%- if card_product and card_product != empty -%}
   {%- liquid
     assign ratio = 1
@@ -110,8 +114,8 @@
         {%- endif -%}
         <div class="card__content">
           <div class="card__information">
-            <h3
-              class="horizontal-card__heading"
+            <{{ card_title_tag }}
+              class="horizontal-card__heading alc-h3"
               {% if card_product.featured_media == null and settings.card_style == 'standard' %}
                 id="title-{{ section_id }}-{{ card_product.id }}"
               {% endif %}
@@ -124,7 +128,7 @@
               >
                 {{ card_product.title | escape }}
               </a>
-            </h3>
+            </{{ card_title_tag }}>
           </div>
           <div class="card__badge {{ settings.badge_position }}">
             {%- if card_product.compare_at_price > card_product.price and card_product.available -%}
@@ -145,8 +149,8 @@
         class="card__content flex flex-col justify-between h-full m-1"
       >
         <div class="card__information">
-          <h3
-            class="horizontal-card__heading{% if card_product.featured_media or settings.card_style == 'standard' %} h5{% endif %}"
+          <{{ card_title_tag }}
+            class="horizontal-card__heading alc-h3{% if card_product.featured_media or settings.card_style == 'standard' %} h5{% endif %}"
             {% if card_product.featured_media or settings.card_style == 'card' %}
               id="title-{{ section_id }}-{{ card_product.id }}"
             {% endif %}
@@ -159,7 +163,7 @@
             >
               {{ card_product.title | escape }}
             </a>
-          </h3>
+          </{{ card_title_tag }}>
           <div class="card-information flex flex-col justify-between">
             {%- if show_vendor -%}
               <span class="visually-hidden">{{ 'accessibility.vendor' | t }}</span>
@@ -588,11 +592,11 @@
       </div>
       <div class="card__content">
         <div class="card__information">
-          <h3 class="horizontal-card__heading card__heading--placeholder {% if settings.card_style == 'standard' %} h5{% endif %}">
+          <{{ card_title_tag }} class="horizontal-card__heading alc-h3 card__heading--placeholder {% if settings.card_style == 'standard' %} h5{% endif %}">
             <a role="link" aria-disabled="true" class="full-unstyled-link">
               {{ 'onboarding.product_title' | t }}
             </a>
-          </h3>
+          </{{ card_title_tag }}>
           <div class="card-information">
             {%- if show_vendor -%}
               <span class="visually-hidden">{{ 'accessibility.vendor' | t }}</span>

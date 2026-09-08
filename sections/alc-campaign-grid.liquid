@@ -1,0 +1,809 @@
+{%- comment -%}
+  Seasonal campaign grid
+  ---------------------------------------------------------------------------
+  A campaign landing page built from the subcollections listed in the campaign
+  collection's `custom.slider_subcollections` metafield. Each subcollection
+  becomes one band of products chosen by snippets/alc-campaign-picker.liquid,
+  so the page stays full of discounted, in-stock merchandise.
+
+  The look follows the store's existing promo language: dark header bars with
+  light text, solid pill buttons, and the same red the "Super Pret" badge uses
+  (--alc-discount-badge-bg, #a20c01 live). Each band leads with the numbers
+  that actually move a shopper - the deepest discount, the largest saving in
+  lei, and the entry price - because a percentage alone underplays a saving of
+  a thousand lei on a chandelier.
+
+  Kept deliberately separate from alc-tw-product-grid.liquid, which eight live
+  Black Friday templates depend on.
+
+  Document outline: one h2 per band and nothing else, matching the heading
+  cleanup. Every other heading-looking element is a div on purpose.
+{%- endcomment -%}
+
+{{ 'component-price.css' | asset_url | stylesheet_tag }}
+{{ 'component-card.css' | asset_url | stylesheet_tag }}
+
+<script src="{{ 'product-form.js' | asset_url }}" defer="defer"></script>
+
+{%- liquid
+  assign subcollections = collection.metafields.custom.slider_subcollections.value
+  assign accent = section.settings.accent_color | default: collection.metafields.custom.main_color | default: '#0f0f10'
+  assign promo = section.settings.promo_color | default: '#a20c01'
+  assign on_accent = section.settings.accent_text_color | default: '#f3f3f3'
+
+  # rgb parts so tints can be built with rgba() instead of guessing at
+  # color_mix weights, and so one custom property drives every accent.
+  assign accent_r = accent | color_extract: 'red'
+  assign accent_g = accent | color_extract: 'green'
+  assign accent_b = accent | color_extract: 'blue'
+  assign promo_r = promo | color_extract: 'red'
+  assign promo_g = promo | color_extract: 'green'
+  assign promo_b = promo | color_extract: 'blue'
+
+  assign picker_no_fill = true
+  if section.settings.picker_fill
+    assign picker_no_fill = false
+  endif
+
+  # Bands with no products are skipped, so only count the ones that survive.
+  assign live_bands = 0
+  for sub in subcollections
+    if sub.products_count > 0
+      assign live_bands = live_bands | plus: 1
+    endif
+  endfor
+
+  # Copy: settings win, but a blank setting falls back to a key that already
+  # ships translated in every locale, so a new language is never left with
+  # Romanian text. en.default.json is at Shopify's key cap, so no new keys.
+  assign quick_add_mode = false
+  if section.settings.show_quick_add
+    assign quick_add_mode = 'standard'
+  endif
+
+  assign see_all_text = section.settings.see_all_button_text | default: 'sections.featured_collection.view_all' | t
+
+  assign shown_ids = ','
+  assign itemlist_handles = ''
+  assign itemlist_names = ''
+-%}
+
+{%- style -%}
+  #alc-campaign-{{ section.id }} {
+    --alc-accent: {{ accent }};
+    --alc-accent-rgb: {{ accent_r }}, {{ accent_g }}, {{ accent_b }};
+    --alc-promo: {{ promo }};
+    --alc-promo-rgb: {{ promo_r }}, {{ promo_g }}, {{ promo_b }};
+    --alc-on-accent: {{ on_accent }};
+    padding-top: {{ section.settings.padding_top }}px;
+    padding-bottom: {{ section.settings.padding_bottom }}px;
+    background-color: {{ section.settings.background_color | default: '#ffffff' }};
+  }
+
+  /* Sticky promo strip: categories on the left, urgency on the right ------ */
+  #alc-campaign-{{ section.id }} .alc-camp__strip {
+    position: sticky;
+    top: 0;
+    z-index: 3;
+    background-color: var(--alc-accent);
+    color: var(--alc-on-accent);
+  }
+
+  #alc-campaign-{{ section.id }} .alc-camp__strip-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1.6rem;
+    padding: 0.9rem 0;
+  }
+
+  #alc-campaign-{{ section.id }} .alc-camp__chips {
+    display: flex;
+    gap: 0.7rem;
+    overflow-x: auto;
+    scrollbar-width: none;
+  }
+
+  #alc-campaign-{{ section.id }} .alc-camp__chips::-webkit-scrollbar {
+    display: none;
+  }
+
+  #alc-campaign-{{ section.id }} .alc-camp__chip {
+    flex: 0 0 auto;
+    padding: 0.55rem 1.3rem;
+    border: 1px solid rgba(255, 255, 255, 0.35);
+    border-radius: 999px;
+    font-size: 1.4rem;
+    font-weight: 600;
+    line-height: 1.2;
+    color: var(--alc-on-accent);
+    text-decoration: none;
+    white-space: nowrap;
+    transition: background-color 0.15s ease, border-color 0.15s ease;
+  }
+
+  #alc-campaign-{{ section.id }} .alc-camp__chip:hover,
+  #alc-campaign-{{ section.id }} .alc-camp__chip[aria-current='true'] {
+    background-color: var(--alc-promo);
+    border-color: var(--alc-promo);
+    color: #fff;
+  }
+
+  #alc-campaign-{{ section.id }} .alc-camp__timer {
+    display: none;
+    align-items: baseline;
+    gap: 0.6rem;
+    flex: 0 0 auto;
+    font-size: 1.4rem;
+    white-space: nowrap;
+  }
+
+  #alc-campaign-{{ section.id }} .alc-camp__timer[data-alc-live='true'] {
+    display: flex;
+  }
+
+  #alc-campaign-{{ section.id }} .alc-camp__timer-label {
+    opacity: 0.85;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    font-size: 1.1rem;
+  }
+
+  #alc-campaign-{{ section.id }} .alc-camp__timer-value {
+    font-weight: 800;
+    font-variant-numeric: tabular-nums;
+    letter-spacing: 0.02em;
+    color: #fff;
+    background-color: var(--alc-promo);
+    padding: 0.25rem 0.7rem;
+    border-radius: 4px;
+  }
+
+  /* Bands ---------------------------------------------------------------- */
+  #alc-campaign-{{ section.id }} .alc-camp__band {
+    padding: 3rem 0 1rem;
+  }
+
+  {%- if section.settings.alternate_bands -%}
+    #alc-campaign-{{ section.id }} .alc-camp__band--tinted {
+      background-color: rgba(var(--alc-accent-rgb), 0.05);
+    }
+  {%- endif -%}
+
+  #alc-campaign-{{ section.id }} .alc-camp__head {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1.6rem 2.4rem;
+    padding: 1.8rem 2.2rem;
+    margin-bottom: 2.6rem;
+    background-color: var(--alc-accent);
+    color: var(--alc-on-accent);
+    border-bottom: 4px solid var(--alc-promo);
+  }
+
+  #alc-campaign-{{ section.id }} .alc-camp__title {
+    margin: 0;
+    color: var(--alc-on-accent);
+    text-transform: uppercase;
+    font-weight: 700;
+    letter-spacing: 0.02em;
+  }
+
+  #alc-campaign-{{ section.id }} .alc-camp__meta {
+    margin-top: 0.4rem;
+    font-size: 1.4rem;
+    opacity: 0.85;
+  }
+
+  #alc-campaign-{{ section.id }} .alc-camp__meta strong {
+    font-weight: 700;
+    opacity: 1;
+  }
+
+  /* The deal block is the reason the bar exists: biggest cut, biggest saving */
+  #alc-campaign-{{ section.id }} .alc-camp__deal {
+    display: flex;
+    align-items: center;
+    gap: 1.2rem;
+    margin-left: auto;
+  }
+
+  #alc-campaign-{{ section.id }} .alc-camp__deal-value {
+    display: block;
+    padding: 0.3rem 1.1rem;
+    background-color: var(--alc-promo);
+    color: #fff;
+    font-size: 3.2rem;
+    font-weight: 800;
+    line-height: 1.1;
+    letter-spacing: -0.01em;
+    border-radius: 4px;
+  }
+
+  #alc-campaign-{{ section.id }} .alc-camp__deal-label {
+    display: block;
+    font-size: 1.15rem;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    opacity: 0.85;
+    margin-bottom: 0.3rem;
+  }
+
+  #alc-campaign-{{ section.id }} .alc-camp__deal-save {
+    display: block;
+    margin-top: 0.4rem;
+    font-size: 1.35rem;
+    font-weight: 700;
+  }
+
+  #alc-campaign-{{ section.id }} .alc-camp__cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
+    padding: 1.1rem 2rem;
+    background-color: var(--alc-promo);
+    color: #fff;
+    border-radius: 999px;
+    font-size: 1.5rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    text-decoration: none;
+    white-space: nowrap;
+    transition: filter 0.15s ease;
+  }
+
+  #alc-campaign-{{ section.id }} .alc-camp__cta:hover {
+    filter: brightness(1.15);
+  }
+
+  /* Saving in lei under each card price, opt-in via alc-card-product ------ */
+  #alc-campaign-{{ section.id }} .alc-card-savings {
+    display: inline-block;
+    margin-top: 0.5rem;
+    padding: 0.3rem 0.8rem;
+    border-radius: 3px;
+    background-color: rgba(var(--alc-promo-rgb), 0.1);
+    color: var(--alc-promo);
+    font-size: 1.3rem;
+    font-weight: 700;
+    letter-spacing: 0.01em;
+  }
+
+  #alc-campaign-{{ section.id }} .alc-camp__more-wrap {
+    display: flex;
+    justify-content: center;
+    padding: 0.6rem 0 2.2rem;
+  }
+
+  #alc-campaign-{{ section.id }} .alc-camp__more {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.7rem;
+    padding: 1.1rem 2.6rem;
+    border: 2px solid var(--alc-accent);
+    border-radius: 999px;
+    color: var(--alc-accent);
+    font-size: 1.5rem;
+    font-weight: 700;
+    text-decoration: none;
+    transition: background-color 0.15s ease, color 0.15s ease;
+  }
+
+  #alc-campaign-{{ section.id }} .alc-camp__more:hover {
+    background-color: var(--alc-accent);
+    color: var(--alc-on-accent);
+  }
+
+  @media screen and (max-width: 989px) {
+    #alc-campaign-{{ section.id }} .alc-camp__head {
+      padding: 1.4rem 1.6rem;
+      gap: 1.2rem 1.6rem;
+    }
+
+    #alc-campaign-{{ section.id }} .alc-camp__deal-value {
+      font-size: 2.6rem;
+    }
+  }
+
+  @media screen and (max-width: 749px) {
+    #alc-campaign-{{ section.id }} .alc-camp__band {
+      padding-top: 2.2rem;
+    }
+
+    #alc-campaign-{{ section.id }} .alc-camp__head {
+      margin-bottom: 1.8rem;
+    }
+
+    #alc-campaign-{{ section.id }} .alc-camp__deal {
+      margin-left: 0;
+    }
+
+    #alc-campaign-{{ section.id }} .alc-camp__cta {
+      width: 100%;
+      justify-content: center;
+      padding: 1rem 1.4rem;
+    }
+
+    #alc-campaign-{{ section.id }} .alc-camp__timer-label {
+      display: none;
+    }
+
+    #alc-campaign-{{ section.id }} .alc-camp__strip-inner {
+      gap: 0.8rem;
+    }
+  }
+{%- endstyle -%}
+
+<div id="alc-campaign-{{ section.id }}">
+  {%- if section.settings.show_jump_nav and live_bands > 1 -%}
+    <div class="alc-camp__strip">
+      <div class="page-width">
+        <div class="alc-camp__strip-inner">
+          <nav class="alc-camp__chips" aria-label="{{ section.settings.nav_label | escape }}">
+            {%- for sub in subcollections -%}
+              {%- if sub.products_count > 0 -%}
+                <a class="alc-camp__chip" href="#alc-band-{{ sub.handle }}" data-alc-chip="{{ sub.handle }}">
+                  {{ sub.title }}
+                </a>
+              {%- endif -%}
+            {%- endfor -%}
+          </nav>
+
+          {%- if section.settings.campaign_end != blank -%}
+            <div
+              class="alc-camp__timer"
+              data-alc-timer="{{ section.settings.campaign_end | escape }}"
+              data-alc-units="{{ section.settings.timer_units | escape }}"
+              data-alc-live="false"
+            >
+              <span class="alc-camp__timer-label">{{ section.settings.timer_label }}</span>
+              <span class="alc-camp__timer-value" data-alc-timer-value>&nbsp;</span>
+            </div>
+          {%- endif -%}
+        </div>
+      </div>
+    </div>
+  {%- endif -%}
+
+  {%- assign band_index = 0 -%}
+  {%- for subcollection in subcollections -%}
+    {%- if subcollection.products_count > 0 -%}
+      {%- liquid
+        assign band_index = band_index | plus: 1
+
+        capture picked
+          render 'alc-campaign-picker', source: subcollection, campaign: collection, slots: section.settings.picker_slots, exclude: shown_ids, no_fill: picker_no_fill
+        endcapture
+        assign picked_tokens = ',' | append: picked
+
+        # One cheap pass over the pool for the header numbers, so the grid loop
+        # below stays the only place that resolves products in picked order.
+        assign band_count = 0
+        assign best_discount = 0
+        assign best_saving = 0
+        assign from_price = 0
+        for product in subcollection.products
+          assign token = ',' | append: product.id | append: ','
+          if picked_tokens contains token
+            assign band_count = band_count | plus: 1
+
+            if from_price == 0 or product.price < from_price
+              assign from_price = product.price
+            endif
+
+            if product.compare_at_price > product.price
+              assign cut = product.compare_at_price | minus: product.price | times: 100 | divided_by: product.compare_at_price
+              if cut > best_discount
+                assign best_discount = cut
+              endif
+
+              assign saving = product.compare_at_price | minus: product.price
+              if saving > best_saving
+                assign best_saving = saving
+              endif
+            endif
+          endif
+        endfor
+
+        assign band_parity = band_index | modulo: 2
+      -%}
+
+      {%- if band_count > 0 -%}
+        <section
+          id="alc-band-{{ subcollection.handle }}"
+          class="alc-camp__band{% if section.settings.alternate_bands and band_parity == 0 %} alc-camp__band--tinted{% endif %}"
+          data-alc-band="{{ subcollection.handle }}"
+        >
+          <div class="page-width">
+            <div class="alc-camp__head">
+              <div>
+                <h2 class="alc-camp__title alc-h2">{{ subcollection.title }}</h2>
+                <div class="alc-camp__meta">
+                  {{- 'products.facets.product_count_simple' | t: count: band_count -}}
+                  {%- if from_price > 0 -%}
+                    {%- assign from_price_money = from_price | money -%}
+                    &middot;
+                    <strong>
+                      {{- 'products.product.price.from_price_html' | t: price: from_price_money -}}
+                    </strong>
+                  {%- endif -%}
+                </div>
+              </div>
+
+              {%- if best_discount > 0 -%}
+                <div class="alc-camp__deal">
+                  <div>
+                    <span class="alc-camp__deal-label">{{ section.settings.savings_prefix }}</span>
+                    <span class="alc-camp__deal-value">-{{ best_discount }}%</span>
+                    {%- if best_saving > 0 -%}
+                      <span class="alc-camp__deal-save">
+                        {{- section.settings.saving_label }} {{ best_saving | money -}}
+                      </span>
+                    {%- endif -%}
+                  </div>
+                </div>
+              {%- endif -%}
+
+              <a class="alc-camp__cta" href="{{ subcollection.url }}">
+                <span>{{ see_all_text }}</span>
+                <svg width="16" height="16" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true" focusable="false">
+                  <path fill-rule="evenodd" clip-rule="evenodd" d="M10.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L12.586 11H5a1 1 0 110-2h7.586l-2.293-2.293a1 1 0 010-1.414z"></path>
+                </svg>
+              </a>
+            </div>
+
+            <ul class="grid product-grid grid--2-col-tablet-down grid--5-col-desktop gap-x-6">
+              {%- assign skip_card_product_styles = false -%}
+              {%- assign picked_ids = picked | strip | split: ',' -%}
+              {%- for picked_id in picked_ids -%}
+                {%- assign wanted_id = picked_id | plus: 0 -%}
+                {%- for product in subcollection.products -%}
+                  {%- if product.id == wanted_id -%}
+                    {%- comment -%} Only the first row of the first band loads eagerly {%- endcomment -%}
+                    {%- assign lazy_load = true -%}
+                    {%- if band_index == 1 and forloop.parentloop.index0 < 5 -%}
+                      {%- assign lazy_load = false -%}
+                    {%- endif -%}
+                    <li class="grid__item">
+                      {% render 'alc-card-product'
+                        , card_product: product
+                        , media_aspect_ratio: section.settings.image_ratio
+                        , image_shape: section.settings.image_shape
+                        , show_secondary_image: section.settings.show_secondary_image
+                        , show_vendor: section.settings.show_vendor
+                        , show_rating: section.settings.show_rating
+                        , lazy_load: lazy_load
+                        , skip_styles: skip_card_product_styles
+                        , section_id: section.id
+                        , quick_add: quick_add_mode
+                        , show_savings: section.settings.show_card_savings
+                        , savings_label: section.settings.card_saving_label
+                      %}
+                    </li>
+                    {%- assign skip_card_product_styles = true -%}
+                    {%- assign shown_ids = shown_ids | append: product.id | append: ',' -%}
+                    {%- assign itemlist_handles = itemlist_handles | append: product.handle | append: ',' -%}
+                    {%- assign itemlist_names = itemlist_names | append: product.title | append: '|||' -%}
+                    {%- break -%}
+                  {%- endif -%}
+                {%- endfor -%}
+              {%- endfor -%}
+            </ul>
+          </div>
+
+          <div class="alc-camp__more-wrap">
+            <a class="alc-camp__more" href="{{ subcollection.url }}">
+              <span>{{ see_all_text }} {{ subcollection.title | downcase }}</span>
+              <svg width="15" height="15" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true" focusable="false">
+                <path fill-rule="evenodd" clip-rule="evenodd" d="M10.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L12.586 11H5a1 1 0 110-2h7.586l-2.293-2.293a1 1 0 010-1.414z"></path>
+              </svg>
+            </a>
+          </div>
+        </section>
+      {%- endif -%}
+    {%- endif -%}
+  {%- endfor -%}
+
+  {%- comment -%} ItemList (carousel) structured data for everything rendered above {%- endcomment -%}
+  {%- assign itemlist_handle_array = itemlist_handles | split: ',' -%}
+  {%- assign itemlist_name_array = itemlist_names | split: '|||' -%}
+  {% render 'alc-collection-itemlist-schema'
+    , handles: itemlist_handle_array
+    , names: itemlist_name_array
+    , list_name: collection.title
+  %}
+</div>
+
+{%- if section.settings.show_jump_nav and live_bands > 1 -%}
+  <script>
+    (function () {
+      var root = document.getElementById('alc-campaign-{{ section.id }}');
+      if (!root) return;
+
+      /* Highlight the category the shopper is currently looking at. */
+      if ('IntersectionObserver' in window) {
+        var chips = root.querySelectorAll('[data-alc-chip]');
+        var bands = root.querySelectorAll('[data-alc-band]');
+
+        if (chips.length && bands.length) {
+          var observer = new IntersectionObserver(
+            function (entries) {
+              entries.forEach(function (entry) {
+                if (!entry.isIntersecting) return;
+                var handle = entry.target.getAttribute('data-alc-band');
+                chips.forEach(function (chip) {
+                  chip.setAttribute('aria-current', chip.getAttribute('data-alc-chip') === handle ? 'true' : 'false');
+                });
+              });
+            },
+            { rootMargin: '-25% 0px -65% 0px' }
+          );
+
+          bands.forEach(function (band) {
+            observer.observe(band);
+          });
+        }
+      }
+
+      /* Campaign countdown. Stays hidden unless the date parses and is ahead. */
+      var timer = root.querySelector('[data-alc-timer]');
+      if (!timer) return;
+
+      var deadline = new Date(timer.getAttribute('data-alc-timer')).getTime();
+      if (isNaN(deadline)) return;
+
+      var output = timer.querySelector('[data-alc-timer-value]');
+
+      function tick() {
+        var left = deadline - Date.now();
+        if (left <= 0) {
+          timer.setAttribute('data-alc-live', 'false');
+          return;
+        }
+
+        var minutes = Math.floor(left / 60000);
+        var days = Math.floor(minutes / 1440);
+        var hours = Math.floor((minutes % 1440) / 60);
+        var mins = minutes % 60;
+
+        var units = (timer.getAttribute('data-alc-units') || 'z h m').split(' ');
+        output.textContent =
+          (days > 0 ? days + units[0] + ' ' : '') + hours + units[1] + ' ' + mins + units[2];
+        timer.setAttribute('data-alc-live', 'true');
+        setTimeout(tick, 30000);
+      }
+
+      tick();
+    })();
+  </script>
+{%- endif -%}
+
+{% schema %}
+{
+  "name": "ALC - Seasonal campaign",
+  "class": "section",
+  "settings": [
+    {
+      "type": "paragraph",
+      "content": "Builds one band per subcollection listed in the campaign collection's custom.slider_subcollections metafield. Each band is filled with discounted, in-stock products, highest stock first, and leads with its deepest discount and largest saving."
+    },
+    {
+      "type": "header",
+      "content": "Product selection"
+    },
+    {
+      "type": "range",
+      "id": "picker_slots",
+      "min": 5,
+      "max": 30,
+      "step": 5,
+      "default": 15,
+      "label": "Products per band"
+    },
+    {
+      "type": "checkbox",
+      "id": "picker_fill",
+      "default": true,
+      "label": "Top up with newest products",
+      "info": "When a subcollection has too few discounted products, fill the remaining slots with its newest in-stock products. Turn off to show a shorter band instead."
+    },
+    {
+      "type": "header",
+      "content": "Urgency"
+    },
+    {
+      "type": "text",
+      "id": "campaign_end",
+      "label": "Campaign ends",
+      "info": "ISO date and time, e.g. 2026-09-30T23:59:59. Shows a countdown in the sticky bar. Leave empty to hide it."
+    },
+    {
+      "type": "text",
+      "id": "timer_label",
+      "label": "Countdown label",
+      "default": "Se termina in"
+    },
+    {
+      "type": "text",
+      "id": "timer_units",
+      "label": "Countdown units",
+      "default": "z h m",
+      "info": "Day, hour and minute letters, separated by single spaces. Translated per language like every other text field here."
+    },
+    {
+      "type": "header",
+      "content": "Colours"
+    },
+    {
+      "type": "color",
+      "id": "accent_color",
+      "label": "Header bar colour",
+      "info": "Falls back to the collection's custom.main_color metafield, so a campaign can be recoloured without touching the theme."
+    },
+    {
+      "type": "color",
+      "id": "accent_text_color",
+      "label": "Header bar text",
+      "default": "#f3f3f3"
+    },
+    {
+      "type": "color",
+      "id": "promo_color",
+      "label": "Price and discount colour",
+      "default": "#a20c01",
+      "info": "Used for the discount figure, the countdown and the buttons. Matches the Super Pret badge by default."
+    },
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "Page background",
+      "default": "#ffffff"
+    },
+    {
+      "type": "checkbox",
+      "id": "alternate_bands",
+      "default": true,
+      "label": "Alternate band backgrounds"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_jump_nav",
+      "default": true,
+      "label": "Sticky category bar",
+      "info": "Sticky row of category links plus the countdown. Hidden when there is only one band."
+    },
+    {
+      "type": "header",
+      "content": "Text"
+    },
+    {
+      "type": "paragraph",
+      "content": "Every field below is translated per language in Shopify admin under Translate & Adapt (Theme content, this template). Leave the See all field empty to use the theme's own translated wording instead."
+    },
+    {
+      "type": "text",
+      "id": "see_all_button_text",
+      "label": "See all button text",
+      "info": "Leave empty to use the theme's translated wording"
+    },
+    {
+      "type": "text",
+      "id": "savings_prefix",
+      "label": "Discount label",
+      "default": "reduceri pana la"
+    },
+    {
+      "type": "text",
+      "id": "saving_label",
+      "label": "Saving label",
+      "default": "economisesti pana la"
+    },
+    {
+      "type": "text",
+      "id": "nav_label",
+      "label": "Nav accessible label",
+      "default": "Categorii din campanie"
+    },
+    {
+      "type": "header",
+      "content": "Product cards"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_quick_add",
+      "default": true,
+      "label": "Show add to cart on cards",
+      "info": "Adds the theme's quick add button. Products with several variants open the options picker instead."
+    },
+    {
+      "type": "checkbox",
+      "id": "show_card_savings",
+      "default": true,
+      "label": "Show saving in lei on each card",
+      "info": "Adds a highlighted line under the price. Only this section asks for it, so cards elsewhere on the store are untouched."
+    },
+    {
+      "type": "text",
+      "id": "card_saving_label",
+      "label": "Card saving label",
+      "default": "Economisesti"
+    },
+    {
+      "type": "select",
+      "id": "image_ratio",
+      "options": [
+        { "value": "adapt", "label": "Adapt to image" },
+        { "value": "portrait", "label": "Portrait" },
+        { "value": "square", "label": "Square" }
+      ],
+      "default": "square",
+      "label": "Image ratio"
+    },
+    {
+      "type": "select",
+      "id": "image_shape",
+      "options": [
+        { "value": "default", "label": "Default" },
+        { "value": "arch", "label": "Arch" },
+        { "value": "blob", "label": "Blob" },
+        { "value": "chevron", "label": "Chevron" },
+        { "value": "diamond", "label": "Diamond" },
+        { "value": "hexagon", "label": "Hexagon" },
+        { "value": "rounded", "label": "Rounded" }
+      ],
+      "default": "default",
+      "label": "Image shape"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_secondary_image",
+      "default": true,
+      "label": "Show second image on hover"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_vendor",
+      "default": false,
+      "label": "Show vendor"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_rating",
+      "default": true,
+      "label": "Show product rating"
+    },
+    {
+      "type": "header",
+      "content": "Spacing"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "Padding top",
+      "default": 0
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "Padding bottom",
+      "default": 36
+    }
+  ],
+  "presets": [
+    {
+      "name": "ALC - Seasonal campaign"
+    }
+  ]
+}
+{% endschema %}

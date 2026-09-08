@@ -21,6 +21,12 @@
       {%- comment -%} Collects the handles of every product rendered below, for the ItemList schema {%- endcomment -%}
       {% assign itemlist_handles = '' %}
       {% assign itemlist_names = '' %}
+      {%- comment -%} Ids already rendered, so the picker never repeats one across blocks {%- endcomment -%}
+      {%- assign shown_ids = ',' -%}
+      {%- assign picker_no_fill = true -%}
+      {%- if section.settings.picker_fill -%}
+        {%- assign picker_no_fill = false -%}
+      {%- endif -%}
 
       {% for subcollection in subcollections %}
         {% if subcollection.products_count > 0 %}
@@ -109,6 +115,54 @@
             <div class="page-width pt-4 pb-8">
               <ul class="grid product-grid grid--2-col-tablet-down grid--5-col-desktop gap-x-6">
                 {% assign skip_card_product_styles = false %}
+                {%- if section.settings.use_campaign_picker -%}
+                  {%- comment -%}
+                    Picker mode: pull straight from the subcollection, keep only
+                    discounted in-stock products and order them by stock.
+                    See snippets/alc-campaign-picker.liquid.
+                  {%- endcomment -%}
+                  {%- capture picked -%}
+                    {%- render 'alc-campaign-picker',
+                      source: subcollection,
+                      campaign: collection,
+                      slots: section.settings.picker_slots,
+                      exclude: shown_ids,
+                      no_fill: picker_no_fill
+                    -%}
+                  {%- endcapture -%}
+                  {%- assign picked_ids = picked | strip | split: ',' -%}
+                  {%- for picked_id in picked_ids -%}
+                    {%- assign wanted_id = picked_id | plus: 0 -%}
+                    {%- for product in subcollection.products -%}
+                      {%- if product.id == wanted_id -%}
+                        {%- comment -%} Eager load the first row only {%- endcomment -%}
+                        {%- assign lazy_load = true -%}
+                        {%- if forloop.parentloop.index0 < 5 -%}
+                          {%- assign lazy_load = false -%}
+                        {%- endif -%}
+                        <li class="grid__item">
+                          {% render 'alc-card-product'
+                            , card_product: product
+                            , media_aspect_ratio: section.settings.image_ratio
+                            , image_shape: section.settings.image_shape
+                            , show_secondary_image: section.settings.show_secondary_image
+                            , show_vendor: section.settings.show_vendor
+                            , show_rating: false
+                            , lazy_load: lazy_load
+                            , skip_styles: skip_card_product_styles
+                            , section_id: section.id
+                            , quick_add: 'standard'
+                          %}
+                        </li>
+                        {%- assign skip_card_product_styles = true -%}
+                        {%- assign shown_ids = shown_ids | append: product.id | append: ',' -%}
+                        {%- assign itemlist_handles = itemlist_handles | append: product.handle | append: ',' -%}
+                        {%- assign itemlist_names = itemlist_names | append: product.title | append: '|||' -%}
+                        {%- break -%}
+                      {%- endif -%}
+                    {%- endfor -%}
+                  {%- endfor -%}
+                {%- else -%}
                 {% for product in collection.products %}
                   {% if product.collections contains subcollection %}
                     {%- comment -%} Check if we should skip out-of-stock products {%- endcomment -%}
@@ -143,6 +197,7 @@
                     {% endif %}
                   {% endif %}
                 {% endfor %}
+                {%- endif -%}
               </ul>
 
               <!-- "See All Products" Button -->
@@ -311,6 +366,34 @@
         "default": false,
         "label": "Hide out of stock products",
         "info": "When enabled, products that are out of stock will not be displayed in the grid"
+      },
+      {
+        "type": "header",
+        "content": "Campaign picker"
+      },
+      {
+        "type": "checkbox",
+        "id": "use_campaign_picker",
+        "default": false,
+        "label": "Pick discounted products automatically",
+        "info": "Ignores the campaign collection's own product order. Each block is filled from its subcollection with discounted, in-stock products, highest stock first. Products already in the campaign collection rank ahead of the rest."
+      },
+      {
+        "type": "range",
+        "id": "picker_slots",
+        "min": 5,
+        "max": 30,
+        "step": 5,
+        "default": 15,
+        "label": "Products per subcollection",
+        "info": "Only used when the picker is on"
+      },
+      {
+        "type": "checkbox",
+        "id": "picker_fill",
+        "default": true,
+        "label": "Top up with newest products",
+        "info": "When a subcollection has too few discounted products, fill the remaining slots with its newest in-stock products. Turn off to show a shorter block instead."
       },
       {
         "type": "header",

@@ -29,9 +29,11 @@
   {{ 'quantity-popover.css' | asset_url | stylesheet_tag }}
   {{ 'component-alc-card.css' | asset_url | stylesheet_tag }}
 {%- endunless -%}
+{%- liquid
+  assign card_title_tag = heading_tag | default: 'h3'
+-%}
 {%- if card_product and card_product != empty -%}
   {%- liquid
-    assign card_title_tag = heading_tag | default: 'h3'
     assign ratio = 1
     if card_product.featured_media and media_aspect_ratio == 'portrait'
       assign ratio = 0.8
