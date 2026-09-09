@@ -25,21 +25,26 @@
         crossorigin>
     {%- endunless -%}
 
+    {%- comment -%} SEO title + description: admin fields first, then per-page fallbacks (snippets/alc-seo-head.liquid) {%- endcomment -%}
+    {%- capture seo_title -%}{%- render 'alc-seo-head', field: 'title' -%}{%- endcapture -%}
+    {%- capture seo_description -%}{%- render 'alc-seo-head', field: 'description' -%}{%- endcapture -%}
+    {%- assign seo_title = seo_title | strip -%}
+    {%- assign seo_description = seo_description | strip -%}
     <title>
-      {{ page_title }}
+      {{ seo_title | escape }}
       {%- if current_tags %}
         &ndash; tagged "{{ current_tags | join: ', ' }}"{% endif -%}
       {%- if current_page != 1 %}
         &ndash; Page {{ current_page }}{% endif -%}
-      {%- unless page_title contains shop.name %}
+      {%- unless seo_title contains shop.name %}
         &ndash; {{ shop.name }}{% endunless -%}
     </title>
 
-    {% if page_description %}
-      <meta name="description" content="{{ page_description | escape }}">
+    {% if seo_description != blank %}
+      <meta name="description" content="{{ seo_description | escape }}">
     {% endif %}
 
-    {% render 'meta-tags' %}
+    {% render 'meta-tags', seo_title: seo_title, seo_description: seo_description %}
 
     {% render 'alc-author-head' %}
 
@@ -72,7 +77,36 @@
       <script src="{{ 'animations.js' | asset_url }}" defer="defer"></script>
     {%- endif -%}
 
-    {{ content_for_header }}
+    {%- comment -%}
+      Shopify's content_for_header writes rel="prev" on page 2 as "?page=1", a duplicate of
+      the bare URL. Only that one href is rewritten (snippets/alc-page-1-url.liquid); when the
+      marker is missing, content_for_header goes out untouched.
+    {%- endcomment -%}
+    {%- # theme-check-disable ContentForHeaderModification -%}
+    {%- liquid
+      assign prev_link_fix = false
+      if current_page == 2
+        assign prev_marker = '<link rel="prev" href="'
+        assign head_parts = content_for_header | split: prev_marker
+        if head_parts.size == 2
+          assign prev_href = head_parts[1] | split: '"' | first
+          capture fixed_href
+            render 'alc-page-1-url', url: prev_href
+          endcapture
+          if fixed_href != prev_href
+            assign prev_link_fix = true
+            assign prev_link_bad = prev_marker | append: prev_href | append: '"'
+            assign prev_link_good = prev_marker | append: fixed_href | append: '"'
+          endif
+        endif
+      endif
+    -%}
+    {%- if prev_link_fix -%}
+      {{ content_for_header | replace_first: prev_link_bad, prev_link_good }}
+    {%- else -%}
+      {{ content_for_header }}
+    {%- endif -%}
+    {%- # theme-check-enable ContentForHeaderModification -%}
 
     {%- liquid
       assign body_font_bold = settings.type_body_font | font_modify: 'weight', 'bold'
