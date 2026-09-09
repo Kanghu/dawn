@@ -14,9 +14,10 @@ Run from the theme root (needs `shopify store auth` for the store):
     python seo/product-meta/clear_seo_descriptions.py --limit 1   # one product first
     python seo/product-meta/clear_seo_descriptions.py
 
-Every Shopify CLI call takes a few seconds; progress is printed before each one.
-The mutation sends the SEO title back unchanged: productUpdate replaces the
-whole `seo` object, so omitting `title` would wipe it.
+The Shopify CLI writes its own progress (and any login prompt) straight to the
+terminal; results are read back from a temp file via --output-file. Every CLI
+call takes a few seconds. The mutation sends the SEO title back unchanged:
+productUpdate replaces the whole `seo` object, so omitting `title` would wipe it.
 """
 import argparse, json, os, subprocess, sys, tempfile, time
 
@@ -33,33 +34,37 @@ CLEAR = '''mutation($product: ProductUpdateInput!) {
 }'''
 
 
+def temp_path(suffix):
+    fd, path = tempfile.mkstemp(suffix=suffix)
+    os.close(fd)
+    return path
+
+
 def shopify(query, variables, mutation=False):
     """Run one GraphQL operation through the Shopify CLI and return the data."""
-    with tempfile.NamedTemporaryFile('w', suffix='.graphql', delete=False, encoding='utf-8') as q:
-        q.write(query)
-    with tempfile.NamedTemporaryFile('w', suffix='.json', delete=False, encoding='utf-8') as v:
-        json.dump(variables, v)
+    q, v, out = temp_path('.graphql'), temp_path('.json'), temp_path('.out.json')
+    open(q, 'w', encoding='utf-8').write(query)
+    json.dump(variables, open(v, 'w', encoding='utf-8'))
     cmd = ['shopify', 'store', 'execute', '-s', STORE, '--json',
-           '--query-file', q.name, '--variable-file', v.name]
+           '--query-file', q, '--variable-file', v, '--output-file', out]
     if mutation:
         cmd.append('--allow-mutations')
     t0 = time.time()
     try:
-        r = subprocess.run(cmd, capture_output=True, text=True, shell=True,
-                           stdin=subprocess.DEVNULL, encoding='utf-8', errors='replace',
-                           timeout=180)
+        r = subprocess.run(cmd, shell=True, stdin=subprocess.DEVNULL, timeout=300)
+        raw = open(out, encoding='utf-8', errors='replace').read() if os.path.exists(out) else ''
     finally:
-        os.unlink(q.name)
-        os.unlink(v.name)
-    out = r.stdout or ''
-    start = out.find('{')
-    if start < 0:
-        raise RuntimeError('no JSON in CLI output after %.0fs (exit %s):\n%s\n%s' % (
-            time.time() - t0, r.returncode, out[-1500:], (r.stderr or '')[-1500:]))
-    data = json.loads(out[start:])
+        for p in (q, v, out):
+            if os.path.exists(p):
+                os.unlink(p)
+    start = raw.find('{')
+    if r.returncode != 0 or start < 0:
+        raise RuntimeError('CLI exit %s after %.0fs, output file %s' % (
+            r.returncode, time.time() - t0, 'empty' if start < 0 else 'present'))
+    data = json.loads(raw[start:])
     if 'errors' in data and 'data' not in data:
         raise RuntimeError('GraphQL errors: %s' % json.dumps(data['errors'])[:1500])
-    return data
+    return data.get('data', data)
 
 
 def main():
@@ -75,7 +80,7 @@ def main():
     print('%d products to process from %s' % (len(entries), os.path.basename(BACKUP)))
     cleared = skipped = failed = 0
     for i, e in enumerate(entries, 1):
-        print('[%d/%d] %s' % (i, len(entries), e['handle']))
+        print('\n[%d/%d] %s' % (i, len(entries), e['handle']))
         print('    reading current SEO fields ...')
         current = shopify(READ, {'id': e['id']})['product']
         if current is None:
