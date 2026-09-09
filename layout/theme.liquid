@@ -77,7 +77,36 @@
       <script src="{{ 'animations.js' | asset_url }}" defer="defer"></script>
     {%- endif -%}
 
-    {{ content_for_header }}
+    {%- comment -%}
+      Shopify's content_for_header writes rel="prev" on page 2 as "?page=1", a duplicate of
+      the bare URL. Only that one href is rewritten (snippets/alc-page-1-url.liquid); when the
+      marker is missing, content_for_header goes out untouched.
+    {%- endcomment -%}
+    {%- # theme-check-disable ContentForHeaderModification -%}
+    {%- liquid
+      assign prev_link_fix = false
+      if current_page == 2
+        assign prev_marker = '<link rel="prev" href="'
+        assign head_parts = content_for_header | split: prev_marker
+        if head_parts.size == 2
+          assign prev_href = head_parts[1] | split: '"' | first
+          capture fixed_href
+            render 'alc-page-1-url', url: prev_href
+          endcapture
+          if fixed_href != prev_href
+            assign prev_link_fix = true
+            assign prev_link_bad = prev_marker | append: prev_href | append: '"'
+            assign prev_link_good = prev_marker | append: fixed_href | append: '"'
+          endif
+        endif
+      endif
+    -%}
+    {%- if prev_link_fix -%}
+      {{ content_for_header | replace_first: prev_link_bad, prev_link_good }}
+    {%- else -%}
+      {{ content_for_header }}
+    {%- endif -%}
+    {%- # theme-check-enable ContentForHeaderModification -%}
 
     {%- liquid
       assign body_font_bold = settings.type_body_font | font_modify: 'weight', 'bold'

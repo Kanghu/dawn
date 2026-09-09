@@ -1,0 +1,19 @@
+{%- comment -%}
+  Echoes `url` with its `page=1` query parameter removed, so page 1 is always linked as
+  the bare URL instead of the duplicate "?page=1". Only pass URLs known to target page 1:
+  on any other URL the `remove` filters would eat the start of "page=10".
+
+  The `&amp;` forms come first: content_for_header HTML-escapes the ampersands in its
+  href attributes, while paginate URLs carry a raw `&`.
+
+  Usage: {% render 'alc-page-1-url', url: paginate.previous.url %}
+{%- endcomment -%}
+{{- url
+  | replace: '?page=1&amp;', '?'
+  | replace: '&amp;page=1&amp;', '&amp;'
+  | remove: '&amp;page=1'
+  | replace: '?page=1&', '?'
+  | replace: '&page=1&', '&'
+  | remove: '&page=1'
+  | remove: '?page=1'
+-}}

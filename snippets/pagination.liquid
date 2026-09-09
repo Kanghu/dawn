@@ -18,9 +18,18 @@
     <nav class="pagination flex-col" role="navigation" aria-label="{{ 'general.pagination.label' | t }}">
       <ul class="pagination__list flex flex-row list-unstyled" role="list">
         {%- if paginate.previous -%}
+          {%- liquid
+            # Page 1 is the bare URL, not "?page=1" (see snippets/alc-page-1-url.liquid).
+            assign previous_url = paginate.previous.url
+            if paginate.current_page == 2
+              capture previous_url
+                render 'alc-page-1-url', url: previous_url
+              endcapture
+            endif
+          -%}
           <li>
             <a
-              href="{{ paginate.previous.url }}{{ anchor }}"
+              href="{{ previous_url }}{{ anchor }}"
               class="pagination__item pagination__item--next pagination__item-arrow link motion-reduce"
               aria-label="{{ 'general.pagination.previous' | t }}"
             >
@@ -34,8 +43,16 @@
         {%- for part in paginate.parts -%}
           <li>
             {%- if part.is_link -%}
+              {%- liquid
+                assign part_url = part.url
+                if part.title == '1' or part.title == 1
+                  capture part_url
+                    render 'alc-page-1-url', url: part_url
+                  endcapture
+                endif
+              -%}
               <a
-                href="{{ part.url }}{{ anchor }}"
+                href="{{ part_url }}{{ anchor }}"
                 class="pagination__item link"
                 aria-label="{{ 'general.pagination.page' | t: number: part.title }}"
               >
