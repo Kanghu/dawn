@@ -54,7 +54,7 @@
   .breadcrumbs__item {
     display: flex;
     align-items: center;
-    font-size: 0.9em;
+    font-size: 0.95em;
     color: rgba(var(--color-foreground), 0.75);
     flex-shrink: 0;
     min-width: 0;
@@ -62,8 +62,8 @@
   .breadcrumbs__item:not(:last-child)::after {
     content: '{{ settings.separator_symbol | default: "›" | escape }}';
     display: inline-block;
-    margin: 0 0.33em;
-    color: rgba(var(--color-foreground), 0.4);
+    margin: 0 0.15em;
+    color: rgba(var(--color-foreground), 0.32);
     font-size: 1em;
   }
   .breadcrumbs__item.shrink {
@@ -81,13 +81,25 @@
     transition: color 0.2s;
     max-width: 100%;
   }
-  .breadcrumbs__link:hover {
+  a.breadcrumbs__link {
+    padding: 0.35em 0.7em;
+    border-radius: 999px;
+    background-color: rgba(var(--color-foreground), 0.055);
+    transition: background-color 0.2s ease, color 0.2s ease;
+  }
+  a.breadcrumbs__link:hover {
+    background-color: rgba(var(--color-foreground), 0.11);
     color: rgba(var(--color-foreground), 1);
+  }
+  a.breadcrumbs__link:focus-visible {
+    outline: 0.2rem solid rgba(var(--color-foreground), 0.5);
+    outline-offset: 0.2rem;
   }
   .breadcrumbs__link[aria-current="page"] {
     font-weight: 600;
     color: rgba(var(--color-foreground), 1);
     max-width: 24ch;
+    padding: 0.35em 0.2em;
   }
   @media screen and (min-width: 750px) {
     .breadcrumbs__link[aria-current="page"] {
@@ -96,7 +108,7 @@
   }
   @media (max-width: 749px) {
     .breadcrumbs__list {
-      font-size: 0.85em;
+      font-size: 0.9em;
     }
     .breadcrumbs__item.shrink {
       max-width: none;
