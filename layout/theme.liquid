@@ -25,21 +25,26 @@
         crossorigin>
     {%- endunless -%}
 
+    {%- comment -%} SEO title + description: admin fields first, then per-page fallbacks (snippets/alc-seo-head.liquid) {%- endcomment -%}
+    {%- capture seo_title -%}{%- render 'alc-seo-head', field: 'title' -%}{%- endcapture -%}
+    {%- capture seo_description -%}{%- render 'alc-seo-head', field: 'description' -%}{%- endcapture -%}
+    {%- assign seo_title = seo_title | strip -%}
+    {%- assign seo_description = seo_description | strip -%}
     <title>
-      {{ page_title }}
+      {{ seo_title | escape }}
       {%- if current_tags %}
         &ndash; tagged "{{ current_tags | join: ', ' }}"{% endif -%}
       {%- if current_page != 1 %}
         &ndash; Page {{ current_page }}{% endif -%}
-      {%- unless page_title contains shop.name %}
+      {%- unless seo_title contains shop.name %}
         &ndash; {{ shop.name }}{% endunless -%}
     </title>
 
-    {% if page_description %}
-      <meta name="description" content="{{ page_description | escape }}">
+    {% if seo_description != blank %}
+      <meta name="description" content="{{ seo_description | escape }}">
     {% endif %}
 
-    {% render 'meta-tags' %}
+    {% render 'meta-tags', seo_title: seo_title, seo_description: seo_description %}
 
     {% render 'alc-author-head' %}
 
