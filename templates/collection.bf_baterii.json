@@ -9,6 +9,14 @@
  */
 {
   "sections": {
+    "alc_breadcrumbs_Bd8j7D": {
+      "type": "alc-breadcrumbs",
+      "name": "Breadcrumbs",
+      "settings": {
+        "separator_symbol": "/",
+        "background": "#ffffff"
+      }
+    },
     "custom_liquid_fKNUgr": {
       "type": "custom-liquid",
       "custom_css": [
@@ -489,8 +497,8 @@
       "settings": {
         "show_collection_description": true,
         "show_collection_image": false,
-        "show_collection_slider": true,
-        "color_scheme": "scheme-15b3ebfc-72e7-42d0-af22-57c8d007abe9"
+        "color_scheme": "scheme-15b3ebfc-72e7-42d0-af22-57c8d007abe9",
+        "show_collection_slider": true
       }
     },
     "alc_category_links_bq7YFX": {
@@ -549,14 +557,11 @@
       ],
       "name": "ALC - Category Links",
       "settings": {
-        "title": "",
-        "heading_size": "h1",
         "alignment": "center",
         "pill_bg_color": "#4e0000",
         "pill_text_color": "#ffffff",
         "pill_border_color": "transparent",
         "pill_border_width": 0,
-        "color_scheme": "scheme-7b52f32e-fb65-4d4e-be50-6d507bcd7425",
         "padding_top": 24,
         "padding_bottom": 36
       }
@@ -585,6 +590,7 @@
     }
   },
   "order": [
+    "alc_breadcrumbs_Bd8j7D",
     "custom_liquid_fKNUgr",
     "alc_collection_list_campaign_GLLQYi",
     "alc_collection_list_campaign_gFjNRH",

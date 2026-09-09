@@ -9,6 +9,14 @@
  */
 {
   "sections": {
+    "alc_breadcrumbs_Bd8j7D": {
+      "type": "alc-breadcrumbs",
+      "name": "Breadcrumbs",
+      "settings": {
+        "separator_symbol": "/",
+        "background": "#ffffff"
+      }
+    },
     "banner": {
       "type": "alc-main-collection-banner",
       "settings": {
@@ -100,6 +108,7 @@
     }
   },
   "order": [
+    "alc_breadcrumbs_Bd8j7D",
     "banner",
     "alc_featured_specs_64abWB",
     "product-grid"

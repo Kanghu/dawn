@@ -9,6 +9,14 @@
  */
 {
   "sections": {
+    "alc_breadcrumbs_Bd8j7D": {
+      "type": "alc-breadcrumbs",
+      "name": "Breadcrumbs",
+      "settings": {
+        "separator_symbol": "/",
+        "background": "#ffffff"
+      }
+    },
     "custom_liquid_fKNUgr": {
       "type": "custom-liquid",
       "custom_css": [
@@ -446,6 +454,7 @@
     }
   },
   "order": [
+    "alc_breadcrumbs_Bd8j7D",
     "custom_liquid_fKNUgr",
     "alc_collection_list_campaign_GLLQYi",
     "alc_collection_list_campaign_gFjNRH",

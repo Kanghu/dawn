@@ -117,7 +117,7 @@
           "name": {{ shop.name | json }},
           "item": "{{ shop.secure_url }}"
         }
-        {%- case template | split: '.' | first -%}
+        {%- case template.name -%}
         {%- when 'product' -%}
           {%- assign main_collection = product.metafields.custom.main_collection.value -%}
           {%- if main_collection != blank -%}
@@ -154,7 +154,7 @@
                     "item": "{{ shop.secure_url }}{{ product.url }}"
                   }
 
-                {%- when 'collection' and collection.handle -%}
+                {%- when 'collection' -%}
                   {%- assign current_collection = collection -%}
                   {%- assign collection_hierarchy = '' | split: ',' -%}
                   {%- for i in (1..100) -%}
@@ -246,7 +246,7 @@
         <li class="breadcrumbs__item shrink">
           <a class="breadcrumbs__link" href="{{ routes.root_url }}">{{ shop.name }}</a>
         </li>
-        {%- case template | split: '.' | first -%}
+        {%- case template.name -%}
           {%- when 'product' -%}
             {%- assign main_collection = product.metafields.custom.main_collection.value -%}
             {%- if main_collection != blank -%}
@@ -281,7 +281,7 @@
               </span>
             </li>
 
-          {%- when 'collection' and collection.handle -%}
+          {%- when 'collection' -%}
             {%- assign current_collection = collection -%}
             {%- assign collection_hierarchy = '' | split: ',' -%}
             {%- for i in (1..100) -%}
