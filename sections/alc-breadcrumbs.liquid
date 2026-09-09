@@ -42,7 +42,14 @@
     align-items: center;
     white-space: nowrap;
     flex-wrap: nowrap;
-    overflow: hidden;
+    overflow-x: auto;
+    overflow-y: hidden;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+  }
+  .breadcrumbs__list::-webkit-scrollbar {
+    display: none;
   }
   .breadcrumbs__item {
     display: flex;
@@ -61,7 +68,7 @@
   }
   .breadcrumbs__item.shrink {
     min-width: 0;
-    flex-shrink: 1;
+    flex-shrink: 0;
     flex-grow: 0;
   }
   .breadcrumbs__link {
@@ -80,6 +87,12 @@
   .breadcrumbs__link[aria-current="page"] {
     font-weight: 600;
     color: rgba(var(--color-foreground), 1);
+    max-width: 24ch;
+  }
+  @media screen and (min-width: 750px) {
+    .breadcrumbs__link[aria-current="page"] {
+      max-width: 40ch;
+    }
   }
   @media (max-width: 749px) {
     .breadcrumbs__list {
@@ -101,7 +114,7 @@
                             {
           "@type": "ListItem",
           "position": 1,
-          "name": "{{ shop.name | escape }}",
+          "name": {{ shop.name | json }},
           "item": "{{ shop.secure_url }}"
         }
         {%- case template | split: '.' | first -%}
@@ -129,7 +142,7 @@
                   {
                     "@type": "ListItem",
                     "position": {{ position }},
-                    "name": "{{ col.title | escape }}",
+                    "name": {{ col.title | json }},
                     "item": "{{ shop.secure_url }}{{ col.url }}"
                   }
                   {%- assign position = position | plus: 1 -%}
@@ -137,7 +150,7 @@
                   {
                     "@type": "ListItem",
                     "position": {{ position }},
-                    "name": "{{ product.selected_or_first_available_variant.sku | default: product.variants.first.sku | escape }}",
+                    "name": {{ product.title | json }},
                     "item": "{{ shop.secure_url }}{{ product.url }}"
                   }
 
@@ -160,14 +173,14 @@
                           {
                             "@type": "ListItem",
                             "position": {{ position }},
-                            "name": "{{ col.title | escape }}",
+                            "name": {{ col.title | json }},
                             "item": "{{ shop.secure_url }}{{ col.url }}"
                           }
                         {%- else -%},
                           {
                             "@type": "ListItem",
                             "position": {{ position }},
-                            "name": "{{ col.title | escape }}",
+                            "name": {{ col.title | json }},
                             "item": "{{ shop.secure_url }}{{ col.url }}"
                           }
                           {%- endif -%}
@@ -177,7 +190,7 @@
                             {
                               "@type": "ListItem",
                               "position": {{ position }},
-                              "name": "{{ current_tags | join: ' + ' | escape }}",
+                              "name": {{ current_tags | join: ' + ' | json }},
                               "item": "{{ shop.secure_url }}{{ collection.url }}/{{ current_tags | join: '+' }}"
                             }
                             {%- endif -%}
@@ -186,7 +199,7 @@
                             {
                               "@type": "ListItem",
                               "position": 2,
-                              "name": "{{ page.title | escape }}",
+                              "name": {{ page.title | json }},
                               "item": "{{ shop.secure_url }}{{ page.url }}"
                             }
 
@@ -194,13 +207,13 @@
                             {
                               "@type": "ListItem",
                               "position": 2,
-                              "name": "{{ blog.title | escape }}",
+                              "name": {{ blog.title | json }},
                               "item": "{{ shop.secure_url }}{{ blog.url }}"
                             },
                             {
                               "@type": "ListItem",
                               "position": 3,
-                              "name": "{{ article.title | escape }}",
+                              "name": {{ article.title | json }},
                               "item": "{{ shop.secure_url }}{{ article.url }}"
                             }
 
@@ -208,7 +221,7 @@
                             {
                               "@type": "ListItem",
                               "position": 2,
-                              "name": "{{ blog.title | escape }}",
+                              "name": {{ blog.title | json }},
                               "item": "{{ shop.secure_url }}{{ blog.url }}"
                             }
 
@@ -216,7 +229,7 @@
                             {
                               "@type": "ListItem",
                               "position": 2,
-                              "name": "{{ page_title | escape }}",
+                              "name": {{ page_title | json }},
                               "item": "{{ shop.secure_url }}{{ request.path }}"
                             }
                             {%- endcase -%}
@@ -230,6 +243,9 @@
     aria-label="breadcrumbs">
     <div class="page-width">
       <ol class="breadcrumbs__list">
+        <li class="breadcrumbs__item shrink">
+          <a class="breadcrumbs__link" href="{{ routes.root_url }}">{{ shop.name }}</a>
+        </li>
         {%- case template | split: '.' | first -%}
           {%- when 'product' -%}
             {%- assign main_collection = product.metafields.custom.main_collection.value -%}
@@ -255,9 +271,13 @@
                 <a class="breadcrumbs__link" href="{{ col.url }}">{{ col.title }}</a>
               </li>
             {%- endfor -%}
-            <li class="breadcrumbs__item">
-              <span class="breadcrumbs__link" aria-current="page">
-                {{ product.selected_or_first_available_variant.sku | default: product.variants.first.sku }}
+            {%- assign product_sku = product.selected_or_first_available_variant.sku | default: product.variants.first.sku -%}
+            <li class="breadcrumbs__item shrink">
+              <span
+                class="breadcrumbs__link"
+                aria-current="page"
+                {% if product_sku != blank %}title="SKU: {{ product_sku | escape }}"{% endif %}>
+                {{ product.title }}
               </span>
             </li>
 
