@@ -1,0 +1,159 @@
+{%- comment -%}
+  alc-seo-head.liquid
+
+  Text for the <title> tag and for the meta / og description. Rendered once per
+  field from layout/theme.liquid:
+
+    {% capture seo_title %}{% render 'alc-seo-head', field: 'title' %}{% endcapture %}
+    {% capture seo_description %}{% render 'alc-seo-head', field: 'description' %}{% endcapture %}
+
+  Product pages:
+    - The SEO title / description typed in the admin always win. Shopify stores
+      them in the global.title_tag / global.description_tag metafields.
+    - Title fallback: the full product title. Shopify's page_title cuts it at
+      70 characters, mid-word, which is what Google and share previews got.
+    - Description fallback, in the visitor's language:
+        Cumpara acum [nume] de pe alessandrodesign.ro! Pret de producator,
+        14 zile drept de retur gratuit.
+      The name is the whole title when the result fits in 160 characters.
+      Otherwise the title is cut at comma boundaries (titles are spec lists:
+      model, wattage, size, colour), so the text stays unique per product and
+      the name sits inside the first 120 characters shown on mobile.
+      "Pret de producator" is only claimed when the vendor is Alessandro
+      Design; other brands get the delivery promise instead.
+  Every other page keeps Shopify's page_title / page_description untouched.
+{%- endcomment -%}
+{%- liquid
+  if request.page_type != 'product' or product == blank
+    if field == 'title'
+      echo page_title
+    else
+      echo page_description
+    endif
+  else
+    assign admin_title = product.metafields.global.title_tag.value | strip
+    assign admin_description = product.metafields.global.description_tag.value | strip
+    assign clean_title = product.title | strip_newlines | strip | replace: '  ', ' ' | replace: '  ', ' '
+
+    if field == 'title'
+      if admin_title != blank
+        echo admin_title
+      else
+        echo clean_title
+      endif
+    elsif admin_description != blank
+      echo admin_description
+    else
+      assign site = request.host | remove_first: 'www.'
+      assign max_length = 160
+
+      case request.locale.iso_code
+        when 'ro'
+          assign cta_before = 'Cumpara acum '
+          assign cta_after = ' de pe ' | append: site | append: '!'
+          assign usp_producer = 'Pret de producator'
+          assign usp_delivery = 'Livrare in 2-4 zile lucratoare'
+          assign usp_return = '14 zile drept de retur gratuit'
+        when 'hu'
+          assign cta_before = 'Vásárold meg most: '
+          assign cta_after = ' az ' | append: site | append: ' oldalon!'
+          assign usp_producer = 'Gyártói ár'
+          assign usp_delivery = 'Szállítás 2-4 munkanapon belül'
+          assign usp_return = '14 napos ingyenes visszaküldés'
+        when 'bg'
+          assign cta_before = 'Купете сега '
+          assign cta_after = ' от ' | append: site | append: '!'
+          assign usp_producer = 'Цена на производител'
+          assign usp_delivery = 'Доставка за 2-4 работни дни'
+          assign usp_return = '14 дни безплатно връщане'
+        when 'cs'
+          assign cta_before = 'Kupte nyní '
+          assign cta_after = ' na ' | append: site | append: '!'
+          assign usp_producer = 'Cena od výrobce'
+          assign usp_delivery = 'Doručení do 2-4 pracovních dnů'
+          assign usp_return = 'bezplatné vrácení do 14 dnů'
+        when 'sk'
+          assign cta_before = 'Kúpte teraz '
+          assign cta_after = ' na ' | append: site | append: '!'
+          assign usp_producer = 'Cena od výrobcu'
+          assign usp_delivery = 'Doručenie do 2-4 pracovných dní'
+          assign usp_return = 'bezplatné vrátenie do 14 dní'
+        when 'pl'
+          assign cta_before = 'Kup teraz '
+          assign cta_after = ' na ' | append: site | append: '!'
+          assign usp_producer = 'Cena producenta'
+          assign usp_delivery = 'Dostawa w 2-4 dni robocze'
+          assign usp_return = 'bezpłatny zwrot w ciągu 14 dni'
+        when 'el'
+          assign cta_before = 'Αγοράστε τώρα '
+          assign cta_after = ' από το ' | append: site | append: '!'
+          assign usp_producer = 'Τιμή κατασκευαστή'
+          assign usp_delivery = 'Παράδοση σε 2-4 εργάσιμες ημέρες'
+          assign usp_return = 'δωρεάν επιστροφή εντός 14 ημερών'
+        when 'fr'
+          assign cta_before = 'Achetez '
+          assign cta_after = ' maintenant sur ' | append: site | append: ' !'
+          assign usp_producer = 'Prix fabricant'
+          assign usp_delivery = 'Livraison en 2-4 jours ouvrés'
+          assign usp_return = 'retour gratuit sous 14 jours'
+        when 'it'
+          assign cta_before = 'Acquista ora '
+          assign cta_after = ' su ' | append: site | append: '!'
+          assign usp_producer = 'Prezzo di fabbrica'
+          assign usp_delivery = 'Consegna in 2-4 giorni lavorativi'
+          assign usp_return = 'reso gratuito entro 14 giorni'
+        when 'nl'
+          assign cta_before = 'Koop '
+          assign cta_after = ' nu op ' | append: site | append: '!'
+          assign usp_producer = 'Fabrieksprijs'
+          assign usp_delivery = 'Levering in 2-4 werkdagen'
+          assign usp_return = '14 dagen gratis retourneren'
+        else
+          assign cta_before = 'Buy '
+          assign cta_after = ' now from ' | append: site | append: '!'
+          assign usp_producer = 'Manufacturer price'
+          assign usp_delivery = 'Delivery in 2-4 working days'
+          assign usp_return = '14-day free returns'
+      endcase
+
+      if product.vendor == 'Alessandro Design'
+        assign usp_first = usp_producer
+      else
+        assign usp_first = usp_delivery
+      endif
+      assign tail = cta_after | append: ' ' | append: usp_first | append: ', ' | append: usp_return | append: '.'
+      assign budget = max_length | minus: cta_before.size | minus: tail.size
+
+      if clean_title.size <= budget
+        assign name = clean_title
+      else
+        # Keep the leading comma-separated segments that fit: model first, then specs.
+        assign segments = clean_title | split: ','
+        assign name = segments[0] | strip
+        for segment in segments offset: 1
+          assign candidate = segment | strip | prepend: ', ' | prepend: name
+          if candidate.size <= budget
+            assign name = candidate
+          else
+            break
+          endif
+        endfor
+        if name.size > budget
+          # A comma-less title longer than the budget: keep whole words only.
+          assign words = name | split: ' '
+          assign name = words[0]
+          for word in words offset: 1
+            assign candidate = name | append: ' ' | append: word
+            if candidate.size <= budget
+              assign name = candidate
+            else
+              break
+            endif
+          endfor
+        endif
+      endif
+
+      echo cta_before | append: name | append: tail
+    endif
+  endif
+-%}
