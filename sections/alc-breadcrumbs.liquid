@@ -42,12 +42,19 @@
     align-items: center;
     white-space: nowrap;
     flex-wrap: nowrap;
-    overflow: hidden;
+    overflow-x: auto;
+    overflow-y: hidden;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+  }
+  .breadcrumbs__list::-webkit-scrollbar {
+    display: none;
   }
   .breadcrumbs__item {
     display: flex;
     align-items: center;
-    font-size: 0.9em;
+    font-size: 0.95em;
     color: rgba(var(--color-foreground), 0.75);
     flex-shrink: 0;
     min-width: 0;
@@ -55,13 +62,13 @@
   .breadcrumbs__item:not(:last-child)::after {
     content: '{{ settings.separator_symbol | default: "›" | escape }}';
     display: inline-block;
-    margin: 0 0.33em;
-    color: rgba(var(--color-foreground), 0.4);
+    margin: 0 0.15em;
+    color: rgba(var(--color-foreground), 0.32);
     font-size: 1em;
   }
   .breadcrumbs__item.shrink {
     min-width: 0;
-    flex-shrink: 1;
+    flex-shrink: 0;
     flex-grow: 0;
   }
   .breadcrumbs__link {
@@ -74,16 +81,34 @@
     transition: color 0.2s;
     max-width: 100%;
   }
-  .breadcrumbs__link:hover {
+  a.breadcrumbs__link {
+    padding: 0.35em 0.7em;
+    border-radius: 999px;
+    background-color: rgba(var(--color-foreground), 0.055);
+    transition: background-color 0.2s ease, color 0.2s ease;
+  }
+  a.breadcrumbs__link:hover {
+    background-color: rgba(var(--color-foreground), 0.11);
     color: rgba(var(--color-foreground), 1);
+  }
+  a.breadcrumbs__link:focus-visible {
+    outline: 0.2rem solid rgba(var(--color-foreground), 0.5);
+    outline-offset: 0.2rem;
   }
   .breadcrumbs__link[aria-current="page"] {
     font-weight: 600;
     color: rgba(var(--color-foreground), 1);
+    max-width: 24ch;
+    padding: 0.35em 0.2em;
+  }
+  @media screen and (min-width: 750px) {
+    .breadcrumbs__link[aria-current="page"] {
+      max-width: 40ch;
+    }
   }
   @media (max-width: 749px) {
     .breadcrumbs__list {
-      font-size: 0.85em;
+      font-size: 0.9em;
     }
     .breadcrumbs__item.shrink {
       max-width: none;
@@ -98,13 +123,8 @@
       "@context": "https://schema.org",
       "@type": "BreadcrumbList",
       "itemListElement": [
-                            {
-          "@type": "ListItem",
-          "position": 1,
-          "name": "{{ shop.name | escape }}",
-          "item": "{{ shop.secure_url }}"
-        }
-        {%- case template | split: '.' | first -%}
+        {%- capture breadcrumb_items -%}
+        {%- case template.name -%}
         {%- when 'product' -%}
           {%- assign main_collection = product.metafields.custom.main_collection.value -%}
           {%- if main_collection != blank -%}
@@ -123,13 +143,13 @@
                 {%- endif -%}
                 {%- assign current_collection = parent_collection -%}
                 {%- endfor -%}
-                {%- assign position = 2 -%}
+                {%- assign position = 1 -%}
                 {%- for hdl in collection_hierarchy reversed -%}
                   {%- assign col = collections[hdl] -%},
                   {
                     "@type": "ListItem",
                     "position": {{ position }},
-                    "name": "{{ col.title | escape }}",
+                    "name": {{ col.title | json }},
                     "item": "{{ shop.secure_url }}{{ col.url }}"
                   }
                   {%- assign position = position | plus: 1 -%}
@@ -137,11 +157,11 @@
                   {
                     "@type": "ListItem",
                     "position": {{ position }},
-                    "name": "{{ product.selected_or_first_available_variant.sku | default: product.variants.first.sku | escape }}",
+                    "name": {{ product.title | json }},
                     "item": "{{ shop.secure_url }}{{ product.url }}"
                   }
 
-                {%- when 'collection' and collection.handle -%}
+                {%- when 'collection' -%}
                   {%- assign current_collection = collection -%}
                   {%- assign collection_hierarchy = '' | split: ',' -%}
                   {%- for i in (1..100) -%}
@@ -153,21 +173,21 @@
                       {%- endif -%}
                       {%- assign current_collection = parent_collection -%}
                       {%- endfor -%}
-                      {%- assign position = 2 -%}
+                      {%- assign position = 1 -%}
                       {%- for hdl in collection_hierarchy reversed -%}
                         {%- assign col = collections[hdl] -%}
                         {%- if forloop.last and current_tags == blank -%},
                           {
                             "@type": "ListItem",
                             "position": {{ position }},
-                            "name": "{{ col.title | escape }}",
+                            "name": {{ col.title | json }},
                             "item": "{{ shop.secure_url }}{{ col.url }}"
                           }
                         {%- else -%},
                           {
                             "@type": "ListItem",
                             "position": {{ position }},
-                            "name": "{{ col.title | escape }}",
+                            "name": {{ col.title | json }},
                             "item": "{{ shop.secure_url }}{{ col.url }}"
                           }
                           {%- endif -%}
@@ -177,7 +197,7 @@
                             {
                               "@type": "ListItem",
                               "position": {{ position }},
-                              "name": "{{ current_tags | join: ' + ' | escape }}",
+                              "name": {{ current_tags | join: ' + ' | json }},
                               "item": "{{ shop.secure_url }}{{ collection.url }}/{{ current_tags | join: '+' }}"
                             }
                             {%- endif -%}
@@ -185,41 +205,43 @@
                           {%- when 'page' -%},
                             {
                               "@type": "ListItem",
-                              "position": 2,
-                              "name": "{{ page.title | escape }}",
+                              "position": 1,
+                              "name": {{ page.title | json }},
                               "item": "{{ shop.secure_url }}{{ page.url }}"
                             }
 
                           {%- when 'article' -%},
                             {
                               "@type": "ListItem",
-                              "position": 2,
-                              "name": "{{ blog.title | escape }}",
+                              "position": 1,
+                              "name": {{ blog.title | json }},
                               "item": "{{ shop.secure_url }}{{ blog.url }}"
                             },
                             {
                               "@type": "ListItem",
-                              "position": 3,
-                              "name": "{{ article.title | escape }}",
+                              "position": 1,
+                              "name": {{ article.title | json }},
                               "item": "{{ shop.secure_url }}{{ article.url }}"
                             }
 
                           {%- when 'blog' -%},
                             {
                               "@type": "ListItem",
-                              "position": 2,
-                              "name": "{{ blog.title | escape }}",
+                              "position": 1,
+                              "name": {{ blog.title | json }},
                               "item": "{{ shop.secure_url }}{{ blog.url }}"
                             }
 
                           {%- else -%},
                             {
                               "@type": "ListItem",
-                              "position": 2,
-                              "name": "{{ page_title | escape }}",
+                              "position": 1,
+                              "name": {{ page_title | json }},
                               "item": "{{ shop.secure_url }}{{ request.path }}"
                             }
                             {%- endcase -%}
+        {%- endcapture -%}
+        {{ breadcrumb_items | strip | remove_first: ',' }}
                           ]
                         }
   </script>
@@ -230,7 +252,7 @@
     aria-label="breadcrumbs">
     <div class="page-width">
       <ol class="breadcrumbs__list">
-        {%- case template | split: '.' | first -%}
+        {%- case template.name -%}
           {%- when 'product' -%}
             {%- assign main_collection = product.metafields.custom.main_collection.value -%}
             {%- if main_collection != blank -%}
@@ -255,13 +277,17 @@
                 <a class="breadcrumbs__link" href="{{ col.url }}">{{ col.title }}</a>
               </li>
             {%- endfor -%}
-            <li class="breadcrumbs__item">
-              <span class="breadcrumbs__link" aria-current="page">
-                {{ product.selected_or_first_available_variant.sku | default: product.variants.first.sku }}
+            {%- assign product_sku = product.selected_or_first_available_variant.sku | default: product.variants.first.sku -%}
+            <li class="breadcrumbs__item shrink">
+              <span
+                class="breadcrumbs__link"
+                aria-current="page"
+                {% if product_sku != blank %}title="SKU: {{ product_sku | escape }}"{% endif %}>
+                {{ product.title }}
               </span>
             </li>
 
-          {%- when 'collection' and collection.handle -%}
+          {%- when 'collection' -%}
             {%- assign current_collection = collection -%}
             {%- assign collection_hierarchy = '' | split: ',' -%}
             {%- for i in (1..100) -%}
