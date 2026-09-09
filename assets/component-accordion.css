@@ -86,12 +86,15 @@
   bottom: 0;
   left: 0;
   right: 0;
-  height: 80px;
+  height: 110px;
   z-index: 2;
   background: linear-gradient(to bottom,
-    rgba(255, 255, 255, 0) 0%,
-    rgba(255, 255, 255, 0.8) 50%,
-    rgba(255, 255, 255, 1) 100%
+    rgba(var(--color-background), 0) 0%,
+    rgba(var(--color-background), 0.12) 22%,
+    rgba(var(--color-background), 0.4) 44%,
+    rgba(var(--color-background), 0.7) 62%,
+    rgba(var(--color-background), 0.9) 80%,
+    rgba(var(--color-background), 1) 100%
   );
   pointer-events: none;
   transition: opacity 0.3s ease-out;
@@ -106,20 +109,40 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 100%;
-  gap: 0.5rem;
-  padding: 0.75rem 0;
-  font-size: 1.4rem;
+  width: fit-content;
+  margin: -0.4rem auto 0.4rem;
+  gap: 0.6rem;
+  padding: 0.7rem 1.6rem;
+  font-size: 1.3rem;
+  font-weight: 500;
+  line-height: 1;
   color: rgb(var(--color-foreground));
-  background: none;
-  border: none;
+  background-color: rgb(var(--color-background));
+  border: 0.1rem solid rgba(var(--color-foreground), 0.22);
+  border-radius: 999px;
   cursor: pointer;
-  text-decoration: underline;
-  text-underline-offset: 0.3rem;
+  text-decoration: none;
+  transition: background-color 0.2s ease, border-color 0.2s ease;
+}
+
+/* Chevron points down when collapsed, up once expanded. */
+.accordion__see-more-btn::after {
+  content: '';
+  width: 0.6rem;
+  height: 0.6rem;
+  border-right: 0.15rem solid currentColor;
+  border-bottom: 0.15rem solid currentColor;
+  transform: translateY(-0.15rem) rotate(45deg);
+  transition: transform 0.2s ease;
+}
+
+.accordion__see-more-btn[aria-expanded='true']::after {
+  transform: translateY(0.1rem) rotate(-135deg);
 }
 
 .accordion__see-more-btn:hover {
-  opacity: 0.7;
+  background-color: rgba(var(--color-foreground), 0.05);
+  border-color: rgba(var(--color-foreground), 0.38);
 }
 
 .accordion__see-more-btn:focus-visible {
@@ -138,7 +161,7 @@
   }
 
   .accordion__gradient-overlay {
-    height: 60px;
+    height: 85px;
   }
 }
 
