@@ -141,7 +141,7 @@
                           {%- assign lazy_load = false -%}
                         {%- endif -%}
                         <li class="grid__item">
-                          {% render 'alc-card-product'
+                          {% render 'alc-card-product', heading_tag: 'div'
                             , card_product: product
                             , media_aspect_ratio: section.settings.image_ratio
                             , image_shape: section.settings.image_shape
@@ -178,7 +178,7 @@
                       {% endif %}
 
                       <li class="grid__item">
-                        {% render 'alc-card-product'
+                        {% render 'alc-card-product', heading_tag: 'div'
                           , card_product: product
                           , media_aspect_ratio: section.settings.image_ratio
                           , image_shape: section.settings.image_shape
