@@ -5,9 +5,13 @@
   {%- endfor -%}
   {%- if group.user_agent.value == '*' -%}
     {{ 'Disallow: /*?filter.p.*' }}
-    {{ 'Disallow: /*?filter.v.*' }}
+    {{- 'Disallow: /*?filter.v.*' }}
   {%- endif -%}
   {%- if group.sitemap != blank -%}
     {{ group.sitemap }}
   {%- endif -%}
-{% endfor %}
+{% endfor -%}
+{%- if request.host == 'www.alessandrodesign.ro' %}
+# LLMs.txt
+# https://www.alessandrodesign.ro/llms.txt
+{% endif -%}
