@@ -107,12 +107,16 @@
                         aria-labelledby="Summary-{{ block.id }}-{{ section.id }}"
                       >
                         <div class="accordion__content rte">
-                          {% if block.settings.row_liquid != blank %}
-                            {{ block.settings.row_liquid | replace: '<img src=', '<img loading="lazy" src=' }}
-                          {% elsif block.settings.row_content != blank %}
-                            {{ block.settings.row_content | replace: '<img src=', '<img loading="lazy" src=' }}
-                          {% endif %}
-                          {{ block.settings.page.content | replace: '<img src=', '<img loading="lazy" src=' }}
+                          {%- comment -%} Rendered here first so row_liquid sees the product, then made responsive {%- endcomment -%}
+                          {%- capture row_html -%}
+                            {% if block.settings.row_liquid != blank %}
+                              {{ block.settings.row_liquid }}
+                            {% elsif block.settings.row_content != blank %}
+                              {{ block.settings.row_content }}
+                            {% endif %}
+                            {{ block.settings.page.content }}
+                          {%- endcapture -%}
+                          {% render 'alc-rte-images', html: row_html %}
                         </div>
                         <div class="accordion__gradient-overlay" aria-hidden="true"></div>
                       </div>

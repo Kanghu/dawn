@@ -32,12 +32,12 @@
                   {% assign top_menu = linklists[menu_handle] %}
 
                   <li class="first-level-group border-gray-200" id="menu-group-{{ block_item.id }}">
-                    <h2 class="first-level-title px-4 py-3 text-lg font-semibold flex items-center justify-between">
+                    <div class="first-level-title alc-h2 px-4 py-3 text-lg font-semibold flex items-center justify-between">
                       <span>{{ label }}</span>
                     {%- comment -%}
                       Optional: link to a landing page for this menu if you have one
                     {%- endcomment -%}
-                    </h2>
+                    </div>
 
                     {% if top_menu.links.size > 0 %}
                       <ul class="menu-drawer__menu has-submenu flex flex-col space-y-2 pb-4" role="list">
@@ -54,8 +54,13 @@
                               <a href="{{ link.url }}" class="drawer-campaign-link flex items-center gap-4 flex-1 no-underline text-black hover:bg-gray-50 transition-colors">
                                 {% if link.object and link.object.image and link.object.image.src %}
                                   <img
-                                    src="{{ link.object.image.src | img_url: 'master' }}"
+                                    src="{{ link.object.image | image_url: width: 750 }}"
+                                    srcset="{% render 'alc-image-srcset', image: link.object.image, widths: '375,550,750,1000', max_width: 1500 %}"
+                                    sizes="85vw"
+                                    width="{{ link.object.image.width }}"
+                                    height="{{ link.object.image.height }}"
                                     alt="{{ link.title | escape }}"
+                                    loading="lazy"
                                     class="w-full h-auto object-contain rounded-md">
                                 {% endif %}
                               </a>
@@ -66,7 +71,8 @@
                                   <img
                                     src="{{ link.object.image.src | img_url: '120x120' }}"
                                     alt="{{ link.title | escape }}"
-                                    class="h-24 object-cover rounded-md flex-shrink-0">
+                                    class="h-24 object-cover rounded-md flex-shrink-0"
+                                    loading="lazy">
                                 {% endif %}
                                 <div class="flex-1 text-left">
                                   <span class="font-medium">{{ link.title | escape }}</span>
@@ -118,7 +124,8 @@
                                                   <img
                                                     src="{{ childlink.object.image.src | img_url: '120x120' }}"
                                                     alt="{{ childlink.title | escape }}"
-                                                    class="h-16 object-cover rounded-md flex-shrink-0">
+                                                    class="h-16 object-cover rounded-md flex-shrink-0"
+                                                    loading="lazy">
                                                 {% endif %}
                                                 <div class="flex-1">
                                                   <span class="font-medium">{{ childlink.title | escape }}</span>
@@ -135,7 +142,8 @@
                                                       <img
                                                         src="{{ childlink.object.image.src | img_url: '120x120' }}"
                                                         alt="{{ childlink.title | escape }}"
-                                                        class="h-16 object-cover rounded-md flex-shrink-0">
+                                                        class="h-16 object-cover rounded-md flex-shrink-0"
+                                                        loading="lazy">
                                                     {% endif %}
                                                     <div class="flex-1 text-left">
                                                       <span class="font-medium">{{ childlink.title | escape }}</span>
@@ -175,7 +183,8 @@
                                                             <img
                                                               src="{{ grandchildlink.object.image.src | img_url: '120x120' }}"
                                                               alt="{{ grandchildlink.title | escape }}"
-                                                              class="h-16 object-cover rounded-md flex-shrink-0">
+                                                              class="h-16 object-cover rounded-md flex-shrink-0"
+                                                              loading="lazy">
                                                           {% endif %}
                                                           <div class="flex-1">
                                                             <span class="font-medium">{{ grandchildlink.title | escape }}</span>
@@ -216,7 +225,8 @@
                                   <img
                                     src="{{ link.object.image.src | img_url: '120x120' }}"
                                     alt="{{ link.title | escape }}"
-                                    class="h-24 object-cover rounded-md flex-shrink-0">
+                                    class="h-24 object-cover rounded-md flex-shrink-0"
+                                    loading="lazy">
                                 {% endif %}
                                 <div class="flex-1 text-left">
                                   <span class="font-medium">{{ link.title | escape }}</span>

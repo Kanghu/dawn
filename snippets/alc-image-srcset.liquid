@@ -1,0 +1,18 @@
+{%- comment -%}
+  Echoes a srcset value for `image`: every width in `widths` (comma-separated) that is
+  smaller than the image, then the image's own width capped at `max_width` (default 2048).
+  No candidate is wider than the file, so the w descriptors match what the CDN returns.
+
+  Usage: srcset="{% render 'alc-image-srcset', image: image, widths: '360,720,1080', max_width: 1500 %}"
+{%- endcomment -%}
+{%- liquid
+  assign largest = max_width | default: 2048 | at_most: image.width
+  assign width_list = widths | split: ','
+  for width in width_list
+    assign candidate_width = width | strip | plus: 0
+    if candidate_width < largest
+      echo image | image_url: width: candidate_width | escape | append: ' ' | append: candidate_width | append: 'w, '
+    endif
+  endfor
+  echo image | image_url: width: largest | escape | append: ' ' | append: largest | append: 'w'
+-%}

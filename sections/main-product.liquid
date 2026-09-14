@@ -226,7 +226,10 @@
               {%- when 'description' -%}
                 {%- if product.description != blank -%}
                   <div class="product__description rte quick-add-hidden" {{ block.shopify_attributes }}>
-                    {{ product.description }}
+                    {% render 'alc-rte-images',
+                      html: product.description,
+                      sizes: '(min-width: 1300px) 650px, (min-width: 990px) 50vw, calc(100vw - 30px)'
+                    %}
                   </div>
                 {%- endif -%}
               {%- when 'sku' -%}
