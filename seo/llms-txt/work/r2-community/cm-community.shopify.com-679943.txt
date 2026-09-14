@@ -1,0 +1,40 @@
+====================================================================================================
+cm-community.shopify.com-679943.json | Your store already serves an llms.txt and a UCP endpoint you did not create. I checked 15 storefronts | created 2026-09-10T16:17:08.083Z | posts_count 5 | stream 5
+------------------------------------------------------------
+#1 Bristan_FARRE () 2026-09-10T16:17:08.245Z staff=False
+Short version: Shopify is publishing an agent-facing surface on your storefront, and most of us were never told.
+I went looking because a merchant in another thread described his llms.txt and UCP endpoints as something he had recently set up, and I had already seen the same file on two unrelated stores that morning. So I fetched it on fifteen storefronts.
+What came back
+Eleven serve a file at /llms.txt that none of the owners wrote. Same generated shape every time: content type text/markdown, between 4.3 and 4.5 KB, titled Agent Instructions followed by the shop name, and the same nine references to a UCP profile and an MCP endpoint. All eleven also answer 200 on /.well-known/ucp.
+That set includes two raw myshopify.com development stores and two very large brands, which is what convinced me it is generated rather than authored. Three of the eleven were in this forum the same day asking beginner questions about their theme and their prices. They did not build an agent surface.
+The file describes a Universal Commerce Protocol profile, an MCP endpoint with a search_catalog tool, and it tells agents to pass buyer country and currency for accurate pricing and availability.
+The exceptions were the interesting part
+One store serves a hand-written llms.txt instead: text/plain, different title, none of the UCP guidance. Its /.well-known/ucp still answers 200. So writing your own file appears to replace what Shopify tells agents, while the endpoint stays live behind it. If you have written one, that is worth knowing.
+One store returned a 106-byte file reading Store Unavailable, and 402 on the UCP path. The agent surface reports your billing status too.
+One returned 404 on both, so it is not literally everywhere.
+Why it matters, without the hype
+If you are chasing a traffic anomaly, these paths are the cleanest evidence you have. Requests to /llms.txt and /.well-known/ucp are unambiguous in a log, unlike Direct sessions, and an agent hitting them does not execute your analytics tag because that needs JavaScript. Analytics moving with no matching requests means nobody visited.
+And if agents can query your catalogue over an endpoint, they are reading a different surface from your product page. Anything you fixed only in your theme is not what they see.
+My actual question
+Has anyone here found requests to /llms.txt or /.well-known/ucp in their server or Cloudflare logs, and if so, which user agents and roughly what volume?
+I can confirm the files exist. I have no idea 
+------------------------------------------------------------
+#2 lumine () 2026-09-11T08:04:01.542Z staff=False
+I ran the same probe on ten storefronts to see whether your numbers held, and they do. Eight served the generated file at both paths, text/markdown, 4.4 to 4.5 KB, and the llms.txt to agents.md difference was exactly 43 bytes on every one of them. It is one line. On /llms.txt it says the canonical agent-facing description of the store is at /agents.md and that you are reading a mirror. On /agents.md that same line says this document is the canonical one.
+Your exception case came out differently in my sample though. The two stores serving a hand-written llms.txt, text/plain, 5485 and 3280 bytes, both return 404 on /agents.md. So a custom file is not sitting in front of the generated one with the generated one still live behind it. The canonical path stops existing. An agent that follows Shopify’s own pointer to /agents.md gets nothing on those stores, which seems worth knowing before anyone writes their own.
+One store gave 404 on both paths and still answered 200 on /.well-known/ucp, so a 404 there is not an opt out either.
+On your actual question, I think the count you want cannot exist on your own domain. I parsed the UCP profile on seven of them and every one points the MCP endpoint at the myshopify domain rather than the custom one, weareallbirds.myshopify.com/api/ucp/mcp on one, fnova.myshopify.com/api/ucp/mcp on another. Discovery lands on your domain. Catalog queries do not. So Cloudflare logs in front of your storefront would show the file being read and none of it being used, and a low number there would mean nothing at all.
+Did any of your fifteen point that endpoint somewhere other than myshopify.com?
+------------------------------------------------------------
+#3 Bristan_FARRE () 2026-09-11T11:26:06.280Z staff=False
+Your prediction holds on a fresh sample. I didn’t keep the domain list from my original fifteen, so I can’t answer for those exactly, but I just pulled /.well-known/ucp on twelve large storefronts.
+Eight returned a profile, and all eight point the MCP endpoint at their myshopify.com domain, never the custom one: weareallbirds, gymsharkusa, fnova, kylie-jenner-us, colourpop-prd, brooklinen2, rothys and skimsbody, each as the handle followed by .myshopify.com/api/ucp/mcp. The other four returned a 404, a 410 or a rate limit, so there was no profile to read.
+So your conclusion stands. Logs on the custom domain can show an agent discovering the store, but catalog queries go to myshopify.com and never pass through whatever sits in front of the custom domain. A low hit count there says nothing about agent usage.
+Your 404 on /agents.md for the stores with a hand-written llms.txt is the more useful of your two findings. Writing your own file removes the path Shopify itself tells agents to use, which is worth knowing before anyone writes one.
+------------------------------------------------------------
+#4 One-Sun1995 () 2026-09-12T05:29:15.957Z staff=False
+Hey @Bristan_FARRE, you can take that one rung further than proving it’s generated. The file names /agents.md as the canonical agent-facing description of the store and calls llms.txt a mirror of it, which is why the shape is identical across stores with nothing to do with each other. The interesting one is the UCP profile: it lists an MCP endpoint on your own domain at /api/ucp/mcp, and a tools/list call against that comes back with the real tool set an agent gets, catalog search, product lookup, cart, checkout. That’s the surface worth reading, because it’s what an agent can actually do on your store rather than what the instructions suggest. Fetch /agents.md and run tools/list on your own storefront, then compare those tool names against what you thought you’d exposed.
+------------------------------------------------------------
+#5 SealSubs-Roan () 2026-09-13T07:58:26.100Z staff=False
+Hi there @Bristan_FARRE
+It’s worth checking especially if you are looking into suspicious traffic. I would check your server or CDN log for requests to /agents.md, /llms.txt, and /.well-known/ucp and look at the user agents making those requests, the number of requests, when they were made, and what response code they got. Then compare what those endpoints expose to things like your actual product data, prices, availability, and so on. So theme customizations may not propagate to these agent facing surfaces and you need to have accurate catalog data at the shopify admin level.

@@ -1,0 +1,51 @@
+====================================================================================================
+cm-community.shopify.com-622018.json | Shopify now serves llms.txt natively – custom redirect no longer works | created 2026-05-11T12:01:15.995Z | posts_count 9 | stream 9
+------------------------------------------------------------
+#1 Nordalux (Shopify Partner) 2026-05-11T12:01:16.196Z staff=False
+Hi everyone,
+I’ve noticed that Shopify has started serving its own llms.txt (yourdomain.com/llms.txt) natively over the past few days. I couldn’t find anything in the changelog about it – if anyone has an official source, I’d appreciate the link.
+This is a real problem for us: we had a URL redirect set up under /llms.txt pointing to a manually curated file. The redirect is still in place, but it’s no longer being honored – Shopify’s system-generated file is served instead. Our curated list has effectively become obsolete overnight.
+My questions for the community:
+Has anyone else run into this?
+Has anyone found a way to override the system file or serve a custom llms.txt in front of it?
+My main goal is just to get our curated content served. I’d be perfectly fine with Shopify appending its default entries (UCP notices etc.) below ours.
+Thanks for any pointers!
+------------------------------------------------------------
+#2 Nordalux (Shopify Partner) 2026-05-11T12:15:32.740Z staff=False
+Update – solved.
+The fix is to add templates/llms.txt.liquid to your theme, the same way you’d customize robots.txt.liquid. Whatever you put in that template is served at /llms.txt and overrides Shopify’s auto-generated content. Tested on our store – works as expected.
+Credit goes to Jason in the Shopify Dev Community, who pointed this out in this thread: Llms.txt and agents.md - Agentic Commerce - Shopify Developer Community Forums
+A few notes for anyone else running into this:
+The old URL-redirect workaround (Admin → Online Store → Navigation → URL Redirects) silently stopped working once Shopify started serving /llms.txt natively. The redirect entry stays in the admin but is no longer honored – worth removing once the Liquid template is in place to avoid two conflicting mechanisms.
+Shopify is also serving /agents.md natively. I haven’t tested whether a templates/agents.md.liquid hook exists – if anyone has, please share.
+Shopify’s default /llms.txt content is essentially a sign-up prompt for Shopify, not a useful index of your store. So overriding it is strongly recommended if you care about how LLM crawlers see your shop.
+Hope this helps the next person who runs into this.
+------------------------------------------------------------
+#3 lumine () 2026-05-11T23:51:12.199Z staff=False
+Nice catch on the Liquid template approach, hit the same thing last week and chased the same diagnosis.
+One thing worth adding once you’re customizing it: the auto-generated version is okay for product catalog but skips a bunch of stuff agents actually need to recommend you. Your About/brand snippet, top FAQs inline (not just linked), shipping and returns summary with concrete numbers, and collections grouped by intent (gift, use-case) rather than internal taxonomy. The auto file leans on the sitemap, which is structured by URL not by “what would an AI tell a user about this store.”
+Both Anthropic and OpenAI crawl /llms.txt at agent runtime now, not just during training, so this affects ChatGPT and Claude conversations live, not 6 months out.
+Did you see anywhere if Shopify plans to keep iterating on the auto file, or is this a one-time bootstrap?
+------------------------------------------------------------
+#4 Nordalux (Shopify Partner) 2026-05-13T09:52:49.578Z staff=False
+lumine:
+Did you see anywhere if Shopify plans to keep iterating on the auto file, or is this a one-time bootstrap?
+I suspect this is a one-time effort to bring all stores up to the same standard. It makes sense at the moment, since many merchants aren’t familiar with Agentic Commerce. This way, at least the basic features are clear, and Shopify Agentic Commerce, along with Copilot and OpenAI (see the Agentic sales channel, also new), share the same foundation.
+------------------------------------------------------------
+#5 bchen27 () 2026-05-13T23:39:28.728Z staff=False
+yeah this caught us off guard too. shopify rolled this out silently and it broke a few things for stores that already had custom redirects in place. the workaround we found was moving our custom content to a different path and updating any external references to point there instead.
+fwiw the native llms.txt is probably a good thing long term for discoverability in AI search, but it would’ve been nice if they’d flagged it in the changelog first. if you need granular control over what AI crawlers see, you can still use robots.txt directives for specific bots like GPTBot or ClaudeBot alongside the native llms.txt.
+------------------------------------------------------------
+#6 ryankatsnel () 2026-05-14T01:40:11.143Z staff=False
+Submitted the exemption request today — hoping for expedited review since this affects our app’s llms.txt functionality directly!
+------------------------------------------------------------
+#7 Nordalux (Shopify Partner) 2026-05-14T12:44:03.525Z staff=False
+I don’t think you’ll get away with that. This was a platform decision that was likely made in haste. There is now a changelog ( A new home for Agentic Storefronts in your admin - Shopify Changelog ) regarding the introduction of the Agentic Storefront.
+A quick check of the shopify.dev documentation just now didn’t turn up any results regarding editing llms.txt. Everything is well documented for robots.txt.
+------------------------------------------------------------
+#8 ryankatsnel () 2026-05-14T13:03:43.225Z staff=False
+Oh, I meant for the ability to add/edit themes directly. Shopify requires approval for that, and we will need it to give our merchants the ability to generate and edit their llms.txt in the way we need.
+------------------------------------------------------------
+#9 Nordalux (Shopify Partner) 2026-05-20T06:03:10.479Z staff=False
+Hi everyone,
+“Great” news - Shopifylike again. It looks like Shopify disabled llms.txt and llms-full.txt last night. These now redirect natively to agents.md. So far, there’s no mention of this in the changelog.

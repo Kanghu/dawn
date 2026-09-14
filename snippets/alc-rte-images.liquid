@@ -1,0 +1,63 @@
+{%- comment -%}
+  Echoes rich text `html` (product descriptions, articles, pages) with lighter <img> tags.
+  Editors paste Files images by their bare cdn.shopify.com URL, so every visitor used to
+  download the original upload: up to 5920px / 2 MB, even on a 360px-wide phone.
+
+  - Every <img> without a loading attribute gets loading="lazy".
+  - An <img> whose src is a file from Content > Files, and that sets no width, height or
+    srcset of its own, also gets a srcset (see alc-image-srcset), `sizes`, a src capped at
+    1080px, and width/height equal to the file's dimensions. `.rte img` has
+    max-width: 100% and height: auto, so it lays out exactly like the original upload.
+
+  Tags are cut at their first ">", so an <img> with ">" inside an attribute value only
+  gets the lazy loading.
+
+  Accepts:
+  - html {String}
+  - sizes {String} Optional, defaults to the page-width content column
+
+  Usage: {% render 'alc-rte-images', html: product.description %}
+{%- endcomment -%}
+{%- liquid
+  assign sizes = sizes | default: '(min-width: 1300px) 1270px, calc(100vw - 30px)'
+  assign chunks = html | split: '<img '
+
+  for chunk in chunks
+    if forloop.first
+      echo chunk
+      continue
+    endif
+
+    assign tag = chunk | split: '>' | first
+    assign attributes = ''
+    unless tag contains 'loading='
+      assign attributes = 'loading="lazy" '
+    endunless
+
+    assign file_image = nil
+    if tag contains 'src="' and tag contains '/files/'
+      unless tag contains 'srcset' or tag contains 'width' or tag contains 'height'
+        assign src = tag | split: 'src="' | last | split: '"' | first
+        if src contains 'cdn.shopify.com/s/files/' or src contains '/cdn/shop/files/'
+          assign filename = src | split: '?' | first | split: '/' | last | url_decode
+          assign file_image = images[filename]
+        endif
+      endunless
+    endif
+
+    if file_image != blank and file_image.width > 0
+      capture srcset
+        render 'alc-image-srcset', image: file_image, widths: '360,540,720,900,1080,1296,1512,1728'
+      endcapture
+      assign fallback_width = 1080 | at_most: file_image.width
+      assign fallback_src = file_image | image_url: width: fallback_width | escape
+      assign attributes = attributes | append: 'srcset="' | append: srcset | append: '" sizes="' | append: sizes | append: '" '
+      assign attributes = attributes | append: 'width="' | append: file_image.width | append: '" height="' | append: file_image.height | append: '" '
+      assign after_tag = chunk | remove_first: tag
+      assign tag = tag | replace: src, fallback_src
+      echo '<img ' | append: attributes | append: tag | append: after_tag
+    else
+      echo '<img ' | append: attributes | append: chunk
+    endif
+  endfor
+-%}

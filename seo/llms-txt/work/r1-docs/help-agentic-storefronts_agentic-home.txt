@@ -1,0 +1,221 @@
+
+
+Help
+
+Log in
+
+Contents
+
+## Managing agentic storefronts
+You manage your agentic storefronts setup from Sales channels > Agentic in your Shopify admin.
+
+By default, all available channels have access to your products through Shopify Catalog, or through the Google & YouTube sales channel or Google Merchant Center for Google AI Mode and Gemini.
+
+Direct checkout in AI channels is active where supported. You can keep the default behavior with the Allow Shopify to manage for me setting, which also means that you're automatically enrolled in all future agentic storefronts channels. You can alternatively turn this setting off to manage your settings manually for individual channels, including Shopify Catalog access and checkout behavior where applicable.
+
+## On this page
+- Using the Agentic section in your Shopify admin
+- Understanding your agentic storefronts settings
+- Understanding Shop as an agentic storefront channel
+- Agentic storefronts performance data
+- Reviewing your products' discoverability and ranking
+
+## Using the Agentic section in your Shopify admin
+
+To access the Sales channels > Agentic section of your Shopify admin, you must be either the store owner or have the Products > View and App and sales channel > Agentic staff permissions. You can complete the following tasks and view the following information in the Agentic section:
+
+- Control which channels can access your product data through Shopify Catalog, or completely deactivate Shopify Catalog access for all third-party agentic storefronts channels.
+
+- Understand which channels offer direct checkout and whether you're eligible, and then decide if you want to continue to have direct checkout activated for Google AI Mode and Gemini, Microsoft Copilot, or Meta.
+
+- Preview how your products appear in Catalog search and how they might rank for discoverability on AI channels.
+
+- Analyze how your products are performing in agentic storefronts.
+
+## Understanding your agentic storefronts settings
+
+Allow Shopify to manage for me is the default behavior for Shopify's agentic storefronts. It means that all channels are active and that Shopify automatically enrolls you in agentic storefronts channels.
+
+Review the following details about what each option means when you make changes to your agentic storefronts settings.
+
+## Note
+If you turn off Shopify Catalog access, then it can take up to 7 days before your product data is no longer being shared through Shopify Catalog.
+
+Agentic storefronts channel management settings and their descriptions.
+Setting nameDescription
+ | Allow Shopify to manage for me | When this setting is turned on:
+
+- Agentic storefronts channels have access to your products through Shopify Catalog.
+
+- Direct checkout is activated for the relevant channels.
+
+- You're auto-enrolled in new agentic storefronts channels.
+
+      When this setting is turned off, you can manually manage global settings for Shopify Catalog access and new storefront enrollment, as well as individual channel settings.
+
+      If Allow Shopify to manage for me is off, then turning it back on automatically activates all agentic storefronts settings, including direct checkout.
+ | Shopify Catalog access (accessible when 'Manage for me' is turned off) | When this setting is turned on, you allow the agentic storefront channels of your choosing to access your products through Shopify Catalog. You can use individual channel controls to allow access for some AI channels but not others.
+
+When this setting is turned off, third-party agentic storefront channels can't access your products through Shopify Catalog from that point on. It can take up to 7 days before your product data is no longer being shared through Shopify Catalog. When access is deactivated, your products can still be discovered through web crawling and indexing. Direct checkout is also deactivated when Shopify Catalog access is turned off.
+
+      Deactivating Shopify Catalog access doesn't remove your products from being displayed on Shop. For more information, refer to Understanding Shop as an agentic storefront.
+ | Auto enroll new storefronts (accessible when 'Manage for me' is turned off) | When this setting is turned on, you're automatically enrolled in new agentic storefronts channels. This includes both Shopify Catalog access and direct checkout.
+
+      When this setting is turned off, you're not auto-enrolled in any new agentic storefronts channels. You can still enroll in any new channels manually while this is turned off.
+ | Direct checkout (accessible when 'Manage for me' is turned off) | When this setting is turned on for relevant channels, customers can purchase your products directly in their conversation in an AI channel.
+
+      When this setting is turned off, customers are redirected to your online store to complete their purchase.
+
+If you turn off Allow Shopify to manage for me, then you can also individually manage a grouped option for smaller and emerging AI agents. Click Other channels, and then activate or deactivate Shopify Catalog access to opt your products in or out of the group, which includes the following types of AI platforms:
+
+- Independent developers and startups that are building niche or experimental shopping agents.
+
+- New third-party partners that have recently gained access to Shopify Catalog for testing.
+
+## Configure your agentic storefronts settings
+
+You can remove access to your products in Shopify Catalog from any third-party agentic storefronts channels. You can also choose whether you're automatically enrolled in new channels.
+
+## Steps:
+
+-
+From your Shopify admin, go to Sales channels > Agentic.
+
+-
+Deactivate Allow Shopify to manage for me.
+
+-
+Change your agentic storefronts settings:
+
+- To completely remove any existing and future Shopify Catalog access for third-party channels, deactivate Shopify Catalog access. This doesn't remove your products from being displayed on Shop.
+
+- To keep Shopify Catalog access for agentic storefronts, but opt out of automatic enrollment in new channels, deactivate Auto enroll new storefronts.
+
+- To remove Shopify Catalog access for individual agentic storefront channels, refer to the instructions for ChatGPT, Microsoft Copilot, and Meta.
+
+- To manage whether customers can use direct checkout in the AI channels that offer the feature, refer to the instructions for Google AI Mode and Gemini, Microsoft Copilot, and Meta.
+
+-
+Click Save.
+
+## Understanding Shop as an agentic storefront channel
+
+Shop acts as an agentic storefront channel, and it's listed with other available channels in your Shopify admin. When customers use the Shop app, they interact with an AI agent that helps them discover and purchase products that are made available through Shopify Catalog. All products that you have published to your online store are discoverable on Shop through Shopify Catalog.
+
+Your sessions, referrals, and sales from the Shop app are all included in your agentic storefronts performance reporting.
+
+## Shop and other agentic storefronts channels
+
+Shop is similar to other agentic storefronts channels, such as ChatGPT and Microsoft Copilot, because it uses Shopify Catalog to help customers discover products through an AI agent.
+
+The key difference between Shop and other channels is that Shop is a Shopify-owned channel. You manage which products are displayed on the Shop app from the Shop sales channel settings in your Shopify admin. However, Shop doesn't have the option for you to deactivate Shopify Catalog access in Sales channels > Agentic in your Shopify admin.
+
+You can control Shop checkout behavior in the Selling method section of your Shop sales channel. For more information, refer to Displaying and selling products in Shop.
+
+If you want to hide your products from all agentic storefronts channels, including Shop, then you can use Unlisted product status or the seo.hidden metafield. This means that your product isn't displayed in Shop or in third-party agentic storefronts channels through Shopify Catalog, and it's also not displayed by search engines such as Google.
+
+## Agentic storefronts performance data
+
+## Note
+Agentic storefronts performance analytics aren't yet available for headless stores.
+
+You can access reports for the following types of performance data for each individual AI channel that you sell on:
+
+- Sales: The total number of sales that you made over a specified time period.
+
+- Orders: The total number of orders that you received over a specified time period.
+
+- Online store sessions: The total number of visits to your online store from an AI channel over a specified time period.
+
+- Online store conversion: The percentage of online store visits that resulted in a sale, calculated as sessions that completed checkout \ sessions.
+
+## Note
+Sales data is an aggregate of referral-based sales and sales that happen through direct checkout.
+
+## View your performance data for a specific AI channel
+
+-
+From your Shopify admin, go to Sales channels > Agentic.
+
+-
+In the main analytics section, either keep the default Sales option in the drop-down menu, or click the menu, and then select Orders, Online store sessions, or Online store conversions.
+
+-
+Optional: Click the Last 30 days drop-down menu, set your own date range, and then click Apply.
+
+-
+Click the name of the AI channel that you want to view the relevant report for.
+
+## View your total sales performance with agentic storefronts
+
+You can also view a Total sales report for your agentic storefronts sales across all the AI channels that you sell on.
+
+## Steps:
+
+-
+From your Shopify admin, go to Sales channels > Agentic.
+
+-
+In the Explore section, click Review in the Understand your performance on agentic channels panel.
+
+-
+View the report details, and optionally make any further changes that you want to the query or visualization. For more information, refer to Understanding sales reports and data and Customize your sales reports.
+
+## Reviewing your products' discoverability and ranking
+
+The search preview tool in Sales channels > Agentic lets you run search queries to review how your products might rank in agentic storefronts channels. It displays the raw outputs of Shopify Catalog search, helping you to understand which products are performing well, which products aren't ranking, and what you can do to improve their visibility.
+
+## Tip
+Agentic storefronts channels often re-rank results based on their own logic, so what's displayed in the preview might differ from what customers view in the actual AI experience. Use this tool as a directional signal, not an exact prediction.
+
+## Run a search query
+
+-
+From your Shopify admin, go to Sales channels > Agentic.
+
+-
+Run a search using one of the following methods:
+
+- In the Enter a search query to see how you might rank field, enter a product name or keyword, and then press Enter.
+
+- In the Top search queries or Queries where your products appeared sections, click a suggested query.
+
+-
+Optional: In the Preview this search section, click a channel name to view how the query might display in the platform's AI chat interface.
+
+## Reviewing your top-ranking products
+
+If any of your products rank in the global top results for your search query, then a confirmation message displays, for example, "10 of your products are in the top ranking search". These are products from your store that are competitive against all other Shopify Catalog products for your search query.
+
+In the Your products that could rank for this query section, each top-ranking product is displayed along with a Listing quality indicator and Listing insights.
+
+## Understanding listing quality indicators
+
+The Listing quality indicator displays as a colored bar meter for each product. It's intended to provide a visual sign of how complete and competitive your product listing is for discoverability. A better listing quality signal generally means that your product contains the necessary data for AI channels to rank and surface it accurately.
+
+## Note
+Listing quality is about what you can directly control with your products. Search relevance also depends on other signals such as popularity, customer engagement, and brand recognition, which are factors that your store can accumulate over time.
+
+You can click the  icon on any product to view Listing insights, which break down the listing quality score into the following specific signals:
+
+- Description completeness: Measures the word count of your product description. AI channels rely on descriptions to match products to natural-language customer queries in AI channels, therefore detailed descriptions can improve your chances of ranking. You can use Sidekick to get more detailed insights about your product description.
+
+- Image coverage: Measures the number of product images. Having more images can help AI channels visually represent your product across different contexts and customer experiences.
+
+- Product reviews: Measures your average product rating and review count. Product reviews signal trust and popularity, which can influence how AI channels rank your products. This measurement is calculated only from reviews that are verified by trusted sources.
+
+- Variant & option completeness: Measures the number of variants, options, and their in-stock availability. Complete variant data can help AI channels match customer purchasing intent, such as a specific size, color, or style. This measurement also checks whether your variant or option names contain acronyms or numbers that are hard for agents to understand or recommend.
+
+- Shop policy completeness: Measures whether your shipping, returns, refund, and other store policies are present. Policies signal store legitimacy and can help AI channels confidently recommend your products.
+
+## Reviewing your products that didn't rank
+
+If your products didn't rank in the top 10 for Shopify Catalog, then you can review the products in your store that were most relevant to your search query. These are products that weren't competitive enough to be included in the top results.
+
+You can review the Listing quality indicators and Listing insights for these products to help identify areas for improvement. This might include missing product descriptions, not enough relevant images, or incomplete variant data. If you take the recommended actions in the Improve your listing section, then your products can become more discoverable over time.
+
+## Note
+Shopify Catalog search always returns the products in your store that are most relevant to a search query. If you search for something with no real relevance to your store, then the results might appear strange, but they still represent whatever is most relevant in your store.
+
+Leave feedback
+

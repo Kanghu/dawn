@@ -1,0 +1,206 @@
+# shopify/theme-graph
+
+## 0.3.2
+
+### Patch Changes
+
+- Patch bump because it depends on @shopify/theme-check-common
+- Updated dependencies [54c5cc81]
+- Updated dependencies [f2071b6d]
+- Updated dependencies [9c46aac0]
+  - @shopify/theme-check-common@3.29.0
+
+## 0.3.1
+
+### Patch Changes
+
+- Patch bump because it depends on @shopify/theme-check-common
+- Updated dependencies [d4ec896e]
+  - @shopify/theme-check-common@3.28.1
+
+## 0.3.0
+
+### Minor Changes
+
+- 6803e99c: Adopt the hand-written `liquid-html-parser` for performance
+
+  Replace the parser-combinator-based Liquid/HTML parser with a hand-written
+  recursive-descent parser. The new parser is significantly faster, adds
+  resilient parsing (it recovers from malformed input instead of bailing), and is
+  adapted to the theme-tools source model. `theme-language-server-common`,
+  `theme-check-common`, `prettier-plugin-liquid`, and `theme-graph` are updated to
+  consume the new parser.
+
+### Patch Changes
+
+- Updated dependencies [6803e99c]
+- Updated dependencies [6803e99c]
+  - @shopify/liquid-html-parser@2.10.0
+  - @shopify/theme-check-common@3.28.0
+
+## 0.2.8
+
+### Patch Changes
+
+- Patch bump because it depends on @shopify/theme-check-common
+- Updated dependencies [180eacbe]
+  - @shopify/theme-check-common@3.27.0
+
+## 0.2.7
+
+### Patch Changes
+
+- 8e63afac: Treat theme app extension blocks as theme graph entry points so snippets rendered by app blocks are not reported as orphaned.
+- cacd8f32: [internal] local development fix for breakpoints
+- Updated dependencies [388cd60b]
+- Updated dependencies [3cc63ff2]
+- Updated dependencies [cacd8f32]
+  - @shopify/theme-check-common@3.26.1
+
+## 0.2.6
+
+### Patch Changes
+
+- Patch bump because it depends on @shopify/theme-check-common
+- Updated dependencies [892683dc]
+- Updated dependencies [e330f115]
+  - @shopify/theme-check-common@3.26.0
+
+## 0.2.5
+
+### Patch Changes
+
+- Patch bump because it depends on @shopify/theme-check-common
+- Updated dependencies [5f098a2d]
+  - @shopify/theme-check-common@3.25.1
+
+## 0.2.4
+
+### Patch Changes
+
+- 78a55fc0: [internal] Moving @shopify/theme-check-node to being a dev-dependency of the package
+- Updated dependencies [e10da7cc]
+- Updated dependencies [020d34fd]
+- Updated dependencies [69513792]
+- Updated dependencies [78a55fc0]
+  - @shopify/theme-check-common@3.25.0
+
+## 0.2.3
+
+### Patch Changes
+
+- Patch bump because it depends on:
+  - @shopify/liquid-html-parser
+  - @shopify/theme-check-common
+  - @shopify/theme-check-node
+- Updated dependencies [346cc150]
+- Updated dependencies [2df8b65e]
+- Updated dependencies [bc8002ba]
+- Updated dependencies [b1bca3f9]
+  - @shopify/theme-check-common@3.24.0
+  - @shopify/theme-check-node@3.24.0
+  - @shopify/liquid-html-parser@2.9.2
+
+## 0.2.2
+
+### Patch Changes
+
+- a7444f17: Include @shopify/theme-check-node as a dependency
+- 8f523617: Bump to TypeScript 5
+- Updated dependencies [8f523617]
+  - @shopify/theme-check-common@3.23.1
+  - @shopify/theme-check-node@3.23.1
+  - @shopify/liquid-html-parser@2.9.1
+
+## 0.2.1
+
+### Patch Changes
+
+- Patch bump because it depends on @shopify/theme-check-common
+- Updated dependencies [f00a1620]
+- Updated dependencies [450b3f28]
+- Updated dependencies [4bcb1126]
+- Updated dependencies [dd1f4c8f]
+  - @shopify/theme-check-common@3.23.0
+
+## 0.2.0
+
+### Minor Changes
+
+- 0380e438: Added a new OrphanedSnippet theme check to discover and warn if a snippet isn't referenced anywhere
+
+### Patch Changes
+
+- Updated dependencies [2fb378ca]
+- Updated dependencies [0c0f6c06]
+- Updated dependencies [c2228360]
+- Updated dependencies [0380e438]
+- Updated dependencies [2784a83b]
+- Updated dependencies [39a6e632]
+  - @shopify/theme-check-common@3.22.0
+
+## 0.1.5
+
+### Patch Changes
+
+- Patch bump because it depends on:
+  - @shopify/liquid-html-parser
+  - @shopify/theme-check-common
+- Updated dependencies [6a1512db]
+- Updated dependencies [a7d0e2d0]
+- Updated dependencies [e1bf12c7]
+- Updated dependencies [1ebf9246]
+- Updated dependencies [374ff3de]
+- Updated dependencies [b226e52c]
+- Updated dependencies [0bfc7859]
+  - @shopify/liquid-html-parser@2.9.0
+  - @shopify/theme-check-common@3.21.0
+
+## 0.1.4
+
+### Patch Changes
+
+- Patch bump because it depends on @shopify/theme-check-common
+- Updated dependencies [d605777f]
+  - @shopify/theme-check-common@3.20.1
+
+## 0.1.3
+
+### Patch Changes
+
+- Patch bump because it depends on @shopify/theme-check-common
+- Updated dependencies [f28daa84]
+- Updated dependencies [4ae72589]
+- Updated dependencies [23992051]
+- Updated dependencies [8ab6a8e7]
+  - @shopify/theme-check-common@3.20.0
+
+## 0.1.2
+
+### Patch Changes
+
+- ce7c01e5: Allow SVGs and images to appear on theme-graph dependencies
+- Updated dependencies [a3a513dc]
+  - @shopify/theme-check-common@3.19.0
+
+## 0.1.1
+
+### Patch Changes
+
+- Patch bump because it depends on @shopify/theme-check-common
+- Updated dependencies [ce5cb33a]
+  - @shopify/theme-check-common@3.18.1
+
+## 0.1.0
+
+### Minor Changes
+
+- 4477a6d9: Introduce `@shopify/theme-graph`, a data structure that represents all the modules in a Shopify theme
+
+### Patch Changes
+
+- Updated dependencies [649da6df]
+- Updated dependencies [4477a6d9]
+- Updated dependencies [606053f1]
+- Updated dependencies [444c9edc]
+  - @shopify/theme-check-common@3.18.0

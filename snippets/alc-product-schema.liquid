@@ -9,6 +9,16 @@
   - review[]         - from a JSON metafield (product.metafields.custom.reviews_json)
                        holding a list of objects: { "author", "date", "body", "rating" }
                        Individual reviews are only emitted when this metafield exists.
+  - offers[].hasMerchantReturnPolicy
+                     - 14 days, free return, courier pickup (/policies/refund-policy and
+                       the "14 zile drept de retur gratuit" line on every product page).
+  - offers[].shippingDetails
+                     - copy of Settings > Shipping and delivery for the visitor's country.
+                       Google requires the shipping currency to equal the offer currency, so
+                       only zones priced in the market's own currency are listed (RO, HU, PL,
+                       GR). Zones priced in RON on EUR/CZK markets (IT, HR, CZ, FR, SK, EU) and
+                       BG (still priced in BGN) are left out. Keep the table below in sync
+                       with the shipping rates.
 
   Accepts:
   - product: {Object} the product to describe. Default: product
@@ -43,6 +53,42 @@
   assign has_reviews = false
   if review_list != blank and review_list.size > 0
     assign has_reviews = true
+  endif
+
+  # Amounts in cents of the market currency; delivery is free once the cart reaches shipping_free_from.
+  # Handling 0-1 days (orders placed before 12:00 leave the same day). Transit: RO 1-3 days as in
+  # /policies/shipping-policy, other markets 2-3 so the total matches the "2 - 4 zile" product page line.
+  assign country_code = localization.country.iso_code
+  assign shipping_currency = ''
+  case country_code
+    when 'RO'
+      assign shipping_currency = 'RON'
+      assign shipping_rate = 2199
+      assign shipping_free_from = 40000
+      assign transit_min = 1
+      assign transit_max = 3
+    when 'HU'
+      assign shipping_currency = 'HUF'
+      assign shipping_rate = 204900
+      assign shipping_free_from = 3250000
+      assign transit_min = 2
+      assign transit_max = 3
+    when 'PL'
+      assign shipping_currency = 'PLN'
+      assign shipping_rate = 2199
+      assign shipping_free_from = 41999
+      assign transit_min = 2
+      assign transit_max = 3
+    when 'GR'
+      assign shipping_currency = 'EUR'
+      assign shipping_rate = 675
+      assign shipping_free_from = 9999
+      assign transit_min = 2
+      assign transit_max = 3
+  endcase
+  assign has_shipping = false
+  if shipping_currency == currency
+    assign has_shipping = true
   endif
 -%}
 
@@ -113,7 +159,7 @@
       {%- endfor -%}
     ],
     {%- endif %}
-    "offers": {%- if product.variants.size > 1 -%}[
+    "offers": {% if product.variants.size > 1 %}[{% endif %}
       {%- for v in product.variants -%}
         {
           "@type": "Offer",
@@ -131,20 +177,48 @@
           "price": {{ v.price | divided_by: 100.0 | json }},
           "priceCurrency": {{ currency | json }},
           "itemCondition": "https://schema.org/NewCondition",
+          {%- if v.requires_shipping and has_shipping %}
+          "shippingDetails": {
+            "@type": "OfferShippingDetails",
+            "shippingRate": {
+              "@type": "MonetaryAmount",
+              "value": {% if v.price >= shipping_free_from %}0{% else %}{{ shipping_rate | divided_by: 100.0 | json }}{% endif %},
+              "currency": {{ currency | json }}
+            },
+            "shippingDestination": {
+              "@type": "DefinedRegion",
+              "addressCountry": {{ country_code | json }}
+            },
+            "deliveryTime": {
+              "@type": "ShippingDeliveryTime",
+              "handlingTime": {
+                "@type": "QuantitativeValue",
+                "minValue": 0,
+                "maxValue": 1,
+                "unitCode": "DAY"
+              },
+              "transitTime": {
+                "@type": "QuantitativeValue",
+                "minValue": {{ transit_min | json }},
+                "maxValue": {{ transit_max | json }},
+                "unitCode": "DAY"
+              }
+            }
+          },
+          {%- endif %}
+          {%- if v.requires_shipping and country_code != blank %}
+          "hasMerchantReturnPolicy": {
+            "@type": "MerchantReturnPolicy",
+            "applicableCountry": {{ country_code | json }},
+            "returnPolicyCategory": "https://schema.org/MerchantReturnFiniteReturnWindow",
+            "merchantReturnDays": 14,
+            "returnMethod": "https://schema.org/ReturnByMail",
+            "returnFees": "https://schema.org/FreeReturn"
+          },
+          {%- endif %}
           "availability": {% if v.available %}"https://schema.org/InStock"{% else %}"https://schema.org/OutOfStock"{% endif %}
         }{%- unless forloop.last -%},{%- endunless -%}
       {%- endfor -%}
-    ]{%- else -%}{
-      "@type": "Offer",
-      "@id": {{ product_url | append: '?variant=' | append: variant.id | append: '#offer' | json }},
-      "url": {{ product_url | append: '?variant=' | append: variant.id | json }},
-      {%- if variant.sku != blank %}
-      "sku": {{ variant.sku | json }},
-      {%- endif %}
-      "price": {{ variant.price | divided_by: 100.0 | json }},
-      "priceCurrency": {{ currency | json }},
-      "itemCondition": "https://schema.org/NewCondition",
-      "availability": {% if variant.available %}"https://schema.org/InStock"{% else %}"https://schema.org/OutOfStock"{% endif %}
-    }{%- endif %}
+    {% if product.variants.size > 1 %}]{% endif %}
   }
 </script>

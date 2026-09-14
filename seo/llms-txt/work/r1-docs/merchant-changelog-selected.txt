@@ -1,0 +1,72 @@
+=====
+
+      A new home for Agentic Storefronts in your admin 
+
+Agentic Storefronts now has its own page in your Shopify admin. Your products are automatically accessible to AI channels like ChatGPT, Shop, and Copilot through Shopify Catalog. Now you can track performance across all major AI channels, see which queries you rank for, and get recommendations to improve your product data.
+
+Learn more about Agentic Storefronts by visiting our Help Center
+
+Mon, 11 May 2026 15:30:00 -0400
+      Admin
+
+- https://changelog.shopify.com/posts/a-new-home-for-agentic-storefronts-in-your-admin
+    
+=====
+
+      Customize robots.txt rules by domain
+
+If you're using multiple domains to target different audiences in Shopify Markets, you can now create custom crawling rules for each domain using the request.host object in your robots.txt.liquid template.
+
+This update gives you more control over how search engines crawl your content across different markets.
+
+To implement domain-specific rules, simply use the request.host object in your robots.txt.liquid template. 
+
+As an example, this code snippet would disallow crawling of the /en/ folder for the example.fr domain, while allowing the folder to remain crawlable for other domains.
+
+{% for group in robots.default_groups %}
+
+  {{- group.user_agent }}
+
+  {%- if request.host == 'example.fr' -%}
+
+    Disallow: /en/
+
+  {%- endif -%}
+
+{% endfor %}
+
+Learn more about customizing robots.txt in the Shopify Dev Docs.
+
+Tue, 25 Mar 2025 16:00:00 -0400
+      Markets
+
+- https://changelog.shopify.com/posts/customize-robots-txt-rules-by-domain
+    
+=====
+
+      Improvements to redirects with subfolders and Shopify Markets
+
+We're rolling out an improvement to URL redirects when your store uses language or market subfolders with Shopify Markets.
+
+Previously, an individual redirect would need to be manually created for every language or market subfolder. Now, all redirects are automatically applied to every language and market subfolder to eliminate manual work. You can still create redirects manually for each subfolder if you want different redirection behaviour for an individual market or language.
+
+Learn more about this change in the Shopify Help Center
+
+Tue, 25 Apr 2023 15:00:00 -0400
+      Markets
+
+- https://changelog.shopify.com/posts/improvements-to-redirects-with-subfolders-and-shopify-markets
+    
+=====
+
+      Customize your robots.txt file
+
+On Monday, June 21st 2021, we will release robots.txt.liquid to give you control over how crawlers discover content in your online store. This helps ensure important pages in your store are indexed and buyers can find them in search results.
+
+Learn more about how to customize your robots.txt file from the Shopify Help Center.
+
+Mon, 21 Jun 2021 10:00:00 -0400
+      Admin
+
+- https://changelog.shopify.com/posts/customize-your-robots-txt-file
+    

@@ -1,0 +1,15 @@
+﻿node.exe : <claude-code-hint v="1" type="plugin" value="shopify-ai-toolkit@claude-plugins-official" />
+At C:\Users\Dan\AppData\Roaming\npm\shopify.ps1:24 char:5
++     & "node$exe"  "$basedir/node_modules/@shopify/cli/bin/run.js" $ar ...
++     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (<claude-code-hi...ns-official" />:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+ 
+╭─ success ────────────────────────────────────────────────────────────────────╮
+│                                                                              │
+│  Theme Check Summary.                                                        │
+│                                                                              │
+│  5 files inspected with no offenses found.                                   │
+│                                                                              │
+╰──────────────────────────────────────────────────────────────────────────────╯
+

@@ -106,7 +106,11 @@
                                 <a href="{{ childlink.url }}" class="mega-menu__link mega-menu__link--campaign block">
                                   {% if childlink.object and childlink.object.image %}
                                     <img
-                                      src="{{ childlink.object.image.src | img_url: 'master' }}"
+                                      src="{{ childlink.object.image | image_url: width: 600 }}"
+                                      srcset="{% render 'alc-image-srcset', image: childlink.object.image, widths: '300,450,600', max_width: 900 %}"
+                                      sizes="300px"
+                                      width="{{ childlink.object.image.width }}"
+                                      height="{{ childlink.object.image.height }}"
                                       alt="{{ childlink.title | escape }}"
                                       class="w-full h-auto object-contain rounded"
                                       loading="lazy">

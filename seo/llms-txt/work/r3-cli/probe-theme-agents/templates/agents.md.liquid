@@ -1,0 +1,6 @@
+# Agent Instructions - {{ agents.store_name }}
+{% for version in agents.ucp_versions %}
+- {{ version }}{% if forloop.first %} (latest stable){% endif %}
+{% endfor %}
+Pricing and availability are returned in {{ agents.currency }}.
+Request host: {{ request.host }}

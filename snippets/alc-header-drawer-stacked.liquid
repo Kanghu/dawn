@@ -54,8 +54,13 @@
                               <a href="{{ link.url }}" class="drawer-campaign-link flex items-center gap-4 flex-1 no-underline text-black hover:bg-gray-50 transition-colors">
                                 {% if link.object and link.object.image and link.object.image.src %}
                                   <img
-                                    src="{{ link.object.image.src | img_url: 'master' }}"
+                                    src="{{ link.object.image | image_url: width: 750 }}"
+                                    srcset="{% render 'alc-image-srcset', image: link.object.image, widths: '375,550,750,1000', max_width: 1500 %}"
+                                    sizes="85vw"
+                                    width="{{ link.object.image.width }}"
+                                    height="{{ link.object.image.height }}"
                                     alt="{{ link.title | escape }}"
+                                    loading="lazy"
                                     class="w-full h-auto object-contain rounded-md">
                                 {% endif %}
                               </a>
@@ -66,7 +71,8 @@
                                   <img
                                     src="{{ link.object.image.src | img_url: '120x120' }}"
                                     alt="{{ link.title | escape }}"
-                                    class="h-24 object-cover rounded-md flex-shrink-0">
+                                    class="h-24 object-cover rounded-md flex-shrink-0"
+                                    loading="lazy">
                                 {% endif %}
                                 <div class="flex-1 text-left">
                                   <span class="font-medium">{{ link.title | escape }}</span>
@@ -118,7 +124,8 @@
                                                   <img
                                                     src="{{ childlink.object.image.src | img_url: '120x120' }}"
                                                     alt="{{ childlink.title | escape }}"
-                                                    class="h-16 object-cover rounded-md flex-shrink-0">
+                                                    class="h-16 object-cover rounded-md flex-shrink-0"
+                                                    loading="lazy">
                                                 {% endif %}
                                                 <div class="flex-1">
                                                   <span class="font-medium">{{ childlink.title | escape }}</span>
@@ -135,7 +142,8 @@
                                                       <img
                                                         src="{{ childlink.object.image.src | img_url: '120x120' }}"
                                                         alt="{{ childlink.title | escape }}"
-                                                        class="h-16 object-cover rounded-md flex-shrink-0">
+                                                        class="h-16 object-cover rounded-md flex-shrink-0"
+                                                        loading="lazy">
                                                     {% endif %}
                                                     <div class="flex-1 text-left">
                                                       <span class="font-medium">{{ childlink.title | escape }}</span>
@@ -175,7 +183,8 @@
                                                             <img
                                                               src="{{ grandchildlink.object.image.src | img_url: '120x120' }}"
                                                               alt="{{ grandchildlink.title | escape }}"
-                                                              class="h-16 object-cover rounded-md flex-shrink-0">
+                                                              class="h-16 object-cover rounded-md flex-shrink-0"
+                                                              loading="lazy">
                                                           {% endif %}
                                                           <div class="flex-1">
                                                             <span class="font-medium">{{ grandchildlink.title | escape }}</span>
@@ -216,7 +225,8 @@
                                   <img
                                     src="{{ link.object.image.src | img_url: '120x120' }}"
                                     alt="{{ link.title | escape }}"
-                                    class="h-24 object-cover rounded-md flex-shrink-0">
+                                    class="h-24 object-cover rounded-md flex-shrink-0"
+                                    loading="lazy">
                                 {% endif %}
                                 <div class="flex-1 text-left">
                                   <span class="font-medium">{{ link.title | escape }}</span>

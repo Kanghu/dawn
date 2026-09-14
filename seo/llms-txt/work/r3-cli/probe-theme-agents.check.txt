@@ -1,0 +1,106 @@
+﻿node.exe : <claude-code-hint v="1" type="plugin" value="shopify-ai-toolkit@claude-plugins-official" />
+At C:\Users\Dan\AppData\Roaming\npm\shopify.ps1:24 char:5
++     & "node$exe"  "$basedir/node_modules/@shopify/cli/bin/run.js" $ar ...
++     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (<claude-code-hi...ns-official" />:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+ 
+╭─ info ───────────────────────────────────────────────────────────────────────╮
+│                                                                              │
+│  :\SITES\Alessandro Design\dawn\seo\llms-txt\work\r3-cli\probe-theme-agents  │
+│  \templates\agents.md.liquid                                                 │
+│                                                                              │
+│                                                                              │
+│  [warning]: UndefinedObject                                                  │
+│  Unknown object 'agents' used.                                               │
+│                                                                              │
+│  1  # Agent Instructions - {{ agents.store_name }}                           │
+│                                                                              │
+│                                                                              │
+│  [warning]: UndefinedObject                                                  │
+│  Unknown object 'agents' used.                                               │
+│                                                                              │
+│  2  {% for version in agents.ucp_versions %}                                 │
+│                                                                              │
+│                                                                              │
+│  [warning]: UndefinedObject                                                  │
+│  Unknown object 'agents' used.                                               │
+│                                                                              │
+│  5  Pricing and availability are returned in {{ agents.currency }}.          │
+│                                                                              │
+╰──────────────────────────────────────────────────────────────────────────────╯
+
+╭─ info ───────────────────────────────────────────────────────────────────────╮
+│                                                                              │
+│  :\SITES\Alessandro Design\dawn\seo\llms-txt\work\r3-cli\probe-theme-agents  │
+│  \templates\control-syntax.txt.liquid                                        │
+│                                                                              │
+│                                                                              │
+│  [error]: LiquidHTMLSyntaxError                                              │
+│  Attempting to end parsing before LiquidTag 'if' was closed                  │
+│                                                                              │
+│  1  {% if true %}                                                            │
+│                                                                              │
+╰──────────────────────────────────────────────────────────────────────────────╯
+
+╭─ info ───────────────────────────────────────────────────────────────────────╮
+│                                                                              │
+│  :\SITES\Alessandro Design\dawn\seo\llms-txt\work\r3-cli\probe-theme-agents  │
+│  \templates\control-undefined.liquid                                         │
+│                                                                              │
+│                                                                              │
+│  [warning]: UndefinedObject                                                  │
+│  Unknown object 'totally_not_a_real_object_xyz' used.                        │
+│                                                                              │
+│  1  {{ totally_not_a_real_object_xyz.name }}                                 │
+│                                                                              │
+╰──────────────────────────────────────────────────────────────────────────────╯
+
+╭─ info ───────────────────────────────────────────────────────────────────────╮
+│                                                                              │
+│  :\SITES\Alessandro Design\dawn\seo\llms-txt\work\r3-cli\probe-theme-agents  │
+│  \templates\llms.txt.liquid                                                  │
+│                                                                              │
+│                                                                              │
+│  [warning]: UndefinedObject                                                  │
+│  Unknown object 'agents' used.                                               │
+│                                                                              │
+│  1  # {{ agents.store_name }}                                                │
+│                                                                              │
+│                                                                              │
+│  [warning]: UndefinedObject                                                  │
+│  Unknown object 'agents' used.                                               │
+│                                                                              │
+│  3  > Agent-discovery summary. The canonical, full description is at {{      │
+│  agents.store_url }}/agents.md.                                              │
+│                                                                              │
+│                                                                              │
+│  [warning]: UndefinedObject                                                  │
+│  Unknown object 'agents' used.                                               │
+│                                                                              │
+│  5  - UCP discovery: {{ agents.ucp_discovery_url }}                          │
+│                                                                              │
+│                                                                              │
+│  [warning]: UndefinedObject                                                  │
+│  Unknown object 'agents' used.                                               │
+│                                                                              │
+│  6  - MCP endpoint: {{ agents.mcp_endpoint_url }}                            │
+│                                                                              │
+│                                                                              │
+│  [warning]: UndefinedObject                                                  │
+│  Unknown object 'agents' used.                                               │
+│                                                                              │
+│  7  - Sitemap: {{ agents.sitemap_url }}                                      │
+│                                                                              │
+╰──────────────────────────────────────────────────────────────────────────────╯
+
+╭─ info ───────────────────────────────────────────────────────────────────────╮
+│                                                                              │
+│  Theme Check Summary.                                                        │
+│                                                                              │
+│  10 files inspected with 10 total offenses found across 4 files.             │
+│  1 errors.                                                                   │
+│  9 warnings.                                                                 │
+│                                                                              │
+╰──────────────────────────────────────────────────────────────────────────────╯
+

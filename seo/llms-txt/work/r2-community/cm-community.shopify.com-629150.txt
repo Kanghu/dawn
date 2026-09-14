@@ -1,0 +1,95 @@
+====================================================================================================
+cm-community.shopify.com-629150.json | Shopify Just Killed /llms.txt for all stores. Here's What to Do | created 2026-05-24T16:44:07.167Z | posts_count 17 | stream 17
+------------------------------------------------------------
+#1 ryankatsnel () 2026-05-24T16:44:07.342Z staff=False
+Hi everyone,
+Important heads up: if your store has a custom llms.txt set up: Shopify just claimed the /llms.txt platform-wide and is redirecting it to a new agents.md file at the root of your site.
+That means if you were using a proxy, redirect, file or app to serve your own llms.txt, it’s being overwritten right now.
+Visit [yourstore.url]/llms.txt right now to check what’s actually being served!
+The good news: you can still take control of what these files say, and add in relevant AI context and store content as structured signals for improved AI visibility.
+I made a short video here breaking down what changed and exactly how to fix it
+What do you think of the change? Drop any questions below.
+------------------------------------------------------------
+#3 ryankatsnel () 2026-05-24T18:33:47.127Z staff=False
+Hey @Eligijus !
+The file size limit for any file whether LLMS.txt or Agents.md should be 256 Bytes, no? We also have a workaround to make sure all the data can be added there if it goes over.
+I’m also confused with what you mean by workaround as this redirect is baked in directly at the server level. You can still create those template files, but the agent will simply be redirected the moment they hit the /llms.txt.
+------------------------------------------------------------
+#4 Eligijus (Shopify Partner) 2026-05-24T18:52:56.798Z staff=False
+It’s 256KB, but when you deal with stores over 5k products - that’s not enough.
+And while you cannot get the urls at /llms.txt and /llms-full.txt - you can do It another way.
+I’ll not share what we found here for everyone to copy us, but there is a solution haha
+------------------------------------------------------------
+#5 ryankatsnel () 2026-05-24T19:48:16.749Z staff=False
+So this solution shows the LLMS.txt or it doesn’t? I’m confused 
+Like send me a Shopify Store URL where the llms.txt and llms-full.txt shows up to show me that your solution works
+------------------------------------------------------------
+#6 lumine () 2026-05-25T02:28:28.220Z staff=False
+Worth stepping back from the redirect mechanics for a second. The harder question is whether AI crawlers actually consume /llms.txt enough to make this fight worth it.
+Server logs from a few stores I help with show GPTBot, PerplexityBot, ClaudeBot all hitting /robots.txt, /sitemap.xml, and crawling product pages directly. The /llms.txt hits are real but tiny, and I haven’t seen evidence that content there shows up in citations vs what they pull from the rendered HTML + JSON-LD.
+If Shopify is forcing agents.md and capping it, the practical play is probably:
+accept the agents.md as the bare-bones brand context
+invest the energy in clean JSON-LD (Product, FAQPage, Article, BreadcrumbList) since that’s what crawlers reliably parse
+make sure sitemap.xml is fresh and product pages render server-side
+Curious if anyone has correlation data showing /llms.txt content actually surfacing in AI Overviews or chat citations? I haven’t been able to make that link.
+------------------------------------------------------------
+#7 ryankatsnel () 2026-05-26T00:09:47.926Z staff=False
+@lumine I completely agree that llms.txt can seem overhyped at times, and LinkGPT for example only treats llms.txt as one component in a broader visibility framework that includes JSON-LD and LLM Outreach. LLMS.txt alone is likely not enough to drive the needle significantly.
+However, there are some major signals:
+Google itself has included llms.txt to Lighthouse agentic browsing scoring recently: Lighthouse agentic browsing scoring | Chrome for Developers
+Maintained llms.txt files also now ship from Vercel, Anthropic, Stripe, Cloudflare, Cursor
+And while there is no public documentation confirming or denying because model ingestion pipelines are not transparent. We do know:
+• LLM systems rely heavily on structured data
+• Crawlers and retrieval systems prefer explicit machine-readable endpoints
+• Every major search evolution has rewarded clarity and structure
+------------------------------------------------------------
+#8 liquidshop.co () 2026-05-26T09:16:07.180Z staff=False
+There’s no clear direction because no defined methodology exists. Previously, we relied on tools like webmaster tools and sitemaps, but this approach lacks a centralized system making it both beneficial and challenging.
+------------------------------------------------------------
+#9 PieLab (Shopify Partner) 2026-05-27T07:33:46.663Z staff=False
+Hi @ryankatsnel,
+I can see this is a massive move by Shopify to standardize AI signals, but it will be frustrating for those who already had custom setups. It’s clear they are prioritizing agentic commerce above all else.
+Does Shopify provide a native way to customize the content of that new agents.md file yet, or is it currently a static template for everyone?
+Thank you for sharing,
+------------------------------------------------------------
+#10 Nordalux (Shopify Partner) 2026-05-27T10:08:19.107Z staff=False
+Worth separating two things here. The redirect is baked in at the server level, so /llms.txt and /llms-full.txt both bounce to /agents.md. That means agents.md is the only file we actually control.
+But being able to overwrite agents.md doesn’t mean we can just paste the old llms.txt content at the bottom. They do different jobs. agents.md is the structured file that tells commerce agents how to act under UCP. llms.txt (and especially llms-full.txt) was a catalog/context map for crawlers. Dumping the catalog underneath Shopify’s agent instructions either buries those instructions or blows past the file’s size limit, since a full llms-full.txt is way too big for it.
+So it’s not “you can’t,” it’s “don’t do it flat.” Keep Shopify’s directives intact, add a short brand summary up top, and link out to a separate catalog instead of inlining everything.
+And +1 on JSON-LD: clean Product/FAQPage/BreadcrumbList markup and a fresh sitemap is where the crawlers actually look anyway.
+------------------------------------------------------------
+#11 Eligijus (Shopify Partner) 2026-05-27T10:34:11.314Z staff=False
+Who said you can’t just paste llms.txt and llms-full.txt at the bottom ?
+If LLMs start reading agents.md - they will see links to more information which they can use.
+------------------------------------------------------------
+#12 Nordalux (Shopify Partner) 2026-05-27T16:35:33.405Z staff=False
+Shopify will once again correctly redirect to llms.txt and llms-full.txt, provided these files have been created at templates/llms.txt.liquid and templates/llms-full.txt.liquid. If these files do not exist, the content of agents.md will be displayed.
+------------------------------------------------------------
+#13 ryankatsnel () 2026-05-27T18:05:25.991Z staff=False
+@Nordalux I just saw that and got an email from one of my users. Great news!
+------------------------------------------------------------
+#15 Faron_hm () 2026-06-05T09:43:05.924Z staff=False
+Worth adding that llms.txt and agents.md are crawl signals, not guarantees. They inform AI agents what’s available but they don’t control how ChatGPT, Gemini or Perplexity actually represent your brand when a customer asks a buying question. Those recommendations are shaped by a much wider set of signals; structured data, review aggregations, third-party mentions, FAQ Schema and how your product descriptions are semantically structured.
+Fixing the file is definitely the right play, but merchants shouldn’t mistake it for full AI Visibility control. Most stores have no idea whether they’re appearing in AI recommendations at all, let alone whether what’s being said is accurate. But the structures content angle is definitely where the ranking signal lives.
+------------------------------------------------------------
+#16 bchen27 () 2026-06-10T05:41:34.782Z staff=False
+for most stores this honestly doesn’t matter much yet. unless you were already customizing llms.txt (which almost nobody was), the default agents.md shopify generates is probably fine for now.
+the bigger takeaway is that AI search is becoming a real traffic source and shopify is optimizing for it at the platform level. if you care about showing up in chatgpt or perplexity results, focus on clear product descriptions with natural language instead of keyword-stuffed spec lists. that matters way more than what’s in any llms.txt file right now.
+------------------------------------------------------------
+#19 arslnser () 2026-07-18T11:27:59.457Z staff=False
+I think the biggest takeaway isn’t the file rename itself, it’s that Shopify is making AI visibility more platform-native. Merchants who were treating llms.txt as the whole strategy may need to rethink things. Clear product content, structured data, reviews, and entity signals are probably going to matter far more than whatever ends up inside a single file.
+------------------------------------------------------------
+#20 kedraapps () 2026-09-03T09:45:33.948Z staff=False
+This post was flagged by the community and is temporarily hidden.
+------------------------------------------------------------
+#21 Muffadal_Ali_Asghar () 2026-09-14T07:55:38.718Z staff=False
+The title is still the first thing anyone lands on here, so: I measured this today, 14 Sep 2026, and /llms.txt is not redirected and not gone.
+It returns HTTP 200 directly, Content-Type: text/markdown. No Location header, no 3xx. It is a mirror, and Shopify’s own docs use that word — the /llms.txt and /llms-full.txt URLs are described as “alternate URLs that mirror the content of /agents.md”. The generated file says so itself. On a store serving the default, /llms.txt and /agents.md differ by exactly one line, and that line is the one naming which path you asked for:
+- Agent discovery: the canonical agent-facing description of the store is at /agents.md. You're reading /llms.txt, which mirrors that content.
+The files run 87 to 89 lines depending on the store. Everything else is identical.
+If you test this and see a redirect, check which host you tested. I caught myself on this today. rothys.com serves the file on the apex and 301s www to it; redbullshopus.com does the opposite. Those are ordinary canonical-domain redirects, nothing to do with llms.txt. The tell is that /robots.txt 3xxs too — no store redirects its robots.txt to another path, so a 3xx on both means the host moved, not the path.
+Credit where it is due: @Nordalux already answered the customisation question in #12, back in May, and it is still the most useful post in this thread. One refinement — the mechanism is a fallback chain rather than a redirect, and there is a third template nobody has mentioned:
+/llms.txt → templates/llms.txt.liquid → templates/agents.md.liquid → the Shopify-generated default.
+So agents.md.liquid alone will change all three paths at once, which is usually what you want. That chain is documented, not inferred — it shipped in the shopify.dev changelog on 28 May 2026.
+Two stores in my sample have actually done it, and you can read both right now: spiritualgangster.com/llms.txt and www.vrggrl.com/llms.txt. Both are powered-by: Shopify and both responses carry Server-Timing: pageType=llms_txt with a theme id, so the theme rendered them, not a proxy. Spiritual Gangster’s is a brand summary plus priority-ordered collections. VRG GRL’s runs 16.6 KB against the 4.4 KB default and covers positioning, sizing, returns and per-country shipping.
+On the 404s, because they get read as Shopify withdrawing the file. Three of the 20 stores I could measure return no file: Mejuri, Hiut Denim, Dr. Squatch. All three are headless — their powered-by header names Oxygen, Shopify’s headless ho

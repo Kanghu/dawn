@@ -1,0 +1,110 @@
+====================================================================================================
+cm-community.shopify.dev-19276.json | Adding LLMs.txt file to shopify store | created 2025-07-16T14:37:08.579Z | posts_count 17 | stream 17
+------------------------------------------------------------
+#1 tov_hamza () 2025-07-16T14:37:08.649Z staff=False
+In this AI era, every merchant wants their products to display in results of LLMs. So, how can we add LLMs.txt file to provide guidance for AI systems (such as language models)? So that the products of store can appear in results of AI Systems.
+Through the internet search, I came to know that this file needs to be added in the root directory of store which shopify does not allow. So, what is the best way to add this file and make it available to LLMs ?
+------------------------------------------------------------
+#2 Luke (Leader) 2025-07-16T14:45:22.307Z staff=False
+I’d suggest taking a look at these docs, this should suffice.
+      Shopify
+Storefront MCP server
+  Learn how to use the Storefront MCP server tools to help shoppers browse products, manage carts, and checkout from a specific Shopify store.
+------------------------------------------------------------
+#3 tov_hamza () 2025-07-17T10:55:44.946Z staff=False
+Thanks for your reply!
+How can we setup storefront MCP server. Do we need to add code at theme level OR make custom app to setup MCP?
+------------------------------------------------------------
+#4 Liam-Shopify (Shopify Staff) 2025-07-17T11:52:55.937Z staff=True
+Hi @tov_hamza
+This video and the docs Luke linked should be enough to help you
+------------------------------------------------------------
+#5 tov_hamza () 2025-07-17T14:51:50.234Z staff=False
+Thanks @Liam-Shopify for your reply!
+What I understood from this video and doc is that we can create AI agents which can be seen on shopify storefront and customer can interact with it to search products according to their need and buy them. And behind the scenes, Storefront MCP Server will be assisting AI agent to accomplish these tasks. Correct me if I am wrong.
+But my requirement is a bit different for now. As you know, each store do SEO so that stores can land at top of search engine results to grab more visits which eventually convert into sales. But nowadays, most people are using LLMs like ChatGPT, Claude, Deepseek, etc. Now I want these LLMs to show store in their results if entered prompt is somewhat related to store. While searching on internet, I came to know that we should add LLMs.txt file to root directory of store to do this but shopify does not allow this.
+So, what can we do?
+------------------------------------------------------------
+#6 Liam-Shopify (Shopify Staff) 2025-07-23T14:37:51.384Z staff=True
+Hi again @tov_hamza
+There’s some info in this blog post to help with making your store visible to LLM crawlers: Get your Shopify store in AI search results – Ilana Davis
+------------------------------------------------------------
+#8 Luke (Leader) 2025-10-10T13:43:06.568Z staff=False
+This most likely doesn’t work, what you’ve got there is a CDN link, so it isn’t crawlable against your store domain.
+------------------------------------------------------------
+#9 FireNet_Designs () 2025-10-10T14:16:45.797Z staff=False
+Yeah I just gave it a shot further more it uses the text/html return header type
+I’m going to redact my previous comment. I have another solution that may work but wouldn’t be a quick fix for anyone. If it works out I’ll report back!
+------------------------------------------------------------
+#10 FireNet_Designs () 2025-10-10T20:02:16.376Z staff=False
+Ok was a bit involved but I have it working now.
+If you are curious on the whole process as it’s a bit involved can see the blog here for more details: How to Add LLMS.txt to Shopify (and Win at AI Search)
+Recently Shopify has O2O with Cloudflare: Shopify · Cloudflare for Platforms docs
+So the idea is the following:
+Edge Routing with Cloudflare O2O
+We created proxied CNAME records for both the apex domain and www subdomain, routing traffic through Cloudflare’s edge network.
+This gave us access to modify requests before they touched Shopify’s servers.
+The Web Worker Solution
+Using Cloudflare Workers, we wrote a micro-service to listen for /llms.txt requests and respond with a plain-text file — instantly, globally, and securely.
+Example Partial Code Snippet to get you started if you need:
+export default {
+  async fetch(request) {
+    const { pathname } = new URL(request.url);
+    if (pathname === "/llms.txt" || pathname === "/llms.txt/") {
+      const body = `WRITE YOUR LLMS.TXT RAW TEXT HERE`;
+      return new Response(body, {
+        status: 200,
+        headers: {
+          "Content-Type": "text/plain; charset=utf-8",
+          "Cache-Control": "public, max-age=86400",
+          "X-Served-By": "llms-worker" // diagnostic to debug
+        },
+      });
+    }
+    // proxy everything else to Shopify
+    const origin = "https://example.com";
+    return fetch(origin + pathname + new URL(request.url).search, request);
+  },
+};
+Validation and Testing
+Once live, we confirmed the file was being served from the edge using curl headers and Cloudflare ray IDs.
+Shopify stayed untouched — yet /llms.txt was now fully functional and validated by AI crawlers.
+To see an example Shopify store we set this up for see here: https://jennaraecakes.com/llms.txt
+image (12)1623×883 38.6 KB
+------------------------------------------------------------
+#11 FireNet_Designs () 2025-10-15T17:00:41.424Z staff=False
+One last thing to update here, IF anybody does do this. Make SURE You turn off “Rocket Loader”
+I have found it causes issues with optimizations with Klaviyo and other apps as it tries to optimize the Javascript. To do so you can see instructions on that here: https://community.cloudflare.com/t/how-to-disable-rocket-loader/241719
+------------------------------------------------------------
+#12 One_Scales () 2025-11-26T00:40:52.542Z staff=False
+you will need to create an llms.txt and upload it to content - files. then create a redirect from /llms.txt to the file. see a tutorial and tool at https://www.youtube.com/watch?v=63a3XTI8uNY
+------------------------------------------------------------
+#13 Gauri () 2025-12-23T23:39:14.408Z staff=False
+Are you saying there is no possible other way of adding llms.txt to a website on shopify without using cloudflare? Is there no way to directly upload llms.txt to shopify?
+------------------------------------------------------------
+#14 Joao_Lourenco () 2025-12-24T03:23:20.429Z staff=False
+I would say to upload the llm.txt file to Files and then setup a redirect from yourstore.com/llm.txt to the URL created after you upload the txt file into Files
+------------------------------------------------------------
+#15 FireNet_Designs () 2025-12-24T17:19:25.679Z staff=False
+Hey. I think you can use a redirect. I am not sure  Ideally you should have it on the same domain I think. But not sure if directing directly to a cdn.shopify.com is supported.
+At the time when I did this I just wasn’t aware of any Apps that use proxies.
+however I have seen a couple apps what they do is. In Shopify apps you can setup a proxy so
+for example see here:
+https://basic-maintenance.com/llms.txt
+This redirects through an App to this url here:
+https://basic-maintenance.com/tools/seo/llms.txt
+This has passed llms.txt validators specifically this one here:
+      llms.txt Checker
+llms.txt Checker - Validate Your llms.txt Files
+  Free online llms.txt checker tool to validate your llms.txt files against the standard specification.
+------------------------------------------------------------
+#16 Jason_Richey () 2026-05-08T15:35:34.393Z staff=False
+This is now solved and executes the same way as robots.txt. You can add a templates/llms.txt.liquid to your theme to customize.
+------------------------------------------------------------
+#17 ema () 2026-09-03T09:40:39.295Z staff=False
+Good that this is native now with templates/llms.txt.liquid. Two things I would add for anyone doing it by hand: 1. Theme files have a 256KB limit. A full-catalog llms-full.txt can be over 1MB, so large stores will hit a validation error and need another way to serve it, such as an app proxy or splitting the file. 2. The native default just mirrors agents.md, so it is generic. The real work is what content goes into the file and keeping it fresh when products change. I build a Shopify app for exactly this part, Kedra AI Index ( Kedra AI Index: AEO Visibility - Boost your AI search visibility to drive more store traffic | Shopify App Store ). It generates the llms.txt and agents.md content from your catalog, keeps it updated, and also tracks whether ChatGPT and Perplexity actually mention your store. Disclosure: it is my app, so not a neutral voice, but the 256KB point above is true whether you use a tool or not.
+------------------------------------------------------------
+#18 Ollie_autoBlogger () 2026-09-03T09:58:57.681Z staff=False
+This is an older post that’s recently been bumped by a new comment, but in case anyone else lands here looking for a solution, here is an option.
+If you want both Shopify’s native agents.md and llms.txt, my app autoLLM can handle both: autoLLMs | LLM SEO & LLMs.txt - Add LLMs.txt to help AI and LLMs understand your store. | Shopify App Store
+If you’re coming from the Shopify Community, you can use it for free for ever. Just install the app, scroll down and enter the promo code autoblogger.

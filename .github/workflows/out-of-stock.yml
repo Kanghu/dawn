@@ -1,0 +1,31 @@
+name: Out-of-stock products
+
+on:
+  schedule:
+    # 04:17 UTC = 07:17 in Bucharest (06:17 in winter). Runs from the default branch only.
+    - cron: "17 4 * * *"
+  workflow_dispatch:
+    inputs:
+      apply:
+        description: "Write changes (leave unchecked for a dry run)"
+        type: boolean
+        default: false
+
+concurrency:
+  group: out-of-stock
+
+jobs:
+  run:
+    runs-on: ubuntu-latest
+    timeout-minutes: 120
+    steps:
+      - uses: actions/checkout@v5
+      - uses: actions/setup-node@v5
+        with:
+          node-version: 24
+      - name: Tag, hide and restore products
+        run: node scripts/out-of-stock/out-of-stock.mjs ${{ (github.event_name == 'schedule' || inputs.apply) && '--apply' || '' }}
+        env:
+          SHOPIFY_STORE: d8cgqq-8s.myshopify.com
+          SHOPIFY_CLIENT_ID: ${{ secrets.SHOPIFY_CLIENT_ID }}
+          SHOPIFY_CLIENT_SECRET: ${{ secrets.SHOPIFY_CLIENT_SECRET }}

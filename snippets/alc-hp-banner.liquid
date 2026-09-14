@@ -1,0 +1,92 @@
+{%- comment -%}
+  Campaign hero banner for the Custom Liquid section at the top of the homepage and the
+  campaign collection templates: a wide image from 769px up and a mobile image below,
+  both named as they appear in Content > Files.
+
+  The banner is the page's LCP element, so it is never lazy-loaded and gets
+  fetchpriority="high". The srcset serves roughly the rendered size instead of the
+  original upload that file_url returns, and width/height reserve the space before the
+  image arrives. A filename missing from Files falls back to its file_url.
+
+  Accepts:
+  - desktop_filename {String}
+  - mobile_filename {String}
+  - url {String} Link target
+  - alt {String}
+
+  Usage:
+  {% render 'alc-hp-banner',
+    desktop_filename: 'HP_B2S_WIDE_RO.png',
+    mobile_filename: 'HP_B2S_MOBILE_RO.png',
+    url: target_url,
+    alt: 'Back to School Sale'
+  %}
+{%- endcomment -%}
+{%- liquid
+  assign desktop_image = images[desktop_filename]
+  assign mobile_image = images[mobile_filename]
+-%}
+<a class="hp-banner-link" href="{{ url }}" aria-label="{{ alt | escape }}">
+  <picture class="hp-banner">
+    {%- if desktop_image != blank %}
+      <source
+        media="(min-width: 769px)"
+        srcset="{% render 'alc-image-srcset', image: desktop_image, widths: '1000,1300,1600,1950', max_width: 2600 %}"
+        sizes="(min-width: 1300px) 1300px, 100vw"
+        width="{{ desktop_image.width }}"
+        height="{{ desktop_image.height }}"
+      >
+    {%- else %}
+      <source media="(min-width: 769px)" srcset="{{ desktop_filename | file_url }}">
+    {%- endif -%}
+
+    {%- if mobile_image != blank %}
+      <img
+        src="{{ mobile_image | image_url: width: 828 }}"
+        srcset="{% render 'alc-image-srcset', image: mobile_image, widths: '414,640,828,1080', max_width: 1290 %}"
+        sizes="100vw"
+        width="{{ mobile_image.width }}"
+        height="{{ mobile_image.height }}"
+        alt="{{ alt | escape }}"
+        fetchpriority="high"
+        class="hp-banner__img"
+      >
+    {%- else %}
+      <img src="{{ mobile_filename | file_url }}" alt="{{ alt | escape }}" fetchpriority="high" class="hp-banner__img">
+    {%- endif %}
+  </picture>
+</a>
+
+<style>
+  .hp-banner-link {
+    display: block;
+    width: 100%;
+    text-decoration: none;
+  }
+
+  .hp-banner {
+    display: block;
+    width: 100%;
+    max-width: 1300px;
+    margin: 0 auto;
+    line-height: 0;
+  }
+
+  .hp-banner__img {
+    display: block;
+    width: 100%;
+    height: auto;
+  }
+
+  @media (max-width: 768px) {
+    .hp-banner-link {
+      width: 100vw;
+      margin-left: calc(50% - 50vw);
+      margin-right: calc(50% - 50vw);
+    }
+
+    .hp-banner {
+      max-width: 100%;
+    }
+  }
+</style>

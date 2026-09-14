@@ -1,0 +1,124 @@
+
+
+Help
+
+Log in
+
+Contents
+
+## Shopify Catalog and product discovery for agentic storefronts
+
+## Note
+Google AI Mode and Gemini is rolling out to eligible stores through Shopify's agentic storefronts. Direct checkout is also rolling out to Google users and might not yet be available in your store.
+
+Your eligible products are automatically discoverable by AI channels through Shopify Catalog, as well as other methods such as web crawling and indexing, or through product feeds that you own and share with companies for other purposes, for example, for advertising with Google.
+
+Products are made available to Google AI Mode and Gemini through the Google & YouTube sales channel, and to Meta surfaces through the Facebook and Instagram by Meta sales channel.
+
+You can choose to remove Shopify Catalog access to your products for ChatGPT or Microsoft Copilot, however your products might still be displayed through other external discovery and listing methods. To hide products completely from AI channels, refer to Hiding products from being discoverable by AI channels.
+
+## On this page
+- Shopify Catalog product data mapping and product grouping
+- AI crawler access and robots.txt
+- Understanding your store information that AI agents can find
+- Hiding products from being discoverable by AI channels
+- B2B and wholesale product considerations for agentic storefronts
+
+## Shopify Catalog product data mapping and product grouping
+
+When your products are syndicated to AI channels by Shopify Catalog, the products are listed by default with their title, description, options, images, price, availability, and other key attributes, all structured in a way that AI agents can parse and understand. Shopify Catalog continuously updates your product data, ensuring that there's accurate inventory and pricing across every AI channel.
+
+If your product data, such as title, description, and category, are stored in custom fields, then you can use Shopify Catalog Mapping to ensure that the product data is correctly sourced for agentic storefronts. Shopify Catalog Mapping is most helpful for stores with custom data and grouping logic for their products, such as metafields, metaobjects, tag prefixes, or separators or delimiters in product titles.
+
+## AI crawler access and robots.txt
+
+Shopify Catalog is the primary method for agentic storefronts to receive your product data. AI crawlers might also access your store directly through the open web. Crawler access is controlled in the following two layers:
+
+- Network layer: Bot management is handled directly for stores on Shopify, and you don't need to take any action. Shopify doesn't recommend a proxy configuration in front of Shopify, and can't provide support for this either.
+
+- /robots.txt layer: You can allow or block specific user-agent crawlers by customizing your store's robots.txt.liquid template. The rules that you set in your /robots.txt file are directional and advisory, and not all crawlers are guaranteed to follow them.
+
+## Note
+Blocking AI crawlers at the /robots.txt or network layer affects only open-web discoverability. It doesn't stop your product data from being sent by Shopify Catalog to the agentic storefronts that you've activated.
+
+## Understanding your store information that AI agents can find
+
+Every Shopify store automatically serves the following discovery URLs that AI agents can read to learn how your store works:
+
+- /agents.md — this is your canonical agent discovery URL, which is the source of truth and the primary location for agent discovery information.
+
+- /llms.txt and /llms-full.txt — these URLs are compatible with older AI crawlers that search for the specific URL conventions, and they can serve the same information as /agents.md.
+
+By default, all three URLs return the same content, which includes context such as your store name, store URL, sitemap link, store policies, and discovery endpoints for other types of store information. You don't need a third-party app to generate these files. Shopify Catalog is the authoritative product data feed to your agentic channels. The agent discovery files are separate from Shopify Catalog, and they don't replace any Shopify Catalog capabilities.
+
+If you want to customize what appears in your store's agent discovery files, then you can add any of the following Liquid templates to your theme:
+
+- agents.md.liquid changes the content that's served from all three URLs.
+
+- llms.txt.liquid changes content only for the /llms.txt URL.
+
+- llms-full.txt.liquid changes content only for the /llms-full.txt URL.
+
+If you have both agents.md.liquid and a URL-specific template, such as llms.txt.liquid, then it's the URL-specific template that defines the content for that specific URL.
+
+For more information, refer to the developer documentation about agents.md.liquid, llms.txt.liquid, and llms-full.txt.liquid.
+
+## Customize your agent discovery files
+
+- 
+From your Shopify admin, go to Online Store.
+
+- 
+For the theme that you want to edit, click  > Edit code.
+
+- 
+Click Add a new template, and then select agents.md, llms.txt, or llms-full.txt, depending on which URLs you want to override.
+
+- 
+Click Create template.
+
+- 
+Make your edits, and then click Save.
+
+For product data accuracy and product discoverability with AI agents, you should focus on having complete and well-structured product information in Shopify Catalog, and on following SEO best practices. For deeper Shopify Catalog data optimization, such as metafields, conversational attributes, and mapping configurations, refer to Mapping your product data sources for Shopify Catalog.
+
+## Hiding products from being discoverable by AI channels
+
+Even when you opt out of Shopify Catalog access with Shopify's agentic storefronts, your products can still be found in AI channels in the same way that they're listed in traditional search engines such as Google. For example, if one of your products can be discovered in a Google web search, then the same product could also be found by a customer using Google Gemini. Shopify can't control any other ways in which your products might be listed by AI channels.
+
+If you need to completely hide your products from being discoverable by AI channels, then you can set the product status to be Unlisted.
+
+## Caution
+Setting a product as Unlisted to hide specific products from being discoverable by AI channels also hides the product from sitemaps, search engines such as Google, and your online store search.
+
+## B2B and wholesale product considerations for agentic storefronts
+
+Shopify's agentic storefronts support only direct-to-consumer (D2C) sales. Products that are sold exclusively to business or wholesale customers are automatically excluded from AI channels when Shopify can identify them.
+
+## How Shopify identifies B2B-only products
+
+Shopify uses the following methods to detect and exclude B2B-only products:
+
+- B2B catalogs: Products that you publish only to B2B markets, or in product catalogs that are assigned to specific companies and locations.
+
+- Customer account requirements: Products that require your customers to authenticate themselves on your store before viewing them.
+
+- Storefronts in private mode: Products that require your customers to enter a password on your store before accessing them.
+
+## Note
+If you sell the same products to both B2B and D2C customers, then your products are included in your agentic storefronts using the D2C price that you set. B2B pricing doesn't display on agentic storefronts.
+
+## Considerations for custom B2B store setups
+
+If you use third-party apps or custom theme modifications to manage B2B pricing or product access controls on your store, such as hiding prices until customers log in, then Shopify might not be able to detect that these products are intended only for B2B customers, and they might display on your agentic storefronts.
+
+To prevent B2B-only products from displaying on your agentic storefronts, consider any of the following options:
+
+- Use Shopify B2B, including catalogs and companies, for your wholesale business.
+
+- Hide specific products from AI channels when they shouldn't be discoverable by D2C customers.
+
+- If you're on the Shopify Plus plan, then use a separate expansion store for B2B. Learn more about choosing a store type for your B2B business.
+
+Leave feedback
+

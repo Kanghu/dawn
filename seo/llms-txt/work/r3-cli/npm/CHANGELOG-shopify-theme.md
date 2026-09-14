@@ -1,0 +1,1978 @@
+# @shopify/theme
+
+## 4.8.0
+
+### Patch Changes
+
+- @shopify/cli-kit@4.8.0
+
+## 4.7.0
+
+### Patch Changes
+
+- 81c77bf: Report missing Theme Check config files as expected user errors.
+- Updated dependencies [5651055]
+- Updated dependencies [92c7be5]
+- Updated dependencies [ba02a02]
+- Updated dependencies [cd9c440]
+  - @shopify/cli-kit@4.7.0
+
+## 4.6.0
+
+### Minor Changes
+
+- 5187101: Add a `--reconciliation-strategy` option to `theme dev`.
+
+### Patch Changes
+
+- 6c6cc2a: Allow app and theme commands to authenticate with a Shopify account alias without changing the current CLI session.
+- 196cea0: Fix 401/403 on cart AJAX endpoints during `shopify theme dev`
+- 1c23036: Stop theme check from crashing when a theme file becomes unreadable while the checks run
+- ba47dd4: Fix `theme dev` and other theme commands adopting `store auth` sessions with insufficient scopes; only `theme pull` and `theme push` reuse them now.
+- Updated dependencies [6c6cc2a]
+- Updated dependencies [77f8eca]
+- Updated dependencies [700bbe9]
+  - @shopify/cli-kit@4.6.0
+
+## 4.5.0
+
+### Patch Changes
+
+- @shopify/cli-kit@4.5.0
+
+## 4.4.0
+
+### Minor Changes
+
+- c954426: Send Shopify-managed crawler signature headers with theme development storefront requests.
+
+### Patch Changes
+
+- 73cebde: Allow `shopify theme pull` and `shopify theme push` to authenticate with a matching `shopify store auth` session when no theme password is provided.
+- 25d9adb: Ignore atomic-write temporary files (e.g. `blocks/foo.liquid.tmp.93809.4dbd82e0b95a`) in the theme dev watcher to prevent crashes when editors save files.
+- Updated dependencies [8ac5e57]
+- Updated dependencies [ac82281]
+- Updated dependencies [3ad1710]
+- Updated dependencies [8604491]
+- Updated dependencies [eddf36d]
+- Updated dependencies [73cebde]
+  - @shopify/cli-kit@4.4.0
+
+## 4.3.0
+
+### Patch Changes
+
+- Updated dependencies [08eb0ad]
+- Updated dependencies [d22ad61]
+- Updated dependencies [2b3d2e2]
+  - @shopify/cli-kit@4.3.0
+
+## 4.2.0
+
+### Minor Changes
+
+- f2c1f50: Add a new `--standard-events-inspector` flag to the `shopify theme dev` command to inject the Standard Storefront Events inspector into storefront previews.
+
+### Patch Changes
+
+- e50cf1c: Set localhost variants and run host header validations to prevent DNS rebinding vulnerability
+- 38bc94a: Fix `theme dev` hot reload not working in the theme editor by allowing the Online Store Editor origin through the dev server's CORS policy
+- 30895ae: Bump @shopify/theme-hot-reload to address HMR issues
+- c9c2faa: Fix `theme dev` serving a same-named theme asset in response to a `/cdn/extensions/...` request. When a theme and an installed app extension shared an asset filename (e.g. `app.js`), the local dev server's theme matcher swallowed the extension URL prefix and returned the theme file. Extension asset requests now fall through to the CDN proxy (or to a locally-developed extension's filesystem) as intended.
+- 16d24c5: `theme dev` now shows a clear error when `--port` is given an invalid value, instead of crashing. The port must be a number between 1 and 65535.
+- 89535d6: Fix `theme dev` preview occasionally rendering the live theme by preserving the Shopify `_shopify_essential` cookie in redirects
+- edcb122: Bump Shopify/theme-tools packages:
+
+  - @shopify/theme-check-node: 3.26.0 → 3.26.1
+  - @shopify/theme-language-server-node: 2.21.2 → 2.21.3
+
+- Updated dependencies [ef14e49]
+- Updated dependencies [334e2d4]
+- Updated dependencies [16d24c5]
+  - @shopify/cli-kit@4.2.0
+
+## 4.1.0
+
+### Patch Changes
+
+- Updated dependencies [8943b19]
+- Updated dependencies [5156580]
+  - @shopify/cli-kit@4.1.0
+
+## 4.0.0
+
+### Major Changes
+
+- a960ee9: Remove the deprecated `shopify theme serve` command. Use `shopify theme dev` instead.
+- 0c35553: Drop support for Node 20
+
+### Patch Changes
+
+- 1e8963e: Upload `config/settings_schema.json` before any other theme file. Fixes `theme push` failing on the first push when blocks or sections reference a `color_palette` theme setting.
+- c6a114d: [internal] Fix `theme dev` analytics being dropped on Ctrl+C.
+- 8f4e546: Fix theme dev proxy to support SFAPI requests.
+- Updated dependencies [67745ee]
+- Updated dependencies [a7d448b]
+- Updated dependencies [2cb5f44]
+- Updated dependencies [0c35553]
+  - @shopify/cli-kit@4.0.0
+
+## 3.94.0
+
+### Patch Changes
+
+- 3e3c971: Bump Shopify/theme-tools packages
+  - @shopify/theme-check-node: 3.24.0 → 3.25.0
+  - @shopify/theme-language-server-node: 2.20.2 → 2.21.0
+
+  Includes ValidScopedCSSClass theme check, color_palette input support, and various fixes.
+
+- b2fc8bc: Fix `ENOTDIR` error when a file path is passed to `--path` flag in theme commands. The flag now validates that the provided path is a directory and shows a helpful error message suggesting the parent directory instead.
+- a95ee0f: Add error handler to chokidar file watcher to prevent unhandled exceptions
+- Updated dependencies [04b8492]
+  - @shopify/cli-kit@3.94.0
+
+## 3.93.0
+
+### Minor Changes
+
+- f0db25b: Add --json flag to theme preview to configure a json output
+- 9a39b44: Add `--development-context` flag to `theme push`
+
+  The new `--development-context` flag (short: `-c`) allows you to specify a unique identifier for a development theme context (e.g., PR number, branch name). This gives developers the ability to programmatically create or reuse named development themes; particularly useful when running `shopify theme push` in a CI environment where you might want to associate a particular development theme to a branch or pull request.
+
+- 962e932: Add support for theme previews using a JSON via `theme preview`. Pass a JSON via --override to quickly preview overrides on a live theme. Also adds a --preview-id flag to to handle in-place updates for previews created from an override JSON.
+
+### Patch Changes
+
+- ae77bc6: Fix theme editor shortcut tracking fetch requests instead of page navigation
+- a910517: Add a 250ms debounce on our filewatcher for themes to stop potential file deletes
+- 34e19bc: Change wording for current development theme in `theme list`
+
+  Previously you could only have one development theme at a time so we'd add `[yours]` beside the development theme that you were currently attached to. Now you can have multiple development themes so we're changing the language to `[current]` to show which theme you are actively connected to.
+
+- 5dd39d0: Fix Cart rate limiting issue
+- Updated dependencies [07d4304]
+- Updated dependencies [35ba22b]
+- Updated dependencies [a52b36d]
+- Updated dependencies [34e19bc]
+- Updated dependencies [9a39b44]
+  - @shopify/cli-kit@3.93.0
+
+## 3.92.0
+
+### Patch Changes
+
+- ce34c6d: Change download files loop to a Promise all to ensure all files are always downloaded and display more accurate progress
+  - @shopify/cli-kit@3.92.0
+
+## 3.91.0
+
+### Patch Changes
+
+- 947025f: Fix the default environments infrastructure so it doesn’t fail when running commands that don't require authentication
+- d0e135b: Fix 401 Unauthorized errors on cart AJAX endpoints during `shopify theme dev`
+- 7750c0c: Fix issue where certain theme commands were failing to have sessions created
+- 6a7bfce: Fix hot-reloading for the {% javascript %} tag when serving compiled assets scripts with multibyte characters
+- 5e13c83: Add --listing flag to theme dev, push, and share commands
+- 12a4037: Ignore API collect endpoint in `shopify theme dev` and `shopify app dev` commands
+- 8048cb9: Protect SSRF vulnerability in proxy requests when hosts don't match
+- Updated dependencies [fa8364d]
+- Updated dependencies [19faac6]
+- Updated dependencies [5e13c83]
+  - @shopify/cli-kit@3.91.0
+
+## 3.90.0
+
+### Patch Changes
+
+- d935cfb: Fix `shopify theme dev --theme-editor-sync` to avoid deleting files during race conditions, especially when multiple changes come from an external process (e.g., AI coding tools)
+- Updated dependencies [f903c47]
+- Updated dependencies [f9cf001]
+  - @shopify/cli-kit@3.90.0
+
+## 3.89.0
+
+### Patch Changes
+
+- e92155e: Abort theme command when an invalid environment is passed in so it doesn't fall back to cached store data
+- 04917c9: Fix issue where theme dev shortcuts keys would not work when using the 'theme-editor-sync' flag
+- eda441d: Create a slight delay when keypressing theme dev shortcut keys to stop accidental copy pasting and opening up a ton of tabs
+  - @shopify/cli-kit@3.89.0
+
+## 3.88.0
+
+### Minor Changes
+
+- 6f306ee: Introduce `AGENTS.md` file support in `shopify theme init`
+
+### Patch Changes
+
+- 226b49e: Fix a possible CORS vulnerability where a website could read data from the localhost server
+- 9450302: [Bug fix] Remove ability to sync Liquid files by checksum
+- cf9a602: Return error when running `theme profile` using a Theme Access password
+- Updated dependencies [6f306ee]
+- Updated dependencies [9b97dfa]
+- Updated dependencies [9450302]
+  - @shopify/cli-kit@3.88.0
+
+## 3.87.0
+
+### Minor Changes
+
+- 32f489c: Add ability to notify user when Liquid files are rewritten remotely
+
+### Patch Changes
+
+- a80d5c9: Mock captcha and api-collect requests in CLI proxy.
+- 3ac7982: Editor shortcut (e) will now navigate to your most recently viewed template
+
+  Hitting `e` while your server is running (`shopify theme dev`) will now open
+  the theme editor in the Admin to the most recently rendered template that you
+  viewed in the browser (e.g. if you have multiple tabs open it will use the
+  one that was rendered most recently).
+
+- Updated dependencies [a407016]
+- Updated dependencies [64d1fc7]
+- Updated dependencies [c30af25]
+- Updated dependencies [60eb2a2]
+- Updated dependencies [14c1504]
+- Updated dependencies [32f489c]
+  - @shopify/cli-kit@3.87.0
+
+## 3.86.0
+
+### Minor Changes
+
+- a657b4b: Add --allow-live flag to theme dev to allow development on live themes without confirmation
+
+### Patch Changes
+
+- d59a924: Bump theme-tools packages
+- Updated dependencies [e81c29c]
+- Updated dependencies [7fad402]
+  - @shopify/cli-kit@3.86.0
+
+## 3.85.0
+
+### Minor Changes
+
+- c2b6097: Abort theme commands if path doesn't exist
+- 7f54a36: Ensure commands run in multiple environments use the correct store URL
+- b855ec1: Allow theme push and share commands to be called with multiple environments
+- 84a7b10: Remove deprecated positional arguments from theme delete command
+- 74fc99c: Commands that don't require authentication should not create sessions when ran with multiple environments
+- 9966ba6: Allow commands run in multiple environments to act on the same store URL
+- acf3248: Allow theme check command to be called with multiple environments
+- 1416fe1: Ensure user provided flag values override defaults in commands with multiple environments
+- 1ee6a38: Allow theme delete command to be called with multiple environments
+- 809d355: Display warning when multiple environment flags are provided to profile, metafields pull, open, dev, or console theme commands
+- f8df96b: Allow theme pull command to be called with multiple environments
+- c5e181c: Extend ThemeCommand's command method to accept both flags and arguments from CLI
+
+### Patch Changes
+
+- 87bedd2: No longer raise password errors when users use custom app passwords on `shopify theme pull/push` commands
+- 9574ca8: Allow publish command to be called with multiple environments
+- 4d377e8: Remove leftover references to CLI2 from theme commands
+- c12289e: Moved analytics logging in theme command layer to ensure we properly log all events
+- abff4d4: Fixed issue with theme.toml files that have a store name without the full domain from being parsed in multi-environment mode
+- 8702cdc: Fix theme file size calculation to improve upload batching reliability
+- f1f5581: Improve `shopify theme dev` to prevent accidental updates to live themes
+- 95c82ef: Bump theme-tool packages
+- Updated dependencies [b855ec1]
+- Updated dependencies [a883d5b]
+- Updated dependencies [74fc99c]
+- Updated dependencies [be916a1]
+- Updated dependencies [1416fe1]
+- Updated dependencies [6497461]
+  - @shopify/cli-kit@3.85.0
+
+## 3.84.0
+
+### Minor Changes
+
+- 1f4fd78: Allow multi-environment theme commands to accept flags from CLI
+- 9b872dc: Update fetched AI instructions
+- b382a89: Prompt for confirmation before running multi-environment theme commands that allow `--force` flag
+- 281b50b: Allow theme rename command to be run with multiple environments
+- d19e3d7: Uses \_shopify_essential cookie for storefront authentication
+- a12a7cc: Allow commands run with multiple environments to require "one of" a list of flags
+
+### Patch Changes
+
+- e301450: Remove request logs from the theme app extensions development server for a cleaner developer experience
+- d2ad0b4: Fixed theme dev error on HTTP 304 patched responses
+- 828bf47: Fixed issue with json files being returned as html/text content type in theme dev
+- b47f879: Removed workflows folder in .github when cloning skeleton theme
+- 1161f7a: Update docs for 'ignore' and 'only' flags for theme push/pull
+- 52f999f: Provide error when using non-theme access app password
+- 4839fb0: Remove .git dir after initializing new theme
+- 45ff625: Add store domain logging for theme commands and update monorail with new theme related even types
+- 2c2999c: Bump theme-tools packages
+- f330c9f: Add a warning for users declaring multiple environments in a command that only supports a single environment
+- bfc6325: Prevent `shopify app dev` sessions from opening multiple tabs in the browser during re-authentication
+- 9dd353c: Fix `shopify app dev` to serve local assets as expected
+- Updated dependencies [9b872dc]
+- Updated dependencies [864c687]
+- Updated dependencies [40e2d6f]
+- Updated dependencies [62d6b9a]
+  - @shopify/cli-kit@3.84.0
+
+## 3.83.0
+
+### Minor Changes
+
+- 521fb07: Add new `theme duplicate` command to duplicate store themes
+
+### Patch Changes
+
+- bb061b9: Fix performance issue on `shopify theme dev` command
+- ee353e9: No longer abort theme GraphQL requests on the client side
+- f4f29ec: Clean up theme command to run either single/no environment or multiple environments
+- 4ff98f1: Bump theme-tools packages
+- Updated dependencies [521fb07]
+- Updated dependencies [b1feb1d]
+- Updated dependencies [ee353e9]
+- Updated dependencies [e73e9a5]
+  - @shopify/cli-kit@3.83.0
+
+## 3.82.0
+
+### Patch Changes
+
+- 02b417b: Ensure all theme commands accept the --path flag
+- 9b52391: Add /listings folder to theme package command
+- 5188073: Improvement and fixes when handling multi-environment commands
+  - Fixes a bug where passing a single environment to multi-env commands would cause it to fail if the environment didn't have all of the required attributes for multi-env
+  - Updates output when running multi-env commands to ensure the results from each command don't overlap one another
+
+- 4176bf5: Add clarity to helper text when a store is missing
+- c9c07b5: Fix `_shopify_essential` issues related to data replication and unstable connections
+- Updated dependencies [0edf793]
+- Updated dependencies [eee4978]
+  - @shopify/cli-kit@3.82.0
+
+## 3.81.1
+
+### Patch Changes
+
+- b838f21: Remove git remote after cloning theme in `theme init` command to prevent accidental pushes to the skeleton theme repository
+- Updated dependencies [b838f21]
+  - @shopify/cli-kit@3.81.1
+
+## 3.81.0
+
+### Minor Changes
+
+- c39ba5e: Add default environment functionality
+
+  You may now optionally define a default environment in your environment config
+  file (e.g. `shopify.theme.toml`) that will be automatically injected into the
+  running command without needing to specify it. The name of the environment must
+  be `[environments.default]`.
+
+- eb19684: Removed overrides for SHOPIFY_CLI_NO_THEME_BUNDLING and SHOPIFY_CLI_BUNDLED_THEME_CLI
+- 24aa2dd: Drop support for Node 18
+- ce3dfdc: Print all log messages to stderr instead of stdout
+- 219e6d1: Prompt users who run `shopify theme init` to create their AI file
+
+### Patch Changes
+
+- e18c9f6: Shopify/skeleton-theme is the default theme for `theme init`
+- dc78463: Make local compiled assets more resilient to Liquid syntax errors.
+- 451a3a8: Update links to shopify dev docs
+- 53c2a92: Make hot reload events more resilient to Liquid syntax errors.
+- 642bb3e: Change `theme download` progress bar to render percentage
+- Updated dependencies [23d4b0b]
+- Updated dependencies [16406ae]
+- Updated dependencies [eb19684]
+- Updated dependencies [24aa2dd]
+- Updated dependencies [9a9e51e]
+  - @shopify/cli-kit@3.81.0
+
+## 3.80.0
+
+### Minor Changes
+
+- ae9e30d: Hot-reloading in `shopify theme dev` now supports `{% javascript %}` tags
+
+### Patch Changes
+
+- c2673be: Ensure that theme console paths are prefixed with a slash
+- 431fd6e: Update `theme init` to use skeleton theme
+- 9cae395: Display theme console errors inside banner
+- 737c9ab: Support hot reloading after changes to Liquid `{% stylesheet %}` tag.
+- eaa8b7c: Fix an issue with hot-reloading the compiled assets (scripts.js, block-scripts.js, etc)
+- 44e8bc7: Improved theme upload ordering to ensure layout files are uploaded before templates
+- acc904f: Bump Shopify/theme-tools packages to
+  - Fix validation for static blocks in JSON templates
+  - Introduce ability the disable theme checks for the next Liquid statement
+
+- Updated dependencies [0cc639e]
+- Updated dependencies [431fd6e]
+- Updated dependencies [8422004]
+- Updated dependencies [6517e43]
+  - @shopify/cli-kit@3.80.0
+
+## 3.79.0
+
+### Patch Changes
+
+- aa85a63: Bump theme-tools packages
+- 164bbbe: The hidden `.shopify` folder now has its own generic .gitignore file
+- d8f017d: Bump theme check & language libraries
+- d9c7b4c: Fix: Clear asset upload error overlay for deleted / renamed files
+- 4134504: Add the actual "errors" during theme upload to the JSON output from `shopify theme push --json`
+- Updated dependencies [f9ac5cf]
+- Updated dependencies [0b1e588]
+- Updated dependencies [94362f9]
+- Updated dependencies [4f17786]
+- Updated dependencies [036bcaf]
+- Updated dependencies [164bbbe]
+- Updated dependencies [68b53f6]
+- Updated dependencies [031feb7]
+  - @shopify/cli-kit@3.79.0
+
+## 3.78.0
+
+### Minor Changes
+
+- a50cc5e: Update 'shopify theme check'
+
+### Patch Changes
+
+- 5c18310: Fix requests to Section Rendering API that contain the same search param name multiple times (e.g. multiple filters for "size").
+- 3ec5649: Fixed an issue where CLI would not apply the SHOPIFY_FLAG_ENVIRONMENT flag
+  - @shopify/cli-kit@3.78.0
+
+## 3.77.0
+
+### Patch Changes
+
+- dbde56d: [BugFix] CLI can't force fetch metafields when run by language-server
+- 9f3c958: Bump `theme-check` packages
+- 0d1d9ce: Fix masking 404 errors as 200 when using Section Rendering API.
+- 4f7dcf7: Bump Shopify/theme-tools packages
+- 1163bb1: [internal] Remove unused metafield definition ownerType
+- f3f66ef: Update `theme info` command to support multiple environments
+  EX: `theme info -e env1 -e env2`
+- Updated dependencies [73c78ac]
+- Updated dependencies [36dccd6]
+  - @shopify/cli-kit@3.77.0
+
+## 3.76.0
+
+### Minor Changes
+
+- fca9c19: Render error overlay when `theme dev` encounters asset upload errors. A 500 status code is returned when the error overlay is rendered.
+
+### Patch Changes
+
+- 0b515f3: Fix 401 and 405 errors when rendering certain routes.
+- fa2fa08: Improve `shopify theme dev` to recover the session when theme ID mismatch errors happen
+- d361f3a: Fixed `shopify theme dev` to avoid emitting full page reload events when files are updated successfully, preventing conflicts with hot-reloading.
+- Updated dependencies [4a3895c]
+- Updated dependencies [38e8d7b]
+- Updated dependencies [b1ed29d]
+- Updated dependencies [6449aa6]
+  - @shopify/cli-kit@3.76.0
+
+## 3.75.0
+
+### Patch Changes
+
+- da606a6: Improve mechanism that adds `.shopify` to `.gitignore` to avoid duplicate entries
+- f3498c3: Fix the local dev proxy for `/checkouts` and `/accounts/logout` to avoid 401 and 403 errors.
+- 88ba848: Update `shopify theme push -x` documentation (it uploads, doesn't download)
+- Updated dependencies [da606a6]
+- Updated dependencies [4aee075]
+- Updated dependencies [ab407f3]
+  - @shopify/cli-kit@3.75.0
+
+## 3.74.0
+
+### Minor Changes
+
+- b7cda8c890: Add `theme profile` command which allows users to get a performance profile for Liquid rendering on a given page
+- 1b8ad07153: Give theme info a facelift using standard UI components
+- 6380277a7a: Unify how asset upload errors are reported in the `theme dev` command
+
+### Patch Changes
+
+- 7e34195c30: Store theme asset upload errors encountered while running the theme dev command
+- 1a5aec270d: Fix `shopify theme dev` to no longer fail when development themes expire in internationalized stores
+- 404fa77c90: When the `.shopify/metafields.json` file gets created, the CLI now proposes to add it to `.gitignore` by default
+- 5be14a5b08: Update documentation for `theme push --only`
+- f004019bb9: Utilize Admin API to determine if a storefront is password protected
+- Updated dependencies [7e34195c30]
+- Updated dependencies [1a5aec270d]
+- Updated dependencies [bb3b100731]
+- Updated dependencies [369351435b]
+- Updated dependencies [f004019bb9]
+  - @shopify/cli-kit@3.74.0
+
+## 3.73.0
+
+### Minor Changes
+
+- beab713acd: Developers can now use the `shopify theme metafields pull` command to download metafields, which can then be used for more refined code completion.
+
+### Patch Changes
+
+- 9d47c0f5f2: Support theme blocks in the `theme package` command
+- a92307dce8: Bump Shopify/theme-tools packages
+- df9d347d73: [Bug Fix] Reduce theme upload batch size to prevent timeout
+- 4d722c64fc: Ensure git directory is clean when running `theme pull`
+- Updated dependencies [beab713acd]
+- Updated dependencies [4d722c64fc]
+- Updated dependencies [03fb93e3c9]
+  - @shopify/cli-kit@3.73.0
+
+## 3.72.0
+
+### Patch Changes
+
+- @shopify/cli-kit@3.72.0
+
+## 3.71.5
+
+### Patch Changes
+
+- Updated dependencies [94a7d4ce4f]
+  - @shopify/cli-kit@3.71.5
+
+## 3.71.4
+
+### Patch Changes
+
+- Updated dependencies [94953a671e]
+  - @shopify/cli-kit@3.71.4
+
+## 3.71.3
+
+### Patch Changes
+
+- @shopify/cli-kit@3.71.3
+
+## 3.71.2
+
+### Patch Changes
+
+- Updated dependencies [a395820e7b]
+  - @shopify/cli-kit@3.71.2
+
+## 3.71.1
+
+### Patch Changes
+
+- @shopify/cli-kit@3.71.1
+
+## 3.71.0
+
+### Minor Changes
+
+- 5107f4e805: Add `--strict` flag to `theme push` command, which will report `theme check` warnings and abort the operation if there are errors.
+- 057e2c6189: Add shortcut keys to theme dev commands
+
+### Patch Changes
+
+- ff994c34d3: Fix password validation to support localized URLs when authenticating storefronts.
+- 1e267a2e04: Update `shopify theme dev` to no longer display redundant URLs
+- 7017b9e31c: Improve storefront password detection for password-protected shops with redirects
+- 9548a34471: Fix password validation to handle capitalized store names on `shopify theme dev`
+- 33f713e06e: Bump @shopify/theme-check-node & @shopify/theme-language-server
+- Updated dependencies [5fd19d2920]
+- Updated dependencies [5531731c11]
+  - @shopify/cli-kit@3.71.0
+
+## 3.70.0
+
+### Minor Changes
+
+- ade20307dc: Removes Ruby implementation of the `theme push` command
+- b981aea41c: Removes the Ruby implementation of the `theme push` command
+
+### Patch Changes
+
+- 404cd2674c: Added a warning to help users troubleshoot when a development theme is missing required files
+- 5aecb3eecb: Prevent the `shopify theme dev` command from terminating by refreshing the session
+- 82786bc78c: Bump Shopify/theme-tools packages
+- 57abf0b31c: Fix the theme ID mismatch error, where the live theme ID is returned instead of the development theme ID
+- eccb52dccd: Fixes an issue in the `theme push` command where a confirmation prompt is rendered to users who provide the `--allow-live` flag
+- 7d89068e32: Fix an issue in `app dev` where host themes would have empty files
+- 8120536219: Show an error when the `config/settings_schema.json` file cannot be parsed.
+- Updated dependencies [03b39a67b3]
+- Updated dependencies [33477dd9d7]
+  - @shopify/cli-kit@3.70.0
+
+## 3.69.0
+
+### Minor Changes
+
+- 82dd1daf8: Add a new option to create a theme on `shopify theme push`
+- 371d53d3e: Remove `legacy` flag and `Ruby` implementation for the following commands:
+  - `shopify theme console`
+  - `shopify theme dev`
+  - `shopify theme push`
+  - `shopify theme pull`
+
+### Patch Changes
+
+- a7f7dc300: Fix hot reloading of `.css.liquid` and `.js.liquid` assets.
+- 1fe7024e6: Fix the issue that prevents password-protected storefronts with an ampersand `&` from logging in, and improve the password prompt message to disambiguate passwords
+- c75c8e201: Remove the warning message from the ignore-module because some files can only be ignored using backward-compatible patterns
+- 87b52747d: Remove Liquid syntax error prettifier to avoid breaking the rest of the document.
+- 8c6906c06: Fix an issue with `shopify theme dev --theme-editor-sync` to prevent showing a remote file deletion error when the file has already been removed
+- 3b6159e8a: Use the new implementation of shopify theme share that no longer depends on Ruby to work.
+  This also fixes the command so it no longer ignores `.shopifyignore`.
+- 265d3e178: Handle background async errors and avoid process exit in some scenarios.
+- a38952cd6: Improved warning message on shopify theme push --json by removing reference to [object Object]
+- df7b178da: Avoid process exit when failing to delete a file from the remote theme.
+- 707b901a7: Make `shopify theme dev` more resilient to HTTP errors with the Admin API
+- 3f10612f0: Fix CDN URls in .css.liquid files
+- 41bfd221f: Fix cart requests in the local proxy to avoid 401-Unauthorized errors
+- a6abeb289: Show preview url for gift cards in the initial server logs.
+- d9fff2c30: Update the ignore module (`--only`/`--ignore`/`.shopifyignore`) to be backward compatible with (Ruby) Shopify CLI 2
+- 89250c301: Fix ignore patterns
+- 1f5d13cf1: Fix serving local assets from the root path for backward compatibility.
+- 51178f2f6: Fix `shopify theme pull --only <value>` so it does not delete ignored files
+- Updated dependencies [283aa815c]
+  - @shopify/cli-kit@3.69.0
+
+## 3.68.0
+
+### Patch Changes
+
+- fc7d5ce58: Fix content in SVG files
+- cce54b10b: Fix Theme Access authentication on `shopify theme dev` and `shopify theme console` commands
+- 53459a23f: Fixes a bug where some users were unable to intialize their app dev command with theme app extensions
+- 492225c47: Fix cart/add request in development.
+- dc30dca87: Fix encoding of certain characters in HTML responses in the new theme dev server.
+- a2f31c249: Fix hot reload on sections
+- a1887fc14: Fix serving local assets that contain non-printable characters.
+- d6c661f06: Update checksum calculation to no longer minify assets before calculating
+- Updated dependencies [4d89691ad]
+  - @shopify/cli-kit@3.68.0
+
+## 3.67.0
+
+### Minor Changes
+
+- 4b4146186: Default to Typescript implementation for theme commands. Legacy implementation is stil available via the `--legacy` flag.
+
+### Patch Changes
+
+- 60ff8754c: Bump Shopify/theme-tools packages
+- Updated dependencies [435c88bf1]
+- Updated dependencies [9cc4d7c1d]
+- Updated dependencies [e9aeab01e]
+  - @shopify/cli-kit@3.67.0
+
+## 3.66.0
+
+### Minor Changes
+
+- f8f55f6c56: Release the developer preview for the Theme Console command
+
+### Patch Changes
+
+- 640420acd0: Update the theme selector to no longer match partial theme names by default; use the '\*' character to enable partial matching
+- 40a7b1229a: CLI now better handles 429 rate limiting for large projects
+- Updated dependencies [05cbe63566]
+- Updated dependencies [40a7b1229a]
+- Updated dependencies [dd4b730962]
+  - @shopify/cli-kit@3.66.0
+
+## 3.65.0
+
+### Patch Changes
+
+- 19f230fca5: Prevent the live theme from being set in the `shopify theme dev` session by Shopify infrastructure
+  - @shopify/cli-kit@3.65.0
+
+## 3.64.0
+
+### Patch Changes
+
+- 13c246e60: Avoid loop with static assets when users pass the `--theme-editor-sync` flag
+- c053fd555: Avoid loop when users pass the `--theme-editor-sync` flag in the `shopify theme dev` command
+- Updated dependencies [f76debde5]
+- Updated dependencies [593019155]
+  - @shopify/cli-kit@3.64.0
+
+## 3.63.0
+
+### Minor Changes
+
+- 53811a2dc: Bump Shopify/theme-tools packages
+- 2a6341b3b: - Add VariableName check
+  - Update Theme Check to use jsonc parser
+
+### Patch Changes
+
+- 9d3a6bade: Updated nx and eslint rules
+- Updated dependencies [9d3a6bade]
+  - @shopify/cli-kit@3.63.0
+
+## 3.62.0
+
+### Patch Changes
+
+- Updated dependencies [08b6acce2]
+- Updated dependencies [2ae9341e7]
+  - @shopify/cli-kit@3.62.0
+
+## 3.61.0
+
+### Patch Changes
+
+- Updated dependencies [79a951f3c]
+- Updated dependencies [87a6cc590]
+- Updated dependencies [0c117d0f4]
+- Updated dependencies [009a43078]
+  - @shopify/cli-kit@3.61.0
+
+## 3.60.0
+
+### Minor Changes
+
+- 0c8800c87: Enables filtering by theme name in commands that use the theme-selector
+
+### Patch Changes
+
+- ea177a190: Render progress bar for theme uploads to stderr
+- d5a05e7cc: - Fix the `shopify theme dev` proxy to use the development theme, even when users have a browser session with the live theme loaded
+- d5a05e7cc: - Fix `shopify theme dev` and `shopify theme console` proxies following session changes
+  - Bring the legacy `shopify theme push` implementation in CI/CD workflows
+- 031aa2d0b: Fix unpublished themes being marked as development themes
+- 5343a3672: Fix issue that prevents `shopify theme console` from evaluating results when another 'preview_theme_id' is set
+- 601020909: Fix the `shopify theme dev`/`shopify theme console` proxy to handle cookies as expected, and ensure they no longer render the live theme instead of the development theme
+- Updated dependencies [0ff96c777]
+  - @shopify/cli-kit@3.60.0
+
+## 3.59.0
+
+### Minor Changes
+
+- ca218cd31: Shopify CLI now defaults to be Global
+- ca218cd31: Rename: Render text input prompt when 'name' flag not provided
+
+### Patch Changes
+
+- ca218cd31: - Theme Push: Fix issue with unresponsive server when password flag is provided
+  - Theme Push: Add 'theme' key to root node of JSON output
+- ca218cd31: Fix `shopify theme dev` issue to avoid previewing the live theme instead of the development one
+- ca218cd31: Activate the new implementation of `shopify theme push` in CI/CD workflows to support contextual assets
+- ca218cd31: Introduce support to the `blocks/` directory in the `shopify theme push` command
+- ca218cd31: Update theme selection text for `shopify theme push` command
+- ca218cd31: Improve Glob Pattern subdirectory mismatch error handling
+- ca218cd31: Bump Shopify/theme-tools packages
+  - TL;DR
+    - (New) `ValidJson` check - JSON schema validation on `.json` files
+    - (New) Section/block schema `t:` translation completion
+    - (Updated) `MatchingTranslations` check - extend support to `.schema.json` files
+    - (Updated) Translation completion is now fuzzy instead of partial
+    - Dynamic JSON schema management without requiring new releases
+    - Internal API changes
+  - https://github.com/Shopify/theme-tools/blob/main/packages/theme-language-server-node/CHANGELOG.md
+  - https://github.com/Shopify/theme-tools/blob/main/packages/theme-check-common/CHANGELOG.md
+
+- Updated dependencies [ca218cd31]
+- Updated dependencies [ca218cd31]
+  - @shopify/cli-kit@3.59.0
+
+## 3.58.0
+
+### Minor Changes
+
+- e0feb4414: - Refine `theme push` implementation to no longer require Ruby setup.
+  - Move Ruby implementation behind `--stable` flag
+- a0a69d9a2: Add support for retrieving single theme information via `shopify theme info --theme <themeNameOrID>` (other supported flags: `--store`, `--environment`, `--development`, `--json`)
+
+### Patch Changes
+
+- ab752de6e: Fix file pattern matching to obey glob patterns on beta version of `theme pull`
+- Updated dependencies [ab752de6e]
+- Updated dependencies [3affd6bbe]
+- Updated dependencies [cedd14e6c]
+  - @shopify/cli-kit@3.58.0
+
+## 3.57.0
+
+### Patch Changes
+
+- 57b51c371: Fix `shopify theme dev` issue to avoid previewing the live theme instead of the development one
+  - @shopify/cli-kit@3.57.0
+
+## 3.56.0
+
+### Patch Changes
+
+- dc946c26c: Fix the error message that started occurring since Ruby 3.3.0
+- 0d59df9f1: Show deprecation logs only on `--verbose` mode
+- Updated dependencies [1220290ec]
+  - @shopify/cli-kit@3.56.0
+
+## 3.55.0
+
+### Minor Changes
+
+- Theme Check 2.0: https://shopify.dev/docs/themes/tools/theme-check
+- 1f4bc949e: Bring the new `shopify theme pull` implementation behind the `--beta` flag and use the legacy version by default
+  - @shopify/cli-kit@3.55.0
+
+## 3.54.0
+
+### Minor Changes
+
+- a9e847717: Refine `shopify theme pull` implementation to no longer require a Ruby setup
+- a9e847717: Introduce `shopify theme rename` command
+- a9e847717: Upgrade oclif to v3 (improved help menus and more)
+
+### Patch Changes
+
+- Updated dependencies [a9e847717]
+- Updated dependencies [a9e847717]
+- Updated dependencies [a9e847717]
+- Updated dependencies [a9e847717]
+- Updated dependencies [a9e847717]
+  - @shopify/cli-kit@3.54.0
+
+## 3.53.0
+
+### Minor Changes
+
+- 1d6fe3475: Increase minimum Node version to 18
+- 0896e62b1: Versioned app config support
+- 72b1daaee: Add new `nodelete` flag to `shopify theme dev` command
+
+### Patch Changes
+
+- Updated dependencies [1d6fe3475]
+- Updated dependencies [cc3ada0a2]
+- Updated dependencies [0896e62b1]
+- Updated dependencies [72b1daaee]
+  - @shopify/cli-kit@3.53.0
+
+## 3.52.0
+
+### Patch Changes
+
+- 1de8122c4: No longer drops _.json templates when there is a _.json.liquid template with the same name.
+- Updated dependencies [4ea4c08dd]
+- Updated dependencies [1de8122c4]
+- Updated dependencies [060bd75cf]
+- Updated dependencies [060bd75cf]
+- Updated dependencies [9cbe46e06]
+  - @shopify/cli-kit@3.52.0
+
+## 3.51.0
+
+### Minor Changes
+
+- 2145d7a46: Added fix to support `:theme_app_extension` for dev-preview theme check.
+
+### Patch Changes
+
+- 84ae8eff7: Fixed misleading message in `shopify theme console` in specific scenarios
+- f5caf4da4: Add new --json flag to theme list and app versions list commands
+- 412b8ca74: Clarify `SHOPIFY_CLI_BUNDLED_THEME_CLI` environment variable should not be used, yet resolve its compatibility issue
+- Updated dependencies [533c66492]
+- Updated dependencies [a8c8b1e6b]
+- Updated dependencies [8b7ce36b1]
+- Updated dependencies [b90f24b2e]
+- Updated dependencies [8c979a621]
+- Updated dependencies [7802bffa9]
+- Updated dependencies [28e629078]
+- Updated dependencies [0b8b97993]
+- Updated dependencies [64b49598b]
+- Updated dependencies [e72b4f1c8]
+  - @shopify/cli-kit@3.51.0
+
+## 3.50.0
+
+### Minor Changes
+
+- 3f36e9463: Fixed CI issue due to theme check --dev-preview --version implementation
+- 6095a8827: Added `--dev-preview` for `theme language-server`
+- fbab28e9e: Added --dev-preview flag for theme check 2.0
+
+### Patch Changes
+
+- a73bb1179: Add versioning to Liquid Console remote theme, allowing users to try different versions of Liquid Console in the same store without facing compatibility issues
+- e0b042e3c: Fix ambiguity between `--editor` and `--environment` flags in the `shopify theme open` command
+- 42aacb5f0: Enhance the `shopify theme dev` command banner by adding the preview URL next to the preview link, for easy copy/pasting in terminal emulators that support hyperlinks
+- b3e858038: The `shopify theme delete` command no longer fails when some flags (`-f`, `-d`, etc.) are passed without the `-t` flag
+- Updated dependencies [4bb8fff29]
+- Updated dependencies [3f36e9463]
+- Updated dependencies [cf5bbff61]
+- Updated dependencies [46a72a6b4]
+- Updated dependencies [3ed6ae88e]
+- Updated dependencies [d6b02afcf]
+- Updated dependencies [e0cd881e1]
+- Updated dependencies [20d667246]
+  - @shopify/cli-kit@3.50.0
+
+## 3.49.1
+
+### Patch Changes
+
+- @shopify/cli-kit@3.49.1
+
+## 3.49.0
+
+### Minor Changes
+
+- 330dddeaa: Introduce support for the `shopify theme console` command
+
+### Patch Changes
+
+- 8d3578b87: Fix internal server error issue in the `shopify theme dev` command
+- Updated dependencies [6211a4aea]
+- Updated dependencies [b2e93d9c3]
+- Updated dependencies [8f5ac815e]
+- Updated dependencies [f1a774c78]
+- Updated dependencies [1914affaf]
+- Updated dependencies [8d3578b87]
+- Updated dependencies [b4c9439c4]
+- Updated dependencies [6ab0ce1a8]
+- Updated dependencies [d230b8773]
+- Updated dependencies [3c88932af]
+- Updated dependencies [c4396fd58]
+  - @shopify/cli-kit@3.49.0
+
+## 3.48.0
+
+### Minor Changes
+
+- 9a942421c: Introduce the `shopify theme update run` command
+
+### Patch Changes
+
+- Updated dependencies [91e7a1fd8]
+- Updated dependencies [598812ca0]
+- Updated dependencies [a156c8b7b]
+- Updated dependencies [f32c66bf6]
+- Updated dependencies [cf52851b7]
+- Updated dependencies [2afacc5e1]
+- Updated dependencies [48f5934d7]
+- Updated dependencies [0705bc30f]
+- Updated dependencies [9311df3a7]
+- Updated dependencies [6a1b88228]
+- Updated dependencies [934c53968]
+- Updated dependencies [f0adf0651]
+- Updated dependencies [64f0d4821]
+- Updated dependencies [029b49795]
+- Updated dependencies [7d512e1b0]
+- Updated dependencies [a17e43672]
+- Updated dependencies [2a1cfc206]
+  - @shopify/cli-kit@3.48.0
+
+## 3.47.0
+
+### Minor Changes
+
+- 0224abe16: Introduce `shopify theme update init` and `shopify theme update check` commands
+- 0d6cdd4c6: Introduce the `--open` flag to open a browser window only when users specifically request it
+- 8420d71cc: Fix `shopify theme dev` command to show valid URLs when `--theme` flag is used with a theme name
+
+### Patch Changes
+
+- ad3894aea: Fix an issue in `shopify theme dev` and `shopify app dev` that was affecting image loading on local servers
+- 22d30f4ad: Fix session refresh for theme dev without password
+- 9bb98c029: Remove image proxying through local server to enable proper functioning of Liquid filters
+- ca2461e94: Fix theme dev re-authentication
+- 99fc03fbc: Fix an issue in `shopify theme dev` that was affecting asset loading on local servers, in some shops
+- 2d3c6dd41: Fix a hot-reload for theme app extensions when blocks are rendered on section groups (in the `app dev` command)
+- 76694a35f: Fix clean login on theme dev
+- Updated dependencies [ad3894aea]
+- Updated dependencies [99df79caf]
+- Updated dependencies [9bb98c029]
+- Updated dependencies [ca2461e94]
+- Updated dependencies [4ded88051]
+- Updated dependencies [99fc03fbc]
+- Updated dependencies [e217b34eb]
+  - @shopify/cli-kit@3.47.0
+
+## 3.47.0-pre.0
+
+### Minor Changes
+
+- 0224abe16: Introduce `shopify theme update init` and `shopify theme update check` commands
+
+### Patch Changes
+
+- ad3894aea: Fix an issue in `shopify theme dev` and `shopify app dev` that was affecting image loading on local servers
+- ca2461e94: Fix theme dev re-authentication
+- Updated dependencies [ad3894aea]
+- Updated dependencies [ca2461e94]
+- Updated dependencies [4ded88051]
+  - @shopify/cli-kit@3.47.0-pre.0
+
+## 3.46.0
+
+### Minor Changes
+
+- 162504891: Introduce the `--notify` flag in the shopify app/theme dev commands
+- d2d1b96a6: Introduce support for update extension files
+- 9de04da4d: Introduce `.jpeg` support for theme app extensions
+- 151684a25: - Improve rule for lazy loading to prevent developers from overusing it
+  - Introduce `--update-docs` flag to synchronously update Theme Check resources (objects, filters, and tags)
+
+### Patch Changes
+
+- 3b1da7747: Fix unavailable constant reference in theme dev
+- 94d197f63: Display clear error message when prompting fails due to non-TTY terminal
+- 9e06083e4: Fix localhost link in the `shopify theme dev` command
+- 595233406: Fix description for `shopify theme open` flags
+- Updated dependencies [d9ef6c3f6]
+- Updated dependencies [33881af95]
+- Updated dependencies [2729e3784]
+- Updated dependencies [3b1da7747]
+- Updated dependencies [a7c1eabeb]
+- Updated dependencies [cc37858fb]
+- Updated dependencies [1707ef75a]
+- Updated dependencies [94d197f63]
+- Updated dependencies [162504891]
+- Updated dependencies [9e4c97b52]
+- Updated dependencies [9de04da4d]
+- Updated dependencies [f95e3a1d5]
+- Updated dependencies [1c8afb7f4]
+- Updated dependencies [151684a25]
+- Updated dependencies [37b53a5be]
+- Updated dependencies [01988114d]
+- Updated dependencies [beda7c241]
+- Updated dependencies [07d0be690]
+- Updated dependencies [6663b3a8f]
+- Updated dependencies [3169c1e44]
+- Updated dependencies [069e38ecf]
+  - @shopify/cli-kit@3.46.0
+
+## 3.46.0-pre.3
+
+### Patch Changes
+
+- Updated dependencies [d9ef6c3f6]
+- Updated dependencies [cc37858fb]
+- Updated dependencies [1c8afb7f4]
+- Updated dependencies [6663b3a8f]
+- Updated dependencies [069e38ecf]
+  - @shopify/cli-kit@3.46.0-pre.3
+
+## 3.46.0-pre.2
+
+### Minor Changes
+
+- 162504891: Introduce the `--notify` flag in the shopfiy app/theme dev commands
+- 151684a25: - Improve rule for lazy loading to prevent developers from overusing it
+  - Introduce `--update-docs` flag to synchronously update Theme Check resources (objects, filters, and tags)
+
+### Patch Changes
+
+- 9e06083e4: Fix localhost link in the `shopify theme dev` command
+- 595233406: Fix description for `shopify theme open` flags
+- Updated dependencies [a7c1eabeb]
+- Updated dependencies [162504891]
+- Updated dependencies [151684a25]
+- Updated dependencies [01988114d]
+  - @shopify/cli-kit@3.46.0-pre.2
+
+## 3.46.0-pre.1
+
+### Patch Changes
+
+- Updated dependencies [beda7c241]
+- Updated dependencies [3169c1e44]
+  - @shopify/cli-kit@3.46.0-pre.1
+
+## 3.46.0-pre.0
+
+### Patch Changes
+
+- Updated dependencies [f95e3a1d5]
+  - @shopify/cli-kit@3.46.0-pre.0
+
+## 3.45.0
+
+### Minor Changes
+
+- 1dd35b0b2: Enable environments for themes
+- e85f718cd: Use `-e` as an alias for --environment and remove the current one for --theme-editor-sync
+- dcc95e191: Improve theme selector component by grouping themes by role
+- 4fc91508e: Fix `shopify theme share` description
+
+### Patch Changes
+
+- db5981a1e: Clean errors related to metrics requests on theme dev
+- 25fc42ae2: Fix: Run ruby with shopify bin file as an argument
+- 6735253e6: Adopt the CLI UI kit in the `shopify theme dev` command
+- 4b223b644: Standardize the tone of prompt text messages for consistency
+- 067199cf6: Pass development theme from CLI 3’s to CLI 2’s local storage
+- Updated dependencies [da01d3595]
+- Updated dependencies [1dd35b0b2]
+- Updated dependencies [db5981a1e]
+- Updated dependencies [7f8a9436d]
+- Updated dependencies [d2a352442]
+- Updated dependencies [25fc42ae2]
+- Updated dependencies [fe32fb789]
+- Updated dependencies [4d5cff225]
+- Updated dependencies [a4b0953d9]
+- Updated dependencies [6735253e6]
+- Updated dependencies [d6f278863]
+- Updated dependencies [ddb967914]
+- Updated dependencies [c3d5ce5e6]
+- Updated dependencies [e85f718cd]
+- Updated dependencies [4bb549840]
+- Updated dependencies [b2e066fc0]
+- Updated dependencies [9c253511e]
+- Updated dependencies [e6753f4ed]
+- Updated dependencies [657593b1a]
+- Updated dependencies [ce1457036]
+- Updated dependencies [163df5e9a]
+- Updated dependencies [b3ea29a21]
+- Updated dependencies [2ca5b35d8]
+- Updated dependencies [067199cf6]
+- Updated dependencies [645b085b8]
+- Updated dependencies [7153dff92]
+  - @shopify/cli-kit@3.45.0
+
+## 3.45.0-pre.5
+
+### Minor Changes
+
+- e85f718cd: Use `-e` as an alias for --environment and remove the current one for --theme-editor-sync
+
+### Patch Changes
+
+- 6735253e6: Adopt the CLI UI kit in the `shopify theme dev` command
+- Updated dependencies [da01d3595]
+- Updated dependencies [6735253e6]
+- Updated dependencies [e85f718cd]
+- Updated dependencies [e6753f4ed]
+- Updated dependencies [645b085b8]
+  - @shopify/cli-kit@3.45.0-pre.5
+
+## 3.45.0-pre.4
+
+### Minor Changes
+
+- 4fc91508e: Fix `shopify theme share` description
+
+### Patch Changes
+
+- Updated dependencies [ce1457036]
+- Updated dependencies [2ca5b35d8]
+  - @shopify/cli-kit@3.45.0-pre.4
+
+## 3.45.0-pre.3
+
+### Patch Changes
+
+- Updated dependencies [ddb967914]
+- Updated dependencies [7153dff92]
+  - @shopify/cli-kit@3.45.0-pre.3
+
+## 3.45.0-pre.2
+
+### Patch Changes
+
+- Updated dependencies [9c253511e]
+  - @shopify/cli-kit@3.45.0-pre.2
+
+## 3.45.0-pre.1
+
+### Minor Changes
+
+- 1dd35b0b2: Enable environments for themes
+
+### Patch Changes
+
+- db5981a1e: Clean errors related to metrics requests on theme dev
+- 067199cf6: Pass development theme from CLI 3’s to CLI 2’s local storage
+- Updated dependencies [1dd35b0b2]
+- Updated dependencies [db5981a1e]
+- Updated dependencies [7f8a9436d]
+- Updated dependencies [fe32fb789]
+- Updated dependencies [4d5cff225]
+- Updated dependencies [a4b0953d9]
+- Updated dependencies [d6f278863]
+- Updated dependencies [c3d5ce5e6]
+- Updated dependencies [b3ea29a21]
+- Updated dependencies [067199cf6]
+  - @shopify/cli-kit@3.45.0-pre.1
+
+## 3.44.1-pre.0
+
+### Patch Changes
+
+- 25fc42ae2: Fix: Run ruby with shopify bin file as an argument
+- Updated dependencies [25fc42ae2]
+- Updated dependencies [b2e066fc0]
+- Updated dependencies [657593b1a]
+  - @shopify/cli-kit@3.44.1-pre.0
+
+## 3.44.0
+
+### Minor Changes
+
+- 84284bd27: Introduce the hidden/beta `shopify theme console` command
+- 8b7c94940: Fix: The CLI should not report IO messages when the `--json` flag is passed
+
+### Patch Changes
+
+- 7925a40b2: Fix loading JS functions when there are UI extensions. Improve theme dev loading time.
+- d2adeb5ec: Extract the ownership of host themes to the CLI3
+- Updated dependencies [999a2fc79]
+- Updated dependencies [b61c5972c]
+- Updated dependencies [d44250676]
+- Updated dependencies [c8e75ac24]
+- Updated dependencies [fb22cb013]
+- Updated dependencies [159df5d07]
+- Updated dependencies [2def6f113]
+- Updated dependencies [ef3846d91]
+- Updated dependencies [3a75ed0a7]
+- Updated dependencies [d2adeb5ec]
+  - @shopify/cli-kit@3.44.0
+
+## 3.43.0
+
+### Patch Changes
+
+- Updated dependencies [f732207fa]
+- Updated dependencies [4b0cc57ce]
+- Updated dependencies [b6f93cfa7]
+  - @shopify/cli-kit@3.43.0
+
+## 3.42.0
+
+### Patch Changes
+
+- 3b8951631: Do not overwrite `theme` parameter if present
+- Updated dependencies [2203d4e6f]
+  - @shopify/cli-kit@3.42.0
+
+## 3.41.2
+
+### Patch Changes
+
+- @shopify/cli-kit@3.41.2
+
+## 3.41.1
+
+### Patch Changes
+
+- @shopify/cli-kit@3.41.1
+
+## 3.41.0
+
+### Patch Changes
+
+- Updated dependencies [9d9480341]
+  - @shopify/cli-kit@3.41.0
+
+## 3.40.3
+
+### Patch Changes
+
+- @shopify/cli-kit@3.40.3
+
+## 3.40.2
+
+### Patch Changes
+
+- Updated dependencies [7c0b13944]
+- Updated dependencies [7ca9a667d]
+  - @shopify/cli-kit@3.40.2
+
+## 3.40.1
+
+### Patch Changes
+
+- @shopify/cli-kit@3.40.1
+
+## 3.40.0
+
+### Minor Changes
+
+- b69bee85c: Add an alias to the `shopify theme serve` command
+
+### Patch Changes
+
+- 1661f80a2: Various copy improvements
+- 99b88caa7: Fix to include customer JSON templates in `theme package`
+- 5ba869fb2: Extract the ownership of development themes
+- 228328a6d: Remove old `ui` module from cli-kit exports
+- Updated dependencies [91e15fed4]
+- Updated dependencies [cfb4b7f68]
+- Updated dependencies [9e74a9fc0]
+- Updated dependencies [1661f80a2]
+- Updated dependencies [ae22dfbaf]
+- Updated dependencies [7734a7ed3]
+- Updated dependencies [5ba869fb2]
+- Updated dependencies [228328a6d]
+- Updated dependencies [c30eb6978]
+  - @shopify/cli-kit@3.40.0
+
+## 3.39.0
+
+### Patch Changes
+
+- afe541577: Adopt the CLI UI kit in the `shopify theme package` command
+- Updated dependencies [afe541577]
+- Updated dependencies [f4d5fb1a8]
+- Updated dependencies [91a44020b]
+  - @shopify/cli-kit@3.39.0
+
+## 3.38.0
+
+### Patch Changes
+
+- @shopify/cli-kit@3.38.0
+
+## 3.37.0
+
+### Minor Changes
+
+- 2f0420599: Slightly improve the text messages in the `shopify theme delete` and `shopify theme publish` commands
+
+### Patch Changes
+
+- Updated dependencies [a5224543b]
+  - @shopify/cli-kit@3.37.0
+
+## 3.36.2
+
+### Patch Changes
+
+- 868befded: Migrate `theme publish` to TypeScript
+- Updated dependencies [3ddd21dba]
+  - @shopify/cli-kit@3.36.2
+
+## 3.36.1
+
+### Patch Changes
+
+- Updated dependencies [d81271abd]
+  - @shopify/cli-kit@3.36.1
+
+## 3.36.0
+
+### Minor Changes
+
+- c2a7c17e0: Refresh command UIs with newly implemented Ink components
+
+### Patch Changes
+
+- Updated dependencies [c2a7c17e0]
+  - @shopify/cli-kit@3.36.0
+
+## 3.35.0
+
+### Minor Changes
+
+- 50c0b2cd3: - Adopt CLI UI kit on `shopify theme delete` command
+  - Introduce the `pluralize` API on `@shopify/cli-kit/common/string`
+
+### Patch Changes
+
+- 1a482191a: Improve the DX of the `shopify theme list` command, by adopting the CLI UI kit
+- Updated dependencies [50c0b2cd3]
+- Updated dependencies [2aa5c07aa]
+- Updated dependencies [1a482191a]
+- Updated dependencies [a4f78e95f]
+  - @shopify/cli-kit@3.35.0
+
+## 3.34.0
+
+### Patch Changes
+
+- 8fa3e7094: Add extra timeout when restarting theme dev
+  - @shopify/cli-kit@3.34.0
+
+## 3.33.0
+
+### Patch Changes
+
+- eee1293ef: - Introduce REST Admin API client on `@shopify/cli-kit`
+  - Improve the DX of the `shopify theme open` command, by adopting the CLI UI kit
+- Updated dependencies [eee1293ef]
+- Updated dependencies [5e7474fab]
+- Updated dependencies [9eb807bf7]
+  - @shopify/cli-kit@3.33.0
+
+## 3.32.1
+
+### Patch Changes
+
+- Updated dependencies [39315c3d0]
+  - @shopify/cli-kit@3.32.1
+
+## 3.32.0
+
+### Patch Changes
+
+- Updated dependencies [a8489366]
+- Updated dependencies [00de42e8]
+  - @shopify/cli-kit@3.32.0
+
+## 3.31.1
+
+### Patch Changes
+
+- db48152c: Fix theme dev not refreshing session automatically
+  - @shopify/cli-kit@3.31.1
+
+## 3.31.0
+
+### Patch Changes
+
+- Updated dependencies [80c6638c]
+- Updated dependencies [dcf53ece]
+  - @shopify/cli-kit@3.31.0
+
+## 3.30.2
+
+### Patch Changes
+
+- Updated dependencies [ba91a2da]
+- Updated dependencies [23b1cc84]
+  - @shopify/cli-kit@3.30.2
+
+## 3.30.1
+
+### Patch Changes
+
+- Updated dependencies [2ac83ce6]
+  - @shopify/cli-kit@3.30.1
+
+## 3.30.0
+
+### Patch Changes
+
+- Updated dependencies [737ca469]
+  - @shopify/cli-kit@3.30.0
+
+## 3.29.0
+
+### Minor Changes
+
+- 3b37c679: Enable password flag for theme dev
+- b549291a: Update @oclif/core to 1.21.0
+
+### Patch Changes
+
+- Updated dependencies [eaf98706]
+- Updated dependencies [d12ece22]
+- Updated dependencies [aeca53c6]
+- Updated dependencies [3b37c679]
+- Updated dependencies [b549291a]
+- Updated dependencies [06b6b00d]
+  - @shopify/cli-kit@3.29.0
+
+## 3.28.0
+
+### Patch Changes
+
+- @shopify/cli-kit@3.28.0
+
+## 3.27.0
+
+### Patch Changes
+
+- Updated dependencies [32bbe23d]
+  - @shopify/cli-kit@3.27.0
+
+## 3.26.0
+
+### Patch Changes
+
+- Updated dependencies [0d8ac8c9]
+- Updated dependencies [ab76be51]
+- Updated dependencies [a6a3f2b4]
+- Updated dependencies [ca8141bc]
+  - @shopify/cli-kit@3.26.0
+
+## 3.25.0
+
+### Patch Changes
+
+- Updated dependencies [78196a78]
+  - @shopify/cli-kit@3.25.0
+
+## 3.24.1
+
+### Patch Changes
+
+- Updated dependencies [7e5c492a]
+  - @shopify/cli-kit@3.24.1
+
+## 3.24.0
+
+### Patch Changes
+
+- a9d4be9e: Generate creative suggested names for new themes
+- Updated dependencies [d47a6e80]
+- Updated dependencies [a9d4be9e]
+- Updated dependencies [aca90638]
+- Updated dependencies [cb0990df]
+  - @shopify/cli-kit@3.24.0
+
+## 3.23.0
+
+### Patch Changes
+
+- d5e81d69: Add hidden `--force` flag for validation on `shopify theme dev/pull/push/share` if users are running the command in a theme directory.
+- Updated dependencies [c15ad5df]
+- Updated dependencies [1ee1cfd1]
+  - @shopify/cli-kit@3.23.0
+
+## 3.22.1
+
+### Patch Changes
+
+- @shopify/cli-kit@3.22.1
+
+## 3.22.0
+
+### Minor Changes
+
+- bc66741a: Introduce shorthand `-e` for `--theme-editor-sync` in `shopify theme dev`
+
+### Patch Changes
+
+- 6c0cd13d: Polish log truncation process
+- Updated dependencies [e0b5c20b]
+- Updated dependencies [6de19ebd]
+- Updated dependencies [6c0cd13d]
+- Updated dependencies [7035d36b]
+  - @shopify/cli-kit@3.22.0
+
+## 3.21.0
+
+### Patch Changes
+
+- Updated dependencies [e4352f2e]
+- Updated dependencies [c906187f]
+- Updated dependencies [5cda6300]
+  - @shopify/cli-kit@3.21.0
+
+## 3.20.1
+
+### Patch Changes
+
+- Updated dependencies [3f285ff9]
+  - @shopify/cli-kit@3.20.1
+
+## 3.20.0
+
+### Minor Changes
+
+- 96d5b175: Enable experimental presets feature for apps and themes
+- 65aac089: Add the hidden `--stable` flag in the `theme dev/push` commands
+- 0a35aca5: Introduce `--only/--ignore` support into the `shopify theme dev` command
+- 4bd05555: Add experimental preset flag for pre-specifying command line flags
+
+### Patch Changes
+
+- efa5b071: Refresh theme dev session every 90 minutes
+- 78372fe7: Fix password flag for theme open/publish
+- Updated dependencies [96d5b175]
+- Updated dependencies [0a8ee2a3]
+- Updated dependencies [efa5b071]
+- Updated dependencies [4bd05555]
+  - @shopify/cli-kit@3.20.0
+
+## 3.19.0
+
+### Minor Changes
+
+- 7bb5c23f: Enable Theme Kit Access passwords
+
+### Patch Changes
+
+- Updated dependencies [7bb5c23f]
+  - @shopify/cli-kit@3.19.0
+
+## 3.18.0
+
+### Patch Changes
+
+- 72171c1b: `shopify theme check` no longer ignores the `.theme-check.yml` file
+- Updated dependencies [ef42fda6]
+- Updated dependencies [514f2cb5]
+- Updated dependencies [1455ee44]
+- Updated dependencies [b4dafa4f]
+- Updated dependencies [65625f47]
+- Updated dependencies [0d674d64]
+  - @shopify/cli-kit@3.18.0
+
+## 3.17.0
+
+### Patch Changes
+
+- ff7a13d5: Fix push command with --store flag
+- Updated dependencies [dac186b2]
+- Updated dependencies [5617050a]
+- Updated dependencies [5703ce9b]
+- Updated dependencies [483318aa]
+  - @shopify/cli-kit@3.17.0
+
+## 3.16.3
+
+### Patch Changes
+
+- Updated dependencies [fc4d6c58]
+  - @shopify/cli-kit@3.16.3
+
+## 3.16.2
+
+### Patch Changes
+
+- Updated dependencies [ca6c7295]
+  - @shopify/cli-kit@3.16.2
+
+## 3.16.1
+
+### Patch Changes
+
+- @shopify/cli-kit@3.16.1
+
+## 3.16.0
+
+### Patch Changes
+
+- Updated dependencies [d460e738]
+  - @shopify/cli-kit@3.16.0
+
+## 3.15.0
+
+### Patch Changes
+
+- Updated dependencies [9f7d90d9]
+  - @shopify/cli-kit@3.15.0
+
+## 3.14.0
+
+### Patch Changes
+
+- Updated dependencies [1dba11ec]
+  - @shopify/cli-kit@3.14.0
+
+## 3.13.1
+
+### Patch Changes
+
+- Updated dependencies [81d3ca50]
+  - @shopify/cli-kit@3.13.1
+
+## 3.13.0
+
+### Patch Changes
+
+- Updated dependencies [a979c0de]
+- Updated dependencies [afa808cb]
+- Updated dependencies [a225e415]
+- Updated dependencies [5336b01f]
+- Updated dependencies [2239cad9]
+  - @shopify/cli-kit@3.13.0
+
+## 3.12.0
+
+### Patch Changes
+
+- Updated dependencies [454641be]
+  - @shopify/cli-kit@3.12.0
+
+## 3.11.0
+
+### Patch Changes
+
+- Updated dependencies [38dedc05]
+- Updated dependencies [79508f56]
+- Updated dependencies [922c204e]
+- Updated dependencies [ddbf7ee4]
+  - @shopify/cli-kit@3.11.0
+
+## 3.10.1
+
+### Patch Changes
+
+- f04ec835: Fix store initialization for Homebrew (project version error)
+- b23e0461: Add theme info command
+- Updated dependencies [f04ec835]
+- Updated dependencies [b23e0461]
+  - @shopify/cli-kit@3.10.1
+
+## 3.10.0
+
+### Patch Changes
+
+- 630153fc: Fix initialization of themes on Windows due to invalid arguments being passed
+- 30a048da: Fix pull command with --store flag
+- Updated dependencies [4c8853f1]
+  - @shopify/cli-kit@3.10.0
+
+## 3.9.2
+
+### Patch Changes
+
+- 1e524fae: Fix syntax of the Homebrew formula
+  - @shopify/cli-kit@3.9.2
+
+## 3.9.1
+
+### Patch Changes
+
+- 869532f9: Remove the theme-command under the theme namespace
+- Updated dependencies [08c42c45]
+  - @shopify/cli-kit@3.9.1
+
+## 3.9.0
+
+### Patch Changes
+
+- Updated dependencies [c7137a3b]
+  - @shopify/cli-kit@3.9.0
+
+## 3.8.0
+
+### Patch Changes
+
+- Updated dependencies [db4e6089]
+- Updated dependencies [79df925d]
+- Updated dependencies [03bd5f28]
+- Updated dependencies [79df925d]
+  - @shopify/cli-kit@3.8.0
+
+## 3.7.1
+
+### Patch Changes
+
+- Updated dependencies [18717ad5]
+- Updated dependencies [29f46e8f]
+- Updated dependencies [bba213f9]
+  - @shopify/cli-kit@3.7.1
+
+## 3.6.2
+
+### Patch Changes
+
+- 59d56a40: Add multiple IDs to theme delete
+- Updated dependencies [59d56a40]
+  - @shopify/cli-kit@3.6.2
+
+## 3.6.1
+
+### Patch Changes
+
+- @shopify/cli-kit@3.6.1
+
+## 3.6.0
+
+### Minor Changes
+
+- 08c6526f: - Clean up theme share
+  - Clean up theme package
+  - Clean up theme publish
+  - Clean up theme delete
+  - Clean up theme open
+
+### Patch Changes
+
+- Updated dependencies [073e514c]
+- Updated dependencies [d9351df4]
+  - @shopify/cli-kit@3.6.0
+
+## 3.5.0
+
+### Patch Changes
+
+- Updated dependencies [dabc4bab]
+  - @shopify/cli-kit@3.5.0
+
+## 3.4.0
+
+### Minor Changes
+
+- 1ee62000: • Show subcommand help in theme help-old (development convenience feature)
+  • Add missing -t shortcut for theme id or name in theme pull/push
+  • Handle multiple --only or --ignore flags correctly in theme pull/push
+- 0da6c7e8: • Run CLI2 commands from passed-in directory, defaulting to current working directory
+  • Fill in flags for theme check
+  • Add --path to theme check
+  • Add --verbose to theme check
+
+### Patch Changes
+
+- Updated dependencies [08366831]
+- Updated dependencies [feae2499]
+- Updated dependencies [19ab3f99]
+- Updated dependencies [0da6c7e8]
+  - @shopify/cli-kit@3.4.0
+
+## 3.3.3
+
+### Patch Changes
+
+- e89dfa81: • Update Ruby CLI to latest
+  • Fix: Await Ruby subprocess
+  • Add path flag to init for better development flow
+  • Add verbose flag to see more output from the Node CLI
+  • Set up logging and CLI-kit store separately for the theme CLI
+- Updated dependencies [e89dfa81]
+  - @shopify/cli-kit@3.3.3
+
+## 3.3.2
+
+### Patch Changes
+
+- ecc4697c: Publish @shopify/theme dist directory
+  - @shopify/cli-kit@3.3.2
+
+## 3.3.1
+
+### Patch Changes
+
+- 68032f84: bump @shopify/theme up to most recent version
+  - @shopify/cli-kit@3.3.1
+
+## 0.6.1
+
+### Patch Changes
+
+- Updated dependencies [f7708fcc]
+  - @shopify/cli-kit@3.3.0
+
+## 0.6.0
+
+### Minor Changes
+
+- 9c10736a: Stop using semantic versioning for @shopify/cli-kit and pin the version from all the dependent packages
+
+### Patch Changes
+
+- Updated dependencies [86b04187]
+  - @shopify/cli-kit@3.2.0
+
+## 0.5.14
+
+### Patch Changes
+
+- 022a4e24: Internal: build cli-kit using tsc instead of rollup+esbuild
+- Updated dependencies [dbcffdbb]
+- Updated dependencies [022a4e24]
+- Updated dependencies [e81e52b1]
+- Updated dependencies [c16035f1]
+- Updated dependencies [61f595df]
+- Updated dependencies [87f7843f]
+- Updated dependencies [8ff4e3d7]
+- Updated dependencies [168bb4c6]
+- Updated dependencies [0a9dbc63]
+- Updated dependencies [2d8e4458]
+  - @shopify/cli-kit@3.0.26
+
+## 0.5.13
+
+### Patch Changes
+
+- eb915dee: Loose version requirements to help dependency managers dedupe dependencies
+- Updated dependencies [eb915dee]
+- Updated dependencies [85ee088d]
+- Updated dependencies [2ecbff43]
+- Updated dependencies [a750e67c]
+  - @shopify/cli-kit@3.0.16
+
+## 0.5.12
+
+### Patch Changes
+
+- b7b980b: Add pull/push/dev/open commands to theme
+- 924fdf3: Added first batch of theme commands
+
+## 0.5.11
+
+### Patch Changes
+
+- Add deploy command
+
+## 0.5.10
+
+### Patch Changes
+
+- e2e working
+
+## 0.5.9
+
+### Patch Changes
+
+- Some fixes
+
+## 0.5.8
+
+### Patch Changes
+
+- Get workflows working e2e
+
+## 0.5.7
+
+### Patch Changes
+
+- Remove unnecessary dependencies
+
+## 0.5.6
+
+### Patch Changes
+
+- Add .gitignore to the app template
+
+## 0.5.5
+
+### Patch Changes
+
+- Version 0.33.2
+
+## 0.5.4
+
+### Patch Changes
+
+- Add scaffold to the package.json's scripts section of the app template
+
+## 0.5.3
+
+### Patch Changes
+
+- New CLI version
+
+## 0.5.2
+
+### Patch Changes
+
+- Add @shopify/support and fix dependencies' setup
+- Updated dependencies
+  - @shopify/cli-kit@0.5.2
+  - @shopify/support@0.5.2
+
+## 0.3.0
+
+### Minor Changes
+
+- Draft the CLI interface
+
+### Patch Changes
+
+- Updated dependencies
+  - @shopify/cli-kit@0.3.0
+  - @shopify/cli-support@0.3.0
+
+## 0.2.0
+
+### Minor Changes
+
+- Move from Lerna to changeset
+
+### Patch Changes
+
+- Updated dependencies
+  - @shopify/cli-kit@0.2.0
+  - @shopify/cli-support@0.2.0

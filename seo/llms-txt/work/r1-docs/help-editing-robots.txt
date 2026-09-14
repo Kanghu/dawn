@@ -1,0 +1,148 @@
+
+
+Help
+
+Log in
+
+Contents
+
+## Editing robots.txt.liquid
+Search engines, such as Google, constantly crawl the internet in search of new data as a source for their search results. The robots.txt file tells search engine bots, known as crawlers, which pages to request to view from your online store. All Shopify stores have a default robots.txt file that's optimal for Search Engine Optimization (SEO).
+
+Your sitemap is used by search engines to place your online store in the search engine results. Learn how to find and submit your sitemap.
+
+## On this page
+- Understanding crawling vs indexing
+- Considerations
+- Edit robots.txt.liquid
+- Understanding "Indexed, though blocked" messages
+- Controlling AI crawler access
+- Understanding Shopify's default robots.txt
+- Delete robots.txt.liquid customizations
+
+## Understanding crawling vs indexing
+
+When working with robots.txt, it's important to understand the difference between crawling and indexing:
+
+- Crawling: When search engine bots (such as Googlebot) examine all the content and code on your pages and analyze it
+
+- Indexing: When pages become eligible to appear in search engine results
+
+These processes aren't mutually exclusive - search engines can index a page without crawling it if they discover it through other means.
+
+## Considerations
+
+The default robots.txt file works for most stores. If you want to customize the robots.txt file, then you must first add a robots.txt.liquid file to the templates folder of your theme in the code editor, and then customize the content of the file. You can make the following edits:
+
+- Allow or disallow certain URLs from being crawled.
+
+- Add crawl-delay rules for certain crawlers.
+
+- Add extra sitemap URLs.
+
+- Block certain crawlers.
+
+The robots.txt file is located at the root directory of your Shopify store's primary domain name. Such as: example.com/robots.txt.
+
+## Caution
+This is an unsupported customization. Shopify Support can't help with edits to the robots.txt.liquid file. If you need to edit your robots.txt.liquid file, then you can hire a Shopify Partner to edit the code for you. Incorrect use of the feature can result in loss of all traffic.
+
+## Edit robots.txt.liquid
+
+If you want to edit the robots.txt.liquid file, then you should work with a Shopify Partner or have expertise in code edits and SEO.
+
+You can use Liquid to add or remove directives from the robots.txt.liquid template. This method preserves Shopify’s ability to keep the file updated automatically in the future, and is recommended. For a full guide on editing this file, refer to Shopify's Developer page Customize robots.txt.liquid.
+
+Remove any previous customizations or workarounds, such as using a third-party service such as Cloudflare, before you edit the robots.txt.liquid file.
+
+## Steps:
+
+-
+From your Shopify admin, go to Online Store.
+
+-
+For the relevant theme, click  > Edit code.
+
+-
+Click Add a new template, and then select robots.
+
+-
+Click Create template.
+
+-
+Make the changes that you want to make to the default template. For more information on liquid variables and common use cases, refer to Shopify's Developer page Customize robots.txt.liquid.
+
+-
+Save changes to the robots.txt.liquid file in your published theme.
+
+Changes are instant, but crawlers don't always react immediately. You can test changes using Google's robots.txt Tester.
+
+You can also delete the contents of the template and replace it with plain text rules. This method is strongly not recommended, as rules may become out of date. If you choose this method, then Shopify can’t ensure that SEO best practices are applied to your robots.txt over time, or make changes to the file with future updates.
+
+## Note
+ThemeKit or command line changes will preserve the robots.txt.liquid file. Uploading a theme from within the Themes section of the Shopify admin won't import robots.txt.liquid.
+
+## Understanding "Indexed, though blocked" messages
+
+In Google Search Console, URLs might display as "indexed, though blocked by robots.txt". This is normal behavior and usually not a cause for concern.
+
+## Why this happens
+
+Many pages are intentionally blocked by robots.txt for SEO optimization. This message is Google's way of letting you know they've discovered blocked content, in case the blocking was unintentional. Everything in Shopify's default robots.txt file is there for a reason to help your SEO.
+
+If a normal page on your site (such as your homepage) displays as "Indexed, though blocked," then it usually means Google's data about your store is outdated. Google can take days, weeks, or months to update their database with the latest changes to any website.
+
+## What to do
+
+In most cases, no action is needed. This is expected behavior for pages that should be blocked from crawling but might still be indexed through other discovery methods.
+
+## Controlling AI crawler access
+
+If you sell through agentic storefronts such as ChatGPT or Microsoft Copilot, then your product data is syndicated to those channels through Shopify Catalog, independently of /robots.txt. AI crawlers might also access your store directly through the open web. Crawler access has the following two layers of control:
+
+- Network layer: Bot management is handled directly for stores on Shopify, and you don't need to take any action. Shopify doesn't recommend a proxy configuration in front of Shopify, and can't provide support for this either.
+
+- /robots.txt layer: You can allow or block specific user-agent crawlers by customizing your store's robots.txt.liquid template. The rules that you set in your /robots.txt file are directional and advisory, and not all crawlers are guaranteed to follow them.
+
+Blocking AI crawlers at the /robots.txt or network layer affects only open-web discoverability. It doesn't stop your product data from being sent by Shopify Catalog to the agentic storefronts that you've activated. To control what Shopify Catalog shares with agentic storefronts, refer to Understanding your agentic storefronts settings.
+
+## Understanding Shopify's default robots.txt
+
+Shopify's default robots.txt file includes specific rules to optimize your store's SEO. Here's what some key entries do:
+
+- Disallow: /admin - Keeps admin pages from being crawled because bots can't access them anyway
+
+- Disallow: /cart - Cart pages don't need to be indexed because they're unique to each customer
+
+- Disallow: /checkout - Checkout pages don't need to be crawled or indexed
+
+- Disallow: /collections/*+* - Prevents filtered collection pages from being indexed, which could create duplicate content issues
+
+- Disallow: /search - Search result pages don't need to be crawled
+
+- Disallow: /policies/ - Auto-generated policy pages are similar across stores and don't need indexing
+
+These rules help search engines focus on your unique, valuable content rather than administrative or duplicate pages.
+
+## Delete robots.txt.liquid customizations
+
+If you want to use the default robots.txt file again, then you can delete your custom robots.txt.liquid file.
+
+## Steps:
+
+-
+From your Shopify admin, go to Online Store.
+
+-
+Click  > Edit code.
+
+-
+Right-click the robots.txt.liquid, and select Delete permanently from the drop-down menu.
+
+-
+Click Delete.
+
+You can always edit the robots.txt.liquid file in the future, or if you saved your past customizations, then you can redo your changes by copying over your saved previous customizations.
+
+Leave feedback
+

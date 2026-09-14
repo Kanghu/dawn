@@ -1,0 +1,215 @@
+79 URLs, 0 done, 79 to do
+GET https://help.alessandrodesign.ro/
+   = 200 -> 200 | Help | products=None
+GET https://www.alessandrodesign.ro/
+   = 200 -> 200 | Alessandro Design | products=None
+GET https://www.alessandrodesign.ro/blogs/idei-de-amenajare
+   = 404 -> 404 | 404 negăsit – Alessandro Design | products=None
+GET https://www.alessandrodesign.ro/blogs/news
+   = 200 -> 200 | News – Alessandro Design | products=None
+GET https://www.alessandrodesign.ro/collections/accesorii-baie
+   products.json page 1
+   = 200 -> 200 | Accesorii baie | Detalii care fac diferenta | Alessandro Design | products=39
+GET https://www.alessandrodesign.ro/collections/all-products
+   products.json page 1
+   products.json page 2
+   products.json page 3
+   = 200 -> 200 | Toate produsele – Alessandro Design | products=750
+GET https://www.alessandrodesign.ro/collections/aplice
+   products.json page 1
+   products.json page 2
+   = 200 -> 200 | Aplice LED | Iluminat estetic si eficient | Alessandro Design | products=260
+GET https://www.alessandrodesign.ro/collections/aplice-baie
+   = 404 -> 404 | 404 negăsit – Alessandro Design | products=None
+GET https://www.alessandrodesign.ro/collections/aplice-exterior
+   = 404 -> 404 | 404 negăsit – Alessandro Design | products=None
+GET https://www.alessandrodesign.ro/collections/aplice-interior
+   = 404 -> 404 | 404 negăsit – Alessandro Design | products=None
+GET https://www.alessandrodesign.ro/collections/baie
+   products.json page 1
+   = 200 -> 200 | Obiecte sanitare pentru baie | Alessandro Design | products=157
+GET https://www.alessandrodesign.ro/collections/baterii-baie
+   = 404 -> 404 | 404 negăsit – Alessandro Design | products=None
+GET https://www.alessandrodesign.ro/collections/baterii-baie-bucatarie
+   products.json page 1
+   = 200 -> 200 | Baterii Chiuveta | Baterii baie si bucatarie – Alessandro Design | products=98
+GET https://www.alessandrodesign.ro/collections/baterii-bucatarie
+   = 404 -> 404 | 404 negăsit – Alessandro Design | products=None
+GET https://www.alessandrodesign.ro/collections/becuri
+   products.json page 1
+   = 200 -> 200 | Becuri | Solutii eficiente pentru iluminat | Alessandro Design | products=26
+GET https://www.alessandrodesign.ro/collections/benzi-led
+   products.json page 1
+   = 200 -> 200 | Benzi LED | Iluminat flexibil si eficient | Alessandro Design | products=12
+GET https://www.alessandrodesign.ro/collections/brazi-craciun
+   = 404 -> 404 | 404 negăsit – Alessandro Design | products=None
+GET https://www.alessandrodesign.ro/collections/cadite-dus
+   = 404 -> 404 | 404 negăsit – Alessandro Design | products=None
+GET https://www.alessandrodesign.ro/collections/calorifer-electric
+   = 404 -> 404 | 404 negăsit – Alessandro Design | products=None
+GET https://www.alessandrodesign.ro/collections/candelabre
+   products.json page 1
+   products.json page 2
+   products.json page 3
+   = 200 -> 200 | Candelabre | Comanda online | Alessandro Design | products=653
+GET https://www.alessandrodesign.ro/collections/candelabre-clasice
+   products.json page 1
+   = 200 -> 200 | Candelabre clasice | Lumina calda si eleganta | Alessandro Design | products=30
+GET https://www.alessandrodesign.ro/collections/candelabre-cristal
+   products.json page 1
+   products.json page 2
+   = 200 -> 200 | Candelabre Cristal – Alessandro Design | products=443
+GET https://www.alessandrodesign.ro/collections/candelabre-moderne
+   products.json page 1
+   = 200 -> 200 | Candelabre moderne | Design contemporan pentru orice spatiu | Alessandro Design | products=62
+GET https://www.alessandrodesign.ro/collections/cazi-baie-freestanding
+   = 404 -> 404 | 404 negăsit – Alessandro Design | products=None
+GET https://www.alessandrodesign.ro/collections/chiuvete
+   -> 301 https://www.alessandrodesign.ro/collections/chiuvete-lavoare
+   products.json page 1
+   = 301 -> 200 | Chiuvete si lavoare moderne | Alessandro Design | products=17
+GET https://www.alessandrodesign.ro/collections/coloane-baterii-dus
+   = 404 -> 404 | 404 negăsit – Alessandro Design | products=None
+GET https://www.alessandrodesign.ro/collections/copaci-artificiali
+   = 404 -> 404 | 404 negăsit – Alessandro Design | products=None
+GET https://www.alessandrodesign.ro/collections/corpuri-de-iluminat
+   products.json page 1
+   products.json page 2
+   products.json page 3
+   = 200 -> 200 | Corpuri de iluminat | Produse interior si exterior | Alessandro Design | products=750
+GET https://www.alessandrodesign.ro/collections/covoare-baie
+   products.json page 1
+   = 200 -> 200 | Covoare Baie – Alessandro Design | products=8
+GET https://www.alessandrodesign.ro/collections/decoratiuni-perete
+   products.json page 1
+   = 200 -> 200 | Decoratiuni Perete – Alessandro Design | products=21
+GET https://www.alessandrodesign.ro/collections/gazon-artificial
+   products.json page 1
+   = 200 -> 200 | Gazon Artificial – Alessandro Design | products=2
+GET https://www.alessandrodesign.ro/collections/ghirlande-artificiale
+   products.json page 1
+   = 200 -> 200 | Ghirlande Artificiale – Alessandro Design | products=3
+GET https://www.alessandrodesign.ro/collections/ierburi-ornamentale-artificiale
+   products.json page 1
+   = 200 -> 200 | Ierburi Ornamentale Artificiale – Alessandro Design | products=29
+GET https://www.alessandrodesign.ro/collections/iluminat-exterior
+   = 404 -> 404 | 404 negăsit – Alessandro Design | products=None
+GET https://www.alessandrodesign.ro/collections/instalatii-exterior
+   = 404 -> 404 | 404 negăsit – Alessandro Design | products=None
+GET https://www.alessandrodesign.ro/collections/lampadare-living
+   products.json page 1
+   = 200 -> 200 | Lampadare Living – Alessandro Design | products=18
+GET https://www.alessandrodesign.ro/collections/lustre
+   -> 301 https://www.alessandrodesign.ro/collections/candelabre
+   products.json page 1
+   products.json page 2
+   products.json page 3
+   = 301 -> 200 | Candelabre | Comanda online | Alessandro Design | products=653
+GET https://www.alessandrodesign.ro/collections/lustre-camera-copii
+   = 404 -> 404 | 404 negăsit – Alessandro Design | products=None
+GET https://www.alessandrodesign.ro/collections/lustre-industriale
+   = 404 -> 404 | 404 negăsit – Alessandro Design | products=None
+GET https://www.alessandrodesign.ro/collections/lustre-led
+   products.json page 1
+   products.json page 2
+   products.json page 3
+   = 200 -> 200 | Lustre LED | Modele variate si accesibile | Alessandro Design | products=685
+GET https://www.alessandrodesign.ro/collections/lustre-moderne
+   products.json page 1
+   = 200 -> 200 | Lustre Moderne – Alessandro Design | products=126
+GET https://www.alessandrodesign.ro/collections/lustre-vintage
+   products.json page 1
+   = 200 -> 200 | Lustre vintage | Oferte pentru iubitorii de retro | Alessandro Design | products=92
+GET https://www.alessandrodesign.ro/collections/mobilier-baie
+   products.json page 1
+   = 200 -> 200 | Mobilier baie | Design modern si functional | Alessandro Design | products=68
+GET https://www.alessandrodesign.ro/collections/oglinzi-led
+   products.json page 1
+   products.json page 2
+   = 200 -> 200 | Oglinzi LED | Oglinzi cu Iluminare LED | Alessandro Design | products=333
+GET https://www.alessandrodesign.ro/collections/oglinzi-led-by-marcello-funghi
+   products.json page 1
+   = 200 -> 200 | Oglinzi LED - by Marcello Funghi – Alessandro Design | products=131
+GET https://www.alessandrodesign.ro/collections/oglinzi-led-cu-dulap
+   products.json page 1
+   = 200 -> 200 | Oglinzi LED cu Dulap – Alessandro Design | products=13
+GET https://www.alessandrodesign.ro/collections/oglinzi-led-dressing
+   products.json page 1
+   = 200 -> 200 | Oglinzi LED Dressing – Alessandro Design | products=8
+GET https://www.alessandrodesign.ro/collections/oglinzi-led-machiaj
+   products.json page 1
+   = 200 -> 200 | Oglinzi LED Machiaj – Alessandro Design | products=37
+GET https://www.alessandrodesign.ro/collections/oglinzi-led-multifunctionale
+   -> 301 https://www.alessandrodesign.ro/collections/oglinzi-baie-cu-led-si-dezaburire
+   products.json page 1
+   = 301 -> 200 | Oglinzi LED Multifunctionale | Vezi ofertele | Alessandro Design | products=155
+GET https://www.alessandrodesign.ro/collections/oglinzi-led-standard
+   = 404 -> 404 | 404 negăsit – Alessandro Design | products=None
+GET https://www.alessandrodesign.ro/collections/oglinzi-rotunde-baie
+   products.json page 1
+   = 200 -> 200 | Oglinzi Rotunde Baie – Alessandro Design | products=70
+GET https://www.alessandrodesign.ro/collections/panouri-artificiale
+   = 404 -> 404 | 404 negăsit – Alessandro Design | products=None
+GET https://www.alessandrodesign.ro/collections/para-dus
+   = 404 -> 404 | 404 negăsit – Alessandro Design | products=None
+GET https://www.alessandrodesign.ro/collections/paravane-dus-walk-in
+   = 404 -> 404 | 404 negăsit – Alessandro Design | products=None
+GET https://www.alessandrodesign.ro/collections/plafoniere-led
+   -> 301 https://www.alessandrodesign.ro/collections/plafoniere-led-1
+   products.json page 1
+   = 301 -> 200 | Plafoniere LED | Gama variata de plafoniere | Alessandro Design | products=82
+GET https://www.alessandrodesign.ro/collections/plante-artificiale
+   products.json page 1
+   = 200 -> 200 | Plante Artificiale – Alessandro Design | products=181
+GET https://www.alessandrodesign.ro/collections/produse-led
+   products.json page 1
+   = 200 -> 200 | Produse LED | Economie de energie si performanta | Alessandro Design | products=46
+GET https://www.alessandrodesign.ro/collections/proiectoare-exterior
+   = 404 -> 404 | 404 negăsit – Alessandro Design | products=None
+GET https://www.alessandrodesign.ro/collections/proiectoare-sina-magnetica
+   products.json page 1
+   = 200 -> 200 | Proiectoare sina magnetica | Iluminat flexibil si profesional | Alessandro Design | products=16
+GET https://www.alessandrodesign.ro/collections/sifon-pardoseala
+   products.json page 1
+   = 200 -> 200 | Sifon Pardoseala – Alessandro Design | products=1
+GET https://www.alessandrodesign.ro/collections/spoturi
+   products.json page 1
+   = 200 -> 200 | Spoturi LED | Iluminat directional accesibil | Alessandro Design | products=24
+GET https://www.alessandrodesign.ro/collections/tablouri-led
+   = 404 -> 404 | 404 negăsit – Alessandro Design | products=None
+GET https://www.alessandrodesign.ro/collections/tablouri-sticla
+   = 404 -> 404 | 404 negăsit – Alessandro Design | products=None
+GET https://www.alessandrodesign.ro/collections/tufe-artificiale
+   = 404 -> 404 | 404 negăsit – Alessandro Design | products=None
+GET https://www.alessandrodesign.ro/collections/uscatoare-maini
+   = 404 -> 404 | 404 negăsit – Alessandro Design | products=None
+GET https://www.alessandrodesign.ro/collections/veioze-dormitor
+   products.json page 1
+   = 200 -> 200 | Veioze Dormitor – Alessandro Design | products=21
+GET https://www.alessandrodesign.ro/collections/veioze-lampadare
+   products.json page 1
+   = 200 -> 200 | Veioze si lampadare | Iluminat ambiental pentru orice camera | Alessandro Design | products=53
+GET https://www.alessandrodesign.ro/pages/achizitii-publice-seap
+   = 200 -> 200 | Achizitii publice SEAP – Alessandro Design | products=None
+GET https://www.alessandrodesign.ro/pages/colaborari
+   = 404 -> 404 | 404 negăsit – Alessandro Design | products=None
+GET https://www.alessandrodesign.ro/pages/colaborari-marketing
+   = 200 -> 200 | Colaborari marketing – Alessandro Design | products=None
+GET https://www.alessandrodesign.ro/pages/comenzi-en-gross
+   = 404 -> 404 | 404 negăsit – Alessandro Design | products=None
+GET https://www.alessandrodesign.ro/pages/companie
+   = 200 -> 200 | Companie – Alessandro Design | products=None
+GET https://www.alessandrodesign.ro/pages/contact
+   = 200 -> 200 | Contact – Alessandro Design | products=None
+GET https://www.alessandrodesign.ro/pages/dropshipping
+   = 404 -> 404 | 404 negăsit – Alessandro Design | products=None
+GET https://www.alessandrodesign.ro/pages/pozele-clientilor
+   = 200 -> 200 | Pozele clientilor – Alessandro Design | products=None
+GET https://www.alessandrodesign.ro/policies/cookie-policy
+   = 404 -> 404 | 404 negăsit – Alessandro Design | products=None
+GET https://www.alessandrodesign.ro/policies/privacy-policy
+   = 200 -> 200 | Politica de confidențialitate – Alessandro Design | products=None
+GET https://www.alessandrodesign.ro/policies/shipping-policy
+   = 200 -> 200 | Politica de expediere – Alessandro Design | products=None
+GET https://www.alessandrodesign.ro/policies/terms-of-service
+   = 200 -> 200 | Termeni de utilizare – Alessandro Design | products=None
