@@ -216,6 +216,22 @@ body:has(.section-header .drawer-menu) .announcement-bar-section .page-width {
   overflow: hidden;
 }
 
+/* Prevents the page from scrolling behind an open overlay when the document is
+   scrolled by the <html> element rather than the <body>. */
+html:has(body.overflow-hidden),
+html:has(body.overflow-hidden-mobile),
+html:has(body.overflow-hidden-tablet) {
+  overflow: hidden;
+}
+
+/* Pins the page while a modal is open (see lockBodyScroll in global.js). */
+body.scroll-lock {
+  position: fixed;
+  left: 0;
+  right: 0;
+  box-sizing: border-box;
+}
+
 .skip-to-content-link:focus {
   z-index: 9999;
   position: inherit;
@@ -2905,13 +2921,15 @@ details-disclosure > details {
 }
 
 @media screen and (min-width: 750px) {
-  .overflow-hidden-mobile {
+  .overflow-hidden-mobile,
+  html:has(body.overflow-hidden-mobile) {
     overflow: auto;
   }
 }
 
 @media screen and (min-width: 990px) {
-  .overflow-hidden-tablet {
+  .overflow-hidden-tablet,
+  html:has(body.overflow-hidden-tablet) {
     overflow: auto;
   }
 }
