@@ -607,10 +607,18 @@ a.product__text {
 .product-media-modal {
   background-color: rgb(var(--color-background));
   height: 100%;
+  /* Mobile browsers shrink the visible viewport when the address bar is shown,
+     so `dvh` keeps the modal covering the screen instead of leaving a gap the
+     page shows through. */
+  height: 100dvh;
   position: fixed;
   top: 0;
   left: 0;
+  right: 0;
+  bottom: 0;
   width: 100%;
+  overflow: hidden;
+  overscroll-behavior: contain;
   visibility: hidden;
   opacity: 0;
   z-index: -1;
@@ -625,13 +633,16 @@ a.product__text {
 .product-media-modal__dialog {
   display: flex;
   align-items: center;
-  height: 100vh;
+  height: 100%;
 }
 
 .product-media-modal__content {
-  max-height: 100vh;
+  max-height: 100%;
   width: 100%;
   overflow: auto;
+  /* Keeps a scroll gesture inside the modal from chaining to the page. */
+  overscroll-behavior: contain;
+  -webkit-overflow-scrolling: touch;
 }
 
 .product-media-modal__content > *:not(.active),

@@ -39,6 +39,7 @@ document.addEventListener('shopify:section:load', () => {
 document.addEventListener('shopify:section:unload', (event) => {
   document.querySelectorAll(`[data-section="${event.detail.sectionId}"]`).forEach((element) => {
     element.remove();
+    if (window.unlockBodyScroll) window.unlockBodyScroll();
     document.body.classList.remove('overflow-hidden');
   });
 });

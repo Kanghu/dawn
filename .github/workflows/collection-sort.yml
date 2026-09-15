@@ -1,0 +1,40 @@
+name: Collection sort
+
+on:
+  schedule:
+    # 05:17 UTC = 08:17 in Bucharest (07:17 in winter), an hour after the
+    # out-of-stock run so it sorts what that run left visible.
+    # Runs from the default branch only.
+    - cron: "17 5 * * *"
+  workflow_dispatch:
+    inputs:
+      apply:
+        description: "Write changes (leave unchecked for a dry run)"
+        type: boolean
+        default: false
+      collection:
+        description: "Limit to one collection handle (optional)"
+        type: string
+        default: ""
+
+concurrency:
+  group: collection-sort
+
+jobs:
+  run:
+    runs-on: ubuntu-latest
+    timeout-minutes: 120
+    steps:
+      - uses: actions/checkout@v5
+      - uses: actions/setup-node@v5
+        with:
+          node-version: 24
+      - name: Move sold-out products to the end of each collection
+        run: |
+          node scripts/collection-sort/collection-sort.mjs \
+            ${{ (github.event_name == 'schedule' || inputs.apply) && '--apply' || '' }} \
+            ${{ inputs.collection && format('--collection {0}', inputs.collection) || '' }}
+        env:
+          SHOPIFY_STORE: d8cgqq-8s.myshopify.com
+          SHOPIFY_CLIENT_ID: ${{ secrets.SHOPIFY_CLIENT_ID }}
+          SHOPIFY_CLIENT_SECRET: ${{ secrets.SHOPIFY_CLIENT_SECRET }}

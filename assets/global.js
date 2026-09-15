@@ -602,6 +602,33 @@ class HeaderDrawer extends MenuDrawer {
 
 customElements.define('header-drawer', HeaderDrawer);
 
+/*
+ * Locks scrolling of the document behind an open overlay (modal, drawer).
+ * `overflow: hidden` on the body alone is not enough: when the document is
+ * scrolled by the <html> element (and on iOS in general) the page keeps
+ * scrolling behind the overlay, so the body is pinned in place instead and the
+ * scroll position is restored on unlock.
+ */
+window.lockBodyScroll = function lockBodyScroll() {
+  if (document.body.classList.contains('scroll-lock')) return;
+  // Keeps the layout from shifting when the document scrollbar disappears.
+  const scrollbarWidth = window.innerWidth - document.documentElement.clientWidth;
+  if (scrollbarWidth > 0) document.body.style.paddingRight = `${scrollbarWidth}px`;
+  document.body.dataset.scrollLockPosition = window.scrollY;
+  document.body.style.top = `-${window.scrollY}px`;
+  document.body.classList.add('scroll-lock', 'overflow-hidden');
+};
+
+window.unlockBodyScroll = function unlockBodyScroll() {
+  if (!document.body.classList.contains('scroll-lock')) return;
+  const scrollPosition = parseInt(document.body.dataset.scrollLockPosition, 10) || 0;
+  document.body.classList.remove('scroll-lock', 'overflow-hidden');
+  document.body.style.top = '';
+  document.body.style.paddingRight = '';
+  delete document.body.dataset.scrollLockPosition;
+  window.scrollTo(0, scrollPosition);
+};
+
 class ModalDialog extends HTMLElement {
   constructor() {
     super();
@@ -623,14 +650,17 @@ class ModalDialog extends HTMLElement {
   connectedCallback() {
     if (this.moved) return;
     this.moved = true;
-    this.dataset.section = this.closest('.shopify-section').id.replace('shopify-section-', '');
+    const section = this.closest('.shopify-section');
+    // The modal is `position: fixed`, so it must be a direct child of the body:
+    // a transformed or filtered ancestor would make it scroll with the page.
+    if (section) this.dataset.section = section.id.replace('shopify-section-', '');
     document.body.appendChild(this);
   }
 
   show(opener) {
     this.openedBy = opener;
     const popup = this.querySelector('.template-popup');
-    document.body.classList.add('overflow-hidden');
+    window.lockBodyScroll();
     this.setAttribute('open', '');
     if (popup) popup.loadContent();
     trapFocus(this, this.querySelector('[role="dialog"]'));
@@ -638,7 +668,7 @@ class ModalDialog extends HTMLElement {
   }
 
   hide() {
-    document.body.classList.remove('overflow-hidden');
+    window.unlockBodyScroll();
     document.body.dispatchEvent(new CustomEvent('modalClosed'));
     this.removeAttribute('open');
     removeTrapFocus(this.openedBy);
