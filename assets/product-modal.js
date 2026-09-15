@@ -25,9 +25,11 @@ if (!customElements.get('product-modal')) {
         const activeMediaTemplate = activeMedia.querySelector('template');
         const activeMediaContent = activeMediaTemplate ? activeMediaTemplate.content : null;
         activeMedia.classList.add('active');
-        activeMedia.scrollIntoView();
 
         const container = this.querySelector('[role="document"]');
+        // Scroll within the modal only: `scrollIntoView()` also scrolls the
+        // document behind the modal, which moves the page while it is open.
+        container.scrollTop += activeMedia.getBoundingClientRect().top - container.getBoundingClientRect().top;
         container.scrollLeft = (activeMedia.width - container.clientWidth) / 2;
 
         if (
