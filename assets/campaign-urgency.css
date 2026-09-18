@@ -7,21 +7,10 @@
   100% { opacity: 1; transform: scale(1); }
 }
 
-@keyframes urgentGlow {
-  0% { box-shadow: 0 0 5px rgba(255, 23, 68, 0.3); }
-  50% { box-shadow: 0 0 20px rgba(255, 23, 68, 0.6), 0 0 30px rgba(255, 107, 0, 0.4); }
-  100% { box-shadow: 0 0 5px rgba(255, 23, 68, 0.3); }
-}
-
 @keyframes urgentShake {
   0%, 100% { transform: translateX(0); }
   25% { transform: translateX(-2px); }
   75% { transform: translateX(2px); }
-}
-
-@keyframes scarcityBlink {
-  0%, 50% { opacity: 1; }
-  51%, 100% { opacity: 0.6; }
 }
 
 /* Enhanced Buy Button Urgency
@@ -38,29 +27,6 @@
 .campaign-product .alc-buy-buttons button[name="add"]:not([style*="background"]):hover,
 .campaign-product .product-form__buttons button[name="add"]:not([style*="background"]):hover {
   transform: translateY(-2px);
-}
-
-
-
-/* Scarcity Indicators */
-.campaign-scarcity {
-  background: linear-gradient(135deg, #ff9800, #f57c00);
-  color: white;
-  padding: 0.75rem 1rem;
-  border-radius: 8px;
-  margin: 1rem 0;
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  font-weight: 600;
-  animation: scarcityBlink 2s infinite;
-  box-shadow: 0 4px 12px rgba(255, 152, 0, 0.3);
-}
-
-.campaign-scarcity::before {
-  content: '⚠️';
-  font-size: 1.2em;
-  animation: urgentShake 1s infinite;
 }
 
 /* Stock level urgency */
@@ -84,149 +50,13 @@
 
 /* Limited offer text is now controlled via theme editor - removed hardcoded ::after pseudo-element */
 
-/* Floating action elements */
-.campaign-floating-message {
-  position: fixed;
-  top: 20%;
-  right: -300px;
-  background: linear-gradient(135deg, #ff1744, #d50000);
-  color: white;
-  padding: 1rem 1.5rem;
-  border-radius: 25px 0 0 25px;
-  box-shadow: -5px 5px 15px rgba(0, 0, 0, 0.3);
-  z-index: 1000;
-  animation: floatIn 0.5s ease-out 2s forwards, floatOut 0.5s ease-in 8s forwards;
-  font-weight: 600;
-  max-width: 250px;
-}
-
-@keyframes floatIn {
-  to { right: 0; }
-}
-
-@keyframes floatOut {
-  to { right: -300px; }
-}
-
-.campaign-floating-message::before {
-  content: '⏰';
-  font-size: 1.5em;
-  margin-right: 0.5rem;
-  animation: urgentShake 1s infinite;
-}
-
 /* Progress bars for campaigns */
-.campaign-progress-indicator {
-  background: rgba(255, 23, 68, 0.1);
-  border: 1px solid rgba(255, 23, 68, 0.2);
-  padding: 1rem;
-  border-radius: 12px;
-  margin: 1rem 0;
-}
-
-.campaign-progress-indicator h4 {
-  margin: 0 0 0.5rem 0;
-  color: #ff1744;
-  font-size: 0.9rem;
-  font-weight: 700;
-  letter-spacing: 0.05em;
-}
-
 .progress-bar {
   background: rgba(255, 23, 68, 0.2);
   height: 8px;
   border-radius: 10px;
   overflow: hidden;
   position: relative;
-}
-
-.progress-fill {
-  background: linear-gradient(90deg, #ff1744, #ff6b00);
-  height: 100%;
-  border-radius: 10px;
-  animation: progressPulse 2s infinite;
-  position: relative;
-}
-
-.progress-fill::after {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: -100%;
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
-  animation: shimmer 1.5s infinite;
-}
-
-@keyframes progressPulse {
-  0%, 100% { opacity: 0.8; }
-  50% { opacity: 1; }
-}
-
-@keyframes shimmer {
-  100% { left: 100%; }
-}
-
-/* Campaign notification banner */
-.campaign-notification {
-  position: sticky;
-  top: 0;
-  background: linear-gradient(90deg, #ff1744, #ff6b00);
-  color: white;
-  text-align: center;
-  padding: 0.75rem;
-  font-weight: 700;
-  font-size: 0.9rem;
-  letter-spacing: 0.05em;
-  z-index: 100;
-  animation: urgentPulse 3s infinite;
-}
-
-.campaign-notification::before {
-  content: '🚨 ';
-  animation: urgentShake 1s infinite;
-}
-
-.campaign-notification::after {
-  content: ' 🚨';
-  animation: urgentShake 1s infinite 0.5s;
-}
-
-/* Social proof elements */
-.campaign-social-proof {
-  background: rgba(76, 175, 80, 0.1);
-  border: 1px solid rgba(76, 175, 80, 0.3);
-  border-radius: 8px;
-  padding: 0.75rem;
-  margin: 1rem 0;
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  animation: urgentPulse 4s infinite;
-}
-
-.campaign-social-proof::before {
-  content: '👥';
-  font-size: 1.2em;
-}
-
-/* Mobile optimizations */
-@media (max-width: 749px) {
-  .campaign-product .product__title::after {
-    font-size: 0.7rem;
-    bottom: -1rem;
-  }
-
-  .campaign-floating-message {
-    top: auto;
-    bottom: 20px;
-    right: -250px;
-    max-width: 200px;
-    padding: 0.75rem 1rem;
-    font-size: 0.85rem;
-  }
-
 }
 
 /* Accessibility improvements */
@@ -245,12 +75,5 @@
   .campaign-discount-badge,
   .campaign-featured-badge {
     border: 2px solid white;
-  }
-}
-
-/* Dark mode support */
-@media (prefers-color-scheme: dark) {
-  .campaign-scarcity {
-    background: linear-gradient(135deg, #f57c00, #ef6c00);
   }
 }
