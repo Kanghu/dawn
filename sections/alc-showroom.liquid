@@ -37,6 +37,14 @@
   assign closed_word = s.closed_label | default: 'Închis' | strip
 
   comment
+    Chrome that is not part of the page copy falls back to the theme's own
+    translated strings, so it follows the visitor's language with no per-market
+    setup. Anything the merchant types stays a setting and is translated in
+    the admin alongside the rest of the page.
+  endcomment
+  assign play_video_label = 'products.product.media.play_video' | t
+
+  comment
     Split "09:00 - 17:00" (either dash) into opens/closes for the JSON-LD below.
   endcomment
   assign mf_parts = s.hours_weekdays | replace: '-', '–' | split: '–'
@@ -245,7 +253,18 @@
           {%- endif -%}
         </div>
 
-        <div class="alcshow__grid" data-alcshow-gallery data-alcshow-reveal>
+        {%- comment -%}
+          The lightbox chrome is built in JS, so its labels are handed over here
+          from the theme's own translated strings rather than hardcoded.
+        {%- endcomment -%}
+        <div
+          class="alcshow__grid"
+          data-alcshow-gallery
+          data-alcshow-reveal
+          data-alcshow-label-close="{{ 'accessibility.close' | t | escape }}"
+          data-alcshow-label-prev="{{ 'sections.slideshow.previous_slideshow' | t | escape }}"
+          data-alcshow-label-next="{{ 'sections.slideshow.next_slideshow' | t | escape }}"
+        >
           {%- for block in gallery_blocks -%}
             {%- liquid
               assign b = block.settings
@@ -333,7 +352,7 @@
                 type="button"
                 class="alcshow__video-poster"
                 data-alcshow-video-open
-                aria-label="{{ s.video_play_label | default: 'Pornește videoclipul' | escape }}"
+                aria-label="{{ s.video_play_label | default: play_video_label | escape }}"
               >
                 <span class="alcshow__video-play">
                   <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg>
@@ -718,7 +737,12 @@
       "label": "Poster din assets",
       "default": "alc-showroom-hall.jpg"
     },
-    { "type": "text", "id": "video_play_label", "label": "Etichetă buton play", "default": "Pornește videoclipul" },
+    {
+      "type": "text",
+      "id": "video_play_label",
+      "label": "Etichetă buton play",
+      "info": "Lasă gol pentru a folosi textul deja tradus al temei în fiecare limbă."
+    },
 
     {
       "type": "header",

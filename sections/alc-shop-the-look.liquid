@@ -1,0 +1,364 @@
+{%- comment -%}
+  alc-shop-the-look — one styled room render ("look") with numbered hotspots,
+  plus the matching product rail underneath.
+
+  One section = one look, so a page can stack several of them. The first one on
+  the page normally carries the intro heading.
+
+  Hotspots point at real products (product picker), which means the link follows
+  the product across markets and handle changes, the price and stock state are
+  live, and a deleted product simply drops out instead of leaving a dead pin.
+
+  The frame keeps the image's exact aspect ratio at every width — the pins are
+  positioned in percentages, so any cropping would move them off their product.
+
+  Renders images through alc-showroom-picture, which despite the name is the
+  generic picture renderer in this theme (image object / theme asset / URL).
+{%- endcomment -%}
+
+{{ 'alc-stl.css' | asset_url | stylesheet_tag }}
+<script src="{{ 'alc-stl.js' | asset_url }}" defer="defer"></script>
+
+{%- liquid
+  assign s = section.settings
+
+  assign display_font_light = s.display_font | font_modify: 'weight', '300'
+
+  comment
+    Aspect ratio: prefer the picked image's own ratio, then the manual override,
+    then a sane default.
+  endcomment
+  assign ratio = '16 / 9'
+  if s.image != blank
+    assign ratio = s.image.width | append: ' / ' | append: s.image.height
+  elsif s.image_ratio != blank
+    assign ratio = s.image_ratio
+  endif
+
+  assign intro_tag = s.intro_heading_tag | default: 'h1'
+  assign look_tag = s.look_heading_tag | default: 'h2'
+
+  comment
+    Falls back to the theme's own translated "out of stock" string, so it
+    follows the visitor's language without a per-market setting.
+  endcomment
+  assign sold_out_fallback = 'products.product.sold_out' | t
+-%}
+
+{%- style -%}
+  {%- if s.display_font -%}
+    {{ s.display_font | font_face: font_display: 'swap' }}
+  {%- endif -%}
+  {%- if display_font_light -%}
+    {{ display_font_light | font_face: font_display: 'swap' }}
+  {%- endif -%}
+
+  #alcstl-{{ section.id }} {
+    --alcstl-accent: {{ s.accent_color | default: '#c8a668' }};
+    {%- if s.display_font %}
+    --alcstl-display-font: {{ s.display_font.family }}, {{ s.display_font.fallback_families }};
+    --alcstl-display-weight: {% if display_font_light %}{{ display_font_light.weight }}{% else %}{{ s.display_font.weight }}{% endif %};
+    {%- endif %}
+  }
+
+  #alcstl-{{ section.id }} .alcstl__frame {
+    --alcstl-ratio: {{ ratio }};
+  }
+
+  #alcstl-{{ section.id }} .alcstl__look {
+    padding-top: {{ s.padding_top | default: 0 }}px;
+  }
+{%- endstyle -%}
+
+<div class="alcstl{% if s.dark %} alcstl--dark{% endif %}" id="alcstl-{{ section.id }}">
+  <div class="alcstl__wrap">
+    {%- if s.intro_heading != blank -%}
+      <div class="alcstl__intro">
+        {%- if s.intro_eyebrow != blank -%}
+          <p class="alcstl__eyebrow">{{ s.intro_eyebrow }}</p>
+        {%- endif -%}
+
+        <{{ intro_tag }} class="alcstl__display">{{ s.intro_heading }}</{{ intro_tag }}>
+
+        {%- if s.intro_text != blank -%}
+          <div class="alcstl__lede">{{ s.intro_text }}</div>
+        {%- endif -%}
+
+        {%- if s.intro_hint != blank -%}
+          <p class="alcstl__hint">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M11 3.5a2.2 2.2 0 0 1 2.2 2.2v6.1l2.6-1a2 2 0 0 1 2.6 1.3l.3 1a6.4 6.4 0 0 1-4.3 7.8l-1.7.5a5.2 5.2 0 0 1-6.2-2.8L4.4 14a1.9 1.9 0 0 1 1-2.6"/><path d="M8.8 12.2V5.7a2.2 2.2 0 0 1 4.4 0"/></svg>
+            {{ s.intro_hint }}
+          </p>
+        {%- endif -%}
+      </div>
+    {%- endif -%}
+
+    <div class="alcstl__look" data-alcstl-look>
+      <div class="alcstl__stage">
+        <div class="alcstl__frame">
+          {%- render 'alc-showroom-picture',
+            image: s.image,
+            src: s.image_url,
+            alt: s.image_alt,
+            sizes: '(min-width: 990px) 62vw, 100vw',
+            loading: s.image_loading
+          -%}
+
+          {%- assign pin_index = 0 -%}
+          {%- for block in section.blocks -%}
+            {%- if block.type != 'hotspot' -%}{%- continue -%}{%- endif -%}
+            {%- assign hotspot_product = block.settings.product -%}
+            {%- if hotspot_product == blank -%}{%- continue -%}{%- endif -%}
+            {%- assign pin_index = pin_index | plus: 1 -%}
+            {%- assign pin_label = block.settings.label | default: hotspot_product.title -%}
+
+            <button
+              type="button"
+              class="alcstl__pin"
+              style="left: {{ block.settings.x }}%; top: {{ block.settings.y }}%; --alcstl-i: {{ pin_index }};"
+              data-alcstl-pin="{{ pin_index }}"
+              aria-pressed="false"
+              aria-label="{{ pin_label | escape }}"
+              {{ block.shopify_attributes }}
+            >
+              {{- pin_index -}}
+            </button>
+          {%- endfor -%}
+        </div>
+      </div>
+
+      <div class="alcstl__panel">
+        {%- if s.room_label != blank or s.look_heading != blank -%}
+          <div class="alcstl__panel-head">
+            {%- if s.room_label != blank -%}
+              <p class="alcstl__eyebrow">{{ s.room_label }}</p>
+            {%- endif -%}
+            {%- if s.look_heading != blank -%}
+              <{{ look_tag }} class="alcstl__display">{{ s.look_heading }}</{{ look_tag }}>
+            {%- endif -%}
+          </div>
+        {%- endif -%}
+
+        <ul class="alcstl__items" data-alcstl-items>
+          {%- assign item_index = 0 -%}
+          {%- for block in section.blocks -%}
+            {%- if block.type != 'hotspot' -%}{%- continue -%}{%- endif -%}
+            {%- assign item_product = block.settings.product -%}
+            {%- if item_product == blank -%}{%- continue -%}{%- endif -%}
+            {%- assign item_index = item_index | plus: 1 -%}
+
+            <li>
+              <a
+                class="alcstl__item"
+                href="{{ item_product.url }}"
+                data-alcstl-item="{{ item_index }}"
+                data-active="false"
+              >
+                <span class="alcstl__thumb">
+                  {%- if item_product.featured_image -%}
+                    <img
+                      src="{{ item_product.featured_image | image_url: width: 300 }}"
+                      srcset="
+                        {{ item_product.featured_image | image_url: width: 160 }} 160w,
+                        {{ item_product.featured_image | image_url: width: 300 }} 300w,
+                        {{ item_product.featured_image | image_url: width: 460 }} 460w
+                      "
+                      sizes="(min-width: 990px) 72px, 154px"
+                      alt="{{ item_product.featured_image.alt | default: item_product.title | escape }}"
+                      width="{{ item_product.featured_image.width }}"
+                      height="{{ item_product.featured_image.height }}"
+                      loading="lazy"
+                      decoding="async"
+                    >
+                  {%- endif -%}
+                  <span class="alcstl__num" aria-hidden="true">{{ item_index }}</span>
+                </span>
+
+                <span class="alcstl__meta">
+                  <span class="alcstl__name">
+                    {{- block.settings.label | default: item_product.title -}}
+                  </span>
+
+                  {%- if item_product.available -%}
+                    <span class="alcstl__price">
+                      {{ item_product.price | money }}
+                      {%- if item_product.compare_at_price > item_product.price -%}
+                        <del>{{ item_product.compare_at_price | money }}</del>
+                      {%- endif -%}
+                    </span>
+                  {%- else -%}
+                    <span class="alcstl__badge">
+                      {{- s.sold_out_label | default: sold_out_fallback -}}
+                    </span>
+                  {%- endif -%}
+                </span>
+              </a>
+            </li>
+          {%- endfor -%}
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Idei de amenajare",
+  "tag": "section",
+  "class": "alc-stl-section",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Aspect"
+    },
+    {
+      "type": "color",
+      "id": "accent_color",
+      "label": "Culoare accent",
+      "default": "#c8a668"
+    },
+    {
+      "type": "font_picker",
+      "id": "display_font",
+      "label": "Font titluri",
+      "default": "roboto_n4"
+    },
+    {
+      "type": "checkbox",
+      "id": "dark",
+      "label": "Fundal închis",
+      "default": false
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 120,
+      "step": 4,
+      "unit": "px",
+      "label": "Spațiu deasupra",
+      "default": 0
+    },
+
+    {
+      "type": "header",
+      "content": "Intro pagină",
+      "info": "Completează doar pe prima secțiune din pagină."
+    },
+    { "type": "text", "id": "intro_eyebrow", "label": "Supratitlu" },
+    { "type": "text", "id": "intro_heading", "label": "Titlu" },
+    {
+      "type": "select",
+      "id": "intro_heading_tag",
+      "label": "Tag titlu intro",
+      "options": [
+        { "value": "h1", "label": "H1" },
+        { "value": "h2", "label": "H2" }
+      ],
+      "default": "h1"
+    },
+    { "type": "richtext", "id": "intro_text", "label": "Text" },
+    { "type": "text", "id": "intro_hint", "label": "Indiciu de utilizare" },
+
+    {
+      "type": "header",
+      "content": "Amenajarea"
+    },
+    { "type": "text", "id": "room_label", "label": "Supratitlu (camera)" },
+    { "type": "text", "id": "look_heading", "label": "Titlu amenajare" },
+    {
+      "type": "select",
+      "id": "look_heading_tag",
+      "label": "Tag titlu amenajare",
+      "options": [
+        { "value": "h2", "label": "H2" },
+        { "value": "h3", "label": "H3" }
+      ],
+      "default": "h2"
+    },
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Imagine",
+      "info": "Lasă gol pentru a folosi URL-ul de mai jos."
+    },
+    {
+      "type": "text",
+      "id": "image_url",
+      "label": "URL imagine",
+      "info": "Folosit doar dacă nu ai ales o imagine mai sus."
+    },
+    {
+      "type": "text",
+      "id": "image_ratio",
+      "label": "Raport imagine",
+      "info": "Doar pentru URL, ex.: 12 / 7. Hotspoturile sunt în procente, deci raportul trebuie să fie exact.",
+      "default": "16 / 9"
+    },
+    { "type": "text", "id": "image_alt", "label": "Text alternativ" },
+    {
+      "type": "select",
+      "id": "image_loading",
+      "label": "Încărcare imagine",
+      "options": [
+        { "value": "lazy", "label": "Lazy (implicit)" },
+        { "value": "eager", "label": "Imediat (prima din pagină)" }
+      ],
+      "default": "lazy"
+    },
+
+    {
+      "type": "header",
+      "content": "Etichete"
+    },
+    {
+      "type": "text",
+      "id": "sold_out_label",
+      "label": "Text stoc epuizat",
+      "info": "Lasă gol pentru a folosi textul deja tradus al temei în fiecare limbă."
+    }
+  ],
+  "blocks": [
+    {
+      "type": "hotspot",
+      "name": "Hotspot",
+      "settings": [
+        { "type": "product", "id": "product", "label": "Produs" },
+        {
+          "type": "range",
+          "id": "x",
+          "min": 0,
+          "max": 100,
+          "step": 1,
+          "unit": "%",
+          "label": "Poziție orizontală",
+          "default": 50
+        },
+        {
+          "type": "range",
+          "id": "y",
+          "min": 0,
+          "max": 100,
+          "step": 1,
+          "unit": "%",
+          "label": "Poziție verticală",
+          "default": 50
+        },
+        {
+          "type": "text",
+          "id": "label",
+          "label": "Nume afișat",
+          "info": "Opțional. Implicit se folosește titlul produsului."
+        }
+      ]
+    }
+  ],
+  "max_blocks": 12,
+  "presets": [
+    {
+      "name": "Idei de amenajare",
+      "blocks": [{ "type": "hotspot" }, { "type": "hotspot" }, { "type": "hotspot" }]
+    }
+  ]
+}
+{% endschema %}
