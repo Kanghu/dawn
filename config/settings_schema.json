@@ -1334,6 +1334,47 @@
         "id": "discount_badge_text",
         "label": "Text Color",
         "default": "#ffffff"
+      },
+      {
+        "type": "header",
+        "content": "Campaign Frame Overlay"
+      },
+      {
+        "type": "paragraph",
+        "content": "A transparent PNG laid over the product image on cards. It shows on every discounted product, the same rule as the \"Super pret\" badge."
+      },
+      {
+        "type": "checkbox",
+        "id": "campaign_frame_enabled",
+        "label": "Enable Frame Overlay",
+        "default": true
+      },
+      {
+        "type": "image_picker",
+        "id": "campaign_frame_image",
+        "label": "Frame Image (transparent PNG)",
+        "info": "Square PNG recommended, around 1000x1000. Leave empty to hide the overlay."
+      },
+      {
+        "type": "select",
+        "id": "campaign_frame_fit",
+        "label": "Frame Fit",
+        "options": [
+          {
+            "value": "fill",
+            "label": "Stretch to the image box"
+          },
+          {
+            "value": "contain",
+            "label": "Fit inside, keep proportions"
+          },
+          {
+            "value": "cover",
+            "label": "Cover, crop the overflow"
+          }
+        ],
+        "default": "fill",
+        "info": "Stretch suits a frame drawn edge to edge. Fit inside suits a sticker or a corner ribbon."
       }
     ]
   },

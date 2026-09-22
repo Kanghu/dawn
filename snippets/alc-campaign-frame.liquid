@@ -1,0 +1,56 @@
+{% comment %}
+  Renders the campaign frame: a transparent PNG laid over a product card image.
+
+  Shows on discounted products, the same condition that puts the "Super pret"
+  badge on the card. The PNG comes from Theme settings > Campaign Badges.
+
+  Rendered as a sibling of .media, never inside it, so base.css keeps matching
+  img:only-child for the hover zoom and img + img for the secondary image.
+
+  Accepts:
+  - card_product: {Object} Product Liquid object (required)
+  - lazy_load: {Boolean} Image should be lazy loaded. Default: true (optional)
+  - frame_sizes: {String} sizes attribute for the overlay (optional)
+
+  Usage:
+  {% render 'alc-campaign-frame', card_product: card_product, lazy_load: lazy_load %}
+{% endcomment %}
+{%- liquid
+  assign frame_image = settings.campaign_frame_image
+
+  assign show_frame = false
+  if settings.campaign_frame_enabled and frame_image != blank
+    if card_product.compare_at_price > card_product.price and card_product.available
+      assign show_frame = true
+    endif
+  endif
+-%}
+{%- if show_frame -%}
+  {%- liquid
+    assign frame_fit = settings.campaign_frame_fit | default: 'fill'
+    assign frame_sizes_attr = frame_sizes | default: '(min-width: 990px) calc((100vw - 130px) / 4), (min-width: 750px) calc((100vw - 120px) / 3), calc((100vw - 35px) / 2)'
+  -%}
+  <img
+    srcset="
+      {%- if frame_image.width >= 165 -%}{{ frame_image | image_url: width: 165 }} 165w,{%- endif -%}
+      {%- if frame_image.width >= 360 -%}{{ frame_image | image_url: width: 360 }} 360w,{%- endif -%}
+      {%- if frame_image.width >= 533 -%}{{ frame_image | image_url: width: 533 }} 533w,{%- endif -%}
+      {%- if frame_image.width >= 720 -%}{{ frame_image | image_url: width: 720 }} 720w,{%- endif -%}
+      {%- if frame_image.width >= 940 -%}{{ frame_image | image_url: width: 940 }} 940w,{%- endif -%}
+      {{ frame_image | image_url }} {{ frame_image.width }}w
+    "
+    src="{{ frame_image | image_url: width: 533 }}"
+    sizes="{{ frame_sizes_attr }}"
+    alt=""
+    role="presentation"
+    aria-hidden="true"
+    class="alc-campaign-frame"
+    style="--alc-campaign-frame-fit: {{ frame_fit }};"
+    {% unless lazy_load == false %}
+      loading="lazy"
+    {% endunless %}
+    decoding="async"
+    width="{{ frame_image.width }}"
+    height="{{ frame_image.height }}"
+  >
+{%- endif -%}
