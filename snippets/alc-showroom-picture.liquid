@@ -1,0 +1,129 @@
+{%- comment -%}
+  Renders a responsive <img> for the showroom section from any of three sources,
+  in priority order:
+
+    1. image  {Object}  a theme-editor image_picker value
+    2. asset  {String}  a filename shipped in assets/ (e.g. "alc-showroom-hall.jpg")
+    3. src    {String}  an absolute URL (Shopify CDN URLs get ?width= appended)
+
+  Accepts:
+  - alt           {String}  alt text (required for meaningful images)
+  - sizes         {String}  sizes attribute, default "100vw"
+  - widths        {String}  comma separated srcset widths
+  - loading       {String}  "lazy" (default) or "eager"
+  - fetchpriority {String}  optional, e.g. "high" for the LCP image
+  - class         {String}  optional class attribute
+  - width         {Number}  optional intrinsic width, for the asset/src branches
+  - height        {Number}  optional intrinsic height, for the asset/src branches
+
+  Note on ImgWidthAndHeight: sources 2 and 3 have no intrinsic size available in
+  Liquid. Every caller in alc-showroom.liquid renders these images inside a box
+  that already has a fixed aspect-ratio (or is absolutely positioned), so there
+  is no layout shift to prevent — the check is disabled around those branches.
+
+  Usage:
+  {% render 'alc-showroom-picture', asset: 'alc-showroom-hall.jpg', alt: '...' %}
+{%- endcomment -%}
+
+{%- liquid
+  assign img_widths = widths | default: '400,600,800,1000,1400,1800,2200' | split: ','
+  assign img_sizes = sizes | default: '100vw'
+  assign img_loading = loading | default: 'lazy'
+  assign img_alt = alt | default: '' | escape
+-%}
+
+{%- if image != blank -%}
+  {%- liquid
+    assign srcset = ''
+    for w in img_widths
+      assign width_int = w | plus: 0
+      if width_int > image.width
+        continue
+      endif
+      unless srcset == ''
+        assign srcset = srcset | append: ', '
+      endunless
+      assign candidate = image | image_url: width: width_int
+      assign srcset = srcset | append: candidate | append: ' ' | append: width_int | append: 'w'
+    endfor
+    if srcset == ''
+      assign srcset = image | image_url: width: image.width | append: ' ' | append: image.width | append: 'w'
+    endif
+  -%}
+  <img
+    src="{{ image | image_url: width: 1400 }}"
+    srcset="{{ srcset }}"
+    sizes="{{ img_sizes }}"
+    alt="{{ img_alt }}"
+    width="{{ image.width }}"
+    height="{{ image.height }}"
+    loading="{{ img_loading }}"
+    decoding="async"
+    {% if fetchpriority %}fetchpriority="{{ fetchpriority }}"{% endif %}
+    {% if class %}class="{{ class }}"{% endif %}
+  >
+
+{%- elsif asset != blank -%}
+  {% # theme-check-disable ImgWidthAndHeight %}
+  {%- liquid
+    assign srcset = ''
+    for w in img_widths
+      assign size_arg = w | append: 'x'
+      unless srcset == ''
+        assign srcset = srcset | append: ', '
+      endunless
+      assign candidate = asset | asset_img_url: size_arg
+      assign srcset = srcset | append: candidate | append: ' ' | append: w | append: 'w'
+    endfor
+  -%}
+  <img
+    src="{{ asset | asset_img_url: '1400x' }}"
+    srcset="{{ srcset }}"
+    sizes="{{ img_sizes }}"
+    alt="{{ img_alt }}"
+    {% if width %}width="{{ width }}"{% endif %}
+    {% if height %}height="{{ height }}"{% endif %}
+    loading="{{ img_loading }}"
+    decoding="async"
+    {% if fetchpriority %}fetchpriority="{{ fetchpriority }}"{% endif %}
+    {% if class %}class="{{ class }}"{% endif %}
+  >
+  {% # theme-check-enable ImgWidthAndHeight %}
+
+{%- elsif src != blank -%}
+  {% # theme-check-disable ImgWidthAndHeight, RemoteAsset %}
+  {%- liquid
+    assign is_shopify_cdn = false
+    if src contains 'cdn.shopify.com' or src contains '/cdn/shop/'
+      assign is_shopify_cdn = true
+    endif
+
+    if src contains '?'
+      assign width_param = '&width='
+    else
+      assign width_param = '?width='
+    endif
+
+    assign srcset = ''
+    if is_shopify_cdn
+      for w in img_widths
+        unless srcset == ''
+          assign srcset = srcset | append: ', '
+        endunless
+        assign srcset = srcset | append: src | append: width_param | append: w | append: ' ' | append: w | append: 'w'
+      endfor
+    endif
+  -%}
+  <img
+    src="{% if is_shopify_cdn %}{{ src }}{{ width_param }}1400{% else %}{{ src }}{% endif %}"
+    {% if srcset != '' %}srcset="{{ srcset }}" sizes="{{ img_sizes }}"{% endif %}
+    alt="{{ img_alt }}"
+    {% if width %}width="{{ width }}"{% endif %}
+    {% if height %}height="{{ height }}"{% endif %}
+    loading="{{ img_loading }}"
+    decoding="async"
+    {% if fetchpriority %}fetchpriority="{{ fetchpriority }}"{% endif %}
+    {% if class %}class="{{ class }}"{% endif %}
+  >
+  {% # theme-check-enable ImgWidthAndHeight, RemoteAsset %}
+{%- endif -%}
