@@ -42,6 +42,7 @@
     overflow-x: auto;
     overflow-y: hidden;
     scroll-snap-type: x mandatory;
+    scroll-padding-inline: {{ settings.spacing_grid_horizontal }}px;
     scroll-behavior: smooth;
     padding: 0 {{ settings.spacing_grid_horizontal }}px {{ block.settings.scrollbar_spacing }}px;
     scrollbar-width: none;
@@ -87,6 +88,11 @@
     object-fit: cover;
     display: block;
     pointer-events: none;
+    transition: transform 1.2s cubic-bezier(0.2, 0.7, 0.2, 1);
+  }
+
+  .ai-collection-card-{{ ai_gen_id }}:hover img {
+    transform: scale(1.05);
   }
 
   .ai-collection-card-placeholder-{{ ai_gen_id }} {
@@ -105,14 +111,25 @@
     max-height: 300px;
   }
 
+  {%- comment -%}
+    The overlay is a span: base.css hides empty divs, so the old div never showed.
+    The colour settings are applied with fixed alphas (bottom 0.8, middle 0.35,
+    top transparent) so the photo stays visible above the text.
+  {%- endcomment -%}
   .ai-collection-card-overlay-{{ ai_gen_id }} {
     position: absolute;
-    inset: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    display: block;
+    z-index: 1;
+    pointer-events: none;
     background: linear-gradient(
       to top,
-      {{ block.settings.overlay_bottom_color }} 0%,
-      {{ block.settings.overlay_middle_color }} {{ block.settings.overlay_middle_position }}%,
-      {{ block.settings.overlay_top_color }} {{ block.settings.overlay_top_position }}%
+      {{ block.settings.overlay_bottom_color | color_modify: 'alpha', 0.8 }} 0%,
+      {{ block.settings.overlay_middle_color | color_modify: 'alpha', 0.35 }} {{ block.settings.overlay_middle_position }}%,
+      {{ block.settings.overlay_top_color | color_modify: 'alpha', 0 }} {{ block.settings.overlay_top_position }}%
     );
   }
 
@@ -131,6 +148,7 @@
     font-weight: {{ block.settings.title_weight }};
     color: {{ block.settings.card_text_color }};
     line-height: 1.2;
+    letter-spacing: -0.01em;
   }
 
   .ai-collection-card-content-{{ ai_gen_id }} p {
@@ -141,9 +159,47 @@
   }
 
   .ai-collection-card-cta-{{ ai_gen_id }} {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 16px;
+    border-radius: 999px;
+    background: #ffffff;
     font-size: {{ block.settings.cta_size }}px;
     color: {{ block.settings.cta_color }};
     font-weight: {{ block.settings.cta_weight }};
+    letter-spacing: 0.02em;
+    line-height: 1.2;
+    transition: background-color 0.25s ease;
+  }
+
+  .ai-collection-card-cta-{{ ai_gen_id }} svg {
+    flex: none;
+    transition: transform 0.25s ease;
+  }
+
+  .ai-collection-card-{{ ai_gen_id }}:hover .ai-collection-card-cta-{{ ai_gen_id }} {
+    background: #ebe6de;
+  }
+
+  .ai-collection-card-{{ ai_gen_id }}:hover .ai-collection-card-cta-{{ ai_gen_id }} svg {
+    transform: translateX(3px);
+  }
+
+  .ai-collection-card-{{ ai_gen_id }}:focus-visible {
+    outline: 2px solid #151515;
+    outline-offset: 3px;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .ai-collection-card-{{ ai_gen_id }},
+    .ai-collection-card-{{ ai_gen_id }} img {
+      transition: none;
+    }
+
+    .ai-collection-card-{{ ai_gen_id }}:hover img {
+      transform: none;
+    }
   }
 
   .ai-collections-nav-{{ ai_gen_id }} {
@@ -253,6 +309,11 @@
 
     .ai-collections-nav-{{ ai_gen_id }} {
       display: none;
+    }
+
+    .ai-collection-card-cta-{{ ai_gen_id }} {
+      padding: 7px 13px;
+      font-size: {{ block.settings.cta_size | minus: 1 | at_least: 12 }}px;
     }
   }
 {% endstyle %}
@@ -384,9 +445,17 @@
         <a href="{{ collection_url }}" class="ai-collection-card-{{ ai_gen_id }}" data-card>
           {% if display_image %}
             <img
+              srcset="
+                {{- display_image | image_url: width: 360 }} 360w,
+                {{ display_image | image_url: width: 540 }} 540w,
+                {{ display_image | image_url: width: 720 }} 720w,
+                {{ display_image | image_url: width: 900 }} 900w
+              "
+              sizes="(max-width: 749px) 75vw, {{ block.settings.card_width }}px"
               src="{{ display_image | image_url: width: 600 }}"
               alt="{% if display_title != blank %}{{ display_title | escape }}{% elsif display_image.alt != blank %}{{ display_image.alt | escape }}{% else %}Collection image{% endif %}"
               loading="lazy"
+              decoding="async"
               width="600"
               height="800"
             >
@@ -395,7 +464,7 @@
               {{ 'collection-1' | placeholder_svg_tag }}
             </div>
           {% endif %}
-          <div class="ai-collection-card-overlay-{{ ai_gen_id }}"></div>
+          <span class="ai-collection-card-overlay-{{ ai_gen_id }}" aria-hidden="true"></span>
           <div class="ai-collection-card-content-{{ ai_gen_id }}">
             {% if display_title != blank %}
               <h3>{{ display_title }}</h3>
@@ -403,7 +472,11 @@
             {% if display_description != blank %}
               <p>{{ display_description }}</p>
             {% endif %}
-            <span class="ai-collection-card-cta-{{ ai_gen_id }}">{{ display_cta }}</span>
+            {%- assign display_cta = display_cta | remove: '→' | remove: '->' | strip -%}
+            <span class="ai-collection-card-cta-{{ ai_gen_id }}">
+              {{- display_cta -}}
+              <svg aria-hidden="true" focusable="false" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+            </span>
           </div>
         </a>
       {% endfor %}
