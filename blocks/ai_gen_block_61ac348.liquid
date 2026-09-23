@@ -82,13 +82,14 @@
 {% style %}
   .ai-hero-banner-{{ ai_gen_id }} {
     position: relative;
+    display: block;
     max-width: 1300px;
-margin-left: auto;
-margin-right: auto;
+    margin-left: auto;
+    margin-right: auto;
     width: 100%;
     overflow: hidden;
     border-radius: {{ block.settings.banner_border_radius }}px;
-    display: block;
+    isolation: isolate;
   }
 
   .ai-hero-banner__image-wrapper-{{ ai_gen_id }} {
@@ -96,31 +97,31 @@ margin-right: auto;
     width: 100%;
     height: {{ block.settings.banner_height_desktop }}px;
     overflow: hidden;
+    background: #1c1b1a;
   }
 
   .ai-hero-banner__image-{{ ai_gen_id }} {
+    display: block;
     width: 100%;
     height: 100%;
     object-fit: cover;
-    transition: transform 0.6s ease;
+    transition: transform 1.2s cubic-bezier(0.2, 0.7, 0.2, 1);
   }
 
   {% if block.settings.hover_effect == 'zoom' %}
     .ai-hero-banner-{{ ai_gen_id }}:hover .ai-hero-banner__image-{{ ai_gen_id }} {
-      transform: scale(1.05);
+      transform: scale(1.04);
     }
   {% endif %}
 
-  .ai-hero-banner__image-mobile-{{ ai_gen_id }} {
-    display: none;
-  }
-
+  {% comment %}
+    The solid overlay is a div, and base.css hides empty divs, so it has never
+    shown on the storefront. It stays that way on purpose: the saved settings
+    (black at 100%) would black out the banners if it started to render.
+  {% endcomment %}
   .ai-hero-banner__overlay-{{ ai_gen_id }} {
     position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
+    inset: 0;
     pointer-events: none;
     z-index: 1;
   }
@@ -133,23 +134,23 @@ margin-right: auto;
   {% endif %}
 
   {% if block.settings.gradient_overlay_enabled %}
+    {%- assign g_op = block.settings.gradient_opacity | divided_by: 100.0 -%}
     .ai-hero-banner__gradient-overlay-{{ ai_gen_id }} {
       position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
+      inset: 0;
+      display: block;
       pointer-events: none;
       z-index: 2;
-      {% if block.settings.gradient_direction == 'bottom' %}
-        background: linear-gradient(to top, rgba(0, 0, 0, {{ block.settings.gradient_opacity | divided_by: 100.0 }}), transparent);
-      {% elsif block.settings.gradient_direction == 'top' %}
-        background: linear-gradient(to bottom, rgba(0, 0, 0, {{ block.settings.gradient_opacity | divided_by: 100.0 }}), transparent);
-      {% elsif block.settings.gradient_direction == 'left' %}
-        background: linear-gradient(to right, rgba(0, 0, 0, {{ block.settings.gradient_opacity | divided_by: 100.0 }}), transparent);
-      {% elsif block.settings.gradient_direction == 'right' %}
-        background: linear-gradient(to left, rgba(0, 0, 0, {{ block.settings.gradient_opacity | divided_by: 100.0 }}), transparent);
-      {% endif %}
+      {% case block.settings.gradient_direction %}
+        {% when 'bottom' %}
+          background: linear-gradient(to top, rgba(0, 0, 0, {{ g_op }}), rgba(0, 0, 0, {{ g_op | times: 0.35 }}) 45%, transparent 80%);
+        {% when 'top' %}
+          background: linear-gradient(to bottom, rgba(0, 0, 0, {{ g_op }}), rgba(0, 0, 0, {{ g_op | times: 0.35 }}) 45%, transparent 80%);
+        {% when 'left' %}
+          background: linear-gradient(to right, rgba(0, 0, 0, {{ g_op }}), rgba(0, 0, 0, {{ g_op | times: 0.35 }}) 45%, transparent 75%);
+        {% when 'right' %}
+          background: linear-gradient(to left, rgba(0, 0, 0, {{ g_op }}), rgba(0, 0, 0, {{ g_op | times: 0.35 }}) 45%, transparent 75%);
+      {% endcase %}
     }
   {% endif %}
 
@@ -158,7 +159,7 @@ margin-right: auto;
     z-index: 3;
     max-width: {{ block.settings.content_max_width }}px;
     padding: {{ block.settings.content_padding_top }}px {{ block.settings.content_padding_horizontal }}px {{ block.settings.content_padding_bottom }}px;
-    
+
     {% if block.settings.text_position_horizontal == 'left' %}
       left: 0;
       text-align: left;
@@ -190,6 +191,7 @@ margin-right: auto;
     font-size: {{ block.settings.title_size_desktop }}px;
     font-weight: {{ block.settings.title_font_weight }};
     line-height: {{ block.settings.title_line_height }};
+    letter-spacing: -0.01em;
     {% if block.settings.text_shadow_enabled %}
       text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
     {% endif %}
@@ -207,24 +209,40 @@ margin-right: auto;
   }
 
   .ai-hero-banner__cta-{{ ai_gen_id }} {
-    display: inline-block;
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
     padding: {{ block.settings.button_padding_vertical }}px {{ block.settings.button_padding_horizontal }}px;
     font-size: {{ block.settings.cta_size_desktop }}px;
     font-weight: {{ block.settings.cta_font_weight }};
+    letter-spacing: 0.02em;
     text-decoration: none;
     border-radius: {{ block.settings.button_border_radius }}px;
-    transition: all 0.3s ease;
+    transition: background-color 0.25s ease, color 0.25s ease, border-color 0.25s ease;
     cursor: pointer;
-    
+
     {% if block.settings.button_style == 'solid' %}
       background-color: {{ block.settings.button_background_color }};
       color: {{ block.settings.cta_color }};
-      border: 2px solid {{ block.settings.button_background_color }};
+      border: 1px solid {{ block.settings.button_background_color }};
     {% elsif block.settings.button_style == 'outline' %}
       background-color: transparent;
       color: {{ block.settings.cta_color }};
-      border: 2px solid {{ block.settings.cta_color }};
+      border: 1px solid {{ block.settings.cta_color }};
     {% endif %}
+  }
+
+  .ai-hero-banner__cta-{{ ai_gen_id }} svg {
+    transition: transform 0.25s ease;
+  }
+
+  .ai-hero-banner__cta-{{ ai_gen_id }}:hover svg {
+    transform: translateX(3px);
+  }
+
+  .ai-hero-banner__cta-{{ ai_gen_id }}:focus-visible {
+    outline: 2px solid currentColor;
+    outline-offset: 3px;
   }
 
   .ai-hero-banner__cta-{{ ai_gen_id }}:hover {
@@ -241,19 +259,19 @@ margin-right: auto;
   }
 
   @media screen and (max-width: 768px) {
+    {% if block.settings.banner_border_radius > 0 %}
+      .ai-hero-banner-{{ ai_gen_id }} {
+        width: calc(100% - 32px);
+      }
+    {% endif %}
+
     .ai-hero-banner__image-wrapper-{{ ai_gen_id }} {
       height: {{ block.settings.banner_height_mobile }}px;
     }
 
-    .ai-hero-banner__image-desktop-{{ ai_gen_id }} {
-      display: none;
-    }
-
-    .ai-hero-banner__image-mobile-{{ ai_gen_id }} {
-      display: block;
-    }
-
     .ai-hero-banner__content-{{ ai_gen_id }} {
+      padding-left: min({{ block.settings.content_padding_horizontal }}px, 22px);
+      padding-right: min({{ block.settings.content_padding_horizontal }}px, 22px);
       {% if block.settings.text_position_horizontal_mobile == 'left' %}
         left: 0;
         right: auto;
@@ -293,46 +311,69 @@ margin-right: auto;
       font-size: {{ block.settings.cta_size_mobile }}px;
     }
   }
+
+  @media (prefers-reduced-motion: reduce) {
+    .ai-hero-banner__image-{{ ai_gen_id }} {
+      transition: none;
+      transform: none !important;
+    }
+  }
 {% endstyle %}
 
-<hero-banner-{{ ai_gen_id }} class="ai-hero-banner-{{ ai_gen_id }}" {{ block.shopify_attributes }}>
-  <div class="ai-hero-banner__image-wrapper-{{ ai_gen_id }}">
-    {% if block.settings.image_desktop %}
-      <img
-        src="{{ block.settings.image_desktop | image_url: width: 2000 }}"
-        alt="{{ block.settings.image_desktop.alt | escape }}"
-        loading="lazy"
-        width="{{ block.settings.image_desktop.width }}"
-        height="{{ block.settings.image_desktop.height }}"
-        class="ai-hero-banner__image-{{ ai_gen_id }} ai-hero-banner__image-desktop-{{ ai_gen_id }}"
-      >
-    {% else %}
-      <div class="ai-hero-banner__image-{{ ai_gen_id }} ai-hero-banner__image-desktop-{{ ai_gen_id }}">
-        {{ 'hero-apparel-1' | placeholder_svg_tag }}
-      </div>
-    {% endif %}
+{%- liquid
+  assign img_desktop = block.settings.image_desktop | default: block.settings.image_mobile
+  assign img_mobile = block.settings.image_mobile
+  assign desktop_widths = '800,1100,1400,1700,2000' | split: ','
+  assign mobile_widths = '400,600,800,1000' | split: ','
+-%}
 
-    {% if block.settings.image_mobile %}
-      <img
-        src="{{ block.settings.image_mobile | image_url: width: 1000 }}"
-        alt="{{ block.settings.image_mobile.alt | escape }}"
-        loading="lazy"
-        width="{{ block.settings.image_mobile.width }}"
-        height="{{ block.settings.image_mobile.height }}"
-        class="ai-hero-banner__image-{{ ai_gen_id }} ai-hero-banner__image-mobile-{{ ai_gen_id }}"
-      >
-    {% else %}
-      <div class="ai-hero-banner__image-{{ ai_gen_id }} ai-hero-banner__image-mobile-{{ ai_gen_id }}">
+<div class="ai-hero-banner-{{ ai_gen_id }}" {{ block.shopify_attributes }}>
+  <div class="ai-hero-banner__image-wrapper-{{ ai_gen_id }}">
+    {%- if img_desktop -%}
+      <picture>
+        {%- if img_mobile and block.settings.image_desktop -%}
+          <source
+            media="(max-width: 768px)"
+            srcset="
+              {%- for w in mobile_widths -%}
+                {%- assign wn = w | plus: 0 -%}
+                {%- if img_mobile.width >= wn or forloop.first -%}{{ img_mobile | image_url: width: wn }} {{ wn | at_most: img_mobile.width }}w{% unless forloop.last %}, {% endunless %}{%- endif -%}
+              {%- endfor -%}
+            "
+            sizes="100vw"
+            width="{{ img_mobile.width }}"
+            height="{{ img_mobile.height }}"
+          >
+        {%- endif -%}
+        <img
+          srcset="
+            {%- for w in desktop_widths -%}
+              {%- assign wn = w | plus: 0 -%}
+              {%- if img_desktop.width >= wn or forloop.first -%}{{ img_desktop | image_url: width: wn }} {{ wn | at_most: img_desktop.width }}w{% unless forloop.last %}, {% endunless %}{%- endif -%}
+            {%- endfor -%}
+          "
+          sizes="(min-width: 1300px) 1300px, 100vw"
+          src="{{ img_desktop | image_url: width: 1400 }}"
+          alt="{{ img_desktop.alt | default: block.settings.title | escape }}"
+          loading="lazy"
+          decoding="async"
+          width="{{ img_desktop.width }}"
+          height="{{ img_desktop.height }}"
+          class="ai-hero-banner__image-{{ ai_gen_id }}"
+        >
+      </picture>
+    {%- else -%}
+      <div class="ai-hero-banner__image-{{ ai_gen_id }}">
         {{ 'hero-apparel-1' | placeholder_svg_tag }}
       </div>
-    {% endif %}
+    {%- endif -%}
 
     {% if block.settings.overlay_enabled %}
       <div class="ai-hero-banner__overlay-{{ ai_gen_id }}"></div>
     {% endif %}
 
     {% if block.settings.gradient_overlay_enabled %}
-      <div class="ai-hero-banner__gradient-overlay-{{ ai_gen_id }}"></div>
+      <span class="ai-hero-banner__gradient-overlay-{{ ai_gen_id }}" aria-hidden="true"></span>
     {% endif %}
 
     <div class="ai-hero-banner__content-{{ ai_gen_id }}">
@@ -346,28 +387,13 @@ margin-right: auto;
 
       {% if block.settings.cta_text != blank and block.settings.cta_link != blank %}
         <a href="{{ block.settings.cta_link }}" class="ai-hero-banner__cta-{{ ai_gen_id }}">
-          {{ block.settings.cta_text }}
+          {{ block.settings.cta_text -}}
+          <svg aria-hidden="true" focusable="false" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
         </a>
       {% endif %}
     </div>
   </div>
-</hero-banner-{{ ai_gen_id }}>
-
-<script>
-  (function() {
-    class HeroBanner{{ ai_gen_id }} extends HTMLElement {
-      constructor() {
-        super();
-      }
-
-      connectedCallback() {
-        this.style.display = 'block';
-      }
-    }
-
-    customElements.define('hero-banner-{{ ai_gen_id }}', HeroBanner{{ ai_gen_id }});
-  })();
-</script>
+</div>
 
 {% schema %}
 {

@@ -176,10 +176,10 @@
       <div class="center collection__view-all{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}">
         <a
           href="{{ section.settings.collection.url }}"
-          class="{% if section.settings.view_all_style == 'link' %}link underlined-link{% elsif section.settings.view_all_style == 'solid' %}button{% else %}button button--secondary{% endif %}"
-          style="border-radius: 0px; margin-top: 2rem;"
+          class="{% if section.settings.view_all_style == 'link' %}link underlined-link{% else %}alc-view-all{% endif %}"
           aria-label="{{ 'sections.featured_collection.view_all_label' | t: collection_name: section.settings.collection.title | escape }}">
-          {{ 'sections.featured_collection.view_all' | t }}
+          <span>{{ 'sections.featured_collection.view_all' | t }}</span>
+          {%- unless section.settings.view_all_style == 'link' -%}<svg aria-hidden="true" focusable="false" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>{%- endunless -%}
         </a>
       </div>
     {%- endif -%}
