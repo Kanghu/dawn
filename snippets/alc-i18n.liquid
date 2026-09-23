@@ -5,7 +5,7 @@
   locale fallback). Outputs the string only; capture it if you need a variable.
 
   Accepts:
-  - key: {String} read_more | about | useful_links | faq
+  - key: {String} read_more | about | useful_links | faq | read_all | show_less | explore
 
   Usage:
   {%- capture about_label -%}{% render 'alc-i18n', key: 'about' %}{%- endcapture -%}
@@ -14,29 +14,29 @@
   assign lang = request.locale.iso_code | downcase | slice: 0, 2
   case lang
     when 'en'
-      assign w = 'Read more|About|Useful links|Frequently asked questions'
+      assign w = 'Read more|About|Useful links|Frequently asked questions|Read all|Show less|Explore also'
     when 'hu'
-      assign w = 'Tovább olvasom|Tudnivalók:|Hasznos linkek|Gyakran ismételt kérdések'
+      assign w = 'Tovább olvasom|Tudnivalók:|Hasznos linkek|Gyakran ismételt kérdések|Teljes szöveg|Kevesebb|Fedezze fel ezeket is'
     when 'pl'
-      assign w = 'Czytaj więcej|O kategorii|Przydatne linki|Najczęściej zadawane pytania'
+      assign w = 'Czytaj więcej|O kategorii|Przydatne linki|Najczęściej zadawane pytania|Czytaj całość|Zwiń|Zobacz także'
     when 'el'
-      assign w = 'Διαβάστε περισσότερα|Σχετικά με|Χρήσιμοι σύνδεσμοι|Συχνές ερωτήσεις'
+      assign w = 'Διαβάστε περισσότερα|Σχετικά με|Χρήσιμοι σύνδεσμοι|Συχνές ερωτήσεις|Διαβάστε όλο|Λιγότερα|Ανακαλύψτε επίσης'
     when 'bg'
-      assign w = 'Прочетете още|За|Полезни връзки|Често задавани въпроси'
+      assign w = 'Прочетете още|За|Полезни връзки|Често задавани въпроси|Прочетете всичко|По-малко|Разгледайте също'
     when 'it'
-      assign w = 'Leggi di più|Informazioni su|Link utili|Domande frequenti'
+      assign w = 'Leggi di più|Informazioni su|Link utili|Domande frequenti|Leggi tutto|Mostra meno|Scopri anche'
     when 'fr'
-      assign w = 'Lire la suite|À propos de|Liens utiles|Questions fréquentes'
+      assign w = 'Lire la suite|À propos de|Liens utiles|Questions fréquentes|Tout lire|Voir moins|Découvrez aussi'
     when 'cs'
-      assign w = 'Číst dále|O kategorii|Užitečné odkazy|Často kladené otázky'
+      assign w = 'Číst dále|O kategorii|Užitečné odkazy|Často kladené otázky|Číst vše|Méně|Prozkoumejte také'
     when 'sk'
-      assign w = 'Čítať ďalej|O kategórii|Užitočné odkazy|Často kladené otázky'
+      assign w = 'Čítať ďalej|O kategórii|Užitočné odkazy|Často kladené otázky|Čítať všetko|Menej|Preskúmajte aj'
     when 'hr'
-      assign w = 'Pročitajte više|O kategoriji|Korisne poveznice|Često postavljana pitanja'
+      assign w = 'Pročitajte više|O kategoriji|Korisne poveznice|Često postavljana pitanja|Pročitajte sve|Manje|Istražite i'
     when 'de'
-      assign w = 'Weiterlesen|Über|Nützliche Links|Häufig gestellte Fragen'
+      assign w = 'Weiterlesen|Über|Nützliche Links|Häufig gestellte Fragen|Alles lesen|Weniger|Entdecken Sie auch'
     else
-      assign w = 'Citește mai mult|Despre|Link-uri utile|Întrebări frecvente'
+      assign w = 'Citește mai mult|Despre|Link-uri utile|Întrebări frecvente|Citește tot|Arată mai puțin|Explorează și'
   endcase
   assign parts = w | split: '|'
   case key
@@ -48,5 +48,11 @@
       echo parts[2]
     when 'faq'
       echo parts[3]
+    when 'read_all'
+      echo parts[4]
+    when 'show_less'
+      echo parts[5]
+    when 'explore'
+      echo parts[6]
   endcase
 -%}

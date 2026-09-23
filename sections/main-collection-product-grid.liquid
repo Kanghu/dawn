@@ -241,59 +241,79 @@
                 , paginate: paginate
                 , anchor: '' %}
             {%- endif -%}
-
-            {% if paginate.current_page == 1 %}
-              <h2 class="mt-8" id="AlcCollAbout">{% render 'alc-i18n', key: 'about' %} {{ collection.title }}</h2>
-              <div class="mt-6 rte">{% render 'alc-rte-images', html: collection.description %}</div>
-
-              {% if collection.metafields.custom.useful_links != blank %}
-                <div class="mt-12">
-                  <div class="alc-h3">{% render 'alc-i18n', key: 'useful_links' %}</div>
-                  <div class="flex flex-wrap gap-3 mt-4">
-                    {% for link in collection.metafields.custom.useful_links.value %}
-                      <a href="{{ link.url }}" class="inline-flex text-base no-underline text-black px-4 py-2 border border-gray-200 rounded-full bg-[#06BAD5] text-white hover:bg-[#058ea2] transition-colors">
-                        {{ link.text }}
-                      </a>
-                    {% endfor %}
-                  </div>
-                </div>
-              {% endif %}
-
-              {% if collection.metafields.custom.faq != blank %}
-                <div class="mt-12 space-y-4" itemscope itemtype="https://schema.org/FAQPage">
-                  <h3>{% render 'alc-i18n', key: 'faq' %}</h3>
-                  {% for faq in collection.metafields.custom.faq.value %}
-                    <details class="group border border-gray-200 rounded-lg" style="border-color: #06BAD5 !important;" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
-                      <summary class="flex items-center justify-between p-4 cursor-pointer">
-                        <h3 class="text-xl" itemprop="name">{{ faq.question }}</h3>
-                        <span class="ml-6 flex-shrink-0">
-                          <svg
-                            class="w-5 h-5 transition-transform group-open:rotate-180"
-                            xmlns="http://www.w3.org/2000/svg"
-                            fill="none"
-                            viewBox="0 0 24 24"
-                            stroke="currentColor">
-                            <path
-                              stroke-linecap="round"
-                              stroke-linejoin="round"
-                              stroke-width="2"
-                              d="M19 9l-7 7-7-7" />
-                          </svg>
-                        </span>
-                      </summary>
-                      <div class="px-4 pb-4" itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
-                        <p class="text-gray-600" itemprop="text">{{ faq.answer }}</p>
-                      </div>
-                    </details>
-                  {% endfor %}
-                </div>
-              {% endif %}
-            {% endif %}
-
           </div>
         {%- endif -%}
       </div>
     </div>
+
+    {%- comment -%}
+      Collection info block (page 1 only): useful links as a compact chip row, then
+      the description (collapsed to a few lines with "read all"; the full text stays
+      in the DOM for search engines) next to a sticky FAQ accordion with FAQPage
+      microdata. Styles: alc-collection-view.css; toggle: alc-collection-view.js.
+    {%- endcomment -%}
+    {% if paginate.current_page == 1 %}
+      {%- liquid
+        assign about_links = collection.metafields.custom.useful_links.value
+        assign about_faqs = collection.metafields.custom.faq.value
+        assign about_has_desc = false
+        if collection.description != blank
+          assign about_has_desc = true
+        endif
+      -%}
+      {%- if about_has_desc or about_links != blank or about_faqs != blank -%}
+        <div class="page-width"><div class="alc-about" data-alc-about>
+          {%- if about_links != blank -%}
+            <nav class="alc-about__links" aria-labelledby="AlcCollLinksTitle">
+              <div class="alc-about__eyebrow" id="AlcCollLinksTitle">{% render 'alc-i18n', key: 'explore' %}</div>
+              <ul class="alc-about__chips" role="list">
+                {%- for link in about_links -%}
+                  <li>
+                    <a href="{{ link.url }}" class="alc-about__chip">
+                      <span>{{ link.text }}</span>
+                      <svg aria-hidden="true" focusable="false" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+                    </a>
+                  </li>
+                {%- endfor -%}
+              </ul>
+            </nav>
+          {%- endif -%}
+
+          <div class="alc-about__grid{% if about_faqs == blank or about_has_desc == false %} alc-about__grid--single{% endif %}">
+            {%- if about_has_desc -%}
+              <section class="alc-about__text">
+                <h2 class="alc-about__title" id="AlcCollAbout">{% render 'alc-i18n', key: 'about' %} {{ collection.title }}</h2>
+                <div class="alc-about__body rte" id="AlcCollAboutBody" data-alc-about-body>
+                  {% render 'alc-rte-images', html: collection.description %}
+                </div>
+                <button type="button" class="alc-about__toggle" aria-expanded="false" aria-controls="AlcCollAboutBody" data-alc-about-toggle hidden>
+                  <span class="alc-about__toggle-more">{% render 'alc-i18n', key: 'read_all' %}</span>
+                  <span class="alc-about__toggle-less">{% render 'alc-i18n', key: 'show_less' %}</span>
+                  <svg aria-hidden="true" focusable="false" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
+                </button>
+              </section>
+            {%- endif -%}
+
+            {%- if about_faqs != blank -%}
+              <section class="alc-about__faq" itemscope itemtype="https://schema.org/FAQPage">
+                <h3 class="alc-about__faq-title">{% render 'alc-i18n', key: 'faq' %}</h3>
+                {%- for faq in about_faqs -%}
+                  <details class="alc-about__q" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
+                    <summary class="alc-about__q-head">
+                      <h3 class="alc-about__q-title" itemprop="name">{{ faq.question }}</h3>
+                      <span class="alc-about__q-icon" aria-hidden="true"></span>
+                    </summary>
+                    <div class="alc-about__q-body" itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
+                      <p itemprop="text">{{ faq.answer }}</p>
+                    </div>
+                  </details>
+                {%- endfor -%}
+              </section>
+            {%- endif -%}
+          </div>
+        </div></div>
+      {%- endif -%}
+    {% endif %}
   {%- endpaginate -%}
   {% if section.settings.image_shape == 'arch' %}
     {{ 'mask-arch.svg' | inline_asset_content }}
