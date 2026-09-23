@@ -1,0 +1,467 @@
+/* Mobile / tablet drawer menu (snippets/alc-header-drawer-stacked.liquid).
+   Dawn still positions and slides #menu-drawer (component-menu-drawer.css); this file
+   styles the .alc-md UI inside it. Every list resets padding explicitly because the
+   legacy global `ul { padding-left: 1rem }` from the same snippet still applies. */
+.alc-md-drawer {
+  --alc-md-ink: #151515;
+  --alc-md-muted: #6b6862;
+  --alc-md-soft: #f4f2ee;
+  --alc-md-line: rgba(21, 21, 21, 0.09);
+  width: 100%;
+  height: calc(var(--viewport-height, 100dvh) - var(--header-bottom-position, 120px));
+  background: #fff;
+  color: var(--alc-md-ink);
+}
+
+@media screen and (min-width: 750px) {
+  .alc-md-drawer {
+    width: 44rem;
+  }
+}
+
+.alc-md {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  overflow: hidden;
+}
+
+.alc-md ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+/* Tabs -------------------------------------------------------------------- */
+.alc-md__tabs {
+  display: grid;
+  flex: none;
+  grid-auto-flow: column;
+  grid-auto-columns: minmax(max-content, 1fr);
+  gap: 4px;
+  margin: 12px 16px;
+  padding: 4px;
+  overflow-x: auto;
+  border-radius: 999px;
+  background: var(--alc-md-soft);
+  scrollbar-width: none;
+}
+
+.alc-md__tabs::-webkit-scrollbar {
+  display: none;
+}
+
+.alc-md__tab {
+  min-height: 38px;
+  padding: 0 12px;
+  border: 0;
+  border-radius: 999px;
+  background: transparent;
+  color: var(--alc-md-muted);
+  font: inherit;
+  font-size: 14px;
+  font-weight: 600;
+  white-space: nowrap;
+  cursor: pointer;
+  transition: background-color 0.2s ease, color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.alc-md__tab[aria-selected='true'] {
+  background: #fff;
+  color: var(--alc-md-ink);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12);
+}
+
+.alc-md__tab:focus-visible,
+.alc-md__tile:focus-visible,
+.alc-md__row:focus-visible,
+.alc-md__back:focus-visible,
+.alc-md__all:focus-visible,
+.alc-md__acc-head:focus-visible,
+.alc-md__chip:focus-visible {
+  outline: 2px solid var(--alc-md-ink);
+  outline-offset: 2px;
+}
+
+/* Scrolling area ------------------------------------------------------------ */
+.alc-md__views {
+  flex: 1 1 auto;
+  border-top: 1px solid var(--alc-md-line);
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  -webkit-overflow-scrolling: touch;
+  padding: 16px 16px calc(28px + env(safe-area-inset-bottom));
+}
+
+.alc-md__view[hidden] {
+  display: none;
+}
+
+/* Category tiles (3-level menus) */
+.alc-md__tiles {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 10px;
+}
+
+.alc-md__tiles-wide {
+  grid-column: 1 / -1;
+}
+
+.alc-md__tile {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  border: 1px solid var(--alc-md-line);
+  border-radius: 14px;
+  background: #fff;
+  color: var(--alc-md-ink);
+  font: inherit;
+  text-align: left;
+  text-decoration: none;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+  transition: border-color 0.2s ease, transform 0.15s ease;
+}
+
+.alc-md__tile:active {
+  transform: scale(0.98);
+  border-color: rgba(21, 21, 21, 0.25);
+}
+
+/* Collection images are cut-outs on white: a white frame hides their edges. */
+.alc-md__tile-media {
+  position: relative;
+  display: block;
+  flex: none;
+  aspect-ratio: 16 / 11;
+  background: #fff;
+  border-bottom: 1px solid var(--alc-md-line);
+}
+
+/* Absolutely placed so the image's intrinsic size cannot stretch the frame. */
+.alc-md__tile-media img {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  bottom: 8px;
+  left: 8px;
+  width: calc(100% - 16px);
+  height: calc(100% - 16px);
+  object-fit: contain;
+}
+
+.alc-md__tile-label {
+  display: flex;
+  flex: 1 1 auto;
+  align-items: center;
+  justify-content: space-between;
+  gap: 6px;
+  padding: 10px 12px 12px;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 1.25;
+}
+
+.alc-md__tile-label svg {
+  flex: none;
+  opacity: 0.45;
+}
+
+.alc-md__campaign {
+  display: block;
+  overflow: hidden;
+  border-radius: 14px;
+}
+
+.alc-md__campaign img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+/* Plain list (2-level menus) */
+.alc-md__row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  min-height: 60px;
+  padding: 8px 4px;
+  border-bottom: 1px solid var(--alc-md-line);
+  color: var(--alc-md-ink);
+  font-size: 16px;
+  font-weight: 500;
+  text-decoration: none;
+}
+
+.alc-md__row > svg {
+  flex: none;
+  opacity: 0.45;
+}
+
+.alc-md__row-icon {
+  display: flex;
+  flex: none;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 12px;
+  background: var(--alc-md-soft);
+  color: var(--alc-md-ink);
+}
+
+.alc-md__row-text {
+  display: flex;
+  flex: 1 1 auto;
+  flex-direction: column;
+  gap: 2px;
+  min-width: 0;
+}
+
+.alc-md__row-desc {
+  color: var(--alc-md-muted);
+  font-size: 13px;
+  font-weight: 400;
+  line-height: 1.35;
+}
+
+/* Sub-panel (slides over the tabs) ------------------------------------------ */
+.alc-md__sub {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  background: #fff;
+  transform: translateX(100%);
+  transition: transform 0.28s cubic-bezier(0.2, 0.7, 0.2, 1);
+}
+
+.alc-md__sub[hidden] {
+  display: none;
+}
+
+.alc-md__sub.is-open {
+  transform: none;
+}
+
+.alc-md__sub-head {
+  display: flex;
+  flex: none;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 16px;
+  border-bottom: 1px solid var(--alc-md-line);
+}
+
+.alc-md__back {
+  display: inline-flex;
+  flex: none;
+  align-items: center;
+  gap: 4px;
+  min-height: 40px;
+  padding: 0 14px 0 8px;
+  border: 0;
+  border-radius: 999px;
+  background: var(--alc-md-soft);
+  color: var(--alc-md-ink);
+  font: inherit;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.alc-md__sub-title {
+  min-width: 0;
+  overflow: hidden;
+  font-size: 17px;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.alc-md__sub-body {
+  flex: 1 1 auto;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  -webkit-overflow-scrolling: touch;
+  padding: 14px 16px calc(28px + env(safe-area-inset-bottom));
+}
+
+/* "View all" card at the top of a sub-panel */
+.alc-md__all {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 10px;
+  padding: 10px 14px 10px 10px;
+  border-radius: 14px;
+  background: var(--alc-md-ink);
+  color: #fff;
+  text-decoration: none;
+}
+
+.alc-md__all-media {
+  display: flex;
+  flex: none;
+  align-items: center;
+  justify-content: center;
+  width: 56px;
+  height: 56px;
+  padding: 4px;
+  overflow: hidden;
+  border-radius: 10px;
+  background: #fff;
+}
+
+.alc-md__all-media img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.alc-md__all-text {
+  display: flex;
+  flex: 1 1 auto;
+  flex-direction: column;
+  gap: 2px;
+  min-width: 0;
+}
+
+.alc-md__all-title {
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.alc-md__all-cta {
+  font-size: 13px;
+  opacity: 0.75;
+}
+
+.alc-md__all svg {
+  flex: none;
+}
+
+/* Accordion of 3rd-level links */
+.alc-md__acc-item {
+  border-bottom: 1px solid var(--alc-md-line);
+}
+
+.alc-md__acc-head {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  width: 100%;
+  min-height: 62px;
+  margin: 0;
+  padding: 8px 2px;
+  border: 0;
+  background: none;
+  color: var(--alc-md-ink);
+  font: inherit;
+  font-size: 15px;
+  font-weight: 600;
+  text-align: left;
+  text-decoration: none;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.alc-md__acc-thumb {
+  display: flex;
+  flex: none;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  overflow: hidden;
+  border-radius: 10px;
+  background: #fff;
+  box-shadow: inset 0 0 0 1px var(--alc-md-line);
+}
+
+.alc-md__acc-thumb img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.alc-md__acc-title {
+  flex: 1 1 auto;
+  min-width: 0;
+  line-height: 1.25;
+}
+
+.alc-md__acc-count {
+  flex: none;
+  min-width: 24px;
+  padding: 2px 8px;
+  border-radius: 999px;
+  background: var(--alc-md-soft);
+  color: var(--alc-md-muted);
+  font-size: 12px;
+  font-weight: 600;
+  text-align: center;
+}
+
+.alc-md__acc-icon {
+  flex: none;
+  opacity: 0.5;
+  transition: transform 0.2s ease;
+}
+
+.alc-md__acc-head[aria-expanded='true'] .alc-md__acc-icon {
+  transform: rotate(180deg);
+}
+
+.alc-md__acc-body {
+  padding: 0 0 14px 56px;
+}
+
+.alc-md__acc-body[hidden] {
+  display: none;
+}
+
+.alc-md__chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.alc-md__chip {
+  display: inline-flex;
+  align-items: center;
+  min-height: 36px;
+  padding: 0 14px;
+  border: 1px solid var(--alc-md-line);
+  border-radius: 999px;
+  background: #faf9f7;
+  color: var(--alc-md-ink);
+  font-size: 13px;
+  font-weight: 500;
+  text-decoration: none;
+}
+
+.alc-md__chip--all {
+  border-color: var(--alc-md-ink);
+  background: var(--alc-md-ink);
+  color: #fff;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .alc-md__sub,
+  .alc-md__tile {
+    transition: none;
+  }
+}
