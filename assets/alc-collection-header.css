@@ -149,76 +149,110 @@
 }
 
 .alc-cs__item {
-  flex: 0 0 148px;
+  flex: 0 0 146px;
   scroll-snap-align: start;
+}
+
+/* Centre the row while it fits; auto margins (unlike justify-content: center) never
+   cut off the first cards once the row overflows and scrolls. */
+.alc-cs__item:first-child {
+  margin-left: auto;
+}
+
+.alc-cs__item:last-child {
+  margin-right: auto;
 }
 
 .alc-cs__card {
   display: flex;
   flex-direction: column;
   height: 100%;
-  overflow: hidden;
-  border: 1px solid var(--alc-ch-line);
-  border-radius: 14px;
-  background: #fff;
   color: var(--alc-ch-ink);
   text-decoration: none;
-  transition: border-color 0.2s ease, box-shadow 0.25s ease, transform 0.25s ease;
 }
 
 .alc-cs__card:focus-visible {
+  outline: none;
+}
+
+.alc-cs__card:focus-visible .alc-cs__media {
   outline: 2px solid var(--alc-ch-ink);
   outline-offset: 2px;
 }
 
-@media (hover: hover) and (pointer: fine) {
-  .alc-cs__card:hover {
-    border-color: transparent;
-    box-shadow: 0 12px 28px -14px rgba(0, 0, 0, 0.3), 0 0 0 1px var(--alc-ch-line);
-    transform: translateY(-2px);
-  }
-
-  .alc-cs__card:hover .alc-cs__media img {
-    transform: scale(1.06);
-  }
-}
-
+/* A warm ground for every photo; multiply melts the photos' white backdrops into it,
+   so mixed studio shots read as one set. */
 .alc-cs__media {
   position: relative;
   display: block;
   aspect-ratio: 1 / 1;
-  border-bottom: 1px solid var(--alc-ch-line);
-  background: #fff;
+  overflow: hidden;
+  border-radius: 14px;
+  background: #f3f0eb;
+  transition: background-color 0.3s ease;
 }
 
 .alc-cs__media img {
   position: absolute;
-  top: 10px;
-  right: 10px;
-  bottom: 10px;
-  left: 10px;
-  width: calc(100% - 20px);
-  height: calc(100% - 20px);
+  top: 10%;
+  left: 10%;
+  width: 80%;
+  height: 80%;
   object-fit: contain;
-  transition: transform 0.4s ease;
+  mix-blend-mode: multiply;
+  /* Lift light-grey studio backdrops to white so they vanish too. */
+  filter: brightness(1.06);
+  transition: transform 0.5s cubic-bezier(0.2, 0.7, 0.2, 1);
 }
 
 .alc-cs__name {
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  gap: 6px;
+  text-align: center;
+  padding: 10px 2px 0;
+  font-size: 13.5px;
+  font-weight: 600;
+  letter-spacing: -0.005em;
+  line-height: 1.3;
+}
+
+.alc-cs__name > span {
   display: -webkit-box;
   -webkit-line-clamp: 2;
   -webkit-box-orient: vertical;
   overflow: hidden;
-  padding: 10px 12px 2px;
-  font-size: 13.5px;
-  font-weight: 600;
-  line-height: 1.3;
+}
+
+.alc-cs__name svg {
+  flex: none;
+  margin-top: 2px;
+  opacity: 0;
+  transform: translateX(-4px);
+  transition: opacity 0.25s ease, transform 0.25s ease;
 }
 
 .alc-cs__count {
-  padding: 0 12px 12px;
-  margin-top: auto;
+  padding: 3px 2px 0;
+  text-align: center;
   color: var(--alc-ch-muted);
-  font-size: 12px;
+  font-size: 12.5px;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .alc-cs__card:hover .alc-cs__media {
+    background-color: #ebe6de;
+  }
+
+  .alc-cs__card:hover .alc-cs__media img {
+    transform: scale(1.07);
+  }
+
+  .alc-cs__card:hover .alc-cs__name svg {
+    opacity: 1;
+    transform: none;
+  }
 }
 
 .alc-cs__arrow {
@@ -295,23 +329,31 @@
   }
 
   .alc-cs__item {
-    flex-basis: 116px;
+    flex-basis: 118px;
+  }
+
+  .alc-cs__media {
+    border-radius: 12px;
   }
 
   .alc-cs__name {
-    padding: 8px 10px 2px;
-    font-size: 12.5px;
+    padding-top: 9px;
+    font-size: 13px;
+  }
+
+  .alc-cs__name svg {
+    display: none;
   }
 
   .alc-cs__count {
-    padding: 0 10px 10px;
-    font-size: 11px;
+    font-size: 11.5px;
   }
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .alc-cs__card,
-  .alc-cs__media img {
+  .alc-cs__media,
+  .alc-cs__media img,
+  .alc-cs__name svg {
     transition: none;
   }
 }

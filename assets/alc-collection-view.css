@@ -681,3 +681,9 @@
     padding: 18px 16px 6px;
   }
 }
+
+/* Mobile active-filter row: collapse its margins while no filter is applied
+   (Bootstrap's .my-3 sets them with !important). */
+#main-collection-filters .active-facets-mobile:not(:has(*)) {
+  margin: 0 !important;
+}
