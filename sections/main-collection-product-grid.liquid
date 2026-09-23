@@ -112,7 +112,16 @@
       , list_name: collection.title
     %}
 
-    <div class="{% if section.settings.filter_type == 'vertical' %} facets-vertical page-width{% endif %}">
+    <div class="{% if section.settings.filter_type == 'vertical' %} facets-vertical page-width{% endif %} alc-coll" data-alc-coll data-alc-view="grid">
+      {%- comment -%} Apply the saved view before the grid paints (no layout jump). {%- endcomment -%}
+      <script>
+        try {
+          var alcView = localStorage.getItem('alc:collection-view');
+          if (alcView === 'large' || alcView === 'list') document.currentScript.parentElement.dataset.alcView = alcView;
+        } catch (e) {}
+      </script>
+      {{ 'alc-collection-view.css' | asset_url | stylesheet_tag }}
+      <script src="{{ 'alc-collection-view.js' | asset_url }}" defer="defer"></script>
       {{ 'component-facets.css' | asset_url | stylesheet_tag }}
       <script src="{{ 'facets.js' | asset_url }}" defer="defer"></script>
       {%- if section.settings.enable_filtering or section.settings.enable_sorting -%}
@@ -137,42 +146,38 @@
         {% if settings.animations_reveal_on_scroll %}
         data-cascade
         {% endif %}>
-        <facet-filters-form class="facets facets-vertical-sort small-hide mb-6 px-0">
-          <form class="flex flex-row mb-6" id="FacetSortForm">
-            <div class="facet-filters sorting caption px-0">
-              <div class="facet-filters__field">
-                <div class="sort-wrapper">
-                  <div class="select select--floating">
-                    {%- assign sort_by = collection.sort_by | default: collection.default_sort_by -%}
-                    <select
-                      name="sort_by"
-                      class="facet-filters__sort select__select caption-large"
-                      id="SortBy"
-                      style="border-color: #06BAD5 !important; border: 2px solid;"
-                      aria-describedby="a11y-refresh-page-message">
-                      {%- for option in collection.sort_options -%}
-                        <option
-                          value="{{ option.value | escape }}"
-                          {% if option.value == sort_by %}
-                          selected="selected"
-                          {% endif %}>
-                          {{ option.name | escape }}
-                        </option>
-                      {%- endfor -%}
-                    </select>
-                    <span class="select__icon">
-                      {{- 'icon-caret.svg' | inline_asset_content -}}
-                    </span>
-                  </div>
+        <div class="alc-coll-bar">
+          <p class="alc-coll-bar__count" role="status">
+            {{- 'products.facets.product_count_simple' | t: count: collection.products_count -}}
+          </p>
+          {%- if section.settings.enable_sorting -%}
+            <facet-filters-form class="facets alc-coll-bar__sort small-hide">
+              <form id="FacetSortForm">
+                {%- assign sort_by = collection.sort_by | default: collection.default_sort_by -%}
+                <label class="alc-coll-bar__sort-label" for="SortBy">{{ 'products.facets.sort_by_label' | t }}</label>
+                <div class="alc-coll-bar__select">
+                  <select
+                    name="sort_by"
+                    class="facet-filters__sort"
+                    id="SortBy"
+                    aria-describedby="a11y-refresh-page-message">
+                    {%- for option in collection.sort_options -%}
+                      <option
+                        value="{{ option.value | escape }}"
+                        {% if option.value == sort_by %}
+                        selected="selected"
+                        {% endif %}>
+                        {{ option.name | escape }}
+                      </option>
+                    {%- endfor -%}
+                  </select>
+                  <svg aria-hidden="true" focusable="false" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
                 </div>
-              </div>
-            </div>
-
-            <div class="product-count-vertical light" role="status">
-              {%- render 'loading-spinner' -%}
-            </div>
-          </form>
-        </facet-filters-form>
+              </form>
+            </facet-filters-form>
+          {%- endif -%}
+          {%- render 'alc-view-switch' -%}
+        </div>
 
         {%- if collection.products.size == 0 -%}
           <div
@@ -224,6 +229,7 @@
                     , skip_styles: true
                     , quick_add: section.settings.quick_add
                     , section_id: section.id
+                    , show_specs: true
                   %}
                 </li>
                 {%- assign skip_card_product_styles = true -%}
@@ -237,12 +243,12 @@
             {%- endif -%}
 
             {% if paginate.current_page == 1 %}
-              <h2 class="mt-8">Despre {{ collection.title }}</h2>
+              <h2 class="mt-8" id="AlcCollAbout">{% render 'alc-i18n', key: 'about' %} {{ collection.title }}</h2>
               <div class="mt-6 rte">{% render 'alc-rte-images', html: collection.description %}</div>
 
               {% if collection.metafields.custom.useful_links != blank %}
                 <div class="mt-12">
-                  <div class="alc-h3">Link-uri utile</div>
+                  <div class="alc-h3">{% render 'alc-i18n', key: 'useful_links' %}</div>
                   <div class="flex flex-wrap gap-3 mt-4">
                     {% for link in collection.metafields.custom.useful_links.value %}
                       <a href="{{ link.url }}" class="inline-flex text-base no-underline text-black px-4 py-2 border border-gray-200 rounded-full bg-[#06BAD5] text-white hover:bg-[#058ea2] transition-colors">
@@ -255,7 +261,7 @@
 
               {% if collection.metafields.custom.faq != blank %}
                 <div class="mt-12 space-y-4" itemscope itemtype="https://schema.org/FAQPage">
-                  <h3>Intrebari frecvente</h3>
+                  <h3>{% render 'alc-i18n', key: 'faq' %}</h3>
                   {% for faq in collection.metafields.custom.faq.value %}
                     <details class="group border border-gray-200 rounded-lg" style="border-color: #06BAD5 !important;" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
                       <summary class="flex items-center justify-between p-4 cursor-pointer">

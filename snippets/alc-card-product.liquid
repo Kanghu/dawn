@@ -18,6 +18,8 @@
   - button_color: {String} Kept for caller compatibility (the tile button follows the theme palette)
   - heading_tag: {String} HTML tag for the product title. Pass 'div' in carousels so they stay out of the page outline. Default: 'h3' (optional)
   - show_savings: {Boolean} Show "Economisesti X" under the price. Default: false (optional)
+  - show_specs: {Boolean} Render key specs (dimensions, power) as icon chips. They are only
+    visible in the collection "list" view (assets/alc-collection-view.css). Default: false (optional)
   - savings_label: {String} Label for the saving line (optional)
 
   Usage:
@@ -177,6 +179,58 @@
             assign pc_stock_text = 'alc-benefits.stock.out_of_stock' | t
           endif
         -%}
+        {%- if show_specs -%}
+          {%- liquid
+            comment
+              Dimensions and power from the spec metafields (text lists like ["60 cm"],
+              or the numeric *__ variants). Icons instead of labels, so no translations.
+            endcomment
+            assign sp_l = card_product.metafields.custom.lungime.value | first
+            if sp_l == blank
+              assign sp_l = card_product.metafields.custom.lungime__.value | first
+            endif
+            assign sp_w = card_product.metafields.custom.latime.value | first
+            if sp_w == blank
+              assign sp_w = card_product.metafields.custom.latime__.value | first
+            endif
+            assign sp_h = card_product.metafields.custom.inaltime.value | last
+            if sp_h == blank
+              assign sp_h = card_product.metafields.custom.inaltime__.value | last
+            endif
+            assign sp_d = card_product.metafields.custom.diametru.value | first
+            assign sp_p = card_product.metafields.custom.putere.value | first
+            assign sp_l = sp_l | append: '' | remove: 'cm' | strip
+            assign sp_w = sp_w | append: '' | remove: 'cm' | strip
+            assign sp_h = sp_h | append: '' | remove: 'cm' | strip
+            assign sp_d = sp_d | append: '' | remove: 'cm' | strip
+            assign sp_dims = ''
+            if sp_l != blank and sp_w != blank
+              assign sp_dims = sp_l | append: ' × ' | append: sp_w
+            elsif sp_d != blank
+              assign sp_dims = 'Ø ' | append: sp_d
+            endif
+            if sp_dims != blank and sp_h != blank
+              assign sp_dims = sp_dims | append: ' × ' | append: sp_h
+            endif
+          -%}
+          {%- if sp_dims != blank or sp_p != blank -%}
+            <ul class="alc-pc__specs" role="list">
+              {%- if sp_dims != blank -%}
+                <li class="alc-pc__spec">
+                  <svg aria-hidden="true" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M3 17 17 3l4 4L7 21z"/><path d="m7 13 2 2M10 10l2 2M13 7l2 2"/></svg>
+                  <span>{{ sp_dims }} cm</span>
+                </li>
+              {%- endif -%}
+              {%- if sp_p != blank -%}
+                <li class="alc-pc__spec">
+                  <svg aria-hidden="true" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M13 3 5 14h6l-1 7 8-11h-6z"/></svg>
+                  <span>{{ sp_p | escape }}</span>
+                </li>
+              {%- endif -%}
+            </ul>
+          {%- endif -%}
+        {%- endif -%}
+
         <div class="alc-pc__stock alc-pc__stock--{{ pc_stock_class }}">{{ pc_stock_text }}</div>
 
         <div class="price alc-pc__price{% if pc_on_sale %} price--on-sale{% endif %}{% unless card_product.available %} price--sold-out{% endunless %}">
@@ -205,7 +259,12 @@
         {%- if show_savings and pc_on_sale -%}
           {%- assign card_saving = card_product.compare_at_price | minus: card_product.price -%}
           <div class="alc-pc__savings">
-            {{- savings_label | default: 'Economisesti' }} {{ card_saving | money -}}
+            {%- if savings_label != blank -%}
+              {{- savings_label }} {{ card_saving | money -}}
+            {%- else -%}
+              {%- assign card_saving_money = card_saving | money -%}
+              {{- 'alc-benefits.savings' | t: amount: card_saving_money -}}
+            {%- endif -%}
           </div>
         {%- endif -%}
         {%- if card_product.quantity_price_breaks_configured? -%}

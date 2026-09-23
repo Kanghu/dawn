@@ -1,0 +1,52 @@
+{% comment %}
+  Small built-in dictionary for theme UI strings that have no locale key.
+  en.default.json is at Shopify's 3400-key limit, so new strings live here, one
+  `when` per storefront language (Romanian is the fallback, like the store's own
+  locale fallback). Outputs the string only; capture it if you need a variable.
+
+  Accepts:
+  - key: {String} read_more | about | useful_links | faq
+
+  Usage:
+  {%- capture about_label -%}{% render 'alc-i18n', key: 'about' %}{%- endcapture -%}
+{% endcomment %}
+{%- liquid
+  assign lang = request.locale.iso_code | downcase | slice: 0, 2
+  case lang
+    when 'en'
+      assign w = 'Read more|About|Useful links|Frequently asked questions'
+    when 'hu'
+      assign w = 'Tovább olvasom|Tudnivalók:|Hasznos linkek|Gyakran ismételt kérdések'
+    when 'pl'
+      assign w = 'Czytaj więcej|O kategorii|Przydatne linki|Najczęściej zadawane pytania'
+    when 'el'
+      assign w = 'Διαβάστε περισσότερα|Σχετικά με|Χρήσιμοι σύνδεσμοι|Συχνές ερωτήσεις'
+    when 'bg'
+      assign w = 'Прочетете още|За|Полезни връзки|Често задавани въпроси'
+    when 'it'
+      assign w = 'Leggi di più|Informazioni su|Link utili|Domande frequenti'
+    when 'fr'
+      assign w = 'Lire la suite|À propos de|Liens utiles|Questions fréquentes'
+    when 'cs'
+      assign w = 'Číst dále|O kategorii|Užitečné odkazy|Často kladené otázky'
+    when 'sk'
+      assign w = 'Čítať ďalej|O kategórii|Užitočné odkazy|Často kladené otázky'
+    when 'hr'
+      assign w = 'Pročitajte više|O kategoriji|Korisne poveznice|Često postavljana pitanja'
+    when 'de'
+      assign w = 'Weiterlesen|Über|Nützliche Links|Häufig gestellte Fragen'
+    else
+      assign w = 'Citește mai mult|Despre|Link-uri utile|Întrebări frecvente'
+  endcase
+  assign parts = w | split: '|'
+  case key
+    when 'read_more'
+      echo parts[0]
+    when 'about'
+      echo parts[1]
+    when 'useful_links'
+      echo parts[2]
+    when 'faq'
+      echo parts[3]
+  endcase
+-%}
