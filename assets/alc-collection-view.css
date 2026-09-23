@@ -1,0 +1,683 @@
+/* Collection toolbar + view modes (sections/main-collection-product-grid.liquid,
+   snippets/alc-view-switch.liquid). The active view is data-alc-view on the
+   [data-alc-coll] wrapper, which sits outside #ProductGridContainer, so it survives
+   the AJAX re-render that facets.js does on every filter/sort change. */
+
+/* Toolbar ----------------------------------------------------------------- */
+.alc-coll-bar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 12px 20px;
+  margin: 0 0 20px;
+  padding: 10px 10px 10px 18px;
+  border: 1px solid rgba(21, 21, 21, 0.08);
+  border-radius: 16px;
+  background: #fff;
+}
+
+.alc-coll-bar__count {
+  flex: 1 1 auto;
+  margin: 0;
+  color: #6b6862;
+  font-size: 14px;
+}
+
+.alc-coll-bar__sort form {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin: 0;
+}
+
+.alc-coll-bar__sort-label {
+  color: #6b6862;
+  font-size: 14px;
+  white-space: nowrap;
+}
+
+.alc-coll-bar__select {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.alc-coll-bar__select select {
+  min-height: 40px;
+  margin: 0;
+  padding: 0 38px 0 16px;
+  border: 1px solid rgba(21, 21, 21, 0.14);
+  border-radius: 999px;
+  background: #fff;
+  color: #151515;
+  font: inherit;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  appearance: none;
+  -webkit-appearance: none;
+}
+
+.alc-coll-bar__select select:hover {
+  border-color: #151515;
+}
+
+.alc-coll-bar__select select:focus-visible {
+  outline: 2px solid #151515;
+  outline-offset: 2px;
+}
+
+.alc-coll-bar__select svg {
+  position: absolute;
+  right: 14px;
+  pointer-events: none;
+}
+
+/* View switch */
+.alc-view-switch {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+  padding: 3px;
+  border-radius: 999px;
+  background: #f4f2ee;
+}
+
+.alc-view-switch__label {
+  padding: 0 8px 0 10px;
+  color: #6b6862;
+  font-size: 13px;
+}
+
+.alc-view-switch__btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 34px;
+  padding: 0;
+  border: 0;
+  border-radius: 999px;
+  background: transparent;
+  color: #8a867f;
+  cursor: pointer;
+  transition: background-color 0.2s ease, color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.alc-view-switch__btn:hover {
+  color: #151515;
+}
+
+.alc-view-switch__btn:focus-visible {
+  outline: 2px solid #151515;
+  outline-offset: 1px;
+}
+
+/* The active state follows the wrapper attribute, so it is right straight after a
+   facets.js re-render, before any script runs. */
+[data-alc-view='grid'] [data-alc-view-btn='grid'],
+[data-alc-view='large'] [data-alc-view-btn='large'],
+[data-alc-view='list'] [data-alc-view-btn='list'] {
+  background: #fff;
+  color: #151515;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.14);
+}
+
+@media screen and (max-width: 749px) {
+  .alc-coll-bar {
+    margin-bottom: 14px;
+    padding: 6px 6px 6px 14px;
+    border-radius: 14px;
+  }
+
+  .alc-view-switch__label {
+    display: none;
+  }
+
+  .alc-view-switch__btn {
+    width: 40px;
+    height: 36px;
+  }
+}
+
+/* Spec chips: only in list view --------------------------------------------- */
+.alc-pc__specs {
+  display: none;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.alc-pc__spec {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 10px;
+  border-radius: 999px;
+  background: #f4f2ee;
+  color: #3d3a35;
+  font-size: 12.5px;
+  font-weight: 500;
+  white-space: nowrap;
+}
+
+.alc-pc__spec svg {
+  flex: none;
+  opacity: 0.7;
+}
+
+/* Large grid ------------------------------------------------------------------ */
+@media screen and (min-width: 990px) {
+  [data-alc-view='large'] #product-grid .grid__item {
+    width: calc(33.333% - var(--grid-desktop-horizontal-spacing) * 2 / 3);
+    max-width: calc(33.333% - var(--grid-desktop-horizontal-spacing) * 2 / 3);
+  }
+
+  [data-alc-view='large'] #product-grid .alc-pc__title {
+    font-size: 16px;
+  }
+}
+
+@media screen and (max-width: 749px) {
+  [data-alc-view='large'] #product-grid .grid__item {
+    width: 100%;
+    max-width: 100%;
+  }
+
+  [data-alc-view='large'] #product-grid .alc-pc {
+    --alc-pc-pad: 16px;
+  }
+
+  [data-alc-view='large'] #product-grid .alc-pc__title {
+    font-size: 15px;
+    min-height: 0;
+  }
+
+  [data-alc-view='large'] #product-grid .alc-pc__link {
+    -webkit-line-clamp: 2;
+  }
+}
+
+/* List ------------------------------------------------------------------------ */
+[data-alc-view='list'] #product-grid {
+  row-gap: 12px;
+}
+
+[data-alc-view='list'] #product-grid .grid__item {
+  width: 100%;
+  max-width: 100%;
+}
+
+[data-alc-view='list'] #product-grid .alc-pc__tile {
+  flex-direction: row;
+}
+
+[data-alc-view='list'] #product-grid .alc-pc__media {
+  flex: none;
+  width: 200px;
+}
+
+[data-alc-view='list'] #product-grid .alc-pc__specs {
+  display: flex;
+}
+
+[data-alc-view='list'] #product-grid .alc-pc__title {
+  min-height: 0;
+  font-size: 16px;
+  font-weight: 500;
+}
+
+[data-alc-view='list'] #product-grid .alc-pc__body {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 240px;
+  grid-auto-rows: min-content;
+  align-content: center;
+  column-gap: 32px;
+  row-gap: 10px;
+  padding: 18px 22px;
+}
+
+[data-alc-view='list'] #product-grid .alc-pc__body > * {
+  grid-column: 1;
+}
+
+[data-alc-view='list'] #product-grid .alc-pc__body > .alc-pc__price {
+  grid-column: 2;
+  grid-row: 1 / span 2;
+  align-self: end;
+  margin: 0;
+}
+
+[data-alc-view='list'] #product-grid .alc-pc__body > .alc-pc__actions {
+  grid-column: 2;
+  grid-row: 3 / span 2;
+  align-self: start;
+  margin: 0;
+  padding: 0;
+}
+
+[data-alc-view='list'] #product-grid .alc-pc__body > .alc-pc__savings {
+  grid-column: 2;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  [data-alc-view='list'] #product-grid .alc-pc__tile:hover {
+    transform: none;
+  }
+}
+
+@media screen and (max-width: 989px) {
+  [data-alc-view='list'] #product-grid .alc-pc__body {
+    grid-template-columns: minmax(0, 1fr) 200px;
+    column-gap: 20px;
+  }
+}
+
+@media screen and (max-width: 749px) {
+  [data-alc-view='list'] #product-grid .alc-pc__media {
+    width: 118px;
+    aspect-ratio: auto;
+    min-height: 100%;
+  }
+
+  [data-alc-view='list'] #product-grid .alc-pc__badges {
+    top: 6px;
+    left: 6px;
+  }
+
+  [data-alc-view='list'] #product-grid .alc-pc__badge {
+    min-height: 18px;
+    padding: 2px 7px;
+    font-size: 9px;
+  }
+
+  [data-alc-view='list'] #product-grid .alc-pc__body {
+    display: flex;
+    gap: 6px;
+    padding: 12px 12px 12px 14px;
+  }
+
+  [data-alc-view='list'] #product-grid .alc-pc__title {
+    font-size: 13.5px;
+  }
+
+  [data-alc-view='list'] #product-grid .alc-pc__link {
+    -webkit-line-clamp: 2;
+  }
+
+  [data-alc-view='list'] #product-grid .alc-pc__spec {
+    padding: 3px 8px;
+    font-size: 11.5px;
+  }
+
+  /* Desktop places price/actions in a right-hand column; on phones they stack. */
+  [data-alc-view='list'] #product-grid .alc-pc__body > .alc-pc__price,
+  [data-alc-view='list'] #product-grid .alc-pc__body > .alc-pc__actions {
+    align-self: stretch;
+  }
+
+  [data-alc-view='list'] #product-grid .alc-pc__body > .alc-pc__actions {
+    margin-top: auto;
+    padding-top: 2px;
+  }
+}
+
+/* Collection info block under the grid (useful links, description, FAQ) ------ */
+.alc-about {
+  --alc-ab-ink: #151515;
+  --alc-ab-muted: #6b6862;
+  --alc-ab-line: rgba(21, 21, 21, 0.08);
+  margin-top: 48px;
+  padding-top: 32px;
+  border-top: 1px solid var(--alc-ab-line);
+}
+
+.alc-about__eyebrow {
+  margin: 0 0 12px;
+  color: var(--alc-ab-muted);
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.alc-about__links {
+  margin-bottom: 32px;
+}
+
+.alc-about__chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.alc-about__chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  min-height: 38px;
+  padding: 0 14px 0 16px;
+  border: 1px solid rgba(21, 21, 21, 0.14);
+  border-radius: 999px;
+  background: #fff;
+  color: var(--alc-ab-ink);
+  font-size: 14px;
+  font-weight: 500;
+  text-decoration: none;
+  transition: background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+}
+
+.alc-about__chip svg {
+  opacity: 0.5;
+  transition: transform 0.2s ease, opacity 0.2s ease;
+}
+
+.alc-about__chip:hover {
+  border-color: var(--alc-ab-ink);
+  background: var(--alc-ab-ink);
+  color: #fff;
+}
+
+.alc-about__chip:hover svg {
+  opacity: 1;
+  transform: translateX(2px);
+}
+
+.alc-about__grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.25fr) minmax(0, 1fr);
+  gap: 56px;
+  align-items: start;
+}
+
+.alc-about__grid--single {
+  grid-template-columns: minmax(0, 1fr);
+}
+
+/* Description */
+.alc-about__title {
+  margin: 0 0 14px;
+  font-size: 22px;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  line-height: 1.25;
+  scroll-margin-top: 140px;
+}
+
+.alc-about__body {
+  position: relative;
+  max-width: 72ch;
+  color: #3d3a35;
+  font-size: 15px;
+  line-height: 1.7;
+}
+
+.alc-about__body h2,
+.alc-about__body h3,
+.alc-about__body h4 {
+  margin: 1.4em 0 0.5em;
+  color: var(--alc-ab-ink);
+  font-size: 17px;
+  font-weight: 600;
+  line-height: 1.35;
+}
+
+.alc-about__body > :first-child,
+.alc-about__body > * > :first-child {
+  margin-top: 0;
+}
+
+.alc-about__body p {
+  margin: 0 0 0.9em;
+}
+
+.alc-about__body ul {
+  margin: 0 0 1em;
+  padding-left: 0;
+}
+
+.alc-about__body li {
+  position: relative;
+  margin: 0 0 0.35em;
+  padding-left: 18px;
+}
+
+.alc-about__body li::before {
+  content: '';
+  position: absolute;
+  left: 2px;
+  top: 0.72em;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: currentColor;
+  opacity: 0.35;
+}
+
+.alc-about__body a {
+  color: var(--alc-ab-ink);
+  text-decoration: underline;
+  text-decoration-color: rgba(21, 21, 21, 0.3);
+  text-underline-offset: 3px;
+}
+
+.alc-about__body a:hover {
+  text-decoration-color: currentColor;
+}
+
+/* The admin editor pastes justify, white backgrounds and fixed colours inline. */
+.alc-about__body [style] {
+  background-color: transparent !important;
+  line-height: inherit !important;
+  text-align: left !important;
+}
+
+.alc-about__body p [style],
+.alc-about__body li[style],
+.alc-about__body li [style],
+.alc-about__body p[style] {
+  color: inherit !important;
+}
+
+.alc-about__body h2 [style],
+.alc-about__body h3 [style] {
+  color: inherit !important;
+}
+
+/* Collapsed state is set by JS only, so without JS the full text shows. */
+.alc-about__body.is-collapsed {
+  max-height: var(--alc-ab-clamp, 300px);
+  overflow: hidden;
+  -webkit-mask-image: linear-gradient(to bottom, #000 55%, transparent);
+  mask-image: linear-gradient(to bottom, #000 55%, transparent);
+}
+
+.alc-about__toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  min-height: 42px;
+  margin-top: 12px;
+  padding: 0 18px;
+  border: 1px solid var(--alc-ab-ink);
+  border-radius: 999px;
+  background: transparent;
+  color: var(--alc-ab-ink);
+  font: inherit;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.alc-about__toggle[hidden] {
+  display: none;
+}
+
+.alc-about__toggle:hover {
+  background: var(--alc-ab-ink);
+  color: #fff;
+}
+
+.alc-about__toggle svg {
+  transition: transform 0.25s ease;
+}
+
+.alc-about__toggle[aria-expanded='true'] svg {
+  transform: rotate(180deg);
+}
+
+.alc-about__toggle-less,
+.alc-about__toggle[aria-expanded='true'] .alc-about__toggle-more {
+  display: none;
+}
+
+.alc-about__toggle[aria-expanded='true'] .alc-about__toggle-less {
+  display: inline;
+}
+
+/* FAQ */
+.alc-about__faq {
+  position: sticky;
+  top: 24px;
+  padding: 22px 22px 10px;
+  border-radius: 18px;
+  background: #f6f4f0;
+}
+
+.alc-about__faq-title {
+  margin: 0 0 8px;
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.alc-about__q {
+  border-bottom: 1px solid var(--alc-ab-line);
+}
+
+.alc-about__q:last-child {
+  border-bottom: 0;
+}
+
+.alc-about__q-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px;
+  padding: 14px 0;
+  cursor: pointer;
+  list-style: none;
+}
+
+.alc-about__q-head::-webkit-details-marker {
+  display: none;
+}
+
+.alc-about__q-title {
+  margin: 0;
+  color: var(--alc-ab-ink);
+  font-size: 14.5px;
+  font-weight: 600;
+  line-height: 1.4;
+}
+
+.alc-about__q-icon {
+  position: relative;
+  flex: none;
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  background: #fff;
+  box-shadow: 0 0 0 1px var(--alc-ab-line);
+}
+
+.alc-about__q-icon::before,
+.alc-about__q-icon::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 10px;
+  height: 1.6px;
+  border-radius: 2px;
+  background: var(--alc-ab-ink);
+  transform: translate(-50%, -50%);
+  transition: transform 0.25s ease;
+}
+
+.alc-about__q-icon::after {
+  transform: translate(-50%, -50%) rotate(90deg);
+}
+
+.alc-about__q[open] .alc-about__q-icon::after {
+  transform: translate(-50%, -50%) rotate(0deg);
+}
+
+.alc-about__q-body {
+  padding: 0 0 16px;
+}
+
+.alc-about__q-body p {
+  margin: 0;
+  color: #4a4741;
+  font-size: 14px;
+  line-height: 1.65;
+}
+
+@media screen and (max-width: 989px) {
+  .alc-about__grid {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 28px;
+  }
+
+  .alc-about__faq {
+    position: static;
+  }
+}
+
+@media screen and (max-width: 749px) {
+  .alc-about {
+    margin-top: 32px;
+    padding-top: 24px;
+  }
+
+  .alc-about__links {
+    margin-bottom: 24px;
+  }
+
+  /* One swipeable row of chips on phones. */
+  .alc-about__chips {
+    flex-wrap: nowrap;
+    margin: 0 -16px;
+    padding: 0 16px 4px;
+    overflow-x: auto;
+    scrollbar-width: none;
+  }
+
+  .alc-about__chips::-webkit-scrollbar {
+    display: none;
+  }
+
+  .alc-about__chip {
+    white-space: nowrap;
+  }
+
+  .alc-about__title {
+    font-size: 19px;
+  }
+
+  .alc-about__body {
+    font-size: 14.5px;
+  }
+
+
+  .alc-about__faq {
+    margin: 0 -4px;
+    padding: 18px 16px 6px;
+  }
+}

@@ -1,0 +1,89 @@
+{% comment %}
+  Collection view switch: grid / large grid / list. Icon buttons; their labels are a
+  small per-language dictionary (en.default.json is at Shopify's key limit).
+  Behaviour and persistence: assets/alc-collection-view.js; layouts:
+  assets/alc-collection-view.css. The active view lives on the [data-alc-coll] wrapper.
+
+  Usage:
+  {% render 'alc-view-switch' %}
+{% endcomment %}
+{%- liquid
+  assign lang = request.locale.iso_code | downcase | slice: 0, 2
+  case lang
+    when 'en'
+      assign l_view = 'View'
+      assign l_grid = 'Grid'
+      assign l_large = 'Large grid'
+      assign l_list = 'List'
+    when 'hu'
+      assign l_view = 'Nézet'
+      assign l_grid = 'Rács'
+      assign l_large = 'Nagy rács'
+      assign l_list = 'Lista'
+    when 'pl'
+      assign l_view = 'Widok'
+      assign l_grid = 'Siatka'
+      assign l_large = 'Duża siatka'
+      assign l_list = 'Lista'
+    when 'el'
+      assign l_view = 'Προβολή'
+      assign l_grid = 'Πλέγμα'
+      assign l_large = 'Μεγάλο πλέγμα'
+      assign l_list = 'Λίστα'
+    when 'bg'
+      assign l_view = 'Изглед'
+      assign l_grid = 'Мрежа'
+      assign l_large = 'Голяма мрежа'
+      assign l_list = 'Списък'
+    when 'it'
+      assign l_view = 'Vista'
+      assign l_grid = 'Griglia'
+      assign l_large = 'Griglia grande'
+      assign l_list = 'Elenco'
+    when 'fr'
+      assign l_view = 'Affichage'
+      assign l_grid = 'Grille'
+      assign l_large = 'Grande grille'
+      assign l_list = 'Liste'
+    when 'cs'
+      assign l_view = 'Zobrazení'
+      assign l_grid = 'Mřížka'
+      assign l_large = 'Velká mřížka'
+      assign l_list = 'Seznam'
+    when 'sk'
+      assign l_view = 'Zobrazenie'
+      assign l_grid = 'Mriežka'
+      assign l_large = 'Veľká mriežka'
+      assign l_list = 'Zoznam'
+    when 'hr'
+      assign l_view = 'Prikaz'
+      assign l_grid = 'Mreža'
+      assign l_large = 'Velika mreža'
+      assign l_list = 'Popis'
+    when 'de'
+      assign l_view = 'Ansicht'
+      assign l_grid = 'Raster'
+      assign l_large = 'Großes Raster'
+      assign l_list = 'Liste'
+    else
+      assign l_view = 'Afișare'
+      assign l_grid = 'Grilă'
+      assign l_large = 'Grilă mare'
+      assign l_list = 'Listă'
+  endcase
+-%}
+<div class="alc-view-switch" role="group" aria-label="{{ l_view }}">
+  <span class="alc-view-switch__label">{{ l_view }}</span>
+  <button type="button" class="alc-view-switch__btn" data-alc-view-btn="grid" aria-pressed="true" title="{{ l_grid }}">
+    <span class="visually-hidden">{{ l_grid }}</span>
+    <svg aria-hidden="true" focusable="false" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"><rect x="3.5" y="3.5" width="7" height="7" rx="1.5"/><rect x="13.5" y="3.5" width="7" height="7" rx="1.5"/><rect x="3.5" y="13.5" width="7" height="7" rx="1.5"/><rect x="13.5" y="13.5" width="7" height="7" rx="1.5"/></svg>
+  </button>
+  <button type="button" class="alc-view-switch__btn" data-alc-view-btn="large" aria-pressed="false" title="{{ l_large }}">
+    <span class="visually-hidden">{{ l_large }}</span>
+    <svg aria-hidden="true" focusable="false" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"><rect x="3.5" y="3.5" width="17" height="17" rx="2"/><path d="M3.5 15.5h17"/></svg>
+  </button>
+  <button type="button" class="alc-view-switch__btn" data-alc-view-btn="list" aria-pressed="false" title="{{ l_list }}">
+    <span class="visually-hidden">{{ l_list }}</span>
+    <svg aria-hidden="true" focusable="false" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3.5" y="4" width="5" height="5" rx="1"/><rect x="3.5" y="15" width="5" height="5" rx="1"/><path d="M12 6.5h8.5M12 17.5h8.5"/></svg>
+  </button>
+</div>

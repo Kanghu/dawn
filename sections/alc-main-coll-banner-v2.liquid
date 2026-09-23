@@ -1,67 +1,63 @@
-{{ 'component-collection-hero.css' | asset_url | stylesheet_tag }}
+{% comment %}
+  Collection header: title, product count and a short description excerpt, then the
+  sub-collection strip (snippets/alc-coll-subnav.liquid). #ProductCount is refreshed
+  by facets.js after filtering, so keep that id. Styles: assets/alc-collection-header.css.
+{% endcomment %}
+{{ 'alc-collection-header.css' | asset_url | stylesheet_tag }}
 
-{%- style -%}
-  @media screen and (max-width: 749px) {
-    .collection-hero--with-image .collection-hero__inner {
-      padding-bottom: calc({{ settings.media_shadow_vertical_offset | at_least: 0 }}px + 2rem);
-    }
-  }
-{%- endstyle -%}
-
-<div class="collection-hero{% if section.settings.show_collection_image and collection.image %} collection-hero--with-image{% endif %} color-{{ section.settings.color_scheme }} gradient">
-  <div class="collection-hero__inner page-width {% if settings.animations_reveal_on_scroll %} scroll-trigger animate--fade-in{% endif %}">
-    <div class="collection-hero__text-wrapper mb-2">
-      <h1 class="collection-hero__title mb-0">
-        {{- collection.title | escape -}}
-      </h1>
-
-      <div class="light" role="status">
-        <div class="alc-h2 text-body">
+<div class="alc-ch color-{{ section.settings.color_scheme }}{% if section.settings.show_collection_image and collection.image %} alc-ch--with-image{% endif %}">
+  <div class="page-width alc-ch__inner">
+    <div class="alc-ch__text">
+      <div class="alc-ch__top">
+        <h1 class="alc-ch__title">{{ collection.title | escape }}</h1>
+        <div class="alc-ch__count" role="status">
           <span id="ProductCount">
             {%- if collection.results_count -%}
-              ({{ 'templates.search.results_with_count' | t: terms: collection.terms, count: collection.results_count }})
+              {{ 'templates.search.results_with_count' | t: terms: collection.terms, count: collection.results_count }}
             {%- elsif collection.products_count == collection.all_products_count -%}
-              ({{ 'products.facets.product_count_simple' | t: count: collection.products_count }})
+              {{ 'products.facets.product_count_simple' | t: count: collection.products_count }}
             {%- else -%}
-              ({{ 'products.facets.product_count' | t: product_count: collection.products_count, count: collection.all_products_count }})
+              {{ 'products.facets.product_count' | t: product_count: collection.products_count, count: collection.all_products_count }}
             {%- endif -%}
           </span>
+          {%- render 'loading-spinner' -%}
         </div>
-        {%- render 'loading-spinner' -%}
       </div>
+
+      {%- comment -%}
+        A two-line teaser of the description; the full text sits under the grid on page 1
+        (#AlcCollAbout in main-collection-product-grid).
+      {%- endcomment -%}
+      {%- assign desc_text = collection.description | strip_html | strip -%}
+      {%- if section.settings.show_collection_description and desc_text != blank and current_page == 1 -%}
+        <p class="alc-ch__desc">
+          <span>{{ desc_text | truncatewords: 40 }}</span>
+          <a href="#AlcCollAbout" class="alc-ch__more">{% render 'alc-i18n', key: 'read_more' %}</a>
+        </p>
+      {%- endif -%}
     </div>
 
     {%- if section.settings.show_collection_image and collection.image -%}
-      <div class="collection-hero__image-container media gradient">
+      <div class="alc-ch__image">
         <img
-          srcset="
-            {%- if collection.image.width >= 165 -%}{{ collection.image | image_url: width: 165 }} 165w,{%- endif -%}
-            {%- if collection.image.width >= 360 -%}{{ collection.image | image_url: width: 360 }} 360w,{%- endif -%}
-            {%- if collection.image.width >= 535 -%}{{ collection.image | image_url: width: 535 }} 535w,{%- endif -%}
-            {%- if collection.image.width >= 750 -%}{{ collection.image | image_url: width: 750 }} 750w,{%- endif -%}
-            {%- if collection.image.width >= 1070 -%}{{ collection.image | image_url: width: 1070 }} 1070w,{%- endif -%}
-            {%- if collection.image.width >= 1500 -%}{{ collection.image | image_url: width: 1500 }} 1500w,{%- endif -%}
-            {{ collection.image | image_url }} {{ collection.image.width }}w
-          "
           src="{{ collection.image | image_url: width: 750 }}"
-          sizes="(min-width: {{ settings.page_width }}px) {{ settings.page_width | minus: 100 | divided_by: 2 }}px, (min-width: 750px) calc(50vw - 130px), calc(50vw - 55px)"
+          srcset="{{ collection.image | image_url: width: 400 }} 400w, {{ collection.image | image_url: width: 750 }} 750w, {{ collection.image | image_url: width: 1100 }} 1100w"
+          sizes="(min-width: 990px) 420px, 100vw"
           alt="{{ collection.image.alt | escape }}"
           width="{{ collection.image.width }}"
-          height="{{ collection.image.height }}">
+          height="{{ collection.image.height }}"
+          fetchpriority="high"
+        >
       </div>
     {%- endif -%}
   </div>
-</div>
 
-{%- if section.settings.show_collection_slider -%}
-  {% render 'alc-subcollection-slider-simple',
-    collection: collection,
-    columns_desktop: section.settings.slider_columns_desktop,
-    columns_mobile: section.settings.slider_columns_mobile,
-    enable_mobile_slider: section.settings.slider_enable_mobile,
-    image_ratio: section.settings.slider_image_ratio
-  %}
-{%- endif -%}
+  {%- if section.settings.show_collection_slider -%}
+    <div class="page-width alc-ch__subnav">
+      {%- render 'alc-coll-subnav', collection: collection -%}
+    </div>
+  {%- endif -%}
+</div>
 
 {% schema %}
   {
