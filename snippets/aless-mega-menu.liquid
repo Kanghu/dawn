@@ -7,7 +7,9 @@
     menu's 2nd-level links (collections, with image). Right: the hovered item's
     3rd-level groups and their 4th-level links, or a feature card when it has none.
     A 2nd-level collection with custom.is_campaign shows as an image tile.
-  - any other display_type: a compact dropdown with the 2nd-level links.
+  - any other display_type: a compact 2-column dropdown with the 2nd-level links, each
+    with an icon (snippets/alc-menu-icon.liquid) and an optional one-line description
+    from the page metafield custom.menu_description (single line text, translatable).
 
   Styles: assets/alc-mega-menu.css. Behaviour: assets/alc-mega-menu.js (hover intent,
   click/touch, keyboard, Esc, click outside). The mobile drawer is a separate snippet.
@@ -228,22 +230,29 @@
                   <div class="alc-mm__panel alc-mm__panel--dropdown" id="{{ panel_id }}" data-alc-mm-panel hidden>
                     <ul class="alc-mm__drop" role="list">
                       {%- for childlink in mega_menu.links -%}
+                        {%- assign drop_desc = childlink.object.metafields.custom.menu_description.value -%}
                         <li>
                           <a href="{{ childlink.url }}" class="alc-mm__drop-link">
-                            {%- if childlink.object.image -%}
-                              <span class="alc-mm__thumb alc-mm__thumb--sm">
+                            <span class="alc-mm__drop-icon">
+                              {%- if childlink.object.image -%}
                                 <img
-                                  src="{{ childlink.object.image | image_url: width: 72 }}"
-                                  width="32"
-                                  height="32"
+                                  src="{{ childlink.object.image | image_url: width: 88 }}"
+                                  width="40"
+                                  height="40"
                                   alt=""
                                   loading="lazy"
                                   decoding="async"
                                 >
-                              </span>
-                            {%- endif -%}
-                            <span>{{ childlink.title | escape }}</span>
-                            <svg class="alc-mm__chev" aria-hidden="true" focusable="false" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 6 6 6-6 6"/></svg>
+                              {%- else -%}
+                                {%- render 'alc-menu-icon', link: childlink -%}
+                              {%- endif -%}
+                            </span>
+                            <span class="alc-mm__drop-text">
+                              <span class="alc-mm__drop-title">{{ childlink.title | escape }}</span>
+                              {%- if drop_desc != blank -%}
+                                <span class="alc-mm__drop-desc">{{ drop_desc | escape }}</span>
+                              {%- endif -%}
+                            </span>
                           </a>
                         </li>
                       {%- endfor -%}

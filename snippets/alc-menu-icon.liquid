@@ -1,0 +1,81 @@
+{% comment %}
+  Outline icon for a menu link without an image (Explorează / Suport menus).
+  Known pages are matched by ID, which is the same on every market (URLs, titles and
+  even page handles are translated per market). Other links fall back to keywords in
+  the handle, template, URL and title; unknown links get a neutral arrow.
+
+  Accepts:
+  - link: {Object} a linklist link
+  - size: {Number} icon size in px. Default: 20 (optional)
+
+  Usage:
+  {% render 'alc-menu-icon', link: link %}
+{% endcomment %}
+{%- liquid
+  assign icon_size = size | default: 20
+  capture haystack
+    echo link.object.handle | append: ' ' | append: link.object.template_suffix | append: ' ' | append: link.url | append: ' ' | append: link.title
+  endcapture
+  assign haystack = haystack | downcase
+
+  assign icon = 'arrow'
+  comment
+    Pages first, by ID: on the other markets even the page handle is translated
+    (companie -> tarsasag), but the ID is the same everywhere.
+  endcomment
+  case link.object.id
+    when 128969933067
+      assign icon = 'spark'
+    when 128969965835
+      assign icon = 'camera'
+    when 129295221003
+      assign icon = 'info'
+    when 157174202635
+      assign icon = 'store'
+    when 129318093067
+      assign icon = 'handshake'
+    when 127169790219
+      assign icon = 'chat'
+  endcase
+
+  if icon != 'arrow'
+    comment
+      Picked by page ID above.
+    endcomment
+  elsif haystack contains 'idei' or haystack contains 'amenajare' or haystack contains 'inspir'
+    assign icon = 'spark'
+  elsif haystack contains 'poze' or haystack contains 'galerie' or haystack contains 'foto'
+    assign icon = 'camera'
+  elsif haystack contains 'showroom'
+    assign icon = 'store'
+  elsif haystack contains 'companie' or haystack contains 'despre'
+    assign icon = 'info'
+  elsif haystack contains 'status' or haystack contains 'comenzii' or haystack contains 'tracking'
+    assign icon = 'package'
+  elsif haystack contains 'retur' or haystack contains 'sesiz'
+    assign icon = 'return'
+  elsif haystack contains 'colabor' or haystack contains 'partener'
+    assign icon = 'handshake'
+  elsif haystack contains 'contact'
+    assign icon = 'chat'
+  elsif haystack contains 'help' or haystack contains 'ajutor' or haystack contains 'intrebari'
+    assign icon = 'help'
+  elsif haystack contains 'blog'
+    assign icon = 'book'
+  endif
+-%}
+<svg class="alc-menu-icon" aria-hidden="true" focusable="false" width="{{ icon_size }}" height="{{ icon_size }}" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+  {%- case icon -%}
+    {%- when 'spark' -%}<path d="M9 18h6M10 21h4"/><path d="M12 3a6 6 0 0 0-3.5 10.9c.6.4 1 1.1 1 1.8V16h5v-.3c0-.7.4-1.4 1-1.8A6 6 0 0 0 12 3z"/>
+    {%- when 'camera' -%}<path d="M4 8h3l2-3h6l2 3h3v11H4z"/><circle cx="12" cy="13" r="3.5"/>
+    {%- when 'store' -%}<path d="M4 10v10h16V10"/><path d="M3 10 5 4h14l2 6"/><path d="M3 10a3 3 0 0 0 6 0 3 3 0 0 0 6 0 3 3 0 0 0 6 0"/><path d="M10 20v-5h4v5"/>
+    {%- when 'info' -%}<circle cx="12" cy="12" r="9"/><path d="M12 11v5M12 8h.01"/>
+    {%- when 'package' -%}<path d="M12 3 4 7v10l8 4 8-4V7z"/><path d="m4 7 8 4 8-4M12 11v10"/>
+    {%- when 'return' -%}<path d="M4 9h11a5 5 0 0 1 0 10H8"/><path d="M8 5 4 9l4 4"/>
+    {%- when 'handshake' -%}<path d="m3 12 4-4 3 1 3-2 4 1 4 4"/><path d="m7 12 4 4a1.5 1.5 0 0 0 2-2l-1-1"/><path d="m10 15 2 2a1.5 1.5 0 0 0 2-2"/><path d="m14 12 2 2a1.5 1.5 0 0 0 2-2l-3-3"/>
+    {%- when 'chat' -%}<path d="M4 5h16v11H9l-5 4z"/><path d="M8 10h8M8 13h5"/>
+    {%- when 'help' -%}<circle cx="12" cy="12" r="9"/><path d="M9.5 9.5a2.5 2.5 0 1 1 3.5 2.3c-.6.3-1 .9-1 1.6V14M12 17h.01"/>
+    {%- when 'book' -%}<path d="M5 4h9a3 3 0 0 1 3 3v13H8a3 3 0 0 1-3-3z"/><path d="M5 17a3 3 0 0 1 3-3h9"/>
+    {%- else -%}<path d="M5 12h14M13 6l6 6-6 6"/>
+  {%- endcase -%}
+</svg>

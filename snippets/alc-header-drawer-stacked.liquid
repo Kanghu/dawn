@@ -167,9 +167,16 @@
               {%- else -%}
                 <ul class="alc-md__list" role="list">
                   {%- for link in top_menu.links -%}
+                    {%- assign row_desc = link.object.metafields.custom.menu_description.value -%}
                     <li>
                       <a href="{{ link.url }}" class="alc-md__row">
-                        <span>{{ link.title | escape }}</span>
+                        <span class="alc-md__row-icon">{%- render 'alc-menu-icon', link: link -%}</span>
+                        <span class="alc-md__row-text">
+                          <span>{{ link.title | escape }}</span>
+                          {%- if row_desc != blank -%}
+                            <span class="alc-md__row-desc">{{ row_desc | escape }}</span>
+                          {%- endif -%}
+                        </span>
                         <svg aria-hidden="true" focusable="false" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 6 6 6-6 6"/></svg>
                       </a>
                     </li>

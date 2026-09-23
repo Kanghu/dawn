@@ -1,0 +1,688 @@
+/* Desktop header menu (snippets/aless-mega-menu.liquid). Hidden below 990px by
+   base.css (.header__inline-menu), where the drawer takes over. */
+.alc-mm {
+  --alc-mm-ink: #151515;
+  --alc-mm-muted: #6b6862;
+  --alc-mm-soft: #f4f2ee;
+  --alc-mm-line: rgba(21, 21, 21, 0.08);
+  position: relative;
+  z-index: 101;
+  width: 100vw;
+  margin-left: calc(-50vw + 50%);
+  margin-right: calc(-50vw + 50%);
+  background: var(--alc-mm-bar, #111);
+  border-bottom: 0 !important;
+}
+
+.header-wrapper,
+.header-wrapper--border-bottom,
+header {
+  border-bottom: none !important;
+}
+
+/* The bar is 100vw wide; with a vertical scrollbar that is wider than the page,
+   so horizontal overflow stays hidden (the previous menu did the same). */
+html,
+body {
+  overflow-x: hidden;
+}
+
+.alc-mm__list {
+  display: flex;
+  align-items: stretch;
+  gap: 4px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.alc-mm__item {
+  position: relative;
+  display: flex;
+}
+
+/* Top-level triggers ------------------------------------------------------ */
+.alc-mm__trigger {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  min-height: 48px;
+  margin: 0;
+  padding: 0 16px;
+  border: 0;
+  background: none;
+  color: #fff;
+  font: inherit;
+  font-size: 14px;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  text-decoration: none;
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+.alc-mm__item:first-child .alc-mm__trigger {
+  padding-left: 0;
+}
+
+.alc-mm__trigger::after {
+  content: '';
+  position: absolute;
+  left: 16px;
+  right: 16px;
+  bottom: 10px;
+  height: 2px;
+  border-radius: 2px;
+  background: currentColor;
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.25s ease;
+}
+
+.alc-mm__item:first-child .alc-mm__trigger::after {
+  left: 0;
+}
+
+.alc-mm__trigger:hover::after,
+.alc-mm__trigger[aria-expanded='true']::after {
+  transform: scaleX(1);
+}
+
+.alc-mm__trigger:focus-visible {
+  outline: 2px solid #fff;
+  outline-offset: -4px;
+  border-radius: 6px;
+}
+
+.alc-mm__caret {
+  opacity: 0.7;
+  transition: transform 0.25s ease;
+}
+
+.alc-mm__trigger[aria-expanded='true'] .alc-mm__caret {
+  transform: rotate(180deg);
+}
+
+/* Campaign items (header "drawer_menu_campaign" blocks). */
+.alc-mm__item--campaign .alc-mm__trigger {
+  color: var(--campaign-text-color, #fff);
+}
+
+.alc-mm__item--highlight .alc-mm__trigger::after {
+  transform: scaleX(1);
+}
+
+.alc-mm__item--button {
+  align-items: center;
+}
+
+.alc-mm__item--button .alc-mm__trigger {
+  min-height: 32px;
+  margin-left: 8px;
+  padding: 0 14px;
+  border-radius: 999px;
+  background: var(--campaign-bg-color, #fff);
+  color: var(--campaign-text-color, #151515);
+  font-weight: 600;
+}
+
+.alc-mm__item--button .alc-mm__trigger::after {
+  display: none;
+}
+
+/* Panels ------------------------------------------------------------------ */
+.alc-mm__panel {
+  color: var(--alc-mm-ink);
+  background: #fff;
+}
+
+.alc-mm__panel[hidden] {
+  display: none;
+}
+
+.alc-mm__panel:not([hidden]) {
+  animation: alc-mm-in 0.18s ease-out;
+}
+
+@keyframes alc-mm-in {
+  from { opacity: 0; transform: translateY(-6px); }
+  to { opacity: 1; transform: none; }
+}
+
+.alc-mm__panel--mega {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  border-top: 1px solid var(--alc-mm-line);
+  border-radius: 0 0 18px 18px;
+  box-shadow: 0 30px 60px -20px rgba(0, 0, 0, 0.28);
+}
+
+.alc-mm__item--mega {
+  position: static;
+}
+
+.alc-mm__mega {
+  display: grid;
+  grid-template-columns: 260px minmax(0, 1fr);
+  gap: 28px;
+  padding-top: 22px;
+  padding-bottom: 24px;
+  max-height: calc(100vh - 220px);
+  overflow-y: auto;
+}
+
+/* Left: categories */
+.alc-mm__cats {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  margin: 0;
+  padding: 0 20px 0 0;
+  list-style: none;
+  border-right: 1px solid var(--alc-mm-line);
+}
+
+.alc-mm__cat {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 6px 10px 6px 6px;
+  border-radius: 12px;
+  color: var(--alc-mm-ink);
+  font-size: 15px;
+  font-weight: 500;
+  text-decoration: none;
+  transition: background-color 0.2s ease;
+}
+
+.alc-mm__cat:hover,
+.alc-mm__cat.is-active {
+  background: var(--alc-mm-soft);
+}
+
+.alc-mm__cat:focus-visible {
+  outline: 2px solid var(--alc-mm-ink);
+  outline-offset: 1px;
+}
+
+.alc-mm__cat-title {
+  flex: 1 1 auto;
+}
+
+.alc-mm__cat.is-active .alc-mm__cat-title {
+  font-weight: 600;
+}
+
+.alc-mm__chev {
+  flex: none;
+  opacity: 0;
+  transform: translateX(-4px);
+  transition: opacity 0.2s ease, transform 0.2s ease;
+}
+
+.alc-mm__cat:hover .alc-mm__chev,
+.alc-mm__cat.is-active .alc-mm__chev,
+.alc-mm__drop-link:hover .alc-mm__chev {
+  opacity: 0.6;
+  transform: none;
+}
+
+.alc-mm__thumb {
+  display: inline-flex;
+  flex: none;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  overflow: hidden;
+  border-radius: 10px;
+  background: #fff;
+  box-shadow: inset 0 0 0 1px var(--alc-mm-line);
+}
+
+.alc-mm__thumb img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.alc-mm__thumb--sm {
+  width: 32px;
+  height: 32px;
+  border-radius: 8px;
+}
+
+.alc-mm__cat-campaign {
+  margin: 4px 0 8px;
+}
+
+.alc-mm__campaign-link {
+  display: block;
+  overflow: hidden;
+  border-radius: 12px;
+}
+
+.alc-mm__campaign-link img {
+  display: block;
+  width: 100%;
+  height: auto;
+  transition: transform 0.6s ease;
+}
+
+.alc-mm__campaign-link:hover img {
+  transform: scale(1.03);
+}
+
+/* Right: content panes ----------------------------------------------------
+   Grouped category: [ groups grid | collection preview ].
+   Category without groups: the collection preview on its own, wider. */
+.alc-mm__pane[hidden] {
+  display: none;
+}
+
+.alc-mm__pane--groups {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 280px;
+  gap: 28px;
+  align-items: start;
+}
+
+.alc-mm__pane-title {
+  display: inline-block;
+  margin-bottom: 14px;
+  color: var(--alc-mm-ink);
+  font-size: 18px;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  text-decoration: none;
+}
+
+.alc-mm__pane-title:hover {
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+
+/* Each sub-category is its own card, so its links clearly belong to it. */
+.alc-mm__groups {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(190px, 1fr));
+  gap: 10px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.alc-mm__group {
+  display: flex;
+  flex-direction: column;
+  padding: 10px 12px 12px;
+  border: 1px solid var(--alc-mm-line);
+  border-radius: 14px;
+  background: #faf9f7;
+  transition: border-color 0.2s ease, background-color 0.2s ease;
+}
+
+.alc-mm__group:hover {
+  border-color: rgba(21, 21, 21, 0.18);
+  background: #fff;
+}
+
+.alc-mm__group-head {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: var(--alc-mm-ink);
+  text-decoration: none;
+}
+
+.alc-mm__group-thumb {
+  display: inline-flex;
+  flex: none;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  overflow: hidden;
+  border-radius: 10px;
+  background: #fff;
+  box-shadow: inset 0 0 0 1px var(--alc-mm-line);
+}
+
+.alc-mm__group-thumb img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  transition: transform 0.4s ease;
+}
+
+.alc-mm__group-head:hover .alc-mm__group-thumb img {
+  transform: scale(1.08);
+}
+
+.alc-mm__group-title {
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 1.25;
+}
+
+.alc-mm__group-head:hover .alc-mm__group-title {
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.alc-mm__sublinks {
+  display: flex;
+  flex-direction: column;
+  margin: 8px 0 0;
+  padding: 8px 0 0;
+  border-top: 1px solid var(--alc-mm-line);
+  list-style: none;
+}
+
+.alc-mm__sublink {
+  position: relative;
+  display: block;
+  padding: 3px 0 3px 12px;
+  color: var(--alc-mm-muted);
+  font-size: 13px;
+  line-height: 1.35;
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.alc-mm__sublink::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 50%;
+  width: 4px;
+  height: 4px;
+  margin-top: -2px;
+  border-radius: 50%;
+  background: currentColor;
+  opacity: 0.45;
+}
+
+.alc-mm__sublink:hover {
+  color: var(--alc-mm-ink);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+/* Collection preview card */
+.alc-mm__feature {
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  border: 1px solid var(--alc-mm-line);
+  border-radius: 16px;
+  background: #fff;
+  color: var(--alc-mm-ink);
+  text-decoration: none;
+  transition: box-shadow 0.25s ease;
+}
+
+.alc-mm__pane--groups .alc-mm__feature {
+  position: sticky;
+  top: 0;
+}
+
+.alc-mm__feature:hover {
+  box-shadow: 0 16px 36px -18px rgba(0, 0, 0, 0.3);
+}
+
+/* Collection images are mostly cut-outs on white, so show them whole. */
+.alc-mm__feature-media {
+  display: block;
+  overflow: hidden;
+  aspect-ratio: 4 / 3;
+  padding: 12px;
+  background: #fff;
+  border-bottom: 1px solid var(--alc-mm-line);
+}
+
+.alc-mm__pane:not(.alc-mm__pane--groups) .alc-mm__feature-media {
+  border-bottom: 0;
+  border-right: 1px solid var(--alc-mm-line);
+}
+
+.alc-mm__feature-media img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  transition: transform 0.8s ease;
+}
+
+.alc-mm__feature:hover .alc-mm__feature-media img {
+  transform: scale(1.04);
+}
+
+.alc-mm__feature-body {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 8px;
+  padding: 14px 16px 16px;
+}
+
+.alc-mm__feature-title {
+  font-size: 17px;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+}
+
+.alc-mm__feature-text {
+  display: -webkit-box;
+  -webkit-line-clamp: 4;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  color: var(--alc-mm-muted);
+  font-size: 13px;
+  line-height: 1.5;
+}
+
+.alc-mm__feature-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 4px;
+  padding: 8px 16px;
+  border: 1px solid var(--alc-mm-ink);
+  border-radius: 999px;
+  color: var(--alc-mm-ink);
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 0.03em;
+  white-space: nowrap;
+  transition: background-color 0.25s ease, color 0.25s ease;
+}
+
+.alc-mm__feature-cta svg {
+  transition: transform 0.25s ease;
+}
+
+.alc-mm__feature:hover .alc-mm__feature-cta {
+  background: var(--alc-mm-ink);
+  color: #fff;
+}
+
+.alc-mm__feature:hover .alc-mm__feature-cta svg {
+  transform: translateX(3px);
+}
+
+/* Category without sub-groups: wide horizontal preview. */
+.alc-mm__pane:not(.alc-mm__pane--groups) .alc-mm__feature {
+  display: grid;
+  grid-template-columns: minmax(0, 440px) minmax(0, 1fr);
+  align-items: center;
+  max-width: 900px;
+}
+
+.alc-mm__pane:not(.alc-mm__pane--groups) .alc-mm__feature-body {
+  gap: 12px;
+  padding: 24px 32px;
+}
+
+.alc-mm__pane:not(.alc-mm__pane--groups) .alc-mm__feature-title {
+  font-size: 22px;
+}
+
+.alc-mm__pane:not(.alc-mm__pane--groups) .alc-mm__feature-text {
+  font-size: 14px;
+  -webkit-line-clamp: 5;
+}
+
+/* Compact dropdown (2-level menus): a 2-column card of icon + title (+ description) */
+.alc-mm__panel--dropdown {
+  position: absolute;
+  top: calc(100% + 8px);
+  left: 0;
+  width: 520px;
+  padding: 10px;
+  border-radius: 18px;
+  box-shadow: 0 24px 48px -16px rgba(0, 0, 0, 0.3), 0 0 0 1px var(--alc-mm-line);
+}
+
+.alc-mm__item:first-child .alc-mm__panel--dropdown {
+  left: -10px;
+}
+
+/* Bridges the 8px gap so the pointer can travel from trigger to panel. */
+.alc-mm__panel--dropdown::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: -10px;
+  height: 10px;
+}
+
+.alc-mm__drop {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 4px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.alc-mm__drop-link {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  height: 100%;
+  padding: 10px;
+  border-radius: 12px;
+  color: var(--alc-mm-ink);
+  text-decoration: none;
+  transition: background-color 0.2s ease;
+}
+
+.alc-mm__drop-link:hover,
+.alc-mm__drop-link:focus-visible {
+  background: var(--alc-mm-soft);
+  outline: none;
+}
+
+.alc-mm__drop-icon {
+  display: flex;
+  flex: none;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  overflow: hidden;
+  border-radius: 12px;
+  background: var(--alc-mm-soft);
+  color: var(--alc-mm-ink);
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.alc-mm__drop-icon img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.alc-mm__drop-link:hover .alc-mm__drop-icon,
+.alc-mm__drop-link:focus-visible .alc-mm__drop-icon {
+  background: var(--alc-mm-ink);
+  color: #fff;
+}
+
+.alc-mm__drop-text {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  min-width: 0;
+}
+
+.alc-mm__drop-title {
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 1.3;
+}
+
+.alc-mm__drop-desc {
+  color: var(--alc-mm-muted);
+  font-size: 12.5px;
+  line-height: 1.35;
+}
+
+/* Page dimmer behind an open mega panel */
+.alc-mm-backdrop {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 99;
+  background: rgba(15, 15, 15, 0.4);
+  pointer-events: none;
+  animation: alc-mm-fade 0.2s ease-out;
+}
+
+/* The backdrop is an empty div, which base.css hides (div:empty), so it needs
+   an explicit display when shown. */
+.alc-mm-backdrop:not([hidden]) {
+  display: block;
+}
+
+.alc-mm-backdrop[hidden] {
+  display: none;
+}
+
+@keyframes alc-mm-fade {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .alc-mm__panel:not([hidden]),
+  .alc-mm-backdrop {
+    animation: none;
+  }
+}
+
+@media screen and (max-width: 1199px) {
+  .alc-mm__mega {
+    grid-template-columns: 230px minmax(0, 1fr);
+    gap: 22px;
+  }
+
+  .alc-mm__pane--groups {
+    grid-template-columns: minmax(0, 1fr) 230px;
+    gap: 20px;
+  }
+
+  .alc-mm__groups {
+    grid-template-columns: repeat(auto-fill, minmax(170px, 1fr));
+  }
+
+  .alc-mm__pane:not(.alc-mm__pane--groups) .alc-mm__feature {
+    grid-template-columns: minmax(0, 340px) minmax(0, 1fr);
+  }
+}
