@@ -1,13 +1,32 @@
 {% comment %}
-  Snippet: alc-header-drawer-stacked.liquid
-  Implements:
-  1) Split row: left = category link, right = arrow to open next level (levels 2/3).
-  2) First drawer_menu_item also prints product links inline above categories.
+  Mobile / tablet menu drawer (below 990px). Rendered by sections/alc-header.liquid.
+
+  Dawn's <header-drawer> (assets/global.js) still opens/closes the drawer through the
+  outer <details id="Details-menu-drawer-container">. Everything inside it is the
+  .alc-md UI (assets/alc-mobile-menu.css + assets/alc-mobile-menu.js), which uses no
+  nested <details>, so Dawn's MenuDrawer only ever handles the main toggle:
+  - Tabs: one per header "drawer_menu_item" block (same locale_codes filter as desktop).
+  - 3-level menus: 2-column tiles of the 2nd-level collections. A tile with children
+    slides in a sub-panel: "view all" + the 3rd-level links as an accordion that
+    reveals their 4th-level links. Campaign collections (custom.is_campaign) show as
+    a full-width image.
+  - Other menus: a plain list.
+
+  Accepts:
+  - all_blocks: header section blocks
+  - menu_color_scheme: colour scheme of the drawer
+  - menu_gradient_start / _middle / _end: kept for caller compatibility
 {% endcomment %}
+{{ 'alc-mobile-menu.css' | asset_url | stylesheet_tag }}
+<script src="{{ 'alc-mobile-menu.js' | asset_url }}" defer="defer"></script>
+
+{%- liquid
+  assign view_all_label = 'sections.featured_collection.view_all' | t
+  assign back_label = 'general.back' | t
+-%}
 
 <header-drawer data-breakpoint="{% if menu_type_desktop == 'drawer' %}desktop{% else %}tablet{% endif %}" class="overflow-hidden">
   <details id="Details-menu-drawer-container" class="menu-drawer-container">
-    <!-- Drawer Toggle Button -->
     <summary class="header__icon header__icon--menu header__icon--summary link focus-inset" aria-label="{{ 'sections.header.menu' | t }}">
       <span>
         {{ 'icon-hamburger.svg' | inline_asset_content }}
@@ -15,358 +34,266 @@
       </span>
     </summary>
 
-    <div id="menu-drawer" class="gradient menu-drawer motion-reduce color-{{ menu_color_scheme }} fixed overflow-hidden">
-      <div class="menu-drawer__inner-container h-full">
-        <div class="menu-drawer__navigation-container h-full">
-          <nav class="menu-drawer__navigation overflow-y-auto">
-            <ul class="menu-drawer__menu has-submenu flex flex-col" role="list">
-              {% for block_item in all_blocks %}
-                {% comment %}Skip campaign menu items in mobile drawer{% endcomment %}
-                {% if block_item.type == 'drawer_menu_campaign' %}
-                  {% continue %}
-                {% endif %}
-
-                {% if block_item.type == 'drawer_menu_item' %}
-                  {% assign label = block_item.settings.menu_label %}
-                  {% assign menu_handle = block_item.settings.menu_handle %}
-                  {% assign top_menu = linklists[menu_handle] %}
-
-                  <li class="first-level-group border-gray-200" id="menu-group-{{ block_item.id }}">
-                    <div class="first-level-title alc-h2 px-4 py-3 text-lg font-semibold flex items-center justify-between">
-                      <span>{{ label }}</span>
-                    {%- comment -%}
-                      Optional: link to a landing page for this menu if you have one
-                    {%- endcomment -%}
-                    </div>
-
-                    {% if top_menu.links.size > 0 %}
-                      <ul class="menu-drawer__menu has-submenu flex flex-col space-y-2 pb-4" role="list">
-                        {% for link in top_menu.links %}
-                          {% comment %}Check if this collection is a campaign{% endcomment %}
-                          {% assign is_campaign = false %}
-                          {% if link.object and link.object.metafields.custom.is_campaign %}
-                            {% assign is_campaign = true %}
-                          {% endif %}
-
-                          <li class="w-full flex items-stretch">
-                            {% if is_campaign %}
-                              {% comment %}Campaign collection: show image directly without drawer expansion{% endcomment %}
-                              <a href="{{ link.url }}" class="drawer-campaign-link flex items-center gap-4 flex-1 no-underline text-black hover:bg-gray-50 transition-colors">
-                                {% if link.object and link.object.image and link.object.image.src %}
-                                  <img
-                                    src="{{ link.object.image | image_url: width: 750 }}"
-                                    srcset="{% render 'alc-image-srcset', image: link.object.image, widths: '375,550,750,1000', max_width: 1500 %}"
-                                    sizes="85vw"
-                                    width="{{ link.object.image.width }}"
-                                    height="{{ link.object.image.height }}"
-                                    alt="{{ link.title | escape }}"
-                                    loading="lazy"
-                                    class="w-full h-auto object-contain rounded-md">
-                                {% endif %}
-                              </a>
-                            {% elsif link.links != blank %}
-                              <!-- LEFT: link to category -->
-                              <a href="{{ link.url }}" class="split-row__link flex items-center gap-4 flex-1 js-category-link no-underline text-black">
-                                {% if link.object and link.object.image and link.object.image.src %}
-                                  <img
-                                    src="{{ link.object.image.src | img_url: '120x120' }}"
-                                    alt="{{ link.title | escape }}"
-                                    class="h-24 object-cover rounded-md flex-shrink-0"
-                                    loading="lazy">
-                                {% endif %}
-                                <div class="flex-1 text-left">
-                                  <span class="font-medium">{{ link.title | escape }}</span>
-                                </div>
-                              </a>
-                              {%- comment -%} Level 2 item WITH children → keep drawer (details) {%- endcomment -%}
-                              <details id="Details-menu-drawer-{{ link.handle }}" class="stacked-menu-item">
-                                <summary class="menu-drawer__menu-item list-menu__item px-0 link link--text focus-inset js-split-summary">
-                                  <div class="split-row flex items-stretch w-full">
-                                    <!-- RIGHT: arrow to open submenu -->
-                                    <button
-                                      class="split-row__arrow flex items-center justify-center px-4 py-4 js-next-level"
-                                      aria-label="{{ 'general.next' | t | default: 'Open submenu' }}"
-                                      type="button">
-                                      <span class="svg-wrapper transform">
-                                        {{ 'icon-chevron.svg' | inline_asset_content }}
-                                      </span>
-                                    </button>
-                                  </div>
-                                </summary>
-
-                                <!-- Level 3 drawer -->
-                                <div
-                                  id="link-{{ link.handle | escape }}"
-                                  class="menu-drawer__submenu has-submenu gradient motion-reduce"
-                                  tabindex="-1">
-                                  <div class="menu-drawer__inner-submenu">
-                                    <button class="menu-drawer__close-button link--text focus-inset flex items-center gap-2 border-b border-main pb-1" aria-expanded="true">
-                                      <span class="svg-wrapper transform rotate-90">
-                                        {{ 'icon-chevron.svg' | inline_asset_content }}
-                                      </span>
-                                      <span class="text-black">{{ 'general.back' | t | default: 'Înapoi' }}</span>
-                                    </button>
-
-                                    <ul
-                                      class="menu-drawer__menu flex flex-col space-y-2"
-                                      role="list"
-                                      tabindex="-1">
-                                      {% for childlink in link.links %}
-                                        <li class="w-full">
-                                          {% if childlink.links == blank %}
-                                            <!-- plain link -->
-                                            <a
-                                              id="HeaderDrawer-{{ link.handle }}-{{ childlink.handle }}"
-                                              href="{{ childlink.url }}"
-                                              class="menu-drawer__menu-item link link--text list-menu__item flex items-center focus-inset hover:bg-gray-50 transition-colors p-0">
-                                              <div class="flex items-center gap-4 flex-1">
-                                                {% if childlink.object and childlink.object.image and childlink.object.image.src %}
-                                                  <img
-                                                    src="{{ childlink.object.image.src | img_url: '120x120' }}"
-                                                    alt="{{ childlink.title | escape }}"
-                                                    class="h-16 object-cover rounded-md flex-shrink-0"
-                                                    loading="lazy">
-                                                {% endif %}
-                                                <div class="flex-1">
-                                                  <span class="font-medium">{{ childlink.title | escape }}</span>
-                                                </div>
-                                              </div>
-                                            </a>
-                                          {% else %}
-                                            <!-- Level 4 (grandchildren) still drawer -->
-                                            <details id="Details-menu-drawer-{{ link.handle }}-{{ childlink.handle }}" class="stacked-menu-item">
-                                              <summary class="menu-drawer__menu-item link link--text list-menu__item px-0 focus-inset js-split-summary">
-                                                <div class="split-row flex items-stretch w-full">
-                                                  <a href="{{ childlink.url }}" class="split-row__link flex items-center gap-4 flex-1 js-category-link no-underline text-black">
-                                                    {% if childlink.object and childlink.object.image and childlink.object.image.src %}
-                                                      <img
-                                                        src="{{ childlink.object.image.src | img_url: '120x120' }}"
-                                                        alt="{{ childlink.title | escape }}"
-                                                        class="h-16 object-cover rounded-md flex-shrink-0"
-                                                        loading="lazy">
-                                                    {% endif %}
-                                                    <div class="flex-1 text-left">
-                                                      <span class="font-medium">{{ childlink.title | escape }}</span>
-                                                    </div>
-                                                  </a>
-                                                  <button
-                                                    class="split-row__arrow flex items-center justify-center px-4 py-4 js-next-level"
-                                                    type="button"
-                                                    aria-label="{{ 'general.next' | t | default: 'Open submenu' }}">
-                                                    <span class="svg-wrapper transform flex-shrink-0 ml-2">
-                                                      {{ 'icon-chevron.svg' | inline_asset_content }}
-                                                    </span>
-                                                  </button>
-                                                </div>
-                                              </summary>
-
-                                              <div id="childlink-{{ childlink.handle | escape }}" class="menu-drawer__submenu has-submenu gradient motion-reduce">
-                                                <button class="menu-drawer__close-button link link--text focus-inset flex items-center gap-2" aria-expanded="true">
-                                                  <span class="svg-wrapper transform rotate-90">
-                                                    {{ 'icon-chevron.svg' | inline_asset_content }}
-                                                  </span>
-                                                  <span class="text-black">{{ 'general.back' | t | default: 'Înapoi' }}</span>
-                                                </button>
-
-                                                <ul
-                                                  class="menu-drawer__menu flex flex-col space-y-2"
-                                                  role="list"
-                                                  tabindex="-1">
-                                                  {% for grandchildlink in childlink.links %}
-                                                    <li class="w-full">
-                                                      <a
-                                                        id="HeaderDrawer-{{ link.handle }}-{{ childlink.handle }}-{{ grandchildlink.handle }}"
-                                                        href="{{ grandchildlink.url }}"
-                                                        class="menu-drawer__menu-item link link--text list-menu__item flex items-center px-4 py-4 focus-inset hover:bg-gray-50 transition-colors">
-                                                        <div class="flex items-center gap-4 flex-1">
-                                                          {% if grandchildlink.object and grandchildlink.object.image and grandchildlink.object.image.src %}
-                                                            <img
-                                                              src="{{ grandchildlink.object.image.src | img_url: '120x120' }}"
-                                                              alt="{{ grandchildlink.title | escape }}"
-                                                              class="h-16 object-cover rounded-md flex-shrink-0"
-                                                              loading="lazy">
-                                                          {% endif %}
-                                                          <div class="flex-1">
-                                                            <span class="font-medium">{{ grandchildlink.title | escape }}</span>
-                                                          </div>
-                                                        </div>
-                                                      </a>
-                                                    </li>
-                                                  {% endfor %}
-                                                </ul>
-
-                                                <div class="px-4 py-3 mt-4">
-                                                  <a href="{{ childlink.url }}" class="button button--primary w-full text-center h-12 flex items-center justify-center">
-                                                    Vezi toata categoria
-                                                  </a>
-                                                </div>
-                                              </div>
-                                            </details>
-                                          {% endif %}
-                                        </li>
-                                      {% endfor %}
-                                    </ul>
-
-                                    <div class="px-4 py-3 mt-4">
-                                      <a href="{{ link.url }}" class="button button--primary w-full text-center h-12 flex items-center justify-center">
-                                        Vezi toata categoria
-                                      </a>
-                                    </div>
-                                  </div>
-                                </div>
-                              </details>
-                            {% else %}
-                              <!-- Level 2 item without children -->
-                              <a
-                                id="HeaderDrawer-{{ link.handle }}"
-                                href="{{ link.url }}"
-                                class="split-row__link flex items-center gap-4 flex-1 no-underline text-black hover:bg-gray-50 transition-colors">
-                                {% if link.object and link.object.image and link.object.image.src %}
-                                  <img
-                                    src="{{ link.object.image.src | img_url: '120x120' }}"
-                                    alt="{{ link.title | escape }}"
-                                    class="h-24 object-cover rounded-md flex-shrink-0"
-                                    loading="lazy">
-                                {% endif %}
-                                <div class="flex-1 text-left">
-                                  <span class="font-medium">{{ link.title | escape }}</span>
-                                </div>
-                              </a>
-                            {% endif %}
-                          </li>
-                        {% endfor %}
-                      </ul>
-                    {% else %}
-                      <p class="px-4 py-3">No links in "{{ label }}" menu.</p>
-                    {% endif %}
-                  </li>
-
-                {% endif %}
-              {% endfor %}
-            </ul>
-          </nav>
-
-          <!-- Utility Links, Localization, Social, etc. -->
-          <div class="menu-drawer__utility-links">
-            {%- comment -%} ... your existing account / localization / social code ... {%- endcomment -%}
-          </div>
+    <div id="menu-drawer" class="gradient menu-drawer motion-reduce color-{{ menu_color_scheme }} alc-md-drawer">
+      <div class="alc-md" data-alc-md>
+        {%- comment -%} Tabs {%- endcomment -%}
+        <div class="alc-md__tabs" role="tablist" aria-label="{{ 'sections.header.menu' | t | escape }}">
+          {%- assign tab_index = 0 -%}
+          {%- for block_item in all_blocks -%}
+            {%- if block_item.type != 'drawer_menu_item' -%}{%- continue -%}{%- endif -%}
+            {%- liquid
+              assign show_item = true
+              if block_item.settings.locale_codes != blank
+                assign show_item = false
+                assign locale_codes = block_item.settings.locale_codes | split: ','
+                for code in locale_codes
+                  assign trimmed_code = code | strip
+                  if trimmed_code == request.locale.iso_code
+                    assign show_item = true
+                    break
+                  endif
+                endfor
+              endif
+            -%}
+            {%- unless show_item -%}{%- continue -%}{%- endunless -%}
+            <button
+              type="button"
+              class="alc-md__tab"
+              role="tab"
+              id="AlcMdTabBtn-{{ block_item.id }}"
+              aria-controls="AlcMdTab-{{ block_item.id }}"
+              aria-selected="{% if tab_index == 0 %}true{% else %}false{% endif %}"
+              {% if tab_index != 0 %}tabindex="-1"{% endif %}
+              data-alc-md-tab
+            >
+              {{- block_item.settings.menu_label -}}
+            </button>
+            {%- assign tab_index = tab_index | plus: 1 -%}
+          {%- endfor -%}
         </div>
+
+        {%- comment -%} Tab panels {%- endcomment -%}
+        <div class="alc-md__views" data-alc-md-views>
+          {%- assign tab_index = 0 -%}
+          {%- for block_item in all_blocks -%}
+            {%- if block_item.type != 'drawer_menu_item' -%}{%- continue -%}{%- endif -%}
+            {%- liquid
+              assign show_item = true
+              if block_item.settings.locale_codes != blank
+                assign show_item = false
+                assign locale_codes = block_item.settings.locale_codes | split: ','
+                for code in locale_codes
+                  assign trimmed_code = code | strip
+                  if trimmed_code == request.locale.iso_code
+                    assign show_item = true
+                    break
+                  endif
+                endfor
+              endif
+            -%}
+            {%- unless show_item -%}{%- continue -%}{%- endunless -%}
+            {%- assign top_menu = linklists[block_item.settings.menu_handle] -%}
+            <section
+              class="alc-md__view"
+              id="AlcMdTab-{{ block_item.id }}"
+              role="tabpanel"
+              aria-labelledby="AlcMdTabBtn-{{ block_item.id }}"
+              data-alc-md-view
+              {% if tab_index != 0 %}hidden{% endif %}
+            >
+              {%- if block_item.settings.display_type == '3-level' -%}
+                <ul class="alc-md__tiles" role="list">
+                  {%- for link in top_menu.links -%}
+                    {%- liquid
+                      assign is_campaign = false
+                      if link.object and link.object.metafields.custom.is_campaign
+                        assign is_campaign = true
+                      endif
+                      assign sub_id = 'AlcMdSub-' | append: block_item.id | append: '-' | append: forloop.index
+                    -%}
+                    {%- if is_campaign -%}
+                      <li class="alc-md__tiles-wide">
+                        <a href="{{ link.url }}" class="alc-md__campaign">
+                          {%- if link.object.image -%}
+                            <img
+                              src="{{ link.object.image | image_url: width: 750 }}"
+                              srcset="{{ link.object.image | image_url: width: 400 }} 400w, {{ link.object.image | image_url: width: 750 }} 750w, {{ link.object.image | image_url: width: 1000 }} 1000w"
+                              sizes="calc(100vw - 32px)"
+                              width="{{ link.object.image.width }}"
+                              height="{{ link.object.image.height }}"
+                              alt="{{ link.title | escape }}"
+                              loading="lazy"
+                              decoding="async"
+                            >
+                          {%- else -%}
+                            <span>{{ link.title | escape }}</span>
+                          {%- endif -%}
+                        </a>
+                      </li>
+                    {%- else -%}
+                      <li>
+                        {%- if link.links.size > 0 -%}
+                          <button type="button" class="alc-md__tile" data-alc-md-open="{{ sub_id }}" aria-controls="{{ sub_id }}" aria-expanded="false">
+                        {%- else -%}
+                          <a href="{{ link.url }}" class="alc-md__tile">
+                        {%- endif -%}
+                          <span class="alc-md__tile-media">
+                            {%- if link.object.image -%}
+                              <img
+                                src="{{ link.object.image | image_url: width: 360 }}"
+                                srcset="{{ link.object.image | image_url: width: 180 }} 180w, {{ link.object.image | image_url: width: 360 }} 360w, {{ link.object.image | image_url: width: 540 }} 540w"
+                                sizes="(min-width: 750px) 25vw, 45vw"
+                                width="180"
+                                height="180"
+                                alt=""
+                                loading="lazy"
+                                decoding="async"
+                              >
+                            {%- endif -%}
+                          </span>
+                          <span class="alc-md__tile-label">
+                            <span>{{ link.title | escape }}</span>
+                            <svg aria-hidden="true" focusable="false" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 6 6 6-6 6"/></svg>
+                          </span>
+                        {%- if link.links.size > 0 -%}
+                          </button>
+                        {%- else -%}
+                          </a>
+                        {%- endif -%}
+                      </li>
+                    {%- endif -%}
+                  {%- endfor -%}
+                </ul>
+              {%- else -%}
+                <ul class="alc-md__list" role="list">
+                  {%- for link in top_menu.links -%}
+                    <li>
+                      <a href="{{ link.url }}" class="alc-md__row">
+                        <span>{{ link.title | escape }}</span>
+                        <svg aria-hidden="true" focusable="false" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 6 6 6-6 6"/></svg>
+                      </a>
+                    </li>
+                  {%- endfor -%}
+                </ul>
+              {%- endif -%}
+            </section>
+            {%- assign tab_index = tab_index | plus: 1 -%}
+          {%- endfor -%}
+        </div>
+
+        {%- comment -%} Sub-panels (2nd-level collections that have children) {%- endcomment -%}
+        {%- for block_item in all_blocks -%}
+          {%- if block_item.type != 'drawer_menu_item' or block_item.settings.display_type != '3-level' -%}{%- continue -%}{%- endif -%}
+          {%- assign top_menu = linklists[block_item.settings.menu_handle] -%}
+          {%- for link in top_menu.links -%}
+            {%- if link.links.size == 0 -%}{%- continue -%}{%- endif -%}
+            {%- assign sub_id = 'AlcMdSub-' | append: block_item.id | append: '-' | append: forloop.index -%}
+            <section class="alc-md__sub" id="{{ sub_id }}" aria-label="{{ link.title | escape }}" data-alc-md-sub hidden>
+              <div class="alc-md__sub-head">
+                <button type="button" class="alc-md__back" data-alc-md-back>
+                  <svg aria-hidden="true" focusable="false" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m15 6-6 6 6 6"/></svg>
+                  <span>{{ back_label }}</span>
+                </button>
+                <span class="alc-md__sub-title">{{ link.title | escape }}</span>
+              </div>
+
+              <div class="alc-md__sub-body">
+                <a href="{{ link.url }}" class="alc-md__all">
+                  {%- if link.object.image -%}
+                    <span class="alc-md__all-media">
+                      <img
+                        src="{{ link.object.image | image_url: width: 160 }}"
+                        width="56"
+                        height="56"
+                        alt=""
+                        loading="lazy"
+                        decoding="async"
+                      >
+                    </span>
+                  {%- endif -%}
+                  <span class="alc-md__all-text">
+                    <span class="alc-md__all-title">{{ link.title | escape }}</span>
+                    <span class="alc-md__all-cta">{{ view_all_label }}</span>
+                  </span>
+                  <svg aria-hidden="true" focusable="false" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+                </a>
+
+                <ul class="alc-md__acc" role="list">
+                  {%- for childlink in link.links -%}
+                    {%- assign acc_id = sub_id | append: '-' | append: forloop.index -%}
+                    <li class="alc-md__acc-item">
+                      {%- if childlink.links.size > 0 -%}
+                        <button type="button" class="alc-md__acc-head" aria-expanded="false" aria-controls="{{ acc_id }}" data-alc-md-acc>
+                      {%- else -%}
+                        <a href="{{ childlink.url }}" class="alc-md__acc-head">
+                      {%- endif -%}
+                        <span class="alc-md__acc-thumb">
+                          {%- if childlink.object.image -%}
+                            <img
+                              src="{{ childlink.object.image | image_url: width: 120 }}"
+                              width="44"
+                              height="44"
+                              alt=""
+                              loading="lazy"
+                              decoding="async"
+                            >
+                          {%- endif -%}
+                        </span>
+                        <span class="alc-md__acc-title">{{ childlink.title | escape }}</span>
+                        {%- if childlink.links.size > 0 -%}
+                          <span class="alc-md__acc-count">{{ childlink.links.size }}</span>
+                          <svg class="alc-md__acc-icon" aria-hidden="true" focusable="false" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
+                        {%- else -%}
+                          <svg class="alc-md__acc-icon" aria-hidden="true" focusable="false" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 6 6 6-6 6"/></svg>
+                        {%- endif -%}
+                      {%- if childlink.links.size > 0 -%}
+                        </button>
+                        <div class="alc-md__acc-body" id="{{ acc_id }}" hidden>
+                          <ul class="alc-md__chips" role="list">
+                            <li>
+                              <a href="{{ childlink.url }}" class="alc-md__chip alc-md__chip--all">{{ view_all_label }}</a>
+                            </li>
+                            {%- for grandchildlink in childlink.links -%}
+                              <li>
+                                <a href="{{ grandchildlink.url }}" class="alc-md__chip">{{ grandchildlink.title | escape }}</a>
+                              </li>
+                            {%- endfor -%}
+                          </ul>
+                        </div>
+                      {%- else -%}
+                        </a>
+                      {%- endif -%}
+                    </li>
+                  {%- endfor -%}
+                </ul>
+              </div>
+            </section>
+          {%- endfor -%}
+        {%- endfor -%}
       </div>
     </div>
   </details>
 </header-drawer>
 
+{%- comment -%}
+  Legacy global rules. The previous drawer shipped these unscoped, so they have been
+  styling the whole site ever since (icon wrappers, list resets). Kept byte-for-byte so
+  nothing outside the menu changes; remove only after checking every page.
+{%- endcomment -%}
 <style>
   ul {
     padding-left: 1rem;
     margin-left: 0;
   }
 
-  .menu-drawer__menu {
-    padding-right: 1rem;
-  }
   li {
     list-style: none;
   }
-  .menu-drawer__navigation {
-    overscroll-behavior: contain;
-    overflow-y: auto !important;
-    height: 100%;
-    max-height: 100%;
-    /* Ensure it doesn't exceed parent */
-    -webkit-overflow-scrolling: touch;
-    /* Smooth scrolling on iOS */
-    padding-bottom: 4rem !important;
-    /* Ensure last item is fully visible */
-  }
 
-  .menu-drawer__navigation-container {
-    overscroll-behavior: contain;
-    overflow-y: hidden !important;
-    /* Container should not scroll */
-    height: calc(100vh - var(--header-height, 60px)) !important;
-    max-height: calc(100vh - var(--header-height, 60px)) !important;
-  }
-
-  #menu-drawer {
-    width: 85vw;
-    left: 0;
-    right: auto;
-    height: calc(100vh - var(--header-height, 60px));
-    max-height: calc(100vh - var(--header-height, 60px));
-    /* keep it left‑anchored to match main CSS */
-  }
-
-  /* Prevent body scroll when main menu is open */
   body.menu-open {
     overflow: hidden !important;
     position: fixed !important;
     width: 100% !important;
-  }
-
-  .first-level-group + .first-level-group {
-    margin-top: 1rem;
-  }
-  .first-level-title {
-    background: linear-gradient(135deg, {{ menu_gradient_start | default: '#000000' }} 0%, {{ menu_gradient_middle | default: '#1a1a1a' }} 50%, {{ menu_gradient_end | default: '#333333' }} 100%);
-    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-    position: relative;
-    overflow: hidden;
-    color: white;
-  }
-
-  .first-level-title::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: linear-gradient(90deg, transparent 0%, rgba(255, 255, 255, 0.1) 50%, transparent 100%);
-    pointer-events: none;
-  }
-
-  /* Style back buttons to match first-level-title */
-  .menu-drawer__close-button {
-    background: linear-gradient(135deg, {{ menu_gradient_start | default: '#000000' }} 0%, {{ menu_gradient_middle | default: '#1a1a1a' }} 50%, {{ menu_gradient_end | default: '#333333' }} 100%) !important;
-    color: white !important;
-    font-weight: 600 !important;
-    padding: 1rem 2rem !important;
-    position: relative !important;
-    overflow: hidden !important;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.1) !important;
-  }
-
-  .menu-drawer__close-button::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: linear-gradient(90deg, transparent 0%, rgba(255, 255, 255, 0.1) 50%, transparent 100%);
-    pointer-events: none;
-  }
-
-  .menu-drawer__close-button .svg-wrapper {
-    z-index: 1;
-    position: relative;
-  }
-
-  .menu-drawer__close-button:hover {
-    background: linear-gradient(135deg, #0a0a0a 0%, #242424 50%, #3d3d3d 100%) !important;
-  }
-  /* --- Existing styles kept --- */
-  .stacked-menu-item summary {
-    cursor: pointer;
-  }
-
-  .stacked-menu-item summary::-webkit-details-marker {
-    display: none;
-  }
-
-  .menu-drawer__menu-item:hover {
-    background-color: rgba(0, 0, 0, 0.05);
   }
 
   .svg-wrapper {
@@ -383,198 +310,10 @@
     transform: rotate(-90deg);
   }
 
-  /* Chevron icon specific styling */
   .svg-wrapper svg.icon-chevron {
     color: #6b7280;
     /* Gray color for chevrons */
     transition: color 0.2s ease
     , transform 0.2s ease;
   }
-
-  .svg-wrapper svg.icon-chevron:hover {
-    color: #374151;
-    /* Darker gray on hover */
-  }
-
-  .menu-drawer__menu-item img {
-    min-width: 72px;
-    min-height: 72px;
-  }
-
-  /* --- NEW: split-row helpers --- */
-  .split-row__arrow {
-    min-width: 48px;
-  }
-
-  .split-row__arrow:hover {
-    background: rgba(0, 0, 0, 0.05);
-  }
-
-  /* Ensure summary doesn't add its own padding since we handle it inside */
-  .js-split-summary {
-    padding: 0;
-  }
-
-  /* Fix submenu scrolling */
-  .menu-drawer__submenu {
-    display: flex;
-    flex-direction: column;
-  }
-
-  /* Back button should not shrink */
-  .menu-drawer__inner-submenu > .menu-drawer__close-button {
-    flex-shrink: 0;
-  }
-
-  .menu-drawer__inner-submenu > ul {
-    flex: 1 1 auto;
-    /* Allow list to grow and shrink */
-    min-height: 0;
-    /* Important for flex scrolling */
-    overflow-y: auto;
-    padding-bottom: 3rem;
-    /* Ensure last item is visible */
-    overscroll-behavior: contain;
-    -webkit-overflow-scrolling: touch;
-  }
-
-  /* Bottom buttons should not shrink */
-  .menu-drawer__inner-submenu > .button,
-  .menu-drawer__inner-submenu > div:has(.button) {
-    flex-shrink: 0;
-    /* Keep buttons at their natural size */
-  }
-
-  /* Campaign collection styles for drawer */
-  .drawer-campaign-link {
-    display: block;
-    width: 100%;
-  }
-
-  .drawer-campaign-link img {
-    transition: transform 0.3s ease;
-  }
-
-  .drawer-campaign-link:hover img {
-    transform: scale(1.02);
-  }
 </style>
-
-<script>
-  (function () {
-    /**
-     * Goal:
-     *  - Clicking the LEFT link should navigate without opening/closing <details>.
-     *  - Clicking the RIGHT arrow should toggle the <details> (default summary behaviour).
-     *
-     * Trick:
-     *  - Both areas are inside <summary>, so prevent the default toggle when left is clicked.
-     */
-    document.addEventListener('click', function (e) {
-      // Handle category link clicks (left side of split row)
-      const leftLink = e.target.closest('.js-category-link');
-      if (leftLink) {
-        const summary = leftLink.closest('summary');
-        // Prevent the summary click from toggling
-        if (summary) {
-          e.preventDefault();
-          e.stopPropagation();
-          window.location.href = leftLink.getAttribute('href');
-        }
-        return;
-      }
-
-      // Handle chevron/arrow clicks (right side of split row)
-      const rightArrow = e.target.closest('.js-next-level');
-      if (rightArrow) {
-        const summary = rightArrow.closest('summary');
-        const details = rightArrow.closest('details');
-        
-        if (summary && details) {
-          e.preventDefault();
-          e.stopPropagation();
-          
-          // Toggle the details element with proper CSS classes
-          if (details.hasAttribute('open')) {
-            // Close submenu
-            details.classList.remove('menu-opening');
-            // Wait for transition then remove open attribute
-            setTimeout(() => {
-              details.removeAttribute('open');
-            }, 300); // Match CSS transition duration
-          } else {
-            // Open submenu
-            details.setAttribute('open', '');
-            // Use requestAnimationFrame for smoother animation
-            requestAnimationFrame(() => {
-              details.classList.add('menu-opening');
-            });
-          }
-          
-          // Rotate chevron icon for visual feedback
-          const chevronIcon = rightArrow.querySelector('.svg-wrapper');
-          if (chevronIcon) {
-            chevronIcon.classList.toggle('rotate-90');
-          }
-        }
-      }
-
-      // Handle close button clicks in submenus
-      const closeButton = e.target.closest('.menu-drawer__close-button');
-      if (closeButton) {
-        const details = closeButton.closest('details');
-        if (details) {
-          e.preventDefault();
-          e.stopPropagation();
-          
-          // Close with transition
-          details.classList.remove('menu-opening');
-          setTimeout(() => {
-            details.removeAttribute('open');
-          }, 300);
-          
-          // Reset chevron rotation
-          const parentSummary = details.querySelector('summary');
-          if (parentSummary) {
-            const chevronIcon = parentSummary.querySelector('.svg-wrapper');
-            if (chevronIcon) {
-              chevronIcon.classList.remove('rotate-90');
-            }
-          }
-        }
-      }
-    }, true); // capture = true so we intercept before <summary> toggles
-
-    // Body scroll management for main menu
-    function setupBodyScrollLock() {
-      const mainMenuDrawer = document.getElementById('Details-menu-drawer-container');
-      if (mainMenuDrawer) {
-        const observer = new MutationObserver(function(mutations) {
-          mutations.forEach(function(mutation) {
-            if (mutation.type === 'attributes' && mutation.attributeName === 'open') {
-              if (mainMenuDrawer.hasAttribute('open')) {
-                document.body.classList.add('menu-open');
-              } else {
-                document.body.classList.remove('menu-open');
-              }
-            }
-          });
-        });
-        observer.observe(mainMenuDrawer, { attributes: true });
-      }
-    }
-
-    // Initialize chevron states on page load
-    document.addEventListener('DOMContentLoaded', function() {
-      setupBodyScrollLock();
-      
-      const openDetails = document.querySelectorAll('.stacked-menu-item[open]');
-      openDetails.forEach(function(details) {
-        const chevronIcon = details.querySelector('summary .svg-wrapper');
-        if (chevronIcon) {
-          chevronIcon.classList.add('rotate-90');
-        }
-      });
-    });
-  })();
-</script>

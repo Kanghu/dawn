@@ -1,666 +1,261 @@
 {% comment %}
-  This snippet creates a full-width mega menu:
-  - Left column: top-level sub-links with images.
-  - Right column: dynamic content that changes based on hovered left column item.
+  Desktop header menu (Theme settings > Header > "aless_mega").
 
-  Requirements:
-  - Include this snippet in your header and pass a menu object as 'menu'.
-  - menu.links should have a structure: Top Link -> Children -> Grandchildren
-  - Links should point to collections if you want to display collection images.
+  One top-level item per header block:
+  - drawer_menu_campaign: a plain highlighted link.
+  - drawer_menu_item with display_type '3-level': full-width mega panel. Left: the
+    menu's 2nd-level links (collections, with image). Right: the hovered item's
+    3rd-level groups and their 4th-level links, or a feature card when it has none.
+    A 2nd-level collection with custom.is_campaign shows as an image tile.
+  - any other display_type: a compact dropdown with the 2nd-level links.
 
-  Example usage in header.liquid:
-  {% render 'header-new-mega-menu', menu: section.settings.menu %}
+  Styles: assets/alc-mega-menu.css. Behaviour: assets/alc-mega-menu.js (hover intent,
+  click/touch, keyboard, Esc, click outside). The mobile drawer is a separate snippet.
+
+  Accepts:
+  - all_blocks: header section blocks
+  - menu_color_scheme, menu_separator_color: kept for caller compatibility
 {% endcomment %}
+{{ 'alc-mega-menu.css' | asset_url | stylesheet_tag }}
+<script src="{{ 'alc-mega-menu.js' | asset_url }}" defer="defer"></script>
 
+{%- liquid
+  assign view_all_label = 'sections.featured_collection.view_all' | t
+  assign bar_bg = section.settings.menu_gradient_start | default: '#111111'
+-%}
 {% assign top_menu = section.settings.menu.links %}
 {% if top_menu.size > 0 %}
-  <nav class="header__inline-menu">
-    <div class="page-width">
-      <ul class="aless-menu aless-menu--inline pl-0 mb-0" role="list">
-        {% for block_item in all_blocks %}
-          {% if block_item.type == 'drawer_menu_campaign' %}
-            {% comment %}
-              Check if campaign should be displayed for current locale
-            {% endcomment %}
-            {% assign show_campaign = true %}
-            {% if block_item.settings.locale_codes != blank %}
-              {% assign locale_codes = block_item.settings.locale_codes | split: ',' %}
-              {% assign show_campaign = false %}
-              {% for code in locale_codes %}
-                {% assign trimmed_code = code | strip %}
-                {% if trimmed_code == request.locale.iso_code %}
-                  {% assign show_campaign = true %}
-                  {% break %}
-                {% endif %}
-              {% endfor %}
-            {% endif %}
+  <nav class="header__inline-menu alc-mm" style="--alc-mm-bar: {{ bar_bg }};" aria-label="{{ 'sections.header.menu' | t | escape }}">
+    <div class="page-width alc-mm__bar-inner">
+      <ul class="alc-mm__list" role="list">
+        {%- for block_item in all_blocks -%}
+          {%- liquid
+            assign show_item = true
+            if block_item.settings.locale_codes != blank
+              assign show_item = false
+              assign locale_codes = block_item.settings.locale_codes | split: ','
+              for code in locale_codes
+                assign trimmed_code = code | strip
+                if trimmed_code == request.locale.iso_code
+                  assign show_item = true
+                  break
+                endif
+              endfor
+            endif
+          -%}
+          {%- unless show_item -%}{%- continue -%}{%- endunless -%}
 
-            {% if show_campaign %}
-              {% comment %}
-                Campaign menu item - direct link, no mega menu
-              {% endcomment %}
-              <li class="campaign-menu-item campaign-menu-item--{{ block_item.settings.highlight_style }} px-6 py-4 text-xl hidden md:block"
-                  data-campaign-text-color="{{ block_item.settings.text_color }}"
-                  data-campaign-bg-color="{{ block_item.settings.background_color }}"
-                  style="
-                    --campaign-text-color: {{ block_item.settings.text_color }};
-                    --campaign-bg-color: {{ block_item.settings.background_color }};
-                  ">
-                <a href="{{ block_item.settings.campaign_url }}"
-                   class="campaign-menu__link"
-                   style="font-weight: 400; letter-spacing: 0.08rem;">
-                  {{ block_item.settings.campaign_label }}
-                </a>
-              </li>
-            {% endif %}
-          {% elsif block_item.type == 'drawer_menu_item' %}
-            {% comment %}
-              Check if menu should be displayed for current locale
-            {% endcomment %}
-            {% assign show_menu = true %}
-            {% if block_item.settings.locale_codes != blank %}
-              {% assign locale_codes = block_item.settings.locale_codes | split: ',' %}
-              {% assign show_menu = false %}
-              {% for code in locale_codes %}
-                {% assign trimmed_code = code | strip %}
-                {% if trimmed_code == request.locale.iso_code %}
-                  {% assign show_menu = true %}
-                  {% break %}
-                {% endif %}
-              {% endfor %}
-            {% endif %}
+          {%- if block_item.type == 'drawer_menu_campaign' -%}
+            <li
+              class="alc-mm__item alc-mm__item--campaign alc-mm__item--{{ block_item.settings.highlight_style }}"
+              style="--campaign-text-color: {{ block_item.settings.text_color }}; --campaign-bg-color: {{ block_item.settings.background_color }};"
+            >
+              <a href="{{ block_item.settings.campaign_url }}" class="alc-mm__trigger alc-mm__trigger--link">
+                {{- block_item.settings.campaign_label -}}
+              </a>
+            </li>
+          {%- elsif block_item.type == 'drawer_menu_item' -%}
+            {%- liquid
+              assign mega_menu = linklists[block_item.settings.menu_handle]
+              assign panel_id = 'AlcMmPanel-' | append: block_item.id
+              assign is_mega = false
+              if block_item.settings.display_type == '3-level'
+                assign is_mega = true
+              endif
+            -%}
+            <li class="alc-mm__item{% if is_mega %} alc-mm__item--mega{% else %} alc-mm__item--dropdown{% endif %}" data-alc-mm-item>
+              {%- if mega_menu.links.size > 0 -%}
+                <button
+                  type="button"
+                  class="alc-mm__trigger"
+                  aria-expanded="false"
+                  aria-controls="{{ panel_id }}"
+                  data-alc-mm-trigger
+                >
+                  <span>{{ block_item.settings.menu_label }}</span>
+                  <svg class="alc-mm__caret" aria-hidden="true" focusable="false" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
+                </button>
+              {%- else -%}
+                <span class="alc-mm__trigger">{{ block_item.settings.menu_label }}</span>
+              {%- endif -%}
 
-            {% if show_menu %}
-              {% comment %}
-                1) Extract the block's label & menu handle
-              {% endcomment %}
-              {% assign menu_label = block_item.settings.menu_label %}
-              {% assign menu_handle = block_item.settings.menu_handle %}
-              {% assign mega_menu = linklists[menu_handle] %}
-                <li class="{% if mega_menu.links != blank %}mega-menu-parent{% endif %} px-6 py-4 text-xl">
-                {% comment %}
-                  Display 1st level (block-type) menu items
-                {% endcomment %}
-                <span class="header__menu-item aless-menu__item" style="font-weight: 400; letter-spacing: 0.08rem;">
-                  {{ menu_label }}
-                </span>
-                {% if block_item.settings.display_type == '3-level' %}
-                  {% if mega_menu and mega_menu.links.size > 0 %}
-                    {% comment %}
-                      Generate mega-menu container for each 1st level menu item
-                    {% endcomment %}
-                    <div class="mega-menu__container page-width">
-                      <div class="mega-menu__inner">
-                        <!-- Left Column: 2nd-level links -->
-                        <ul class="mega-menu__left-column" role="list">
-                          {% for childlink in mega_menu.links %}
-                            {% comment %}Check if this collection is a campaign{% endcomment %}
-                            {% assign is_campaign = false %}
-                            {% if childlink.object and childlink.object.metafields.custom.is_campaign %}
-                              {% assign is_campaign = true %}
-                            {% endif %}
-
-                            {% if is_campaign %}
-                              {% comment %}Campaign collection: show image directly without nested menu{% endcomment %}
-                              <li class="mega-menu__left-item mega-menu__campaign-item overflow-hidden">
-                                <a href="{{ childlink.url }}" class="mega-menu__link mega-menu__link--campaign block">
-                                  {% if childlink.object and childlink.object.image %}
-                                    <img
-                                      src="{{ childlink.object.image | image_url: width: 600 }}"
-                                      srcset="{% render 'alc-image-srcset', image: childlink.object.image, widths: '300,450,600', max_width: 900 %}"
-                                      sizes="300px"
-                                      width="{{ childlink.object.image.width }}"
-                                      height="{{ childlink.object.image.height }}"
-                                      alt="{{ childlink.title | escape }}"
-                                      class="w-full h-auto object-contain rounded"
-                                      loading="lazy">
-                                  {% endif %}
-                                </a>
-                              </li>
-                            {% else %}
-                              {% comment %}Regular collection: show with hover menu{% endcomment %}
-                              <li class="mega-menu__left-item overflow-hidden {% if forloop.first %} active{% endif %}" data-target="{{ childlink.handle }}">
-                                <a href="{{ childlink.url }}" class="mega-menu__link mega-menu__link--level-2 text-2xl">
-                                  {% if childlink.object and childlink.object.image %}
-                                    <div class="mega-menu__icon-wrapper">
-                                      <img
-                                        src="{{ childlink.object.image.src | img_url}}"
-                                        alt="{{ childlink.title | escape }}"
-                                        class=""
-                                        loading="lazy">
-                                    </div>
-                                  {% endif %}
+              {%- if mega_menu.links.size > 0 -%}
+                {%- if is_mega -%}
+                  <div class="alc-mm__panel alc-mm__panel--mega" id="{{ panel_id }}" data-alc-mm-panel hidden>
+                    <div class="page-width alc-mm__mega">
+                      <ul class="alc-mm__cats" role="list">
+                        {%- for childlink in mega_menu.links -%}
+                          {%- liquid
+                            assign cat_id = panel_id | append: '-' | append: forloop.index
+                            assign is_campaign = false
+                            if childlink.object and childlink.object.metafields.custom.is_campaign
+                              assign is_campaign = true
+                            endif
+                          -%}
+                          {%- if is_campaign -%}
+                            <li class="alc-mm__cat-campaign">
+                              <a href="{{ childlink.url }}" class="alc-mm__campaign-link">
+                                {%- if childlink.object.image -%}
+                                  <img
+                                    src="{{ childlink.object.image | image_url: width: 600 }}"
+                                    srcset="{{ childlink.object.image | image_url: width: 300 }} 300w, {{ childlink.object.image | image_url: width: 600 }} 600w"
+                                    sizes="280px"
+                                    width="{{ childlink.object.image.width }}"
+                                    height="{{ childlink.object.image.height }}"
+                                    alt="{{ childlink.title | escape }}"
+                                    loading="lazy"
+                                    decoding="async"
+                                  >
+                                {%- else -%}
                                   {{ childlink.title | escape }}
-                                </a>
-                              </li>
-                            {% endif %}
-                          {% endfor %}
-                        </ul>
-
-                        <!-- Right Column: 3rd-level links -->
-                        <div class="mega-menu__right-column">
-                          {% for childlink in mega_menu.links %}
-                            {% comment %}Skip campaign collections in right column{% endcomment %}
-                            {% assign is_campaign = false %}
-                            {% if childlink.object and childlink.object.metafields.custom.is_campaign %}
-                              {% assign is_campaign = true %}
-                            {% endif %}
-
-                            {% unless is_campaign %}
-                              <div class="mega-menu__right-content{% if forloop.first %} active{% endif %}" data-content="{{ childlink.handle }}">
-                                <ul class="mega-menu__grid" role="list">
-                                  {% for grandchildlink in childlink.links %}
-                                    <li class="mega-menu__grid-item">
-                                      <div class="aspect-square bg-white relative transition-transform duration-100 hover:scale-104" style="width: 120px; height: 120px;">
-                                        <a href="{{ grandchildlink.url }}" class="mega-menu__link px-0">
-                                          {% if grandchildlink.object and grandchildlink.object.image %}
-                                            <img
-                                              src="{{ grandchildlink.object.image.src | img_url: '120x120', crop: 'center' }}"
-                                              alt="{{ grandchildlink.title | escape }}"
-                                              class="object-cover object-center"
-                                              width="120"
-                                              height="120"
-                                              loading="lazy">
-                                          {% endif %}
-                                          <div class="alc-h4 absolute top-28 left-0 right-0 text-xl font-semibold pt-4">
-                                            {{ grandchildlink.title | escape }}
-                                          </div>
-                                        </a>
-                                      </div>
-
-                                      {% if grandchildlink.links.size > 0 %}
-                                        <ul class="mega-menu__sublinks mx-0 px-0 pt-2">
-                                          {% for grandgrandchildlink in grandchildlink.links %}
-                                            <li class="my-[-8px] py-2">
-                                              <a href="{{ grandgrandchildlink.url }}" class="mega-menu__sublink text-xl no-underline text-black my-[-8px] py-0 font-light">
-                                                {{ grandgrandchildlink.title | escape }}
-                                              </a>
-                                            </li>
-                                          {% endfor %}
-                                        </ul>
-                                      {% endif %}
-                                    </li>
-                                  {% endfor %}
-                                </ul>
-                              </div>
-                            {% endunless %}
-                          {% endfor %}
-                        </div>
-                      </div>
-                    </div>
-                  {% endif %}
-                {% elsif block_item.settings.display_type == '2-level' %}
-                  {% if mega_menu and mega_menu.links.size > 0 %}
-                    {% comment %}
-                      Generate mega-menu container for each 1st level menu item
-                    {% endcomment %}
-                    <div class="mega-menu__container page-width">
-                      <div class="mega-menu__inner">
-                        <!-- Left Column: 2nd-level links -->
-                        <ul class="mega-menu__left-column border-0" role="list">
-                          {% for childlink in mega_menu.links %}
-                            <li class="mega-menu__left-item overflow-hidden p-4 m-0 {% if forloop.first %} active{% endif %}" data-target="{{ childlink.handle }}">
-                              <a href="{{ childlink.url }}" class="mega-menu__link mega-menu__link--level-2 text-2xl">
-                                {% if childlink.object and childlink.object.image %}
-                                  <div class="mega-menu__icon-wrapper">
-                                    <img
-                                      src="{{ childlink.object.image.src | img_url}}"
-                                      alt="{{ childlink.title | escape }}"
-                                      class=""
-                                      loading="lazy">
-                                  </div>
-                                {% endif %}
-                                {{ childlink.title | escape }}
+                                {%- endif -%}
                               </a>
                             </li>
-                          {% endfor %}
-                        </ul>
-                      </div>
-                    </div>
-                  {% endif %}
-                {% elsif block_item.settings.display_type == 'grid-2-2' %}
-                  <div class="mega-menu__container page-width">
-                    <div class="mega-menu__inner">
-                      <div class="flex flex-col gap-4 w-90 m-auto">
-                        <!-- First row: Full width image -->
-                        <div class="w-full h-auto">
-                          {% assign first_childlink = mega_menu.links[0] %}
-                          <a href="{{ first_childlink.url }}">
-                            <img
-                              src="{{ first_childlink.object.image.src | img_url: '1200x', crop: 'center' }}"
-                              alt="{{ first_childlink.title | escape }}"
-                              class="h-auto hover:scale-110 transition-transform duration-300 m-auto"
-                              loading="lazy">
-                          </a>
-                        </div>
-                        <!-- Second row: 33% text + 66% image -->
-                        <div class="flex flex-row w-full justify-between gap-1">
-                          <div>
-                            {% assign third_childlink = mega_menu.links[2] %}
-                            {% if third_childlink %}
-                              <a href="{{ third_childlink.url }}">
-                                <img
-                                  src="{{ third_childlink.object.image.src | img_url: '800x', crop: 'center' }}"
-                                  alt="{{ third_childlink.title | escape }}"
-                                  class="h-auto hover:scale-110 transition-transform duration-300"
-                                  loading="lazy">
+                          {%- else -%}
+                            <li>
+                              <a
+                                href="{{ childlink.url }}"
+                                class="alc-mm__cat"
+                                data-alc-mm-cat="{{ cat_id }}"
+                              >
+                                <span class="alc-mm__thumb">
+                                  {%- if childlink.object.image -%}
+                                    <img
+                                      src="{{ childlink.object.image | image_url: width: 96 }}"
+                                      width="44"
+                                      height="44"
+                                      alt=""
+                                      loading="lazy"
+                                      decoding="async"
+                                    >
+                                  {%- endif -%}
+                                </span>
+                                <span class="alc-mm__cat-title">{{ childlink.title | escape }}</span>
+                                <svg class="alc-mm__chev" aria-hidden="true" focusable="false" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 6 6 6-6 6"/></svg>
                               </a>
-                            {% endif %}
-                          </div>
-                          {% assign second_childlink = mega_menu.links[1] %}
-                          {% if second_childlink %}
-                            <div>
-                              <a href="{{ second_childlink.url }}">
-                                <img
-                                  src="{{ second_childlink.object.image.src | img_url: '800x', crop: 'center' }}"
-                                  alt="{{ second_childlink.title | escape }}"
-                                  class="h-auto hover:scale-110 transition-transform duration-300"
-                                  loading="lazy">
-                              </a>
-                            </div>
-                          {% endif %}
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                {% elsif block_item.settings.display_type == 'grid-1/2' %}
-                  <div class="mega-menu__container page-width">
-                    <div class="mega-menu__inner">
-                      <ul class="mega-menu__grid" role="list">
-                        {% for childlink in mega_menu.links %}
-                          <li class="mega-menu__grid-item">
-                            <a href="{{ childlink.url }}" class="mega-menu__link">
-                              {% if childlink.object and childlink.object.image %}
-                                <img
-                                  src="{{ childlink.object.image.src | img_url: '120x120', crop: 'center' }}"
-                                  alt="{{ childlink.title | escape }}"
-                                  class="mega-menu__grid-image w-full h-full object-cover hover:scale-110 transition-transform duration-300"
-                                  loading="lazy">
-                              {% endif %}
-                              <div class="alc-h4">{{ childlink.title | escape }}</div>
-                            </a>
-                          </li>
-                        {% endfor %}
+                            </li>
+                          {%- endif -%}
+                        {%- endfor -%}
                       </ul>
+
+                      <div class="alc-mm__content">
+                        {%- for childlink in mega_menu.links -%}
+                          {%- liquid
+                            assign cat_id = panel_id | append: '-' | append: forloop.index
+                            if childlink.object and childlink.object.metafields.custom.is_campaign
+                              continue
+                            endif
+                          -%}
+                          {%- liquid
+                            assign feature_image = childlink.object.image | default: childlink.object.featured_image
+                            assign feature_text = childlink.object.description | strip_html | strip | truncatewords: 24
+                          -%}
+                          <div class="alc-mm__pane{% if childlink.links.size > 0 %} alc-mm__pane--groups{% endif %}" data-alc-mm-pane="{{ cat_id }}" hidden>
+                            {%- if childlink.links.size > 0 -%}
+                              <div class="alc-mm__pane-main">
+                                <a href="{{ childlink.url }}" class="alc-mm__pane-title">{{ childlink.title | escape }}</a>
+                                <ul class="alc-mm__groups" role="list">
+                                  {%- for grandchildlink in childlink.links -%}
+                                    <li class="alc-mm__group">
+                                      <a href="{{ grandchildlink.url }}" class="alc-mm__group-head">
+                                        <span class="alc-mm__group-thumb">
+                                          {%- if grandchildlink.object.image -%}
+                                            <img
+                                              src="{{ grandchildlink.object.image | image_url: width: 96 }}"
+                                              width="40"
+                                              height="40"
+                                              alt=""
+                                              loading="lazy"
+                                              decoding="async"
+                                            >
+                                          {%- endif -%}
+                                        </span>
+                                        <span class="alc-mm__group-title">{{ grandchildlink.title | escape }}</span>
+                                      </a>
+                                      {%- if grandchildlink.links.size > 0 -%}
+                                        <ul class="alc-mm__sublinks" role="list">
+                                          {%- for grandgrandchildlink in grandchildlink.links -%}
+                                            <li>
+                                              <a href="{{ grandgrandchildlink.url }}" class="alc-mm__sublink">
+                                                {{- grandgrandchildlink.title | escape -}}
+                                              </a>
+                                            </li>
+                                          {%- endfor -%}
+                                        </ul>
+                                      {%- endif -%}
+                                    </li>
+                                  {%- endfor -%}
+                                </ul>
+                              </div>
+                            {%- endif -%}
+
+                            {%- comment -%}
+                              Collection preview: beside the groups, or on its own when the
+                              category has no sub-groups.
+                            {%- endcomment -%}
+                            <a href="{{ childlink.url }}" class="alc-mm__feature">
+                              {%- if feature_image -%}
+                                <span class="alc-mm__feature-media">
+                                  <img
+                                    src="{{ feature_image | image_url: width: 600 }}"
+                                    srcset="{{ feature_image | image_url: width: 400 }} 400w, {{ feature_image | image_url: width: 600 }} 600w, {{ feature_image | image_url: width: 900 }} 900w"
+                                    sizes="{% if childlink.links.size > 0 %}300px{% else %}420px{% endif %}"
+                                    width="{{ feature_image.width }}"
+                                    height="{{ feature_image.height }}"
+                                    alt="{{ childlink.title | escape }}"
+                                    loading="lazy"
+                                    decoding="async"
+                                  >
+                                </span>
+                              {%- endif -%}
+                              <span class="alc-mm__feature-body">
+                                <span class="alc-mm__feature-title">{{ childlink.title | escape }}</span>
+                                {%- if feature_text != blank -%}
+                                  <span class="alc-mm__feature-text">{{ feature_text }}</span>
+                                {%- endif -%}
+                                <span class="alc-mm__feature-cta">
+                                  {{- view_all_label -}}
+                                  <svg aria-hidden="true" focusable="false" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+                                </span>
+                              </span>
+                            </a>
+                          </div>
+                        {%- endfor -%}
+                      </div>
                     </div>
                   </div>
-                {% endif %}
-              </li>
-            {% endif %}
-          {% endif %}
-        {% endfor %}
+                {%- else -%}
+                  <div class="alc-mm__panel alc-mm__panel--dropdown" id="{{ panel_id }}" data-alc-mm-panel hidden>
+                    <ul class="alc-mm__drop" role="list">
+                      {%- for childlink in mega_menu.links -%}
+                        <li>
+                          <a href="{{ childlink.url }}" class="alc-mm__drop-link">
+                            {%- if childlink.object.image -%}
+                              <span class="alc-mm__thumb alc-mm__thumb--sm">
+                                <img
+                                  src="{{ childlink.object.image | image_url: width: 72 }}"
+                                  width="32"
+                                  height="32"
+                                  alt=""
+                                  loading="lazy"
+                                  decoding="async"
+                                >
+                              </span>
+                            {%- endif -%}
+                            <span>{{ childlink.title | escape }}</span>
+                            <svg class="alc-mm__chev" aria-hidden="true" focusable="false" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 6 6 6-6 6"/></svg>
+                          </a>
+                        </li>
+                      {%- endfor -%}
+                    </ul>
+                  </div>
+                {%- endif -%}
+              {%- endif -%}
+            </li>
+          {%- endif -%}
+        {%- endfor -%}
       </ul>
     </div>
   </nav>
+  <div class="alc-mm-backdrop" data-alc-mm-backdrop hidden></div>
 {% endif %}
-
-<style>
-  /* Basic Reset and Variables */
-  :root {
-    --menu-primary-color: rgba(20, 20, 23, 0.9);
-    --menu-secondary-color: rgba(3, 186, 214, 0.9);
-    --aless-menu-text-color: #ffffff;
-    --submenu-bg-color: #ffffff;
-    --submenu-text-color: #333333;
-    --menu-hover-color: rgba(3, 186, 214, 0.9);
-    /* New variable for hover color */
-  }
-
-  .header-wrapper,
-  .header-wrapper--border-bottom,
-  header {
-    border-bottom: none !important;
-  }
-
-  body,
-  html {
-    margin: 0;
-    padding: 0;
-    overflow-x: hidden;
-    /* Prevent horizontal scroll due to full-width menu */
-  }
-
-  .header__inline-menu {
-    position: relative;
-    width: 100%;
-    margin-left: calc(-50vw + 50%);
-    margin-right: calc(-50vw + 50%);
-    width: 100vw;
-    background: linear-gradient(to right, {{ section.settings.menu_gradient_start | default: '#000000' }}, {{ section.settings.menu_gradient_middle | default: '#003840' }}, {{ section.settings.menu_gradient_end | default: '#00BAD7' }});
-    border-bottom: none !important;
-    z-index: 101;
-    /* Add this to ensure header menu is above overlay */
-  }
-
-  .aless-menu {
-    list-style: none;
-    display: flex;
-    max-width: var(--page-width);
-    box-sizing: border-box;
-  }
-
-  .aless-menu__item {
-    text-decoration: none;
-    color: var(--aless-menu-text-color);
-    font-weight: 500;
-    font-size: 1.25rem;
-    padding: 0.5rem 0;
-    /* Changed from opacity to all */
-  }
-
-  .aless-menu__item:hover {
-    color: var(--menu-hover-color);
-    border-bottom: 1px solid #00BAD7;
-    color: #ffffff;
-  }
-
-  .mega-menu__link:hover {
-    color: var(--submenu-text-color) !important;
-  }
-
-  .mega-menu__link--level-2:hover {
-    color: var(--submenu-text-color) !important;
-  }
-
-  .mega-menu-parent {
-    border-right: 1px solid;
-    border-image: linear-gradient(to bottom, {{ menu_separator_color | default: '#00BAD7' }}, transparent) 1;
-    z-index: 101;
-    cursor: pointer;
-  }
-
-  .mega-menu-parent:first-child {
-    padding-left: 0;
-  }
-
-  .mega-menu__container {
-    position: absolute;
-    top: 100%;
-    left: 0;
-    right: 0;
-    width: 100vw;
-    background-color: var(--submenu-bg-color);
-    z-index: 100;
-    display: none;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-    padding: 2rem 0;
-    box-sizing: border-box;
-  }
-
-  .mega-menu__inner {
-    display: flex;
-    gap: 2rem;
-    max-width: var(--page-width);
-  }
-
-  .mega-menu__left-column {
-    width: 300px;
-    border-right: 1px solid #eee;
-    padding: 0 1rem;
-    margin: 0;
-  }
-
-  .mega-menu__left-column li:hover {
-    background-color: rgba(64, 63, 65, 0.2) !important;
-  }
-
-  .mega-menu__right-column {
-    flex: 1;
-  }
-
-  .mega-menu__left-item {
-    margin-bottom: 1rem;
-  }
-
-  .mega-menu__link {
-    color: var(--submenu-text-color);
-    text-decoration: none;
-    display: flex;
-    align-items: center;
-    gap: 1rem;
-    transition: all 0.3s ease;
-    /* Changed transition */
-  }
-
-  .mega-menu__link:hover {
-    transform: scale(1.02);
-    color: var(--menu-hover-color);
-  }
-
-  .mega-menu__icon-wrapper {
-    overflow: hidden;
-    border-radius: 4px;
-  }
-
-  .mega-menu__icon {
-    width: 80px;
-    height: 80px;
-    object-fit: cover;
-    transition: transform 0.3s ease;
-  }
-
-  .mega-menu__grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 2.5rem 1rem;
-  }
-
-  .mega-menu__grid-image {
-    object-fit: cover;
-    border-radius: 8px;
-    margin-bottom: 0.5rem;
-  }
-
-  .mega-menu__right-content {
-    display: none;
-  }
-
-  .mega-menu__right-content.active {
-    display: block;
-  }
-
-  /* Mobile adjustments */
-  @media (max-width: 768px) {
-    .mega-menu__inner {
-      flex-direction: column;
-    }
-
-    .mega-menu__left-column,
-    .mega-menu__right-column {
-      width: 100%;
-    }
-
-    .mega-menu__grid {
-      grid-template-columns: repeat(2, 1fr);
-    }
-  }
-
-  .mega-menu__sublink {
-    transition: all 0.3s ease;
-    /* Added transition */
-  }
-
-  .mega-menu__sublink:hover {
-    transform: scale(1.02);
-    color: var(--menu-hover-color) !important;
-  }
-
-  /* Add these new styles */
-  .mega-menu-overlay {
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background-color: rgba(0, 0, 0, 0.66);
-    /* Reduced to be below menu content */
-    display: none;
-    pointer-events: none;
-  }
-
-  /* Ensure mega menu appears above overlay */
-  .mega-menu__container {
-    z-index: 100;
-  }
-
-  /* Campaign collection styles */
-  .mega-menu__campaign-item {
-    margin-bottom: 1rem;
-  }
-
-  .mega-menu__link--campaign {
-    padding: 0;
-  }
-
-  .mega-menu__link--campaign:hover {
-    transform: scale(1.05);
-  }
-
-  /* Campaign items don't trigger right column */
-  .mega-menu__campaign-item:hover {
-    background-color: transparent !important;
-  }
-
-  /* Campaign Menu Item Styles */
-  .campaign-menu-item {
-    border-right: 1px solid;
-    border-image: linear-gradient(to bottom, {{ menu_separator_color | default: '#00BAD7' }}, transparent) 1;
-    cursor: pointer;
-  }
-
-  .campaign-menu-item:first-child {
-    padding-left: 0;
-  }
-
-  .campaign-menu__link {
-    text-decoration: none;
-    color: var(--campaign-text-color, var(--aless-menu-text-color));
-    font-weight: 500;
-    font-size: 1.25rem;
-    padding: 0.5rem 0;
-    display: inline-block;
-    transition: all 0.3s ease;
-  }
-
-  /* Default style - same as regular menu items */
-  .campaign-menu-item--default .campaign-menu__link {
-    color: var(--campaign-text-color, var(--aless-menu-text-color));
-  }
-
-  .campaign-menu-item--default .campaign-menu__link:hover {
-    color: var(--menu-hover-color);
-    border-bottom: 1px solid #00BAD7;
-  }
-
-  /* Highlight style - colored underline */
-  .campaign-menu-item--highlight .campaign-menu__link {
-    color: var(--campaign-text-color, #ffffff);
-    border-bottom: 2px solid var(--campaign-text-color, #00BAD7);
-    padding-bottom: 0.3rem;
-  }
-
-  .campaign-menu-item--highlight .campaign-menu__link:hover {
-    border-bottom-width: 3px;
-    transform: translateY(-2px);
-  }
-
-  /* Button style - with background */
-  .campaign-menu-item--button .campaign-menu__link {
-    background: var(--campaign-bg-color, #00BAD7);
-    color: var(--campaign-text-color, #ffffff);
-    padding: 0.75rem 1.5rem;
-    border-radius: 4px;
-    font-weight: 600;
-  }
-
-  .campaign-menu-item--button .campaign-menu__link:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    opacity: 0.9;
-  }
-
-  .campaign-menu-item--button {
-    border-right: none;
-  }
-
-  /* Hide on mobile */
-  @media (max-width: 989px) {
-    .campaign-menu-item {
-      display: none !important;
-    }
-  }
-</style>
-
-<script>
-  document.addEventListener('DOMContentLoaded', () => {
-    const leftItems = document.querySelectorAll('.mega-menu__left-item');
-    const rightContents = document.querySelectorAll('.mega-menu__right-content');
-    const megaMenuContainers = document.querySelectorAll('.mega-menu__container');
-    
-    // Create overlay element
-    const overlay = document.createElement('div');
-    overlay.className = 'mega-menu-overlay';
-    document.body.appendChild(overlay);
-
-    // Function to close menu
-    const closeMenu = () => {
-      overlay.style.display = 'none';
-      megaMenuContainers.forEach((container) => {
-        container.style.display = 'none';
-      });
-      rightContents.forEach((content) => {
-        content.classList.remove('active');
-      });
-    };
-
-    // Show overlay when menu opens
-    document.querySelectorAll('.mega-menu-parent').forEach((parent) => {
-      parent.addEventListener('click', (e) => {
-        e.stopPropagation(); // Prevent click from bubbling to document
-        megaMenuContainers.forEach((container) => {
-          container.style.display = 'none';
-        });
-        parent.querySelector('.mega-menu__container').style.display = 'block';
-        overlay.style.display = 'block';
-      });
-    });
-
-    // Close menu when clicking outside
-    document.addEventListener('click', (e) => {
-      if (!e.target.closest('.mega-menu-parent')) {
-        closeMenu();
-      }
-    });
-
-    // Prevent clicks inside menu from closing it
-    megaMenuContainers.forEach((container) => {
-      container.addEventListener('click', (e) => {
-        e.stopPropagation();
-      });
-    });
-
-    leftItems.forEach((item) => {
-      item.addEventListener('mouseenter', () => {
-        const target = item.getAttribute('data-target');
-
-        // Hide all right content
-        rightContents.forEach((content) => {
-          content.classList.remove('active');
-        });
-
-        // Show the matched content
-        const activeContent = document.querySelector(`.mega-menu__right-content[data-content="${target}"]`);
-        if (activeContent) {
-          activeContent.classList.add('active');
-        }
-      });
-    });
-
-    // Optional: On mouse leave of parent, hide the menu
-    document.querySelectorAll('.mega-menu-parent').forEach((parent) => {
-      parent.addEventListener('mouseleave', () => {
-        rightContents.forEach((content) => content.classList.remove('active'));
-      });
-    });
-  });
-</script>
