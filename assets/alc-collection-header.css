@@ -1,0 +1,359 @@
+/* Collection header (sections/alc-main-coll-banner-v2.liquid) and sub-collection
+   strip (snippets/alc-coll-subnav.liquid). */
+.alc-ch {
+  --alc-ch-ink: #151515;
+  --alc-ch-muted: #6b6862;
+  --alc-ch-line: rgba(21, 21, 21, 0.08);
+  padding: 8px 0 20px;
+}
+
+.alc-ch__inner {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 32px;
+}
+
+.alc-ch__text {
+  flex: 1 1 auto;
+  min-width: 0;
+}
+
+.alc-ch__top {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 10px 16px;
+}
+
+.alc-ch__title {
+  margin: 0;
+  color: var(--alc-ch-ink);
+  font-size: clamp(28px, 3.6vw, 42px);
+  font-weight: 600;
+  letter-spacing: -0.015em;
+  line-height: 1.1;
+}
+
+.alc-ch__count {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  min-height: 30px;
+  padding: 0 12px;
+  border-radius: 999px;
+  background: #f4f2ee;
+  color: var(--alc-ch-muted);
+  font-size: 13px;
+  font-weight: 500;
+  white-space: nowrap;
+}
+
+/* facets.js shows the spinner while filtering; keep it inside the pill. */
+.alc-ch__count .loading__spinner {
+  position: static;
+  width: 14px;
+  margin-left: 6px;
+}
+
+.alc-ch__count .loading__spinner.hidden {
+  display: none;
+}
+
+.alc-ch__desc {
+  max-width: 78ch;
+  margin: 12px 0 0;
+  color: var(--alc-ch-muted);
+  font-size: 15px;
+  line-height: 1.55;
+}
+
+.alc-ch__desc > span {
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.alc-ch__more {
+  display: inline-block;
+  margin-top: 4px;
+  color: var(--alc-ch-ink);
+  font-size: 14px;
+  font-weight: 600;
+  text-decoration: underline;
+  text-decoration-color: rgba(21, 21, 21, 0.3);
+  text-underline-offset: 4px;
+}
+
+.alc-ch__more:hover {
+  text-decoration-color: currentColor;
+}
+
+.alc-ch__image {
+  flex: none;
+  width: 420px;
+  overflow: hidden;
+  border-radius: 16px;
+}
+
+.alc-ch__image img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+#AlcCollAbout {
+  scroll-margin-top: 140px;
+}
+
+/* Sub-collection strip ------------------------------------------------------------ */
+.alc-ch__subnav {
+  margin-top: 20px;
+}
+
+.alc-cs {
+  position: relative;
+}
+
+.alc-cs__track {
+  display: flex;
+  gap: 10px;
+  margin: 0;
+  padding: 2px 2px 6px;
+  overflow-x: auto;
+  list-style: none;
+  scroll-snap-type: x proximity;
+  scrollbar-width: none;
+  overscroll-behavior-x: contain;
+}
+
+.alc-cs__track::-webkit-scrollbar {
+  display: none;
+}
+
+/* Soft edge fades hint that the row scrolls. */
+.alc-cs.is-scrollable:not(.at-end) .alc-cs__track {
+  -webkit-mask-image: linear-gradient(to right, #000 calc(100% - 60px), transparent);
+  mask-image: linear-gradient(to right, #000 calc(100% - 60px), transparent);
+}
+
+.alc-cs.is-scrollable.at-end:not(.at-start) .alc-cs__track {
+  -webkit-mask-image: linear-gradient(to left, #000 calc(100% - 60px), transparent);
+  mask-image: linear-gradient(to left, #000 calc(100% - 60px), transparent);
+}
+
+.alc-cs.is-scrollable:not(.at-start):not(.at-end) .alc-cs__track {
+  -webkit-mask-image: linear-gradient(to right, transparent, #000 60px, #000 calc(100% - 60px), transparent);
+  mask-image: linear-gradient(to right, transparent, #000 60px, #000 calc(100% - 60px), transparent);
+}
+
+.alc-cs__item {
+  flex: 0 0 146px;
+  scroll-snap-align: start;
+}
+
+/* Centre the row while it fits; auto margins (unlike justify-content: center) never
+   cut off the first cards once the row overflows and scrolls. */
+.alc-cs__item:first-child {
+  margin-left: auto;
+}
+
+.alc-cs__item:last-child {
+  margin-right: auto;
+}
+
+.alc-cs__card {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  color: var(--alc-ch-ink);
+  text-decoration: none;
+}
+
+.alc-cs__card:focus-visible {
+  outline: none;
+}
+
+.alc-cs__card:focus-visible .alc-cs__media {
+  outline: 2px solid var(--alc-ch-ink);
+  outline-offset: 2px;
+}
+
+/* A warm ground for every photo; multiply melts the photos' white backdrops into it,
+   so mixed studio shots read as one set. */
+.alc-cs__media {
+  position: relative;
+  display: block;
+  aspect-ratio: 1 / 1;
+  overflow: hidden;
+  border-radius: 14px;
+  background: #f3f0eb;
+  transition: background-color 0.3s ease;
+}
+
+.alc-cs__media img {
+  position: absolute;
+  top: 10%;
+  left: 10%;
+  width: 80%;
+  height: 80%;
+  object-fit: contain;
+  mix-blend-mode: multiply;
+  /* Lift light-grey studio backdrops to white so they vanish too. */
+  filter: brightness(1.06);
+  transition: transform 0.5s cubic-bezier(0.2, 0.7, 0.2, 1);
+}
+
+.alc-cs__name {
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  gap: 6px;
+  text-align: center;
+  padding: 10px 2px 0;
+  font-size: 13.5px;
+  font-weight: 600;
+  letter-spacing: -0.005em;
+  line-height: 1.3;
+}
+
+.alc-cs__name > span {
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.alc-cs__name svg {
+  flex: none;
+  margin-top: 2px;
+  opacity: 0;
+  transform: translateX(-4px);
+  transition: opacity 0.25s ease, transform 0.25s ease;
+}
+
+.alc-cs__count {
+  padding: 3px 2px 0;
+  text-align: center;
+  color: var(--alc-ch-muted);
+  font-size: 12.5px;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .alc-cs__card:hover .alc-cs__media {
+    background-color: #ebe6de;
+  }
+
+  .alc-cs__card:hover .alc-cs__media img {
+    transform: scale(1.07);
+  }
+
+  .alc-cs__card:hover .alc-cs__name svg {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+.alc-cs__arrow {
+  position: absolute;
+  top: 50%;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  padding: 0;
+  border: 0;
+  border-radius: 50%;
+  background: #fff;
+  color: var(--alc-ch-ink);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.14), 0 0 0 1px var(--alc-ch-line);
+  cursor: pointer;
+  transform: translateY(-50%);
+}
+
+.alc-cs__arrow[hidden] {
+  display: none;
+}
+
+.alc-cs__arrow--prev {
+  left: -14px;
+}
+
+.alc-cs__arrow--next {
+  right: -14px;
+}
+
+@media (hover: none) {
+  .alc-cs__arrow {
+    display: none;
+  }
+}
+
+@media screen and (max-width: 749px) {
+  .alc-ch {
+    padding: 4px 0 12px;
+  }
+
+  .alc-ch__inner {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 16px;
+  }
+
+  .alc-ch__image {
+    width: 100%;
+  }
+
+  .alc-ch__desc {
+    font-size: 14px;
+  }
+
+  .alc-ch__subnav {
+    margin-top: 16px;
+    padding-right: 0;
+  }
+
+  .alc-cs__track {
+    gap: 8px;
+    margin: 0 -16px;
+    padding: 2px 16px 6px;
+    scroll-padding-inline: 16px;
+  }
+
+  .alc-cs.is-scrollable .alc-cs__track {
+    -webkit-mask-image: none;
+    mask-image: none;
+  }
+
+  .alc-cs__item {
+    flex-basis: 118px;
+  }
+
+  .alc-cs__media {
+    border-radius: 12px;
+  }
+
+  .alc-cs__name {
+    padding-top: 9px;
+    font-size: 13px;
+  }
+
+  .alc-cs__name svg {
+    display: none;
+  }
+
+  .alc-cs__count {
+    font-size: 11.5px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .alc-cs__media,
+  .alc-cs__media img,
+  .alc-cs__name svg {
+    transition: none;
+  }
+}
