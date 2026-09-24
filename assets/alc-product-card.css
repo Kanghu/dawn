@@ -1,0 +1,607 @@
+/* Product card tile (snippets/alc-card-product.liquid).
+   Loaded once from layout/theme.liquid. Everything is scoped under .alc-pc;
+   the few !important flags only exist to beat the legacy global rules in
+   component-alc-card.css (.price pink, .card-wrapper:hover lift), which the
+   other card snippets still rely on. Tweak the look through the tokens below. */
+.alc-pc {
+  --alc-pc-radius: 14px;
+  --alc-pc-surface: #fff;
+  --alc-pc-media-bg: #f3f2ef;
+  --alc-pc-ink: #151515;
+  --alc-pc-muted: #74716c;
+  --alc-pc-line: rgba(21, 21, 21, 0.08);
+  --alc-pc-sale: #b3121f;
+  --alc-pc-in: #2f7d4f;
+  --alc-pc-low: #b25a00;
+  --alc-pc-out: #9a9690;
+  --alc-pc-pad: 16px;
+  height: 100%;
+  color: var(--alc-pc-ink);
+}
+
+/* Neutralise the legacy wrapper lift from component-alc-card.css. */
+.alc-pc.card-wrapper,
+.alc-pc.card-wrapper:hover {
+  transform: none !important;
+  box-shadow: none !important;
+  will-change: auto;
+}
+
+.alc-pc__tile {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  background: var(--alc-pc-surface);
+  border: 1px solid var(--alc-pc-line);
+  border-radius: var(--alc-pc-radius);
+  overflow: hidden;
+  isolation: isolate;
+  container-type: inline-size;
+  transition: box-shadow 0.35s ease, border-color 0.35s ease, transform 0.35s ease;
+}
+
+/* Media ------------------------------------------------------------------ */
+.alc-pc__media {
+  position: relative;
+  aspect-ratio: var(--alc-pc-ratio, 1 / 1);
+  background: var(--alc-pc-media-bg);
+  overflow: hidden;
+}
+
+.alc-pc__img,
+.alc-pc__placeholder {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.9s cubic-bezier(0.2, 0.7, 0.2, 1), opacity 0.45s ease;
+}
+
+.alc-pc__placeholder {
+  fill: rgba(21, 21, 21, 0.25);
+}
+
+.alc-pc__img--secondary {
+  opacity: 0;
+}
+
+.alc-pc__media .alc-campaign-frame {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: var(--alc-campaign-frame-fit, fill);
+  pointer-events: none;
+  z-index: 2;
+}
+
+.alc-pc--sold-out .alc-pc__img {
+  opacity: 0.55;
+  filter: grayscale(0.4);
+}
+
+/* Badges ----------------------------------------------------------------- */
+.alc-pc__badges {
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  right: 12px;
+  z-index: 3;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  pointer-events: none;
+}
+
+.alc-pc__badge {
+  display: inline-flex;
+  align-items: center;
+  min-height: 24px;
+  padding: 4px 11px;
+  border-radius: 999px;
+  font-size: 12px;
+  font-weight: 700;
+  line-height: 1.2;
+  letter-spacing: 0.02em;
+  white-space: nowrap;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.14), 0 3px 8px -4px rgba(0, 0, 0, 0.3);
+}
+
+.alc-pc__badge--sale {
+  background: var(--alc-discount-badge-bg, var(--alc-pc-sale));
+  color: var(--alc-discount-badge-text, #fff);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  font-size: 11px;
+}
+
+.alc-pc__badge--campaign {
+  background-color: var(--alc-campaign-badge-bg-color, #151515);
+  background-image: var(--alc-campaign-badge-bg-image, none);
+  color: var(--alc-campaign-badge-text, #fff);
+  max-width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.alc-pc__badge--soldout {
+  background: rgba(255, 255, 255, 0.92);
+  color: var(--alc-pc-ink);
+  box-shadow: 0 0 0 1px var(--alc-pc-line);
+}
+
+/* Body ------------------------------------------------------------------- */
+.alc-pc__body {
+  display: flex;
+  flex-direction: column;
+  flex: 1 1 auto;
+  gap: 8px;
+  padding: 14px var(--alc-pc-pad) var(--alc-pc-pad);
+}
+
+.alc-pc__vendor {
+  font-size: 11px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--alc-pc-muted);
+}
+
+.alc-pc__title {
+  margin: 0;
+  font-family: inherit;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 1.45;
+  letter-spacing: 0.005em;
+  color: var(--alc-pc-ink);
+  text-wrap: pretty;
+  min-height: calc(1.45em * 2);
+}
+
+.alc-pc__link {
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  color: inherit;
+  text-decoration: none;
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* The whole tile is clickable; the add-to-cart button sits above the overlay. */
+.alc-pc__link::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 1;
+}
+
+.alc-pc__link:focus-visible {
+  outline: none;
+}
+
+.alc-pc__tile:has(.alc-pc__link:focus-visible) {
+  outline: 2px solid var(--alc-pc-ink);
+  outline-offset: 2px;
+}
+
+.alc-pc__stock {
+  display: flex;
+  min-height: 16px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  align-items: center;
+  gap: 7px;
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 1.3;
+  letter-spacing: 0.01em;
+}
+
+.alc-pc__stock::before {
+  content: '';
+  flex: none;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: currentColor;
+  box-shadow: 0 0 0 2.5px color-mix(in srgb, currentColor 16%, transparent);
+}
+
+/* A block so ::first-letter applies (the flex parent would ignore it). */
+.alc-pc__stock-text {
+  display: block;
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.alc-pc__stock-text::first-letter {
+  text-transform: uppercase;
+}
+
+.alc-pc__stock--in { color: var(--alc-pc-in); }
+.alc-pc__stock--low { color: var(--alc-pc-low); }
+.alc-pc__stock--out { color: var(--alc-pc-out); }
+
+/* Sold out already reads on the image badge and the disabled button. */
+.alc-pc--sold-out .alc-pc__stock--out {
+  visibility: hidden;
+}
+
+/* Price ------------------------------------------------------------------ */
+.alc-pc .alc-pc__price {
+  display: flex;
+  align-items: stretch;
+  justify-content: space-between;
+  gap: 10px;
+  margin: 2px 0 0;
+  font-family: inherit !important;
+  font-weight: 400 !important;
+  color: var(--alc-pc-ink) !important;
+}
+
+.alc-pc .alc-pc__price-lines {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 0; /* no gap: the visually-hidden labels are flex items too */
+  min-width: 0;
+}
+
+.alc-pc .alc-pc__price .price-item {
+  margin: 0;
+  font-family: inherit !important;
+  letter-spacing: 0;
+}
+
+/* Doubled class beats the legacy .price > * rule; :empty beats base.css div:empty,
+   so the row still reserves its height on cards without a discount. */
+.alc-pc .alc-pc__price-top,
+.alc-pc .alc-pc__price-top:empty {
+  display: flex;
+  align-items: center;
+  height: 20px;
+  margin-bottom: 2px;
+}
+
+.alc-pc .alc-pc__price .alc-pc__price-was {
+  font-size: clamp(12px, 5.4cqi, 15px);
+  line-height: 1.2;
+  font-weight: 400 !important;
+  color: var(--alc-pc-muted) !important;
+  text-decoration-thickness: 1px;
+  text-decoration-color: color-mix(in srgb, var(--alc-pc-muted) 70%, transparent);
+  white-space: nowrap;
+}
+
+.alc-pc .alc-pc__price-now {
+  font-size: clamp(15px, 8.2cqi, 22px);
+  line-height: 1.2;
+  font-weight: 700 !important;
+  color: var(--alc-pc-ink) !important;
+  font-variant-numeric: lining-nums proportional-nums;
+  letter-spacing: -0.012em !important;
+  white-space: nowrap;
+}
+
+.alc-pc .price--on-sale .alc-pc__price-now {
+  color: var(--alc-pc-sale) !important;
+}
+
+/* The percentage: a block centred next to the two price lines
+   (about 70% of their height on desktop, 80% on mobile). */
+.alc-pc .alc-pc__pct {
+  display: flex;
+  flex: none;
+  align-self: center;
+  align-items: center;
+  justify-content: center;
+  padding: 0.45em 0.55em;
+  border-radius: 8px;
+  background: var(--alc-discount-badge-bg, var(--alc-pc-sale));
+  color: var(--alc-discount-badge-text, #fff);
+  font-size: clamp(12px, 6cqi, 18px);
+  font-weight: 800;
+  line-height: 1;
+  letter-spacing: -0.01em;
+  white-space: nowrap;
+  font-variant-numeric: lining-nums;
+}
+
+.alc-pc__savings {
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--alc-pc-sale);
+}
+
+/* Add to cart ------------------------------------------------------------ */
+.alc-pc__actions {
+  position: relative;
+  z-index: 2;
+  margin-top: auto;
+  padding-top: 6px;
+}
+
+.alc-pc .alc-pc__atc {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  width: 100%;
+  min-height: 42px;
+  margin: 0;
+  padding: 0 14px;
+  border: 1px solid var(--alc-pc-ink);
+  border-radius: 999px;
+  background: transparent;
+  color: var(--alc-pc-ink);
+  font: inherit;
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 0.03em;
+  text-decoration: none;
+  cursor: pointer;
+  box-shadow: none;
+  filter: none;
+  -webkit-tap-highlight-color: transparent;
+  transition: background-color 0.25s ease, color 0.25s ease, border-color 0.25s ease, transform 0.15s ease;
+}
+
+.alc-pc .alc-pc__atc:active:not([disabled]) {
+  transform: scale(0.98);
+}
+
+.alc-pc .alc-pc__atc:hover,
+.alc-pc .alc-pc__atc:focus-visible {
+  background: var(--alc-pc-ink);
+  color: #fff;
+  box-shadow: none;
+  filter: none;
+}
+
+.alc-pc .alc-pc__atc:focus-visible {
+  outline: 2px solid var(--alc-pc-ink);
+  outline-offset: 2px;
+}
+
+.alc-pc .alc-pc__atc[disabled] {
+  border-color: var(--alc-pc-line);
+  background: #f1f0ed;
+  color: var(--alc-pc-out);
+  cursor: not-allowed;
+}
+
+.alc-pc__atc-icon {
+  flex: none;
+}
+
+.alc-pc__atc[disabled] .alc-pc__atc-icon {
+  display: none;
+}
+
+.alc-pc__atc .loading__spinner {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+}
+
+.alc-pc__atc .loading__spinner.hidden {
+  display: none;
+}
+
+.alc-pc__atc.loading > :not(.loading__spinner) {
+  visibility: hidden;
+}
+
+.alc-pc__atc .sold-out-message.hidden {
+  display: none;
+}
+
+/* Hover (pointer devices only) ------------------------------------------ */
+@media (hover: hover) and (pointer: fine) {
+  .alc-pc__tile:hover {
+    border-color: transparent;
+    box-shadow: 0 18px 40px -18px rgba(21, 21, 21, 0.28), 0 0 0 1px var(--alc-pc-line);
+    transform: translateY(-3px);
+  }
+
+  .alc-pc__tile:hover .alc-pc__img--primary {
+    transform: scale(1.035);
+  }
+
+  .alc-pc__tile:hover .alc-pc__img--secondary {
+    opacity: 1;
+    transform: scale(1.02);
+  }
+
+  .alc-pc__tile:hover .alc-pc__atc:not([disabled]) {
+    background: var(--alc-pc-ink);
+    color: #fff;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .alc-pc__tile,
+  .alc-pc__img {
+    transition: none;
+  }
+
+  .alc-pc__tile:hover,
+  .alc-pc__tile:hover .alc-pc__img {
+    transform: none;
+  }
+}
+
+/* Small screens ---------------------------------------------------------- */
+@media screen and (max-width: 749px) {
+  .alc-pc {
+    --alc-pc-radius: 12px;
+    --alc-pc-pad: 10px;
+  }
+
+  .alc-pc__body {
+    gap: 6px;
+    padding-top: 10px;
+  }
+
+  .alc-pc__badges {
+    top: 8px;
+    left: 8px;
+    right: 8px;
+    gap: 4px;
+  }
+
+  .alc-pc__badge {
+    min-height: 21px;
+    padding: 3px 9px;
+    font-size: 10px;
+  }
+
+  .alc-pc__badge--sale {
+    font-size: 9px;
+  }
+
+  .alc-pc .alc-pc__price {
+    gap: 6px;
+  }
+
+  .alc-pc .alc-pc__pct {
+    padding: 0.6em 0.5em;
+    border-radius: 7px;
+    font-size: 12px;
+  }
+
+  .alc-pc__title {
+    font-size: 13px;
+    min-height: calc(1.45em * 3);
+  }
+
+  .alc-pc__link {
+    -webkit-line-clamp: 3;
+  }
+
+  .alc-pc__stock {
+    font-size: 11px;
+    gap: 6px;
+  }
+
+  .alc-pc .alc-pc__price-top,
+  .alc-pc .alc-pc__price-top:empty {
+    height: 16px;
+  }
+
+  .alc-pc .alc-pc__atc {
+    min-height: 40px;
+    padding: 0 8px;
+    font-size: 12px;
+    letter-spacing: 0.01em;
+  }
+
+  .alc-pc__atc-icon {
+    display: none;
+  }
+}
+
+/* Grid rhythm for grids of tiles: a little more air than the theme default. */
+@media screen and (min-width: 990px) {
+  .product-grid:has(.alc-pc) {
+    --grid-desktop-horizontal-spacing: 24px;
+    --grid-desktop-vertical-spacing: 32px;
+  }
+}
+
+/* "View all" under featured-collection grids (sections/featured-collection,
+   sections/alc-featured-collection). The "link" style keeps Dawn's link look. */
+.alc-view-all {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  min-height: 46px;
+  margin-top: 8px;
+  padding: 0 26px;
+  border: 1px solid #151515;
+  border-radius: 999px;
+  background: transparent;
+  color: #151515;
+  font-size: 14px;
+  font-weight: 500;
+  letter-spacing: 0.03em;
+  text-decoration: none;
+  transition: background-color 0.25s ease, color 0.25s ease;
+}
+
+.alc-view-all svg {
+  transition: transform 0.25s ease;
+}
+
+.alc-view-all:hover,
+.alc-view-all:focus-visible {
+  background: #151515;
+  color: #fff;
+}
+
+.alc-view-all:hover svg {
+  transform: translateX(3px);
+}
+
+.alc-view-all:focus-visible {
+  outline: 2px solid #151515;
+  outline-offset: 3px;
+}
+
+/* Fallbacks for older browsers (Safari < 16 / iOS < 16). Modern browsers skip
+   these blocks entirely, so they never override the rules above. */
+@supports not (width: 1cqi) {
+  .alc-pc .alc-pc__price .alc-pc__price-was {
+    font-size: 14px;
+  }
+
+  .alc-pc .alc-pc__price-now {
+    font-size: 20px;
+  }
+
+  .alc-pc .alc-pc__pct {
+    padding: 0.45em 0.55em;
+    font-size: 16px;
+  }
+
+  @media screen and (max-width: 749px) {
+    .alc-pc .alc-pc__price .alc-pc__price-was {
+      font-size: 12px;
+    }
+
+    .alc-pc .alc-pc__price-now {
+      font-size: 15px;
+    }
+
+    .alc-pc .alc-pc__pct {
+      padding: 0.6em 0.5em;
+      font-size: 12px;
+    }
+  }
+}
+
+/* Safari < 15 has no aspect-ratio: reserve the image frame with padding. */
+@supports not (aspect-ratio: 1 / 1) {
+  .alc-pc__media::before {
+    content: '';
+    display: block;
+    padding-top: var(--alc-pc-ratio-pct, 100%);
+  }
+}

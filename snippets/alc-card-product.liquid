@@ -231,7 +231,7 @@
           {%- endif -%}
         {%- endif -%}
 
-        <div class="alc-pc__stock alc-pc__stock--{{ pc_stock_class }}">{{ pc_stock_text }}</div>
+        <div class="alc-pc__stock alc-pc__stock--{{ pc_stock_class }}"><span class="alc-pc__stock-text">{{ pc_stock_text }}</span></div>
 
         <div class="price alc-pc__price{% if pc_on_sale %} price--on-sale{% endif %}{% unless card_product.available %} price--sold-out{% endunless %}">
           {%- comment -%}
