@@ -17,7 +17,8 @@
         "color_scheme": "scheme-3",
         "padding_top": 0,
         "padding_bottom": 0
-      }
+      },
+      "disabled": true
     },
     "custom_liquid_fmtgbQ": {
       "type": "custom-liquid",
@@ -67,12 +68,33 @@
         "use_campaign_picker": true,
         "picker_slots": 15,
         "picker_fill": true
+      },
+      "disabled": true
+    },
+    "offer": {
+      "type": "alc-offer-page",
+      "settings": {
+        "end_date": "2026-09-30",
+        "accent": "#e8732c",
+        "slots": 15,
+        "show_top_deals": true,
+        "more_collections": [
+          "lustre-led",
+          "candelabre",
+          "aplice",
+          "oglinzi-led",
+          "veioze-dormitor",
+          "plafoniere-led-1"
+        ],
+        "wide_cards": true,
+        "layout": "grid"
       }
     }
   },
   "order": [
-    "custom_liquid_VYDXbJ",
+    "offer",
     "custom_liquid_fmtgbQ",
+    "custom_liquid_VYDXbJ",
     "banner",
     "product-grid"
   ]
