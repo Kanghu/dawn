@@ -80,7 +80,13 @@
   z-index: 1;
 }
 
-/* Gradient overlay */
+/* Gradient overlay. It is an empty div and base.css hides div:empty (specificity 0,1,1),
+   so the display needs two classes. alc-collapsible-preview.js sets display: none inline
+   when nothing is cut off. */
+.accordion__content-preview .accordion__gradient-overlay {
+  display: block;
+}
+
 .accordion__gradient-overlay {
   position: absolute;
   bottom: 0;

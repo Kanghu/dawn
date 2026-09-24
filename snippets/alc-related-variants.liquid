@@ -1,0 +1,111 @@
+{% comment %}
+  "Related variants" picker for the product page. Every product on the store is a
+  single-variant product; colours, sizes etc. are separate products linked through
+  the metafield custom.variant_groups (metaobjects: tag_type + group of {product, tag}).
+  Each group with more than one available product renders as a row of compact chips
+  (thumbnail + tag), the current product first. Links, no JS needed; on pointer devices
+  hovering a chip previews that product's photo in the main gallery.
+
+  Replaces the Swiper markup of als-product-variant-picker (still used for the dropdown
+  style). Styles: assets/alc-product.css.
+
+  Accepts:
+  - product: {Object}
+  - block: {Object} the related_variants block (custom_text, e.g. "Alege dintre")
+
+  Usage:
+  {% render 'alc-related-variants', product: product, block: block %}
+{% endcomment %}
+{%- assign related_groups = product.metafields.custom.variant_groups.value -%}
+{%- if related_groups -%}
+  <div class="alc-rvp" data-alc-rvp>
+    {%- for variant_group in related_groups -%}
+      {%- liquid
+        assign group_metaobj = variant_group | metaobject
+        assign group_products = variant_group.group | metaobject
+        assign available_count = 0
+        assign current_tag = ''
+        for group_product in group_products.value
+          assign item = group_product | metaobject
+          if item.product.value.available
+            assign available_count = available_count | plus: 1
+          endif
+          if item.product.value.handle == product.handle
+            assign current_tag = item.tag
+          endif
+        endfor
+      -%}
+      {%- if available_count > 1 -%}
+        <div class="alc-rvp__group">
+          <p class="alc-rvp__label">
+            {{- block.settings.custom_text }} {{ group_metaobj.tag_type -}}
+            {%- if current_tag != blank -%}: <strong>{{ current_tag }}</strong>{%- endif -%}
+          </p>
+          <ul class="alc-rvp__list" role="list">
+            {%- for pass in (1..2) -%}
+              {%- for group_product in group_products.value -%}
+                {%- liquid
+                  assign item = group_product | metaobject
+                  assign item_product = item.product.value
+                  assign is_current = false
+                  if item_product.handle == product.handle
+                    assign is_current = true
+                  endif
+                -%}
+                {%- if pass == 1 and is_current == false -%}{%- continue -%}{%- endif -%}
+                {%- if pass == 2 and is_current -%}{%- continue -%}{%- endif -%}
+                {%- unless item_product.available -%}{%- continue -%}{%- endunless -%}
+                <li>
+                  <a
+                    href="{{ item_product.url }}"
+                    class="alc-rvp__opt{% if is_current %} is-current{% endif %}"
+                    title="{{ item_product.title | escape }}"
+                    {% if is_current %}aria-current="true"{% endif %}
+                    {% if item_product.featured_image and is_current == false %}data-preview="{{ item_product.featured_image | image_url: width: 1200 }}"{% endif %}
+                  >
+                    <span class="alc-rvp__media">
+                      {%- if item_product.featured_image -%}
+                        <img
+                          src="{{ item_product.featured_image | image_url: width: 120 }}"
+                          width="60"
+                          height="60"
+                          alt=""
+                          loading="lazy"
+                          decoding="async"
+                        >
+                      {%- endif -%}
+                    </span>
+                    <span class="alc-rvp__name">{{ item.tag }}</span>
+                  </a>
+                </li>
+              {%- endfor -%}
+            {%- endfor -%}
+          </ul>
+        </div>
+      {%- endif -%}
+    {%- endfor -%}
+  </div>
+  <script>
+    (() => {
+      const root = document.currentScript.previousElementSibling;
+      if (!root || !window.matchMedia('(hover: hover) and (pointer: fine)').matches) return;
+      const main = () => document.querySelector('.product__media-item.is-active .product__media img') || document.querySelector('.product__media img');
+      let saved = null;
+      root.addEventListener('mouseover', (event) => {
+        const opt = event.target.closest('[data-preview]');
+        const img = main();
+        if (!opt || !img || saved) return;
+        saved = { img, src: img.src, srcset: img.srcset };
+        img.srcset = '';
+        img.src = opt.dataset.preview;
+      });
+      root.addEventListener('mouseout', (event) => {
+        const opt = event.target.closest('[data-preview]');
+        if (!opt || !saved || opt.contains(event.relatedTarget)) return;
+        saved.img.src = saved.src;
+        saved.img.srcset = saved.srcset;
+        saved = null;
+      });
+    })();
+  </script>
+{%- endif -%}

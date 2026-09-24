@@ -39,7 +39,9 @@ if (!customElements.get('alc-collapsible-preview')) {
         if (!contentInner) return;
 
         const contentHeight = contentInner.scrollHeight;
-        const previewHeight = window.innerWidth <= 749 ? 200 : 250;
+        // The collapsed height comes from CSS (it differs per page); fall back to the old values.
+        const cssMax = parseFloat(getComputedStyle(this.previewContainer).maxHeight);
+        const previewHeight = cssMax > 0 ? cssMax : window.innerWidth <= 749 ? 200 : 250;
 
         // If content is shorter than preview height, hide button and gradient
         if (contentHeight <= previewHeight) {
