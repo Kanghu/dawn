@@ -1,0 +1,227 @@
+{% comment %}
+  Customer photos gallery (templates/page.pozele-clientilor.json).
+
+  - Header: eyebrow, title, lead and a count of the photos.
+  - Grid of customer photos (4:5 crops; the lightbox shows the whole photo). Each photo is a block with an optional product and
+    an optional collection. A photo links to its product while it is in stock; a sold-out
+    or deleted product falls back to the collection ("see similar products").
+  - Clicking a photo opens a lightbox (assets/alc-customer-photos.js) with the product;
+    without JS the tile is a plain link.
+  - Closing card that invites customers to share their photos.
+
+  Texts have built-in translations for every storefront language (en.default.json is at
+  Shopify's key limit); a filled-in setting overrides them. Styles:
+  assets/alc-customer-photos.css.
+{% endcomment %}
+{{ 'alc-customer-photos.css' | asset_url | stylesheet_tag }}
+<script src="{{ 'alc-customer-photos.js' | asset_url }}" defer="defer"></script>
+
+{%- liquid
+  assign lang = request.locale.iso_code | downcase | slice: 0, 2
+  case lang
+    when 'en'
+      assign w = "From our customers' homes|Customer photos|Chandeliers, wall lights and ceiling lamps photographed by our customers, in their own homes. No studio, no retouching.|Real photos|View product|View collection|See similar products|Bought from us? Show us how it looks at your place.|Send us a photo on Facebook or post it on Instagram with #AlessandroDesign. The best ones end up in this gallery.|Customer photo|Previous photo|Next photo|Close"
+    when 'hu'
+      assign w = 'Vásárlóink otthonából|Vásárlói fotók|Csillárok, fali és mennyezeti lámpák vásárlóink saját fotóin, az otthonukban. Stúdió és retusálás nélkül.|Valódi fotók|Megnézem a terméket|Kollekció megtekintése|Hasonló termékek|Tőlünk vásárolt? Mutassa meg, hogyan mutat Önnél!|Küldjön nekünk egy fotót Facebookon, vagy tegye közzé Instagramon #AlessandroDesign címkével. A legszebbek ebbe a galériába kerülnek.|Vásárlói fotó|Előző fotó|Következő fotó|Bezárás'
+    when 'pl'
+      assign w = 'Z domów naszych klientów|Zdjęcia klientów|Lampy wiszące, kinkiety i żyrandole sfotografowane przez naszych klientów w ich domach. Bez studia, bez retuszu.|Prawdziwe zdjęcia|Zobacz produkt|Zobacz kolekcję|Zobacz podobne produkty|Kupiłeś u nas? Pokaż nam, jak wygląda u Ciebie.|Wyślij nam zdjęcie na Facebooku lub opublikuj je na Instagramie z #AlessandroDesign. Najpiękniejsze trafią do tej galerii.|Zdjęcie od klienta|Poprzednie zdjęcie|Następne zdjęcie|Zamknij'
+    when 'el'
+      assign w = 'Από τα σπίτια των πελατών μας|Φωτογραφίες πελατών|Φωτιστικά οροφής, απλίκες και πολυέλαιοι, φωτογραφημένα από τους πελάτες μας στα σπίτια τους. Χωρίς στούντιο, χωρίς ρετούς.|Πραγματικές φωτογραφίες|Δείτε το προϊόν|Δείτε τη συλλογή|Δείτε παρόμοια προϊόντα|Αγοράσατε από εμάς; Δείξτε μας πώς φαίνεται στο σπίτι σας.|Στείλτε μας μια φωτογραφία στο Facebook ή δημοσιεύστε τη στο Instagram με #AlessandroDesign. Οι ωραιότερες μπαίνουν σε αυτή τη συλλογή.|Φωτογραφία πελάτη|Προηγούμενη φωτογραφία|Επόμενη φωτογραφία|Κλείσιμο'
+    when 'bg'
+      assign w = 'От домовете на нашите клиенти|Снимки от клиенти|Полилеи, аплици и лампи, заснети от нашите клиенти у дома им. Без студио, без ретуш.|Реални снимки|Вижте продукта|Вижте колекцията|Вижте подобни продукти|Купихте от нас? Покажете ни как изглежда при вас.|Изпратете ни снимка във Facebook или я публикувайте в Instagram с #AlessandroDesign. Най-красивите влизат в тази галерия.|Снимка от клиент|Предишна снимка|Следваща снимка|Затвори'
+    when 'it'
+      assign w = 'Dalle case dei nostri clienti|Foto dei clienti|Lampadari, applique e plafoniere fotografati dai nostri clienti, a casa loro. Niente studio, niente ritocchi.|Foto reali|Vedi il prodotto|Vedi la collezione|Vedi prodotti simili|Hai acquistato da noi? Mostraci come sta a casa tua.|Inviaci una foto su Facebook o pubblicala su Instagram con #AlessandroDesign. Le più belle finiscono in questa galleria.|Foto di un cliente|Foto precedente|Foto successiva|Chiudi'
+    when 'fr'
+      assign w = 'Chez nos clients|Photos de nos clients|Lustres, appliques et plafonniers photographiés par nos clients, chez eux. Sans studio, sans retouche.|Photos réelles|Voir le produit|Voir la collection|Voir des produits similaires|Vous avez acheté chez nous ? Montrez-nous le résultat chez vous.|Envoyez-nous une photo sur Facebook ou publiez-la sur Instagram avec #AlessandroDesign. Les plus belles rejoignent cette galerie.|Photo d’un client|Photo précédente|Photo suivante|Fermer'
+    when 'cs'
+      assign w = 'Z domovů našich zákazníků|Fotky zákazníků|Lustry, nástěnná a stropní svítidla vyfocená našimi zákazníky u nich doma. Bez studia, bez retuše.|Skutečné fotografie|Zobrazit produkt|Zobrazit kolekci|Zobrazit podobné produkty|Nakoupili jste u nás? Ukažte nám, jak to vypadá u vás.|Pošlete nám fotku na Facebooku nebo ji zveřejněte na Instagramu s #AlessandroDesign. Ty nejhezčí se objeví v této galerii.|Fotografie od zákazníka|Předchozí fotografie|Další fotografie|Zavřít'
+    when 'sk'
+      assign w = 'Z domovov našich zákazníkov|Fotky zákazníkov|Lustre, nástenné a stropné svietidlá odfotené našimi zákazníkmi u nich doma. Bez štúdia, bez retuše.|Skutočné fotografie|Zobraziť produkt|Zobraziť kolekciu|Zobraziť podobné produkty|Nakúpili ste u nás? Ukážte nám, ako to vyzerá u vás.|Pošlite nám fotku na Facebooku alebo ju zverejnite na Instagrame s #AlessandroDesign. Tie najkrajšie sa objavia v tejto galérii.|Fotografia od zákazníka|Predchádzajúca fotografia|Ďalšia fotografia|Zavrieť'
+    when 'hr'
+      assign w = 'Iz domova naših kupaca|Fotografije kupaca|Lusteri, zidne i stropne svjetiljke koje su fotografirali naši kupci u svojim domovima. Bez studija, bez retuširanja.|Stvarne fotografije|Pogledajte proizvod|Pogledajte kolekciju|Pogledajte slične proizvode|Kupili ste kod nas? Pokažite nam kako izgleda kod vas.|Pošaljite nam fotografiju na Facebooku ili je objavite na Instagramu uz #AlessandroDesign. Najljepše završe u ovoj galeriji.|Fotografija kupca|Prethodna fotografija|Sljedeća fotografija|Zatvori'
+    when 'de'
+      assign w = 'Aus den Wohnungen unserer Kunden|Kundenfotos|Kronleuchter, Wand- und Deckenleuchten, fotografiert von unseren Kunden bei sich zu Hause. Kein Studio, keine Retusche.|Echte Fotos|Produkt ansehen|Kollektion ansehen|Ähnliche Produkte ansehen|Bei uns gekauft? Zeigen Sie uns, wie es bei Ihnen aussieht.|Schicken Sie uns ein Foto auf Facebook oder posten Sie es auf Instagram mit #AlessandroDesign. Die schönsten kommen in diese Galerie.|Kundenfoto|Vorheriges Foto|Nächstes Foto|Schließen'
+    else
+      assign w = 'Din casele clienților|Pozele clienților|Lustre, aplice și candelabre fotografiate de clienții noștri, acasă la ei. Fără studio, fără retuș.|Fotografii reale|Vezi produsul|Vezi colecția|Vezi produse similare|Ai cumpărat de la noi? Arată-ne cum arată la tine.|Trimite-ne o poză pe Facebook sau publică-o pe Instagram cu #AlessandroDesign. Cele mai frumoase ajung în această galerie.|Fotografie de la client|Fotografia anterioară|Fotografia următoare|Închide'
+  endcase
+  assign t = w | split: '|'
+
+  assign cp_eyebrow = section.settings.eyebrow | default: t[0]
+  assign cp_title = section.settings.heading | default: t[1]
+  assign cp_lead = section.settings.lead | default: t[2]
+  assign cp_share_title = section.settings.share_heading | default: t[7]
+  assign cp_share_text = section.settings.share_text | default: t[8]
+
+  assign photos = section.blocks | where: 'type', 'photo'
+  assign photo_count = 0
+  for block in photos
+    if block.settings.image != blank
+      assign photo_count = photo_count | plus: 1
+    endif
+  endfor
+-%}
+
+<section
+  class="alc-cp"
+  style="--alc-cp-pt: {{ section.settings.padding_top }}px; --alc-cp-pb: {{ section.settings.padding_bottom }}px;"
+>
+  <div class="page-width">
+    <header class="alc-cp__head">
+      <p class="alc-cp__eyebrow">{{ cp_eyebrow | escape }}</p>
+      <h1 class="alc-cp__title">{{ cp_title | escape }}</h1>
+      <p class="alc-cp__lead">{{ cp_lead | escape }}</p>
+      <ul class="alc-cp__meta" role="list">
+        <li class="alc-cp__meta-item">
+          <span class="alc-cp__meta-num">{{ photo_count }}</span>
+          {{ t[3] | escape }}
+        </li>
+        <li class="alc-cp__meta-item alc-cp__meta-item--tag">#AlessandroDesign</li>
+      </ul>
+    </header>
+
+    <alc-customer-photos
+      class="alc-cp__grid"
+      data-t-prev="{{ t[10] | escape }}"
+      data-t-next="{{ t[11] | escape }}"
+      data-t-close="{{ t[12] | escape }}"
+    >
+      {%- for block in photos -%}
+        {%- liquid
+          assign img = block.settings.image
+          if img == blank
+            continue
+          endif
+          assign p = block.settings.product
+          assign c = block.settings.collection
+          assign caption = ''
+          assign url = ''
+          assign cta = ''
+          assign sold_out = false
+          if p != blank
+            assign caption = p.title
+            if p.available
+              assign url = p.url
+              assign cta = t[4]
+            else
+              assign sold_out = true
+              if c != blank
+                assign url = c.url
+                assign cta = t[6]
+              else
+                assign url = p.url
+                assign cta = t[4]
+              endif
+            endif
+          elsif c != blank
+            assign caption = c.title
+            assign url = c.url
+            assign cta = t[5]
+          endif
+          comment
+            File alts are SKUs like "6756BK", so the alt text is always built here.
+          endcomment
+          assign alt = t[9]
+          if caption != blank
+            assign alt = alt | append: ': ' | append: caption
+          endif
+        -%}
+        <a
+          class="alc-cp__tile"
+          href="{{ url | default: '#' }}"
+          {% if url == blank %}aria-disabled="true"{% endif %}
+          data-cp-index="{{ forloop.index0 }}"
+          data-full="{{ img | image_url: width: 1600 }}"
+          data-w="{{ img.width }}"
+          data-h="{{ img.height }}"
+          data-caption="{{ caption | escape }}"
+          data-url="{{ url }}"
+          data-cta="{{ cta | escape }}"
+          {%- if p != blank %}
+            data-thumb="{{ p.featured_image | image_url: width: 160 }}"
+            {%- if sold_out %}
+              data-note="{{ 'products.product.sold_out' | t | escape }}"
+            {%- else %}
+              data-price="{{ p.price | money | strip_html | escape }}"
+              {%- if p.compare_at_price > p.price %} data-was="{{ p.compare_at_price | money | strip_html | escape }}"{% endif -%}
+            {%- endif -%}
+          {%- elsif c != blank and c.image != blank %}
+            data-thumb="{{ c.image | image_url: width: 160 }}"
+          {%- endif %}
+          {{ block.shopify_attributes }}
+        >
+          <span class="alc-cp__frame">
+            <img
+              class="alc-cp__img"
+              src="{{ img | image_url: width: 600 }}"
+              srcset="{{ img | image_url: width: 400 }} 400w, {{ img | image_url: width: 600 }} 600w, {{ img | image_url: width: 800 }} 800w"
+              sizes="(min-width: 1400px) 310px, (min-width: 1200px) 23vw, (min-width: 750px) 31vw, 48vw"
+              alt="{{ alt | escape }}"
+              width="{{ img.width }}"
+              height="{{ img.height }}"
+              {% if forloop.index > 4 %}loading="lazy"{% else %}fetchpriority="{% if forloop.first %}high{% else %}auto{% endif %}"{% endif %}
+              decoding="async"
+            >
+          </span>
+          {%- if caption != blank -%}
+            <span class="alc-cp__cap">
+              <span class="alc-cp__cap-text">{{ caption | escape }}</span>
+              <svg class="alc-cp__cap-icon" aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+            </span>
+          {%- endif -%}
+        </a>
+      {%- endfor -%}
+    </alc-customer-photos>
+
+    <aside class="alc-cp__share">
+      <div class="alc-cp__share-copy">
+        <h2 class="alc-cp__share-title">{{ cp_share_title | escape }}</h2>
+        <p class="alc-cp__share-text">{{ cp_share_text | escape }}</p>
+      </div>
+      <div class="alc-cp__share-actions">
+        {%- if section.settings.instagram_url != blank -%}
+          <a class="alc-cp__btn alc-cp__btn--light" href="{{ section.settings.instagram_url }}" target="_blank" rel="noopener">
+            <svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>
+            Instagram
+          </a>
+        {%- endif -%}
+        {%- if section.settings.facebook_url != blank -%}
+          <a class="alc-cp__btn alc-cp__btn--ghost" href="{{ section.settings.facebook_url }}" target="_blank" rel="noopener">
+            <svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M13.5 21v-7.5h2.6l.4-3h-3V8.6c0-.9.3-1.5 1.5-1.5h1.6V4.4c-.3 0-1.2-.1-2.3-.1-2.3 0-3.8 1.4-3.8 3.9v2.3H7.9v3h2.6V21z"/></svg>
+            Facebook
+          </a>
+        {%- endif -%}
+      </div>
+    </aside>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Customer photos",
+  "tag": "div",
+  "class": "section",
+  "settings": [
+    { "type": "text", "id": "eyebrow", "label": "Eyebrow", "info": "Leave empty for the built-in translated text" },
+    { "type": "text", "id": "heading", "label": "Heading", "info": "Leave empty for the built-in translated text" },
+    { "type": "textarea", "id": "lead", "label": "Intro text", "info": "Leave empty for the built-in translated text" },
+    { "type": "text", "id": "share_heading", "label": "Share card heading", "info": "Leave empty for the built-in translated text" },
+    { "type": "textarea", "id": "share_text", "label": "Share card text", "info": "Leave empty for the built-in translated text" },
+    { "type": "url", "id": "instagram_url", "label": "Instagram link" },
+    { "type": "url", "id": "facebook_url", "label": "Facebook link" },
+    { "type": "range", "id": "padding_top", "min": 0, "max": 100, "step": 4, "unit": "px", "label": "Top padding", "default": 32 },
+    { "type": "range", "id": "padding_bottom", "min": 0, "max": 100, "step": 4, "unit": "px", "label": "Bottom padding", "default": 56 }
+  ],
+  "blocks": [
+    {
+      "type": "photo",
+      "name": "Photo",
+      "settings": [
+        { "type": "image_picker", "id": "image", "label": "Customer photo" },
+        { "type": "product", "id": "product", "label": "Product in the photo", "info": "Linked while it is in stock" },
+        { "type": "collection", "id": "collection", "label": "Collection", "info": "Used when there is no product, or it is sold out" }
+      ]
+    }
+  ],
+  "presets": [{ "name": "Customer photos" }]
+}
+{% endschema %}
