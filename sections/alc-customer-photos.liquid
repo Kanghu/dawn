@@ -172,6 +172,46 @@
       {%- endfor -%}
     </alc-customer-photos>
 
+    {%- comment -%} The gallery as structured data: one ImageObject per photo. {%- endcomment -%}
+    {%- if template.name == 'page' -%}
+      <script type="application/ld+json">
+        {
+          "@context": "https://schema.org",
+          "@type": "ImageGallery",
+          "@id": {{ canonical_url | append: '#gallery' | json }},
+          "url": {{ canonical_url | json }},
+          "name": {{ cp_title | json }},
+          "description": {{ cp_lead | json }},
+          "inLanguage": {{ request.locale.iso_code | json }},
+          "publisher": { "@id": {{ request.origin | append: '/#organization' | json }} },
+          "image": [
+            {%- assign first_img = true -%}
+            {%- for block in photos -%}
+              {%- assign img = block.settings.image -%}
+              {%- if img == blank -%}{%- continue -%}{%- endif -%}
+              {%- liquid
+                assign cap = t[9]
+                if block.settings.product != blank
+                  assign cap = cap | append: ': ' | append: block.settings.product.title
+                elsif block.settings.collection != blank
+                  assign cap = cap | append: ': ' | append: block.settings.collection.title
+                endif
+              -%}
+              {%- unless first_img %},{% endunless -%}
+              {
+                "@type": "ImageObject",
+                "contentUrl": {{ img | image_url: width: 1600 | prepend: 'https:' | json }},
+                "width": {{ img.width | at_most: 1600 }},
+                "height": {{ img.height | times: 1600 | divided_by: img.width | at_most: img.height }},
+                "caption": {{ cap | json }}
+              }
+              {%- assign first_img = false -%}
+            {%- endfor -%}
+          ]
+        }
+      </script>
+    {%- endif -%}
+
     <aside class="alc-cp__share">
       <div class="alc-cp__share-copy">
         <h2 class="alc-cp__share-title">{{ cp_share_title | escape }}</h2>

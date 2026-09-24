@@ -22,6 +22,13 @@
     if allowed_handles contains current_handle
       assign show_organization = true
     endif
+    comment
+      Handles are translated on other markets (companie -> tarsasag on .hu), so the
+      company page is also recognised by its template.
+    endcomment
+    if template.suffix == 'companie'
+      assign show_organization = true
+    endif
   endif
 
   if show_organization

@@ -1,0 +1,59 @@
+{%- comment -%}
+  Title and meta description for the rebuilt brand pages, in the storefront language.
+  Called by snippets/alc-seo-head.liquid only when the page has no SEO title /
+  description typed in the admin (those always win).
+
+  Romanian follows the store's meta copy style (no diacritics). Titles already contain
+  the shop name, so layout/theme.liquid does not append it again.
+
+  Accepts:
+  - page_key: {String} 'company' (templates/page.companie.json) or 'photos'
+    (templates/page.pozele-clientilor.json)
+  - field: {String} 'title' or 'description'
+
+  Usage:
+  {% render 'alc-page-seo', page_key: 'company', field: 'title' %}
+{%- endcomment -%}
+{%- liquid
+  assign lang = request.locale.iso_code | downcase | slice: 0, 2
+  case lang
+    when 'en'
+      assign w = 'About Alessandro Design - lighting manufacturer since 2019|Since 2019, over 80,000 customers have chosen us: our own factory, a 1,000 m² logistics hub, a showroom and manufacturer prices, with no middlemen.|Real customer photos | Alessandro Design|Chandeliers, wall lights and ceiling lamps by Alessandro Design, photographed by customers at home. No studio, no retouching: see them in real homes.'
+    when 'hu'
+      assign w = 'Az Alessandro Designról – világítástechnikai gyártó 2019 óta|2019 óta több mint 80 000 vásárló választott minket: saját gyár, 1000 m²-es logisztikai központ, bemutatóterem és gyártói árak, közvetítők nélkül.|Valódi vásárlói fotók | Alessandro Design|Alessandro Design csillárok és lámpák vásárlóink fotóin, az otthonukban. Stúdió és retusálás nélkül: nézze meg, hogyan mutatnak valódi otthonokban.'
+    when 'pl'
+      assign w = 'O Alessandro Design – producent oświetlenia od 2019 roku|Od 2019 roku zaufało nam ponad 80 000 klientów: własna fabryka, centrum logistyczne 1000 m², showroom i ceny producenta, bez pośredników.|Prawdziwe zdjęcia klientów | Alessandro Design|Lampy i żyrandole Alessandro Design na zdjęciach naszych klientów, w ich domach. Bez studia i retuszu: zobacz, jak wyglądają w prawdziwych wnętrzach.'
+    when 'el'
+      assign w = 'Σχετικά με την Alessandro Design – κατασκευαστής φωτιστικών|Από το 2019 μας εμπιστεύτηκαν πάνω από 80.000 πελάτες: δικό μας εργοστάσιο, κέντρο logistics 1.000 m², showroom και τιμές κατασκευαστή, χωρίς μεσάζοντες.|Πραγματικές φωτογραφίες πελατών | Alessandro Design|Φωτιστικά Alessandro Design σε φωτογραφίες πελατών, στα σπίτια τους. Χωρίς στούντιο, χωρίς ρετούς: δείτε πώς φαίνονται σε πραγματικά σπίτια.'
+    when 'bg'
+      assign w = 'За Alessandro Design – производител на осветление от 2019 г.|От 2019 г. над 80 000 клиенти ни избраха: собствена фабрика, логистичен център от 1000 m², шоурум и цени на производител, без посредници.|Реални снимки от клиенти | Alessandro Design|Полилеи и лампи Alessandro Design на снимки от нашите клиенти, у дома им. Без студио и ретуш: вижте как изглеждат в истински домове.'
+    when 'it'
+      assign w = 'Chi è Alessandro Design – produttore di illuminazione dal 2019|Dal 2019 oltre 80.000 clienti ci hanno scelto: fabbrica propria, hub logistico di 1.000 m², showroom e prezzi di produttore, senza intermediari.|Foto reali dei clienti | Alessandro Design|Lampadari e applique Alessandro Design fotografati dai clienti, a casa loro. Niente studio, niente ritocchi: guarda come stanno in case vere.'
+    when 'fr'
+      assign w = 'À propos d’Alessandro Design – fabricant de luminaires|Depuis 2019, plus de 80 000 clients nous ont choisis : usine propre, plateforme logistique de 1 000 m², showroom et prix fabricant, sans intermédiaires.|Photos réelles de nos clients | Alessandro Design|Lustres et appliques Alessandro Design photographiés par nos clients, chez eux. Sans studio ni retouche : voyez-les dans de vrais intérieurs.'
+    when 'cs'
+      assign w = 'O Alessandro Design – výrobce svítidel od roku 2019|Od roku 2019 si nás vybralo přes 80 000 zákazníků: vlastní továrna, logistické centrum 1000 m², showroom a ceny výrobce, bez prostředníků.|Skutečné fotky zákazníků | Alessandro Design|Lustry a svítidla Alessandro Design na fotkách zákazníků, u nich doma. Bez studia a retuše: podívejte se, jak vypadají ve skutečných domovech.'
+    when 'sk'
+      assign w = 'O Alessandro Design – výrobca svietidiel od roku 2019|Od roku 2019 si nás vybralo viac ako 80 000 zákazníkov: vlastná továreň, logistické centrum 1000 m², showroom a ceny výrobcu, bez sprostredkovateľov.|Skutočné fotky zákazníkov | Alessandro Design|Lustre a svietidlá Alessandro Design na fotkách zákazníkov, u nich doma. Bez štúdia a retuše: pozrite sa, ako vyzerajú v skutočných domovoch.'
+    when 'hr'
+      assign w = 'O Alessandro Designu – proizvođač rasvjete od 2019.|Od 2019. odabralo nas je više od 80.000 kupaca: vlastita tvornica, logistički centar od 1.000 m², izložbeni salon i cijene proizvođača, bez posrednika.|Stvarne fotografije kupaca | Alessandro Design|Lusteri i svjetiljke Alessandro Design na fotografijama kupaca, u njihovim domovima. Bez studija i retuša: pogledajte ih u stvarnim domovima.'
+    when 'de'
+      assign w = 'Über Alessandro Design – Leuchtenhersteller seit 2019|Seit 2019 haben uns über 80.000 Kunden gewählt: eigene Fabrik, 1.000 m² Logistikzentrum, Showroom und Herstellerpreise, ohne Zwischenhändler.|Echte Kundenfotos | Alessandro Design|Leuchten von Alessandro Design, fotografiert von Kunden bei sich zu Hause. Kein Studio, keine Retusche: So wirken die Modelle in echten Wohnungen.'
+    else
+      assign w = 'Despre Alessandro Design - producator de corpuri de iluminat|Din 2019, peste 80.000 de clienti ne-au ales: fabrica proprie, hub logistic de 1.000 m2, showroom si preturi de producator, fara intermediari.|Poze reale de la clienti | Alessandro Design|Lustre, aplice si candelabre Alessandro Design fotografiate de clienti, acasa la ei. Fara studio, fara retus: vezi cum arata modelele in case reale.'
+  endcase
+
+  comment
+    Four parts: company title, company description, photos title, photos description.
+    The photos title contains " | " itself, so split on the field separator only.
+  endcomment
+  assign parts = w | replace: ' | Alessandro Design', ' ~ Alessandro Design' | split: '|'
+  assign i = 0
+  if page_key == 'photos'
+    assign i = 2
+  endif
+  if field == 'description'
+    assign i = i | plus: 1
+  endif
+  echo parts[i] | replace: ' ~ Alessandro Design', ' | Alessandro Design'
+-%}
