@@ -1,6 +1,18 @@
-<style>
-  @import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,300;0,400;0,500;0,700;1,400&display=swap');
-</style>
+{% comment %}
+  Product page stock, delivery and trust rows. Styles: assets/alc-product.css.
+
+  The stock + delivery line sits right above the add-to-cart button (main-product renders
+  it with part: 'stock' from the buy-buttons block); the benefits block itself renders the
+  trust rows (factory price, returns, warranty) below the button with part: 'trust'.
+
+  Accepts:
+  - product: {Object}
+  - block: {Object} the alc_product_benefits block, for its toggles and stock thresholds (optional)
+  - part: {String} 'stock' | 'trust'; blank renders both (optional)
+
+  Usage:
+  {% render 'alc-product-benefits', product: product, part: 'stock' %}
+{% endcomment %}
 {%- liquid
   assign show_stock_status = true
   assign show_delivery = true
@@ -17,7 +29,6 @@
     assign show_price_info = block.settings.show_price_info
     assign show_return_policy = block.settings.show_return_policy
     assign show_warranty = block.settings.show_warranty
-
     if block.settings.high_stock_threshold
       assign high_stock_threshold = block.settings.high_stock_threshold
     endif
@@ -28,161 +39,137 @@
       assign low_stock_threshold = block.settings.low_stock_threshold
     endif
   endif
--%}
-<div
-  class="w-full flex flex-col gap-2 lg:pr-5"
-  style="
-    font-family: Roboto, 'Segoe UI', Helvetica, Arial, sans-serif;
-    font-weight: 400;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-    text-rendering: optimizeLegibility;
-  "
->
 
-{% if show_stock_status %}
-  {% if product.available %}
-    {% if product.variants.first.inventory_quantity > high_stock_threshold or product.variants.first.inventory_policy == 'continue' %}
-      <div class="flex flex-col items-start md:space-y-1 md:w-1/2 text-xl font-semibold" style="color: green">
-        <div class="flex items-center text-green text-15px leading-tight -tracking-0.39">
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="size-6">
-            <path fill-rule="evenodd" d="M9 4.5a.75.75 0 0 1 .721.544l.813 2.846a3.75 3.75 0 0 0 2.576 2.576l2.846.813a.75.75 0 0 1 0 1.442l-2.846.813a3.75 3.75 0 0 0-2.576 2.576l-.813 2.846a.75.75 0 0 1-1.442 0l-.813-2.846a3.75 3.75 0 0 0-2.576-2.576l-2.846-.813a.75.75 0 0 1 0-1.442l2.846-.813A3.75 3.75 0 0 0 7.466 7.89l.813-2.846A.75.75 0 0 1 9 4.5ZM18 1.5a.75.75 0 0 1 .728.568l.258 1.036c.236.94.97 1.674 1.91 1.91l1.036.258a.75.75 0 0 1 0 1.456l-1.036.258c-.94.236-1.674.97-1.91 1.91l-.258 1.036a.75.75 0 0 1-1.456 0l-.258-1.036a2.625 2.625 0 0 0-1.91-1.91l-1.036-.258a.75.75 0 0 1 0-1.456l1.036-.258a2.625 2.625 0 0 0 1.91-1.91l.258-1.036A.75.75 0 0 1 18 1.5ZM16.5 15a.75.75 0 0 1 .712.513l.394 1.183c.15.447.5.799.948.948l1.183.395a.75.75 0 0 1 0 1.422l-1.183.395c-.447.15-.799.5-.948.948l-.395 1.183a.75.75 0 0 1-1.422 0l-.395-1.183a1.5 1.5 0 0 0-.948-.948l-1.183-.395a.75.75 0 0 1 0-1.422l1.183-.395c.447-.15.799-.5.948-.948l.395-1.183A.75.75 0 0 1 16.5 15Z" clip-rule="evenodd" />
-          </svg>
-          &nbsp;
-          {{ 'alc-benefits.stock.in_stock' | t }}
-        </div>
-      </div>
-
-    {% else %}
-      {% if product.variants.first.inventory_quantity <= low_stock_threshold %}
-        <div class="flex flex-col items-start md:space-y-1 md:w-1/2 text-lg font-semibold" style="color: red">
-          <div class="flex items-center text-13px leading-tight -tracking-0.39">
-            <svg
-              class="inline-block mr-1"
-              width="10px"
-              height="10px"
-              viewBox="0 0 20 20"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path class="fill-current" d="m10 0 .1.1s1.2 3.6 3.7 6c2.5 2.6 6 3.8 6 3.8l.2.1-.1.1s-3.6 1.2-6.1 3.7c-2.5 2.5-3.7 6-3.7 6l-.1.2-.1-.1s-1.2-3.6-3.7-6C3.7 11.2.2 10 .2 10H0l.1-.1s3.6-1.2 6.1-3.7c2.5-2.5 3.7-6 3.7-6L10 0"></path>
-            </svg>
-            {% if product.variants.first.inventory_quantity == 1 %}
-              {{ 'alc-benefits.stock.last_piece' | t }}
-            {% else %}
-              {{ 'alc-benefits.stock.last_stock' | t: count: product.variants.first.inventory_quantity }}
-            {% endif %}
-          </div>
-        </div>
-      {% elsif product.variants.first.inventory_quantity <= medium_stock_threshold %}
-        <div class="flex flex-col items-start md:space-y-1 md:w-1/2 text-lg font-semibold" style="color: #ff6b00">
-          <div class="flex items-center text-13px leading-tight -tracking-0.39">
-            <svg
-              class="inline-block mr-1"
-              width="10px"
-              height="10px"
-              viewBox="0 0 20 20"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path class="fill-current" d="m10 0 .1.1s1.2 3.6 3.7 6c2.5 2.6 6 3.8 6 3.8l.2.1-.1.1s-3.6 1.2-6.1 3.7c-2.5 2.5-3.7 6-3.7 6l-.1.2-.1-.1s-1.2-3.6-3.7-6C3.7 11.2.2 10 .2 10H0l.1-.1s3.6-1.2 6.1-3.7c2.5-2.5 3.7-6 3.7-6L10 0"></path>
-            </svg>
-            {{ 'alc-benefits.stock.last_stock' | t: count: product.variants.first.inventory_quantity }}
-          </div>
-        </div>
-      {% else %}
-        <div class="flex flex-col items-start md:space-y-1 md:w-1/2 text-lg font-semibold" style="color: #ff6b00">
-          <div class="flex items-center text-13px leading-tight -tracking-0.39">
-            <svg
-              class="inline-block mr-1"
-              width="10px"
-              height="10px"
-              viewBox="0 0 20 20"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path class="fill-current" d="m10 0 .1.1s1.2 3.6 3.7 6c2.5 2.6 6 3.8 6 3.8l.2.1-.1.1s-3.6 1.2-6.1 3.7c-2.5 2.5-3.7 6-3.7 6l-.1.2-.1-.1s-1.2-3.6-3.7-6C3.7 11.2.2 10 .2 10H0l.1-.1s3.6-1.2 6.1-3.7c2.5-2.5 3.7-6 3.7-6L10 0"></path>
-            </svg>
-            {{ 'alc-benefits.stock.low_stock' | t: count: product.variants.first.inventory_quantity }}
-          </div>
-        </div>
-      {% endif %}
-    {% endif %}
-  {% else %}
-    <div class="flex flex-col items-start md:space-y-1 md:w-1/2 text-lg" style="color:red">
-      <div class="flex items-center text-green text-13px leading-tight -tracking-0.39">
-        <svg
-          class="inline-block mr-1"
-          width="10px"
-          height="10px"
-          viewBox="0 0 20 20"
-          xmlns="http://www.w3.org/2000/svg"
-        >
-          <path class="fill-current" d="m10 0 .1.1s1.2 3.6 3.7 6c2.5 2.6 6 3.8 6 3.8l.2.1-.1.1s-3.6 1.2-6.1 3.7c-2.5 2.5-3.7 6-3.7 6l-.1.2-.1-.1s-1.2-3.6-3.7-6C3.7 11.2.2 10 .2 10H0l.1-.1s3.6-1.2 6.1-3.7c2.5-2.5 3.7-6 3.7-6L10 0"></path>
-        </svg>
-        {{ 'alc-benefits.stock.out_of_stock' | t }}
-      </div>
-    </div>
-  {% endif %}
-{% endif %}
-
-{% if show_delivery %}
-
-{%- liquid
-  assign product_price = product.price_min
-  assign is_romanian = false
-  assign show_free_shipping = false
-  
-  if request.locale.iso_code == 'ro'
-    assign is_romanian = true
+  assign render_stock = true
+  assign render_trust = true
+  if part == 'stock'
+    assign render_trust = false
+  elsif part == 'trust'
+    assign render_stock = false
   endif
-  
-  if is_romanian and product_price >= 40000
-    assign show_free_shipping = true
-  endif
+
+  assign first_variant = product.variants.first
+  assign qty = first_variant.inventory_quantity
 -%}
 
-<div class="mt-3 md:mt-3 text-xl font-bold" style="color: green">
-  <div class="flex flex-row gap-2">
-    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 640 512" fill="currentColor">
-      <!--!Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2025 Fonticons, Inc.--><path d="M48 0C21.5 0 0 21.5 0 48L0 368c0 26.5 21.5 48 48 48l16 0c0 53 43 96 96 96s96-43 96-96l128 0c0 53 43 96 96 96s96-43 96-96l32 0c17.7 0 32-14.3 32-32s-14.3-32-32-32l0-64 0-32 0-18.7c0-17-6.7-33.3-18.7-45.3L512 114.7c-12-12-28.3-18.7-45.3-18.7L416 96l0-48c0-26.5-21.5-48-48-48L48 0zM416 160l50.7 0L544 237.3l0 18.7-128 0 0-96zM112 416a48 48 0 1 1 96 0 48 48 0 1 1 -96 0zm368-48a48 48 0 1 1 0 96 48 48 0 1 1 0-96z"/>
-    </svg>
-    {% if show_free_shipping %}
-      <p class="mb-0 text-xl">{{ 'alc-benefits.free_shipping' | t }}</p>
-    {% else %}
-      <p class="mb-0 text-xl">{{ 'alc-benefits.delivery' | t }}</p>
-    {% endif %}
-  </div>
-</div>
-{% endif %}
+{%- if render_stock and show_stock_status or render_stock and show_delivery -%}
+  <div class="alc-pb-status">
+    {%- if show_stock_status -%}
+      {%- liquid
+        if product.available
+          if qty > high_stock_threshold or first_variant.inventory_policy == 'continue'
+            assign stock_mod = 'in'
+            assign stock_text = 'alc-benefits.stock.in_stock' | t
+          elsif qty <= low_stock_threshold
+            assign stock_mod = 'last'
+            if qty == 1
+              assign stock_text = 'alc-benefits.stock.last_piece' | t
+            else
+              assign stock_text = 'alc-benefits.stock.last_stock' | t: count: qty
+            endif
+          elsif qty <= medium_stock_threshold
+            assign stock_mod = 'low'
+            assign stock_text = 'alc-benefits.stock.last_stock' | t: count: qty
+          else
+            assign stock_mod = 'low'
+            assign stock_text = 'alc-benefits.stock.low_stock' | t: count: qty
+          endif
+        else
+          assign stock_mod = 'out'
+          assign stock_text = 'alc-benefits.stock.out_of_stock' | t
+        endif
+      -%}
+      <p class="alc-pb-status__stock alc-pb-status__stock--{{ stock_mod }}">
+        <span class="alc-pb-status__dot" aria-hidden="true"></span>
+        {{ stock_text }}
+      </p>
+    {%- endif -%}
 
-{% if show_price_info %}
-  <div class="text-xl">
-    <div class="flex flex-row gap-2">
-      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 448 512">
-        <!--!Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2025 Fonticons, Inc.--><path d="M438.6 105.4c12.5 12.5 12.5 32.8 0 45.3l-256 256c-12.5 12.5-32.8 12.5-45.3 0l-128-128c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0L160 338.7 393.4 105.4c12.5-12.5 32.8-12.5 45.3 0z"/>
-      </svg>
-      <p class="mb-0">{{ 'alc-benefits.price_info' | t }} <a href="{{ 'alc-benefits.price_info_link' | t }}">{{ 'alc-benefits.price_info_link_text' | t }}</a></p>
-    </div>
+    {%- if show_delivery and product.available -%}
+      {%- liquid
+        assign show_free_shipping = false
+        if request.locale.iso_code == 'ro' and product.price_min >= 40000
+          assign show_free_shipping = true
+        endif
+      -%}
+      {%- comment -%}
+        Delivery card. The date range is 2-4 working days from today (same promise as the
+        text and as the shippingDetails in alc-product-schema); it is filled in by the script
+        below with Intl, so weekday and month names follow the page language.
+      {%- endcomment -%}
+      <div class="alc-pb-ship" data-alc-eta data-min="2" data-max="4">
+        <span class="alc-pb-ship__icon" aria-hidden="true">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M3 6.5h11v9H3zM14 9.5h3.6l3.4 3.4v2.6h-7"/><circle cx="7" cy="17.5" r="1.8"/><circle cx="17.5" cy="17.5" r="1.8"/></svg>
+        </span>
+        <span class="alc-pb-ship__body">
+          <strong class="alc-pb-ship__title">
+            {%- if show_free_shipping -%}
+              {{ 'alc-benefits.free_shipping' | t }}
+            {%- else -%}
+              {{ 'alc-benefits.delivery' | t }}
+            {%- endif -%}
+          </strong>
+          <span class="alc-pb-ship__eta" hidden>
+            <svg aria-hidden="true" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3.5" y="5" width="17" height="15" rx="2"/><path d="M3.5 10h17M8 3v4M16 3v4"/></svg>
+            <span data-alc-eta-text></span>
+          </span>
+        </span>
+      </div>
+      <script>
+        (() => {
+          const box = document.currentScript.previousElementSibling;
+          const out = box.querySelector('[data-alc-eta-text]');
+          if (!out || typeof Intl === 'undefined') return;
+          const addWorkingDays = (from, n) => {
+            const d = new Date(from);
+            while (n > 0) {
+              d.setDate(d.getDate() + 1);
+              if (d.getDay() !== 0 && d.getDay() !== 6) n -= 1;
+            }
+            return d;
+          };
+          const today = new Date();
+          const lang = document.documentElement.lang || 'ro';
+          try {
+            const fmt = new Intl.DateTimeFormat(lang, { weekday: 'short', day: 'numeric', month: 'short' });
+            const a = addWorkingDays(today, +box.dataset.min);
+            const b = addWorkingDays(today, +box.dataset.max);
+            out.textContent = fmt.formatRange ? fmt.formatRange(a, b) : fmt.format(a) + ' – ' + fmt.format(b);
+            out.parentElement.hidden = false;
+          } catch (e) {}
+        })();
+      </script>
+    {%- endif -%}
   </div>
-{% endif %}
+{%- endif -%}
 
-{% if show_return_policy %}
-  <div class="text-xl">
-    <div class="flex flex-row gap-2">
-      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 448 512">
-        <!--!Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2025 Fonticons, Inc.--><path d="M438.6 105.4c12.5 12.5 12.5 32.8 0 45.3l-256 256c-12.5 12.5-32.8 12.5-45.3 0l-128-128c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0L160 338.7 393.4 105.4c12.5-12.5 32.8-12.5 45.3 0z"/>
-      </svg>
-      <p class="mb-0">{{ 'alc-benefits.return_policy' | t }}</p>
-    </div>
-  </div>
-{% endif %}
-
-{% if show_warranty %}
-  <div class="text-xl">
-    <div class="flex flex-row gap-2">
-      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 448 512">
-        <!--!Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2025 Fonticons, Inc.--><path d="M438.6 105.4c12.5 12.5 12.5 32.8 0 45.3l-256 256c-12.5 12.5-32.8 12.5-45.3 0l-128-128c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0L160 338.7 393.4 105.4c12.5-12.5 32.8-12.5 45.3 0z"/>
-      </svg>
-      <p class="mb-0">{{ 'alc-benefits.warranty' | t }} <a href="{{ 'alc-benefits.warranty_link' | t }}">{{ 'alc-benefits.warranty_link_text' | t }}</a></p>
-    </div>
-  </div>
-{% endif %}
-</div>
+{%- if render_trust -%}
+  {%- if show_price_info or show_return_policy or show_warranty -%}
+    <ul class="alc-pb-trust" role="list">
+      {%- if show_price_info -%}
+        <li class="alc-pb-trust__row">
+          <span class="alc-pb-trust__icon" aria-hidden="true">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M3 20.5h18M4.5 20.5V10l5 3V10l5 3V5.5h5v15"/></svg>
+          </span>
+          <span class="alc-pb-trust__text">{{ 'alc-benefits.price_info' | t }} <a href="{{ 'alc-benefits.price_info_link' | t }}">{{ 'alc-benefits.price_info_link_text' | t }}</a></span>
+        </li>
+      {%- endif -%}
+      {%- if show_return_policy -%}
+        <li class="alc-pb-trust__row">
+          <span class="alc-pb-trust__icon" aria-hidden="true">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M4 10h11a5 5 0 0 1 0 10h-3"/><path d="m8 6-4 4 4 4"/></svg>
+          </span>
+          <span class="alc-pb-trust__text">{{ 'alc-benefits.return_policy' | t }}</span>
+        </li>
+      {%- endif -%}
+      {%- if show_warranty -%}
+        <li class="alc-pb-trust__row">
+          <span class="alc-pb-trust__icon" aria-hidden="true">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3 5 6v5.5c0 4.4 3 8 7 9.5 4-1.5 7-5.1 7-9.5V6z"/><path d="m9 12 2.2 2.2L15.5 10"/></svg>
+          </span>
+          <span class="alc-pb-trust__text">{{ 'alc-benefits.warranty' | t }} <a href="{{ 'alc-benefits.warranty_link' | t }}">{{ 'alc-benefits.warranty_link_text' | t }}</a></span>
+        </li>
+      {%- endif -%}
+    </ul>
+  {%- endif -%}
+{%- endif -%}

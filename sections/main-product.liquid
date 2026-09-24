@@ -9,7 +9,7 @@
 
 <product-info
   id="MainProduct-{{ section.id }}"
-  class="section-{{ section.id }}-padding gradient color-{{ section.settings.color_scheme }}{% if is_campaign_product %} campaign-product{% endif %}"
+  class="alc-pdp section-{{ section.id }}-padding gradient color-{{ section.settings.color_scheme }}{% if is_campaign_product %} campaign-product{% endif %}"
   data-section="{{ section.id }}"
   data-product-id="{{ product.id }}"
   data-update-url="true"
@@ -24,6 +24,7 @@
   {{ 'component-slider.css' | asset_url | stylesheet_tag }}
   {{ 'component-rating.css' | asset_url | stylesheet_tag }}
   {{ 'component-deferred-media.css' | asset_url | stylesheet_tag }}
+  {{ 'alc-product.css' | asset_url | stylesheet_tag }}
 
   {%- if is_campaign_product -%}
     {{ 'campaign-urgency.css' | asset_url | stylesheet_tag }}
@@ -107,7 +108,7 @@
               {%- when '@app' -%}
                 {% render block %}
               {%- when 'alc_product_benefits' %}
-                {% render 'alc-product-benefits', product: product, block: block %}
+                {% render 'alc-product-benefits', product: product, block: block, part: 'trust' %}
               {%- when 'alc_countdown_timer' %}
                 {% render 'alc-countdown-timer', product: product, block: block %}
               {%- when 'text' -%}
@@ -233,15 +234,11 @@
                   </div>
                 {%- endif -%}
               {%- when 'sku' -%}
-                <p
-                  class="product__sku{% if block.settings.text_style == 'uppercase' %} caption-with-letter-spacing{% elsif block.settings.text_style == 'subtitle' %} subtitle{% endif %}{% if product.selected_or_first_available_variant.sku.size == 0 %} visibility-hidden{% endif %}"
-                  id="Sku-{{ section.id }}"
-                  role="status"
-                  {{ block.shopify_attributes }}
-                >
-                  <span class="visually-hidden">{{ 'products.product.sku' | t }}:</span>
-                  {{- product.selected_or_first_available_variant.sku -}}
-                </p>
+                {%- if product.selected_or_first_available_variant.sku != blank -%}
+                  <p class="product__sku alc-pdp-sku" id="Sku-{{ section.id }}" role="status" {{ block.shopify_attributes }}>
+                    {%- render 'alc-i18n', key: 'sku' -%}: <span>{{ product.selected_or_first_available_variant.sku }}</span>
+                  </p>
+                {%- endif -%}
               {%- when 'custom_liquid' -%}
                 {{ block.settings.custom_liquid }}
               {%- when 'collapsible_tab' -%}
@@ -499,17 +496,15 @@
               {%- when 'variant_picker' -%}
                 {% render 'product-variant-picker', product: product, block: block, product_form_id: product_form_id %}
               {% when 'related_variants' %}
-                {% render 'als-product-variant-picker', product: product, block: block %}
+                {%- if block.settings.picker_style == 'buttons' -%}
+                  <div {{ block.shopify_attributes }}>{% render 'alc-related-variants', product: product, block: block %}</div>
+                {%- else -%}
+                  {% render 'als-product-variant-picker', product: product, block: block %}
+                {%- endif -%}
               {% when 'alc_price' %}
-                {%- render 'alc-price',
-                  product: product,
-                  target: product,
-                  use_variant: true,
-                  show_badges: true,
-                  price_class: 'price--large',
-                  block: block,
-                  section: section
-                -%}
+                <div id="price-{{ section.id }}" role="status" {{ block.shopify_attributes }}>
+                  {%- render 'alc-pdp-price', product: product -%}
+                </div>
               {%- when 'buy_buttons' -%}
                 {%- render 'buy-buttons',
                   block: block,
@@ -519,6 +514,9 @@
                   show_pickup_availability: true
                 -%}
               {%- when 'alc_buy_buttons' -%}
+                {%- comment -%} Stock + delivery sit right above the button; the benefits block keeps the trust rows. {%- endcomment -%}
+                {%- assign benefits_block = section.blocks | where: 'type', 'alc_product_benefits' | first -%}
+                {%- render 'alc-product-benefits', product: product, block: benefits_block, part: 'stock' -%}
                 {%- render 'alc-buy-button',
                   block: block,
                   product: product,
@@ -573,6 +571,11 @@
                   </div>
                 {%- endif -%}
               {%- when 'complementary' -%}
+                {%- comment -%}
+                  Captured here and printed as a full-width carousel under the product grid
+                  (below both columns), so it no longer stretches the buy column.
+                {%- endcomment -%}
+                {%- capture complementary_html -%}
                 {%- liquid
                   # Complementary products are set manually in Shopify Search & Discovery and stored in a
                   # product metafield. When that list exists we render it on the server (crawlable without
@@ -593,147 +596,49 @@
                   assign complementary_rendered = 0
                 -%}
                 <product-recommendations
-                  class="complementary-products quick-add-hidden{% if block.settings.make_collapsible_row %} is-accordion{% endif %}{% if block.settings.enable_quick_add %} complementary-products-contains-quick-add{% endif %}"
+                  class="complementary-products alc-compl quick-add-hidden{% if block.settings.enable_quick_add %} complementary-products-contains-quick-add{% endif %}"
                   data-url="{{ routes.product_recommendations_url }}?limit={{ block.settings.product_list_limit }}&intent=complementary"
                   data-section-id="{{ section.id }}"
                   data-product-id="{{ product.id }}"
                   {% if complementary_ssr %}data-ssr="true"{% endif %}
                 >
                   {%- if complementary_count > 0 -%}
-                    <aside
-                      aria-label="{{ 'accessibility.complementary_products' | t }}"
-                      {{ block.shopify_attributes -}}
-                      {% if block.settings.make_collapsible_row %}
-                        class="product__accordion accordion"
-                      {% endif %}
-                    >
-                      <div class="complementary-products__container">
-                        {%- if block.settings.make_collapsible_row -%}
-                          <details id="Details-{{ block.id }}-{{ section.id }}" open>
-                            <summary>
-                        {%- endif %}
-                        <div class="summary__title">
-                          {%- if block.settings.make_collapsible_row -%}
-                            {% render 'icon-accordion', icon: block.settings.icon %}
-                            <h2 class="h4 accordion__title">{{ block.settings.block_heading }}</h2>
-                          {%- else -%}
-                            <h2 class="h3 accordion__title">{{ block.settings.block_heading }}</h2>
-                          {%- endif -%}
+                    <aside class="alc-compl__inner" aria-label="{{ 'accessibility.complementary_products' | t }}" data-alc-compl {{ block.shopify_attributes }}>
+                      <div class="alc-compl__head">
+                        <h2 class="alc-compl__title">{{ block.settings.block_heading }}</h2>
+                        <div class="alc-compl__nav">
+                          <button type="button" class="alc-compl__arrow" data-alc-compl-prev aria-label="{{ 'general.slider.previous_slide' | t }}" disabled>
+                            <svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="m15 6-6 6 6 6"/></svg>
+                          </button>
+                          <button type="button" class="alc-compl__arrow" data-alc-compl-next aria-label="{{ 'general.slider.next_slide' | t }}">
+                            <svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="m9 6 6 6-6 6"/></svg>
+                          </button>
                         </div>
-                        {%- if block.settings.make_collapsible_row -%}
-                          {{- 'icon-caret.svg' | inline_asset_content -}}
-                          </summary>
-                        {%- endif -%}
-                        <slideshow-component class="slider-mobile-gutter">
-                          {%- assign number_of_slides = complementary_count
-                            | plus: 0.0
-                            | divided_by: block.settings.products_per_page
-                            | ceil
-                          -%}
-                          <div
-                            id="Slider-{{ block.id }}"
-                            class="contains-card contains-card--product complementary-slider grid grid--1-col slider slider--everywhere"
-                            role="list"
-                            {% if number_of_slides > 1 %}
-                              aria-label="{{ 'general.slider.name' | t }}"
-                            {% endif %}
-                          >
-                            {% assign skip_card_product_styles = false %}
-                            {%- for i in (1..number_of_slides) -%}
-                              <div
-                                id="Slide-{{ block.id }}-{{ forloop.index }}"
-                                class="complementary-slide complementary-slide--{{ settings.card_style }} grid__item slider__slide slideshow__slide"
-                                tabindex="-1"
-                                role="group"
-                                {% if number_of_slides > 1 %}
-                                  aria-roledescription="{{ 'sections.slideshow.slide' | t }}"
-                                  aria-label="{{ forloop.index }} {{ 'general.slider.of' | t }} {{ forloop.length }}"
-                                {% endif %}
-                              >
-                                <ul class="list-unstyled" role="list">
-                                  {%- for product in complementary_products
-                                    limit: block.settings.products_per_page
-                                    offset: continue
-                                  -%}
-                                    {%- if complementary_rendered >= complementary_count -%}{%- break -%}{%- endif -%}
-                                    {%- assign complementary_rendered = complementary_rendered | plus: 1 -%}
-                                    <li>
-                                      {%- if block.settings.enable_quick_add -%}
-                                        {% assign quick_add = 'standard' %}
-                                      {%- else -%}
-                                        {% assign quick_add = 'none' %}
-                                      {%- endif -%}
-                                      {% render 'alc-horizontal-card-product',
-                                        card_product: product,
-                                        media_aspect_ratio: block.settings.image_ratio,
-                                        show_secondary_image: false,
-                                        lazy_load: true,
-                                        skip_styles: skip_card_product_styles,
-                                        quick_add: quick_add,
-                                        section_id: section.id,
-                                        horizontal_class: true,
-                                        horizontal_quick_add: true
-                                      %}
-                                    </li>
-                                    {%- assign skip_card_product_styles = true -%}
-                                  {%- endfor -%}
-                                </ul>
-                              </div>
-                            {%- endfor -%}
-                          </div>
-                          {%- if number_of_slides > 1 -%}
-                            <div class="slider-buttons">
-                              <button
-                                type="button"
-                                class="slider-button slider-button--prev"
-                                name="previous"
-                                aria-label="{{ 'general.slider.previous_slide' | t }}"
-                              >
-                                <span class="svg-wrapper">
-                                  {{- 'icon-caret.svg' | inline_asset_content -}}
-                                </span>
-                              </button>
-                              <div class="slider-counter slider-counter--{{ block.settings.pagination_style }}{% if block.settings.pagination_style == 'counter' or block.settings.pagination_style == 'numbers' %} caption{% endif %}">
-                                {%- if block.settings.pagination_style == 'counter' -%}
-                                  <span class="slider-counter--current">1</span>
-                                  <span aria-hidden="true"> / </span>
-                                  <span class="visually-hidden">{{ 'general.slider.of' | t }}</span>
-                                  <span class="slider-counter--total">{{ number_of_slides }}</span>
-                                {%- else -%}
-                                  <div class="slideshow__control-wrapper">
-                                    {%- for i in (1..number_of_slides) -%}
-                                      <button
-                                        class="slider-counter__link slider-counter__link--{{ block.settings.pagination_style }} link"
-                                        aria-label="{{ 'sections.slideshow.load_slide' | t }} {{ forloop.index }} {{ 'general.slider.of' | t }} {{ forloop.length }}"
-                                        aria-controls="Slider-{{ block.id }}"
-                                      >
-                                        {%- if block.settings.pagination_style == 'numbers' -%}
-                                          {{ forloop.index -}}
-                                        {%- else -%}
-                                          <span class="dot"></span>
-                                        {%- endif -%}
-                                      </button>
-                                    {%- endfor -%}
-                                  </div>
-                                {%- endif -%}
-                              </div>
-                              <button
-                                type="button"
-                                class="slider-button slider-button--next"
-                                name="next"
-                                aria-label="{{ 'general.slider.next_slide' | t }}"
-                              >
-                                <span class="svg-wrapper">
-                                  {{- 'icon-caret.svg' | inline_asset_content -}}
-                                </span>
-                              </button>
-                            </div>
-                          {%- endif -%}
-                        </slideshow-component>
-                        {%- if block.settings.make_collapsible_row -%}
-                          </details>
-                        {%- endif -%}
                       </div>
+                      <ul class="alc-compl__track list-unstyled" role="list" data-alc-compl-track>
+                        {% assign skip_card_product_styles = false %}
+                        {%- if block.settings.enable_quick_add -%}
+                          {% assign quick_add = 'standard' %}
+                        {%- else -%}
+                          {% assign quick_add = 'none' %}
+                        {%- endif -%}
+                        {%- for product in complementary_products limit: complementary_count -%}
+                          <li class="alc-compl__item">
+                            {% render 'alc-horizontal-card-product',
+                              card_product: product,
+                              media_aspect_ratio: block.settings.image_ratio,
+                              show_secondary_image: false,
+                              lazy_load: true,
+                              skip_styles: skip_card_product_styles,
+                              quick_add: quick_add,
+                              section_id: section.id,
+                              horizontal_class: true,
+                              horizontal_quick_add: true
+                            %}
+                          </li>
+                          {%- assign skip_card_product_styles = true -%}
+                        {%- endfor -%}
+                      </ul>
                     </aside>
                   {%- endif -%}
                   {{ 'component-card.css' | asset_url | stylesheet_tag }}
@@ -743,6 +648,7 @@
                     <script src="{{ 'quick-add.js' | asset_url }}" defer="defer"></script>
                   {%- endif -%}
                 </product-recommendations>
+                {%- endcapture -%}
               {%- when 'icon-with-text' -%}
                 {% render 'icon-with-text', block: block %}
             {%- endcase -%}
@@ -754,6 +660,41 @@
         </section>
       </div>
     </div>
+
+    {%- if complementary_html != blank -%}
+      {{ complementary_html }}
+      <script>
+        // Complementary carousel arrows. Delegated, because when the list comes from the
+        // recommendations endpoint global.js swaps it in with innerHTML (scripts don't run).
+        (() => {
+          if (window.alcCompl) return;
+          window.alcCompl = true;
+          const sync = (root) => {
+            const track = root.querySelector('[data-alc-compl-track]');
+            if (!track) return;
+            const max = track.scrollWidth - track.clientWidth;
+            root.classList.toggle('is-scrollable', max > 4);
+            root.querySelector('[data-alc-compl-prev]').disabled = track.scrollLeft < 4;
+            root.querySelector('[data-alc-compl-next]').disabled = track.scrollLeft > max - 4;
+          };
+          const syncAll = () => document.querySelectorAll('[data-alc-compl]').forEach(sync);
+          document.addEventListener('click', (event) => {
+            const btn = event.target.closest('[data-alc-compl-prev], [data-alc-compl-next]');
+            if (!btn) return;
+            const track = btn.closest('[data-alc-compl]').querySelector('[data-alc-compl-track]');
+            const step = Math.max(track.clientWidth * 0.8, 240);
+            track.scrollBy({ left: btn.hasAttribute('data-alc-compl-prev') ? -step : step, behavior: 'smooth' });
+          });
+          document.addEventListener('scroll', (event) => {
+            const root = event.target.closest?.('[data-alc-compl]');
+            if (root) sync(root);
+          }, true);
+          window.addEventListener('resize', syncAll, { passive: true });
+          document.querySelectorAll('.alc-compl').forEach((el) => new MutationObserver(syncAll).observe(el, { childList: true }));
+          syncAll();
+        })();
+      </script>
+    {%- endif -%}
 
     {% render 'alc-pl-media-modal', variant_images: variant_images %}
 

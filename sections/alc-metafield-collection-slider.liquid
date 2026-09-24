@@ -133,29 +133,36 @@
   }
 {%- endstyle -%}
 
+{%- comment -%}
+  The "gama" metafield holds a collection title. Look it up by handle too (the
+  `collections | where` scan only sees the first page of collections), and render
+  nothing at all when no such collection has products, instead of an empty heading.
+{%- endcomment -%}
+{%- liquid
+  assign collection = nil
+  if product.metafields.custom.collection != blank
+    assign collection_first = product.metafields.custom.collection.value[0]
+    assign collection_handle = collection_first | handleize
+    assign collection = collections[collection_handle]
+    if collection == blank or collection.products.size == 0
+      assign collection = collections | where: 'title', collection_first | first
+    endif
+  else
+    for temp_collection in product.collections
+      if temp_collection.products.size > 0
+        assign collection = temp_collection
+        break
+      endif
+    endfor
+  endif
+-%}
+{%- if collection != blank and collection.products.size > 0 -%}
 <div class="color-{{ section.settings.color_scheme }} gradient">
   <div class="page-width section-{{ section.id }}-padding section-{{ section.id }}">
     {%- if section.settings.title != blank -%}
       <h2 class="inline-richtext {{ section.settings.heading_size }} mb-6">
         {{ section.settings.title }}
       </h2>
-    {%- endif -%}
-
-    {%- if product.metafields.custom.collection != blank -%}
-      {%- liquid
-        assign collection_first = product.metafields.custom.collection.value[0]
-        assign collection = collections | where: 'title', collection_first | first
-      -%}
-    {%- else -%}
-      {%- liquid
-        assign collection = nil
-        for temp_collection in product.collections
-          if temp_collection.products.size > 0
-            assign collection = temp_collection
-            break
-          endif
-        endfor
-      -%}
     {%- endif -%}
 
     <slider-component class="slider-mobile-gutter">
@@ -216,6 +223,7 @@
     </slider-component>
   </div>
 </div>
+{%- endif -%}
 
 {% schema %}
   {

@@ -350,3 +350,9 @@
     transition: none;
   }
 }
+
+/* Vitals injects its own floating "4.9 / 250 reviews" badge into <body>; this section
+   already shows the store rating, so hide the duplicate wherever it renders. */
+.Vtl-ReviewsBadge__Widget {
+  display: none !important;
+}

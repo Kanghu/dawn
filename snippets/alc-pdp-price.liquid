@@ -1,0 +1,61 @@
+{% comment %}
+  Product page price: compare-at price struck through above, the current price below
+  with the discount percentage beside it, then the saving. Mirrors the product card
+  (snippets/alc-card-product.liquid) so both read the same way.
+  Styles: assets/alc-product.css.
+
+  Accepts:
+  - product: {Object} the product (all products on the store are single-variant)
+
+  Usage:
+  {% render 'alc-pdp-price', product: product %}
+{% endcomment %}
+{%- liquid
+  assign variant = product.selected_or_first_available_variant
+  assign price = variant.price
+  assign compare_at_price = variant.compare_at_price
+  assign on_sale = false
+  if compare_at_price > price
+    assign on_sale = true
+    assign diff = compare_at_price | minus: price
+    assign pct = diff | times: 100.0 | divided_by: compare_at_price | round
+  endif
+
+  if settings.currency_code_enabled
+    assign money_price = price | money_with_currency
+    assign money_compare = compare_at_price | money_with_currency
+  else
+    assign money_price = price | money
+    assign money_compare = compare_at_price | money
+  endif
+  if on_sale
+    assign money_diff = diff | money
+  endif
+
+  assign campaign_title = product.metafields.custom.featured_campaign.value.title
+-%}
+<div class="alc-pdp-price{% if on_sale %} is-sale{% endif %}{% unless variant.available %} is-sold-out{% endunless %}">
+  {%- if on_sale -%}
+    <span class="visually-hidden">{{ 'products.product.price.regular_price' | t }}</span>
+    <s class="alc-pdp-price__was">{{ money_compare }}</s>
+  {%- endif -%}
+  <div class="alc-pdp-price__row">
+    <span class="visually-hidden">
+      {%- if on_sale -%}{{ 'products.product.price.sale_price' | t }}{%- else -%}{{ 'products.product.price.regular_price' | t }}{%- endif -%}
+    </span>
+    <span class="alc-pdp-price__now price-item{% if on_sale %} price-item--sale{% else %} price-item--regular{% endif %}">{{ money_price }}</span>
+    {%- if on_sale and pct > 0 -%}
+      <span class="alc-pdp-price__pct">-{{ pct }}%</span>
+    {%- endif -%}
+  </div>
+  {%- if on_sale or campaign_title != blank -%}
+    <div class="alc-pdp-price__tags">
+      {%- if on_sale -%}
+        <span class="alc-pdp-price__save">{{ 'alc-benefits.savings' | t: amount: money_diff }}</span>
+      {%- endif -%}
+      {%- if campaign_title != blank -%}
+        <span class="alc-pdp-price__campaign">{{ campaign_title }}</span>
+      {%- endif -%}
+    </div>
+  {%- endif -%}
+</div>

@@ -1203,7 +1203,7 @@ class ProductRecommendations extends HTMLElement {
           this.innerHTML = recommendations.innerHTML;
         }
 
-        if (!this.querySelector('slideshow-component') && this.classList.contains('complementary-products')) {
+        if (!this.querySelector('slideshow-component, [data-alc-compl]') && this.classList.contains('complementary-products')) {
           this.remove();
         }
 
