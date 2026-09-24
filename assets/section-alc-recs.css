@@ -1,0 +1,244 @@
+/* Shared styles for the product-page recommendation rows:
+   sections/alc-related-products-dynamic.liquid and sections/alc-recently-viewed.liquid.
+   Same look as the rest of the redesign (ink headings, muted eyebrow, pill link) and one
+   scrolling row of product cards with arrows. Padding is set on #section-<id> via {% style %}. */
+
+.alc-recs {
+  --alc-recs-ink: #151515;
+  --alc-recs-muted: #6b6862;
+  --alc-recs-line: rgba(21, 21, 21, 0.1);
+  position: relative;
+  display: block;
+  background: #fff;
+}
+
+.alc-recs[hidden] {
+  display: none;
+}
+
+/* Hide the theme's section wrapper too while the client-side section has nothing to show. */
+.shopify-section:has(> .alc-recs[hidden]) {
+  display: none;
+}
+
+/* ---- header ---- */
+.alc-recs__header {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 12px 24px;
+  margin-bottom: 20px;
+}
+
+.alc-recs__eyebrow {
+  margin: 0 0 6px;
+  color: var(--alc-recs-muted);
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.alc-recs__title {
+  margin: 0;
+  color: var(--alc-recs-ink);
+  font-size: clamp(22px, 2.2vw, 30px);
+  font-weight: 600;
+  letter-spacing: -0.015em;
+  line-height: 1.15;
+}
+
+.alc-recs__subtitle {
+  margin: 8px 0 0;
+  max-width: 62ch;
+  color: var(--alc-recs-muted);
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+.alc-recs__actions {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.alc-recs__link {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  min-height: 40px;
+  padding: 0 18px;
+  border: 1px solid rgba(21, 21, 21, 0.18);
+  border-radius: 999px;
+  background: #fff;
+  color: var(--alc-recs-ink);
+  font-family: inherit;
+  font-size: 13.5px;
+  font-weight: 600;
+  line-height: 1;
+  text-decoration: none;
+  white-space: nowrap;
+  cursor: pointer;
+  transition: border-color 0.2s ease, background-color 0.2s ease, color 0.2s ease;
+}
+
+.alc-recs__link svg {
+  width: 14px;
+  height: 14px;
+  transition: transform 0.2s ease;
+}
+
+.alc-recs__link:hover,
+.alc-recs__link:focus-visible {
+  border-color: var(--alc-recs-ink);
+  background-color: var(--alc-recs-ink);
+  color: #fff;
+}
+
+.alc-recs__link:hover svg {
+  transform: translateX(2px);
+}
+
+.alc-recs__link--muted {
+  border-color: transparent;
+  background: transparent;
+  color: var(--alc-recs-muted);
+  font-weight: 500;
+}
+
+.alc-recs__link--muted:hover,
+.alc-recs__link--muted:focus-visible {
+  border-color: rgba(21, 21, 21, 0.18);
+  background-color: #f6f4f0;
+  color: var(--alc-recs-ink);
+}
+
+.alc-recs__link--muted:hover svg {
+  transform: none;
+}
+
+.alc-recs__nav {
+  display: flex;
+  gap: 8px;
+}
+
+.alc-recs:not(.is-scrollable) .alc-recs__nav {
+  display: none;
+}
+
+.alc-recs__arrow {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  padding: 0;
+  border: 1px solid rgba(21, 21, 21, 0.18);
+  border-radius: 50%;
+  background: #fff;
+  color: var(--alc-recs-ink);
+  cursor: pointer;
+  transition: background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+}
+
+.alc-recs__arrow:not([disabled]):hover {
+  border-color: var(--alc-recs-ink);
+  background: var(--alc-recs-ink);
+  color: #fff;
+}
+
+.alc-recs__arrow[disabled] {
+  opacity: 0.35;
+  cursor: default;
+}
+
+/* ---- one scrolling row of cards ---- */
+.alc-recs .slider-buttons {
+  display: none;
+}
+
+.alc-recs__grid.grid,
+.alc-recs__grid.grid.slider {
+  display: flex;
+  flex-wrap: nowrap;
+  gap: 16px;
+  margin: 0;
+  padding: 2px 2px 10px;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scroll-padding-inline: 2px;
+  scrollbar-width: none;
+  overscroll-behavior-x: contain;
+}
+
+.alc-recs__grid::-webkit-scrollbar {
+  display: none;
+}
+
+.alc-recs__grid .grid__item,
+.alc-recs__item {
+  display: flex;
+  flex: 0 0 calc((100% - 48px) / 4);
+  flex-direction: column;
+  width: auto;
+  max-width: none;
+  margin: 0 !important;
+  padding: 0;
+  scroll-snap-align: start;
+}
+
+.alc-recs__item > * {
+  flex: 1 1 auto;
+}
+
+/* Labels ("same category", "recently viewed") are switched off in the template; keep them quiet if re-enabled. */
+.alc-recs__reason {
+  display: inline-flex;
+  align-self: flex-start;
+  flex: none;
+  margin-bottom: 8px;
+  padding: 3px 9px;
+  border-radius: 999px;
+  background: #f3f0eb;
+  color: var(--alc-recs-muted);
+  font-size: 11.5px;
+  font-weight: 600;
+}
+
+@media screen and (max-width: 989px) {
+  .alc-recs__grid .grid__item,
+  .alc-recs__item {
+    flex-basis: calc((100% - 32px) / 3);
+  }
+}
+
+@media screen and (max-width: 749px) {
+  .alc-recs__header {
+    align-items: center;
+    margin-bottom: 14px;
+  }
+
+  .alc-recs__nav {
+    display: none;
+  }
+
+  .alc-recs__link {
+    min-height: 36px;
+    padding: 0 14px;
+    font-size: 12.5px;
+  }
+
+  .alc-recs__grid.grid,
+  .alc-recs__grid.grid.slider {
+    gap: 10px;
+    margin: 0 -1.5rem;
+    padding: 2px 1.5rem 10px;
+    scroll-padding-inline: 1.5rem;
+  }
+
+  .alc-recs__grid .grid__item,
+  .alc-recs__item {
+    flex-basis: 46%;
+  }
+}

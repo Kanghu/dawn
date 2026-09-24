@@ -24,23 +24,16 @@
         assign group_metaobj = variant_group | metaobject
         assign group_products = variant_group.group | metaobject
         assign available_count = 0
-        assign current_tag = ''
         for group_product in group_products.value
           assign item = group_product | metaobject
           if item.product.value.available
             assign available_count = available_count | plus: 1
           endif
-          if item.product.value.handle == product.handle
-            assign current_tag = item.tag
-          endif
         endfor
       -%}
       {%- if available_count > 1 -%}
         <div class="alc-rvp__group">
-          <p class="alc-rvp__label">
-            {{- block.settings.custom_text }} {{ group_metaobj.tag_type -}}
-            {%- if current_tag != blank -%}: <strong>{{ current_tag }}</strong>{%- endif -%}
-          </p>
+          <p class="alc-rvp__label">{{ block.settings.custom_text }} {{ group_metaobj.tag_type }}</p>
           <ul class="alc-rvp__list" role="list">
             {%- for pass in (1..2) -%}
               {%- for group_product in group_products.value -%}
