@@ -15,6 +15,7 @@
   Accepts:
   - form_id: {String} id of the cart form the checkout button submits
   - button_id: {String} id for the checkout button (Dawn's JS looks it up)
+  - view_cart: {Boolean} also show a "View cart (N)" link to the cart page (drawer only)
 
   Usage:
   {% render 'alc-cart-summary', form_id: 'CartDrawer-Form', button_id: 'CartDrawer-Checkout' %}
@@ -104,6 +105,10 @@
     <svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="10.5" width="14" height="10" rx="2"/><path d="M8.5 10.5V7.5a3.5 3.5 0 0 1 7 0v3"/></svg>
     {{ 'sections.cart.checkout' | t }}
   </button>
+
+  {%- if view_cart and cart != empty -%}
+    <a href="{{ routes.cart_url }}" class="alc-csum__view">{{ 'general.cart.view' | t: count: cart.item_count | capitalize }}</a>
+  {%- endif -%}
 
   {%- if cart != empty -%}
     <ul class="alc-csum__trust" role="list">
