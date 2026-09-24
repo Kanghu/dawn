@@ -7,6 +7,8 @@
   Accepts:
   - key: {String} read_more | about | useful_links | faq | read_all | show_less | explore | sku | asked_by | answer
     | recs_eyebrow | recs_title | recs_view_all | recent_eyebrow | recent_title | recent_clear
+    | cart_free_left | cart_free_ok | cart_shipping | cart_free | cart_eta | cart_secure
+    | cart_at_checkout | cart_subtotal ({amount} in cart_free_left is filled in by assets/alc-cart.js)
     ([category] in the recs_* strings is replaced by the caller)
 
   Usage:
@@ -16,29 +18,29 @@
   assign lang = request.locale.iso_code | downcase | slice: 0, 2
   case lang
     when 'en'
-      assign w = 'Read more|About|Useful links|Frequently asked questions|Read all|Show less|Explore also|Product code|Asked by|Answer|From [category]|You might also like|View all: [category]|Your history|Recently viewed|Clear history'
+      assign w = 'Read more|About|Useful links|Frequently asked questions|Read all|Show less|Explore also|Product code|Asked by|Answer|From [category]|You might also like|View all: [category]|Your history|Recently viewed|Clear history|Add {amount} more for free delivery|You get free delivery!|Shipping|Free|Estimated delivery|Secure payment|Calculated at checkout|Subtotal'
     when 'hu'
-      assign w = 'Tovább olvasom|Tudnivalók:|Hasznos linkek|Gyakran ismételt kérdések|Teljes szöveg|Kevesebb|Fedezze fel ezeket is|Termékkód|Kérdezte:|Válasz|Kategória: [category]|Ezek is érdekelhetik|Összes megtekintése: [category]|Előzmények|Nemrég megtekintett|Előzmények törlése'
+      assign w = 'Tovább olvasom|Tudnivalók:|Hasznos linkek|Gyakran ismételt kérdések|Teljes szöveg|Kevesebb|Fedezze fel ezeket is|Termékkód|Kérdezte:|Válasz|Kategória: [category]|Ezek is érdekelhetik|Összes megtekintése: [category]|Előzmények|Nemrég megtekintett|Előzmények törlése|Még {amount} az ingyenes szállításhoz|Ingyenes szállítás!|Szállítás|Ingyenes|Várható kézbesítés|Biztonságos fizetés|A pénztárban számoljuk|Részösszeg'
     when 'pl'
-      assign w = 'Czytaj więcej|O kategorii|Przydatne linki|Najczęściej zadawane pytania|Czytaj całość|Zwiń|Zobacz także|Kod produktu|Pyta:|Odpowiedź|Z kategorii [category]|Może Cię również zainteresować|Zobacz wszystkie: [category]|Twoja historia|Ostatnio oglądane|Wyczyść historię'
+      assign w = 'Czytaj więcej|O kategorii|Przydatne linki|Najczęściej zadawane pytania|Czytaj całość|Zwiń|Zobacz także|Kod produktu|Pyta:|Odpowiedź|Z kategorii [category]|Może Cię również zainteresować|Zobacz wszystkie: [category]|Twoja historia|Ostatnio oglądane|Wyczyść historię|Dodaj jeszcze {amount}, aby mieć darmową dostawę|Masz darmową dostawę!|Dostawa|Gratis|Przewidywana dostawa|Bezpieczna płatność|Obliczana przy kasie|Suma częściowa'
     when 'el'
-      assign w = 'Διαβάστε περισσότερα|Σχετικά με|Χρήσιμοι σύνδεσμοι|Συχνές ερωτήσεις|Διαβάστε όλο|Λιγότερα|Ανακαλύψτε επίσης|Κωδικός προϊόντος|Ερώτηση από|Απάντηση|Από την κατηγορία [category]|Μπορεί επίσης να σας ενδιαφέρουν|Δείτε όλα: [category]|Το ιστορικό σας|Είδατε πρόσφατα|Διαγραφή ιστορικού'
+      assign w = 'Διαβάστε περισσότερα|Σχετικά με|Χρήσιμοι σύνδεσμοι|Συχνές ερωτήσεις|Διαβάστε όλο|Λιγότερα|Ανακαλύψτε επίσης|Κωδικός προϊόντος|Ερώτηση από|Απάντηση|Από την κατηγορία [category]|Μπορεί επίσης να σας ενδιαφέρουν|Δείτε όλα: [category]|Το ιστορικό σας|Είδατε πρόσφατα|Διαγραφή ιστορικού|Προσθέστε ακόμη {amount} για δωρεάν αποστολή|Έχετε δωρεάν αποστολή!|Μεταφορικά|Δωρεάν|Εκτιμώμενη παράδοση|Ασφαλής πληρωμή|Υπολογίζεται στο ταμείο|Μερικό σύνολο'
     when 'bg'
-      assign w = 'Прочетете още|За|Полезни връзки|Често задавани въпроси|Прочетете всичко|По-малко|Разгледайте също|Код на продукта|Въпрос от|Отговор|От категорията [category]|Може да ви харесат и|Вижте всички: [category]|Вашата история|Наскоро разгледани|Изчисти историята'
+      assign w = 'Прочетете още|За|Полезни връзки|Често задавани въпроси|Прочетете всичко|По-малко|Разгледайте също|Код на продукта|Въпрос от|Отговор|От категорията [category]|Може да ви харесат и|Вижте всички: [category]|Вашата история|Наскоро разгледани|Изчисти историята|Добавете още {amount} за безплатна доставка|Имате безплатна доставка!|Доставка|Безплатно|Очаквана доставка|Сигурно плащане|Изчислява се при плащане|Междинна сума'
     when 'it'
-      assign w = 'Leggi di più|Informazioni su|Link utili|Domande frequenti|Leggi tutto|Mostra meno|Scopri anche|Codice prodotto|Domanda di|Risposta|Dalla categoria [category]|Potrebbe interessarti anche|Vedi tutti: [category]|La tua cronologia|Visti di recente|Cancella cronologia'
+      assign w = 'Leggi di più|Informazioni su|Link utili|Domande frequenti|Leggi tutto|Mostra meno|Scopri anche|Codice prodotto|Domanda di|Risposta|Dalla categoria [category]|Potrebbe interessarti anche|Vedi tutti: [category]|La tua cronologia|Visti di recente|Cancella cronologia|Aggiungi ancora {amount} per la spedizione gratuita|Hai la spedizione gratuita!|Spedizione|Gratuita|Consegna stimata|Pagamento sicuro|Calcolata al checkout|Subtotale'
     when 'fr'
-      assign w = 'Lire la suite|À propos de|Liens utiles|Questions fréquentes|Tout lire|Voir moins|Découvrez aussi|Référence|Question de|Réponse|De la catégorie [category]|Vous aimerez aussi|Voir tout : [category]|Votre historique|Vus récemment|Effacer l’historique'
+      assign w = 'Lire la suite|À propos de|Liens utiles|Questions fréquentes|Tout lire|Voir moins|Découvrez aussi|Référence|Question de|Réponse|De la catégorie [category]|Vous aimerez aussi|Voir tout : [category]|Votre historique|Vus récemment|Effacer l’historique|Plus que {amount} pour la livraison gratuite|Livraison gratuite !|Livraison|Gratuite|Livraison estimée|Paiement sécurisé|Calculée au paiement|Sous-total'
     when 'cs'
-      assign w = 'Číst dále|O kategorii|Užitečné odkazy|Často kladené otázky|Číst vše|Méně|Prozkoumejte také|Kód produktu|Dotaz od|Odpověď|Z kategorie [category]|Mohlo by vás zajímat|Zobrazit vše: [category]|Vaše historie|Nedávno zobrazené|Vymazat historii'
+      assign w = 'Číst dále|O kategorii|Užitečné odkazy|Často kladené otázky|Číst vše|Méně|Prozkoumejte také|Kód produktu|Dotaz od|Odpověď|Z kategorie [category]|Mohlo by vás zajímat|Zobrazit vše: [category]|Vaše historie|Nedávno zobrazené|Vymazat historii|Přidejte ještě {amount} a máte dopravu zdarma|Máte dopravu zdarma!|Doprava|Zdarma|Předpokládané doručení|Bezpečná platba|Vypočítá se v pokladně|Mezisoučet'
     when 'sk'
-      assign w = 'Čítať ďalej|O kategórii|Užitočné odkazy|Často kladené otázky|Čítať všetko|Menej|Preskúmajte aj|Kód produktu|Otázka od|Odpoveď|Z kategórie [category]|Mohlo by vás zaujímať|Zobraziť všetko: [category]|Vaša história|Nedávno zobrazené|Vymazať históriu'
+      assign w = 'Čítať ďalej|O kategórii|Užitočné odkazy|Často kladené otázky|Čítať všetko|Menej|Preskúmajte aj|Kód produktu|Otázka od|Odpoveď|Z kategórie [category]|Mohlo by vás zaujímať|Zobraziť všetko: [category]|Vaša história|Nedávno zobrazené|Vymazať históriu|Pridajte ešte {amount} a máte dopravu zadarmo|Máte dopravu zadarmo!|Doprava|Zadarmo|Predpokladané doručenie|Bezpečná platba|Vypočíta sa v pokladni|Medzisúčet'
     when 'hr'
-      assign w = 'Pročitajte više|O kategoriji|Korisne poveznice|Često postavljana pitanja|Pročitajte sve|Manje|Istražite i|Šifra proizvoda|Pitanje od|Odgovor|Iz kategorije [category]|Moglo bi vas zanimati|Pogledajte sve: [category]|Vaša povijest|Nedavno pregledano|Obriši povijest'
+      assign w = 'Pročitajte više|O kategoriji|Korisne poveznice|Često postavljana pitanja|Pročitajte sve|Manje|Istražite i|Šifra proizvoda|Pitanje od|Odgovor|Iz kategorije [category]|Moglo bi vas zanimati|Pogledajte sve: [category]|Vaša povijest|Nedavno pregledano|Obriši povijest|Dodajte još {amount} za besplatnu dostavu|Imate besplatnu dostavu!|Dostava|Besplatno|Procijenjena dostava|Sigurno plaćanje|Izračunava se na blagajni|Međuzbroj'
     when 'de'
-      assign w = 'Weiterlesen|Über|Nützliche Links|Häufig gestellte Fragen|Alles lesen|Weniger|Entdecken Sie auch|Artikelnummer|Frage von|Antwort|Aus der Kategorie [category]|Das könnte Sie auch interessieren|Alle ansehen: [category]|Ihr Verlauf|Zuletzt angesehen|Verlauf löschen'
+      assign w = 'Weiterlesen|Über|Nützliche Links|Häufig gestellte Fragen|Alles lesen|Weniger|Entdecken Sie auch|Artikelnummer|Frage von|Antwort|Aus der Kategorie [category]|Das könnte Sie auch interessieren|Alle ansehen: [category]|Ihr Verlauf|Zuletzt angesehen|Verlauf löschen|Noch {amount} bis zum kostenlosen Versand|Kostenloser Versand!|Versand|Kostenlos|Voraussichtliche Lieferung|Sichere Zahlung|Wird an der Kasse berechnet|Zwischensumme'
     else
-      assign w = 'Citește mai mult|Despre|Link-uri utile|Întrebări frecvente|Citește tot|Arată mai puțin|Explorează și|Cod produs|Întrebare de la|Răspuns|Din categoria [category]|Te-ar putea interesa și următoarele|Vezi toate produsele din [category]|Istoricul tău|Vizualizate recent|Șterge istoricul'
+      assign w = 'Citește mai mult|Despre|Link-uri utile|Întrebări frecvente|Citește tot|Arată mai puțin|Explorează și|Cod produs|Întrebare de la|Răspuns|Din categoria [category]|Te-ar putea interesa și următoarele|Vezi toate produsele din [category]|Istoricul tău|Vizualizate recent|Șterge istoricul|Mai adaugă {amount} pentru livrare gratuită|Ai livrare gratuită!|Transport|Gratuit|Livrare estimată|Plată securizată|Se calculează la checkout|Subtotal'
   endcase
   assign parts = w | split: '|'
   case key
@@ -74,5 +76,21 @@
       echo parts[14]
     when 'recent_clear'
       echo parts[15]
+    when 'cart_free_left'
+      echo parts[16]
+    when 'cart_free_ok'
+      echo parts[17]
+    when 'cart_shipping'
+      echo parts[18]
+    when 'cart_free'
+      echo parts[19]
+    when 'cart_eta'
+      echo parts[20]
+    when 'cart_secure'
+      echo parts[21]
+    when 'cart_at_checkout'
+      echo parts[22]
+    when 'cart_subtotal'
+      echo parts[23]
   endcase
 -%}

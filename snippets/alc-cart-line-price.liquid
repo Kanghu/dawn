@@ -1,0 +1,27 @@
+{% comment %}
+  Line price for the cart drawer and cart page: the compare-at total struck through (or the
+  pre-discount total), then the line total, in sale colour when it is lower.
+
+  Accepts:
+  - item: {Object} cart line item
+
+  Usage:
+  {% render 'alc-cart-line-price', item: item %}
+{% endcomment %}
+{%- liquid
+  assign was = 0
+  if item.variant.compare_at_price > item.original_price
+    assign was = item.variant.compare_at_price | times: item.quantity
+  endif
+  if item.original_line_price > item.final_line_price and item.original_line_price > was
+    assign was = item.original_line_price
+  endif
+-%}
+<div class="alc-line-price{% if was > item.final_line_price %} is-sale{% endif %}">
+  {%- if was > item.final_line_price -%}
+    <span class="visually-hidden">{{ 'products.product.price.regular_price' | t }}</span>
+    <s class="alc-line-price__was">{{ was | money }}</s>
+    <span class="visually-hidden">{{ 'products.product.price.sale_price' | t }}</span>
+  {%- endif -%}
+  <span class="alc-line-price__now">{{ item.final_line_price | money }}</span>
+</div>
