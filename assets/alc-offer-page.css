@@ -14,7 +14,7 @@
   position: relative;
   display: flex;
   align-items: center;
-  min-height: min(78vh, 640px);
+  min-height: min(64vh, 520px);
   overflow: hidden;
   isolation: isolate;
   background: #0b0b0b;
@@ -51,8 +51,8 @@
 
 .alc-of__hero-inner {
   width: 100%;
-  padding-top: 88px;
-  padding-bottom: 96px;
+  padding-top: 64px;
+  padding-bottom: 68px;
 }
 
 .alc-of__hero-copy {
@@ -63,7 +63,7 @@
   display: inline-flex;
   align-items: center;
   gap: 10px;
-  margin: 0 0 20px;
+  margin: 0 0 16px;
   font-size: 12px;
   font-weight: 600;
   letter-spacing: 0.16em;
@@ -97,7 +97,7 @@
 .alc-of__title {
   margin: 0;
   font-family: inherit;
-  font-size: clamp(36px, 4.4vw, 60px);
+  font-size: clamp(34px, 4vw, 54px);
   font-weight: 600;
   line-height: 1.04;
   letter-spacing: -0.03em;
@@ -109,8 +109,8 @@
   display: flex;
   flex-wrap: wrap;
   align-items: baseline;
-  gap: 0 14px;
-  margin: 18px 0 0;
+  gap: 0 12px;
+  margin: 10px 0 0;
   line-height: 0.9;
 }
 
@@ -122,7 +122,7 @@
 }
 
 .alc-of__deal-pct {
-  font-size: clamp(64px, 8vw, 120px);
+  font-size: clamp(56px, 6.6vw, 96px);
   font-weight: 700;
   letter-spacing: -0.055em;
   color: var(--alc-of-accent);
@@ -132,7 +132,7 @@
 /* Countdown: plain figures, no boxes. */
 .alc-of__countdown {
   display: block;
-  margin-top: 32px;
+  margin-top: 24px;
 }
 
 .alc-of__countdown[hidden] {
@@ -166,7 +166,7 @@
 }
 
 .alc-of__unit b {
-  font-size: 34px;
+  font-size: 30px;
   font-weight: 500;
   line-height: 1;
   letter-spacing: -0.02em;
@@ -182,9 +182,9 @@
 }
 
 .alc-of__sep {
-  font-size: 28px;
-  line-height: 1.1;
-  color: rgba(255, 255, 255, 0.25);
+  font-size: 24px;
+  line-height: 1.15;
+  color: rgba(255, 255, 255, 0.28);
 }
 
 .alc-of__countdown.is-ended .alc-of__clock,
@@ -207,9 +207,9 @@
   display: inline-flex;
   align-items: center;
   gap: 10px;
-  min-height: 52px;
-  margin-top: 36px;
-  padding: 0 28px;
+  min-height: 50px;
+  margin-top: 28px;
+  padding: 0 26px;
   border-radius: 999px;
   background: #fff;
   color: #111;
@@ -582,9 +582,10 @@
 
 .alc-of__sort select {
   min-height: 40px;
-  padding: 0 36px 0 14px;
+  padding: 0 38px 0 16px;
   border: 1px solid var(--alc-of-line);
-  border-radius: 999px;
+  border-radius: 999px !important;
+  box-shadow: none !important;
   background: #fff url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%23151515' stroke-width='2.4' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E") no-repeat right 14px center;
   color: var(--alc-of-ink);
   font: inherit;
@@ -636,7 +637,8 @@
   }
 
   .alc-of__wide .alc-pc__title {
-    font-size: 17px;
+    font-size: 18px;
+    line-height: 1.4;
     min-height: 0;
   }
 
@@ -750,7 +752,7 @@
   .alc-of__hero-media {
     position: relative;
     inset: auto;
-    height: 300px;
+    height: 210px;
     z-index: 0;
   }
 
@@ -760,48 +762,76 @@
 
   .alc-of__hero-inner {
     position: relative;
-    margin-top: -64px;
+    margin-top: -48px;
     padding-top: 0;
-    padding-bottom: 40px;
+    padding-bottom: 28px;
   }
 
   .alc-of__eyebrow {
-    margin-bottom: 14px;
+    margin-bottom: 10px;
+    font-size: 11px;
+  }
+
+  .alc-of__title {
+    font-size: 32px;
   }
 
   .alc-of__deal {
-    margin-top: 12px;
+    margin-top: 6px;
+  }
+
+  .alc-of__deal-pct {
+    font-size: 60px;
+  }
+
+  .alc-of__deal-pre,
+  .alc-of__deal-post {
+    font-size: 16px;
   }
 
   .alc-of__countdown {
-    margin-top: 24px;
+    margin-top: 18px;
+  }
+
+  .alc-of__countdown-label {
+    margin-bottom: 8px;
+    font-size: 11px;
   }
 
   .alc-of__clock {
-    gap: 10px;
+    gap: 8px;
+  }
+
+  .alc-of__unit {
+    min-width: 38px;
   }
 
   .alc-of__unit b {
-    font-size: 30px;
+    font-size: 26px;
+  }
+
+  .alc-of__unit small {
+    margin-top: 6px;
   }
 
   .alc-of__sep {
-    font-size: 24px;
+    font-size: 20px;
   }
 
   .alc-of__cta {
     justify-content: center;
     width: 100%;
-    margin-top: 26px;
+    min-height: 48px;
+    margin-top: 20px;
   }
 
   .alc-of__caption {
-    top: 14px;
+    top: 12px;
     right: 1.5rem;
     bottom: auto;
     left: 1.5rem;
     max-width: none;
-    padding: 8px 12px 8px 8px;
+    padding: 7px 12px 7px 7px;
     border-radius: 14px;
   }
 
