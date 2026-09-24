@@ -59,7 +59,7 @@
   width: 100%;
   height: 100%;
   object-fit: cover;
-  transition: transform 0.7s cubic-bezier(0.2, 0.7, 0.2, 1), opacity 0.45s ease;
+  transition: transform 0.9s cubic-bezier(0.2, 0.7, 0.2, 1), opacity 0.45s ease;
 }
 
 .alc-pc__placeholder {
@@ -112,7 +112,7 @@
   line-height: 1.2;
   letter-spacing: 0.02em;
   white-space: nowrap;
-  box-shadow: 0 4px 12px -5px rgba(0, 0, 0, 0.45);
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.14), 0 3px 8px -4px rgba(0, 0, 0, 0.3);
 }
 
 .alc-pc__badge--sale {
@@ -162,6 +162,7 @@
   line-height: 1.45;
   letter-spacing: 0.005em;
   color: var(--alc-pc-ink);
+  text-wrap: pretty;
   min-height: calc(1.45em * 2);
 }
 
@@ -172,6 +173,7 @@
   overflow: hidden;
   color: inherit;
   text-decoration: none;
+  -webkit-tap-highlight-color: transparent;
 }
 
 /* The whole tile is clickable; the add-to-cart button sits above the overlay. */
@@ -211,11 +213,23 @@
 .alc-pc__stock::before {
   content: '';
   flex: none;
-  width: 7px;
-  height: 7px;
+  width: 6px;
+  height: 6px;
   border-radius: 50%;
   background: currentColor;
-  box-shadow: 0 0 0 3px color-mix(in srgb, currentColor 18%, transparent);
+  box-shadow: 0 0 0 2.5px color-mix(in srgb, currentColor 16%, transparent);
+}
+
+/* A block so ::first-letter applies (the flex parent would ignore it). */
+.alc-pc__stock-text {
+  display: block;
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.alc-pc__stock-text::first-letter {
+  text-transform: uppercase;
 }
 
 .alc-pc__stock--in { color: var(--alc-pc-in); }
@@ -269,6 +283,7 @@
   font-weight: 400 !important;
   color: var(--alc-pc-muted) !important;
   text-decoration-thickness: 1px;
+  text-decoration-color: color-mix(in srgb, var(--alc-pc-muted) 70%, transparent);
   white-space: nowrap;
 }
 
@@ -277,7 +292,8 @@
   line-height: 1.2;
   font-weight: 700 !important;
   color: var(--alc-pc-ink) !important;
-  font-variant-numeric: tabular-nums;
+  font-variant-numeric: lining-nums proportional-nums;
+  letter-spacing: -0.012em !important;
   white-space: nowrap;
 }
 
@@ -294,7 +310,7 @@
   align-items: center;
   justify-content: center;
   padding: 0.45em 0.55em;
-  border-radius: 10px;
+  border-radius: 8px;
   background: var(--alc-discount-badge-bg, var(--alc-pc-sale));
   color: var(--alc-discount-badge-text, #fff);
   font-size: clamp(12px, 6cqi, 18px);
@@ -302,7 +318,7 @@
   line-height: 1;
   letter-spacing: -0.01em;
   white-space: nowrap;
-  box-shadow: 0 6px 16px -8px color-mix(in srgb, var(--alc-discount-badge-bg, #b3121f) 80%, transparent);
+  font-variant-numeric: lining-nums;
 }
 
 .alc-pc__savings {
@@ -341,7 +357,12 @@
   cursor: pointer;
   box-shadow: none;
   filter: none;
-  transition: background-color 0.25s ease, color 0.25s ease, border-color 0.25s ease;
+  -webkit-tap-highlight-color: transparent;
+  transition: background-color 0.25s ease, color 0.25s ease, border-color 0.25s ease, transform 0.15s ease;
+}
+
+.alc-pc .alc-pc__atc:active:not([disabled]) {
+  transform: scale(0.98);
 }
 
 .alc-pc .alc-pc__atc:hover,
@@ -401,7 +422,7 @@
   }
 
   .alc-pc__tile:hover .alc-pc__img--primary {
-    transform: scale(1.045);
+    transform: scale(1.035);
   }
 
   .alc-pc__tile:hover .alc-pc__img--secondary {
@@ -462,7 +483,7 @@
 
   .alc-pc .alc-pc__pct {
     padding: 0.6em 0.5em;
-    border-radius: 8px;
+    border-radius: 7px;
     font-size: 12px;
   }
 
@@ -486,7 +507,7 @@
   }
 
   .alc-pc .alc-pc__atc {
-    min-height: 38px;
+    min-height: 40px;
     padding: 0 8px;
     font-size: 12px;
     letter-spacing: 0.01em;
