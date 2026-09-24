@@ -18,6 +18,7 @@
 {{ 'section-alc-recs.css' | asset_url | stylesheet_tag }}
 {{ 'component-alc-card.css' | asset_url | stylesheet_tag }}
 <script src="{{ 'alc-recently-viewed.js' | asset_url }}" defer="defer"></script>
+<script src="{{ 'alc-recs.js' | asset_url }}" defer="defer"></script>
 
 {%- style -%}
   #section-{{ section.id }} {
@@ -34,6 +35,27 @@
   }
 {%- endstyle -%}
 
+{%- comment -%} Empty settings use the built-in translation (snippets/alc-i18n.liquid). {%- endcomment -%}
+{%- liquid
+  assign rv_title = section.settings.title
+  if rv_title == blank
+    capture rv_title
+      render 'alc-i18n', key: 'recent_title'
+    endcapture
+  endif
+  assign rv_eyebrow = section.settings.eyebrow_text
+  if rv_eyebrow == blank
+    capture rv_eyebrow
+      render 'alc-i18n', key: 'recent_eyebrow'
+    endcapture
+  endif
+  assign rv_clear = section.settings.clear_text
+  if rv_clear == blank
+    capture rv_clear
+      render 'alc-i18n', key: 'recent_clear'
+    endcapture
+  endif
+-%}
 <alc-recently-viewed
   id="section-{{ section.id }}"
   class="alc-recs alc-recs--recent color-{{ section.settings.color_scheme }} gradient"
@@ -52,22 +74,29 @@
   <div class="page-width">
     <header class="alc-recs__header">
       <div class="alc-recs__text">
-        {%- if section.settings.eyebrow_text != blank -%}
-          <p class="alc-recs__eyebrow">{{ section.settings.eyebrow_text }}</p>
-        {%- endif -%}
+        <p class="alc-recs__eyebrow">{{ rv_eyebrow }}</p>
         <div id="Heading-{{ section.id }}" class="alc-recs__title alc-h2 {{ section.settings.heading_size }}">
-          {{ section.settings.title }}
+          {{ rv_title }}
         </div>
         {%- if section.settings.subtitle_text != blank -%}
           <p class="alc-recs__subtitle">{{ section.settings.subtitle_text }}</p>
         {%- endif -%}
       </div>
-      {%- if section.settings.clear_text != blank -%}
+      <div class="alc-recs__actions">
         <button type="button" class="alc-recs__link alc-recs__link--muted" data-clear>
-          {{ section.settings.clear_text }}
+          {{ rv_clear }}
           {{- 'icon-close-small.svg' | inline_asset_content -}}
         </button>
-      {%- endif -%}
+        {%- comment -%} Carousel arrows (assets/alc-recs.js); hidden while the row fits. {%- endcomment -%}
+        <div class="alc-recs__nav">
+          <button type="button" class="alc-recs__arrow" data-alc-recs-prev aria-label="{{ 'general.slider.previous_slide' | t }}" disabled>
+            <svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="m15 6-6 6 6 6"/></svg>
+          </button>
+          <button type="button" class="alc-recs__arrow" data-alc-recs-next aria-label="{{ 'general.slider.next_slide' | t }}">
+            <svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="m9 6 6 6-6 6"/></svg>
+          </button>
+        </div>
+      </div>
     </header>
 
     <div class="alc-recs__results" data-results aria-live="polite"></div>
@@ -95,13 +124,13 @@
       "type": "text",
       "id": "eyebrow_text",
       "label": "Eyebrow text",
-      "default": "Istoricul tău"
+      "info": "Leave empty to use the built-in text, translated for every storefront language."
     },
     {
       "type": "text",
       "id": "title",
       "label": "Heading",
-      "default": "Vizualizate recent"
+      "info": "Leave empty to use the built-in text, translated for every storefront language."
     },
     {
       "type": "select",
@@ -124,8 +153,7 @@
       "type": "text",
       "id": "clear_text",
       "label": "'Clear history' button text",
-      "info": "Leave empty to hide the button.",
-      "default": "Șterge istoricul"
+      "info": "Leave empty to use the built-in text, translated for every storefront language."
     },
     {
       "type": "checkbox",

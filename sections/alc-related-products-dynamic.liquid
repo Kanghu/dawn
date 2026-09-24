@@ -27,6 +27,7 @@
 {{ 'component-slider.css' | asset_url | stylesheet_tag }}
 {{ 'section-alc-recs.css' | asset_url | stylesheet_tag }}
 {{ 'component-alc-card.css' | asset_url | stylesheet_tag }}
+<script src="{{ 'alc-recs.js' | asset_url }}" defer="defer"></script>
 
 {%- liquid
   assign limit = section.settings.products_to_show
@@ -179,6 +180,30 @@
 {%- endcapture -%}
 
 {%- if count > 0 -%}
+  {%- comment -%}
+    Texts: a filled-in setting wins; empty settings use the built-in translation for the
+    storefront language (snippets/alc-i18n.liquid), so every market gets its own language.
+  {%- endcomment -%}
+  {%- liquid
+    assign recs_title = section.settings.title
+    if recs_title == blank
+      capture recs_title
+        render 'alc-i18n', key: 'recs_title'
+      endcapture
+    endif
+    assign recs_eyebrow = section.settings.eyebrow_text
+    if recs_eyebrow == blank
+      capture recs_eyebrow
+        render 'alc-i18n', key: 'recs_eyebrow'
+      endcapture
+    endif
+    assign recs_view_all = section.settings.view_all_text
+    if recs_view_all == blank
+      capture recs_view_all
+        render 'alc-i18n', key: 'recs_view_all'
+      endcapture
+    endif
+  -%}
   {%- style -%}
     #section-{{ section.id }} {
       --alc-recs-accent: {{ section.settings.accent_color | default: '#03bad6' }};
@@ -203,13 +228,13 @@
     <div class="page-width">
       <header class="alc-recs__header">
         <div class="alc-recs__text">
-          {%- if section.settings.show_category and category_name != blank and section.settings.eyebrow_text != blank -%}
+          {%- if section.settings.show_category and category_name != blank -%}
             <p class="alc-recs__eyebrow">
-              {{ section.settings.eyebrow_text | replace: '[category]', category_name }}
+              {{ recs_eyebrow | replace: '[category]', category_name }}
             </p>
           {%- endif -%}
           <div id="Heading-{{ section.id }}" class="alc-recs__title alc-h2 {{ section.settings.heading_size }}">
-            {{ section.settings.title }}
+            {{ recs_title }}
           </div>
           {%- if section.settings.show_subtitle and section.settings.subtitle_text != blank -%}
             <p class="alc-recs__subtitle">
@@ -217,12 +242,23 @@
             </p>
           {%- endif -%}
         </div>
-        {%- if section.settings.show_category and category_collection and category_collection.url != blank and section.settings.view_all_text != blank -%}
-          <a class="alc-recs__link" href="{{ category_collection.url }}">
-            {{ section.settings.view_all_text | replace: '[category]', category_name }}
-            {{- 'icon-arrow.svg' | inline_asset_content -}}
-          </a>
-        {%- endif -%}
+        <div class="alc-recs__actions">
+          {%- if section.settings.show_category and category_collection and category_collection.url != blank -%}
+            <a class="alc-recs__link" href="{{ category_collection.url }}">
+              {{ recs_view_all | replace: '[category]', category_name }}
+              {{- 'icon-arrow.svg' | inline_asset_content -}}
+            </a>
+          {%- endif -%}
+          {%- comment -%} Carousel arrows (assets/alc-recs.js); hidden while the row fits. {%- endcomment -%}
+          <div class="alc-recs__nav">
+            <button type="button" class="alc-recs__arrow" data-alc-recs-prev aria-label="{{ 'general.slider.previous_slide' | t }}" disabled>
+              <svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="m15 6-6 6 6 6"/></svg>
+            </button>
+            <button type="button" class="alc-recs__arrow" data-alc-recs-next aria-label="{{ 'general.slider.next_slide' | t }}">
+              <svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="m9 6 6 6-6 6"/></svg>
+            </button>
+          </div>
+        </div>
       </header>
 
       <slider-component class="slider-mobile-gutter">
@@ -241,7 +277,7 @@
         {
           "@context": "https://schema.org",
           "@type": "ItemList",
-          "name": {{ section.settings.title | json }},
+          "name": {{ recs_title | strip | json }},
           "numberOfItems": {{ count }},
           "itemListElement": [{{ ld_items }}]
         }
@@ -271,7 +307,7 @@
       "type": "text",
       "id": "title",
       "label": "Heading",
-      "default": "Te-ar putea interesa și următoarele"
+      "info": "Leave empty to use the built-in text, translated for every storefront language."
     },
     {
       "type": "select",
@@ -288,8 +324,7 @@
       "type": "text",
       "id": "eyebrow_text",
       "label": "Eyebrow text",
-      "info": "[category] is replaced with the category name.",
-      "default": "Din categoria [category]"
+      "info": "Leave empty to use the built-in text, translated for every storefront language. [category] is replaced with the category name."
     },
     {
       "type": "text",
@@ -302,8 +337,7 @@
       "type": "text",
       "id": "view_all_text",
       "label": "'View all' link text",
-      "info": "[category] is replaced with the category name.",
-      "default": "Vezi toate produsele din [category]"
+      "info": "Leave empty to use the built-in text, translated for every storefront language. [category] is replaced with the category name."
     },
     {
       "type": "checkbox",

@@ -62,8 +62,8 @@
   .breadcrumbs__item:not(:last-child)::after {
     content: '{{ settings.separator_symbol | default: "›" | escape }}';
     display: inline-block;
-    margin: 0 0.15em;
-    color: rgba(var(--color-foreground), 0.32);
+    margin: 0 0.55em;
+    color: rgba(var(--color-foreground), 0.28);
     font-size: 1em;
   }
   .breadcrumbs__item.shrink {
@@ -81,19 +81,22 @@
     transition: color 0.2s;
     max-width: 100%;
   }
+  /* Plain text links: muted, darker and underlined on hover. */
   a.breadcrumbs__link {
-    padding: 0.35em 0.7em;
-    border-radius: 999px;
-    background-color: rgba(var(--color-foreground), 0.055);
-    transition: background-color 0.2s ease, color 0.2s ease;
+    padding: 0.35em 0.15em;
+    color: rgba(var(--color-foreground), 0.62);
+    text-decoration: underline;
+    text-decoration-color: transparent;
+    text-underline-offset: 0.25em;
+    transition: color 0.2s ease, text-decoration-color 0.2s ease;
   }
   a.breadcrumbs__link:hover {
-    background-color: rgba(var(--color-foreground), 0.11);
     color: rgba(var(--color-foreground), 1);
+    text-decoration-color: rgba(var(--color-foreground), 0.35);
   }
   a.breadcrumbs__link--home {
-    padding-left: 0.6em;
-    padding-right: 0.6em;
+    padding-left: 0;
+    padding-right: 0.15em;
   }
   .breadcrumbs__home-icon {
     display: inline-block;
@@ -123,6 +126,79 @@
     }
     .breadcrumbs__item.shrink {
       max-width: none;
+    }
+  }
+
+  /* Trail on the left, product code on the right. */
+  .breadcrumbs__row {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+  }
+  .breadcrumbs__row > .breadcrumbs__list {
+    flex: 1 1 auto;
+    min-width: 0;
+  }
+  .breadcrumbs__sku {
+    display: flex;
+    flex: none;
+    align-items: baseline;
+    gap: 5px;
+    margin: 0;
+    color: rgba(var(--color-foreground), 0.6);
+    font-size: 0.85em;
+    white-space: nowrap;
+  }
+  .breadcrumbs__sku-value {
+    color: rgba(var(--color-foreground), 1);
+    font-weight: 600;
+    letter-spacing: 0.01em;
+  }
+  @media (max-width: 749px) {
+    .breadcrumbs__row {
+      gap: 10px;
+    }
+    /* The product name is the H1 right below; on phones the room goes to the code. */
+    .breadcrumbs__item--product {
+      display: none;
+    }
+    .breadcrumbs__item:has(+ .breadcrumbs__item--product)::after {
+      content: none;
+    }
+    .breadcrumbs__row > .breadcrumbs__list.is-scrolled {
+      -webkit-mask-image: linear-gradient(to right, transparent, #000 22px);
+      mask-image: linear-gradient(to right, transparent, #000 22px);
+    }
+    .breadcrumbs__sku {
+      align-items: center;
+      font-size: 0.8em;
+    }
+    /* Phones: home + nearest category (trimmed) + code with a barcode icon. */
+    .breadcrumbs__row:has(.breadcrumbs__item--product) .breadcrumbs__list {
+      overflow: hidden;
+    }
+    .breadcrumbs__row:has(.breadcrumbs__item--product) .breadcrumbs__item:not(:first-child):not(:has(+ .breadcrumbs__item--product)) {
+      display: none;
+    }
+    .breadcrumbs__item:has(+ .breadcrumbs__item--product) {
+      flex-shrink: 1;
+      min-width: 0;
+    }
+    .breadcrumbs__item:has(+ .breadcrumbs__item--product) .breadcrumbs__link {
+      max-width: 100%;
+    }
+    .breadcrumbs__sku-label {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      overflow: hidden;
+      clip: rect(0 0 0 0);
+      white-space: nowrap;
+    }
+  }
+  @media (min-width: 750px) {
+    .breadcrumbs__sku-icon {
+      display: none;
     }
   }
 </style>
@@ -264,8 +340,8 @@
     class="breadcrumbs"
     style="background-color: {{ section.settings.background }}"
     aria-label="breadcrumbs">
-    <div class="page-width">
-      <ol class="breadcrumbs__list">
+    <div class="page-width breadcrumbs__row">
+      <ol class="breadcrumbs__list" data-breadcrumbs-list>
         <li class="breadcrumbs__item">
           <a class="breadcrumbs__link breadcrumbs__link--home" href="{{ routes.root_url }}">
             <svg
@@ -311,13 +387,8 @@
               </li>
             {%- endfor -%}
             {%- assign product_sku = product.selected_or_first_available_variant.sku | default: product.variants.first.sku -%}
-            <li class="breadcrumbs__item shrink">
-              <span
-                class="breadcrumbs__link"
-                aria-current="page"
-                {% if product_sku != blank %}title="SKU: {{ product_sku | escape }}"{% endif %}>
-                {{ product.title }}
-              </span>
+            <li class="breadcrumbs__item shrink breadcrumbs__item--product">
+              <span class="breadcrumbs__link" aria-current="page">{{ product.title }}</span>
             </li>
 
           {%- when 'collection' -%}
@@ -372,6 +443,27 @@
             </li>
         {%- endcase -%}
       </ol>
+      {%- comment -%}
+        Product code at the end of the row, always visible (it is no longer repeated in the
+        buy box). On phones the trail scrolls to its end so the nearest category shows.
+      {%- endcomment -%}
+      {%- if template.name == 'product' and product_sku != blank -%}
+        <p class="breadcrumbs__sku">
+          <svg class="breadcrumbs__sku-icon" aria-hidden="true" focusable="false" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M4 6v12M7.5 6v12M11 6v12M14 6v12M17.5 6v12M20 6v12"/></svg>
+          <span class="breadcrumbs__sku-label">{% render 'alc-i18n', key: 'sku' %}:</span>
+          <span class="breadcrumbs__sku-value">{{ product_sku }}</span>
+        </p>
+      {%- endif -%}
     </div>
   </nav>
+  <script>
+    (() => {
+      const list = document.currentScript.previousElementSibling.querySelector('[data-breadcrumbs-list]');
+      if (!list) return;
+      const sync = () => list.classList.toggle('is-scrolled', list.scrollLeft > 4);
+      list.scrollLeft = list.scrollWidth;
+      sync();
+      list.addEventListener('scroll', sync, { passive: true });
+    })();
+  </script>
 {%- endunless -%}

@@ -1,9 +1,9 @@
 {% comment %}
   Product page stock, delivery and trust rows. Styles: assets/alc-product.css.
 
-  The stock + delivery line sits right above the add-to-cart button (main-product renders
-  it with part: 'stock' from the buy-buttons block); the benefits block itself renders the
-  trust rows (factory price, returns, warranty) below the button with part: 'trust'.
+  Availability + delivery sit in one card right above the add-to-cart button (main-product
+  renders it with part: 'stock' from the buy-buttons block); the benefits block itself
+  renders the trust rows (factory price, returns, warranty) below the button with part: 'trust'.
 
   Accepts:
   - product: {Object}
@@ -53,94 +53,98 @@
 -%}
 
 {%- if render_stock and show_stock_status or render_stock and show_delivery -%}
-  <div class="alc-pb-status">
-    {%- if show_stock_status -%}
-      {%- liquid
-        if product.available
-          if qty > high_stock_threshold or first_variant.inventory_policy == 'continue'
-            assign stock_mod = 'in'
-            assign stock_text = 'alc-benefits.stock.in_stock' | t
-          elsif qty <= low_stock_threshold
-            assign stock_mod = 'last'
-            if qty == 1
-              assign stock_text = 'alc-benefits.stock.last_piece' | t
-            else
-              assign stock_text = 'alc-benefits.stock.last_stock' | t: count: qty
-            endif
-          elsif qty <= medium_stock_threshold
-            assign stock_mod = 'low'
-            assign stock_text = 'alc-benefits.stock.last_stock' | t: count: qty
+  {%- liquid
+    if show_stock_status
+      if product.available
+        if qty > high_stock_threshold or first_variant.inventory_policy == 'continue'
+          assign stock_mod = 'in'
+          assign stock_text = 'alc-benefits.stock.in_stock' | t
+        elsif qty <= low_stock_threshold
+          assign stock_mod = 'last'
+          if qty == 1
+            assign stock_text = 'alc-benefits.stock.last_piece' | t
           else
-            assign stock_mod = 'low'
-            assign stock_text = 'alc-benefits.stock.low_stock' | t: count: qty
+            assign stock_text = 'alc-benefits.stock.last_stock' | t: count: qty
           endif
+        elsif qty <= medium_stock_threshold
+          assign stock_mod = 'low'
+          assign stock_text = 'alc-benefits.stock.last_stock' | t: count: qty
         else
-          assign stock_mod = 'out'
-          assign stock_text = 'alc-benefits.stock.out_of_stock' | t
+          assign stock_mod = 'low'
+          assign stock_text = 'alc-benefits.stock.low_stock' | t: count: qty
         endif
-      -%}
-      <p class="alc-pb-status__stock alc-pb-status__stock--{{ stock_mod }}">
-        <span class="alc-pb-status__dot" aria-hidden="true"></span>
-        {{ stock_text }}
-      </p>
-    {%- endif -%}
-
-    {%- if show_delivery and product.available -%}
-      {%- liquid
-        assign show_free_shipping = false
-        if request.locale.iso_code == 'ro' and product.price_min >= 40000
-          assign show_free_shipping = true
-        endif
-      -%}
-      {%- comment -%}
-        Delivery card. The date range is 2-4 working days from today (same promise as the
-        text and as the shippingDetails in alc-product-schema); it is filled in by the script
-        below with Intl, so weekday and month names follow the page language.
-      {%- endcomment -%}
-      <div class="alc-pb-ship" data-alc-eta data-min="2" data-max="4">
-        <span class="alc-pb-ship__icon" aria-hidden="true">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M3 6.5h11v9H3zM14 9.5h3.6l3.4 3.4v2.6h-7"/><circle cx="7" cy="17.5" r="1.8"/><circle cx="17.5" cy="17.5" r="1.8"/></svg>
-        </span>
-        <span class="alc-pb-ship__body">
-          <strong class="alc-pb-ship__title">
-            {%- if show_free_shipping -%}
-              {{ 'alc-benefits.free_shipping' | t }}
-            {%- else -%}
-              {{ 'alc-benefits.delivery' | t }}
-            {%- endif -%}
-          </strong>
-          <span class="alc-pb-ship__eta" hidden>
-            <svg aria-hidden="true" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3.5" y="5" width="17" height="15" rx="2"/><path d="M3.5 10h17M8 3v4M16 3v4"/></svg>
-            <span data-alc-eta-text></span>
+      else
+        assign stock_mod = 'out'
+        assign stock_text = 'alc-benefits.stock.out_of_stock' | t
+      endif
+    endif
+    assign show_ship_card = false
+    if show_delivery and product.available
+      assign show_ship_card = true
+      assign show_free_shipping = false
+      if request.locale.iso_code == 'ro' and product.price_min >= 40000
+        assign show_free_shipping = true
+      endif
+    endif
+  -%}
+  {%- if show_ship_card -%}
+    {%- comment -%}
+      One card: availability, the delivery promise, and the estimated dates. The range is
+      2-4 working days from today (same promise as the text and as the shippingDetails in
+      alc-product-schema), filled in below with Intl so names follow the page language.
+    {%- endcomment -%}
+    <div class="alc-pb-ship" data-alc-eta data-min="2" data-max="4">
+      <span class="alc-pb-ship__icon" aria-hidden="true">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M3 6.5h11v9H3zM14 9.5h3.6l3.4 3.4v2.6h-7"/><circle cx="7" cy="17.5" r="1.8"/><circle cx="17.5" cy="17.5" r="1.8"/></svg>
+      </span>
+      <span class="alc-pb-ship__body">
+        {%- if show_stock_status -%}
+          <span class="alc-pb-ship__stock alc-pb-status__stock--{{ stock_mod }}">
+            <span class="alc-pb-status__dot" aria-hidden="true"></span>
+            {{- stock_text -}}
           </span>
+        {%- endif -%}
+        <strong class="alc-pb-ship__title">
+          {%- if show_free_shipping -%}
+            {{ 'alc-benefits.free_shipping' | t }}
+          {%- else -%}
+            {{ 'alc-benefits.delivery' | t }}
+          {%- endif -%}
+        </strong>
+        <span class="alc-pb-ship__eta" hidden>
+          <svg aria-hidden="true" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3.5" y="5" width="17" height="15" rx="2"/><path d="M3.5 10h17M8 3v4M16 3v4"/></svg>
+          <span data-alc-eta-text></span>
         </span>
-      </div>
-      <script>
-        (() => {
-          const box = document.currentScript.previousElementSibling;
-          const out = box.querySelector('[data-alc-eta-text]');
-          if (!out || typeof Intl === 'undefined') return;
-          const addWorkingDays = (from, n) => {
-            const d = new Date(from);
-            while (n > 0) {
-              d.setDate(d.getDate() + 1);
-              if (d.getDay() !== 0 && d.getDay() !== 6) n -= 1;
-            }
-            return d;
-          };
-          const today = new Date();
-          const lang = document.documentElement.lang || 'ro';
-          try {
-            const fmt = new Intl.DateTimeFormat(lang, { weekday: 'short', day: 'numeric', month: 'short' });
-            const a = addWorkingDays(today, +box.dataset.min);
-            const b = addWorkingDays(today, +box.dataset.max);
-            out.textContent = fmt.formatRange ? fmt.formatRange(a, b) : fmt.format(a) + ' – ' + fmt.format(b);
-            out.parentElement.hidden = false;
-          } catch (e) {}
-        })();
-      </script>
-    {%- endif -%}
-  </div>
+      </span>
+    </div>
+    <script>
+      (() => {
+        const box = document.currentScript.previousElementSibling;
+        const out = box.querySelector('[data-alc-eta-text]');
+        if (!out || typeof Intl === 'undefined') return;
+        const addWorkingDays = (from, n) => {
+          const d = new Date(from);
+          while (n > 0) {
+            d.setDate(d.getDate() + 1);
+            if (d.getDay() !== 0 && d.getDay() !== 6) n -= 1;
+          }
+          return d;
+        };
+        try {
+          const fmt = new Intl.DateTimeFormat(document.documentElement.lang || 'ro', { weekday: 'short', day: 'numeric', month: 'short' });
+          const a = addWorkingDays(new Date(), +box.dataset.min);
+          const b = addWorkingDays(new Date(), +box.dataset.max);
+          out.textContent = fmt.formatRange ? fmt.formatRange(a, b) : fmt.format(a) + ' – ' + fmt.format(b);
+          out.parentElement.hidden = false;
+        } catch (e) {}
+      })();
+    </script>
+  {%- elsif show_stock_status -%}
+    <p class="alc-pb-status alc-pb-status__stock alc-pb-status__stock--{{ stock_mod }}">
+      <span class="alc-pb-status__dot" aria-hidden="true"></span>
+      {{- stock_text -}}
+    </p>
+  {%- endif -%}
 {%- endif -%}
 
 {%- if render_trust -%}
