@@ -915,13 +915,15 @@ cart-drawer.drawer .drawer__footer {
   width: 100%;
 }
 
-/* Desktop cart page: old and new line price side by side; everywhere else stacked. */
+/* Cart page (desktop): stacked prices and a compact stepper leave room for the name. */
 @media screen and (min-width: 750px) {
-  #main-cart-items .cart-item__totals .alc-line-price {
-    flex-direction: row !important;
-    align-items: baseline;
-    justify-content: flex-end;
-    gap: 8px;
+  #main-cart-items .quantity {
+    width: 120px;
+    min-height: 40px;
+  }
+
+  #main-cart-items .quantity__button {
+    width: 38px;
   }
 }
 
@@ -994,4 +996,148 @@ cart-drawer.drawer .cart-item__totals {
     min-width: 38px;
     min-height: 38px;
   }
+}
+
+/* Extended warranty (Upcharge app, .mw-*) as an AppleCare-style offer card: shield icon,
+   the app's own title ("Extinde Garantia") and the option underneath. Styling only. */
+.cart-item .mw-stack--vertical:has(.mw-fee__control) {
+  position: relative;
+  max-width: 360px;
+  margin: 10px 0 2px;
+  padding: 10px 12px 10px 48px;
+  border: 1px solid rgba(21, 21, 21, 0.12);
+  border-radius: 12px;
+  background: #fff;
+  transition: border-color 0.2s ease, background-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.cart-item .mw-stack--vertical:has(.mw-fee__control)::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 12px;
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  background: #f3f0eb url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23151515' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M12 3 5 6v5.5c0 4.4 3 8 7 9.5 4-1.5 7-5.1 7-9.5V6z'/%3E%3Cpath d='m9 12 2.2 2.2L15.5 10'/%3E%3C/svg%3E") center / 15px no-repeat;
+  transform: translateY(-50%);
+}
+
+.cart-item .mw-stack--vertical:has(.mw-fee__control):hover {
+  border-color: rgba(21, 21, 21, 0.3);
+}
+
+.cart-item .mw-stack--vertical:has(.mw-fee__control:checked) {
+  border-color: #2f7d4f;
+  background: #f4f8f5;
+  box-shadow: 0 0 0 1px #2f7d4f inset;
+}
+
+.cart-item .mw-stack--vertical:has(.mw-fee__control:checked)::before {
+  background-color: #2f7d4f;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23ffffff' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M12 3 5 6v5.5c0 4.4 3 8 7 9.5 4-1.5 7-5.1 7-9.5V6z'/%3E%3Cpath d='m9 12 2.2 2.2L15.5 10'/%3E%3C/svg%3E");
+}
+
+.cart-item .mw-stack--vertical:has(.mw-fee__control) [data-fee-header] {
+  display: block;
+}
+
+.cart-item .mw-stack--vertical:has(.mw-fee__control) [data-fee-header] .mw-text {
+  color: #151515;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0;
+  text-transform: none;
+}
+
+.cart-item .mw-stack--vertical:has(.mw-fee__control) [data-fee-header] .mw-text::first-letter {
+  text-transform: uppercase;
+}
+
+.cart-item .mw-stack--vertical:has(.mw-fee__control) .mw-label--fee-option {
+  gap: 8px;
+}
+
+.cart-item .mw-stack--vertical:has(.mw-fee__control) .mw-fee__control {
+  order: 2;
+  margin-left: auto;
+  width: 18px;
+  height: 18px;
+}
+
+.cart-item .mw-stack--vertical:has(.mw-fee__control) .mw-fee__control-title {
+  color: #6b6862;
+  font-size: 12.5px;
+}
+
+.cart-item .mw-stack--vertical:has(.mw-fee__control) .mw-fee__control-title .mw-text {
+  color: #3d3a35;
+  font-weight: 500;
+}
+
+.cart-item .mw-stack--vertical:has(.mw-fee__control) {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  gap: 2px;
+  width: 100%;
+  max-width: 380px;
+  text-align: left;
+}
+
+.cart-item .mw-stack--vertical:has(.mw-fee__control)::before {
+  top: 12px;
+  transform: none;
+}
+
+.cart-item .mw-stack--vertical:has(.mw-fee__control) .mw-stack,
+.cart-item .mw-stack--vertical:has(.mw-fee__control) .mw-stack__item {
+  justify-content: flex-start;
+  align-items: flex-start;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  text-align: left;
+}
+
+.cart-item .mw-stack--vertical:has(.mw-fee__control) [data-fee-header] .mw-label {
+  display: block;
+  margin: 0;
+}
+
+.cart-item .mw-stack--vertical:has(.mw-fee__control) .mw-fee__control-container {
+  width: 100%;
+}
+
+.cart-item .mw-stack--vertical:has(.mw-fee__control) .mw-label--fee-option {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  margin: 0;
+}
+
+.cart-item .mw-stack--vertical:has(.mw-fee__control) .mw-fee__control-title {
+  flex: 1 1 auto;
+  white-space: nowrap;
+}
+
+.cart-item .mw-stack--vertical:has(.mw-fee__control) .mw-fee__tooltip-container:empty {
+  display: none;
+}
+
+/* On the cart page the warranty title may wrap; only the narrow drawer keeps it on one line. */
+#main-cart-items .mw-stack--vertical:has(.mw-fee__control) .mw-fee__control-title {
+  white-space: normal;
+}
+
+@media screen and (min-width: 750px) {
+  #main-cart-items .cart-item__details {
+    width: 48%;
+  }
+}
+
+/* The WhatsApp chat widget (app) floats bottom-right, over the drawer's checkout button.
+   Hide it while the cart drawer is open; it comes back when the drawer closes. */
+body:has(cart-drawer.active) #whatsapp-chat-widget {
+  display: none !important;
 }
