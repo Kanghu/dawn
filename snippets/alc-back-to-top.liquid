@@ -1,14 +1,14 @@
 {%- comment -%}
-  Floating "back to top" button for the long campaign pages (sections/alc-offer-page,
-  sections/alc-tw-product-grid).
+  Floating "back to top" button on every storefront page, rendered once from
+  layout/theme.liquid.
 
   - Shows up once the visitor has scrolled past the first screen and scrolls back up
     smoothly (instantly with reduced motion), then hands focus to the page's main content.
   - Sits bottom-left: the WhatsApp button and its greeting bubble own the bottom-right.
-    The Vitals scroll-to-top widget they cover is hidden on these pages.
-  - Steps aside while the cart drawer, the menu, search or a modal is open, since the
-    header's menu stacks below any fixed element.
-  - One per page even if two sections render it. Text translated for every storefront language.
+    It replaces the Vitals scroll-to-top widget, which they cover, so that one is hidden.
+  - Steps aside while the cart drawer, the menu, the filters, search or a modal is open,
+    since the header's menu stacks below any fixed element.
+  - One per page even if rendered twice. Text translated for every storefront language.
 {%- endcomment -%}
 {%- liquid
   assign btt_lang = request.locale.iso_code | downcase | slice: 0, 2
