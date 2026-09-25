@@ -5,7 +5,8 @@
  * Bucharest time (the store's time zone), and switches to "offer ended" afterwards.
  *
  * <alc-offer-grid>: category chips filter the cards, the select re-orders them
- * (recommended = the server's pick order, discount, price), and the terms line gets a localised date.
+ * (recommended = the server's order, discount, price; sold out always last), and the
+ * terms line gets a localised date.
  */
 (() => {
   const pad = (n) => String(n).padStart(2, '0');
@@ -90,10 +91,13 @@
         });
 
         // Sorting re-orders each grid on its own (one per category when grouped).
+        // Sold-out products stay at the end whatever the order.
         this.querySelector('[data-sort]')?.addEventListener('change', (event) => {
           const mode = event.target.value;
           const num = (li, key) => parseFloat(li.dataset[key]) || 0;
           const compare = (a, b) => {
+            const soldOut = num(a, 'soldout') - num(b, 'soldout');
+            if (soldOut) return soldOut;
             if (mode === 'price-asc') return num(a, 'price') - num(b, 'price');
             if (mode === 'price-desc') return num(b, 'price') - num(a, 'price');
             if (mode === 'discount') return num(b, 'pct') - num(a, 'pct') || num(a, 'order') - num(b, 'order');

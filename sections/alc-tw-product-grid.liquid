@@ -4,6 +4,8 @@
   - Uses page-width class for margins
   - Displays featured categories from metafield 'slider subcollections'
   - Groups products by subcollections
+  - Runs inside paginate by 250 (Shopify's largest page): without it Liquid only hands the
+    loop the first 50 products of the campaign, and a bigger campaign lost the rest.
 {% endcomment %}
 
 {{ 'component-price.css' | asset_url | stylesheet_tag }}
@@ -28,6 +30,7 @@
         {%- assign picker_no_fill = false -%}
       {%- endif -%}
 
+      {% paginate collection.products by 250 %}
       {% for subcollection in subcollections %}
         {% if subcollection.products_count > 0 %}
 
@@ -226,6 +229,7 @@
           </div>
         {% endif %}
       {% endfor %}
+      {% endpaginate %}
 
       {%- comment -%} ItemList (carousel) structured data for the products shown above {%- endcomment -%}
       {%- assign itemlist_handle_array = itemlist_handles | split: ',' -%}
