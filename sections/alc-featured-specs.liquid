@@ -5,6 +5,9 @@
 
   - The heading and the feature texts are translated per market in Translate & Adapt, which keys
     them by this section's and its blocks' ids: keep those ids when editing the template.
+  - The video URL is translatable too. Translate & Adapt holds a copy of the old 27.8 MB upload
+    for every foreign language under the former setting id `video`, which is why this one is
+    `video_src`: a language only gets another video if one is set for it there.
   - The video loads only when the band comes near the screen, plays only while it is visible,
     and never under prefers-reduced-motion or Data Saver. Until then the card shows Shopify's
     preview frame of the same video (files/preview_images/<video id>.thumbnail.0000000000.jpg).
@@ -14,7 +17,7 @@
 {{ 'alc-featured-specs.css' | asset_url | stylesheet_tag }}
 
 {%- liquid
-  assign video_url = section.settings.video
+  assign video_url = section.settings.video_src
   assign poster = ''
   if video_url contains 'cdn.shopify.com/videos/'
     assign video_id = video_url | split: '/' | last | split: '.' | first
@@ -144,9 +147,9 @@
     "settings": [
       {
         "type": "url",
-        "id": "video",
+        "id": "video_src",
         "label": "Video URL",
-        "info": "Paste the video URL from Files. For a lighter page, use its SD-480p copy (cdn.shopify.com/videos/c/vp/…SD-480p…mp4) instead of the original upload."
+        "info": "Paste the video URL from Files. For a lighter page, use its SD-480p copy (cdn.shopify.com/videos/c/vp/…SD-480p…mp4) instead of the original upload. Translate & Adapt can override it per language."
       },
       {
         "type": "text",
