@@ -1,0 +1,43 @@
+{%- comment -%}
+  One product in the grid of sections/alc-offer-page.liquid.
+
+  Accepts:
+  - row: {String} "<100 - discount><pick order>~<product id>~<category handle>~<source handle>"
+  - product: {Object} the row's product
+  - position: {Number} 0-based position in its grid (the wide-card rhythm and eager loading)
+  - wide_cards: {Boolean} allow two-column landscape cards on desktop
+  - section_id: {String}
+  - skip_styles: {Boolean} passed on to alc-card-product
+
+  Every seventh card, starting with the second, spans two columns on desktop as a
+  landscape card, so each other row reads "small, wide, small". A sold-out product never
+  gets the wide highlight, and carries data-soldout so sorting keeps it at the end.
+{%- endcomment -%}
+{%- liquid
+  assign parts = row | split: '~'
+  assign row_pct = parts[0] | slice: 0, 3 | plus: 0
+  assign row_pct = 100 | minus: row_pct
+  assign rhythm = position | modulo: 7
+  assign wide = false
+  if wide_cards and rhythm == 1 and product.available
+    assign wide = true
+  endif
+  assign lazy = true
+  if position < 4
+    assign lazy = false
+  endif
+-%}
+{%- if product != blank -%}
+  <li class="grid__item{% if wide %} alc-of__wide{% endif %}" data-cat="{{ parts[2] }}" data-pct="{{ row_pct }}" data-price="{{ product.price }}" data-order="{{ position }}"{% unless product.available %} data-soldout="1"{% endunless %}>
+    {% render 'alc-card-product',
+      card_product: product,
+      heading_tag: 'div',
+      media_aspect_ratio: 'square',
+      show_secondary_image: true,
+      lazy_load: lazy,
+      skip_styles: skip_styles,
+      section_id: section_id,
+      quick_add: 'standard'
+    %}
+  </li>
+{%- endif -%}
