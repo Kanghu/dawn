@@ -155,16 +155,10 @@
             href="{%- if customer -%}{{ routes.account_url }}{%- else -%}{{ routes.account_login_url }}{%- endif -%}"
             class="header__icon header__icon--account link focus-inset"
             rel="nofollow">
-            {%- if section.settings.enable_customer_avatar -%}
-              <account-icon>
-                {%- if customer and customer.has_avatar? -%}
-                  {{ customer | avatar }}
-                {%- else -%}
-                  <span class="svg-wrapper">{{ 'icon-account.svg' | inline_asset_content }}</span>
-                {%- endif -%}
-              </account-icon>
+            {%- if section.settings.enable_customer_avatar and customer and customer.has_avatar? -%}
+              <account-icon>{{ customer | avatar }}</account-icon>
             {%- else -%}
-              <span class="svg-wrapper">{{ 'icon-account.svg' | inline_asset_content }}</span>
+              {%- render 'alc-header-icon', name: 'account' -%}
             {%- endif -%}
             <span class="visually-hidden">
               {%- liquid
@@ -182,20 +176,7 @@
           href="{{ routes.cart_url }}"
           class="header__icon header__icon--cart link focus-inset"
           id="cart-icon-bubble">
-          {% if cart == empty %}
-            <span class="svg-wrapper">{{ 'icon-cart-empty.svg' | inline_asset_content }}</span>
-          {% else %}
-            <span class="svg-wrapper">{{ 'icon-cart.svg' | inline_asset_content }}</span>
-          {% endif %}
-          <span class="visually-hidden">{{ 'templates.cart.cart' | t }}</span>
-          {%- if cart != empty -%}
-            <div class="cart-count-bubble">
-              {%- if cart.item_count < 100 -%}
-                <span aria-hidden="true">{{ cart.item_count }}</span>
-              {%- endif -%}
-              <span class="visually-hidden">{{ 'sections.header.cart_count' | t: count: cart.item_count }}</span>
-            </div>
-          {%- endif -%}
+          {%- render 'alc-cart-icon' -%}
         </a>
       </div>
 

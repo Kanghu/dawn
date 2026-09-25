@@ -145,9 +145,9 @@
       assign localization_forms = true
     endif
   -%}
-  <header class="page-width flex flex-col w-100 pt-2 md:pt-4">
+  <header class="page-width alc-hd flex flex-col w-100">
     <div class="flex flex-col md:flex-row justify-between items-center w-100 pb-2">
-      <div class="flex flex-row justify-between items-center w-full">
+      <div class="alc-hd__row flex flex-row justify-between items-center w-full">
         <div class="flex md:hidden">
           {%- liquid
             if section.settings.menu != blank
@@ -181,12 +181,11 @@
           </div>
         {%- endif -%}
 
-        <div class="hidden md:!flex w-3/5 h-24 flex-initial items-center">
-          {% render 'alc-header-search'
-            , input_id: 'Search-In-Modal' %}
+        <div class="alc-hd__search hidden md:!flex">
+          {% render 'alc-header-search', input_id: 'Search-In-Modal' %}
         </div>
 
-        <div class="flex flex-row">
+        <div class="alc-hd__actions flex flex-row">
           {%- if localization_forms -%}
             <!-- Desktop version -->
             <div class="header-localization hidden md:!flex">
@@ -248,16 +247,10 @@
               href="{%- if customer -%}{{ routes.account_url }}{%- else -%}{{ routes.account_login_url }}{%- endif -%}"
               class="header__icon header__icon--account link focus-inset{% if section.settings.menu != blank %} small-hide{% endif %}"
               rel="nofollow">
-              {%- if section.settings.enable_customer_avatar -%}
-                <account-icon>
-                  {%- if customer and customer.has_avatar? -%}
-                    {{ customer | avatar }}
-                  {%- else -%}
-                    <span class="svg-wrapper">{{ 'icon-account.svg' | inline_asset_content }}</span>
-                  {%- endif -%}
-                </account-icon>
+              {%- if section.settings.enable_customer_avatar and customer and customer.has_avatar? -%}
+                <account-icon>{{ customer | avatar }}</account-icon>
               {%- else -%}
-                <span class="svg-wrapper">{{ 'icon-account.svg' | inline_asset_content }}</span>
+                {%- render 'alc-header-icon', name: 'account' -%}
               {%- endif -%}
               <span class="visually-hidden">
                 {%- liquid
@@ -275,27 +268,14 @@
             href="{{ routes.cart_url }}"
             class="header__icon header__icon--cart link focus-inset"
             id="cart-icon-bubble">
-            {% if cart == empty %}
-              <span class="svg-wrapper">{{ 'icon-cart-empty.svg' | inline_asset_content }}</span>
-            {% else %}
-              <span class="svg-wrapper">{{ 'icon-cart.svg' | inline_asset_content }}</span>
-            {% endif %}
-            <span class="visually-hidden">{{ 'templates.cart.cart' | t }}</span>
-            {%- if cart != empty -%}
-              <div class="cart-count-bubble">
-                {%- if cart.item_count < 100 -%}
-                  <span aria-hidden="true">{{ cart.item_count }}</span>
-                {%- endif -%}
-                <span class="visually-hidden">{{ 'sections.header.cart_count' | t: count: cart.item_count }}</span>
-              </div>
-            {%- endif -%}
+            {%- render 'alc-cart-icon' -%}
           </a>
         </div>
       </div>
 
-      <div class="flex md:hidden w-full h-24 flex-initial flex items-center">
-          {% render 'alc-header-search'
-            , input_id: 'Search-In-Modal' %}
+      <div class="alc-hd__search alc-hd__search--mobile flex md:hidden">
+        {%- comment -%} Its own id: the desktop field above uses Search-In-Modal. {%- endcomment -%}
+        {% render 'alc-header-search', input_id: 'Search-In-Header-Mobile' %}
       </div>
     </div>
 
