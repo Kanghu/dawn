@@ -113,7 +113,8 @@
 
         {%- if show_link and author_url != blank -%}
           <a class="alc-author-box__more link animate-arrow" href="{{ author_url }}" rel="author">
-            {{ 'blogs.article.author_more_posts' | t: name: author_display_name }}
+            {%- capture more_label -%}{% render 'alc-i18n', key: 'author_more' %}{%- endcapture -%}
+            {{ more_label | replace: '[name]', author_display_name | escape }}
             <span class="icon-wrap">
               <span class="svg-wrapper">{{- 'icon-arrow.svg' | inline_asset_content -}}</span>
             </span>

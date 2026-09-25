@@ -19,8 +19,9 @@
 
 {%- liquid
   assign hero_eyebrow = author.job_title.value | default: eyebrow
-  assign count_label = 'blogs.author.articles_heading' | t: count: total_articles | remove_first: total_articles | strip
 -%}
+{%- capture count_label -%}{% render 'alc-i18n', key: 'author_articles', count: total_articles %}{%- endcapture -%}
+{%- assign count_label = count_label | remove_first: total_articles | strip -%}
 
 <header class="alc-author-hero">
   <div class="alc-author-hero__inner page-width">
