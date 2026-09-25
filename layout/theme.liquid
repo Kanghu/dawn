@@ -374,6 +374,7 @@ body {
       onload="this.media='all'">
 
     {{ 'alc-cart.css' | asset_url | stylesheet_tag }}
+    {{ 'alc-header.css' | asset_url | stylesheet_tag }}
     {%- if settings.cart_type == 'drawer' -%}
       {{ 'component-cart-drawer.css' | asset_url | stylesheet_tag }}
       {{ 'component-cart.css' | asset_url | stylesheet_tag }}

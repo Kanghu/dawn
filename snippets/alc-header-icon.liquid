@@ -1,0 +1,20 @@
+{%- comment -%}
+  Line icons for the header (assets/alc-header.css), drawn on one 24px grid with the
+  same 1.6 stroke so search, account and bag read as one set.
+
+  Accepts:
+  - name: {String} 'search', 'account', 'bag' or 'close'
+
+  Usage:
+  {% render 'alc-header-icon', name: 'bag' %}
+{%- endcomment -%}
+{%- case name -%}
+  {%- when 'search' -%}
+    <svg class="alc-hd-icon" aria-hidden="true" focusable="false" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="6.5"/><path d="m20 20-4.2-4.2"/></svg>
+  {%- when 'account' -%}
+    <svg class="alc-hd-icon" aria-hidden="true" focusable="false" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8.2" r="3.7"/><path d="M4.8 20.2c.6-3.7 3.6-6.2 7.2-6.2s6.6 2.5 7.2 6.2"/></svg>
+  {%- when 'bag' -%}
+    <svg class="alc-hd-icon" aria-hidden="true" focusable="false" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5.2 8h13.6l-1.1 11.3a1.8 1.8 0 0 1-1.8 1.7H8.1a1.8 1.8 0 0 1-1.8-1.7z"/><path d="M9 10V7a3 3 0 0 1 6 0v3"/></svg>
+  {%- when 'close' -%}
+    <svg class="alc-hd-icon" aria-hidden="true" focusable="false" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 6l12 12M18 6 6 18"/></svg>
+{%- endcase -%}

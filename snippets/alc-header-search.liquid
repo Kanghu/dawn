@@ -1,77 +1,61 @@
 {% comment %}
-  Renders a header search form directly in the header
+  Renders a header search form directly in the header (styles: assets/alc-header.css).
+  One magnifier on the left doubles as the submit button; the clear button shows while
+  there is text. Dawn's predictive-search.js reads the input[type=search] and the
+  button[type=reset], so both keep their types.
+
   Accepts:
-  - input_id: {String} Id for the search input element (required)
+  - input_id: {String} Id for the search input element (required, unique per page)
 
   Usage:
   {% render 'alc-header-search', input_id: 'My-Id'%}
 {% endcomment %}
 
-<div class="w-100">
+<div class="alc-hd-search">
   {%- if settings.predictive_search_enabled -%}
-    <predictive-search class="w-full relative" data-loading-text="{{ 'accessibility.loading' | t }}">
+    <predictive-search class="alc-hd-search__predictive" data-loading-text="{{ 'accessibility.loading' | t }}">
   {%- endif -%}
-  <form
-    action="{{ routes.search_url }}"
-    method="get"
-    role="search"
-    class="w-full">
-    <div class="relative flex items-center">
+  <form action="{{ routes.search_url }}" method="get" role="search" class="alc-hd-search__form">
+    <div class="alc-hd-search__field">
+      <button type="submit" class="alc-hd-search__submit" aria-label="{{ 'general.search.search' | t }}">
+        {%- render 'alc-header-icon', name: 'search' -%}
+      </button>
+      <label class="visually-hidden" for="{{ input_id }}">{{ 'general.search.search' | t }}</label>
       <input
-        class="w-full h-16 pl-10 pr-10 rounded-lg border border-gray-200 focus:outline-none focus:border-primary text-xl border-main border-radius-main"
+        class="alc-hd-search__input"
         id="{{ input_id }}"
         type="search"
         name="q"
         value="{{ search.terms | escape }}"
         placeholder="{{ 'general.search.search' | t }}"
+        enterkeyhint="search"
         {%- if settings.predictive_search_enabled -%}
-        role="combobox"
-        aria-expanded="false"
-        aria-owns="predictive-search-results"
-        aria-controls="predictive-search-results"
-        aria-haspopup="listbox"
-        aria-autocomplete="list"
-        autocorrect="off"
-        autocomplete="off"
-        autocapitalize="off"
-        spellcheck="false"
-        {%- endif -%}>
-      <label class="sr-only" for="{{ input_id }}">{{ 'general.search.search' | t }}</label>
-      <div class="absolute inset-y-0 left-0 flex items-center pl-3">
-        <span class="w-4 h-4 text-gray-500">
-          {{- 'icon-search.svg' | inline_asset_content -}}
-        </span>
-      </div>
+          role="combobox"
+          aria-expanded="false"
+          aria-owns="predictive-search-results"
+          aria-controls="predictive-search-results"
+          aria-haspopup="listbox"
+          aria-autocomplete="list"
+          autocorrect="off"
+          autocomplete="off"
+          autocapitalize="off"
+          spellcheck="false"
+        {%- endif -%}
+      >
       <button
         type="reset"
-        class="absolute right-16 hidden items-center justify-center{% if search.terms != blank %} flex{% endif %}"
-        aria-label="{{ 'general.search.reset' | t }}">
-        <span class="w-4 h-4 text-gray-500">
-          {{- 'icon-reset.svg' | inline_asset_content -}}
-        </span>
-      </button>
-      <button
-        type="submit"
-        class="absolute right-2 flex items-center justify-center w-8 h-8"
-        aria-label="{{ 'general.search.search' | t }}">
-        <span class="w-4 h-4 text-gray-500">
-          {{- 'icon-search.svg' | inline_asset_content -}}
-        </span>
+        class="alc-hd-search__reset{% if search.terms == blank %} hidden{% endif %}"
+        aria-label="{{ 'general.search.reset' | t }}"
+      >
+        {%- render 'alc-header-icon', name: 'close' -%}
       </button>
     </div>
 
     {%- if settings.predictive_search_enabled -%}
-      <div
-        class="predictive-search absolute w-full mt-2 z-10 bg-white shadow-lg rounded-lg"
-        tabindex="-1"
-        data-predictive-search>
-        {%- render 'loading-spinner'
-          , class: 'predictive-search__loading-state hidden' -%}
+      <div class="predictive-search alc-hd-search__results" tabindex="-1" data-predictive-search>
+        {%- render 'loading-spinner', class: 'predictive-search__loading-state hidden' -%}
       </div>
-      <span
-        class="predictive-search-status visually-hidden"
-        role="status"
-        aria-hidden="true"></span>
+      <span class="predictive-search-status visually-hidden" role="status" aria-hidden="true"></span>
     {%- endif -%}
   </form>
   {%- if settings.predictive_search_enabled -%}

@@ -1,0 +1,474 @@
+/* Header top row (sections/alc-header.liquid, sections/alc-campaign-header.liquid):
+   search, country, account and bag. The menu bar below has its own file
+   (alc-mega-menu.css). Loaded site-wide from layout/theme.liquid. */
+.alc-hd {
+  --alc-hd-ink: #151515;
+  --alc-hd-muted: #6f6c67;
+  --alc-hd-soft: #f3f2ef;
+  --alc-hd-line: rgba(21, 21, 21, 0.08);
+  padding-top: 14px;
+}
+
+.alc-hd > div:first-child {
+  padding-bottom: 14px;
+}
+
+/* Layout -----------------------------------------------------------------
+   Three columns with equal outer tracks, so the search (desktop) or the logo (phones)
+   sits on the page's true centre whatever the widths of the two sides. */
+.alc-hd__row {
+  display: grid !important;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 640px) minmax(0, 1fr);
+  align-items: center;
+  column-gap: 32px;
+}
+
+/* Dawn gives .header__heading (the homepage wraps the logo in it) grid-area: heading,
+   which would open a second row; every child stays on row 1. */
+.alc-hd__row > * {
+  grid-row: 1;
+}
+
+.alc-hd__row > a,
+.alc-hd__row > .header__heading {
+  grid-area: auto;
+  grid-row: 1;
+  grid-column: 1;
+  justify-self: start;
+}
+
+/* The logo link is inline by default, so the image sat on a text baseline a few pixels
+   above the search and the icons; as a flex box it centres on the same axis. */
+.alc-hd__row > a,
+.alc-hd__row > .header__heading,
+.alc-hd__row > .header__heading > a,
+.alc-hd__row .header__heading-logo-wrapper {
+  display: flex;
+  align-items: center;
+  margin: 0;
+  line-height: 0;
+}
+
+.alc-hd__row > .alc-hd__search {
+  grid-column: 2;
+}
+
+.alc-hd__row > .alc-hd__actions {
+  grid-column: 3;
+  justify-self: end;
+}
+
+/* Search ---------------------------------------------------------------- */
+.alc-hd__search {
+  width: 100%;
+  min-width: 0;
+}
+
+.alc-hd__search .alc-hd-search {
+  width: 100%;
+}
+
+.alc-hd-search__predictive,
+.alc-hd-search__form {
+  position: relative;
+  display: block;
+  width: 100%;
+}
+
+.alc-hd-search__field {
+  position: relative;
+  display: flex;
+  align-items: center;
+  height: 46px;
+  border: 1px solid transparent;
+  border-radius: 999px;
+  background: var(--alc-hd-soft, #f3f2ef);
+  transition: background-color 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.alc-hd-search__field:hover {
+  background: #eeece8;
+}
+
+.alc-hd-search__field:focus-within {
+  border-color: rgba(21, 21, 21, 0.18);
+  background: #fff;
+  box-shadow: 0 8px 24px -14px rgba(0, 0, 0, 0.35);
+}
+
+.alc-hd-search__submit {
+  display: inline-flex;
+  flex: none;
+  align-items: center;
+  justify-content: center;
+  width: 46px;
+  height: 46px;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  border-radius: 50%;
+  background: none;
+  color: #6f6c67;
+  cursor: pointer;
+}
+
+.alc-hd-search__field:focus-within .alc-hd-search__submit {
+  color: #151515;
+}
+
+.alc-hd-search__input {
+  flex: 1 1 auto;
+  min-width: 0;
+  height: 100%;
+  margin: 0;
+  padding: 0 8px 0 0;
+  border: 0;
+  outline: 0;
+  background: transparent;
+  box-shadow: none;
+  color: #151515;
+  font: inherit;
+  font-size: 15px;
+  letter-spacing: 0.005em;
+  -webkit-appearance: none;
+  appearance: none;
+}
+
+.alc-hd-search__input::placeholder {
+  color: #8a8781;
+  opacity: 1;
+}
+
+.alc-hd-search__input::-webkit-search-cancel-button,
+.alc-hd-search__input::-webkit-search-decoration {
+  -webkit-appearance: none;
+}
+
+.alc-hd-search__input:focus,
+.alc-hd-search__input:focus-visible {
+  outline: 0;
+  box-shadow: none;
+}
+
+.alc-hd-search__reset {
+  display: inline-flex;
+  flex: none;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  margin: 0 10px 0 0;
+  padding: 0;
+  border: 0;
+  border-radius: 50%;
+  background: rgba(21, 21, 21, 0.08);
+  color: #151515;
+  cursor: pointer;
+}
+
+.alc-hd-search__reset.hidden {
+  display: none;
+}
+
+.alc-hd-search__submit:focus-visible,
+.alc-hd-search__reset:focus-visible {
+  outline: 2px solid #151515;
+  outline-offset: 2px;
+}
+
+/* Predictive results drop below the field as a card. */
+.alc-hd-search__results {
+  position: absolute;
+  top: calc(100% + 8px);
+  right: 0;
+  left: 0;
+  z-index: 30;
+  overflow: hidden;
+  border: 1px solid var(--alc-hd-line, rgba(21, 21, 21, 0.08));
+  border-radius: 18px;
+  background: #fff;
+  box-shadow: 0 24px 60px -24px rgba(0, 0, 0, 0.35);
+}
+
+/* Actions: country, account, bag ------------------------------------------ */
+.alc-hd__actions {
+  flex: none;
+  align-items: center;
+  gap: 4px;
+}
+
+.alc-hd .header__icon,
+.section-header .header__icon--cart,
+.section-header .header__icon--account {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  color: #151515;
+  transition: background-color 0.2s ease;
+}
+
+/* A soft disc behind the hovered icon, tinted from the icon colour so it also works on
+   the dark campaign header. */
+.section-header .header__icon:hover {
+  background: color-mix(in srgb, currentColor 9%, transparent);
+}
+
+/* Line icons: campaign styles fill every svg path, which would turn them solid. */
+.alc-hd-icon,
+.alc-hd-icon * {
+  fill: none !important;
+}
+
+.section-header .header__icon::after {
+  display: none;
+}
+
+.section-header .header__icon .alc-hd-icon {
+  width: 24px;
+  height: 24px;
+}
+
+.section-header .header__icon:focus-visible {
+  outline: 2px solid #151515;
+  outline-offset: 0;
+}
+
+/* Item count on the bag: a small ink disc with a white rim. */
+.section-header #cart-icon-bubble .cart-count-bubble {
+  position: absolute;
+  top: 6px;
+  right: 4px;
+  bottom: auto;
+  left: auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: auto;
+  min-width: 18px;
+  height: 18px;
+  padding: 0 4px;
+  border: 2px solid #fff;
+  border-radius: 999px;
+  background: #151515;
+  color: #fff;
+  font-size: 10px;
+  font-weight: 700;
+  line-height: 1;
+  font-variant-numeric: tabular-nums;
+  box-sizing: border-box;
+}
+
+/* Vitals wishlist heart (injected by the app into the actions row): same 44px round
+   target and hover as the theme icons. */
+.alc-hd .Vtl-WishlistHeaderWrapper {
+  display: inline-flex;
+  align-items: center;
+}
+
+.alc-hd .Vtl-WishlistHeader {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  transition: background-color 0.2s ease;
+}
+
+.alc-hd .Vtl-WishlistHeader:hover {
+  background: color-mix(in srgb, #151515 9%, transparent);
+}
+
+.alc-hd .Vtl-WishlistHeader__IconWrapper,
+.alc-hd .Vtl-WishlistHeader__HeartIconWrapper {
+  width: 21px !important;
+  height: 21px !important;
+}
+
+/* Dark campaign header: the count disc inverts. */
+.section-header > sticky-header:not(:has(.alc-hd)) #cart-icon-bubble .cart-count-bubble,
+.section-header > div.header-wrapper:not(:has(.alc-hd)) #cart-icon-bubble .cart-count-bubble {
+  border-color: #111;
+  background: #fff;
+  color: #111;
+}
+
+/* Country picker: round flag, compact label. */
+.alc-hd .localization-form__select {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  min-width: 0 !important;
+  min-height: 40px;
+  padding: 0 12px 0 10px !important;
+  border: 0;
+  border-radius: 999px;
+  background: none;
+  color: #151515;
+  font-size: 13px !important;
+  font-weight: 500;
+  text-decoration: none;
+  transition: background-color 0.2s ease;
+}
+
+.alc-hd .localization-form__select:hover {
+  background: #f3f2ef;
+}
+
+.alc-hd .localization-form__select .country-flag-wrapper {
+  margin-right: 0 !important;
+  line-height: 0;
+}
+
+.alc-hd .localization-form__select .country-flag-wrapper img {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  object-fit: cover;
+  box-shadow: 0 0 0 1px rgba(21, 21, 21, 0.08);
+}
+
+.alc-hd .localization-form__select > span:not(.country-flag-wrapper) {
+  font-size: 13px !important;
+}
+
+.alc-hd .localization-form__select .icon-caret {
+  position: static;
+  width: 10px;
+  height: 10px;
+  margin: 0;
+  opacity: 0.6;
+}
+
+/* Phones ---------------------------------------------------------------- */
+@media screen and (max-width: 749px) {
+  .alc-hd {
+    padding-top: 6px;
+  }
+
+  .alc-hd > div:first-child {
+    padding-bottom: 10px;
+  }
+
+  .alc-hd__row {
+    grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
+    column-gap: 8px;
+  }
+
+  .alc-hd__row > :first-child {
+    grid-column: 1;
+    justify-self: start;
+  }
+
+  .alc-hd__row > a,
+  .alc-hd__row > .header__heading {
+    grid-column: 2;
+    justify-self: center;
+  }
+
+  /* Menu and flag on the left, logo in the middle, bag on the right: the actions box
+     dissolves so its items can take a side each. */
+  .alc-hd__actions {
+    display: contents !important;
+  }
+
+  .alc-hd__actions > * {
+    grid-row: 1;
+  }
+
+  .alc-hd__actions > .header-localization {
+    grid-column: 1;
+    justify-self: start;
+    margin-left: 42px;
+  }
+
+  .alc-hd__actions > #cart-icon-bubble,
+  .alc-hd__actions > .header__icon--account {
+    grid-column: 3;
+    justify-self: end;
+  }
+
+  /* Two items a side. Next to the bag goes the wishlist heart when the Vitals app has
+     added it (the account is in the drawer anyway), otherwise the account icon. */
+  .alc-hd__actions > .header__icon--account.small-hide {
+    display: inline-flex !important;
+    margin-right: 42px;
+  }
+
+  .alc-hd__actions > .Vtl-WishlistHeaderWrapper {
+    grid-column: 3;
+    justify-self: end;
+    margin-right: 42px;
+  }
+
+  .alc-hd__actions:has(> .Vtl-WishlistHeaderWrapper) > .header__icon--account.small-hide {
+    display: none !important;
+  }
+
+  .alc-hd .Vtl-WishlistHeader {
+    width: 42px;
+    height: 42px;
+  }
+
+  .alc-hd .header__heading-logo-wrapper,
+  .alc-hd .header__heading-logo {
+    max-width: 136px;
+    height: auto;
+  }
+
+  .alc-hd__search--mobile {
+    width: 100%;
+    max-width: none;
+    margin: 6px 0 0;
+  }
+
+  .alc-hd-search__field {
+    height: 44px;
+  }
+
+  .alc-hd-search__submit {
+    width: 44px;
+    height: 44px;
+  }
+
+  .alc-hd-search__input {
+    font-size: 16px; /* 16px keeps iOS from zooming into the field */
+  }
+
+  /* The flag says enough on a phone; the full name is in the picker. */
+  .alc-hd .mobile-localization-wrapper .localization-form__select > span:not(.country-flag-wrapper) {
+    display: none;
+  }
+
+  /* On phones the picker is a 42px round button, the same size as the icons, so the two
+     sides of the logo mirror each other. */
+  .alc-hd .mobile-localization-wrapper .localization-form__select {
+    justify-content: center;
+    width: 42px !important;
+    min-width: 0 !important;
+    min-height: 42px;
+    padding: 0 !important; /* component-localization-form.css pads it for a caret */
+  }
+
+  .alc-hd .mobile-localization-wrapper .localization-form__select .icon-caret {
+    display: none;
+  }
+
+  .alc-hd .header__icon,
+  .section-header .header__icon--cart {
+    width: 42px;
+    height: 42px;
+  }
+}
+
+/* Tablet: a narrower middle track. */
+@media screen and (min-width: 768px) and (max-width: 1099px) {
+  .alc-hd__row {
+    grid-template-columns: auto minmax(0, 1fr) auto;
+    column-gap: 20px;
+  }
+}
