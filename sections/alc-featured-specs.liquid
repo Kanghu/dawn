@@ -1,3 +1,143 @@
+{% comment %}
+  "Why Marcello" band on the Oglinzi LED collection (templates/collection.colectie-oglinzi-led-baie.json):
+  a looping video next to the heading, the feature list and a link to the Marcello collection.
+  The whole card follows the link.
+
+  - The heading and the feature texts are translated per market in Translate & Adapt, which keys
+    them by this section's and its blocks' ids: keep those ids when editing the template.
+  - The video loads only when the band comes near the screen, plays only while it is visible,
+    and never under prefers-reduced-motion or Data Saver. Until then the card shows Shopify's
+    preview frame of the same video (files/preview_images/<video id>.thumbnail.0000000000.jpg).
+  - The button label comes from the dictionary below unless cta_label is filled.
+  Styles: assets/alc-featured-specs.css.
+{% endcomment %}
+{{ 'alc-featured-specs.css' | asset_url | stylesheet_tag }}
+
+{%- liquid
+  assign video_url = section.settings.video
+  assign poster = ''
+  if video_url contains 'cdn.shopify.com/videos/'
+    assign video_id = video_url | split: '/' | last | split: '.' | first
+    assign poster = '/cdn/shop/files/preview_images/' | append: video_id | append: '.thumbnail.0000000000.jpg'
+  endif
+
+  assign link = section.settings.link_collection
+  assign cta = section.settings.cta_label
+  if cta == blank
+    assign lang = request.locale.iso_code | downcase | slice: 0, 2
+    case lang
+      when 'en'
+        assign cta = 'Discover the collection'
+      when 'hu'
+        assign cta = 'Fedezze fel a kollekciót'
+      when 'pl'
+        assign cta = 'Odkryj kolekcję'
+      when 'el'
+        assign cta = 'Ανακαλύψτε τη συλλογή'
+      when 'bg'
+        assign cta = 'Разгледайте колекцията'
+      when 'it'
+        assign cta = 'Scopri la collezione'
+      when 'fr'
+        assign cta = 'Découvrir la collection'
+      when 'cs'
+        assign cta = 'Objevte kolekci'
+      when 'sk'
+        assign cta = 'Objavte kolekciu'
+      when 'hr'
+        assign cta = 'Otkrijte kolekciju'
+      when 'de'
+        assign cta = 'Kollektion entdecken'
+      else
+        assign cta = 'Descoperă colecția'
+    endcase
+  endif
+-%}
+
+<div class="page-width">
+  <section class="alc-fs{% if video_url == blank %} alc-fs--no-media{% endif %}" id="AlcFs-{{ section.id }}" aria-labelledby="AlcFsTitle-{{ section.id }}">
+    {%- if video_url != blank -%}
+      <div class="alc-fs__media">
+        {%- if poster != blank -%}
+          <img
+            src="{{ poster }}?width=640"
+            srcset="{{ poster }}?width=320 320w, {{ poster }}?width=480 480w, {{ poster }}?width=640 640w"
+            sizes="(min-width: 1360px) 340px, (min-width: 990px) 25vw, (min-width: 750px) 300px, 150px"
+            alt=""
+            width="1080"
+            height="1080"
+            decoding="async"
+          >
+        {%- endif -%}
+        <video muted loop playsinline preload="none" aria-hidden="true" tabindex="-1" data-alc-fs-video>
+          <source src="{{ video_url }}" type="video/mp4">
+        </video>
+      </div>
+    {%- endif -%}
+
+    {%- comment -%} On phones the body is display: contents and its children are placed on the card's grid. {%- endcomment -%}
+    <div class="alc-fs__body">
+      {%- if section.settings.eyebrow != blank -%}
+        <p class="alc-fs__eyebrow">{{ section.settings.eyebrow | escape }}</p>
+      {%- endif -%}
+      <h2 class="alc-fs__title" id="AlcFsTitle-{{ section.id }}">{{ section.settings.heading | escape }}</h2>
+
+      {%- if section.blocks.size > 0 -%}
+        <ul class="alc-fs__list" role="list">
+          {%- for block in section.blocks -%}
+            <li class="alc-fs__item" {{ block.shopify_attributes }}>
+              <svg class="alc-fs__check" aria-hidden="true" focusable="false" width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><circle cx="10" cy="10" r="9.25" stroke-opacity=".4"/><path d="m6.3 10.3 2.5 2.5 4.9-5.3" stroke-width="1.6"/></svg>
+              <span>{{ block.settings.text | escape }}</span>
+            </li>
+          {%- endfor -%}
+        </ul>
+      {%- endif -%}
+
+      {%- if link != blank -%}
+        {%- comment -%} The arrow is glued to the last word, so a wrapped label never leaves it alone on a line. {%- endcomment -%}
+        {%- assign cta_last = cta | split: ' ' | last -%}
+        {%- assign cta_head = cta | remove_last: cta_last -%}
+        <a href="{{ link.url }}" class="alc-fs__link">
+          <span class="alc-fs__btn">
+            <span class="alc-fs__label">
+              {{- cta_head | escape -}}
+              <span class="alc-fs__tail">
+                {{- cta_last | escape -}}
+                <svg aria-hidden="true" focusable="false" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+              </span>
+            </span>
+            <span class="visually-hidden">: {{ link.title | escape }}</span>
+          </span>
+        </a>
+      {%- endif -%}
+    </div>
+  </section>
+</div>
+
+{%- if video_url != blank -%}
+  <script>
+    (function () {
+      var video = document.querySelector('#AlcFs-{{ section.id }} [data-alc-fs-video]');
+      if (!video || !('IntersectionObserver' in window)) return;
+      if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+      if (navigator.connection && navigator.connection.saveData) return;
+
+      video.addEventListener('playing', function () {
+        video.classList.add('is-playing');
+      }, { once: true });
+
+      new IntersectionObserver(function (entries) {
+        if (entries[0].isIntersecting) {
+          var playing = video.play();
+          if (playing && playing.catch) playing.catch(function () {});
+        } else {
+          video.pause();
+        }
+      }, { rootMargin: '200px 0px' }).observe(video);
+    })();
+  </script>
+{%- endif -%}
+
 {% schema %}
   {
     "name": "Featured Specs",
@@ -6,7 +146,13 @@
         "type": "url",
         "id": "video",
         "label": "Video URL",
-        "info": "Paste the full video URL from your Files section"
+        "info": "Paste the video URL from Files. For a lighter page, use its SD-480p copy (cdn.shopify.com/videos/c/vp/…SD-480p…mp4) instead of the original upload."
+      },
+      {
+        "type": "text",
+        "id": "eyebrow",
+        "label": "Eyebrow",
+        "default": "Marcello Funghi"
       },
       {
         "type": "text",
@@ -15,10 +161,15 @@
         "default": "De ce Oglinzi LED Marcello?"
       },
       {
-        "type": "color",
-        "id": "checkmark_color",
-        "label": "Checkmark Color",
-        "default": "#4CAF50"
+        "type": "collection",
+        "id": "link_collection",
+        "label": "Link to collection"
+      },
+      {
+        "type": "text",
+        "id": "cta_label",
+        "label": "Button label",
+        "info": "Leave empty for the built-in translated label."
       }
     ],
     "blocks": [
@@ -47,97 +198,3 @@
     ]
   }
 {% endschema %}
-
-<a href="/collections/marcello-funghi" class="no-underline text-black">
-  <div class="two-columns pb-6">
-    <div class="column video-column mobile-m-auto">
-      {% if section.settings.video != blank %}
-        <video
-          autoplay
-          muted
-          loop
-          playsinline
-          loading="lazy"
-          preload="none">
-          <source src="{{ section.settings.video }}" type="video/mp4">
-          Your browser does not support the video tag.
-        </video>
-      {% endif %}
-    </div>
-    <div class="column text-column">
-      <h2>
-        <b>{{ section.settings.heading }}</b>
-      </h2>
-      <br>
-      <ul style="list-style-type: none; padding: 0;">
-        {% for block in section.blocks %}
-          {% if block.type == 'feature' %}
-            <li style="font-weight: bold; margin-bottom: 10px;">
-              <span style="color: {{ section.settings.checkmark_color }};">✔</span>
-              {{ block.settings.text }}
-            </li>
-          {% endif %}
-        {% endfor %}
-      </ul>
-
-      {% if section.settings.disclaimer != blank %}
-        <p style="font-size: 12px; color: #555; margin-top: 20px; text-align: center;">
-          <em>{{ section.settings.disclaimer }}</em>
-        </p>
-      {% endif %}
-    </div>
-  </div>
-</a>
-<style>
-  /* Stilurile pentru desktop */
-  .two-columns {
-    display: flex;
-    gap: 20px;
-    /* Padding doar pe stânga și dreapta */
-    max-width: 1200px;
-    /* Lățimea maximă a secțiunii */
-    margin: 0 auto;
-    /* Centrare orizontală */
-    background-color: #ffffff;
-    /* O culoare deschisă de fundal (opțional) */
-    border-radius: 10px;
-    /* Colțuri rotunjite */
-  }
-
-  .video-column video {
-    max-width: 32rem;
-    height: auto;
-    border-radius: 10px;
-    /* Optional: rotunjire colțuri */
-  }
-
-  /* Stilurile pentru mobil */
-  @media (max-width: 768px) {
-    .two-columns {
-      flex-direction: column;
-      /* Coloanele una sub alta */
-      gap: 0;
-      /* Elimină spațiul dintre coloane */
-      padding: 0;
-      /* Elimină padding-ul general */
-    }
-
-    .video-column video {
-      border-radius: 0;
-      /* Elimină rotunjirea colțurilor la video */
-    }
-
-    .mobile-m-auto {
-      margin: 0 auto;
-    }
-
-    .text-column {
-      padding: 20px;
-      /* Adaugă padding doar la text */
-      text-align: center;
-      /* Centrează textul pentru mobil */
-      display: none;
-      /* Ascunde textul pe mobile */
-    }
-  }
-</style>

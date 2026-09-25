@@ -18,14 +18,13 @@
       }
     },
     "banner": {
-      "type": "alc-main-collection-banner",
+      "type": "alc-main-coll-banner-v2",
       "settings": {
         "show_collection_description": true,
         "show_collection_image": false,
         "color_scheme": "scheme-1",
         "show_collection_slider": true,
-        "slider_columns_desktop": 5,
-        "slider_enable_desktop": true,
+        "slider_columns_desktop": 6,
         "slider_columns_mobile": "2",
         "slider_enable_mobile": true,
         "slider_image_ratio": "square"
@@ -80,19 +79,23 @@
         "feature_6WNPDR"
       ],
       "settings": {
-        "video": "https://cdn.shopify.com/videos/c/o/v/20a1c379a4b14b8aa5777d21733b299c.mp4",
+        "video": "https://cdn.shopify.com/videos/c/vp/20a1c379a4b14b8aa5777d21733b299c/20a1c379a4b14b8aa5777d21733b299c.SD-480p-1.5Mbps-39860332.mp4",
+        "eyebrow": "Marcello Funghi",
         "heading": "De ce Oglinzi LED Marcello?",
-        "checkmark_color": "#4caf50"
+        "link_collection": "oglinzi-led-by-marcello-funghi",
+        "cta_label": ""
       }
     },
     "product-grid": {
       "type": "main-collection-product-grid",
-      "custom_css": [],
+      "custom_css": [
+        ".rating-star {--color-rating-star: #fecf07; letter-spacing: 0.03em;}"
+      ],
       "settings": {
         "products_per_page": 36,
         "columns_desktop": 4,
-        "color_scheme": "",
-        "image_ratio": "adapt",
+        "color_scheme": "scheme-1",
+        "image_ratio": "square",
         "image_shape": "default",
         "show_secondary_image": true,
         "show_vendor": false,
@@ -102,8 +105,8 @@
         "filter_type": "vertical",
         "enable_sorting": true,
         "columns_mobile": "2",
-        "padding_top": 60,
-        "padding_bottom": 0
+        "padding_top": 4,
+        "padding_bottom": 32
       }
     }
   },
