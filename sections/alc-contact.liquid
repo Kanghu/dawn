@@ -118,8 +118,8 @@
         </p>
       </div>
 
-      <ul class="alc-ct__channels{{ reveal }}" role="list" data-cascade>
-        <li class="alc-ct__channel">
+      <ul class="alc-ct__channels" role="list">
+        <li class="alc-ct__channel{{ reveal }}" {% if reveal != blank %}style="--animation-order: 1;"{% endif %}>
           <a class="alc-ct__channel-link" href="tel:{{ phone_href }}">
             <span class="alc-ct__icon" aria-hidden="true">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"><path d="M6.6 3h3l1.5 4-2.2 1.6a12 12 0 0 0 5.5 5.5L16 11.9l4 1.5v3a2 2 0 0 1-2.2 2A16.5 16.5 0 0 1 3.1 5.2 2 2 0 0 1 5.1 3z"/></svg>
@@ -130,7 +130,7 @@
             <span class="alc-ct__channel-cta">{{ t[13] }} {{ arrow }}</span>
           </a>
         </li>
-        <li class="alc-ct__channel">
+        <li class="alc-ct__channel{{ reveal }}" {% if reveal != blank %}style="--animation-order: 2;"{% endif %}>
           <a class="alc-ct__channel-link" href="{{ wa_href }}" target="_blank" rel="noopener">
             <span class="alc-ct__icon alc-ct__icon--wa" aria-hidden="true">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"><path d="M3.5 20.5l1.3-4.3A8 8 0 1 1 8 19.3z"/><path d="M9 9.5c0 3 2.5 5.5 5.5 5.5.6 0 1-.5 1-1v-.7l-1.8-.8-.9 1a6 6 0 0 1-2.5-2.5l1-.9-.8-1.8H9.9c-.5 0-.9.4-.9 1z"/></svg>
@@ -141,7 +141,7 @@
             <span class="alc-ct__channel-cta">{{ t[15] }} {{ arrow }}</span>
           </a>
         </li>
-        <li class="alc-ct__channel">
+        <li class="alc-ct__channel{{ reveal }}" {% if reveal != blank %}style="--animation-order: 3;"{% endif %}>
           <a class="alc-ct__channel-link" href="mailto:{{ email }}">
             <span class="alc-ct__icon" aria-hidden="true">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3.6 6.5l8.4 6 8.4-6"/></svg>
@@ -190,9 +190,6 @@
                       type="radio"
                       name="contact[Subiect]"
                       value="{{ topic }}"
-                      {% if forloop.index0 == 0 or forloop.index0 == 2 %}
-                        data-order
-                      {% endif %}
                     >
                     <span>{{ t[ti] }}</span>
                   </label>
@@ -250,8 +247,9 @@
                   value="{% if form.phone %}{{ form.phone }}{% elsif customer.phone %}{{ customer.phone }}{% endif %}"
                 >
               </div>
-              <div class="alc-ct__field alc-ct__field--order">
-                <label class="alc-ct__label" for="ContactForm-order">{{ t[30] }}</label>
+              <div class="alc-ct__field">
+                {%- assign optional = t[29] | split: '(' | last -%}
+                <label class="alc-ct__label" for="ContactForm-order">{{ t[30] }} ({{ optional }}</label>
                 <input
                   class="alc-ct__input"
                   type="text"
