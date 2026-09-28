@@ -226,18 +226,55 @@
               </div>
             </div>
 
+            {%- comment -%}
+              Opening hours in every storefront language. The old locale strings (cc_schedule,
+              showroom_schedule_1) were machine-translated ("Voluntari" became "Volunteers") and
+              still named the closed Voluntari showroom. Showroom: Afumati, see sections/alc-showroom.
+            {%- endcomment -%}
+            {%- liquid
+              case request.locale.iso_code
+                when 'en'
+                  assign footer_hours = 'Customer care: Mon–Fri 10–18|Showroom Afumați: Mon–Fri 9–17; Sat 9–14'
+                when 'hu'
+                  assign footer_hours = 'Ügyfélszolgálat: H–P 10–18|Bemutatóterem Afumați: H–P 9–17; Szo 9–14'
+                when 'pl'
+                  assign footer_hours = 'Obsługa klienta: pn.–pt. 10–18|Salon Afumați: pn.–pt. 9–17; sob. 9–14'
+                when 'el'
+                  assign footer_hours = 'Εξυπηρέτηση πελατών: Δευ–Παρ 10–18|Showroom Afumați: Δευ–Παρ 9–17· Σάβ 9–14'
+                when 'bg'
+                  assign footer_hours = 'Обслужване на клиенти: пон–пет 10–18|Шоурум Афумаци: пон–пет 9–17; съб 9–14'
+                when 'it'
+                  assign footer_hours = 'Servizio clienti: lun–ven 10–18|Showroom Afumați: lun–ven 9–17; sab 9–14'
+                when 'fr'
+                  assign footer_hours = 'Service client&nbsp;: lun–ven 10h–18h|Showroom Afumați&nbsp;: lun–ven 9h–17h, sam 9h–14h'
+                when 'cs'
+                  assign footer_hours = 'Zákaznický servis: po–pá 10–18|Showroom Afumați: po–pá 9–17; so 9–14'
+                when 'sk'
+                  assign footer_hours = 'Zákaznícky servis: po–pi 10–18|Showroom Afumați: po–pi 9–17; so 9–14'
+                when 'hr'
+                  assign footer_hours = 'Služba za korisnike: pon–pet 10–18|Izložbeni salon Afumați: pon–pet 9–17; sub 9–14'
+                when 'de'
+                  assign footer_hours = 'Kundenservice: Mo–Fr 10–18 Uhr|Showroom Afumați: Mo–Fr 9–17, Sa 9–14 Uhr'
+                when 'nl'
+                  assign footer_hours = 'Klantenservice: ma–vr 10–18|Showroom Afumați: ma–vr 9–17; za 9–14'
+                else
+                  assign footer_hours = 'Program relații clienți: L–V 10–18|Showroom Afumați: L–V 9–17; S 9–14'
+              endcase
+              assign footer_hours = footer_hours | split: '|'
+              assign footer_showroom = pages['showroom']
+            -%}
             <!-- Section 6 (Program) -->
             <div class="w-1/2 sm:w-1/3 md:w-1/4 lg:w-2/12 px-2 mb-6">
               <div class="widget widget-info text-base mx-2">
                 <ul class="space-y-1 text-lg px-0">
                   <li class="flex items-center space-x-1 my-2">
                     <span>
-                      {{ 'sections.footer.contact_info.cc_schedule' | t }}
+                      {{ footer_hours[0] }}
                     </span>
                   </li>
                   <li class="flex items-center space-x-1 my-2">
                     <span>
-                      {{ 'sections.footer.contact_info.showroom_schedule_1' | t }}
+                      {%- if footer_showroom != empty and footer_showroom.url != blank -%}<a href="{{ footer_showroom.url }}" class="hover:text-gray-400 no-underline text-white">{{ footer_hours[1] }}</a>{%- else -%}{{ footer_hours[1] }}{%- endif -%}
                     </span>
                   </li>
                   <li class="flex items-center space-x-1 my-2"></li>
