@@ -1,0 +1,579 @@
+{% comment %}
+  Marketing collaborations page (templates/page.colaborari-marketing.json). A "creator"
+  page, deliberately unlike the showroom, company and B2B pages:
+
+  - Hero: headline + a fan of three phone screens (reels shot in the showroom) with a
+    "new customer via your link" notification.
+  - The four collaboration formats as tabs (assets/alc-collab.js), a bento of what the
+    partner gets (the product count is live), vertical content-idea cards, and the
+    application: three steps next to a form that goes to the store's contact inbox,
+    tagged "Colaborare marketing" so it can be filtered.
+
+  Every storefront language has a built-in translation. Styles: assets/alc-collab.css.
+{% endcomment %}
+{{ 'alc-collab.css' | asset_url | stylesheet_tag }}
+<script src="{{ 'alc-collab.js' | asset_url }}" defer="defer"></script>
+
+{%- liquid
+  assign lang = request.locale.iso_code | downcase | slice: 0, 2
+  case lang
+    when 'en'
+      assign w = "Marketing collaborations|You create.|We bring the light.|We work with content creators, bloggers, YouTube channels and newsletters who want to show beautiful products to a real audience. You pick the format, we bring the products, the materials and the reward.|Apply to collaborate|Message us on WhatsApp|@your.handle|The living room, before and after|New customer via your link|Reward added|Formats|Choose how you want to work with us.|What you do|What you get|Ideal for|Affiliate and blog|Writing about interiors, lighting or home design? Recommend our products through your link and earn from every customer you bring.|Articles, guides and product round-ups linking to our store.|A reward for every customer who buys through your link.|Blogs, niche sites, buying guides|Social media|Creating on Instagram, TikTok or Facebook? Show your followers how the right light changes a whole room.|Reels, short videos, stories and posts featuring our products in your home.|The products for your content and a reward agreed together.|Instagram, TikTok, Facebook|YouTube channel|Running a YouTube channel? Reviews and makeover projects keep being watched months and years after they go live.|Reviews, unboxings, step-by-step installs and renovation projects.|The products to film, technical details and a long-term collaboration.|Reviews, DIY, makeovers, renovations|Newsletter|Have a subscriber list? Add Alessandro Design products to your picks and offers.|Product picks and offers sent to your subscribers.|Images and copy ready to send, plus the agreed reward.|Newsletters, communities, shopping clubs|Why us|Everything you need for content that looks good.|Products that look good on camera|Chandeliers, wall lights, LED mirrors and designer bathroom pieces, made to look as good on camera as they do at home.|A showroom as your film set|A showroom and warehouse of over 5,000 m² in Afumați, Romania. We set a date and you film among the lights.|Ready-to-use materials|Photos, videos, spec sheets and copy for every product.|A reward for every customer|Every customer you bring is rewarded, according to your format.|One point of contact|You talk directly to our marketing team, from the first idea to publishing.|An audience in several countries|We deliver to several European countries, so you can work with us wherever your community is.|products in the catalogue|Content ideas|Not sure where to start? Start here.|Before and after: the living room|Unboxing: a crystal chandelier|A tour of the showroom|Step-by-step installation|The bathroom, LED mirror on|How to choose the light for every room|How we start|Three steps to your first piece.|You apply|Fill in the form. It takes two minutes.|We agree the details|We get in touch and choose the products, the format and the reward together.|You publish|You create the content in your own style. We help with everything product-related.|Apply|Tell us who you are.|A few details about you and your content. Our marketing team will get back to you soon.|Name|Email|Main platform|Something else|Link to your profile or site|Audience (followers or subscribers)|Message|Tell us briefly about your content and what you would like to create.|Send application|Thank you!|We have your application. Our marketing team will be in touch soon.|Check your email address and try again.|We only use your details to contact you about the collaboration.|Prefer WhatsApp?|Message us directly|Hi! I would like to collaborate on promoting Alessandro Design products.|,|Blog / website|now|Required field"
+    when 'hu'
+      assign w = "Marketing együttműködések|Ön alkot.|Mi hozzuk a fényt.|Tartalomgyártókkal, bloggerekkel, YouTube-csatornákkal és hírlevelekkel dolgozunk, akik szép termékeket szeretnének bemutatni valódi közönségnek. Ön választja a formát, mi hozzuk a termékeket, az anyagokat és a jutalmat.|Jelentkezzen együttműködésre|Írjon nekünk WhatsAppon|@az.on.profilja|A nappali, előtte és utána|Új vásárló az Ön linkjén|Jutalom jóváírva|Formák|Válassza ki, hogyan dolgozzunk együtt.|Amit Ön csinál|Amit kap|Kinek ajánlott|Affiliate és blog|Lakberendezésről, világításról vagy belsőépítészetről ír? Ajánlja termékeinket a saját linkjén, és minden hozott vásárló után jutalmat kap.|Cikkek, útmutatók és terméklisták, linkekkel a webáruházunkra.|Jutalom minden vásárló után, aki az Ön linkjén vásárol.|Blogok, niche oldalak, vásárlási útmutatók|Közösségi média|Instagramon, TikTokon vagy Facebookon alkot? Mutassa meg követőinek, hogyan változtat meg egy egész szobát a megfelelő fény.|Reelek, rövid videók, storyk és posztok a termékeinkkel, az Ön otthonában.|Termékek a tartalomhoz és közösen egyeztetett jutalom.|Instagram, TikTok, Facebook|YouTube-csatorna|Van YouTube-csatornája? A tesztvideókat és a felújítási projekteket hónapokkal, évekkel a megjelenés után is nézik.|Tesztek, kicsomagolás, lépésről lépésre szerelés és felújítási projektek.|Termékek a forgatáshoz, műszaki információk és hosszú távú együttműködés.|Tesztek, DIY, lakberendezés, felújítás|Hírlevél|Van feliratkozói listája? Tegyen Alessandro Design termékeket a válogatásaiba és ajánlataiba.|Termékválogatások és ajánlatok a feliratkozóinak.|Küldésre kész képek és szövegek, plusz a megállapodott jutalom.|Hírlevelek, közösségek, vásárlói klubok|Miért velünk|Minden, ami egy jól kinéző tartalomhoz kell.|Termékek, amelyek jól mutatnak a képen|Csillárok, fali lámpák, LED tükrök és design fürdőszobai termékek, amelyek a kamerán is olyan jól mutatnak, mint otthon.|Bemutatóterem forgatási helyszínként|Több mint 5000 m²-es bemutatóterem és raktár Afumațiban, Romániában. Egyeztetünk egy napot, és a fények között forgathat.|Használatra kész anyagok|Fotók, videók, műszaki adatlapok és szövegek minden termékhez.|Jutalom minden vásárló után|Minden vásárlót, akit Ön hoz, jutalmazunk a választott forma szerint.|Egy kapcsolattartó|Közvetlenül a marketingcsapatunkkal beszél, az ötlettől a megjelenésig.|Közönség több országban|Több európai országba szállítunk, így bárhol is van a közössége, együttműködhetünk.|termék a katalógusban|Tartalomötletek|Nem tudja, hol kezdje? Kezdje itt.|Előtte és utána: a nappali|Kicsomagolás: kristálycsillár|Séta a bemutatóteremben|Szerelés lépésről lépésre|A fürdőszoba, bekapcsolt LED tükörrel|Hogyan válasszunk fényt minden szobába|Hogyan kezdünk|Három lépés az első anyagig.|Jelentkezik|Kitölti az űrlapot. Két percet vesz igénybe.|Egyeztetjük a részleteket|Felvesszük Önnel a kapcsolatot, és közösen kiválasztjuk a termékeket, a formát és a jutalmat.|Publikál|A tartalmat a saját stílusában készíti el. Mi mindenben segítünk, ami a termékekkel kapcsolatos.|Jelentkezés|Mondja el, ki Ön.|Néhány adat Önről és a tartalmáról. Marketingcsapatunk hamarosan válaszol.|Név|E-mail|Fő platform|Egyéb|Link a profiljához vagy oldalához|Közönség (követők vagy feliratkozók)|Üzenet|Írja le röviden, milyen tartalmat készít, és mit szeretne létrehozni.|Jelentkezés elküldése|Köszönjük!|Megkaptuk a jelentkezését. Marketingcsapatunk hamarosan felveszi Önnel a kapcsolatot.|Ellenőrizze az e-mail-címét, és próbálja újra.|Adatait csak arra használjuk, hogy az együttműködéssel kapcsolatban felvegyük Önnel a kapcsolatot.|Inkább WhatsApp?|Írjon nekünk közvetlenül|Üdvözlöm! Szívesen együttműködnék az Alessandro Design termékeinek népszerűsítésében.| |Blog / weboldal|most|Kötelező mező"
+    when 'pl'
+      assign w = "Współpraca marketingowa|Ty tworzysz.|My dajemy światło.|Współpracujemy z twórcami treści, blogerami, kanałami YouTube i newsletterami, którzy chcą pokazywać piękne produkty prawdziwej publiczności. Ty wybierasz format, my zapewniamy produkty, materiały i wynagrodzenie.|Zgłoś się do współpracy|Napisz na WhatsApp|@twoj.profil|Salon przed i po|Nowy klient z Twojego linku|Nagroda dodana|Formaty|Wybierz, jak chcesz z nami współpracować.|Co robisz|Co otrzymujesz|Dla kogo|Afiliacja i blog|Piszesz o aranżacji wnętrz, oświetleniu lub designie? Polecaj nasze produkty przez swój link i zarabiaj na każdym przyprowadzonym kliencie.|Artykuły, poradniki i zestawienia produktów z linkami do naszego sklepu.|Nagroda za każdego klienta, który kupi przez Twój link.|Blogi, strony niszowe, poradniki zakupowe|Social media|Tworzysz na Instagramie, TikToku lub Facebooku? Pokaż obserwującym, jak odpowiednie światło zmienia całe pomieszczenie.|Rolki, krótkie filmy, relacje i posty z naszymi produktami w Twoim domu.|Produkty do treści i wynagrodzenie ustalone wspólnie.|Instagram, TikTok, Facebook|Kanał YouTube|Masz kanał na YouTube? Recenzje i metamorfozy wnętrz są oglądane miesiącami i latami po publikacji.|Recenzje, unboxingi, montaż krok po kroku i projekty remontowe.|Produkty do nagrań, informacje techniczne i długofalowa współpraca.|Recenzje, DIY, aranżacje, remonty|Newsletter|Masz listę subskrybentów? Dodaj produkty Alessandro Design do swoich zestawień i ofert.|Zestawienia produktów i oferty wysyłane do subskrybentów.|Gotowe do wysyłki zdjęcia i teksty oraz uzgodnione wynagrodzenie.|Newslettery, społeczności, kluby zakupowe|Dlaczego my|Wszystko, czego potrzebujesz do treści, które dobrze wyglądają.|Produkty, które dobrze wyglądają w kadrze|Żyrandole, kinkiety, lustra LED i designerskie wyposażenie łazienek, które wyglądają w kamerze tak samo dobrze jak w domu.|Showroom jako plan zdjęciowy|Showroom i magazyn o powierzchni ponad 5 000 m² w Afumați w Rumunii. Ustalamy termin, a Ty nagrywasz wśród zapalonych świateł.|Gotowe materiały|Zdjęcia, filmy, karty techniczne i teksty do każdego produktu.|Nagroda za każdego klienta|Każdy klient, którego przyprowadzisz, jest nagradzany zgodnie z wybranym formatem.|Jedna osoba kontaktowa|Rozmawiasz bezpośrednio z naszym zespołem marketingu, od pomysłu po publikację.|Odbiorcy w wielu krajach|Dostarczamy do wielu krajów Europy, więc możesz z nami współpracować, gdziekolwiek jest Twoja społeczność.|produktów w katalogu|Pomysły na treści|Nie wiesz, od czego zacząć? Zacznij tutaj.|Przed i po: salon|Unboxing: kryształowy żyrandol|Wycieczka po showroomie|Montaż krok po kroku|Łazienka z zapalonym lustrem LED|Jak dobrać światło do każdego pokoju|Jak zaczynamy|Trzy kroki do pierwszego materiału.|Zgłaszasz się|Wypełniasz formularz. Zajmie to dwie minuty.|Ustalamy szczegóły|Kontaktujemy się z Tobą i wspólnie wybieramy produkty, format i wynagrodzenie.|Publikujesz|Tworzysz treści w swoim stylu. Pomagamy we wszystkim, co dotyczy produktów.|Zgłoszenie|Powiedz nam, kim jesteś.|Kilka informacji o Tobie i Twoich treściach. Nasz zespół marketingu wkrótce odpowie.|Imię i nazwisko|E-mail|Główna platforma|Coś innego|Link do profilu lub strony|Zasięg (obserwujący lub subskrybenci)|Wiadomość|Opowiedz krótko o swoich treściach i o tym, co chcesz stworzyć.|Wyślij zgłoszenie|Dziękujemy!|Otrzymaliśmy Twoje zgłoszenie. Nasz zespół marketingu wkrótce się z Tobą skontaktuje.|Sprawdź adres e-mail i spróbuj ponownie.|Używamy Twoich danych wyłącznie do kontaktu w sprawie współpracy.|Wolisz WhatsApp?|Napisz bezpośrednio|Dzień dobry! Chciałbym/Chciałabym współpracować przy promocji produktów Alessandro Design.| |Blog / strona|teraz|Pole wymagane"
+    when 'el'
+      assign w = "Συνεργασίες μάρκετινγκ|Εσείς δημιουργείτε.|Εμείς φέρνουμε το φως.|Συνεργαζόμαστε με δημιουργούς περιεχομένου, bloggers, κανάλια YouTube και newsletters που θέλουν να δείχνουν όμορφα προϊόντα σε πραγματικό κοινό. Εσείς επιλέγετε τη μορφή, εμείς φέρνουμε τα προϊόντα, το υλικό και την ανταμοιβή.|Κάντε αίτηση συνεργασίας|Γράψτε μας στο WhatsApp|@to.profil.sas|Το σαλόνι, πριν και μετά|Νέος πελάτης από το link σας|Η ανταμοιβή προστέθηκε|Μορφές|Επιλέξτε πώς θέλετε να συνεργαστούμε.|Τι κάνετε|Τι κερδίζετε|Ιδανικό για|Affiliate και blog|Γράφετε για διακόσμηση, φωτισμό ή εσωτερικό σχεδιασμό; Προτείνετε τα προϊόντα μας μέσω του link σας και κερδίζετε από κάθε πελάτη που φέρνετε.|Άρθρα, οδηγοί και λίστες προϊόντων με links προς το κατάστημά μας.|Ανταμοιβή για κάθε πελάτη που αγοράζει μέσω του link σας.|Blogs, εξειδικευμένα sites, οδηγοί αγορών|Social media|Δημιουργείτε στο Instagram, στο TikTok ή στο Facebook; Δείξτε στους ακόλουθούς σας πώς το σωστό φως αλλάζει ένα ολόκληρο δωμάτιο.|Reels, σύντομα βίντεο, stories και αναρτήσεις με τα προϊόντα μας στο σπίτι σας.|Τα προϊόντα για το περιεχόμενο και ανταμοιβή που συμφωνούμε μαζί.|Instagram, TikTok, Facebook|Κανάλι YouTube|Έχετε κανάλι στο YouTube; Οι κριτικές και τα projects ανακαίνισης προβάλλονται για μήνες και χρόνια μετά τη δημοσίευση.|Κριτικές, unboxing, εγκατάσταση βήμα προς βήμα και projects ανακαίνισης.|Τα προϊόντα για τη λήψη, τεχνικές πληροφορίες και μακροχρόνια συνεργασία.|Κριτικές, DIY, διακόσμηση, ανακαινίσεις|Newsletter|Έχετε λίστα συνδρομητών; Προσθέστε προϊόντα Alessandro Design στις επιλογές και στις προσφορές σας.|Επιλογές προϊόντων και προσφορές για τους συνδρομητές σας.|Εικόνες και κείμενα έτοιμα για αποστολή, μαζί με τη συμφωνημένη ανταμοιβή.|Newsletters, κοινότητες, λέσχες αγορών|Γιατί μαζί μας|Ό,τι χρειάζεστε για περιεχόμενο που δείχνει όμορφο.|Προϊόντα που δείχνουν όμορφα στο κάδρο|Πολυέλαιοι, απλίκες, καθρέπτες LED και design είδη μπάνιου, φτιαγμένα να δείχνουν στην κάμερα όσο όμορφα δείχνουν και στο σπίτι.|Ένα showroom για πλατό|Showroom και αποθήκη άνω των 5.000 m² στο Afumați της Ρουμανίας. Κλείνουμε μια μέρα και γυρίζετε ανάμεσα στα φώτα.|Υλικό έτοιμο για χρήση|Φωτογραφίες, βίντεο, τεχνικά φυλλάδια και κείμενα για κάθε προϊόν.|Ανταμοιβή για κάθε πελάτη|Κάθε πελάτης που φέρνετε ανταμείβεται, ανάλογα με τη μορφή που επιλέξατε.|Ένα άτομο επικοινωνίας|Μιλάτε απευθείας με την ομάδα μάρκετινγκ, από την ιδέα έως τη δημοσίευση.|Κοινό σε πολλές χώρες|Παραδίδουμε σε πολλές ευρωπαϊκές χώρες, οπότε μπορείτε να συνεργαστείτε μαζί μας όπου κι αν βρίσκεται η κοινότητά σας.|προϊόντα στον κατάλογο|Ιδέες περιεχομένου|Δεν ξέρετε από πού να ξεκινήσετε; Ξεκινήστε από εδώ.|Πριν και μετά: το σαλόνι|Unboxing: ένας κρυστάλλινος πολυέλαιος|Περιήγηση στο showroom|Εγκατάσταση βήμα προς βήμα|Το μπάνιο, με αναμμένο καθρέπτη LED|Πώς διαλέγετε φως για κάθε δωμάτιο|Πώς ξεκινάμε|Τρία βήματα μέχρι το πρώτο υλικό.|Κάνετε αίτηση|Συμπληρώνετε τη φόρμα. Χρειάζονται δύο λεπτά.|Συμφωνούμε τις λεπτομέρειες|Επικοινωνούμε μαζί σας και επιλέγουμε μαζί τα προϊόντα, τη μορφή και την ανταμοιβή.|Δημοσιεύετε|Δημιουργείτε το περιεχόμενο με το δικό σας ύφος. Σας βοηθάμε σε ό,τι αφορά τα προϊόντα.|Αίτηση|Πείτε μας ποιοι είστε.|Λίγα στοιχεία για εσάς και το περιεχόμενό σας. Η ομάδα μάρκετινγκ θα σας απαντήσει σύντομα.|Όνομα|Email|Κύρια πλατφόρμα|Κάτι άλλο|Link προς το προφίλ ή το site σας|Κοινό (ακόλουθοι ή συνδρομητές)|Μήνυμα|Πείτε μας σύντομα για το περιεχόμενό σας και τι θα θέλατε να δημιουργήσετε.|Αποστολή αίτησης|Ευχαριστούμε!|Λάβαμε την αίτησή σας. Η ομάδα μάρκετινγκ θα επικοινωνήσει σύντομα μαζί σας.|Ελέγξτε τη διεύθυνση email σας και δοκιμάστε ξανά.|Χρησιμοποιούμε τα στοιχεία σας μόνο για να επικοινωνήσουμε μαζί σας σχετικά με τη συνεργασία.|Προτιμάτε WhatsApp;|Γράψτε μας απευθείας|Γεια σας! Θα ήθελα να συνεργαστούμε για την προώθηση των προϊόντων Alessandro Design.|.|Blog / site|τώρα|Υποχρεωτικό πεδίο"
+    when 'bg'
+      assign w = "Маркетингови партньорства|Вие създавате.|Ние носим светлината.|Работим със създатели на съдържание, блогъри, YouTube канали и бюлетини, които искат да показват красиви продукти на реална аудитория. Вие избирате формата, ние осигуряваме продуктите, материалите и възнаграждението.|Кандидатствайте за партньорство|Пишете ни в WhatsApp|@vashiat.profil|Холът, преди и след|Нов клиент от вашия линк|Добавено възнаграждение|Формати|Изберете как искате да работим заедно.|Какво правите|Какво получавате|Подходящо за|Афилиейт и блог|Пишете за интериор, осветление или дизайн? Препоръчвайте нашите продукти чрез вашия линк и печелете от всеки доведен клиент.|Статии, ръководства и класации на продукти с линкове към нашия магазин.|Възнаграждение за всеки клиент, който купи чрез вашия линк.|Блогове, нишови сайтове, ръководства за покупки|Социални мрежи|Създавате съдържание в Instagram, TikTok или Facebook? Покажете на последователите си как правилната светлина променя цяла стая.|Reels, кратки видеа, stories и публикации с нашите продукти във вашия дом.|Продуктите за съдържанието и възнаграждение, договорено заедно.|Instagram, TikTok, Facebook|YouTube канал|Имате YouTube канал? Ревютата и проектите за обзавеждане се гледат месеци и години след публикуването.|Ревюта, разопаковане, монтаж стъпка по стъпка и ремонтни проекти.|Продуктите за снимане, техническа информация и дългосрочно партньорство.|Ревюта, DIY, обзавеждане, ремонти|Бюлетин|Имате списък с абонати? Добавете продукти на Alessandro Design към вашите селекции и оферти.|Селекции от продукти и оферти, изпратени до абонатите ви.|Готови за изпращане снимки и текстове, плюс договореното възнаграждение.|Бюлетини, общности, клубове за пазаруване|Защо с нас|Всичко, от което се нуждаете за съдържание, което изглежда добре.|Продукти, които изглеждат добре в кадър|Полилеи, аплици, LED огледала и дизайнерски продукти за баня, създадени да изглеждат пред камерата толкова добре, колкото и у дома.|Шоурум като снимачна площадка|Шоурум и склад от над 5000 m² в Афумац, Румъния. Уговаряме ден и снимате сред светлините.|Готови материали|Снимки, видеа, технически листове и текстове за всеки продукт.|Възнаграждение за всеки клиент|Всеки клиент, когото доведете, се възнаграждава според избрания формат.|Едно лице за контакт|Говорите директно с нашия маркетинг екип, от идеята до публикуването.|Аудитория в няколко държави|Доставяме в няколко европейски държави, така че можете да работите с нас, където и да е вашата общност.|продукта в каталога|Идеи за съдържание|Не знаете откъде да започнете? Започнете оттук.|Преди и след: холът|Разопаковане: кристален полилей|Разходка из шоурума|Монтаж стъпка по стъпка|Банята, със светнало LED огледало|Как да изберете светлина за всяка стая|Как започваме|Три стъпки до първия материал.|Кандидатствате|Попълвате формуляра. Отнема две минути.|Уточняваме детайлите|Свързваме се с вас и заедно избираме продуктите, формата и възнаграждението.|Публикувате|Създавате съдържанието в своя стил. Ние помагаме с всичко, свързано с продуктите.|Кандидатстване|Разкажете ни кои сте.|Няколко детайла за вас и вашето съдържание. Маркетинг екипът ни ще ви отговори скоро.|Име|Имейл|Основна платформа|Друго|Линк към профил или сайт|Аудитория (последователи или абонати)|Съобщение|Разкажете ни накратко за съдържанието си и какво бихте искали да създадете.|Изпрати кандидатурата|Благодарим!|Получихме кандидатурата ви. Маркетинг екипът ни ще се свърже с вас скоро.|Проверете имейл адреса си и опитайте отново.|Използваме данните ви само за да се свържем с вас относно партньорството.|Предпочитате WhatsApp?|Пишете ни директно|Здравейте! Бих искал(а) да си партньорстваме за популяризиране на продуктите на Alessandro Design.| |Блог / сайт|сега|Задължително поле"
+    when 'it'
+      assign w = "Collaborazioni di marketing|Tu crei.|Noi portiamo la luce.|Collaboriamo con content creator, blogger, canali YouTube e newsletter che vogliono mostrare prodotti belli a un pubblico reale. Tu scegli il formato, noi mettiamo i prodotti, i materiali e la ricompensa.|Candidati per collaborare|Scrivici su WhatsApp|@il.tuo.profilo|Il soggiorno, prima e dopo|Nuovo cliente dal tuo link|Ricompensa aggiunta|Formati|Scegli come vuoi collaborare con noi.|Cosa fai|Cosa ricevi|Ideale per|Affiliazione e blog|Scrivi di arredamento, illuminazione o interior design? Consiglia i nostri prodotti tramite il tuo link e guadagna per ogni cliente che porti.|Articoli, guide e classifiche di prodotti con link al nostro negozio.|Una ricompensa per ogni cliente che acquista tramite il tuo link.|Blog, siti di nicchia, guide all'acquisto|Social media|Crei contenuti su Instagram, TikTok o Facebook? Mostra ai tuoi follower come la luce giusta cambia un'intera stanza.|Reel, video brevi, storie e post con i nostri prodotti a casa tua.|I prodotti per i contenuti e una ricompensa concordata insieme.|Instagram, TikTok, Facebook|Canale YouTube|Hai un canale YouTube? Recensioni e progetti di ristrutturazione vengono visti per mesi e anni dopo la pubblicazione.|Recensioni, unboxing, montaggio passo dopo passo e progetti di ristrutturazione.|I prodotti da filmare, informazioni tecniche e una collaborazione a lungo termine.|Recensioni, fai da te, arredamento, ristrutturazioni|Newsletter|Hai una lista di iscritti? Aggiungi i prodotti Alessandro Design alle tue selezioni e offerte.|Selezioni di prodotti e offerte inviate ai tuoi iscritti.|Immagini e testi pronti da inviare, più la ricompensa concordata.|Newsletter, community, club di acquisto|Perché con noi|Tutto ciò che serve per contenuti che fanno bella figura.|Prodotti che bucano lo schermo|Lampadari, applique, specchi LED e arredo bagno di design, pensati per fare in video la stessa figura che fanno a casa.|Uno showroom come set|Showroom e magazzino di oltre 5.000 m² ad Afumați, in Romania. Fissiamo una data e giri tra le luci accese.|Materiali pronti all'uso|Foto, video, schede tecniche e testi per ogni prodotto.|Una ricompensa per ogni cliente|Ogni cliente che porti viene ricompensato, secondo il formato scelto.|Un unico referente|Parli direttamente con il nostro team marketing, dall'idea alla pubblicazione.|Un pubblico in più paesi|Consegniamo in diversi paesi europei, quindi puoi collaborare con noi ovunque sia la tua community.|prodotti in catalogo|Idee per contenuti|Non sai da dove iniziare? Inizia da qui.|Prima e dopo: il soggiorno|Unboxing: un lampadario di cristallo|Tour dello showroom|Montaggio passo dopo passo|Il bagno, con lo specchio LED acceso|Come scegliere la luce per ogni stanza|Come iniziamo|Tre passi fino al primo contenuto.|Ti candidi|Compili il modulo. Bastano due minuti.|Definiamo i dettagli|Ti contattiamo e scegliamo insieme prodotti, formato e ricompensa.|Pubblichi|Crei i contenuti nel tuo stile. Noi ti aiutiamo in tutto ciò che riguarda i prodotti.|Candidatura|Raccontaci chi sei.|Qualche dettaglio su di te e sui tuoi contenuti. Il nostro team marketing ti risponderà presto.|Nome|Email|Piattaforma principale|Altro|Link al profilo o al sito|Pubblico (follower o iscritti)|Messaggio|Raccontaci in breve i tuoi contenuti e cosa ti piacerebbe creare.|Invia la candidatura|Grazie!|Abbiamo ricevuto la tua candidatura. Il nostro team marketing ti contatterà presto.|Controlla il tuo indirizzo email e riprova.|Usiamo i tuoi dati solo per contattarti riguardo alla collaborazione.|Preferisci WhatsApp?|Scrivici direttamente|Ciao! Vorrei collaborare alla promozione dei prodotti Alessandro Design.|.|Blog / sito|ora|Campo obbligatorio"
+    when 'fr'
+      assign w = "Collaborations marketing|Vous créez.|Nous apportons la lumière.|Nous travaillons avec des créateurs de contenu, des blogueurs, des chaînes YouTube et des newsletters qui veulent montrer de beaux produits à une vraie audience. Vous choisissez le format, nous apportons les produits, les supports et la récompense.|Postuler pour collaborer|Écrivez-nous sur WhatsApp|@votre.profil|Le salon, avant et après|Nouveau client via votre lien|Récompense ajoutée|Formats|Choisissez comment collaborer avec nous.|Ce que vous faites|Ce que vous recevez|Idéal pour|Affiliation et blog|Vous écrivez sur la décoration, l'éclairage ou le design intérieur ? Recommandez nos produits via votre lien et gagnez pour chaque client apporté.|Articles, guides et sélections de produits avec des liens vers notre boutique.|Une récompense pour chaque client qui achète via votre lien.|Blogs, sites de niche, guides d'achat|Réseaux sociaux|Vous créez sur Instagram, TikTok ou Facebook ? Montrez à votre communauté comment la bonne lumière transforme toute une pièce.|Reels, vidéos courtes, stories et publications avec nos produits chez vous.|Les produits pour vos contenus et une récompense fixée ensemble.|Instagram, TikTok, Facebook|Chaîne YouTube|Vous avez une chaîne YouTube ? Les tests et les projets de rénovation sont regardés des mois et des années après leur publication.|Tests, unboxings, installation pas à pas et projets de rénovation.|Les produits à filmer, des informations techniques et une collaboration sur le long terme.|Tests, DIY, décoration, rénovation|Newsletter|Vous avez une liste d'abonnés ? Ajoutez les produits Alessandro Design à vos sélections et offres.|Sélections de produits et offres envoyées à vos abonnés.|Des images et des textes prêts à envoyer, plus la récompense convenue.|Newsletters, communautés, clubs d'achat|Pourquoi nous|Tout ce qu'il faut pour des contenus qui font de l'effet.|Des produits qui crèvent l'écran|Lustres, appliques, miroirs LED et équipements de salle de bain design, pensés pour être aussi beaux à l'écran qu'à la maison.|Un showroom comme plateau de tournage|Un showroom et un entrepôt de plus de 5 000 m² à Afumați, en Roumanie. Nous fixons une date et vous tournez au milieu des lumières.|Des supports prêts à l'emploi|Photos, vidéos, fiches techniques et textes pour chaque produit.|Une récompense pour chaque client|Chaque client que vous apportez est récompensé, selon le format choisi.|Un seul interlocuteur|Vous échangez directement avec notre équipe marketing, de l'idée à la publication.|Une audience dans plusieurs pays|Nous livrons dans plusieurs pays européens : vous pouvez collaborer avec nous où que soit votre communauté.|produits au catalogue|Idées de contenu|Vous ne savez pas par où commencer ? Commencez ici.|Avant et après : le salon|Unboxing : un lustre en cristal|Visite du showroom|Installation pas à pas|La salle de bain, miroir LED allumé|Comment choisir la lumière de chaque pièce|Comment on commence|Trois étapes jusqu'au premier contenu.|Vous postulez|Vous remplissez le formulaire. Cela prend deux minutes.|On fixe les détails|Nous vous contactons et choisissons ensemble les produits, le format et la récompense.|Vous publiez|Vous créez le contenu à votre façon. Nous vous aidons pour tout ce qui concerne les produits.|Candidature|Dites-nous qui vous êtes.|Quelques détails sur vous et vos contenus. Notre équipe marketing vous répondra bientôt.|Nom|E-mail|Plateforme principale|Autre|Lien vers votre profil ou site|Audience (abonnés)|Message|Parlez-nous brièvement de vos contenus et de ce que vous aimeriez créer.|Envoyer ma candidature|Merci !|Nous avons bien reçu votre candidature. Notre équipe marketing vous contactera bientôt.|Vérifiez votre adresse e-mail et réessayez.|Nous utilisons vos données uniquement pour vous contacter au sujet de la collaboration.|Vous préférez WhatsApp ?|Écrivez-nous directement|Bonjour ! J'aimerais collaborer à la promotion des produits Alessandro Design.| |Blog / site|maintenant|Champ obligatoire"
+    when 'cs'
+      assign w = "Marketingová spolupráce|Vy tvoříte.|My přinášíme světlo.|Spolupracujeme s tvůrci obsahu, blogery, YouTube kanály a newslettery, kteří chtějí ukazovat krásné produkty skutečnému publiku. Vy si vyberete formát, my dodáme produkty, podklady a odměnu.|Přihlásit se ke spolupráci|Napište nám na WhatsApp|@vas.profil|Obývák před a po|Nový zákazník z vašeho odkazu|Odměna připsána|Formáty|Vyberte si, jak chcete spolupracovat.|Co děláte|Co získáte|Vhodné pro|Affiliate a blog|Píšete o bydlení, osvětlení nebo interiérovém designu? Doporučujte naše produkty přes svůj odkaz a vydělávejte na každém přivedeném zákazníkovi.|Články, průvodce a žebříčky produktů s odkazy do našeho obchodu.|Odměna za každého zákazníka, který nakoupí přes váš odkaz.|Blogy, specializované weby, nákupní průvodce|Sociální sítě|Tvoříte na Instagramu, TikToku nebo Facebooku? Ukažte sledujícím, jak správné světlo promění celou místnost.|Reels, krátká videa, stories a příspěvky s našimi produkty u vás doma.|Produkty pro obsah a odměnu, na které se domluvíme společně.|Instagram, TikTok, Facebook|YouTube kanál|Máte YouTube kanál? Recenze a proměny interiérů se sledují měsíce i roky po zveřejnění.|Recenze, unboxingy, montáž krok za krokem a rekonstrukční projekty.|Produkty k natáčení, technické informace a dlouhodobou spolupráci.|Recenze, DIY, bydlení, rekonstrukce|Newsletter|Máte seznam odběratelů? Přidejte produkty Alessandro Design do svých výběrů a nabídek.|Výběry produktů a nabídky pro vaše odběratele.|Obrázky a texty připravené k odeslání a dohodnutou odměnu.|Newslettery, komunity, nákupní kluby|Proč s námi|Vše, co potřebujete pro obsah, který dobře vypadá.|Produkty, které v záběru vyniknou|Lustry, nástěnná svítidla, LED zrcadla a designové koupelnové vybavení, které vypadá před kamerou stejně dobře jako doma.|Showroom jako natáčecí místo|Showroom a sklad o rozloze přes 5 000 m² v Afumați v Rumunsku. Domluvíme den a vy natáčíte mezi rozsvícenými světly.|Podklady připravené k použití|Fotky, videa, technické listy a texty ke každému produktu.|Odměna za každého zákazníka|Každý zákazník, kterého přivedete, je odměněn podle zvoleného formátu.|Jedna kontaktní osoba|Mluvíte přímo s naším marketingovým týmem, od nápadu po zveřejnění.|Publikum v několika zemích|Doručujeme do několika evropských zemí, takže s námi můžete spolupracovat, ať je vaše komunita kdekoli.|produktů v katalogu|Nápady na obsah|Nevíte, kde začít? Začněte tady.|Před a po: obývák|Unboxing: křišťálový lustr|Prohlídka showroomu|Montáž krok za krokem|Koupelna s rozsvíceným LED zrcadlem|Jak vybrat světlo do každé místnosti|Jak začneme|Tři kroky k prvnímu obsahu.|Přihlásíte se|Vyplníte formulář. Zabere to dvě minuty.|Domluvíme detaily|Ozveme se vám a společně vybereme produkty, formát a odměnu.|Zveřejníte|Obsah tvoříte ve svém stylu. My pomůžeme se vším, co se týká produktů.|Přihláška|Řekněte nám, kdo jste.|Pár informací o vás a vašem obsahu. Náš marketingový tým se vám brzy ozve.|Jméno|E-mail|Hlavní platforma|Něco jiného|Odkaz na profil nebo web|Publikum (sledující nebo odběratelé)|Zpráva|Napište nám krátce o svém obsahu a o tom, co byste chtěli vytvořit.|Odeslat přihlášku|Děkujeme!|Vaši přihlášku jsme obdrželi. Náš marketingový tým se vám brzy ozve.|Zkontrolujte e-mailovou adresu a zkuste to znovu.|Vaše údaje používáme jen k tomu, abychom vás kontaktovali ohledně spolupráce.|Raději WhatsApp?|Napište nám přímo|Dobrý den! Rád/a bych spolupracoval/a na propagaci produktů Alessandro Design.| |Blog / web|teď|Povinné pole"
+    when 'sk'
+      assign w = "Marketingová spolupráca|Vy tvoríte.|My prinášame svetlo.|Spolupracujeme s tvorcami obsahu, blogermi, YouTube kanálmi a newslettermi, ktorí chcú ukazovať krásne produkty skutočnému publiku. Vy si vyberiete formát, my dodáme produkty, podklady a odmenu.|Prihlásiť sa na spoluprácu|Napíšte nám na WhatsApp|@vas.profil|Obývačka pred a po|Nový zákazník z vášho odkazu|Odmena pripísaná|Formáty|Vyberte si, ako chcete spolupracovať.|Čo robíte|Čo získate|Vhodné pre|Affiliate a blog|Píšete o bývaní, osvetlení alebo interiérovom dizajne? Odporúčajte naše produkty cez svoj odkaz a zarábajte na každom privedenom zákazníkovi.|Články, sprievodcovia a rebríčky produktov s odkazmi do nášho obchodu.|Odmena za každého zákazníka, ktorý nakúpi cez váš odkaz.|Blogy, špecializované weby, nákupní sprievodcovia|Sociálne siete|Tvoríte na Instagrame, TikToku alebo Facebooku? Ukážte sledovateľom, ako správne svetlo premení celú miestnosť.|Reels, krátke videá, stories a príspevky s našimi produktmi u vás doma.|Produkty na obsah a odmenu, na ktorej sa dohodneme spolu.|Instagram, TikTok, Facebook|YouTube kanál|Máte YouTube kanál? Recenzie a premeny interiérov sa pozerajú mesiace aj roky po zverejnení.|Recenzie, unboxingy, montáž krok za krokom a rekonštrukčné projekty.|Produkty na natáčanie, technické informácie a dlhodobú spoluprácu.|Recenzie, DIY, bývanie, rekonštrukcie|Newsletter|Máte zoznam odberateľov? Pridajte produkty Alessandro Design do svojich výberov a ponúk.|Výbery produktov a ponuky pre vašich odberateľov.|Obrázky a texty pripravené na odoslanie a dohodnutú odmenu.|Newslettre, komunity, nákupné kluby|Prečo s nami|Všetko, čo potrebujete pre obsah, ktorý dobre vyzerá.|Produkty, ktoré v zábere vyniknú|Lustre, nástenné svietidlá, LED zrkadlá a dizajnové kúpeľňové vybavenie, ktoré vyzerá pred kamerou rovnako dobre ako doma.|Showroom ako miesto natáčania|Showroom a sklad s rozlohou vyše 5 000 m² v Afumați v Rumunsku. Dohodneme deň a vy natáčate medzi rozsvietenými svetlami.|Podklady pripravené na použitie|Fotky, videá, technické listy a texty ku každému produktu.|Odmena za každého zákazníka|Každý zákazník, ktorého privediete, je odmenený podľa zvoleného formátu.|Jedna kontaktná osoba|Hovoríte priamo s naším marketingovým tímom, od nápadu po zverejnenie.|Publikum vo viacerých krajinách|Doručujeme do viacerých európskych krajín, takže s nami môžete spolupracovať, nech je vaša komunita kdekoľvek.|produktov v katalógu|Nápady na obsah|Neviete, kde začať? Začnite tu.|Pred a po: obývačka|Unboxing: krištáľový luster|Prehliadka showroomu|Montáž krok za krokom|Kúpeľňa s rozsvieteným LED zrkadlom|Ako vybrať svetlo do každej miestnosti|Ako začneme|Tri kroky k prvému obsahu.|Prihlásite sa|Vyplníte formulár. Zaberie to dve minúty.|Dohodneme detaily|Ozveme sa vám a spolu vyberieme produkty, formát a odmenu.|Zverejníte|Obsah tvoríte vo svojom štýle. My pomôžeme so všetkým, čo sa týka produktov.|Prihláška|Povedzte nám, kto ste.|Pár informácií o vás a vašom obsahu. Náš marketingový tím sa vám čoskoro ozve.|Meno|E-mail|Hlavná platforma|Niečo iné|Odkaz na profil alebo web|Publikum (sledovatelia alebo odberatelia)|Správa|Napíšte nám krátko o svojom obsahu a o tom, čo by ste chceli vytvoriť.|Odoslať prihlášku|Ďakujeme!|Vašu prihlášku sme dostali. Náš marketingový tím sa vám čoskoro ozve.|Skontrolujte e-mailovú adresu a skúste to znova.|Vaše údaje používame len na to, aby sme vás kontaktovali ohľadom spolupráce.|Radšej WhatsApp?|Napíšte nám priamo|Dobrý deň! Rád/a by som spolupracoval/a na propagácii produktov Alessandro Design.| |Blog / web|teraz|Povinné pole"
+    when 'hr'
+      assign w = "Marketinške suradnje|Vi stvarate.|Mi donosimo svjetlo.|Surađujemo s kreatorima sadržaja, blogerima, YouTube kanalima i newsletterima koji žele pokazati lijepe proizvode stvarnoj publici. Vi birate format, mi donosimo proizvode, materijale i nagradu.|Prijavite se za suradnju|Pišite nam na WhatsApp|@vas.profil|Dnevni boravak, prije i poslije|Novi kupac preko vaše poveznice|Nagrada dodana|Formati|Odaberite kako želite surađivati s nama.|Što radite|Što dobivate|Idealno za|Affiliate i blog|Pišete o uređenju doma, rasvjeti ili dizajnu interijera? Preporučite naše proizvode putem svoje poveznice i zaradite za svakog dovedenog kupca.|Članci, vodiči i popisi proizvoda s poveznicama na našu trgovinu.|Nagrada za svakog kupca koji kupi putem vaše poveznice.|Blogovi, nišne stranice, vodiči za kupnju|Društvene mreže|Stvarate na Instagramu, TikToku ili Facebooku? Pokažite pratiteljima kako prava rasvjeta mijenja cijelu prostoriju.|Reelsi, kratki videozapisi, stories i objave s našim proizvodima u vašem domu.|Proizvodi za sadržaj i nagrada koju dogovorimo zajedno.|Instagram, TikTok, Facebook|YouTube kanal|Imate YouTube kanal? Recenzije i projekti uređenja gledaju se mjesecima i godinama nakon objave.|Recenzije, unboxing, montaža korak po korak i projekti renovacije.|Proizvodi za snimanje, tehničke informacije i dugoročna suradnja.|Recenzije, DIY, uređenje, renovacije|Newsletter|Imate popis pretplatnika? Dodajte proizvode Alessandro Design u svoje izbore i ponude.|Izbori proizvoda i ponude poslane vašim pretplatnicima.|Slike i tekstovi spremni za slanje, uz dogovorenu nagradu.|Newsletteri, zajednice, klubovi kupnje|Zašto s nama|Sve što vam treba za sadržaj koji dobro izgleda.|Proizvodi koji dobro izgledaju u kadru|Lusteri, zidne svjetiljke, LED ogledala i dizajnerska kupaonska oprema koja pred kamerom izgleda jednako dobro kao i kod kuće.|Showroom kao set za snimanje|Showroom i skladište od preko 5.000 m² u Afumațiju u Rumunjskoj. Dogovorimo dan i snimate među upaljenim svjetlima.|Materijali spremni za upotrebu|Fotografije, videozapisi, tehnički listovi i tekstovi za svaki proizvod.|Nagrada za svakog kupca|Svaki kupac kojeg dovedete nagrađuje se prema odabranom formatu.|Jedna osoba za kontakt|Razgovarate izravno s našim marketinškim timom, od ideje do objave.|Publika u više zemalja|Dostavljamo u više europskih zemalja, pa s nama možete surađivati gdje god bila vaša zajednica.|proizvoda u katalogu|Ideje za sadržaj|Ne znate odakle početi? Počnite ovdje.|Prije i poslije: dnevni boravak|Unboxing: kristalni luster|Obilazak showrooma|Montaža korak po korak|Kupaonica s upaljenim LED ogledalom|Kako odabrati rasvjetu za svaku prostoriju|Kako počinjemo|Tri koraka do prvog sadržaja.|Prijavite se|Ispunite obrazac. Traje dvije minute.|Dogovaramo detalje|Javljamo vam se i zajedno biramo proizvode, format i nagradu.|Objavljujete|Sadržaj stvarate u svom stilu. Mi pomažemo u svemu što se tiče proizvoda.|Prijava|Recite nam tko ste.|Nekoliko detalja o vama i vašem sadržaju. Naš marketinški tim uskoro će vam odgovoriti.|Ime|E-mail|Glavna platforma|Nešto drugo|Poveznica na profil ili stranicu|Publika (pratitelji ili pretplatnici)|Poruka|Ukratko nam opišite svoj sadržaj i što biste voljeli stvoriti.|Pošalji prijavu|Hvala!|Primili smo vašu prijavu. Naš marketinški tim uskoro će vam se javiti.|Provjerite adresu e-pošte i pokušajte ponovno.|Vaše podatke koristimo samo kako bismo vas kontaktirali u vezi sa suradnjom.|Radije WhatsApp?|Pišite nam izravno|Pozdrav! Želio/željela bih surađivati na promociji proizvoda Alessandro Design.|.|Blog / web stranica|sada|Obavezno polje"
+    when 'de'
+      assign w = "Marketing-Kooperationen|Sie gestalten.|Wir bringen das Licht.|Wir arbeiten mit Content Creators, Bloggern, YouTube-Kanälen und Newslettern, die schöne Produkte einem echten Publikum zeigen möchten. Sie wählen das Format, wir bringen die Produkte, die Materialien und die Vergütung.|Für eine Kooperation bewerben|Schreiben Sie uns auf WhatsApp|@ihr.profil|Das Wohnzimmer, vorher und nachher|Neuer Kunde über Ihren Link|Prämie gutgeschrieben|Formate|Wählen Sie, wie Sie mit uns zusammenarbeiten möchten.|Was Sie tun|Was Sie bekommen|Ideal für|Affiliate und Blog|Sie schreiben über Einrichtung, Beleuchtung oder Interior Design? Empfehlen Sie unsere Produkte über Ihren Link und verdienen Sie an jedem geworbenen Kunden.|Artikel, Ratgeber und Produktvergleiche mit Links zu unserem Shop.|Eine Prämie für jeden Kunden, der über Ihren Link kauft.|Blogs, Nischenseiten, Kaufratgeber|Social Media|Sie erstellen Inhalte auf Instagram, TikTok oder Facebook? Zeigen Sie Ihren Followern, wie das richtige Licht einen ganzen Raum verwandelt.|Reels, Kurzvideos, Stories und Beiträge mit unseren Produkten bei Ihnen zu Hause.|Die Produkte für Ihre Inhalte und eine gemeinsam vereinbarte Vergütung.|Instagram, TikTok, Facebook|YouTube-Kanal|Sie haben einen YouTube-Kanal? Tests und Einrichtungsprojekte werden noch Monate und Jahre nach der Veröffentlichung angesehen.|Tests, Unboxings, Montage Schritt für Schritt und Renovierungsprojekte.|Die Produkte zum Filmen, technische Informationen und eine langfristige Zusammenarbeit.|Tests, DIY, Einrichtung, Renovierung|Newsletter|Sie haben eine Abonnentenliste? Nehmen Sie Alessandro Design Produkte in Ihre Empfehlungen und Angebote auf.|Produktauswahlen und Angebote für Ihre Abonnenten.|Versandfertige Bilder und Texte sowie die vereinbarte Prämie.|Newsletter, Communitys, Einkaufsclubs|Warum mit uns|Alles, was Sie für Inhalte brauchen, die gut aussehen.|Produkte, die vor der Kamera glänzen|Kronleuchter, Wandleuchten, LED-Spiegel und Design-Badausstattung, die vor der Kamera genauso gut aussehen wie zu Hause.|Ein Showroom als Filmset|Showroom und Lager mit über 5.000 m² in Afumați, Rumänien. Wir vereinbaren einen Tag, und Sie filmen zwischen leuchtenden Lampen.|Materialien zum sofortigen Einsatz|Fotos, Videos, Datenblätter und Texte zu jedem Produkt.|Eine Prämie für jeden Kunden|Jeder Kunde, den Sie bringen, wird je nach gewähltem Format belohnt.|Ein fester Ansprechpartner|Sie sprechen direkt mit unserem Marketingteam, von der Idee bis zur Veröffentlichung.|Publikum in mehreren Ländern|Wir liefern in mehrere europäische Länder, Sie können also mit uns zusammenarbeiten, wo auch immer Ihre Community ist.|Produkte im Katalog|Content-Ideen|Sie wissen nicht, wo Sie anfangen sollen? Fangen Sie hier an.|Vorher und nachher: das Wohnzimmer|Unboxing: ein Kristallkronleuchter|Rundgang durch den Showroom|Montage Schritt für Schritt|Das Bad, mit leuchtendem LED-Spiegel|So wählen Sie das Licht für jeden Raum|So starten wir|Drei Schritte bis zum ersten Beitrag.|Sie bewerben sich|Sie füllen das Formular aus. Das dauert zwei Minuten.|Wir klären die Details|Wir melden uns und wählen gemeinsam Produkte, Format und Vergütung.|Sie veröffentlichen|Sie gestalten die Inhalte in Ihrem Stil. Wir helfen bei allem, was die Produkte betrifft.|Bewerbung|Erzählen Sie uns, wer Sie sind.|Ein paar Angaben zu Ihnen und Ihren Inhalten. Unser Marketingteam meldet sich bald.|Name|E-Mail|Hauptplattform|Etwas anderes|Link zu Ihrem Profil oder Ihrer Website|Reichweite (Follower oder Abonnenten)|Nachricht|Erzählen Sie uns kurz von Ihren Inhalten und was Sie gerne erstellen möchten.|Bewerbung senden|Vielen Dank!|Wir haben Ihre Bewerbung erhalten. Unser Marketingteam meldet sich bald bei Ihnen.|Bitte prüfen Sie Ihre E-Mail-Adresse und versuchen Sie es erneut.|Wir verwenden Ihre Daten nur, um Sie wegen der Kooperation zu kontaktieren.|Lieber WhatsApp?|Schreiben Sie uns direkt|Hallo! Ich würde gerne bei der Werbung für Alessandro Design Produkte zusammenarbeiten.|.|Blog / Website|jetzt|Pflichtfeld"
+    else
+      assign w = "Colaborări de marketing|Tu creezi.|Noi aducem lumina.|Lucrăm cu creatori de conținut, bloggeri, canale de YouTube și newslettere care vor să arate produse frumoase unei audiențe reale. Alegi formatul, noi venim cu produsele, materialele și recompensa.|Aplică pentru colaborare|Scrie-ne pe WhatsApp|@creatorul.tau|Livingul, înainte și după|Client nou prin linkul tău|Recompensă adăugată|Formate|Alege cum vrei să colaborăm.|Ce faci|Ce primești|Potrivit pentru|Afiliere și blog|Scrii despre amenajări, iluminat sau design interior? Recomanzi produsele noastre prin linkul tău și câștigi din fiecare client adus.|Articole, ghiduri și topuri de produse, cu linkuri către magazinul nostru.|O recompensă pentru fiecare client care cumpără prin linkul tău.|Bloguri, site-uri de nișă, ghiduri de cumpărături|Social media|Ești creator pe Instagram, TikTok sau Facebook? Arată-le urmăritorilor cum schimbă lumina potrivită o cameră întreagă.|Reels, clipuri scurte, stories și postări cu produsele noastre, în casa ta.|Produsele pentru content și o recompensă stabilită împreună.|Instagram, TikTok, Facebook|Canal de YouTube|Ai un canal de YouTube? Recenziile și proiectele de amenajare sunt văzute luni și ani după publicare.|Recenzii, unboxing, montaj pas cu pas și proiecte de renovare.|Produsele pentru filmare, informații tehnice și o colaborare pe termen lung.|Recenzii, DIY, amenajări, renovări|Newsletter|Ai o listă de abonați? Adaugă produse Alessandro Design în selecțiile și ofertele tale.|Selecții de produse și oferte trimise abonaților tăi.|Imagini și texte gata de trimis, plus recompensa agreată.|Newslettere, comunități, cluburi de cumpărături|De ce cu noi|Tot ce îți trebuie pentru un content care arată bine.|Produse care arată bine în cadru|Lustre, aplice, oglinzi LED și obiecte sanitare cu design, gândite să arate la fel de bine pe cameră ca în casă.|Un showroom ca platou de filmare|Showroom și depozit de peste 5.000 m² în Afumați. Stabilim o zi și filmezi printre lumini aprinse.|Materiale gata de folosit|Fotografii, clipuri, fișe tehnice și texte pentru fiecare produs.|Recompensă pentru fiecare client|Fiecare client adus de tine e răsplătit, după formatul ales.|Un om de contact|Vorbești direct cu echipa de marketing, de la idee până la publicare.|Audiență din mai multe țări|Livrăm în mai multe țări din Europa, așa că poți colabora cu noi oriunde ar fi comunitatea ta.|produse în catalog|Idei de content|Nu știi de unde să începi? Începe de aici.|Înainte și după: livingul|Unboxing: o lustră de cristal|Tur prin showroom|Montaj pas cu pas|Baia, cu oglinda LED aprinsă|Cum alegi lumina pentru fiecare cameră|Cum începem|Trei pași până la primul material.|Aplici|Completezi formularul. Durează două minute.|Stabilim detaliile|Te contactăm și alegem împreună produsele, formatul și recompensa.|Publici|Creezi conținutul în stilul tău. Noi te ajutăm cu tot ce ține de produse.|Aplică|Spune-ne cine ești.|Câteva detalii despre tine și conținutul tău. Echipa de marketing îți răspunde cât de curând.|Nume|Email|Platforma principală|Altceva|Link către profil sau site|Audiență (urmăritori sau abonați)|Mesaj|Povestește-ne pe scurt despre conținutul tău și ce ți-ar plăcea să creezi.|Trimite aplicația|Mulțumim!|Am primit aplicația ta. Echipa de marketing te contactează în curând.|Verifică adresa de email și încearcă din nou.|Folosim datele tale doar ca să te contactăm despre colaborare.|Preferi WhatsApp?|Scrie-ne direct|Salut! Aș vrea să colaborăm pentru promovarea produselor Alessandro Design.|.|Blog / site|acum|Câmp obligatoriu"
+  endcase
+  assign t = w | split: '|'
+
+  assign reveal = ''
+  if settings.animations_reveal_on_scroll
+    assign reveal = ' scroll-trigger animate--slide-in'
+  endif
+
+  comment
+    Live catalogue size, rounded down to the hundred: "3.300+".
+  endcomment
+  assign n = collections.all.products_count | divided_by: 100 | times: 100
+  assign n_thousands = n | divided_by: 1000
+  assign n_rest = n | modulo: 1000 | plus: 1000 | append: '' | slice: 1, 3
+  if n_thousands > 0
+    assign product_count = n_thousands | append: t[85] | append: n_rest | append: '+'
+  else
+    assign product_count = n | append: '+'
+  endif
+
+  assign wa_number = section.settings.whatsapp | remove: '+' | remove: ' '
+  assign wa_msg = t[84] | url_encode | replace: '+', '%20'
+  assign wa_url = 'https://wa.me/' | append: wa_number | append: '?text=' | append: wa_msg
+
+  comment
+    Product photos for the catalogue card and the content ideas: available products
+    with a photo from the chosen collection (Lustre LED by default).
+  endcomment
+  assign pool = section.settings.collection | default: collections['lustre-led']
+  assign picks = pool.products | where: 'available'
+
+  comment
+    The unboxing idea shows a crystal chandelier.
+  endcomment
+  assign crystal = blank
+  for p in collections['candelabre-cristal'].products
+    if p.available and p.featured_image
+      assign crystal = p
+      break
+    endif
+  endfor
+
+  comment
+    Formats: [icon, first copy index]. Each format has name, text, do, get, for.
+  endcomment
+  assign formats = 'pen:15,camera:20,video:25,mail:30' | split: ','
+
+  comment
+    Values stored in the email the team receives stay in Romanian, whatever the
+    storefront language, so every application reads the same.
+  endcomment
+  assign platforms_ro = 'Instagram|TikTok|YouTube|Facebook|Blog / site|Newsletter|Altceva' | split: '|'
+  assign audiences = '< 10k|10k – 50k|50k – 200k|200k +' | split: '|'
+-%}
+
+<div class="alc-cl">
+  {%- comment -%} Hero {%- endcomment -%}
+  <section class="alc-cl__hero">
+    <div class="page-width alc-cl__hero-grid">
+      <div class="alc-cl__hero-copy">
+        <p class="alc-cl__pill"><span class="alc-cl__pill-dot" aria-hidden="true"></span>{{ t[0] }}</p>
+        <h1 class="alc-cl__h1">
+          {{- t[1] }} <span class="alc-cl__glow-text">{{ t[2] }}</span>
+        </h1>
+        <p class="alc-cl__lead">{{ t[3] }}</p>
+        <div class="alc-cl__actions">
+          <a class="alc-cl__btn alc-cl__btn--ink" href="#AlcCollabApply">
+            {{- t[4] -}}
+            {%- render 'alc-cl-icon', name: 'arrow' -%}
+          </a>
+          <a class="alc-cl__btn alc-cl__btn--ghost" href="{{ wa_url }}" target="_blank" rel="noopener">
+            {%- render 'alc-ds-icon', name: 'whatsapp' -%}
+            {{- t[5] -}}
+          </a>
+        </div>
+      </div>
+
+      {%- comment -%} Decorative: it repeats what the copy says, so screen readers skip it. {%- endcomment -%}
+      <div class="alc-cl__stage" aria-hidden="true">
+        <span class="alc-cl__halo"></span>
+        {%- for pos in (1..3) -%}
+          {%- liquid
+            case pos
+              when 1
+                assign ph_class = 'l'
+                assign ph_img = section.settings.phone_1
+                assign ph_asset = 'alc-showroom-detail.jpg'
+                assign ph_likes = '8,9k'
+                assign ph_comments = '214'
+              when 2
+                assign ph_class = 'c'
+                assign ph_img = section.settings.phone_2
+                assign ph_asset = 'alc-showroom-crystal.jpg'
+                assign ph_likes = '24,1k'
+                assign ph_comments = '1.208'
+              else
+                assign ph_class = 'r'
+                assign ph_img = section.settings.phone_3
+                assign ph_asset = 'alc-showroom-mirrors.jpg'
+                assign ph_likes = '5,3k'
+                assign ph_comments = '97'
+            endcase
+          -%}
+          <div class="alc-cl__phone alc-cl__phone--{{ ph_class }}">
+            <div class="alc-cl__screen">
+              {%- if ph_img != blank -%}
+                {{
+                  ph_img
+                  | image_url: width: 640
+                  | image_tag: widths: '320, 480, 640', sizes: '(min-width: 990px) 240px, 45vw', loading: 'eager', alt: '', class: 'alc-cl__screen-img'
+                }}
+              {%- else -%}
+                <img
+                  class="alc-cl__screen-img"
+                  src="{{ ph_asset | asset_img_url: '640x' }}"
+                  srcset="{{ ph_asset | asset_img_url: '360x' }} 360w, {{ ph_asset | asset_img_url: '640x' }} 640w"
+                  sizes="(min-width: 990px) 240px, 45vw"
+                  width="640"
+                  height="480"
+                  alt=""
+                  loading="eager"
+                >
+              {%- endif -%}
+              {%- if pos == 2 -%}
+                <span class="alc-cl__bars"><i></i><i></i><i></i></span>
+              {%- endif -%}
+              <span class="alc-cl__rail">
+                <span>{%- render 'alc-cl-icon', name: 'heart' -%}<small>{{ ph_likes }}</small></span>
+                <span>{%- render 'alc-cl-icon', name: 'comment' -%}<small>{{ ph_comments }}</small></span>
+                <span>{%- render 'alc-cl-icon', name: 'send' -%}</span>
+              </span>
+              <span class="alc-cl__meta">
+                <span class="alc-cl__who"><i></i>{{ t[6] }}</span>
+                {%- if pos == 2 -%}<span class="alc-cl__cap">{{ t[7] }}</span>{%- endif -%}
+              </span>
+            </div>
+          </div>
+        {%- endfor -%}
+
+        <div class="alc-cl__toast">
+          <span class="alc-cl__toast-icon">{%- render 'alc-cl-icon', name: 'spark' -%}</span>
+          <span class="alc-cl__toast-text">
+            <strong>{{ t[8] }}</strong>
+            <span>{{ t[9] }} · {{ t[87] }}</span>
+          </span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  {%- comment -%} Formats, as tabs {%- endcomment -%}
+  <section class="page-width alc-cl__block">
+    <header class="alc-cl__head">
+      <p class="alc-cl__eyebrow">{{ t[10] }}</p>
+      <h2 class="alc-cl__h2">{{ t[11] }}</h2>
+    </header>
+
+    <alc-cl-tabs class="alc-cl__tabs{{ reveal }}">
+      <div class="alc-cl__tablist" role="tablist" aria-label="{{ t[10] | escape }}">
+        {%- for f in formats -%}
+          {%- assign parts = f | split: ':' -%}
+          {%- assign fi = parts[1] | plus: 0 -%}
+          <button
+            type="button"
+            class="alc-cl__tab"
+            role="tab"
+            id="AlcClTab-{{ forloop.index }}"
+            aria-controls="AlcClPanel-{{ forloop.index }}"
+            aria-selected="{% if forloop.first %}true{% else %}false{% endif %}"
+            {% unless forloop.first %}
+              tabindex="-1"
+            {% endunless %}
+          >
+            {%- render 'alc-cl-icon', name: parts[0] -%}
+            <span>{{ t[fi] }}</span>
+          </button>
+        {%- endfor -%}
+      </div>
+
+      {%- for f in formats -%}
+        {%- liquid
+          assign parts = f | split: ':'
+          assign fi = parts[1] | plus: 0
+          assign fd = fi | plus: 1
+          assign fdo = fi | plus: 2
+          assign fget = fi | plus: 3
+          assign ffor = fi | plus: 4
+        -%}
+        <div
+          class="alc-cl__panel"
+          role="tabpanel"
+          id="AlcClPanel-{{ forloop.index }}"
+          aria-labelledby="AlcClTab-{{ forloop.index }}"
+          tabindex="0"
+          {% unless forloop.first %}
+            hidden
+          {% endunless %}
+        >
+          <div class="alc-cl__panel-intro">
+            <span class="alc-cl__panel-icon" aria-hidden="true">{%- render 'alc-cl-icon', name: parts[0] -%}</span>
+            <h3 class="alc-cl__panel-title">{{ t[fi] }}</h3>
+            <p class="alc-cl__panel-text">{{ t[fd] }}</p>
+          </div>
+          <dl class="alc-cl__facts">
+            <div>
+              <dt>{{ t[12] }}</dt>
+              <dd>{{ t[fdo] }}</dd>
+            </div>
+            <div>
+              <dt>{{ t[13] }}</dt>
+              <dd>{{ t[fget] }}</dd>
+            </div>
+            <div>
+              <dt>{{ t[14] }}</dt>
+              <dd>{{ t[ffor] }}</dd>
+            </div>
+          </dl>
+        </div>
+      {%- endfor -%}
+    </alc-cl-tabs>
+  </section>
+
+  {%- comment -%} What the partner gets {%- endcomment -%}
+  <section class="page-width alc-cl__block">
+    <header class="alc-cl__head">
+      <p class="alc-cl__eyebrow">{{ t[35] }}</p>
+      <h2 class="alc-cl__h2">{{ t[36] }}</h2>
+    </header>
+
+    <div class="alc-cl__bento"{% if reveal != blank %} data-cascade{% endif %}>
+      <article class="alc-cl__card alc-cl__card--count{{ reveal }}" style="--animation-order: 1;">
+        <p class="alc-cl__count">{{ product_count }}</p>
+        <p class="alc-cl__count-label">{{ t[49] }}</p>
+        <h3 class="alc-cl__card-title">{{ t[37] }}</h3>
+        <p class="alc-cl__card-text">{{ t[38] }}</p>
+        {%- if picks.size > 3 -%}
+          <div class="alc-cl__thumbs">
+            {%- for p in picks limit: 4 -%}
+              <span>
+                {{-
+                  p.featured_image
+                  | image_url: width: 240
+                  | image_tag: widths: '120, 240', sizes: '120px', loading: 'lazy', alt: ''
+                -}}
+              </span>
+            {%- endfor -%}
+          </div>
+        {%- endif -%}
+      </article>
+
+      <article class="alc-cl__card alc-cl__card--set{{ reveal }}" style="--animation-order: 2;">
+        {%- assign set_img = section.settings.set_image -%}
+        {%- if set_img != blank -%}
+          {{
+            set_img
+            | image_url: width: 1400
+            | image_tag: widths: '600, 900, 1200, 1400', sizes: '(min-width: 990px) 640px, 100vw', loading: 'lazy', alt: '', class: 'alc-cl__card-bg'
+          }}
+        {%- else -%}
+          <img
+            class="alc-cl__card-bg"
+            src="{{ 'alc-showroom-hall.jpg' | asset_img_url: '1200x' }}"
+            srcset="{{ 'alc-showroom-hall.jpg' | asset_img_url: '600x' }} 600w, {{ 'alc-showroom-hall.jpg' | asset_img_url: '1200x' }} 1200w"
+            sizes="(min-width: 990px) 640px, 100vw"
+            width="1200"
+            height="675"
+            alt=""
+            loading="lazy"
+          >
+        {%- endif -%}
+        <span class="alc-cl__card-icon">{%- render 'alc-cl-icon', name: 'film' -%}</span>
+        <h3 class="alc-cl__card-title">{{ t[39] }}</h3>
+        <p class="alc-cl__card-text">{{ t[40] }}</p>
+      </article>
+
+      {%- for i in (1..4) -%}
+        {%- liquid
+          assign ti = i | times: 2 | plus: 39
+          assign di = ti | plus: 1
+          case i
+            when 1
+              assign icon = 'image'
+            when 2
+              assign icon = 'gift'
+            when 3
+              assign icon = 'user'
+            else
+              assign icon = 'globe'
+          endcase
+          assign order = i | plus: 2
+        -%}
+        <article class="alc-cl__card{% if i > 2 %} alc-cl__card--wide{% endif %}{{ reveal }}" style="--animation-order: {{ order }};">
+          <span class="alc-cl__card-icon">{%- render 'alc-cl-icon', name: icon -%}</span>
+          <h3 class="alc-cl__card-title">{{ t[ti] }}</h3>
+          <p class="alc-cl__card-text">{{ t[di] }}</p>
+        </article>
+      {%- endfor -%}
+    </div>
+  </section>
+
+  {%- comment -%} Content ideas, as vertical video cards {%- endcomment -%}
+  <section class="alc-cl__block alc-cl__ideas-wrap">
+    <div class="page-width">
+      <header class="alc-cl__head">
+        <p class="alc-cl__eyebrow">{{ t[50] }}</p>
+        <h2 class="alc-cl__h2">{{ t[51] }}</h2>
+      </header>
+      <ul class="alc-cl__ideas" role="list"{% if reveal != blank %} data-cascade{% endif %}>
+        {%- for i in (1..6) -%}
+          {%- liquid
+            assign ti = i | plus: 51
+            assign idea_asset = blank
+            assign idea_src = blank
+            case i
+              when 1
+                assign idea_src = picks[4].featured_image | default: picks[0].featured_image
+                assign dur = '0:42'
+              when 2
+                assign idea_src = crystal.featured_image | default: picks[1].featured_image
+                assign dur = '1:15'
+              when 3
+                assign idea_asset = 'alc-showroom-exterior.jpg'
+                assign dur = '3:08'
+              when 4
+                assign idea_src = picks[6].featured_image | default: picks[2].featured_image
+                assign dur = '8:24'
+              when 5
+                assign idea_asset = 'alc-showroom-bath.jpg'
+                assign dur = '0:28'
+              else
+                assign idea_src = picks[7].featured_image | default: picks[3].featured_image
+                assign dur = '5:51'
+            endcase
+          -%}
+          <li class="alc-cl__idea{{ reveal }}" style="--animation-order: {{ i }};">
+            {%- if idea_asset != blank -%}
+              <img
+                src="{{ idea_asset | asset_img_url: '600x' }}"
+                srcset="{{ idea_asset | asset_img_url: '360x' }} 360w, {{ idea_asset | asset_img_url: '600x' }} 600w"
+                sizes="(min-width: 990px) 200px, 56vw"
+                width="600"
+                height="600"
+                alt=""
+                loading="lazy"
+              >
+            {%- elsif idea_src != blank -%}
+              {{
+                idea_src
+                | image_url: width: 600
+                | image_tag: widths: '360, 600', sizes: '(min-width: 990px) 200px, 56vw', loading: 'lazy', alt: ''
+              }}
+            {%- endif -%}
+            <span class="alc-cl__idea-dur">{{ dur }}</span>
+            <span class="alc-cl__idea-play" aria-hidden="true">{%- render 'alc-cl-icon', name: 'play' -%}</span>
+            <h3 class="alc-cl__idea-title">{{ t[ti] }}</h3>
+          </li>
+        {%- endfor -%}
+      </ul>
+    </div>
+  </section>
+
+  {%- comment -%} Apply: the steps next to the form {%- endcomment -%}
+  <section class="alc-cl__apply" id="AlcCollabApply">
+    <div class="page-width alc-cl__apply-grid">
+      <div class="alc-cl__apply-copy">
+        <p class="alc-cl__eyebrow">{{ t[58] }}</p>
+        <h2 class="alc-cl__h2">{{ t[59] }}</h2>
+        <ol class="alc-cl__steps" role="list">
+          {%- for i in (1..3) -%}
+            {%- assign ti = i | minus: 1 | times: 2 | plus: 60 -%}
+            {%- assign di = ti | plus: 1 -%}
+            <li class="alc-cl__step">
+              <span class="alc-cl__step-num" aria-hidden="true">{{ i }}</span>
+              <div>
+                <h3 class="alc-cl__step-title">{{ t[ti] }}</h3>
+                <p class="alc-cl__step-text">{{ t[di] }}</p>
+              </div>
+            </li>
+          {%- endfor -%}
+        </ol>
+        <p class="alc-cl__alt">
+          {{ t[82] }}
+          <a href="{{ wa_url }}" target="_blank" rel="noopener">
+            {%- render 'alc-ds-icon', name: 'whatsapp' -%}
+            {{- t[83] -}}
+          </a>
+        </p>
+      </div>
+
+      <div class="alc-cl__form-card{{ reveal }}">
+        {%- form 'contact', id: 'AlcCollabForm', class: 'alc-cl__form' -%}
+          {%- if form.posted_successfully? -%}
+            <div class="alc-cl__success" tabindex="-1" autofocus>
+              <span class="alc-cl__success-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.2 4.2L19 7"/></svg>
+              </span>
+              <h2 class="alc-cl__form-title">{{ t[78] }}</h2>
+              <p class="alc-cl__form-sub">{{ t[79] }}</p>
+            </div>
+          {%- else -%}
+            <p class="alc-cl__eyebrow">{{ t[66] }}</p>
+            <h2 class="alc-cl__form-title">{{ t[67] }}</h2>
+            <p class="alc-cl__form-sub">{{ t[68] }}</p>
+
+            {%- if form.errors -%}
+              <p class="alc-cl__alert" role="alert" tabindex="-1" autofocus>{{ t[80] }}</p>
+            {%- endif -%}
+
+            <input type="hidden" name="contact[Formular]" value="Colaborare marketing">
+            <input type="hidden" name="contact[Piata]" value="{{ request.host | remove_first: 'www.' }} ({{ request.locale.iso_code }})">
+
+            <div class="alc-cl__row">
+              <div class="alc-cl__field">
+                <label class="alc-cl__label" for="AlcCollabForm-name">{{ t[69] }}</label>
+                <input
+                  class="alc-cl__input"
+                  type="text"
+                  id="AlcCollabForm-name"
+                  name="contact[name]"
+                  autocomplete="name"
+                  value="{% if form.name %}{{ form.name }}{% elsif customer %}{{ customer.name }}{% endif %}"
+                >
+              </div>
+              <div class="alc-cl__field">
+                <label class="alc-cl__label" for="AlcCollabForm-email">
+                  {{- t[70] }} <span aria-hidden="true">*</span></label
+                >
+                <input
+                  class="alc-cl__input"
+                  type="email"
+                  id="AlcCollabForm-email"
+                  name="contact[email]"
+                  autocomplete="email"
+                  spellcheck="false"
+                  autocapitalize="off"
+                  required
+                  aria-required="true"
+                  value="{% if form.email %}{{ form.email }}{% elsif customer %}{{ customer.email }}{% endif %}"
+                  {% if form.errors contains 'email' %}
+                    aria-invalid="true"
+                  {% endif %}
+                >
+              </div>
+            </div>
+
+            <fieldset class="alc-cl__group">
+              <legend class="alc-cl__label">{{ t[71] }}</legend>
+              <div class="alc-cl__chips">
+                {%- for p in platforms_ro -%}
+                  <label class="alc-cl__chip">
+                    <input type="radio" name="contact[Platforma]" value="{{ p }}">
+                    <span>
+                      {%- case forloop.index -%}
+                        {%- when 5 -%}
+                          {{- t[86] -}}
+                        {%- when 7 -%}
+                          {{- t[72] -}}
+                        {%- else -%}
+                          {{- p -}}
+                      {%- endcase -%}
+                    </span>
+                  </label>
+                {%- endfor -%}
+              </div>
+            </fieldset>
+
+            <div class="alc-cl__field">
+              <label class="alc-cl__label" for="AlcCollabForm-link">{{ t[73] }}</label>
+              <input
+                class="alc-cl__input"
+                type="text"
+                id="AlcCollabForm-link"
+                name="contact[Profil]"
+                inputmode="url"
+                autocomplete="url"
+                autocapitalize="off"
+                spellcheck="false"
+                placeholder="instagram.com/…"
+              >
+            </div>
+
+            <fieldset class="alc-cl__group">
+              <legend class="alc-cl__label">{{ t[74] }}</legend>
+              <div class="alc-cl__chips">
+                {%- for a in audiences -%}
+                  <label class="alc-cl__chip">
+                    <input type="radio" name="contact[Audienta]" value="{{ a }}">
+                    <span>{{ a }}</span>
+                  </label>
+                {%- endfor -%}
+              </div>
+            </fieldset>
+
+            <div class="alc-cl__field">
+              <label class="alc-cl__label" for="AlcCollabForm-body">{{ t[75] }}</label>
+              <textarea
+                class="alc-cl__input alc-cl__textarea"
+                id="AlcCollabForm-body"
+                name="contact[body]"
+                rows="4"
+                placeholder="{{ t[76] | escape }}"
+              >
+                {{- form.body -}}
+              </textarea>
+            </div>
+
+            <div class="alc-cl__submit">
+              <button type="submit" class="alc-cl__btn alc-cl__btn--ink alc-cl__btn--wide">
+                {{- t[77] -}}
+                {%- render 'alc-cl-icon', name: 'arrow' -%}
+              </button>
+              <p class="alc-cl__note"><span aria-hidden="true">*</span> {{ t[88] }} · {{ t[81] }}</p>
+            </div>
+          {%- endif -%}
+        {%- endform -%}
+      </div>
+    </div>
+  </section>
+</div>
+
+{% schema %}
+{
+  "name": "ALC marketing collabs",
+  "tag": "section",
+  "class": "section alc-cl-section",
+  "settings": [
+    { "type": "text", "id": "whatsapp", "label": "WhatsApp number (international, digits only)", "default": "40725665925" },
+    { "type": "collection", "id": "collection", "label": "Products for the catalogue card and content ideas", "info": "Empty: Lustre LED" },
+    { "type": "image_picker", "id": "phone_1", "label": "Left phone image", "info": "Empty: showroom detail" },
+    { "type": "image_picker", "id": "phone_2", "label": "Middle phone image", "info": "Empty: showroom crystal" },
+    { "type": "image_picker", "id": "phone_3", "label": "Right phone image", "info": "Empty: showroom mirrors" },
+    { "type": "image_picker", "id": "set_image", "label": "Showroom card image", "info": "Empty: showroom hall" }
+  ],
+  "presets": [{ "name": "ALC marketing collabs" }]
+}
+{% endschema %}
