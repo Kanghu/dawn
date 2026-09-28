@@ -1,0 +1,369 @@
+{% comment %}
+  B2B dropshipping landing page (templates/page.dropshipment.json). A light, "product"
+  style page, deliberately unlike the showroom and company pages:
+
+  - Hero: headline + an animated mock of the partner's store (a product card, a "new
+    order" notification and a delivery tracker going paid -> packed -> delivered).
+  - Proof row (the product count is live), the flow as a delivery route, a comparison
+    table (classic store vs dropshipping with us), a margin calculator
+    (assets/alc-b2b.js), a moving strip of real products, FAQ (+ FAQPage data) and a
+    WhatsApp call to action for the B2B team.
+
+  Every storefront language has a built-in translation. Styles: assets/alc-b2b.css.
+{% endcomment %}
+{{ 'alc-b2b.css' | asset_url | stylesheet_tag }}
+<script src="{{ 'alc-b2b.js' | asset_url }}" defer="defer"></script>
+
+{%- liquid
+  assign lang = request.locale.iso_code | downcase | slice: 0, 2
+  case lang
+    when 'en'
+      assign w = "B2B programme · Dropshipping|Your store. Our stock.|Sell Alessandro Design products in your online store, with no stock and no warehouse. When you get an order, we pack it and deliver it straight to your customer.|Get the B2B offer|Work out your margin|Your store|New order|Paid|Packed|Delivered|Add to cart|products ready to list|working days to deliver|invested in stock|showroom and warehouse|How it works|From order to customer, without touching a parcel.|You list the products|Pick from our catalogue and publish them in your store, at your own prices.|You get the order|Your customer buys from you. You pass us the order and pay according to the agreed financial report.|We pack and ship|We prepare the parcel from our stock and send it straight to your customer.|Your customer gets the parcel|Delivered in 2–4 working days. Meanwhile, you are already working on your next sale.|Comparison|A classic store or dropshipping with us?|Classic store|Dropshipping with Alessandro|Investment in stock|High|None|Warehouse|Required|Not needed|Risk of unsold goods|High|None|Packing and delivery|You do it|We do it|Time for selling|Little|All of it|Import power|Own factory|In-house systems|Dedicated team|Calculator|How much could you earn?|Estimate your monthly profit. You get the purchase prices in the B2B offer.|Purchase price|Your selling price|Orders per month|Margin per product|Gross profit per month|A rough estimate, before marketing, shipping and taxes.|Catalogue|{n} products, ready to list.|See the catalogue|Frequently asked questions|Everything you need to know|What is dropshipping?|A business model in which the seller keeps no stock. When an order comes in, they buy the product from the supplier, who ships it straight to the customer.|How safe is dropshipping?|It is a safe model as long as you work with a reliable supplier and manage your payments and logistics properly.|How much can I earn?|It depends on the niche, the margin you set and your sales volume. Choosing the right products and well-optimised marketing campaigns make the biggest difference.|Why choose us as a partner?|We have market experience, import power, our own factory and in-house systems that we adapt to your needs. Our team is young, dedicated and motivated to grow your business.|Ready to sell without stock?|Tell us about your store and we will send you the terms of the B2B dropshipping programme.|Message us on WhatsApp|Contact page|Hello! I would like to know more about the B2B dropshipping programme.|,|3,200 m²|now"
+    when 'hu'
+      assign w = "B2B program · Dropshipping|Az Ön boltja. A mi készletünk.|Értékesítse az Alessandro Design termékeit a webáruházában, készlet és raktár nélkül. Amikor rendelést kap, mi becsomagoljuk és közvetlenül a vásárlójának szállítjuk.|B2B ajánlatot kérek|Számolja ki az árrését|Az Ön boltja|Új rendelés|Fizetve|Becsomagolva|Kézbesítve|Kosárba|termék listázásra készen|munkanap szállítás|készletbefektetés|bemutatóterem és raktár|Hogyan működik|A rendeléstől a vásárlóig, egyetlen csomag érintése nélkül.|Listázza a termékeket|Válasszon a katalógusunkból, és tegye közzé a boltjában, a saját áraival.|Megkapja a rendelést|A vásárló Öntől vásárol. Ön továbbítja nekünk a rendelést, a fizetés a megállapodott pénzügyi kimutatás szerint történik.|Mi csomagolunk és szállítunk|A csomagot a készletünkből készítjük elő, és közvetlenül a vásárlójának küldjük.|A vásárló megkapja a csomagot|Kézbesítés 2–4 munkanap alatt. Ön közben már a következő eladással foglalkozik.|Összehasonlítás|Hagyományos bolt vagy dropshipping velünk?|Hagyományos bolt|Dropshipping az Alessandróval|Készletbefektetés|Magas|Nulla|Raktár|Szükséges|Nincs rá szükség|Eladatlan áru kockázata|Magas|Nulla|Csomagolás és szállítás|Ön végzi|Mi végezzük|Idő az értékesítésre|Kevés|Az egész|Importerő|Saját gyár|Saját rendszerek|Elkötelezett csapat|Kalkulátor|Mennyit kereshet?|Becsülje meg havi nyereségét. A beszerzési árakat a B2B ajánlatban kapja meg.|Beszerzési ár|Az Ön eladási ára|Rendelés havonta|Árrés termékenként|Havi bruttó nyereség|Tájékoztató becslés, marketing-, szállítási költségek és adók nélkül.|Katalógus|{n} termék listázásra készen.|Katalógus megtekintése|Gyakori kérdések|Minden, amit tudnia kell|Mi az a dropshipping?|Olyan üzleti modell, amelyben az eladó nem tart készletet. Rendeléskor megvásárolja a terméket a beszállítótól, aki közvetlenül a vásárlónak küldi.|Mennyire biztonságos a dropshipping?|Biztonságos modell, ha megbízható beszállítóval dolgozik, és helyesen kezeli a kifizetéseket és a logisztikát.|Mekkora nyereségre számíthatok?|Ez a résterülettől, a választott árréstől és az eladások mennyiségétől függ. A legtöbbet a jó termékválasztás és a jól optimalizált kampányok számítanak.|Miért válasszon minket partnerként?|Piaci tapasztalatunk, importerőnk, saját gyárunk és saját fejlesztésű rendszereink vannak, amelyeket az Ön igényeihez igazítunk. Csapatunk fiatal, elkötelezett és motivált az Ön üzletének növelésére.|Készen áll készlet nélkül értékesíteni?|Meséljen a webáruházáról, és elküldjük a B2B dropshipping program feltételeit.|Írjon nekünk WhatsAppon|Kapcsolat oldal|Üdvözlöm! Szeretnék többet megtudni a B2B dropshipping programról.| |3200 m²|most"
+    when 'pl'
+      assign w = "Program B2B · Dropshipping|Twój sklep. Nasz magazyn.|Sprzedawaj produkty Alessandro Design w swoim sklepie internetowym, bez zapasów i bez magazynu. Gdy dostaniesz zamówienie, pakujemy je i dostarczamy prosto do Twojego klienta.|Poproś o ofertę B2B|Oblicz swoją marżę|Twój sklep|Nowe zamówienie|Opłacone|Spakowane|Dostarczone|Dodaj do koszyka|produktów gotowych do wystawienia|dni roboczych dostawy|inwestycji w zapasy|showroom i magazyn|Jak to działa|Od zamówienia do klienta, bez dotykania paczki.|Wystawiasz produkty|Wybierasz z naszego katalogu i publikujesz w swoim sklepie, po swoich cenach.|Dostajesz zamówienie|Klient kupuje u Ciebie. Przekazujesz nam zamówienie, a płacisz zgodnie z uzgodnionym raportem finansowym.|Pakujemy i wysyłamy|Przygotowujemy paczkę z naszych zapasów i wysyłamy ją prosto do Twojego klienta.|Klient odbiera paczkę|Dostawa w 2–4 dni robocze. W tym czasie Ty zajmujesz się już kolejną sprzedażą.|Porównanie|Klasyczny sklep czy dropshipping z nami?|Klasyczny sklep|Dropshipping z Alessandro|Inwestycja w zapasy|Wysoka|Zero|Magazyn|Potrzebny|Niepotrzebny|Ryzyko niesprzedanego towaru|Wysokie|Zero|Pakowanie i dostawa|Robisz to Ty|Robimy to my|Czas na sprzedaż|Niewiele|Cały|Siła importu|Własna fabryka|Własne systemy|Oddany zespół|Kalkulator|Ile możesz zarobić?|Oszacuj swój miesięczny zysk. Ceny zakupu otrzymasz w ofercie B2B.|Cena zakupu|Twoja cena sprzedaży|Zamówienia miesięcznie|Marża na produkcie|Zysk brutto miesięcznie|Szacunek orientacyjny, bez kosztów marketingu, wysyłki i podatków.|Katalog|{n} produktów gotowych do wystawienia.|Zobacz katalog|Najczęściej zadawane pytania|Wszystko, co musisz wiedzieć|Czym jest dropshipping?|To model biznesowy, w którym sprzedawca nie trzyma zapasów. Gdy wpływa zamówienie, kupuje produkt u dostawcy, który wysyła go prosto do klienta.|Czy dropshipping jest bezpieczny?|Tak, o ile współpracujesz z rzetelnym dostawcą i właściwie zarządzasz płatnościami oraz logistyką.|Ile mogę zarobić?|To zależy od niszy, wybranej marży i wolumenu sprzedaży. Najwięcej zmienia dobry wybór produktów i dobrze zoptymalizowane kampanie.|Dlaczego warto wybrać nas na partnera?|Mamy doświadczenie rynkowe, siłę importu, własną fabrykę i systemy stworzone u nas, które dopasowujemy do Twoich potrzeb. Nasz zespół jest młody, oddany i zmotywowany do rozwoju Twojego biznesu.|Gotowy, by sprzedawać bez zapasów?|Opowiedz nam o swoim sklepie, a prześlemy Ci warunki programu B2B dropshipping.|Napisz do nas na WhatsApp|Strona kontaktowa|Dzień dobry! Chciałbym dowiedzieć się więcej o programie B2B dropshipping.| |3200 m²|teraz"
+    when 'el'
+      assign w = "Πρόγραμμα B2B · Dropshipping|Το κατάστημά σας. Το απόθεμά μας.|Πουλήστε προϊόντα Alessandro Design στο ηλεκτρονικό σας κατάστημα, χωρίς απόθεμα και χωρίς αποθήκη. Όταν λάβετε παραγγελία, τη συσκευάζουμε και την παραδίδουμε απευθείας στον πελάτη σας.|Ζητήστε προσφορά B2B|Υπολογίστε το περιθώριό σας|Το κατάστημά σας|Νέα παραγγελία|Πληρώθηκε|Συσκευάστηκε|Παραδόθηκε|Προσθήκη στο καλάθι|προϊόντα έτοιμα για καταχώριση|εργάσιμες ημέρες παράδοσης|επένδυση σε απόθεμα|showroom και αποθήκη|Πώς λειτουργεί|Από την παραγγελία στον πελάτη, χωρίς να αγγίξετε δέμα.|Καταχωρίζετε τα προϊόντα|Επιλέγετε από τον κατάλογό μας και τα δημοσιεύετε στο κατάστημά σας, με τις δικές σας τιμές.|Λαμβάνετε την παραγγελία|Ο πελάτης αγοράζει από εσάς. Μας διαβιβάζετε την παραγγελία και πληρώνετε σύμφωνα με τη συμφωνημένη οικονομική αναφορά.|Εμείς συσκευάζουμε και αποστέλλουμε|Ετοιμάζουμε το δέμα από το απόθεμά μας και το στέλνουμε απευθείας στον πελάτη σας.|Ο πελάτης παραλαμβάνει|Παράδοση σε 2–4 εργάσιμες ημέρες. Στο μεταξύ, εσείς ασχολείστε ήδη με την επόμενη πώληση.|Σύγκριση|Κλασικό κατάστημα ή dropshipping μαζί μας;|Κλασικό κατάστημα|Dropshipping με την Alessandro|Επένδυση σε απόθεμα|Υψηλή|Μηδενική|Αποθήκη|Απαραίτητη|Δεν χρειάζεται|Κίνδυνος απούλητου εμπορεύματος|Υψηλός|Μηδενικός|Συσκευασία και παράδοση|Τα κάνετε εσείς|Τα κάνουμε εμείς|Χρόνος για πωλήσεις|Λίγος|Όλος|Δύναμη εισαγωγών|Δικό μας εργοστάσιο|Δικά μας συστήματα|Αφοσιωμένη ομάδα|Υπολογιστής|Πόσα μπορείτε να κερδίσετε;|Εκτιμήστε το μηνιαίο κέρδος σας. Τις τιμές αγοράς τις λαμβάνετε στην προσφορά B2B.|Τιμή αγοράς|Η τιμή πώλησής σας|Παραγγελίες ανά μήνα|Περιθώριο ανά προϊόν|Μικτό κέρδος ανά μήνα|Ενδεικτική εκτίμηση, χωρίς κόστη μάρκετινγκ, αποστολής και φόρους.|Κατάλογος|{n} προϊόντα, έτοιμα για καταχώριση.|Δείτε τον κατάλογο|Συχνές ερωτήσεις|Όλα όσα χρειάζεται να γνωρίζετε|Τι είναι το dropshipping;|Ένα επιχειρηματικό μοντέλο όπου ο πωλητής δεν κρατά απόθεμα. Όταν έρθει μια παραγγελία, αγοράζει το προϊόν από τον προμηθευτή, ο οποίος το στέλνει απευθείας στον πελάτη.|Πόσο ασφαλές είναι το dropshipping;|Είναι ασφαλές μοντέλο, εφόσον συνεργάζεστε με αξιόπιστο προμηθευτή και διαχειρίζεστε σωστά πληρωμές και logistics.|Τι κέρδος μπορώ να έχω;|Εξαρτάται από τη θέση στην αγορά, το περιθώριο που επιλέγετε και τον όγκο πωλήσεων. Τη μεγαλύτερη διαφορά κάνουν η σωστή επιλογή προϊόντων και οι καλά βελτιστοποιημένες καμπάνιες.|Γιατί να μας επιλέξετε ως συνεργάτη;|Έχουμε εμπειρία στην αγορά, δύναμη εισαγωγών, δικό μας εργοστάσιο και συστήματα που προσαρμόζουμε στις ανάγκες σας. Η ομάδα μας είναι νέα, αφοσιωμένη και έχει κίνητρο να αναπτύξει την επιχείρησή σας.|Έτοιμοι να πουλάτε χωρίς απόθεμα;|Πείτε μας για το κατάστημά σας και θα σας στείλουμε τους όρους του προγράμματος B2B dropshipping.|Γράψτε μας στο WhatsApp|Σελίδα επικοινωνίας|Γεια σας! Θα ήθελα να μάθω περισσότερα για το πρόγραμμα B2B dropshipping.|.|3.200 m²|τώρα"
+    when 'bg'
+      assign w = "B2B програма · Дропшипинг|Вашият магазин. Нашата наличност.|Продавайте продуктите на Alessandro Design в онлайн магазина си, без наличност и без склад. Когато получите поръчка, ние я опаковаме и доставяме директно на клиента ви.|Поискайте B2B оферта|Изчислете маржа си|Вашият магазин|Нова поръчка|Платена|Опакована|Доставена|Добави в количката|продукта, готови за публикуване|работни дни за доставка|инвестиция в стока|шоурум и склад|Как работи|От поръчката до клиента, без да докоснете колет.|Публикувате продуктите|Избирате от нашия каталог и ги публикувате в магазина си, с вашите цени.|Получавате поръчката|Клиентът купува от вас. Препращате ни поръчката, а плащате според договорения финансов отчет.|Ние опаковаме и изпращаме|Подготвяме колета от нашата наличност и го изпращаме директно на клиента ви.|Клиентът получава колета|Доставка за 2–4 работни дни. Междувременно вие вече работите по следващата продажба.|Сравнение|Класически магазин или дропшипинг с нас?|Класически магазин|Дропшипинг с Alessandro|Инвестиция в стока|Голяма|Нула|Склад|Необходим|Не ви трябва|Риск от непродадена стока|Висок|Нула|Опаковане и доставка|Правите ги вие|Правим ги ние|Време за продажби|Малко|Цялото|Сила на вноса|Собствена фабрика|Собствени системи|Отдаден екип|Калкулатор|Колко можете да спечелите?|Оценете месечната си печалба. Покупните цени ще получите в B2B офертата.|Покупна цена|Вашата продажна цена|Поръчки на месец|Марж на продукт|Брутна печалба на месец|Ориентировъчна оценка, без разходи за маркетинг, доставка и данъци.|Каталог|{n} продукта, готови за публикуване.|Вижте каталога|Често задавани въпроси|Всичко, което трябва да знаете|Какво е дропшипинг?|Бизнес модел, при който продавачът не държи наличност. Когато получи поръчка, купува продукта от доставчика, който го изпраща директно на клиента.|Колко сигурен е дропшипингът?|Сигурен модел е, стига да работите с надежден доставчик и да управлявате правилно плащанията и логистиката.|Каква печалба мога да постигна?|Зависи от нишата, избрания марж и обема на продажбите. Най-голяма разлика правят правилният избор на продукти и добре оптимизираните кампании.|Защо да ни изберете за партньор?|Имаме пазарен опит, сила на вноса, собствена фабрика и собствени системи, които адаптираме към вашите нужди. Екипът ни е млад, отдаден и мотивиран да развива бизнеса ви.|Готови да продавате без наличност?|Разкажете ни за магазина си и ще ви изпратим условията на B2B програмата за дропшипинг.|Пишете ни в WhatsApp|Страница за контакт|Здравейте! Бих искал да науча повече за B2B програмата за дропшипинг.| |3200 m²|сега"
+    when 'it'
+      assign w = "Programma B2B · Dropshipping|Il tuo negozio. Il nostro magazzino.|Vendi i prodotti Alessandro Design nel tuo negozio online, senza scorte e senza magazzino. Quando ricevi un ordine, lo imballiamo e lo consegniamo direttamente al tuo cliente.|Richiedi l’offerta B2B|Calcola il tuo margine|Il tuo negozio|Nuovo ordine|Pagato|Imballato|Consegnato|Aggiungi al carrello|prodotti pronti da pubblicare|giorni lavorativi di consegna|investimento in scorte|showroom e magazzino|Come funziona|Dall’ordine al cliente, senza toccare un pacco.|Pubblichi i prodotti|Scegli dal nostro catalogo e li pubblichi nel tuo negozio, con i tuoi prezzi.|Ricevi l’ordine|Il cliente compra da te. Ci inoltri l’ordine e paghi secondo il report finanziario concordato.|Imballiamo e spediamo|Prepariamo il pacco dal nostro magazzino e lo spediamo direttamente al tuo cliente.|Il cliente riceve il pacco|Consegna in 2–4 giorni lavorativi. Nel frattempo, tu pensi già alla prossima vendita.|Confronto|Negozio classico o dropshipping con noi?|Negozio classico|Dropshipping con Alessandro|Investimento in scorte|Alto|Zero|Magazzino|Necessario|Non serve|Rischio di merce invenduta|Alto|Zero|Imballaggio e consegna|Li fai tu|Li facciamo noi|Tempo per vendere|Poco|Tutto|Forza d’importazione|Fabbrica propria|Sistemi proprietari|Team dedicato|Calcolatore|Quanto puoi guadagnare?|Stima il tuo profitto mensile. I prezzi d’acquisto li ricevi nell’offerta B2B.|Prezzo d’acquisto|Il tuo prezzo di vendita|Ordini al mese|Margine per prodotto|Profitto lordo al mese|Stima indicativa, senza costi di marketing, spedizione e tasse.|Catalogo|{n} prodotti pronti da pubblicare.|Vedi il catalogo|Domande frequenti|Tutto quello che devi sapere|Che cos’è il dropshipping?|Un modello di business in cui il venditore non tiene scorte. Quando arriva un ordine, acquista il prodotto dal fornitore, che lo spedisce direttamente al cliente.|Quanto è sicuro il dropshipping?|È un modello sicuro, a patto di lavorare con un fornitore affidabile e di gestire correttamente pagamenti e logistica.|Quanto posso guadagnare?|Dipende dalla nicchia, dal margine che scegli e dal volume di vendite. La differenza la fanno soprattutto la scelta dei prodotti giusti e campagne ben ottimizzate.|Perché sceglierci come partner?|Abbiamo esperienza di mercato, forza d’importazione, una fabbrica nostra e sistemi interni che adattiamo alle tue esigenze. Il nostro team è giovane, dedicato e motivato a far crescere la tua attività.|Pronto a vendere senza scorte?|Raccontaci del tuo negozio e ti invieremo le condizioni del programma B2B dropshipping.|Scrivici su WhatsApp|Pagina contatti|Ciao! Vorrei saperne di più sul programma B2B dropshipping.|.|3.200 m²|ora"
+    when 'fr'
+      assign w = "Programme B2B · Dropshipping|Votre boutique. Notre stock.|Vendez les produits Alessandro Design dans votre boutique en ligne, sans stock ni entrepôt. Dès que vous recevez une commande, nous l’emballons et la livrons directement à votre client.|Demander l’offre B2B|Calculer votre marge|Votre boutique|Nouvelle commande|Payée|Emballée|Livrée|Ajouter au panier|produits prêts à publier|jours ouvrés de livraison|investis en stock|showroom et entrepôt|Comment ça marche|De la commande au client, sans toucher un colis.|Vous publiez les produits|Vous choisissez dans notre catalogue et les publiez dans votre boutique, à vos prix.|Vous recevez la commande|Le client achète chez vous. Vous nous transmettez la commande et payez selon le rapport financier convenu.|Nous emballons et expédions|Nous préparons le colis à partir de notre stock et l’expédions directement à votre client.|Votre client reçoit son colis|Livraison en 2 à 4 jours ouvrés. Pendant ce temps, vous préparez déjà la prochaine vente.|Comparatif|Boutique classique ou dropshipping avec nous ?|Boutique classique|Dropshipping avec Alessandro|Investissement en stock|Élevé|Aucun|Entrepôt|Nécessaire|Inutile|Risque d’invendus|Élevé|Aucun|Emballage et livraison|À votre charge|On s’en occupe|Temps pour vendre|Peu|Tout|Puissance d’importation|Usine propre|Systèmes maison|Équipe dédiée|Calculateur|Combien pouvez-vous gagner ?|Estimez votre bénéfice mensuel. Les prix d’achat vous sont communiqués dans l’offre B2B.|Prix d’achat|Votre prix de vente|Commandes par mois|Marge par produit|Bénéfice brut par mois|Estimation indicative, hors marketing, livraison et taxes.|Catalogue|{n} produits prêts à publier.|Voir le catalogue|Questions fréquentes|Tout ce qu’il faut savoir|Qu’est-ce que le dropshipping ?|Un modèle d’affaires dans lequel le vendeur ne garde pas de stock. Quand une commande arrive, il achète le produit au fournisseur, qui l’expédie directement au client.|Le dropshipping est-il sûr ?|C’est un modèle sûr, à condition de travailler avec un fournisseur fiable et de bien gérer vos paiements et votre logistique.|Quel bénéfice puis-je espérer ?|Cela dépend de la niche, de la marge choisie et du volume de ventes. Le bon choix de produits et des campagnes bien optimisées font la plus grande différence.|Pourquoi nous choisir comme partenaire ?|Nous avons l’expérience du marché, la puissance d’importation, notre propre usine et des systèmes maison que nous adaptons à vos besoins. Notre équipe est jeune, dédiée et motivée à faire grandir votre activité.|Prêt à vendre sans stock ?|Parlez-nous de votre boutique et nous vous enverrons les conditions du programme B2B dropshipping.|Écrivez-nous sur WhatsApp|Page contact|Bonjour ! Je souhaite en savoir plus sur le programme B2B dropshipping.| |3 200 m²|maintenant"
+    when 'cs'
+      assign w = "B2B program · Dropshipping|Váš e-shop. Naše zásoby.|Prodávejte produkty Alessandro Design ve svém e-shopu bez zásob a bez skladu. Když přijde objednávka, zabalíme ji a doručíme přímo vašemu zákazníkovi.|Chci B2B nabídku|Spočítejte si marži|Váš e-shop|Nová objednávka|Zaplaceno|Zabaleno|Doručeno|Přidat do košíku|produktů připravených k nabídce|pracovních dnů doručení|investice do zásob|showroom a sklad|Jak to funguje|Od objednávky k zákazníkovi, aniž byste se dotkli balíku.|Zalistujete produkty|Vyberete z našeho katalogu a zveřejníte je ve svém e-shopu za své ceny.|Přijmete objednávku|Zákazník nakoupí u vás. Objednávku nám předáte a platíte podle dohodnutého finančního výkazu.|Zabalíme a odešleme|Připravíme balík z našich zásob a pošleme ho přímo vašemu zákazníkovi.|Zákazník dostane balík|Doručení za 2–4 pracovní dny. Vy se mezitím věnujete dalšímu prodeji.|Srovnání|Klasický obchod, nebo dropshipping s námi?|Klasický obchod|Dropshipping s Alessandro|Investice do zásob|Vysoká|Nulová|Sklad|Nutný|Nepotřebujete|Riziko neprodaného zboží|Vysoké|Nulové|Balení a doručení|Děláte vy|Děláme my|Čas na prodej|Málo|Všechen|Síla importu|Vlastní továrna|Vlastní systémy|Oddaný tým|Kalkulačka|Kolik můžete vydělat?|Odhadněte svůj měsíční zisk. Nákupní ceny dostanete v B2B nabídce.|Nákupní cena|Vaše prodejní cena|Objednávek měsíčně|Marže na produkt|Hrubý zisk měsíčně|Orientační odhad, bez nákladů na marketing, dopravu a daní.|Katalog|{n} produktů připravených k nabídce.|Zobrazit katalog|Časté dotazy|Vše, co potřebujete vědět|Co je dropshipping?|Obchodní model, ve kterém prodejce nedrží zásoby. Když přijde objednávka, koupí produkt od dodavatele, který ho pošle přímo zákazníkovi.|Jak bezpečný je dropshipping?|Je to bezpečný model, pokud spolupracujete se spolehlivým dodavatelem a správně řídíte platby a logistiku.|Jaký zisk mohu mít?|Záleží na nice, zvolené marži a objemu prodejů. Největší rozdíl dělá správný výběr produktů a dobře optimalizované kampaně.|Proč si nás vybrat jako partnera?|Máme zkušenosti na trhu, sílu importu, vlastní továrnu a vlastní systémy, které přizpůsobíme vašim potřebám. Náš tým je mladý, oddaný a motivovaný rozvíjet vaše podnikání.|Připraveni prodávat bez zásob?|Řekněte nám o svém e-shopu a pošleme vám podmínky B2B dropshipping programu.|Napište nám na WhatsApp|Kontaktní stránka|Dobrý den! Rád bych se dozvěděl více o B2B dropshipping programu.| |3200 m²|nyní"
+    when 'sk'
+      assign w = "B2B program · Dropshipping|Váš e-shop. Naše zásoby.|Predávajte produkty Alessandro Design vo svojom e-shope bez zásob a bez skladu. Keď príde objednávka, zabalíme ju a doručíme priamo vášmu zákazníkovi.|Chcem B2B ponuku|Vypočítajte si maržu|Váš e-shop|Nová objednávka|Zaplatená|Zabalená|Doručená|Pridať do košíka|produktov pripravených na ponuku|pracovných dní doručenia|investícia do zásob|showroom a sklad|Ako to funguje|Od objednávky k zákazníkovi bez toho, aby ste sa dotkli balíka.|Zalistujete produkty|Vyberiete z nášho katalógu a zverejníte ich vo svojom e-shope za svoje ceny.|Prijmete objednávku|Zákazník nakúpi u vás. Objednávku nám odovzdáte a platíte podľa dohodnutého finančného výkazu.|Zabalíme a odošleme|Pripravíme balík z našich zásob a pošleme ho priamo vášmu zákazníkovi.|Zákazník dostane balík|Doručenie za 2–4 pracovné dni. Vy sa medzitým venujete ďalšiemu predaju.|Porovnanie|Klasický obchod alebo dropshipping s nami?|Klasický obchod|Dropshipping s Alessandro|Investícia do zásob|Vysoká|Nulová|Sklad|Nutný|Nepotrebujete|Riziko nepredaného tovaru|Vysoké|Nulové|Balenie a doručenie|Robíte vy|Robíme my|Čas na predaj|Málo|Všetok|Sila importu|Vlastná továreň|Vlastné systémy|Oddaný tím|Kalkulačka|Koľko môžete zarobiť?|Odhadnite svoj mesačný zisk. Nákupné ceny dostanete v B2B ponuke.|Nákupná cena|Vaša predajná cena|Objednávok mesačne|Marža na produkt|Hrubý zisk mesačne|Orientačný odhad, bez nákladov na marketing, dopravu a daní.|Katalóg|{n} produktov pripravených na ponuku.|Zobraziť katalóg|Časté otázky|Všetko, čo potrebujete vedieť|Čo je dropshipping?|Obchodný model, v ktorom predajca nedrží zásoby. Keď príde objednávka, kúpi produkt od dodávateľa, ktorý ho pošle priamo zákazníkovi.|Aký bezpečný je dropshipping?|Je to bezpečný model, ak spolupracujete so spoľahlivým dodávateľom a správne riadite platby a logistiku.|Aký zisk môžem mať?|Závisí to od niky, zvolenej marže a objemu predajov. Najväčší rozdiel robí správny výber produktov a dobre optimalizované kampane.|Prečo si nás vybrať ako partnera?|Máme skúsenosti na trhu, silu importu, vlastnú továreň a vlastné systémy, ktoré prispôsobíme vašim potrebám. Náš tím je mladý, oddaný a motivovaný rozvíjať vaše podnikanie.|Pripravení predávať bez zásob?|Povedzte nám o svojom e-shope a pošleme vám podmienky B2B dropshipping programu.|Napíšte nám na WhatsApp|Kontaktná stránka|Dobrý deň! Rád by som sa dozvedel viac o B2B dropshipping programe.| |3200 m²|teraz"
+    when 'hr'
+      assign w = "B2B program · Dropshipping|Vaša trgovina. Naše zalihe.|Prodajite proizvode Alessandro Design u svojoj web trgovini, bez zaliha i bez skladišta. Kad primite narudžbu, mi je pakiramo i dostavljamo izravno vašem kupcu.|Zatražite B2B ponudu|Izračunajte svoju maržu|Vaša trgovina|Nova narudžba|Plaćeno|Zapakirano|Dostavljeno|Dodaj u košaricu|proizvoda spremnih za objavu|radnih dana dostave|ulaganja u zalihe|izložbeni salon i skladište|Kako funkcionira|Od narudžbe do kupca, a da ne dotaknete paket.|Objavljujete proizvode|Birate iz našeg kataloga i objavljujete ih u svojoj trgovini, po svojim cijenama.|Primate narudžbu|Kupac kupuje kod vas. Proslijedite nam narudžbu, a plaćate prema dogovorenom financijskom izvješću.|Mi pakiramo i šaljemo|Pripremamo paket iz naših zaliha i šaljemo ga izravno vašem kupcu.|Kupac prima paket|Dostava za 2–4 radna dana. U međuvremenu vi već radite na sljedećoj prodaji.|Usporedba|Klasična trgovina ili dropshipping s nama?|Klasična trgovina|Dropshipping s Alessandrom|Ulaganje u zalihe|Veliko|Nula|Skladište|Potrebno|Ne treba vam|Rizik neprodane robe|Visok|Nula|Pakiranje i dostava|Radite vi|Radimo mi|Vrijeme za prodaju|Malo|Sve|Snaga uvoza|Vlastita tvornica|Vlastiti sustavi|Posvećen tim|Kalkulator|Koliko možete zaraditi?|Procijenite mjesečnu dobit. Nabavne cijene dobivate u B2B ponudi.|Nabavna cijena|Vaša prodajna cijena|Narudžbi mjesečno|Marža po proizvodu|Bruto dobit mjesečno|Okvirna procjena, bez troškova marketinga, dostave i poreza.|Katalog|{n} proizvoda spremnih za objavu.|Pogledajte katalog|Česta pitanja|Sve što trebate znati|Što je dropshipping?|Poslovni model u kojem prodavač ne drži zalihe. Kad stigne narudžba, kupuje proizvod od dobavljača, koji ga šalje izravno kupcu.|Koliko je dropshipping siguran?|Siguran je model ako surađujete s pouzdanim dobavljačem i pravilno upravljate plaćanjima i logistikom.|Koliku zaradu mogu ostvariti?|Ovisi o niši, odabranoj marži i obujmu prodaje. Najveću razliku čine pravi izbor proizvoda i dobro optimizirane kampanje.|Zašto nas odabrati za partnera?|Imamo tržišno iskustvo, snagu uvoza, vlastitu tvornicu i vlastite sustave koje prilagođavamo vašim potrebama. Naš tim je mlad, posvećen i motiviran za rast vašeg poslovanja.|Spremni prodavati bez zaliha?|Recite nam o svojoj trgovini i poslat ćemo vam uvjete B2B dropshipping programa.|Pišite nam na WhatsApp|Stranica za kontakt|Pozdrav! Želio bih saznati više o B2B dropshipping programu.|.|3.200 m²|sada"
+    when 'de'
+      assign w = "B2B-Programm · Dropshipping|Ihr Shop. Unser Lager.|Verkaufen Sie Produkte von Alessandro Design in Ihrem Onlineshop, ohne Lager und ohne Vorrat. Sobald eine Bestellung eingeht, verpacken wir sie und liefern direkt an Ihren Kunden.|B2B-Angebot anfragen|Marge berechnen|Ihr Shop|Neue Bestellung|Bezahlt|Verpackt|Zugestellt|In den Warenkorb|Produkte bereit zum Listen|Werktage Lieferzeit|Investition in Ware|Showroom und Lager|So funktioniert’s|Von der Bestellung zum Kunden, ohne ein Paket anzufassen.|Sie listen die Produkte|Sie wählen aus unserem Katalog und veröffentlichen die Produkte in Ihrem Shop, zu Ihren Preisen.|Sie erhalten die Bestellung|Der Kunde kauft bei Ihnen. Sie leiten uns die Bestellung weiter und zahlen gemäß vereinbartem Finanzbericht.|Wir verpacken und versenden|Wir packen die Sendung aus unserem Bestand und schicken sie direkt an Ihren Kunden.|Ihr Kunde erhält das Paket|Lieferung in 2–4 Werktagen. Währenddessen kümmern Sie sich schon um den nächsten Verkauf.|Vergleich|Klassischer Shop oder Dropshipping mit uns?|Klassischer Shop|Dropshipping mit Alessandro|Investition in Ware|Hoch|Keine|Lager|Nötig|Nicht nötig|Risiko unverkaufter Ware|Hoch|Keins|Verpackung und Versand|Machen Sie|Machen wir|Zeit zum Verkaufen|Wenig|Die ganze|Importstärke|Eigene Fabrik|Eigene Systeme|Engagiertes Team|Rechner|Wie viel können Sie verdienen?|Schätzen Sie Ihren Monatsgewinn. Die Einkaufspreise erhalten Sie im B2B-Angebot.|Einkaufspreis|Ihr Verkaufspreis|Bestellungen pro Monat|Marge pro Produkt|Bruttogewinn pro Monat|Unverbindliche Schätzung, ohne Marketing-, Versandkosten und Steuern.|Katalog|{n} Produkte, bereit zum Listen.|Katalog ansehen|Häufige Fragen|Alles, was Sie wissen müssen|Was ist Dropshipping?|Ein Geschäftsmodell, bei dem der Verkäufer keine Ware auf Lager hält. Geht eine Bestellung ein, kauft er das Produkt beim Lieferanten, der es direkt an den Kunden schickt.|Wie sicher ist Dropshipping?|Es ist ein sicheres Modell, solange Sie mit einem zuverlässigen Lieferanten arbeiten und Zahlungen und Logistik richtig steuern.|Welchen Gewinn kann ich erzielen?|Das hängt von der Nische, der gewählten Marge und dem Verkaufsvolumen ab. Den größten Unterschied machen die richtige Produktauswahl und gut optimierte Kampagnen.|Warum uns als Partner wählen?|Wir haben Markterfahrung, Importstärke, eine eigene Fabrik und eigene Systeme, die wir an Ihre Anforderungen anpassen. Unser Team ist jung, engagiert und motiviert, Ihr Geschäft wachsen zu lassen.|Bereit, ohne Lager zu verkaufen?|Erzählen Sie uns von Ihrem Shop, und wir senden Ihnen die Konditionen des B2B-Dropshipping-Programms.|Schreiben Sie uns auf WhatsApp|Kontaktseite|Hallo! Ich möchte mehr über das B2B-Dropshipping-Programm erfahren.|.|3.200 m²|jetzt"
+    else
+      assign w = "Program B2B · Dropshipping|Magazinul tău. Stocul nostru.|Vinzi produsele Alessandro Design în magazinul tău online, fără stoc și fără depozit. Când primești o comandă, noi o ambalăm și o livrăm direct clientului tău.|Cere oferta B2B|Calculează-ți marja|Magazinul tău|Comandă nouă|Plătită|Ambalată|Livrată|Adaugă în coș|produse gata de listat|zile lucrătoare de livrare|investiție în stoc|showroom și depozit|Cum funcționează|De la comandă la client, fără să atingi un colet.|Listezi produsele|Alegi din catalogul nostru și le publici în magazinul tău, cu prețurile tale.|Primești comanda|Clientul cumpără de la tine. Ne transmiți comanda, iar plata o faci conform raportului financiar agreat.|Noi ambalăm și expediem|Pregătim coletul din stocul nostru și îl trimitem direct clientului tău.|Clientul primește coletul|Livrare în 2–4 zile lucrătoare. Între timp, tu te ocupi deja de următoarea vânzare.|Comparație|Magazin clasic sau dropshipping cu noi?|Magazin clasic|Dropshipping cu Alessandro|Investiție în stoc|Mare|Zero|Depozit|Necesar|Nu ai nevoie|Risc de marfă nevândută|Ridicat|Zero|Ambalare și livrare|Le faci tu|Le facem noi|Timp pentru vânzări|Puțin|Tot|Putere de import|Fabrică proprie|Sisteme proprii|Echipă dedicată|Calculator|Cât poți câștiga?|Estimează-ți profitul lunar. Prețurile de achiziție le primești în oferta B2B.|Preț de achiziție|Prețul tău de vânzare|Comenzi pe lună|Marja pe produs|Profit brut pe lună|Estimare orientativă, fără costurile de marketing, transport și taxe.|Catalog|{n} produse, gata de listat.|Vezi catalogul|Întrebări frecvente|Tot ce trebuie să știi|Ce este dropshipping-ul?|Un model de afaceri în care vânzătorul nu ține produse în stoc. Când primește o comandă, cumpără produsul de la furnizor, iar furnizorul îl trimite direct clientului.|Cât de sigur este dropshipping-ul?|Este un model sigur atâta timp cât lucrezi cu un furnizor de încredere și îți gestionezi corect plățile și logistica.|Ce profit pot obține?|Depinde de nișă, de marja pe care o alegi și de volumul de vânzări. Contează mult alegerea produselor potrivite și campaniile de marketing bine optimizate.|De ce să ne alegi ca partener?|Avem experiență pe piață, putere de import, fabrică proprie și sisteme dezvoltate intern, pe care le adaptăm nevoilor tale. Iar echipa noastră e tânără, dedicată și motivată să îți crească afacerea.|Gata să vinzi fără stoc?|Spune-ne despre magazinul tău și îți trimitem condițiile programului B2B dropshipping.|Scrie-ne pe WhatsApp|Pagina de contact|Salut! Doresc să aflu mai multe despre programul B2B dropshipping.|.|3.200 m²|acum"
+  endcase
+  assign t = w | split: '|'
+
+  assign reveal = ''
+  if settings.animations_reveal_on_scroll
+    assign reveal = ' scroll-trigger animate--slide-in'
+  endif
+
+  comment
+    Live catalogue size, rounded down to the hundred: "3.300+".
+  endcomment
+  assign n = collections.all.products_count | divided_by: 100 | times: 100
+  assign n_thousands = n | divided_by: 1000
+  assign n_rest = n | modulo: 1000 | plus: 1000 | append: '' | slice: 1, 3
+  if n_thousands > 0
+    assign product_count = n_thousands | append: t[75] | append: n_rest | append: '+'
+  else
+    assign product_count = n | append: '+'
+  endif
+  assign count_token = '{' | append: 'n' | append: '}'
+  assign catalog_title = t[58] | replace: count_token, product_count
+
+  assign wa_number = section.settings.whatsapp | remove: '+' | remove: ' '
+  assign wa_msg = t[74] | url_encode | replace: '+', '%20'
+  assign wa_url = 'https://wa.me/' | append: wa_number | append: '?text=' | append: wa_msg
+  assign p_contact = pages['contact']
+
+  comment
+    The product shown in the store mock: the one picked in the editor, otherwise the
+    first available product with a photo in the strip's collection.
+  endcomment
+  assign strip = section.settings.strip_collection | default: collections['lustre-led']
+  assign spot = section.settings.hero_product
+  if spot == blank
+    for p in strip.products
+      if p.available and p.featured_image
+        assign spot = p
+        break
+      endif
+    endfor
+  endif
+-%}
+
+<div class="alc-b2b">
+  {%- comment -%} Hero {%- endcomment -%}
+  <section class="alc-b2b__hero">
+    <div class="page-width alc-b2b__hero-grid">
+      <div class="alc-b2b__hero-copy">
+        <p class="alc-b2b__pill"><span class="alc-b2b__pill-dot" aria-hidden="true"></span>{{ t[0] }}</p>
+        <h1 class="alc-b2b__h1">{{ t[1] }}</h1>
+        <p class="alc-b2b__lead">{{ t[2] }}</p>
+        <div class="alc-b2b__actions">
+          <a class="alc-b2b__btn alc-b2b__btn--wa" href="{{ wa_url }}" target="_blank" rel="noopener">
+            {%- render 'alc-ds-icon', name: 'whatsapp' -%}
+            {{- t[3] -}}
+          </a>
+          <a class="alc-b2b__btn alc-b2b__btn--ghost" href="#AlcB2bCalc">{{ t[4] }}</a>
+        </div>
+      </div>
+
+      {%- if spot != blank -%}
+        {%- comment -%} Decorative: it repeats what the copy says, so screen readers skip it. {%- endcomment -%}
+        <div class="alc-b2b__scene" aria-hidden="true">
+          <div class="alc-b2b__win">
+            <div class="alc-b2b__win-bar">
+              <span></span><span></span><span></span>
+              <em>{{ t[5] }}</em>
+            </div>
+            <div class="alc-b2b__win-body">
+              <div class="alc-b2b__win-media">
+                {{
+                  spot.featured_image
+                  | image_url: width: 640
+                  | image_tag: widths: '320, 480, 640', sizes: '(min-width: 990px) 300px, 60vw', loading: 'eager', alt: '', class: 'alc-b2b__win-img'
+                }}
+              </div>
+              <div class="alc-b2b__win-info">
+                <span class="alc-b2b__win-title">{{ spot.title | escape }}</span>
+                <span class="alc-b2b__win-price">{{ spot.price | money }}</span>
+                <span class="alc-b2b__win-btn">{{ t[10] }}</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="alc-b2b__toast">
+            <span class="alc-b2b__toast-icon">{%- render 'alc-header-icon', name: 'bag' -%}</span>
+            <span class="alc-b2b__toast-text">
+              <strong>{{ t[6] }}</strong>
+              <span>{{ spot.price | money }} · {{ t[77] }}</span>
+            </span>
+          </div>
+
+          <div class="alc-b2b__track">
+            <div class="alc-b2b__track-line"><span class="alc-b2b__track-fill"></span></div>
+            <ol class="alc-b2b__track-steps">
+              <li class="alc-b2b__track-step alc-b2b__track-step--1"><i></i>{{ t[7] }}</li>
+              <li class="alc-b2b__track-step alc-b2b__track-step--2"><i></i>{{ t[8] }}</li>
+              <li class="alc-b2b__track-step alc-b2b__track-step--3"><i></i>{{ t[9] }}</li>
+            </ol>
+          </div>
+        </div>
+      {%- endif -%}
+    </div>
+  </section>
+
+  {%- comment -%} Proof row {%- endcomment -%}
+  <div class="page-width">
+    <dl class="alc-b2b__proof">
+      <div><dd>{{ product_count }}</dd><dt>{{ t[11] }}</dt></div>
+      <div><dd>2–4</dd><dt>{{ t[12] }}</dt></div>
+      <div><dd>0</dd><dt>{{ t[13] }}</dt></div>
+      <div><dd>{{ t[76] }}</dd><dt>{{ t[14] }}</dt></div>
+    </dl>
+  </div>
+
+  {%- comment -%} The flow as a delivery route {%- endcomment -%}
+  <section class="page-width alc-b2b__block">
+    <header class="alc-b2b__head">
+      <p class="alc-b2b__eyebrow">{{ t[15] }}</p>
+      <h2 class="alc-b2b__h2">{{ t[16] }}</h2>
+    </header>
+    <ol class="alc-b2b__route" role="list"{% if reveal != blank %} data-cascade{% endif %}>
+      {%- for i in (1..4) -%}
+        {%- liquid
+          assign ti = i | minus: 1 | times: 2 | plus: 17
+          assign di = ti | plus: 1
+          case i
+            when 1
+              assign icon = 'list'
+            when 2
+              assign icon = 'card'
+            when 3
+              assign icon = 'box'
+            else
+              assign icon = 'truck'
+          endcase
+        -%}
+        <li class="alc-b2b__stop{{ reveal }}" style="--animation-order: {{ i }};">
+          <span class="alc-b2b__stop-node" aria-hidden="true">{%- render 'alc-ds-icon', name: icon -%}</span>
+          <span class="alc-b2b__stop-num">0{{ i }}</span>
+          <h3 class="alc-b2b__stop-title">{{ t[ti] }}</h3>
+          <p class="alc-b2b__stop-text">{{ t[di] }}</p>
+        </li>
+      {%- endfor -%}
+    </ol>
+  </section>
+
+  {%- comment -%} Comparison {%- endcomment -%}
+  <section class="alc-b2b__cmp-band">
+    <div class="page-width">
+      <header class="alc-b2b__head alc-b2b__head--center">
+        <p class="alc-b2b__eyebrow">{{ t[25] }}</p>
+        <h2 class="alc-b2b__h2">{{ t[26] }}</h2>
+      </header>
+      <div class="alc-b2b__cmp" role="table" aria-label="{{ t[26] | escape }}">
+        <div class="alc-b2b__cmp-row alc-b2b__cmp-row--head" role="row">
+          <span role="columnheader"></span>
+          <span role="columnheader">{{ t[27] }}</span>
+          <span role="columnheader" class="alc-b2b__cmp-us">{{ t[28] }}</span>
+        </div>
+        {%- for i in (1..5) -%}
+          {%- liquid
+            assign ri = i | minus: 1 | times: 3 | plus: 29
+            assign ai = ri | plus: 1
+            assign bi = ri | plus: 2
+          -%}
+          <div class="alc-b2b__cmp-row" role="row">
+            <span role="rowheader" class="alc-b2b__cmp-crit">{{ t[ri] }}</span>
+            <span role="cell" class="alc-b2b__cmp-them"><i aria-hidden="true">×</i>{{ t[ai] }}</span>
+            <span role="cell" class="alc-b2b__cmp-us"><i aria-hidden="true">✓</i>{{ t[bi] }}</span>
+          </div>
+        {%- endfor -%}
+      </div>
+      <ul class="alc-b2b__chips" role="list">
+        {%- for i in (44..47) -%}
+          <li>{{ t[i] }}</li>
+        {%- endfor -%}
+      </ul>
+    </div>
+  </section>
+
+  {%- comment -%} Margin calculator {%- endcomment -%}
+  <section class="page-width alc-b2b__block" id="AlcB2bCalc">
+    <alc-b2b-calc
+      class="alc-b2b__calc"
+      data-currency="{{ cart.currency.iso_code }}"
+      data-money="{{ 123400 | money_without_trailing_zeros | escape }}"
+      data-lang="{{ request.locale.iso_code }}"
+    >
+      <div class="alc-b2b__calc-copy">
+        <p class="alc-b2b__eyebrow">{{ t[48] }}</p>
+        <h2 class="alc-b2b__h2">{{ t[49] }}</h2>
+        <p class="alc-b2b__calc-lead">{{ t[50] }}</p>
+        <div class="alc-b2b__fields">
+          <label class="alc-b2b__field">
+            <span class="alc-b2b__field-top"><span>{{ t[51] }}</span><output data-out="buy"></output></span>
+            <input type="range" data-in="buy" data-base="150" data-max="1500">
+          </label>
+          <label class="alc-b2b__field">
+            <span class="alc-b2b__field-top"><span>{{ t[52] }}</span><output data-out="sell"></output></span>
+            <input type="range" data-in="sell" data-base="249" data-max="2500">
+          </label>
+          <label class="alc-b2b__field">
+            <span class="alc-b2b__field-top"><span>{{ t[53] }}</span><output data-out="qty"></output></span>
+            <input type="range" data-in="qty" min="1" max="200" step="1" value="20">
+          </label>
+        </div>
+      </div>
+      <div class="alc-b2b__calc-result" aria-live="polite">
+        <div class="alc-b2b__res">
+          <span class="alc-b2b__res-label">{{ t[54] }}</span>
+          <span class="alc-b2b__res-value" data-out="margin">–</span>
+        </div>
+        <div class="alc-b2b__res alc-b2b__res--big">
+          <span class="alc-b2b__res-label">{{ t[55] }}</span>
+          <span class="alc-b2b__res-value" data-out="profit">–</span>
+        </div>
+        <p class="alc-b2b__res-note">{{ t[56] }}</p>
+      </div>
+    </alc-b2b-calc>
+  </section>
+
+  {%- comment -%} Moving strip of real products {%- endcomment -%}
+  {%- if strip != blank -%}
+    <section class="alc-b2b__block alc-b2b__strip-wrap">
+      <header class="page-width alc-b2b__head alc-b2b__head--row">
+        <div>
+          <p class="alc-b2b__eyebrow">{{ t[57] }}</p>
+          <h2 class="alc-b2b__h2">{{ catalog_title }}</h2>
+        </div>
+        <a class="alc-b2b__more" href="{{ routes.all_products_collection_url }}">
+          {{- t[59] -}}
+          <svg aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+        </a>
+      </header>
+      <div class="alc-b2b__strip" aria-hidden="true">
+        {%- for row in (1..2) -%}
+          <div class="alc-b2b__strip-row alc-b2b__strip-row--{{ row }}">
+            {%- comment -%} Each row is printed twice so the loop has no seam. {%- endcomment -%}
+            {%- for copy in (1..2) -%}
+              {%- assign shown = 0 -%}
+              {%- for p in strip.products -%}
+                {%- unless p.featured_image -%}{%- continue -%}{%- endunless -%}
+                {%- assign shown = shown | plus: 1 -%}
+                {%- assign half = shown | modulo: 2 -%}
+                {%- if row == 1 and half == 0 -%}{%- continue -%}{%- endif -%}
+                {%- if row == 2 and half == 1 -%}{%- continue -%}{%- endif -%}
+                {%- if shown > 16 -%}{%- break -%}{%- endif -%}
+                <span class="alc-b2b__strip-item">
+                  {{ p.featured_image | image_url: width: 300 | image_tag: widths: '200, 300', sizes: '150px', loading: 'lazy', alt: '' }}
+                </span>
+              {%- endfor -%}
+            {%- endfor -%}
+          </div>
+        {%- endfor -%}
+      </div>
+    </section>
+  {%- endif -%}
+
+  {%- comment -%} FAQ {%- endcomment -%}
+  <section class="page-width alc-b2b__block">
+    <div class="alc-b2b__faq-grid">
+      <header class="alc-b2b__head">
+        <p class="alc-b2b__eyebrow">{{ t[60] }}</p>
+        <h2 class="alc-b2b__h2">{{ t[61] }}</h2>
+      </header>
+      <div class="alc-b2b__faq">
+        {%- for i in (1..4) -%}
+          {%- assign qi = i | minus: 1 | times: 2 | plus: 62 -%}
+          {%- assign ai = qi | plus: 1 -%}
+          <details class="alc-b2b__qa"{% if forloop.first %} open{% endif %}>
+            <summary class="alc-b2b__q"><span>{{ t[qi] }}</span><i aria-hidden="true"></i></summary>
+            <p class="alc-b2b__a">{{ t[ai] }}</p>
+          </details>
+        {%- endfor -%}
+      </div>
+    </div>
+  </section>
+
+  {%- comment -%} Closing call to action {%- endcomment -%}
+  <section class="page-width alc-b2b__block alc-b2b__block--last">
+    <div class="alc-b2b__final">
+      <h2 class="alc-b2b__final-title">{{ t[70] }}</h2>
+      <p class="alc-b2b__final-text">{{ t[71] }}</p>
+      <div class="alc-b2b__actions alc-b2b__actions--center">
+        <a class="alc-b2b__btn alc-b2b__btn--wa" href="{{ wa_url }}" target="_blank" rel="noopener">
+          {%- render 'alc-ds-icon', name: 'whatsapp' -%}
+          {{- t[72] -}}
+        </a>
+        {%- if p_contact != blank -%}
+          <a class="alc-b2b__btn alc-b2b__btn--ghost" href="{{ p_contact.url }}">{{ t[73] }}</a>
+        {%- endif -%}
+      </div>
+    </div>
+  </section>
+
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "inLanguage": {{ request.locale.iso_code | json }},
+      "mainEntity": [
+        {%- for i in (1..4) -%}
+          {%- assign qi = i | minus: 1 | times: 2 | plus: 62 -%}
+          {%- assign ai = qi | plus: 1 -%}
+          { "@type": "Question", "name": {{ t[qi] | json }}, "acceptedAnswer": { "@type": "Answer", "text": {{ t[ai] | json }} } }{% unless forloop.last %},{% endunless %}
+        {%- endfor -%}
+      ]
+    }
+  </script>
+</div>
+
+{% schema %}
+{
+  "name": "B2B dropshipping page",
+  "tag": "div",
+  "class": "section",
+  "settings": [
+    { "type": "paragraph", "content": "All texts have built-in translations for every storefront language." },
+    { "type": "text", "id": "whatsapp", "label": "B2B WhatsApp number", "default": "40725665925", "info": "International format, digits only" },
+    { "type": "product", "id": "hero_product", "label": "Product in the store mock", "info": "Empty: the first available product of the strip collection" },
+    { "type": "collection", "id": "strip_collection", "label": "Products in the moving strip", "info": "Empty: Lustre LED" }
+  ],
+  "presets": [{ "name": "B2B dropshipping page" }]
+}
+{% endschema %}
