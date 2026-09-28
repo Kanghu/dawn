@@ -1,0 +1,508 @@
+{% comment %}
+  Contact page (templates/page.contact.json).
+
+  Hero with a live "open now" status for customer care, three contact channels (phone,
+  WhatsApp, email), the Shopify contact form with a topic picker, quick links to the
+  policies and the help center, company details and the Afumati showroom.
+
+  All copy has built-in translations for every storefront language (en.default.json is
+  at Shopify's key limit), so the page reads the same on every market. The admin page
+  body is not rendered: it carried its own global <style> and stale data (Voluntari
+  address, Dec 2024 closure).
+
+  Numbers: Romanian storefront shows the landline, every other market the international
+  mobile (same rule as the footer). Hours: customer care Mon-Fri 10-18, showroom
+  Mon-Fri 9-17, Sat 9-14 (data-hours below, 0 = Sunday, Europe/Bucharest time).
+
+  Name, email, phone and body use Shopify's standard field names so they are refilled
+  after a failed submit. The extra fields (topic, order number, market) are named in
+  Romanian with Romanian values, so every message reaches the inbox in the same shape.
+
+  Styles: assets/alc-contact.css.
+{% endcomment %}
+{{ 'alc-contact.css' | asset_url | stylesheet_tag }}
+
+{%- liquid
+  assign lang = request.locale.iso_code | downcase | slice: 0, 2
+  case lang
+    when 'en'
+      assign w = "Contact|How can we help?|Our customer care team helps with orders, products, returns and quotes. Choose how you would like to reach us.|Customer care|Open now|until [t]|Closed now|Opens [d] at [t]|today|tomorrow|Monday|Phone|Monday – Friday, 10:00 – 18:00 (Romanian time)|Call now|Send us photos, a product link or your order number.|Message on WhatsApp|For orders, returns and project quotes.|Send an email|Write to us|Send us a message|We reply by email during business hours.|What is it about?|An order I placed|A product|Return or warranty|B2B partnership|Something else|Name|Email|Phone (optional)|Order number|Message|Send message|Fields marked * are required.|Thank you! Your message has reached us.|We will reply by email as soon as we can, during business hours.|Please check the highlighted fields.|Quick answers|Shipping and delivery times|Returns and refunds|Terms and conditions|Help center|B2B and dropshipping|Company details|Showroom|Come and see the chandeliers lit up|3,200 m² of lighting in Afumați, just outside Bucharest on the DN2, near Doraly.|Monday – Friday|Saturday|Sunday|Closed|Get directions|See the showroom|Address|Opening hours|Romania|Enter a valid email address.|Showroom phone|Return and warranty form"
+    when 'hu'
+      assign w = "Kapcsolat|Miben segíthetünk?|Ügyfélszolgálatunk segít rendelésekkel, termékekkel, visszaküldéssel és árajánlatokkal kapcsolatban. Válassza ki, hogyan szeretne elérni minket.|Ügyfélszolgálat|Most nyitva|[t]-ig|Most zárva|Nyitás: [d] [t]|ma|holnap|hétfőn|Telefon|Hétfő – péntek, 10:00 – 18:00 (romániai idő)|Hívás most|Küldjön fotókat, termékhivatkozást vagy a rendelésszámot.|Írjon WhatsAppon|Rendelésekhez, visszaküldéshez és projektajánlatokhoz.|E-mail küldése|Írjon nekünk|Küldjön üzenetet|E-mailben válaszolunk, munkaidőben.|Miről van szó?|Leadott rendelés|Egy termék|Visszaküldés vagy garancia|B2B együttműködés|Egyéb|Név|E-mail|Telefon (nem kötelező)|Rendelésszám|Üzenet|Üzenet küldése|A *-gal jelölt mezők kitöltése kötelező.|Köszönjük! Üzenete megérkezett.|Munkaidőben, a lehető leghamarabb válaszolunk e-mailben.|Kérjük, ellenőrizze a megjelölt mezőket.|Gyors válaszok|Szállítás és határidők|Visszaküldés és visszatérítés|Általános szerződési feltételek|Súgóközpont|B2B és dropshipping|Cégadatok|Bemutatóterem|Jöjjön el, és nézze meg a csillárokat felkapcsolva|3200 m² világítás Afumațiban, Bukarest mellett, a DN2 út mentén, a Doraly közelében.|Hétfő – péntek|Szombat|Vasárnap|Zárva|Útvonaltervezés|Bemutatóterem megtekintése|Cím|Nyitvatartás|Románia|Adjon meg érvényes e-mail-címet.|Bemutatóterem telefonszáma|Visszaküldési és garanciális űrlap"
+    when 'pl'
+      assign w = "Kontakt|Jak możemy pomóc?|Nasz dział obsługi klienta pomoże w sprawie zamówień, produktów, zwrotów i wycen. Wybierz, jak chcesz się z nami skontaktować.|Obsługa klienta|Otwarte teraz|do [t]|Teraz zamknięte|Otwieramy [d] o [t]|dziś|jutro|w poniedziałek|Telefon|Poniedziałek – piątek, 10:00 – 18:00 (czas rumuński)|Zadzwoń|Wyślij nam zdjęcia, link do produktu lub numer zamówienia.|Napisz na WhatsApp|W sprawie zamówień, zwrotów i wycen projektów.|Wyślij e-mail|Napisz do nas|Wyślij wiadomość|Odpowiadamy e-mailem w godzinach pracy.|Czego dotyczy wiadomość?|Złożone zamówienie|Produkt|Zwrot lub gwarancja|Współpraca B2B|Coś innego|Imię i nazwisko|E-mail|Telefon (opcjonalnie)|Numer zamówienia|Wiadomość|Wyślij wiadomość|Pola oznaczone * są wymagane.|Dziękujemy! Twoja wiadomość do nas dotarła.|Odpowiemy e-mailem najszybciej, jak to możliwe, w godzinach pracy.|Sprawdź zaznaczone pola.|Szybkie odpowiedzi|Dostawa i terminy|Zwroty i refundacje|Regulamin|Centrum pomocy|B2B i dropshipping|Dane firmy|Showroom|Zobacz nasze żyrandole na żywo|3200 m² oświetlenia w Afumați, tuż za Bukaresztem przy drodze DN2, w pobliżu Doraly.|Poniedziałek – piątek|Sobota|Niedziela|Zamknięte|Wyznacz trasę|Zobacz showroom|Adres|Godziny otwarcia|Rumunia|Podaj poprawny adres e-mail.|Telefon do showroomu|Formularz zwrotu i reklamacji"
+    when 'el'
+      assign w = "Επικοινωνία|Πώς μπορούμε να βοηθήσουμε;|Η ομάδα εξυπηρέτησης πελατών σας βοηθά με παραγγελίες, προϊόντα, επιστροφές και προσφορές. Επιλέξτε πώς θέλετε να επικοινωνήσετε μαζί μας.|Εξυπηρέτηση πελατών|Ανοιχτά τώρα|έως τις [t]|Κλειστά τώρα|Ανοίγουμε [d] στις [t]|σήμερα|αύριο|τη Δευτέρα|Τηλέφωνο|Δευτέρα – Παρασκευή, 10:00 – 18:00|Καλέστε τώρα|Στείλτε μας φωτογραφίες, τον σύνδεσμο του προϊόντος ή τον αριθμό παραγγελίας.|Γράψτε μας στο WhatsApp|Για παραγγελίες, επιστροφές και προσφορές για έργα.|Στείλτε email|Γράψτε μας|Στείλτε μας μήνυμα|Απαντάμε με email, σε ώρες λειτουργίας.|Σχετικά με τι;|Παραγγελία που έκανα|Ένα προϊόν|Επιστροφή ή εγγύηση|Συνεργασία B2B|Κάτι άλλο|Όνομα|Email|Τηλέφωνο (προαιρετικό)|Αριθμός παραγγελίας|Μήνυμα|Αποστολή μηνύματος|Τα πεδία με * είναι υποχρεωτικά.|Ευχαριστούμε! Το μήνυμά σας έφτασε.|Θα σας απαντήσουμε με email το συντομότερο, σε ώρες λειτουργίας.|Ελέγξτε τα επισημασμένα πεδία.|Γρήγορες απαντήσεις|Αποστολή και χρόνοι παράδοσης|Επιστροφές και αποζημιώσεις|Όροι και προϋποθέσεις|Κέντρο βοήθειας|B2B και dropshipping|Στοιχεία εταιρείας|Showroom|Ελάτε να δείτε τα φωτιστικά αναμμένα|3.200 m² φωτιστικών στο Afumați, έξω από το Βουκουρέστι στον DN2, κοντά στο Doraly.|Δευτέρα – Παρασκευή|Σάββατο|Κυριακή|Κλειστά|Οδηγίες|Δείτε το showroom|Διεύθυνση|Ωράριο|Ρουμανία|Εισαγάγετε ένα έγκυρο email.|Τηλέφωνο showroom|Φόρμα επιστροφής και εγγύησης"
+    when 'bg'
+      assign w = "Контакт|С какво можем да помогнем?|Екипът ни за обслужване на клиенти помага с поръчки, продукти, връщания и оферти. Изберете как да се свържете с нас.|Обслужване на клиенти|Отворено сега|до [t]|Затворено сега|Отваряме [d] в [t]|днес|утре|в понеделник|Телефон|Понеделник – петък, 10:00 – 18:00|Обадете се|Изпратете ни снимки, линк към продукта или номера на поръчката.|Пишете ни в WhatsApp|За поръчки, връщания и оферти за проекти.|Изпратете имейл|Пишете ни|Изпратете ни съобщение|Отговаряме по имейл в работно време.|За какво се отнася?|Направена поръчка|Продукт|Връщане или гаранция|B2B сътрудничество|Друго|Име|Имейл|Телефон (по избор)|Номер на поръчката|Съобщение|Изпратете съобщението|Полетата, отбелязани с *, са задължителни.|Благодарим! Съобщението ви е получено.|Ще ви отговорим по имейл възможно най-скоро, в работно време.|Моля, проверете отбелязаните полета.|Бързи отговори|Доставка и срокове|Връщане и възстановяване|Общи условия|Помощен център|B2B и дропшипинг|Данни за фирмата|Шоурум|Елате да видите полилеите светнали|3200 m² осветление в Афумаци, в покрайнините на Букурещ, на път DN2, до Doraly.|Понеделник – петък|Събота|Неделя|Затворено|Упътвания|Вижте шоурума|Адрес|Работно време|Румъния|Въведете валиден имейл адрес.|Телефон на шоурума|Формуляр за връщане и гаранция"
+    when 'it'
+      assign w = "Contatti|Come possiamo aiutarti?|Il nostro servizio clienti ti aiuta con ordini, prodotti, resi e preventivi. Scegli come preferisci contattarci.|Servizio clienti|Aperto ora|fino alle [t]|Chiuso ora|Apriamo [d] alle [t]|oggi|domani|lunedì|Telefono|Lunedì – venerdì, 10:00 – 18:00 (ora rumena)|Chiama ora|Inviaci foto, il link del prodotto o il numero d’ordine.|Scrivici su WhatsApp|Per ordini, resi e preventivi per progetti.|Invia un’email|Scrivici|Inviaci un messaggio|Rispondiamo via email in orario di lavoro.|Di cosa si tratta?|Un ordine effettuato|Un prodotto|Reso o garanzia|Collaborazione B2B|Altro|Nome|Email|Telefono (facoltativo)|Numero d’ordine|Messaggio|Invia messaggio|I campi contrassegnati da * sono obbligatori.|Grazie! Il tuo messaggio è arrivato.|Ti risponderemo via email il prima possibile, in orario di lavoro.|Controlla i campi evidenziati.|Risposte rapide|Spedizione e tempi di consegna|Resi e rimborsi|Termini e condizioni|Centro assistenza|B2B e dropshipping|Dati aziendali|Showroom|Vieni a vedere i lampadari accesi|3.200 m² di illuminazione ad Afumați, appena fuori Bucarest sulla DN2, zona Doraly.|Lunedì – venerdì|Sabato|Domenica|Chiuso|Indicazioni stradali|Scopri lo showroom|Indirizzo|Orari|Romania|Inserisci un indirizzo email valido.|Telefono showroom|Modulo di reso e garanzia"
+    when 'fr'
+      assign w = "Contact|Comment pouvons-nous vous aider&nbsp;?|Notre service client vous aide pour les commandes, les produits, les retours et les devis. Choisissez comment nous joindre.|Service client|Ouvert|jusqu’à [t]|Fermé|Ouverture [d] à [t]|aujourd’hui|demain|lundi|Téléphone|Lundi – vendredi, 10:00 – 18:00 (heure de Roumanie)|Appeler|Envoyez-nous des photos, le lien du produit ou votre numéro de commande.|Écrire sur WhatsApp|Pour les commandes, les retours et les devis de projets.|Envoyer un e-mail|Écrivez-nous|Envoyez-nous un message|Nous répondons par e-mail pendant nos horaires d’ouverture.|De quoi s’agit-il&nbsp;?|Une commande passée|Un produit|Retour ou garantie|Partenariat B2B|Autre chose|Nom|E-mail|Téléphone (facultatif)|Numéro de commande|Message|Envoyer le message|Les champs marqués d’un * sont obligatoires.|Merci&nbsp;! Votre message nous est bien parvenu.|Nous vous répondrons par e-mail dès que possible, pendant nos horaires d’ouverture.|Veuillez vérifier les champs signalés.|Réponses rapides|Livraison et délais|Retours et remboursements|Conditions générales|Centre d’aide|B2B et dropshipping|Informations société|Showroom|Venez voir nos lustres allumés|3&nbsp;200 m² de luminaires à Afumați, aux portes de Bucarest sur la DN2, près de Doraly.|Lundi – vendredi|Samedi|Dimanche|Fermé|Itinéraire|Découvrir le showroom|Adresse|Horaires|Roumanie|Saisissez une adresse e-mail valide.|Téléphone du showroom|Formulaire de retour et garantie"
+    when 'cs'
+      assign w = "Kontakt|Jak vám můžeme pomoci?|Náš zákaznický servis vám pomůže s objednávkami, produkty, vrácením zboží i cenovými nabídkami. Vyberte si, jak nás chcete kontaktovat.|Zákaznický servis|Nyní otevřeno|do [t]|Nyní zavřeno|Otevíráme [d] v [t]|dnes|zítra|v pondělí|Telefon|Pondělí – pátek, 10:00 – 18:00 (rumunský čas)|Zavolat|Pošlete nám fotky, odkaz na produkt nebo číslo objednávky.|Napsat na WhatsApp|Pro objednávky, vrácení zboží a nabídky pro projekty.|Poslat e-mail|Napište nám|Pošlete nám zprávu|Odpovídáme e-mailem v pracovní době.|Čeho se zpráva týká?|Odeslaná objednávka|Produkt|Vrácení nebo záruka|Spolupráce B2B|Něco jiného|Jméno|E-mail|Telefon (nepovinné)|Číslo objednávky|Zpráva|Odeslat zprávu|Pole označená * jsou povinná.|Děkujeme! Vaše zpráva k nám dorazila.|Odpovíme e-mailem co nejdříve, v pracovní době.|Zkontrolujte prosím označená pole.|Rychlé odpovědi|Doprava a dodací lhůty|Vrácení a refundace|Obchodní podmínky|Centrum nápovědy|B2B a dropshipping|Údaje o firmě|Showroom|Přijďte se podívat na rozsvícené lustry|3&nbsp;200 m² svítidel v Afumați, kousek za Bukureští u silnice DN2, u Doraly.|Pondělí – pátek|Sobota|Neděle|Zavřeno|Navigovat|Prohlédnout showroom|Adresa|Otevírací doba|Rumunsko|Zadejte platnou e-mailovou adresu.|Telefon do showroomu|Formulář pro vrácení a reklamaci"
+    when 'sk'
+      assign w = "Kontakt|Ako vám môžeme pomôcť?|Náš zákaznícky servis vám pomôže s objednávkami, produktmi, vrátením tovaru aj cenovými ponukami. Vyberte si, ako nás chcete kontaktovať.|Zákaznícky servis|Teraz otvorené|do [t]|Teraz zatvorené|Otvárame [d] o [t]|dnes|zajtra|v pondelok|Telefón|Pondelok – piatok, 10:00 – 18:00 (rumunský čas)|Zavolať|Pošlite nám fotky, odkaz na produkt alebo číslo objednávky.|Napísať na WhatsApp|Pre objednávky, vrátenie tovaru a ponuky pre projekty.|Poslať e-mail|Napíšte nám|Pošlite nám správu|Odpovedáme e-mailom v pracovnom čase.|Čoho sa správa týka?|Odoslaná objednávka|Produkt|Vrátenie alebo záruka|Spolupráca B2B|Niečo iné|Meno|E-mail|Telefón (nepovinné)|Číslo objednávky|Správa|Odoslať správu|Polia označené * sú povinné.|Ďakujeme! Vaša správa k nám dorazila.|Odpovieme e-mailom čo najskôr, v pracovnom čase.|Skontrolujte, prosím, označené polia.|Rýchle odpovede|Doprava a dodacie lehoty|Vrátenie a refundácia|Obchodné podmienky|Centrum pomoci|B2B a dropshipping|Údaje o firme|Showroom|Príďte sa pozrieť na rozsvietené lustre|3&nbsp;200 m² svietidiel v Afumați, kúsok za Bukurešťou pri ceste DN2, pri Doraly.|Pondelok – piatok|Sobota|Nedeľa|Zatvorené|Navigovať|Pozrieť showroom|Adresa|Otváracie hodiny|Rumunsko|Zadajte platnú e-mailovú adresu.|Telefón do showroomu|Formulár na vrátenie a reklamáciu"
+    when 'hr'
+      assign w = "Kontakt|Kako vam možemo pomoći?|Naša služba za korisnike pomaže s narudžbama, proizvodima, povratima i ponudama. Odaberite kako nas želite kontaktirati.|Služba za korisnike|Sada otvoreno|do [t]|Sada zatvoreno|Otvaramo [d] u [t]|danas|sutra|u ponedjeljak|Telefon|Ponedjeljak – petak, 10:00 – 18:00 (rumunjsko vrijeme)|Nazovite|Pošaljite nam fotografije, poveznicu proizvoda ili broj narudžbe.|Pišite na WhatsApp|Za narudžbe, povrate i ponude za projekte.|Pošaljite e-poruku|Pišite nam|Pošaljite nam poruku|Odgovaramo e-poštom tijekom radnog vremena.|O čemu se radi?|Poslana narudžba|Proizvod|Povrat ili jamstvo|B2B suradnja|Nešto drugo|Ime|E-pošta|Telefon (neobavezno)|Broj narudžbe|Poruka|Pošalji poruku|Polja označena s * su obavezna.|Hvala! Vaša poruka je stigla do nas.|Odgovorit ćemo e-poštom što prije, tijekom radnog vremena.|Provjerite označena polja.|Brzi odgovori|Dostava i rokovi|Povrati i povrat novca|Uvjeti poslovanja|Centar za pomoć|B2B i dropshipping|Podaci o tvrtki|Izložbeni salon|Dođite vidjeti upaljene lustere|3.200 m² rasvjete u Afumațiju, na izlazu iz Bukurešta cestom DN2, kod Doralyja.|Ponedjeljak – petak|Subota|Nedjelja|Zatvoreno|Upute za put|Pogledajte salon|Adresa|Radno vrijeme|Rumunjska|Unesite valjanu adresu e-pošte.|Telefon salona|Obrazac za povrat i jamstvo"
+    when 'de'
+      assign w = "Kontakt|Wie können wir helfen?|Unser Kundenservice hilft bei Bestellungen, Produkten, Rücksendungen und Angeboten. Wählen Sie, wie Sie uns erreichen möchten.|Kundenservice|Jetzt geöffnet|bis [t] Uhr|Jetzt geschlossen|Wir öffnen [d] um [t] Uhr|heute|morgen|am Montag|Telefon|Montag – Freitag, 10:00 – 18:00 (rumänische Zeit)|Jetzt anrufen|Senden Sie uns Fotos, den Produktlink oder Ihre Bestellnummer.|Auf WhatsApp schreiben|Für Bestellungen, Rücksendungen und Projektangebote.|E-Mail senden|Schreiben Sie uns|Senden Sie uns eine Nachricht|Wir antworten per E-Mail während der Geschäftszeiten.|Worum geht es?|Eine aufgegebene Bestellung|Ein Produkt|Rücksendung oder Garantie|B2B-Partnerschaft|Etwas anderes|Name|E-Mail|Telefon (optional)|Bestellnummer|Nachricht|Nachricht senden|Mit * markierte Felder sind Pflichtfelder.|Danke! Ihre Nachricht ist bei uns angekommen.|Wir antworten so schnell wie möglich per E-Mail, während der Geschäftszeiten.|Bitte prüfen Sie die markierten Felder.|Schnelle Antworten|Versand und Lieferzeiten|Rückgabe und Erstattung|AGB|Hilfe-Center|B2B und Dropshipping|Firmendaten|Showroom|Erleben Sie unsere Leuchter eingeschaltet|3.200 m² Leuchten in Afumați, direkt vor Bukarest an der DN2, bei Doraly.|Montag – Freitag|Samstag|Sonntag|Geschlossen|Route planen|Showroom ansehen|Adresse|Öffnungszeiten|Rumänien|Geben Sie eine gültige E-Mail-Adresse ein.|Telefon Showroom|Rücksende- und Garantieformular"
+    when 'nl'
+      assign w = "Contact|Hoe kunnen we helpen?|Onze klantenservice helpt je met bestellingen, producten, retouren en offertes. Kies hoe je ons wilt bereiken.|Klantenservice|Nu geopend|tot [t]|Nu gesloten|We openen [d] om [t]|vandaag|morgen|maandag|Telefoon|Maandag – vrijdag, 10:00 – 18:00 (Roemeense tijd)|Nu bellen|Stuur ons foto’s, een productlink of je bestelnummer.|Stuur een WhatsApp|Voor bestellingen, retouren en projectoffertes.|Stuur een e-mail|Schrijf ons|Stuur ons een bericht|We antwoorden per e-mail tijdens kantooruren.|Waar gaat het over?|Een geplaatste bestelling|Een product|Retour of garantie|B2B-samenwerking|Iets anders|Naam|E-mail|Telefoon (optioneel)|Bestelnummer|Bericht|Bericht versturen|Velden met * zijn verplicht.|Bedankt! Je bericht is bij ons aangekomen.|We antwoorden zo snel mogelijk per e-mail, tijdens kantooruren.|Controleer de gemarkeerde velden.|Snelle antwoorden|Verzending en levertijden|Retouren en terugbetalingen|Algemene voorwaarden|Helpcentrum|B2B en dropshipping|Bedrijfsgegevens|Showroom|Kom de kroonluchters brandend bekijken|3.200 m² verlichting in Afumați, net buiten Boekarest aan de DN2, bij Doraly.|Maandag – vrijdag|Zaterdag|Zondag|Gesloten|Route plannen|Bekijk de showroom|Adres|Openingstijden|Roemenië|Vul een geldig e-mailadres in.|Telefoon showroom|Retour- en garantieformulier"
+    else
+      assign w = "Contact|Cum te putem ajuta?|Echipa noastră de relații clienți te ajută cu comenzi, produse, retururi și oferte. Alege cum vrei să ne contactezi.|Relații clienți|Deschis acum|până la [t]|Închis acum|Deschidem [d] la [t]|azi|mâine|luni|Telefon|Luni – Vineri, 10:00 – 18:00|Sună acum|Trimite-ne poze, linkul produsului sau numărul comenzii.|Scrie pe WhatsApp|Pentru comenzi, retururi și oferte pentru proiecte.|Trimite un email|Scrie-ne|Trimite-ne un mesaj|Îți răspundem pe email, în programul de lucru.|Despre ce ne scrii?|O comandă plasată|Un produs|Retur sau garanție|Colaborare B2B|Altceva|Nume|Email|Telefon (opțional)|Numărul comenzii|Mesaj|Trimite mesajul|Câmpurile marcate cu * sunt obligatorii.|Mulțumim! Mesajul tău a ajuns la noi.|Îți răspundem pe email cât mai repede, în programul de lucru.|Verifică te rog câmpurile marcate.|Răspunsuri rapide|Livrare și termene|Retur și rambursare|Termeni și condiții|Centrul de ajutor|B2B și dropshipping|Date firmă|Showroom|Vino să vezi lustrele aprinse|3.200 m² de corpuri de iluminat în Afumați, la ieșirea din București pe DN2, în zona Doraly.|Luni – Vineri|Sâmbătă|Duminică|Închis|Navighează|Vezi showroomul|Adresă|Program|România|Introdu o adresă de email validă.|Telefon showroom|Formular de retur și garanție"
+  endcase
+  assign t = w | split: '|'
+
+  comment
+    Topic values stay Romanian on every market (they land in the store inbox).
+  endcomment
+  assign topics_ro = 'Comanda plasata|Produs|Retur sau garantie|Colaborare B2B|Altceva' | split: '|'
+
+  if lang == 'ro'
+    assign phone_display = '021 555 7252'
+    assign phone_href = '+40215557252'
+    assign wa_display = '0730 478 880'
+  else
+    assign phone_display = '+40 723 029 676'
+    assign phone_href = '+40723029676'
+    assign wa_display = '+40 730 478 880'
+  endif
+  assign wa_href = 'https://wa.me/40730478880'
+  assign email = 'contact@alessandrodesign.ro'
+
+  assign showroom_phone_display = '0731 640 968'
+  if lang != 'ro'
+    assign showroom_phone_display = '+40 731 640 968'
+  endif
+  assign directions = 'https://www.google.com/maps/dir/?api=1&destination=44.5034297,26.2123503'
+
+  assign p_showroom = pages['showroom']
+  assign p_b2b = pages['dropshipment']
+  assign p_return_form = pages['formular-retur']
+
+  assign help_url = ''
+  case lang
+    when 'ro', 'hu', 'bg', 'pl'
+      assign help_url = 'https://help.alessandrodesign.ro/hc/alessandro-design/' | append: lang
+  endcase
+
+  assign reveal = ''
+  if settings.animations_reveal_on_scroll
+    assign reveal = ' scroll-trigger animate--slide-in'
+  endif
+
+  assign arrow = '<svg class="alc-ct__arrow" viewBox="0 0 14 10" fill="none" aria-hidden="true" focusable="false"><path d="M1 5h11.5M8.5 1l4 4-4 4" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>'
+-%}
+
+<div class="alc-ct">
+  {%- comment -%} ---------------------------------------------------- HERO {%- endcomment -%}
+  <section class="alc-ct__hero">
+    <div class="page-width">
+      <div class="alc-ct__intro{{ reveal }}">
+        <p class="alc-ct__eyebrow">{{ t[0] }}</p>
+        <h1 class="alc-ct__title">{{ t[1] }}</h1>
+        <p class="alc-ct__lede">{{ t[2] }}</p>
+        <p
+          class="alc-ct__status"
+          data-alc-hours="1:10-18,2:10-18,3:10-18,4:10-18,5:10-18"
+          data-open-now="{{ t[4] }}"
+          data-until="{{ t[5] }}"
+          data-closed-now="{{ t[6] }}"
+          data-opens="{{ t[7] }}"
+          data-days="{{ t[8] }}|{{ t[9] }}|{{ t[10] }}"
+        >
+          <span class="alc-ct__dot" aria-hidden="true"></span>
+          <span class="alc-ct__status-label">{{ t[3] }}</span>
+          <span class="alc-ct__status-state" aria-live="polite">{{ t[12] }}</span>
+        </p>
+      </div>
+
+      <ul class="alc-ct__channels{{ reveal }}" role="list" data-cascade>
+        <li class="alc-ct__channel">
+          <a class="alc-ct__channel-link" href="tel:{{ phone_href }}">
+            <span class="alc-ct__icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"><path d="M6.6 3h3l1.5 4-2.2 1.6a12 12 0 0 0 5.5 5.5L16 11.9l4 1.5v3a2 2 0 0 1-2.2 2A16.5 16.5 0 0 1 3.1 5.2 2 2 0 0 1 5.1 3z"/></svg>
+            </span>
+            <span class="alc-ct__channel-name">{{ t[11] }}</span>
+            <span class="alc-ct__channel-value">{{ phone_display }}</span>
+            <span class="alc-ct__channel-note">{{ t[12] }}</span>
+            <span class="alc-ct__channel-cta">{{ t[13] }} {{ arrow }}</span>
+          </a>
+        </li>
+        <li class="alc-ct__channel">
+          <a class="alc-ct__channel-link" href="{{ wa_href }}" target="_blank" rel="noopener">
+            <span class="alc-ct__icon alc-ct__icon--wa" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"><path d="M3.5 20.5l1.3-4.3A8 8 0 1 1 8 19.3z"/><path d="M9 9.5c0 3 2.5 5.5 5.5 5.5.6 0 1-.5 1-1v-.7l-1.8-.8-.9 1a6 6 0 0 1-2.5-2.5l1-.9-.8-1.8H9.9c-.5 0-.9.4-.9 1z"/></svg>
+            </span>
+            <span class="alc-ct__channel-name">WhatsApp</span>
+            <span class="alc-ct__channel-value">{{ wa_display }}</span>
+            <span class="alc-ct__channel-note">{{ t[14] }}</span>
+            <span class="alc-ct__channel-cta">{{ t[15] }} {{ arrow }}</span>
+          </a>
+        </li>
+        <li class="alc-ct__channel">
+          <a class="alc-ct__channel-link" href="mailto:{{ email }}">
+            <span class="alc-ct__icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3.6 6.5l8.4 6 8.4-6"/></svg>
+            </span>
+            <span class="alc-ct__channel-name">{{ t[28] }}</span>
+            <span class="alc-ct__channel-value alc-ct__channel-value--email">{{ email }}</span>
+            <span class="alc-ct__channel-note">{{ t[16] }}</span>
+            <span class="alc-ct__channel-cta">{{ t[17] }} {{ arrow }}</span>
+          </a>
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  {%- comment -%} ------------------------------------------- FORM + ASIDE {%- endcomment -%}
+  <section class="alc-ct__main">
+    <div class="page-width alc-ct__grid">
+      <div class="alc-ct__card alc-ct__card--form{{ reveal }}">
+        {%- form 'contact', id: 'ContactForm', class: 'alc-ct__form' -%}
+          {%- if form.posted_successfully? -%}
+            <div class="alc-ct__success" tabindex="-1" autofocus>
+              <span class="alc-ct__success-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.2 4.2L19 7"/></svg>
+              </span>
+              <h2 class="alc-ct__form-title">{{ t[34] }}</h2>
+              <p class="alc-ct__form-sub">{{ t[35] }}</p>
+            </div>
+          {%- else -%}
+            <p class="alc-ct__eyebrow">{{ t[18] }}</p>
+            <h2 class="alc-ct__form-title">{{ t[19] }}</h2>
+            <p class="alc-ct__form-sub">{{ t[20] }}</p>
+
+            {%- if form.errors -%}
+              <p class="alc-ct__alert" role="alert" tabindex="-1" autofocus>{{ t[36] }}</p>
+            {%- endif -%}
+
+            <input type="hidden" name="contact[Piata]" value="{{ request.host | remove_first: 'www.' }} ({{ request.locale.iso_code }})">
+
+            <fieldset class="alc-ct__topics">
+              <legend class="alc-ct__label">{{ t[21] }}</legend>
+              <div class="alc-ct__chips">
+                {%- for topic in topics_ro -%}
+                  {%- assign ti = forloop.index0 | plus: 22 -%}
+                  <label class="alc-ct__chip">
+                    <input
+                      type="radio"
+                      name="contact[Subiect]"
+                      value="{{ topic }}"
+                      {% if forloop.index0 == 0 or forloop.index0 == 2 %}
+                        data-order
+                      {% endif %}
+                    >
+                    <span>{{ t[ti] }}</span>
+                  </label>
+                {%- endfor -%}
+              </div>
+            </fieldset>
+
+            <div class="alc-ct__row">
+              <div class="alc-ct__field">
+                <label class="alc-ct__label" for="ContactForm-name">{{ t[27] }}</label>
+                <input
+                  class="alc-ct__input"
+                  type="text"
+                  id="ContactForm-name"
+                  name="contact[name]"
+                  autocomplete="name"
+                  value="{% if form.name %}{{ form.name }}{% elsif customer %}{{ customer.name }}{% endif %}"
+                >
+              </div>
+              <div class="alc-ct__field">
+                <label class="alc-ct__label" for="ContactForm-email">
+                  {{- t[28] }} <span aria-hidden="true">*</span></label
+                >
+                <input
+                  class="alc-ct__input"
+                  type="email"
+                  id="ContactForm-email"
+                  name="contact[email]"
+                  autocomplete="email"
+                  spellcheck="false"
+                  autocapitalize="off"
+                  required
+                  aria-required="true"
+                  value="{% if form.email %}{{ form.email }}{% elsif customer %}{{ customer.email }}{% endif %}"
+                  {% if form.errors contains 'email' %}
+                    aria-invalid="true" aria-describedby="ContactForm-email-error"
+                  {% endif %}
+                >
+                {%- if form.errors contains 'email' -%}
+                  <small class="alc-ct__error" id="ContactForm-email-error">{{ t[56] }}</small>
+                {%- endif -%}
+              </div>
+            </div>
+
+            <div class="alc-ct__row">
+              <div class="alc-ct__field">
+                <label class="alc-ct__label" for="ContactForm-phone">{{ t[29] }}</label>
+                <input
+                  class="alc-ct__input"
+                  type="tel"
+                  id="ContactForm-phone"
+                  name="contact[phone]"
+                  autocomplete="tel"
+                  inputmode="tel"
+                  value="{% if form.phone %}{{ form.phone }}{% elsif customer.phone %}{{ customer.phone }}{% endif %}"
+                >
+              </div>
+              <div class="alc-ct__field alc-ct__field--order">
+                <label class="alc-ct__label" for="ContactForm-order">{{ t[30] }}</label>
+                <input
+                  class="alc-ct__input"
+                  type="text"
+                  id="ContactForm-order"
+                  name="contact[Numar comanda]"
+                  autocomplete="off"
+                  placeholder="#"
+                >
+              </div>
+            </div>
+
+            <div class="alc-ct__field">
+              <label class="alc-ct__label" for="ContactForm-body">{{ t[31] }}</label>
+              <textarea class="alc-ct__input alc-ct__textarea" id="ContactForm-body" name="contact[body]" rows="6">
+                {{- form.body -}}
+              </textarea>
+            </div>
+
+            <div class="alc-ct__submit">
+              <button type="submit" class="alc-ct__btn">
+                {{- t[32] }}
+                {{ arrow -}}
+              </button>
+              <p class="alc-ct__required">{{ t[33] }}</p>
+            </div>
+          {%- endif -%}
+        {%- endform -%}
+      </div>
+
+      <aside class="alc-ct__aside">
+        <div class="alc-ct__card{{ reveal }}">
+          <h2 class="alc-ct__card-title">{{ t[37] }}</h2>
+          <ul class="alc-ct__links" role="list">
+            {%- if shop.shipping_policy.body != blank -%}
+              <li>
+                <a href="{{ shop.shipping_policy.url }}">{{ t[38] }} {{ arrow }}</a>
+              </li>
+            {%- endif -%}
+            {%- if shop.refund_policy.body != blank -%}
+              <li>
+                <a href="{{ shop.refund_policy.url }}">{{ t[39] }} {{ arrow }}</a>
+              </li>
+            {%- endif -%}
+            {%- if p_return_form != empty and p_return_form.url != blank -%}
+              <li>
+                <a href="{{ p_return_form.url }}">{{ t[58] }} {{ arrow }}</a>
+              </li>
+            {%- endif -%}
+            {%- if shop.terms_of_service.body != blank -%}
+              <li>
+                <a href="{{ shop.terms_of_service.url }}">{{ t[40] }} {{ arrow }}</a>
+              </li>
+            {%- endif -%}
+            {%- if help_url != '' -%}
+              <li>
+                <a href="{{ help_url }}" target="_blank" rel="noopener">{{ t[41] }} {{ arrow }}</a>
+              </li>
+            {%- endif -%}
+            {%- if p_b2b != empty and p_b2b.url != blank -%}
+              <li>
+                <a href="{{ p_b2b.url }}">{{ t[42] }} {{ arrow }}</a>
+              </li>
+            {%- endif -%}
+          </ul>
+        </div>
+
+        <div class="alc-ct__card alc-ct__card--company{{ reveal }}">
+          <h2 class="alc-ct__card-title">{{ t[43] }}</h2>
+          <p class="alc-ct__company-name">S.C. Atlantic Logistic Concept S.R.L.</p>
+          <dl class="alc-ct__company">
+            <dt>CUI</dt>
+            <dd>43286659</dd>
+            <dt>Reg. Com.</dt>
+            <dd>J23/5258/04.11.2020</dd>
+          </dl>
+        </div>
+      </aside>
+    </div>
+  </section>
+
+  {%- comment -%} -------------------------------------------------- SHOWROOM {%- endcomment -%}
+  <section class="alc-ct__showroom-wrap">
+    <div class="page-width">
+      <div class="alc-ct__showroom{{ reveal }}">
+        <div class="alc-ct__showroom-media">
+          <img
+            src="{{ 'alc-showroom-crystal.jpg' | asset_img_url: '1200x' }}"
+            srcset="
+              {{ 'alc-showroom-crystal.jpg' | asset_img_url: '600x' }} 600w,
+              {{ 'alc-showroom-crystal.jpg' | asset_img_url: '900x' }} 900w,
+              {{ 'alc-showroom-crystal.jpg' | asset_img_url: '1200x' }} 1200w,
+              {{ 'alc-showroom-crystal.jpg' | asset_img_url: '1600x' }} 1600w
+            "
+            sizes="(min-width: 990px) 50vw, 100vw"
+            width="2200"
+            height="1650"
+            alt="Showroom Alessandro Design, Afumați"
+            loading="lazy"
+            decoding="async"
+          >
+        </div>
+        <div class="alc-ct__showroom-body">
+          <p class="alc-ct__eyebrow alc-ct__eyebrow--gold">{{ t[44] }}</p>
+          <h2 class="alc-ct__showroom-title">{{ t[45] }}</h2>
+          <p class="alc-ct__showroom-text">{{ t[46] }}</p>
+
+          <p
+            class="alc-ct__status alc-ct__status--dark"
+            data-alc-hours="1:9-17,2:9-17,3:9-17,4:9-17,5:9-17,6:9-14"
+            data-open-now="{{ t[4] }}"
+            data-until="{{ t[5] }}"
+            data-closed-now="{{ t[6] }}"
+            data-opens="{{ t[7] }}"
+            data-days="{{ t[8] }}|{{ t[9] }}|{{ t[10] }}"
+          >
+            <span class="alc-ct__dot" aria-hidden="true"></span>
+            <span class="alc-ct__status-state" aria-live="polite"></span>
+          </p>
+
+          <div class="alc-ct__facts">
+            <div>
+              <h3 class="alc-ct__fact-title">{{ t[53] }}</h3>
+              <address class="alc-ct__address">
+                Șos. București–Urziceni nr. 21, Magazin nr. 1<br>
+                077010 Afumați, Ilfov, {{ t[55] }}
+              </address>
+            </div>
+            <div>
+              <h3 class="alc-ct__fact-title">{{ t[54] }}</h3>
+              <dl class="alc-ct__hours">
+                <dt>{{ t[47] }}</dt>
+                <dd>09:00 – 17:00</dd>
+                <dt>{{ t[48] }}</dt>
+                <dd>09:00 – 14:00</dd>
+                <dt>{{ t[49] }}</dt>
+                <dd class="alc-ct__closed">{{ t[50] }}</dd>
+              </dl>
+            </div>
+            <div>
+              <h3 class="alc-ct__fact-title">{{ t[57] }}</h3>
+              <a class="alc-ct__fact-link" href="tel:+40731640968">{{ showroom_phone_display }}</a>
+            </div>
+          </div>
+
+          <div class="alc-ct__actions">
+            <a class="alc-ct__btn alc-ct__btn--light" href="{{ directions }}" target="_blank" rel="noopener">
+              {{- t[51] }}
+              {{ arrow -}}
+            </a>
+            {%- if p_showroom != empty and p_showroom.url != blank -%}
+              <a class="alc-ct__btn alc-ct__btn--ghost" href="{{ p_showroom.url }}">
+                {{- t[52] }}
+                {{ arrow -}}
+              </a>
+            {%- endif -%}
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+
+<script>
+  (function () {
+    if (!window.Intl) return;
+    var fmt;
+    try {
+      fmt = new Intl.DateTimeFormat('en-GB', { timeZone: 'Europe/Bucharest', weekday: 'short', hour: 'numeric', minute: 'numeric', hourCycle: 'h23' });
+    } catch (e) { return; }
+    var wd = { Sun: 0, Mon: 1, Tue: 2, Wed: 3, Thu: 4, Fri: 5, Sat: 6 };
+    var hh = function (h) { return (h < 10 ? '0' : '') + h + ':00'; };
+    var els = document.querySelectorAll('.alc-ct [data-alc-hours]');
+
+    function update() {
+      var parts = {};
+      fmt.formatToParts(new Date()).forEach(function (p) { parts[p.type] = p.value; });
+      var day = wd[parts.weekday], mins = +parts.hour * 60 + +parts.minute;
+      els.forEach(function (el) {
+        var hours = {};
+        el.dataset.alcHours.split(',').forEach(function (p) {
+          var d = p.split(':'), r = d[1].split('-');
+          hours[+d[0]] = [+r[0], +r[1]];
+        });
+        var days = el.dataset.days.split('|'), today = hours[day], text;
+        if (today && mins >= today[0] * 60 && mins < today[1] * 60) {
+          el.dataset.open = '1';
+          text = el.dataset.openNow + ' · ' + el.dataset.until.replace('[t]', hh(today[1]));
+        } else {
+          el.dataset.open = '0';
+          var label, at;
+          if (today && mins < today[0] * 60) { label = days[0]; at = today[0]; }
+          else {
+            for (var i = 1; i <= 7; i++) {
+              var next = hours[(day + i) % 7];
+              // days[2] is Monday: with these hours the only gap longer than a night ends on a Monday
+              if (next) { label = i === 1 ? days[1] : days[2]; at = next[0]; break; }
+            }
+          }
+          text = el.dataset.closedNow + ' · ' + el.dataset.opens.replace('[d]', label).replace('[t]', hh(at));
+        }
+        var state = el.querySelector('.alc-ct__status-state');
+        if (state.textContent !== text) state.textContent = text;
+      });
+    }
+    update();
+    setInterval(update, 60000);
+  })();
+</script>
+
+{%- comment -%} ContactPage + the organisation's contact points (same @id as alc-organization-schema). {%- endcomment -%}
+<script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "ContactPage",
+    "url": {{ request.origin | append: request.path | json }},
+    "name": {{ t[1] | replace: '&nbsp;', ' ' | json }},
+    "mainEntity": {
+      "@type": "Organization",
+      "@id": {{ request.origin | append: '/#organization' | json }},
+      "name": {{ shop.name | json }},
+      "legalName": "S.C. Atlantic Logistic Concept S.R.L.",
+      "email": {{ email | json }},
+      "contactPoint": [
+        {
+          "@type": "ContactPoint",
+          "contactType": "customer service",
+          "telephone": {{ phone_href | json }},
+          "email": {{ email | json }},
+          "hoursAvailable": {
+            "@type": "OpeningHoursSpecification",
+            "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+            "opens": "10:00",
+            "closes": "18:00"
+          }
+        },
+        {
+          "@type": "ContactPoint",
+          "contactType": "customer service",
+          "telephone": "+40730478880",
+          "name": "WhatsApp"
+        }
+      ]
+    }
+  }
+</script>
+
+{% schema %}
+{
+  "name": "Contact (ALC)",
+  "tag": "div",
+  "class": "section",
+  "settings": []
+}
+{% endschema %}

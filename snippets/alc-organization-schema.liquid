@@ -24,9 +24,9 @@
     endif
     comment
       Handles are translated on other markets (companie -> tarsasag on .hu), so the
-      company page is also recognised by its template.
+      company and contact pages are also recognised by their templates.
     endcomment
-    if template.suffix == 'companie'
+    if template.suffix == 'companie' or template.suffix == 'contact'
       assign show_organization = true
     endif
   endif
