@@ -1,0 +1,539 @@
+{% comment %}
+  Wholesale orders page (templates/page.comenzi-engross.json). A precise, "project
+  quote" page, deliberately unlike the showroom, company, B2B and creator pages:
+
+  - Hero: headline + a quote document for a 48-room hotel, built from real products
+    (list prices live, wholesale prices locked "on request").
+  - Proof row (the product count is live), who it is for, why buy direct, the four
+    steps, and a four-step quote request (assets/alc-engross.js) that goes to the
+    store's contact inbox tagged "Comanda en-gros". Without JavaScript the four steps
+    show as one form.
+
+  Every storefront language has a built-in translation. Styles: assets/alc-engross.css.
+{% endcomment %}
+{{ 'alc-engross.css' | asset_url | stylesheet_tag }}
+<script src="{{ 'alc-engross.js' | asset_url }}" defer="defer"></script>
+
+{%- liquid
+  assign lang = request.locale.iso_code | downcase | slice: 0, 2
+  case lang
+    when 'en'
+      assign w = "Wholesale orders · B2B|Light at project scale.|We fit out hotels, restaurants, offices and turnkey homes straight from the manufacturer. Volume pricing, our own stock and a consultant who quotes on your own product list.|Request a quote|Talk to a consultant|Wholesale quote|Client|Hotel, 48 rooms|List price|Wholesale price|Total|on request|Volume pricing|pcs|products in the catalogue|m² showroom and warehouse|our factory opened|countries served|5,000+|Who it is for|For buyers who order by the dozen, not by the piece.|Hotels and guesthouses|Rooms, lobbies and restaurants, fitted out to one standard.|Restaurants and cafés|The light that makes the mood, from the bar to the terrace.|Offices and retail spaces|Efficient lighting for open spaces, shops and showrooms.|Property developers|Turnkey apartments with the same standard in every unit.|Architects and designers|The products in your projects, at project prices.|Resellers and installers|Stock for your shop or your jobs, at wholesale prices.|Why buy direct|No middlemen between the factory and your project.|Volume pricing|The bigger the list, the lower the price per piece. You get a quote on your products, not a generic price list.|Straight from the manufacturer|Our own factory since 2023 and strong import capacity. Zero middlemen, minimal markup.|Our own stock|Over 5,000 m² of showroom and warehouse in Afumați, next to Bucharest.|See it before you order|Visit the showroom and see the products lit, at full scale, before the big order.|A dedicated consultant|One point of contact, from the product list to delivery.|How it works|From list to delivery, in four steps.|Send your list|Products, quantities and deadline. You can do it in the form below.|Get your quote|A consultant sends you volume prices for your list.|Confirm the order|Together we settle payment, invoicing and the delivery schedule.|We deliver|The order leaves our warehouse with a tracking number.|Quote request|Tell us what you need.|It takes two minutes. A consultant will get back to you with a quote.|Project|Products|Volume|Contact|What kind of project is it?|Something else|Which products are you interested in?|You can pick several.|Chandeliers|LED chandeliers|Crystal chandeliers|Wall lights|Spotlights|LED mirrors|Bathroom fixtures|Bathroom furniture|Roughly how many pieces?|When do you need them?|As soon as possible|Within the next month|In 1–3 months|Just exploring|Product list (optional)|Product codes, links or a description: for example, 40 wall lights for corridors, 12 chandeliers for the restaurant.|Company|VAT number (optional)|Name|Email|Phone|Back|Continue|Send request|Your request is with us.|A consultant will be in touch with your quote soon.|Check your email address and try again.|We only use your details for the wholesale quote.|Required field|Step|Hi! I would like a quote for a wholesale order.|,|Rather talk?|Message us on WhatsApp|Date"
+    when 'hu'
+      assign w = "Nagykereskedelmi rendelések · B2B|Fény projektméretben.|Szállodákat, éttermeket, irodákat és kulcsrakész otthonokat szerelünk fel közvetlenül a gyártótól. Mennyiségi árak, saját készlet és egy tanácsadó, aki az Ön terméklistájára ad ajánlatot.|Ajánlatkérés|Beszéljen egy tanácsadóval|Nagykereskedelmi ajánlat|Ügyfél|Szálloda, 48 szoba|Listaár|Nagykereskedelmi ár|Összesen|kérésre|Mennyiségi ár|db|termék a katalógusban|m² bemutatóterem és raktár|saját gyárunk éve|kiszolgált ország|5000+|Kinek szól|Azoknak, akik tucatjával rendelnek, nem darabra.|Szállodák és panziók|Szobák, előterek és éttermek egységes színvonalon felszerelve.|Éttermek és kávézók|A fény, amely a hangulatot adja, a pulttól a teraszig.|Irodák és üzlethelyiségek|Hatékony világítás irodákhoz, üzletekhez és bemutatótermekhez.|Ingatlanfejlesztők|Kulcsrakész lakások, minden egységben ugyanazzal a színvonallal.|Építészek és tervezők|A projektjeiben szereplő termékek, projektárakon.|Viszonteladók és szerelők|Készlet az üzletéhez vagy munkáihoz, nagykereskedelmi áron.|Miért közvetlenül tőlünk|Nincs közvetítő a gyár és az Ön projektje között.|Mennyiségi árak|Minél hosszabb a lista, annál alacsonyabb a darabár. Az ajánlatot az Ön termékeire kapja, nem egy általános árlistára.|Közvetlenül a gyártótól|Saját gyár 2023 óta és erős importkapacitás. Nulla közvetítő, minimális árrés.|Saját készlet|Több mint 5000 m² bemutatóterem és raktár Afumațiban, Bukarest mellett.|Nézze meg rendelés előtt|Látogasson el a bemutatóterembe, és nézze meg a termékeket felkapcsolva, valós méretben, mielőtt nagyot rendel.|Dedikált tanácsadó|Egyetlen kapcsolattartó a terméklistától a szállításig.|Hogyan működik|A listától a szállításig, négy lépésben.|Elküldi a listát|Termékek, mennyiségek és határidő. Megteheti az alábbi űrlapon.|Megkapja az ajánlatot|Egy tanácsadó elküldi a mennyiségi árakat a listájára.|Megerősíti a rendelést|Közösen egyeztetjük a fizetést, a számlázást és a szállítás ütemezését.|Szállítunk|A rendelés a raktárunkból indul, nyomkövetési számmal.|Ajánlatkérés|Mondja el, mire van szüksége.|Két percet vesz igénybe. Egy tanácsadó felveszi Önnel a kapcsolatot az ajánlattal.|Projekt|Termékek|Mennyiség|Kapcsolat|Milyen projektről van szó?|Egyéb|Mely termékek érdeklik?|Többet is választhat.|Csillárok|LED csillárok|Kristálycsillárok|Fali lámpák|Spotlámpák|LED tükrök|Fürdőszobai termékek|Fürdőszobabútorok|Nagyjából hány darab?|Mikorra van rá szüksége?|Amint lehet|A következő hónapban|1–3 hónapon belül|Csak tájékozódom|Terméklista (nem kötelező)|Termékkódok, linkek vagy leírás: például 40 fali lámpa a folyosókra, 12 csillár az étterembe.|Cég|Adószám (nem kötelező)|Név|E-mail|Telefon|Vissza|Tovább|Kérés elküldése|Megkaptuk a kérését.|Egy tanácsadó hamarosan jelentkezik az ajánlattal.|Ellenőrizze az e-mail-címét, és próbálja újra.|Adatait csak a nagykereskedelmi ajánlathoz használjuk.|Kötelező mező|Lépés|Üdvözlöm! Ajánlatot szeretnék kérni egy nagykereskedelmi rendelésre.| |Inkább beszélne?|Írjon nekünk WhatsAppon|Dátum"
+    when 'pl'
+      assign w = "Zamówienia hurtowe · B2B|Światło w skali projektu.|Wyposażamy hotele, restauracje, biura i mieszkania pod klucz prosto od producenta. Ceny zależne od ilości, własny magazyn i doradca, który przygotuje ofertę na Twoją listę produktów.|Poproś o ofertę|Porozmawiaj z doradcą|Oferta hurtowa|Klient|Hotel, 48 pokoi|Cena katalogowa|Cena hurtowa|Razem|na zapytanie|Cena za ilość|szt.|produktów w katalogu|m² showroomu i magazynu|rok otwarcia naszej fabryki|obsługiwanych krajów|5000+|Dla kogo|Dla tych, którzy kupują na tuziny, a nie na sztuki.|Hotele i pensjonaty|Pokoje, lobby i restauracje wyposażone w jednym standardzie.|Restauracje i kawiarnie|Światło, które tworzy klimat, od baru po taras.|Biura i lokale handlowe|Wydajne oświetlenie do open space, sklepów i showroomów.|Deweloperzy|Mieszkania pod klucz z tym samym standardem w każdym lokalu.|Architekci i projektanci|Produkty z Twoich projektów w cenach projektowych.|Sprzedawcy i instalatorzy|Towar do Twojego sklepu lub na Twoje zlecenia, w cenach hurtowych.|Dlaczego bezpośrednio u nas|Bez pośredników między fabryką a Twoim projektem.|Ceny za ilość|Im dłuższa lista, tym niższa cena za sztukę. Ofertę dostajesz na swoje produkty, a nie ogólny cennik.|Prosto od producenta|Własna fabryka od 2023 roku i duże możliwości importowe. Zero pośredników, minimalna marża.|Własny magazyn|Ponad 5000 m² showroomu i magazynu w Afumați pod Bukaresztem.|Zobacz przed zamówieniem|Odwiedź showroom i zobacz produkty zapalone, w realnej skali, zanim złożysz duże zamówienie.|Dedykowany doradca|Jedna osoba kontaktowa, od listy produktów po dostawę.|Jak to działa|Od listy do dostawy w czterech krokach.|Wysyłasz listę|Produkty, ilości i termin. Możesz to zrobić w formularzu poniżej.|Otrzymujesz ofertę|Doradca przesyła Ci ceny hurtowe dla Twojej listy.|Potwierdzasz zamówienie|Wspólnie ustalamy płatność, fakturowanie i harmonogram dostaw.|Dostarczamy|Zamówienie wyjeżdża z naszego magazynu z numerem śledzenia.|Zapytanie ofertowe|Powiedz nam, czego potrzebujesz.|Zajmie to dwie minuty. Doradca skontaktuje się z Tobą z ofertą.|Projekt|Produkty|Ilość|Kontakt|Jaki to projekt?|Coś innego|Jakie produkty Cię interesują?|Możesz wybrać kilka.|Żyrandole|Żyrandole LED|Żyrandole kryształowe|Kinkiety|Reflektory punktowe|Lustra LED|Wyposażenie łazienki|Meble łazienkowe|Ile sztuk, mniej więcej?|Kiedy ich potrzebujesz?|Jak najszybciej|W ciągu miesiąca|W ciągu 1–3 miesięcy|Tylko się rozglądam|Lista produktów (opcjonalnie)|Kody produktów, linki lub opis: na przykład 40 kinkietów na korytarze, 12 żyrandoli do restauracji.|Firma|NIP (opcjonalnie)|Imię i nazwisko|E-mail|Telefon|Wstecz|Dalej|Wyślij zapytanie|Twoje zapytanie do nas dotarło.|Doradca wkrótce skontaktuje się z Tobą z ofertą.|Sprawdź adres e-mail i spróbuj ponownie.|Używamy Twoich danych wyłącznie do przygotowania oferty hurtowej.|Pole wymagane|Krok|Dzień dobry! Chciałbym/Chciałabym otrzymać ofertę na zamówienie hurtowe.| |Wolisz porozmawiać?|Napisz na WhatsApp|Data"
+    when 'el'
+      assign w = "Χονδρικές παραγγελίες · B2B|Φως σε κλίμακα έργου.|Εξοπλίζουμε ξενοδοχεία, εστιατόρια, γραφεία και κατοικίες με το κλειδί στο χέρι, απευθείας από τον κατασκευαστή. Τιμές ανά ποσότητα, δικό μας απόθεμα και ένας σύμβουλος που κάνει προσφορά στη δική σας λίστα προϊόντων.|Ζητήστε προσφορά|Μιλήστε με έναν σύμβουλο|Προσφορά χονδρικής|Πελάτης|Ξενοδοχείο, 48 δωμάτια|Τιμή καταλόγου|Τιμή χονδρικής|Σύνολο|κατόπιν αιτήματος|Τιμή ανά ποσότητα|τεμ.|προϊόντα στον κατάλογο|m² showroom και αποθήκη|έτος ίδρυσης του εργοστασίου μας|χώρες που εξυπηρετούμε|5.000+|Για ποιους|Για όσους αγοράζουν με τις δεκάδες, όχι με το κομμάτι.|Ξενοδοχεία και καταλύματα|Δωμάτια, λόμπι και εστιατόρια, εξοπλισμένα με ενιαίο στάνταρ.|Εστιατόρια και καφέ|Το φως που δημιουργεί ατμόσφαιρα, από το μπαρ ως τη βεράντα.|Γραφεία και εμπορικοί χώροι|Αποδοτικός φωτισμός για γραφεία, καταστήματα και showroom.|Κατασκευαστικές εταιρείες|Διαμερίσματα με το κλειδί στο χέρι, με το ίδιο στάνταρ σε κάθε μονάδα.|Αρχιτέκτονες και σχεδιαστές|Τα προϊόντα των έργων σας, σε τιμές έργου.|Μεταπωλητές και εγκαταστάτες|Απόθεμα για το κατάστημα ή τα έργα σας, σε τιμές χονδρικής.|Γιατί απευθείας από εμάς|Χωρίς μεσάζοντες ανάμεσα στο εργοστάσιο και το έργο σας.|Τιμές ανά ποσότητα|Όσο μεγαλύτερη η λίστα, τόσο χαμηλότερη η τιμή ανά τεμάχιο. Παίρνετε προσφορά για τα δικά σας προϊόντα, όχι έναν γενικό τιμοκατάλογο.|Απευθείας από τον κατασκευαστή|Δικό μας εργοστάσιο από το 2023 και ισχυρή δυνατότητα εισαγωγών. Μηδέν μεσάζοντες, ελάχιστο περιθώριο.|Δικό μας απόθεμα|Showroom και αποθήκη άνω των 5.000 m² στο Afumați, δίπλα στο Βουκουρέστι.|Δείτε πριν παραγγείλετε|Επισκεφθείτε το showroom και δείτε τα προϊόντα αναμμένα, σε πραγματική κλίμακα, πριν από τη μεγάλη παραγγελία.|Αποκλειστικός σύμβουλος|Ένα άτομο επικοινωνίας, από τη λίστα προϊόντων έως την παράδοση.|Πώς λειτουργεί|Από τη λίστα στην παράδοση, σε τέσσερα βήματα.|Στέλνετε τη λίστα|Προϊόντα, ποσότητες και προθεσμία. Μπορείτε να το κάνετε στη φόρμα παρακάτω.|Λαμβάνετε την προσφορά|Ένας σύμβουλος σας στέλνει τιμές ποσότητας για τη λίστα σας.|Επιβεβαιώνετε την παραγγελία|Συμφωνούμε μαζί πληρωμή, τιμολόγηση και πρόγραμμα παράδοσης.|Παραδίδουμε|Η παραγγελία φεύγει από την αποθήκη μας με αριθμό παρακολούθησης.|Αίτημα προσφοράς|Πείτε μας τι χρειάζεστε.|Χρειάζονται δύο λεπτά. Ένας σύμβουλος θα επικοινωνήσει μαζί σας με την προσφορά.|Έργο|Προϊόντα|Ποσότητα|Επικοινωνία|Τι είδους έργο είναι;|Κάτι άλλο|Ποια προϊόντα σας ενδιαφέρουν;|Μπορείτε να επιλέξετε πολλά.|Πολυέλαιοι|Πολυέλαιοι LED|Κρυστάλλινοι πολυέλαιοι|Απλίκες|Σποτ|Καθρέπτες LED|Είδη μπάνιου|Έπιπλα μπάνιου|Περίπου πόσα τεμάχια;|Πότε τα χρειάζεστε;|Το συντομότερο|Μέσα στον επόμενο μήνα|Σε 1–3 μήνες|Απλώς ενημερώνομαι|Λίστα προϊόντων (προαιρετικά)|Κωδικοί προϊόντων, links ή περιγραφή: για παράδειγμα, 40 απλίκες για διαδρόμους, 12 πολυέλαιοι για το εστιατόριο.|Εταιρεία|ΑΦΜ (προαιρετικά)|Όνομα|Email|Τηλέφωνο|Πίσω|Συνέχεια|Αποστολή αιτήματος|Λάβαμε το αίτημά σας.|Ένας σύμβουλος θα επικοινωνήσει σύντομα μαζί σας με την προσφορά.|Ελέγξτε τη διεύθυνση email σας και δοκιμάστε ξανά.|Χρησιμοποιούμε τα στοιχεία σας μόνο για την προσφορά χονδρικής.|Υποχρεωτικό πεδίο|Βήμα|Γεια σας! Θα ήθελα προσφορά για μια χονδρική παραγγελία.|.|Προτιμάτε να μιλήσουμε;|Γράψτε μας στο WhatsApp|Ημερομηνία"
+    when 'bg'
+      assign w = "Поръчки на едро · B2B|Светлина в мащаба на проекта.|Обзавеждаме хотели, ресторанти, офиси и жилища до ключ директно от производителя. Цени според количеството, собствен склад и консултант, който прави оферта по вашия списък с продукти.|Поискайте оферта|Говорете с консултант|Оферта на едро|Клиент|Хотел, 48 стаи|Каталожна цена|Цена на едро|Общо|при запитване|Цена за количество|бр.|продукта в каталога|m² шоурум и склад|година на собствената ни фабрика|обслужвани държави|5000+|За кого|За тези, които купуват на десетки, а не на бройка.|Хотели и къщи за гости|Стаи, лобита и ресторанти, обзаведени в единен стандарт.|Ресторанти и кафенета|Светлината, която създава атмосфера, от бара до терасата.|Офиси и търговски площи|Ефективно осветление за офиси, магазини и шоуруми.|Инвеститори в недвижими имоти|Апартаменти до ключ с един и същ стандарт във всяко жилище.|Архитекти и дизайнери|Продуктите от вашите проекти на проектни цени.|Търговци и монтажници|Стока за вашия магазин или обекти на цени на едро.|Защо директно от нас|Без посредници между фабриката и вашия проект.|Цени според количеството|Колкото по-дълъг е списъкът, толкова по-ниска е цената на бройка. Получавате оферта за вашите продукти, а не общ ценоразпис.|Директно от производителя|Собствена фабрика от 2023 г. и голям вносен капацитет. Нула посредници, минимална надценка.|Собствен склад|Над 5000 m² шоурум и склад в Афумац, до Букурещ.|Вижте преди да поръчате|Посетете шоурума и вижте продуктите светнали, в реален мащаб, преди голямата поръчка.|Личен консултант|Едно лице за контакт, от списъка с продукти до доставката.|Как работи|От списъка до доставката в четири стъпки.|Изпращате списъка|Продукти, количества и срок. Можете да го направите във формуляра по-долу.|Получавате оферта|Консултант ви изпраща цени за количество за вашия списък.|Потвърждавате поръчката|Заедно уточняваме плащането, фактурирането и графика на доставка.|Доставяме|Поръчката тръгва от нашия склад с номер за проследяване.|Запитване за оферта|Кажете ни от какво имате нужда.|Отнема две минути. Консултант ще се свърже с вас с оферта.|Проект|Продукти|Количество|Контакт|Какъв е проектът?|Друго|Кои продукти ви интересуват?|Можете да изберете няколко.|Полилеи|LED полилеи|Кристални полилеи|Аплици|Спотове|LED огледала|Продукти за баня|Мебели за баня|Приблизително колко броя?|Кога са ви нужни?|Възможно най-скоро|През следващия месец|След 1–3 месеца|Само се информирам|Списък с продукти (по желание)|Кодове на продукти, линкове или описание: например 40 аплика за коридорите, 12 полилея за ресторанта.|Фирма|ЕИК (по желание)|Име|Имейл|Телефон|Назад|Продължи|Изпрати запитването|Запитването ви е при нас.|Консултант ще се свърже с вас скоро с оферта.|Проверете имейл адреса си и опитайте отново.|Използваме данните ви само за офертата на едро.|Задължително поле|Стъпка|Здравейте! Бих искал(а) оферта за поръчка на едро.| |Предпочитате разговор?|Пишете ни в WhatsApp|Дата"
+    when 'it'
+      assign w = "Ordini all'ingrosso · B2B|Luce su scala di progetto.|Arrediamo hotel, ristoranti, uffici e case chiavi in mano direttamente dal produttore. Prezzi a volume, magazzino proprio e un consulente che fa l'offerta sulla tua lista di prodotti.|Richiedi un preventivo|Parla con un consulente|Preventivo all'ingrosso|Cliente|Hotel, 48 camere|Prezzo di listino|Prezzo all'ingrosso|Totale|su richiesta|Prezzo a volume|pz|prodotti in catalogo|m² di showroom e magazzino|anno della nostra fabbrica|paesi serviti|5.000+|Per chi|Per chi compra a decine, non al pezzo.|Hotel e B&B|Camere, hall e ristoranti arredati con un unico standard.|Ristoranti e caffè|La luce che crea l'atmosfera, dal bancone alla terrazza.|Uffici e spazi commerciali|Illuminazione efficiente per open space, negozi e showroom.|Costruttori e sviluppatori|Appartamenti chiavi in mano con lo stesso standard in ogni unità.|Architetti e designer|I prodotti dei tuoi progetti, a prezzi da progetto.|Rivenditori e installatori|Merce per il tuo negozio o i tuoi cantieri, a prezzi all'ingrosso.|Perché direttamente da noi|Nessun intermediario tra la fabbrica e il tuo progetto.|Prezzi a volume|Più lunga è la lista, più basso è il prezzo al pezzo. Ricevi un'offerta sui tuoi prodotti, non un listino generico.|Direttamente dal produttore|Fabbrica propria dal 2023 e grande capacità di importazione. Zero intermediari, ricarico minimo.|Magazzino proprio|Oltre 5.000 m² di showroom e magazzino ad Afumați, vicino a Bucarest.|Vedi prima di ordinare|Visita lo showroom e guarda i prodotti accesi, a grandezza reale, prima dell'ordine importante.|Un consulente dedicato|Un unico referente, dalla lista dei prodotti alla consegna.|Come funziona|Dalla lista alla consegna, in quattro passi.|Invii la lista|Prodotti, quantità e scadenza. Puoi farlo nel modulo qui sotto.|Ricevi il preventivo|Un consulente ti invia i prezzi a volume per la tua lista.|Confermi l'ordine|Definiamo insieme pagamento, fatturazione e calendario di consegna.|Consegniamo|L'ordine parte dal nostro magazzino con un numero di tracciamento.|Richiesta di preventivo|Dicci di cosa hai bisogno.|Bastano due minuti. Un consulente ti ricontatterà con il preventivo.|Progetto|Prodotti|Quantità|Contatto|Che tipo di progetto è?|Altro|Quali prodotti ti interessano?|Puoi sceglierne più di uno.|Lampadari|Lampadari LED|Lampadari di cristallo|Applique|Faretti|Specchi LED|Sanitari|Mobili da bagno|Quanti pezzi, più o meno?|Quando ti servono?|Il prima possibile|Entro il prossimo mese|Tra 1 e 3 mesi|Mi sto solo informando|Lista dei prodotti (facoltativa)|Codici prodotto, link o una descrizione: per esempio, 40 applique per i corridoi, 12 lampadari per il ristorante.|Azienda|Partita IVA (facoltativa)|Nome|Email|Telefono|Indietro|Continua|Invia la richiesta|La tua richiesta è arrivata.|Un consulente ti contatterà presto con il preventivo.|Controlla il tuo indirizzo email e riprova.|Usiamo i tuoi dati solo per il preventivo all'ingrosso.|Campo obbligatorio|Passo|Ciao! Vorrei un preventivo per un ordine all'ingrosso.|.|Preferisci parlarne?|Scrivici su WhatsApp|Data"
+    when 'fr'
+      assign w = "Commandes en gros · B2B|La lumière à l'échelle du projet.|Nous équipons hôtels, restaurants, bureaux et logements clés en main, en direct du fabricant. Prix dégressifs, stock propre et un conseiller qui chiffre votre propre liste de produits.|Demander un devis|Parler à un conseiller|Devis grossiste|Client|Hôtel, 48 chambres|Prix catalogue|Prix de gros|Total|sur demande|Prix dégressif|pcs|produits au catalogue|m² de showroom et d'entrepôt|année de notre usine|pays desservis|5 000+|Pour qui|Pour ceux qui achètent à la dizaine, pas à la pièce.|Hôtels et maisons d'hôtes|Chambres, halls et restaurants équipés selon un même standard.|Restaurants et cafés|La lumière qui fait l'ambiance, du bar à la terrasse.|Bureaux et commerces|Un éclairage efficace pour open spaces, boutiques et showrooms.|Promoteurs immobiliers|Des appartements clés en main, avec le même standard dans chaque logement.|Architectes et designers|Les produits de vos projets, à des prix de projet.|Revendeurs et installateurs|Du stock pour votre magasin ou vos chantiers, à prix de gros.|Pourquoi en direct|Aucun intermédiaire entre l'usine et votre projet.|Prix dégressifs|Plus la liste est longue, plus le prix à la pièce baisse. Vous recevez un devis sur vos produits, pas une grille générique.|En direct du fabricant|Notre propre usine depuis 2023 et une forte capacité d'importation. Zéro intermédiaire, marge minimale.|Notre propre stock|Plus de 5 000 m² de showroom et d'entrepôt à Afumați, près de Bucarest.|Voir avant de commander|Venez au showroom voir les produits allumés, en taille réelle, avant la grosse commande.|Un conseiller dédié|Un seul interlocuteur, de la liste de produits à la livraison.|Comment ça marche|De la liste à la livraison, en quatre étapes.|Vous envoyez la liste|Produits, quantités et délai. Vous pouvez le faire dans le formulaire ci-dessous.|Vous recevez le devis|Un conseiller vous envoie les prix dégressifs pour votre liste.|Vous confirmez la commande|Ensemble, nous fixons le paiement, la facturation et le planning de livraison.|Nous livrons|La commande part de notre entrepôt avec un numéro de suivi.|Demande de devis|Dites-nous ce qu'il vous faut.|Cela prend deux minutes. Un conseiller revient vers vous avec un devis.|Projet|Produits|Volume|Contact|De quel type de projet s'agit-il ?|Autre|Quels produits vous intéressent ?|Vous pouvez en choisir plusieurs.|Lustres|Lustres LED|Lustres en cristal|Appliques|Spots|Miroirs LED|Sanitaires|Meubles de salle de bain|Combien de pièces, environ ?|Pour quand en avez-vous besoin ?|Le plus tôt possible|Dans le mois|Dans 1 à 3 mois|Je me renseigne|Liste de produits (facultatif)|Références, liens ou description : par exemple, 40 appliques pour les couloirs, 12 lustres pour le restaurant.|Entreprise|N° de TVA (facultatif)|Nom|E-mail|Téléphone|Retour|Continuer|Envoyer la demande|Votre demande est bien arrivée.|Un conseiller vous contactera bientôt avec votre devis.|Vérifiez votre adresse e-mail et réessayez.|Nous utilisons vos données uniquement pour le devis de gros.|Champ obligatoire|Étape|Bonjour ! Je souhaiterais un devis pour une commande en gros.| |Vous préférez en parler ?|Écrivez-nous sur WhatsApp|Date"
+    when 'cs'
+      assign w = "Velkoobchodní objednávky · B2B|Světlo v měřítku projektu.|Vybavujeme hotely, restaurace, kanceláře a byty na klíč přímo od výrobce. Množstevní ceny, vlastní sklad a konzultant, který nacení váš vlastní seznam produktů.|Vyžádat nabídku|Mluvit s konzultantem|Velkoobchodní nabídka|Klient|Hotel, 48 pokojů|Katalogová cena|Velkoobchodní cena|Celkem|na vyžádání|Množstevní cena|ks|produktů v katalogu|m² showroomu a skladu|rok založení naší továrny|obsluhovaných zemí|5 000+|Pro koho|Pro ty, kdo nakupují po desítkách, ne po kusech.|Hotely a penziony|Pokoje, haly a restaurace vybavené v jednotném standardu.|Restaurace a kavárny|Světlo, které tvoří atmosféru, od baru po terasu.|Kanceláře a obchodní prostory|Úsporné osvětlení pro kanceláře, obchody a showroomy.|Developeři|Byty na klíč se stejným standardem v každé jednotce.|Architekti a designéři|Produkty z vašich projektů za projektové ceny.|Prodejci a montážníci|Zboží pro váš obchod nebo zakázky za velkoobchodní ceny.|Proč přímo od nás|Žádní prostředníci mezi továrnou a vaším projektem.|Množstevní ceny|Čím delší seznam, tím nižší cena za kus. Nabídku dostanete na své produkty, ne obecný ceník.|Přímo od výrobce|Vlastní továrna od roku 2023 a silná dovozní kapacita. Nula prostředníků, minimální přirážka.|Vlastní sklad|Přes 5 000 m² showroomu a skladu v Afumați u Bukurešti.|Podívejte se před objednávkou|Přijďte do showroomu a prohlédněte si produkty rozsvícené, ve skutečné velikosti, ještě před velkou objednávkou.|Osobní konzultant|Jedna kontaktní osoba od seznamu produktů až po doručení.|Jak to funguje|Od seznamu k doručení ve čtyřech krocích.|Pošlete seznam|Produkty, množství a termín. Můžete to udělat ve formuláři níže.|Dostanete nabídku|Konzultant vám pošle množstevní ceny pro váš seznam.|Potvrdíte objednávku|Společně domluvíme platbu, fakturaci a harmonogram dodání.|Doručíme|Objednávka odjíždí z našeho skladu se sledovacím číslem.|Poptávka|Řekněte nám, co potřebujete.|Zabere to dvě minuty. Konzultant se vám ozve s nabídkou.|Projekt|Produkty|Množství|Kontakt|O jaký projekt jde?|Něco jiného|Které produkty vás zajímají?|Můžete vybrat více.|Lustry|LED lustry|Křišťálové lustry|Nástěnná svítidla|Bodová svítidla|LED zrcadla|Sanitární vybavení|Koupelnový nábytek|Kolik kusů přibližně?|Kdy je potřebujete?|Co nejdříve|Během příštího měsíce|Za 1–3 měsíce|Jen se informuji|Seznam produktů (nepovinné)|Kódy produktů, odkazy nebo popis: například 40 nástěnných svítidel na chodby, 12 lustrů do restaurace.|Firma|IČ / DIČ (nepovinné)|Jméno|E-mail|Telefon|Zpět|Pokračovat|Odeslat poptávku|Vaše poptávka dorazila.|Konzultant se vám brzy ozve s nabídkou.|Zkontrolujte e-mailovou adresu a zkuste to znovu.|Vaše údaje používáme jen pro velkoobchodní nabídku.|Povinné pole|Krok|Dobrý den! Rád/a bych nabídku na velkoobchodní objednávku.| |Raději si promluvit?|Napište nám na WhatsApp|Datum"
+    when 'sk'
+      assign w = "Veľkoobchodné objednávky · B2B|Svetlo v mierke projektu.|Vybavujeme hotely, reštaurácie, kancelárie a byty na kľúč priamo od výrobcu. Množstevné ceny, vlastný sklad a konzultant, ktorý nacení váš vlastný zoznam produktov.|Vyžiadať ponuku|Hovoriť s konzultantom|Veľkoobchodná ponuka|Klient|Hotel, 48 izieb|Katalógová cena|Veľkoobchodná cena|Spolu|na požiadanie|Množstevná cena|ks|produktov v katalógu|m² showroomu a skladu|rok založenia našej továrne|obsluhovaných krajín|5 000+|Pre koho|Pre tých, ktorí nakupujú po desiatkach, nie po kusoch.|Hotely a penzióny|Izby, haly a reštaurácie vybavené v jednotnom štandarde.|Reštaurácie a kaviarne|Svetlo, ktoré tvorí atmosféru, od baru po terasu.|Kancelárie a obchodné priestory|Úsporné osvetlenie pre kancelárie, obchody a showroomy.|Developeri|Byty na kľúč s rovnakým štandardom v každej jednotke.|Architekti a dizajnéri|Produkty z vašich projektov za projektové ceny.|Predajcovia a montážnici|Tovar pre váš obchod alebo zákazky za veľkoobchodné ceny.|Prečo priamo od nás|Žiadni sprostredkovatelia medzi továrňou a vaším projektom.|Množstevné ceny|Čím dlhší zoznam, tým nižšia cena za kus. Ponuku dostanete na svoje produkty, nie všeobecný cenník.|Priamo od výrobcu|Vlastná továreň od roku 2023 a silná dovozná kapacita. Nula sprostredkovateľov, minimálna prirážka.|Vlastný sklad|Vyše 5 000 m² showroomu a skladu v Afumați pri Bukurešti.|Pozrite si pred objednávkou|Príďte do showroomu a pozrite si produkty rozsvietené, v skutočnej veľkosti, ešte pred veľkou objednávkou.|Osobný konzultant|Jedna kontaktná osoba od zoznamu produktov až po doručenie.|Ako to funguje|Od zoznamu k doručeniu v štyroch krokoch.|Pošlete zoznam|Produkty, množstvá a termín. Môžete to urobiť vo formulári nižšie.|Dostanete ponuku|Konzultant vám pošle množstevné ceny pre váš zoznam.|Potvrdíte objednávku|Spoločne dohodneme platbu, fakturáciu a harmonogram dodania.|Doručíme|Objednávka odchádza z nášho skladu so sledovacím číslom.|Dopyt|Povedzte nám, čo potrebujete.|Zaberie to dve minúty. Konzultant sa vám ozve s ponukou.|Projekt|Produkty|Množstvo|Kontakt|O aký projekt ide?|Niečo iné|Ktoré produkty vás zaujímajú?|Môžete vybrať viac.|Lustre|LED lustre|Krištáľové lustre|Nástenné svietidlá|Bodové svietidlá|LED zrkadlá|Sanitárne vybavenie|Kúpeľňový nábytok|Koľko kusov približne?|Kedy ich potrebujete?|Čo najskôr|Počas budúceho mesiaca|O 1–3 mesiace|Len sa informujem|Zoznam produktov (nepovinné)|Kódy produktov, odkazy alebo popis: napríklad 40 nástenných svietidiel na chodby, 12 lustrov do reštaurácie.|Firma|IČO / DIČ (nepovinné)|Meno|E-mail|Telefón|Späť|Pokračovať|Odoslať dopyt|Váš dopyt dorazil.|Konzultant sa vám čoskoro ozve s ponukou.|Skontrolujte e-mailovú adresu a skúste to znova.|Vaše údaje používame len na veľkoobchodnú ponuku.|Povinné pole|Krok|Dobrý deň! Chcel/a by som ponuku na veľkoobchodnú objednávku.| |Radšej sa porozprávať?|Napíšte nám na WhatsApp|Dátum"
+    when 'hr'
+      assign w = "Veleprodajne narudžbe · B2B|Svjetlo u mjerilu projekta.|Opremamo hotele, restorane, urede i domove po principu ključ u ruke, izravno od proizvođača. Cijene prema količini, vlastito skladište i savjetnik koji radi ponudu na vaš popis proizvoda.|Zatražite ponudu|Razgovarajte sa savjetnikom|Veleprodajna ponuda|Klijent|Hotel, 48 soba|Kataloška cijena|Veleprodajna cijena|Ukupno|na upit|Cijena prema količini|kom|proizvoda u katalogu|m² showrooma i skladišta|godina otvaranja naše tvornice|zemalja koje opslužujemo|5.000+|Za koga|Za one koji kupuju na desetke, ne na komad.|Hoteli i pansioni|Sobe, predvorja i restorani opremljeni u jednom standardu.|Restorani i kafići|Svjetlo koje stvara atmosferu, od šanka do terase.|Uredi i poslovni prostori|Učinkovita rasvjeta za urede, trgovine i showroome.|Investitori|Stanovi ključ u ruke s istim standardom u svakoj jedinici.|Arhitekti i dizajneri|Proizvodi iz vaših projekata po projektnim cijenama.|Preprodavači i instalateri|Roba za vašu trgovinu ili radove po veleprodajnim cijenama.|Zašto izravno od nas|Bez posrednika između tvornice i vašeg projekta.|Cijene prema količini|Što je popis duži, to je cijena po komadu niža. Ponudu dobivate za svoje proizvode, a ne opći cjenik.|Izravno od proizvođača|Vlastita tvornica od 2023. i snažan uvozni kapacitet. Nula posrednika, minimalna marža.|Vlastito skladište|Više od 5.000 m² showrooma i skladišta u Afumațiju, kraj Bukurešta.|Pogledajte prije narudžbe|Posjetite showroom i pogledajte proizvode upaljene, u stvarnoj veličini, prije velike narudžbe.|Osobni savjetnik|Jedna osoba za kontakt, od popisa proizvoda do isporuke.|Kako funkcionira|Od popisa do isporuke u četiri koraka.|Šaljete popis|Proizvodi, količine i rok. Možete to učiniti u obrascu u nastavku.|Dobivate ponudu|Savjetnik vam šalje cijene prema količini za vaš popis.|Potvrđujete narudžbu|Zajedno dogovaramo plaćanje, fakturiranje i raspored isporuke.|Isporučujemo|Narudžba kreće iz našeg skladišta s brojem za praćenje.|Upit za ponudu|Recite nam što trebate.|Traje dvije minute. Savjetnik će vam se javiti s ponudom.|Projekt|Proizvodi|Količina|Kontakt|O kakvom je projektu riječ?|Nešto drugo|Koji vas proizvodi zanimaju?|Možete odabrati više.|Lusteri|LED lusteri|Kristalni lusteri|Zidne svjetiljke|Reflektori|LED ogledala|Sanitarije|Kupaonski namještaj|Otprilike koliko komada?|Kada vam trebaju?|Što prije|Tijekom sljedećeg mjeseca|Za 1–3 mjeseca|Samo se informiram|Popis proizvoda (neobavezno)|Šifre proizvoda, poveznice ili opis: na primjer, 40 zidnih svjetiljki za hodnike, 12 lustera za restoran.|Tvrtka|OIB (neobavezno)|Ime|E-mail|Telefon|Natrag|Nastavi|Pošalji upit|Vaš upit je stigao.|Savjetnik će vam se uskoro javiti s ponudom.|Provjerite adresu e-pošte i pokušajte ponovno.|Vaše podatke koristimo samo za veleprodajnu ponudu.|Obavezno polje|Korak|Pozdrav! Želio/željela bih ponudu za veleprodajnu narudžbu.|.|Radije razgovor?|Pišite nam na WhatsApp|Datum"
+    when 'de'
+      assign w = "Großhandelsbestellungen · B2B|Licht im Projektmaßstab.|Wir statten Hotels, Restaurants, Büros und schlüsselfertige Wohnungen direkt vom Hersteller aus. Mengenpreise, eigenes Lager und ein Berater, der Ihre eigene Produktliste kalkuliert.|Angebot anfordern|Mit einem Berater sprechen|Großhandelsangebot|Kunde|Hotel, 48 Zimmer|Listenpreis|Großhandelspreis|Summe|auf Anfrage|Mengenpreis|Stk.|Produkte im Katalog|m² Showroom und Lager|Gründungsjahr unserer Fabrik|belieferte Länder|5.000+|Für wen|Für alle, die im Dutzend kaufen, nicht einzeln.|Hotels und Pensionen|Zimmer, Lobbys und Restaurants in einheitlichem Standard.|Restaurants und Cafés|Das Licht, das Stimmung macht, von der Bar bis zur Terrasse.|Büros und Gewerbeflächen|Effiziente Beleuchtung für Büros, Läden und Showrooms.|Bauträger|Schlüsselfertige Wohnungen mit gleichem Standard in jeder Einheit.|Architekten und Designer|Die Produkte aus Ihren Projekten zu Projektpreisen.|Händler und Installateure|Ware für Ihren Laden oder Ihre Baustellen zu Großhandelspreisen.|Warum direkt bei uns|Keine Zwischenhändler zwischen Fabrik und Projekt.|Mengenpreise|Je länger die Liste, desto niedriger der Stückpreis. Sie erhalten ein Angebot für Ihre Produkte, keine allgemeine Preisliste.|Direkt vom Hersteller|Eigene Fabrik seit 2023 und starke Importkapazität. Null Zwischenhändler, minimale Marge.|Eigenes Lager|Über 5.000 m² Showroom und Lager in Afumați bei Bukarest.|Vor der Bestellung ansehen|Besuchen Sie den Showroom und sehen Sie die Produkte leuchtend in Originalgröße, bevor Sie groß bestellen.|Ein fester Berater|Ein Ansprechpartner, von der Produktliste bis zur Lieferung.|So funktioniert es|Von der Liste zur Lieferung in vier Schritten.|Sie senden die Liste|Produkte, Mengen und Termin. Das geht im Formular unten.|Sie erhalten das Angebot|Ein Berater schickt Ihnen Mengenpreise für Ihre Liste.|Sie bestätigen die Bestellung|Gemeinsam klären wir Zahlung, Rechnung und Lieferplan.|Wir liefern|Die Bestellung verlässt unser Lager mit Sendungsnummer.|Angebotsanfrage|Sagen Sie uns, was Sie brauchen.|Das dauert zwei Minuten. Ein Berater meldet sich mit einem Angebot.|Projekt|Produkte|Menge|Kontakt|Um welche Art von Projekt geht es?|Etwas anderes|Welche Produkte interessieren Sie?|Sie können mehrere wählen.|Kronleuchter|LED-Kronleuchter|Kristallkronleuchter|Wandleuchten|Spots|LED-Spiegel|Sanitärobjekte|Badmöbel|Wie viele Stück ungefähr?|Wann brauchen Sie sie?|So schnell wie möglich|Im nächsten Monat|In 1–3 Monaten|Ich informiere mich nur|Produktliste (optional)|Artikelnummern, Links oder eine Beschreibung: zum Beispiel 40 Wandleuchten für die Flure, 12 Kronleuchter für das Restaurant.|Firma|USt-IdNr. (optional)|Name|E-Mail|Telefon|Zurück|Weiter|Anfrage senden|Ihre Anfrage ist bei uns.|Ein Berater meldet sich bald mit Ihrem Angebot.|Bitte prüfen Sie Ihre E-Mail-Adresse und versuchen Sie es erneut.|Wir verwenden Ihre Daten nur für das Großhandelsangebot.|Pflichtfeld|Schritt|Hallo! Ich hätte gerne ein Angebot für eine Großhandelsbestellung.|.|Lieber sprechen?|Schreiben Sie uns auf WhatsApp|Datum"
+    else
+      assign w = "Comenzi en‑gros · B2B|Lumină la scară de proiect.|Echipăm hoteluri, restaurante, birouri și locuințe la cheie direct de la producător. Prețuri pe volum, stoc propriu și un consultant care îți face oferta pe lista ta de produse.|Cere o ofertă|Vorbește cu un consultant|Ofertă en‑gros|Client|Hotel, 48 de camere|Preț listă|Preț en‑gros|Total|la cerere|Preț pe volum|buc.|produse în catalog|m² showroom și depozit|anul fabricii proprii|țări deservite|5.000+|Pentru cine|Pentru cei care cumpără cu zecile, nu cu bucata.|Hoteluri și pensiuni|Camere, holuri și restaurante, echipate la același standard.|Restaurante și cafenele|Lumina care face atmosfera, de la bar la terasă.|Birouri și spații comerciale|Iluminat eficient pentru open space, magazine și showroomuri.|Dezvoltatori imobiliari|Apartamente la cheie, cu același standard în fiecare unitate.|Arhitecți și designeri|Produsele din proiectele tale, la prețuri de proiect.|Revânzători și instalatori|Stoc pentru magazinul sau lucrările tale, la prețuri en‑gros.|De ce direct de la noi|Fără intermediari între fabrică și proiectul tău.|Prețuri pe volum|Cu cât lista e mai mare, cu atât prețul pe bucată scade. Primești oferta pe produsele tale, nu o listă de prețuri generică.|Direct de la producător|Fabrică proprie din 2023 și putere de import. Zero intermediari, adaos redus la minimum.|Stoc propriu|Peste 5.000 m² de showroom și depozit în Afumați, lângă București.|Vezi înainte să comanzi|Vino în showroom și vezi produsele aprinse, la scară reală, înainte de comanda mare.|Un consultant dedicat|Un singur om de contact, de la lista de produse până la livrare.|Cum funcționează|De la listă la livrare, în patru pași.|Trimiți lista|Produse, cantități și termen. O poți face în formularul de mai jos.|Primești oferta|Un consultant îți trimite prețurile pe volum pentru lista ta.|Confirmi comanda|Stabilim împreună plata, facturarea și programul de livrare.|Livrăm|Comanda pleacă din depozitul nostru, cu număr de urmărire.|Cerere de ofertă|Spune-ne de ce ai nevoie.|Durează două minute. Un consultant revine cu oferta.|Proiect|Produse|Volum|Contact|Ce fel de proiect ai?|Altceva|Ce produse te interesează?|Poți alege mai multe.|Lustre|Lustre LED|Candelabre de cristal|Aplice|Spoturi|Oglinzi LED|Obiecte sanitare|Mobilier de baie|Cam câte bucăți?|Când ai nevoie de ele?|Cât mai repede|În luna următoare|În 1–3 luni|Doar mă informez|Lista de produse (opțional)|Coduri de produs, linkuri sau o descriere: de exemplu, 40 de aplice pentru holuri, 12 lustre pentru restaurant.|Firma|CUI (opțional)|Nume|Email|Telefon|Înapoi|Continuă|Trimite cererea|Cererea a ajuns la noi.|Un consultant te contactează cu oferta cât de curând.|Verifică adresa de email și încearcă din nou.|Folosim datele tale doar pentru oferta en‑gros.|Câmp obligatoriu|Pasul|Salut! Aș dori o ofertă pentru o comandă en-gros.|.|Preferi să vorbim?|Scrie-ne pe WhatsApp|Data"
+  endcase
+  assign t = w | split: '|'
+
+  assign reveal = ''
+  if settings.animations_reveal_on_scroll
+    assign reveal = ' scroll-trigger animate--slide-in'
+  endif
+
+  comment
+    Live catalogue size, rounded down to the hundred: "3.300+".
+  endcomment
+  assign n = collections.all.products_count | divided_by: 100 | times: 100
+  assign n_thousands = n | divided_by: 1000
+  assign n_rest = n | modulo: 1000 | plus: 1000 | append: '' | slice: 1, 3
+  if n_thousands > 0
+    assign product_count = n_thousands | append: t[97] | append: n_rest | append: '+'
+  else
+    assign product_count = n | append: '+'
+  endif
+
+  assign wa_number = section.settings.whatsapp | remove: '+' | remove: ' '
+  assign wa_msg = t[96] | url_encode | replace: '+', '%20'
+  assign wa_url = 'https://wa.me/' | append: wa_number | append: '?text=' | append: wa_msg
+
+  comment
+    Quote lines for a 48-room hotel: two wall lights, one chandelier and one mirror per
+    room. Each line is the product picked in the editor, or, if it is empty or sold out,
+    the first available product with a photo in its collection.
+  endcomment
+  assign quote_handles = 'aplice,lustre-led,oglinzi-led' | split: ','
+  assign quote_qty = '96,48,48' | split: ','
+
+  comment
+    Values stored in the email the team receives stay in Romanian, whatever the
+    storefront language, so every request reads the same.
+  endcomment
+  assign segments_ro = 'Hotel sau pensiune|Restaurant sau cafenea|Birouri sau spatiu comercial|Dezvoltator imobiliar|Arhitect sau designer|Revanzator sau instalator|Altceva' | split: '|'
+  assign segment_icons = 'bed,cup,office,crane,compass,store,other' | split: ','
+  assign cats_ro = 'Lustre|Lustre LED|Candelabre de cristal|Aplice|Spoturi|Oglinzi LED|Obiecte sanitare|Mobilier de baie' | split: '|'
+  assign cat_handles = 'lustre-cu-bec,lustre-led,candelabre-cristal,aplice,spoturi,oglinzi-led,baie,mobilier-baie' | split: ','
+  assign volumes = '< 20|20 – 100|100 – 500|500 +' | split: '|'
+  assign times_ro = 'Cat mai repede|In luna urmatoare|In 1-3 luni|Doar ma informez' | split: '|'
+
+  assign start_step = 1
+-%}
+
+<div class="alc-eg">
+  {%- comment -%} Hero {%- endcomment -%}
+  <section class="alc-eg__hero">
+    <div class="page-width alc-eg__hero-grid">
+      <div class="alc-eg__hero-copy">
+        <p class="alc-eg__kicker"><span aria-hidden="true"></span>{{ t[0] }}</p>
+        <h1 class="alc-eg__h1">{{ t[1] }}</h1>
+        <p class="alc-eg__lead">{{ t[2] }}</p>
+        <div class="alc-eg__actions">
+          <a class="alc-eg__btn alc-eg__btn--primary" href="#AlcEgQuote">
+            {{- t[3] -}}
+            {%- render 'alc-eg-icon', name: 'arrow' -%}
+          </a>
+          <a class="alc-eg__btn alc-eg__btn--ghost" href="{{ wa_url }}" target="_blank" rel="noopener">
+            {%- render 'alc-ds-icon', name: 'whatsapp' -%}
+            {{- t[4] -}}
+          </a>
+        </div>
+      </div>
+
+      {%- comment -%} Decorative: it repeats what the copy says, so screen readers skip it. {%- endcomment -%}
+      <div class="alc-eg__doc-wrap" aria-hidden="true">
+        <div class="alc-eg__doc alc-eg__doc--back"></div>
+        <div class="alc-eg__doc">
+          <div class="alc-eg__doc-head">
+            <div>
+              <p class="alc-eg__mono alc-eg__doc-no">AD-EG-{{ 'now' | date: '%y%m' }}-048</p>
+              <p class="alc-eg__doc-title">{{ t[5] }}</p>
+            </div>
+            <span class="alc-eg__doc-badge">{{ t[12] }}</span>
+          </div>
+          <dl class="alc-eg__doc-meta">
+            <div>
+              <dt class="alc-eg__mono">{{ t[6] }}</dt>
+              <dd>{{ t[7] }}</dd>
+            </div>
+            <div>
+              <dt class="alc-eg__mono">{{ t[100] }}</dt>
+              <dd>{{ 'now' | date: '%d.%m.%Y' }}</dd>
+            </div>
+          </dl>
+          <div class="alc-eg__doc-cols alc-eg__mono">
+            <span></span>
+            <span>{{ t[8] }}</span>
+            <span>{{ t[9] }}</span>
+          </div>
+          <ol class="alc-eg__lines">
+            {%- for h in quote_handles -%}
+              {%- liquid
+                assign key = 'quote_' | append: forloop.index
+                assign line = section.settings[key]
+                if line == blank or line.available == false or line.featured_image == blank
+                  assign line = blank
+                  for p in collections[h].products
+                    if p.available and p.featured_image
+                      assign line = p
+                      break
+                    endif
+                  endfor
+                endif
+                assign qty = quote_qty[forloop.index0]
+              -%}
+              {%- if line != blank -%}
+                <li class="alc-eg__line" style="--i: {{ forloop.index }};">
+                  <span class="alc-eg__line-img">
+                    {{-
+                      line.featured_image
+                      | image_url: width: 120
+                      | image_tag: widths: '60, 120', sizes: '52px', loading: 'eager', alt: ''
+                    -}}
+                  </span>
+                  <span class="alc-eg__line-name">
+                    <span>{{ line.title | escape }}</span>
+                    <small class="alc-eg__mono">× {{ qty }} {{ t[13] }}</small>
+                  </span>
+                  <span class="alc-eg__line-list alc-eg__mono">{{ line.price | money_without_trailing_zeros }}</span>
+                  <span class="alc-eg__line-wh">
+                    <span class="alc-eg__blur"></span>
+                    {%- render 'alc-eg-icon', name: 'lock' -%}
+                  </span>
+                </li>
+              {%- endif -%}
+            {%- endfor -%}
+          </ol>
+          <div class="alc-eg__doc-total">
+            <span class="alc-eg__mono">{{ t[10] }}</span>
+            <strong>{{ t[11] }}</strong>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  {%- comment -%} Proof row {%- endcomment -%}
+  <div class="page-width">
+    <dl class="alc-eg__proof">
+      <div>
+        <dd>{{ product_count }}</dd>
+        <dt class="alc-eg__mono">{{ t[14] }}</dt>
+      </div>
+      <div>
+        <dd>{{ t[18] }}</dd>
+        <dt class="alc-eg__mono">{{ t[15] }}</dt>
+      </div>
+      <div>
+        <dd>2023</dd>
+        <dt class="alc-eg__mono">{{ t[16] }}</dt>
+      </div>
+      <div>
+        <dd>10</dd>
+        <dt class="alc-eg__mono">{{ t[17] }}</dt>
+      </div>
+    </dl>
+  </div>
+
+  {%- comment -%} Who it is for {%- endcomment -%}
+  <section class="page-width alc-eg__block">
+    <header class="alc-eg__head">
+      <p class="alc-eg__eyebrow alc-eg__mono">01 — {{ t[19] }}</p>
+      <h2 class="alc-eg__h2">{{ t[20] }}</h2>
+    </header>
+    <ul class="alc-eg__segments" role="list"{% if reveal != blank %} data-cascade{% endif %}>
+      {%- for i in (1..6) -%}
+        {%- assign ti = i | times: 2 | plus: 19 -%}
+        {%- assign di = ti | plus: 1 -%}
+        <li class="alc-eg__segment{{ reveal }}" style="--animation-order: {{ i }};">
+          <span class="alc-eg__segment-top">
+            <span class="alc-eg__segment-icon">{%- render 'alc-eg-icon', name: segment_icons[forloop.index0] -%}</span>
+            <span class="alc-eg__mono">0{{ i }}</span>
+          </span>
+          <h3 class="alc-eg__segment-title">{{ t[ti] }}</h3>
+          <p class="alc-eg__segment-text">{{ t[di] }}</p>
+        </li>
+      {%- endfor -%}
+    </ul>
+  </section>
+
+  {%- comment -%} Why buy direct {%- endcomment -%}
+  <section class="page-width alc-eg__block">
+    <div class="alc-eg__why">
+      <div class="alc-eg__why-side">
+        <header class="alc-eg__head">
+          <p class="alc-eg__eyebrow alc-eg__mono">02 — {{ t[33] }}</p>
+          <h2 class="alc-eg__h2">{{ t[34] }}</h2>
+        </header>
+        <figure class="alc-eg__why-media">
+          {%- assign why_img = section.settings.image -%}
+          {%- if why_img != blank -%}
+            {{
+              why_img
+              | image_url: width: 1200
+              | image_tag: widths: '600, 900, 1200', sizes: '(min-width: 990px) 560px, 100vw', loading: 'lazy', alt: ''
+            }}
+          {%- else -%}
+            <img
+              src="{{ 'alc-showroom-hall.jpg' | asset_img_url: '1200x' }}"
+              srcset="{{ 'alc-showroom-hall.jpg' | asset_img_url: '600x' }} 600w, {{ 'alc-showroom-hall.jpg' | asset_img_url: '1200x' }} 1200w"
+              sizes="(min-width: 990px) 560px, 100vw"
+              width="1200"
+              height="675"
+              alt=""
+              loading="lazy"
+            >
+          {%- endif -%}
+          <figcaption class="alc-eg__mono">
+            <span>{{ t[18] }} m²</span>
+            <span>Afumați · RO</span>
+          </figcaption>
+        </figure>
+      </div>
+      <ul class="alc-eg__features" role="list">
+        {%- assign feature_icons = 'tag,factory,warehouse,eye,user' | split: ',' -%}
+        {%- for i in (1..5) -%}
+          {%- assign ti = i | times: 2 | plus: 33 -%}
+          {%- assign di = ti | plus: 1 -%}
+          <li class="alc-eg__feature{{ reveal }}" style="--animation-order: {{ i }};">
+            <span class="alc-eg__feature-icon">{%- render 'alc-eg-icon', name: feature_icons[forloop.index0] -%}</span>
+            <div>
+              <h3 class="alc-eg__feature-title">{{ t[ti] }}</h3>
+              <p class="alc-eg__feature-text">{{ t[di] }}</p>
+            </div>
+          </li>
+        {%- endfor -%}
+      </ul>
+    </div>
+  </section>
+
+  {%- comment -%} The four steps {%- endcomment -%}
+  <section class="page-width alc-eg__block">
+    <header class="alc-eg__head">
+      <p class="alc-eg__eyebrow alc-eg__mono">03 — {{ t[45] }}</p>
+      <h2 class="alc-eg__h2">{{ t[46] }}</h2>
+    </header>
+    <ol class="alc-eg__process" role="list"{% if reveal != blank %} data-cascade{% endif %}>
+      {%- assign process_icons = 'list,doc,confirm,truck' | split: ',' -%}
+      {%- for i in (1..4) -%}
+        {%- assign ti = i | minus: 1 | times: 2 | plus: 47 -%}
+        {%- assign di = ti | plus: 1 -%}
+        <li class="alc-eg__pstep{{ reveal }}" style="--animation-order: {{ i }};">
+          <span class="alc-eg__pstep-node">{%- render 'alc-eg-icon', name: process_icons[forloop.index0] -%}</span>
+          <span class="alc-eg__mono alc-eg__pstep-num">{{ t[95] }} 0{{ i }}</span>
+          <h3 class="alc-eg__pstep-title">{{ t[ti] }}</h3>
+          <p class="alc-eg__pstep-text">{{ t[di] }}</p>
+        </li>
+      {%- endfor -%}
+    </ol>
+  </section>
+
+  {%- comment -%} Quote request {%- endcomment -%}
+  <section class="alc-eg__quote" id="AlcEgQuote">
+    <div class="page-width">
+      <header class="alc-eg__head alc-eg__head--light">
+        <p class="alc-eg__eyebrow alc-eg__mono">04 — {{ t[55] }}</p>
+        <h2 class="alc-eg__h2">{{ t[56] }}</h2>
+        <p class="alc-eg__head-sub">{{ t[57] }}</p>
+      </header>
+
+      <div class="alc-eg__wizard-card{{ reveal }}">
+        {%- form 'contact', id: 'AlcEgQuoteForm', class: 'alc-eg__form' -%}
+          {%- if form.posted_successfully? -%}
+            <div class="alc-eg__success" tabindex="-1" autofocus>
+              <span class="alc-eg__success-icon">{%- render 'alc-eg-icon', name: 'check' -%}</span>
+              <h3 class="alc-eg__success-title">{{ t[90] }}</h3>
+              <p class="alc-eg__success-text">{{ t[91] }}</p>
+            </div>
+          {%- else -%}
+            {%- if form.errors -%}
+              {%- assign start_step = 4 -%}
+            {%- endif -%}
+            <alc-eg-quote class="alc-eg__wizard" data-start="{{ start_step }}">
+              <ol class="alc-eg__rail" role="list">
+                {%- for i in (1..4) -%}
+                  {%- assign si = i | plus: 57 -%}
+                  <li>
+                    <button type="button" class="alc-eg__rail-step" data-go="{{ i }}"{% if i == start_step %} aria-current="step"{% endif %}>
+                      <span class="alc-eg__rail-num alc-eg__mono">0{{ i }}</span>
+                      <span class="alc-eg__rail-label">{{ t[si] }}</span>
+                    </button>
+                  </li>
+                {%- endfor -%}
+              </ol>
+              <div class="alc-eg__progress" aria-hidden="true"><span></span></div>
+
+              <input type="hidden" name="contact[Formular]" value="Comanda en-gros">
+              <input type="hidden" name="contact[Piata]" value="{{ request.host | remove_first: 'www.' }} ({{ request.locale.iso_code }})">
+
+              {%- comment -%} Step 1: project type {%- endcomment -%}
+              <fieldset class="alc-eg__step" data-step="1">
+                <legend class="alc-eg__step-q" tabindex="-1">{{ t[62] }}</legend>
+                <div class="alc-eg__tiles">
+                  {%- for s in segments_ro -%}
+                    {%- liquid
+                      if forloop.last
+                        assign label = t[63]
+                      else
+                        assign li = forloop.index | times: 2 | plus: 19
+                        assign label = t[li]
+                      endif
+                    -%}
+                    <label class="alc-eg__tile">
+                      <input type="radio" name="contact[Tip proiect]" value="{{ s }}">
+                      <span class="alc-eg__tile-box">
+                        <span class="alc-eg__tile-icon">{%- render 'alc-eg-icon', name: segment_icons[forloop.index0] -%}</span>
+                        <span class="alc-eg__tile-label">{{ label }}</span>
+                        <span class="alc-eg__tile-check">{%- render 'alc-eg-icon', name: 'check' -%}</span>
+                      </span>
+                    </label>
+                  {%- endfor -%}
+                </div>
+              </fieldset>
+
+              {%- comment -%} Step 2: products {%- endcomment -%}
+              <fieldset class="alc-eg__step" data-step="2">
+                <legend class="alc-eg__step-q" tabindex="-1">{{ t[64] }} <span>{{ t[65] }}</span></legend>
+                <div class="alc-eg__cats">
+                  {%- for c in cats_ro -%}
+                    {%- liquid
+                      assign ci = forloop.index | plus: 65
+                      assign cat_img = blank
+                      for p in collections[cat_handles[forloop.index0]].products
+                        if p.available and p.featured_image
+                          assign cat_img = p.featured_image
+                          break
+                        endif
+                      endfor
+                    -%}
+                    <label class="alc-eg__cat">
+                      <input type="checkbox" name="contact[Produse: {{ c }}]" value="Da">
+                      <span class="alc-eg__cat-box">
+                        <span class="alc-eg__cat-img">
+                          {%- if cat_img != blank -%}
+                            {{-
+                              cat_img
+                              | image_url: width: 300
+                              | image_tag: widths: '150, 300', sizes: '(min-width: 990px) 150px, 40vw', loading: 'lazy', alt: ''
+                            -}}
+                          {%- endif -%}
+                        </span>
+                        <span class="alc-eg__cat-label">{{ t[ci] }}</span>
+                        <span class="alc-eg__tile-check">{%- render 'alc-eg-icon', name: 'check' -%}</span>
+                      </span>
+                    </label>
+                  {%- endfor -%}
+                </div>
+              </fieldset>
+
+              {%- comment -%} Step 3: volume, timing, list {%- endcomment -%}
+              <fieldset class="alc-eg__step" data-step="3">
+                <legend class="alc-eg__step-q" tabindex="-1">{{ t[74] }}</legend>
+                <div class="alc-eg__chips">
+                  {%- for v in volumes -%}
+                    <label class="alc-eg__chip">
+                      <input type="radio" name="contact[Volum]" value="{{ v }}">
+                      <span class="alc-eg__mono">{{ v }} {{ t[13] }}</span>
+                    </label>
+                  {%- endfor -%}
+                </div>
+                <p class="alc-eg__sub-q" id="AlcEgTime">{{ t[75] }}</p>
+                <div class="alc-eg__chips" role="radiogroup" aria-labelledby="AlcEgTime">
+                  {%- for tm in times_ro -%}
+                    {%- assign tmi = forloop.index | plus: 75 -%}
+                    <label class="alc-eg__chip">
+                      <input type="radio" name="contact[Termen]" value="{{ tm }}">
+                      <span>{{ t[tmi] }}</span>
+                    </label>
+                  {%- endfor -%}
+                </div>
+                <div class="alc-eg__field">
+                  <label class="alc-eg__label" for="AlcEgQuoteForm-body">{{ t[80] }}</label>
+                  <textarea
+                    class="alc-eg__input alc-eg__textarea"
+                    id="AlcEgQuoteForm-body"
+                    name="contact[body]"
+                    rows="4"
+                    placeholder="{{ t[81] | escape }}"
+                  >
+                    {{- form.body -}}
+                  </textarea>
+                </div>
+              </fieldset>
+
+              {%- comment -%} Step 4: contact {%- endcomment -%}
+              <fieldset class="alc-eg__step" data-step="4">
+                <legend class="alc-eg__step-q" tabindex="-1">{{ t[61] }}</legend>
+                {%- if form.errors -%}
+                  <p class="alc-eg__alert" role="alert">{{ t[92] }}</p>
+                {%- endif -%}
+                <div class="alc-eg__grid">
+                  <div class="alc-eg__field">
+                    <label class="alc-eg__label" for="AlcEgQuoteForm-company">{{ t[82] }}</label>
+                    <input class="alc-eg__input" type="text" id="AlcEgQuoteForm-company" name="contact[Firma]" autocomplete="organization">
+                  </div>
+                  <div class="alc-eg__field">
+                    <label class="alc-eg__label" for="AlcEgQuoteForm-cui">{{ t[83] }}</label>
+                    <input class="alc-eg__input" type="text" id="AlcEgQuoteForm-cui" name="contact[CUI]" autocomplete="off" autocapitalize="characters">
+                  </div>
+                  <div class="alc-eg__field">
+                    <label class="alc-eg__label" for="AlcEgQuoteForm-name">{{ t[84] }}</label>
+                    <input
+                      class="alc-eg__input"
+                      type="text"
+                      id="AlcEgQuoteForm-name"
+                      name="contact[name]"
+                      autocomplete="name"
+                      value="{% if form.name %}{{ form.name }}{% elsif customer %}{{ customer.name }}{% endif %}"
+                    >
+                  </div>
+                  <div class="alc-eg__field">
+                    <label class="alc-eg__label" for="AlcEgQuoteForm-phone">{{ t[86] }}</label>
+                    <input
+                      class="alc-eg__input"
+                      type="tel"
+                      id="AlcEgQuoteForm-phone"
+                      name="contact[phone]"
+                      autocomplete="tel"
+                      inputmode="tel"
+                      value="{% if form.phone %}{{ form.phone }}{% elsif customer.phone %}{{ customer.phone }}{% endif %}"
+                    >
+                  </div>
+                  <div class="alc-eg__field alc-eg__field--wide">
+                    <label class="alc-eg__label" for="AlcEgQuoteForm-email">
+                      {{- t[85] }} <span aria-hidden="true">*</span></label
+                    >
+                    <input
+                      class="alc-eg__input"
+                      type="email"
+                      id="AlcEgQuoteForm-email"
+                      name="contact[email]"
+                      autocomplete="email"
+                      spellcheck="false"
+                      autocapitalize="off"
+                      required
+                      aria-required="true"
+                      value="{% if form.email %}{{ form.email }}{% elsif customer %}{{ customer.email }}{% endif %}"
+                      {% if form.errors contains 'email' %}
+                        aria-invalid="true"
+                      {% endif %}
+                    >
+                  </div>
+                </div>
+                <p class="alc-eg__note"><span aria-hidden="true">*</span> {{ t[94] }} · {{ t[93] }}</p>
+              </fieldset>
+
+              <div class="alc-eg__nav">
+                <button type="button" class="alc-eg__btn alc-eg__btn--ghost alc-eg__nav-back" data-back hidden>
+                  {%- render 'alc-eg-icon', name: 'back' -%}
+                  {{- t[87] -}}
+                </button>
+                <span class="alc-eg__nav-count alc-eg__mono" aria-live="polite"><span data-count>{{ start_step }}</span> / 4</span>
+                <button type="button" class="alc-eg__btn alc-eg__btn--primary" data-next hidden>
+                  {{- t[88] -}}
+                  {%- render 'alc-eg-icon', name: 'arrow' -%}
+                </button>
+                <button type="submit" class="alc-eg__btn alc-eg__btn--primary" data-submit>
+                  {{- t[89] -}}
+                  {%- render 'alc-eg-icon', name: 'arrow' -%}
+                </button>
+              </div>
+            </alc-eg-quote>
+          {%- endif -%}
+        {%- endform -%}
+      </div>
+
+      <p class="alc-eg__alt">
+        {{ t[98] }}
+        <a href="{{ wa_url }}" target="_blank" rel="noopener">
+          {%- render 'alc-ds-icon', name: 'whatsapp' -%}
+          {{- t[99] -}}
+        </a>
+      </p>
+    </div>
+  </section>
+</div>
+
+{% schema %}
+{
+  "name": "ALC wholesale orders",
+  "tag": "section",
+  "class": "section alc-eg-section",
+  "settings": [
+    { "type": "text", "id": "whatsapp", "label": "WhatsApp number (international, digits only)", "default": "40725665925" },
+    { "type": "image_picker", "id": "image", "label": "Image next to the benefits", "info": "Empty: showroom hall" },
+    { "type": "header", "content": "Quote in the hero" },
+    { "type": "product", "id": "quote_1", "label": "Line 1 (96 pcs)", "info": "Empty or sold out: first wall light available" },
+    { "type": "product", "id": "quote_2", "label": "Line 2 (48 pcs)", "info": "Empty or sold out: first LED chandelier available" },
+    { "type": "product", "id": "quote_3", "label": "Line 3 (48 pcs)", "info": "Empty or sold out: first LED mirror available" }
+  ],
+  "presets": [{ "name": "ALC wholesale orders" }]
+}
+{% endschema %}
