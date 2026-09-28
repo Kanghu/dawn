@@ -1,3 +1,13 @@
+{%- comment -%}
+  The lightbox is hidden with visibility, which does not stop images from downloading, so every product view
+  fetched all its 900px slides and thumbnails. Its content now stays out of the render tree until it opens,
+  and the lazy images load then (or a moment earlier, when the gallery is touched or hovered).
+{%- endcomment -%}
+<style>
+  #ProductModal-{{ section.id }}:not([open]) .product-media-modal__content {
+    display: none;
+  }
+</style>
 <product-modal id="ProductModal-{{ section.id }}" class="product-media-modal">
   <div
     class="product-media-modal__dialog mx-auto my-8 max-w-screen-xl color-{{ section.settings.color_scheme }} gradient"
@@ -34,7 +44,9 @@
                       src="{{ media | image_url: width: 180 }}"
                       alt="{{ media.alt | escape }}"
                       width="{{ media.width | default: 180 }}"
-                      height="{{ media.height | default: 180 }}">
+                      height="{{ media.height | default: 180 }}"
+                      loading="lazy"
+                      decoding="async">
                   </div>
                 {%- endfor -%}
               </div>
@@ -51,6 +63,8 @@
                       alt="{{ media.alt | escape }}"
                       width="{{ media.width | default: 900 }}"
                       height="{{ media.height | default: 900 }}"
+                      loading="lazy"
+                      decoding="async"
                       style="transform-origin: center center; cursor: zoom-in;">
                   </div>
                 {%- endfor -%}
@@ -133,6 +147,17 @@
 
       // Init
       showSlide(0);
+
+      // Slides load only when the lightbox opens; start them as soon as the gallery is touched, hovered or focused.
+      // Delegated, because variant changes re-render the gallery and its openers.
+      const opener = '[data-modal="#ProductModal-{{ section.id }}"]';
+      const warmTypes = ['pointerdown', 'mouseover', 'focusin'];
+      const warm = (e) => {
+        if (!(e.target instanceof Element) || !e.target.closest(opener)) return;
+        warmTypes.forEach((type) => document.removeEventListener(type, warm, true));
+        modal.querySelectorAll('img[loading="lazy"]').forEach((img) => { img.loading = 'eager'; });
+      };
+      warmTypes.forEach((type) => document.addEventListener(type, warm, { capture: true, passive: true }));
 
       // Zoom
       modal.querySelectorAll('.zoomable-image').forEach(img => {

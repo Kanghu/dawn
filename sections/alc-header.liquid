@@ -13,11 +13,14 @@
   href="{{ 'component-menu-drawer.css' | asset_url }}"
   media="print"
   onload="this.media='all'">
-<link
-  rel="stylesheet"
-  href="{{ 'component-cart-notification.css' | asset_url }}"
-  media="print"
-  onload="this.media='all'">
+{%- comment -%} The cart popup only exists when the theme uses it instead of the cart drawer (see the render below). {%- endcomment -%}
+{%- if settings.cart_type == 'notification' -%}
+  <link
+    rel="stylesheet"
+    href="{{ 'component-cart-notification.css' | asset_url }}"
+    media="print"
+    onload="this.media='all'">
+{%- endif -%}
 
 {%- if settings.predictive_search_enabled -%}
   <link
@@ -122,7 +125,9 @@
   }
 {%- endstyle -%}
 
-<script src="{{ 'cart-notification.js' | asset_url }}" defer="defer"></script>
+{%- if settings.cart_type == 'notification' -%}
+  <script src="{{ 'cart-notification.js' | asset_url }}" defer="defer"></script>
+{%- endif -%}
 
 {%- liquid
   for block in section.blocks

@@ -15,6 +15,17 @@
   .drawer {
     visibility: hidden;
   }
+
+  /* The drawer's own stylesheet no longer blocks the first paint (layout/theme.liquid); until it arrives,
+     keep the closed drawer out of the page flow so nothing on the page shifts. */
+  cart-drawer.drawer {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100%;
+    z-index: 1000;
+  }
 </style>
 
 <cart-drawer class="drawer{% if cart == empty %} is-empty{% endif %}">

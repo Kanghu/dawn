@@ -308,6 +308,9 @@
 
   {% if related_variants %}
     {% if block.settings.picker_style == 'buttons' %}
+      {%- comment -%} Swiper is loaded here, where the slider renders, instead of on every product page (layout/theme.liquid). {%- endcomment -%}
+      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
+      <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js" defer></script>
       <!-- Button Picker -->
       <div class="ProductForm__Option ProductForm__Option--Buttons gap-4">
         <!-- Variant group iteration -->
