@@ -14,7 +14,8 @@
       "settings": {
         "padding_top": 28,
         "padding_bottom": 28
-      }
+      },
+      "disabled": true
     },
     "multicolumn_abpPMN": {
       "type": "multicolumn",
@@ -67,10 +68,19 @@
         "swipe_on_mobile": false,
         "padding_top": 36,
         "padding_bottom": 36
+      },
+      "disabled": true
+    },
+    "b2b": {
+      "type": "alc-b2b",
+      "settings": {
+        "whatsapp": "40725665925",
+        "strip_collection": "lustre-led"
       }
     }
   },
   "order": [
+    "b2b",
     "main",
     "multicolumn_abpPMN"
   ]
