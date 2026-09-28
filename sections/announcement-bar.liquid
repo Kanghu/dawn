@@ -33,7 +33,9 @@
         aria-label="{{ 'sections.header.announcement' | t }}"
         {{ block.shopify_attributes }}
       >
-        {%- if section.blocks.first.settings.text != blank -%}
+        {%- if section.blocks.first.type == 'showroom' -%}
+          {%- render 'alc-announcement-showroom', block: section.blocks.first -%}
+        {%- elsif section.blocks.first.settings.text != blank -%}
           {%- if section.blocks.first.settings.link != blank -%}
             <a
               href="{{ section.blocks.first.settings.link }}"
@@ -100,7 +102,9 @@
                   aria-label="{{ 'sections.header.announcement' | t }}"
                   {{ block.shopify_attributes }}
                 >
-                  {%- if block.settings.text != blank -%}
+                  {%- if block.type == 'showroom' -%}
+                    {%- render 'alc-announcement-showroom', block: block -%}
+                  {%- elsif block.settings.text != blank -%}
                     {%- if block.settings.link != blank -%}
                       <a
                         href="{{ block.settings.link }}"
@@ -252,6 +256,22 @@
     }
   ],
   "blocks": [
+    {
+      "type": "showroom",
+      "name": "Showroom deschis",
+      "settings": [
+        {
+          "type": "paragraph",
+          "content": "Mesaj tradus automat in toate limbile, cu status live Deschis / Inchis dupa programul showroomului (L-V 09-17, Sa 09-14, ora Romaniei). Textele sunt in snippets/alc-announcement-showroom.liquid."
+        },
+        {
+          "type": "url",
+          "id": "link",
+          "label": "Link",
+          "info": "Gol = pagina showroom"
+        }
+      ]
+    },
     {
       "type": "announcement",
       "name": "t:sections.announcement-bar.blocks.announcement.name",

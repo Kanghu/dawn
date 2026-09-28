@@ -1,0 +1,158 @@
+{% comment %}
+  Showroom announcement: "new showroom open" message with a live open/closed status.
+  Text lives in the per-language dictionary below (en.default.json is at the key cap,
+  and Translate & Adapt copies of block text go stale), Romanian is the fallback.
+  The status is computed in the browser in Europe/Bucharest time, because the page
+  itself is cached. Opening hours: data-hours, "weekday:open-close" with 0 = Sunday.
+
+  Accepts:
+  - block: {Object} the announcement-bar "showroom" block
+{% endcomment %}
+{%- liquid
+  assign lang = request.locale.iso_code | downcase | slice: 0, 2
+  case lang
+    when 'en'
+      assign w = 'New|Our new showroom near Bucharest is now open|New showroom near Bucharest|3,200 m² of lighting, all switched on|Visit the showroom|Open now|until [t]|Closed now|Opens [d] at [t]|today|tomorrow|Monday'
+    when 'hu'
+      assign w = 'Új|Megnyílt új bemutatótermünk Bukarest mellett|Új bemutatóterem Bukarest mellett|3200 m² felkapcsolt lámpa|Nézze meg a bemutatótermet|Most nyitva|[t]-ig|Most zárva|Nyitás: [d] [t]|ma|holnap|hétfőn'
+    when 'pl'
+      assign w = 'Nowość|Otworzyliśmy nowy salon pod Bukaresztem|Nowy salon pod Bukaresztem|3200 m² zapalonych lamp|Zobacz salon|Otwarte teraz|do [t]|Teraz zamknięte|Otwieramy [d] o [t]|dziś|jutro|w poniedziałek'
+    when 'el'
+      assign w = 'Νέο|Άνοιξε το νέο μας showroom κοντά στο Βουκουρέστι|Νέο showroom κοντά στο Βουκουρέστι|3.200 m² αναμμένα φωτιστικά|Δείτε το showroom|Ανοιχτά τώρα|έως τις [t]|Κλειστά τώρα|Ανοίγουμε [d] στις [t]|σήμερα|αύριο|τη Δευτέρα'
+    when 'bg'
+      assign w = 'Ново|Отворихме нов шоурум край Букурещ|Нов шоурум край Букурещ|3200 m² светещи осветителни тела|Вижте шоурума|Отворено сега|до [t]|Затворено сега|Отваряме [d] в [t]|днес|утре|в понеделник'
+    when 'it'
+      assign w = 'Novità|Il nostro nuovo showroom vicino a Bucarest è aperto|Nuovo showroom vicino a Bucarest|3.200 m² di luci accese|Scopri lo showroom|Aperto ora|fino alle [t]|Chiuso ora|Apriamo [d] alle [t]|oggi|domani|lunedì'
+    when 'fr'
+      assign w = 'Nouveau|Notre nouveau showroom près de Bucarest est ouvert|Nouveau showroom près de Bucarest|3 200 m² de luminaires allumés|Découvrir le showroom|Ouvert|jusqu’à [t]|Fermé|Ouverture [d] à [t]|aujourd’hui|demain|lundi'
+    when 'cs'
+      assign w = 'Novinka|Otevřeli jsme nový showroom u Bukurešti|Nový showroom u Bukurešti|3 200 m² rozsvícených svítidel|Prohlédnout showroom|Nyní otevřeno|do [t]|Nyní zavřeno|Otevíráme [d] v [t]|dnes|zítra|v pondělí'
+    when 'sk'
+      assign w = 'Novinka|Otvorili sme nový showroom pri Bukurešti|Nový showroom pri Bukurešti|3 200 m² rozsvietených svietidiel|Pozrieť showroom|Teraz otvorené|do [t]|Teraz zatvorené|Otvárame [d] o [t]|dnes|zajtra|v pondelok'
+    when 'hr'
+      assign w = 'Novo|Otvorili smo novi salon kraj Bukurešta|Novi salon kraj Bukurešta|3.200 m² upaljenih svjetiljki|Pogledajte salon|Sada otvoreno|do [t]|Sada zatvoreno|Otvaramo [d] u [t]|danas|sutra|u ponedjeljak'
+    when 'de'
+      assign w = 'Neu|Unser neuer Showroom bei Bukarest ist eröffnet|Neuer Showroom bei Bukarest|3.200 m² Leuchten, alle eingeschaltet|Showroom ansehen|Jetzt geöffnet|bis [t] Uhr|Jetzt geschlossen|Wir öffnen [d] um [t] Uhr|heute|morgen|am Montag'
+    else
+      assign w = 'Nou|Noul showroom Alessandro Design s-a deschis în Afumați|Showroom nou în Afumați|3.200 m² de lumini aprinse|Vezi showroomul|Deschis acum|până la [t]|Închis acum|Deschidem [d] la [t]|azi|mâine|luni'
+  endcase
+  assign t = w | split: '|'
+  assign link = block.settings.link
+  if link == blank
+    assign link = routes.root_url | append: '/pages/showroom' | replace: '//', '/'
+  endif
+-%}
+
+<style>
+  .alc-sr{--sr-gold:#c9a26a;--sr-open:#34c759;display:inline-flex;align-items:center;justify-content:center;gap:1.2rem;max-width:100%;min-height:4rem;padding:.6rem 0;color:rgb(var(--color-foreground));font-family:var(--font-body-family);font-size:1.3rem;line-height:1.3;letter-spacing:.01em;text-decoration:none;-webkit-font-smoothing:antialiased}
+  .alc-sr__badge{flex:none;padding:.3rem .8rem .25rem;border:1px solid rgba(201,162,106,.55);border-radius:999px;color:var(--sr-gold);font-size:1rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;line-height:1.2}
+  .alc-sr__title{font-weight:600;letter-spacing:-.005em;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;min-width:0}
+  .alc-sr__long,.alc-sr__sub,.alc-sr__cta-text,.alc-sr__badge{display:none}
+  .alc-sr__sub{color:rgba(var(--color-foreground),.62);white-space:nowrap}
+  .alc-sr__sub::before{content:'·';margin-right:1.2rem;color:rgba(var(--color-foreground),.35)}
+  .alc-sr__status{display:inline-flex;align-items:center;gap:.7rem;flex:none;white-space:nowrap;color:rgba(var(--color-foreground),.78)}
+  .alc-sr__status{order:-1}
+  .alc-sr__state{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+  .alc-sr__dot{position:relative;width:.8rem;height:.8rem;border-radius:50%;background:var(--sr-gold)}
+  .alc-sr[data-open='1'] .alc-sr__dot{background:var(--sr-open)}
+  .alc-sr[data-open='0'] .alc-sr__dot{background:rgba(var(--color-foreground),.4)}
+  .alc-sr[data-open='1'] .alc-sr__dot::after{content:'';position:absolute;inset:0;border-radius:50%;background:var(--sr-open);animation:alc-sr-ping 2.4s cubic-bezier(.2,.7,.2,1) infinite}
+  @keyframes alc-sr-ping{0%{transform:scale(1);opacity:.55}70%,100%{transform:scale(2.6);opacity:0}}
+  .alc-sr__cta{display:inline-flex;align-items:center;gap:.6rem;flex:none;font-weight:600}
+  .alc-sr__cta svg{width:1.2rem;height:1.2rem;transition:transform .3s cubic-bezier(.2,.7,.2,1)}
+  @media (hover:hover) and (pointer:fine){
+    .alc-sr:hover .alc-sr__cta svg{transform:translateX(3px)}
+    .alc-sr:hover .alc-sr__cta-text{text-decoration:underline;text-underline-offset:.3rem}
+  }
+  .alc-sr:focus-visible{outline:2px solid rgb(var(--color-foreground));outline-offset:-2px;border-radius:4px}
+  @media screen and (min-width:750px){
+    .alc-sr{gap:1.4rem}
+    .alc-sr__badge{display:inline-block}
+    .alc-sr__status{order:0;padding-left:1.4rem;border-left:1px solid rgba(var(--color-foreground),.18)}
+    .alc-sr__state{position:static;width:auto;height:auto;overflow:visible;clip:auto}
+  }
+  @media screen and (min-width:990px){
+    .alc-sr__long,.alc-sr__cta-text{display:inline}
+    .alc-sr__short{display:none}
+    .alc-sr__cta{padding-left:1.4rem;border-left:1px solid rgba(var(--color-foreground),.18)}
+  }
+  @media screen and (min-width:1280px){
+    .alc-sr__sub{display:inline}
+  }
+  @media (prefers-reduced-motion:reduce){
+    .alc-sr[data-open='1'] .alc-sr__dot::after{animation:none}
+    .alc-sr__cta svg{transition:none}
+  }
+</style>
+
+<a
+  href="{{ link }}"
+  class="alc-sr"
+  data-hours="1:9-17,2:9-17,3:9-17,4:9-17,5:9-17,6:9-14"
+  data-open-now="{{ t[5] }}"
+  data-until="{{ t[6] }}"
+  data-closed-now="{{ t[7] }}"
+  data-opens="{{ t[8] }}"
+  data-days="{{ t[9] }}|{{ t[10] }}|{{ t[11] }}"
+>
+  <span class="alc-sr__badge">{{ t[0] }}</span>
+  <span class="alc-sr__title"
+    ><span class="alc-sr__long">{{ t[1] }}</span><span class="alc-sr__short">{{ t[2] }}</span></span
+  >
+  <span class="alc-sr__sub">{{ t[3] }}</span>
+  <span class="alc-sr__status">
+    <span class="alc-sr__dot" aria-hidden="true"></span>
+    <span class="alc-sr__state" aria-live="polite"></span>
+  </span>
+  <span class="alc-sr__cta">
+    <span class="alc-sr__cta-text">{{ t[4] }}</span>
+    <svg viewBox="0 0 14 10" fill="none" aria-hidden="true" focusable="false">
+      <path d="M1 5h11.5M8.5 1l4 4-4 4" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
+    </svg>
+  </span>
+</a>
+
+<script>
+  (function () {
+    var el = document.currentScript && document.currentScript.previousElementSibling;
+    if (!el || !el.classList.contains('alc-sr') || !window.Intl) return;
+    var hours = {};
+    el.dataset.hours.split(',').forEach(function (p) {
+      var d = p.split(':'), r = d[1].split('-');
+      hours[+d[0]] = [+r[0], +r[1]];
+    });
+    var days = el.dataset.days.split('|');
+    var state = el.querySelector('.alc-sr__state');
+    var fmt;
+    try {
+      fmt = new Intl.DateTimeFormat('en-GB', { timeZone: 'Europe/Bucharest', weekday: 'short', hour: 'numeric', minute: 'numeric', hourCycle: 'h23' });
+    } catch (e) { return; }
+    var wd = { Sun: 0, Mon: 1, Tue: 2, Wed: 3, Thu: 4, Fri: 5, Sat: 6 };
+    var hh = function (h) { return (h < 10 ? '0' : '') + h + ':00'; };
+    function update() {
+      var parts = {};
+      fmt.formatToParts(new Date()).forEach(function (p) { parts[p.type] = p.value; });
+      var day = wd[parts.weekday], mins = +parts.hour * 60 + +parts.minute, today = hours[day];
+      var text;
+      if (today && mins >= today[0] * 60 && mins < today[1] * 60) {
+        el.dataset.open = '1';
+        text = el.dataset.openNow + ' · ' + el.dataset.until.replace('[t]', hh(today[1]));
+      } else {
+        el.dataset.open = '0';
+        var label, at;
+        if (today && mins < today[0] * 60) { label = days[0]; at = today[0]; }
+        else {
+          for (var i = 1; i <= 7; i++) {
+            var next = hours[(day + i) % 7];
+            // days[2] is Monday: with these hours the only gap longer than a night is Sunday
+            if (next) { label = i === 1 ? days[1] : days[2]; at = next[0]; break; }
+          }
+        }
+        text = el.dataset.closedNow + ' · ' + el.dataset.opens.replace('[d]', label).replace('[t]', hh(at));
+      }
+      if (state.textContent !== text) state.textContent = text;
+    }
+    update();
+    setInterval(update, 60000);
+  })();
+</script>
