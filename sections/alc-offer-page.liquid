@@ -20,10 +20,28 @@
   largest page Shopify allows, so a campaign can list up to 250 products.
 
   Texts have built-in translations for every storefront language; filled-in settings
-  override them. Styles: assets/alc-offer-page.css.
+  override them. Styles: assets/alc-offer-page.css, in the look of the homepage campaign
+  banner (sections/alc-campaign-spotlight): warm dark hero, serif title with its last word
+  in gold, gold accents. The serif's figures come from assets/alc-cs-figures.woff2, the
+  lining-digit subset the banner uses.
 {% endcomment %}
 {{ 'alc-offer-page.css' | asset_url | stylesheet_tag }}
 <script src="{{ 'alc-offer-page.js' | asset_url }}" defer="defer"></script>
+{%- assign display_font = section.settings.display_font -%}
+<link rel="preload" href="{{ display_font | font_url }}" as="font" type="font/woff2" crossorigin>
+{{ 'alc-cs-figures.woff2' | asset_url | preload_tag: as: 'font', type: 'font/woff2', crossorigin: 'anonymous' }}
+<style>
+  {{ display_font | font_face: font_display: 'swap' }}
+  @font-face {
+    font-family: 'AlcCsFigures';
+    src: url({{ 'alc-cs-figures.woff2' | asset_url }}) format('woff2');
+    font-display: swap;
+    unicode-range: U+0025, U+002D, U+0030-0039;
+  }
+  .alc-of {
+    --alc-of-display: {{ display_font.family }}, {{ display_font.fallback_families }};
+  }
+</style>
 {%- comment -%}
   The cards' add-to-cart forms need Dawn's product-form (AJAX add + cart drawer) and
   quick-add (options modal for multi-variant products), like the collection grid loads.
@@ -36,29 +54,29 @@
   assign lang = request.locale.iso_code | downcase | slice: 0, 2
   case lang
     when 'en'
-      assign w = 'Limited offer|Up to|off|Our selection at the best prices, for a limited time only.|Offer ends in|days|hours|min|sec|See the deals|All|Sort by|Biggest discount|Price, low to high|Price, high to low|Offer valid until {date}, while stocks last.|This offer has ended|Products on offer|Recommended|Deals by category|View category|All deals|biggest saving|Shop now|Explore all categories|More than deals: discover the full Alessandro Design range.'
+      assign w = 'Limited offer|Up to|off|Our selection at the best prices, for a limited time only.|Offer ends in|days|hours|min|sec|See the deals|All|Sort by|Biggest discount|Price, low to high|Price, high to low|Offer valid until {date}, while stocks last.|This offer has ended|Products on offer|Recommended|Deals by category|View category|All deals|biggest saving|Shop now|Explore all categories|More than deals: discover the full Alessandro Design range.|Stylish lighting|for a more beautiful home'
     when 'hu'
-      assign w = 'Korlátozott ajánlat|Akár|kedvezmény|Válogatott termékek a legjobb áron, csak korlátozott ideig.|Az ajánlat vége:|nap|óra|perc|mp|Az ajánlatok|Mind|Rendezés|Legnagyobb kedvezmény|Ár szerint növekvő|Ár szerint csökkenő|Az ajánlat {date}-ig érvényes, a készlet erejéig.|Az ajánlat lejárt|Akciós termékek|Ajánlott|Ajánlatok kategóriánként|Kategória megtekintése|Összes ajánlat|legnagyobb megtakarítás|Megveszem|Összes kategória|Az ajánlatokon túl: fedezze fel a teljes Alessandro Design kínálatot.'
+      assign w = 'Korlátozott ajánlat|Akár|kedvezmény|Válogatott termékek a legjobb áron, csak korlátozott ideig.|Az ajánlat vége:|nap|óra|perc|mp|Az ajánlatok|Mind|Rendezés|Legnagyobb kedvezmény|Ár szerint növekvő|Ár szerint csökkenő|Az ajánlat {date}-ig érvényes, a készlet erejéig.|Az ajánlat lejárt|Akciós termékek|Ajánlott|Ajánlatok kategóriánként|Kategória megtekintése|Összes ajánlat|legnagyobb megtakarítás|Megveszem|Összes kategória|Az ajánlatokon túl: fedezze fel a teljes Alessandro Design kínálatot.|Elegáns világítás|egy szebb otthonért'
     when 'pl'
-      assign w = 'Oferta ograniczona|Do|rabatu|Wybrane produkty w najlepszych cenach, tylko przez ograniczony czas.|Oferta kończy się za|dni|godz.|min|sek|Zobacz oferty|Wszystkie|Sortuj|Największy rabat|Cena rosnąco|Cena malejąco|Oferta ważna do {date} lub do wyczerpania zapasów.|Oferta zakończona|Produkty w promocji|Polecane|Oferty według kategorii|Zobacz kategorię|Wszystkie oferty|największa oszczędność|Kup teraz|Wszystkie kategorie|Nie tylko oferty: odkryj pełną ofertę Alessandro Design.'
+      assign w = 'Oferta ograniczona|Do|rabatu|Wybrane produkty w najlepszych cenach, tylko przez ograniczony czas.|Oferta kończy się za|dni|godz.|min|sek|Zobacz oferty|Wszystkie|Sortuj|Największy rabat|Cena rosnąco|Cena malejąco|Oferta ważna do {date} lub do wyczerpania zapasów.|Oferta zakończona|Produkty w promocji|Polecane|Oferty według kategorii|Zobacz kategorię|Wszystkie oferty|największa oszczędność|Kup teraz|Wszystkie kategorie|Nie tylko oferty: odkryj pełną ofertę Alessandro Design.|Eleganckie oświetlenie|dla piękniejszego domu'
     when 'el'
-      assign w = 'Περιορισμένη προσφορά|Έως|έκπτωση|Επιλεγμένα προϊόντα στις καλύτερες τιμές, μόνο για περιορισμένο χρόνο.|Η προσφορά λήγει σε|ημέρες|ώρες|λεπτά|δευτ.|Δείτε τις προσφορές|Όλα|Ταξινόμηση|Μεγαλύτερη έκπτωση|Τιμή αύξουσα|Τιμή φθίνουσα|Η προσφορά ισχύει έως {date}, έως εξαντλήσεως των αποθεμάτων.|Η προσφορά έληξε|Προϊόντα σε προσφορά|Προτεινόμενα|Προσφορές ανά κατηγορία|Δείτε την κατηγορία|Όλες οι προσφορές|μεγαλύτερη εξοικονόμηση|Αγοράστε τώρα|Όλες οι κατηγορίες|Πέρα από τις προσφορές: ανακαλύψτε όλη τη σειρά Alessandro Design.'
+      assign w = 'Περιορισμένη προσφορά|Έως|έκπτωση|Επιλεγμένα προϊόντα στις καλύτερες τιμές, μόνο για περιορισμένο χρόνο.|Η προσφορά λήγει σε|ημέρες|ώρες|λεπτά|δευτ.|Δείτε τις προσφορές|Όλα|Ταξινόμηση|Μεγαλύτερη έκπτωση|Τιμή αύξουσα|Τιμή φθίνουσα|Η προσφορά ισχύει έως {date}, έως εξαντλήσεως των αποθεμάτων.|Η προσφορά έληξε|Προϊόντα σε προσφορά|Προτεινόμενα|Προσφορές ανά κατηγορία|Δείτε την κατηγορία|Όλες οι προσφορές|μεγαλύτερη εξοικονόμηση|Αγοράστε τώρα|Όλες οι κατηγορίες|Πέρα από τις προσφορές: ανακαλύψτε όλη τη σειρά Alessandro Design.|Κομψός φωτισμός|για ένα πιο όμορφο σπίτι'
     when 'bg'
-      assign w = 'Ограничена оферта|До|отстъпка|Избрани продукти на най-добри цени, само за ограничено време.|Офертата изтича след|дни|часа|мин|сек|Вижте офертите|Всички|Сортиране|Най-голяма отстъпка|Цена възходящо|Цена низходящо|Офертата е валидна до {date} или до изчерпване на количествата.|Офертата приключи|Продукти в промоция|Препоръчани|Оферти по категории|Вижте категорията|Всички оферти|най-голямо спестяване|Купете сега|Всички категории|Не само оферти: разгледайте цялата гама на Alessandro Design.'
+      assign w = 'Ограничена оферта|До|отстъпка|Избрани продукти на най-добри цени, само за ограничено време.|Офертата изтича след|дни|часа|мин|сек|Вижте офертите|Всички|Сортиране|Най-голяма отстъпка|Цена възходящо|Цена низходящо|Офертата е валидна до {date} или до изчерпване на количествата.|Офертата приключи|Продукти в промоция|Препоръчани|Оферти по категории|Вижте категорията|Всички оферти|най-голямо спестяване|Купете сега|Всички категории|Не само оферти: разгледайте цялата гама на Alessandro Design.|Елегантно осветление|за по-красив дом'
     when 'it'
-      assign w = 'Offerta limitata|Fino al|di sconto|Prodotti selezionati ai prezzi migliori, solo per un periodo limitato.|L’offerta termina tra|giorni|ore|min|sec|Vedi le offerte|Tutti|Ordina per|Sconto maggiore|Prezzo crescente|Prezzo decrescente|Offerta valida fino al {date}, fino a esaurimento scorte.|L’offerta è terminata|Prodotti in offerta|Consigliati|Offerte per categoria|Vedi la categoria|Tutte le offerte|risparmio massimo|Acquista ora|Tutte le categorie|Non solo offerte: scopri tutta la gamma Alessandro Design.'
+      assign w = 'Offerta limitata|Fino al|di sconto|Prodotti selezionati ai prezzi migliori, solo per un periodo limitato.|L’offerta termina tra|giorni|ore|min|sec|Vedi le offerte|Tutti|Ordina per|Sconto maggiore|Prezzo crescente|Prezzo decrescente|Offerta valida fino al {date}, fino a esaurimento scorte.|L’offerta è terminata|Prodotti in offerta|Consigliati|Offerte per categoria|Vedi la categoria|Tutte le offerte|risparmio massimo|Acquista ora|Tutte le categorie|Non solo offerte: scopri tutta la gamma Alessandro Design.|Illuminazione elegante|per una casa più bella'
     when 'fr'
-      assign w = 'Offre limitée|Jusqu’à|de remise|Une sélection aux meilleurs prix, pour une durée limitée.|L’offre se termine dans|jours|h|min|s|Voir les offres|Tous|Trier par|Plus forte remise|Prix croissant|Prix décroissant|Offre valable jusqu’au {date}, dans la limite des stocks disponibles.|L’offre est terminée|Produits en promotion|Recommandés|Offres par catégorie|Voir la catégorie|Toutes les offres|économie maximale|Acheter|Toutes les catégories|Au-delà des offres : découvrez toute la gamme Alessandro Design.'
+      assign w = 'Offre limitée|Jusqu’à|de remise|Une sélection aux meilleurs prix, pour une durée limitée.|L’offre se termine dans|jours|h|min|s|Voir les offres|Tous|Trier par|Plus forte remise|Prix croissant|Prix décroissant|Offre valable jusqu’au {date}, dans la limite des stocks disponibles.|L’offre est terminée|Produits en promotion|Recommandés|Offres par catégorie|Voir la catégorie|Toutes les offres|économie maximale|Acheter|Toutes les catégories|Au-delà des offres : découvrez toute la gamme Alessandro Design.|Un éclairage élégant|pour une maison plus belle'
     when 'cs'
-      assign w = 'Omezená nabídka|Až|sleva|Vybrané produkty za nejlepší ceny, jen po omezenou dobu.|Nabídka končí za|dní|hod|min|s|Zobrazit nabídky|Vše|Seřadit|Největší sleva|Cena vzestupně|Cena sestupně|Nabídka platí do {date} nebo do vyprodání zásob.|Nabídka skončila|Produkty v akci|Doporučené|Nabídky podle kategorií|Zobrazit kategorii|Všechny nabídky|největší úspora|Koupit|Všechny kategorie|Nejen nabídky: objevte celý sortiment Alessandro Design.'
+      assign w = 'Omezená nabídka|Až|sleva|Vybrané produkty za nejlepší ceny, jen po omezenou dobu.|Nabídka končí za|dní|hod|min|s|Zobrazit nabídky|Vše|Seřadit|Největší sleva|Cena vzestupně|Cena sestupně|Nabídka platí do {date} nebo do vyprodání zásob.|Nabídka skončila|Produkty v akci|Doporučené|Nabídky podle kategorií|Zobrazit kategorii|Všechny nabídky|největší úspora|Koupit|Všechny kategorie|Nejen nabídky: objevte celý sortiment Alessandro Design.|Elegantní osvětlení|pro krásnější domov'
     when 'sk'
-      assign w = 'Obmedzená ponuka|Až|zľava|Vybrané produkty za najlepšie ceny, len na obmedzený čas.|Ponuka končí o|dní|hod|min|s|Zobraziť ponuky|Všetko|Zoradiť|Najväčšia zľava|Cena vzostupne|Cena zostupne|Ponuka platí do {date} alebo do vypredania zásob.|Ponuka sa skončila|Produkty v akcii|Odporúčané|Ponuky podľa kategórií|Zobraziť kategóriu|Všetky ponuky|najväčšia úspora|Kúpiť|Všetky kategórie|Nielen ponuky: objavte celý sortiment Alessandro Design.'
+      assign w = 'Obmedzená ponuka|Až|zľava|Vybrané produkty za najlepšie ceny, len na obmedzený čas.|Ponuka končí o|dní|hod|min|s|Zobraziť ponuky|Všetko|Zoradiť|Najväčšia zľava|Cena vzostupne|Cena zostupne|Ponuka platí do {date} alebo do vypredania zásob.|Ponuka sa skončila|Produkty v akcii|Odporúčané|Ponuky podľa kategórií|Zobraziť kategóriu|Všetky ponuky|najväčšia úspora|Kúpiť|Všetky kategórie|Nielen ponuky: objavte celý sortiment Alessandro Design.|Elegantné osvetlenie|pre krajší domov'
     when 'hr'
-      assign w = 'Ograničena ponuda|Do|popusta|Odabrani proizvodi po najboljim cijenama, samo ograničeno vrijeme.|Ponuda završava za|dana|sati|min|sek|Pogledajte ponude|Sve|Poredaj|Najveći popust|Cijena uzlazno|Cijena silazno|Ponuda vrijedi do {date} ili do isteka zaliha.|Ponuda je završila|Proizvodi na akciji|Preporučeno|Ponude po kategorijama|Pogledajte kategoriju|Sve ponude|najveća ušteda|Kupi sada|Sve kategorije|Ne samo ponude: otkrijte cijeli asortiman Alessandro Design.'
+      assign w = 'Ograničena ponuda|Do|popusta|Odabrani proizvodi po najboljim cijenama, samo ograničeno vrijeme.|Ponuda završava za|dana|sati|min|sek|Pogledajte ponude|Sve|Poredaj|Najveći popust|Cijena uzlazno|Cijena silazno|Ponuda vrijedi do {date} ili do isteka zaliha.|Ponuda je završila|Proizvodi na akciji|Preporučeno|Ponude po kategorijama|Pogledajte kategoriju|Sve ponude|najveća ušteda|Kupi sada|Sve kategorije|Ne samo ponude: otkrijte cijeli asortiman Alessandro Design.|Elegantna rasvjeta|za ljepši dom'
     when 'de'
-      assign w = 'Begrenztes Angebot|Bis zu|Rabatt|Ausgewählte Produkte zu den besten Preisen, nur für kurze Zeit.|Angebot endet in|Tage|Std.|Min.|Sek.|Angebote ansehen|Alle|Sortieren|Höchster Rabatt|Preis aufsteigend|Preis absteigend|Angebot gültig bis {date}, solange der Vorrat reicht.|Das Angebot ist beendet|Produkte im Angebot|Empfohlen|Angebote nach Kategorie|Kategorie ansehen|Alle Angebote|größte Ersparnis|Jetzt kaufen|Alle Kategorien|Mehr als Angebote: Entdecken Sie das ganze Sortiment von Alessandro Design.'
+      assign w = 'Begrenztes Angebot|Bis zu|Rabatt|Ausgewählte Produkte zu den besten Preisen, nur für kurze Zeit.|Angebot endet in|Tage|Std.|Min.|Sek.|Angebote ansehen|Alle|Sortieren|Höchster Rabatt|Preis aufsteigend|Preis absteigend|Angebot gültig bis {date}, solange der Vorrat reicht.|Das Angebot ist beendet|Produkte im Angebot|Empfohlen|Angebote nach Kategorie|Kategorie ansehen|Alle Angebote|größte Ersparnis|Jetzt kaufen|Alle Kategorien|Mehr als Angebote: Entdecken Sie das ganze Sortiment von Alessandro Design.|Elegante Beleuchtung|für ein schöneres Zuhause'
     else
-      assign w = 'Ofertă limitată|Până la|reducere|Produse selectate la cele mai bune prețuri, doar pentru o perioadă limitată.|Oferta se încheie în|zile|ore|min|sec|Vezi ofertele|Toate|Sortează după|Reducere maximă|Preț crescător|Preț descrescător|Ofertă valabilă până pe {date}, în limita stocului.|Oferta s-a încheiat|Produse la ofertă|Recomandate|Oferte pe categorii|Vezi categoria|Toate ofertele|economie maximă|Cumpără acum|Explorează toate categoriile|Mai mult decât oferte: descoperă întreaga gamă Alessandro Design.'
+      assign w = 'Ofertă limitată|Până la|reducere|Produse selectate la cele mai bune prețuri, doar pentru o perioadă limitată.|Oferta se încheie în|zile|ore|min|sec|Vezi ofertele|Toate|Sortează după|Reducere maximă|Preț crescător|Preț descrescător|Ofertă valabilă până pe {date}, în limita stocului.|Oferta s-a încheiat|Produse la ofertă|Recomandate|Oferte pe categorii|Vezi categoria|Toate ofertele|economie maximă|Cumpără acum|Explorează toate categoriile|Mai mult decât oferte: descoperă întreaga gamă Alessandro Design.|Iluminat elegant|pentru o casă mai frumoasă'
   endcase
   assign t = w | split: '|'
 
@@ -236,12 +254,15 @@
 -%}
 
 <div class="alc-of" style="--alc-of-accent: {{ section.settings.accent }};">
+  <div class="alc-of__wrap">
+  <div class="alc-of__stage">
   {%- comment -%} Hero {%- endcomment -%}
   <section class="alc-of__hero">
     {%- liquid
       comment
-        Hero picture: the one chosen in the editor, otherwise the photo of the deepest
-        deal, which then gets a small caption linking to it.
+        Hero picture: the one chosen in the editor, otherwise the homepage banner's photo
+        (setting "Hero photo") or the photo of the deepest deal. The deepest deal also
+        gets a small card with its thumbnail, linking to it.
       endcomment
       assign spot = nil
       if top_rows.size > 0
@@ -252,9 +273,16 @@
         assign spot = row_products | where: 'id', wanted_id | first
       endif
       assign hero_img = section.settings.hero_image
+      assign hero_campaign = false
+      if hero_img == blank
+        if section.settings.hero_source == 'campaign'
+          assign hero_campaign = true
+        elsif spot != nil
+          assign hero_img = spot.featured_image
+        endif
+      endif
       assign show_caption = false
-      if hero_img == blank and spot != nil
-        assign hero_img = spot.featured_image
+      if spot != nil
         assign show_caption = true
       endif
       assign max_pct = 0
@@ -263,7 +291,20 @@
         assign max_pct = 100 | minus: first_key
       endif
     -%}
-    {%- if hero_img != blank -%}
+    {%- if hero_campaign -%}
+      <div class="alc-of__hero-media alc-of__hero-media--campaign">
+        <img
+          class="alc-of__hero-img"
+          src="{{ 'alc-campaign-hero.jpg' | asset_img_url: '931x' }}"
+          srcset="{{ 'alc-campaign-hero.jpg' | asset_img_url: '540x' }} 540w, {{ 'alc-campaign-hero.jpg' | asset_img_url: '760x' }} 760w, {{ 'alc-campaign-hero.jpg' | asset_img_url: '931x' }} 931w"
+          sizes="(min-width: 750px) 66vw, 100vw"
+          width="931"
+          height="941"
+          alt=""
+          fetchpriority="high"
+        >
+      </div>
+    {%- elsif hero_img != blank -%}
       <div class="alc-of__hero-media">
         {{
           hero_img
@@ -279,47 +320,76 @@
       </div>
     {%- endif -%}
 
-    <div class="page-width alc-of__hero-inner">
+    <div class="alc-of__hero-inner">
       <div class="alc-of__hero-copy">
-        <p class="alc-of__eyebrow">
-          <span class="alc-of__pulse" aria-hidden="true"></span>
-          {{ t[0] }}
+        {%- liquid
+          comment
+            Like the homepage banner: the last word goes on its own line in gold capitals,
+            shrinking above six letters so a long word never runs into the photo.
+          endcomment
+          assign title_text = section.settings.heading | default: collection.title | strip
+          assign title_words = title_text | split: ' '
+          assign title_last = title_words | last
+          assign title_lead = ''
+          if title_words.size > 1
+            assign title_lead = title_text | remove_last: title_last | strip
+          endif
+          assign title_scale = 1
+          if title_last.size > 6
+            assign title_scale = 6.3 | divided_by: title_last.size | round: 3
+          endif
+        -%}
+        <h1 class="alc-of__title" style="--alc-of-title-scale: {{ title_scale }};">
+          {%- if title_lead != blank -%}
+            <span class="alc-of__title-lead alc-of__rise">{{ title_lead | escape }}</span>
+          {%- endif -%}
+          <span class="alc-of__title-accent alc-of__rise">{{ title_last | escape }}</span>
+        </h1>
+        <p class="alc-of__tagline alc-of__rise">
+          <span>{{ t[26] }}</span>
+          <span>{{ t[27] }}</span>
         </p>
-        <h1 class="alc-of__title">{{ section.settings.heading | default: collection.title | escape }}</h1>
 
         {%- if max_pct > 0 -%}
-          <p class="alc-of__deal">
+          <p class="alc-of__deal alc-of__rise">
             <span class="alc-of__deal-pre">{{ t[1] }}</span>
-            <span class="alc-of__deal-pct">-{{ max_pct }}%</span>
+            <span class="alc-of__deal-pct">{{ max_pct }}<span class="alc-of__deal-sign">%</span></span>
             <span class="alc-of__deal-post">{{ t[2] }}</span>
           </p>
         {%- endif -%}
 
-        {%- if end_date != blank -%}
-          <alc-offer-countdown class="alc-of__countdown is-pending" data-end="{{ end_date | escape }}">
-            <p class="alc-of__countdown-label">{{ t[4] }}</p>
-            <div class="alc-of__clock" role="timer" aria-live="off">
-              <span class="alc-of__unit"><b data-d>0</b><small>{{ t[5] }}</small></span>
-              <span class="alc-of__sep" aria-hidden="true">:</span>
-              <span class="alc-of__unit"><b data-h>00</b><small>{{ t[6] }}</small></span>
-              <span class="alc-of__sep" aria-hidden="true">:</span>
-              <span class="alc-of__unit"><b data-m>00</b><small>{{ t[7] }}</small></span>
-              <span class="alc-of__sep" aria-hidden="true">:</span>
-              <span class="alc-of__unit"><b data-s>00</b><small>{{ t[8] }}</small></span>
-            </div>
-            <p class="alc-of__ended" data-ended hidden>{{ t[16] }}</p>
-          </alc-offer-countdown>
-        {%- endif -%}
+        <div class="alc-of__actions alc-of__rise">
+          <a class="alc-of__cta" href="#AlcOffers">
+            <span class="alc-of__cta-text">{{ t[9] }}</span>
+            <svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M6 13l6 6 6-6"/></svg>
+          </a>
 
-        <a class="alc-of__cta" href="#AlcOffers">
-          {{- t[9] -}}
-          <svg aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M6 13l6 6 6-6"/></svg>
-        </a>
+          {%- if end_date != blank -%}
+            <alc-offer-countdown class="alc-of__countdown is-pending" data-end="{{ end_date | escape }}">
+              <p class="alc-of__countdown-label">{{ t[4] }}</p>
+              <div class="alc-of__clock" role="timer" aria-live="off">
+                <span class="alc-of__unit"><b data-d>0</b><small>{{ t[5] }}</small></span>
+                <span class="alc-of__sep" aria-hidden="true">:</span>
+                <span class="alc-of__unit"><b data-h>00</b><small>{{ t[6] }}</small></span>
+                <span class="alc-of__sep" aria-hidden="true">:</span>
+                <span class="alc-of__unit"><b data-m>00</b><small>{{ t[7] }}</small></span>
+                <span class="alc-of__sep" aria-hidden="true">:</span>
+                <span class="alc-of__unit"><b data-s>00</b><small>{{ t[8] }}</small></span>
+              </div>
+              <p class="alc-of__ended" data-ended hidden>{{ t[16] }}</p>
+            </alc-offer-countdown>
+          {%- endif -%}
+        </div>
       </div>
     </div>
 
     {%- if show_caption and section.settings.show_top_deals -%}
       <a class="alc-of__caption" href="{{ spot.url }}">
+        {%- if spot.featured_image != blank -%}
+          <span class="alc-of__caption-thumb">
+            {{ spot.featured_image | image_url: width: 160 | image_tag: width: 52, height: 52, loading: 'lazy', alt: '' }}
+          </span>
+        {%- endif -%}
         <span class="alc-of__caption-pct">-{{ spot_pct }}%</span>
         <span class="alc-of__caption-text">
           <span class="alc-of__caption-name">{{ spot.title | escape }}</span>
@@ -332,7 +402,7 @@
 
   {%- comment -%} The campaign's categories, each linking to its page on the site. {%- endcomment -%}
   {%- if source_handles.size > 1 or source_handles.first != collection.handle -%}
-    <section class="page-width alc-of__cats-wrap">
+    <section class="alc-of__cats-wrap">
       <h2 class="alc-of__h2">{{ t[19] }}</h2>
       <ul class="alc-of__cats" role="list">
         {%- for source_handle in source_handles -%}
@@ -423,7 +493,7 @@
     endcomment
     assign group_handles = source_handles | join: ',' | append: ',' | append: collection.handle | split: ','
   -%}
-  <section class="page-width alc-of__offers" id="AlcOffers">
+  <section class="alc-of__offers" id="AlcOffers">
     <alc-offer-grid class="alc-of__grid-wrap" data-layout="{% if grouped %}grouped{% else %}grid{% endif %}">
       <h2 class="alc-of__h2">{{ t[21] }}</h2>
       <div class="alc-of__bar">
@@ -536,6 +606,9 @@
     </alc-offer-grid>
   </section>
 
+  </div>
+  </div>
+
   {%- comment -%} The rest of the store, picked in the editor. {%- endcomment -%}
   {%- if section.settings.more_collections.size > 0 -%}
     <section class="page-width alc-of__more">
@@ -598,11 +671,22 @@
     { "type": "paragraph", "content": "Lists every product of the campaign collection (up to 250): in-stock offers, then full price, sold out last. The categories (collection metafield custom.slider_subcollections, or the setting below) add their own discounted, in-stock products." },
     { "type": "text", "id": "end_date", "label": "Offer end date", "info": "YYYY-MM-DD. The countdown runs to 23:59 Bucharest time. Leave empty to hide it." },
     { "type": "text", "id": "heading", "label": "Heading", "info": "Empty: the collection title" },
-    { "type": "image_picker", "id": "hero_image", "label": "Hero image", "info": "Empty: the photo of the deepest deal, with a caption linking to it" },
+    { "type": "image_picker", "id": "hero_image", "label": "Hero image", "info": "Overrides the choice below" },
+    {
+      "type": "select",
+      "id": "hero_source",
+      "label": "Hero photo",
+      "options": [
+        { "value": "campaign", "label": "The homepage campaign banner's photo" },
+        { "value": "deal", "label": "The photo of the deepest deal" }
+      ],
+      "default": "campaign"
+    },
     { "type": "collection_list", "id": "categories", "label": "Campaign categories", "limit": 8, "info": "Empty: the collection metafield custom.slider_subcollections. Offers are picked from the campaign collection first, then from these." },
-    { "type": "color", "id": "accent", "label": "Accent colour", "default": "#e8732c" },
+    { "type": "color", "id": "accent", "label": "Accent colour", "default": "#f2c47e", "info": "Light sections use a darker shade of it, so text stays readable" },
+    { "type": "font_picker", "id": "display_font", "label": "Title font", "default": "playfair_display_n4" },
     { "type": "range", "id": "slots", "min": 4, "max": 30, "step": 1, "label": "Offers per category", "default": 15 },
-    { "type": "checkbox", "id": "show_top_deals", "label": "Caption with the deepest deal on the hero photo", "default": true },
+    { "type": "checkbox", "id": "show_top_deals", "label": "Card with the deepest deal on the hero photo", "default": true },
     { "type": "checkbox", "id": "wide_cards", "label": "Wide highlight cards in the grid (desktop)", "default": true },
     {
       "type": "select",
