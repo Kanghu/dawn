@@ -1,0 +1,457 @@
+{% comment %}
+  Homepage campaign spotlight: an HTML banner for the running campaign (big serif
+  campaign name, "up to X%" and a countdown) with its best deals underneath, all linking
+  to the campaign page.
+
+  - "Up to X%" is computed like the campaign page (sections/alc-offer-page) computes its
+    hero: the campaign collection's in-stock offers, plus the discounted, in-stock
+    products that snippets/alc-campaign-picker adds from the campaign's categories
+    (collection metafield custom.slider_subcollections). Both pages therefore show the
+    same figure, and it is never a number typed into a picture.
+  - The deals (12 by default, six per row on desktop, a two-row swipe below 1100px): the
+    categories take turns, deepest discount first, with one product per model family on
+    the first pass; the campaign's in-stock full-price products only top up. A product
+    list picked in the editor replaces them. The tiles are the shared product card,
+    re-skinned for the dark stage in the CSS.
+  - The campaign runs inside paginate: without it Liquid only hands a loop the first 50
+    products of a collection.
+
+  Texts have built-in translations for every storefront language; filled-in settings
+  override them. Styles: assets/alc-campaign-spotlight.css, countdown:
+  assets/alc-campaign-spotlight.js.
+{% endcomment %}
+{%- liquid
+  assign campaign = section.settings.collection
+  assign lang = request.locale.iso_code | downcase | slice: 0, 2
+  case lang
+    when 'en'
+      assign w = 'Stylish lighting|for a more beautiful home|Up to|off|Shop now|Offer ends in|day|days|hours|min|sec|Top deals|See all deals'
+    when 'hu'
+      assign w = 'Elegáns világítás|egy szebb otthonért|Akár|kedvezmény|Vásároljon most|Az ajánlat vége:|nap|nap|óra|perc|mp|A legnagyobb kedvezmények|Összes ajánlat'
+    when 'pl'
+      assign w = 'Eleganckie oświetlenie|dla piękniejszego domu|Do|rabatu|Kup teraz|Oferta kończy się za|dzień|dni|godz.|min|sek|Największe rabaty|Zobacz wszystkie oferty'
+    when 'el'
+      assign w = 'Κομψός φωτισμός|για ένα πιο όμορφο σπίτι|Έως|έκπτωση|Αγοράστε τώρα|Η προσφορά λήγει σε|ημέρα|ημέρες|ώρες|λεπτά|δευτ.|Οι μεγαλύτερες εκπτώσεις|Δείτε όλες τις προσφορές'
+    when 'bg'
+      assign w = 'Елегантно осветление|за по-красив дом|До|отстъпка|Купете сега|Офертата изтича след|ден|дни|часа|мин|сек|Най-големите отстъпки|Вижте всички оферти'
+    when 'it'
+      assign w = 'Illuminazione elegante|per una casa più bella|Fino al|di sconto|Acquista ora|L’offerta termina tra|giorno|giorni|ore|min|sec|Gli sconti migliori|Vedi tutte le offerte'
+    when 'fr'
+      assign w = 'Un éclairage élégant|pour une maison plus belle|Jusqu’à|de remise|J’en profite|L’offre se termine dans|jour|jours|h|min|s|Les plus fortes remises|Voir toutes les offres'
+    when 'cs'
+      assign w = 'Elegantní osvětlení|pro krásnější domov|Až|sleva|Nakoupit nyní|Nabídka končí za|den|dní|hod|min|s|Největší slevy|Zobrazit všechny nabídky'
+    when 'sk'
+      assign w = 'Elegantné osvetlenie|pre krajší domov|Až|zľava|Nakúpiť teraz|Ponuka končí o|deň|dní|hod|min|s|Najväčšie zľavy|Zobraziť všetky ponuky'
+    when 'hr'
+      assign w = 'Elegantna rasvjeta|za ljepši dom|Do|popusta|Kupi sada|Ponuda završava za|dan|dana|sati|min|sek|Najveći popusti|Pogledajte sve ponude'
+    when 'de'
+      assign w = 'Elegante Beleuchtung|für ein schöneres Zuhause|Bis zu|Rabatt|Jetzt shoppen|Angebot endet in|Tag|Tage|Std.|Min.|Sek.|Die größten Rabatte|Alle Angebote ansehen'
+    when 'nl'
+      assign w = 'Stijlvolle verlichting|voor een mooier thuis|Tot|korting|Shop nu|Aanbieding eindigt over|dag|dagen|uur|min|sec|De grootste kortingen|Bekijk alle aanbiedingen'
+    else
+      assign w = 'Iluminat elegant|pentru o casă mai frumoasă|Până la|reducere|Cumpără acum|Oferta se încheie în|zi|zile|ore|min|sec|Cele mai mari reduceri|Vezi toate ofertele'
+  endcase
+  assign t = w | split: '|'
+
+  assign tagline_1 = section.settings.tagline_1 | default: t[0]
+  assign tagline_2 = section.settings.tagline_2 | default: t[1]
+  assign cta_label = section.settings.cta_label | default: t[4]
+  assign deals_heading = section.settings.deals_heading | default: t[11]
+
+  assign font = section.settings.display_font
+  assign products_count = section.settings.products_count
+
+  comment
+    The gold line fits up to six capitals ("SALE", "FRIDAY") at full size; longer words
+    shrink in proportion so they never run into the photo or off a phone screen.
+  endcomment
+  assign t2_chars = section.settings.title_2 | strip | size
+  assign t2_scale = 1
+  if t2_chars > 6
+    assign t2_scale = 6.3 | divided_by: t2_chars | round: 3
+  endif
+-%}
+
+{%- if campaign == blank -%}
+  {%- if request.design_mode -%}
+    <div class="page-width" style="padding: 24px 0;">Campaign spotlight: pick the campaign collection.</div>
+  {%- endif -%}
+{%- else -%}
+{{ 'alc-campaign-spotlight.css' | asset_url | stylesheet_tag }}
+<script src="{{ 'alc-campaign-spotlight.js' | asset_url }}" defer="defer"></script>
+{%- if section.settings.show_products -%}
+  {%- comment -%} The cards' add-to-cart needs Dawn's product-form and quick-add, like the collection grid. {%- endcomment -%}
+  {{ 'quick-add.css' | asset_url | stylesheet_tag }}
+  <script src="{{ 'product-form.js' | asset_url }}" defer="defer"></script>
+  <script src="{{ 'quick-add.js' | asset_url }}" defer="defer"></script>
+{%- endif -%}
+<link rel="preload" href="{{ font | font_url }}" as="font" type="font/woff2" crossorigin>
+{{ 'alc-cs-figures.woff2' | asset_url | preload_tag: as: 'font', type: 'font/woff2', crossorigin: 'anonymous' }}
+<style>
+  {{ font | font_face: font_display: 'swap' }}
+  {%- comment -%}
+    Lining figures for "up to X%": Shopify's Playfair Display only has old-style figures
+    (the 4 drops below the line). A 2 KB subset of Playfair Display (OFL) with the
+    lining digits mapped in, and the hyphen drawn as a true minus (the "−64%" seals),
+    used for digits, % and - only.
+  {%- endcomment %}
+  @font-face {
+    font-family: 'AlcCsFigures';
+    src: url({{ 'alc-cs-figures.woff2' | asset_url }}) format('woff2');
+    font-display: swap;
+    unicode-range: U+0025, U+002D, U+0030-0039;
+  }
+  .alc-cs-{{ section.id }} {
+    --alc-cs-display: {{ font.family }}, {{ font.fallback_families }};
+    --alc-cs-pt: {{ section.settings.padding_top }}px;
+    --alc-cs-pb: {{ section.settings.padding_bottom }}px;
+    --alc-cs-t2-scale: {{ t2_scale }};
+  }
+</style>
+
+{%- paginate campaign.products by 250 -%}
+{%- liquid
+  comment
+    The campaign's categories, the same list the campaign page uses.
+  endcomment
+  assign source_handles = ''
+  for sub in campaign.metafields.custom.slider_subcollections.value
+    assign source_handles = source_handles | append: sub.handle | append: ','
+  endfor
+  if source_handles == ''
+    assign source_handles = campaign.handle
+  endif
+  assign source_handles = source_handles | split: ','
+
+  comment
+    Rows: "<100 - discount><order>~<product id>~<category>~<source collection>". A plain
+    sort puts the deepest discount first; full-price rows start with 999 and only top up.
+  endcomment
+  assign deal_rows = ''
+  assign fill_rows = ''
+  assign shown_ids = ','
+  assign order = 0
+  for p in campaign.products
+    if p.available == false
+      continue
+    endif
+    assign cat = campaign.handle
+    assign p_handles = p.collections | map: 'handle'
+    for h in source_handles
+      if p_handles contains h
+        assign cat = h
+        break
+      endif
+    endfor
+    assign ord = order | plus: 1000 | append: '' | slice: 1, 3
+    if p.compare_at_price > p.price
+      assign pct = p.compare_at_price | minus: p.price | times: 100.0 | divided_by: p.compare_at_price | round
+      assign inv = 100 | minus: pct | plus: 1000 | append: '' | slice: 1, 3
+      assign deal_rows = deal_rows | append: inv | append: ord | append: '~' | append: p.id | append: '~' | append: cat | append: '~' | append: campaign.handle | append: ','
+    else
+      assign fill_rows = fill_rows | append: '999' | append: ord | append: '~' | append: p.id | append: '~' | append: cat | append: '~' | append: campaign.handle | append: ','
+    endif
+    assign shown_ids = shown_ids | append: p.id | append: ','
+    assign order = order | plus: 1
+  endfor
+
+  for pass_handle in source_handles
+    if pass_handle == campaign.handle
+      continue
+    endif
+    assign source = collections[pass_handle]
+    if source == blank
+      continue
+    endif
+    capture picked
+      render 'alc-campaign-picker', source: source, campaign: campaign, slots: section.settings.slots, exclude: shown_ids, no_fill: true
+    endcapture
+    assign picked_ids = picked | strip | split: ','
+    for picked_id in picked_ids
+      assign wanted_id = picked_id | plus: 0
+      assign found = source.products | where: 'id', wanted_id
+      if found.size == 0
+        continue
+      endif
+      assign p = found.first
+      assign pct = p.compare_at_price | minus: p.price | times: 100.0 | divided_by: p.compare_at_price | round
+      assign inv = 100 | minus: pct | plus: 1000 | append: '' | slice: 1, 3
+      assign ord = order | plus: 1000 | append: '' | slice: 1, 3
+      assign deal_rows = deal_rows | append: inv | append: ord | append: '~' | append: p.id | append: '~' | append: pass_handle | append: '~' | append: pass_handle | append: ','
+      assign shown_ids = shown_ids | append: p.id | append: ','
+      assign order = order | plus: 1
+    endfor
+  endfor
+
+  assign ranked = deal_rows | split: ',' | sort
+  assign deal_count = ranked.size
+  assign max_pct = 0
+  if deal_count > 0
+    assign max_pct = ranked.first | slice: 0, 3 | plus: 0
+    assign max_pct = 100 | minus: max_pct
+  endif
+
+  comment
+    The deals take turns by category: the best deal of each category, then the second
+    best of each, and so on, deepest discount first within a round. A two-digit round
+    number in front of the row does the ordering; near-identical products of one
+    category then never sit side by side. Full-price products only top up the end.
+    seen_cats starts and joins with "x" so split counts every earlier token.
+  endcomment
+  assign seen_cats = 'x'
+  assign rr_rows = ''
+  for row in ranked
+    assign parts = row | split: '~'
+    assign cat_token = '~' | append: parts[2] | append: '~'
+    assign round = seen_cats | split: cat_token | size | plus: 99 | append: '' | slice: 1, 2
+    assign seen_cats = seen_cats | append: cat_token | append: 'x'
+    assign rr_rows = rr_rows | append: round | append: row | append: ','
+  endfor
+  assign top_rows = rr_rows | split: ',' | sort | join: ',' | append: ',' | append: fill_rows | split: ','
+
+  assign link = section.settings.cta_link | default: campaign.url
+
+  comment
+    Countdown end: 23:59:59 Bucharest time on the end date. The server value is only a
+    first paint; the script recomputes it with the real offset and hides an ended clock.
+  endcomment
+  assign end_date = section.settings.end_date | strip
+  assign show_clock = false
+  if end_date != blank
+    assign end_s = end_date | append: ' 23:59:59 +0200' | date: '%s' | plus: 0
+    assign now_s = 'now' | date: '%s' | plus: 0
+    assign left_s = end_s | minus: now_s
+    if left_s > 0
+      assign show_clock = true
+      assign c_d = left_s | divided_by: 86400
+      assign c_rest = left_s | modulo: 86400
+      assign c_h = c_rest | divided_by: 3600 | plus: 100 | append: '' | slice: 1, 2
+      assign c_rest = c_rest | modulo: 3600
+      assign c_m = c_rest | divided_by: 60 | plus: 100 | append: '' | slice: 1, 2
+      assign c_s = c_rest | modulo: 60 | plus: 100 | append: '' | slice: 1, 2
+    endif
+  endif
+-%}
+
+<div class="alc-cs alc-cs-{{ section.id }}">
+  <div class="alc-cs__wrap">
+    <div class="alc-cs__stage">
+      <div class="alc-cs__hero">
+        <span class="alc-cs__media" aria-hidden="true">
+          {%- liquid
+            assign img = section.settings.image
+            assign img_mobile = section.settings.image_mobile | default: img
+          -%}
+          <picture>
+            {%- if img != blank -%}
+              <source
+                media="(min-width: 750px)"
+                srcset="{{ img | image_url: width: 900 }} 900w, {{ img | image_url: width: 1300 }} 1300w, {{ img | image_url: width: 1800 }} 1800w"
+                sizes="(min-width: 1300px) 860px, 66vw"
+              >
+            {%- endif -%}
+            {%- if img_mobile != blank -%}
+              <img
+                class="alc-cs__img"
+                src="{{ img_mobile | image_url: width: 900 }}"
+                srcset="{{ img_mobile | image_url: width: 600 }} 600w, {{ img_mobile | image_url: width: 900 }} 900w, {{ img_mobile | image_url: width: 1200 }} 1200w"
+                sizes="(min-width: 750px) 66vw, 100vw"
+                width="{{ img_mobile.width }}"
+                height="{{ img_mobile.height }}"
+                alt=""
+                fetchpriority="high"
+              >
+            {%- else -%}
+              <img
+                class="alc-cs__img"
+                src="{{ 'alc-campaign-hero.jpg' | asset_img_url: '931x' }}"
+                srcset="{{ 'alc-campaign-hero.jpg' | asset_img_url: '540x' }} 540w, {{ 'alc-campaign-hero.jpg' | asset_img_url: '760x' }} 760w, {{ 'alc-campaign-hero.jpg' | asset_img_url: '931x' }} 931w"
+                sizes="(min-width: 1300px) 860px, (min-width: 750px) 66vw, 100vw"
+                width="931"
+                height="941"
+                alt=""
+                fetchpriority="high"
+              >
+            {%- endif -%}
+          </picture>
+          <span class="alc-cs__shade"></span>
+        </span>
+
+        <div class="alc-cs__copy">
+          <h2 class="alc-cs__title">
+            <span class="alc-cs__t1 alc-cs__rise">{{ section.settings.title_1 | escape }}</span>
+            <span class="alc-cs__t2 alc-cs__rise">{{ section.settings.title_2 | escape }}</span>
+          </h2>
+          <p class="alc-cs__tagline alc-cs__rise">
+            <span>{{ tagline_1 | escape }}</span>
+            <span>{{ tagline_2 | escape }}</span>
+          </p>
+
+          {%- if max_pct > 0 -%}
+            <p class="alc-cs__deal alc-cs__rise">
+              <span class="alc-cs__deal-pre">{{ t[2] }}</span>
+              <span class="alc-cs__deal-pct">{{ max_pct }}<span class="alc-cs__deal-sign">%</span></span>
+              <span class="alc-cs__deal-post">{{ t[3] }}</span>
+            </p>
+          {%- endif -%}
+
+          <div class="alc-cs__actions alc-cs__rise">
+            <a class="alc-cs__cta" href="{{ link }}">
+              <span class="alc-cs__cta-pill">
+                <span class="alc-cs__cta-text">{{ cta_label | escape }}</span>
+                <svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12h16M14 6l6 6-6 6"/></svg>
+              </span>
+            </a>
+
+            {%- if show_clock -%}
+              <alc-cs-countdown class="alc-cs__clock" data-end="{{ end_date | escape }}" data-day="{{ t[6] | escape }}" data-days="{{ t[7] | escape }}">
+                <span class="alc-cs__clock-label">{{ t[5] }}</span>
+                <span class="alc-cs__clock-units" role="timer" aria-live="off">
+                  <span class="alc-cs__unit" data-d-unit{% if c_d == 0 %} hidden{% endif %}><b data-d>{{ c_d }}</b><small data-d-label>{% if c_d == 1 %}{{ t[6] }}{% else %}{{ t[7] }}{% endif %}</small></span>
+                  <span class="alc-cs__unit"><b data-h>{{ c_h }}</b><small>{{ t[8] }}</small></span>
+                  <span class="alc-cs__unit"><b data-m>{{ c_m }}</b><small>{{ t[9] }}</small></span>
+                  <span class="alc-cs__unit"><b data-s>{{ c_s }}</b><small>{{ t[10] }}</small></span>
+                </span>
+              </alc-cs-countdown>
+            {%- endif -%}
+          </div>
+        </div>
+      </div>
+
+      {%- if section.settings.show_products -%}
+        {%- liquid
+          assign picked_products = section.settings.product_list
+        -%}
+        <div class="alc-cs__deals">
+          <div class="alc-cs__deals-head">
+            <h3 class="alc-cs__deals-title">{{ deals_heading | escape }}</h3>
+            <a class="alc-cs__all" href="{{ link }}">
+              {{- t[12] -}}
+              {%- if deal_count > 0 and picked_products.size == 0 %} <span class="alc-cs__all-count">{{ deal_count }}</span>{% endif -%}
+              <svg aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+            </a>
+          </div>
+
+          {%- liquid
+            comment
+              The tiles: the editor's list, else the ranked rows in two passes. The first
+              pass keeps one product per model family (the first all-caps word of the
+              title, e.g. ICEBERG), so colour versions of one lamp do not fill the grid;
+              the second pass tops up with whatever was skipped.
+            endcomment
+            if picked_products.size > 0
+              assign tiles = picked_products
+            else
+              assign tiles = '' | split: ','
+              assign tile_ids = ','
+              assign families = ','
+              for pass in (1..2)
+                for row in top_rows
+                  if tiles.size >= products_count
+                    break
+                  endif
+                  assign parts = row | split: '~'
+                  assign wanted_id = parts[1] | plus: 0
+                  assign id_token = ',' | append: wanted_id | append: ','
+                  if wanted_id == 0 or tile_ids contains id_token
+                    continue
+                  endif
+                  if parts[3] == campaign.handle
+                    assign found = campaign.products | where: 'id', wanted_id
+                  else
+                    assign found = collections[parts[3]].products | where: 'id', wanted_id
+                  endif
+                  if found.size == 0
+                    continue
+                  endif
+                  if pass == 1
+                    assign family = wanted_id
+                    assign words = found.first.title | replace: ',', ' ' | replace: '-', ' ' | split: ' '
+                    for word in words
+                      if word.size < 3 or word == 'LED' or word == 'RGB' or word == 'USB' or word == 'CCT'
+                        continue
+                      endif
+                      assign word_up = word | upcase
+                      assign word_down = word | downcase
+                      assign letters = word | remove: '0' | remove: '1' | remove: '2' | remove: '3' | remove: '4' | remove: '5' | remove: '6' | remove: '7' | remove: '8' | remove: '9'
+                      if word_up == word and word_down != word and letters == word
+                        assign family = word
+                        break
+                      endif
+                    endfor
+                    assign family_token = ',' | append: family | append: ','
+                    if families contains family_token
+                      continue
+                    endif
+                    assign families = families | append: family | append: ','
+                  endif
+                  assign tiles = tiles | concat: found
+                  assign tile_ids = tile_ids | append: wanted_id | append: ','
+                endfor
+              endfor
+            endif
+          -%}
+          <ul class="alc-cs__grid" role="list">
+            {%- for p in tiles limit: products_count -%}
+              {%- liquid
+                assign skip_card_styles = true
+                if forloop.first
+                  assign skip_card_styles = false
+                endif
+              -%}
+              <li class="alc-cs__item{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}"{% if settings.animations_reveal_on_scroll %} data-cascade style="--animation-order: {{ forloop.index }};"{% endif %}>
+                {%- render 'alc-card-product', heading_tag: 'div', card_product: p, media_aspect_ratio: 'square', show_secondary_image: true, skip_styles: skip_card_styles, section_id: section.id, quick_add: 'standard' -%}
+              </li>
+            {%- endfor -%}
+            {%- comment -%} Phones and tablets: the swipe row ends with a "see all" tile. {%- endcomment -%}
+            <li class="alc-cs__more">
+              <a class="alc-cs__more-link" href="{{ link }}">
+                {%- if deal_count > 0 and picked_products.size == 0 -%}
+                  <span class="alc-cs__more-count">{{ deal_count }}</span>
+                {%- endif -%}
+                <span class="alc-cs__more-text">{{ t[12] }}</span>
+                <span class="alc-cs__more-go" aria-hidden="true">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12h16M14 6l6 6-6 6"/></svg>
+                </span>
+              </a>
+            </li>
+          </ul>
+        </div>
+      {%- endif -%}
+    </div>
+  </div>
+</div>
+{%- endpaginate -%}
+{%- endif -%}
+
+{% schema %}
+{
+  "name": "Campaign spotlight",
+  "tag": "section",
+  "class": "section",
+  "settings": [
+    { "type": "paragraph", "content": "Homepage banner for the running campaign with its best deals. \"Up to X%\" is computed from the campaign's offers, the same way as on the campaign page." },
+    { "type": "collection", "id": "collection", "label": "Campaign collection" },
+    { "type": "url", "id": "cta_link", "label": "Link", "info": "Empty: the campaign collection's page" },
+    { "type": "text", "id": "title_1", "label": "Title, first line", "default": "October" },
+    { "type": "text", "id": "title_2", "label": "Title, second line (gold)", "default": "Sale" },
+    { "type": "text", "id": "tagline_1", "label": "Tagline, first line", "info": "Empty: built-in text in every language" },
+    { "type": "text", "id": "tagline_2", "label": "Tagline, second line", "info": "Empty: built-in text in every language" },
+    { "type": "text", "id": "cta_label", "label": "Button", "info": "Empty: built-in text in every language" },
+    { "type": "text", "id": "end_date", "label": "Campaign end date", "info": "YYYY-MM-DD. The countdown runs to 23:59 Bucharest time and disappears once it ends. Empty: no countdown." },
+    { "type": "image_picker", "id": "image", "label": "Photo", "info": "Landscape, about 1600 px wide. The left side fades into the dark background behind the text." },
+    { "type": "image_picker", "id": "image_mobile", "label": "Photo on phones", "info": "Empty: the photo above" },
+    { "type": "font_picker", "id": "display_font", "label": "Title font", "default": "playfair_display_n4" },
+    { "type": "header", "content": "Deals" },
+    { "type": "checkbox", "id": "show_products", "label": "Show deals", "default": true },
+    { "type": "text", "id": "deals_heading", "label": "Heading", "info": "Empty: built-in text in every language" },
+    { "type": "range", "id": "products_count", "min": 6, "max": 24, "step": 6, "label": "Products", "default": 12, "info": "Six per row on desktop" },
+    { "type": "product_list", "id": "product_list", "label": "Pick products by hand", "limit": 24, "info": "Empty: the deepest deals, taking turns by category" },
+    { "type": "range", "id": "slots", "min": 4, "max": 30, "step": 1, "label": "Offers per category", "default": 15, "info": "Same value as on the campaign page, so both show the same \"up to\" figure" },
+    { "type": "header", "content": "Spacing" },
+    { "type": "range", "id": "padding_top", "min": 0, "max": 60, "step": 4, "unit": "px", "label": "Top padding", "default": 24, "info": "Half on phones" },
+    { "type": "range", "id": "padding_bottom", "min": 0, "max": 60, "step": 4, "unit": "px", "label": "Bottom padding", "default": 32, "info": "Half on phones" }
+  ],
+  "presets": [{ "name": "Campaign spotlight" }]
+}
+{% endschema %}
