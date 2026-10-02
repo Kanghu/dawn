@@ -771,8 +771,9 @@
   color: currentColor;
 }
 
-/* Sold out, at the end of the grid: a dark glass badge, a dimmed photo (the shared
-   card's half opacity turns milky on this ground) and no empty cart ring. */
+/* Sold out, at the end of the grid: a dark glass badge, a dimmed photo and no empty
+   cart ring. Only the filter here: an opacity would outrank the hover image's 0 and
+   show both photos at once. */
 .alc-of .alc-pc__badge--soldout {
   background: rgba(22, 16, 10, 0.72);
   color: var(--alc-of-on-dark);
@@ -782,7 +783,6 @@
 }
 
 .alc-of .alc-pc--sold-out .alc-pc__img {
-  opacity: 1;
   filter: grayscale(0.6) brightness(0.62);
 }
 
