@@ -15,6 +15,10 @@
   - show_excerpt: {Boolean}
   - read_more_label: {String} CTA text. A section setting rather than a locale string:
     locales/en.default.json sits on Shopify's 3400-key ceiling and cannot take another.
+    The default wording ("Citește articolul" saved in a template, or the schema's "Read article"
+    when nothing is saved) is swapped for alc-i18n's read_article in the visitor's language;
+    Translate & Adapt never covered it, so foreign markets showed it in Romanian or English.
+    Any other label is shown as typed.
   - eager: {Boolean} skip lazy loading — pass true for cards above the fold
 {% endcomment %}
 
@@ -68,6 +72,10 @@
     {%- endif -%}
 
     {%- if read_more_label != blank -%}
+      {%- if read_more_label == 'Citește articolul' or read_more_label == 'Read article' -%}
+        {%- capture read_more_label -%}{% render 'alc-i18n', key: 'read_article' %}{%- endcapture -%}
+        {%- assign read_more_label = read_more_label | strip -%}
+      {%- endif -%}
       <span class="alc-article-card__cta" aria-hidden="true">{{ read_more_label | escape }}</span>
     {%- endif -%}
   </div>
