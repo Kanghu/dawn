@@ -17,229 +17,299 @@
         "padding_bottom": 28
       }
     },
-    "rich_text_kqKhDp": {
-      "type": "rich-text",
+    "showroom": {
+      "type": "alc-showroom",
       "blocks": {
-        "heading_z46AMB": {
-          "type": "heading",
+        "stat_surface": {
+          "type": "stat",
           "settings": {
-            "heading": "<strong>Vizitează Showroom-ul Alessandro Design.</strong>",
-            "heading_size": "h2"
+            "value": "5.000+",
+            "label": "m² showroom & depozit"
           }
         },
-        "text_8MyHbF": {
-          "type": "text",
+        "stat_factory": {
+          "type": "stat",
           "settings": {
-            "text": "<p>Descoperă cele mai recente colecții de corpuri de iluminat și decorațiuni interioare, create pentru a aduce eleganță și armonie în casa ta. Inspiră-te din noile tendințe și transformă-ți spațiul într-un loc cu adevărat special!<br/><br/></p>"
-          }
-        }
-      },
-      "block_order": [
-        "heading_z46AMB",
-        "text_8MyHbF"
-      ],
-      "name": "t:sections.rich-text.presets.name",
-      "settings": {
-        "desktop_content_position": "center",
-        "content_alignment": "center",
-        "color_scheme": "scheme-4",
-        "full_width": true,
-        "padding_top": 40,
-        "padding_bottom": 52
-      }
-    },
-    "blocks_nU64y6": {
-      "type": "_blocks",
-      "blocks": {
-        "ai_gen_block_cd6b924_9px4DW": {
-          "type": "ai_gen_block_cd6b924",
-          "settings": {
-            "image": "shopify://shop_images/ChatGPT_Image_Mar_5_2026_12_09_36_PM.png",
-            "image_position": "left",
-            "bevel_size": 5,
-            "title": "<p>Oferte exclusive </p>",
-            "title_font": "roboto_n4",
-            "title_size": 36,
-            "title_bold": true,
-            "title_color": "#121212",
-            "text": "<p>Bucură-te de avantajele unor oferte exclusive disponibile doar în showroomurile noastre și descoperă produse de calitate la prețuri speciale!<br/><br/></p>",
-            "text_font": "roboto_n4",
-            "text_size": 16,
-            "text_bold": false,
-            "text_color": "#121212",
-            "background_color": "#ffffff"
-          },
-          "blocks": {}
-        }
-      },
-      "block_order": [
-        "ai_gen_block_cd6b924_9px4DW"
-      ],
-      "name": "Bevel image with text",
-      "settings": {}
-    },
-    "blocks_E4PNEU": {
-      "type": "_blocks",
-      "blocks": {
-        "ai_gen_block_cd6b924_8bMRLy": {
-          "type": "ai_gen_block_cd6b924",
-          "settings": {
-            "image": "shopify://shop_images/SS1.webp",
-            "image_position": "right",
-            "bevel_size": 5,
-            "title": "<p>Consiliere de specialitate</p>",
-            "title_font": "roboto_n4",
-            "title_size": 36,
-            "title_bold": true,
-            "title_color": "#ffffff",
-            "text": "<p>Beneficiază de consiliere de specialitate pentru a alege produsele ideale care se potrivesc perfect stilului și nevoilor casei tale. Echipa noastră de experți îți oferă sfaturi personalizate și soluții inspirate pentru un decor armonios.</p>",
-            "text_font": "roboto_n4",
-            "text_size": 16,
-            "text_bold": false,
-            "text_color": "#ffffff",
-            "background_color": "#121212"
-          },
-          "blocks": {}
-        }
-      },
-      "block_order": [
-        "ai_gen_block_cd6b924_8bMRLy"
-      ],
-      "name": "Bevel image with text",
-      "settings": {}
-    },
-    "blocks_8fC9rt": {
-      "type": "_blocks",
-      "blocks": {
-        "ai_gen_block_cd6b924_BW7ViH": {
-          "type": "ai_gen_block_cd6b924",
-          "settings": {
-            "image": "shopify://shop_images/SS2.webp",
-            "image_position": "left",
-            "bevel_size": 5,
-            "title": "<p>Optiunea de testare produse</p>",
-            "title_font": "roboto_n4",
-            "title_size": 36,
-            "title_bold": true,
-            "title_color": "#121212",
-            "text": "<p>Profită de opțiunea de testare a produselor înainte de achiziție și asigură-te că faci cea mai bună alegere pentru casa ta. Vino în showroomurile noastre și descoperă confortul și calitatea produselor noastre direct la fața locului!<br/><br/></p>",
-            "text_font": "roboto_n4",
-            "text_size": 16,
-            "text_bold": false,
-            "text_color": "#121212",
-            "background_color": "#ffffff"
-          },
-          "blocks": {}
-        }
-      },
-      "block_order": [
-        "ai_gen_block_cd6b924_BW7ViH"
-      ],
-      "name": "Bevel image with text",
-      "settings": {}
-    },
-    "rich_text_hwKxNU": {
-      "type": "rich-text",
-      "blocks": {
-        "heading_WFqyXp": {
-          "type": "heading",
-          "settings": {
-            "heading": "<strong>Program de Lucru</strong>",
-            "heading_size": "h2"
+            "value": "2023",
+            "label": "anul fabricii proprii"
           }
         },
-        "text_RRdJgh": {
-          "type": "text",
+        "stat_countries": {
+          "type": "stat",
           "settings": {
-            "text": ""
+            "value": "10",
+            "label": "țări deservite"
+          }
+        },
+        "stat_middlemen": {
+          "type": "stat",
+          "settings": {
+            "value": "0",
+            "label": "intermediari"
+          }
+        },
+        "feature_offers": {
+          "type": "feature",
+          "settings": {
+            "icon": "tag",
+            "title": "Oferte exclusive în showroom",
+            "text": "Prețuri de producător și oferte care există doar aici, pe loc. Ce vezi expus se negociază la fața locului, nu într-un coș online."
+          }
+        },
+        "feature_advice": {
+          "type": "feature",
+          "settings": {
+            "icon": "compass",
+            "title": "Consiliere de specialitate",
+            "text": "Îți spunem ce se potrivește cu înălțimea tavanului, cu temperatura de culoare a camerei și cu bugetul tău. Venim cu o recomandare, nu cu o vânzare forțată."
+          }
+        },
+        "feature_test": {
+          "type": "feature",
+          "settings": {
+            "icon": "sparkle",
+            "title": "Testezi înainte să cumperi",
+            "text": "Aprindem corpul, îl dimăm, îți arătăm diferența dintre lumina caldă și cea neutră. Alegi cu ochii tăi, nu după o fotografie."
+          }
+        },
+        "feature_stock": {
+          "type": "feature",
+          "settings": {
+            "icon": "box",
+            "title": "Stocul e la doi pași",
+            "text": "Depozitul e lipit de showroom. Ce alegi azi pleacă, de regulă, tot azi cu tine — fără termen de livrare și fără așteptare."
+          }
+        },
+        "gal_g01": {
+          "type": "gallery_image",
+          "settings": {
+            "image_asset": "alc-showroom-g01.jpg",
+            "zone": "crystal"
+          }
+        },
+        "gal_g02": {
+          "type": "gallery_image",
+          "settings": {
+            "image_asset": "alc-showroom-g02.jpg",
+            "zone": "design"
+          }
+        },
+        "gal_f_offers": {
+          "type": "gallery_image",
+          "settings": {
+            "image_asset": "alc-showroom-f-offers.jpg",
+            "zone": "crystal"
+          }
+        },
+        "gal_g03": {
+          "type": "gallery_image",
+          "settings": {
+            "image_asset": "alc-showroom-g03.jpg",
+            "zone": "bath"
+          }
+        },
+        "gal_g04": {
+          "type": "gallery_image",
+          "settings": {
+            "image_asset": "alc-showroom-g04.jpg",
+            "zone": "crystal"
+          }
+        },
+        "gal_g07": {
+          "type": "gallery_image",
+          "settings": {
+            "image_asset": "alc-showroom-g07.jpg",
+            "zone": "design"
+          }
+        },
+        "gal_f_test": {
+          "type": "gallery_image",
+          "settings": {
+            "image_asset": "alc-showroom-f-test.jpg",
+            "zone": "bath"
+          }
+        },
+        "gal_g12": {
+          "type": "gallery_image",
+          "settings": {
+            "image_asset": "alc-showroom-g12.jpg",
+            "zone": "crystal"
+          }
+        },
+        "gal_g05": {
+          "type": "gallery_image",
+          "settings": {
+            "image_asset": "alc-showroom-g05.jpg",
+            "zone": "design"
+          }
+        },
+        "gal_g06": {
+          "type": "gallery_image",
+          "settings": {
+            "image_asset": "alc-showroom-g06.jpg",
+            "zone": "bath"
+          }
+        },
+        "gal_g08": {
+          "type": "gallery_image",
+          "settings": {
+            "image_asset": "alc-showroom-g08.jpg",
+            "zone": "crystal"
+          }
+        },
+        "gal_g09": {
+          "type": "gallery_image",
+          "settings": {
+            "image_asset": "alc-showroom-g09.jpg",
+            "zone": "bath"
+          }
+        },
+        "gal_g10": {
+          "type": "gallery_image",
+          "settings": {
+            "image_asset": "alc-showroom-g10.jpg",
+            "zone": "design"
+          }
+        },
+        "gal_g11": {
+          "type": "gallery_image",
+          "settings": {
+            "image_asset": "alc-showroom-g11.jpg",
+            "zone": "bath"
+          }
+        },
+        "gal_g13": {
+          "type": "gallery_image",
+          "settings": {
+            "image_asset": "alc-showroom-g13.jpg",
+            "zone": "design"
+          }
+        },
+        "gal_g14": {
+          "type": "gallery_image",
+          "settings": {
+            "image_asset": "alc-showroom-g14.jpg",
+            "zone": "design"
+          }
+        },
+        "gal_g15": {
+          "type": "gallery_image",
+          "settings": {
+            "image_asset": "alc-showroom-g15.jpg",
+            "zone": "design"
+          }
+        },
+        "gal_g16": {
+          "type": "gallery_image",
+          "settings": {
+            "image_asset": "alc-showroom-g16.jpg",
+            "zone": "crystal"
+          }
+        },
+        "gal_f_stock": {
+          "type": "gallery_image",
+          "settings": {
+            "image_asset": "alc-showroom-f-stock.jpg",
+            "zone": "crystal"
           }
         }
       },
       "block_order": [
-        "heading_WFqyXp",
-        "text_RRdJgh"
+        "stat_surface",
+        "stat_factory",
+        "stat_countries",
+        "stat_middlemen",
+        "feature_offers",
+        "feature_advice",
+        "feature_test",
+        "feature_stock",
+        "gal_g01",
+        "gal_g02",
+        "gal_f_offers",
+        "gal_g03",
+        "gal_g04",
+        "gal_g07",
+        "gal_f_test",
+        "gal_g12",
+        "gal_g05",
+        "gal_g06",
+        "gal_g08",
+        "gal_g09",
+        "gal_g10",
+        "gal_g11",
+        "gal_g13",
+        "gal_g14",
+        "gal_g15",
+        "gal_g16",
+        "gal_f_stock"
       ],
-      "name": "t:sections.rich-text.presets.name",
       "settings": {
-        "desktop_content_position": "center",
-        "content_alignment": "center",
-        "color_scheme": "scheme-4",
-        "full_width": true,
-        "padding_top": 16,
-        "padding_bottom": 0
-      }
-    },
-    "image_banner_86wkX3": {
-      "type": "image-banner",
-      "name": "t:sections.image-banner.presets.name",
-      "settings": {
-        "image": "shopify://shop_images/SHVOL_0dc63644-f875-439e-b56c-8d8f7ca21184.webp",
-        "image_overlay_opacity": 0,
-        "image_height": "medium",
-        "desktop_content_position": "middle-center",
-        "show_text_box": true,
-        "desktop_content_alignment": "center",
-        "color_scheme": "",
-        "image_behavior": "fixed",
-        "mobile_content_alignment": "center",
-        "stack_images_on_mobile": true,
-        "show_text_below": true
-      }
-    },
-    "rich_text_gHKfMe": {
-      "type": "rich-text",
-      "blocks": {
-        "text_m7j7pW": {
-          "type": "text",
-          "settings": {
-            "text": "<p><strong>Luni - Vineri: 09:00 - 18:00</strong></p><p><strong>Sambata: 09:00 - 15:00</strong></p><p><strong>Duminica: Inchis</strong></p>"
-          }
-        }
-      },
-      "block_order": [
-        "text_m7j7pW"
-      ],
-      "name": "t:sections.rich-text.presets.name",
-      "settings": {
-        "desktop_content_position": "center",
-        "content_alignment": "center",
-        "color_scheme": "",
-        "full_width": true,
-        "padding_top": 0,
-        "padding_bottom": 0
-      }
-    },
-    "custom_liquid_XKJdPE": {
-      "type": "custom-liquid",
-      "name": "t:sections.custom-liquid.presets.name",
-      "settings": {
-        "custom_liquid": "<div style=\"display:flex; justify-content:center;\">\n  <iframe\n    src=\"https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2845.951236792003!2d26.204163876688852!3d44.49566597107471!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x40b1fe47cdf57acf%3A0xd3b59273c7d1c0e!2sAlessandro%20Design%20-%20Lustre%20si%20Corpuri%20de%20Iluminat!5e0!3m2!1sen!2sro!4v1741853160649!5m2!1sen!2sro\"\n    width=\"600\"\n    height=\"450\"\n    style=\"border:0;\"\n    allowfullscreen\n    loading=\"lazy\"\n    referrerpolicy=\"no-referrer-when-downgrade\">\n  </iframe>\n</div>",
-        "color_scheme": "",
-        "padding_top": 40,
-        "padding_bottom": 52
-      }
-    },
-    "custom_liquid_mQbVp8": {
-      "type": "custom-liquid",
-      "name": "t:sections.custom-liquid.presets.name",
-      "settings": {
-        "custom_liquid": "",
-        "color_scheme": "",
-        "padding_top": 40,
-        "padding_bottom": 52
+        "accent_color": "#c9a26a",
+        "hero_asset": "alc-showroom-hero.jpg",
+        "hero_image_alt": "Zeci de candelabre de cristal aprinse in showroomul Alessandro Design din Afumati",
+        "brandline": "Alessandro Design",
+        "heading": "Showroom Afumați",
+        "subheading": "<p>Peste 5.000 m² în care lumina se vede, nu se descrie. Candelabre de cristal, corpuri LED, oglinzi cu iluminare și obiecte sanitare — toate expuse, aprinse și gata de probat, direct de la producător.</p>",
+        "cta_maps_label": "Deschide în Google Maps",
+        "fact_address_label": "Adresă",
+        "fact_address": "Șos. București–Urziceni nr. 21, Magazin nr. 1 — Afumați, Ilfov",
+        "fact_hours_label": "Program",
+        "fact_hours": "Luni – Vineri 09:00 – 17:00 · Sâmbătă 09:00 – 14:00",
+        "fact_contact_label": "Contact",
+        "fact_contact": "0731 640 968",
+        "intro_eyebrow": "Showroom & depozit",
+        "intro_heading": "Un depozit cât o galerie de lumină",
+        "intro_text": "<p>Nu e un magazin cu trei lustre în vitrină. E hala noastră din Afumați: sute de corpuri aprinse în același timp, de la candelabre clasice de cristal până la sisteme magnetice și benzi LED, cu depozitul chiar în spatele expunerii.</p><p>Fiind producător și importator direct, între raftul de aici și casa ta nu mai stă nimeni.</p>",
+        "intro_asset": "alc-showroom-f-advice.jpg",
+        "features_eyebrow": "De ce să vii",
+        "features_heading": "Patru motive să faci drumul",
+        "features_text": "<p>Online vezi o fotografie. Aici vezi lumina.</p>",
+        "final_asset": "alc-showroom-cinema.jpg",
+        "gallery_eyebrow": "Galerie",
+        "gallery_heading": "Cum arată înăuntru",
+        "gallery_text": "<p>Fotografii făcute în showroom, fără randări și fără decoruri de studio.</p>",
+        "video_eyebrow": "Tur video",
+        "video_heading": "Un tur prin showroom",
+        "video_poster_asset": "alc-showroom-hall.jpg",
+        "visit_eyebrow": "Vizitează-ne",
+        "visit_heading": "Te așteptăm în Afumați",
+        "visit_text": "<p>Ieșirea din București pe DN2, spre Urziceni. Dă-ne un semn înainte dacă vrei să-ți pregătim un anumit model pe masă.</p>",
+        "address_title": "Adresă",
+        "address_street": "Șos. București–Urziceni nr. 21, Magazin nr. 1",
+        "address_locality": "Afumați",
+        "address_region": "Ilfov",
+        "address_postal": "077010",
+        "address_country": "RO",
+        "address_note": "Ieșirea din București pe DN2 (Șos. București–Urziceni), în zona Doraly. Intrarea se face direct din șosea.",
+        "hours_title": "Program",
+        "hours_weekdays_label": "Luni – Vineri",
+        "hours_weekdays": "09:00 – 17:00",
+        "hours_saturday_label": "Sâmbătă",
+        "hours_saturday": "09:00 – 14:00",
+        "hours_sunday_label": "Duminică",
+        "hours_sunday": "Închis",
+        "closed_label": "Închis",
+        "contact_title": "Contact",
+        "phone": "0731 640 968",
+        "whatsapp": "https://wa.me/40731640968",
+        "whatsapp_label": "Scrie-ne pe WhatsApp",
+        "email": "",
+        "latitude": "44.5034297",
+        "longitude": "26.2123503",
+        "map_embed_src": "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2845.57230664058!2d26.212350299999997!3d44.5034297!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x40b1f7b5e85e00fb%3A0x5f52bc1c89e3a691!2sDepozit%20Iluminat!5e0!3m2!1sen!2sro!4v1785749350264!5m2!1sen!2sro",
+        "map_title": "Harta showroomului Alessandro Design din Afumați",
+        "map_consent_label": "Afișează harta",
+        "map_preview_asset": "alc-showroom-exterior.jpg",
+        "cta_directions_label": "Navighează",
+        "enable_schema": true,
+        "business_name": "Alessandro Design Showroom",
+        "price_range": "$$",
+        "schema_parent_org": true
       }
     }
   },
   "order": [
     "main",
-    "rich_text_kqKhDp",
-    "blocks_nU64y6",
-    "blocks_E4PNEU",
-    "blocks_8fC9rt",
-    "rich_text_hwKxNU",
-    "image_banner_86wkX3",
-    "rich_text_gHKfMe",
-    "custom_liquid_XKJdPE",
-    "custom_liquid_mQbVp8"
+    "showroom"
   ]
 }

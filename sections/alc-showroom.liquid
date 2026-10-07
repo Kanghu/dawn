@@ -1,15 +1,26 @@
 {%- comment -%}
-  alc-showroom — the Alessandro Design Showroom page.
+  alc-showroom — the Alessandro Design Showroom page, in the same visual language
+  as the company page (alc-company): photo hero with a white figures card over its
+  foot, a photo + text split, value cards on the warm ground, a dark gallery band,
+  the visit card (live open/closed status, today's hours, Google Maps and Waze)
+  and the dark closing card.
 
-  Everything on the page is driven by section settings and blocks so the copy,
-  media, address and opening hours can be edited (and translated per market)
-  from the theme editor. Default media ships in assets/ as alc-showroom-*.jpg.
+  Copy, media, address and opening hours are section settings and blocks, so they
+  can be edited (and translated per market in Translate & Adapt) from the theme
+  editor. Setting and block ids are kept stable on purpose: T&A stores its copies
+  per id, and renaming one would drop every market back to Romanian.
+
+  UI text that is not page copy (the live status, the gallery zones and alt texts,
+  "see all photos") comes from the per-language dictionary below, like
+  alc-announcement-showroom: en.default.json is at the key cap, and T&A's
+  automatic translation has been off since August.
 
   Performance notes:
-  - the Google Maps iframe is only created after a click (no third-party frame
-    on first paint, and nothing to consent to until the visitor asks for it)
+  - the Google Maps iframe is only created after a click
   - the video is likewise click-to-load
-  - only the hero image is eager/high priority
+  - only the hero image is eager/high priority; everything else is lazy
+  - the open/closed status is computed in the browser (the page is cached) by a
+    tiny inline script right after the markup it fills, so it never flickers
 {%- endcomment -%}
 
 {{ 'alc-showroom.css' | asset_url | stylesheet_tag }}
@@ -26,26 +37,118 @@
     assign coords = lat | append: ',' | append: lon
     assign maps_link = 'https://www.google.com/maps/search/?api=1&query=' | append: coords
     assign directions_link = 'https://www.google.com/maps/dir/?api=1&destination=' | append: coords
+    assign waze_link = 'https://waze.com/ul?ll=' | append: coords | append: '&navigate=yes'
   endif
 
   if s.maps_url != blank
     assign maps_link = s.maps_url
   endif
 
-  assign phone_raw = s.phone | remove: ' ' | remove: '-' | remove: '(' | remove: ')'
+  assign phone_raw = s.phone | remove: ' ' | remove: '-' | remove: '(' | remove: ')' | remove: '.'
 
   assign closed_word = s.closed_label | default: 'Închis' | strip
 
   comment
-    Chrome that is not part of the page copy falls back to the theme's own
-    translated strings, so it follows the visitor's language with no per-market
-    setup. Anything the merchant types stays a setting and is translated in
-    the admin alongside the rest of the page.
+    Chrome that is not page copy falls back to the theme's own translated strings.
   endcomment
   assign play_video_label = 'products.product.media.play_video' | t
 
   comment
-    Split "09:00 - 17:00" (either dash) into opens/closes for the JSON-LD below.
+    w: open now | until [t] | closed now | opens [d] at [t] | today | tomorrow | on Monday
+       (same wording as the announcement bar, so the two never disagree)
+    z: gallery zones: all | crystal | design | bath & mirrors | see all photos
+    za: gallery alt text per zone, used when a photo has no alt of its own
+  endcomment
+  assign lang = request.locale.iso_code | downcase | slice: 0, 2
+  case lang
+    when 'en'
+      assign w = 'Open now|until [t]|Closed now|Opens [d] at [t]|today|tomorrow|Monday'
+      assign z = 'All|Crystal|Design|Bath & mirrors|See all photos'
+      assign za = 'Crystal chandeliers in the Alessandro Design showroom in Afumați|Designer lighting in the Alessandro Design showroom in Afumați|LED mirrors and bathroom fittings in the Alessandro Design showroom in Afumați'
+    when 'hu'
+      assign w = 'Most nyitva|[t]-ig|Most zárva|Nyitás: [d] [t]|ma|holnap|hétfőn'
+      assign z = 'Összes|Kristály|Design|Fürdő és tükrök|Az összes fotó'
+      assign za = 'Kristálycsillárok az Alessandro Design afumați-i bemutatótermében|Design lámpák az Alessandro Design afumați-i bemutatótermében|LED-es tükrök és fürdőszobai berendezések az Alessandro Design afumați-i bemutatótermében'
+    when 'pl'
+      assign w = 'Otwarte teraz|do [t]|Teraz zamknięte|Otwieramy [d] o [t]|dziś|jutro|w poniedziałek'
+      assign z = 'Wszystkie|Kryształ|Design|Łazienka i lustra|Zobacz wszystkie zdjęcia'
+      assign za = 'Kryształowe żyrandole w salonie Alessandro Design w Afumați|Designerskie oświetlenie w salonie Alessandro Design w Afumați|Lustra LED i wyposażenie łazienek w salonie Alessandro Design w Afumați'
+    when 'el'
+      assign w = 'Ανοιχτά τώρα|έως τις [t]|Κλειστά τώρα|Ανοίγουμε [d] στις [t]|σήμερα|αύριο|τη Δευτέρα'
+      assign z = 'Όλα|Κρύσταλλο|Design|Μπάνιο & καθρέφτες|Δείτε όλες τις φωτογραφίες'
+      assign za = 'Κρυστάλλινοι πολυέλαιοι στο showroom της Alessandro Design στο Afumați|Φωτιστικά design στο showroom της Alessandro Design στο Afumați|Καθρέφτες LED και είδη μπάνιου στο showroom της Alessandro Design στο Afumați'
+    when 'bg'
+      assign w = 'Отворено сега|до [t]|Затворено сега|Отваряме [d] в [t]|днес|утре|в понеделник'
+      assign z = 'Всички|Кристал|Дизайн|Баня и огледала|Вижте всички снимки'
+      assign za = 'Кристални полилеи в шоурума на Alessandro Design в Афумаци|Дизайнерско осветление в шоурума на Alessandro Design в Афумаци|LED огледала и санитария в шоурума на Alessandro Design в Афумаци'
+    when 'it'
+      assign w = 'Aperto ora|fino alle [t]|Chiuso ora|Apriamo [d] alle [t]|oggi|domani|lunedì'
+      assign z = 'Tutte|Cristallo|Design|Bagno e specchi|Vedi tutte le foto'
+      assign za = 'Lampadari di cristallo nello showroom Alessandro Design di Afumați|Illuminazione di design nello showroom Alessandro Design di Afumați|Specchi LED e arredo bagno nello showroom Alessandro Design di Afumați'
+    when 'fr'
+      assign w = 'Ouvert|jusqu’à [t]|Fermé|Ouverture [d] à [t]|aujourd’hui|demain|lundi'
+      assign z = 'Tout|Cristal|Design|Bain et miroirs|Voir toutes les photos'
+      assign za = 'Lustres en cristal dans le showroom Alessandro Design d’Afumați|Luminaires design dans le showroom Alessandro Design d’Afumați|Miroirs LED et sanitaires dans le showroom Alessandro Design d’Afumați'
+    when 'cs'
+      assign w = 'Nyní otevřeno|do [t]|Nyní zavřeno|Otevíráme [d] v [t]|dnes|zítra|v pondělí'
+      assign z = 'Vše|Křišťál|Design|Koupelna a zrcadla|Zobrazit všechny fotografie'
+      assign za = 'Křišťálové lustry v showroomu Alessandro Design v Afumați|Designová svítidla v showroomu Alessandro Design v Afumați|LED zrcadla a koupelnové vybavení v showroomu Alessandro Design v Afumați'
+    when 'sk'
+      assign w = 'Teraz otvorené|do [t]|Teraz zatvorené|Otvárame [d] o [t]|dnes|zajtra|v pondelok'
+      assign z = 'Všetko|Krištáľ|Dizajn|Kúpeľňa a zrkadlá|Zobraziť všetky fotografie'
+      assign za = 'Krištáľové lustre v showroome Alessandro Design v Afumați|Dizajnové svietidlá v showroome Alessandro Design v Afumați|LED zrkadlá a kúpeľňové vybavenie v showroome Alessandro Design v Afumați'
+    when 'hr'
+      assign w = 'Sada otvoreno|do [t]|Sada zatvoreno|Otvaramo [d] u [t]|danas|sutra|u ponedjeljak'
+      assign z = 'Sve|Kristal|Dizajn|Kupaonica i ogledala|Pogledajte sve fotografije'
+      assign za = 'Kristalni lusteri u salonu Alessandro Design u Afumațiju|Dizajnerska rasvjeta u salonu Alessandro Design u Afumațiju|LED ogledala i kupaonska oprema u salonu Alessandro Design u Afumațiju'
+    when 'de'
+      assign w = 'Jetzt geöffnet|bis [t] Uhr|Jetzt geschlossen|Wir öffnen [d] um [t] Uhr|heute|morgen|am Montag'
+      assign z = 'Alle|Kristall|Design|Bad & Spiegel|Alle Fotos ansehen'
+      assign za = 'Kristallkronleuchter im Showroom von Alessandro Design in Afumați|Designerleuchten im Showroom von Alessandro Design in Afumați|LED-Spiegel und Badausstattung im Showroom von Alessandro Design in Afumați'
+    else
+      assign w = 'Deschis acum|până la [t]|Închis acum|Deschidem [d] la [t]|azi|mâine|luni'
+      assign z = 'Toate|Cristal|Design|Baie și oglinzi|Vezi toate fotografiile'
+      assign za = 'Candelabre de cristal in showroomul Alessandro Design din Afumati|Corpuri de iluminat de design in showroomul Alessandro Design din Afumati|Oglinzi LED si obiecte sanitare in showroomul Alessandro Design din Afumati'
+  endcase
+  assign t = w | split: '|'
+  assign zl = z | split: '|'
+  assign zone_alts = za | split: '|'
+
+  comment
+    Opening hours for the status, read from the same settings the hours table shows:
+    "weekday:opens-closes" in minutes, 0 = Sunday. A range that does not parse
+    (e.g. "Închis") leaves that day closed.
+  endcomment
+  assign hours_spec = ''
+  assign day_groups = '1,2,3,4,5;6;0' | split: ';'
+  for group in day_groups
+    case forloop.index
+      when 1
+        assign range = s.hours_weekdays
+      when 2
+        assign range = s.hours_saturday
+      else
+        assign range = s.hours_sunday
+    endcase
+    assign r = range | replace: '-', '–' | replace: '.', ':' | split: '–'
+    if r.size == 2
+      assign o = r[0] | strip | split: ':'
+      assign c = r[1] | strip | split: ':'
+      assign o_min = o[1] | default: 0 | plus: 0
+      assign c_min = c[1] | default: 0 | plus: 0
+      assign om = o[0] | plus: 0 | times: 60 | plus: o_min
+      assign cm = c[0] | plus: 0 | times: 60 | plus: c_min
+      if om > 0 and cm > om and cm <= 1440
+        assign days = group | split: ','
+        for d in days
+          assign hours_spec = hours_spec | append: d | append: ':' | append: om | append: '-' | append: cm | append: ','
+        endfor
+      endif
+    endif
+  endfor
+
+  comment
+    The same split, kept for the JSON-LD below.
   endcomment
   assign mf_parts = s.hours_weekdays | replace: '-', '–' | split: '–'
   assign sat_parts = s.hours_saturday | replace: '-', '–' | split: '–'
@@ -56,31 +159,46 @@
   assign gallery_blocks = section.blocks | where: 'type', 'gallery_image'
 
   comment
-    Display headings run one weight lighter than the picked face when that
-    weight exists — at 50-84px a light sans reads far better than a regular
-    one. Falls back to the picked weight when there is no lighter cut.
+    Gallery: which zones are in use (the filter shows from two up), and how many
+    photos show before "see all" (two rows of four on desktop, three of two on phones).
   endcomment
-  assign display_font_light = s.display_font | font_modify: 'weight', '300'
+  assign zones_used = ''
+  for block in gallery_blocks
+    assign zkey = block.settings.zone | default: 'crystal'
+    unless zones_used contains zkey
+      assign zones_used = zones_used | append: zkey | append: ','
+    endunless
+  endfor
+  assign zone_count = zones_used | split: ',' | size
+  assign gallery_cap = 8
+
+  comment
+    Dawn's reveal-on-scroll (assets/animations.js), only when the theme setting is on.
+  endcomment
+  assign reveal = ''
+  if settings.animations_reveal_on_scroll
+    assign reveal = ' scroll-trigger animate--slide-in'
+  endif
+
+  assign arrow = '<svg aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>'
 -%}
 
 {%- style -%}
-  {%- if s.display_font -%}
-    {{ s.display_font | font_face: font_display: 'swap' }}
-  {%- endif -%}
-  {%- if display_font_light -%}
-    {{ display_font_light | font_face: font_display: 'swap' }}
-  {%- endif -%}
-
   #alcshow-{{ section.id }} {
-    --alcshow-accent: {{ s.accent_color | default: '#c8a668' }};
-    {%- if s.display_font %}
-    --alcshow-display-font: {{ s.display_font.family }}, {{ s.display_font.fallback_families }};
-    --alcshow-display-weight: {% if display_font_light %}{{ display_font_light.weight }}{% else %}{{ s.display_font.weight }}{% endif %};
-    {%- endif %}
+    --alcshow-gold: {{ s.accent_color | default: '#c9a26a' }};
   }
 {%- endstyle -%}
 
-<div class="alcshow" id="alcshow-{{ section.id }}">
+<div
+  class="alcshow"
+  id="alcshow-{{ section.id }}"
+  data-hours="{{ hours_spec }}"
+  data-t-open="{{ t[0] | escape }}"
+  data-t-until="{{ t[1] | escape }}"
+  data-t-closed="{{ t[2] | escape }}"
+  data-t-opens="{{ t[3] | escape }}"
+  data-t-days="{{ t[4] | escape }}|{{ t[5] | escape }}|{{ t[6] | escape }}"
+>
   {%- comment -%} ---------------------------------------------------- HERO {%- endcomment -%}
   <section class="alcshow__hero">
     <div class="alcshow__hero-media">
@@ -89,182 +207,254 @@
         asset: s.hero_asset,
         alt: s.hero_image_alt,
         sizes: '100vw',
+        widths: '750,1100,1500,2000,2400',
         loading: 'eager',
         fetchpriority: 'high'
       -%}
     </div>
 
-    <div class="alcshow__hero-inner">
-      <div class="alcshow__wrap">
-        {%- if s.brandline != blank -%}
-          <span class="alcshow__hero-brandline">{{ s.brandline }}</span>
+    <div class="page-width alcshow__hero-inner">
+      {%- if s.brandline != blank -%}
+        <p class="alcshow__eyebrow alcshow__eyebrow--light">{{ s.brandline }}</p>
+      {%- endif -%}
+
+      {%- if s.heading != blank -%}
+        <h1 class="alcshow__hero-title">{% render 'alc-nbsp', text: s.heading %}</h1>
+      {%- endif -%}
+
+      {%- if s.subheading != blank -%}
+        <div class="alcshow__hero-lead">{{ s.subheading }}</div>
+      {%- endif -%}
+
+      <div class="alcshow__actions">
+        {%- if maps_link -%}
+          <a class="alcshow__btn alcshow__btn--light" href="{{ maps_link }}" target="_blank" rel="noopener">
+            {{- s.cta_maps_label | default: 'Deschide în Google Maps' -}}
+            {{- arrow -}}
+          </a>
         {%- endif -%}
-
-        {%- if s.heading != blank -%}
-          <h1 class="alcshow__display">{{ s.heading }}</h1>
-        {%- endif -%}
-
-        {%- if s.subheading != blank -%}
-          <div class="alcshow__lede">{{ s.subheading }}</div>
-        {%- endif -%}
-
-        <div class="alcshow__actions">
-          {%- if maps_link -%}
-            <a
-              href="{{ maps_link }}"
-              class="alcshow__btn alcshow__btn--solid"
-              target="_blank"
-              rel="noopener"
-            >
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M12 21s7-6.2 7-11a7 7 0 1 0-14 0c0 4.8 7 11 7 11z"/><circle cx="12" cy="10" r="2.6"/></svg>
-              {{ s.cta_maps_label | default: 'Deschide în Google Maps' }}
-            </a>
-          {%- endif -%}
-
-          {%- if s.phone != blank -%}
-            <a href="tel:{{ phone_raw }}" class="alcshow__btn alcshow__btn--ghost">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M6.6 3h3l1.5 4-2.2 1.6a12 12 0 0 0 5.5 5.5L16 11.9l4 1.5v3a2 2 0 0 1-2.2 2A16.5 16.5 0 0 1 3.1 5.2 2 2 0 0 1 5.1 3z"/></svg>
-              {{ s.phone }}
-            </a>
-          {%- endif -%}
-        </div>
-
-        {%- if s.fact_address != blank or s.fact_hours != blank or s.fact_contact != blank -%}
-          <dl class="alcshow__herofacts">
-            {%- if s.fact_address != blank -%}
-              <div class="alcshow__herofact">
-                <dt>{{ s.fact_address_label | default: 'Adresă' }}</dt>
-                <dd>{{ s.fact_address }}</dd>
-              </div>
-            {%- endif -%}
-            {%- if s.fact_hours != blank -%}
-              <div class="alcshow__herofact">
-                <dt>{{ s.fact_hours_label | default: 'Program' }}</dt>
-                <dd>{{ s.fact_hours }}</dd>
-              </div>
-            {%- endif -%}
-            {%- if s.fact_contact != blank -%}
-              <div class="alcshow__herofact">
-                <dt>{{ s.fact_contact_label | default: 'Contact' }}</dt>
-                <dd>{{ s.fact_contact }}</dd>
-              </div>
-            {%- endif -%}
-          </dl>
+        {%- if s.phone != blank -%}
+          <a class="alcshow__btn alcshow__btn--glass" href="tel:{{ phone_raw }}">
+            <svg aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M6.6 3h3l1.5 4-2.2 1.6a12 12 0 0 0 5.5 5.5L16 11.9l4 1.5v3a2 2 0 0 1-2.2 2A16.5 16.5 0 0 1 3.1 5.2 2 2 0 0 1 5.1 3z"/></svg>
+            {{- s.phone -}}
+          </a>
         {%- endif -%}
       </div>
+
+      {%- if hours_spec != '' -%}
+        <p class="alcshow__status alcshow__status--glass" data-alcshow-status>
+          <span class="alcshow__status-dot" aria-hidden="true"></span>
+          <span data-alcshow-status-text></span>
+        </p>
+      {%- endif -%}
     </div>
   </section>
 
-  {%- comment -%} --------------------------------------------- INTRO + STATS {%- endcomment -%}
-  {%- if s.intro_heading != blank or s.intro_text != blank or stat_blocks.size > 0 -%}
-    <section class="alcshow__intro">
-      <div class="alcshow__wrap">
-        <div class="alcshow__intro-grid" data-alcshow-reveal>
-          <div>
-            {%- if s.intro_eyebrow != blank -%}
-              <p class="alcshow__eyebrow">{{ s.intro_eyebrow }}</p>
-            {%- endif -%}
-            {%- if s.intro_heading != blank -%}
-              <h2 class="alcshow__display">{{ s.intro_heading }}</h2>
-            {%- endif -%}
+  {%- if hours_spec != '' -%}
+    <script>
+      (function () {
+        if (window.alcShowStatus) return;
+        var DAY = { Sun: 0, Mon: 1, Tue: 2, Wed: 3, Thu: 4, Fri: 5, Sat: 6 };
+        var hhmm = function (m) {
+          var h = Math.floor(m / 60), mm = m % 60;
+          return (h < 10 ? '0' : '') + h + ':' + (mm < 10 ? '0' : '') + mm;
+        };
+        window.alcShowStatus = function (root) {
+          if (!root || !window.Intl || !Intl.DateTimeFormat.prototype.formatToParts) return;
+          var hours = {};
+          (root.getAttribute('data-hours') || '').split(',').forEach(function (p) {
+            if (!p) return;
+            var a = p.split(':'), r = a[1].split('-');
+            hours[+a[0]] = [+r[0], +r[1]];
+          });
+          var parts = {};
+          try {
+            new Intl.DateTimeFormat('en-GB', { timeZone: 'Europe/Bucharest', weekday: 'short', hour: 'numeric', minute: 'numeric', hourCycle: 'h23' })
+              .formatToParts(new Date())
+              .forEach(function (p) { parts[p.type] = p.value; });
+          } catch (e) { return; }
+          var t = function (k) { return root.getAttribute('data-t-' + k) || ''; };
+          var days = t('days').split('|');
+          var day = DAY[parts.weekday], mins = +parts.hour * 60 + +parts.minute, today = hours[day];
+          var open = !!(today && mins >= today[0] && mins < today[1]);
+          var text;
+          if (open) {
+            text = t('open') + ' · ' + t('until').replace('[t]', hhmm(today[1]));
+          } else {
+            var label = '', at = 0;
+            if (today && mins < today[0]) { label = days[0]; at = today[0]; }
+            else {
+              for (var i = 1; i <= 7; i++) {
+                var nd = (day + i) % 7;
+                if (!hours[nd]) continue;
+                at = hours[nd][0];
+                if (i === 1) label = days[1];
+                else if (nd === 1) label = days[2];
+                else {
+                  try { label = new Intl.DateTimeFormat(document.documentElement.lang || 'ro', { weekday: 'long', timeZone: 'UTC' }).format(new Date(Date.UTC(2024, 0, 7 + nd))); } catch (e) {}
+                }
+                break;
+              }
+            }
+            text = t('closed') + (label ? ' · ' + t('opens').replace('[d]', label).replace('[t]', hhmm(at)) : '');
+          }
+          Array.prototype.forEach.call(root.querySelectorAll('[data-alcshow-status]'), function (el) {
+            el.setAttribute('data-open', open ? '1' : '0');
+            var tx = el.querySelector('[data-alcshow-status-text]');
+            if (tx) tx.textContent = text;
+          });
+          Array.prototype.forEach.call(root.querySelectorAll('[data-alcshow-days]'), function (row) {
+            var on = (',' + row.getAttribute('data-alcshow-days') + ',').indexOf(',' + day + ',') > -1;
+            row.classList.toggle('is-today', on);
+          });
+        };
+      })();
+      window.alcShowStatus(document.getElementById('alcshow-{{ section.id }}'));
+    </script>
+  {%- endif -%}
+
+  {%- comment -%} -------------------------------------------- KEY FIGURES {%- endcomment -%}
+  {%- if stat_blocks.size > 0 -%}
+    <div class="page-width">
+      <dl class="alcshow__stats alcshow__stats--{{ stat_blocks.size }}">
+        {%- for block in stat_blocks -%}
+          <div class="alcshow__stat" {{ block.shopify_attributes }}>
+            <dt>{{ block.settings.label }}</dt>
+            <dd>{{ block.settings.value }}</dd>
           </div>
+        {%- endfor -%}
+      </dl>
+    </div>
+  {%- endif -%}
+
+  {%- comment -%} ------------------------------------------- STORY (split) {%- endcomment -%}
+  {%- if s.intro_heading != blank or s.intro_text != blank -%}
+    {%- liquid
+      assign has_intro_img = false
+      if s.intro_image != blank or s.intro_asset != blank
+        assign has_intro_img = true
+      endif
+    -%}
+    <section class="page-width alcshow__block">
+      <div class="alcshow__split{% unless has_intro_img %} alcshow__split--text{% endunless %}">
+        {%- if has_intro_img -%}
+          <div class="alcshow__split-media{{ reveal }}">
+            {%- render 'alc-showroom-picture',
+              image: s.intro_image,
+              asset: s.intro_asset,
+              alt: s.hero_image_alt,
+              widths: '600,900,1200,1600',
+              sizes: '(min-width: 990px) 55vw, 100vw'
+            -%}
+          </div>
+        {%- endif -%}
+        <div class="alcshow__split-copy{{ reveal }}">
+          {%- if s.intro_eyebrow != blank -%}
+            <p class="alcshow__eyebrow">{{ s.intro_eyebrow }}</p>
+          {%- endif -%}
+          {%- if s.intro_heading != blank -%}
+            <h2 class="alcshow__title">{% render 'alc-nbsp', text: s.intro_heading %}</h2>
+          {%- endif -%}
           {%- if s.intro_text != blank -%}
-            <div class="alcshow__lede">{{ s.intro_text }}</div>
+            <div class="alcshow__intro">{{ s.intro_text }}</div>
           {%- endif -%}
         </div>
-
-        {%- if stat_blocks.size > 0 -%}
-          <dl class="alcshow__stats" data-alcshow-reveal>
-            {%- for block in stat_blocks -%}
-              <div class="alcshow__stat" {{ block.shopify_attributes }}>
-                <dt>{{ block.settings.value }}</dt>
-                <dd>{{ block.settings.label }}</dd>
-              </div>
-            {%- endfor -%}
-          </dl>
-        {%- endif -%}
       </div>
     </section>
   {%- endif -%}
 
-  {%- comment -%} ------------------------------------------------- FEATURES {%- endcomment -%}
+  {%- comment -%} ------------------------------------------------ FEATURES {%- endcomment -%}
   {%- if feature_blocks.size > 0 -%}
-    <section class="alcshow__features">
-      <div class="alcshow__wrap">
-        <div data-alcshow-reveal>
-          {%- if s.features_eyebrow != blank -%}
-            <p class="alcshow__eyebrow">{{ s.features_eyebrow }}</p>
-          {%- endif -%}
-          {%- if s.features_heading != blank -%}
-            <h2 class="alcshow__display">{{ s.features_heading }}</h2>
-          {%- endif -%}
-          {%- if s.features_text != blank -%}
-            <div class="alcshow__lede">{{ s.features_text }}</div>
-          {%- endif -%}
-        </div>
+    <section class="page-width alcshow__block">
+      <header class="alcshow__head">
+        {%- if s.features_eyebrow != blank -%}
+          <p class="alcshow__eyebrow">{{ s.features_eyebrow }}</p>
+        {%- endif -%}
+        {%- if s.features_heading != blank -%}
+          <h2 class="alcshow__title">{% render 'alc-nbsp', text: s.features_heading %}</h2>
+        {%- endif -%}
+      </header>
 
-        <div class="alcshow__feature-grid" data-alcshow-reveal>
-          {%- for block in feature_blocks -%}
-            <div class="alcshow__feature" {{ block.shopify_attributes }}>
-              <div class="alcshow__feature-icon" aria-hidden="true">
-                {%- case block.settings.icon -%}
-                  {%- when 'tag' -%}
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M3 12.5V4a1 1 0 0 1 1-1h8.5L21 11.5 12.5 20 3 12.5z"/><circle cx="7.5" cy="7.5" r="1.4"/></svg>
-                  {%- when 'compass' -%}
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><circle cx="12" cy="12" r="9"/><path d="M15.6 8.4l-2.1 5.1-5.1 2.1 2.1-5.1z"/></svg>
-                  {%- when 'sparkle' -%}
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M12 3l1.9 5.6L19.5 10l-5.6 1.9L12 17.5l-1.9-5.6L4.5 10l5.6-1.4z"/><path d="M18.5 15.5l.7 2 2 .7-2 .7-.7 2-.7-2-2-.7 2-.7z"/></svg>
-                  {%- when 'box' -%}
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M21 8.5L12 3.5 3 8.5v7l9 5 9-5z"/><path d="M3 8.5l9 5 9-5M12 13.5V20.5"/></svg>
-                  {%- when 'shield' -%}
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M12 3l7.5 3v5.5c0 4.4-3.1 8.1-7.5 9.5-4.4-1.4-7.5-5.1-7.5-9.5V6z"/><path d="M9 12l2.2 2.2L15.5 10"/></svg>
-                  {%- else -%}
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M9 18h6M10 21h4"/><path d="M12 3a6 6 0 0 0-3.5 10.9c.4.3.6.8.6 1.3V16h5.8v-.8c0-.5.2-1 .6-1.3A6 6 0 0 0 12 3z"/></svg>
-                {%- endcase -%}
-              </div>
-              {%- if block.settings.title != blank -%}
-                <h3>{{ block.settings.title }}</h3>
-              {%- endif -%}
-              {%- if block.settings.text != blank -%}
-                <p>{{ block.settings.text }}</p>
-              {%- endif -%}
-            </div>
-          {%- endfor -%}
-        </div>
-      </div>
+      <ul class="alcshow__values alcshow__values--{{ feature_blocks.size }}" role="list"{% if reveal != blank %} data-cascade{% endif %}>
+        {%- for block in feature_blocks -%}
+          <li class="alcshow__value{{ reveal }}" style="--animation-order: {{ forloop.index }};" {{ block.shopify_attributes }}>
+            <span class="alcshow__value-icon" aria-hidden="true">
+              {%- case block.settings.icon -%}
+                {%- when 'tag' -%}
+                  <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M20.6 13.4 13.4 20.6a2 2 0 0 1-2.8 0L3 13V3h10l7.6 7.6a2 2 0 0 1 0 2.8z"/><circle cx="7.5" cy="7.5" r="1.5"/></svg>
+                {%- when 'compass' -%}
+                  <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M15.6 8.4l-2.1 5.1-5.1 2.1 2.1-5.1z"/></svg>
+                {%- when 'sparkle' -%}
+                  <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l1.9 5.6L19.5 10l-5.6 1.9L12 17.5l-1.9-5.6L4.5 10l5.6-1.4z"/><path d="M18.5 15.5l.7 2 2 .7-2 .7-.7 2-.7-2-2-.7 2-.7z"/></svg>
+                {%- when 'box' -%}
+                  <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M21 8.5L12 3.5 3 8.5v7l9 5 9-5z"/><path d="M3 8.5l9 5 9-5M12 13.5V20.5"/></svg>
+                {%- when 'shield' -%}
+                  <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l7.5 3v5.5c0 4.4-3.1 8.1-7.5 9.5-4.4-1.4-7.5-5.1-7.5-9.5V6z"/><path d="M9 12l2.2 2.2L15.5 10"/></svg>
+                {%- else -%}
+                  <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18h6M10 21h4"/><path d="M12 3a6 6 0 0 0-3.5 10.9c.4.3.6.8.6 1.3V16h5.8v-.8c0-.5.2-1 .6-1.3A6 6 0 0 0 12 3z"/></svg>
+              {%- endcase -%}
+            </span>
+            {%- if block.settings.title != blank -%}
+              <h3 class="alcshow__value-title">{% render 'alc-nbsp', text: block.settings.title %}</h3>
+            {%- endif -%}
+            {%- if block.settings.text != blank -%}
+              <p class="alcshow__value-text">{{ block.settings.text }}</p>
+            {%- endif -%}
+          </li>
+        {%- endfor -%}
+      </ul>
     </section>
   {%- endif -%}
 
   {%- comment -%} -------------------------------------------------- GALLERY {%- endcomment -%}
   {%- if gallery_blocks.size > 0 -%}
-    <section class="alcshow__gallery">
-      <div class="alcshow__wrap">
-        <div class="alcshow__gallery-head" data-alcshow-reveal>
+    <section class="alcshow__gallery" data-alcshow-gallery-section>
+      <div class="page-width">
+        <header class="alcshow__head alcshow__head--row">
           <div>
             {%- if s.gallery_eyebrow != blank -%}
               <p class="alcshow__eyebrow">{{ s.gallery_eyebrow }}</p>
             {%- endif -%}
             {%- if s.gallery_heading != blank -%}
-              <h2 class="alcshow__display">{{ s.gallery_heading }}</h2>
+              <h2 class="alcshow__title">{% render 'alc-nbsp', text: s.gallery_heading %}</h2>
+            {%- endif -%}
+            {%- if s.gallery_text != blank -%}
+              <div class="alcshow__intro">{{ s.gallery_text }}</div>
             {%- endif -%}
           </div>
-          {%- if s.gallery_text != blank -%}
-            <div class="alcshow__lede">{{ s.gallery_text }}</div>
+
+          {%- if zone_count > 1 -%}
+            <div class="alcshow__chips" role="group" aria-label="{{ s.gallery_heading | default: s.gallery_eyebrow | escape }}" data-alcshow-filter>
+              <button type="button" class="alcshow__chip" aria-pressed="true" data-zone="all">{{ zl[0] }}</button>
+              {%- if zones_used contains 'crystal' -%}
+                <button type="button" class="alcshow__chip" aria-pressed="false" data-zone="crystal">{{ zl[1] }}</button>
+              {%- endif -%}
+              {%- if zones_used contains 'design' -%}
+                <button type="button" class="alcshow__chip" aria-pressed="false" data-zone="design">{{ zl[2] }}</button>
+              {%- endif -%}
+              {%- if zones_used contains 'bath' -%}
+                <button type="button" class="alcshow__chip" aria-pressed="false" data-zone="bath">{{ zl[3] }}</button>
+              {%- endif -%}
+            </div>
           {%- endif -%}
-        </div>
+        </header>
 
         {%- comment -%}
-          The lightbox chrome is built in JS, so its labels are handed over here
-          from the theme's own translated strings rather than hardcoded.
+          The lightbox chrome is built in JS; its labels come from the theme's
+          translated strings. Photos past the cap carry data-extra and stay hidden
+          until "see all"; the lightbox still steps through them.
         {%- endcomment -%}
-        <div
-          class="alcshow__grid"
+        <ul
+          class="alcshow__photos"
+          role="list"
           data-alcshow-gallery
-          data-alcshow-reveal
+          data-alcshow-cap="{{ gallery_cap }}"
           data-alcshow-label-close="{{ 'accessibility.close' | t | escape }}"
           data-alcshow-label-prev="{{ 'sections.slideshow.previous_slideshow' | t | escape }}"
           data-alcshow-label-next="{{ 'sections.slideshow.next_slideshow' | t | escape }}"
+          {% if reveal != blank %}data-cascade{% endif %}
         >
+          {%- assign shown = 0 -%}
           {%- for block in gallery_blocks -%}
             {%- liquid
               assign b = block.settings
@@ -278,223 +468,304 @@
                 assign full_src = ''
               endif
 
-              case b.size
-                when 'wide'
-                  assign tile_sizes = '(min-width: 750px) 66vw, 50vw'
-                when 'full'
-                  assign tile_sizes = '100vw'
+              assign zkey = b.zone | default: 'crystal'
+              case zkey
+                when 'design'
+                  assign zi = 1
+                  assign zone_label = zl[2]
+                when 'bath'
+                  assign zi = 2
+                  assign zone_label = zl[3]
                 else
-                  assign tile_sizes = '(min-width: 750px) 33vw, 50vw'
+                  assign zi = 0
+                  assign zone_label = zl[1]
               endcase
+              assign tile_alt = b.alt | default: zone_alts[zi]
+              assign tile_caption = b.caption | default: zone_label
             -%}
             {%- if full_src != '' -%}
-              <button
-                type="button"
-                class="alcshow__tile alcshow__tile--{{ b.size | default: 'regular' }}"
-                data-alcshow-tile
-                data-alcshow-full="{{ full_src | escape }}"
-                data-alcshow-alt="{{ b.alt | escape }}"
-                data-alcshow-caption="{{ b.caption | escape }}"
-                aria-label="{{ b.caption | default: b.alt | escape }}"
+              {%- assign shown = shown | plus: 1 -%}
+              <li
+                class="alcshow__photo{% if shown <= gallery_cap %}{{ reveal }}{% endif %}"
+                data-zone="{{ zkey }}"
+                {% if shown > gallery_cap %}data-extra hidden{% endif %}
+                {% if shown <= gallery_cap %}style="--animation-order: {{ shown }};"{% endif %}
                 {{ block.shopify_attributes }}
               >
-                {%- render 'alc-showroom-picture',
-                  image: b.image,
-                  asset: b.image_asset,
-                  src: b.image_url,
-                  alt: b.alt,
-                  sizes: tile_sizes
-                -%}
-                {%- if b.caption != blank -%}
-                  <span class="alcshow__tile-caption">{{ b.caption }}</span>
-                {%- endif -%}
-              </button>
+                <button
+                  type="button"
+                  class="alcshow__photo-btn"
+                  data-alcshow-tile
+                  data-alcshow-full="{{ full_src | escape }}"
+                  data-alcshow-alt="{{ tile_alt | escape }}"
+                  data-alcshow-caption="{{ tile_caption | escape }}"
+                  aria-label="{{ tile_alt | escape }}"
+                >
+                  {%- render 'alc-showroom-picture',
+                    image: b.image,
+                    asset: b.image_asset,
+                    src: b.image_url,
+                    alt: tile_alt,
+                    widths: '300,450,600,800,1000',
+                    sizes: '(min-width: 990px) 25vw, 50vw'
+                  -%}
+                </button>
+              </li>
             {%- endif -%}
           {%- endfor -%}
-        </div>
+        </ul>
+
+        {%- if shown > gallery_cap -%}
+          <div class="alcshow__more-wrap">
+            <button type="button" class="alcshow__btn alcshow__btn--light" data-alcshow-more>
+              {{- zl[4] }} <span class="alcshow__count">({{ shown }})</span>
+            </button>
+          </div>
+        {%- endif -%}
       </div>
     </section>
   {%- endif -%}
 
   {%- comment -%} ---------------------------------------------------- VIDEO {%- endcomment -%}
   {%- if s.video != blank or s.video_url != blank -%}
-    <section class="alcshow__video">
-      <div class="alcshow__wrap">
-        {%- if s.video_heading != blank -%}
-          <div style="margin-bottom: 3.2rem;" data-alcshow-reveal>
-            {%- if s.video_eyebrow != blank -%}
-              <p class="alcshow__eyebrow">{{ s.video_eyebrow }}</p>
-            {%- endif -%}
-            <h2 class="alcshow__display">{{ s.video_heading }}</h2>
-          </div>
-        {%- endif -%}
-
-        <div class="alcshow__video-frame" data-alcshow-reveal>
-          {%- if s.video != blank -%}
-            {{
-              s.video
-              | video_tag: image_size: '1600x', controls: true, muted: false, autoplay: false, loop: false
-            }}
-          {%- else -%}
-            <div
-              style="position:absolute;inset:0;"
-              data-alcshow-video
-              data-alcshow-video-src="{{ s.video_url | escape }}"
-              data-alcshow-video-poster="{{ s.video_poster_asset | default: 'alc-showroom-hall.jpg' | asset_img_url: '1600x' | escape }}"
-            >
-              {%- render 'alc-showroom-picture',
-                image: s.video_poster,
-                asset: s.video_poster_asset,
-                alt: s.video_heading,
-                sizes: '100vw'
-              -%}
-              <button
-                type="button"
-                class="alcshow__video-poster"
-                data-alcshow-video-open
-                aria-label="{{ s.video_play_label | default: play_video_label | escape }}"
-              >
-                <span class="alcshow__video-play">
-                  <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg>
-                </span>
-              </button>
-            </div>
+    <section class="page-width alcshow__block">
+      {%- if s.video_heading != blank -%}
+        <header class="alcshow__head">
+          {%- if s.video_eyebrow != blank -%}
+            <p class="alcshow__eyebrow">{{ s.video_eyebrow }}</p>
           {%- endif -%}
-        </div>
-      </div>
-    </section>
-  {%- endif -%}
+          <h2 class="alcshow__title">{{ s.video_heading }}</h2>
+        </header>
+      {%- endif -%}
 
-  {%- comment -%} ---------------------------------------------------- VISIT {%- endcomment -%}
-  <section class="alcshow__visit">
-    <div class="alcshow__wrap">
-      <div data-alcshow-reveal>
-        {%- if s.visit_eyebrow != blank -%}
-          <p class="alcshow__eyebrow">{{ s.visit_eyebrow }}</p>
-        {%- endif -%}
-        {%- if s.visit_heading != blank -%}
-          <h2 class="alcshow__display">{{ s.visit_heading }}</h2>
-        {%- endif -%}
-        {%- if s.visit_text != blank -%}
-          <div class="alcshow__lede">{{ s.visit_text }}</div>
-        {%- endif -%}
-      </div>
-
-      <div class="alcshow__visit-grid" data-alcshow-reveal>
-        <div>
-          <div class="alcshow__panel">
-            <h3>{{ s.address_title | default: 'Adresă' }}</h3>
-            <address class="alcshow__address">
-              {%- if s.address_street != blank -%}<span>{{ s.address_street }}</span>{%- endif -%}
-              {%- if s.address_locality != blank -%}
-                <span>
-                  {{- s.address_postal }} {{ s.address_locality -}}
-                  {%- if s.address_region != blank %}, {{ s.address_region }}{% endif -%}
-                </span>
-              {%- endif -%}
-              {%- if s.address_note != blank -%}
-                <span class="alcshow__address-note">{{ s.address_note }}</span>
-              {%- endif -%}
-            </address>
-
-            {%- if directions_link -%}
-              <div class="alcshow__map-actions">
-                <a
-                  href="{{ directions_link }}"
-                  class="alcshow__btn alcshow__btn--ghost"
-                  target="_blank"
-                  rel="noopener"
-                >
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M12 2.5l9.5 9.5-9.5 9.5L2.5 12z"/><path d="M9.5 14v-2.5A1.5 1.5 0 0 1 11 10h4"/><path d="M13 8l2.2 2-2.2 2"/></svg>
-                  {{ s.cta_directions_label | default: 'Navighează' }}
-                </a>
-              </div>
-            {%- endif -%}
-          </div>
-
-          <div class="alcshow__panel">
-            <h3>{{ s.hours_title | default: 'Program' }}</h3>
-            <dl class="alcshow__hours">
-              {%- if s.hours_weekdays != blank -%}
-                <dt>{{ s.hours_weekdays_label | default: 'Luni – Vineri' }}</dt>
-                <dd {% if s.hours_weekdays contains closed_word %}data-closed="true"{% endif %}>
-                  {{- s.hours_weekdays -}}
-                </dd>
-              {%- endif -%}
-              {%- if s.hours_saturday != blank -%}
-                <dt>{{ s.hours_saturday_label | default: 'Sâmbătă' }}</dt>
-                <dd {% if s.hours_saturday contains closed_word %}data-closed="true"{% endif %}>
-                  {{- s.hours_saturday -}}
-                </dd>
-              {%- endif -%}
-              {%- if s.hours_sunday != blank -%}
-                <dt>{{ s.hours_sunday_label | default: 'Duminică' }}</dt>
-                <dd {% if s.hours_sunday contains closed_word %}data-closed="true"{% endif %}>
-                  {{- s.hours_sunday -}}
-                </dd>
-              {%- endif -%}
-            </dl>
-          </div>
-
-          {%- if s.phone != blank or s.whatsapp != blank or s.email != blank -%}
-            <div class="alcshow__panel">
-              <h3>{{ s.contact_title | default: 'Contact' }}</h3>
-              <ul class="alcshow__contact">
-                {%- if s.phone != blank -%}
-                  <li>
-                    <a href="tel:{{ phone_raw }}">
-                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M6.6 3h3l1.5 4-2.2 1.6a12 12 0 0 0 5.5 5.5L16 11.9l4 1.5v3a2 2 0 0 1-2.2 2A16.5 16.5 0 0 1 3.1 5.2 2 2 0 0 1 5.1 3z"/></svg>
-                      {{ s.phone }}
-                    </a>
-                  </li>
-                {%- endif -%}
-                {%- if s.whatsapp != blank -%}
-                  <li>
-                    <a href="{{ s.whatsapp }}" target="_blank" rel="noopener">
-                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M3.5 20.5l1.3-4.3A8 8 0 1 1 8 19.3z"/><path d="M9 9.5c0 3 2.5 5.5 5.5 5.5.6 0 1-.5 1-1v-.7l-1.8-.8-.9 1a6 6 0 0 1-2.5-2.5l1-.9-.8-1.8H9.9c-.5 0-.9.4-.9 1z"/></svg>
-                      {{ s.whatsapp_label | default: 'WhatsApp' }}
-                    </a>
-                  </li>
-                {%- endif -%}
-                {%- if s.email != blank -%}
-                  <li>
-                    <a href="mailto:{{ s.email }}">
-                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="1.5"/><path d="M3.6 6l8.4 6 8.4-6"/></svg>
-                      {{ s.email }}
-                    </a>
-                  </li>
-                {%- endif -%}
-              </ul>
-            </div>
-          {%- endif -%}
-        </div>
-
-        {%- if s.map_embed_src != blank -%}
+      <div class="alcshow__video-frame">
+        {%- if s.video != blank -%}
+          {{
+            s.video
+            | video_tag: image_size: '1600x', controls: true, muted: false, autoplay: false, loop: false
+          }}
+        {%- else -%}
           <div
-            class="alcshow__map"
-            data-alcshow-map
-            data-alcshow-map-src="{{ s.map_embed_src | escape }}"
-            data-alcshow-map-title="{{ s.map_title | default: 'Harta showroomului' | escape }}"
+            class="alcshow__video-holder"
+            data-alcshow-video
+            data-alcshow-video-src="{{ s.video_url | escape }}"
+            data-alcshow-video-poster="{{ s.video_poster_asset | default: 'alc-showroom-hero.jpg' | asset_img_url: '1600x' | escape }}"
           >
             {%- render 'alc-showroom-picture',
-              image: s.map_preview,
-              asset: s.map_preview_asset,
-              alt: '',
-              sizes: '(min-width: 990px) 60vw, 100vw'
+              image: s.video_poster,
+              asset: s.video_poster_asset,
+              alt: s.video_heading,
+              sizes: '100vw'
             -%}
-            <button type="button" class="alcshow__map-consent" data-alcshow-map-open>
-              <span class="alcshow__map-consent-pin">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M12 21s7-6.2 7-11a7 7 0 1 0-14 0c0 4.8 7 11 7 11z"/><circle cx="12" cy="10" r="2.6"/></svg>
-              </span>
-              <span class="alcshow__map-consent-label">
-                {{- s.map_consent_label | default: 'Afișează harta' -}}
+            <button
+              type="button"
+              class="alcshow__video-poster"
+              data-alcshow-video-open
+              aria-label="{{ s.video_play_label | default: play_video_label | escape }}"
+            >
+              <span class="alcshow__video-play">
+                <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg>
               </span>
             </button>
           </div>
         {%- endif -%}
       </div>
+    </section>
+  {%- endif -%}
+
+  {%- comment -%} ---------------------------------------------------- VISIT {%- endcomment -%}
+  <section class="page-width alcshow__block">
+    <header class="alcshow__head">
+      {%- if s.visit_eyebrow != blank -%}
+        <p class="alcshow__eyebrow">{{ s.visit_eyebrow }}</p>
+      {%- endif -%}
+      {%- if s.visit_heading != blank -%}
+        <h2 class="alcshow__title">{% render 'alc-nbsp', text: s.visit_heading %}</h2>
+      {%- endif -%}
+      {%- if s.visit_text != blank -%}
+        <div class="alcshow__intro">{{ s.visit_text }}</div>
+      {%- endif -%}
+    </header>
+
+    <div class="alcshow__visit">
+      <div class="alcshow__info">
+        {%- if hours_spec != '' -%}
+          <p class="alcshow__status" data-alcshow-status>
+            <span class="alcshow__status-dot" aria-hidden="true"></span>
+            <span data-alcshow-status-text></span>
+          </p>
+        {%- endif -%}
+
+        <div class="alcshow__info-block">
+          <h3 class="alcshow__label">{{ s.address_title | default: 'Adresă' }}</h3>
+          <address class="alcshow__address">
+            {%- if s.address_street != blank -%}<span class="alcshow__address-street">{{ s.address_street }}</span>{%- endif -%}
+            {%- if s.address_locality != blank -%}
+              <span>
+                {{- s.address_postal }} {{ s.address_locality -}}
+                {%- if s.address_region != blank %}, {{ s.address_region }}{% endif -%}
+              </span>
+            {%- endif -%}
+          </address>
+          {%- if s.address_note != blank -%}
+            <p class="alcshow__address-note">{{ s.address_note }}</p>
+          {%- endif -%}
+
+          {%- if directions_link -%}
+            <div class="alcshow__nav">
+              <a href="{{ directions_link }}" class="alcshow__btn alcshow__btn--dark" target="_blank" rel="noopener">
+                <svg aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20.5 3.5l-7 17-2.6-7.4-7.4-2.6z"/></svg>
+                {{- s.cta_directions_label | default: 'Navighează' -}}
+              </a>
+              <a href="{{ waze_link }}" class="alcshow__btn alcshow__btn--outline" target="_blank" rel="noopener">
+                <svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M5.4 16.2A8.2 8.2 0 1 1 20 11c0 3.6-2.6 5.8-5.6 5.8H10.6"/><circle cx="8" cy="18.4" r="1.7"/><circle cx="15.4" cy="18.4" r="1.7"/><path d="M10.2 9.6h.01M14.6 9.6h.01M10 12.6c1.2 1 3.2 1 4.4 0"/></svg>
+                Waze
+              </a>
+            </div>
+          {%- endif -%}
+        </div>
+
+        <div class="alcshow__info-block">
+          <h3 class="alcshow__label">{{ s.hours_title | default: 'Program' }}</h3>
+          <dl class="alcshow__hours">
+            {%- if s.hours_weekdays != blank -%}
+              <div class="alcshow__hours-row" data-alcshow-days="1,2,3,4,5">
+                <dt>{{ s.hours_weekdays_label | default: 'Luni – Vineri' }}<span class="alcshow__today">{{ t[4] }}</span></dt>
+                <dd {% if s.hours_weekdays contains closed_word %}data-closed="true"{% endif %}>{{ s.hours_weekdays }}</dd>
+              </div>
+            {%- endif -%}
+            {%- if s.hours_saturday != blank -%}
+              <div class="alcshow__hours-row" data-alcshow-days="6">
+                <dt>{{ s.hours_saturday_label | default: 'Sâmbătă' }}<span class="alcshow__today">{{ t[4] }}</span></dt>
+                <dd {% if s.hours_saturday contains closed_word %}data-closed="true"{% endif %}>{{ s.hours_saturday }}</dd>
+              </div>
+            {%- endif -%}
+            {%- if s.hours_sunday != blank -%}
+              <div class="alcshow__hours-row" data-alcshow-days="0">
+                <dt>{{ s.hours_sunday_label | default: 'Duminică' }}<span class="alcshow__today">{{ t[4] }}</span></dt>
+                <dd {% if s.hours_sunday contains closed_word %}data-closed="true"{% endif %}>{{ s.hours_sunday }}</dd>
+              </div>
+            {%- endif -%}
+          </dl>
+        </div>
+
+        {%- if s.phone != blank or s.whatsapp != blank or s.email != blank -%}
+          <div class="alcshow__info-block">
+            <h3 class="alcshow__label">{{ s.contact_title | default: 'Contact' }}</h3>
+            <ul class="alcshow__contact" role="list">
+              {%- if s.phone != blank -%}
+                <li>
+                  <a href="tel:{{ phone_raw }}">
+                    <span class="alcshow__contact-icon" aria-hidden="true"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M6.6 3h3l1.5 4-2.2 1.6a12 12 0 0 0 5.5 5.5L16 11.9l4 1.5v3a2 2 0 0 1-2.2 2A16.5 16.5 0 0 1 3.1 5.2 2 2 0 0 1 5.1 3z"/></svg></span>
+                    <span class="alcshow__contact-text">{{ s.phone }}</span>
+                    {{- arrow -}}
+                  </a>
+                </li>
+              {%- endif -%}
+              {%- if s.whatsapp != blank -%}
+                <li>
+                  <a href="{{ s.whatsapp }}" target="_blank" rel="noopener">
+                    <span class="alcshow__contact-icon" aria-hidden="true"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3.5 20.5l1.3-4.3A8 8 0 1 1 8 19.3z"/><path d="M9 9.5c0 3 2.5 5.5 5.5 5.5.6 0 1-.5 1-1v-.7l-1.8-.8-.9 1a6 6 0 0 1-2.5-2.5l1-.9-.8-1.8H9.9c-.5 0-.9.4-.9 1z"/></svg></span>
+                    <span class="alcshow__contact-text">{{ s.whatsapp_label | default: 'WhatsApp' }}</span>
+                    {{- arrow -}}
+                  </a>
+                </li>
+              {%- endif -%}
+              {%- if s.email != blank -%}
+                <li>
+                  <a href="mailto:{{ s.email }}">
+                    <span class="alcshow__contact-icon" aria-hidden="true"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="1.5"/><path d="M3.6 6l8.4 6 8.4-6"/></svg></span>
+                    <span class="alcshow__contact-text">{{ s.email }}</span>
+                    {{- arrow -}}
+                  </a>
+                </li>
+              {%- endif -%}
+            </ul>
+          </div>
+        {%- endif -%}
+      </div>
+
+      {%- if s.map_embed_src != blank -%}
+        <div
+          class="alcshow__map"
+          data-alcshow-map
+          data-alcshow-map-src="{{ s.map_embed_src | escape }}"
+          data-alcshow-map-title="{{ s.map_title | default: 'Harta showroomului' | escape }}"
+        >
+          {%- render 'alc-showroom-picture',
+            image: s.map_preview,
+            asset: s.map_preview_asset,
+            alt: '',
+            widths: '400,600,800,1000,1400',
+            sizes: '(min-width: 990px) 58vw, 100vw'
+          -%}
+          <button type="button" class="alcshow__map-consent" data-alcshow-map-open>
+            <span class="alcshow__map-pin" aria-hidden="true">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s7-6.2 7-11a7 7 0 1 0-14 0c0 4.8 7 11 7 11z"/><circle cx="12" cy="10" r="2.6"/></svg>
+            </span>
+            <span class="alcshow__map-label">{{- s.map_consent_label | default: 'Afișează harta' -}}</span>
+          </button>
+        </div>
+      {%- endif -%}
     </div>
   </section>
+
+  {%- if hours_spec != '' -%}
+    <script>
+      window.alcShowStatus && window.alcShowStatus(document.getElementById('alcshow-{{ section.id }}'));
+    </script>
+  {%- endif -%}
+
+  {%- comment -%} -------------------------------------------- CLOSING CARD {%- endcomment -%}
+  {%- if s.features_text != blank -%}
+    {%- liquid
+      comment
+        Two sentences ("Online vezi o fotografie. Aici vezi lumina.") go on two lines,
+        the second in gold; anything else is shown as one title.
+      endcomment
+      assign final_plain = s.features_text | strip_html | strip
+      assign final_parts = final_plain | split: '. '
+      assign has_final_img = false
+      if s.final_image != blank or s.final_asset != blank
+        assign has_final_img = true
+      endif
+    -%}
+    <section class="page-width alcshow__block alcshow__block--last">
+      <div class="alcshow__final{% if has_final_img %} alcshow__final--photo{% endif %}">
+        {%- if has_final_img -%}
+          <div class="alcshow__final-media">
+            {%- render 'alc-showroom-picture',
+              image: s.final_image,
+              asset: s.final_asset,
+              alt: '',
+              widths: '600,900,1200,1600,2000',
+              sizes: '(min-width: 1300px) 1300px, 100vw'
+            -%}
+          </div>
+        {%- endif -%}
+        <h2 class="alcshow__final-title">
+          {%- if final_parts.size == 2 -%}
+            <span class="alcshow__final-line">{% render 'alc-nbsp', text: final_parts[0] %}.</span> <span class="alcshow__final-line alcshow__final-line--gold">{% render 'alc-nbsp', text: final_parts[1] %}</span>
+          {%- else -%}
+            {{ final_plain }}
+          {%- endif -%}
+        </h2>
+        <div class="alcshow__actions alcshow__actions--center">
+          {%- if directions_link -%}
+            <a class="alcshow__btn alcshow__btn--light" href="{{ directions_link }}" target="_blank" rel="noopener">
+              {{- s.cta_directions_label | default: 'Navighează' -}}
+              {{- arrow -}}
+            </a>
+          {%- endif -%}
+          {%- if s.whatsapp != blank -%}
+            <a class="alcshow__btn alcshow__btn--glass" href="{{ s.whatsapp }}" target="_blank" rel="noopener">
+              {{- s.whatsapp_label | default: 'WhatsApp' -}}
+            </a>
+          {%- endif -%}
+        </div>
+      </div>
+    </section>
+  {%- endif -%}
 
   {%- comment -%} -------------------------------------------- LOCALBUSINESS {%- endcomment -%}
   {%- if s.enable_schema -%}
@@ -505,15 +776,18 @@
       endif
 
       assign schema_images = ''
-      if s.hero_asset != blank
-        assign hero_abs = s.hero_asset | asset_img_url: '1600x' | prepend: 'https:'
-        assign schema_images = hero_abs | json
-      elsif s.hero_image != blank
+      if s.hero_image != blank
         assign hero_abs = s.hero_image | image_url: width: 1600 | prepend: 'https:'
+        assign schema_images = hero_abs | json
+      elsif s.hero_asset != blank
+        assign hero_abs = s.hero_asset | asset_img_url: '1600x' | prepend: 'https:'
         assign schema_images = hero_abs | json
       endif
 
-      for block in gallery_blocks
+      comment
+        Up to eight gallery photos are plenty for the listing.
+      endcomment
+      for block in gallery_blocks limit: 8
         if block.settings.image != blank
           assign gal_abs = block.settings.image | image_url: width: 1600 | prepend: 'https:'
         elsif block.settings.image_asset != blank
@@ -625,14 +899,8 @@
     {
       "type": "color",
       "id": "accent_color",
-      "label": "Culoare accent",
-      "default": "#c8a668"
-    },
-    {
-      "type": "font_picker",
-      "id": "display_font",
-      "label": "Font titluri",
-      "default": "roboto_n4"
+      "label": "Culoare accent (auriu)",
+      "default": "#c9a26a"
     },
 
     {
@@ -649,7 +917,7 @@
       "type": "text",
       "id": "hero_asset",
       "label": "Imagine hero din assets",
-      "default": "alc-showroom-hall.jpg"
+      "default": "alc-showroom-hero.jpg"
     },
     {
       "type": "text",
@@ -683,7 +951,8 @@
 
     {
       "type": "header",
-      "content": "Fapte rapide (sub hero)"
+      "content": "Fapte rapide (nefolosite)",
+      "info": "Păstrate pentru traducerile existente. Adresa, programul și telefonul apar în statusul live și în secțiunea de vizită."
     },
     { "type": "text", "id": "fact_address_label", "label": "Etichetă 1", "default": "Adresă" },
     { "type": "text", "id": "fact_address", "label": "Valoare 1" },
@@ -699,6 +968,13 @@
     { "type": "text", "id": "intro_eyebrow", "label": "Supratitlu" },
     { "type": "text", "id": "intro_heading", "label": "Titlu" },
     { "type": "richtext", "id": "intro_text", "label": "Text" },
+    { "type": "image_picker", "id": "intro_image", "label": "Imagine" },
+    {
+      "type": "text",
+      "id": "intro_asset",
+      "label": "Imagine din assets",
+      "default": "alc-showroom-f-advice.jpg"
+    },
 
     {
       "type": "header",
@@ -706,7 +982,19 @@
     },
     { "type": "text", "id": "features_eyebrow", "label": "Supratitlu" },
     { "type": "text", "id": "features_heading", "label": "Titlu" },
-    { "type": "richtext", "id": "features_text", "label": "Text" },
+    {
+      "type": "richtext",
+      "id": "features_text",
+      "label": "Titlu card final",
+      "info": "Apare în cardul închis de la finalul paginii. Două propoziții = două rânduri, a doua aurie."
+    },
+    { "type": "image_picker", "id": "final_image", "label": "Fundal card final" },
+    {
+      "type": "text",
+      "id": "final_asset",
+      "label": "Fundal card final din assets",
+      "default": "alc-showroom-cinema.jpg"
+    },
 
     {
       "type": "header",
@@ -735,7 +1023,7 @@
       "type": "text",
       "id": "video_poster_asset",
       "label": "Poster din assets",
-      "default": "alc-showroom-hall.jpg"
+      "default": "alc-showroom-hero.jpg"
     },
     {
       "type": "text",
@@ -766,7 +1054,8 @@
 
     {
       "type": "header",
-      "content": "Program"
+      "content": "Program",
+      "info": "Format „09:00 – 17:00”. Statusul live (deschis / închis) se calculează din aceste intervale, în ora României."
     },
     { "type": "text", "id": "hours_title", "label": "Titlu panou", "default": "Program" },
     { "type": "text", "id": "hours_weekdays_label", "label": "Etichetă zile lucrătoare", "default": "Luni – Vineri" },
@@ -875,27 +1164,37 @@
           "type": "text",
           "id": "image_asset",
           "label": "Imagine din assets",
-          "info": "Ex.: alc-showroom-crystal.jpg"
+          "info": "Ex.: alc-showroom-g01.jpg"
         },
         { "type": "text", "id": "image_url", "label": "URL imagine externă" },
-        { "type": "text", "id": "alt", "label": "Text alternativ" },
-        { "type": "text", "id": "caption", "label": "Legendă" },
         {
           "type": "select",
-          "id": "size",
-          "label": "Dimensiune",
+          "id": "zone",
+          "label": "Zonă",
+          "info": "Folosită de filtrul galeriei. Numele zonelor sunt deja traduse în toate limbile.",
           "options": [
-            { "value": "regular", "label": "Normală (1/3)" },
-            { "value": "tall", "label": "Înaltă (1/3)" },
-            { "value": "wide", "label": "Lată (2/3)" },
-            { "value": "full", "label": "Lățime completă" }
+            { "value": "crystal", "label": "Cristal" },
+            { "value": "design", "label": "Design" },
+            { "value": "bath", "label": "Baie și oglinzi" }
           ],
-          "default": "regular"
+          "default": "crystal"
+        },
+        {
+          "type": "text",
+          "id": "alt",
+          "label": "Text alternativ",
+          "info": "Opțional. Gol = un text tradus automat după zonă."
+        },
+        {
+          "type": "text",
+          "id": "caption",
+          "label": "Legendă",
+          "info": "Opțional, apare în fereastra mărită. Gol = numele zonei."
         }
       ]
     }
   ],
-  "max_blocks": 24,
+  "max_blocks": 40,
   "presets": [
     {
       "name": "Showroom",

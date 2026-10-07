@@ -1,0 +1,26 @@
+{%- comment -%}
+  Glues one-letter words to the word after them, so a title never ends a line on
+  one ("Un depozit cât o / galerie" becomes "Un depozit cât / o galerie").
+  Covers the one-letter words of the store's languages (ro o/a/e, pl w/z/i/o/a/u,
+  cs/sk v/s/k/z/a/i/o/u, hr i/u/s/a/o, hu a). For plain-text titles only.
+
+  Accepts:
+  - text {String}
+
+  Usage:
+  {% render 'alc-nbsp', text: section.settings.heading %}
+{%- endcomment -%}
+{{- text
+  | replace: ' o ', ' o&nbsp;'
+  | replace: ' a ', ' a&nbsp;'
+  | replace: ' e ', ' e&nbsp;'
+  | replace: ' i ', ' i&nbsp;'
+  | replace: ' u ', ' u&nbsp;'
+  | replace: ' w ', ' w&nbsp;'
+  | replace: ' z ', ' z&nbsp;'
+  | replace: ' v ', ' v&nbsp;'
+  | replace: ' s ', ' s&nbsp;'
+  | replace: ' k ', ' k&nbsp;'
+  | replace: ' A ', ' A&nbsp;'
+  | replace: ' O ', ' O&nbsp;'
+-}}
