@@ -1,0 +1,17 @@
+{%- comment -%}
+  The artwork's own name, out of a full wall-art product title:
+  "Tablou Decorativ cu Iluminare LED Dansul Sferelor, 60 x 120 cm, 24W, ..." → "Dansul Sferelor".
+  Takes the part before the first comma and drops the Romanian type prefix; a
+  translated title keeps its own wording up to the comma.
+
+  Accepts:
+  - title {String}
+
+  Usage:
+  {% render 'alc-wa-name', title: product.title %}
+{%- endcomment -%}
+{%- liquid
+  assign n = title | split: ',' | first | strip
+  assign n = n | remove_first: 'Tablou Decorativ cu Iluminare LED ' | remove_first: 'Tablou Decorativ cu iluminare LED ' | remove_first: 'Tablou Decorativ ' | remove_first: 'Tablou '
+  echo n | strip | escape
+-%}

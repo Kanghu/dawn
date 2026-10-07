@@ -1,0 +1,562 @@
+{%- comment -%}
+  alc-wall-art — the top of the wall-art collection page (Decoratiuni Perete), in
+  the house language of alc-company / alc-showroom:
+
+  1. a dark gallery hero: copy on the left, three lifestyle photos of the artworks
+     on the right (each one links to its product), and the white figures card over
+     its foot (works, LED models, formats, starting price — all counted live)
+  2. "On your wall": every format the collection has, drawn to scale above a
+     220 cm sofa, 25 cm over the backrest; a format chip redraws the wall and
+     shows the models in that format
+
+  Formats come from the products' size metafields (custom.lungime = width,
+  custom.inaltime = height, both lists in cm; three values = a set of three). A
+  square "Diametru" product is drawn round.
+
+  UI text is in the per-language dictionary below (en.default.json is at the key
+  cap and T&A's automatic translation is off since August), so every market
+  reads its own language. The product grid itself is the normal
+  main-collection-product-grid section in the template.
+
+  Styles: assets/alc-wall-art.css. The format switch is the small inline script
+  after the wall, so the first drawing never flickers.
+{%- endcomment -%}
+
+{{ 'alc-wall-art.css' | asset_url | stylesheet_tag }}
+
+{%- liquid
+  assign s = section.settings
+  assign lang = request.locale.iso_code | downcase | slice: 0, 2
+
+  comment
+    d: eyebrow | heading (non-RO) | lead | see all | choose size | works | with LED |
+       formats | starting price | sizes eyebrow | sizes title | sizes intro |
+       set of 3 | sofa caption | sold out | drawn to scale | models in this format
+  endcomment
+  case lang
+    when 'en'
+      assign d = 'Wall gallery|Wall decor|LED-lit wall art and decorative compositions that give a bare wall character – at home, in the office or in a restaurant.|See all artworks|Choose the size|artworks in the collection|with LED lighting|different formats|starting price|On your wall|See the real size, not just the numbers.|Every format is drawn to scale above a 220 cm sofa, 25 cm over the backrest – the height a designer would hang it.|Set of 3|220 cm sofa · artwork 25 cm above the backrest|Sold out|Drawn to scale|Models in this format'
+    when 'hu'
+      assign d = 'Fali galéria|Falidekorációk|LED-es világítású falképek és dekoratív kompozíciók, amelyek karaktert adnak egy üres falnak – otthon, az irodában vagy az étteremben.|Az összes falkép|Válassz méretet|alkotás a kollekcióban|LED-világítással|különböző formátum|kezdőár|A te faladon|Lásd a valódi méretet, ne csak a számokat.|Minden formátum méretarányosan van megrajzolva egy 220 cm-es kanapé fölé, 25 cm-rel a háttámla fölött – ilyen magasra akasztaná egy belsőépítész.|3 darabos szett|220 cm-es kanapé · a kép 25 cm-rel a háttámla fölött|Elfogyott|Méretarányos rajz|Modellek ebben a formátumban'
+    when 'pl'
+      assign d = 'Galeria ścienna|Dekoracje ścienne|Obrazy z podświetleniem LED i kompozycje dekoracyjne, które nadają charakter pustej ścianie – w domu, w biurze lub w restauracji.|Zobacz wszystkie obrazy|Wybierz rozmiar|prac w kolekcji|z podświetleniem LED|różnych formatów|cena początkowa|Na Twojej ścianie|Zobacz prawdziwy rozmiar, nie tylko liczby.|Każdy format narysowano w skali nad sofą o długości 220 cm, 25 cm nad oparciem – na wysokości, na jakiej powiesiłby go projektant.|Zestaw 3 obrazów|Sofa 220 cm · obraz 25 cm nad oparciem|Wyprzedane|Rysunek w skali|Modele w tym formacie'
+    when 'el'
+      assign d = 'Γκαλερί τοίχου|Διακόσμηση τοίχου|Πίνακες με φωτισμό LED και διακοσμητικές συνθέσεις που δίνουν χαρακτήρα σε έναν άδειο τοίχο – στο σπίτι, στο γραφείο ή στο εστιατόριο.|Δείτε όλους τους πίνακες|Επιλέξτε μέγεθος|έργα στη συλλογή|με φωτισμό LED|διαφορετικά μεγέθη|τιμή από|Στον τοίχο σας|Δείτε το πραγματικό μέγεθος, όχι μόνο νούμερα.|Κάθε μέγεθος είναι σχεδιασμένο υπό κλίμακα πάνω από έναν καναπέ 220 cm, 25 cm πάνω από την πλάτη – στο ύψος που θα το κρεμούσε ένας διακοσμητής.|Σετ 3 τεμαχίων|Καναπές 220 cm · πίνακας 25 cm πάνω από την πλάτη|Εξαντλήθηκε|Σχέδιο υπό κλίμακα|Μοντέλα σε αυτό το μέγεθος'
+    when 'bg'
+      assign d = 'Стенна галерия|Декорация за стена|Картини с LED подсветка и декоративни композиции, които придават характер на празна стена – у дома, в офиса или в ресторанта.|Вижте всички картини|Изберете размер|творби в колекцията|с LED подсветка|различни формата|начална цена|На вашата стена|Вижте истинския размер, не само числата.|Всеки формат е нарисуван в мащаб над диван от 220 cm, на 25 cm над облегалката – на височината, на която би я окачил дизайнер.|Комплект от 3|Диван 220 cm · картината на 25 cm над облегалката|Изчерпан|Рисунка в мащаб|Модели в този формат'
+    when 'it'
+      assign d = 'Galleria da parete|Decorazioni da parete|Quadri con illuminazione LED e composizioni decorative che danno carattere a una parete vuota: a casa, in ufficio o al ristorante.|Vedi tutti i quadri|Scegli la misura|opere nella collezione|con illuminazione LED|formati diversi|prezzo di partenza|Sulla tua parete|Guarda la misura reale, non solo i numeri.|Ogni formato è disegnato in scala sopra un divano di 220 cm, a 25 cm dallo schienale: l’altezza a cui lo appenderebbe un designer.|Set da 3|Divano da 220 cm · quadro a 25 cm sopra lo schienale|Esaurito|Disegno in scala|Modelli in questo formato'
+    when 'fr'
+      assign d = 'Galerie murale|Décoration murale|Tableaux avec éclairage LED et compositions décoratives qui donnent du caractère à un mur nu – à la maison, au bureau ou au restaurant.|Voir tous les tableaux|Choisir la taille|œuvres dans la collection|avec éclairage LED|formats différents|prix de départ|Sur votre mur|Voyez la taille réelle, pas seulement les chiffres.|Chaque format est dessiné à l’échelle au-dessus d’un canapé de 220 cm, à 25 cm du dossier – la hauteur à laquelle un décorateur l’accrocherait.|Lot de 3|Canapé de 220 cm · tableau à 25 cm au-dessus du dossier|Épuisé|Dessin à l’échelle|Modèles dans ce format'
+    when 'cs'
+      assign d = 'Nástěnná galerie|Nástěnné dekorace|Obrazy s LED podsvícením a dekorativní kompozice, které dodají prázdné stěně charakter – doma, v kanceláři nebo v restauraci.|Zobrazit všechny obrazy|Vyberte velikost|děl v kolekci|s LED podsvícením|různých formátů|počáteční cena|Na vaší stěně|Podívejte se na skutečnou velikost, ne jen na čísla.|Každý formát je nakreslen v měřítku nad pohovkou o délce 220 cm, 25 cm nad opěradlem – ve výšce, kam by ho pověsil designér.|Sada 3 kusů|Pohovka 220 cm · obraz 25 cm nad opěradlem|Vyprodáno|Nákres v měřítku|Modely v tomto formátu'
+    when 'sk'
+      assign d = 'Nástenná galéria|Nástenné dekorácie|Obrazy s LED podsvietením a dekoratívne kompozície, ktoré dodajú prázdnej stene charakter – doma, v kancelárii alebo v reštaurácii.|Zobraziť všetky obrazy|Vyberte veľkosť|diel v kolekcii|s LED podsvietením|rôznych formátov|počiatočná cena|Na vašej stene|Pozrite si skutočnú veľkosť, nie iba čísla.|Každý formát je nakreslený v mierke nad pohovkou s dĺžkou 220 cm, 25 cm nad operadlom – vo výške, kam by ho zavesil dizajnér.|Sada 3 kusov|Pohovka 220 cm · obraz 25 cm nad operadlom|Vypredané|Nákres v mierke|Modely v tomto formáte'
+    when 'hr'
+      assign d = 'Zidna galerija|Zidne dekoracije|Slike s LED rasvjetom i dekorativne kompozicije koje praznom zidu daju karakter – kod kuće, u uredu ili u restoranu.|Pogledajte sve slike|Odaberite veličinu|djela u kolekciji|s LED rasvjetom|različitih formata|početna cijena|Na vašem zidu|Pogledajte stvarnu veličinu, ne samo brojeve.|Svaki je format nacrtan u mjerilu iznad kauča od 220 cm, 25 cm iznad naslona – na visini na koju bi ga objesio dizajner.|Set od 3|Kauč od 220 cm · slika 25 cm iznad naslona|Rasprodano|Crtež u mjerilu|Modeli u ovom formatu'
+    when 'de'
+      assign d = 'Wandgalerie|Wanddekoration|Wandbilder mit LED-Beleuchtung und dekorative Kompositionen, die einer leeren Wand Charakter geben – zu Hause, im Büro oder im Restaurant.|Alle Bilder ansehen|Größe wählen|Werke in der Kollektion|mit LED-Beleuchtung|verschiedene Formate|Einstiegspreis|An Ihrer Wand|Sehen Sie die echte Größe, nicht nur die Zahlen.|Jedes Format ist maßstabsgetreu über einem 220-cm-Sofa gezeichnet, 25 cm über der Rückenlehne – auf der Höhe, auf der es ein Designer aufhängen würde.|3er-Set|220-cm-Sofa · Bild 25 cm über der Rückenlehne|Ausverkauft|Maßstabsgetreue Zeichnung|Modelle in diesem Format'
+    else
+      assign d = 'Galerie de perete|Decorațiuni de perete|Tablouri cu iluminare LED și compoziții decorative care dau caracter unui perete gol – acasă, la birou sau în restaurant.|Vezi toate tablourile|Alege mărimea|lucrări în colecție|cu iluminare LED|formate diferite|prețul de pornire|Pe peretele tău|Vezi mărimea reală, nu doar cifrele.|Fiecare format e desenat la scară deasupra unei canapele de 220 cm, la 25 cm de spătar – înălțimea la care l-ar agăța un designer.|Set de 3|Canapea de 220 cm · tabloul la 25 cm deasupra spătarului|Stoc epuizat|Desen la scară|Modele în acest format'
+  endcase
+  assign t = d | split: '|'
+
+  comment
+    The collection title is not translated on the foreign markets yet, so they get
+    the dictionary heading; Romania keeps the collection's own title.
+  endcomment
+  if lang == 'ro'
+    assign heading = collection.title
+  else
+    assign heading = t[1]
+  endif
+
+  assign anchor_grid = s.grid_anchor | default: 'ProductGridContainer'
+  assign sizes_id = 'alcwa-sizes-' | append: section.id
+
+  comment
+    One pass over the products (paginated, so the 50-product cap does not apply):
+    live counts, the starting price, each product's format key, and the list of
+    formats as "AREA|key|pieces|round" so a plain string sort orders them by size.
+  endcomment
+  assign works = 0
+  assign led = 0
+  assign min_price = 0
+  assign fmt_rows = ''
+  assign prod_keys = ''
+-%}
+
+{%- paginate collection.products by 250 -%}
+  {%- for p in collection.products -%}
+    {%- liquid
+      assign works = works | plus: 1
+      if p.metafields.custom.putere.value != blank or p.type contains 'LED'
+        assign led = led | plus: 1
+      endif
+      if p.available
+        if min_price == 0 or p.price < min_price
+          assign min_price = p.price
+        endif
+      endif
+
+      assign key = ''
+      assign wl = p.metafields.custom.lungime.value
+      assign hl = p.metafields.custom.inaltime.value
+      if wl != blank and hl != blank and wl.size == hl.size
+        assign pieces = ''
+        assign area = 0
+        for wv in wl
+          assign w = wv | remove: 'cm' | strip | replace: ',', '.' | plus: 0
+          assign h = hl[forloop.index0] | remove: 'cm' | strip | replace: ',', '.' | plus: 0
+          assign area = w | times: h | plus: area
+          if forloop.index > 1
+            assign pieces = pieces | append: '-'
+          endif
+          assign pieces = pieces | append: w | append: 'x' | append: h
+        endfor
+        assign round = '0'
+        if wl.size == 1 and w == h
+          assign t_low = p.title | downcase
+          assign h_low = p.handle | downcase
+          if t_low contains 'diametru' or h_low contains 'diametru' or t_low contains 'ø'
+            assign round = '1'
+          endif
+        endif
+        if wl.size > 1
+          assign key = 'set-' | append: pieces
+        elsif round == '1'
+          assign key = 'd' | append: w
+        else
+          assign key = pieces
+        endif
+        assign area_pad = '000000' | append: area | slice: -6, 6
+        assign row = area_pad | append: '|' | append: key | append: '|' | append: pieces | append: '|' | append: round
+        unless fmt_rows contains row
+          assign fmt_rows = fmt_rows | append: row | append: ';'
+        endunless
+      endif
+      assign prod_keys = prod_keys | append: key | append: ';'
+    -%}
+  {%- endfor -%}
+
+  {%- liquid
+    assign formats = fmt_rows | split: ';' | sort
+    assign keys = prod_keys | split: ';'
+
+    comment
+      The format shown first: the one with the most models in stock.
+    endcomment
+    assign default_key = ''
+    assign best = -1
+    for row in formats
+      assign parts = row | split: '|'
+      assign fk = parts[1]
+      assign n_av = 0
+      for p in collection.products
+        if p.available and keys[forloop.index0] == fk
+          assign n_av = n_av | plus: 1
+        endif
+      endfor
+      if n_av > best
+        assign best = n_av
+        assign default_key = fk
+      endif
+    endfor
+
+    assign tiles = section.blocks | where: 'type', 'tile'
+    assign reveal = ''
+    if settings.animations_reveal_on_scroll
+      assign reveal = ' scroll-trigger animate--slide-in'
+    endif
+    assign arrow = '<svg aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>'
+  -%}
+
+  <div class="alcwa" id="alcwa-{{ section.id }}">
+    {%- comment -%} ------------------------------------------------ HERO {%- endcomment -%}
+    <section class="alcwa__hero">
+      <div class="page-width alcwa__hero-inner">
+        <div class="alcwa__hero-copy">
+          <p class="alcwa__eyebrow alcwa__eyebrow--gold">{{ t[0] }}</p>
+          <h1 class="alcwa__hero-title">{% render 'alc-nbsp', text: heading %}</h1>
+          <p class="alcwa__hero-lead">{{ t[2] | replace: ' – ', '&nbsp;– ' }}</p>
+          <div class="alcwa__actions">
+            <a class="alcwa__btn alcwa__btn--light" href="#{{ anchor_grid }}">
+              {{- t[3] -}}
+              {{- arrow -}}
+            </a>
+            {%- if s.show_sizes and formats.size > 1 -%}
+              <a class="alcwa__btn alcwa__btn--glass" href="#{{ sizes_id }}">
+                <svg aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8V4h4M21 8V4h-4M3 16v4h4M21 16v4h-4"/></svg>
+                {{- t[4] -}}
+              </a>
+            {%- endif -%}
+          </div>
+        </div>
+
+        <div class="alcwa__mosaic">
+          {%- liquid
+            comment
+              Three photos: the tile blocks, or the first three products when there are none.
+            endcomment
+            assign shown = 0
+          -%}
+          {%- if tiles.size > 0 -%}
+            {%- for block in tiles limit: 3 -%}
+              {%- liquid
+                assign tp = block.settings.product
+                if tp == blank
+                  continue
+                endif
+                assign mi = block.settings.media_position | minus: 1
+                assign media = tp.media[mi] | default: tp.featured_media
+                assign shown = shown | plus: 1
+              -%}
+              {%- render 'alc-wa-tile', product: tp, media: media, index: shown, block: block -%}
+            {%- endfor -%}
+          {%- else -%}
+            {%- for tp in collection.products limit: 3 -%}
+              {%- assign shown = shown | plus: 1 -%}
+              {%- render 'alc-wa-tile', product: tp, media: tp.featured_media, index: shown -%}
+            {%- endfor -%}
+          {%- endif -%}
+        </div>
+      </div>
+    </section>
+
+    <div class="page-width">
+      <dl class="alcwa__stats">
+        <div class="alcwa__stat">
+          <dt>{{ t[5] }}</dt>
+          <dd>{{ works }}</dd>
+        </div>
+        <div class="alcwa__stat">
+          <dt>{{ t[6] }}</dt>
+          <dd>{{ led }}</dd>
+        </div>
+        <div class="alcwa__stat">
+          <dt>{{ t[7] }}</dt>
+          <dd>{{ formats.size }}</dd>
+        </div>
+        {%- if min_price > 0 -%}
+          <div class="alcwa__stat">
+            <dt>{{ t[8] }}</dt>
+            <dd>{{ min_price | money }}</dd>
+          </div>
+        {%- endif -%}
+      </dl>
+    </div>
+
+    {%- comment -%} ----------------------------------------------- SIZES {%- endcomment -%}
+    {%- if s.show_sizes and formats.size > 1 -%}
+      <section class="page-width alcwa__sizes{{ reveal }}" id="{{ sizes_id }}" data-alcwa-sizes>
+        <div class="alcwa__sizes-grid">
+          <div class="alcwa__sizes-head">
+            <p class="alcwa__eyebrow">{{ t[9] }}</p>
+            <h2 class="alcwa__title">{% render 'alc-nbsp', text: t[10] %}</h2>
+            <p class="alcwa__intro">{{ t[11] | replace: ' – ', '&nbsp;– ' }}</p>
+
+            <div class="alcwa__chips" role="group" aria-label="{{ t[4] | escape }}">
+              {%- for row in formats -%}
+                {%- liquid
+                  assign parts = row | split: '|'
+                  assign fk = parts[1]
+                  assign fpieces = parts[2]
+                  assign fround = parts[3]
+                  assign n = 0
+                  for k in keys
+                    if k == fk
+                      assign n = n | plus: 1
+                    endif
+                  endfor
+                  if fround == '1'
+                    assign dia = fpieces | split: 'x' | first
+                    assign label = 'Ø ' | append: dia | append: ' cm'
+                  elsif fk contains 'set-'
+                    assign label = t[12]
+                  else
+                    assign label = fpieces | replace: 'x', ' × ' | append: ' cm'
+                  endif
+                -%}
+                <button
+                  type="button"
+                  class="alcwa__chip"
+                  data-key="{{ fk }}"
+                  data-pieces="{{ fpieces }}"
+                  data-round="{{ fround }}"
+                  aria-pressed="{% if fk == default_key %}true{% else %}false{% endif %}"
+                >
+                  <span class="alcwa__chip-shape alcwa__chip-shape--{% if fround == '1' %}round{% elsif fk contains 'set-' %}set{% else %}rect{% endif %}" aria-hidden="true"
+                    {%- unless fround == '1' or fk contains 'set-' -%}
+                      {%- assign cw = fpieces | split: 'x' | first | plus: 0 -%}
+                      {%- assign ch = fpieces | split: 'x' | last | plus: 0 -%}
+                      {%- if cw > ch %} data-wide{% endif -%}
+                    {%- endunless -%}
+                  ></span>
+                  <span>{{ label }}</span>
+                  <span class="alcwa__chip-count">{{ n }}</span>
+                </button>
+              {%- endfor -%}
+            </div>
+          </div>
+
+          <figure class="alcwa__wall">
+            <div class="alcwa__scene" data-alcwa-scene role="img" aria-label="{{ t[15] | escape }}">
+              <div class="alcwa__ruler" aria-hidden="true">
+                {%- for cm in (1..5) -%}
+                  {%- assign y = cm | times: 50 -%}
+                  <span style="bottom: {{ y | times: 100.0 | divided_by: 250 }}%"><i>{{ y }}</i></span>
+                {%- endfor -%}
+              </div>
+              <div class="alcwa__piece" data-piece="0"></div>
+              <div class="alcwa__piece" data-piece="1"></div>
+              <div class="alcwa__piece" data-piece="2"></div>
+              <div class="alcwa__dim alcwa__dim--w" data-dim-w><span data-dim-w-label></span></div>
+              <div class="alcwa__dim alcwa__dim--h" data-dim-h><span data-dim-h-label></span></div>
+              <svg class="alcwa__sofa" viewBox="0 0 220 85" preserveAspectRatio="none" aria-hidden="true" focusable="false">
+                <rect x="12" y="2" width="196" height="46" rx="10" fill="#cfc7bb"/>
+                <rect x="24" y="8" width="84" height="38" rx="9" fill="#d8d1c6"/>
+                <rect x="112" y="8" width="84" height="38" rx="9" fill="#d8d1c6"/>
+                <rect x="0" y="30" width="24" height="48" rx="10" fill="#d2cabe"/>
+                <rect x="196" y="30" width="24" height="48" rx="10" fill="#d2cabe"/>
+                <rect x="16" y="44" width="188" height="34" rx="8" fill="#ddd6cb"/>
+                <rect x="24" y="44" width="85" height="16" rx="6" fill="#e6e0d6"/>
+                <rect x="111" y="44" width="85" height="16" rx="6" fill="#e6e0d6"/>
+                <rect x="18" y="78" width="5" height="7" rx="1.5" fill="#8f877c"/>
+                <rect x="197" y="78" width="5" height="7" rx="1.5" fill="#8f877c"/>
+              </svg>
+            </div>
+            <figcaption class="alcwa__caption">
+              <span>{{ t[13] }}</span>
+              <span class="alcwa__caption-tag">{{ t[15] }}</span>
+            </figcaption>
+          </figure>
+        </div>
+
+        <div class="alcwa__strip-wrap">
+          <div class="alcwa__strip-head">
+            <p class="alcwa__strip-title">{{ t[16] }}</p>
+            <div class="alcwa__strip-nav">
+              <button type="button" class="alcwa__nav" data-alcwa-prev aria-label="{{ 'general.slider.previous_slide' | t | escape }}" disabled>
+                <svg aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M11 6l-6 6 6 6"/></svg>
+              </button>
+              <button type="button" class="alcwa__nav" data-alcwa-next aria-label="{{ 'general.slider.next_slide' | t | escape }}">
+                <svg aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+              </button>
+            </div>
+          </div>
+          <ul class="alcwa__strip" role="list" data-alcwa-strip>
+            {%- comment -%} In-stock models first, sold-out ones last. {%- endcomment -%}
+            {%- for pass in (1..2) -%}
+              {%- for p in collection.products -%}
+                {%- liquid
+                  assign k = keys[forloop.index0]
+                  if k == blank
+                    continue
+                  endif
+                  if pass == 1 and p.available == false
+                    continue
+                  endif
+                  if pass == 2 and p.available
+                    continue
+                  endif
+                -%}
+                <li class="alcwa__card{% unless p.available %} is-soldout{% endunless %}" data-key="{{ k }}"{% if k != default_key %} hidden{% endif %}>
+                  <a href="{{ p.url }}" class="alcwa__card-link">
+                    <span class="alcwa__card-media">
+                      {%- if p.featured_media -%}
+                        {{
+                          p.featured_media
+                          | image_url: width: 600
+                          | image_tag:
+                            loading: 'lazy',
+                            widths: '200,300,400,600',
+                            sizes: '(min-width: 990px) 220px, 44vw',
+                            alt: p.featured_media.alt
+                        }}
+                      {%- endif -%}
+                      {%- if p.metafields.custom.putere.value != blank -%}
+                        <span class="alcwa__card-tag">LED {{ p.metafields.custom.putere.value | first }}</span>
+                      {%- endif -%}
+                    </span>
+                    <span class="alcwa__card-name">{% render 'alc-wa-name', title: p.title %}</span>
+                    <span class="alcwa__card-meta">
+                      {%- if p.available -%}
+                        {%- if p.compare_at_price > p.price -%}
+                          <span class="alcwa__card-sale">{{ p.price | money }}</span>
+                          <s>{{ p.compare_at_price | money }}</s>
+                        {%- else -%}
+                          <span>{{ p.price | money }}</span>
+                        {%- endif -%}
+                      {%- else -%}
+                        <span class="alcwa__card-out">{{ t[14] }}</span>
+                      {%- endif -%}
+                    </span>
+                  </a>
+                </li>
+              {%- endfor -%}
+            {%- endfor -%}
+          </ul>
+        </div>
+      </section>
+
+      <script>
+        (function () {
+          var root = document.getElementById('{{ sizes_id }}');
+          if (!root) return;
+          // The wall in cm: 380 wide, 300 high; the art hangs 25 cm above an 85 cm backrest.
+          var WALL_W = 380, WALL_H = 300, BOTTOM = 110, GAP = 6;
+          var scene = root.querySelector('[data-alcwa-scene]');
+          var pieces = scene.querySelectorAll('.alcwa__piece');
+          var dimW = scene.querySelector('[data-dim-w]'), dimWl = scene.querySelector('[data-dim-w-label]');
+          var dimH = scene.querySelector('[data-dim-h]'), dimHl = scene.querySelector('[data-dim-h-label]');
+          var cards = root.querySelectorAll('.alcwa__card');
+          var chips = root.querySelectorAll('.alcwa__chip');
+          var pct = function (v, of) { return (v / of * 100).toFixed(3) + '%'; };
+
+          function draw(chip) {
+            var list = chip.getAttribute('data-pieces').split('-').map(function (p) {
+              var a = p.split('x'); return { w: +a[0], h: +a[1] };
+            });
+            var round = chip.getAttribute('data-round') === '1';
+            var total = list.reduce(function (s, p) { return s + p.w; }, 0) + GAP * (list.length - 1);
+            var maxH = Math.max.apply(null, list.map(function (p) { return p.h; }));
+            var x = (WALL_W - total) / 2;
+            pieces.forEach(function (el, i) {
+              var p = list[i];
+              if (p) {
+                // A set hangs centred on one line.
+                var b = BOTTOM + (maxH - p.h) / 2;
+                el.style.left = pct(x, WALL_W);
+                el.style.width = pct(p.w, WALL_W);
+                el.style.bottom = pct(b, WALL_H);
+                el.style.height = pct(p.h, WALL_H);
+                el.style.opacity = '1';
+                x += p.w + GAP;
+              } else {
+                el.style.left = pct(WALL_W / 2, WALL_W);
+                el.style.width = '0%';
+                el.style.opacity = '0';
+              }
+              el.classList.toggle('is-round', round && i === 0);
+            });
+            var left = (WALL_W - total) / 2;
+            dimW.style.left = pct(left, WALL_W);
+            dimW.style.width = pct(total, WALL_W);
+            dimW.style.bottom = pct(BOTTOM + maxH + 7, WALL_H);
+            dimWl.textContent = round ? 'Ø ' + list[0].w + ' cm' : list.map(function (p) { return p.w; }).join(' + ') + ' cm';
+            dimH.style.left = pct(left + total + 7, WALL_W);
+            dimH.style.bottom = pct(BOTTOM, WALL_H);
+            dimH.style.height = pct(maxH, WALL_H);
+            dimH.style.opacity = round ? '0' : '1';
+            dimHl.textContent = maxH + ' cm';
+            scene.setAttribute('aria-label', scene.getAttribute('data-label-base') + ': ' + dimWl.textContent + (round ? '' : ' × ' + maxH + ' cm'));
+          }
+
+          function select(chip) {
+            var key = chip.getAttribute('data-key');
+            chips.forEach(function (c) { c.setAttribute('aria-pressed', c === chip ? 'true' : 'false'); });
+            cards.forEach(function (c) { c.hidden = c.getAttribute('data-key') !== key; });
+            var strip = root.querySelector('[data-alcwa-strip]');
+            if (strip) strip.scrollLeft = 0;
+            draw(chip);
+            nav();
+          }
+
+          // Arrows for the models row: a page at a time, disabled at either end.
+          var strip = root.querySelector('[data-alcwa-strip]');
+          var prev = root.querySelector('[data-alcwa-prev]'), next = root.querySelector('[data-alcwa-next]');
+          function nav() {
+            if (!strip || !prev) return;
+            var max = strip.scrollWidth - strip.clientWidth;
+            prev.disabled = strip.scrollLeft <= 2;
+            next.disabled = strip.scrollLeft >= max - 2;
+            prev.parentNode.hidden = max <= 2;
+          }
+          if (strip && prev) {
+            var page = function (dir) {
+              var rtl = getComputedStyle(strip).direction === 'rtl' ? -1 : 1;
+              strip.scrollBy({ left: dir * rtl * strip.clientWidth, behavior: 'smooth' });
+            };
+            prev.addEventListener('click', function () { page(-1); });
+            next.addEventListener('click', function () { page(1); });
+            strip.addEventListener('scroll', nav, { passive: true });
+            window.addEventListener('resize', nav, { passive: true });
+          }
+
+          scene.setAttribute('data-label-base', scene.getAttribute('aria-label'));
+          scene.classList.add('is-instant');
+          var first = root.querySelector('.alcwa__chip[aria-pressed="true"]') || chips[0];
+          if (first) draw(first);
+          nav();
+          requestAnimationFrame(function () { requestAnimationFrame(function () { scene.classList.remove('is-instant'); }); });
+          chips.forEach(function (c) { c.addEventListener('click', function () { select(c); }); });
+        })();
+      </script>
+    {%- endif -%}
+  </div>
+{%- endpaginate -%}
+
+{% schema %}
+{
+  "name": "ALC - Wall art top",
+  "tag": "section",
+  "class": "section",
+  "settings": [
+    {
+      "type": "paragraph",
+      "content": "Top of the wall-art collection page: dark gallery hero with three photos, live figures and the to-scale size chooser. Text is translated in the section's own dictionary."
+    },
+    {
+      "type": "checkbox",
+      "id": "show_sizes",
+      "label": "Show the size chooser",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "grid_anchor",
+      "label": "Product grid anchor id",
+      "default": "ProductGridContainer"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "tile",
+      "name": "Hero photo",
+      "limit": 3,
+      "settings": [
+        {
+          "type": "product",
+          "id": "product",
+          "label": "Product"
+        },
+        {
+          "type": "range",
+          "id": "media_position",
+          "label": "Photo number in the product gallery",
+          "min": 1,
+          "max": 12,
+          "step": 1,
+          "default": 1
+        },
+        {
+          "type": "select",
+          "id": "focus",
+          "label": "Crop focus",
+          "default": "center",
+          "options": [
+            { "value": "top", "label": "Top" },
+            { "value": "center", "label": "Center" },
+            { "value": "bottom", "label": "Bottom" }
+          ]
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "ALC - Wall art top"
+    }
+  ]
+}
+{% endschema %}

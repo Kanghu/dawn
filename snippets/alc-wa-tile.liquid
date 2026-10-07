@@ -1,0 +1,58 @@
+{%- comment -%}
+  One photo of the wall-art hero mosaic (sections/alc-wall-art.liquid): a product's
+  lifestyle photo that links to the product, with its name and price on a glass label.
+
+  Accepts:
+  - product {Object}
+  - media   {Object}  the product media to show
+  - index   {Number}  1 = the large tile (the page's LCP image), 2-3 = the small ones
+  - block   {Object}  optional, the tile block (crop focus, theme-editor attributes)
+{%- endcomment -%}
+{%- liquid
+  assign focus = 'center'
+  if block
+    assign focus = block.settings.focus | default: 'center'
+  endif
+  if index == 1
+    assign tile_sizes = '(min-width: 990px) 34vw, 92vw'
+    assign tile_loading = 'eager'
+  else
+    assign tile_sizes = '(min-width: 990px) 22vw, 46vw'
+    assign tile_loading = 'eager'
+  endif
+-%}
+<a
+  class="alcwa__tile alcwa__tile--{{ index }}"
+  href="{{ product.url }}"
+  style="--alcwa-focus: {{ focus }};"
+  {% if block %}{{ block.shopify_attributes }}{% endif %}
+>
+  {%- if media -%}
+    {%- if index == 1 -%}
+      {{
+        media
+        | image_url: width: 1254
+        | image_tag:
+          loading: tile_loading,
+          fetchpriority: 'high',
+          widths: '400,600,800,1000,1254',
+          sizes: tile_sizes,
+          alt: product.title
+      }}
+    {%- else -%}
+      {{
+        media
+        | image_url: width: 900
+        | image_tag:
+          loading: tile_loading,
+          widths: '300,450,600,900',
+          sizes: tile_sizes,
+          alt: product.title
+      }}
+    {%- endif -%}
+  {%- endif -%}
+  <span class="alcwa__tile-label">
+    <span class="alcwa__tile-name">{% render 'alc-wa-name', title: product.title %}</span>
+    <span class="alcwa__tile-price">{{ product.price | money }}</span>
+  </span>
+</a>

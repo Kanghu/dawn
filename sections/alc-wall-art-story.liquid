@@ -1,0 +1,240 @@
+{%- comment -%}
+  alc-wall-art-story — the dark "details" band under the wall-art product grid:
+  a lifestyle photo, the copy, and four figures of the LED models read live from
+  the first LED product's metafields (power, luminous flux and colour temperature,
+  LED lifespan, depth), so the band never disagrees with the product pages.
+  A figure whose metafield is empty is left out.
+
+  UI text is in the per-language dictionary below, numbers are formatted per
+  locale (1.920 / 1,920 / 1 920). Styles: assets/alc-wall-art.css.
+{%- endcomment -%}
+
+{{ 'alc-wall-art.css' | asset_url | stylesheet_tag }}
+
+{%- liquid
+  assign s = section.settings
+  assign lang = request.locale.iso_code | downcase | slice: 0, 2
+
+  comment
+    d: eyebrow | title | lead | power label ([k] = colour temperature) | flux label |
+       lifespan label | depth label | footnote | CTA
+  endcomment
+  case lang
+    when 'en'
+      assign d = 'Details that matter|The light is part of the artwork.|The LED strip sits behind the artwork, so the light falls on the wall, not in your eyes. An aluminium alloy frame, glass and an MDF back keep it straight and slim.|LED strip, neutral [k] light|luminous flux|LED lifespan|thick – sits close to the wall|Figures for the LED-lit models · 220–230 V mains power.|See the LED artworks'
+    when 'hu'
+      assign d = 'Részletek, amelyek számítanak|A fény a kép része.|A LED-szalag a kép mögött van, így a fény a falra esik, nem a szemedbe. Az alumíniumötvözet keret, az üveg és az MDF hátlap egyenesen és vékonyan tartja.|LED-szalag, semleges [k] fény|fényáram|a LED-ek élettartama|vastag – közel simul a falhoz|A LED-es modellek adatai · 220–230 V-os hálózati táplálás.|A LED-es falképek'
+    when 'pl'
+      assign d = 'Szczegóły, które mają znaczenie|Światło jest częścią obrazu.|Taśma LED znajduje się za obrazem, więc światło pada na ścianę, a nie w oczy. Rama ze stopu aluminium, szkło i tył z MDF utrzymują go prosto i smukło.|taśma LED, neutralne światło [k]|strumień świetlny|żywotność diod LED|grubości – blisko ściany|Dane dla modeli z podświetleniem LED · zasilanie 220–230 V.|Zobacz obrazy z LED'
+    when 'el'
+      assign d = 'Λεπτομέρειες που μετράνε|Το φως είναι μέρος του πίνακα.|Η ταινία LED βρίσκεται πίσω από το έργο, έτσι το φως πέφτει στον τοίχο και όχι στα μάτια. Το πλαίσιο από κράμα αλουμινίου, το γυαλί και η πλάτη MDF τον κρατούν ίσιο και λεπτό.|ταινία LED, ουδέτερο φως [k]|φωτεινή ροή|διάρκεια ζωής των LED|πάχος – κάθεται κοντά στον τοίχο|Τιμές για τα μοντέλα με φωτισμό LED · τροφοδοσία 220–230 V.|Δείτε τους πίνακες LED'
+    when 'bg'
+      assign d = 'Детайли, които имат значение|Светлината е част от картината.|LED лентата е зад творбата, затова светлината пада върху стената, а не в очите. Рамката от алуминиева сплав, стъклото и гърбът от MDF я държат права и тънка.|LED лента, неутрална светлина [k]|светлинен поток|живот на светодиодите|дебелина – стои близо до стената|Стойности за моделите с LED подсветка · захранване 220–230 V.|Вижте картините с LED'
+    when 'it'
+      assign d = 'Dettagli che contano|La luce fa parte del quadro.|La striscia LED è dietro l’opera, così la luce cade sulla parete e non negli occhi. La cornice in lega di alluminio, il vetro e il retro in MDF lo tengono dritto e sottile.|striscia LED, luce neutra [k]|flusso luminoso|durata dei LED|di spessore – resta vicino alla parete|Valori per i modelli con illuminazione LED · alimentazione 220–230 V.|Vedi i quadri LED'
+    when 'fr'
+      assign d = 'Les détails qui comptent|La lumière fait partie du tableau.|Le ruban LED est placé derrière l’œuvre : la lumière tombe sur le mur, pas dans les yeux. Le cadre en alliage d’aluminium, le verre et le dos en MDF le gardent droit et fin.|ruban LED, lumière neutre [k]|flux lumineux|durée de vie des LED|d’épaisseur – reste près du mur|Valeurs des modèles avec éclairage LED · alimentation 220–230 V.|Voir les tableaux LED'
+    when 'cs'
+      assign d = 'Detaily, na kterých záleží|Světlo je součástí obrazu.|LED pásek je za obrazem, takže světlo dopadá na stěnu, ne do očí. Rám ze slitiny hliníku, sklo a zadní deska z MDF ho drží rovný a tenký.|LED pásek, neutrální světlo [k]|světelný tok|životnost LED|tloušťka – drží blízko u stěny|Hodnoty pro modely s LED podsvícením · napájení 220–230 V.|Zobrazit obrazy s LED'
+    when 'sk'
+      assign d = 'Detaily, na ktorých záleží|Svetlo je súčasťou obrazu.|LED pás je za obrazom, takže svetlo dopadá na stenu, nie do očí. Rám zo zliatiny hliníka, sklo a zadná doska z MDF ho držia rovný a tenký.|LED pás, neutrálne svetlo [k]|svetelný tok|životnosť LED|hrúbka – drží blízko pri stene|Hodnoty pre modely s LED podsvietením · napájanie 220–230 V.|Zobraziť obrazy s LED'
+    when 'hr'
+      assign d = 'Detalji koji su važni|Svjetlo je dio slike.|LED traka nalazi se iza djela, pa svjetlo pada na zid, a ne u oči. Okvir od aluminijske legure, staklo i stražnja ploča od MDF-a drže je ravnom i tankom.|LED traka, neutralno svjetlo [k]|svjetlosni tok|vijek trajanja LED-a|debljina – stoji blizu zida|Vrijednosti za modele s LED rasvjetom · napajanje 220–230 V.|Pogledajte slike s LED-om'
+    when 'de'
+      assign d = 'Details, die zählen|Das Licht gehört zum Bild.|Der LED-Streifen sitzt hinter dem Werk, so fällt das Licht auf die Wand und nicht in die Augen. Rahmen aus Aluminiumlegierung, Glas und eine MDF-Rückwand halten es gerade und flach.|LED-Streifen, neutrales Licht [k]|Lichtstrom|Lebensdauer der LEDs|tief – sitzt nah an der Wand|Werte für die Modelle mit LED-Beleuchtung · Netzbetrieb 220–230 V.|LED-Bilder ansehen'
+    else
+      assign d = 'Detalii care contează|Lumina face parte din tablou.|Banda LED stă în spatele lucrării, așa că lumina cade pe perete, nu în ochi. Rama din aliaj de aluminiu, sticla și spatele din MDF îl țin drept și subțire.|bandă LED, lumină neutră [k]|flux luminos|durata de viață a LED-urilor|grosime – stă aproape de perete|Valori pentru modelele cu iluminare LED · alimentare 220–230 V.|Vezi tablourile cu LED'
+  endcase
+  assign t = d | split: '|'
+
+  comment
+    Number formatting per locale: thousands separator and decimal mark.
+  endcomment
+  case lang
+    when 'en'
+      assign thou = ','
+      assign dec = '.'
+    when 'hu', 'pl', 'cs', 'sk', 'bg', 'fr'
+      assign thou = '&nbsp;'
+      assign dec = ','
+    else
+      assign thou = '.'
+      assign dec = ','
+  endcase
+
+  comment
+    The reference product: the first one in the collection with an LED power metafield.
+  endcomment
+  assign ref = nil
+  for p in collection.products
+    if p.metafields.custom.putere.value != blank
+      assign ref = p
+      break
+    endif
+  endfor
+
+  assign power = ''
+  assign flux = ''
+  assign life = ''
+  assign depth = ''
+  assign kelvin = ''
+  if ref
+    assign power = ref.metafields.custom.putere.value | first | remove: 'W' | remove: 'w' | strip
+    assign flux_n = ref.metafields.custom.flux_de_lumina_lm_.value | first
+    if flux_n
+      assign flux_s = flux_n | append: ''
+      if flux_n >= 1000
+        assign th = flux_n | divided_by: 1000
+        assign rest = flux_n | modulo: 1000 | prepend: '00' | slice: -3, 3
+        assign flux_s = th | append: thou | append: rest
+      endif
+      assign flux = flux_s
+    endif
+    assign life_mo = ref.metafields.custom.autonomie_.value | first
+    if life_mo
+      assign life_n = life_mo.autonomie.value | first | strip | split: ' ' | first | remove: '.' | remove: ',' | remove: 'h' | plus: 0
+      if life_n >= 1000
+        assign th = life_n | divided_by: 1000
+        assign rest = life_n | modulo: 1000 | prepend: '00' | slice: -3, 3
+        assign life = th | append: thou | append: rest
+      endif
+    endif
+    assign depth = ref.metafields.custom.latime.value | first | remove: 'cm' | strip | replace: '.', dec
+    assign k_mo = ref.metafields.custom.kelvin_.value | first
+    if k_mo
+      comment
+        Only the number: the metaobject's translations are machine-made ("4000 tys", "4000 χιλ").
+      endcomment
+      assign kelvin = k_mo.kelvin.value | first | strip | split: ' ' | first | remove: 'K' | remove: 'k'
+      assign kelvin_n = kelvin | plus: 0
+      if kelvin_n < 1000
+        assign kelvin = ''
+      endif
+    endif
+  endif
+
+  if kelvin != blank
+    assign k_label = kelvin | append: ' K'
+    assign power_label = t[3] | replace: '[k]', k_label
+  else
+    assign power_label = t[3] | replace: ' [k]', '' | replace: '[k]', ''
+  endif
+
+  assign media = blank
+  if s.product != blank
+    assign mi = s.media_position | minus: 1
+    assign media = s.product.media[mi] | default: s.product.featured_media
+  endif
+
+  assign cta_collection = s.link_collection
+
+  assign reveal = ''
+  if settings.animations_reveal_on_scroll
+    assign reveal = ' scroll-trigger animate--slide-in'
+  endif
+  assign arrow = '<svg aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>'
+-%}
+
+{%- if ref -%}
+  <div class="alcwa">
+    <section class="page-width alcwa__story{{ reveal }}">
+      <div class="alcwa__story-card">
+        {%- if media -%}
+          <div class="alcwa__story-media">
+            {{
+              media
+              | image_url: width: 1254
+              | image_tag:
+                loading: 'lazy',
+                widths: '400,600,800,1000,1254',
+                sizes: '(min-width: 990px) 44vw, 100vw',
+                alt: s.product.title
+            }}
+          </div>
+        {%- endif -%}
+
+        <div class="alcwa__story-body">
+          <p class="alcwa__eyebrow alcwa__eyebrow--gold">{{ t[0] }}</p>
+          <h2 class="alcwa__title alcwa__title--light">{% render 'alc-nbsp', text: t[1] %}</h2>
+          <p class="alcwa__intro alcwa__intro--light">{{ t[2] }}</p>
+
+          <dl class="alcwa__figures">
+            {%- if power != blank -%}
+              <div class="alcwa__figure">
+                <dt>{{ power_label }}</dt>
+                <dd>{{ power }}&nbsp;W</dd>
+              </div>
+            {%- endif -%}
+            {%- if flux != blank -%}
+              <div class="alcwa__figure">
+                <dt>{{ t[4] }}</dt>
+                <dd>{{ flux }}&nbsp;lm</dd>
+              </div>
+            {%- endif -%}
+            {%- if life != blank -%}
+              <div class="alcwa__figure">
+                <dt>{{ t[5] }}</dt>
+                <dd>{{ life }}&nbsp;h</dd>
+              </div>
+            {%- endif -%}
+            {%- if depth != blank -%}
+              <div class="alcwa__figure">
+                <dt>{{ t[6] }}</dt>
+                <dd>{{ depth }}&nbsp;cm</dd>
+              </div>
+            {%- endif -%}
+          </dl>
+
+          <p class="alcwa__note">{{ t[7] }}</p>
+
+          {%- if cta_collection != blank -%}
+            <div class="alcwa__actions">
+              <a class="alcwa__btn alcwa__btn--light" href="{{ cta_collection.url }}">
+                {{- t[8] -}}
+                {{- arrow -}}
+              </a>
+            </div>
+          {%- endif -%}
+        </div>
+      </div>
+    </section>
+  </div>
+{%- endif -%}
+
+{% schema %}
+{
+  "name": "ALC - Wall art details",
+  "tag": "section",
+  "class": "section",
+  "settings": [
+    {
+      "type": "paragraph",
+      "content": "Dark details band for the wall-art collection. The figures are read from the first LED product's metafields; the text is translated in the section's own dictionary."
+    },
+    {
+      "type": "product",
+      "id": "product",
+      "label": "Photo from product"
+    },
+    {
+      "type": "range",
+      "id": "media_position",
+      "label": "Photo number in the product gallery",
+      "min": 1,
+      "max": 12,
+      "step": 1,
+      "default": 1
+    },
+    {
+      "type": "collection",
+      "id": "link_collection",
+      "label": "Button links to collection"
+    }
+  ],
+  "presets": [
+    {
+      "name": "ALC - Wall art details"
+    }
+  ]
+}
+{% endschema %}
