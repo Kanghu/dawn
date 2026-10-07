@@ -253,7 +253,7 @@
           <div class="alcwa__sizes-head">
             <p class="alcwa__eyebrow">{{ t[9] }}</p>
             <h2 class="alcwa__title">{% render 'alc-nbsp', text: t[10] %}</h2>
-            <p class="alcwa__intro">{{ t[11] | replace: ' – ', '&nbsp;– ' }}</p>
+            <p class="alcwa__intro">{{ t[11] | replace: ' – ', '&nbsp;– ' | replace: ' cm', '&nbsp;cm' }}</p>
 
             <div class="alcwa__chips" role="group" aria-label="{{ t[4] | escape }}">
               {%- for row in formats -%}

@@ -1,0 +1,637 @@
+{%- comment -%}
+  alc-mirror-sizes — "On your wall" for LED mirror collections: the same to-scale
+  chooser as the wall-art page (sections/alc-wall-art.liquid), with a bathroom wall.
+
+  - Three steps: shape (rectangular, round, oval, polygonal), then the width the
+    shape comes in (the diameter for round mirrors), then the heights of that
+    width; each chip shows its number of models.
+  - The wall (380 x 260 cm) shows the mirror to scale above the vanity it fits: the
+    narrowest standard vanity (60/80/100/120/160 cm) at least as wide as the mirror,
+    the mirror centred at eye level (160 cm) and at least 115 cm off the floor so it
+    clears the tap.
+  - Below, the models in that size, in-stock first (rendered from a JSON list, so a
+    collection of 300+ mirrors does not ship hundreds of hidden cards).
+
+  Sizes come from custom.lungime (width) and custom.inaltime (height), or
+  custom.diametru for round mirrors; the shape from the title (Rotunda / Ovala /
+  Poligon). "Ovala" mirrors are capsules, polygons are drawn as 12-sided.
+
+  Shown on the first page of the collection only. UI text is in the per-language
+  dictionary below. Styles: assets/alc-wall-art.css (shared chips, wall, strip) +
+  assets/alc-mirror-sizes.css.
+{%- endcomment -%}
+
+{%- liquid
+  assign lang = request.locale.iso_code | downcase | slice: 0, 2
+
+  comment
+    d: eyebrow | title | intro | shape | width (step 2) | rectangular | round | oval | polygonal |
+       caption ([w] = vanity width) | drawn to scale | models in this size | sold out |
+       fallback name | vanity label ([w]) | height (step 3) | diameter (step 2, round)
+  endcomment
+  case lang
+    when 'en'
+      assign d = 'On your wall|See the real size, not just the numbers.|Every mirror is drawn to scale above the vanity it fits, centred at eye level – 160 cm from the floor.|Shape|Width|Rectangular|Round|Oval|Polygonal|Fits a [w] cm vanity · centred at eye level|Drawn to scale|Models in this size|Sold out|LED mirror|[w] cm vanity|Height|Diameter'
+    when 'hu'
+      assign d = 'A te faladon|Lásd a valódi méretet, ne csak a számokat.|Minden tükör méretarányosan van megrajzolva a hozzá illő fürdőszobabútor fölé, szemmagasságban – 160 cm-re a padlótól.|Forma|Szélesség|Szögletes|Kerek|Ovális|Sokszögű|[w] cm-es bútorhoz illik · szemmagasságban|Méretarányos rajz|Modellek ebben a méretben|Elfogyott|LED-es tükör|[w] cm-es bútor|Magasság|Átmérő'
+    when 'pl'
+      assign d = 'Na Twojej ścianie|Zobacz prawdziwy rozmiar, nie tylko liczby.|Każde lustro narysowano w skali nad pasującą szafką łazienkową, na wysokości oczu – 160 cm od podłogi.|Kształt|Szerokość|Prostokątne|Okrągłe|Owalne|Wielokątne|Pasuje do szafki [w] cm · na wysokości oczu|Rysunek w skali|Modele w tym rozmiarze|Wyprzedane|Lustro LED|szafka [w] cm|Wysokość|Średnica'
+    when 'el'
+      assign d = 'Στον τοίχο σας|Δείτε το πραγματικό μέγεθος, όχι μόνο νούμερα.|Κάθε καθρέφτης είναι σχεδιασμένος υπό κλίμακα πάνω από το έπιπλο μπάνιου που του ταιριάζει, στο ύψος των ματιών – 160 cm από το πάτωμα.|Σχήμα|Πλάτος|Ορθογώνιοι|Στρογγυλοί|Οβάλ|Πολυγωνικοί|Ταιριάζει σε έπιπλο [w] cm · στο ύψος των ματιών|Σχέδιο υπό κλίμακα|Μοντέλα σε αυτό το μέγεθος|Εξαντλήθηκε|Καθρέφτης LED|έπιπλο [w] cm|Ύψος|Διάμετρος'
+    when 'bg'
+      assign d = 'На вашата стена|Вижте истинския размер, не само числата.|Всяко огледало е нарисувано в мащаб над подходящия шкаф за баня, на нивото на очите – 160 cm от пода.|Форма|Ширина|Правоъгълни|Кръгли|Овални|Многоъгълни|Подходящо за шкаф [w] cm · на нивото на очите|Рисунка в мащаб|Модели в този размер|Изчерпан|LED огледало|шкаф [w] cm|Височина|Диаметър'
+    when 'it'
+      assign d = 'Sulla tua parete|Guarda la misura reale, non solo i numeri.|Ogni specchio è disegnato in scala sopra il mobile bagno adatto, all’altezza degli occhi: 160 cm dal pavimento.|Forma|Larghezza|Rettangolari|Rotondi|Ovali|Poligonali|Adatto a un mobile da [w] cm · all’altezza degli occhi|Disegno in scala|Modelli in questa misura|Esaurito|Specchio LED|mobile [w] cm|Altezza|Diametro'
+    when 'fr'
+      assign d = 'Sur votre mur|Voyez la taille réelle, pas seulement les chiffres.|Chaque miroir est dessiné à l’échelle au-dessus du meuble de salle de bain qui lui convient, à hauteur des yeux – 160 cm du sol.|Forme|Largeur|Rectangulaires|Ronds|Ovales|Polygonaux|Convient à un meuble de [w] cm · à hauteur des yeux|Dessin à l’échelle|Modèles dans cette taille|Épuisé|Miroir LED|meuble [w] cm|Hauteur|Diamètre'
+    when 'cs'
+      assign d = 'Na vaší stěně|Podívejte se na skutečnou velikost, ne jen na čísla.|Každé zrcadlo je nakresleno v měřítku nad koupelnovou skříňkou, ke které se hodí, v úrovni očí – 160 cm od podlahy.|Tvar|Šířka|Obdélníková|Kulatá|Oválná|Mnohoúhelníková|Hodí se ke skříňce [w] cm · v úrovni očí|Nákres v měřítku|Modely v této velikosti|Vyprodáno|LED zrcadlo|skříňka [w] cm|Výška|Průměr'
+    when 'sk'
+      assign d = 'Na vašej stene|Pozrite si skutočnú veľkosť, nie iba čísla.|Každé zrkadlo je nakreslené v mierke nad kúpeľňovou skrinkou, ku ktorej sa hodí, v úrovni očí – 160 cm od podlahy.|Tvar|Šírka|Obdĺžnikové|Okrúhle|Oválne|Mnohouholníkové|Hodí sa ku skrinke [w] cm · v úrovni očí|Nákres v mierke|Modely v tejto veľkosti|Vypredané|LED zrkadlo|skrinka [w] cm|Výška|Priemer'
+    when 'hr'
+      assign d = 'Na vašem zidu|Pogledajte stvarnu veličinu, ne samo brojeve.|Svako je ogledalo nacrtano u mjerilu iznad kupaonskog ormarića kojem pristaje, u visini očiju – 160 cm od poda.|Oblik|Širina|Pravokutna|Okrugla|Ovalna|Poligonalna|Pristaje ormariću od [w] cm · u visini očiju|Crtež u mjerilu|Modeli u ovoj veličini|Rasprodano|LED ogledalo|ormarić [w] cm|Visina|Promjer'
+    when 'de'
+      assign d = 'An Ihrer Wand|Sehen Sie die echte Größe, nicht nur die Zahlen.|Jeder Spiegel ist maßstabsgetreu über dem passenden Waschtisch gezeichnet, auf Augenhöhe – 160 cm über dem Boden.|Form|Breite|Rechteckig|Rund|Oval|Polygonal|Passt zu einem [w]-cm-Waschtisch · auf Augenhöhe|Maßstabsgetreue Zeichnung|Modelle in dieser Größe|Ausverkauft|LED-Spiegel|Waschtisch [w] cm|Höhe|Durchmesser'
+    else
+      assign d = 'Pe peretele tău|Vezi mărimea reală, nu doar cifrele.|Fiecare oglindă e desenată la scară deasupra mobilierului pe care se potrivește, la nivelul ochilor – 160 cm de la podea.|Formă|Lungime|Dreptunghiulare|Rotunde|Ovale|Poligonale|Se potrivește pe un mobilier de [w] cm · la nivelul ochilor|Desen la scară|Modele în această mărime|Stoc epuizat|Oglindă LED|mobilier [w] cm|Lățime|Diametru'
+  endcase
+  assign t = d | split: '|'
+  assign shape_ids = 'rect,round,oval,poly' | split: ','
+  assign sid = 'alcms-' | append: section.id
+-%}
+
+{%- if current_page == 1 -%}
+  {%- paginate collection.products by 250 -%}
+    {%- liquid
+      comment
+        One pass: each product's key ("shape-WxH"), the format rows to sort
+        ("<shape order><width><height>|key|shape|w|h"), and the product list for the JSON.
+      endcomment
+      assign rows = ''
+      assign keys = ''
+      assign avail = ''
+      for p in collection.products
+        assign key = ''
+        assign wv = p.metafields.custom.lungime.value | first
+        assign hv = p.metafields.custom.inaltime.value | first
+        assign dv = p.metafields.custom.diametru.value | first
+        assign w = 0
+        assign h = 0
+        if wv != blank and hv != blank
+          assign w = wv | remove: 'cm' | strip | replace: ',', '.' | plus: 0 | round
+          assign h = hv | remove: 'cm' | strip | replace: ',', '.' | plus: 0 | round
+        elsif dv != blank
+          assign w = dv | remove: 'cm' | strip | replace: ',', '.' | plus: 0 | round
+          assign h = w
+        endif
+        if w > 0 and h > 0
+          comment
+            Shape, in this order, from data that is not translated: Shopify's standard
+            shape (it alone marks the polygons, as heptagonal), then custom.forma_, then
+            the size (a diameter only = round). The title is a last resort for the few
+            mirrors with neither field.
+          endcomment
+          assign mo = p.metafields.shopify.shape.value | first
+          assign sh_std = mo.system.handle | default: ''
+          assign mo = p.metafields.custom.forma_.value | first
+          assign fh = mo.system.handle | default: ''
+          assign tl = p.title | downcase
+          assign shape = ''
+          if sh_std contains 'gon'
+            assign shape = 'poly'
+          elsif sh_std == 'oval' or fh == 'ovala'
+            assign shape = 'oval'
+          elsif sh_std == 'round' or fh == 'rotunda'
+            if w == h
+              assign shape = 'round'
+            endif
+          elsif sh_std != '' or fh != ''
+            assign shape = 'rect'
+          endif
+          if shape == ''
+            if tl contains 'poligon' or tl contains 'polygon' or tl contains 'sokszög' or tl contains 'wielok' or tl contains 'πολυγων' or tl contains 'многоъгъл'
+              assign shape = 'poly'
+            elsif tl contains 'oval' or tl contains 'owal' or tl contains 'ovál' or tl contains 'οβάλ' or tl contains 'овал'
+              assign shape = 'oval'
+            elsif w == h and wv == blank
+              assign shape = 'round'
+            else
+              assign shape = 'rect'
+            endif
+          endif
+          case shape
+            when 'rect'
+              assign so = '1'
+            when 'round'
+              assign so = '2'
+            when 'oval'
+              assign so = '3'
+            else
+              assign so = '4'
+          endcase
+          assign key = shape | append: '-' | append: w | append: 'x' | append: h
+          assign w_pad = '000' | append: w | slice: -3, 3
+          assign h_pad = '000' | append: h | slice: -3, 3
+          assign row = so | append: w_pad | append: h_pad | append: '|' | append: key | append: '|' | append: shape | append: '|' | append: w | append: '|' | append: h
+          unless rows contains row
+            assign rows = rows | append: row | append: ';'
+          endunless
+        endif
+        assign keys = keys | append: key | append: ';'
+        if p.available
+          assign avail = avail | append: '1;'
+        else
+          assign avail = avail | append: '0;'
+        endif
+      endfor
+      assign formats = rows | split: ';' | sort
+      assign key_list = keys | split: ';'
+      assign avail_list = avail | split: ';'
+
+      comment
+        Per format: models and models in stock. Per shape: models, and the size to show
+        first (most in stock). The shape shown first is the one with most in stock.
+      endcomment
+      assign f_counts = ''
+      assign shape_stock = ''
+      assign default_shape = ''
+      assign best_shape_n = -1
+      for sh in shape_ids
+        assign total = 0
+        assign stock = 0
+        assign best_n = -1
+        assign best_k = ''
+        for row in formats
+          assign parts = row | split: '|'
+          if parts[2] != sh
+            continue
+          endif
+          assign n = 0
+          assign n_av = 0
+          for k in key_list
+            if k == parts[1]
+              assign n = n | plus: 1
+              if avail_list[forloop.index0] == '1'
+                assign n_av = n_av | plus: 1
+              endif
+            endif
+          endfor
+          assign f_counts = f_counts | append: parts[1] | append: ':' | append: n | append: ':' | append: n_av | append: ';'
+          assign total = total | plus: n
+          assign stock = stock | plus: n_av
+          if n_av > best_n
+            assign best_n = n_av
+            assign best_k = parts[1]
+          endif
+        endfor
+        assign shape_stock = shape_stock | append: sh | append: ':' | append: total | append: ':' | append: best_k | append: ';'
+        if total > 0 and stock > best_shape_n
+          assign best_shape_n = stock
+          assign default_shape = sh
+        endif
+      endfor
+      assign shape_rows = shape_stock | split: ';'
+    -%}
+
+    {%- if formats.size > 1 -%}
+      {{ 'alc-wall-art.css' | asset_url | stylesheet_tag }}
+      {{ 'alc-mirror-sizes.css' | asset_url | stylesheet_tag }}
+
+      <div class="alcwa alcms">
+        <section class="page-width alcwa__sizes alcms__sizes" id="{{ sid }}">
+          <div class="alcwa__sizes-grid alcms__grid">
+            <div class="alcwa__sizes-head">
+              <p class="alcwa__eyebrow">{{ t[0] }}</p>
+              <h2 class="alcwa__title">{% render 'alc-nbsp', text: t[1] %}</h2>
+              <p class="alcwa__intro">{{ t[2] | replace: ' – ', '&nbsp;– ' | replace: ' cm', '&nbsp;cm' }}</p>
+            </div>
+
+            <div class="alcms__steps">
+
+              {%- liquid
+                comment
+                  The format shown first: its shape, width and height.
+                endcomment
+                for srow in shape_rows
+                  assign sp = srow | split: ':'
+                  if sp[0] == default_shape
+                    assign dk = sp[2] | split: '-' | last | split: 'x'
+                    assign default_w = dk[0]
+                    assign default_h = dk[1]
+                  endif
+                endfor
+              -%}
+              <p class="alcms__label" id="{{ sid }}-shape"><span class="alcms__step" aria-hidden="true">1</span>{{ t[3] }}</p>
+              <div class="alcwa__chips alcms__chips alcms__chips--shape" role="group" aria-labelledby="{{ sid }}-shape">
+                {%- for srow in shape_rows -%}
+                  {%- liquid
+                    assign sp = srow | split: ':'
+                    assign sh = sp[0]
+                    assign total = sp[1] | plus: 0
+                    if total == 0
+                      continue
+                    endif
+                    case sh
+                      when 'rect'
+                        assign sl = t[5]
+                      when 'round'
+                        assign sl = t[6]
+                      when 'oval'
+                        assign sl = t[7]
+                      else
+                        assign sl = t[8]
+                    endcase
+                  -%}
+                  <button
+                    type="button"
+                    class="alcwa__chip"
+                    data-step="shape"
+                    data-shape="{{ sh }}"
+                    data-default="{{ sp[2] }}"
+                    aria-pressed="{% if sh == default_shape %}true{% else %}false{% endif %}"
+                  >
+                    <span class="alcms__shape alcms__shape--{{ sh }}" aria-hidden="true"></span>
+                    <span>{{ sl }}</span>
+                    <span class="alcwa__chip-count">{{ total }}</span>
+                  </button>
+                {%- endfor -%}
+              </div>
+
+              <p class="alcms__label" id="{{ sid }}-w">
+                <span class="alcms__step" aria-hidden="true">2</span>
+                <span data-label-w data-text="{{ t[4] | escape }}" data-text-round="{{ t[16] | escape }}">
+                  {%- if default_shape == 'round' %}{{ t[16] }}{% else %}{{ t[4] }}{% endif -%}
+                </span>
+              </p>
+              <div class="alcwa__chips alcms__chips" role="group" aria-labelledby="{{ sid }}-w">
+                {%- assign seen = '' -%}
+                {%- for row in formats -%}
+                  {%- liquid
+                    assign parts = row | split: '|'
+                    assign group = parts[2] | append: '-' | append: parts[3] | append: 'x'
+                    assign marker = ';' | append: group
+                    if seen contains marker
+                      continue
+                    endif
+                    assign seen = seen | append: marker
+                    assign n = 0
+                    for k in key_list
+                      assign kp = k | slice: 0, group.size
+                      if kp == group
+                        assign n = n | plus: 1
+                      endif
+                    endfor
+                  -%}
+                  <button
+                    type="button"
+                    class="alcwa__chip"
+                    data-step="w"
+                    data-shape="{{ parts[2] }}"
+                    data-w="{{ parts[3] }}"
+                    aria-pressed="{% if parts[2] == default_shape and parts[3] == default_w %}true{% else %}false{% endif %}"
+                    {% if parts[2] != default_shape %}hidden{% endif %}
+                  >
+                    <span>{{ parts[3] }} cm</span>
+                    <span class="alcwa__chip-count">{{ n }}</span>
+                  </button>
+                {%- endfor -%}
+              </div>
+
+              <div data-step-h{% if default_shape == 'round' %} hidden{% endif %}>
+                <p class="alcms__label" id="{{ sid }}-h"><span class="alcms__step" aria-hidden="true">3</span>{{ t[15] }}</p>
+                <div class="alcwa__chips alcms__chips" role="group" aria-labelledby="{{ sid }}-h">
+                  {%- for row in formats -%}
+                    {%- liquid
+                      assign parts = row | split: '|'
+                      assign fk = parts[1]
+                      assign needle = ';' | append: fk | append: ':'
+                      assign fc_all = ';' | append: f_counts
+                      assign fc = fc_all | split: needle | last | split: ';' | first | split: ':'
+                    -%}
+                    <button
+                      type="button"
+                      class="alcwa__chip"
+                      data-step="h"
+                      data-key="{{ fk }}"
+                      data-shape="{{ parts[2] }}"
+                      data-w="{{ parts[3] }}"
+                      data-h="{{ parts[4] }}"
+                      data-av="{{ fc[1] }}"
+                      aria-pressed="{% if parts[2] == default_shape and parts[3] == default_w and parts[4] == default_h %}true{% else %}false{% endif %}"
+                      {% unless parts[2] == default_shape and parts[3] == default_w %}hidden{% endunless %}
+                    >
+                      <span>{{ parts[4] }} cm</span>
+                      <span class="alcwa__chip-count">{{ fc[0] }}</span>
+                    </button>
+                  {%- endfor -%}
+                </div>
+              </div>
+            </div>
+
+            <figure class="alcwa__wall">
+              <div class="alcwa__scene alcms__scene" data-scene role="img" aria-label="{{ t[10] | escape }}">
+                <div class="alcwa__ruler alcms__ruler" aria-hidden="true">
+                  {%- for cm in (1..5) -%}
+                    {%- assign y = cm | times: 50 -%}
+                    <span style="bottom: {{ y | times: 100.0 | divided_by: 250 }}%"><i>{{ y }}</i></span>
+                  {%- endfor -%}
+                </div>
+                <div class="alcms__mirror" data-mirror>
+                  <svg class="alcms__poly" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true" focusable="false">
+                    <polygon points="37,1 63,1 85,13 98,35 98,65 85,87 63,99 37,99 15,87 2,65 2,35 15,13" />
+                  </svg>
+                </div>
+                <div class="alcwa__dim alcwa__dim--w" data-dim-w><span data-dim-w-label></span></div>
+                <div class="alcwa__dim alcwa__dim--h" data-dim-h><span data-dim-h-label></span></div>
+                <div class="alcms__vanity" data-vanity aria-hidden="true">
+                  <span class="alcms__tap"></span>
+                  <span class="alcms__basin"></span>
+                  <span class="alcms__top"></span>
+                  <span class="alcms__cabinet"><i data-vanity-label></i></span>
+                </div>
+              </div>
+              <figcaption class="alcwa__caption">
+                <span data-caption></span>
+                <span class="alcwa__caption-tag">{{ t[10] }}</span>
+              </figcaption>
+            </figure>
+          </div>
+
+          <div class="alcwa__strip-wrap">
+            <div class="alcwa__strip-head">
+              <p class="alcwa__strip-title">{{ t[11] }}</p>
+              <div class="alcwa__strip-nav">
+                <button type="button" class="alcwa__nav" data-prev aria-label="{{ 'general.slider.previous_slide' | t | escape }}" disabled>
+                  <svg aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M11 6l-6 6 6 6"/></svg>
+                </button>
+                <button type="button" class="alcwa__nav" data-next aria-label="{{ 'general.slider.next_slide' | t | escape }}">
+                  <svg aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+                </button>
+              </div>
+            </div>
+            <ul class="alcwa__strip" role="list" data-strip></ul>
+          </div>
+        </section>
+
+        {%- liquid
+          comment
+            The models, in-stock first: [key, product path, image, name, price, compare price, in stock].
+            Paths drop the parts every model shares: the CDN folder (data-cdn) and "/products/".
+          endcomment
+          assign cdn_base = ''
+          for p in collection.products
+            if p.featured_media
+              assign probe = p.featured_media | image_url: width: 600
+              if probe contains '/files/'
+                assign cdn_base = probe | split: '/files/' | first | append: '/files/'
+              endif
+              break
+            endif
+          endfor
+        -%}
+        <script type="application/json" data-models="{{ sid }}" data-cdn="{{ cdn_base }}">
+          [
+          {%- assign first_item = true -%}
+          {%- for pass in (1..2) -%}
+            {%- for p in collection.products -%}
+              {%- liquid
+                assign k = key_list[forloop.index0]
+                if k == blank
+                  continue
+                endif
+                if pass == 1 and p.available == false
+                  continue
+                endif
+                if pass == 2 and p.available
+                  continue
+                endif
+                assign img = ''
+                if p.featured_media
+                  assign img = p.featured_media | image_url: width: 600
+                  if cdn_base != '' and img contains cdn_base
+                    assign img = img | remove_first: cdn_base | remove: '&width=600'
+                  endif
+                endif
+                assign pu = p.url
+                assign pre = pu | slice: 0, 10
+                if pre == '/products/'
+                  assign pu = pu | remove_first: '/products/'
+                endif
+                capture nm
+                  render 'alc-ms-name', title: p.title, fallback: t[13]
+                endcapture
+                assign cmp = ''
+                if p.compare_at_price > p.price
+                  assign cmp = p.compare_at_price | money
+                endif
+              -%}
+              {%- unless first_item %},{% endunless -%}
+              {%- assign first_item = false -%}
+              [{{ k | json }},{{ pu | json }},{{ img | json }},{{ nm | strip | json }},{{ p.price | money | json }},{{ cmp | json }},{% if p.available %}1{% else %}0{% endif %}]
+            {%- endfor -%}
+          {%- endfor -%}
+          ]
+        </script>
+
+        <script>
+          (function () {
+            var root = document.getElementById('{{ sid }}');
+            var data = document.querySelector('script[data-models="{{ sid }}"]');
+            if (!root || !data) return;
+            var models = [];
+            try { models = JSON.parse(data.textContent); } catch (e) { return; }
+
+            var T = {
+              out: {{ t[12] | json }},
+              caption: {{ t[9] | json }},
+              vanity: {{ t[14] | json }}
+            };
+            // The bathroom wall in cm.
+            var WALL_W = 380, WALL_H = 260, COUNTER = 85, EYE = 160, MIN_BOTTOM = 115;
+            var VANITIES = [60, 80, 100, 120, 160];
+            var scene = root.querySelector('[data-scene]');
+            var mirror = root.querySelector('[data-mirror]');
+            var vanity = root.querySelector('[data-vanity]');
+            var vanityLabel = root.querySelector('[data-vanity-label]');
+            var caption = root.querySelector('[data-caption]');
+            var dimW = root.querySelector('[data-dim-w]'), dimWl = root.querySelector('[data-dim-w-label]');
+            var dimH = root.querySelector('[data-dim-h]'), dimHl = root.querySelector('[data-dim-h-label]');
+            var shapeChips = root.querySelectorAll('[data-step="shape"]');
+            var widthChips = root.querySelectorAll('[data-step="w"]');
+            var heightChips = root.querySelectorAll('[data-step="h"]');
+            var heightStep = root.querySelector('[data-step-h]');
+            var widthLabel = root.querySelector('[data-label-w]');
+            var strip = root.querySelector('[data-strip]');
+            var prev = root.querySelector('[data-prev]'), next = root.querySelector('[data-next]');
+            var pct = function (v, of) { return (v / of * 100).toFixed(3) + '%'; };
+            var labelBase = scene.getAttribute('aria-label');
+
+            function draw(chip) {
+              var shape = chip.getAttribute('data-shape');
+              var w = +chip.getAttribute('data-w'), h = +chip.getAttribute('data-h');
+              var v = VANITIES[VANITIES.length - 1];
+              for (var i = 0; i < VANITIES.length; i++) { if (VANITIES[i] >= w) { v = VANITIES[i]; break; } }
+              var bottom = Math.max(EYE - h / 2, MIN_BOTTOM);
+              var left = (WALL_W - w) / 2;
+
+              mirror.style.left = pct(left, WALL_W);
+              mirror.style.width = pct(w, WALL_W);
+              mirror.style.bottom = pct(bottom, WALL_H);
+              mirror.style.height = pct(h, WALL_H);
+              mirror.setAttribute('data-shape', shape);
+
+              vanity.style.left = pct((WALL_W - v) / 2, WALL_W);
+              vanity.style.width = pct(v, WALL_W);
+              vanityLabel.textContent = v + ' cm';
+
+              var round = shape === 'round' || (shape === 'poly' && w === h);
+              dimW.style.left = pct(left, WALL_W);
+              dimW.style.width = pct(w, WALL_W);
+              dimW.style.bottom = pct(bottom + h + 7, WALL_H);
+              dimWl.textContent = (round ? 'Ø ' : '') + w + ' cm';
+              dimH.style.left = pct(left + w + 7, WALL_W);
+              dimH.style.bottom = pct(bottom, WALL_H);
+              dimH.style.height = pct(h, WALL_H);
+              dimH.style.opacity = round ? '0' : '1';
+              dimHl.textContent = h + ' cm';
+
+              caption.textContent = T.caption.replace('[w]', v);
+              scene.setAttribute('aria-label', labelBase + ': ' + dimWl.textContent + (round ? '' : ' × ' + h + ' cm') + ' · ' + T.vanity.replace('[w]', v));
+            }
+
+            var CDN = data.getAttribute('data-cdn') || '';
+            function img(path, n) {
+              var full = path.charAt(0) === '/' ? path : CDN + path;
+              return /width=\d+/.test(full) ? full.replace(/width=\d+/, 'width=' + n) : full + (full.indexOf('?') > -1 ? '&' : '?') + 'width=' + n;
+            }
+            function srcset(path) {
+              return [200, 300, 400, 600].map(function (n) { return img(path, n) + ' ' + n + 'w'; }).join(', ');
+            }
+            function href(path) {
+              return path.charAt(0) === '/' ? path : '/products/' + path;
+            }
+
+            function esc(s) {
+              return String(s).replace(/[&<>"]/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]; });
+            }
+
+            function fill(key) {
+              var html = '';
+              models.forEach(function (m) {
+                if (m[0] !== key) return;
+                var media = m[2]
+                  ? '<img src="' + esc(img(m[2], 400)) + '" srcset="' + esc(srcset(m[2])) + '" sizes="(min-width: 990px) 200px, 40vw" alt="" loading="lazy" width="600" height="600">'
+                  : '';
+                var price = m[6]
+                  ? (m[5] ? '<span class="alcwa__card-sale">' + esc(m[4]) + '</span><s>' + esc(m[5]) + '</s>' : '<span>' + esc(m[4]) + '</span>')
+                  : '<span class="alcwa__card-out">' + esc(T.out) + '</span>';
+                html += '<li class="alcwa__card' + (m[6] ? '' : ' is-soldout') + '"><a href="' + esc(href(m[1])) + '" class="alcwa__card-link">'
+                  + '<span class="alcwa__card-media">' + media + '</span>'
+                  + '<span class="alcwa__card-name">' + esc(m[3]) + '</span>'
+                  + '<span class="alcwa__card-meta">' + price + '</span></a></li>';
+              });
+              strip.innerHTML = html;
+              strip.scrollLeft = 0;
+              nav();
+            }
+
+            function nav() {
+              var max = strip.scrollWidth - strip.clientWidth;
+              prev.disabled = strip.scrollLeft <= 2;
+              next.disabled = strip.scrollLeft >= max - 2;
+              prev.parentNode.hidden = max <= 2;
+            }
+
+            function press(list, chip) {
+              list.forEach(function (c) { c.setAttribute('aria-pressed', c === chip ? 'true' : 'false'); });
+              // On phones each step is one swipeable row: bring the chosen chip into view.
+              var row = chip.parentNode;
+              if (row.scrollWidth > row.clientWidth) {
+                var off = chip.getBoundingClientRect().left - row.getBoundingClientRect().left;
+                if (off < 0 || off + chip.offsetWidth > row.clientWidth) row.scrollLeft += off - 24;
+              }
+            }
+
+            // Step 3: the height decides the exact format.
+            function selectHeight(chip) {
+              press(heightChips, chip);
+              draw(chip);
+              fill(chip.getAttribute('data-key'));
+            }
+
+            // Step 2: the width shows the heights it comes in. It keeps the height
+            // already chosen when the width has it, else takes the best-stocked one.
+            function selectWidth(chip, keepH) {
+              press(widthChips, chip);
+              var shape = chip.getAttribute('data-shape'), w = chip.getAttribute('data-w');
+              var pick = null, kept = null;
+              heightChips.forEach(function (c) {
+                var on = c.getAttribute('data-shape') === shape && c.getAttribute('data-w') === w;
+                c.hidden = !on;
+                if (!on) return;
+                if (keepH && c.getAttribute('data-h') === keepH) kept = c;
+                if (!pick || +c.getAttribute('data-av') > +pick.getAttribute('data-av')) pick = c;
+              });
+              if (kept || pick) selectHeight(kept || pick);
+            }
+
+            // Step 1: the shape shows its widths and opens on its best-stocked format.
+            // Round mirrors have one number, so step 2 reads "diameter" and step 3 hides.
+            function selectShape(chip) {
+              press(shapeChips, chip);
+              var shape = chip.getAttribute('data-shape');
+              var dk = (chip.getAttribute('data-default') || '').split('-').pop().split('x');
+              var want = null, first = null;
+              widthChips.forEach(function (c) {
+                var on = c.getAttribute('data-shape') === shape;
+                c.hidden = !on;
+                if (on && !first) first = c;
+                if (on && c.getAttribute('data-w') === dk[0]) want = c;
+              });
+              var round = shape === 'round';
+              heightStep.hidden = round;
+              widthLabel.textContent = widthLabel.getAttribute(round ? 'data-text-round' : 'data-text');
+              if (want || first) selectWidth(want || first, dk[1]);
+            }
+
+            var page = function (dir) { strip.scrollBy({ left: dir * strip.clientWidth, behavior: 'smooth' }); };
+            prev.addEventListener('click', function () { page(-1); });
+            next.addEventListener('click', function () { page(1); });
+            strip.addEventListener('scroll', nav, { passive: true });
+            window.addEventListener('resize', nav, { passive: true });
+            shapeChips.forEach(function (c) { c.addEventListener('click', function () { selectShape(c); }); });
+            widthChips.forEach(function (c) { c.addEventListener('click', function () {
+              var cur = root.querySelector('[data-step="h"][aria-pressed="true"]');
+              selectWidth(c, cur && cur.getAttribute('data-h'));
+            }); });
+            heightChips.forEach(function (c) { c.addEventListener('click', function () { selectHeight(c); }); });
+
+            scene.classList.add('is-instant');
+            var start = root.querySelector('[data-step="shape"][aria-pressed="true"]') || shapeChips[0];
+            if (start) selectShape(start);
+            requestAnimationFrame(function () { requestAnimationFrame(function () { scene.classList.remove('is-instant'); }); });
+          })();
+        </script>
+      </div>
+    {%- endif -%}
+  {%- endpaginate -%}
+{%- endif -%}
+
+{% schema %}
+{
+  "name": "ALC - Mirror sizes",
+  "tag": "section",
+  "class": "section",
+  "settings": [
+    {
+      "type": "paragraph",
+      "content": "To-scale size chooser for LED mirror collections: shapes, sizes, a bathroom wall with the matching vanity, and the models in each size. Shown on the first page of the collection. Text is translated in the section's own dictionary."
+    }
+  ],
+  "presets": [
+    {
+      "name": "ALC - Mirror sizes"
+    }
+  ]
+}
+{% endschema %}

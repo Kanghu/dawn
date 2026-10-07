@@ -1,0 +1,459 @@
+/* Mirror size chooser (sections/alc-mirror-sizes.liquid). Builds on alc-wall-art.css
+   (chips, wall, dimension lines, models strip); this file adds the bathroom wall:
+   380 x 260 cm with 60 x 120 cm tiles, a wall-hung vanity with a basin and tap, and
+   the mirror in four shapes. Fixed-size parts use --cm, one centimetre of the wall. */
+.alcms__sizes {
+  margin-top: 40px;
+  margin-bottom: 72px;
+}
+
+/* Layout: copy and steps on the left, the wall on the right (phones: copy, wall, steps). */
+.alcms__grid {
+  grid-template-columns: minmax(0, 5fr) minmax(0, 6fr);
+  grid-template-areas:
+    "head wall"
+    "steps wall";
+  column-gap: 56px;
+  row-gap: 0;
+  align-items: start;
+}
+
+.alcms__grid > .alcwa__sizes-head {
+  grid-area: head;
+}
+
+.alcms__steps {
+  grid-area: steps;
+}
+
+.alcms__grid > .alcwa__wall {
+  grid-area: wall;
+  align-self: center;
+}
+
+.alcms .alcwa__title {
+  font-size: clamp(26px, 2.6vw, 36px);
+}
+
+.alcms .alcwa__intro {
+  max-width: 520px;
+  margin-top: 12px;
+  font-size: 16px;
+}
+
+/* Six models a row on desktop: a shorter strip, so the grid starts sooner. */
+.alcms .alcwa__strip-wrap {
+  margin-top: 40px;
+}
+
+.alcms .alcwa__strip {
+  grid-auto-columns: calc((100% - 5 * 16px) / 6);
+  gap: 16px;
+}
+
+.alcms .alcwa__card-name {
+  margin-top: 10px;
+  font-size: 14px;
+}
+
+.alcms .alcwa__card-meta {
+  font-size: 14px;
+}
+
+.alcms__label {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin: 28px 0 10px;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--alcwa-muted);
+}
+
+/* Step 1 on tablets and desktop: four equal tiles, the shape outline above its name. */
+@media screen and (min-width: 750px) {
+  .alcms .alcms__chips--shape {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 8px;
+  }
+
+  .alcms__chips--shape .alcwa__chip {
+    flex-direction: column;
+    justify-content: center;
+    gap: 7px;
+    min-width: 0;
+    min-height: 88px;
+    padding: 12px 8px;
+    border-radius: 16px;
+    text-align: center;
+  }
+
+  .alcms__chips--shape .alcms__shape {
+    width: 20px;
+    height: 15px;
+    margin-bottom: 2px;
+  }
+
+  .alcms__chips--shape .alcms__shape--round,
+  .alcms__chips--shape .alcms__shape--poly {
+    width: 18px;
+    height: 18px;
+  }
+
+  .alcms__chips--shape .alcms__shape--oval {
+    width: 12px;
+    height: 19px;
+  }
+
+  .alcms__chips--shape .alcwa__chip-count {
+    min-width: 0;
+    height: auto;
+    padding: 0;
+    background: none;
+    font-size: 12px;
+    font-weight: 500;
+    color: var(--alcwa-muted);
+  }
+
+  .alcms__chips--shape .alcwa__chip[aria-pressed='true'] .alcwa__chip-count {
+    background: none;
+    color: rgba(255, 255, 255, 0.7);
+  }
+}
+
+/* Step number in front of each label. */
+.alcms__step {
+  display: inline-grid;
+  place-items: center;
+  flex: none;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: var(--alcwa-ink);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0;
+  color: #fff;
+  font-variant-numeric: lining-nums;
+}
+
+.alcms [data-step-h][hidden] {
+  display: none;
+}
+
+.alcms .alcms__chips {
+  margin-top: 0;
+}
+
+.alcms .alcwa__chip[hidden] {
+  display: none;
+}
+
+/* Shape outlines in the shape chips. */
+.alcms__shape {
+  flex: none;
+  width: 14px;
+  height: 11px;
+  border: 1.5px solid currentColor;
+  border-radius: 2px;
+}
+
+.alcms__shape--round {
+  width: 13px;
+  height: 13px;
+  border-radius: 50%;
+}
+
+.alcms__shape--oval {
+  width: 9px;
+  height: 14px;
+  border-radius: 999px;
+}
+
+.alcms__shape--poly {
+  width: 13px;
+  height: 13px;
+  border: 0;
+  border-radius: 0;
+  background: currentColor;
+  clip-path: polygon(37% 1%, 63% 1%, 85% 13%, 98% 35%, 98% 65%, 85% 87%, 63% 99%, 37% 99%, 15% 87%, 2% 65%, 2% 35%, 15% 13%);
+}
+
+/* An outline like the other shapes: the same polygon, inset, in the chip colour. */
+.alcms__shape--poly {
+  position: relative;
+}
+
+.alcms__shape--poly::after {
+  content: '';
+  position: absolute;
+  inset: 1.5px;
+  background: #fff;
+  clip-path: inherit;
+}
+
+.alcwa__chip[aria-pressed='true'] .alcms__shape--poly::after {
+  background: var(--alcwa-ink);
+}
+
+/* The bathroom wall. */
+.alcms__scene {
+  --cm: calc(100cqw / 380);
+  aspect-ratio: 380 / 260;
+  container-type: inline-size;
+  background-color: #efeeeb;
+  background-image:
+    linear-gradient(to right, rgba(21, 21, 21, 0.05) 1px, transparent 1px),
+    linear-gradient(to top, rgba(21, 21, 21, 0.05) 1px, transparent 1px),
+    linear-gradient(180deg, #f3f2ef 0%, #e9e7e3 100%);
+  background-size: 15.7895% 46.1538%, 15.7895% 46.1538%, 100% 100%;
+  background-position: 0 100%, 0 100%, 0 0;
+}
+
+.alcms__scene::after {
+  display: none;
+}
+
+.alcms__ruler {
+  height: 96.1538%;
+}
+
+/* The mirror: a silver face with a sheen and the white LED edge. */
+.alcms__mirror {
+  position: absolute;
+  z-index: 1;
+  left: 50%;
+  bottom: 50%;
+  width: 0;
+  height: 0;
+  border-radius: 4px;
+  background:
+    linear-gradient(115deg, transparent 28%, rgba(255, 255, 255, 0.6) 40%, transparent 54%),
+    linear-gradient(160deg, #dfe5e9 0%, #f4f7f8 42%, #d7dee3 70%, #e9eef1 100%);
+  box-shadow:
+    inset 0 0 0 2px rgba(255, 255, 255, 0.95),
+    0 0 0 1px rgba(21, 21, 21, 0.12),
+    0 12px 24px -16px rgba(0, 0, 0, 0.4);
+  transition:
+    left 0.6s var(--alcwa-ease),
+    bottom 0.6s var(--alcwa-ease),
+    width 0.6s var(--alcwa-ease),
+    height 0.6s var(--alcwa-ease),
+    border-radius 0.6s var(--alcwa-ease);
+}
+
+.alcms__mirror[data-shape='round'] {
+  border-radius: 50%;
+}
+
+.alcms__mirror[data-shape='oval'] {
+  border-radius: 999px;
+}
+
+.alcms__poly {
+  display: none;
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+}
+
+.alcms__mirror[data-shape='poly'] {
+  border-radius: 0;
+  background: none;
+  box-shadow: none;
+  filter: drop-shadow(0 0 1px rgba(21, 21, 21, 0.25)) drop-shadow(0 10px 12px rgba(0, 0, 0, 0.18));
+}
+
+.alcms__mirror[data-shape='poly'] .alcms__poly {
+  display: block;
+}
+
+.alcms__poly polygon {
+  fill: #e6ebee;
+  stroke: #fff;
+  stroke-width: 2px;
+  vector-effect: non-scaling-stroke;
+}
+
+/* Wall-hung vanity, 35-85 cm off the floor, with a basin and a tap on top. */
+.alcms__vanity {
+  position: absolute;
+  z-index: 1;
+  left: 50%;
+  bottom: calc(35 * var(--cm));
+  width: 0;
+  height: calc(73 * var(--cm));
+  transition:
+    left 0.6s var(--alcwa-ease),
+    width 0.6s var(--alcwa-ease);
+}
+
+.alcms__cabinet {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: calc(47 * var(--cm));
+  display: grid;
+  place-items: center;
+  border-radius: 2px;
+  background:
+    linear-gradient(to bottom, transparent calc(50% - 0.5px), rgba(21, 21, 21, 0.14) calc(50% - 0.5px), rgba(21, 21, 21, 0.14) calc(50% + 0.5px), transparent calc(50% + 0.5px)),
+    linear-gradient(180deg, #ddd2c1 0%, #cfc2ae 100%);
+  box-shadow: 0 10px 18px -12px rgba(0, 0, 0, 0.35);
+}
+
+.alcms__cabinet i {
+  font-size: 11px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 1;
+  color: rgba(21, 21, 21, 0.5);
+  font-variant-numeric: lining-nums;
+  transform: translateY(calc(12 * var(--cm)));
+}
+
+.alcms__top {
+  position: absolute;
+  left: calc(-1 * var(--cm));
+  right: calc(-1 * var(--cm));
+  bottom: calc(47 * var(--cm));
+  height: calc(3 * var(--cm));
+  border-radius: 1px;
+  background: #f7f6f3;
+  box-shadow: 0 0 0 1px rgba(21, 21, 21, 0.08);
+}
+
+.alcms__basin {
+  position: absolute;
+  left: 50%;
+  bottom: calc(50 * var(--cm));
+  width: calc(42 * var(--cm));
+  height: calc(13 * var(--cm));
+  transform: translateX(-50%);
+  border-radius: 6% 6% 50% 50% / 10% 10% 90% 90%;
+  background: linear-gradient(180deg, #ffffff 0%, #eeeeec 100%);
+  box-shadow: 0 0 0 1px rgba(21, 21, 21, 0.1);
+}
+
+.alcms__tap {
+  position: absolute;
+  left: 50%;
+  bottom: calc(50 * var(--cm));
+  width: calc(2.6 * var(--cm));
+  height: calc(23 * var(--cm));
+  transform: translateX(-50%);
+  border-radius: 999px 999px 0 0;
+  background: #2a2a2a;
+}
+
+/* The spout, seen from the front: a short rounded head on the stem. */
+.alcms__tap::before {
+  content: '';
+  position: absolute;
+  top: calc(-1 * var(--cm));
+  left: 50%;
+  width: calc(5 * var(--cm));
+  height: calc(3.4 * var(--cm));
+  transform: translateX(-50%);
+  border-radius: 999px;
+  background: #2a2a2a;
+}
+
+.alcms__scene.is-instant .alcms__mirror,
+.alcms__scene.is-instant .alcms__vanity {
+  transition: none;
+}
+
+@media screen and (max-width: 989px) {
+  .alcms__grid {
+    grid-template-columns: minmax(0, 1fr);
+    grid-template-areas:
+      "head"
+      "wall"
+      "steps";
+    row-gap: 20px;
+  }
+
+  .alcms .alcwa__strip {
+    grid-auto-columns: 40%;
+    gap: 12px;
+  }
+
+  .alcms__sizes {
+    margin-top: 32px;
+    margin-bottom: 48px;
+  }
+
+  .alcms__label {
+    margin-top: 18px;
+  }
+
+  .alcms__steps > .alcms__label:first-child {
+    margin-top: 0;
+  }
+
+  .alcms .alcms__chips {
+    margin-top: 0;
+  }
+
+  .alcms__cabinet i {
+    font-size: 9.5px;
+  }
+}
+
+/* Phones: the drawing sits right under the title and the steps under it, so every
+   tap shows its effect without scrolling. The four shapes become a 2 x 2 grid. */
+@media screen and (max-width: 749px) {
+  .alcms .alcwa__intro,
+  .alcms .alcwa__caption-tag {
+    display: none;
+  }
+
+  .alcms .alcwa__caption {
+    margin-top: 10px;
+    font-size: 12.5px;
+  }
+
+  .alcms .alcms__chips--shape {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 8px;
+    margin: 0;
+    padding: 0;
+    overflow: visible;
+  }
+
+  .alcms__chips--shape .alcwa__chip {
+    justify-content: flex-start;
+    min-width: 0;
+  }
+
+  .alcms__chips--shape .alcwa__chip > span:nth-child(2) {
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  /* No room for the count beside "Dreptunghiulare" in half a phone width. */
+  .alcms__chips--shape .alcwa__chip-count {
+    display: none;
+  }
+
+  .alcms .alcwa__chip {
+    min-height: 42px;
+  }
+
+  .alcms .alcwa__strip-wrap {
+    margin-top: 32px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .alcms__mirror,
+  .alcms__vanity {
+    transition: none;
+  }
+}

@@ -1,0 +1,72 @@
+{%- comment -%}
+  The model name of an LED mirror, out of a long product title, in any language:
+  "Oglinda LED Rectangulara, 80x60cm, Verite Royale Gold MotionGlow Marcello, Sistem ..." → "Verite Royale Gold"
+  "Négyszögletű LED-es tükör, 80x60 cm, Verite Royale Gold MotionGlow Marcello, ..."      → "Verite Royale Gold"
+  "Oglinda LED Senzor MotionGlow Francesca 60x80 cm Lumina ..."                           → "Francesca"
+  "Oglinda LED Rotunda GIULIA, 70cm, senzor MotionGlow, ..."                               → "GIULIA"
+
+  The name sits next to the untranslated line marks (MotionGlow, Marcello, Touch,
+  Senzor), so the comma-separated part that holds one is read first: the words left
+  once sizes, numbers and feature words are skipped, up to the next such word. Then
+  the other parts, in order. Prints the fallback when nothing is left.
+
+  Accepts:
+  - title    {String}
+  - fallback {String}
+{%- endcomment -%}
+{%- liquid
+  assign stop = ',oglinda,led,rectangulara,dreptunghiulara,rotunda,ovala,poligon,senzor,motionglow,motion,glow,marcello,funghi,touch,cu,de,si,și,&,functie,funcție,dezaburire,termometru,ceas,lumina,calda,rece,neutra,dimabila,sistem,colectia,rama,miscare,lupa,cosmetica,efect,boxa,bluetooth,rgb,an,garantie,diametru,négyszögletű,téglalap,alakú,kerek,ovális,sokszögű,tükör,tükörérzékelő,érzékelő,led-es,páramentesítő,rendszer,funkcióval,hőmérő,óra,szenzor,cm,sensor,sensore,senzorem,czujnik,capteur,αισθητήρα,сензор,lustro,lustrzany,lustrzane,prostokątne,prostokątny,okrągłe,okrągły,owalne,owalny,system,systemem,rechteckig,rechteckiger,runder,rund,ovaler,rettangolare,rotondo,ovale,rectangulaire,rond,obdélníkové,kulaté,oválné,obdĺžnikové,okrúhle,oválne,pravokutno,okruglo,ovalno,правоъгълно,кръгло,овално,ορθογώνιος,στρογγυλός,οβάλ,mirror,spiegel,specchio,miroir,zrcadlo,zrkadlo,ogledalo,огледало,καθρέφτης,-,[resigilat],+1,'
+  assign raw = title | replace: '  ', ' '
+  assign parts = raw | split: ','
+  assign name = ''
+  for pass in (1..2)
+    for part in parts
+      assign pl = part | downcase
+      assign marked = false
+      if pl contains 'motionglow' or pl contains 'motion glow' or pl contains 'marcello' or pl contains 'touch' or pl contains 'senzor'
+        assign marked = true
+      endif
+      if pass == 1 and marked == false
+        continue
+      endif
+      if pass == 2 and marked
+        continue
+      endif
+      assign words = part | strip | split: ' '
+      assign got = ''
+      for wd in words
+        assign wl = wd | downcase
+        assign needle = ',' | append: wl | append: ','
+        assign nodigits = wd | remove: '0' | remove: '1' | remove: '2' | remove: '3' | remove: '4' | remove: '5' | remove: '6' | remove: '7' | remove: '8' | remove: '9'
+        comment
+          Model names are capitalised; translated feature words mostly are not.
+        endcomment
+        assign c1 = wd | slice: 0
+        assign c1_low = c1 | downcase
+        assign lower = false
+        if c1 == c1_low
+          assign lower = true
+        endif
+        if stop contains needle or wl contains '/' or nodigits.size != wd.size or wd == '' or lower
+          if got != ''
+            break
+          endif
+        else
+          assign got = got | append: wd | append: ' '
+        endif
+      endfor
+      assign got = got | strip
+      if got != ''
+        assign name = got
+        break
+      endif
+    endfor
+    if name != ''
+      break
+    endif
+  endfor
+  if name == ''
+    assign name = fallback
+  endif
+  echo name | truncatewords: 4, '' | escape
+-%}
