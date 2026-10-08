@@ -1136,10 +1136,30 @@ cart-drawer.drawer .cart-item__totals {
   }
 }
 
-/* The WhatsApp chat widget (app) floats bottom-right, over the drawer's checkout button.
-   Hide it while the cart drawer is open; it comes back when the drawer closes. */
-body:has(cart-drawer.active) #whatsapp-chat-widget {
+/* The WhatsApp chat widget (app) floats bottom-right, over the drawer's checkout button and over the open mobile
+   filters and menu. Hide it while one of them is open; it comes back when the drawer closes. */
+body:has(cart-drawer.active) #whatsapp-chat-widget,
+body:has(details.mobile-facets__disclosure[open]) #whatsapp-chat-widget,
+body:has(header-drawer details[open]) #whatsapp-chat-widget {
   display: none !important;
+}
+
+/* Until the visitor answers it, Shopify's cookie banner (#shopify-pc__banner, z 2000000) is a bottom sheet over half
+   of a phone screen. It covered the drawer's checkout button (the first tap landed on "Accept"), the mobile filters'
+   "Apply" and the lower half of the mobile menu. While one of them is open the banner steps aside; it comes back,
+   still unanswered, as soon as that drawer closes, so nothing is accepted on the visitor's behalf. */
+body:has(cart-drawer.active) #shopify-pc__banner,
+body:has(details.mobile-facets__disclosure[open]) #shopify-pc__banner,
+body:has(header-drawer details[open]) #shopify-pc__banner {
+  display: none !important;
+}
+
+/* On phones the WhatsApp greeting bubble sits over the right half of the banner's "Decline" button; declining must
+   stay as easy as accepting, so the bubble waits until the banner is answered (the round chat button stays). */
+@media screen and (max-width: 749px) {
+  body:has(#shopify-pc__banner:not([style*='none'])) #whatsapp-chat-widget .wa-chat-bubble {
+    display: none !important;
+  }
 }
 
 /* "View cart (N)" under the checkout button in the drawer: secondary, outlined. */
