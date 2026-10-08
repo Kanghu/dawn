@@ -20,7 +20,7 @@
         <!-- Company Info & Logo -->
         <div class="w-full lg:w-3/12 max-sm:hidden px-2 mb-6 footer-logo">
           <div class="mb-4 flex content-center">
-            <a href="{{ shop.url }}" class="logo-footer inline-block">
+            <a href="{{ routes.root_url }}" class="logo-footer inline-block">
               <img
                 src="{{ 'logo-footer.webp' | file_url }}"
                 alt="logo-footer"
@@ -86,7 +86,12 @@
                     </a>
                   </li>
                   <li class="my-3">
-                    <a href="{{ 'sections.footer.utile_links.return_form.url' | t }}" class="hover:text-gray-400 no-underline text-als-gray">
+                    {%- comment -%}
+                      Every locale's return_form.url was the Romanian form on the .ro domain; the page object
+                      gives each market its own translated form (.hu/pages/visszakuldesi-urlap, ...).
+                    {%- endcomment -%}
+                    {%- assign return_form_page = pages['formular-retur'] -%}
+                    <a href="{% if return_form_page != blank %}{{ return_form_page.url }}{% else %}{{ 'sections.footer.utile_links.return_form.url' | t }}{% endif %}" class="hover:text-gray-400 no-underline text-als-gray">
                       {{ 'sections.footer.utile_links.return_form.title' | t }}
                     </a>
                   </li>

@@ -47,6 +47,8 @@
 
   assign ld_items = ''
   assign ld_sep = ''
+  # ItemList URLs on the domain being visited (shop.url is always the .ro domain).
+  assign ld_origin = request.origin
 
   assign discovery = product.metafields['shopify--discovery--product_recommendation']
   assign manual_list = discovery.related_products.value
@@ -94,7 +96,7 @@
           {%- assign picked = picked | append: candidate.handle | append: ',' -%}
           {%- assign count = count | plus: 1 -%}
           {%- assign ld_name = candidate.title | json -%}
-          {%- assign ld_items = ld_items | append: ld_sep | append: '{"@type":"ListItem","position":' | append: count | append: ',"url":"' | append: shop.url | append: candidate.url | append: '","name":' | append: ld_name | append: '}' -%}
+          {%- assign ld_items = ld_items | append: ld_sep | append: '{"@type":"ListItem","position":' | append: count | append: ',"url":"' | append: ld_origin | append: candidate.url | append: '","name":' | append: ld_name | append: '}' -%}
           {%- assign ld_sep = ',' -%}
           {%- render 'alc-related-products-dynamic-card', card_product: candidate, section: section, source: 'manual', position: count -%}
         {%- endunless -%}
@@ -131,7 +133,7 @@
         {%- assign picked = picked | append: candidate.handle | append: ',' -%}
         {%- assign count = count | plus: 1 -%}
         {%- assign ld_name = candidate.title | json -%}
-        {%- assign ld_items = ld_items | append: ld_sep | append: '{"@type":"ListItem","position":' | append: count | append: ',"url":"' | append: shop.url | append: candidate.url | append: '","name":' | append: ld_name | append: '}' -%}
+        {%- assign ld_items = ld_items | append: ld_sep | append: '{"@type":"ListItem","position":' | append: count | append: ',"url":"' | append: ld_origin | append: candidate.url | append: '","name":' | append: ld_name | append: '}' -%}
         {%- assign ld_sep = ',' -%}
         {%- render 'alc-related-products-dynamic-card', card_product: candidate, section: section, source: 'collection-type', position: count -%}
       {%- elsif queued_count < limit -%}
@@ -156,7 +158,7 @@
       {%- assign picked = picked | append: handle | append: ',' -%}
       {%- assign count = count | plus: 1 -%}
       {%- assign ld_name = candidate.title | json -%}
-      {%- assign ld_items = ld_items | append: ld_sep | append: '{"@type":"ListItem","position":' | append: count | append: ',"url":"' | append: shop.url | append: candidate.url | append: '","name":' | append: ld_name | append: '}' -%}
+      {%- assign ld_items = ld_items | append: ld_sep | append: '{"@type":"ListItem","position":' | append: count | append: ',"url":"' | append: ld_origin | append: candidate.url | append: '","name":' | append: ld_name | append: '}' -%}
       {%- assign ld_sep = ',' -%}
       {%- render 'alc-related-products-dynamic-card', card_product: candidate, section: section, source: 'collection', position: count -%}
     {%- endfor -%}
@@ -172,7 +174,7 @@
       {%- assign picked = picked | append: candidate.handle | append: ',' -%}
       {%- assign count = count | plus: 1 -%}
       {%- assign ld_name = candidate.title | json -%}
-      {%- assign ld_items = ld_items | append: ld_sep | append: '{"@type":"ListItem","position":' | append: count | append: ',"url":"' | append: shop.url | append: candidate.url | append: '","name":' | append: ld_name | append: '}' -%}
+      {%- assign ld_items = ld_items | append: ld_sep | append: '{"@type":"ListItem","position":' | append: count | append: ',"url":"' | append: ld_origin | append: candidate.url | append: '","name":' | append: ld_name | append: '}' -%}
       {%- assign ld_sep = ',' -%}
       {%- render 'alc-related-products-dynamic-card', card_product: candidate, section: section, source: 'fallback', position: count -%}
     {%- endfor -%}

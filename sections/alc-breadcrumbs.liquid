@@ -204,7 +204,11 @@
 </style>
 
 {%- unless template == 'index' or template == 'cart' or template == '404' -%}
-  {%- comment -%} Generate JSON-LD structured data for breadcrumbs {%- endcomment -%}
+  {%- comment -%}
+    Generate JSON-LD structured data for breadcrumbs. URLs use request.origin, the domain being
+    visited: shop.secure_url is always the primary .ro domain, so every foreign market listed
+    .ro URLs with its own translated handles (they only 301 back to the Romanian page).
+  {%- endcomment -%}
   <script type="application/ld+json">
     {
       "@context": "https://schema.org",
@@ -214,7 +218,7 @@
           "@type": "ListItem",
           "position": 1,
           "name": {{ shop.name | json }},
-          "item": "{{ shop.secure_url }}{{ routes.root_url }}"
+          "item": "{{ request.origin }}{{ routes.root_url }}"
         }
         {%- case template.name -%}
         {%- when 'product' -%}
@@ -242,7 +246,7 @@
                     "@type": "ListItem",
                     "position": {{ position }},
                     "name": {{ col.title | json }},
-                    "item": "{{ shop.secure_url }}{{ col.url }}"
+                    "item": "{{ request.origin }}{{ col.url }}"
                   }
                   {%- assign position = position | plus: 1 -%}
                   {%- endfor -%},
@@ -250,7 +254,7 @@
                     "@type": "ListItem",
                     "position": {{ position }},
                     "name": {{ product.title | json }},
-                    "item": "{{ shop.secure_url }}{{ product.url }}"
+                    "item": "{{ request.origin }}{{ product.url }}"
                   }
 
                 {%- when 'collection' -%}
@@ -273,14 +277,14 @@
                             "@type": "ListItem",
                             "position": {{ position }},
                             "name": {{ col.title | json }},
-                            "item": "{{ shop.secure_url }}{{ col.url }}"
+                            "item": "{{ request.origin }}{{ col.url }}"
                           }
                         {%- else -%},
                           {
                             "@type": "ListItem",
                             "position": {{ position }},
                             "name": {{ col.title | json }},
-                            "item": "{{ shop.secure_url }}{{ col.url }}"
+                            "item": "{{ request.origin }}{{ col.url }}"
                           }
                           {%- endif -%}
                           {%- assign position = position | plus: 1 -%}
@@ -290,7 +294,7 @@
                               "@type": "ListItem",
                               "position": {{ position }},
                               "name": {{ current_tags | join: ' + ' | json }},
-                              "item": "{{ shop.secure_url }}{{ collection.url }}/{{ current_tags | join: '+' }}"
+                              "item": "{{ request.origin }}{{ collection.url }}/{{ current_tags | join: '+' }}"
                             }
                             {%- endif -%}
 
@@ -299,7 +303,7 @@
                               "@type": "ListItem",
                               "position": 2,
                               "name": {{ page.title | json }},
-                              "item": "{{ shop.secure_url }}{{ page.url }}"
+                              "item": "{{ request.origin }}{{ page.url }}"
                             }
 
                           {%- when 'article' -%},
@@ -307,13 +311,13 @@
                               "@type": "ListItem",
                               "position": 2,
                               "name": {{ blog.title | json }},
-                              "item": "{{ shop.secure_url }}{{ blog.url }}"
+                              "item": "{{ request.origin }}{{ blog.url }}"
                             },
                             {
                               "@type": "ListItem",
                               "position": 3,
                               "name": {{ article.title | json }},
-                              "item": "{{ shop.secure_url }}{{ article.url }}"
+                              "item": "{{ request.origin }}{{ article.url }}"
                             }
 
                           {%- when 'blog' -%},
@@ -321,7 +325,7 @@
                               "@type": "ListItem",
                               "position": 2,
                               "name": {{ blog.title | json }},
-                              "item": "{{ shop.secure_url }}{{ blog.url }}"
+                              "item": "{{ request.origin }}{{ blog.url }}"
                             }
 
                           {%- else -%},
@@ -329,7 +333,7 @@
                               "@type": "ListItem",
                               "position": 2,
                               "name": {{ page_title | json }},
-                              "item": "{{ shop.secure_url }}{{ request.path }}"
+                              "item": "{{ request.origin }}{{ request.path }}"
                             }
                             {%- endcase -%}
                           ]
