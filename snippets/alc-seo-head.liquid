@@ -21,7 +21,7 @@
       the name sits inside the first 120 characters shown on mobile.
       "Pret de producator" is only claimed when the vendor is Alessandro
       Design; other brands get the delivery promise instead.
-  Pages on the companie / pozele-clientilor / contact templates: translated title and
+  Pages on the companie / pozele-clientilor / contact / factory templates: translated title and
   description from snippets/alc-page-seo.liquid, unless set in the admin.
   Every other page keeps Shopify's page_title / page_description untouched.
 {%- endcomment -%}
@@ -38,6 +38,8 @@
       assign page_key = 'photos'
     elsif template.suffix == 'contact'
       assign page_key = 'contact'
+    elsif template.suffix == 'factory'
+      assign page_key = 'factory'
     endif
     if field == 'title'
       assign admin_value = page.metafields.global.title_tag.value | strip

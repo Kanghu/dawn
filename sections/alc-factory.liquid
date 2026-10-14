@@ -1,0 +1,498 @@
+{% comment %}
+  Factory page (/pages/fabrica-alessandro-design, templates/page.factory.liquid).
+
+  Hero on a factory photo, key figures, what buying from the maker means for the
+  customer, the factory story, the film (YouTube, loaded only on click), the way a
+  product travels from the technical sheet to the customer, collections and a closing
+  call to action. Product pages link here from "Producator direct: vezi fabrica".
+
+  Built on the house style of the company page: it loads assets/alc-company.css and
+  reuses its alc-co__ classes; assets/alc-factory.css only adds the film, the steps
+  and the reversed split.
+
+  All copy has built-in translations for every storefront language (en.default.json is
+  at Shopify's key limit). The dictionary between "case lang" and "endcase" is generated
+  by seo/tools/factory-page-i18n.py; edit the texts there and run it again.
+  Figures, photos, film and links are section settings; the photos fall back to the
+  factory stills in Files (fabrica_2/3/5/6.jpg). Static section: the template renders it
+  with {% section %}, so the page keeps its "factory" template and needs no admin change.
+{% endcomment %}
+{{ 'alc-company.css' | asset_url | stylesheet_tag }}
+{{ 'alc-factory.css' | asset_url | stylesheet_tag }}
+<script src="{{ 'alc-factory.js' | asset_url }}" defer="defer"></script>
+
+{%- liquid
+  assign lang = request.locale.iso_code | downcase | slice: 0, 2
+  case lang
+    when 'en'
+      assign w = "The Alessandro Design factory|From our factory, straight to your home.|Alessandro Design lighting is made in our own factory in Guzhen, China, to specifications we set ourselves. No middlemen, at manufacturer prices.|Watch the film|Discover the products|the year we started the factory|people on the factory team|countries we deliver to|invested in the factory|Why it matters|What you gain when you buy straight from the maker|Manufacturer prices|There is no distributor between the factory and your home. You pay for the product, not for middlemen’s markups.|Specifications you can trust|Every model is made to our own technical sheet and in-house standards, so the specifications in the description are the ones you get.|Advice from the people who make it|We know every product from its very first part, so we can give you sound advice before and after your order.|The factory’s story|Made in China’s lighting capital|In [year] we started our own production line in Guzhen, Guangdong province, the town known as China’s lighting capital. This is where Alessandro Design lighting is made: LED ceiling lights, chandeliers, wall lights and spotlights, as well as displays and custom decorative pieces.|Every model starts from a specification sheet we write ourselves. Because we produce directly, we make sure the technical parameters are met and keep our prices competitive across Europe.|About our company|Inside the factory|See how we work|A short film from our production line in Guzhen.|Play the film|A product’s journey|From technical sheet to your home|Technical sheet|We set the specifications of every model ourselves: power, light, materials and finishes.|Production|The fittings are assembled on our line in Guzhen, to our in-house standards.|Stock in Romania|Products arrive at our warehouse in Romania, from where they ship to customers.|At your home|We deliver to [countries] countries, straight from our own stock, with no middlemen.|What we make|Explore the collections|View all products|Light, straight from the maker.|Choose from our collections or ask for a quote for a project, custom pieces included.|Request a wholesale quote|The Alessandro Design factory team on the production line|Fitting LEDs to a ceiling light at the Alessandro Design factory|Assembling a light fitting at the Alessandro Design factory|pre|LED ceiling lights|Chandeliers|Wall lights|Spotlights"
+    when 'hu'
+      assign w = "Az Alessandro Design gyár|A saját gyárunkból, egyenesen az otthonába.|Az Alessandro Design lámpái saját gyárunkban készülnek, a kínai Guzhenben, az általunk meghatározott előírások szerint. Közvetítők nélkül, gyártói áron.|Nézze meg a filmet|Termékek felfedezése|ebben az évben indult a gyár|fő a gyár csapatában|országba szállítunk|beruházás a gyárba|Miért fontos?|Mit nyer, ha közvetlenül a gyártótól vásárol|Gyártói ár|A gyár és az Ön otthona között nincs nagykereskedő. A termékért fizet, nem a közvetítők árrését.|Betartott paraméterek|Minden modell saját műszaki adatlapunk és belső szabványaink szerint készül, így a leírásban szereplő paramétereket kapja meg.|Tanács azoktól, akik gyártják|Minden terméket az első alkatrésztől ismerünk, így a rendelés előtt és után is pontos tanácsot adhatunk.|A gyár története|Kína világítási fővárosában gyártunk|[year] óta saját gyártósorunk működik Guzhenben, Kuangtung tartományban, a Kína világítási fővárosaként ismert városban. Itt készülnek az Alessandro Design lámpái: LED-es mennyezeti lámpák, csillárok, falilámpák és spotlámpák, valamint egyedi bemutatóelemek és dekorációs darabok.|Minden modell egy általunk írt műszaki adatlappal kezdődik. Mivel közvetlenül gyártunk, biztosítjuk a műszaki paraméterek betartását, és egész Európában versenyképes árakat tartunk.|Cégünkről|A gyárban|Nézze meg, hogyan dolgozunk|Rövid film guzheni gyártósorunkról.|Film lejátszása|Egy termék útja|A műszaki adatlaptól az Ön otthonáig|Műszaki adatlap|Minden modell előírásait mi határozzuk meg: teljesítmény, fény, anyagok és felületek.|Gyártás|A lámpák guzheni gyártósorunkon készülnek, belső szabványaink szerint.|Készlet Romániában|A termékek romániai raktárunkba érkeznek, onnan indulnak a vásárlókhoz.|Az Ön otthonában|[countries] országba szállítunk, közvetlenül saját készletről, közvetítők nélkül.|Amit gyártunk|Fedezze fel kollekcióinkat|Összes termék|Fény, egyenesen a gyártótól.|Válasszon kollekcióinkból, vagy kérjen ajánlatot egy projektre, akár egyedi darabokra is.|Nagykereskedelmi ajánlatkérés|Az Alessandro Design gyár csapata a gyártósoron|LED-ek szerelése egy mennyezeti lámpára az Alessandro Design gyárban|Lámpa összeszerelése az Alessandro Design gyárban|post|LED csillárok|Csillárok|Falilámpák|Spotlámpák"
+    when 'pl'
+      assign w = "Fabryka Alessandro Design|Z naszej fabryki, prosto do Twojego domu.|Oświetlenie Alessandro Design powstaje w naszej własnej fabryce w Guzhen w Chinach, według specyfikacji, które ustalamy sami. Bez pośredników, w cenie producenta.|Obejrzyj film|Odkryj produkty|rok uruchomienia fabryki|osób w zespole fabryki|krajów, do których dostarczamy|zainwestowane w fabrykę|Dlaczego to ważne|Co zyskujesz, kupując bezpośrednio od producenta|Cena producenta|Między fabryką a Twoim domem nie ma żadnego dystrybutora. Płacisz za produkt, a nie za marże pośredników.|Parametry zgodne z opisem|Każdy model powstaje według naszej karty technicznej i wewnętrznych standardów, więc parametry z opisu są tymi, które otrzymujesz.|Porady od tych, którzy go produkują|Znamy każdy produkt od pierwszego elementu, dlatego możemy rzetelnie doradzić Ci przed zamówieniem i po nim.|Historia fabryki|Produkujemy w chińskiej stolicy oświetlenia|W [year] roku uruchomiliśmy własną linię produkcyjną w Guzhen, w prowincji Guangdong, mieście nazywanym chińską stolicą oświetlenia. To tu powstaje oświetlenie Alessandro Design: lampy sufitowe LED, żyrandole, kinkiety i spoty, a także ekspozytory i elementy dekoracyjne na zamówienie.|Każdy model zaczyna się od karty specyfikacji, którą piszemy sami. Ponieważ produkujemy bezpośrednio, dbamy o zgodność parametrów technicznych i utrzymujemy konkurencyjne ceny w całej Europie.|O naszej firmie|W fabryce|Zobacz, jak pracujemy|Krótki film z naszej linii produkcyjnej w Guzhen.|Odtwórz film|Droga produktu|Od karty technicznej do Twojego domu|Karta techniczna|Sami ustalamy specyfikację każdego modelu: moc, światło, materiały i wykończenia.|Produkcja|Lampy są montowane na naszej linii w Guzhen, według wewnętrznych standardów.|Magazyn w Rumunii|Produkty trafiają do naszego magazynu w Rumunii, skąd wysyłamy je do klientów.|U Ciebie w domu|Dostarczamy do [countries] krajów, prosto z własnego magazynu, bez pośredników.|Co produkujemy|Odkryj kolekcje|Zobacz wszystkie produkty|Światło prosto od producenta.|Wybierz z naszych kolekcji lub poproś o wycenę projektu, także elementów na zamówienie.|Zapytaj o ofertę hurtową|Zespół fabryki Alessandro Design na linii produkcyjnej|Montaż diod LED w lampie sufitowej w fabryce Alessandro Design|Montaż oprawy oświetleniowej w fabryce Alessandro Design|post|Żyrandole LED|Żyrandole|Kinkiety|Spoty"
+    when 'el'
+      assign w = "Το εργοστάσιο της Alessandro Design|Από το εργοστάσιό μας, κατευθείαν στο σπίτι σας.|Τα φωτιστικά Alessandro Design κατασκευάζονται στο δικό μας εργοστάσιο στο Guzhen της Κίνας, σύμφωνα με προδιαγραφές που ορίζουμε εμείς. Χωρίς μεσάζοντες, σε τιμή κατασκευαστή.|Δείτε το βίντεο|Ανακαλύψτε τα προϊόντα|η χρονιά που ξεκίνησε το εργοστάσιο|άτομα στην ομάδα του εργοστασίου|χώρες όπου παραδίδουμε|επένδυση στο εργοστάσιο|Γιατί έχει σημασία|Τι κερδίζετε όταν αγοράζετε απευθείας από τον κατασκευαστή|Τιμή κατασκευαστή|Ανάμεσα στο εργοστάσιο και στο σπίτι σας δεν υπάρχει κανένας διανομέας. Πληρώνετε το προϊόν, όχι το κέρδος των μεσαζόντων.|Τηρούμενες προδιαγραφές|Κάθε μοντέλο κατασκευάζεται σύμφωνα με το δικό μας τεχνικό φύλλο και εσωτερικά πρότυπα, ώστε τα χαρακτηριστικά της περιγραφής να είναι αυτά που λαμβάνετε.|Συμβουλές από όσους το κατασκευάζουν|Γνωρίζουμε κάθε προϊόν από το πρώτο του εξάρτημα, γι’ αυτό σας συμβουλεύουμε σωστά πριν και μετά την παραγγελία.|Η ιστορία του εργοστασίου|Παράγουμε στην πρωτεύουσα του φωτισμού της Κίνας|Το [year] ξεκινήσαμε τη δική μας γραμμή παραγωγής στο Guzhen της επαρχίας Guangdong, την πόλη που είναι γνωστή ως η πρωτεύουσα του φωτισμού της Κίνας. Εδώ κατασκευάζονται τα φωτιστικά Alessandro Design: φωτιστικά οροφής LED, πολυέλαιοι, απλίκες και σποτ, καθώς και σταντ προβολής και διακοσμητικά κομμάτια κατά παραγγελία.|Κάθε μοντέλο ξεκινά από ένα φύλλο προδιαγραφών που γράφουμε εμείς. Επειδή παράγουμε απευθείας, διασφαλίζουμε ότι τηρούνται τα τεχνικά χαρακτηριστικά και κρατάμε ανταγωνιστικές τιμές σε όλη την Ευρώπη.|Σχετικά με την εταιρεία μας|Μέσα στο εργοστάσιο|Δείτε πώς δουλεύουμε|Ένα σύντομο βίντεο από τη γραμμή παραγωγής μας στο Guzhen.|Αναπαραγωγή βίντεο|Η διαδρομή ενός προϊόντος|Από το τεχνικό φύλλο στο σπίτι σας|Τεχνικό φύλλο|Ορίζουμε εμείς τις προδιαγραφές κάθε μοντέλου: ισχύ, φως, υλικά και φινιρίσματα.|Παραγωγή|Τα φωτιστικά συναρμολογούνται στη γραμμή μας στο Guzhen, με τα δικά μας εσωτερικά πρότυπα.|Απόθεμα στη Ρουμανία|Τα προϊόντα φτάνουν στην αποθήκη μας στη Ρουμανία και από εκεί αποστέλλονται στους πελάτες.|Στο σπίτι σας|Παραδίδουμε σε [countries] χώρες, απευθείας από το δικό μας απόθεμα, χωρίς μεσάζοντες.|Τι παράγουμε|Ανακαλύψτε τις συλλογές|Δείτε όλα τα προϊόντα|Φως απευθείας από τον κατασκευαστή.|Επιλέξτε από τις συλλογές μας ή ζητήστε προσφορά για ένα έργο, ακόμη και για κομμάτια κατά παραγγελία.|Ζητήστε προσφορά χονδρικής|Η ομάδα του εργοστασίου Alessandro Design στη γραμμή παραγωγής|Τοποθέτηση LED σε φωτιστικό οροφής στο εργοστάσιο Alessandro Design|Συναρμολόγηση φωτιστικού στο εργοστάσιο Alessandro Design|post|Πολυέλαιοι LED|Πολυέλαιοι|Απλίκες|Σποτ"
+    when 'bg'
+      assign w = "Фабриката на Alessandro Design|От нашата фабрика, направо във вашия дом.|Осветителните тела Alessandro Design се произвеждат в собствената ни фабрика в Гуджън, Китай, по спецификации, които определяме ние. Без посредници, на цена на производител.|Вижте видеото|Разгледайте продуктите|годината, в която стартирахме фабриката|души в екипа на фабриката|държави, в които доставяме|инвестирани във фабриката|Защо е важно|Какво печелите, когато купувате директно от производителя|Цена на производител|Между фабриката и вашия дом няма дистрибутор. Плащате за продукта, а не за надценките на посредниците.|Спазени параметри|Всеки модел се произвежда по наш технически лист и вътрешни стандарти, така че параметрите от описанието са тези, които получавате.|Съвети от тези, които го произвеждат|Познаваме всеки продукт от първата му част, затова можем да ви посъветваме правилно преди и след поръчката.|Историята на фабриката|Произвеждаме в столицата на осветлението в Китай|През [year] г. стартирахме собствена производствена линия в Гуджън, провинция Гуандун, градът, известен като столицата на осветлението в Китай. Тук се произвеждат осветителните тела Alessandro Design: LED лампи за таван, полилеи, аплици и спотове, както и дисплеи и декоративни елементи по поръчка.|Всеки модел започва от спецификация, която пишем ние. Тъй като произвеждаме директно, гарантираме спазването на техническите параметри и поддържаме конкурентни цени в цяла Европа.|За нашата компания|Във фабриката|Вижте как работим|Кратко видео от нашата производствена линия в Гуджън.|Пуснете видеото|Пътят на един продукт|От техническия лист до вашия дом|Технически лист|Ние определяме спецификациите на всеки модел: мощност, светлина, материали и покрития.|Производство|Осветителните тела се сглобяват на нашата линия в Гуджън по вътрешните ни стандарти.|Склад в Румъния|Продуктите пристигат в нашия склад в Румъния, откъдето заминават към клиентите.|Във вашия дом|Доставяме в [countries] държави, директно от собствената ни наличност, без посредници.|Какво произвеждаме|Разгледайте колекциите|Вижте всички продукти|Светлина директно от производителя.|Изберете от нашите колекции или поискайте оферта за проект, включително елементи по поръчка.|Поискайте оферта на едро|Екипът на фабриката Alessandro Design на производствената линия|Монтаж на светодиоди в лампа за таван във фабриката Alessandro Design|Сглобяване на осветително тяло във фабриката Alessandro Design|post|LED полилеи|Полилеи|Аплици|Спотове"
+    when 'it'
+      assign w = "La fabbrica Alessandro Design|Dalla nostra fabbrica, direttamente a casa tua.|Le lampade Alessandro Design nascono nella nostra fabbrica di Guzhen, in Cina, secondo specifiche che definiamo noi. Senza intermediari, a prezzo di produttore.|Guarda il video|Scopri i prodotti|l’anno in cui abbiamo avviato la fabbrica|persone nel team della fabbrica|paesi in cui consegniamo|investiti nella fabbrica|Perché conta|Cosa ci guadagni comprando direttamente dal produttore|Prezzo di produttore|Tra la fabbrica e casa tua non c’è nessun distributore. Paghi il prodotto, non i ricarichi degli intermediari.|Parametri rispettati|Ogni modello è prodotto secondo la nostra scheda tecnica e standard interni, così i parametri della descrizione sono quelli che ricevi.|Consigli da chi lo produce|Conosciamo ogni prodotto dal primo componente, per questo possiamo consigliarti al meglio prima e dopo l’ordine.|La storia della fabbrica|Produciamo nella capitale cinese dell’illuminazione|Nel [year] abbiamo avviato la nostra linea di produzione a Guzhen, nella provincia del Guangdong, la città conosciuta come la capitale cinese dell’illuminazione. Qui nascono le lampade Alessandro Design: plafoniere LED, lampadari, applique e faretti, oltre a espositori ed elementi decorativi su misura.|Ogni modello parte da una scheda di specifiche scritta da noi. Producendo direttamente, garantiamo il rispetto dei parametri tecnici e manteniamo prezzi competitivi in tutta Europa.|Chi siamo|In fabbrica|Guarda come lavoriamo|Un breve video dalla nostra linea di produzione a Guzhen.|Riproduci il video|Il percorso di un prodotto|Dalla scheda tecnica a casa tua|Scheda tecnica|Definiamo noi le specifiche di ogni modello: potenza, luce, materiali e finiture.|Produzione|Le lampade vengono assemblate sulla nostra linea di Guzhen, secondo i nostri standard interni.|Magazzino in Romania|I prodotti arrivano nel nostro magazzino in Romania, da dove partono verso i clienti.|A casa tua|Consegniamo in [countries] paesi, direttamente dal nostro stock, senza intermediari.|Cosa produciamo|Scopri le collezioni|Vedi tutti i prodotti|Luce, direttamente dal produttore.|Scegli tra le nostre collezioni o chiedi un preventivo per un progetto, anche con pezzi su misura.|Chiedi un preventivo all’ingrosso|Il team della fabbrica Alessandro Design sulla linea di produzione|Montaggio dei LED su una plafoniera nella fabbrica Alessandro Design|Assemblaggio di una lampada nella fabbrica Alessandro Design|post|Lampadari a LED|Lampadari|Applique|Faretti"
+    when 'fr'
+      assign w = "L’usine Alessandro Design|De notre usine, directement chez vous.|Les luminaires Alessandro Design sont fabriqués dans notre propre usine de Guzhen, en Chine, selon des spécifications que nous fixons nous-mêmes. Sans intermédiaires, au prix fabricant.|Voir le film|Découvrir les produits|l’année de lancement de l’usine|personnes dans l’équipe de l’usine|pays où nous livrons|investis dans l’usine|Pourquoi c’est important|Ce que vous gagnez en achetant directement au fabricant|Prix fabricant|Entre l’usine et votre maison, aucun distributeur. Vous payez le produit, pas les marges des intermédiaires.|Des caractéristiques respectées|Chaque modèle est fabriqué selon notre fiche technique et nos standards internes : les caractéristiques de la description sont celles que vous recevez.|Les conseils de ceux qui le fabriquent|Nous connaissons chaque produit dès sa première pièce, ce qui nous permet de bien vous conseiller avant et après la commande.|L’histoire de l’usine|Nous fabriquons dans la capitale chinoise de l’éclairage|En [year], nous avons lancé notre propre ligne de production à Guzhen, dans la province du Guangdong, la ville connue comme la capitale chinoise de l’éclairage. C’est ici que naissent les luminaires Alessandro Design : plafonniers LED, lustres, appliques et spots, ainsi que des présentoirs et des pièces décoratives sur mesure.|Chaque modèle part d’une fiche de spécifications que nous rédigeons nous-mêmes. Comme nous produisons en direct, nous garantissons le respect des paramètres techniques et maintenons des prix compétitifs dans toute l’Europe.|À propos de notre entreprise|Dans l’usine|Découvrez comment nous travaillons|Un court film tourné sur notre ligne de production à Guzhen.|Lancer le film|Le parcours d’un produit|De la fiche technique à chez vous|Fiche technique|Nous fixons nous-mêmes les spécifications de chaque modèle : puissance, lumière, matériaux et finitions.|Production|Les luminaires sont assemblés sur notre ligne de Guzhen, selon nos standards internes.|Stock en Roumanie|Les produits arrivent dans notre entrepôt en Roumanie, d’où ils partent vers les clients.|Chez vous|Nous livrons dans [countries] pays, directement depuis notre propre stock, sans intermédiaires.|Ce que nous fabriquons|Découvrez les collections|Voir tous les produits|La lumière, directement du fabricant.|Choisissez parmi nos collections ou demandez un devis pour un projet, pièces sur mesure comprises.|Demander un devis en gros|L’équipe de l’usine Alessandro Design sur la ligne de production|Montage des LED sur un plafonnier à l’usine Alessandro Design|Assemblage d’un luminaire à l’usine Alessandro Design|post|Lustres LED|Lustres|Appliques|Spots"
+    when 'cs'
+      assign w = "Továrna Alessandro Design|Z naší továrny přímo k vám domů.|Svítidla Alessandro Design vyrábíme ve vlastní továrně v čínském Guzhenu podle specifikací, které si stanovujeme sami. Bez prostředníků, za cenu výrobce.|Podívejte se na video|Objevit produkty|rok, kdy jsme továrnu spustili|lidí v týmu továrny|zemí, kam doručujeme|investováno do továrny|Proč na tom záleží|Co získáte, když nakupujete přímo od výrobce|Cena výrobce|Mezi továrnou a vaším domovem nestojí žádný distributor. Platíte za produkt, ne za marže prostředníků.|Dodržené parametry|Každý model vyrábíme podle vlastního technického listu a interních standardů, takže parametry z popisu jsou ty, které dostanete.|Rady od těch, kdo ho vyrábějí|Každý produkt známe od první součástky, a proto vám umíme správně poradit před objednávkou i po ní.|Příběh továrny|Vyrábíme v čínském hlavním městě osvětlení|V roce [year] jsme spustili vlastní výrobní linku v Guzhenu v provincii Kuang-tung, ve městě známém jako čínské hlavní město osvětlení. Právě tady vznikají svítidla Alessandro Design: LED stropní svítidla, lustry, nástěnná svítidla a bodová světla, ale také prezentační stojany a dekorativní prvky na zakázku.|Každý model začíná specifikací, kterou píšeme sami. Protože vyrábíme přímo, zajišťujeme dodržení technických parametrů a držíme konkurenceschopné ceny po celé Evropě.|O naší společnosti|V továrně|Podívejte se, jak pracujeme|Krátké video z naší výrobní linky v Guzhenu.|Přehrát video|Cesta produktu|Od technického listu až k vám domů|Technický list|Specifikace každého modelu určujeme sami: výkon, světlo, materiály a povrchové úpravy.|Výroba|Svítidla se kompletují na naší lince v Guzhenu podle interních standardů.|Sklad v Rumunsku|Produkty přicházejí do našeho skladu v Rumunsku, odkud putují k zákazníkům.|U vás doma|Doručujeme do [countries] zemí, přímo z vlastních zásob, bez prostředníků.|Co vyrábíme|Prohlédněte si kolekce|Zobrazit všechny produkty|Světlo přímo od výrobce.|Vyberte si z našich kolekcí nebo si vyžádejte nabídku na projekt, včetně prvků na zakázku.|Velkoobchodní poptávka|Tým továrny Alessandro Design na výrobní lince|Montáž LED diod do stropního svítidla v továrně Alessandro Design|Kompletace svítidla v továrně Alessandro Design|post|LED lustry|Lustry|Nástěnná svítidla|Bodová svítidla"
+    when 'sk'
+      assign w = "Továreň Alessandro Design|Z našej továrne priamo k vám domov.|Svietidlá Alessandro Design vyrábame vo vlastnej továrni v čínskom Guzhene podľa špecifikácií, ktoré si určujeme sami. Bez sprostredkovateľov, za cenu výrobcu.|Pozrite si video|Objaviť produkty|rok, keď sme továreň spustili|ľudí v tíme továrne|krajín, kam doručujeme|investovaných do továrne|Prečo na tom záleží|Čo získate, keď nakupujete priamo od výrobcu|Cena výrobcu|Medzi továrňou a vaším domovom nestojí žiadny distribútor. Platíte za produkt, nie za marže sprostredkovateľov.|Dodržané parametre|Každý model vyrábame podľa vlastného technického listu a interných štandardov, takže parametre z popisu sú tie, ktoré dostanete.|Rady od tých, ktorí ho vyrábajú|Každý produkt poznáme od prvej súčiastky, preto vám vieme správne poradiť pred objednávkou aj po nej.|Príbeh továrne|Vyrábame v čínskom hlavnom meste osvetlenia|V roku [year] sme spustili vlastnú výrobnú linku v Guzhene v provincii Kuang-tung, v meste známom ako čínske hlavné mesto osvetlenia. Práve tu vznikajú svietidlá Alessandro Design: LED stropné svietidlá, lustre, nástenné svietidlá a bodové svetlá, ale aj prezentačné stojany a dekoratívne prvky na zákazku.|Každý model sa začína špecifikáciou, ktorú píšeme sami. Keďže vyrábame priamo, zabezpečujeme dodržanie technických parametrov a držíme konkurencieschopné ceny v celej Európe.|O našej spoločnosti|V továrni|Pozrite sa, ako pracujeme|Krátke video z našej výrobnej linky v Guzhene.|Prehrať video|Cesta produktu|Od technického listu až k vám domov|Technický list|Špecifikácie každého modelu určujeme sami: výkon, svetlo, materiály a povrchové úpravy.|Výroba|Svietidlá sa kompletizujú na našej linke v Guzhene podľa interných štandardov.|Sklad v Rumunsku|Produkty prichádzajú do nášho skladu v Rumunsku, odkiaľ putujú k zákazníkom.|U vás doma|Doručujeme do [countries] krajín, priamo z vlastných zásob, bez sprostredkovateľov.|Čo vyrábame|Pozrite si kolekcie|Zobraziť všetky produkty|Svetlo priamo od výrobcu.|Vyberte si z našich kolekcií alebo si vyžiadajte ponuku na projekt, vrátane prvkov na zákazku.|Veľkoobchodný dopyt|Tím továrne Alessandro Design na výrobnej linke|Montáž LED diód do stropného svietidla v továrni Alessandro Design|Kompletizácia svietidla v továrni Alessandro Design|post|LED lustre|Lustre|Nástenné svietidlá|Spoty"
+    when 'hr'
+      assign w = "Tvornica Alessandro Design|Iz naše tvornice, ravno u vaš dom.|Rasvjeta Alessandro Design izrađuje se u našoj vlastitoj tvornici u Guzhenu u Kini, prema specifikacijama koje sami određujemo. Bez posrednika, po cijeni proizvođača.|Pogledajte video|Otkrijte proizvode|godina u kojoj smo pokrenuli tvornicu|ljudi u timu tvornice|zemalja u koje dostavljamo|uloženo u tvornicu|Zašto je to važno|Što dobivate kad kupujete izravno od proizvođača|Cijena proizvođača|Između tvornice i vašeg doma nema distributera. Plaćate proizvod, a ne marže posrednika.|Poštovani parametri|Svaki model izrađuje se prema našem tehničkom listu i internim standardima, pa su parametri iz opisa upravo oni koje dobivate.|Savjeti onih koji ga proizvode|Svaki proizvod poznajemo od prvog dijela, pa vas možemo dobro savjetovati prije i nakon narudžbe.|Priča tvornice|Proizvodimo u kineskoj prijestolnici rasvjete|Godine [year] pokrenuli smo vlastitu proizvodnu liniju u Guzhenu, u pokrajini Guangdong, gradu poznatom kao kineska prijestolnica rasvjete. Ovdje nastaje rasvjeta Alessandro Design: LED stropne svjetiljke, lusteri, zidne i spot svjetiljke, kao i stalci za izlaganje i dekorativni elementi po narudžbi.|Svaki model počinje specifikacijom koju sami pišemo. Budući da proizvodimo izravno, osiguravamo poštivanje tehničkih parametara i zadržavamo konkurentne cijene u cijeloj Europi.|O našoj tvrtki|U tvornici|Pogledajte kako radimo|Kratki video s naše proizvodne linije u Guzhenu.|Pokreni video|Put jednog proizvoda|Od tehničkog lista do vašeg doma|Tehnički list|Sami određujemo specifikacije svakog modela: snagu, svjetlo, materijale i završnu obradu.|Proizvodnja|Svjetiljke se sklapaju na našoj liniji u Guzhenu, prema internim standardima.|Zalihe u Rumunjskoj|Proizvodi stižu u naše skladište u Rumunjskoj, odakle putuju do kupaca.|U vašem domu|Dostavljamo u [countries] zemalja, izravno s vlastitih zaliha, bez posrednika.|Što proizvodimo|Otkrijte kolekcije|Pogledajte sve proizvode|Svjetlo izravno od proizvođača.|Odaberite iz naših kolekcija ili zatražite ponudu za projekt, uključujući elemente po narudžbi.|Zatražite veleprodajnu ponudu|Tim tvornice Alessandro Design na proizvodnoj liniji|Montaža LED dioda na stropnu svjetiljku u tvornici Alessandro Design|Sklapanje svjetiljke u tvornici Alessandro Design|post|LED lusteri|Lusteri|Zidne svjetiljke|Spot svjetiljke"
+    when 'de'
+      assign w = "Die Alessandro Design Fabrik|Aus unserer Fabrik, direkt zu Ihnen nach Hause.|Leuchten von Alessandro Design entstehen in unserer eigenen Fabrik im chinesischen Guzhen, nach Spezifikationen, die wir selbst festlegen. Ohne Zwischenhändler, zum Herstellerpreis.|Film ansehen|Produkte entdecken|das Jahr, in dem die Fabrik startete|Menschen im Team der Fabrik|Länder, in die wir liefern|in die Fabrik investiert|Warum das zählt|Was Sie gewinnen, wenn Sie direkt beim Hersteller kaufen|Herstellerpreis|Zwischen der Fabrik und Ihrem Zuhause steht kein Großhändler. Sie bezahlen das Produkt, nicht die Aufschläge von Zwischenhändlern.|Eingehaltene Werte|Jedes Modell wird nach unserem eigenen technischen Datenblatt und internen Standards gefertigt, damit die Angaben in der Beschreibung genau das sind, was Sie erhalten.|Beratung von denen, die es herstellen|Wir kennen jedes Produkt ab dem ersten Bauteil und beraten Sie deshalb fundiert vor und nach Ihrer Bestellung.|Die Geschichte der Fabrik|Wir produzieren in Chinas Hauptstadt der Beleuchtung|[year] haben wir unsere eigene Produktionslinie in Guzhen in der Provinz Guangdong gestartet, der Stadt, die als Chinas Hauptstadt der Beleuchtung gilt. Hier entstehen die Leuchten von Alessandro Design: LED-Deckenleuchten, Kronleuchter, Wandleuchten und Spots, dazu Displays und dekorative Elemente nach Maß.|Jedes Modell beginnt mit einem Spezifikationsblatt, das wir selbst schreiben. Weil wir direkt produzieren, stellen wir die Einhaltung der technischen Werte sicher und halten unsere Preise in ganz Europa wettbewerbsfähig.|Über unser Unternehmen|In der Fabrik|Sehen Sie, wie wir arbeiten|Ein kurzer Film von unserer Produktionslinie in Guzhen.|Film abspielen|Der Weg eines Produkts|Vom Datenblatt zu Ihnen nach Hause|Technisches Datenblatt|Wir legen die Spezifikationen jedes Modells selbst fest: Leistung, Licht, Materialien und Oberflächen.|Produktion|Die Leuchten werden auf unserer Linie in Guzhen nach internen Standards montiert.|Lager in Rumänien|Die Produkte kommen in unser Lager in Rumänien und gehen von dort an die Kunden.|Bei Ihnen zu Hause|Wir liefern in [countries] Länder, direkt aus unserem eigenen Bestand, ohne Zwischenhändler.|Was wir herstellen|Kollektionen entdecken|Alle Produkte ansehen|Licht, direkt vom Hersteller.|Wählen Sie aus unseren Kollektionen oder fragen Sie ein Angebot für ein Projekt an, auch mit Sonderanfertigungen.|Großhandelsangebot anfragen|Das Team der Alessandro Design Fabrik an der Produktionslinie|Montage von LEDs an einer Deckenleuchte in der Alessandro Design Fabrik|Montage einer Leuchte in der Alessandro Design Fabrik|post|LED-Deckenleuchten|Kronleuchter|Wandleuchten|Spots"
+    else
+      assign w = "Fabrica Alessandro Design|Din fabrica noastră, direct în casa ta.|Corpurile de iluminat Alessandro Design se produc în fabrica noastră din Guzhen, China, după specificații stabilite de noi. Fără intermediari, la preț de producător.|Vezi filmul|Descoperă produsele|anul în care am pornit fabrica|oameni în echipa fabricii|țări în care livrăm|investiți în fabrică|De ce contează|Ce câștigi când cumperi direct de la producător|Preț de producător|Între fabrică și casa ta nu stă niciun distribuitor. Plătești produsul, nu adaosurile intermediarilor.|Parametri respectați|Fiecare model se produce după fișa noastră tehnică și standarde stabilite intern, ca parametrii din descriere să fie cei pe care îi primești.|Sfaturi de la cine îl produce|Cunoaștem fiecare produs de la prima piesă, așa că te putem sfătui corect înainte și după comandă.|Povestea fabricii|Producem în capitala iluminatului din China|În [year] am pornit propria linie de producție în Guzhen, provincia Guangdong, orașul supranumit capitala iluminatului din China. Aici se produc corpurile de iluminat Alessandro Design: lustre cu LED, candelabre, aplice și spoturi, dar și afișaje sau piese decorative la comandă.|Fiecare model pornește de la o fișă de specificații scrisă de noi. Pentru că producem direct, ne asigurăm că parametrii tehnici sunt respectați și păstrăm prețuri competitive în toată Europa.|Despre compania noastră|Film din fabrică|Vezi cum lucrăm|Un film scurt de pe linia noastră de producție din Guzhen.|Pornește filmul|Drumul unui produs|De la fișa tehnică la tine acasă|Fișa tehnică|Stabilim noi specificațiile fiecărui model: putere, lumină, materiale și finisaje.|Producția|Corpurile se asamblează pe linia noastră din Guzhen, după standardele noastre interne.|Stocul din România|Produsele ajung în depozitul nostru din România, de unde pleacă spre clienți.|La tine acasă|Livrăm în [countries] țări, direct din stocul propriu, fără intermediari.|Ce producem|Descoperă colecțiile|Vezi toate produsele|Lumină direct de la producător.|Alege din colecțiile noastre sau cere o ofertă pentru un proiect, inclusiv piese la comandă.|Cere o ofertă en‑gros|Echipa fabricii Alessandro Design pe linia de producție|Montajul LED-urilor pe o plafonieră în fabrica Alessandro Design|Asamblarea unui corp de iluminat în fabrica Alessandro Design|post|Lustre LED|Candelabre|Aplice|Spoturi"
+  endcase
+  assign t = w | split: '|'
+
+  assign year = section.settings.year | default: '2023'
+  assign people = section.settings.people | default: '20'
+  assign countries = section.settings.countries | default: '10'
+  assign video_id = section.settings.video_id | default: '5vx-UAD7Cvg' | strip
+  assign video_length = section.settings.video_length | default: '1:22' | strip
+
+  comment
+    Investment in euro, grouped the way each language writes thousands.
+  endcomment
+  case lang
+    when 'en'
+      assign sep = ','
+    when 'hu', 'pl', 'bg', 'fr', 'cs', 'sk'
+      assign sep = '&nbsp;'
+    else
+      assign sep = '.'
+  endcase
+  assign inv = section.settings.investment | default: 800000 | plus: 0
+  assign inv_m = inv | divided_by: 1000000
+  assign inv_k = inv | divided_by: 1000 | modulo: 1000
+  assign inv_r = inv | modulo: 1000 | prepend: '00' | slice: -3, 3
+  if inv_m > 0
+    assign inv_k = inv_k | prepend: '00' | slice: -3, 3
+    assign inv_text = inv_m | append: sep | append: inv_k | append: sep | append: inv_r
+  elsif inv_k > 0
+    assign inv_text = inv_k | append: sep | append: inv_r
+  else
+    assign inv_text = inv
+  endif
+
+  assign lead = t[2]
+  assign story_1 = t[19] | replace: '[year]', year
+  assign step_4 = t[35] | replace: '[countries]', countries
+
+  comment
+    Collections fall back to the store's main lighting lines when a setting is empty.
+  endcomment
+  assign default_handles = 'lustre-led,candelabre,aplice,spoturi' | split: ','
+
+  assign shop_url = section.settings.shop_url | default: collections['lustre-led'].url | default: routes.all_products_collection_url
+  assign p_company = pages['companie']
+  assign p_b2b = pages['comenzi-engross']
+
+  assign img_hero = section.settings.hero_image | default: images['fabrica_5.jpg']
+  assign img_story = section.settings.story_image | default: images['fabrica_2.jpg']
+  assign img_poster = section.settings.poster_image | default: images['fabrica_3.jpg']
+  assign img_steps = section.settings.steps_image | default: images['fabrica_6.jpg']
+
+  comment
+    Dawn's reveal-on-scroll (assets/animations.js), only when the theme setting is on.
+  endcomment
+  assign reveal = ''
+  if settings.animations_reveal_on_scroll
+    assign reveal = ' scroll-trigger animate--slide-in'
+  endif
+
+  comment
+    Break the headline after its first comma ("From our factory, / straight to your
+    home.") so the two halves read as a pair; languages without a comma keep one line.
+  endcomment
+  assign h1_parts = t[1] | split: ', '
+-%}
+
+<div class="alc-co alc-fa">
+  {%- comment -%} Hero {%- endcomment -%}
+  <section class="alc-co__hero alc-fa__hero">
+    <div class="alc-co__hero-media">
+      {%- if img_hero != blank -%}
+        {%- comment -%} The factory stills are letterboxed video frames: crop to 16:9 to drop the bars. {%- endcomment -%}
+        {{
+          img_hero
+          | image_url: width: 2400, height: 1350, crop: 'center'
+          | image_tag:
+            class: 'alc-co__hero-img',
+            widths: '750, 1100, 1500, 2000, 2400',
+            sizes: '100vw',
+            fetchpriority: 'high',
+            loading: 'eager',
+            alt: t[42]
+        }}
+      {%- endif -%}
+    </div>
+    <div class="page-width alc-co__hero-inner">
+      <p class="alc-co__eyebrow alc-co__eyebrow--light">{{ t[0] }}</p>
+      <h1 class="alc-co__hero-title">
+        {%- if h1_parts.size == 2 -%}
+          <span class="alc-co__hero-line">{{ h1_parts[0] }},</span> <span class="alc-co__hero-line">{{ h1_parts[1] }}</span>
+        {%- else -%}
+          {{ t[1] }}
+        {%- endif -%}
+      </h1>
+      <p class="alc-co__hero-lead">{{ lead }}</p>
+      <div class="alc-co__actions">
+        {%- if video_id != blank -%}
+          <a class="alc-co__btn alc-co__btn--light" href="#film" data-alc-fa-play>
+            <svg class="alc-fa__icon-play" aria-hidden="true" width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M7 4.5v15a1 1 0 0 0 1.5.86l12.5-7.5a1 1 0 0 0 0-1.72L8.5 3.64A1 1 0 0 0 7 4.5z"/></svg>
+            {{- t[3] -}}
+            {%- if video_length != blank -%}<span class="alc-fa__btn-meta">{{ video_length }}</span>{%- endif -%}
+          </a>
+        {%- endif -%}
+        <a class="alc-co__btn alc-co__btn--glass" href="{{ shop_url }}">{{ t[4] }}</a>
+      </div>
+    </div>
+  </section>
+
+  {%- comment -%} Key figures {%- endcomment -%}
+  <div class="page-width">
+    <dl class="alc-co__stats">
+      <div class="alc-co__stat">
+        <dt>{{ t[5] }}</dt>
+        <dd>{{ year }}</dd>
+      </div>
+      <div class="alc-co__stat">
+        <dt>{{ t[6] }}</dt>
+        <dd>{{ people }}</dd>
+      </div>
+      <div class="alc-co__stat">
+        <dt>{{ t[7] }}</dt>
+        <dd>{{ countries }}</dd>
+      </div>
+      <div class="alc-co__stat">
+        <dt>{{ t[8] }}</dt>
+        <dd>
+          {%- if t[45] == 'pre' -%}
+            <span class="alc-co__stat-unit alc-fa__unit-pre">€</span>{{ inv_text }}
+          {%- else -%}
+            {{ inv_text }}<span class="alc-co__stat-unit alc-fa__unit">€</span>
+          {%- endif -%}
+        </dd>
+      </div>
+    </dl>
+  </div>
+
+  {%- comment -%} What buying from the maker means {%- endcomment -%}
+  <section class="page-width alc-co__block">
+    <header class="alc-co__head">
+      <p class="alc-co__eyebrow">{{ t[9] }}</p>
+      <h2 class="alc-co__title">{% render 'alc-nbsp', text: t[10] %}</h2>
+    </header>
+    <ul class="alc-co__values" role="list"{% if reveal != blank %} data-cascade{% endif %}>
+      <li class="alc-co__value{{ reveal }}" style="--animation-order: 1;">
+        <span class="alc-co__value-icon" aria-hidden="true">
+          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M20.6 13.4 13.4 20.6a2 2 0 0 1-2.8 0L3 13V3h10l7.6 7.6a2 2 0 0 1 0 2.8z"/><circle cx="7.5" cy="7.5" r="1.5"/></svg>
+        </span>
+        <h3 class="alc-co__value-title">{{ t[11] }}</h3>
+        <p class="alc-co__value-text">{{ t[12] }}</p>
+      </li>
+      <li class="alc-co__value{{ reveal }}" style="--animation-order: 2;">
+        <span class="alc-co__value-icon" aria-hidden="true">
+          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M9 3h6M10 3v4.5L5.2 17.1A2.6 2.6 0 0 0 7.5 21h9a2.6 2.6 0 0 0 2.3-3.9L14 7.5V3"/><path d="m9 14 2 2 4-4"/></svg>
+        </span>
+        <h3 class="alc-co__value-title">{{ t[13] }}</h3>
+        <p class="alc-co__value-text">{{ t[14] }}</p>
+      </li>
+      <li class="alc-co__value{{ reveal }}" style="--animation-order: 3;">
+        <span class="alc-co__value-icon" aria-hidden="true">
+          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12a8.5 8.5 0 0 1-12.6 7.4L3 21l1.6-5.1A8.5 8.5 0 1 1 21 12z"/><path d="M8.5 10.5h7M8.5 14h4.5"/></svg>
+        </span>
+        <h3 class="alc-co__value-title">{{ t[15] }}</h3>
+        <p class="alc-co__value-text">{{ t[16] }}</p>
+      </li>
+    </ul>
+  </section>
+
+  {%- comment -%} The factory's story {%- endcomment -%}
+  <section class="page-width alc-co__block">
+    <div class="alc-co__split">
+      <div class="alc-co__split-media">
+        {%- if img_story != blank -%}
+          {{
+            img_story
+            | image_url: width: 1600, height: 900, crop: 'center'
+            | image_tag:
+              class: 'alc-co__split-img alc-fa__story-img',
+              widths: '600, 900, 1200, 1600',
+              sizes: '(min-width: 990px) 50vw, 100vw',
+              loading: 'lazy',
+              alt: t[43]
+          }}
+        {%- endif -%}
+      </div>
+      <div class="alc-co__split-copy">
+        <p class="alc-co__eyebrow">{{ t[17] }}</p>
+        <h2 class="alc-co__title">{% render 'alc-nbsp', text: t[18] %}</h2>
+        <p class="alc-co__intro">{{ story_1 }}</p>
+        <p class="alc-co__intro">{{ t[20] }}</p>
+        {%- if p_company != blank -%}
+          <a class="alc-co__btn alc-co__btn--dark" href="{{ p_company.url }}">
+            {{- t[21] -}}
+            <svg aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+          </a>
+        {%- endif -%}
+      </div>
+    </div>
+  </section>
+
+  {%- comment -%}
+    The film: a poster that links to YouTube and, with JavaScript (assets/alc-factory.js),
+    swaps itself for the privacy-enhanced player on click. Nothing loads from YouTube
+    before that.
+  {%- endcomment -%}
+  {%- if video_id != blank -%}
+    {%- capture video_label -%}{{ t[25] }}: {{ t[0] }}{% if video_length != blank %} ({{ video_length }}){% endif %}{%- endcapture -%}
+    <section class="alc-co__story alc-fa__film">
+      <div class="page-width">
+        <header class="alc-co__story-head alc-fa__film-head">
+          <p class="alc-co__eyebrow">{{ t[22] }}</p>
+          <h2 class="alc-co__title">{% render 'alc-nbsp', text: t[23] %}</h2>
+          <p class="alc-co__intro">{{ t[24] }}</p>
+        </header>
+        <alc-fa-video class="alc-fa__player" id="film" data-id="{{ video_id | escape }}" data-title="{{ t[0] | escape }}">
+          <a
+            class="alc-fa__player-link"
+            href="https://www.youtube.com/watch?v={{ video_id | url_encode }}"
+            target="_blank"
+            rel="noopener"
+            aria-label="{{ video_label | escape }}"
+          >
+            {%- if img_poster != blank -%}
+              {{
+                img_poster
+                | image_url: width: 2200, height: 1238, crop: 'center'
+                | image_tag:
+                  class: 'alc-fa__player-poster',
+                  widths: '600, 900, 1200, 1600, 2200',
+                  sizes: '(min-width: 1200px) 1080px, calc(100vw - 32px)',
+                  loading: 'lazy',
+                  alt: ''
+              }}
+            {%- endif -%}
+            <span class="alc-fa__play" aria-hidden="true">
+              <svg width="30" height="30" viewBox="0 0 24 24" fill="currentColor"><path d="M7 4.5v15a1 1 0 0 0 1.5.86l12.5-7.5a1 1 0 0 0 0-1.72L8.5 3.64A1 1 0 0 0 7 4.5z"/></svg>
+            </span>
+            <span class="alc-fa__player-meta" aria-hidden="true">
+              <span>{{ t[25] }}</span>
+              {%- if video_length != blank -%}<span class="alc-fa__player-length">{{ video_length }}</span>{%- endif -%}
+            </span>
+          </a>
+        </alc-fa-video>
+      </div>
+    </section>
+  {%- endif -%}
+
+  {%- comment -%} From the technical sheet to the customer {%- endcomment -%}
+  <section class="page-width alc-co__block">
+    <div class="alc-co__split alc-fa__split--steps">
+      <div class="alc-fa__steps-copy">
+        <p class="alc-co__eyebrow">{{ t[26] }}</p>
+        <h2 class="alc-co__title">{% render 'alc-nbsp', text: t[27] %}</h2>
+        <ol class="alc-fa__steps" role="list">
+          <li class="alc-fa__step{{ reveal }}">
+            <span class="alc-fa__step-num" aria-hidden="true">1</span>
+            <h3 class="alc-fa__step-title">{{ t[28] }}</h3>
+            <p class="alc-fa__step-text">{{ t[29] }}</p>
+          </li>
+          <li class="alc-fa__step{{ reveal }}">
+            <span class="alc-fa__step-num" aria-hidden="true">2</span>
+            <h3 class="alc-fa__step-title">{{ t[30] }}</h3>
+            <p class="alc-fa__step-text">{{ t[31] }}</p>
+          </li>
+          <li class="alc-fa__step{{ reveal }}">
+            <span class="alc-fa__step-num" aria-hidden="true">3</span>
+            <h3 class="alc-fa__step-title">{{ t[32] }}</h3>
+            <p class="alc-fa__step-text">{{ t[33] }}</p>
+          </li>
+          <li class="alc-fa__step{{ reveal }}">
+            <span class="alc-fa__step-num" aria-hidden="true">4</span>
+            <h3 class="alc-fa__step-title">{{ t[34] }}</h3>
+            <p class="alc-fa__step-text">{{ step_4 }}</p>
+          </li>
+        </ol>
+      </div>
+      <div class="alc-co__split-media alc-fa__steps-media">
+        {%- if section.settings.steps_image != blank -%}
+          {{
+            section.settings.steps_image
+            | image_url: width: 1200, height: 1500, crop: 'center'
+            | image_tag:
+              class: 'alc-co__split-img',
+              widths: '500, 700, 900, 1200',
+              sizes: '(min-width: 990px) 42vw, 100vw',
+              loading: 'lazy',
+              alt: t[44]
+          }}
+        {%- elsif img_steps != blank -%}
+          {%- comment -%} fabrica_6.jpg (3840x2160): a 4:5 window on the logo across the shirt. {%- endcomment -%}
+          {{
+            img_steps
+            | image_url: width: 1200, height: 1500, crop: 'region', crop_left: 360, crop_top: 0, crop_width: 1728, crop_height: 2160
+            | image_tag:
+              class: 'alc-co__split-img',
+              widths: '500, 700, 900, 1200',
+              sizes: '(min-width: 990px) 42vw, 100vw',
+              loading: 'lazy',
+              alt: t[44]
+          }}
+        {%- endif -%}
+      </div>
+    </div>
+  </section>
+
+  {%- comment -%} Collections {%- endcomment -%}
+  <section class="page-width alc-co__block">
+    <header class="alc-co__head alc-co__head--row">
+      <div>
+        <p class="alc-co__eyebrow">{{ t[36] }}</p>
+        <h2 class="alc-co__title">{{ t[37] }}</h2>
+      </div>
+      <a class="alc-co__more" href="{{ shop_url }}">
+        {{- t[38] -}}
+        <svg aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+      </a>
+    </header>
+    <ul class="alc-co__cats" role="list"{% if reveal != blank %} data-cascade{% endif %}>
+      {%- for i in (1..4) -%}
+        {%- liquid
+          comment
+            The default lines carry their own names: the Translate & Adapt titles of
+            "Aplice" and "Spoturi" read "Apply" and "Stains" in most languages.
+          endcomment
+          assign ckey = 'collection_' | append: i
+          assign c = section.settings[ckey]
+          assign cname = c.title
+          if c == blank
+            assign c = collections[default_handles[forloop.index0]]
+            assign ci = forloop.index0 | plus: 46
+            assign cname = t[ci]
+          endif
+        -%}
+        {%- if c != blank and c.products_count > 0 -%}
+          <li class="{{ reveal | strip }}" style="--animation-order: {{ i }};">
+            <a class="alc-co__cat" href="{{ c.url }}">
+              <span class="alc-co__cat-media">
+                {%- assign cimg = c.image | default: c.products.first.featured_image -%}
+                {%- if cimg != blank -%}
+                  {{
+                    cimg
+                    | image_url: width: 700
+                    | image_tag:
+                      widths: '300, 450, 600, 700',
+                      sizes: '(min-width: 990px) 25vw, 50vw',
+                      loading: 'lazy',
+                      alt: ''
+                  }}
+                {%- endif -%}
+              </span>
+              <span class="alc-co__cat-name">{{ cname | escape }}</span>
+            </a>
+          </li>
+        {%- endif -%}
+      {%- endfor -%}
+    </ul>
+  </section>
+
+  {%- comment -%} Closing call to action {%- endcomment -%}
+  <section class="page-width alc-co__block alc-co__block--last">
+    <div class="alc-co__final">
+      <h2 class="alc-co__final-title">{% render 'alc-nbsp', text: t[39] %}</h2>
+      <p class="alc-co__final-text">{{ t[40] }}</p>
+      <div class="alc-co__actions alc-co__actions--center">
+        <a class="alc-co__btn alc-co__btn--light" href="{{ shop_url }}">
+          {{- t[4] -}}
+          <svg aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+        </a>
+        {%- if p_b2b != blank -%}
+          <a class="alc-co__btn alc-co__btn--glass" href="{{ p_b2b.url }}">{{ t[41] }}</a>
+        {%- endif -%}
+      </div>
+    </div>
+  </section>
+
+  {%- comment -%}
+    The page and its film. The Organization itself is output by
+    snippets/alc-organization-schema.liquid (same @id).
+  {%- endcomment -%}
+  {%- if template.name == 'page' -%}
+    {%- liquid
+      assign v_parts = video_length | split: ':'
+      assign v_iso = ''
+      if v_parts.size == 2
+        assign v_iso = 'PT' | append: v_parts[0] | append: 'M' | append: v_parts[1] | append: 'S'
+      endif
+    -%}
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "AboutPage",
+        "@id": {{ canonical_url | append: '#webpage' | json }},
+        "url": {{ canonical_url | json }},
+        "name": {{ page_title | json }},
+        "description": {{ lead | json }},
+        "inLanguage": {{ request.locale.iso_code | json }},
+        "about": { "@id": {{ request.origin | append: '/#organization' | json }} }
+        {%- if img_hero != blank -%},
+        "primaryImageOfPage": { "@type": "ImageObject", "url": {{ img_hero | image_url: width: 1600, height: 900, crop: 'center' | prepend: 'https:' | json }} }
+        {%- endif -%}
+        {%- if video_id != blank and img_poster != blank and section.settings.video_date != blank -%},
+        "video": {
+          "@type": "VideoObject",
+          "name": {{ t[0] | json }},
+          "description": {{ t[24] | append: ' ' | append: lead | json }},
+          "thumbnailUrl": {{ img_poster | image_url: width: 1280, height: 720, crop: 'center' | prepend: 'https:' | json }},
+          "uploadDate": {{ section.settings.video_date | json }},
+          {%- if v_iso != blank %}
+          "duration": {{ v_iso | json }},
+          {%- endif %}
+          "embedUrl": {{ 'https://www.youtube.com/embed/' | append: video_id | json }},
+          "publisher": { "@id": {{ request.origin | append: '/#organization' | json }} }
+        }
+        {%- endif %}
+      }
+    </script>
+  {%- endif -%}
+</div>
+
+{% schema %}
+{
+  "name": "Factory page",
+  "tag": "div",
+  "class": "section",
+  "settings": [
+    { "type": "paragraph", "content": "All texts have built-in translations for every storefront language. Empty photos fall back to the factory stills in Files (fabrica_5, fabrica_2, fabrica_3, fabrica_6)." },
+    { "type": "header", "content": "Key figures" },
+    { "type": "text", "id": "year", "label": "Year the factory started", "default": "2023" },
+    { "type": "text", "id": "people", "label": "People in the factory team", "default": "20" },
+    { "type": "text", "id": "countries", "label": "Countries we deliver to", "default": "10" },
+    { "type": "number", "id": "investment", "label": "Investment (EUR)", "default": 800000 },
+    { "type": "header", "content": "Photos" },
+    { "type": "image_picker", "id": "hero_image", "label": "Hero" },
+    { "type": "image_picker", "id": "story_image", "label": "Story" },
+    { "type": "image_picker", "id": "steps_image", "label": "Steps", "info": "Cropped to portrait from the centre" },
+    { "type": "header", "content": "Film" },
+    { "type": "text", "id": "video_id", "label": "YouTube video id", "default": "5vx-UAD7Cvg" },
+    { "type": "text", "id": "video_length", "label": "Length (m:ss)", "default": "1:22" },
+    { "type": "text", "id": "video_date", "label": "Upload date (for Google)", "default": "2025-09-20T08:18:54-07:00" },
+    { "type": "image_picker", "id": "poster_image", "label": "Poster" },
+    { "type": "header", "content": "Links" },
+    { "type": "url", "id": "shop_url", "label": "Shop link", "info": "Empty: LED chandeliers" },
+    { "type": "collection", "id": "collection_1", "label": "Collection 1", "info": "Empty: lustre-led" },
+    { "type": "collection", "id": "collection_2", "label": "Collection 2", "info": "Empty: candelabre" },
+    { "type": "collection", "id": "collection_3", "label": "Collection 3", "info": "Empty: aplice" },
+    { "type": "collection", "id": "collection_4", "label": "Collection 4", "info": "Empty: spoturi" }
+  ]
+}
+{% endschema %}
