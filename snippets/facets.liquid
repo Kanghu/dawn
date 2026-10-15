@@ -77,7 +77,7 @@
                     <facet-remove>
                       <a href="{{ value.url_to_remove }}" class="active-facets__button active-facets__button--light">
                         <span class="active-facets__button-inner button button--tertiary">
-                          {{ filter.label | escape }}: {{ value.label | escape }}
+                          {{ filter.label | escape }}: {% render 'alc-filter-label', label: value.label %}
                           <span class="svg-wrapper">
                             {{- 'icon-close-small.svg' | inline_asset_content -}}
                           </span>
@@ -206,10 +206,10 @@
 
                             {%- capture text_value -%}
                               <span class="facet-checkbox__text" aria-hidden="true">
-                                <span class="facet-checkbox__text-label">{{- value.label | escape }}</span> ({{- value.count -}})
+                                <span class="facet-checkbox__text-label">{%- render 'alc-filter-label', label: value.label %}</span> ({{- value.count -}})
                               </span>
                               <span class="visually-hidden">
-                                {{- value.label | escape }} (
+                                {%- render 'alc-filter-label', label: value.label %} (
                                 {%- if value.count == 1 -%}
                                   {{- 'products.facets.product_count_simple.one' | t: count: value.count -}}
                                 {%- else -%}
@@ -343,7 +343,7 @@
                   <facet-remove>
                     <a href="{{ value.url_to_remove }}" class="active-facets__button active-facets__button--light">
                       <span class="active-facets__button-inner button button--tertiary">
-                        {{ filter.label | escape }}: {{ value.label | escape }}
+                        {{ filter.label | escape }}: {% render 'alc-filter-label', label: value.label %}
                         <span class="svg-wrapper">
                           {{- 'icon-close-small.svg' | inline_asset_content -}}
                         </span>
@@ -575,10 +575,10 @@
 
                               {%- capture text_value -%}
                                 <span class="facet-checkbox__text" aria-hidden="true">
-                                  <span class="facet-checkbox__text-label">{{- value.label | escape }}</span> ({{- value.count -}})
+                                  <span class="facet-checkbox__text-label">{%- render 'alc-filter-label', label: value.label %}</span> ({{- value.count -}})
                                 </span>
                                 <span class="visually-hidden">
-                                  {{- value.label | escape }} (
+                                  {%- render 'alc-filter-label', label: value.label %} (
                                   {%- if value.count == '1' -%}
                                     {{- 'products.facets.product_count_simple.one' | t: count: value.count -}}
                                   {%- else -%}
@@ -788,7 +788,7 @@
         <facet-remove>
           <a href="{{ value.url_to_remove }}" class="active-facets__button active-facets__button--light">
             <span class="active-facets__button-inner button button--tertiary">
-              {{ filter.label | escape }}: {{ value.label | escape }}
+              {{ filter.label | escape }}: {% render 'alc-filter-label', label: value.label %}
               <span class="svg-wrapper">
                 {{- 'icon-close-small.svg' | inline_asset_content -}}
               </span>
@@ -897,7 +897,7 @@
               <facet-remove>
                 <a href="{{ value.url_to_remove }}" class="active-facets__button active-facets__button--light">
                   <span class="active-facets__button-inner button button--tertiary">
-                    {{ filter.label | escape }}: {{ value.label | escape }}
+                    {{ filter.label | escape }}: {% render 'alc-filter-label', label: value.label %}
                     <span class="svg-wrapper">
                       {{- 'icon-close-small.svg' | inline_asset_content -}}
                     </span>

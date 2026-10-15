@@ -1,0 +1,56 @@
+{%- comment -%}
+  Prints a filter value label. Search & Discovery can't translate grouped filter values
+  ("Dormitor / Bucatarie / Birou", "MARE ( > 50 cm )"), so other languages showed the Romanian
+  group name. Known group names are swapped for the storefront language here, one `when` per
+  language in the same order as `ro`; any other label prints unchanged. Output is escaped.
+
+  Accepts:
+  - label: {String} the filter value label (value.label)
+
+  Usage:
+  {% render 'alc-filter-label', label: value.label %}
+{%- endcomment -%}
+{%- liquid
+  assign out = label
+  unless request.locale.primary
+    assign ro = 'Abstract|Geometric|Liniara|Patrata / Rectangulara|Rotunda / Circulara|Dormitor / Bucatarie / Birou|Dressing / Hol|Exterior|Spatii Comerciale / Living / Casa Scarii|Intrerupator pe fir / stecher|MARE ( > 50 cm )|MEDIU ( 30 - 50 cm)|MIC ( < 30 cm )' | split: '|'
+    assign idx = -1
+    for r in ro
+      if r == label
+        assign idx = forloop.index0
+        break
+      endif
+    endfor
+    if idx >= 0
+      assign lang = request.locale.iso_code | downcase | slice: 0, 2
+      assign w = ''
+      case lang
+        when 'en'
+          assign w = 'Abstract|Geometric|Linear|Square / Rectangular|Round / Circular|Bedroom / Kitchen / Office|Dressing room / Hallway|Outdoor|Commercial spaces / Living room / Stairwell|Cord switch / plug|LARGE ( > 50 cm )|MEDIUM ( 30 - 50 cm)|SMALL ( < 30 cm )'
+        when 'hu'
+          assign w = 'Absztrakt|Geometrikus|Lineáris|Négyzet / Téglalap|Kerek / Kör alakú|Hálószoba / Konyha / Iroda|Gardrób / Előszoba|Kültér|Üzlethelyiségek / Nappali / Lépcsőház|Zsinórkapcsoló / csatlakozó|NAGY ( > 50 cm )|KÖZEPES ( 30 - 50 cm)|KICSI ( < 30 cm )'
+        when 'pl'
+          assign w = 'Abstrakcyjny|Geometryczny|Liniowy|Kwadratowy / Prostokątny|Okrągły|Sypialnia / Kuchnia / Biuro|Garderoba / Korytarz|Na zewnątrz|Lokale usługowe / Salon / Klatka schodowa|Włącznik na przewodzie / wtyczka|DUŻY ( > 50 cm )|ŚREDNI ( 30 - 50 cm)|MAŁY ( < 30 cm )'
+        when 'el'
+          assign w = 'Αφηρημένο|Γεωμετρικό|Γραμμικό|Τετράγωνο / Ορθογώνιο|Στρογγυλό / Κυκλικό|Υπνοδωμάτιο / Κουζίνα / Γραφείο|Ντουλάπα / Χολ|Εξωτερικός χώρος|Εμπορικοί χώροι / Σαλόνι / Κλιμακοστάσιο|Διακόπτης καλωδίου / φις|ΜΕΓΑΛΟ ( > 50 cm )|ΜΕΣΑΙΟ ( 30 - 50 cm)|ΜΙΚΡΟ ( < 30 cm )'
+        when 'bg'
+          assign w = 'Абстрактна|Геометрична|Линейна|Квадратна / Правоъгълна|Кръгла|Спалня / Кухня / Офис|Дрешник / Коридор|Екстериор|Търговски обекти / Всекидневна / Стълбище|Ключ на кабела / щепсел|ГОЛЯМ ( > 50 cm )|СРЕДЕН ( 30 - 50 cm)|МАЛЪК ( < 30 cm )'
+        when 'it'
+          assign w = 'Astratta|Geometrica|Lineare|Quadrata / Rettangolare|Rotonda / Circolare|Camera da letto / Cucina / Ufficio|Cabina armadio / Ingresso|Esterno|Spazi commerciali / Soggiorno / Vano scale|Interruttore sul cavo / spina|GRANDE ( > 50 cm )|MEDIO ( 30 - 50 cm)|PICCOLO ( < 30 cm )'
+        when 'fr'
+          assign w = 'Abstraite|Géométrique|Linéaire|Carrée / Rectangulaire|Ronde / Circulaire|Chambre / Cuisine / Bureau|Dressing / Entrée|Extérieur|Espaces commerciaux / Salon / Cage d’escalier|Interrupteur sur câble / prise|GRAND ( > 50 cm )|MOYEN ( 30 - 50 cm)|PETIT ( < 30 cm )'
+        when 'cs'
+          assign w = 'Abstraktní|Geometrický|Lineární|Čtvercový / Obdélníkový|Kulatý|Ložnice / Kuchyně / Kancelář|Šatna / Chodba|Exteriér|Komerční prostory / Obývací pokoj / Schodiště|Vypínač na kabelu / zástrčka|VELKÝ ( > 50 cm )|STŘEDNÍ ( 30 - 50 cm)|MALÝ ( < 30 cm )'
+        when 'sk'
+          assign w = 'Abstraktný|Geometrický|Lineárny|Štvorcový / Obdĺžnikový|Okrúhly|Spálňa / Kuchyňa / Kancelária|Šatník / Chodba|Exteriér|Komerčné priestory / Obývačka / Schodisko|Vypínač na kábli / zástrčka|VEĽKÝ ( > 50 cm )|STREDNÝ ( 30 - 50 cm)|MALÝ ( < 30 cm )'
+        when 'nl'
+          assign w = 'Abstract|Geometrisch|Lineair|Vierkant / Rechthoekig|Rond|Slaapkamer / Keuken / Kantoor|Kleedkamer / Hal|Buiten|Commerciële ruimtes / Woonkamer / Trappenhuis|Snoerschakelaar / stekker|GROOT ( > 50 cm )|MIDDEL ( 30 - 50 cm)|KLEIN ( < 30 cm )'
+      endcase
+      if w != blank
+        assign words = w | split: '|'
+        assign out = words[idx]
+      endif
+    endif
+  endunless
+  echo out | escape
+-%}
