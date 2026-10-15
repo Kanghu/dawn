@@ -12,6 +12,13 @@
   Tags are cut at their first ">", so an <img> with ">" inside an attribute value only
   gets the lazy loading.
 
+  Outside the primary (Romanian) language, description banners with Romanian text baked
+  into the picture are left out; translation can't reach text inside an image. The list
+  holds file name stems, so re-uploads with a _<uuid> suffix match too.
+  There, links to alessandrodesign.ro also become relative (the Romanian handles redirect to
+  the translated ones), and a bare .ro URL used as link text shows the linked collection's or
+  article's translated title instead.
+
   Accepts:
   - html {String}
   - sizes {String} Optional, defaults to the page-width content column
@@ -20,7 +27,44 @@
 {%- endcomment -%}
 {%- liquid
   assign sizes = sizes | default: '(min-width: 1300px) 1270px, calc(100vw - 30px)'
+  assign hide_ro_banners = false
+  unless request.locale.primary
+    if html contains 'alessandrodesign.ro/'
+      assign html = html | replace: 'href="https://www.alessandrodesign.ro/', 'href="/' | replace: 'href="https://alessandrodesign.ro/', 'href="/' | replace: 'href="http://www.alessandrodesign.ro/', 'href="/'
+      if html contains '>https://www.alessandrodesign.ro/'
+        assign raw_parts = html | split: '>https://www.alessandrodesign.ro/'
+        capture html_local
+          for part in raw_parts
+            if forloop.first
+              echo part
+              continue
+            endif
+            assign raw_path = part | split: '<' | first
+            assign raw_rest = part | remove_first: raw_path
+            assign raw_bits = raw_path | split: '?' | first | split: '/'
+            assign raw_title = ''
+            if raw_bits[0] == 'collections'
+              assign raw_title = collections[raw_bits[1]].title
+            elsif raw_bits[0] == 'blogs'
+              assign raw_key = raw_bits[1] | append: '/' | append: raw_bits[2]
+              assign raw_title = articles[raw_key].title
+            endif
+            if raw_title == blank
+              assign raw_title = request.host | append: '/' | append: raw_path
+            endif
+            echo '>' | append: raw_title | append: raw_rest
+          endfor
+        endcapture
+        assign html = html_local
+      endif
+    endif
+  endunless
+
   assign chunks = html | split: '<img '
+  unless request.locale.primary
+    assign hide_ro_banners = true
+    assign ro_banners = 'banner_lumina_rece_calda_neutra_lustra_led|telecomanda-banner|noapte-banner|banner_20m2_generic|banner-dezaburire-oglinda|banner_general_lustre_led|banner-cutie-oglinda|banner-ceas-termometru-oglinda|banner-3tipuri-lumina-oglinda|banner-capac-pvc-oglinda|banner-senzor-oglinda|banner-led-touch-oglinda|banner-lupa-cosmetica-oglinda|banner-candelabre-bec-|Ideala_pentru_Holuri|banner_desc_|banner-mobilier-creta|banner-iluminat-exterior' | split: '|'
+  endunless
 
   for chunk in chunks
     if forloop.first
@@ -29,6 +73,20 @@
     endif
 
     assign tag = chunk | split: '>' | first
+
+    if hide_ro_banners
+      assign ro_banner = false
+      for stem in ro_banners
+        if tag contains stem
+          assign ro_banner = true
+          break
+        endif
+      endfor
+      if ro_banner
+        echo chunk | remove_first: tag | remove_first: '>'
+        continue
+      endif
+    endif
     assign attributes = ''
     unless tag contains 'loading='
       assign attributes = 'loading="lazy" '

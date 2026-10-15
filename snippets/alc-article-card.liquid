@@ -35,7 +35,8 @@
         "
         sizes="(min-width: 990px) calc((100vw - 10rem) / 3), (min-width: 750px) calc((100vw - 10rem) / 2), calc(100vw - 3rem)"
         src="{{ article.image | image_url: width: 600 }}"
-        alt="{{ article.image.alt | escape }}"
+        {%- comment -%} Image alt text can't be translated in Shopify; other languages get the translated title. {%- endcomment %}
+        alt="{% if request.locale.primary %}{{ article.image.alt | default: article.title | escape }}{% else %}{{ article.title | escape }}{% endif %}"
         width="{{ article.image.width }}"
         height="{{ article.image.height }}"
         loading="{% if eager %}eager{% else %}lazy{% endif %}"

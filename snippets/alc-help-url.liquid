@@ -1,0 +1,30 @@
+{%- comment -%}
+  Prints a menu link URL, swapping the Romanian help-center and return-form links for the
+  storefront language's own (the same URLs the footer reads from the locale files). Menu link
+  URLs can't be translated in Shopify, so the Support menu sent every market to Romanian help.
+
+  Accepts:
+  - url: {String} link.url
+
+  Usage:
+  <a href="{% render 'alc-help-url', url: link.url %}">
+{%- endcomment -%}
+{%- liquid
+  assign out = url
+  unless request.locale.primary
+    if url contains 'help.alessandrodesign.ro'
+      if url contains 'retur-si-sesizri'
+        assign out = 'sections.footer.utile_links.return_warranty.url' | t
+      elsif url contains 'statusul-comenzii-mele'
+        assign out = 'sections.footer.utile_links.order_status.url' | t
+      elsif url contains '/articles/' or url contains '/categories/'
+        assign out = url
+      else
+        assign out = 'sections.footer.utile_links.help_center.url' | t
+      endif
+    elsif url contains '/pages/formular-retur'
+      assign out = 'sections.footer.utile_links.return_form.url' | t
+    endif
+  endunless
+  echo out
+-%}

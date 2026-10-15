@@ -232,7 +232,7 @@
                       {%- for childlink in mega_menu.links -%}
                         {%- assign drop_desc = childlink.object.metafields.custom.menu_description.value -%}
                         <li>
-                          <a href="{{ childlink.url }}" class="alc-mm__drop-link">
+                          <a href="{% render 'alc-help-url', url: childlink.url %}" class="alc-mm__drop-link">
                             <span class="alc-mm__drop-icon">
                               {%- if childlink.object.image -%}
                                 <img

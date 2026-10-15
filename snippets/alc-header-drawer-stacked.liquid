@@ -169,7 +169,7 @@
                   {%- for link in top_menu.links -%}
                     {%- assign row_desc = link.object.metafields.custom.menu_description.value -%}
                     <li>
-                      <a href="{{ link.url }}" class="alc-md__row">
+                      <a href="{% render 'alc-help-url', url: link.url %}" class="alc-md__row">
                         <span class="alc-md__row-icon">{%- render 'alc-menu-icon', link: link -%}</span>
                         <span class="alc-md__row-text">
                           <span>{{ link.title | escape }}</span>

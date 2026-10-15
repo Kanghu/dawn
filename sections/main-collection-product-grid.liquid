@@ -268,9 +268,40 @@
               <div class="alc-about__eyebrow" id="AlcCollLinksTitle">{% render 'alc-i18n', key: 'explore' %}</div>
               <ul class="alc-about__chips" role="list">
                 {%- for link in about_links -%}
+                  {%- comment -%}
+                    The links are absolute .ro URLs with Romanian text. Other languages use the linked
+                    collection, product or page itself (translated title, local URL) and skip links
+                    that don't resolve, so nobody is sent to the Romanian store.
+                  {%- endcomment -%}
+                  {%- liquid
+                    assign chip_text = link.text
+                    assign chip_url = link.url
+                    unless request.locale.primary
+                      assign chip_path = link.url | split: '?' | first | split: '#' | first
+                      assign chip_target = nil
+                      if chip_path contains '/collections/'
+                        assign chip_handle = chip_path | split: '/collections/' | last | split: '/' | first
+                        assign chip_target = collections[chip_handle]
+                        if chip_target.products_count == 0
+                          assign chip_target = nil
+                        endif
+                      elsif chip_path contains '/products/'
+                        assign chip_handle = chip_path | split: '/products/' | last | split: '/' | first
+                        assign chip_target = all_products[chip_handle]
+                      elsif chip_path contains '/pages/'
+                        assign chip_handle = chip_path | split: '/pages/' | last | split: '/' | first
+                        assign chip_target = pages[chip_handle]
+                      endif
+                      if chip_target == nil or chip_target.url == blank
+                        continue
+                      endif
+                      assign chip_text = chip_target.title
+                      assign chip_url = chip_target.url
+                    endunless
+                  -%}
                   <li>
-                    <a href="{{ link.url }}" class="alc-about__chip">
-                      <span>{{ link.text }}</span>
+                    <a href="{{ chip_url }}" class="alc-about__chip">
+                      <span>{{ chip_text }}</span>
                       <svg aria-hidden="true" focusable="false" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
                     </a>
                   </li>

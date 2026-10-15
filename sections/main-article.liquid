@@ -42,7 +42,8 @@
                 fetchpriority="high"
                 width="{{ article.image.width }}"
                 height="{{ article.image.height }}"
-                alt="{{ article.image.alt | escape }}"
+                {%- comment -%} Image alt text can't be translated in Shopify; other languages get the translated title. {%- endcomment %}
+                alt="{% if request.locale.primary %}{{ article.image.alt | default: article.title | escape }}{% else %}{{ article.title | escape }}{% endif %}"
               >
             </div>
           </div>
