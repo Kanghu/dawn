@@ -2,8 +2,10 @@
   Matched deals, the site-wide half (the homepage half is snippets/alc-cs-personal).
   Rendered once from layout/theme.liquid.
 
-  1. Product pages: remember the product's price (last 12, with this market's currency) in
-     localStorage "alc:pz-prices": the visitor's price level for the homepage deals.
+  1. Product pages: remember the product's price (last 12, with this market's currency) and
+     the ids of its collections in localStorage "alc:pz-prices": the visitor's price level
+     for the homepage deals, and what they looked at in each homepage collection
+     (assets/alc-pz-sections.js).
   2. Every page, once the visitor has seen the homepage deals ("alc:pz" exists, less than
      30 days old): put the visitor's neutral code (e.g. "A3d", see snippets/alc-cs-personal)
      on the cart as the attribute _alc_pz, so the order says which list its buyer saw.
@@ -24,7 +26,7 @@
     {%- if request.page_type == 'product' and product %}
     try {
       const seen = (read('alc:pz-prices') || []).filter((x) => x && x.i !== {{ product.id }});
-      seen.unshift({ i: {{ product.id }}, p: {{ product.price | default: 0 }}, c: {{ cart.currency.iso_code | json }} });
+      seen.unshift({ i: {{ product.id }}, p: {{ product.price | default: 0 }}, c: {{ cart.currency.iso_code | json }}, k: {{ product.collections | map: 'id' | json }} });
       localStorage.setItem('alc:pz-prices', JSON.stringify(seen.slice(0, 12)));
     } catch (e) {}
     {%- endif %}

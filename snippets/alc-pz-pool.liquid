@@ -1,0 +1,39 @@
+{% comment %}
+  Homepage product sections that change per visitor (assets/alc-pz-sections.js). Rendered by
+  sections/featured-collection and sections/alc-featured-collection right after their product
+  list; outputs nothing outside the homepage, in the theme editor, or with the section's
+  "personalize" setting off.
+
+  It hands the script the section's collection id, how many cards it shows, whether the cards
+  show a hover image, and the candidates: the first 30 products of the collection that are in
+  stock, in the collection's own order, as [product id, price in cents].
+
+  Accepts:
+  - section: {Object} the calling section
+{% endcomment %}
+{%- liquid
+  assign pz_collection = section.settings.collection
+  assign pz_on = section.settings.personalize
+  if pz_on == nil
+    assign pz_on = true
+  endif
+  if template.name != 'index' or request.design_mode or pz_collection == blank
+    assign pz_on = false
+  endif
+-%}
+{%- if pz_on -%}
+  {%- capture pz_candidates -%}
+    {%- assign pz_count = 0 -%}
+    {%- for p in pz_collection.products limit: 50 -%}
+      {%- if p.available and pz_count < 30 -%}
+        {%- if pz_count > 0 %},{% endif -%}
+        [{{ p.id }},{{ p.price }}]
+        {%- assign pz_count = pz_count | plus: 1 -%}
+      {%- endif -%}
+    {%- endfor -%}
+  {%- endcapture -%}
+  <script type="application/json" data-alc-pz-pool>
+    {"section":{{ section.id | json }},"col":{{ pz_collection.id }},"n":{{ section.settings.products_to_show }},"secondary":{{ section.settings.show_secondary_image | json }},"candidates":[{{ pz_candidates | strip_newlines }}]}
+  </script>
+  <script src="{{ 'alc-pz-sections.js' | asset_url }}" defer="defer"></script>
+{%- endif -%}

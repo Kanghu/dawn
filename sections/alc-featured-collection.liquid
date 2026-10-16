@@ -138,6 +138,7 @@
           {%- endfor -%}
         {%- endfor -%}
       </ul>
+      {%- render 'alc-pz-pool', section: section -%}
       {%- if show_mobile_slider or show_desktop_slider -%}
         <div class="slider-buttons">
           <button
@@ -276,6 +277,13 @@
         "step": 1,
         "default": 4,
         "label": "t:sections.featured-collection.settings.products_to_show.label"
+      },
+      {
+        "type": "checkbox",
+        "id": "personalize",
+        "label": "Products per visitor (homepage)",
+        "default": true,
+        "info": "Products the visitor opened from this collection first, then ones at their price level, then a random pick of the first 30 in stock, new each visit."
       },
       {
         "type": "range",

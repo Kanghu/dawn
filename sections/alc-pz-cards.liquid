@@ -1,0 +1,37 @@
+{% comment %}
+  Static section used only through the Section Rendering API by assets/alc-pz-sections.js:
+    /search?type=product&options[unavailable_products]=hide&q=id:123 OR id:456&section_id=alc-pz-cards
+  Renders each matching in-stock product as the homepage product card (snippets/alc-card-product,
+  "adapt" ratio, hover image, standard quick add), one per element with data-pid. The script puts
+  the cards into the homepage sections, swapping "alc-pz-cards" in the element ids for the
+  target section's id and dropping the hover image where that section has it off. Not meant to
+  be added from the editor, so it has no presets.
+{% endcomment %}
+{%- if search.performed and search.results_count > 0 -%}
+  {%- paginate search.results by 50 -%}
+    {%- for item in search.results -%}
+      {%- if item.object_type == 'product' and item.available -%}
+        <div data-pid="{{ item.id }}">
+          {%- render 'alc-card-product',
+            heading_tag: 'div',
+            card_product: item,
+            media_aspect_ratio: 'adapt',
+            image_shape: 'default',
+            show_secondary_image: true,
+            show_vendor: false,
+            skip_styles: true,
+            section_id: section.id,
+            quick_add: 'standard'
+          -%}
+        </div>
+      {%- endif -%}
+    {%- endfor -%}
+  {%- endpaginate -%}
+{%- endif -%}
+
+{% schema %}
+{
+  "name": "Personal homepage cards",
+  "settings": []
+}
+{% endschema %}
