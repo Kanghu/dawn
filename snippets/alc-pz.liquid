@@ -1,0 +1,77 @@
+{% comment %}
+  Matched deals, the site-wide half (the homepage half is snippets/alc-cs-personal).
+  Rendered once from layout/theme.liquid.
+
+  1. Product pages: remember the product's price (last 12, with this market's currency) in
+     localStorage "alc:pz-prices": the visitor's price level for the homepage deals.
+  2. Every page, once the visitor has seen the homepage deals ("alc:pz" exists, less than
+     30 days old): put the visitor's neutral code (e.g. "A3d", see snippets/alc-cs-personal)
+     on the cart as the attribute _alc_pz, so the order says which list its buyer saw.
+     Underscore attributes stay hidden at checkout and show under "Additional details" on
+     the order; the code means nothing to a customer should a template print it.
+     Written when the cart already has items and lacks the value, after every add to cart,
+     and into any form posted to /cart (the checkout buttons of the drawer and cart page).
+{% endcomment %}
+<script>
+  (() => {
+    const read = (key) => {
+      try {
+        return JSON.parse(localStorage.getItem(key) || 'null');
+      } catch (e) {
+        return null;
+      }
+    };
+    {%- if request.page_type == 'product' and product %}
+    try {
+      const seen = (read('alc:pz-prices') || []).filter((x) => x && x.i !== {{ product.id }});
+      seen.unshift({ i: {{ product.id }}, p: {{ product.price | default: 0 }}, c: {{ cart.currency.iso_code | json }} });
+      localStorage.setItem('alc:pz-prices', JSON.stringify(seen.slice(0, 12)));
+    } catch (e) {}
+    {%- endif %}
+
+    const state = read('alc:pz');
+    if (!state || !state.v || !(Date.now() - state.ts < 30 * 864e5)) return;
+    const value = state.v;
+    let onCart = {{ cart.attributes['_alc_pz'] | json }};
+
+    const tagCart = () => {
+      if (onCart === value) return;
+      onCart = value;
+      fetch({{ routes.cart_update_url | append: '.js' | json }}, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+        body: JSON.stringify({ attributes: { _alc_pz: value } }),
+      }).catch(() => {
+        onCart = null;
+      });
+    };
+
+    {%- if cart.item_count > 0 %}
+    tagCart();
+    {%- endif %}
+
+    // pubsub.js and constants.js are deferred: subscribe once they have run.
+    document.addEventListener('DOMContentLoaded', () => {
+      if (typeof subscribe === 'function' && typeof PUB_SUB_EVENTS !== 'undefined') {
+        subscribe(PUB_SUB_EVENTS.cartUpdate, tagCart);
+      }
+    });
+
+    document.addEventListener(
+      'submit',
+      (event) => {
+        const form = event.target;
+        if (!(form instanceof HTMLFormElement) || !/\/cart\/?$/.test(new URL(form.action, location.href).pathname)) return;
+        let input = form.querySelector('input[name="attributes[_alc_pz]"]');
+        if (!input) {
+          input = document.createElement('input');
+          input.type = 'hidden';
+          input.name = 'attributes[_alc_pz]';
+          form.appendChild(input);
+        }
+        input.value = value;
+      },
+      true
+    );
+  })();
+</script>

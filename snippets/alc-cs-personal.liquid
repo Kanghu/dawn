@@ -1,0 +1,221 @@
+{% comment %}
+  Matched deals for the homepage campaign spotlight (sections/alc-campaign-spotlight).
+  Rendered right after the deals grid and inline on purpose: it runs before the tiles are
+  painted, so a visitor never sees the list change.
+
+  The grid holds the standard tiles; a <template> holds the pool (best-ranked deals of the
+  upper and the lower price half). Every tile has data-rank (its place in the standard
+  ranking), data-price (cents, this market's currency) and data-cat (its category); the
+  grid has the price levels to aim at (data-low = 10th percentile of the deals, data-high =
+  65th percentile).
+
+  - Group: a random number kept in localStorage. Below the share set in the editor the
+    visitor gets matched deals ("p"), otherwise the standard list ("c"). Both groups get a
+    price level, so orders can be compared level by level.
+  - Target price, history first: two or more product pages seen (snippets/alc-pz records
+    their prices) -> the median of the last eight prices, 10% up.
+  - Otherwise the device:
+    premium = iPhone 15 Pro and newer, the big recent iPhone screens, Galaxy S/Z, Pixel, Mac;
+    budget = iPhone 11 and older, iPhone SE, small or old iPhone screens and iOS 16 or
+    older, Android 10 or older, Galaxy A0x-A2x/M/J, Redmi and similar.
+    premium -> data-high, budget -> data-low, anything else keeps the standard list. Safari on iPhone does not tell the model, so there the screen size
+    decides; the Facebook/Instagram browsers do (FBDV/iPhone16,2); Chrome on Android tells
+    it through userAgentData (async the first time, then remembered).
+  - The deals priced within a factor of 1.5 of the target win, deepest discount first and
+    at most data-cat-cap per category before the cap loosens; the nearest prices top up.
+    They are shown like the standard list (categories taking turns, deepest discount
+    first). Prices are the same for everybody.
+  - The result goes to localStorage "alc:pz" as a neutral code ("A3d", see below), which
+    snippets/alc-pz copies onto the cart (attribute _alc_pz), so it reaches the order. The
+    readable version, with the device, is only in window.alcPz.
+
+  Testing: ?alc_pz=p|c forces the group and ?alc_tier=premium|standard|budget the level,
+  for that page view only (nothing is stored).
+{% endcomment %}
+<script>
+  (() => {
+    const box = document.currentScript.parentElement;
+    const grid = box.querySelector('.alc-cs__grid[data-count]');
+    if (!grid) return;
+
+    const read = (key) => {
+      try {
+        return JSON.parse(localStorage.getItem(key) || 'null');
+      } catch (e) {
+        return null;
+      }
+    };
+    const store = (key, value) => {
+      try {
+        localStorage.setItem(key, JSON.stringify(value));
+      } catch (e) {}
+    };
+
+    const count = Number(grid.dataset.count) || 12;
+    const low = Number(grid.dataset.low) || 0;
+    const high = Number(grid.dataset.high) || 0;
+    const share = Number(grid.dataset.share) / 100;
+    const params = new URLSearchParams(location.search);
+    const forcedGroup = params.get('alc_pz');
+    const forcedTier = params.get('alc_tier');
+    const forced = Boolean(forcedGroup || forcedTier);
+
+    const state = read('alc:pz') || {};
+    if (typeof state.r !== 'number') state.r = Math.random();
+    let group = state.r < share ? 'p' : 'c';
+    if (forcedGroup === 'p' || forcedGroup === 'c') group = forcedGroup;
+
+    // Price level from the product pages seen in this market (same currency).
+    const seen = (read('alc:pz-prices') || [])
+      .filter((x) => x && x.c === grid.dataset.currency && x.p > 0)
+      .slice(0, 8)
+      .map((x) => x.p)
+      .sort((a, b) => a - b);
+    const mid = seen.length >> 1;
+    const target = seen.length >= 2 ? (seen.length % 2 ? seen[mid] : (seen[mid - 1] + seen[mid]) / 2) * 1.1 : 0;
+
+    const iphoneTier = (major, minor) => {
+      if ((major === 12 && minor === 8) || (major === 14 && minor === 6)) return 'budget'; // SE 2nd/3rd generation
+      if (major === 17 && minor === 5) return 'standard'; // 16e
+      if (major >= 16) return 'premium'; // iPhone 15 Pro (2023) and newer
+      if (major <= 12) return 'budget'; // iPhone 11 (2019) and older
+      return 'standard';
+    };
+
+    const androidTier = (model, version) => {
+      if (version && version <= 10) return 'budget';
+      if (/^SM-(S9|F9|F7)\d|^Pixel ([7-9]|1\d)( Pro( XL| Fold)?)?$/i.test(model)) return 'premium';
+      if (/^SM-(A0|A1|A2|M|E|J|G[3-7])\d|Redmi|POCO C|moto [eg]|Nokia [1-5]|TECNO|Infinix|itel|Blade|Alcatel/i.test(model)) {
+        return 'budget';
+      }
+      return 'standard';
+    };
+
+    // [level, label] from the user agent and the screen; null when Android hides the model.
+    const fromUserAgent = () => {
+      const ua = navigator.userAgent;
+      const machine = /iPhone(\d+),(\d+)/.exec(ua);
+      if (machine) return [iphoneTier(+machine[1], +machine[2]), machine[0]];
+
+      if (/iPhone/.test(ua)) {
+        const w = Math.min(screen.width, screen.height);
+        const h = Math.max(screen.width, screen.height);
+        const size = `${w}x${h}`;
+        const os = /OS (\d+)_/.exec(ua);
+        if (os && +os[1] <= 16) return ['budget', `ios${os[1]}-${size}`];
+        // 16 Pro / 17 / 17 Pro, 16-17 Pro Max, Air, 14-15 Pro Max / 15-16 Plus
+        if (['402x874', '440x956', '420x912', '430x932'].includes(size)) return ['premium', `ios-${size}`];
+        // SE, 8 and older, XR / 11 / 11 Pro Max
+        if (h <= 736 || size === '414x896') return ['budget', `ios-${size}`];
+        return ['standard', `ios-${size}`];
+      }
+
+      if (/iPad/.test(ua) || (/Macintosh/.test(ua) && navigator.maxTouchPoints > 1)) return ['standard', 'ipad'];
+      if (/Macintosh/.test(ua)) return ['premium', 'mac'];
+
+      if (/Android/.test(ua)) {
+        const a = /Android (\d+)[^;)]*; ([^;)]+?)(?: Build\/[^;)]*)?[;)]/.exec(ua);
+        if (a && a[2] !== 'K') return [androidTier(a[2], +a[1]), a[2].slice(0, 24)];
+        if (state.dm) return [androidTier(state.dm, state.dv), state.dm];
+        return null;
+      }
+
+      return ['standard', /Windows/.test(ua) ? 'windows' : 'desktop'];
+    };
+
+    const byRank = (a, b) => a.dataset.rank - b.dataset.rank;
+
+    const apply = (goal) => {
+      const live = [...grid.querySelectorAll(':scope > .alc-cs__item')];
+      const pool = box.querySelector('template[data-alc-cs-pool]');
+      const all = live.concat(pool ? [...pool.content.children] : []);
+
+      // Nearest the target price first (on a log scale: 300 is as far from 600 as from 150).
+      const distance = (li) => Math.abs(Math.log(Math.max(Number(li.dataset.price) || 0, 1) / goal));
+      const preferred = all.sort((a, b) => distance(a) - distance(b) || byRank(a, b));
+
+      // Deals priced within a factor of 1.5 of the target, in standard order (deepest
+      // discount first): data-cat-cap per category, then one more per category each round,
+      // so the list stays as mixed as the prices allow. Then top up by distance.
+      const near = all.filter((li) => distance(li) <= Math.log(1.5)).sort(byRank);
+      const perCat = {};
+      const chosen = [];
+      for (let cap = Number(grid.dataset.catCap) || count; cap <= count && chosen.length < count; cap++) {
+        near.forEach((li) => {
+          const used = perCat[li.dataset.cat] || 0;
+          if (chosen.length < count && used < cap && !chosen.includes(li)) {
+            chosen.push(li);
+            perCat[li.dataset.cat] = used + 1;
+          }
+        });
+      }
+      preferred.forEach((li) => {
+        if (chosen.length < count && !chosen.includes(li)) chosen.push(li);
+      });
+
+      // Categories take turns again, each in standard order, like the standard list.
+      const lists = new Map();
+      chosen.sort(byRank).forEach((li) => lists.set(li.dataset.cat, (lists.get(li.dataset.cat) || []).concat(li)));
+      const ordered = [];
+      for (let i = 0; ordered.length < chosen.length; i++) {
+        lists.forEach((list) => list[i] && ordered.push(list[i]));
+      }
+
+      // Unchosen standard tiles stay in the DOM, hidden: the first one carries the card styles.
+      const more = grid.querySelector('.alc-cs__more');
+      live.forEach((li) => {
+        if (!chosen.includes(li)) {
+          li.hidden = true;
+          grid.appendChild(li);
+        }
+      });
+      ordered.forEach((li, i) => {
+        li.style.setProperty('--animation-order', i + 1);
+        grid.insertBefore(li, more);
+      });
+    };
+
+    const decide = (device) => {
+      let tier = device ? device[0] : 'standard';
+      let source = 'device';
+      if (target) {
+        source = 'history';
+        tier = target >= high ? 'premium' : target <= low ? 'budget' : 'standard';
+      }
+      if (['premium', 'standard', 'budget'].includes(forcedTier)) {
+        tier = forcedTier;
+        source = 'device';
+      }
+      // History always aims at the visitor's own level; the device only when it says something.
+      const goal = source === 'history' ? target : { premium: high, budget: low }[tier];
+      if (group === 'p' && goal > 0) {
+        apply(goal);
+        grid.dataset.pz = `${tier}|${source}`;
+      }
+      window.alcPz = { group, tier, source, device: device ? device[1] : 'android' };
+      if (forced) return;
+      // The order only gets a neutral code, e.g. "A3d": A matched / B standard, 1 budget /
+      // 2 standard / 3 premium, d device / h history. No device names, no tier words.
+      const level = { budget: 1, standard: 2, premium: 3 }[tier];
+      state.v = (group === 'p' ? 'A' : 'B') + level + source[0];
+      state.ts = Date.now();
+      store('alc:pz', state);
+    };
+
+    const device = fromUserAgent();
+    const hints = navigator.userAgentData && navigator.userAgentData.getHighEntropyValues;
+    if (device || target || !hints) {
+      decide(device);
+    } else {
+      // Chrome on Android, first visit: the model needs one async call; remembered after.
+      navigator.userAgentData
+        .getHighEntropyValues(['model', 'platformVersion'])
+        .then((v) => {
+          state.dm = (v.model || 'android').slice(0, 24);
+          state.dv = parseInt(v.platformVersion, 10) || 0;
+          decide([androidTier(state.dm, state.dv), state.dm]);
+        })
+        .catch(() => decide(null));
+    }
+  })();
+</script>
