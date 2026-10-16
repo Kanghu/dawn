@@ -12,7 +12,8 @@
  *      session (stable within one, so going back to the homepage shows the same cards).
  * 1 and 2 are for the matched-deals group only (A, see snippets/alc-cs-personal); the
  * standard group (B) gets 3, so both groups rotate and the A/B test measures the personal
- * part. A product appears in one section only.
+ * part. A product appears in one section only, and never a sold-out one: the sections list
+ * in-stock products only on the homepage, and a section with none in this market is hidden.
  *
  * Missing cards come from the Section Rendering API (alc-pz-cards) in a few requests. A
  * section the visitor can already see, or has scrolled past, is left alone, so nothing moves
@@ -126,7 +127,14 @@
     pools.forEach((pool) => {
       const ul = document.getElementById(`Slider-${pool.section}`);
       const lis = [...ul.children].filter((el) => el.tagName === 'LI');
+      // Nothing in stock in this market: the server rendered no card, so hide the section.
+      if (!lis.length) {
+        const wrapper = ul.closest('.shopify-section');
+        if (wrapper) wrapper.hidden = true;
+        return;
+      }
       const current = lis.map(cardId);
+      const soldOut = new Set(lis.filter((li) => li.querySelector('.alc-pc--sold-out')).map(cardId));
       const n = lis.length;
       const candidates = pool.candidates.filter(([id]) => !used.has(id));
       const rand = random(pool.col % 2147483647);
@@ -161,7 +169,7 @@
       const spares = rest.filter((id) => !picks.includes(id)).slice(0, 2);
 
       picks.forEach((id) => used.add(id));
-      plans.push({ pool, ul, lis, current, picks, spares, reasons });
+      plans.push({ pool, ul, lis, current, soldOut, picks, spares, reasons });
     });
 
     const missing = new Set();
@@ -172,8 +180,9 @@
 
     const shown = new Set();
     plans.forEach((plan) => {
-      const { pool, ul, lis, current } = plan;
-      const have = (id) => current.includes(id) || cards.has(id);
+      const { pool, ul, lis, current, soldOut } = plan;
+      // Never a sold-out card, not even as a filler.
+      const have = (id) => (current.includes(id) && !soldOut.has(id)) || cards.has(id);
       const taken = (id) => shown.has(id) || (used.has(id) && !plan.picks.includes(id));
       const final = plan.picks.filter(have);
       plan.spares.concat(current).forEach((id) => {
@@ -181,7 +190,7 @@
       });
       final.forEach((id) => shown.add(id));
       plan.final = final;
-      if (final.length !== lis.length || final.join() === current.join()) return;
+      if (!final.length || final.join() === current.join()) return;
 
       const box = ul.getBoundingClientRect();
       if (box.top < window.innerHeight) {
@@ -192,7 +201,9 @@
       // The first card carries the card stylesheet: keep it in the section.
       ul.querySelectorAll('link[rel="stylesheet"], style').forEach((el) => ul.before(el));
       const existing = new Map(lis.map((li, i) => [current[i], [...li.childNodes]]));
-      lis.forEach((li, i) => {
+      // Fewer in-stock products than places: drop the extra places.
+      lis.slice(final.length).forEach((li) => li.remove());
+      lis.slice(0, final.length).forEach((li, i) => {
         const id = final[i];
         if (existing.has(id)) {
           li.replaceChildren(...existing.get(id));

@@ -89,7 +89,19 @@
         role="list"
         aria-label="{{ 'general.slider.name' | t }}">
         {% assign skip_card_product_styles = false %}
-        {%- for product in section.settings.collection.products limit: section.settings.products_to_show -%}
+        {%- liquid
+          comment
+            Homepage: in-stock products only (the per-visitor picks of assets/alc-pz-sections.js
+            are in stock too); elsewhere the collection as it is.
+          endcomment
+          assign alc_products = section.settings.collection.products
+          assign alc_in_stock_only = false
+          if template.name == 'index'
+            assign alc_products = section.settings.collection.products | where: 'available'
+            assign alc_in_stock_only = true
+          endif
+        -%}
+        {%- for product in alc_products limit: section.settings.products_to_show -%}
           <li
             id="Slide-{{ section.id }}-{{ forloop.index }}"
             class="grid__item{% if show_mobile_slider or show_desktop_slider %} slider__slide{% endif %}{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}"
@@ -111,6 +123,7 @@
           </li>
           {%- assign skip_card_product_styles = true -%}
         {%- else -%}
+          {%- unless alc_in_stock_only -%}
           {%- for i in (1..section.settings.columns_desktop) -%}
             <li
               class="grid__item{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}"
@@ -136,6 +149,7 @@
               %}
             </li>
           {%- endfor -%}
+          {%- endunless -%}
         {%- endfor -%}
       </ul>
       {%- render 'alc-pz-pool', section: section -%}
