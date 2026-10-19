@@ -56,6 +56,15 @@
     <script src="{{ 'details-disclosure.js' | asset_url }}" defer="defer"></script>
     <script src="{{ 'details-modal.js' | asset_url }}" defer="defer"></script>
     <script src="{{ 'search-form.js' | asset_url }}" defer="defer"></script>
+    {%- if template.name == 'index' -%}
+      {%- comment -%}
+        Every product section on the homepage (featured-collection, alc-featured-collection) needs these. They load
+        once here instead of once per section, which ran each of them six or seven times on the homepage.
+      {%- endcomment -%}
+      <script src="{{ 'product-form.js' | asset_url }}" defer="defer"></script>
+      <script src="{{ 'quick-add.js' | asset_url }}" defer="defer"></script>
+      <script src="{{ 'alc-pz-sections.js' | asset_url }}" defer="defer"></script>
+    {%- endif -%}
 
     <!-- Load Bootstrap CSS non-blocking to improve INP -->
     <link
