@@ -348,7 +348,7 @@
       "title": "Wyniki wyszukiwania",
       "results_with_count": {
         "one": "{{ count }} wynik",
-        "other": "{{ count }} wyniku",
+        "other": "{{ count }} wyników",
         "few": "{{ count }} wyniki",
         "many": "{{ count }} wyniki(-ów)"
       },
@@ -356,7 +356,7 @@
       "search_for": "Wyszukaj „{{ terms }}”",
       "results_with_count_and_term": {
         "one": "Znaleziono {{ count }} wynik dla „{{ terms }}”",
-        "other": "Znaleziono {{ count }} wyniku dla „{{ terms }}”",
+        "other": "Znaleziono {{ count }} wyników dla „{{ terms }}”",
         "few": "Znaleziono {{ count }} wyniki dla „{{ terms }}”",
         "many": "Znaleziono {{ count }} wyniki(-ów) dla \"{{ terms }}\""
       },
@@ -3966,7 +3966,7 @@
       "checkpoint": "Punkt walidacji",
       "search_results": {
         "one": "Szukaj: znaleziono %{count} wynik dla „%{terms}”",
-        "other": "Szukaj: znaleziono %{count} wyniku dla „%{terms}”",
+        "other": "Szukaj: znaleziono %{count} wyników dla „%{terms}”",
         "few": "Szukaj: znaleziono %{count} wyniki dla „%{terms}”"
       },
       "blog_or_article_with_error": "Błąd – %{title}"
