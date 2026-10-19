@@ -373,14 +373,29 @@ body {
       media="print"
       onload="this.media='all'">
 
-    {{ 'alc-cart.css' | asset_url | stylesheet_tag }}
+    {%- comment -%}
+      Cart drawer and cart summary styles only matter once the drawer opens, so they load without blocking the
+      first paint; snippets/cart-drawer keeps the closed drawer hidden and out of the page flow until they arrive.
+      /cart keeps alc-cart.css render-blocking because it lays that page out (its sections include the rest).
+    {%- endcomment -%}
+    {%- if template.name == 'cart' -%}
+      {{ 'alc-cart.css' | asset_url | stylesheet_tag }}
+    {%- else -%}
+      <link
+        rel="stylesheet"
+        href="{{ 'alc-cart.css' | asset_url }}"
+        media="print"
+        onload="this.media='all'">
+    {%- endif -%}
+    
     {{ 'alc-header.css' | asset_url | stylesheet_tag }}
     {%- if settings.cart_type == 'drawer' -%}
-      {{ 'component-cart-drawer.css' | asset_url | stylesheet_tag }}
-      {{ 'component-cart.css' | asset_url | stylesheet_tag }}
-      {{ 'component-totals.css' | asset_url | stylesheet_tag }}
+      {%- comment -%} Same order as before, so the cascade is unchanged; only component-price.css (cards use it) still blocks. {%- endcomment -%}
+      <link rel="stylesheet" href="{{ 'component-cart-drawer.css' | asset_url }}" media="print" onload="this.media='all'">
+      <link rel="stylesheet" href="{{ 'component-cart.css' | asset_url }}" media="print" onload="this.media='all'">
+      <link rel="stylesheet" href="{{ 'component-totals.css' | asset_url }}" media="print" onload="this.media='all'">
       {{ 'component-price.css' | asset_url | stylesheet_tag }}
-      {{ 'component-discounts.css' | asset_url | stylesheet_tag }}
+      <link rel="stylesheet" href="{{ 'component-discounts.css' | asset_url }}" media="print" onload="this.media='all'">
     {%- endif -%}
 
     {%- unless settings.type_body_font.system? -%}
@@ -437,10 +452,7 @@ body {
       href="https://app.chatwoot.com"
       crossorigin>
 
-    {%- if template contains 'slideshow' or template contains 'product' or template contains 'collection' -%}
-      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
-      <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js" defer></script>
-    {%- endif -%}
+    {%- comment -%} Swiper loads only where a slider uses it (snippets/als-product-variant-picker), not on every product and collection page. {%- endcomment -%}
   </head>
 
   <body class="gradient{% if settings.animations_hover_elements != 'none' %} animate--hover-{{ settings.animations_hover_elements }}{% endif %}">
@@ -467,7 +479,11 @@ body {
       class="content-for-layout focus-none"
       role="main"
       tabindex="-1">
-      {{ content_for_layout }}
+      {%- if request.page_type == 'policy' -%}
+        {%- render 'alc-policy', content: content_for_layout -%}
+      {%- else -%}
+        {{ content_for_layout }}
+      {%- endif -%}
     </main>
 
     {% sections 'footer-group' %}
@@ -532,6 +548,7 @@ body {
       <script src="{{ 'cart-drawer.js' | asset_url }}" defer="defer"></script>
     {%- endif -%}
     <script src="{{ 'alc-cart.js' | asset_url }}" defer="defer"></script>
+    {%- render 'alc-pz' -%}
 
   </body>
 </html>
