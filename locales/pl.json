@@ -336,7 +336,7 @@
       "title": "Wyniki wyszukiwania",
       "results_with_count": {
         "one": "{{ count }} wynik",
-        "other": "{{ count }} wyniki",
+        "other": "{{ count }} wyników",
         "few": "{{ count }} wyniki",
         "many": "{{ count }} wyników"
       },
@@ -344,7 +344,7 @@
       "search_for": "Wyszukaj „{{ terms }}”",
       "results_with_count_and_term": {
         "one": "Znaleziono {{ count }} wynik dla \"{{ terms }}”",
-        "other": "Odnaleźli się {{ count }} wyniki dla „{{ terms }}”",
+        "other": "Znaleziono {{ count }} wyników dla „{{ terms }}”",
         "few": "Odnaleźli się {{ count }} wyniki dla „{{ terms }}”",
         "many": "Znaleziono {{ count }} wyników dla „{{ terms }}”"
       },
@@ -3954,7 +3954,7 @@
       "checkpoint": "Punkt walidacji",
       "search_results": {
         "one": "Szukaj: znaleziono %{count} wynik dla „%{terms}”",
-        "other": "Szukaj: znaleziono %{count} wyniku dla „%{terms}”",
+        "other": "Szukaj: znaleziono %{count} wyników dla „%{terms}”",
         "few": "Szukaj: znaleziono %{count} wyniki dla „%{terms}”",
         "many": "Szukaj: znaleziono %{count} wyników dla „%{terms}”"
       },
