@@ -3,10 +3,10 @@
   {%- for rule in group.rules -%}
     {{ rule }}
   {%- endfor -%}
-  {%- if group.user_agent.value == '*' -%}
-    {{ 'Disallow: /*?filter.p.*' }}
-    {{- 'Disallow: /*?filter.v.*' }}
-  {%- endif -%}
+  {%- if group.user_agent.value == '*' %}
+Disallow: /*?*filter.p.
+Disallow: /*?*filter.v.
+{% endif -%}
   {%- if group.sitemap != blank -%}
     {{ group.sitemap }}
   {%- endif -%}
