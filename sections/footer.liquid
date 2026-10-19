@@ -80,11 +80,14 @@
                       {{ 'sections.footer.utile_links.order_status.title' | t }}
                     </a>
                   </li>
+                  {%- comment -%} SEAP is Romanian public procurement: only relevant on the Romanian storefront. {%- endcomment -%}
+                  {%- if request.locale.iso_code == 'ro' -%}
                   <li class="my-3">
                     <a href="{{ 'sections.footer.utile_links.public_procurement.url' | t }}" class="hover:text-gray-400 no-underline text-als-gray">
                       {{ 'sections.footer.utile_links.public_procurement.title' | t }}
                     </a>
                   </li>
+                  {%- endif -%}
                   <li class="my-3">
                     {%- comment -%}
                       Every locale's return_form.url was the Romanian form on the .ro domain; the page object
@@ -192,7 +195,7 @@
                       </g>
                     </svg>
                     <a
-                      href="https://api.whatsapp.com/send?phone=40730478880&amp;text=Salut!"
+                      href="https://api.whatsapp.com/send?phone=40730478880&amp;text={% case request.locale.iso_code %}{% when 'pl' %}{{ 'Dzień dobry!' | url_encode }}{% when 'hu' %}{{ 'Jó napot!' | url_encode }}{% when 'cs', 'sk' %}{{ 'Dobrý den!' | url_encode }}{% when 'ro' %}Salut!{% else %}Hello!{% endcase %}"
                       target="_blank"
                       class="hover:text-gray-400 no-underline text-white">
                       0730.478.880
@@ -222,10 +225,7 @@
                           stroke-linejoin="round"></path>
                       </g>
                     </svg>
-                    <a href="mailto:contact@alessandrodesign.ro" class="hover:text-gray-400 no-underline text-white ">
-                      contact@ 
-                      alessandrodesign.ro
-                    </a>
+                    <a href="mailto:contact@alessandrodesign.ro" class="hover:text-gray-400 no-underline text-white ">contact@alessandrodesign.ro</a>
                   </li>
                 </ul>
               </div>
@@ -292,7 +292,7 @@
               <p class="text-base text-gray-300">
                 &copy; 2020-{{ "now" | date: "%Y" }} S.C. ATLANTIC LOGISTIC CONCEPT S.R.L.
                 <br/>
-                CUI 43286659 Reg Com J23/5258/04.11.2020
+                CUI 43286659 Reg Com J2020005258233
               </p>
             </div>
           </div>
@@ -312,7 +312,8 @@
             class="w-25 cursor-pointer h-auto" />
         </div>
 
-        <!-- ANPC icons -->
+        <!-- ANPC icons (Romanian consumer authority: Romanian storefront only) -->
+        {%- if request.locale.iso_code == 'ro' -%}
         <div class="flex items-center justify-center space-x-4">
           <a
             href="https://anpc.ro/ce-este-sal/"
@@ -334,6 +335,7 @@
           </a>
  
         </div>
+        {%- endif -%}
       </div>
 
       <!-- Copyright + Developer -->

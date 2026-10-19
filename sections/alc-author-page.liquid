@@ -91,6 +91,26 @@
   if fallback_bio == blank
     assign fallback_bio = section.settings.default_bio
   endif
+
+  # Setting defaults are Romanian/English and not saved in the template, so translation
+  # apps never see them: the Polish storefront gets its own wording.
+  assign hero_eyebrow_label = section.settings.eyebrow
+  assign hero_years_label = section.settings.years_label
+  assign hero_archive_label = section.settings.archive_label
+  if request.locale.iso_code == 'pl'
+    if fallback_bio == section.settings.default_bio
+      assign fallback_bio = '<p>Pisze o oświetleniu i aranżacji wnętrz dla Alessandro Design.</p>'
+    endif
+    if hero_eyebrow_label == 'Author, Alessandro Design'
+      assign hero_eyebrow_label = 'Autor, Alessandro Design'
+    endif
+    if hero_years_label == 'active'
+      assign hero_years_label = 'aktywność'
+    endif
+    if hero_archive_label == 'See all articles'
+      assign hero_archive_label = 'Zobacz wszystkie artykuły'
+    endif
+  endif
 -%}
 
 {%- style -%}
@@ -115,12 +135,12 @@
     oldest_year: oldest_year,
     newest_year: newest_year,
     fallback_bio: fallback_bio,
-    eyebrow: section.settings.eyebrow,
-    years_label: section.settings.years_label,
+    eyebrow: hero_eyebrow_label,
+    years_label: hero_years_label,
     show_image: section.settings.show_image,
     show_socials: section.settings.show_socials,
     archive_url: archive_url,
-    archive_label: section.settings.archive_label
+    archive_label: hero_archive_label
   -%}
 {%- else -%}
   <header class="alc-author-strip">
@@ -194,10 +214,10 @@
       -%}
     {%- endif -%}
 
-    {%- if section.settings.archive_label != blank -%}
+    {%- if hero_archive_label != blank -%}
       <p class="alc-author-page__archive-link">
         <a class="link animate-arrow" href="{{ archive_url }}">
-          {{ section.settings.archive_label | escape }}
+          {{ hero_archive_label | escape }}
           <span class="icon-wrap">
             <span class="svg-wrapper">{{- 'icon-arrow.svg' | inline_asset_content -}}</span>
           </span>

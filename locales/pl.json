@@ -85,7 +85,7 @@
       "external": "Otwiera zewnętrzną stronę internetową."
     },
     "skip_to_product_info": "Pomiń, aby przejść do informacji o produkcie",
-    "total_reviews": "suma recenzji",
+    "total_reviews": "opinii",
     "star_reviews_info": "{{ rating_value }} od {{ rating_max }} gwiazdy",
     "collapsible_content_title": "Treści, które mogą podlegać ograniczeniom",
     "complementary_products": "Produkty uzupełniające"
@@ -119,10 +119,10 @@
   "alc-benefits": {
     "stock": {
       "in_stock": "w magazynie",
-      "low_stock": "Po prostu {{ count }} pozostawione w magazynie",
+      "low_stock": "Zostało tylko {{ count }} szt.",
       "out_of_stock": "Brak w magazynie",
-      "last_stock": "Ostatni {{ count }} kawałki 🔥",
-      "last_piece": "Ostatni kawałek 🔥"
+      "last_stock": "Ostatnie {{ count }} szt. 🔥",
+      "last_piece": "Ostatnia sztuka 🔥"
     },
     "delivery": "Dostawa w ciągu 2 - 4 dni roboczych",
     "price_info": "Bezpośredni producent: ",
@@ -338,7 +338,7 @@
         "one": "{{ count }} wynik",
         "other": "{{ count }} wyniki",
         "few": "{{ count }} wyniki",
-        "many": "{{ count }} wyniki(-ów)"
+        "many": "{{ count }} wyników"
       },
       "products": "Produkty",
       "search_for": "Wyszukaj „{{ terms }}”",
@@ -346,7 +346,7 @@
         "one": "Znaleziono {{ count }} wynik dla \"{{ terms }}”",
         "other": "Odnaleźli się {{ count }} wyniki dla „{{ terms }}”",
         "few": "Odnaleźli się {{ count }} wyniki dla „{{ terms }}”",
-        "many": "Znaleziono {{ count }} wyniki(-ów) dla \"{{ terms }}\""
+        "many": "Znaleziono {{ count }} wyników dla „{{ terms }}”"
       },
       "results_pages_with_count": {
         "one": "{{ count }} strona",
@@ -3953,9 +3953,10 @@
       "challenge": "Wyzwanie",
       "checkpoint": "Punkt walidacji",
       "search_results": {
-        "one": "Szukaj: znaleziono %{count} wynik dla \"%{terms}”",
-        "other": "Szukaj: znaleziono %{count} wyniki dla „%{terms}”",
-        "few": "Szukaj: znaleziono %{count} wyniki dla „%{terms}”"
+        "one": "Szukaj: znaleziono %{count} wynik dla „%{terms}”",
+        "other": "Szukaj: znaleziono %{count} wyniku dla „%{terms}”",
+        "few": "Szukaj: znaleziono %{count} wyniki dla „%{terms}”",
+        "many": "Szukaj: znaleziono %{count} wyników dla „%{terms}”"
       },
       "blog_or_article_with_error": "Błąd – %{title}"
     },
