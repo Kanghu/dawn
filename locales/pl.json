@@ -65,7 +65,8 @@
       "next_slide": "Przesuń w prawo",
       "previous_slide": "Przesuń w lewo",
       "name": "Suwak"
-    }
+    },
+    "next": "Następny"
   },
   "newsletter": {
     "label": "E-mail",
@@ -85,7 +86,7 @@
       "external": "Otwiera zewnętrzną stronę internetową."
     },
     "skip_to_product_info": "Pomiń, aby przejść do informacji o produkcie",
-    "total_reviews": "suma recenzji",
+    "total_reviews": "opinii",
     "star_reviews_info": "{{ rating_value }} od {{ rating_max }} gwiazdy",
     "collapsible_content_title": "Treści, które mogą podlegać ograniczeniom",
     "complementary_products": "Produkty uzupełniające"
@@ -109,7 +110,18 @@
         "other": "{{ count }} komentarze",
         "few": "{{ count }} komentarze",
         "many": "{{ count }} komentarze(-y)"
-      }
+      },
+      "author_more_posts": "Wszystkie artykuły: {{ name }}",
+      "author_website": "Strona internetowa"
+    },
+    "author": {
+      "articles_heading": {
+        "one": "{{ count }} artykuł",
+        "few": "{{ count }} artykuły",
+        "other": "{{ count }} artykułu"
+      },
+      "no_articles": "Ten autor nie opublikował jeszcze żadnych artykułów.",
+      "posts_by": "Artykuły: {{ name }}"
     }
   },
   "onboarding": {
@@ -119,10 +131,10 @@
   "alc-benefits": {
     "stock": {
       "in_stock": "w magazynie",
-      "low_stock": "Po prostu {{ count }} pozostawione w magazynie",
+      "low_stock": "Zostało tylko {{ count }} szt.",
       "out_of_stock": "Brak w magazynie",
-      "last_stock": "Ostatni {{ count }} kawałki 🔥",
-      "last_piece": "Ostatni kawałek 🔥"
+      "last_stock": "Ostatnie {{ count }} szt. 🔥",
+      "last_piece": "Ostatnia sztuka 🔥"
     },
     "delivery": "Dostawa w ciągu 2 - 4 dni roboczych",
     "price_info": "Bezpośredni producent: ",
@@ -253,7 +265,7 @@
       },
       "media": {
         "open_media": "Otwórz zawartość multimedialną {{ index }} w oknie modalnym",
-        "play_model": "Graj w przeglądarce 3D",
+        "play_model": "Uruchom w przeglądarce 3D",
         "play_video": "Odtwórz wideo",
         "gallery_viewer": "Przeglądarka galerii",
         "load_image": "Załaduj obraz {{ index }} w widoku galerii",
@@ -269,8 +281,8 @@
       "variant_sold_out_or_unavailable": "Wariant jest niedostępny lub niedostępny",
       "inventory_in_stock": "W magazynie",
       "inventory_in_stock_show_count": "{{ quantity }} w magazynie",
-      "inventory_low_stock": "Zmniejszone zapasy",
-      "inventory_low_stock_show_count": "Niski poziom zapasów: tylko {{ quantity }} pozostałe elementy",
+      "inventory_low_stock": "Niski stan magazynowy",
+      "inventory_low_stock_show_count": "Niski stan: zostało tylko {{ quantity }} szt.",
       "inventory_out_of_stock": "Brak w magazynie",
       "inventory_out_of_stock_continue_selling": "W magazynie",
       "sku": "SKU",
@@ -336,16 +348,16 @@
       "title": "Wyniki wyszukiwania",
       "results_with_count": {
         "one": "{{ count }} wynik",
-        "other": "{{ count }} wyniki",
+        "other": "{{ count }} wyniku",
         "few": "{{ count }} wyniki",
         "many": "{{ count }} wyniki(-ów)"
       },
       "products": "Produkty",
       "search_for": "Wyszukaj „{{ terms }}”",
       "results_with_count_and_term": {
-        "one": "Znaleziono {{ count }} wynik dla \"{{ terms }}”",
-        "other": "Odnaleźli się {{ count }} wyniki dla „{{ terms }}”",
-        "few": "Odnaleźli się {{ count }} wyniki dla „{{ terms }}”",
+        "one": "Znaleziono {{ count }} wynik dla „{{ terms }}”",
+        "other": "Znaleziono {{ count }} wyniku dla „{{ terms }}”",
+        "few": "Znaleziono {{ count }} wyniki dla „{{ terms }}”",
         "many": "Znaleziono {{ count }} wyniki(-ów) dla \"{{ terms }}\""
       },
       "results_pages_with_count": {
@@ -416,7 +428,7 @@
       },
       "login": {
         "title": "Czy masz konto?",
-        "paragraph_html": "<a href=\"{{ link }}\" class=\"link underlined-link\">Połącz się</a> aby szybciej zrealizować zamówienie."
+        "paragraph_html": "<a href=\"{{ link }}\" class=\"link underlined-link\">Zaloguj się</a>, aby szybciej złożyć zamówienie."
       },
       "estimated_total": "Szacunkowa suma",
       "new_estimated_total": "Nowa szacunkowa suma",
@@ -447,15 +459,15 @@
       "utile_links": {
         "help_center": {
           "title": "Centrum pomocy",
-          "url": "https://help.alessandrodesign.ro/"
+          "url": "https://help.alessandrodesign.ro/hc/alessandro-design/pl"
         },
         "return_warranty": {
           "title": "Zwrot i gwarancja",
-          "url": "https://help.alessandrodesign.ro/hc/alessandro-design/ro/categories/retur-si-sesizri"
+          "url": "https://help.alessandrodesign.ro/hc/alessandro-design/pl/categories/returns-warranty"
         },
         "order_status": {
           "title": "Stan zamówienia",
-          "url": "https://help.alessandrodesign.ro/hc/alessandro-design/articles/1763659675-statusul-comenzii-mele"
+          "url": "https://help.alessandrodesign.ro/hc/alessandro-design/articles/1764101957-jak-sprawdzic-status-zamowienia"
         },
         "public_procurement": {
           "title": "Zamówienia publiczne SEAP",
@@ -463,7 +475,7 @@
         },
         "return_form": {
           "title": "Formularz zwrotu i gwarancji",
-          "url": "https://www.alessandrodesign.ro/pages/formular-retur"
+          "url": "/pages/formularz-zwrotu"
         }
       }
     },
@@ -1110,7 +1122,7 @@
         "order_number_label": "Numer zamówienia",
         "customer_validation_error": "Proszę podać prawidłowy adres e-mail lub numer zamówienia.",
         "customer_validation_error_phone": "Proszę wprowadzić prawidłowy numer telefonu lub numer zamówienia.",
-        "login": "Połącz się",
+        "login": "Zaloguj się",
         "unfulfilled_items_title": "Przygotowanie do wysyłki",
         "unfulfilled_items_description": "Obecnie przygotowujemy te produkty do wysyłki.",
         "order_updates_description_missing": "Nie otrzymujesz aktualizacji dotyczących wysyłki.",
@@ -2074,7 +2086,7 @@
       "customer_account": {
         "not_user_label": "Nie jesteś %{first_name}?",
         "have_an_account_label": "Czy masz konto?",
-        "sign_in_link_label": "Połącz się",
+        "sign_in_link_label": "Zaloguj się",
         "sign_out_link_label": "Wyloguj się",
         "save_my_information_label": "Zapisz tę informację na następny raz",
         "invalid_address": "Wybrany adres jest nieprawidłowy. %{update_address_link} lub wybierz inny adres.",
@@ -2539,7 +2551,7 @@
         "login_prompt": {
           "no_access": {
             "message": "{{logIn}} na konto, które ma dostęp do tej lokalizacji, aby dodać lub skorzystać z zapisanych metod płatności.",
-            "link": "Połącz się"
+            "link": "Zaloguj się"
           }
         },
         "direct_payment_terms": "Musisz przestrzegać warunków {{translatedName}}. Twoja karta zostanie obciążona w {{dueDate}}.",
@@ -3275,7 +3287,7 @@
       "wallets": {
         "return_to_store": "Wróć do sklepu",
         "redirect_hint": "Zostaniesz poproszony o zalogowanie się za pomocą {{walletName}}.",
-        "logged_in": "Połączony z {{email}}",
+        "logged_in": "Zalogowano jako {{email}}",
         "shipping_line_label": "Wysyłka",
         "connect_shipping_methods": "{{method1}} i {{method2}}",
         "payment_in_progress_title": "Płatność w toku",
@@ -3871,7 +3883,7 @@
         "invalid_input": "Parametr %{parameter} jest nieważne.",
         "buyer_cannot_purchase_for_company_locations": "Nie możesz dokonywać zakupów w tej lokalizacji",
         "only_one_added_to_cart": "Tylko 1 artykuł został dodany do Twojego koszyka ze względu na dostępność.",
-        "only_n_added_to_cart": "Po prostu %{quantity} pozycje zostały dodane do Twojego koszyka ze względu na dostępność.",
+        "only_n_added_to_cart": "Ze względu na dostępność do koszyka dodano tylko %{quantity} szt.",
         "maximum_available_quantity_reached": "Maksymalna ilość tego artykułu znajduje się już w Twoim koszyku.",
         "cart_attributes_error": "Atrybuty koszyka zawierają nieprawidłowe dane.",
         "merchandise_not_applicable": "Tego elementu nie można kupić w konfiguracji.",
@@ -3953,8 +3965,8 @@
       "challenge": "Wyzwanie",
       "checkpoint": "Punkt walidacji",
       "search_results": {
-        "one": "Szukaj: znaleziono %{count} wynik dla \"%{terms}”",
-        "other": "Szukaj: znaleziono %{count} wyniki dla „%{terms}”",
+        "one": "Szukaj: znaleziono %{count} wynik dla „%{terms}”",
+        "other": "Szukaj: znaleziono %{count} wyniku dla „%{terms}”",
         "few": "Szukaj: znaleziono %{count} wyniki dla „%{terms}”"
       },
       "blog_or_article_with_error": "Błąd – %{title}"
