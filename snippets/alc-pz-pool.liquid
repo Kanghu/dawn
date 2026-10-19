@@ -6,7 +6,8 @@
 
   It hands the script the section's collection id, how many cards it shows, whether the cards
   show a hover image, and the candidates: the first 30 products of the collection that are in
-  stock, in the collection's own order, as [product id, price in cents].
+  stock, in the collection's own order, as [product id, price in cents]. The script itself loads
+  once, from layout/theme.liquid.
 
   Accepts:
   - section: {Object} the calling section
@@ -35,5 +36,4 @@
   <script type="application/json" data-alc-pz-pool>
     {"section":{{ section.id | json }},"col":{{ pz_collection.id }},"n":{{ section.settings.products_to_show }},"secondary":{{ section.settings.show_secondary_image | json }},"candidates":[{{ pz_candidates | strip_newlines }}]}
   </script>
-  <script src="{{ 'alc-pz-sections.js' | asset_url }}" defer="defer"></script>
 {%- endif -%}

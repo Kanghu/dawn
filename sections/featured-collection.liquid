@@ -8,12 +8,15 @@
   {{ 'mask-blobs.css' | asset_url | stylesheet_tag }}
 {%- endif -%}
 
+{%- comment -%} On the homepage layout/theme.liquid loads product-form.js and quick-add.js once for every section. {%- endcomment -%}
 {%- unless section.settings.quick_add == 'none' -%}
   {{ 'quick-add.css' | asset_url | stylesheet_tag }}
-  <script src="{{ 'product-form.js' | asset_url }}" defer="defer"></script>
+  {%- unless template.name == 'index' -%}
+    <script src="{{ 'product-form.js' | asset_url }}" defer="defer"></script>
+  {%- endunless -%}
 {%- endunless -%}
 
-{%- if section.settings.quick_add == 'standard' -%}
+{%- if section.settings.quick_add == 'standard' and template.name != 'index' -%}
   <script src="{{ 'quick-add.js' | asset_url }}" defer="defer"></script>
 {%- endif -%}
 
