@@ -56,8 +56,9 @@ if (!customElements.get('alc-collections-slider')) {
         cancelAnimationFrame(this.measureFrame);
       }
 
+      // The cards, or the elements Shopify wraps each card block in on the storefront.
       get cards() {
-        return this.track.querySelectorAll(':scope > li');
+        return this.track.children;
       }
 
       scheduleMeasure() {
@@ -170,8 +171,9 @@ if (!customElements.get('alc-collections-slider')) {
 
       // Theme editor: bring the selected card into view.
       onBlockSelect(event) {
-        const card = event.target.closest('li');
-        if (!card || card.parentElement !== this.track) return;
+        let card = event.target;
+        while (card && card.parentElement !== this.track) card = card.parentElement;
+        if (!card) return;
         this.track.scrollTo({ left: card.offsetLeft - this.track.offsetLeft - 16 });
       }
     }

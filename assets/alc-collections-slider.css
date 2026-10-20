@@ -59,10 +59,15 @@
   user-select: none;
 }
 
-.alc-csl__item {
+/* The track's children: the cards, or the element Shopify wraps each card block in on the storefront. */
+.alc-csl__track > * {
   flex: 0 0 270px;
   height: 380px;
   scroll-snap-align: start;
+}
+
+.alc-csl__track > * > .alc-csl__item {
+  height: 100%;
 }
 
 .alc-csl__card {
@@ -244,7 +249,7 @@
 }
 
 @media screen and (max-width: 989px) {
-  .alc-csl__item {
+  .alc-csl__track > * {
     flex-basis: 230px;
     height: 340px;
   }
@@ -268,7 +273,7 @@
     font-size: 14px;
   }
 
-  .alc-csl__item {
+  .alc-csl__track > * {
     flex-basis: 75%;
   }
 
