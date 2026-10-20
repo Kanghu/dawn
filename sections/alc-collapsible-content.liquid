@@ -189,16 +189,16 @@
           {%- if spec contains '.' -%}
             {%- if mf.definition.name != blank -%}
               {%- assign translated_spec = mf.definition.name -%}
-              {%- comment -%} Shopify does not localise taxonomy names for every market: override the ones used in specification groups {%- endcomment -%}
-              {%- assign tax_lookup = current_locale | append: ':' | append: spec_key | append: '=' -%}
-              {%- assign tax_pairs = 'bg:bulb-cap-type=Тип цокъл|bg:color-pattern=Цвят|bg:light-temperature=Цветна температура|bg:shape=Форма|bg:material=Материал|bg:style=Стил|bg:mounting-type=Тип монтаж|pl:bulb-cap-type=Typ trzonka|pl:color-pattern=Kolor|pl:light-temperature=Temperatura barwowa|pl:shape=Kształt|pl:material=Materiał|pl:style=Styl|pl:mounting-type=Rodzaj montażu|hu:bulb-cap-type=Foglalat típusa|hu:color-pattern=Szín|hu:light-temperature=Színhőmérséklet|hu:shape=Forma|hu:material=Anyag|hu:style=Stílus|hu:mounting-type=Rögzítés típusa|cs:bulb-cap-type=Typ patice|cs:color-pattern=Barva|cs:light-temperature=Teplota světla|cs:shape=Tvar|cs:material=Materiál|cs:style=Styl|cs:mounting-type=Typ montáže|sk:bulb-cap-type=Typ pätice|sk:color-pattern=Farba|sk:light-temperature=Teplota svetla|sk:shape=Tvar|sk:material=Materiál|sk:style=Štýl|sk:mounting-type=Typ montáže|el:bulb-cap-type=Τύπος κάλυκα|el:color-pattern=Χρώμα|el:light-temperature=Θερμοκρασία φωτός|el:shape=Σχήμα|el:material=Υλικό|el:style=Στυλ|el:mounting-type=Τύπος τοποθέτησης|hr:bulb-cap-type=Vrsta grla|hr:color-pattern=Boja|hr:light-temperature=Temperatura svjetla|hr:shape=Oblik|hr:material=Materijal|hr:style=Stil|hr:mounting-type=Način montaže|ro:bulb-cap-type=Tip soclu|ro:color-pattern=Culoare|ro:light-temperature=Temperatura luminii|ro:shape=Formă|ro:material=Material|ro:style=Stil|ro:mounting-type=Tip montaj' | split: '|' -%}
-              {%- for tax_pair in tax_pairs -%}
-                {%- if tax_pair contains tax_lookup -%}{%- assign translated_spec = tax_pair | remove_first: tax_lookup -%}{%- break -%}{%- endif -%}
-              {%- endfor -%}
             {%- else -%}
               {%- comment -%} Fallback: format the key portion nicely {%- endcomment -%}
               {%- assign translated_spec = spec_key | replace: '-', ' ' | capitalize -%}
             {%- endif -%}
+            {%- comment -%} Shopify taxonomy metafields have no definition name in Liquid (the key fallback is English): local labels per market {%- endcomment -%}
+            {%- assign tax_lookup = current_locale | append: ':' | append: spec_key | append: '=' -%}
+            {%- assign tax_pairs = 'bg:bulb-cap-type=Тип цокъл|bg:color-pattern=Цвят|bg:light-temperature=Цветна температура|bg:shape=Форма|bg:material=Материал|bg:style=Стил|bg:mounting-type=Тип монтаж|pl:bulb-cap-type=Typ trzonka|pl:color-pattern=Kolor|pl:light-temperature=Temperatura barwowa|pl:shape=Kształt|pl:material=Materiał|pl:style=Styl|pl:mounting-type=Rodzaj montażu|hu:bulb-cap-type=Foglalat típusa|hu:color-pattern=Szín|hu:light-temperature=Színhőmérséklet|hu:shape=Forma|hu:material=Anyag|hu:style=Stílus|hu:mounting-type=Rögzítés típusa|cs:bulb-cap-type=Typ patice|cs:color-pattern=Barva|cs:light-temperature=Teplota světla|cs:shape=Tvar|cs:material=Materiál|cs:style=Styl|cs:mounting-type=Typ montáže|sk:bulb-cap-type=Typ pätice|sk:color-pattern=Farba|sk:light-temperature=Teplota svetla|sk:shape=Tvar|sk:material=Materiál|sk:style=Štýl|sk:mounting-type=Typ montáže|el:bulb-cap-type=Τύπος κάλυκα|el:color-pattern=Χρώμα|el:light-temperature=Θερμοκρασία φωτός|el:shape=Σχήμα|el:material=Υλικό|el:style=Στυλ|el:mounting-type=Τύπος τοποθέτησης|hr:bulb-cap-type=Vrsta grla|hr:color-pattern=Boja|hr:light-temperature=Temperatura svjetla|hr:shape=Oblik|hr:material=Materijal|hr:style=Stil|hr:mounting-type=Način montaže|ro:bulb-cap-type=Tip soclu|ro:color-pattern=Culoare|ro:light-temperature=Temperatura luminii|ro:shape=Formă|ro:material=Material|ro:style=Stil|ro:mounting-type=Tip montaj' | split: '|' -%}
+            {%- for tax_pair in tax_pairs -%}
+              {%- if tax_pair contains tax_lookup -%}{%- assign translated_spec = tax_pair | remove_first: tax_lookup -%}{%- break -%}{%- endif -%}
+            {%- endfor -%}
           {%- elsif current_locale == 'bg' -%}
             {%- case spec -%}
               {%- when 'tip_produs_' -%}{%- assign translated_spec = 'Тип продукт' -%}
