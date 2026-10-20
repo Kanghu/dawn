@@ -1,0 +1,179 @@
+{% comment %}
+  Collection banner: a wide photo with a title, a line of text and a button, linking to a collection.
+  Replaces the AI-generated "Hero banner" (blocks/ai_gen_block_61ac348), which wrote ~240 lines of CSS
+  into the page for every banner and had 46 settings; the four home page banners only ever differed in
+  photo, collection, texts and the side the text sits on.
+
+  - Empty texts use built-in translations (snippets/alc-blocks-i18n), so every storefront language gets
+    a banner in its own language; the title falls back to the collection's own, translated, title.
+    Filled-in texts win and are translated in Translate & Adapt.
+  - The whole banner is clickable: the button's hit area is stretched over it.
+  - Styles: assets/alc-collection-banner.css. Only the height and the text side change per banner,
+    through modifier classes.
+{% endcomment %}
+{%- liquid
+  assign collection = block.settings.collection
+  assign link = block.settings.link | default: collection.url
+  assign image = block.settings.image | default: collection.featured_image
+  assign image_mobile = block.settings.image_mobile
+
+  assign title = block.settings.title | default: collection.title
+  assign subtitle = block.settings.subtitle
+  if subtitle == blank
+    capture subtitle
+      render 'alc-blocks-i18n', key: 'banner_subtitle'
+    endcapture
+  endif
+  assign cta = block.settings.cta_text
+  if cta == blank
+    capture cta
+      render 'alc-blocks-i18n', key: 'banner_cta'
+    endcapture
+  endif
+-%}
+
+{{ 'alc-collection-banner.css' | asset_url | stylesheet_tag }}
+
+<div
+  class="alc-cb alc-cb--{{ block.settings.text_position }} alc-cb--{{ block.settings.height }}"
+  {{ block.shopify_attributes }}
+>
+  <div class="alc-cb__media">
+    {%- if image != blank -%}
+      <picture>
+        {%- if image_mobile != blank -%}
+          <source
+            media="(max-width: 749px)"
+            srcset="
+              {%- for width in (1..4) -%}
+                {%- assign w = width | times: 250 | plus: 150 -%}
+                {%- if image_mobile.width >= w or forloop.first -%}
+                  {%- unless forloop.first %}, {% endunless -%}
+                  {{ image_mobile | image_url: width: w }} {{ w | at_most: image_mobile.width }}w
+                {%- endif -%}
+              {%- endfor -%}
+            "
+            sizes="calc(100vw - 32px)"
+            width="{{ image_mobile.width }}"
+            height="{{ image_mobile.height }}"
+          >
+        {%- endif -%}
+        {{
+          image
+          | image_url: width: 1300
+          | image_tag:
+            widths: '650, 900, 1300, 1950, 2600',
+            sizes: '(min-width: 1300px) 1300px, (min-width: 750px) 100vw, calc(100vw - 32px)',
+            loading: 'lazy',
+            class: 'alc-cb__img',
+            alt: title
+        }}
+      </picture>
+    {%- else -%}
+      {{ 'hero-apparel-1' | placeholder_svg_tag: 'alc-cb__img alc-cb__img--placeholder' }}
+    {%- endif -%}
+  </div>
+
+  <div class="alc-cb__content">
+    <div class="alc-cb__text">
+      {%- if title != blank -%}
+        <h2 class="alc-cb__title">{{ title | escape }}</h2>
+      {%- endif -%}
+      {%- if subtitle != blank -%}
+        <p class="alc-cb__subtitle">{{ subtitle | escape }}</p>
+      {%- endif -%}
+      {%- if link != blank and cta != blank -%}
+        <a class="alc-cb__cta" href="{{ link }}">
+          {{- cta | escape -}}
+          <svg aria-hidden="true" focusable="false" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+        </a>
+      {%- endif -%}
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Collection banner",
+  "settings": [
+    {
+      "type": "collection",
+      "id": "collection",
+      "label": "Collection",
+      "info": "The banner links to it. Empty title: the collection's own (translated) title. Empty photo: the collection's image."
+    },
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Photo",
+      "info": "Wide, at least 1700 × 450 px."
+    },
+    {
+      "type": "image_picker",
+      "id": "image_mobile",
+      "label": "Photo on phones",
+      "info": "Empty: the photo above."
+    },
+    {
+      "type": "header",
+      "content": "Texts"
+    },
+    {
+      "type": "paragraph",
+      "content": "Leave a text empty to use the built-in text, translated into every storefront language. A text you type here wins and is translated in Translate & Adapt."
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Title"
+    },
+    {
+      "type": "text",
+      "id": "subtitle",
+      "label": "Text"
+    },
+    {
+      "type": "text",
+      "id": "cta_text",
+      "label": "Button"
+    },
+    {
+      "type": "url",
+      "id": "link",
+      "label": "Link",
+      "info": "Empty: the collection above."
+    },
+    {
+      "type": "header",
+      "content": "Layout"
+    },
+    {
+      "type": "select",
+      "id": "text_position",
+      "label": "Text position",
+      "options": [
+        { "value": "left", "label": "Left" },
+        { "value": "center", "label": "Center" },
+        { "value": "right", "label": "Right" }
+      ],
+      "default": "left"
+    },
+    {
+      "type": "select",
+      "id": "height",
+      "label": "Height",
+      "options": [
+        { "value": "compact", "label": "Compact (300 px, 200 px on phones)" },
+        { "value": "medium", "label": "Medium (420 px, 320 px on phones)" },
+        { "value": "tall", "label": "Tall (560 px, 420 px on phones)" }
+      ],
+      "default": "compact"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Collection banner"
+    }
+  ]
+}
+{% endschema %}

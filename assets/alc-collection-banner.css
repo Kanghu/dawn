@@ -1,0 +1,184 @@
+/* Collection banner (blocks/alc-collection-banner.liquid). The look of the four home page banners
+   it replaces: 1300px wide, 16px corners, a dark gradient on the text side, white pill button. */
+
+.alc-cb {
+  --alc-cb-height: 300px;
+  position: relative;
+  width: 100%;
+  max-width: 1300px;
+  height: var(--alc-cb-height);
+  margin: 0 auto;
+  overflow: hidden;
+  border-radius: 16px;
+  background: #1c1b1a;
+  isolation: isolate;
+}
+
+.alc-cb--medium {
+  --alc-cb-height: 420px;
+}
+
+.alc-cb--tall {
+  --alc-cb-height: 560px;
+}
+
+.alc-cb__media,
+.alc-cb__img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.alc-cb__img {
+  display: block;
+  object-fit: cover;
+  transition: transform 1.2s cubic-bezier(0.2, 0.7, 0.2, 1);
+}
+
+.alc-cb:hover .alc-cb__img {
+  transform: scale(1.04);
+}
+
+/* The gradient sits on the text side so the white text reads on any photo. A pseudo-element:
+   base.css hides empty divs. */
+.alc-cb__media::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  background: linear-gradient(to right, rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.21) 45%, transparent 75%);
+}
+
+.alc-cb--right .alc-cb__media::after {
+  background: linear-gradient(to left, rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.21) 45%, transparent 75%);
+}
+
+.alc-cb--center .alc-cb__media::after {
+  background: rgba(0, 0, 0, 0.35);
+}
+
+.alc-cb__content {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  padding: 0 45px;
+}
+
+.alc-cb--center .alc-cb__content {
+  justify-content: center;
+  text-align: center;
+}
+
+.alc-cb--right .alc-cb__content {
+  justify-content: flex-end;
+  text-align: right;
+}
+
+.alc-cb__text {
+  max-width: 410px;
+}
+
+.alc-cb__title {
+  margin: 0 0 10px;
+  color: #fff;
+  font-size: 36px;
+  font-weight: 600;
+  line-height: 1.1;
+  letter-spacing: -0.01em;
+}
+
+.alc-cb__subtitle {
+  margin: 0 0 25px;
+  color: #ece7df;
+  font-size: 16px;
+  line-height: 1.5;
+}
+
+.alc-cb__cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 25px;
+  border: 1px solid #fff;
+  border-radius: 40px;
+  background: #fff;
+  color: #151515;
+  font-size: 14px;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  text-decoration: none;
+  transition: background-color 0.25s ease, border-color 0.25s ease;
+}
+
+/* The button's hit area covers the whole banner (.alc-cb__content is the positioned box). */
+.alc-cb__cta::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+}
+
+.alc-cb__cta svg {
+  flex: none;
+  transition: transform 0.25s ease;
+}
+
+.alc-cb:hover .alc-cb__cta {
+  background: #ebe6de;
+  border-color: #ebe6de;
+}
+
+.alc-cb:hover .alc-cb__cta svg {
+  transform: translateX(3px);
+}
+
+.alc-cb__cta:focus-visible {
+  outline: 2px solid #fff;
+  outline-offset: 3px;
+}
+
+@media screen and (max-width: 749px) {
+  .alc-cb {
+    --alc-cb-height: 200px;
+    width: calc(100% - 32px);
+  }
+
+  .alc-cb--medium {
+    --alc-cb-height: 320px;
+  }
+
+  .alc-cb--tall {
+    --alc-cb-height: 420px;
+  }
+
+  .alc-cb__content {
+    padding: 0 22px;
+  }
+
+  .alc-cb__title {
+    font-size: 26px;
+  }
+
+  .alc-cb__subtitle {
+    font-size: 14px;
+  }
+
+  .alc-cb__cta {
+    font-size: 12px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .alc-cb__img,
+  .alc-cb__cta svg {
+    transition: none;
+  }
+
+  .alc-cb:hover .alc-cb__img {
+    transform: none;
+  }
+}

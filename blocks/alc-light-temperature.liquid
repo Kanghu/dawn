@@ -1,0 +1,196 @@
+{% comment %}
+  Light temperature: one room photographed in warm (3000K), neutral (4500K) and cool (6000K) light,
+  with three buttons that switch between them. Replaces the AI-generated "Temperature showcase"
+  (blocks/ai_gen_block_7356d5d), whose texts were English everywhere except the RO market (a market
+  override), which loaded three 1300px images on every screen size, wrote its CSS and script into the
+  page and defined its custom element without a guard.
+
+  - Empty texts use the built-in translations (snippets/alc-blocks-i18n) in every storefront language.
+  - Each button carries a swatch of its light colour instead of a number.
+  - Styles: assets/alc-light-temperature.css; behaviour: assets/alc-light-temperature.js.
+{% endcomment %}
+{%- liquid
+  assign title = block.settings.title
+  if title == blank
+    capture title
+      render 'alc-blocks-i18n', key: 'temp_title'
+    endcapture
+  endif
+  assign temps = '3000,4500,6000' | split: ','
+  assign text_keys = 'temp_warm,temp_neutral,temp_cool' | split: ','
+-%}
+
+{{ 'alc-light-temperature.css' | asset_url | stylesheet_tag }}
+<script src="{{ 'alc-light-temperature.js' | asset_url }}" defer="defer"></script>
+
+<alc-light-temperature class="alc-lt" {{ block.shopify_attributes }}>
+  <div class="alc-lt__inner">
+    <div class="alc-lt__media">
+      {%- for temp in temps -%}
+        {%- liquid
+          assign image_key = 'image_' | append: temp | append: 'k'
+          assign label_key = 'label_' | append: temp | append: 'k'
+          assign image = block.settings[image_key]
+          assign label = block.settings[label_key]
+          if label == blank
+            capture label
+              render 'alc-blocks-i18n', key: text_keys[forloop.index0]
+            endcapture
+          endif
+          assign image_class = 'alc-lt__img'
+          if forloop.first
+            assign image_class = 'alc-lt__img is-active'
+          endif
+          capture image_alt
+            echo image.alt | default: label | append: ' – ' | append: temp | append: 'K'
+          endcapture
+        -%}
+        {%- if image != blank -%}
+          {{
+            image
+            | image_url: width: 1300
+            | image_tag:
+              widths: '480, 720, 960, 1300',
+              sizes: '(min-width: 1300px) 640px, (min-width: 990px) 50vw, (min-width: 750px) 620px, calc(100vw - 56px)',
+              loading: 'lazy',
+              class: image_class,
+              alt: image_alt
+          }}
+        {%- else -%}
+          <span class="{{ image_class }} alc-lt__img--placeholder">
+            {{- 'product-1' | placeholder_svg_tag -}}
+          </span>
+        {%- endif -%}
+      {%- endfor -%}
+    </div>
+
+    <div class="alc-lt__content">
+      <div>
+        <h2 class="alc-lt__title">{{ title | escape }}</h2>
+        {%- if block.settings.subtitle != blank -%}
+          <p class="alc-lt__subtitle">{{ block.settings.subtitle | escape }}</p>
+        {%- endif -%}
+      </div>
+      <div class="alc-lt__options" role="group" aria-label="{{ title | escape }}">
+        {%- for temp in temps -%}
+          {%- liquid
+            assign label_key = 'label_' | append: temp | append: 'k'
+            assign desc_key = 'desc_' | append: temp | append: 'k'
+            assign label = block.settings[label_key]
+            if label == blank
+              capture label
+                render 'alc-blocks-i18n', key: text_keys[forloop.index0]
+              endcapture
+            endif
+            assign desc = block.settings[desc_key]
+            if desc == blank
+              assign desc_text_key = text_keys[forloop.index0] | append: '_desc'
+              capture desc
+                render 'alc-blocks-i18n', key: desc_text_key
+              endcapture
+            endif
+          -%}
+          <button
+            type="button"
+            class="alc-lt__option"
+            data-temp="{{ temp }}"
+            aria-pressed="{% if forloop.first %}true{% else %}false{% endif %}"
+          >
+            <span class="alc-lt__swatch alc-lt__swatch--{{ temp }}" aria-hidden="true"></span>
+            <span class="alc-lt__text">
+              <span class="alc-lt__label">{{ label | escape }}</span>
+              <span class="alc-lt__desc">{{ desc | escape }}</span>
+            </span>
+            <span class="alc-lt__kelvin">{{ temp }}K</span>
+          </button>
+        {%- endfor -%}
+      </div>
+    </div>
+  </div>
+</alc-light-temperature>
+
+{% schema %}
+{
+  "name": "Light temperature",
+  "settings": [
+    {
+      "type": "paragraph",
+      "content": "Leave a text empty to use the built-in text, translated into every storefront language. A text you type here wins and is translated in Translate & Adapt."
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Heading"
+    },
+    {
+      "type": "text",
+      "id": "subtitle",
+      "label": "Text",
+      "info": "Optional."
+    },
+    {
+      "type": "header",
+      "content": "Warm light (3000K)"
+    },
+    {
+      "type": "image_picker",
+      "id": "image_3000k",
+      "label": "Photo",
+      "info": "The same room in each light, square, at least 1300 px."
+    },
+    {
+      "type": "text",
+      "id": "label_3000k",
+      "label": "Name"
+    },
+    {
+      "type": "text",
+      "id": "desc_3000k",
+      "label": "Description"
+    },
+    {
+      "type": "header",
+      "content": "Neutral light (4500K)"
+    },
+    {
+      "type": "image_picker",
+      "id": "image_4500k",
+      "label": "Photo"
+    },
+    {
+      "type": "text",
+      "id": "label_4500k",
+      "label": "Name"
+    },
+    {
+      "type": "text",
+      "id": "desc_4500k",
+      "label": "Description"
+    },
+    {
+      "type": "header",
+      "content": "Cool light (6000K)"
+    },
+    {
+      "type": "image_picker",
+      "id": "image_6000k",
+      "label": "Photo"
+    },
+    {
+      "type": "text",
+      "id": "label_6000k",
+      "label": "Name"
+    },
+    {
+      "type": "text",
+      "id": "desc_6000k",
+      "label": "Description"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Light temperature"
+    }
+  ]
+}
+{% endschema %}
