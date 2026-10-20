@@ -1,0 +1,71 @@
+{% comment %}
+  Built-in texts of the home page blocks (blocks/alc-collection-banner, blocks/alc-collections-slider,
+  blocks/_alc-collection-card, blocks/alc-light-temperature), one `when` per storefront language.
+  Romanian is the fallback, like snippets/alc-i18n. A block uses these when its own setting is
+  empty; a filled-in setting wins and is translated in Translate & Adapt instead.
+
+  Accepts:
+  - key: {String} banner_cta | banner_subtitle | slider_heading | slider_subheading | card_cta
+    | temp_title | temp_warm | temp_warm_desc | temp_neutral | temp_neutral_desc | temp_cool | temp_cool_desc
+
+  Usage:
+  {%- capture cta -%}{% render 'alc-blocks-i18n', key: 'banner_cta' %}{%- endcapture -%}
+{% endcomment %}
+{%- liquid
+  assign lang = request.locale.iso_code | downcase | slice: 0, 2
+  case lang
+    when 'en'
+      assign w = 'See the deals|Discover the best deals on our most popular models.|Inspire your space|Discover our premium collections|Discover the collection|Choose your colour temperature|Warm white|Cosy and relaxing|Neutral white|Balanced and natural|Cool white|Bright and energising'
+    when 'hu'
+      assign w = 'Ajánlatok megtekintése|Fedezze fel legnépszerűbb modelljeink legjobb ajánlatait.|Inspiráció otthonához|Fedezze fel prémium kollekcióinkat|A kollekció felfedezése|Válassza ki a színhőmérsékletet|Meleg fehér|Otthonos és pihentető|Semleges fehér|Kiegyensúlyozott és természetes|Hideg fehér|Világos és élénkítő'
+    when 'pl'
+      assign w = 'Zobacz oferty|Odkryj najlepsze oferty na nasze najpopularniejsze modele.|Zainspiruj swoje wnętrze|Odkryj nasze kolekcje premium|Odkryj kolekcję|Wybierz temperaturę barwową|Ciepła biel|Przytulna i relaksująca|Neutralna biel|Zrównoważona i naturalna|Zimna biel|Jasna i energetyzująca'
+    when 'el'
+      assign w = 'Δείτε τις προσφορές|Ανακαλύψτε τις καλύτερες προσφορές στα πιο δημοφιλή μας μοντέλα.|Εμπνευστείτε για τον χώρο σας|Ανακαλύψτε τις premium συλλογές μας|Ανακαλύψτε τη συλλογή|Επιλέξτε θερμοκρασία χρώματος|Θερμό λευκό|Ζεστό και χαλαρωτικό|Ουδέτερο λευκό|Ισορροπημένο και φυσικό|Ψυχρό λευκό|Φωτεινό και τονωτικό'
+    when 'bg'
+      assign w = 'Вижте офертите|Открийте най-добрите оферти за най-популярните ни модели.|Вдъхновете се за вашето пространство|Открийте нашите премиум колекции|Разгледайте колекцията|Изберете цветова температура|Топло бяло|Уютно и отпускащо|Неутрално бяло|Балансирано и естествено|Студено бяло|Ярко и ободряващо'
+    when 'it'
+      assign w = 'Scopri le offerte|Scopri le migliori offerte sui nostri modelli più popolari.|Ispira il tuo spazio|Scopri le nostre collezioni premium|Scopri la collezione|Scegli la temperatura di colore|Bianco caldo|Accogliente e rilassante|Bianco neutro|Equilibrato e naturale|Bianco freddo|Luminoso ed energizzante'
+    when 'fr'
+      assign w = 'Voir les offres|Découvrez les meilleures offres sur nos modèles les plus populaires.|Inspirez votre intérieur|Découvrez nos collections premium|Découvrir la collection|Choisissez la température de couleur|Blanc chaud|Cosy et relaxant|Blanc neutre|Équilibré et naturel|Blanc froid|Lumineux et dynamisant'
+    when 'cs'
+      assign w = 'Zobrazit nabídky|Objevte nejlepší nabídky na naše nejoblíbenější modely.|Inspirujte se pro svůj prostor|Objevte naše prémiové kolekce|Prozkoumat kolekci|Zvolte teplotu barvy|Teplá bílá|Útulná a uklidňující|Neutrální bílá|Vyvážená a přirozená|Studená bílá|Jasná a povzbuzující'
+    when 'sk'
+      assign w = 'Zobraziť ponuky|Objavte najlepšie ponuky na naše najobľúbenejšie modely.|Inšpirujte sa pre svoj priestor|Objavte naše prémiové kolekcie|Preskúmať kolekciu|Zvoľte teplotu farby|Teplá biela|Útulná a upokojujúca|Neutrálna biela|Vyvážená a prirodzená|Studená biela|Jasná a povzbudzujúca'
+    when 'hr'
+      assign w = 'Pogledajte ponude|Otkrijte najbolje ponude za naše najpopularnije modele.|Inspirirajte svoj prostor|Otkrijte naše premium kolekcije|Istražite kolekciju|Odaberite temperaturu boje|Toplo bijela|Ugodna i opuštajuća|Neutralno bijela|Uravnotežena i prirodna|Hladno bijela|Svijetla i energična'
+    when 'de'
+      assign w = 'Angebote ansehen|Entdecken Sie die besten Angebote für unsere beliebtesten Modelle.|Inspiration für Ihr Zuhause|Entdecken Sie unsere Premium-Kollektionen|Kollektion entdecken|Wählen Sie Ihre Farbtemperatur|Warmweiß|Gemütlich und entspannend|Neutralweiß|Ausgewogen und natürlich|Kaltweiß|Hell und belebend'
+    when 'nl'
+      assign w = 'Bekijk de aanbiedingen|Ontdek de beste aanbiedingen op onze populairste modellen.|Inspiratie voor je interieur|Ontdek onze premium collecties|Ontdek de collectie|Kies je kleurtemperatuur|Warm wit|Gezellig en ontspannend|Neutraal wit|Evenwichtig en natuurlijk|Koel wit|Helder en energiek'
+    else
+      assign w = 'Vezi ofertele|Descoperă cele mai bune oferte la cele mai populare modele.|Inspiră-ți spațiul|Descoperă colecțiile noastre premium|Descoperă colecția|Alege temperatura de culoare|Alb cald|Confortabil și relaxant|Alb neutru|Echilibrat și natural|Alb rece|Luminos și energizant'
+  endcase
+  assign parts = w | split: '|'
+  case key
+    when 'banner_cta'
+      echo parts[0]
+    when 'banner_subtitle'
+      echo parts[1]
+    when 'slider_heading'
+      echo parts[2]
+    when 'slider_subheading'
+      echo parts[3]
+    when 'card_cta'
+      echo parts[4]
+    when 'temp_title'
+      echo parts[5]
+    when 'temp_warm'
+      echo parts[6]
+    when 'temp_warm_desc'
+      echo parts[7]
+    when 'temp_neutral'
+      echo parts[8]
+    when 'temp_neutral_desc'
+      echo parts[9]
+    when 'temp_cool'
+      echo parts[10]
+    when 'temp_cool_desc'
+      echo parts[11]
+  endcase
+-%}

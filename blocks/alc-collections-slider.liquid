@@ -1,0 +1,95 @@
+{% comment %}
+  Collections slider: a heading and a row of collection cards that scrolls sideways (swipe, drag,
+  arrows, dots). Replaces the AI-generated "Collections slider" (blocks/ai_gen_block_d0b28ae): 69
+  settings with five fixed card slots, its CSS and custom element class written into the page per
+  block, and a mouse-wheel handler that kept the page from scrolling while the pointer was over the row.
+
+  - The cards are child blocks (blocks/_alc-collection-card), so any number can be added and reordered.
+  - An empty heading or subheading uses the built-in translations (snippets/alc-blocks-i18n).
+  - On the home page the heading is the page's h1 (the logo h1 was dropped for SEO), elsewhere an h2.
+  - Styles: assets/alc-collections-slider.css; behaviour: assets/alc-collections-slider.js.
+{% endcomment %}
+{%- liquid
+  assign heading = block.settings.heading
+  if heading == blank
+    capture heading
+      render 'alc-blocks-i18n', key: 'slider_heading'
+    endcapture
+  endif
+  assign subheading = block.settings.subheading
+  if subheading == blank
+    capture subheading
+      render 'alc-blocks-i18n', key: 'slider_subheading'
+    endcapture
+  endif
+  assign heading_tag = 'h2'
+  if request.page_type == 'index'
+    assign heading_tag = 'h1'
+  endif
+-%}
+
+{{ 'alc-collections-slider.css' | asset_url | stylesheet_tag }}
+<script src="{{ 'alc-collections-slider.js' | asset_url }}" defer="defer"></script>
+
+<alc-collections-slider
+  class="alc-csl"
+  data-dot-label="{{ 'general.slider.name' | t | escape }}"
+  {{ block.shopify_attributes }}
+>
+  <div class="alc-csl__head">
+    <{{ heading_tag }} class="alc-csl__heading">{{ heading | escape }}</{{ heading_tag }}>
+    {%- if subheading != blank -%}
+      <p class="alc-csl__subheading">{{ subheading | escape }}</p>
+    {%- endif -%}
+  </div>
+
+  <div class="alc-csl__shell">
+    <ul class="alc-csl__track" role="list" data-track>
+      {%- content_for 'blocks' -%}
+    </ul>
+    <div class="alc-csl__nav">
+      <button type="button" class="alc-csl__arrow" data-prev aria-label="{{ 'general.slider.previous_slide' | t | escape }}" disabled>
+        <svg aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 6l-6 6 6 6"/></svg>
+      </button>
+      <button type="button" class="alc-csl__arrow" data-next aria-label="{{ 'general.slider.next_slide' | t | escape }}">
+        <svg aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"/></svg>
+      </button>
+    </div>
+  </div>
+  <div class="alc-csl__dots" data-dots hidden></div>
+</alc-collections-slider>
+
+{% schema %}
+{
+  "name": "Collections slider",
+  "settings": [
+    {
+      "type": "paragraph",
+      "content": "Leave a text empty to use the built-in text, translated into every storefront language. A text you type here wins and is translated in Translate & Adapt."
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "info": "On the home page this is the page's main heading (h1)."
+    },
+    {
+      "type": "text",
+      "id": "subheading",
+      "label": "Subheading"
+    }
+  ],
+  "blocks": [{ "type": "_alc-collection-card" }],
+  "presets": [
+    {
+      "name": "Collections slider",
+      "blocks": [
+        { "type": "_alc-collection-card" },
+        { "type": "_alc-collection-card" },
+        { "type": "_alc-collection-card" },
+        { "type": "_alc-collection-card" }
+      ]
+    }
+  ]
+}
+{% endschema %}

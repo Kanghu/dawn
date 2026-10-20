@@ -1,0 +1,101 @@
+{% comment %}
+  One card of blocks/alc-collections-slider: a tall photo with the collection's title, an optional line
+  of text and a button, all one link. Private block (the underscore): it can only be added inside the
+  slider.
+
+  - Empty title: the collection's own, translated, title. Empty photo: the collection's image.
+  - Empty button text: the built-in translation (snippets/alc-blocks-i18n).
+  - The optional line is shown as typed; it is translated in Translate & Adapt.
+{% endcomment %}
+{%- liquid
+  assign collection = block.settings.collection
+  assign image = block.settings.image | default: collection.featured_image
+  assign title = block.settings.title | default: collection.title
+  assign cta = block.settings.cta_text
+  if cta == blank
+    capture cta
+      render 'alc-blocks-i18n', key: 'card_cta'
+    endcapture
+  endif
+  assign card_tag = 'div'
+  if collection != blank
+    assign card_tag = 'a'
+  endif
+-%}
+<li class="alc-csl__item" {{ block.shopify_attributes }}>
+  <{{ card_tag }}
+    class="alc-csl__card"
+    {% if collection != blank %}
+      href="{{ collection.url }}"
+    {% endif %}
+  >
+    {%- if image != blank -%}
+      {{
+        image
+        | image_url: width: 600
+        | image_tag:
+          widths: '360, 540, 720, 900',
+          sizes: '(max-width: 749px) 75vw, (max-width: 989px) 230px, 270px',
+          loading: 'lazy',
+          class: 'alc-csl__img',
+          alt: ''
+      }}
+    {%- else -%}
+      {{ 'collection-1' | placeholder_svg_tag: 'alc-csl__img alc-csl__img--placeholder' }}
+    {%- endif -%}
+    <div class="alc-csl__content">
+      {%- if title != blank -%}
+        <h3 class="alc-csl__title">{{ title | escape }}</h3>
+      {%- endif -%}
+      {%- if block.settings.description != blank -%}
+        <p class="alc-csl__desc">{{ block.settings.description | escape }}</p>
+      {%- endif -%}
+      <span class="alc-csl__cta">
+        {{- cta | escape -}}
+        <svg aria-hidden="true" focusable="false" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+      </span>
+    </div>
+  </{{ card_tag }}>
+</li>
+
+{% schema %}
+{
+  "name": "Collection card",
+  "settings": [
+    {
+      "type": "collection",
+      "id": "collection",
+      "label": "Collection"
+    },
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Photo",
+      "info": "Portrait, about 600 × 800 px. Empty: the collection's image."
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Title",
+      "info": "Empty: the collection's title, translated in every language."
+    },
+    {
+      "type": "text",
+      "id": "description",
+      "label": "Short text",
+      "info": "Optional. Translated in Translate & Adapt."
+    },
+    {
+      "type": "text",
+      "id": "cta_text",
+      "label": "Button",
+      "info": "Empty: built-in text, translated in every language."
+    }
+  ],
+  "presets": [
+    {
+      "name": "Collection card"
+    }
+  ]
+}
+{% endschema %}
