@@ -69,7 +69,12 @@
     endif
   -%}
   <div class="card-wrapper product-card-wrapper alc-pc{% unless card_product.available %} alc-pc--sold-out{% endunless %}">
-    <div class="alc-pc__tile">
+    <div
+      class="alc-pc__tile"
+      {%- if pc_media and pc_second != null and show_secondary_image %}
+        onpointerenter="var s=this.querySelector('source[data-srcset]');if(s){s.srcset=s.dataset.srcset;s.removeAttribute('data-srcset')}"
+      {%- endif %}
+    >
       <div class="alc-pc__media" style="--alc-pc-ratio: {{ pc_ratio }}; --alc-pc-ratio-pct: {{ pc_ratio_pct }};">
         {%- if pc_media -%}
           {% comment %}theme-check-disable ImgLazyLoading{% endcomment %}
@@ -97,13 +102,15 @@
           >
           {%- comment -%}
             The hover image only exists for mouse pointers. Touch devices match no
-            <source> and get a 1x1 inline GIF, so phones never download it.
+            <source> and get a 1x1 inline GIF, so phones never download it. On desktop the
+            srcset waits in data-srcset until the pointer first enters the tile (onpointerenter
+            above), so a page of cards no longer downloads every second image up front.
           {%- endcomment -%}
           {%- if pc_second != null and show_secondary_image -%}
             <picture>
               <source
                 media="(hover: hover) and (pointer: fine)"
-                srcset="
+                data-srcset="
                   {%- if pc_second.width >= 360 -%}{{ pc_second | image_url: width: 360 }} 360w,{%- endif -%}
                   {%- if pc_second.width >= 540 -%}{{ pc_second | image_url: width: 540 }} 540w,{%- endif -%}
                   {%- if pc_second.width >= 720 -%}{{ pc_second | image_url: width: 720 }} 720w,{%- endif -%}

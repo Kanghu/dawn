@@ -373,10 +373,9 @@
       }
     }
     
-    // Check periodically and on various events
-    setInterval(checkAndRestoreElements, 1000);
+    // On the events that can close the selector. No timer or scroll listener: the snippet
+    // renders twice (desktop and mobile header), and both ran every second and on every scroll.
     window.addEventListener('resize', checkAndRestoreElements);
-    window.addEventListener('scroll', checkAndRestoreElements);
     window.addEventListener('click', checkAndRestoreElements);
   })();
 </script>

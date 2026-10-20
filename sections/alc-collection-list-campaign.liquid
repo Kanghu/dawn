@@ -240,8 +240,10 @@
   {%- endfor -%}
 </div>
 
-{%- comment -%} Load SweetAlert2 CDN {%- endcomment -%}
-<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+{%- comment -%}
+  SweetAlert2 (the popup) loads on the first hover or tap of a popup tile, not with the page:
+  as a plain script tag it held up the display of every campaign page.
+{%- endcomment -%}
 
 <style>
   /* Desktop - transparent background, hide color scheme */
@@ -315,6 +317,21 @@
 
 <script>
   (function() {
+    function loadSwal() {
+      if (window.Swal) return Promise.resolve(window.Swal);
+      window.alcSwalLoading = window.alcSwalLoading || new Promise(function(resolve, reject) {
+        const script = document.createElement('script');
+        script.src = 'https://cdn.jsdelivr.net/npm/sweetalert2@11';
+        script.onload = function() { resolve(window.Swal); };
+        script.onerror = function(error) {
+          window.alcSwalLoading = null; // let the next click try again
+          reject(error);
+        };
+        document.head.appendChild(script);
+      });
+      return window.alcSwalLoading;
+    }
+
     // Handle popup opening via data-open-modal attribute
     function initPopupTriggers() {
       const popupTriggers = document.querySelectorAll('[data-open-modal]');
@@ -332,24 +349,28 @@
           if (popupData) {
             const htmlContent = popupData.innerHTML;
 
-            Swal.fire({
-              title: 'BLACK FRIDAY',
-              html: htmlContent,
-              showCloseButton: true,
-              showConfirmButton: false,
-              customClass: {
-                popup: 'campaign-popup',
-                title: 'campaign-popup-title',
-                htmlContainer: 'rte campaign-popup-content'
-              },
-              width: '90%',
-              padding: '3rem',
-              backdrop: 'rgba(0,0,0,0.7)'
+            loadSwal().then(function(Swal) {
+              Swal.fire({
+                title: 'BLACK FRIDAY',
+                html: htmlContent,
+                showCloseButton: true,
+                showConfirmButton: false,
+                customClass: {
+                  popup: 'campaign-popup',
+                  title: 'campaign-popup-title',
+                  htmlContainer: 'rte campaign-popup-content'
+                },
+                width: '90%',
+                padding: '3rem',
+                backdrop: 'rgba(0,0,0,0.7)'
+              });
             });
           }
         };
 
         trigger.addEventListener('click', trigger._popupClickHandler);
+        // Start the download while the pointer is on its way to the click.
+        trigger.addEventListener('pointerenter', loadSwal, { once: true });
       });
     }
 
