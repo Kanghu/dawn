@@ -165,7 +165,7 @@
       "vendor": "Продавач",
       "video_exit_message": "{{ title }} отворете видеоклипа на цял екран в същия прозорец.",
       "xr_button": "Преглед във вашето пространство",
-      "xr_button_label": "Преглед във вашето пространство, статията се зарежда в прозореца с добавена реалност",
+      "xr_button_label": "Вижте във вашето пространство – артикулът се зарежда в прозорец с добавена реалност",
       "sold_out": "Изчерпана наличност",
       "pickup_availability": {
         "view_store_info": "Вижте информацията за магазина",
@@ -217,7 +217,7 @@
       "label": "Медийна галерия"
     },
     "facets": {
-      "apply": "Кандидатствайте",
+      "apply": "Приложи",
       "clear": "Изпразнете го",
       "clear_all": "Премахнете всичко",
       "from": "от",
@@ -401,7 +401,7 @@
       "headings": {
         "product": "Продукт",
         "price": "Цена",
-        "total": "Напълно",
+        "total": "Общо",
         "quantity": "Количество",
         "image": "Изображение на продукта"
       },
@@ -409,7 +409,7 @@
       "note": "Специални инструкции за поръчката",
       "login": {
         "title": "имаш ли акаунт",
-        "paragraph_html": "<a href=\"{{ link }}\" class=\"link underlined-link\">Свържете се</a> за по-бързо изпълнение на поръчката."
+        "paragraph_html": "<a href=\"{{ link }}\" class=\"link underlined-link\">Влезте</a> за по-бързо завършване на поръчката."
       },
       "estimated_total": "Очаквано общо",
       "new_estimated_total": "Новата прогнозна обща сума",
@@ -516,9 +516,9 @@
         "few": "{{ quantity }} добавени елементи"
       },
       "items_removed": {
-        "one": "{{ quantity }} изтрита статия",
-        "other": "{{ quantity }} изтрити елементи",
-        "few": "{{ quantity }} изтрити елементи"
+        "one": "{{ quantity }} изтрит артикул",
+        "other": "{{ quantity }} изтрити артикула",
+        "few": "{{ quantity }} изтрити артикула"
       },
       "product_variants": "Варианти на продукта",
       "total_items": "Общо елементи",
@@ -592,7 +592,7 @@
       "order_number": "ред",
       "order_number_link": "Номер на поръчката: {{ number }}",
       "date": "Дата",
-      "total": "Напълно",
+      "total": "Общо",
       "none": "Все още не сте направили поръчки.",
       "title": "История на поръчките",
       "payment_status": "Статус на плащане",
@@ -640,7 +640,7 @@
       "sku": "SKU",
       "price": "Цена",
       "quantity": "Количество",
-      "total": "Напълно",
+      "total": "Общо",
       "fulfilled_at_html": "Орден почетен при {{ date }}",
       "track_shipment": "Проследете пратката",
       "tracking_url": "Връзка за проследяване",
@@ -878,7 +878,7 @@
         "missing_shipping_address": "Адресът за доставка липсва",
         "delivery_title": "Доставка",
         "address_default": "Задайте по подразбиране",
-        "split_shipping_merchandise_quantity_label_standard": "%{quantity} статии",
+        "split_shipping_merchandise_quantity_label_standard": "%{quantity} артикула",
         "split_shipping_merchandise_quantity_label_additional": "+ още %{quantity}",
         "split_shipping_merchandise_shipment_number": "Доставка %{number} от %{total}",
         "pre_order_ships_now": "Изпраща се сега",
@@ -923,15 +923,15 @@
       "general": {
         "map": {
           "cluster_title": {
-            "few": "Образуван клъстер {{number}} Куршуми"
+            "few": "Група от {{number}} маркера"
           }
         },
-        "page_title": "Изпълнете поръчката",
+        "page_title": "Завършване на поръчката",
         "error_page_title": "Грешка",
         "skip_to_content": "Преминете към съдържанието",
-        "breadcrumb": "следа",
+        "breadcrumb": "Навигация",
         "continue_button_label": "Продължи",
-        "complete_purchase_button_label": "Изпълнете поръчката",
+        "complete_purchase_button_label": "Завършете поръчката",
         "pay_now_button_label": "Платете сега",
         "authenticate_purchase_button_label": "Удостоверете плащането",
         "edit_link_label": "Редактиране",
@@ -941,8 +941,8 @@
         "close_modal_label": "затвори",
         "close_notice_label": "затвори",
         "expand_notice_label": "Вижте повече",
-        "continue_to_shipping_method": "Продължете да изпращате",
-        "continue_to_payment_method": "Продължете към касата",
+        "continue_to_shipping_method": "Продължете към доставката",
+        "continue_to_payment_method": "Продължете към плащането",
         "continue_to_review": "Прегледайте поръчката",
         "back_to_cart": "Върнете се в количката",
         "back_to_contact_information": "Върнете се към информацията",
@@ -964,7 +964,7 @@
           "external_and_new_window": "Отворете външния уебсайт в нов прозорец."
         },
         "checkout_context": {
-          "step_one": "%{shop_name} – Изпълнете поръчката"
+          "step_one": "%{shop_name} – Завършване на поръчката"
         },
         "errors": {
           "session_identifier_not_unique_error": "Имаше проблем с вашата поръчка. Моля, опитайте плащането отново.",
@@ -1103,9 +1103,9 @@
           },
           "tip": {
             "not_accepted_by_shop": "Магазинът не приема бакшиши.",
-            "only_one_tip_line_allowed": "Няколко линии на върха не се приемат.",
+            "only_one_tip_line_allowed": "Не се приема повече от един ред за бакшиш.",
             "tips_not_allowed_for_b2b": "Даването на бакшиши не е разрешено в B2B магазини.",
-            "currency_change_reset": "Съветът е нулиран поради промяна на валутата.",
+            "currency_change_reset": "Бакшишът е нулиран поради промяна на валутата.",
             "tips_not_allowed_for_deferred_purchase_options": "Все още не се приемат бакшиши за опции за отложена покупка."
           },
           "sale_attribution": {
@@ -1149,16 +1149,16 @@
           }
         },
         "full_price": "Пълна цена:",
-        "title": "Пълна поръчка – {{shopName}}",
-        "full_title": "{{pageTitle}} – {{shopName}} – Изпълнете поръчката",
-        "loading_title": "Пълна поръчка – {{shopName}}",
+        "title": "Завършване на поръчката – {{shopName}}",
+        "full_title": "{{pageTitle}} – {{shopName}} – Завършване на поръчката",
+        "loading_title": "Завършване на поръчката – {{shopName}}",
         "display_name": "{{firstName}} {{lastName}}",
         "google_map_title": "Google карта",
         "submit_order_button_label": "Изпратете поръчката",
         "submit_for_review_button_label": "Изпратете за преглед",
         "submit_for_review_notice_label": "Плащането няма да бъде дължимо, докато не прегледаме поръчката",
         "continue_to_payment_plans_button_label": "Продължете с плановете за плащане",
-        "back_button_label": "Връща се",
+        "back_button_label": "Назад",
         "choose_delivery_strategy": "Изберете начин на доставка",
         "autocomplete_zero_item": "Няма налични артикули",
         "autocomplete_powered_by_google": "На платформата {{brandName}}",
@@ -1222,7 +1222,7 @@
         },
         "not_user_label": "Вие не сте %{first_name}?",
         "have_an_account_label": "имаш ли акаунт",
-        "sign_in_link_label": "Свържете се",
+        "sign_in_link_label": "Вход",
         "sign_out_link_label": "Излезте",
         "save_my_information_label": "Запазете тази информация за следващия път",
         "invalid_address": "Избраният адрес е невалиден. %{update_address_link} или изберете друг адрес.",
@@ -1236,9 +1236,9 @@
       "stock": {
         "unshippable_product": {
           "header": {
-            "few": "Няма наличен начин на доставка за %{count} (от) статии",
-            "one": "Няма наличен начин на доставка за %{count} статия",
-            "other": "Няма наличен начин на доставка за %{count} (от) статии"
+            "few": "Няма наличен начин на доставка за %{count} артикула",
+            "one": "Няма наличен начин на доставка за %{count} артикул",
+            "other": "Няма наличен начин на доставка за %{count} артикула"
           },
           "message": {
             "few": "Тези артикули ще бъдат премахнати от вашата количка, защото няма налични методи за доставка за вашия адрес.",
@@ -1249,9 +1249,9 @@
           "status_column_header": "Без начин на доставка"
         },
         "item_label": {
-          "few": "{{count}} статии",
-          "one": "{{count}} статия",
-          "other": "{{count}} статии"
+          "few": "{{count}} артикула",
+          "one": "{{count}} артикул",
+          "other": "{{count}} артикула"
         },
         "unfulfillable_product": {
           "message": {
@@ -1318,20 +1318,20 @@
       },
       "order_summary": {
         "expand_component_information": {
-          "few": "Дисплей %{count} статии",
-          "one": "Дисплей %{count} статия",
-          "other": "Дисплей %{count} статии"
+          "few": "Покажи %{count} артикула",
+          "one": "Покажи %{count} артикул",
+          "other": "Покажи %{count} артикула"
         },
         "collapse_component_information": {
-          "few": "Скрий се %{count} статии",
-          "one": "Скрий се %{count} статия",
-          "other": "Скрий се %{count} статии"
+          "few": "Скрий %{count} артикула",
+          "one": "Скрий %{count} артикул",
+          "other": "Скрий %{count} артикула"
         },
         "discount_discovery": {
           "merchandise_quantity_label": {
-            "few": "%{count} (от) статии",
-            "one": "%{count} статия",
-            "other": "%{count} (от) статии"
+            "few": "%{count} артикула",
+            "one": "%{count} артикул",
+            "other": "%{count} артикула"
           },
           "add_code": "Добавете отстъпка",
           "back_to_finalize_order": "Назад към касата"
@@ -1347,19 +1347,19 @@
           "other": "Поръчайте отстъпки"
         },
         "subtotal_label_with_quantity": {
-          "few": "Междинна сума · %{count} статии",
-          "one": "Междинна сума · %{count} статия",
-          "other": "Междинна сума · %{count} статии"
+          "few": "Междинна сума · %{count} артикула",
+          "one": "Междинна сума · %{count} артикул",
+          "other": "Междинна сума · %{count} артикула"
         },
         "number_items": {
-          "few": "%{count} статии",
-          "one": "%{count} статия",
-          "other": "%{count} статии"
+          "few": "%{count} артикула",
+          "one": "%{count} артикул",
+          "other": "%{count} артикула"
         },
         "view_all_items": {
-          "few": "Вижте всички тези %{count} статии",
-          "one": "виж %{count} статия",
-          "other": "Вижте всички тези %{count} статии"
+          "few": "Вижте всички %{count} артикула",
+          "one": "Вижте %{count} артикул",
+          "other": "Вижте всички %{count} артикула"
         },
         "pickup_unavailable_banner_title": {
           "few": "Няма налични магазини с вашите артикули",
@@ -1368,10 +1368,10 @@
         },
         "unit_price": {
           "per_item": {
-            "few": "%{price} за %{count} статии",
+            "few": "%{price} за %{count} артикула",
             "single": "%{price} всеки артикул",
-            "one": "%{price} за %{count} статия",
-            "other": "%{price} за %{count} статии"
+            "one": "%{price} за %{count} артикул",
+            "other": "%{price} за %{count} артикула"
           },
           "accessible_separator": "на",
           "content_html": "%{price}%{accessible_separator}%{per_unit}",
@@ -1412,7 +1412,7 @@
         "remove_gift_card_label": "Премахване на подаръчна карта",
         "remove_discount_label": "Премахване на отстъпката",
         "free_shipping_discount_label": "Безплатна доставка",
-        "apply_discount_button_label": "Кандидатствайте",
+        "apply_discount_button_label": "Приложи",
         "applied_discount_message": "%{amount} отстъпка от общата цена на поръчката",
         "discount_has_been_applied": "Отстъпката е приложена",
         "discount_has_been_removed": "Отстъпката е премахната",
@@ -1425,7 +1425,7 @@
         "shipping_information_does_not_meet_discount_requirements_notice": "Код за отстъпка <strong style=\"text-transform:uppercase\">%{code}</strong> не е наличен за вашия адрес за доставка",
         "customer_already_used_once_per_customer_discount_notice": "Код за отстъпка <strong style=\"text-transform:uppercase\">%{code}</strong> вече е използван",
         "subtotal_label": "Междинна сума",
-        "shipping_label": "Транспорт",
+        "shipping_label": "Доставка",
         "pickup_label": "Вземете от магазина",
         "no_pickup_location": "Няма налични места за получаване.",
         "tip_label": "съвет",
@@ -1435,9 +1435,9 @@
         "shipping_pending_message": "Все още не е наличен",
         "shipping_policy_link": "Транспортни разходи",
         "taxes_label": "Данъци",
-        "total_label": "Напълно",
+        "total_label": "Общо",
         "total_outstanding_label": "Сума на плащането",
-        "partial_total_label": "Напълно",
+        "partial_total_label": "Общо",
         "free_total_label": "безплатно",
         "free_shipping_total_label": "безплатно",
         "paid_label": "Платено",
@@ -1452,7 +1452,7 @@
         "quantity_label": "Количество",
         "product_change_label": "Променете",
         "product_image_label": "Изображение на продукта",
-        "scroll_order_summary": "Превъртете за още статии",
+        "scroll_order_summary": "Превъртете за още артикули",
         "expand_order_summary_short": "Дисплей",
         "collapse_order_summary_short": "Скрий се",
         "total_updated_label": "Актуализирана обща цена:",
@@ -1467,7 +1467,7 @@
         "original_price": "Оригиналната цена",
         "sale_price": "Офертна цена",
         "recurring_subtotal_label": "Повтаряща се междинна сума",
-        "recurring_total_label": "Напълно повтарящи се",
+        "recurring_total_label": "Общо за повтарящи се плащания",
         "recurring_total_tooltip": "Не включва доставка, данъци, мита или приложими отстъпки.",
         "gift_card_subscriptions_notice": "Подаръчните карти ще се прилагат само за първото плащане",
         "confirmation_number_label": "№ потвърждение %{confirmation_number}",
@@ -1514,7 +1514,7 @@
         "calculating": "Изчислява се...",
         "group_title_label": "част от \"%{group_title}”",
         "price_per_item": {
-          "accessibility_label": "%{price} на статия",
+          "accessibility_label": "%{price} за артикул",
           "label": "%{price}/ бр."
         },
         "updated_shipping_method": "Методът на плащане е актуализиран: %{shipping_method}",
@@ -1533,13 +1533,13 @@
           "due_on_fulfillment_title": "Стойност на баланса {{amount_due}} има датата на падежа към момента на уважаването"
         },
         "eligible_customer_missing_notice": "За кода за отстъпка <strong style=\"text-transform:uppercase\">%{code}</strong> изисква се отговарящ на условията клиент",
-        "cost_table_item_column_header": "статия",
+        "cost_table_item_column_header": "Артикул",
         "cost_table_value_column_header": "Стойност",
         "product_image_quantity_label": "Количество",
         "more_items_modal": {
           "clear_search": "Изчистете търсенето",
           "empty_results": "Няма намерени резултати за \"%{searchText}\". Проверете правописа си или използвайте друга дума или фраза.",
-          "number_items_shown": "%{shownNumber} от %{totalNumber} статии",
+          "number_items_shown": "%{shownNumber} от %{totalNumber} артикула",
           "search_item": "Търсене"
         },
         "price_before_discount_aria_text": "Начална цена",
@@ -1554,7 +1554,7 @@
         "total_due_later_label": "Общо дължимо по-късно",
         "discount_code_allocations_mismatch": "Вашият код за отстъпка <strong style=\"text-transform:uppercase\">%{code}</strong> се е променило. Моля, прегледайте пазарската си количка и опитайте отново.",
         "deferred_total_due_date_label_next": "Краен срок: %{date}",
-        "total_due_label": "Напълно дължимо",
+        "total_due_label": "Общо дължимо",
         "total_price_label": "Обща цена",
         "for_add_on": "за: %{group_title}",
         "unconfirmed_label": "Непотвърдено",
@@ -1640,7 +1640,7 @@
         "amount_left_to_pay_label": "Краен срок за плащане:",
         "discount_button_action_label": "Приложете код за отстъпка",
         "gift_card_code_label": "Код на подаръчна карта",
-        "apply_gift_card_button_label": "Кандидатствайте",
+        "apply_gift_card_button_label": "Приложи",
         "gift_card_balance_label": "Баланс:",
         "supported_card_brands_more_label": "и още...",
         "detected_card_brand": "Разкрита марка на картата: {brand}",
@@ -1728,7 +1728,7 @@
         "billing_address_associated_with_mandate_info": "За да промените адреса си за фактуриране, премахнете и въведете отново данните за кредитната си карта",
         "credit_card_vaulting_sign_in_banner_title": "Запазете кредитната си карта",
         "credit_card_vaulting_sign_in_banner_info": "Влезте или създайте акаунт, за да запазите кредитната си карта за бъдещи покупки.",
-        "credit_card_vaulting_sign_in_banner_button_label": "Свържете се",
+        "credit_card_vaulting_sign_in_banner_button_label": "Вход",
         "expiry_long": "(Изтича през %{month}/%{year})",
         "expiry_short": "(Експ. в %{month}/%{year})",
         "ftd_vault_credit_card_label": "Искам да запазя тази кредитна карта в акаунта си за по-бързо плащане",
@@ -2127,9 +2127,9 @@
           "other": "Тези операции бяха извършени безплатно"
         },
         "thank_you_item_label": {
-          "few": "%{count} статии",
-          "one": "%{count} статия",
-          "other": "%{count} статии"
+          "few": "%{count} артикула",
+          "one": "%{count} артикул",
+          "other": "%{count} артикула"
         },
         "thank_you_confirmed_items_with_email": {
           "few": "Скоро ще получите имейл съобщения за потвърждение с номера на вашите поръчки"
@@ -2227,7 +2227,7 @@
         "updated_time": "Актуализиран сега %{time_ago}",
         "failure": "Недоставено",
         "failed_title": "Вашата поръчка не можа да бъде доставена",
-        "failed_contact_merchant": "Свържете се %{company} да организираме доставката.",
+        "failed_contact_merchant": "Свържете се с %{company}, за да организираме доставката.",
         "failed_contact_merchant_no_company": "Свържете се с нас, за да организираме доставката.",
         "non_shippable_title": "Вашата поръчка е завършена",
         "login_title": "Влезте, за да видите всички подробности за поръчката",
@@ -2240,7 +2240,7 @@
         "order_number_label": "Номер на поръчката",
         "customer_validation_error": "Моля, въведете валиден имейл или номер на поръчка.",
         "customer_validation_error_phone": "Моля, въведете валиден телефонен номер или номер на поръчка.",
-        "login": "Свържете се",
+        "login": "Вход",
         "unfulfilled_items_title": "Подготовка за изпращане",
         "unfulfilled_items_description": "В момента подготвяме тези артикули за изпращане.",
         "order_updates_description_missing": "Не получавате актуализации за доставка.",
@@ -2459,10 +2459,10 @@
       },
       "open_graph_meta_tag": {
         "title_with_products": {
-          "few": "Купете го %{product_name} и все още %{count} статии",
+          "few": "Купете %{product_name} и още %{count} артикула",
           "zero": "Купете го %{product_name}",
-          "one": "Купете го %{product_name} и все още %{count} статия",
-          "other": "Купете го %{product_name} и все още %{count} статии"
+          "one": "Купете %{product_name} и още %{count} артикул",
+          "other": "Купете %{product_name} и още %{count} артикула"
         }
       },
       "subscriptions": {
@@ -2562,9 +2562,9 @@
       "deliverability": {
         "not_deliverable": {
           "title": {
-            "few": "Няма наличен начин на доставка за %{count} (от) статии",
-            "one": "Няма наличен начин на доставка за %{count} статия",
-            "other": "Няма наличен начин на доставка за %{count} (от) статии"
+            "few": "Няма наличен начин на доставка за %{count} артикула",
+            "one": "Няма наличен начин на доставка за %{count} артикул",
+            "other": "Няма наличен начин на доставка за %{count} артикула"
           },
           "message": {
             "few": "Тези артикули ще бъдат премахнати от вашата количка, защото няма налични методи за доставка за вашия адрес.",
@@ -2695,9 +2695,9 @@
         "location_closest": "Най-близкото местоположение с вашия артикул",
         "toggle_multiple_locations": "други риби %{count} местоположения",
         "location_information_far_away": {
-          "one": "намерих %{count} местоположение с вашата статия",
-          "other": "намерих %{count} местоположения с вашата статия",
-          "few": "намерих %{count} местоположения с вашата статия"
+          "one": "Намерено е %{count} местоположение с вашия артикул",
+          "other": "Намерени са %{count} местоположения с вашия артикул",
+          "few": "Намерени са %{count} местоположения с вашия артикул"
         },
         "location_nearby": {
           "one": "Има %{count} местоположение наблизо с вашия артикул",
@@ -2710,9 +2710,9 @@
           "few": "%{count} близки местоположения с вашия артикул"
         },
         "location_far_away": {
-          "one": "%{count} местоположение с вашата статия",
-          "other": "%{count} местоположения с вашата статия",
-          "few": "%{count} местоположения с вашата статия"
+          "one": "%{count} местоположение с вашия артикул",
+          "other": "%{count} местоположения с вашия артикул",
+          "few": "%{count} местоположения с вашия артикул"
         },
         "toggle_more_locations": {
           "one": "още %{count} местоположение",
@@ -2725,7 +2725,7 @@
           "few": "Няма местоположения с вашите артикули"
         },
         "pickup_unavailable_banner_title_with_country": {
-          "one": "в %{country} няма местоположения с вашата статия",
+          "one": "В %{country} няма местоположения с вашия артикул",
           "other": "в %{country} няма местоположения с вашите артикули",
           "few": "в %{country} няма местоположения с вашите артикули"
         },
@@ -2734,8 +2734,8 @@
         "location_closest_other_items": "Най-близкото местоположение с вашите артикули.",
         "location_information_far_away_one_item": {
           "one": "Има %{count} местоположение с вашия артикул",
-          "other": "Има %{count} местоположения с вашата статия",
-          "few": "Има %{count} местоположения с вашата статия"
+          "other": "Има %{count} местоположения с вашия артикул",
+          "few": "Има %{count} местоположения с вашия артикул"
         },
         "location_information_far_away_other_items": {
           "one": "Има %{count} местоположение с вашите артикули",
@@ -2764,8 +2764,8 @@
         },
         "location_far_away_one_item": {
           "one": "%{count} местоположение с вашия артикул",
-          "other": "%{count} местоположения с вашата статия",
-          "few": "%{count} местоположения с вашата статия"
+          "other": "%{count} местоположения с вашия артикул",
+          "few": "%{count} местоположения с вашия артикул"
         },
         "location_far_away_other_items": {
           "one": "%{count} местоположение с вашите артикули",
@@ -2809,9 +2809,9 @@
       },
       "remote_merchandise_only": {
         "detail_item_label": {
-          "few": "{{count}} статии",
-          "one": "{{count}} статия",
-          "other": "{{count}} статии"
+          "few": "{{count}} артикула",
+          "one": "{{count}} артикул",
+          "other": "{{count}} артикула"
         },
         "title": "Завършете покупката",
         "remote_only_notice": "Тези артикули се продават и изпращат от други магазини. Платете във всеки отделен магазин, за да завършите покупката си.",
@@ -3124,7 +3124,7 @@
         "missing_cvc": "Въведете код за сигурност"
       },
       "alternative_payment_method_banner": {
-        "express_checkout": "Експресно изпълнение на поръчка",
+        "express_checkout": "Експресно плащане",
         "or": "ИЛИ",
         "show_more_options": "Покажи още опции",
         "hide_more_options": "Скриване на допълнителни опции",
@@ -3150,7 +3150,7 @@
         "login_prompt": {
           "no_access": {
             "message": "{{logIn}} към акаунт, който има достъп до това местоположение, за да добавите или използвате запазени методи на плащане.",
-            "link": "Свържете се"
+            "link": "Вход"
           }
         },
         "direct_payment_terms": "Трябва да спазвате условията {{translatedName}}. Вашата карта ще бъде таксувана {{dueDate}}.",
@@ -3201,14 +3201,14 @@
           "company_location": "Местоположение на фирмата",
           "change_company_location_link_label": "Промяна на адреса на фирмата",
           "pickup_items_at": {
-            "one": "Повдигане %{count} статия от",
-            "other": "Повдигане %{count} статии от",
-            "few": "Повдигане %{count} статии от"
+            "one": "Вземане на %{count} артикул от",
+            "other": "Вземане на %{count} артикула от",
+            "few": "Вземане на %{count} артикула от"
           },
           "ship_items_to": {
-            "one": "Доставка %{count} статия в",
-            "other": "Доставка %{count} статии в",
-            "few": "Доставка %{count} статии в"
+            "one": "Доставка на %{count} артикул до",
+            "other": "Доставка на %{count} артикула до",
+            "few": "Доставка на %{count} артикула до"
           },
           "no_purchase_order_number_long": "Няма номер на поръчка за покупка"
         },
@@ -3252,7 +3252,7 @@
         "privacy_policy": "Политика за поверителност",
         "terms_of_service": "Условия за ползване",
         "legal_notice": "Правна информация",
-        "shipping_policy": "Транспорт",
+        "shipping_policy": "Политика за доставка",
         "terms_of_sale": "Условия за продажба",
         "subscription_policy": "Анулации",
         "purchase_options_policy": "Политика за опции за покупка",
@@ -3476,7 +3476,7 @@
             }
           },
           "remove_item": {
-            "one": "премахнете статията",
+            "one": "премахнете артикула",
             "other": "премахване на елементи",
             "few": "премахване на елементи"
           },
@@ -3499,10 +3499,10 @@
         },
         "items_for_shipping": "Артикули за изпращане",
         "pickup_items_count": {
-          "few": "Повдигане %{count} статии"
+          "few": "Вземане на %{count} артикула"
         },
         "ship_items_count": {
-          "few": "Доставка %{count} статии"
+          "few": "Доставка на %{count} артикула"
         },
         "items_moved_to_shipping_toast": "Артикулите, които не могат да бъдат взети, са преместени в доставката",
         "cross_border": {
@@ -3515,7 +3515,7 @@
           "banner": "Вашият начин на доставка е актуализиран"
         },
         "items_count": {
-          "few": "%{count} статии"
+          "few": "%{count} артикула"
         },
         "accessibility": {
           "status": {
@@ -3753,7 +3753,7 @@
         "foot": "крак",
         "yard": "двор",
         "square_foot": "квадратен фут",
-        "item": "статия"
+        "item": "артикул"
       },
       "memberships": {
         "delivery_promise_unfulfillable": "Адресът не се приема за текущия абонамент.",
@@ -3971,7 +3971,7 @@
         "empty_update": "не може да актуализира празната кошница",
         "missing_parameters": "няма валиден идентификатор или параметър на реда",
         "generic_error": "Грешка в кошницата",
-        "too_many_line_items_error": "Вашата кошница не може да съдържа риба %{max} статии.",
+        "too_many_line_items_error": "Количката ви не може да съдържа повече от %{max} артикула.",
         "link_expired": "Линкът е изтекъл",
         "link_no_longer_exists": "Връзката вече не съществува.",
         "stock_problems_html": "Един или повече артикули вече не са налични. Направих го достъпно <a href='%{link}'>актуализирана кошница</a>.",
@@ -4106,7 +4106,7 @@
       "customer_already_used_once_per_customer_discount_notice": "Тази отстъпка достигна лимита си за използване",
       "gift_card_already_applied": "Кодът вече е приложен при плащане",
       "gift_card_code_invalid": "Кодът не е валиден",
-      "gift_card_currency_mismatch": "Тази подаръчна карта не може да се използва за тази покупка. Свържете се %{shop_name} за преиздаването му.",
+      "gift_card_currency_mismatch": "Тази подаръчна карта не може да се използва за тази покупка. Свържете се с %{shop_name} за преиздаването ѝ.",
       "gift_card_depleted": "Няма останали средства по тази подаръчна карта",
       "gift_card_disabled": "Картата за подарък е деактивирана",
       "gift_card_expired": "Картата за подарък е изтекла",
@@ -4294,7 +4294,7 @@
           "few": "{{count}} изделия"
         },
         "column_headers": {
-          "total": "Напълно",
+          "total": "Общо",
           "order": "ред",
           "actions_accessibility_label": "Действия",
           "products_accessibility_label": "Продукти"
