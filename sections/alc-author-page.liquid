@@ -93,23 +93,37 @@
   endif
 
   # Setting defaults are Romanian/English and not saved in the template, so translation
-  # apps never see them: the Polish storefront gets its own wording.
+  # apps never see them: each storefront language gets its own wording here.
   assign hero_eyebrow_label = section.settings.eyebrow
   assign hero_years_label = section.settings.years_label
   assign hero_archive_label = section.settings.archive_label
-  if request.locale.iso_code == 'pl'
-    if fallback_bio == section.settings.default_bio
-      assign fallback_bio = '<p>Pisze o oświetleniu i aranżacji wnętrz dla Alessandro Design.</p>'
-    endif
-    if hero_eyebrow_label == 'Author, Alessandro Design'
-      assign hero_eyebrow_label = 'Autor, Alessandro Design'
-    endif
-    if hero_years_label == 'active'
-      assign hero_years_label = 'aktywność'
-    endif
-    if hero_archive_label == 'See all articles'
-      assign hero_archive_label = 'Zobacz wszystkie artykuły'
-    endif
+  assign l_bio = ''
+  assign l_eyebrow = ''
+  assign l_years = ''
+  assign l_archive = ''
+  case request.locale.iso_code
+    when 'pl'
+      assign l_bio = '<p>Pisze o oświetleniu i aranżacji wnętrz dla Alessandro Design.</p>'
+      assign l_eyebrow = 'Autor, Alessandro Design'
+      assign l_years = 'aktywność'
+      assign l_archive = 'Zobacz wszystkie artykuły'
+    when 'hu'
+      assign l_bio = '<p>Világításról és lakberendezésről ír az Alessandro Design számára.</p>'
+      assign l_eyebrow = 'Szerző, Alessandro Design'
+      assign l_years = 'aktív'
+      assign l_archive = 'Az összes cikk megtekintése'
+  endcase
+  if l_bio != blank and fallback_bio == section.settings.default_bio
+    assign fallback_bio = l_bio
+  endif
+  if l_eyebrow != blank and hero_eyebrow_label == 'Author, Alessandro Design'
+    assign hero_eyebrow_label = l_eyebrow
+  endif
+  if l_years != blank and hero_years_label == 'active'
+    assign hero_years_label = l_years
+  endif
+  if l_archive != blank and hero_archive_label == 'See all articles'
+    assign hero_archive_label = l_archive
   endif
 -%}
 
