@@ -44,9 +44,13 @@
   </div>
 
   <div class="alc-csl__shell">
-    <ul class="alc-csl__track" role="list" data-track>
+    {%- comment -%}
+      Not a ul: on the storefront Shopify wraps each card block in its own element, so the
+      track's children are those wrappers (sized in the CSS), not the cards.
+    {%- endcomment -%}
+    <div class="alc-csl__track" role="list" data-track>
       {%- content_for 'blocks' -%}
-    </ul>
+    </div>
     <div class="alc-csl__nav">
       <button type="button" class="alc-csl__arrow" data-prev aria-label="{{ 'general.slider.previous_slide' | t | escape }}" disabled>
         <svg aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 6l-6 6 6 6"/></svg>

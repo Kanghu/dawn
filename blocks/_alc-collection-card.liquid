@@ -22,7 +22,7 @@
     assign card_tag = 'a'
   endif
 -%}
-<li class="alc-csl__item" {{ block.shopify_attributes }}>
+<div class="alc-csl__item" role="listitem" {{ block.shopify_attributes }}>
   <{{ card_tag }}
     class="alc-csl__card"
     {% if collection != blank %}
@@ -56,7 +56,7 @@
       </span>
     </div>
   </{{ card_tag }}>
-</li>
+</div>
 
 {% schema %}
 {
