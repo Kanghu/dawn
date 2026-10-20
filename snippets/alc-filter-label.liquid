@@ -45,6 +45,10 @@
           assign w = 'Abstraktný|Geometrický|Lineárny|Štvorcový / Obdĺžnikový|Okrúhly|Spálňa / Kuchyňa / Kancelária|Šatník / Chodba|Exteriér|Komerčné priestory / Obývačka / Schodisko|Vypínač na kábli / zástrčka|VEĽKÝ ( > 50 cm )|STREDNÝ ( 30 - 50 cm)|MALÝ ( < 30 cm )'
         when 'nl'
           assign w = 'Abstract|Geometrisch|Lineair|Vierkant / Rechthoekig|Rond|Slaapkamer / Keuken / Kantoor|Kleedkamer / Hal|Buiten|Commerciële ruimtes / Woonkamer / Trappenhuis|Snoerschakelaar / stekker|GROOT ( > 50 cm )|MIDDEL ( 30 - 50 cm)|KLEIN ( < 30 cm )'
+        when 'hr'
+          assign w = 'Apstraktni|Geometrijski|Linearni|Kvadratni / Pravokutni|Okrugli|Spavaća soba / Kuhinja / Ured|Garderoba / Hodnik|Vanjski prostor|Poslovni prostori / Dnevni boravak / Stubište|Prekidač na kabelu / utikač|VELIKI ( > 50 cm )|SREDNJI ( 30 - 50 cm)|MALI ( < 30 cm )'
+        when 'de'
+          assign w = 'Abstrakt|Geometrisch|Linear|Quadratisch / Rechteckig|Rund|Schlafzimmer / Küche / Büro|Ankleide / Flur|Außenbereich|Gewerbeflächen / Wohnzimmer / Treppenhaus|Schnurschalter / Stecker|GROSS ( > 50 cm )|MITTEL ( 30 - 50 cm)|KLEIN ( < 30 cm )'
       endcase
       if w != blank
         assign words = w | split: '|'

@@ -85,6 +85,8 @@
   case lang
     when 'ro', 'hu', 'bg', 'pl'
       assign help_url = 'https://help.alessandrodesign.ro/hc/alessandro-design/' | append: lang
+    when 'en', 'el', 'it', 'fr', 'de', 'cs', 'sk', 'hr', 'nl'
+      assign help_url = 'https://help.alessandrodesign.ro/hc/alessandro-design/en'
   endcase
 
   assign reveal = ''

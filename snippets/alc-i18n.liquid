@@ -41,6 +41,8 @@
       assign w = 'Pročitajte više|O kategoriji|Korisne poveznice|Često postavljana pitanja|Pročitajte sve|Manje|Istražite i|Šifra proizvoda|Pitanje od|Odgovor|Iz kategorije [category]|Moglo bi vas zanimati|Pogledajte sve: [category]|Vaša povijest|Nedavno pregledano|Obriši povijest|Dodajte još {amount} za besplatnu dostavu|Imate besplatnu dostavu!|Dostava|Besplatno|Procijenjena dostava|Sigurno plaćanje|Izračunava se na blagajni|Međuzbroj|Svi članci: [name]|Članci: [name]|Web stranica|[count] članak~[count] članka~[count] članaka|Ovaj autor još nije objavio nijedan članak.|Pročitajte članak'
     when 'de'
       assign w = 'Weiterlesen|Über|Nützliche Links|Häufig gestellte Fragen|Alles lesen|Weniger|Entdecken Sie auch|Artikelnummer|Frage von|Antwort|Aus der Kategorie [category]|Das könnte Sie auch interessieren|Alle ansehen: [category]|Ihr Verlauf|Zuletzt angesehen|Verlauf löschen|Noch {amount} bis zum kostenlosen Versand|Kostenloser Versand!|Versand|Kostenlos|Voraussichtliche Lieferung|Sichere Zahlung|Wird an der Kasse berechnet|Zwischensumme|Alle Artikel von [name]|Artikel von [name]|Website|[count] Artikel~[count] Artikel|Dieser Autor hat noch keine Artikel veröffentlicht.|Artikel lesen'
+    when 'nl'
+      assign w = 'Lees meer|Over|Handige links|Veelgestelde vragen|Alles lezen|Toon minder|Ontdek ook|Productcode|Gevraagd door|Antwoord|Uit de categorie [category]|Dit vind je misschien ook leuk|Bekijk alles: [category]|Jouw geschiedenis|Recent bekeken|Geschiedenis wissen|Nog {amount} tot gratis verzending|Je hebt gratis verzending!|Verzending|Gratis|Verwachte levering|Veilig betalen|Berekend bij het afrekenen|Subtotaal|Alle artikelen van [name]|Artikelen van [name]|Website|[count] artikel~[count] artikelen|Deze auteur heeft nog geen artikelen gepubliceerd.|Lees het artikel'
     else
       assign w = 'Citește mai mult|Despre|Link-uri utile|Întrebări frecvente|Citește tot|Arată mai puțin|Explorează și|Cod produs|Întrebare de la|Răspuns|Din categoria [category]|Te-ar putea interesa și următoarele|Vezi toate produsele din [category]|Istoricul tău|Vizualizate recent|Șterge istoricul|Mai adaugă {amount} pentru livrare gratuită|Ai livrare gratuită!|Transport|Gratuit|Livrare estimată|Plată securizată|Se calculează la checkout|Subtotal|Toate articolele de [name]|Articole de [name]|Site web|[count] articol~[count] articole~[count] de articole|Acest autor nu are încă articole publicate.|Citește articolul'
   endcase
@@ -135,7 +137,7 @@
           if n <= 1
             assign form = 0
           endif
-        when 'en', 'bg', 'el', 'it', 'de'
+        when 'en', 'bg', 'el', 'it', 'de', 'nl'
           if n == 1
             assign form = 0
           endif
