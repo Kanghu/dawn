@@ -1,0 +1,396 @@
+{% comment %}
+  Homepage Black Friday banner, in place of the campaign spotlight (sections/alc-campaign-spotlight):
+  the Black Friday page's hero (sections/alc-black-friday) on one rounded black-marble stage,
+  then its hottest deals as poster cards in a sideways row, with links to the running offer.
+
+  - Hero: "Starts today / BLACK FRIDAY" (the line above the title follows the start date),
+    "up to -X%" computed from the products shown, "From 23 October", the countdown while the
+    start is ahead (assets/alc-black-friday.js), the button to the campaign collection (each
+    market's own address) and the stock note. The ads' living room at the edges (desktop) or
+    underneath (phones).
+  - Deals: the editor's list (the page's "hottest deals"), else the collection's deepest
+    in-stock deals, as snippets/alc-bf-poster cards, ending in a tile to all the deals.
+  - Keeps the matched-deals A/B test's visitor groups going (see the note at the end).
+
+  Built for phones first: two font files (Montserrat 900 and 800; the small lines use the
+  body font), the wide-screen photos only load on wide screens, the posters load lazily, and
+  the copy with its button fits the first screen.
+
+  Styles: assets/alc-black-friday.css (the page's tokens, type and posters) and
+  assets/alc-bf-spotlight.css (this layout). Texts have built-in translations for every
+  storefront language.
+{% endcomment %}
+{%- liquid
+  assign campaign = section.settings.collection
+  assign display_font = section.settings.display_font
+  assign font_bold = display_font | font_modify: 'weight', '800'
+
+  assign lang = request.locale.iso_code | downcase | slice: 0, 2
+  case lang
+    when 'en'
+      assign w = 'Coming soon|Starts today|It’s on|Up to|From {date}|Discover the deals|*While stocks last.|The hottest deals|You save|Previous|Next|All Black Friday deals|Starts in|day|days|hours|min|sec'
+      assign mw = 'January|February|March|April|May|June|July|August|September|October|November|December'
+      assign date_pat = 'd m'
+    when 'hu'
+      assign w = 'Hamarosan|Ma kezdődik a|Elkezdődött a|Akár|{date}|Fedezze fel az ajánlatokat|*A készlet erejéig.|A legforróbb ajánlatok|Megtakarítás:|Előző|Következő|Összes Black Friday ajánlat|Kezdésig|nap|nap|óra|perc|mp'
+      assign mw = 'január|február|március|április|május|június|július|augusztus|szeptember|október|november|december'
+      assign date_pat = 'hu'
+    when 'pl'
+      assign w = 'Już wkrótce|Dziś startuje|Trwa|Do|Od {date}|Odkryj oferty|*Do wyczerpania zapasów.|Najgorętsze oferty|Oszczędzasz|Wstecz|Dalej|Wszystkie oferty Black Friday|Start za|dzień|dni|godz.|min|sek'
+      assign mw = 'stycznia|lutego|marca|kwietnia|maja|czerwca|lipca|sierpnia|września|października|listopada|grudnia'
+      assign date_pat = 'd m'
+    when 'el'
+      assign w = 'Έρχεται η|Ξεκινά σήμερα η|Ξεκίνησε η|Έως|Από {date}|Δείτε τις προσφορές|*Έως εξαντλήσεως των αποθεμάτων.|Οι πιο καυτές προσφορές|Κερδίζετε|Προηγούμενα|Επόμενα|Όλες οι προσφορές Black Friday|Ξεκινά σε|ημέρα|ημέρες|ώρες|λεπτά|δευτ.'
+      assign mw = 'Ιανουαρίου|Φεβρουαρίου|Μαρτίου|Απριλίου|Μαΐου|Ιουνίου|Ιουλίου|Αυγούστου|Σεπτεμβρίου|Οκτωβρίου|Νοεμβρίου|Δεκεμβρίου'
+      assign date_pat = 'd m'
+    when 'bg'
+      assign w = 'Очаквайте|Днес започва|Започна|До|От {date}|Разгледайте офертите|*До изчерпване на количествата.|Най-горещите оферти|Спестявате|Назад|Напред|Всички оферти за Black Friday|Започва след|ден|дни|часа|мин|сек'
+      assign mw = 'януари|февруари|март|април|май|юни|юли|август|септември|октомври|ноември|декември'
+      assign date_pat = 'd m'
+    when 'it'
+      assign w = 'Sta arrivando il|Inizia oggi il|È iniziato il|Fino al|Dal {date}|Scopri le offerte|*Fino a esaurimento scorte.|Le offerte più calde|Risparmi|Precedenti|Successivi|Tutte le offerte Black Friday|Inizia tra|giorno|giorni|ore|min|sec'
+      assign mw = 'gennaio|febbraio|marzo|aprile|maggio|giugno|luglio|agosto|settembre|ottobre|novembre|dicembre'
+      assign date_pat = 'd m'
+    when 'fr'
+      assign w = 'Bientôt le|Aujourd’hui commence le|C’est parti pour le|Jusqu’à|Dès le {date}|Découvrir les offres|*Dans la limite des stocks disponibles.|Les offres les plus chaudes|Vous économisez|Précédent|Suivant|Toutes les offres Black Friday|Début dans|jour|jours|h|min|s'
+      assign mw = 'janvier|février|mars|avril|mai|juin|juillet|août|septembre|octobre|novembre|décembre'
+      assign date_pat = 'd m'
+    when 'cs'
+      assign w = 'Již brzy|Dnes začíná|Právě probíhá|Až|Od {date}|Objevte nabídky|*Do vyprodání zásob.|Nejžhavější nabídky|Ušetříte|Předchozí|Další|Všechny nabídky Black Friday|Začíná za|den|dní|hod|min|s'
+      assign mw = 'ledna|února|března|dubna|května|června|července|srpna|září|října|listopadu|prosince'
+      assign date_pat = 'd. m'
+    when 'sk'
+      assign w = 'Už čoskoro|Dnes začína|Práve prebieha|Až|Od {date}|Objavte ponuky|*Do vypredania zásob.|Najhorúcejšie ponuky|Ušetríte|Predchádzajúce|Ďalšie|Všetky ponuky Black Friday|Začína o|deň|dní|hod|min|s'
+      assign mw = 'januára|februára|marca|apríla|mája|júna|júla|augusta|septembra|októbra|novembra|decembra'
+      assign date_pat = 'd. m'
+    when 'hr'
+      assign w = 'Uskoro|Danas počinje|U tijeku je|Do|Od {date}|Otkrijte ponude|*Do isteka zaliha.|Najtoplije ponude|Uštedite|Prethodno|Sljedeće|Sve Black Friday ponude|Počinje za|dan|dana|sati|min|sek'
+      assign mw = 'siječnja|veljače|ožujka|travnja|svibnja|lipnja|srpnja|kolovoza|rujna|listopada|studenoga|prosinca'
+      assign date_pat = 'd. m'
+    when 'de'
+      assign w = 'Demnächst|Heute startet der|Jetzt läuft der|Bis zu|Ab {date}|Angebote entdecken|*Solange der Vorrat reicht.|Die heißesten Angebote|Sie sparen|Zurück|Weiter|Alle Black-Friday-Angebote|Start in|Tag|Tage|Std.|Min.|Sek.'
+      assign mw = 'Januar|Februar|März|April|Mai|Juni|Juli|August|September|Oktober|November|Dezember'
+      assign date_pat = 'd. m'
+    when 'nl'
+      assign w = 'Binnenkort|Vandaag begint|Nu bezig:|Tot|Vanaf {date}|Ontdek de aanbiedingen|*Zolang de voorraad strekt.|De heetste aanbiedingen|U bespaart|Vorige|Volgende|Alle Black Friday-aanbiedingen|Begint over|dag|dagen|uur|min|sec'
+      assign mw = 'januari|februari|maart|april|mei|juni|juli|augustus|september|oktober|november|december'
+      assign date_pat = 'd m'
+    else
+      assign w = 'În curând|Azi a început|A început|Până la|Din {date}|Descoperă ofertele|*În limita stocului disponibil.|Cele mai tari oferte|Economisești|Înapoi|Înainte|Toate ofertele Black Friday|Începe în|zi|zile|ore|min|sec'
+      assign mw = 'ianuarie|februarie|martie|aprilie|mai|iunie|iulie|august|septembrie|octombrie|noiembrie|decembrie'
+      assign date_pat = 'd m'
+  endcase
+  assign t = w | split: '|'
+  assign months = mw | split: '|'
+  assign date_token = '{' | append: 'date' | append: '}'
+
+  comment
+    The line above the title, as on the page: soon / starts today / running.
+  endcomment
+  assign start_date = section.settings.start_date | strip
+  assign today_str = 'now' | date: '%Y-%m-%d'
+  assign state = 'live'
+  if start_date != blank
+    if today_str < start_date
+      assign state = 'soon'
+    elsif today_str == start_date
+      assign state = 'today'
+    endif
+  endif
+  case state
+    when 'soon'
+      assign kicker = t[0]
+    when 'today'
+      assign kicker = t[1]
+    else
+      assign kicker = t[2]
+  endcase
+
+  comment
+    "From 23 October" in the page language (Hungarian: "október 23-tól").
+  endcomment
+  assign since_text = ''
+  if start_date != blank
+    assign s_day = start_date | date: '%-d' | plus: 0
+    assign s_month = start_date | date: '%-m' | plus: 0 | minus: 1
+    assign s_month_name = months[s_month]
+    case date_pat
+      when 'hu'
+        assign last_digit = s_day | modulo: 10
+        if last_digit == 0
+          assign tens = s_day | divided_by: 10
+          if tens == 1
+            assign sfx = 'től'
+          else
+            assign sfx = 'tól'
+          endif
+        elsif last_digit == 3 or last_digit == 6 or last_digit == 8
+          assign sfx = 'tól'
+        else
+          assign sfx = 'től'
+        endif
+        assign s_date = s_month_name | append: ' ' | append: s_day | append: '-' | append: sfx
+      when 'd. m'
+        assign s_date = s_day | append: '. ' | append: s_month_name
+      else
+        assign s_date = s_day | append: ' ' | append: s_month_name
+    endcase
+    assign since_text = t[4] | replace: date_token, s_date
+  endif
+
+  comment
+    Countdown to the start while it is ahead; the script hides it afterwards.
+  endcomment
+  assign show_clock = false
+  if state == 'soon'
+    assign show_clock = true
+    assign now_s = 'now' | date: '%s' | plus: 0
+    assign target_s = start_date | append: ' 00:00:00 +0300' | date: '%s' | plus: 0
+    assign left_s = target_s | minus: now_s | at_least: 0
+    assign c_d = left_s | divided_by: 86400
+    assign c_rest = left_s | modulo: 86400
+    assign c_h = c_rest | divided_by: 3600 | plus: 100 | append: '' | slice: 1, 2
+    assign c_rest = c_rest | modulo: 3600
+    assign c_m = c_rest | divided_by: 60 | plus: 100 | append: '' | slice: 1, 2
+    assign c_s = c_rest | modulo: 60 | plus: 100 | append: '' | slice: 1, 2
+  endif
+
+  assign cta_label = section.settings.cta_label | default: t[5]
+  assign link = section.settings.cta_link
+  if link == blank and campaign != blank
+    assign link = campaign.url
+  endif
+-%}
+
+{%- liquid
+  comment
+    The products: the editor's list (in stock only), else the collection's deepest in-stock
+    deals.
+  endcomment
+  assign no_products = '' | split: ','
+  assign posters = section.settings.products | where: 'available'
+  if section.settings.products.size == 0 and campaign != blank
+    assign keys = ''
+    for p in campaign.products
+      if p.available and p.compare_at_price > p.price
+        assign pct = p.compare_at_price | minus: p.price | times: 100.0 | divided_by: p.compare_at_price | round
+        assign inv = 100 | minus: pct | plus: 1000 | append: '' | slice: 1, 3
+        assign ord = forloop.index0 | plus: 10000 | append: '' | slice: 1, 4
+        assign keys = keys | append: inv | append: ord | append: '~' | append: p.id | append: ','
+      endif
+    endfor
+    assign keys = keys | split: ',' | sort
+    assign posters = no_products
+    for key in keys limit: section.settings.products_count
+      assign wanted_id = key | split: '~' | last | plus: 0
+      assign found = campaign.products | where: 'id', wanted_id
+      assign posters = posters | concat: found
+    endfor
+  endif
+
+  assign max_pct = 0
+  for p in posters
+    if p.compare_at_price > p.price
+      assign p_pct = p.compare_at_price | minus: p.price | times: 100.0 | divided_by: p.compare_at_price | round
+      if p_pct > max_pct
+        assign max_pct = p_pct
+      endif
+    endif
+  endfor
+
+  comment
+    Price levels for the matched-deals test (see the end): the 10th and 65th percentile of
+    the products shown, zero-padded so the text sort orders them as numbers.
+  endcomment
+  assign low_price = 0
+  assign high_price = 0
+  if posters.size > 0
+    assign price_keys = ''
+    for p in posters
+      assign price_keys = p.price | plus: 10000000000 | append: ',' | prepend: price_keys
+    endfor
+    assign price_keys = price_keys | split: ',' | sort
+    assign mid = price_keys.size | divided_by: 10
+    assign low_price = price_keys[mid] | minus: 10000000000
+    assign mid = price_keys.size | times: 65 | divided_by: 100
+    assign high_price = price_keys[mid] | minus: 10000000000
+  endif
+
+  assign deals_words = t[7] | split: ' '
+  assign deals_last = deals_words | last
+  assign deals_lead = t[7] | remove_last: deals_last | strip
+-%}
+
+{%- if link == blank and posters.size == 0 -%}
+  {%- if request.design_mode -%}
+    <div class="page-width" style="padding: 24px 0;">Black Friday spotlight: pick the campaign collection or products.</div>
+  {%- endif -%}
+{%- else -%}
+<link rel="preload" href="{{ display_font | font_url }}" as="font" type="font/woff2" crossorigin>
+{{ 'alc-black-friday.css' | asset_url | stylesheet_tag }}
+{{ 'alc-bf-spotlight.css' | asset_url | stylesheet_tag }}
+<script src="{{ 'alc-black-friday.js' | asset_url }}" defer="defer"></script>
+<script src="{{ 'product-form.js' | asset_url }}" defer="defer"></script>
+<style>
+  {{ display_font | font_face: font_display: 'swap' }}
+  {%- if font_bold %}{{ font_bold | font_face: font_display: 'swap' }}{% endif %}
+  .alc-bfh-{{ section.id }} {
+    --alc-bf-display: {{ display_font.family }}, 'Arial Black', 'Helvetica Neue', Arial, sans-serif;
+    --alc-bf-foil-img: url({{ 'alc-bf-foil.jpg' | asset_img_url: '320x' }});
+    --alc-bf-marble-img: url({{ 'alc-bf-marble.jpg' | asset_img_url: '1300x' }});
+    --alc-bf-marble-img-sm: url({{ 'alc-bf-marble.jpg' | asset_img_url: '900x' }});
+    --alc-bf-room-l: url({{ 'alc-bf-room-left.jpg' | asset_img_url: '495x' }});
+    --alc-bf-room-r: url({{ 'alc-bf-room-right.jpg' | asset_img_url: '495x' }});
+    --alc-bf-room-m: url({{ 'alc-bf-room-mobile.jpg' | asset_img_url: '720x' }});
+    --alc-bfh-pt: {{ section.settings.padding_top }}px;
+    --alc-bfh-pb: {{ section.settings.padding_bottom }}px;
+  }
+</style>
+
+<div class="alc-bfh-wrap alc-bfh-{{ section.id }}">
+  <div class="alc-of alc-bf alc-bfh" data-state="{{ state }}">
+    <div class="alc-bfh__hero">
+      <div class="alc-bfh__scene" aria-hidden="true">
+        <span class="alc-bfh__room alc-bfh__room--l"></span>
+        <span class="alc-bfh__room alc-bfh__room--r"></span>
+        <span class="alc-bfh__room alc-bfh__room--m"></span>
+        <span class="alc-bfh__lights"></span>
+      </div>
+
+      <div class="alc-bfh__copy">
+        <p class="alc-bf__brand alc-bf__rise"><span>Alessandro Design</span></p>
+        <h2 class="alc-bf__title">
+          <span class="alc-bf__kicker alc-bf__rise" data-kicker data-today="{{ t[1] | escape }}" data-live="{{ t[2] | escape }}">{{ kicker }}</span>
+          <span class="alc-bf__t1 alc-bf__rise">{{ section.settings.title_1 | escape }}</span>
+          <span class="alc-bf__t2 alc-bf__rise"><span class="alc-bf__t2-text">{{ section.settings.title_2 | escape }}</span></span>
+        </h2>
+
+        {%- if max_pct > 0 -%}
+          <p class="alc-bf__upto alc-bf__rise">
+            <span class="alc-bf__upto-pre">{{ t[3] }}</span>
+            <span class="alc-bf__upto-pct">-{{ max_pct }}%</span>
+          </p>
+        {%- endif -%}
+
+        {%- if since_text != blank -%}
+          <p class="alc-bf__since alc-bf__rise"><span>{{ since_text }}</span></p>
+        {%- endif -%}
+
+        {%- if start_date != blank -%}
+          <alc-bf-countdown
+            class="alc-bf__clock alc-bf__rise"
+            data-start="{{ start_date | escape }}"
+            data-end=""
+            data-label-start="{{ t[12] | escape }}"
+            data-label-end=""
+            data-day="{{ t[13] | escape }}"
+            data-days="{{ t[14] | escape }}"
+            {% unless show_clock %}hidden{% endunless %}
+          >
+            <span class="alc-bf__clock-label" data-label>{{ t[12] }}</span>
+            <span class="alc-bf__clock-units" role="timer" aria-live="off">
+              <span class="alc-bf__unit" data-d-unit{% if c_d == 0 %} hidden{% endif %}><b data-d>{{ c_d | default: 0 }}</b><small data-d-label>{% if c_d == 1 %}{{ t[13] }}{% else %}{{ t[14] }}{% endif %}</small></span>
+              <span class="alc-bf__unit"><b data-h>{{ c_h | default: '00' }}</b><small>{{ t[15] }}</small></span>
+              <span class="alc-bf__unit"><b data-m>{{ c_m | default: '00' }}</b><small>{{ t[16] }}</small></span>
+              <span class="alc-bf__unit"><b data-s>{{ c_s | default: '00' }}</b><small>{{ t[17] }}</small></span>
+            </span>
+          </alc-bf-countdown>
+        {%- endif -%}
+
+        {%- if link != blank -%}
+          <div class="alc-bf__actions alc-bf__rise">
+            <a class="alc-bf__cta" href="{{ link }}">
+              <span class="alc-bf__cta-text">{{ cta_label | escape }}</span>
+              <svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="m9 5 7 7-7 7"/></svg>
+            </a>
+          </div>
+        {%- endif -%}
+        <p class="alc-bf__fine alc-bf__rise">{{ t[6] }}</p>
+      </div>
+    </div>
+
+    {%- if posters.size > 0 -%}
+      <alc-bf-scroller class="alc-bfh__deals">
+        <div class="alc-bfh__deals-head">
+          <h3 class="alc-bfh__deals-title">
+            {%- if deals_lead != blank %}<span>{{ deals_lead }}</span> {% endif -%}
+            <span class="alc-bf__gold">{{ deals_last }}</span>
+          </h3>
+          <div class="alc-bfh__tools">
+            {%- if link != blank -%}
+              <a class="alc-bf__cat-link" href="{{ link }}">
+                {{- t[11] -}}
+                <svg aria-hidden="true" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+              </a>
+            {%- endif -%}
+            <button type="button" class="alc-bf__arrow" data-prev aria-label="{{ t[9] | escape }}" disabled>
+              <svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m15 6-6 6 6 6"/></svg>
+            </button>
+            <button type="button" class="alc-bf__arrow" data-next aria-label="{{ t[10] | escape }}">
+              <svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 6 6 6-6 6"/></svg>
+            </button>
+          </div>
+        </div>
+        <ul class="alc-bfh__track" role="list" data-track>
+          {%- for p in posters -%}
+            {%- render 'alc-bf-poster', product: p, position: forloop.index0, section_id: section.id, save_label: t[8], reveal: false, eager: false, widths: '280, 420, 560, 700', sizes: '(min-width: 1100px) 290px, (min-width: 750px) 34vw, 46vw' -%}
+          {%- endfor -%}
+          {%- if link != blank -%}
+            <li class="alc-bf__rail-end alc-bfh__end">
+              <a class="alc-bf__rail-all" href="{{ link }}">
+                <span class="alc-bf__rail-all-name">{{ t[11] }}</span>
+                <span class="alc-bf__rail-all-text">{{ cta_label | escape }}</span>
+                <span class="alc-bf__rail-all-go" aria-hidden="true">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12h16M14 6l6 6-6 6"/></svg>
+                </span>
+              </a>
+            </li>
+          {%- endif -%}
+        </ul>
+      </alc-bf-scroller>
+    {%- endif -%}
+
+    {%- comment -%}
+      Matched deals A/B test (snippets/alc-cs-personal, read with seo/personal-deals): the
+      campaign banner this section replaces gave every new visitor their group and price
+      level, which the homepage product sections (assets/alc-pz-sections.js) and the order
+      attribute _alc_pz rely on. An empty, hidden grid keeps that going; there are no tiles
+      to swap here, so the posters stay the same for everybody.
+    {%- endcomment -%}
+    {%- if section.settings.personalize and request.design_mode == false -%}
+      <div class="alc-bfh__pz" hidden>
+        <ul class="alc-cs__grid" data-count="12" data-low="{{ low_price }}" data-high="{{ high_price }}" data-cat-cap="2" data-share="{{ section.settings.personalize_share }}" data-currency="{{ cart.currency.iso_code }}"></ul>
+        {%- render 'alc-cs-personal' -%}
+      </div>
+    {%- endif -%}
+  </div>
+</div>
+{%- endif -%}
+
+{% schema %}
+{
+  "name": "Black Friday spotlight",
+  "tag": "section",
+  "class": "section",
+  "settings": [
+    { "type": "paragraph", "content": "Homepage banner in the look of the Black Friday page, with its hottest deals and a button to the offer. \"Up to X%\" is computed from the products shown." },
+    { "type": "collection", "id": "collection", "label": "Black Friday collection", "info": "The button and the last tile link here." },
+    { "type": "url", "id": "cta_link", "label": "Link", "info": "Empty: the collection's page (each market's own address)" },
+    { "type": "text", "id": "cta_label", "label": "Button", "info": "Empty: built-in text in every language" },
+    { "type": "text", "id": "start_date", "label": "Start date", "default": "2026-10-23", "info": "YYYY-MM-DD, as on the Black Friday page" },
+    { "type": "text", "id": "title_1", "label": "Title, first line (ivory)", "default": "Black" },
+    { "type": "text", "id": "title_2", "label": "Title, second line (gold)", "default": "Friday" },
+    { "type": "font_picker", "id": "display_font", "label": "Title font", "default": "montserrat_n9" },
+    { "type": "header", "content": "Products" },
+    { "type": "product_list", "id": "products", "label": "Products", "limit": 12, "info": "The Black Friday page's \"hottest deals\". Sold-out products are skipped. Empty: the collection's deepest deals." },
+    { "type": "range", "id": "products_count", "min": 3, "max": 12, "step": 1, "label": "Automatic products", "default": 9, "info": "When the list above is empty" },
+    { "type": "header", "content": "Matched deals test" },
+    { "type": "checkbox", "id": "personalize", "label": "Keep assigning test groups", "default": true, "info": "The homepage product sections match their products to half of the visitors; this banner gives new visitors their group, as the campaign banner did." },
+    { "type": "range", "id": "personalize_share", "min": 0, "max": 100, "step": 10, "unit": "%", "label": "Visitors in the matched group", "default": 50 },
+    { "type": "header", "content": "Spacing" },
+    { "type": "range", "id": "padding_top", "min": 0, "max": 60, "step": 4, "unit": "px", "label": "Top padding", "default": 24, "info": "Half on phones" },
+    { "type": "range", "id": "padding_bottom", "min": 0, "max": 60, "step": 4, "unit": "px", "label": "Bottom padding", "default": 32, "info": "Half on phones" }
+  ],
+  "presets": [{ "name": "Black Friday spotlight" }]
+}
+{% endschema %}

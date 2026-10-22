@@ -7,6 +7,9 @@
   - position: {Number} 0-based, the first three load eagerly
   - section_id: {String}
   - save_label: {String} "You save" in the page language
+  - eager: {Boolean} false to load every photo lazily (below the first screen)
+  - widths, sizes: {String} the photo's srcset widths and sizes (default: the page's posters)
+  - reveal: {Boolean} false in sideways rows (no scroll reveal, like Dawn's sliders)
 
   The price is cut at its decimal separator so the decimals can sit raised ("79,⁹⁹ lei"):
   the separator is the one ("," or ".") followed by the two cent digits with no digit after
@@ -61,12 +64,20 @@
     endif
   endif
 
+  assign img_widths = widths | default: '360, 540, 720, 900'
+  assign img_sizes = sizes | default: '(min-width: 990px) 400px, (min-width: 750px) 45vw, 80vw'
   assign img_loading = 'lazy'
-  if position < 3
+  if position < 3 and eager != false
     assign img_loading = 'eager'
   endif
 -%}
-<li class="alc-bf__poster{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}"{% if settings.animations_reveal_on_scroll %} data-cascade style="--animation-order: {{ position | plus: 1 }};"{% endif %}>
+{%- liquid
+  assign use_reveal = settings.animations_reveal_on_scroll
+  if reveal == false
+    assign use_reveal = false
+  endif
+-%}
+<li class="alc-bf__poster{% if use_reveal %} scroll-trigger animate--slide-in{% endif %}"{% if use_reveal %} data-cascade style="--animation-order: {{ position | plus: 1 }};"{% endif %}>
   <article class="alc-bf__card" style="--alc-bf-i: {{ position | modulo: 4 }};">
     <a class="alc-bf__card-media" href="{{ product.url }}" tabindex="-1" aria-hidden="true">
       <span class="alc-bf__niche">
@@ -75,8 +86,8 @@
             product.featured_media
             | image_url: width: 900
             | image_tag:
-              widths: '360, 540, 720, 900',
-              sizes: '(min-width: 990px) 400px, (min-width: 750px) 45vw, 80vw',
+              widths: img_widths,
+              sizes: img_sizes,
               loading: img_loading,
               alt: '',
               class: 'alc-bf__niche-img'

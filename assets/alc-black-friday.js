@@ -221,4 +221,38 @@
   }
 
   customElements.define('alc-bf-rail', AlcBfRail);
+
+  /**
+   * <alc-bf-scroller>: a sideways row ([data-track]) with [data-prev] / [data-next] arrows,
+   * used by the homepage spotlight (sections/alc-bf-spotlight.liquid).
+   */
+  class AlcBfScroller extends HTMLElement {
+    connectedCallback() {
+      if (this.bound) return;
+      this.bound = true;
+      this.track = this.querySelector('[data-track]');
+      this.prev = this.querySelector('[data-prev]');
+      this.next = this.querySelector('[data-next]');
+      if (!this.track) return;
+      this.prev?.addEventListener('click', () => this.page(-1));
+      this.next?.addEventListener('click', () => this.page(1));
+      this.track.addEventListener('scroll', () => this.updateArrows(), { passive: true });
+      this.updateArrows();
+    }
+
+    page(direction) {
+      const item = this.track.firstElementChild;
+      const width = item ? item.getBoundingClientRect().width : 0;
+      this.track.scrollBy({ left: direction * Math.max(width, this.track.clientWidth - width), behavior: 'smooth' });
+    }
+
+    updateArrows() {
+      if (!this.prev || !this.next) return;
+      const max = this.track.scrollWidth - this.track.clientWidth - 2;
+      this.prev.disabled = this.track.scrollLeft <= 2;
+      this.next.disabled = this.track.scrollLeft >= max;
+    }
+  }
+
+  customElements.define('alc-bf-scroller', AlcBfScroller);
 })();

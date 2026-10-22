@@ -1,0 +1,431 @@
+/* Homepage Black Friday banner (sections/alc-bf-spotlight.liquid), in place of the campaign
+   spotlight: the Black Friday page's hero on one rounded black-marble stage up to 1300px
+   wide, then the hottest deals as poster cards in a sideways row. Type, tokens, posters and
+   the gold leaf come from assets/alc-black-friday.css; this file sizes them for the stage.
+   Phones: full bleed; the copy and its button fit the first screen, the ads' living room
+   sits under them and the first poster peeks in below. */
+.alc-bfh-wrap {
+  max-width: calc(1300px + 40px);
+  margin: 0 auto;
+  padding: var(--alc-bfh-pt, 24px) 20px var(--alc-bfh-pb, 32px);
+}
+
+.alc-of.alc-bf.alc-bfh {
+  border-radius: 28px;
+  background:
+    linear-gradient(180deg, rgba(11, 10, 9, 0.5) 0%, rgba(11, 10, 9, 0.84) 46%, rgba(11, 10, 9, 0.92) 100%),
+    var(--alc-bf-marble-img) center top / 1300px auto,
+    var(--alc-bf-black);
+}
+
+/* Hero ---------------------------------------------------------------------- */
+.alc-bfh__hero {
+  position: relative;
+  isolation: isolate;
+  display: grid;
+  place-items: center;
+  padding: 44px 24px 40px;
+  overflow: hidden;
+  text-align: center;
+}
+
+.alc-bfh__scene {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+}
+
+.alc-bfh__room {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: min(33%, 440px);
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.alc-bfh__room--l {
+  left: 0;
+  background-image: var(--alc-bf-room-l);
+  background-position: 30% 50%;
+  -webkit-mask-image: linear-gradient(90deg, #000 40%, rgba(0, 0, 0, 0.55) 68%, transparent 100%);
+  mask-image: linear-gradient(90deg, #000 40%, rgba(0, 0, 0, 0.55) 68%, transparent 100%);
+}
+
+.alc-bfh__room--r {
+  right: 0;
+  background-image: var(--alc-bf-room-r);
+  background-position: 70% 50%;
+  -webkit-mask-image: linear-gradient(270deg, #000 40%, rgba(0, 0, 0, 0.55) 68%, transparent 100%);
+  mask-image: linear-gradient(270deg, #000 40%, rgba(0, 0, 0, 0.55) 68%, transparent 100%);
+}
+
+.alc-bfh__room--m {
+  display: none;
+}
+
+.alc-bfh__lights {
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(40% 50% at 50% 0%, rgba(255, 214, 140, 0.2) 0%, rgba(255, 214, 140, 0) 70%),
+    radial-gradient(32% 42% at 50% 48%, rgba(214, 160, 76, 0.12) 0%, rgba(214, 160, 76, 0) 72%),
+    linear-gradient(180deg, rgba(11, 10, 9, 0) 70%, rgba(11, 10, 9, 0.85) 100%);
+}
+
+.alc-bfh__copy {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  max-width: 640px;
+}
+
+/* The small lines use the body font: the stage loads only the title's two weights. */
+.alc-bfh .alc-bf__brand {
+  font-family: var(--font-body-family);
+  font-size: 13px;
+  font-weight: 400;
+}
+
+.alc-bfh .alc-bf__title {
+  margin-top: 18px;
+}
+
+.alc-bfh .alc-bf__kicker {
+  font-size: clamp(22px, 2.3vw, 32px);
+}
+
+.alc-bfh .alc-bf__t1,
+.alc-bfh .alc-bf__t2 {
+  font-size: clamp(64px, 8.6vw, 124px);
+}
+
+.alc-bfh .alc-bf__upto {
+  margin-top: 24px;
+}
+
+.alc-bfh .alc-bf__upto-pct {
+  font-size: clamp(50px, 5.4vw, 74px);
+}
+
+.alc-bfh .alc-bf__since {
+  margin-top: 22px;
+}
+
+.alc-bfh .alc-bf__actions {
+  margin-top: 22px;
+}
+
+.alc-bfh .alc-bf__fine {
+  font-family: var(--font-body-family);
+}
+
+/* Deals --------------------------------------------------------------------- */
+.alc-bfh__deals {
+  display: block;
+  padding: 8px 28px 30px;
+}
+
+.alc-bfh__deals-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 6px;
+  padding-bottom: 14px;
+  border-bottom: 1px solid var(--alc-bf-line);
+}
+
+.alc-bf .alc-bfh__deals-title {
+  margin: 0;
+  font-family: var(--alc-bf-display);
+  font-size: clamp(20px, 2vw, 26px);
+  font-weight: 800;
+  line-height: 1.15;
+  letter-spacing: 0;
+  text-transform: uppercase;
+  color: var(--alc-bf-ivory);
+}
+
+.alc-bfh__deals-title .alc-bf__gold {
+  display: inline-block;
+}
+
+.alc-bfh__tools {
+  display: flex;
+  flex: none;
+  align-items: center;
+  gap: 8px;
+}
+
+.alc-bfh__track {
+  display: grid;
+  grid-auto-flow: column;
+  grid-auto-columns: calc((100% - 3 * 16px) / 4);
+  gap: 16px;
+  margin: 0;
+  padding: 14px 0 4px;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scrollbar-width: none;
+  list-style: none;
+  -webkit-overflow-scrolling: touch;
+}
+
+.alc-bfh__track::-webkit-scrollbar {
+  display: none;
+}
+
+.alc-bfh__track > li {
+  min-width: 0;
+  scroll-snap-align: start;
+}
+
+/* Posters, four to a row. Concentric corners: 22px card, minus the 1px border and the
+   10px inset. */
+.alc-bfh .alc-bf__card {
+  padding: 10px 10px 18px;
+  border-radius: 22px;
+}
+
+.alc-bfh .alc-bf__niche {
+  border-radius: 11px;
+}
+
+.alc-bfh .alc-bf__seal {
+  top: -8px;
+  right: -6px;
+  width: 74px;
+  font-size: 20px;
+}
+
+.alc-bfh .alc-bf__card-body {
+  padding: 16px 6px 0;
+}
+
+.alc-bfh .alc-bf__card-title {
+  font-size: 14px;
+}
+
+.alc-bfh .alc-bf__was {
+  font-size: 14.5px;
+}
+
+.alc-bfh .alc-bf__amount {
+  font-size: clamp(34px, 3vw, 44px);
+}
+
+.alc-bfh .alc-bf__save {
+  font-size: 12.5px;
+}
+
+.alc-bfh .alc-bf__form {
+  margin-top: 16px;
+}
+
+.alc-bfh .alc-bf__buy {
+  gap: 8px;
+  min-height: 48px;
+  padding: 0 14px;
+  font-size: 12.5px;
+  letter-spacing: 0.04em;
+  white-space: nowrap;
+}
+
+.alc-bfh__end .alc-bf__rail-all {
+  min-height: 100%;
+  border-radius: 22px;
+}
+
+/* Tablet ------------------------------------------------------------------------ */
+@media screen and (max-width: 1099px) {
+  .alc-bfh__room {
+    width: min(30%, 340px);
+    opacity: 0.8;
+  }
+
+  .alc-bfh__track {
+    grid-auto-columns: calc((100% - 2 * 14px) / 3);
+    gap: 14px;
+  }
+}
+
+@media screen and (max-width: 989px) {
+  .alc-bfh__deals {
+    padding: 4px 0 28px;
+  }
+
+  .alc-bfh__deals-head {
+    margin: 0 24px 4px;
+  }
+
+  .alc-bfh__track {
+    grid-auto-columns: calc((100% - 48px - 2 * 12px) / 2.6);
+    gap: 12px;
+    padding: 14px 24px 4px;
+    scroll-padding: 0 24px;
+  }
+}
+
+/* Phones: full bleed, like the campaign banner it replaces ------------------------- */
+@media screen and (max-width: 749px) {
+  .alc-bfh-wrap {
+    padding: calc(var(--alc-bfh-pt, 24px) / 2) 0 calc(var(--alc-bfh-pb, 32px) / 2);
+  }
+
+  .alc-of.alc-bf.alc-bfh {
+    border-radius: 0;
+    background:
+      linear-gradient(180deg, rgba(11, 10, 9, 0.5) 0%, rgba(11, 10, 9, 0.86) 40%, rgba(11, 10, 9, 0.94) 100%),
+      var(--alc-bf-marble-img-sm) center top / 900px auto,
+      var(--alc-bf-black);
+  }
+
+  /* The copy, then the living room as a band under the button. */
+  .alc-bfh__hero {
+    padding: 28px 16px 33vw;
+  }
+
+  .alc-bfh__room--l,
+  .alc-bfh__room--r {
+    display: none;
+  }
+
+  .alc-bfh__room--m {
+    display: block;
+    top: auto;
+    left: 0;
+    right: 0;
+    width: auto;
+    height: 46vw;
+    background-image: var(--alc-bf-room-m);
+    background-position: 50% 100%;
+    -webkit-mask-image: linear-gradient(180deg, transparent 0%, transparent 14%, rgba(0, 0, 0, 0.8) 46%, #000 66%);
+    mask-image: linear-gradient(180deg, transparent 0%, transparent 14%, rgba(0, 0, 0, 0.8) 46%, #000 66%);
+  }
+
+  .alc-bfh__lights {
+    background: radial-gradient(80% 30% at 50% 0%, rgba(255, 214, 140, 0.18) 0%, rgba(255, 214, 140, 0) 72%);
+  }
+
+  .alc-bfh .alc-bf__brand {
+    gap: 12px;
+    font-size: 11.5px;
+    letter-spacing: 0.3em;
+  }
+
+  .alc-bfh .alc-bf__brand span {
+    margin-right: -0.3em;
+  }
+
+  .alc-bfh .alc-bf__title {
+    margin-top: 14px;
+  }
+
+  .alc-bfh .alc-bf__kicker {
+    margin-bottom: 4px;
+    font-size: 20px;
+  }
+
+  .alc-bfh .alc-bf__t1,
+  .alc-bfh .alc-bf__t2 {
+    font-size: clamp(54px, 17.5vw, 84px);
+  }
+
+  .alc-bfh .alc-bf__upto {
+    gap: 10px;
+    margin-top: 18px;
+    padding: 2px 18px 4px;
+    border-radius: 14px;
+  }
+
+  .alc-bfh .alc-bf__upto-pre {
+    font-size: 12px;
+  }
+
+  .alc-bfh .alc-bf__upto-pct {
+    font-size: 46px;
+  }
+
+  .alc-bfh .alc-bf__since {
+    gap: 12px;
+    margin-top: 16px;
+    font-size: 12.5px;
+    letter-spacing: 0.16em;
+  }
+
+  .alc-bfh .alc-bf__since span {
+    margin-right: -0.16em;
+  }
+
+  .alc-bfh .alc-bf__clock {
+    margin-top: 14px;
+    gap: 8px;
+  }
+
+  .alc-bfh .alc-bf__unit {
+    min-width: 50px;
+    height: 50px;
+    border-radius: 12px;
+    -webkit-backdrop-filter: none;
+    backdrop-filter: none;
+  }
+
+  .alc-bfh .alc-bf__unit b {
+    font-size: 19px;
+  }
+
+  .alc-bfh .alc-bf__actions {
+    margin-top: 18px;
+  }
+
+  .alc-bfh .alc-bf__cta {
+    min-height: 54px;
+    padding: 0 26px 0 30px;
+    font-size: 15px;
+  }
+
+  .alc-bfh .alc-bf__fine {
+    margin-top: 10px;
+    font-size: 11.5px;
+  }
+
+  .alc-bfh__deals {
+    padding: 0 0 24px;
+  }
+
+  /* Long headings ("ΟΙ ΠΙΟ ΚΑΥΤΕΣ ΠΡΟΣΦΟΡΕΣ") get the full width; the link goes under. */
+  .alc-bfh__deals-head {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+    margin: 0 16px 2px;
+  }
+
+  .alc-bfh__tools .alc-bf__arrow {
+    display: none;
+  }
+
+  .alc-bfh__tools .alc-bf__cat-link {
+    margin-right: 0;
+    font-size: 13px;
+  }
+
+  .alc-bfh__track {
+    grid-auto-columns: min(70vw, 280px);
+    gap: 10px;
+    padding: 14px 16px 4px;
+    scroll-padding: 0 16px;
+  }
+
+  .alc-bfh .alc-bf__seal {
+    width: 66px;
+    font-size: 18px;
+  }
+
+  .alc-bfh .alc-bf__amount {
+    font-size: 38px;
+  }
+}

@@ -27,7 +27,8 @@
         "slots": 15,
         "padding_top": 24,
         "padding_bottom": 32
-      }
+      },
+      "disabled": true
     },
     "17767703530432b021": {
       "type": "_blocks",
@@ -672,9 +673,36 @@
         "padding_top": 56,
         "padding_bottom": 56
       }
+    },
+    "bf_spotlight": {
+      "type": "alc-bf-spotlight",
+      "settings": {
+        "collection": "black-friday",
+        "start_date": "2026-10-23",
+        "title_1": "Black",
+        "title_2": "Friday",
+        "display_font": "montserrat_n9",
+        "products": [
+          "baterie-bucatarie-alama-sanitara-negru-wzx-2018",
+          "lustra-led-qikiqtaaluk-40w-diametru-26-cm-lumina-calda-neutra-rece-alb",
+          "candelabru-led-cristal-llc212-400bu-rotund-22w-lumina-rece-calda-neutra-cristale-crom-lucios",
+          "baterie-bucatarie-cu-dus-extractibil-alama-sanitara-negru-cf2042",
+          "lustra-led-qikiqtaaluk-40w-33-x-33-cm-lumina-calda-neutra-rece-alb",
+          "candelabru-led-cristal-llc215-400wh-rotund-22w-lumina-rece-calda-neutra-cristal-auriu",
+          "oglinda-led-giga-60x80cm-14w-touch-lumina-6000k",
+          "oglinda-led-ovala-50x80cm-llexort-touch-sistem-dezaburire-dimabila",
+          "oglinda-led-senzor-motionglow-francesca-60x80-cm-lumina-calda-rece-neutra-dimabila-rama-negru-brushed-sistem-dezaburire-termometru-ceas-colectia-marcello-funghi"
+        ],
+        "products_count": 9,
+        "padding_top": 24,
+        "padding_bottom": 32,
+        "personalize": true,
+        "personalize_share": 50
+      }
     }
   },
   "order": [
+    "bf_spotlight",
     "campaign_spotlight",
     "17767703530432b021",
     "blocks_M8bhb3",
