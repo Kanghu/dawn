@@ -1,0 +1,1238 @@
+/* Black Friday page (sections/alc-black-friday.liquid), in the look of the Black Friday ads:
+   black marble, ivory and gold-leaf display type (the section's font, Montserrat Black by
+   default), gold pills and seals, red-struck old prices.
+   The product cards keep the October Sale page's dark skin (assets/alc-offer-page.css),
+   re-coloured here through its --alc-of-* tokens. The textures (assets/alc-bf-foil.jpg, alc-bf-marble.jpg)
+   and the ads' living-room crops come in as custom properties from the section. */
+.alc-of.alc-bf {
+  --alc-bf-black: #0b0a09;
+  --alc-bf-ivory: #f8f1e4;
+  --alc-bf-ivory-soft: rgba(248, 241, 228, 0.8);
+  --alc-bf-ivory-muted: rgba(248, 241, 228, 0.58);
+  --alc-bf-line: rgba(248, 241, 228, 0.12);
+  --alc-bf-gold: #e8c27a;
+  --alc-bf-gold-line: rgba(232, 194, 122, 0.34);
+  --alc-bf-on-gold: #1c1206;
+  --alc-bf-red: #e5383b;
+  --alc-bf-max: 1320px;
+  --alc-bf-gutter: clamp(16px, 3vw, 40px);
+  /* Gold leaf: the crinkled texture under a light-to-amber sheen, as one background. */
+  --alc-bf-foil:
+    linear-gradient(168deg, rgba(255, 248, 222, 0.5) 0%, rgba(255, 248, 222, 0) 34%, rgba(150, 92, 24, 0) 52%, rgba(150, 92, 24, 0.55) 100%),
+    linear-gradient(rgba(226, 172, 84, 0.32), rgba(226, 172, 84, 0.32)),
+    var(--alc-bf-foil-img) 0 0 / 220px repeat,
+    #d6a650;
+  --alc-bf-ivory-face: linear-gradient(180deg, #fffaf0 0%, #f4ecdd 55%, #ddd0ba 100%);
+
+  /* The October Sale page's tokens, re-pointed. */
+  --alc-of-accent: var(--alc-bf-gold);
+  --alc-of-gold-grad: var(--alc-bf-foil);
+  --alc-of-dark: var(--alc-bf-black);
+  --alc-of-on-dark: var(--alc-bf-ivory);
+  --alc-of-on-dark-soft: var(--alc-bf-ivory-soft);
+  --alc-of-on-dark-muted: var(--alc-bf-ivory-muted);
+  --alc-of-on-dark-line: var(--alc-bf-line);
+  --alc-of-tile: rgba(255, 248, 235, 0.045);
+  --alc-of-tile-line: rgba(232, 194, 122, 0.16);
+  --alc-of-tile-media: #f4ede1;
+  --alc-of-on-accent: var(--alc-bf-on-gold);
+  --alc-of-display: var(--alc-bf-display);
+  --alc-of-figures: var(--alc-bf-display);
+  --alc-of-gap: 14px;
+
+  position: relative;
+  isolation: isolate;
+  padding: 0;
+  overflow: hidden;
+  background:
+    linear-gradient(180deg, rgba(11, 10, 9, 0.55) 0%, rgba(11, 10, 9, 0.88) 34%, rgba(11, 10, 9, 0.95) 100%),
+    var(--alc-bf-marble-img) center top / 1600px auto repeat,
+    var(--alc-bf-black);
+  color: var(--alc-bf-ivory);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Gold leaf on type: the foil clipped to the letters. A drop shadow (not a text shadow,
+   which would paint over clipped letters) gives the ads' bevelled edge. */
+.alc-bf__t2-text,
+.alc-bf__gold,
+.alc-bf__amount {
+  background: var(--alc-bf-foil);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Hero ---------------------------------------------------------------------- */
+.alc-bf__hero {
+  position: relative;
+  isolation: isolate;
+  display: grid;
+  place-items: center;
+  min-height: clamp(600px, 48vw, 760px);
+  padding: clamp(40px, 4.4vw, 64px) var(--alc-bf-gutter) clamp(48px, 5vw, 72px);
+  overflow: hidden;
+  text-align: center;
+}
+
+.alc-bf__scene {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+}
+
+/* The ads' living room at both edges, fading into the marble behind the copy. */
+.alc-bf__room {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: min(34vw, 560px);
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.alc-bf__room--l {
+  left: 0;
+  background-image: var(--alc-bf-room-l);
+  background-position: 30% 50%;
+  -webkit-mask-image: linear-gradient(90deg, #000 42%, rgba(0, 0, 0, 0.6) 66%, transparent 100%);
+  mask-image: linear-gradient(90deg, #000 42%, rgba(0, 0, 0, 0.6) 66%, transparent 100%);
+}
+
+.alc-bf__room--r {
+  right: 0;
+  background-image: var(--alc-bf-room-r);
+  background-position: 70% 50%;
+  -webkit-mask-image: linear-gradient(270deg, #000 42%, rgba(0, 0, 0, 0.6) 66%, transparent 100%);
+  mask-image: linear-gradient(270deg, #000 42%, rgba(0, 0, 0, 0.6) 66%, transparent 100%);
+}
+
+.alc-bf__room--m {
+  display: none;
+}
+
+/* Warm light pools from above, and a dark floor so the hero runs into the deals. */
+.alc-bf__lights {
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(38% 46% at 50% 0%, rgba(255, 214, 140, 0.2) 0%, rgba(255, 214, 140, 0) 70%),
+    radial-gradient(30% 40% at 50% 46%, rgba(214, 160, 76, 0.13) 0%, rgba(214, 160, 76, 0) 72%),
+    linear-gradient(180deg, rgba(11, 10, 9, 0) 72%, var(--alc-bf-black) 100%);
+}
+
+.alc-bf__copy {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  max-width: 760px;
+}
+
+/* "—— ALESSANDRO DESIGN ——" */
+.alc-bf .alc-bf__brand,
+.alc-bf .alc-bf__since {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 18px;
+  margin: 0;
+  font-family: var(--alc-bf-display);
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 1.2;
+  letter-spacing: 0.34em;
+  text-transform: uppercase;
+  color: var(--alc-bf-ivory);
+}
+
+/* Cancels the tracking after the last letter, so the lines sit at equal gaps. */
+.alc-bf__brand span,
+.alc-bf__since span {
+  margin-right: -0.34em;
+}
+
+.alc-bf__brand::before,
+.alc-bf__brand::after,
+.alc-bf__since::before,
+.alc-bf__since::after {
+  content: '';
+  flex: none;
+  width: clamp(36px, 6vw, 96px);
+  height: 1px;
+  background: linear-gradient(90deg, rgba(232, 194, 122, 0), var(--alc-bf-gold));
+}
+
+.alc-bf__brand::after,
+.alc-bf__since::after {
+  transform: scaleX(-1);
+}
+
+.alc-bf .alc-bf__title {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: clamp(18px, 2vw, 26px) 0 0;
+  font-family: var(--alc-bf-display);
+  font-weight: 900;
+  line-height: 1;
+  letter-spacing: 0;
+  color: var(--alc-bf-ivory);
+}
+
+.alc-bf__kicker {
+  margin-bottom: clamp(6px, 0.8vw, 12px);
+  font-size: clamp(22px, 2.7vw, 38px);
+  font-weight: 800;
+  line-height: 1.1;
+  letter-spacing: 0.01em;
+  text-transform: uppercase;
+  text-wrap: balance;
+}
+
+.alc-bf__t1,
+.alc-bf__t2 {
+  display: block;
+  font-size: clamp(64px, 9.6vw, 150px);
+  line-height: 0.86;
+  letter-spacing: -0.012em;
+  text-transform: uppercase;
+}
+
+.alc-bf__t1 {
+  background: var(--alc-bf-ivory-face);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  -webkit-text-fill-color: transparent;
+  filter: drop-shadow(0 2px 0 #b9ab93) drop-shadow(0 14px 22px rgba(0, 0, 0, 0.55));
+}
+
+.alc-bf__t2 {
+  position: relative;
+  margin-top: 0.02em;
+  filter: drop-shadow(0 3px 0 #7a4f17) drop-shadow(0 16px 26px rgba(0, 0, 0, 0.6));
+}
+
+/* The ads' star flares at the ends of the gold word. */
+.alc-bf__t2::before,
+.alc-bf__t2::after {
+  content: '';
+  position: absolute;
+  width: 0.5em;
+  height: 0.5em;
+  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cdefs%3E%3CradialGradient id='g'%3E%3Cstop offset='0' stop-color='%23fff'/%3E%3Cstop offset='.35' stop-color='%23ffe9b8' stop-opacity='.7'/%3E%3Cstop offset='1' stop-color='%23ffd27a' stop-opacity='0'/%3E%3C/radialGradient%3E%3C/defs%3E%3Ccircle cx='50' cy='50' r='16' fill='url(%23g)'/%3E%3Cpath d='M50 0 53 47 100 50 53 53 50 100 47 53 0 50 47 47Z' fill='%23fff8e6'/%3E%3C/svg%3E") center / contain no-repeat;
+  pointer-events: none;
+}
+
+.alc-bf__t2::before {
+  top: -0.12em;
+  left: -0.16em;
+}
+
+.alc-bf__t2::after {
+  top: 0.36em;
+  right: -0.2em;
+  width: 0.36em;
+  height: 0.36em;
+}
+
+/* "PÂNĂ LA -80%": a gold-leaf plate. */
+.alc-bf .alc-bf__upto {
+  display: inline-flex;
+  align-items: center;
+  gap: 14px;
+  margin: clamp(22px, 2.2vw, 30px) 0 0;
+  padding: 4px 26px 6px;
+  border-radius: 16px;
+  background: var(--alc-bf-foil);
+  color: var(--alc-bf-on-gold);
+  font-family: var(--alc-bf-display);
+  line-height: 1;
+  box-shadow: inset 0 1px 0 rgba(255, 250, 230, 0.7), inset 0 -2px 0 rgba(110, 66, 14, 0.35), 0 18px 34px -18px rgba(0, 0, 0, 0.8);
+}
+
+.alc-bf__upto-pre {
+  max-width: 5.2em;
+  font-size: clamp(13px, 1.3vw, 17px);
+  font-weight: 800;
+  line-height: 1.05;
+  letter-spacing: 0.04em;
+  text-align: left;
+  text-transform: uppercase;
+}
+
+.alc-bf__upto-pct {
+  font-size: clamp(54px, 6.4vw, 88px);
+  font-weight: 900;
+  letter-spacing: -0.03em;
+}
+
+.alc-bf .alc-bf__since {
+  margin-top: clamp(22px, 2.2vw, 28px);
+  font-weight: 700;
+  font-size: 15px;
+  letter-spacing: 0.2em;
+}
+
+.alc-bf__since span {
+  margin-right: -0.2em;
+}
+
+/* Countdown: dark glass chips under a gold hairline. */
+.alc-bf__clock {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  margin-top: 22px;
+}
+
+.alc-bf__clock[hidden] {
+  display: none;
+}
+
+.alc-bf__clock-label {
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--alc-bf-ivory-muted);
+}
+
+.alc-bf__clock-units {
+  display: flex;
+  gap: 8px;
+}
+
+.alc-bf__unit {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-width: 62px;
+  height: 62px;
+  padding: 0 8px;
+  border: 1px solid var(--alc-bf-gold-line);
+  border-radius: 14px;
+  background: rgba(20, 16, 12, 0.62);
+  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
+}
+
+.alc-bf__unit[hidden] {
+  display: none;
+}
+
+.alc-bf__unit b {
+  font-family: var(--alc-bf-display);
+  font-size: 24px;
+  font-weight: 800;
+  line-height: 1;
+  font-variant-numeric: tabular-nums;
+  color: var(--alc-bf-ivory);
+}
+
+.alc-bf__unit small {
+  margin-top: 4px;
+  font-size: 10.5px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--alc-bf-ivory-muted);
+}
+
+.alc-bf__actions {
+  margin-top: 26px;
+}
+
+/* "DESCOPERĂ OFERTELE ›": the gold pill of the ads. */
+.alc-bf__cta,
+.alc-bf__buy {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  border: 0;
+  border-radius: 999px;
+  background: var(--alc-bf-foil);
+  color: var(--alc-bf-on-gold);
+  font-family: var(--alc-bf-display);
+  font-weight: 800;
+  text-transform: uppercase;
+  text-decoration: none;
+  cursor: pointer;
+  box-shadow: inset 0 1px 0 rgba(255, 250, 230, 0.75), inset 0 -2px 0 rgba(110, 66, 14, 0.35), 0 14px 30px -16px rgba(0, 0, 0, 0.9);
+  transition: transform 0.2s ease, filter 0.2s ease;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.alc-bf__cta {
+  min-height: 60px;
+  padding: 0 34px 0 38px;
+  font-size: clamp(15px, 1.4vw, 18px);
+  letter-spacing: 0.04em;
+}
+
+.alc-bf__cta svg {
+  flex: none;
+  transition: transform 0.25s ease;
+}
+
+.alc-bf__cta:active,
+.alc-bf__buy:active {
+  transform: scale(0.98);
+}
+
+.alc-bf__cta:focus-visible,
+.alc-bf__buy:focus-visible,
+.alc-bf__card-title a:focus-visible {
+  outline: 2px solid var(--alc-bf-gold);
+  outline-offset: 3px;
+}
+
+.alc-bf .alc-bf__fine {
+  margin: 16px 0 0;
+  font-size: 12.5px;
+  letter-spacing: 0.01em;
+  color: var(--alc-bf-ivory-muted);
+}
+
+/* Section heads ---------------------------------------------------------------- */
+.alc-bf__head {
+  margin: 0 auto clamp(26px, 3vw, 40px);
+  text-align: center;
+}
+
+.alc-bf .alc-bf__h2 {
+  margin: 0;
+  font-family: var(--alc-bf-display);
+  font-size: clamp(30px, 3.8vw, 52px);
+  font-weight: 900;
+  line-height: 1.02;
+  letter-spacing: -0.005em;
+  text-transform: uppercase;
+  text-wrap: balance;
+  color: var(--alc-bf-ivory);
+}
+
+.alc-bf__h2 .alc-bf__gold {
+  display: inline-block;
+  filter: drop-shadow(0 2px 0 #7a4f17);
+}
+
+.alc-bf .alc-bf__sub {
+  max-width: 560px;
+  margin: 14px auto 0;
+  font-size: 15px;
+  line-height: 1.5;
+  text-wrap: pretty;
+  color: var(--alc-bf-ivory-muted);
+}
+
+/* The hottest deals: posters ------------------------------------------------------ */
+.alc-bf__stars {
+  max-width: calc(var(--alc-bf-max) + 2 * var(--alc-bf-gutter));
+  margin: 0 auto;
+  padding: clamp(24px, 3vw, 40px) var(--alc-bf-gutter) clamp(56px, 6vw, 88px);
+  scroll-margin-top: 16px;
+}
+
+.alc-bf__posters {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: clamp(16px, 1.8vw, 24px);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.alc-bf__poster {
+  min-width: 0;
+}
+
+.alc-bf__card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  padding: 12px 12px 22px;
+  border: 1px solid var(--alc-bf-gold-line);
+  border-radius: 26px;
+  background:
+    radial-gradient(90% 55% at 50% 0%, rgba(232, 182, 98, 0.16) 0%, rgba(232, 182, 98, 0) 70%),
+    linear-gradient(180deg, rgba(14, 12, 10, 0.55), rgba(14, 12, 10, 0.86)),
+    var(--alc-bf-marble-img-sm) calc(var(--alc-bf-i, 0) * 31%) calc(var(--alc-bf-i, 0) * 23%) / 900px auto,
+    #110f0d;
+  text-align: center;
+}
+
+.alc-bf__card-media {
+  position: relative;
+  display: block;
+  color: inherit;
+}
+
+/* The product on a lit champagne display: studio photos on white take its colour through
+   multiply. Concentric corners: 26px card, minus the 1px border and the 12px inset. */
+.alc-bf__niche {
+  position: relative;
+  display: block;
+  overflow: hidden;
+  aspect-ratio: 1 / 1;
+  border-radius: 14px;
+  background:
+    radial-gradient(70% 62% at 50% 36%, #fffaf1 0%, #f6ecd9 46%, #e2cba6 100%);
+}
+
+.alc-bf__niche::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  box-shadow: inset 0 0 0 1px rgba(150, 108, 44, 0.18), inset 0 -40px 60px -40px rgba(120, 80, 30, 0.35);
+  pointer-events: none;
+}
+
+.alc-bf__niche-img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  mix-blend-mode: multiply;
+  transition: transform 0.9s cubic-bezier(0.2, 0.7, 0.2, 1);
+}
+
+/* The gold seal of the ads, overlapping the display's corner. */
+.alc-bf__seal {
+  position: absolute;
+  top: -8px;
+  right: -8px;
+  z-index: 2;
+  display: grid;
+  place-items: center;
+  width: clamp(76px, 7vw, 92px);
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background: var(--alc-bf-foil);
+  color: var(--alc-bf-on-gold);
+  font-family: var(--alc-bf-display);
+  font-size: clamp(21px, 1.9vw, 26px);
+  font-weight: 900;
+  letter-spacing: -0.04em;
+  box-shadow:
+    inset 0 0 0 3px rgba(255, 246, 214, 0.45),
+    inset 0 0 0 5px rgba(122, 79, 23, 0.22),
+    inset 0 2px 0 rgba(255, 252, 236, 0.7),
+    0 14px 26px -12px rgba(0, 0, 0, 0.75);
+}
+
+/* Optical centring: the minus is lighter than the digits. */
+.alc-bf__seal span {
+  margin-left: -0.04em;
+}
+
+.alc-bf__card-body {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  align-items: center;
+  padding: 18px 10px 0;
+}
+
+.alc-bf .alc-bf__card-title {
+  display: -webkit-box;
+  overflow: hidden;
+  min-height: calc(1.4em * 2);
+  margin: 0;
+  font-family: var(--font-body-family);
+  font-size: 15px;
+  font-weight: 500;
+  line-height: 1.4;
+  letter-spacing: 0;
+  text-wrap: balance;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+}
+
+.alc-bf__card-title a {
+  color: var(--alc-bf-ivory);
+  text-decoration: none;
+}
+
+.alc-bf__prices {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: auto;
+  padding-top: 14px;
+}
+
+.alc-bf .alc-bf__was {
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 1.3;
+  color: var(--alc-bf-ivory-soft);
+  text-decoration: line-through;
+  text-decoration-color: var(--alc-bf-red);
+  text-decoration-thickness: 2px;
+}
+
+.alc-bf .alc-bf__now {
+  margin: 2px 0 0;
+  font-family: var(--alc-bf-display);
+  font-weight: 900;
+  line-height: 1;
+}
+
+/* "79,⁹⁹ lei": the decimals raised and smaller, the currency smaller still. */
+.alc-bf__amount {
+  display: inline-block;
+  padding: 0.04em 0.02em 0.1em;
+  font-size: clamp(44px, 4vw, 56px);
+  letter-spacing: -0.02em;
+  filter: drop-shadow(0 2px 0 #7a4f17);
+}
+
+.alc-bf__dec {
+  display: inline-block;
+  font-size: 0.5em;
+  vertical-align: 0.74em;
+  letter-spacing: 0;
+}
+
+.alc-bf__sep {
+  margin-right: 0.04em;
+}
+
+.alc-bf__cur {
+  margin-left: 0.14em;
+  font-size: 0.5em;
+  letter-spacing: 0;
+}
+
+.alc-bf .alc-bf__save {
+  margin: 8px 0 0;
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  color: var(--alc-bf-gold);
+}
+
+.alc-bf__form {
+  display: block;
+  width: 100%;
+  margin-top: 18px;
+}
+
+.alc-bf__buy {
+  position: relative;
+  width: 100%;
+  min-height: 52px;
+  padding: 0 22px;
+  font-size: 14px;
+  letter-spacing: 0.06em;
+}
+
+.alc-bf__buy svg {
+  flex: none;
+}
+
+.alc-bf__buy .loading__spinner {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  color: currentColor;
+}
+
+.alc-bf__buy.loading > span,
+.alc-bf__buy.loading > svg {
+  visibility: hidden;
+}
+
+.alc-bf__buy[disabled] {
+  filter: grayscale(0.8) brightness(0.7);
+  cursor: default;
+}
+
+/* All deals, by category ----------------------------------------------------------
+   One row per category: title with its "up to -X%", a link to the category and arrows;
+   the cards scroll sideways (five on wide screens, two and a bit on phones). */
+.alc-bf__cats {
+  max-width: calc(var(--alc-bf-max) + 2 * var(--alc-bf-gutter));
+  margin: 0 auto;
+  padding: clamp(48px, 5vw, 72px) var(--alc-bf-gutter) clamp(56px, 6vw, 88px);
+  border-top: 1px solid var(--alc-bf-line);
+  scroll-margin-top: 16px;
+}
+
+.alc-bf__head--all {
+  margin-bottom: clamp(20px, 2.2vw, 28px);
+}
+
+.alc-bf__chips {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 8px;
+  margin: 0 auto clamp(36px, 4vw, 52px);
+  max-width: 1080px;
+}
+
+.alc-bf__chip {
+  display: inline-flex;
+  align-items: center;
+  min-height: 40px;
+  padding: 0 16px;
+  border: 1px solid var(--alc-bf-line);
+  border-radius: 999px;
+  color: var(--alc-bf-ivory);
+  font-size: 14px;
+  font-weight: 500;
+  text-decoration: none;
+  transition: border-color 0.2s ease, background-color 0.2s ease, color 0.2s ease;
+}
+
+.alc-bf__chip:focus-visible,
+.alc-bf__cat-link:focus-visible,
+.alc-bf__arrow:focus-visible,
+.alc-bf__rail-all:focus-visible {
+  outline: 2px solid var(--alc-bf-gold);
+  outline-offset: 2px;
+}
+
+.alc-bf__cat {
+  scroll-margin-top: 20px;
+}
+
+.alc-bf__cat + .alc-bf__cat {
+  margin-top: clamp(40px, 4.4vw, 60px);
+}
+
+.alc-bf__cat-head {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 16px;
+  padding-bottom: 14px;
+  border-bottom: 1px solid var(--alc-bf-line);
+}
+
+.alc-bf .alc-bf__cat-title {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 4px 14px;
+  margin: 0;
+  font-family: var(--alc-bf-display);
+  font-size: clamp(22px, 2.3vw, 30px);
+  font-weight: 800;
+  line-height: 1.15;
+  letter-spacing: 0;
+  text-transform: uppercase;
+  color: var(--alc-bf-ivory);
+}
+
+.alc-bf__cat-pct {
+  font-family: var(--alc-bf-display);
+  font-size: 15px;
+  font-weight: 800;
+  letter-spacing: 0.02em;
+  color: var(--alc-bf-gold);
+}
+
+.alc-bf__cat-pct[hidden] {
+  display: none;
+}
+
+.alc-bf__cat-tools {
+  display: flex;
+  flex: none;
+  align-items: center;
+  gap: 8px;
+}
+
+.alc-bf__cat-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-right: 8px;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--alc-bf-gold);
+  text-decoration: none;
+}
+
+.alc-bf__cat-link svg {
+  transition: transform 0.25s ease;
+}
+
+.alc-bf__arrow {
+  display: inline-grid;
+  place-items: center;
+  width: 42px;
+  height: 42px;
+  margin: 0;
+  padding: 0;
+  border: 1px solid var(--alc-bf-gold-line);
+  border-radius: 50%;
+  background: transparent;
+  color: var(--alc-bf-ivory);
+  cursor: pointer;
+  transition: background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease, opacity 0.2s ease;
+}
+
+.alc-bf__arrow[disabled] {
+  opacity: 0.32;
+  cursor: default;
+}
+
+.alc-bf__rail {
+  display: block;
+}
+
+.alc-bf__track {
+  display: grid;
+  grid-auto-flow: column;
+  grid-auto-columns: calc((100% - 4 * var(--alc-of-gap)) / 5);
+  gap: var(--alc-of-gap);
+  margin: 0;
+  padding: 0 0 6px;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scrollbar-width: none;
+  list-style: none;
+  outline: none;
+  -webkit-overflow-scrolling: touch;
+}
+
+.alc-bf__track::-webkit-scrollbar {
+  display: none;
+}
+
+.alc-bf__rail-item {
+  min-width: 0;
+  scroll-snap-align: start;
+}
+
+.alc-bf__rail-item > .alc-pc {
+  height: 100%;
+}
+
+/* Placeholder tiles: the card's square photo plus its text block, softly pulsing. */
+.alc-bf__ghost span {
+  display: block;
+  aspect-ratio: 1 / 1.5;
+  border: 1px solid var(--alc-of-tile-line);
+  border-radius: 18px;
+  background:
+    linear-gradient(180deg, rgba(244, 237, 225, 0.08) 0 61%, transparent 61%),
+    var(--alc-of-tile);
+}
+
+/* The last tile: the whole category, on gold. */
+.alc-bf__rail-all {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  gap: 6px;
+  height: 100%;
+  min-height: 240px;
+  padding: 22px;
+  border: 1px solid var(--alc-bf-gold-line);
+  border-radius: 18px;
+  background:
+    radial-gradient(90% 60% at 50% 0%, rgba(232, 182, 98, 0.22) 0%, rgba(232, 182, 98, 0) 72%),
+    var(--alc-of-tile);
+  color: var(--alc-bf-ivory);
+  text-decoration: none;
+}
+
+.alc-bf__rail-all-name {
+  font-family: var(--alc-bf-display);
+  font-size: 20px;
+  font-weight: 800;
+  line-height: 1.15;
+  text-transform: uppercase;
+}
+
+.alc-bf__rail-all-text {
+  font-size: 14px;
+  color: var(--alc-bf-gold);
+}
+
+.alc-bf__rail-all-go {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  display: grid;
+  place-items: center;
+  width: 46px;
+  height: 46px;
+  border-radius: 50%;
+  background: var(--alc-bf-foil);
+  color: var(--alc-bf-on-gold);
+  box-shadow: inset 0 1px 0 rgba(255, 250, 230, 0.7);
+  transition: transform 0.25s ease;
+}
+
+/* The cards on this page: Montserrat seals with the gold-leaf edge, gold prices, red strikes. */
+.alc-bf .alc-pc .alc-pc__pct {
+  font-weight: 900;
+  font-size: 15px;
+  letter-spacing: -0.04em;
+  box-shadow: inset 0 0 0 2px rgba(255, 246, 214, 0.4), inset 0 1px 0 rgba(255, 252, 236, 0.7), 0 8px 16px -8px rgba(0, 0, 0, 0.7);
+}
+
+.alc-bf .alc-pc .alc-pc__price .alc-pc__price-was {
+  text-decoration-color: var(--alc-bf-red);
+  text-decoration-thickness: 1.5px;
+}
+
+.alc-bf .alc-pc .alc-pc__price-now,
+.alc-bf .alc-pc .price--on-sale .alc-pc__price-now {
+  color: var(--alc-bf-gold) !important;
+  font-weight: 700;
+}
+
+.alc-bf .alc-bf__terms {
+  margin: 40px 0 0;
+  font-size: 13px;
+  text-align: center;
+  color: var(--alc-bf-ivory-muted);
+}
+
+.alc-bf .alc-bf__teaser {
+  max-width: 640px;
+  margin: 0 auto;
+  padding: 0 var(--alc-bf-gutter) 72px;
+  font-size: 16px;
+  text-align: center;
+  color: var(--alc-bf-ivory-muted);
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .alc-bf__ghost span {
+    animation: alc-bf-ghost 1.6s ease-in-out infinite alternate;
+  }
+
+  @keyframes alc-bf-ghost {
+    to {
+      opacity: 0.55;
+    }
+  }
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .alc-bf__chip:hover {
+    border-color: var(--alc-bf-gold-line);
+    color: var(--alc-bf-gold);
+  }
+
+  .alc-bf__cat-link:hover svg,
+  .alc-bf__rail-all:hover .alc-bf__rail-all-go {
+    transform: translateX(3px);
+  }
+
+  .alc-bf__arrow:not([disabled]):hover {
+    border-color: transparent;
+    background: var(--alc-bf-gold);
+    color: var(--alc-bf-on-gold);
+  }
+}
+
+@media screen and (max-width: 1199px) {
+  .alc-bf__track {
+    grid-auto-columns: calc((100% - 3 * var(--alc-of-gap)) / 4);
+  }
+}
+
+@media screen and (max-width: 989px) {
+  .alc-bf__track {
+    grid-auto-columns: calc((100% - 2 * var(--alc-of-gap)) / 3);
+  }
+}
+
+/* Motion ------------------------------------------------------------------------ */
+@media (prefers-reduced-motion: no-preference) {
+  .alc-bf__rise {
+    animation: alc-bf-rise 0.8s cubic-bezier(0.2, 0.7, 0.2, 1) both;
+  }
+
+  .alc-bf__kicker { animation-delay: 0.05s; }
+  .alc-bf__t1 { animation-delay: 0.1s; }
+  .alc-bf__t2 { animation-delay: 0.18s; }
+  .alc-bf__upto { animation-delay: 0.28s; }
+  .alc-bf__since { animation-delay: 0.34s; }
+  .alc-bf__clock { animation-delay: 0.38s; }
+  .alc-bf__actions { animation-delay: 0.42s; }
+  .alc-bf__fine { animation-delay: 0.48s; }
+
+  /* The flares twinkle twice, then rest. */
+  .alc-bf__t2::before,
+  .alc-bf__t2::after {
+    animation: alc-bf-twinkle 2.4s ease-in-out 0.9s 2 both;
+  }
+
+  .alc-bf__t2::after {
+    animation-delay: 1.5s;
+  }
+
+  @keyframes alc-bf-rise {
+    from {
+      opacity: 0;
+      transform: translateY(14px);
+    }
+    to {
+      opacity: 1;
+      transform: none;
+    }
+  }
+
+  @keyframes alc-bf-twinkle {
+    0%, 100% {
+      opacity: 1;
+      transform: scale(1) rotate(0deg);
+    }
+    50% {
+      opacity: 0.55;
+      transform: scale(0.72) rotate(18deg);
+    }
+  }
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .alc-bf__cta:hover,
+  .alc-bf__buy:hover:not([disabled]) {
+    filter: brightness(1.06) saturate(1.05);
+  }
+
+  .alc-bf__cta:hover svg {
+    transform: translateX(3px);
+  }
+
+  .alc-bf__card:hover .alc-bf__niche-img {
+    transform: scale(1.04);
+  }
+
+  .alc-bf__card-title a:hover {
+    text-decoration: underline;
+    text-decoration-thickness: 1px;
+    text-underline-offset: 3px;
+  }
+}
+
+/* Tablet ------------------------------------------------------------------------ */
+@media screen and (max-width: 1099px) {
+  .alc-bf__room {
+    width: min(30vw, 400px);
+    opacity: 0.85;
+  }
+}
+
+@media screen and (max-width: 989px) {
+  .alc-bf__posters {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+/* Phones: copy on top, the ads' living room underneath, posters in a swipe row ----- */
+@media screen and (max-width: 749px) {
+  .alc-of.alc-bf {
+    background:
+      linear-gradient(180deg, rgba(11, 10, 9, 0.3) 0%, rgba(11, 10, 9, 0.88) 30%, rgba(11, 10, 9, 0.95) 100%),
+      var(--alc-bf-marble-img-sm) center top / 900px auto repeat,
+      var(--alc-bf-black);
+  }
+
+  .alc-bf__hero {
+    min-height: 0;
+    padding: 36px 16px calc(52vw + 8px);
+  }
+
+  .alc-bf__room--l,
+  .alc-bf__room--r {
+    display: none;
+  }
+
+  .alc-bf__room--m {
+    display: block;
+    top: auto;
+    left: 0;
+    right: 0;
+    width: auto;
+    height: 64vw;
+    background-image: var(--alc-bf-room-m-sm);
+    background-position: 50% 100%;
+    -webkit-mask-image: linear-gradient(180deg, transparent 0%, rgba(0, 0, 0, 0.75) 34%, #000 60%);
+    mask-image: linear-gradient(180deg, transparent 0%, rgba(0, 0, 0, 0.75) 34%, #000 60%);
+  }
+
+  .alc-bf__lights {
+    background:
+      radial-gradient(70% 34% at 50% 0%, rgba(255, 214, 140, 0.2) 0%, rgba(255, 214, 140, 0) 72%),
+      linear-gradient(180deg, rgba(11, 10, 9, 0) 86%, var(--alc-bf-black) 100%);
+  }
+
+  .alc-bf .alc-bf__brand {
+    gap: 12px;
+    font-size: 11.5px;
+    letter-spacing: 0.3em;
+  }
+
+  .alc-bf__brand span {
+    margin-right: -0.3em;
+  }
+
+  .alc-bf__t1,
+  .alc-bf__t2 {
+    font-size: clamp(56px, 19vw, 96px);
+  }
+
+  .alc-bf .alc-bf__upto {
+    gap: 10px;
+    padding: 2px 18px 4px;
+    border-radius: 14px;
+  }
+
+  .alc-bf .alc-bf__since {
+    gap: 12px;
+    font-size: 13px;
+    letter-spacing: 0.16em;
+  }
+
+  .alc-bf__since span {
+    margin-right: -0.16em;
+  }
+
+  .alc-bf__unit {
+    min-width: 54px;
+    height: 54px;
+    border-radius: 12px;
+  }
+
+  .alc-bf__unit b {
+    font-size: 20px;
+  }
+
+  .alc-bf__cta {
+    min-height: 56px;
+    padding: 0 28px 0 32px;
+  }
+
+  .alc-bf__stars {
+    padding: 8px 0 52px;
+  }
+
+  .alc-bf__stars .alc-bf__head {
+    padding: 0 16px;
+  }
+
+  .alc-bf__posters {
+    display: flex;
+    gap: 12px;
+    padding: 4px 16px 8px;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scroll-padding: 0 16px;
+    scrollbar-width: none;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .alc-bf__posters::-webkit-scrollbar {
+    display: none;
+  }
+
+  .alc-bf__poster {
+    flex: 0 0 min(80vw, 340px);
+    scroll-snap-align: start;
+  }
+
+  .alc-bf__seal {
+    top: -6px;
+    right: -6px;
+  }
+
+  /* "ΠΡΟΣΘΗΚΗ ΣΤΟ ΚΑΛΑΘΙ" and "ДОБАВЯНЕ В КОЛИЧКАТА" stay on one line. */
+  .alc-bf__buy {
+    gap: 10px;
+    padding: 0 16px;
+    font-size: 12.5px;
+    letter-spacing: 0.03em;
+    white-space: nowrap;
+  }
+
+  .alc-bf__cats {
+    padding-left: 0;
+    padding-right: 0;
+  }
+
+  .alc-bf__cats .alc-bf__head,
+  .alc-bf__cat-head {
+    margin-left: 16px;
+    margin-right: 16px;
+  }
+
+  .alc-bf__chips {
+    flex-wrap: nowrap;
+    justify-content: flex-start;
+    padding: 0 16px;
+    overflow-x: auto;
+    scrollbar-width: none;
+  }
+
+  .alc-bf__chips::-webkit-scrollbar {
+    display: none;
+  }
+
+  .alc-bf__chip {
+    flex: none;
+  }
+
+  /* Long category names ("Oglinzi LED Multifunctionale") get the full width; the link
+     goes under them. */
+  .alc-bf__cat-head {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+  }
+
+  .alc-bf .alc-bf__cat-title {
+    font-size: 21px;
+  }
+
+  .alc-bf__arrow {
+    display: none;
+  }
+
+  .alc-bf__cat-link {
+    margin-right: 0;
+    font-size: 13px;
+  }
+
+  .alc-bf__track {
+    grid-auto-columns: calc((100% - 32px - 2 * 10px) / 2.2);
+    gap: 10px;
+    padding: 0 16px 6px;
+    scroll-padding: 0 16px;
+  }
+
+  .alc-bf__terms {
+    padding: 0 16px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .alc-bf__cta,
+  .alc-bf__buy,
+  .alc-bf__niche-img {
+    transition: none;
+  }
+}

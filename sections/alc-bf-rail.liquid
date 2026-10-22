@@ -1,0 +1,116 @@
+{% comment %}
+  One category row of the Black Friday page (sections/alc-black-friday.liquid), fetched by
+  the page through the Section Rendering API: /collections/<handle>?section_id=alc-bf-rail.
+  Rendered in the category's own context, so paginate reaches up to 250 of its products
+  (a plain loop stops at 50).
+
+  The row: the category's in-stock products, biggest discount first (full-price products
+  only after every discounted one), at most "Products" of them, then a tile to the whole
+  category. The root carries data-max (its deepest discount) and data-count for the page.
+  It is not meant to be added in the editor (no preset); the page styles and loads it.
+{% endcomment %}
+{%- liquid
+  assign lang = request.locale.iso_code | downcase | slice: 0, 2
+  case lang
+    when 'en'
+      assign see_all = 'See the whole category'
+    when 'hu'
+      assign see_all = 'A teljes kategória'
+    when 'pl'
+      assign see_all = 'Zobacz całą kategorię'
+    when 'el'
+      assign see_all = 'Δείτε όλη την κατηγορία'
+    when 'bg'
+      assign see_all = 'Вижте цялата категория'
+    when 'it'
+      assign see_all = 'Vedi tutta la categoria'
+    when 'fr'
+      assign see_all = 'Voir toute la catégorie'
+    when 'cs'
+      assign see_all = 'Zobrazit celou kategorii'
+    when 'sk'
+      assign see_all = 'Zobraziť celú kategóriu'
+    when 'hr'
+      assign see_all = 'Pogledajte cijelu kategoriju'
+    when 'de'
+      assign see_all = 'Ganze Kategorie ansehen'
+    when 'nl'
+      assign see_all = 'Bekijk de hele categorie'
+    else
+      assign see_all = 'Vezi toată categoria'
+  endcase
+  assign limit = section.settings.count | default: 20
+-%}
+{%- if collection != blank -%}
+  {%- paginate collection.products by 250 -%}
+    {%- liquid
+      comment
+        Key per in-stock product: "<100 - discount><4-digit position>~<id>"; a plain sort
+        puts the deepest discount first and keeps the collection's order among equals.
+      endcomment
+      assign keys = ''
+      for p in collection.products
+        unless p.available
+          continue
+        endunless
+        assign pct = 0
+        if p.compare_at_price > p.price
+          assign pct = p.compare_at_price | minus: p.price | times: 100.0 | divided_by: p.compare_at_price | round
+        endif
+        assign inv = 100 | minus: pct | plus: 1000 | append: '' | slice: 1, 3
+        assign ord = forloop.index0 | plus: 10000 | append: '' | slice: 1, 4
+        assign keys = keys | append: inv | append: ord | append: '~' | append: p.id | append: ','
+      endfor
+      assign keys = keys | split: ',' | sort
+      assign max_pct = 0
+      if keys.size > 0
+        assign max_pct = keys.first | slice: 0, 3 | plus: 0
+        assign max_pct = 100 | minus: max_pct
+      endif
+      assign shown = keys.size | at_most: limit
+    -%}
+    <ul class="alc-bf-rail-src" role="list" data-max="{{ max_pct }}" data-count="{{ shown }}">
+      {%- for key in keys limit: limit -%}
+        {%- liquid
+          assign wanted_id = key | split: '~' | last | plus: 0
+          assign p = collection.products | where: 'id', wanted_id | first
+        -%}
+        {%- if p != blank -%}
+          <li class="alc-bf__rail-item">
+            {%- render 'alc-card-product',
+              card_product: p,
+              heading_tag: 'div',
+              media_aspect_ratio: 'square',
+              show_secondary_image: true,
+              lazy_load: true,
+              skip_styles: true,
+              section_id: section.id,
+              quick_add: 'standard'
+            -%}
+          </li>
+        {%- endif -%}
+      {%- endfor -%}
+      {%- if shown > 0 -%}
+        <li class="alc-bf__rail-item alc-bf__rail-end">
+          <a class="alc-bf__rail-all" href="{{ collection.url }}">
+            <span class="alc-bf__rail-all-name">{{ collection.title | escape }}</span>
+            <span class="alc-bf__rail-all-text">{{ see_all }}</span>
+            <span class="alc-bf__rail-all-go" aria-hidden="true">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12h16M14 6l6 6-6 6"/></svg>
+            </span>
+          </a>
+        </li>
+      {%- endif -%}
+    </ul>
+  {%- endpaginate -%}
+{%- endif -%}
+
+{% schema %}
+{
+  "name": "Black Friday row",
+  "tag": "div",
+  "settings": [
+    { "type": "range", "id": "count", "min": 8, "max": 40, "step": 4, "label": "Products", "default": 20 }
+  ]
+}
+{% endschema %}
