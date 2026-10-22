@@ -182,4 +182,57 @@
     if (CART_MUTATION.test(String(url))) this.addEventListener('loadend', refreshSummaries);
     return originalOpen.call(this, method, url, ...rest);
   };
+
+  // Until 20 Oct 2026 the summary estimated shipping through /cart/shipping_rates.json with one
+  // placeholder address per country, and Shopify kept it on the cart: carts from that period
+  // still open checkout with postcode 010011 / Județ București (1000 in Bulgaria, ...). Once per
+  // browser, read the cart's delivery address through the Storefront API (tokenless) and remove
+  // it when it is one of those placeholders; an address with a street is never touched.
+  // Carts expire, so this can go in 2027.
+  const PLACEHOLDER_ZIPS = {
+    RO: '010011', HU: '1011', PL: '00-001', GR: '10431', BG: '1000', SK: '81101',
+    FR: '75001', IT: '00118', DE: '10115', ES: '28001', BE: '1000', CZ: '11000',
+    HR: '10000', AT: '1010', NL: '1011 AB', PT: '1100-148', IE: 'D01 F5P2', CH: '8001',
+  };
+  const ADDRESS_FLAG = 'alc-cart-address-checked';
+
+  async function clearPlaceholderAddress() {
+    try {
+      if (localStorage.getItem(ADDRESS_FLAG)) return;
+    } catch (e) {
+      return;
+    }
+    try {
+      const res = await originalFetch(`${window.Shopify?.routes?.root || '/'}cart.js`, { headers: { Accept: 'application/json' } });
+      const { token } = await res.json();
+      if (!token) return;
+      const storefront = (query) =>
+        originalFetch('/api/2025-10/graphql.json', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+          body: JSON.stringify({ query, variables: { id: `gid://shopify/Cart/${token}` } }),
+        }).then((r) => r.json());
+
+      const read = await storefront(
+        'query($id: ID!) { cart(id: $id) { delivery { addresses { address { ... on CartDeliveryAddress { address1 zip countryCode } } } } } }'
+      );
+      if (!read?.data) return;
+      // No cart yet: a cart created from now on never gets a placeholder.
+      const addresses = read.data.cart?.delivery?.addresses || [];
+      const placeholder =
+        addresses.length > 0 &&
+        addresses.every(({ address: a }) => a && !a.address1 && PLACEHOLDER_ZIPS[a.countryCode] === a.zip);
+      if (placeholder) {
+        const done = await storefront(
+          'mutation($id: ID!) { cartDeliveryAddressesReplace(cartId: $id, addresses: []) { userErrors { message } } }'
+        );
+        const result = done?.data?.cartDeliveryAddressesReplace;
+        if (!result || result.userErrors.length) return;
+      }
+      localStorage.setItem(ADDRESS_FLAG, '1');
+    } catch (e) {}
+  }
+
+  if (document.readyState === 'complete') setTimeout(clearPlaceholderAddress, 1500);
+  else window.addEventListener('load', () => setTimeout(clearPlaceholderAddress, 1500), { once: true });
 })();
