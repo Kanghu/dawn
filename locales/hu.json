@@ -442,8 +442,8 @@
       "terms": "Általános szerződési feltételek",
       "contact": "Kapcsolat",
       "contact_info": {
-        "cc_schedule": "Ügyfélkapcsolati program: H-P: 10-18",
-        "showroom_schedule_1": "Bemutatótermi önkéntesek: H-P: 9-18; S: 9-15",
+        "cc_schedule": "Ügyfélszolgálat: H–P 10–18",
+        "showroom_schedule_1": "Bemutatóterem: H–P 9–18, Szo 9–15",
         "showroom_schedule_2": "Vulcanescu Bemutatóterem: H-P: 10-19; S: 10-16"
       },
       "privacy": "Adatvédelmi szabályzat",
@@ -498,7 +498,7 @@
       "next_slideshow": "Következő dia",
       "pause_slideshow": "A diavetítés szüneteltetése",
       "play_slideshow": "A diavetítés lejátszása",
-      "carousel": "Körhinta",
+      "carousel": "Karusszel",
       "slide": "Dia"
     },
     "page": {
@@ -507,7 +507,7 @@
     "announcements": {
       "previous_announcement": "Előző közlemény",
       "next_announcement": "Következő közlemény",
-      "carousel": "Körhinta",
+      "carousel": "Karusszel",
       "announcement": "Közlemény",
       "announcement_bar": "Közlemények sávja",
       "black_friday_continues": "🎉 A BLACK FRIDAY AKÁR 80%-os kedvezménnyel folytatódik",
@@ -525,7 +525,7 @@
       "items_added": {
         "one": "{{ quantity }} termék hozzáadva",
         "other": "{{ quantity }} termék hozzáadva",
-        "few": "{{ quantity }} elemek hozzáadva"
+        "few": "{{ quantity }} tétel hozzáadva"
       },
       "items_removed": {
         "one": "{{ quantity }} termék eltávolítva",
@@ -673,7 +673,7 @@
   },
   "gift_cards": {
     "issued": {
-      "title": "Itt van az ajándékutalvány egyenlege, értéke {{ value }}, számára {{ shop }}!",
+      "title": "Íme az ajándékkártyája egyenlege: {{ value }} ({{ shop }})!",
       "subtext": "Az Ön ajándékkártyája",
       "gift_card_code": "Ajándékkártya kódja",
       "shop_link": "Látogassa meg az online áruházat",
@@ -683,7 +683,7 @@
       "expired": "Lejárt",
       "copy_code_success": "A kód sikeresen másolva",
       "how_to_use_gift_card": "Használja az ajándékkártya kódját online vagy QR kódot az üzletben",
-      "expiration_date": "Lejár {{ expires_on }}"
+      "expiration_date": "Lejárat: {{ expires_on }}"
     }
   },
   "recipient": {
