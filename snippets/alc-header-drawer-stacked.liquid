@@ -12,8 +12,8 @@
     a full-width image.
   - Other menus: a plain list.
   - Gold campaign links: header "drawer_menu_campaign" blocks with the Gold style (the
-    Black Friday pill of the desktop bar), full width above the tabs. Other campaign
-    styles stay desktop only.
+    Black Friday link of the desktop bar), full width above the tabs, black with
+    gold-yellow type. Other campaign styles stay desktop only.
 
   Accepts:
   - all_blocks: header section blocks
@@ -57,7 +57,7 @@
             endif
           -%}
           {%- unless show_item -%}{%- continue -%}{%- endunless -%}
-          <a href="{{ block_item.settings.campaign_url }}" class="alc-md__gold" style="--alc-md-foil: url('{{ 'alc-bf-foil.jpg' | asset_url }}');">
+          <a href="{{ block_item.settings.campaign_url }}" class="alc-md__gold">
             <svg aria-hidden="true" focusable="false" width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M12 1.5 14.3 9.7 22.5 12l-8.2 2.3L12 22.5l-2.3-8.2L1.5 12l8.2-2.3z"/></svg>
             <span>{{ block_item.settings.campaign_label }}</span>
             <svg class="alc-md__gold-arrow" aria-hidden="true" focusable="false" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
