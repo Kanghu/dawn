@@ -11,6 +11,9 @@
     reveals their 4th-level links. Campaign collections (custom.is_campaign) show as
     a full-width image.
   - Other menus: a plain list.
+  - Gold campaign links: header "drawer_menu_campaign" blocks with the Gold style (the
+    Black Friday pill of the desktop bar), full width above the tabs. Other campaign
+    styles stay desktop only.
 
   Accepts:
   - all_blocks: header section blocks
@@ -36,6 +39,31 @@
 
     <div id="menu-drawer" class="gradient menu-drawer motion-reduce color-{{ menu_color_scheme }} alc-md-drawer">
       <div class="alc-md" data-alc-md>
+        {%- comment -%} Gold campaign links {%- endcomment -%}
+        {%- for block_item in all_blocks -%}
+          {%- if block_item.type != 'drawer_menu_campaign' or block_item.settings.highlight_style != 'gold' -%}{%- continue -%}{%- endif -%}
+          {%- liquid
+            assign show_item = true
+            if block_item.settings.locale_codes != blank
+              assign show_item = false
+              assign locale_codes = block_item.settings.locale_codes | split: ','
+              for code in locale_codes
+                assign trimmed_code = code | strip
+                if trimmed_code == request.locale.iso_code
+                  assign show_item = true
+                  break
+                endif
+              endfor
+            endif
+          -%}
+          {%- unless show_item -%}{%- continue -%}{%- endunless -%}
+          <a href="{{ block_item.settings.campaign_url }}" class="alc-md__gold" style="--alc-md-foil: url('{{ 'alc-bf-foil.jpg' | asset_url }}');">
+            <svg aria-hidden="true" focusable="false" width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M12 1.5 14.3 9.7 22.5 12l-8.2 2.3L12 22.5l-2.3-8.2L1.5 12l8.2-2.3z"/></svg>
+            <span>{{ block_item.settings.campaign_label }}</span>
+            <svg class="alc-md__gold-arrow" aria-hidden="true" focusable="false" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+          </a>
+        {%- endfor -%}
+
         {%- comment -%} Tabs {%- endcomment -%}
         <div class="alc-md__tabs" role="tablist" aria-label="{{ 'sections.header.menu' | t | escape }}">
           {%- assign tab_index = 0 -%}

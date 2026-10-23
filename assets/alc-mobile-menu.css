@@ -33,6 +33,87 @@
   list-style: none;
 }
 
+/* Gold campaign link ---------------------------------------------------------
+   The desktop bar's Black Friday pill (assets/alc-mega-menu.css), full width above the
+   tabs. The foil texture (--alc-md-foil from the snippet) and the light sweep only switch
+   on while the drawer is open, so closed drawers on every page download nothing. */
+.alc-md__gold {
+  position: relative;
+  display: flex;
+  flex: none;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  min-height: 46px;
+  margin: 12px 16px 0;
+  padding: 0 48px;
+  overflow: hidden;
+  border-radius: 999px;
+  background:
+    linear-gradient(168deg, rgba(255, 248, 222, 0.5) 0%, rgba(255, 248, 222, 0) 34%, rgba(150, 92, 24, 0) 52%, rgba(150, 92, 24, 0.55) 100%),
+    linear-gradient(rgba(226, 172, 84, 0.32), rgba(226, 172, 84, 0.32)),
+    var(--alc-md-foil-on, none) 0 0 / 220px repeat,
+    #d6a650;
+  color: #1c1206;
+  font-size: 14px;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  text-decoration: none;
+  box-shadow: inset 0 1px 0 rgba(255, 250, 230, 0.75), inset 0 -2px 0 rgba(110, 66, 14, 0.35), 0 10px 20px -12px rgba(150, 92, 24, 0.8);
+  transition: transform 0.15s ease;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.menu-drawer-container[open] .alc-md__gold {
+  --alc-md-foil-on: var(--alc-md-foil);
+}
+
+.alc-md__gold svg {
+  flex: none;
+}
+
+.alc-md__gold-arrow {
+  position: absolute;
+  right: 18px;
+}
+
+.alc-md__gold::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  width: 35%;
+  background: linear-gradient(100deg, rgba(255, 250, 230, 0) 0%, rgba(255, 250, 230, 0.7) 50%, rgba(255, 250, 230, 0) 100%);
+  transform: translateX(-130%) skewX(-18deg);
+  pointer-events: none;
+}
+
+.menu-drawer-container[open] .alc-md__gold::after {
+  animation: alc-md-shine 5s ease-in-out 0.6s infinite;
+}
+
+@keyframes alc-md-shine {
+  0% { transform: translateX(-130%) skewX(-18deg); }
+  28%, 100% { transform: translateX(400%) skewX(-18deg); }
+}
+
+.alc-md__gold:active {
+  transform: scale(0.98);
+}
+
+.alc-md__gold:focus-visible {
+  outline: 2px solid var(--alc-md-ink);
+  outline-offset: 2px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .alc-md__gold::after {
+    display: none;
+  }
+}
+
 /* Tabs -------------------------------------------------------------------- */
 .alc-md__tabs {
   display: grid;
