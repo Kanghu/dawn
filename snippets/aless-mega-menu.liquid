@@ -48,12 +48,19 @@
           {%- unless show_item -%}{%- continue -%}{%- endunless -%}
 
           {%- if block_item.type == 'drawer_menu_campaign' -%}
+            {%- assign is_gold = false -%}
+            {%- if block_item.settings.highlight_style == 'gold' -%}
+              {%- assign is_gold = true -%}
+            {%- endif -%}
             <li
               class="alc-mm__item alc-mm__item--campaign alc-mm__item--{{ block_item.settings.highlight_style }}"
-              style="--campaign-text-color: {{ block_item.settings.text_color }}; --campaign-bg-color: {{ block_item.settings.background_color }};"
+              style="--campaign-text-color: {{ block_item.settings.text_color }}; --campaign-bg-color: {{ block_item.settings.background_color }};{% if is_gold %} --alc-mm-foil: url('{{ 'alc-bf-foil.jpg' | asset_url }}');{% endif %}"
             >
               <a href="{{ block_item.settings.campaign_url }}" class="alc-mm__trigger alc-mm__trigger--link">
-                {{- block_item.settings.campaign_label -}}
+                {%- if is_gold -%}
+                  <svg class="alc-mm__flare" aria-hidden="true" focusable="false" width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M12 1.5 14.3 9.7 22.5 12l-8.2 2.3L12 22.5l-2.3-8.2L1.5 12l8.2-2.3z"/></svg>
+                {%- endif -%}
+                <span>{{ block_item.settings.campaign_label }}</span>
               </a>
             </li>
           {%- elsif block_item.type == 'drawer_menu_item' -%}
