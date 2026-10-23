@@ -153,13 +153,36 @@
         {% if product.metafields.custom != blank %}
           <!-- Force grid layout despite utility-class conflict -->
           <div class="py-2 grid grid-cols-1 md:grid-cols-2 gap-4" style="display: grid;">
-            {% assign collection_with_specs = nil %}
-            {% for collection in product.collections %}
-              {% if collection.metafields.custom.specification_groups != blank %}
-                {% assign collection_with_specs = collection %}
-                {% break %}
-              {% endif %}
-            {% endfor %}
+            {%- comment -%}
+              A product sits in several collections that carry specification groups (incl. the catch-all
+              'Toate produsele'). Use the one whose groups have the most filled specs for this product;
+              ties keep the first, as before, so no product shows fewer rows than it did.
+            {%- endcomment -%}
+            {%- assign collection_with_specs = nil -%}
+            {%- assign best_spec_rows = -1 -%}
+            {%- for collection in product.collections -%}
+              {%- if collection.metafields.custom.specification_groups != blank -%}
+                {%- assign candidate_rows = 0 -%}
+                {%- for candidate_group in collection.metafields.custom.specification_groups.value -%}
+                  {%- assign candidate_group_obj = candidate_group | metaobject -%}
+                  {%- for candidate_spec in candidate_group_obj.specifications.value -%}
+                    {%- if candidate_spec contains '.' -%}
+                      {%- assign candidate_parts = candidate_spec | split: '.' -%}
+                      {%- assign candidate_mf = product.metafields[candidate_parts[0]][candidate_parts[1]] -%}
+                    {%- else -%}
+                      {%- assign candidate_mf = product.metafields.custom[candidate_spec] -%}
+                    {%- endif -%}
+                    {%- if candidate_mf and candidate_mf.value != blank -%}
+                      {%- assign candidate_rows = candidate_rows | plus: 1 -%}
+                    {%- endif -%}
+                  {%- endfor -%}
+                {%- endfor -%}
+                {%- if candidate_rows > best_spec_rows -%}
+                  {%- assign best_spec_rows = candidate_rows -%}
+                  {%- assign collection_with_specs = collection -%}
+                {%- endif -%}
+              {%- endif -%}
+            {%- endfor -%}
 
             {% if collection_with_specs %}
               {% for spec_group in collection_with_specs.metafields.custom.specification_groups.value %}
@@ -435,6 +458,22 @@
             {%- endif -%}
           {%- endif -%}
           
+          {%- if spec_base == 'functii_oglinda' -%}
+            {%- case current_locale -%}
+              {%- when 'ro' -%}{%- assign translated_spec = 'Funcții oglindă' -%}
+              {%- when 'bg' -%}{%- assign translated_spec = 'Функции на огледалото' -%}
+              {%- when 'hu' -%}{%- assign translated_spec = 'Tükör funkciói' -%}
+              {%- when 'pl' -%}{%- assign translated_spec = 'Funkcje lustra' -%}
+              {%- when 'cs' -%}{%- assign translated_spec = 'Funkce zrcadla' -%}
+              {%- when 'sk' -%}{%- assign translated_spec = 'Funkcie zrkadla' -%}
+              {%- when 'hr' -%}{%- assign translated_spec = 'Funkcije ogledala' -%}
+              {%- when 'el' -%}{%- assign translated_spec = 'Λειτουργίες καθρέφτη' -%}
+              {%- when 'it' -%}{%- assign translated_spec = 'Funzioni dello specchio' -%}
+              {%- when 'fr' -%}{%- assign translated_spec = 'Fonctions du miroir' -%}
+              {%- when 'de' -%}{%- assign translated_spec = 'Spiegelfunktionen' -%}
+              {%- else -%}{%- assign translated_spec = 'Mirror functions' -%}
+            {%- endcase -%}
+          {%- endif -%}
           {{ translated_spec | strip | remove_last: ':' }}
         </span>
 
