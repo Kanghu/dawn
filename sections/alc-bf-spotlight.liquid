@@ -188,6 +188,9 @@
     endfor
   endif
 
+  comment
+    "Up to X%": the campaign's figure from the editor, else the deepest discount shown here.
+  endcomment
   assign max_pct = 0
   for p in posters
     if p.compare_at_price > p.price
@@ -197,6 +200,9 @@
       endif
     endif
   endfor
+  if section.settings.up_to > 0
+    assign max_pct = section.settings.up_to | round
+  endif
 
   comment
     Price levels for the matched-deals test (see the end): the 10th and 65th percentile of
@@ -380,6 +386,7 @@
     { "type": "text", "id": "start_date", "label": "Start date", "default": "2026-10-23", "info": "YYYY-MM-DD, as on the Black Friday page" },
     { "type": "text", "id": "title_1", "label": "Title, first line (ivory)", "default": "Black" },
     { "type": "text", "id": "title_2", "label": "Title, second line (gold)", "default": "Friday" },
+    { "type": "number", "id": "up_to", "label": "Up to (%)", "info": "The campaign's deepest discount, e.g. 80. A product in stock must have it. Empty: the deepest discount among the products shown." },
     { "type": "font_picker", "id": "display_font", "label": "Title font", "default": "montserrat_n9" },
     { "type": "header", "content": "Products" },
     { "type": "product_list", "id": "products", "label": "Products", "limit": 12, "info": "The Black Friday page's \"hottest deals\". Sold-out products are skipped. Empty: the collection's deepest deals." },

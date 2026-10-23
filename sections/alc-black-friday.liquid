@@ -288,8 +288,9 @@
   endif
 
   comment
-    "Up to X%" in the hero: the deepest discount among the posters and the collection's own
-    in-stock products, the deals that are on the page as it loads.
+    "Up to X%" in the hero: the campaign's figure from the editor (the deepest discount in
+    the category rows, which load later, so the page cannot compute it), else the deepest
+    discount among the posters and the collection's own in-stock products.
   endcomment
   assign max_pct = 0
   if own_keys.size > 0
@@ -304,6 +305,9 @@
       endif
     endif
   endfor
+  if section.settings.up_to > 0
+    assign max_pct = section.settings.up_to | round
+  endif
 
   assign cta_target = '#AlcBfDeals'
   if posters.size == 0
@@ -506,6 +510,7 @@
     { "type": "text", "id": "end_date", "label": "End date", "info": "YYYY-MM-DD. Optional: a countdown to 23:59 Bucharest time on that day." },
     { "type": "text", "id": "title_1", "label": "Title, first line (ivory)", "default": "Black" },
     { "type": "text", "id": "title_2", "label": "Title, second line (gold)", "default": "Friday" },
+    { "type": "number", "id": "up_to", "label": "Up to (%)", "info": "The campaign's deepest discount, e.g. 80. A product in stock must have it. Empty: the deepest discount among the posters." },
     { "type": "font_picker", "id": "display_font", "label": "Title font", "default": "montserrat_n9" },
     { "type": "header", "content": "The hottest deals" },
     { "type": "product_list", "id": "featured", "label": "Products shown like the ads", "limit": 12, "info": "Sold-out products are skipped. Empty: the collection's deepest deals." },
