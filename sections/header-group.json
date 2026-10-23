@@ -73,13 +73,25 @@
             "display_type": "2-level",
             "locale_codes": ""
           }
+        },
+        "drawer_menu_campaign_black_friday": {
+          "type": "drawer_menu_campaign",
+          "settings": {
+            "campaign_label": "Black Friday",
+            "campaign_url": "shopify://collections/black-friday",
+            "highlight_style": "gold",
+            "text_color": "#1c1206",
+            "background_color": "#d6a650",
+            "locale_codes": ""
+          }
         }
       },
       "block_order": [
         "drawer_menu_item_eWNhzm",
         "drawer_menu_item_APUfD6",
         "drawer_menu_item_ttQiRU",
-        "drawer_menu_item_dVExxP"
+        "drawer_menu_item_dVExxP",
+        "drawer_menu_campaign_black_friday"
       ],
       "settings": {
         "logo_position": "top-left",
