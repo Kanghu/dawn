@@ -9,7 +9,8 @@
     market's own address) and the stock note. The ads' living room at the edges (desktop) or
     underneath (phones).
   - Deals: the editor's list (the page's "hottest deals"), else the collection's deepest
-    in-stock deals, as snippets/alc-bf-poster cards, ending in a tile to all the deals.
+    in-stock deals from the minimum discount up, picked as on the page, as
+    snippets/alc-bf-poster cards, ending in a tile to all the deals.
   - Keeps the matched-deals A/B test's visitor groups going (see the note at the end).
 
   Built for phones first: two font files (Montserrat 900 and 800; the small lines use the
@@ -165,29 +166,79 @@
 {%- liquid
   comment
     The products: the editor's list (in stock only), else the collection's deepest in-stock
-    deals.
+    deals, picked as on the Black Friday page (sections/alc-black-friday) so both lead with
+    the same ones (the page then keeps whole rows of three): up to 250 of the collection's
+    products, from the minimum discount up (or the deepest deals when none reaches it), one
+    per model family.
   endcomment
   assign no_products = '' | split: ','
   assign posters = section.settings.products | where: 'available'
-  if section.settings.products.size == 0 and campaign != blank
-    assign keys = ''
-    for p in campaign.products
-      if p.available and p.compare_at_price > p.price
-        assign pct = p.compare_at_price | minus: p.price | times: 100.0 | divided_by: p.compare_at_price | round
-        assign inv = 100 | minus: pct | plus: 1000 | append: '' | slice: 1, 3
-        assign ord = forloop.index0 | plus: 10000 | append: '' | slice: 1, 4
-        assign keys = keys | append: inv | append: ord | append: '~' | append: p.id | append: ','
-      endif
-    endfor
-    assign keys = keys | split: ',' | sort
-    assign posters = no_products
-    for key in keys limit: section.settings.products_count
-      assign wanted_id = key | split: '~' | last | plus: 0
-      assign found = campaign.products | where: 'id', wanted_id
-      assign posters = posters | concat: found
-    endfor
+-%}
+{%- if section.settings.products.size == 0 and campaign != blank -%}
+{%- paginate campaign.products by 250 -%}
+{%- liquid
+  assign keys = ''
+  for p in campaign.products
+    if p.available and p.compare_at_price > p.price
+      assign pct = p.compare_at_price | minus: p.price | times: 100.0 | divided_by: p.compare_at_price | round
+      assign inv = 100 | minus: pct | plus: 1000 | append: '' | slice: 1, 3
+      assign ord = forloop.index0 | plus: 10000 | append: '' | slice: 1, 4
+      assign keys = keys | append: inv | append: ord | append: '~' | append: p.id | append: ','
+    endif
+  endfor
+  assign keys = keys | split: ',' | sort
+
+  assign min_pct = section.settings.min_pct | default: 0
+  if keys.size > 0
+    assign top_inv = keys.first | slice: 0, 3 | plus: 0
+    assign top_pct = 100 | minus: top_inv
+    if top_pct < min_pct
+      assign min_pct = 0
+    endif
   endif
 
+  assign posters = no_products
+  assign families = ','
+  for key in keys
+    if posters.size >= section.settings.products_count
+      break
+    endif
+    assign key_inv = key | slice: 0, 3 | plus: 0
+    assign key_pct = 100 | minus: key_inv
+    if key_pct < min_pct
+      break
+    endif
+    assign wanted_id = key | split: '~' | last | plus: 0
+    assign found = campaign.products | where: 'id', wanted_id
+    if found.size == 0
+      continue
+    endif
+    assign family = wanted_id
+    assign words = found.first.title | replace: ',', ' ' | replace: '-', ' ' | split: ' '
+    for word in words
+      if word.size < 3 or word == 'LED' or word == 'RGB' or word == 'USB' or word == 'CCT'
+        continue
+      endif
+      assign word_up = word | upcase
+      assign word_down = word | downcase
+      assign letters = word | remove: '0' | remove: '1' | remove: '2' | remove: '3' | remove: '4' | remove: '5' | remove: '6' | remove: '7' | remove: '8' | remove: '9'
+      if word_up == word and word_down != word and letters == word
+        assign family = word
+        break
+      endif
+    endfor
+    assign family_token = ',' | append: family | append: ','
+    if families contains family_token
+      continue
+    endif
+    assign families = families | append: family | append: ','
+    assign posters = posters | concat: found
+  endfor
+-%}
+{%- endpaginate -%}
+{%- endif -%}
+
+{%- liquid
   comment
     "Up to X%": the campaign's figure from the editor, else the deepest discount shown here.
   endcomment
@@ -391,6 +442,7 @@
     { "type": "header", "content": "Products" },
     { "type": "product_list", "id": "products", "label": "Products", "limit": 12, "info": "The Black Friday page's \"hottest deals\". Sold-out products are skipped. Empty: the collection's deepest deals." },
     { "type": "range", "id": "products_count", "min": 3, "max": 12, "step": 1, "label": "Automatic products", "default": 9, "info": "When the list above is empty" },
+    { "type": "range", "id": "min_pct", "min": 0, "max": 90, "step": 5, "unit": "%", "label": "Automatic products: minimum discount", "default": 0, "info": "Only in-stock products with at least this discount, biggest first. If none has it, the deepest deals are shown. Set it as on the Black Friday page to show the same products." },
     { "type": "header", "content": "Matched deals test" },
     { "type": "checkbox", "id": "personalize", "label": "Keep assigning test groups", "default": true, "info": "The homepage product sections match their products to half of the visitors; this banner gives new visitors their group, as the campaign banner did." },
     { "type": "range", "id": "personalize_share", "min": 0, "max": 100, "step": 10, "unit": "%", "label": "Visitors in the matched group", "default": 50 },

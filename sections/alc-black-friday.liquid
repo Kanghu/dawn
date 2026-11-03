@@ -8,7 +8,8 @@
     "From 23 October", an optional countdown (to the start, then to the end date) and the
     button. Desktop: the ads' living room at both edges; phones: under the copy.
   - "The hottest deals": poster cards like the ads (snippets/alc-bf-poster) for the products
-    picked in the editor (the ads' products), else the collection's deepest deals.
+    picked in the editor (the ads' products), else the collection's deepest deals from the
+    editor's minimum discount up, in whole rows of three.
   - "All deals, by category": one row per second-level collection of the "Produse" menu,
     each with its in-stock products, biggest discount first (sections/alc-bf-rail, fetched
     as the row nears the screen), plus a first row with the collection's own products.
@@ -253,10 +254,28 @@
 
   assign posters = section.settings.featured | where: 'available'
   if section.settings.featured.size == 0
+    comment
+      Only deals of at least the editor's minimum discount (the keys run biggest first);
+      when no product in stock reaches it, the deepest deals regardless, so the row never
+      goes empty.
+    endcomment
+    assign min_pct = section.settings.min_pct | default: 0
+    if own_keys.size > 0
+      assign top_inv = own_keys.first | slice: 0, 3 | plus: 0
+      assign top_pct = 100 | minus: top_inv
+      if top_pct < min_pct
+        assign min_pct = 0
+      endif
+    endif
     assign posters = no_products
     assign families = ','
     for key in own_keys
       if posters.size >= section.settings.featured_count
+        break
+      endif
+      assign key_inv = key | slice: 0, 3 | plus: 0
+      assign key_pct = 100 | minus: key_inv
+      if key_pct < min_pct
         break
       endif
       assign wanted_id = key | split: '~' | last | plus: 0
@@ -285,6 +304,16 @@
       assign families = families | append: family | append: ','
       assign posters = posters | concat: found
     endfor
+
+    comment
+      Whole rows of three (the desktop grid): fewer deals than asked keep the full rows.
+    endcomment
+    if posters.size > 3
+      assign whole_rows = posters.size | divided_by: 3 | times: 3
+      if whole_rows < posters.size
+        assign posters = posters | slice: 0, whole_rows
+      endif
+    endif
   endif
 
   comment
@@ -515,6 +544,7 @@
     { "type": "header", "content": "The hottest deals" },
     { "type": "product_list", "id": "featured", "label": "Products shown like the ads", "limit": 12, "info": "Sold-out products are skipped. Empty: the collection's deepest deals." },
     { "type": "range", "id": "featured_count", "min": 3, "max": 12, "step": 3, "label": "Automatic posters", "default": 6, "info": "When the list above is empty" },
+    { "type": "range", "id": "min_pct", "min": 0, "max": 90, "step": 5, "unit": "%", "label": "Automatic posters: minimum discount", "default": 0, "info": "Only in-stock products with at least this discount, biggest first, in whole rows of three. If none has it, the deepest deals are shown." },
     { "type": "header", "content": "Categories" },
     { "type": "link_list", "id": "menu", "label": "Menu", "default": "main-menu", "info": "One row per second-level item (the mega menu's cards). The products per row are set in sections/alc-bf-rail (20)." }
   ],
