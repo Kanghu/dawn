@@ -9,8 +9,8 @@
     market's own address) and the stock note. The ads' living room at the edges (desktop) or
     underneath (phones).
   - Deals: the editor's list (the page's "hottest deals"), else the collection's deepest
-    in-stock deals of the collection and the menu's categories from the minimum discount
-    up, picked as on the page, as
+    in-stock deals of the collection and the menu's categories, biggest discount first,
+    picked as on the page, as
     snippets/alc-bf-poster cards, ending in a tile to all the deals.
   - Keeps the matched-deals A/B test's visitor groups going (see the note at the end).
 
@@ -170,9 +170,8 @@
     (sections/alc-black-friday) so both lead with the same ones (the page then keeps whole
     rows of three): the in-stock deals of the collection (up to 250) and of the first 50
     products of every category of the menu, each product once, biggest discount first,
-    from the minimum discount up (or the deepest deals when none reaches it), one per model
-    family. The Black Friday prices sit on the category products, so the campaign
-    collection alone can come up empty.
+    one per model family. The Black Friday prices sit on the category products, so the
+    campaign collection alone can come up empty.
   endcomment
   assign no_products = '' | split: ','
   assign picked_count = section.settings.products.size | default: 0
@@ -254,23 +253,9 @@
   endfor
   assign keys = keys | split: ',' | sort
 
-  assign min_pct = section.settings.min_pct | default: 0
-  if keys.size > 0
-    assign top_inv = keys.first | slice: 0, 3 | plus: 0
-    assign top_pct = 100 | minus: top_inv
-    if top_pct < min_pct
-      assign min_pct = 0
-    endif
-  endif
-
   assign families = ','
   for key in keys
     if posters.size >= section.settings.products_count
-      break
-    endif
-    assign key_inv = key | slice: 0, 3 | plus: 0
-    assign key_pct = 100 | minus: key_inv
-    if key_pct < min_pct
       break
     endif
     assign key_parts = key | split: '~'
@@ -512,7 +497,6 @@
     { "type": "header", "content": "Products" },
     { "type": "product_list", "id": "products", "label": "Products", "limit": 12, "info": "The Black Friday page's \"hottest deals\". Sold-out products are skipped. Empty: the deepest deals of the collection and the menu's categories." },
     { "type": "range", "id": "products_count", "min": 3, "max": 12, "step": 1, "label": "Automatic products", "default": 9, "info": "When the list above is empty" },
-    { "type": "range", "id": "min_pct", "min": 0, "max": 90, "step": 5, "unit": "%", "label": "Automatic products: minimum discount", "default": 0, "info": "Only in-stock products with at least this discount, biggest first. If none has it, the deepest deals are shown. Set it as on the Black Friday page to show the same products." },
     { "type": "link_list", "id": "menu", "label": "Categories menu", "default": "main-menu", "info": "Automatic products also come from every second-level collection of this menu, as on the Black Friday page." },
     { "type": "header", "content": "Matched deals test" },
     { "type": "checkbox", "id": "personalize", "label": "Keep assigning test groups", "default": true, "info": "The homepage product sections match their products to half of the visitors; this banner gives new visitors their group, as the campaign banner did." },
