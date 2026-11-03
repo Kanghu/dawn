@@ -9,7 +9,8 @@
     market's own address) and the stock note. The ads' living room at the edges (desktop) or
     underneath (phones).
   - Deals: the editor's list (the page's "hottest deals"), else the collection's deepest
-    in-stock deals from the minimum discount up, picked as on the page, as
+    in-stock deals of the collection and the menu's categories from the minimum discount
+    up, picked as on the page, as
     snippets/alc-bf-poster cards, ending in a tile to all the deals.
   - Keeps the matched-deals A/B test's visitor groups going (see the note at the end).
 
@@ -165,26 +166,91 @@
 
 {%- liquid
   comment
-    The products: the editor's list (in stock only), else the collection's deepest in-stock
-    deals, picked as on the Black Friday page (sections/alc-black-friday) so both lead with
-    the same ones (the page then keeps whole rows of three): up to 250 of the collection's
-    products, from the minimum discount up (or the deepest deals when none reaches it), one
-    per model family.
+    The products: the editor's list (in stock only), else picked as on the Black Friday page
+    (sections/alc-black-friday) so both lead with the same ones (the page then keeps whole
+    rows of three): the in-stock deals of the collection (up to 250) and of the first 50
+    products of every category of the menu, each product once, biggest discount first,
+    from the minimum discount up (or the deepest deals when none reaches it), one per model
+    family. The Black Friday prices sit on the category products, so the campaign
+    collection alone can come up empty.
   endcomment
   assign no_products = '' | split: ','
-  assign posters = section.settings.products | where: 'available'
+  assign picked_count = section.settings.products.size | default: 0
+  assign posters = no_products
+  if picked_count > 0
+    assign posters = section.settings.products | where: 'available'
+  endif
 -%}
-{%- if section.settings.products.size == 0 and campaign != blank -%}
+{%- if picked_count == 0 and campaign != blank -%}
 {%- paginate campaign.products by 250 -%}
 {%- liquid
+  comment
+    The categories, as on the page: every second-level collection of the menu, a
+    first-level item without children counting itself, campaign collections skipped.
+  endcomment
+  assign cat_handles = ''
+  assign cat_seen = ','
+  assign menu = linklists[section.settings.menu]
+  for top in menu.links
+    if top.object.metafields.custom.is_campaign
+      continue
+    endif
+    assign level_two = top.links
+    if level_two.size == 0
+      assign level_two = menu.links | where: 'handle', top.handle
+    endif
+    for link in level_two
+      if link.type != 'collection_link' or link.object == blank
+        continue
+      endif
+      if link.object.metafields.custom.is_campaign
+        continue
+      endif
+      assign handle_token = ',' | append: link.object.handle | append: ','
+      if cat_seen contains handle_token
+        continue
+      endif
+      assign cat_seen = cat_seen | append: link.object.handle | append: ','
+      assign cat_handles = cat_handles | append: link.object.handle | append: ','
+    endfor
+  endfor
+  assign cat_handles = cat_handles | split: ','
+
+  comment
+    Keys: "<100 - discount><order>~<category handle, empty for the collection>~<id>".
+  endcomment
   assign keys = ''
+  assign pool_seen = ','
+  assign pool_n = 0
   for p in campaign.products
     if p.available and p.compare_at_price > p.price
+      assign pool_seen = pool_seen | append: p.id | append: ','
       assign pct = p.compare_at_price | minus: p.price | times: 100.0 | divided_by: p.compare_at_price | round
       assign inv = 100 | minus: pct | plus: 1000 | append: '' | slice: 1, 3
-      assign ord = forloop.index0 | plus: 10000 | append: '' | slice: 1, 4
-      assign keys = keys | append: inv | append: ord | append: '~' | append: p.id | append: ','
+      assign pool_n = pool_n | plus: 1
+      assign ord = pool_n | plus: 100000 | append: '' | slice: 1, 5
+      assign keys = keys | append: inv | append: ord | append: '~~' | append: p.id | append: ','
     endif
+  endfor
+  for cat_handle in cat_handles
+    assign cat = collections[cat_handle]
+    if cat == blank
+      continue
+    endif
+    for p in cat.products
+      assign id_token = ',' | append: p.id | append: ','
+      if pool_seen contains id_token
+        continue
+      endif
+      if p.available and p.compare_at_price > p.price
+        assign pool_seen = pool_seen | append: p.id | append: ','
+        assign pct = p.compare_at_price | minus: p.price | times: 100.0 | divided_by: p.compare_at_price | round
+        assign inv = 100 | minus: pct | plus: 1000 | append: '' | slice: 1, 3
+        assign pool_n = pool_n | plus: 1
+        assign ord = pool_n | plus: 100000 | append: '' | slice: 1, 5
+        assign keys = keys | append: inv | append: ord | append: '~' | append: cat_handle | append: '~' | append: p.id | append: ','
+      endif
+    endfor
   endfor
   assign keys = keys | split: ',' | sort
 
@@ -197,7 +263,6 @@
     endif
   endif
 
-  assign posters = no_products
   assign families = ','
   for key in keys
     if posters.size >= section.settings.products_count
@@ -208,8 +273,13 @@
     if key_pct < min_pct
       break
     endif
-    assign wanted_id = key | split: '~' | last | plus: 0
-    assign found = campaign.products | where: 'id', wanted_id
+    assign key_parts = key | split: '~'
+    assign wanted_id = key_parts | last | plus: 0
+    if key_parts[1] == blank
+      assign found = campaign.products | where: 'id', wanted_id
+    else
+      assign found = collections[key_parts[1]].products | where: 'id', wanted_id
+    endif
     if found.size == 0
       continue
     endif
@@ -440,9 +510,10 @@
     { "type": "number", "id": "up_to", "label": "Up to (%)", "info": "The campaign's deepest discount, e.g. 80. A product in stock must have it. Empty: the deepest discount among the products shown." },
     { "type": "font_picker", "id": "display_font", "label": "Title font", "default": "montserrat_n9" },
     { "type": "header", "content": "Products" },
-    { "type": "product_list", "id": "products", "label": "Products", "limit": 12, "info": "The Black Friday page's \"hottest deals\". Sold-out products are skipped. Empty: the collection's deepest deals." },
+    { "type": "product_list", "id": "products", "label": "Products", "limit": 12, "info": "The Black Friday page's \"hottest deals\". Sold-out products are skipped. Empty: the deepest deals of the collection and the menu's categories." },
     { "type": "range", "id": "products_count", "min": 3, "max": 12, "step": 1, "label": "Automatic products", "default": 9, "info": "When the list above is empty" },
     { "type": "range", "id": "min_pct", "min": 0, "max": 90, "step": 5, "unit": "%", "label": "Automatic products: minimum discount", "default": 0, "info": "Only in-stock products with at least this discount, biggest first. If none has it, the deepest deals are shown. Set it as on the Black Friday page to show the same products." },
+    { "type": "link_list", "id": "menu", "label": "Categories menu", "default": "main-menu", "info": "Automatic products also come from every second-level collection of this menu, as on the Black Friday page." },
     { "type": "header", "content": "Matched deals test" },
     { "type": "checkbox", "id": "personalize", "label": "Keep assigning test groups", "default": true, "info": "The homepage product sections match their products to half of the visitors; this banner gives new visitors their group, as the campaign banner did." },
     { "type": "range", "id": "personalize_share", "min": 0, "max": 100, "step": 10, "unit": "%", "label": "Visitors in the matched group", "default": 50 },
