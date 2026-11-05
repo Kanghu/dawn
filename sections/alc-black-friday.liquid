@@ -255,7 +255,19 @@
   assign picked_count = section.settings.featured.size | default: 0
   assign posters = no_products
   if picked_count > 0
-    assign posters = section.settings.featured | where: 'available'
+    comment
+      Only products in stock that still have a discount; spares in the list wait for a poster
+      that sells out or loses it.
+    endcomment
+    for picked in section.settings.featured
+      if posters.size >= section.settings.featured_count
+        break
+      endif
+      if picked.available and picked.compare_at_price > picked.price
+        assign found = section.settings.featured | where: 'id', picked.id
+        assign posters = posters | concat: found
+      endif
+    endfor
   else
     comment
       The automatic posters pick from the collection's own in-stock deals (up to 250) and
@@ -338,14 +350,15 @@
       assign posters = posters | concat: found
     endfor
 
-    comment
-      Whole rows of three (the desktop grid): fewer deals than asked keep the full rows.
-    endcomment
-    if posters.size > 3
-      assign whole_rows = posters.size | divided_by: 3 | times: 3
-      if whole_rows < posters.size
-        assign posters = posters | slice: 0, whole_rows
-      endif
+  endif
+
+  comment
+    Picked or automatic: whole rows of three (the desktop grid).
+  endcomment
+  if posters.size > 3
+    assign whole_rows = posters.size | divided_by: 3 | times: 3
+    if whole_rows < posters.size
+      assign posters = posters | slice: 0, whole_rows
     endif
   endif
 
@@ -575,8 +588,8 @@
     { "type": "number", "id": "up_to", "label": "Up to (%)", "info": "The campaign's deepest discount, e.g. 80. A product in stock must have it. Empty: the deepest discount among the posters." },
     { "type": "font_picker", "id": "display_font", "label": "Title font", "default": "montserrat_n9" },
     { "type": "header", "content": "The hottest deals" },
-    { "type": "product_list", "id": "featured", "label": "Products shown like the ads", "limit": 12, "info": "Sold-out products are skipped. Empty: the deepest deals of the collection and the category rows." },
-    { "type": "range", "id": "featured_count", "min": 3, "max": 12, "step": 3, "label": "Automatic posters", "default": 6, "info": "When the list above is empty: the deepest deals, biggest discount first" },
+    { "type": "product_list", "id": "featured", "label": "Products shown like the ads", "limit": 12, "info": "Sold-out products and those without a discount are skipped and the next ones in the list take their place, so keep a few spares. Leave it filled: empty, the section scans about 3,000 products of the category rows on every render." },
+    { "type": "range", "id": "featured_count", "min": 3, "max": 12, "step": 3, "label": "Posters shown", "default": 6, "info": "How many of the list above, or of the deepest deals when the list is empty" },
     { "type": "header", "content": "Categories" },
     { "type": "link_list", "id": "menu", "label": "Menu", "default": "main-menu", "info": "One row per second-level item (the mega menu's cards). The products per row are set in sections/alc-bf-rail (20)." }
   ],

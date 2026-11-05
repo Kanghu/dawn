@@ -1050,7 +1050,7 @@ cart-drawer.drawer .cart-item__totals {
   text-transform: none;
 }
 
-.cart-item .mw-stack--vertical:has(.mw-fee__control) [data-fee-header] .mw-text::first-letter {
+.cart-item .mw-stack--vertical [data-fee-header] .mw-text::first-letter {
   text-transform: uppercase;
 }
 
@@ -1154,10 +1154,11 @@ body:has(header-drawer details[open]) #shopify-pc__banner {
   display: none !important;
 }
 
-/* On phones the WhatsApp greeting bubble sits over the right half of the banner's "Decline" button; declining must
-   stay as easy as accepting, so the bubble waits until the banner is answered (the round chat button stays). */
+/* On phones the WhatsApp greeting bubble ("Chat with us", English on every market, 140x39 above the button) sat over
+   the right half of the cookie banner's "Decline" button and, once the banner was answered, over the product cards
+   (titles, prices and add-to-cart buttons of the right-hand column). Phones keep only the round chat button. */
 @media screen and (max-width: 749px) {
-  body:has(#shopify-pc__banner:not([style*='none'])) #whatsapp-chat-widget .wa-chat-bubble {
+  #whatsapp-chat-widget .wa-chat-bubble {
     display: none !important;
   }
 }
