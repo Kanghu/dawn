@@ -390,6 +390,21 @@
   endif
 
   comment
+    The deals sold only with a code (blocks) come first, so the button goes to them.
+  endcomment
+  assign code_deals_end = section.settings.code_deals_end_date | strip
+  assign show_code_deals = false
+  if section.blocks.size > 0
+    assign show_code_deals = true
+    if code_deals_end != blank and today_str > code_deals_end
+      assign show_code_deals = false
+    endif
+  endif
+  if show_code_deals
+    assign cta_target = '#AlcBfCodeDeals'
+  endif
+
+  comment
     Section headings: the last word in gold, like the hero's "FRIDAY".
   endcomment
   assign stars_words = t[14] | split: ' '
@@ -459,6 +474,13 @@
       <p class="alc-bf__fine alc-bf__rise">{{ t[6] }}</p>
     </div>
   </section>
+
+  {%- comment -%} The deals sold only with a code: snippets/alc-bf-code-deals {%- endcomment -%}
+  {%- if show_code_deals -%}
+    {{ 'alc-bf-code-deals.css' | asset_url | stylesheet_tag }}
+    <script src="{{ 'alc-bf-code-deals.js' | asset_url }}" defer="defer"></script>
+    {%- render 'alc-bf-code-deals', deals: section.blocks, section_id: section.id, units: section.settings.code_deals_units -%}
+  {%- endif -%}
 
   {%- comment -%} The hottest deals: posters like the ads {%- endcomment -%}
   {%- if posters.size > 0 -%}
@@ -587,11 +609,26 @@
     { "type": "text", "id": "title_2", "label": "Title, second line (gold)", "default": "Friday" },
     { "type": "number", "id": "up_to", "label": "Up to (%)", "info": "The campaign's deepest discount, e.g. 80. A product in stock must have it. Empty: the deepest discount among the posters." },
     { "type": "font_picker", "id": "display_font", "label": "Title font", "default": "montserrat_n9" },
+    { "type": "header", "content": "Deals only with a code" },
+    { "type": "paragraph", "content": "Products sold at a special price only with a discount code, under the hero: add a Deal block for each. Each block needs its own code in Shopify, with the same reduction." },
+    { "type": "number", "id": "code_deals_units", "label": "Units per product", "default": 20, "info": "Shown in the limited-stock texts. The real limit is the code's usage limit in Shopify." },
+    { "type": "text", "id": "code_deals_end_date", "label": "End date of these deals", "info": "YYYY-MM-DD. They disappear the day after. Empty: they stay on." },
     { "type": "header", "content": "The hottest deals" },
     { "type": "product_list", "id": "featured", "label": "Products shown like the ads", "limit": 12, "info": "Sold-out products and those without a discount are skipped and the next ones in the list take their place, so keep a few spares. Leave it filled: empty, the section scans about 3,000 products of the category rows on every render." },
     { "type": "range", "id": "featured_count", "min": 3, "max": 12, "step": 3, "label": "Posters shown", "default": 6, "info": "How many of the list above, or of the deepest deals when the list is empty" },
     { "type": "header", "content": "Categories" },
     { "type": "link_list", "id": "menu", "label": "Menu", "default": "main-menu", "info": "One row per second-level item (the mega menu's cards). The products per row are set in sections/alc-bf-rail (20)." }
+  ],
+  "blocks": [
+    {
+      "type": "code_deal",
+      "name": "Deal",
+      "settings": [
+        { "type": "product", "id": "product", "label": "Product" },
+        { "type": "text", "id": "code", "label": "Discount code", "info": "Exactly as in Shopify. Never translate it." },
+        { "type": "number", "id": "reduction", "label": "Reduction, in bani", "info": "The code's fixed amount × 100: 350 lei = 35000. Sets the price on the card." }
+      ]
+    }
   ],
   "presets": [{ "name": "Black Friday" }]
 }

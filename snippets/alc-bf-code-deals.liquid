@@ -1,0 +1,303 @@
+{%- comment -%}
+  The Black Friday deals sold only with a discount code: a heading and a sideways row of cards
+  in the look of the page's posters, each with its code on a coupon, the limited-stock note
+  and the normal add to cart. Used by sections/alc-bf-code-deals (homepage) and
+  sections/alc-black-friday (between the hero and the posters). Both load
+  assets/alc-bf-code-deals.css and .js and sit inside a ".alc-of.alc-bf" stage.
+
+  Accepts:
+  - deals: {Array} blocks with the settings product, code and reduction
+  - section_id: {String}
+  - units: {Number} how many units of each product the code gives, for the texts
+
+  A native code has one fixed value, so the card can't read its price from it: the block holds
+  the same reduction as the code, in bani of the shop's currency (35000 = 350,00 lei), and the
+  card shows product.price minus that. A price changed in Base moves both alike.
+
+  Abroad the code takes the same lei at the day's rate. Liquid has no exchange rate, so the
+  first paint converts with the approximate ones below and the script corrects it to
+  Shopify.currency.rate, rounding as the cart does.
+
+  A product out of stock, or with the metafield custom.bf_code_exhausted set (Liquid can't read
+  a code's usage), goes to the end of the row, greyed out, without its code.
+{%- endcomment -%}
+{%- liquid
+  assign lang = request.locale.iso_code | downcase | slice: 0, 2
+  case lang
+    when 'en'
+      assign w = 'Super prices,|with a code only|Limited stock: only {n} pcs of each product at these prices. The code is applied automatically when you add the product to the cart.|with code|Limited stock: only {n} pcs at this price|Copy code|Code copied|Sold out at this price|You save|Previous|Next|Code {code} has run out. The product stays in your cart at the regular price.|An order can use at most 5 codes. This product stays in your cart at the regular price.'
+    when 'hu'
+      assign w = 'Szuperárak,|csak kóddal|Korlátozott készlet: termékenként csak {n} db ezen az áron. A kód automatikusan érvényesül, amikor a terméket a kosárba teszi.|kóddal|Korlátozott készlet: csak {n} db ezen az áron|Kód másolása|Kód másolva|Ezen az áron elfogyott|Megtakarítás:|Előző|Következő|A(z) {code} kód elfogyott. A termék a normál áron marad a kosárban.|Egy rendeléshez legfeljebb 5 kód használható. Ez a termék a normál áron marad a kosárban.'
+    when 'pl'
+      assign w = 'Super ceny,|tylko z kodem|Ograniczona ilość: tylko {n} szt. każdego produktu w tych cenach. Kod zostanie zastosowany automatycznie po dodaniu produktu do koszyka.|z kodem|Ograniczona ilość: tylko {n} szt. w tej cenie|Kopiuj kod|Kod skopiowany|Wyprzedane w tej cenie|Oszczędzasz|Wstecz|Dalej|Kod {code} został wyczerpany. Produkt pozostaje w koszyku w zwykłej cenie.|W jednym zamówieniu można użyć maksymalnie 5 kodów. Ten produkt pozostaje w koszyku w zwykłej cenie.'
+    when 'el'
+      assign w = 'Σούπερ τιμές,|μόνο με κωδικό|Περιορισμένο απόθεμα: μόνο {n} τεμ. από κάθε προϊόν σε αυτές τις τιμές. Ο κωδικός εφαρμόζεται αυτόματα όταν προσθέτετε το προϊόν στο καλάθι.|με κωδικό|Περιορισμένο απόθεμα: μόνο {n} τεμ. σε αυτή την τιμή|Αντιγραφή κωδικού|Ο κωδικός αντιγράφηκε|Εξαντλήθηκε σε αυτή την τιμή|Κερδίζετε|Προηγούμενα|Επόμενα|Ο κωδικός {code} εξαντλήθηκε. Το προϊόν παραμένει στο καλάθι στην κανονική τιμή.|Σε κάθε παραγγελία μπορούν να χρησιμοποιηθούν έως 5 κωδικοί. Το προϊόν παραμένει στο καλάθι στην κανονική τιμή.'
+    when 'bg'
+      assign w = 'Супер цени,|само с код|Ограничено количество: само по {n} бр. от всеки продукт на тези цени. Кодът се прилага автоматично, когато добавите продукта в количката.|с код|Ограничено количество: само {n} бр. на тази цена|Копирай кода|Кодът е копиран|Изчерпано на тази цена|Спестявате|Назад|Напред|Код {code} е изчерпан. Продуктът остава в количката на редовна цена.|В една поръчка могат да се използват най-много 5 кода. Този продукт остава в количката на редовна цена.'
+    when 'it'
+      assign w = 'Super prezzi,|solo con codice|Disponibilità limitata: solo {n} pz per ogni prodotto a questi prezzi. Il codice si applica da solo quando aggiungi il prodotto al carrello.|con codice|Disponibilità limitata: solo {n} pz a questo prezzo|Copia il codice|Codice copiato|Esaurito a questo prezzo|Risparmi|Precedenti|Successivi|Il codice {code} è esaurito. Il prodotto resta nel carrello al prezzo normale.|In un ordine puoi usare al massimo 5 codici. Questo prodotto resta nel carrello al prezzo normale.'
+    when 'fr'
+      assign w = 'Super prix,|uniquement avec un code|Stock limité : seulement {n} pièces de chaque produit à ces prix. Le code s’applique automatiquement lorsque vous ajoutez le produit au panier.|avec le code|Stock limité : seulement {n} pièces à ce prix|Copier le code|Code copié|Épuisé à ce prix|Vous économisez|Précédent|Suivant|Le code {code} est épuisé. Le produit reste dans le panier au prix normal.|Une commande accepte 5 codes au maximum. Ce produit reste dans le panier au prix normal.'
+    when 'cs'
+      assign w = 'Super ceny,|jen s kódem|Omezené zásoby: jen {n} ks od každého produktu za tyto ceny. Kód se použije automaticky, když produkt přidáte do košíku.|s kódem|Omezené zásoby: jen {n} ks za tuto cenu|Zkopírovat kód|Kód zkopírován|Za tuto cenu vyprodáno|Ušetříte|Předchozí|Další|Kód {code} je vyčerpán. Produkt zůstává v košíku za běžnou cenu.|V jedné objednávce lze použít nejvýše 5 kódů. Tento produkt zůstává v košíku za běžnou cenu.'
+    when 'sk'
+      assign w = 'Super ceny,|len s kódom|Obmedzené zásoby: len {n} ks z každého produktu za tieto ceny. Kód sa použije automaticky, keď produkt pridáte do košíka.|s kódom|Obmedzené zásoby: len {n} ks za túto cenu|Skopírovať kód|Kód skopírovaný|Za túto cenu vypredané|Ušetríte|Predchádzajúce|Ďalšie|Kód {code} je vyčerpaný. Produkt zostáva v košíku za bežnú cenu.|V jednej objednávke možno použiť najviac 5 kódov. Tento produkt zostáva v košíku za bežnú cenu.'
+    when 'hr'
+      assign w = 'Super cijene,|samo s kodom|Ograničene zalihe: samo {n} kom. svakog proizvoda po ovim cijenama. Kod se primjenjuje automatski kada proizvod dodate u košaricu.|s kodom|Ograničene zalihe: samo {n} kom. po ovoj cijeni|Kopiraj kod|Kod je kopiran|Rasprodano po ovoj cijeni|Uštedite|Prethodno|Sljedeće|Kod {code} je iskorišten. Proizvod ostaje u košarici po redovnoj cijeni.|U jednoj narudžbi možete upotrijebiti najviše 5 kodova. Ovaj proizvod ostaje u košarici po redovnoj cijeni.'
+    when 'de'
+      assign w = 'Superpreise,|nur mit Code|Begrenzter Vorrat: nur {n} Stück pro Produkt zu diesen Preisen. Der Code wird automatisch angewendet, wenn Sie das Produkt in den Warenkorb legen.|mit Code|Begrenzter Vorrat: nur {n} Stück zu diesem Preis|Code kopieren|Code kopiert|Zu diesem Preis ausverkauft|Sie sparen|Zurück|Weiter|Der Code {code} ist aufgebraucht. Das Produkt bleibt zum regulären Preis im Warenkorb.|Pro Bestellung können höchstens 5 Codes verwendet werden. Dieses Produkt bleibt zum regulären Preis im Warenkorb.'
+    when 'nl'
+      assign w = 'Superprijzen,|alleen met code|Beperkte voorraad: slechts {n} stuks per product voor deze prijzen. De code wordt automatisch toegepast wanneer u het product aan de winkelwagen toevoegt.|met code|Beperkte voorraad: slechts {n} stuks voor deze prijs|Code kopiëren|Code gekopieerd|Uitverkocht voor deze prijs|U bespaart|Vorige|Volgende|Code {code} is op. Het product blijft in uw winkelwagen tegen de normale prijs.|Per bestelling kunt u maximaal 5 codes gebruiken. Dit product blijft in uw winkelwagen tegen de normale prijs.'
+    else
+      assign w = 'Prețuri super,|doar cu cod|Stoc limitat: doar câte {n} buc. din fiecare produs la aceste prețuri. Codul se aplică singur când adaugi produsul în coș.|cu codul|Stoc limitat: doar {n} buc. la acest preț|Copiază codul|Cod copiat|Epuizat la acest preț|Economisești|Înapoi|Înainte|Codul {code} s-a epuizat. Produsul a rămas în coș la prețul normal.|Poți folosi cel mult 5 coduri pe o comandă. Produsul a rămas în coș la prețul normal.'
+  endcase
+  assign t = w | split: '|'
+
+  comment
+    Literal tokens inside an output tag would close it early, so they are built.
+  endcomment
+  assign n_token = '{' | append: 'n' | append: '}'
+  assign code_token = '{' | append: 'code' | append: '}'
+  assign units_text = units | default: 20 | append: ''
+  assign sub_text = t[2] | replace: n_token, units_text
+  assign limit_text = t[4] | replace: n_token, units_text
+
+  comment
+    Lei to the market's currency, approximate: see the note at the top.
+  endcomment
+  assign rate = 0
+  case cart.currency.iso_code
+    when 'RON'
+      assign rate = 1
+    when 'HUF'
+      assign rate = 69.75
+    when 'EUR'
+      assign rate = 0.18728
+    when 'PLN'
+      assign rate = 0.84
+    when 'CZK'
+      assign rate = 4.653
+  endcase
+
+  assign valid_deals = 0
+  for deal in deals
+    if deal.settings.product != blank and deal.settings.code != blank and deal.settings.reduction > 0
+      assign valid_deals = valid_deals | plus: 1
+    endif
+  endfor
+
+  assign money_sample = 1234500 | money
+  assign img_widths = '300, 450, 600'
+  assign img_sizes = '(min-width: 1100px) 300px, (min-width: 750px) 36vw, 72vw'
+  assign deal_position = 0
+-%}
+{%- if valid_deals > 0 -%}
+  <section class="alc-bfcd" id="AlcBfCodeDeals" aria-labelledby="AlcBfCdTitle-{{ section_id }}" data-money-sample="{{ money_sample | escape }}">
+    <alc-bf-scroller class="alc-bfcd__scroller">
+      <div class="alc-bfcd__head">
+        <div class="alc-bfcd__heading">
+          <h2 class="alc-bf__h2 alc-bfcd__title" id="AlcBfCdTitle-{{ section_id }}">
+            <span>{{ t[0] }}</span> <span class="alc-bf__gold">{{ t[1] }}</span>
+          </h2>
+          <p class="alc-bf__sub alc-bfcd__sub">{{ sub_text }}</p>
+        </div>
+        <div class="alc-bfcd__tools">
+          <button type="button" class="alc-bf__arrow" data-prev aria-label="{{ t[9] | escape }}" disabled>
+            <svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m15 6-6 6 6 6"/></svg>
+          </button>
+          <button type="button" class="alc-bf__arrow" data-next aria-label="{{ t[10] | escape }}">
+            <svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 6 6 6-6 6"/></svg>
+          </button>
+        </div>
+      </div>
+
+      <ul class="alc-bfcd__track" role="list" data-track>
+        {%- comment -%} Two passes: the deals still on first, the exhausted ones after them. {%- endcomment -%}
+        {%- for pass in (1..2) -%}
+          {%- for deal in deals -%}
+            {%- liquid
+              assign product = deal.settings.product
+              assign code = deal.settings.code | strip
+              assign reduction = deal.settings.reduction | plus: 0
+              if product == blank or code == blank or reduction <= 0
+                continue
+              endif
+
+              assign is_out = false
+              unless product.available
+                assign is_out = true
+              endunless
+              if product.metafields.custom.bf_code_exhausted.value
+                assign is_out = true
+              endif
+              if pass == 1 and is_out
+                continue
+              endif
+              if pass == 2 and is_out == false
+                continue
+              endif
+
+              assign reduction_local = reduction | times: rate | floor
+              if reduction_local >= product.price
+                continue
+              endif
+
+              assign variant = product.selected_or_first_available_variant
+              assign price_now = product.price | minus: reduction_local
+              assign pct = reduction_local | times: 100.0 | divided_by: product.price | round
+              assign form_id = 'bf-code-' | append: section_id | append: '-' | append: product.id
+              assign title_id = 'BfCodeTitle-' | append: section_id | append: '-' | append: product.id
+              assign refused_text = t[11] | replace: code_token, code
+
+              assign money_now = price_now | money
+              assign money_was = product.price | money
+              if settings.currency_code_enabled
+                assign money_now = price_now | money_with_currency
+                assign money_was = product.price | money_with_currency
+              endif
+
+              comment
+                The price cut at its decimal separator, as in snippets/alc-bf-poster.
+              endcomment
+              assign cents = price_now | modulo: 100 | plus: 100 | append: '' | slice: 1, 2
+              assign whole = money_now
+              assign sep = ''
+              assign tail = ''
+              for candidate in (1..2)
+                if candidate == 1
+                  assign try_sep = ','
+                else
+                  assign try_sep = '.'
+                endif
+                assign token = try_sep | append: cents
+                unless money_now contains token
+                  continue
+                endunless
+                assign cut = money_now | split: token
+                assign after = cut[1] | default: ''
+                assign after_digits = after | remove: '0' | remove: '1' | remove: '2' | remove: '3' | remove: '4' | remove: '5' | remove: '6' | remove: '7' | remove: '8' | remove: '9'
+                if after_digits == after and cut.size < 3
+                  assign whole = cut[0]
+                  assign sep = try_sep
+                  assign tail = after | strip
+                  break
+                endif
+              endfor
+              if sep == ''
+                assign last_word = money_now | split: ' ' | last
+                assign last_digits = last_word | remove: '0' | remove: '1' | remove: '2' | remove: '3' | remove: '4' | remove: '5' | remove: '6' | remove: '7' | remove: '8' | remove: '9'
+                if last_digits == last_word and last_word != money_now
+                  assign whole = money_now | remove_last: last_word | strip
+                  assign tail = last_word
+                endif
+              endif
+            -%}
+            <li class="alc-bfcd__item" {{ deal.shopify_attributes }}>
+              <alc-code-deal
+                class="alc-bfcd__deal{% if is_out %} is-out{% endif %}"
+                data-code="{{ code | escape }}"
+                data-reduction="{{ reduction }}"
+                data-price="{{ product.price }}"
+                data-variant-id="{{ variant.id }}"
+                data-refused="{{ refused_text | escape }}"
+                data-no-place="{{ t[12] | escape }}"
+              >
+                <article class="alc-bf__card" style="--alc-bf-i: {{ deal_position | modulo: 4 }};">
+                  <a class="alc-bf__card-media" href="{{ product.url }}" tabindex="-1" aria-hidden="true">
+                    <span class="alc-bf__niche">
+                      {%- if product.featured_media != blank -%}
+                        {{
+                          product.featured_media
+                          | image_url: width: 600
+                          | image_tag:
+                            widths: img_widths,
+                            sizes: img_sizes,
+                            loading: 'lazy',
+                            alt: '',
+                            class: 'alc-bf__niche-img'
+                        }}
+                      {%- endif -%}
+                    </span>
+                    {%- unless is_out -%}
+                      <span class="alc-bf__seal"><span data-seal>-{{ pct }}%</span></span>
+                    {%- endunless -%}
+                  </a>
+
+                  <div class="alc-bf__card-body">
+                    <h3 class="alc-bf__card-title" id="{{ title_id }}">
+                      <a href="{{ product.url }}">{{ product.title | escape }}</a>
+                    </h3>
+
+                    <div class="alc-bf__prices">
+                      <s class="alc-bf__was">
+                        <span class="visually-hidden">{{ 'products.product.price.regular_price' | t }}</span>
+                        {{- money_was -}}
+                      </s>
+                      {%- unless is_out -%}
+                        <p class="alc-bf__now">
+                          <span class="visually-hidden" data-now-text>{{ 'products.product.price.sale_price' | t }} {{ money_now }}</span>
+                          <span class="alc-bf__amount" aria-hidden="true" data-amount>
+                            {%- if sep != '' or tail != '' -%}
+                              {{- whole -}}
+                              {%- if sep != '' %}<span class="alc-bf__dec"><span class="alc-bf__sep">{{ sep }}</span>{{ cents }}</span>{% endif -%}
+                              {%- if tail != '' %}<span class="alc-bf__cur">{{ tail }}</span>{% endif -%}
+                            {%- else -%}
+                              {{- money_now -}}
+                            {%- endif -%}
+                          </span>
+                        </p>
+                        <p class="alc-bf__save">{{ t[8] }} <span data-save>{{ reduction_local | money }}</span></p>
+                      {%- endunless -%}
+                    </div>
+
+                    {%- unless is_out -%}
+                      <div class="alc-bfcd__coupon">
+                        <span class="alc-bfcd__coupon-text">
+                          <span class="alc-bfcd__with">{{ t[3] }}</span>
+                          <strong class="alc-bfcd__code">{{ code | escape }}</strong>
+                        </span>
+                        <button type="button" class="alc-bfcd__copy" data-copy aria-label="{{ t[5] | escape }} {{ code | escape }}" data-done="{{ t[6] | escape }}">
+                          <svg class="alc-bfcd__copy-icon" aria-hidden="true" focusable="false" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15H4a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1h10a1 1 0 0 1 1 1v1"/></svg>
+                          <svg class="alc-bfcd__copied-icon" aria-hidden="true" focusable="false" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="m5 13 4.5 4.5L19 7"/></svg>
+                        </button>
+                        <span class="visually-hidden" role="status" data-copy-status></span>
+                      </div>
+                      <p class="alc-bfcd__limit">{{ limit_text }}</p>
+                    {%- endunless -%}
+
+                    <product-form class="alc-bf__form" data-section-id="{{ section_id }}">
+                      {%- form 'product', product, id: form_id, class: 'form', novalidate: 'novalidate', data-type: 'add-to-cart-form' -%}
+                        <input type="hidden" name="id" value="{{ variant.id }}" class="product-variant-id">
+                        <button
+                          id="{{ form_id }}-submit"
+                          type="submit"
+                          name="add"
+                          class="alc-bf__buy"
+                          aria-haspopup="dialog"
+                          aria-labelledby="{{ form_id }}-submit {{ title_id }}"
+                          aria-live="polite"
+                          data-sold-out-message="true"
+                          {% if is_out %}disabled{% endif %}
+                        >
+                          <span>{% if is_out %}{{ t[7] }}{% else %}{{ 'products.product.add_to_cart' | t }}{% endif %}</span>
+                          <span class="sold-out-message hidden">{{- 'products.product.sold_out' | t -}}</span>
+                          {%- unless is_out -%}
+                            <svg aria-hidden="true" focusable="false" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M6 7h12l1 13H5L6 7z"/><path d="M9 7a3 3 0 0 1 6 0"/></svg>
+                          {%- endunless -%}
+                          {%- render 'loading-spinner' -%}
+                        </button>
+                      {%- endform -%}
+                    </product-form>
+
+                    <p class="alc-bfcd__refused" role="status" data-refused-slot hidden></p>
+                  </div>
+                </article>
+              </alc-code-deal>
+            </li>
+            {%- assign deal_position = deal_position | plus: 1 -%}
+          {%- endfor -%}
+        {%- endfor -%}
+      </ul>
+    </alc-bf-scroller>
+  </section>
+{%- endif -%}

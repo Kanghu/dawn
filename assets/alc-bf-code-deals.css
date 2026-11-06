@@ -1,0 +1,357 @@
+/* Black Friday deals sold only with a code (snippets/alc-bf-code-deals.liquid): a sideways row
+   of the page's posters, each with its code on a dashed coupon and the limited-stock note.
+   Tokens, type and posters come from assets/alc-black-friday.css; this file has the row and
+   sizes the posters for it, because assets/alc-bf-spotlight.css isn't on the Black Friday page. */
+.alc-bfcd {
+  max-width: calc(var(--alc-bf-max) + 2 * var(--alc-bf-gutter));
+  margin: 0 auto;
+  padding: clamp(28px, 3.4vw, 48px) var(--alc-bf-gutter) clamp(16px, 2vw, 28px);
+  /* The hero's button lands here: the title clears the 74px sticky header. */
+  scroll-margin-top: 42px;
+}
+
+.alc-bfcd__scroller {
+  display: block;
+}
+
+/* The homepage's stage */
+.alc-bfcd-wrap {
+  max-width: calc(1300px + 40px);
+  margin: 0 auto;
+  padding: var(--alc-bfcd-pt, 0) 20px var(--alc-bfcd-pb, 32px);
+}
+
+.alc-of.alc-bf.alc-bfcd-stage {
+  border-radius: 28px;
+  background:
+    linear-gradient(180deg, rgba(11, 10, 9, 0.72) 0%, rgba(11, 10, 9, 0.92) 100%),
+    var(--alc-bf-marble-img) center top / 1300px auto,
+    var(--alc-bf-black);
+}
+
+.alc-bfcd-stage .alc-bfcd {
+  max-width: none;
+  padding: 28px 28px 30px;
+}
+
+/* Heading --------------------------------------------------------------------- */
+.alc-bfcd__head {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 20px;
+  margin-bottom: 6px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid var(--alc-bf-line);
+}
+
+.alc-bf .alc-bfcd__title {
+  font-size: clamp(24px, 2.7vw, 38px);
+  line-height: 1.08;
+  text-align: left;
+}
+
+.alc-bf .alc-bfcd__sub {
+  max-width: 660px;
+  margin: 8px 0 0;
+  font-size: 14px;
+  text-align: left;
+}
+
+.alc-bfcd__tools {
+  display: flex;
+  flex: none;
+  align-items: center;
+  gap: 8px;
+}
+
+/* The row: four posters, the rest a swipe or an arrow away ----------------------- */
+.alc-bfcd__track {
+  display: grid;
+  grid-auto-flow: column;
+  grid-auto-columns: calc((100% - 3 * 16px) / 4);
+  gap: 16px;
+  margin: 0;
+  padding: 14px 0 4px;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scrollbar-width: none;
+  list-style: none;
+  -webkit-overflow-scrolling: touch;
+}
+
+.alc-bfcd__track::-webkit-scrollbar {
+  display: none;
+}
+
+.alc-bfcd__item {
+  min-width: 0;
+  scroll-snap-align: start;
+}
+
+.alc-bfcd__deal {
+  display: block;
+  height: 100%;
+}
+
+/* Posters. Concentric corners: 22px card, minus the 1px border and the 10px inset. */
+.alc-bfcd .alc-bf__card {
+  padding: 10px 10px 16px;
+  border-radius: 22px;
+}
+
+.alc-bfcd .alc-bf__niche {
+  border-radius: 11px;
+}
+
+.alc-bfcd .alc-bf__seal {
+  top: -8px;
+  right: -6px;
+  width: 74px;
+  font-size: 20px;
+}
+
+.alc-bfcd .alc-bf__card-body {
+  padding: 14px 6px 0;
+}
+
+/* The clamp's "…" takes the heading's colour, not the link's: without this it's dark on dark
+   and a long title looks cut off mid-word. */
+.alc-bfcd .alc-bf__card-title {
+  font-size: 14px;
+  color: var(--alc-bf-ivory);
+}
+
+.alc-bfcd .alc-bf__was {
+  font-size: 14.5px;
+}
+
+.alc-bfcd .alc-bf__amount {
+  font-size: clamp(34px, 3vw, 44px);
+}
+
+.alc-bfcd .alc-bf__save {
+  margin-top: 4px;
+  font-size: 12.5px;
+}
+
+/* The code: reads on from the price, "249,99 lei / with code SUPPERBF1" */
+.alc-bfcd__coupon {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 4px;
+  width: 100%;
+  min-height: 46px;
+  margin-top: 12px;
+  padding: 2px 2px 2px 12px;
+  border: 1.5px dashed var(--alc-bf-gold);
+  border-radius: 12px;
+  background: rgba(232, 194, 122, 0.09);
+}
+
+.alc-bfcd__coupon-text {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 0 6px;
+  min-width: 0;
+  text-align: left;
+}
+
+.alc-bfcd__with {
+  font-size: 12.5px;
+  line-height: 1.25;
+  color: var(--alc-bf-ivory-soft);
+}
+
+.alc-bfcd__code {
+  font-family: var(--alc-bf-display);
+  font-size: 15px;
+  font-weight: 800;
+  line-height: 1.25;
+  letter-spacing: 0.03em;
+  color: var(--alc-bf-gold);
+  -webkit-user-select: all;
+  user-select: all;
+}
+
+.alc-bfcd__copy {
+  position: relative;
+  display: grid;
+  flex: none;
+  place-items: center;
+  width: 40px;
+  height: 40px;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  border-radius: 9px;
+  background: transparent;
+  color: var(--alc-bf-gold);
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.alc-bfcd__copy:focus-visible {
+  outline: 2px solid var(--alc-bf-gold);
+  outline-offset: 1px;
+}
+
+.alc-bfcd__copied-icon,
+.alc-bfcd__copy.is-copied .alc-bfcd__copy-icon {
+  display: none;
+}
+
+.alc-bfcd__copy.is-copied .alc-bfcd__copied-icon {
+  display: block;
+}
+
+@media (hover: hover) {
+  .alc-bfcd__copy:hover {
+    background: rgba(232, 194, 122, 0.16);
+  }
+}
+
+/* Limited stock */
+.alc-bf .alc-bfcd__limit {
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  gap: 8px;
+  margin: 11px 0 0;
+  font-size: 12.5px;
+  font-weight: 600;
+  line-height: 1.35;
+  text-align: left;
+  text-wrap: balance;
+  color: var(--alc-bf-ivory);
+}
+
+.alc-bfcd__limit::before {
+  content: '';
+  flex: none;
+  width: 7px;
+  height: 7px;
+  margin-top: 0.34em;
+  border-radius: 50%;
+  background: var(--alc-bf-red);
+  box-shadow: 0 0 0 3px rgba(229, 56, 59, 0.24);
+}
+
+.alc-bfcd .alc-bf__form {
+  margin-top: 12px;
+}
+
+/* Long labels (Greek, German, Dutch) take a second line on narrow posters instead of leaving the pill. */
+.alc-bfcd .alc-bf__buy {
+  gap: 8px;
+  min-height: 48px;
+  padding: 6px 14px;
+  font-size: 12.5px;
+  line-height: 1.2;
+  letter-spacing: 0.04em;
+  text-wrap: balance;
+}
+
+/* The code was refused when adding (it ran out before the page knew). */
+.alc-bf .alc-bfcd__refused {
+  margin: 10px 0 0;
+  font-size: 12.5px;
+  line-height: 1.35;
+  text-wrap: pretty;
+  color: #ffb4a8;
+}
+
+/*
+ * Sold out at this price: last in the row, without its code. The whole niche dims: the image
+ * multiplies over a cream ground, so fading the image alone only lets the cream through.
+ */
+.alc-bfcd__deal.is-out .alc-bf__niche {
+  filter: grayscale(1) brightness(0.55);
+}
+
+.alc-bfcd__deal.is-out .alc-bf__was {
+  text-decoration: none;
+}
+
+/* Tablet ------------------------------------------------------------------------ */
+@media screen and (max-width: 1099px) {
+  .alc-bfcd__track {
+    grid-auto-columns: calc((100% - 2 * 14px) / 3);
+    gap: 14px;
+  }
+}
+
+@media screen and (max-width: 989px) {
+  .alc-bfcd,
+  .alc-bfcd-stage .alc-bfcd {
+    padding: 28px 0 24px;
+    scroll-margin-top: 62px;
+  }
+
+  .alc-bfcd__head {
+    margin: 0 24px 4px;
+  }
+
+  .alc-bfcd__track {
+    grid-auto-columns: calc((100% - 48px - 2 * 12px) / 2.6);
+    gap: 12px;
+    padding: 14px 24px 4px;
+    scroll-padding: 0 24px;
+  }
+}
+
+/* Phones: full bleed, swipe ---------------------------------------------------------- */
+@media screen and (max-width: 749px) {
+  .alc-bfcd-wrap {
+    padding: calc(var(--alc-bfcd-pt, 0px) / 2) 0 calc(var(--alc-bfcd-pb, 32px) / 2);
+  }
+
+  .alc-of.alc-bf.alc-bfcd-stage {
+    border-radius: 0;
+    background:
+      linear-gradient(180deg, rgba(11, 10, 9, 0.76) 0%, rgba(11, 10, 9, 0.94) 100%),
+      var(--alc-bf-marble-img-sm) center top / 900px auto,
+      var(--alc-bf-black);
+  }
+
+  .alc-bfcd,
+  .alc-bfcd-stage .alc-bfcd {
+    padding: 26px 0 22px;
+  }
+
+  .alc-bfcd__head {
+    display: block;
+    margin: 0 16px 2px;
+    padding-bottom: 14px;
+  }
+
+  .alc-bfcd__tools {
+    display: none;
+  }
+
+  .alc-bf .alc-bfcd__title {
+    font-size: 26px;
+  }
+
+  .alc-bf .alc-bfcd__sub {
+    font-size: 13.5px;
+  }
+
+  .alc-bfcd__track {
+    grid-auto-columns: min(72vw, 280px);
+    gap: 10px;
+    padding: 14px 16px 4px;
+    scroll-padding: 0 16px;
+  }
+
+  .alc-bfcd .alc-bf__seal {
+    width: 66px;
+    font-size: 18px;
+  }
+
+  .alc-bfcd .alc-bf__amount {
+    font-size: 38px;
+  }
+}

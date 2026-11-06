@@ -1,0 +1,68 @@
+{%- comment -%}
+  Homepage row of the Black Friday deals sold only with a discount code, on a rounded black
+  marble stage like sections/alc-bf-spotlight. The cards and their texts are in
+  snippets/alc-bf-code-deals, shared with the Black Friday page.
+{%- endcomment -%}
+{%- liquid
+  assign end_date = section.settings.end_date | strip
+  assign today_str = 'now' | date: '%Y-%m-%d'
+  assign expired = false
+  if end_date != blank and today_str > end_date
+    assign expired = true
+  endif
+  assign display_font = section.settings.display_font
+  assign font_bold = display_font | font_modify: 'weight', '800'
+-%}
+{%- unless expired or section.blocks.size == 0 -%}
+  {{ 'alc-black-friday.css' | asset_url | stylesheet_tag }}
+  {{ 'alc-bf-code-deals.css' | asset_url | stylesheet_tag }}
+  <script src="{{ 'alc-black-friday.js' | asset_url }}" defer="defer"></script>
+  <script src="{{ 'product-form.js' | asset_url }}" defer="defer"></script>
+  <script src="{{ 'alc-bf-code-deals.js' | asset_url }}" defer="defer"></script>
+  <style>
+    {{ display_font | font_face: font_display: 'swap' }}
+    {%- if font_bold %}{{ font_bold | font_face: font_display: 'swap' }}{% endif %}
+    .alc-bfcd-{{ section.id }} {
+      --alc-bf-display: {{ display_font.family }}, 'Arial Black', 'Helvetica Neue', Arial, sans-serif;
+      --alc-bf-foil-img: url({{ 'alc-bf-foil.jpg' | asset_img_url: '320x' }});
+      --alc-bf-marble-img: url({{ 'alc-bf-marble.jpg' | asset_img_url: '1300x' }});
+      --alc-bf-marble-img-sm: url({{ 'alc-bf-marble.jpg' | asset_img_url: '900x' }});
+      --alc-bfcd-pt: {{ section.settings.padding_top }}px;
+      --alc-bfcd-pb: {{ section.settings.padding_bottom }}px;
+    }
+  </style>
+
+  <div class="alc-bfcd-wrap alc-bfcd-{{ section.id }}">
+    <div class="alc-of alc-bf alc-bfcd-stage">
+      {%- render 'alc-bf-code-deals', deals: section.blocks, section_id: section.id, units: section.settings.units -%}
+    </div>
+  </div>
+{%- endunless -%}
+
+{% schema %}
+{
+  "name": "BF code deals",
+  "tag": "div",
+  "class": "section",
+  "settings": [
+    { "type": "paragraph", "content": "Products sold at a special price only with a discount code. Each block needs its own code in Shopify, with the same reduction." },
+    { "type": "number", "id": "units", "label": "Units per product", "default": 20, "info": "Shown in the limited-stock texts. The real limit is the code's usage limit in Shopify." },
+    { "type": "text", "id": "end_date", "label": "End date", "info": "YYYY-MM-DD. The section disappears the day after. Empty: it stays on." },
+    { "type": "font_picker", "id": "display_font", "label": "Title font", "default": "montserrat_n9" },
+    { "type": "range", "id": "padding_top", "min": 0, "max": 60, "step": 4, "unit": "px", "label": "Top padding", "default": 0, "info": "Half on phones" },
+    { "type": "range", "id": "padding_bottom", "min": 0, "max": 60, "step": 4, "unit": "px", "label": "Bottom padding", "default": 32, "info": "Half on phones" }
+  ],
+  "blocks": [
+    {
+      "type": "code_deal",
+      "name": "Deal",
+      "settings": [
+        { "type": "product", "id": "product", "label": "Product" },
+        { "type": "text", "id": "code", "label": "Discount code", "info": "Exactly as in Shopify. Never translate it." },
+        { "type": "number", "id": "reduction", "label": "Reduction, in bani", "info": "The code's fixed amount × 100: 350 lei = 35000. Sets the price on the card." }
+      ]
+    }
+  ],
+  "presets": [{ "name": "BF code deals" }]
+}
+{% endschema %}
