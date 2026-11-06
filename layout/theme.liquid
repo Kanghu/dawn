@@ -339,6 +339,13 @@ body {
   display: grid;
   grid-template-rows: auto auto 1fr auto;
   grid-template-columns: 100%;
+  {%- comment -%}
+    Keeps the footer at the bottom of the window on short pages (cart, search, 404). Home, collection and product stay
+    without it: it was removed site-wide for CLS in 6b5d6651, and those are long pages anyway.
+  {%- endcomment -%}
+  {%- unless template.name == 'index' or template.name == 'collection' or template.name == 'product' %}
+  min-height: 100%;
+  {%- endunless %}
   margin: 0;
   font-size: 1.5rem;
   letter-spacing: 0.02rem;
