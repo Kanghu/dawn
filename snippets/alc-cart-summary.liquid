@@ -122,11 +122,11 @@
       </li>
     </ul>
     {%- comment -%}
-      Cards go through NETOPIA / Viva (not reported in shop.enabled_payment_types, which only
-      lists PayPal here), so the methods customers actually get are listed explicitly.
+      Cards go through NETOPIA / Viva (not reported in shop.enabled_payment_types), so the
+      methods are listed explicitly. PayPal is offered at checkout but deliberately not shown here.
     {%- endcomment -%}
     <ul class="alc-csum__pay" role="list" aria-label="{{ 'sections.footer.payment' | t }}">
-      {%- assign pay_types = 'visa,master,maestro,paypal' | split: ',' -%}
+      {%- assign pay_types = 'visa,master,maestro' | split: ',' -%}
       {%- for type in pay_types -%}
         <li>{{ type | payment_type_svg_tag: class: 'alc-csum__pay-icon' }}</li>
       {%- endfor -%}

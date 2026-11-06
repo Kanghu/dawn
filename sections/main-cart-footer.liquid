@@ -47,13 +47,10 @@
                 {%- render 'alc-cart-summary', form_id: 'cart', button_id: 'checkout' -%}
               </div>
             {%- else -%}
-              {%- comment -%} The checkout button is part of alc-cart-summary (subtotal block). {%- endcomment -%}
-
-              {%- if additional_checkout_buttons -%}
-                <div class="cart__dynamic-checkout-buttons additional-checkout-buttons">
-                  {{ content_for_additional_checkout_buttons }}
-                </div>
-              {%- endif -%}
+              {%- comment -%}
+                The checkout button is part of alc-cart-summary (subtotal block). Express checkout
+                buttons (PayPal and others) are deliberately not shown on the cart page.
+              {%- endcomment -%}
           {%- endcase -%}
         {% endfor %}
 
