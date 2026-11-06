@@ -9,6 +9,83 @@
  */
 {
   "sections": {
+    "bf_code_deals": {
+      "type": "alc-bf-code-deals",
+      "settings": {
+        "units": 20,
+        "end_date": "",
+        "display_font": "montserrat_n9",
+        "padding_top": 0,
+        "padding_bottom": 32
+      },
+      "blocks": {
+        "deal_w10": {
+          "type": "code_deal",
+          "settings": {
+            "product": "oglinda-led-rectangulara-80x60cm-verite-royale-gold-motionglow-marcello-sistem-dezaburire-ceas-termometru-dimabila",
+            "code": "SUPPERBF1",
+            "reduction": 35000
+          }
+        },
+        "deal_e07s": {
+          "type": "code_deal",
+          "settings": {
+            "product": "oglinda-led-rectangulara-80x60cm-linea-touch-sistem-dezaburire-dimabila",
+            "code": "SUPPERBF2",
+            "reduction": 28000
+          }
+        },
+        "deal_e71s": {
+          "type": "code_deal",
+          "settings": {
+            "product": "oglinda-led-touch-ivory-sistem-dezaburire-50x50cm",
+            "code": "SUPPERBF3",
+            "reduction": 7980
+          }
+        },
+        "deal_w03": {
+          "type": "code_deal",
+          "settings": {
+            "product": "oglinda-led-rectangulara-80x60cm-verite-majeste-noir-motion-glow-marcello-sistem-dezaburire-ceas-termometru-dimabila",
+            "code": "SUPPERBF4",
+            "reduction": 38000
+          }
+        },
+        "deal_lc6002": {
+          "type": "code_deal",
+          "settings": {
+            "product": "lustra-clasica-pevek-63cm-3xe27-aluminiu-negru",
+            "code": "SUPPERBF5",
+            "reduction": 11000
+          }
+        },
+        "deal_cy6102": {
+          "type": "code_deal",
+          "settings": {
+            "product": "planta-artificiala-tip-filodendron-120-cm-verde",
+            "code": "SUPPERBF6",
+            "reduction": 26000
+          }
+        },
+        "deal_jy105": {
+          "type": "code_deal",
+          "settings": {
+            "product": "decorațiune-alocasia-150-cm-verde",
+            "code": "SUPPERBF7",
+            "reduction": 31002
+          }
+        }
+      },
+      "block_order": [
+        "deal_w10",
+        "deal_e07s",
+        "deal_e71s",
+        "deal_w03",
+        "deal_lc6002",
+        "deal_cy6102",
+        "deal_jy105"
+      ]
+    },
     "campaign_spotlight": {
       "type": "alc-campaign-spotlight",
       "disabled": true,
@@ -694,6 +771,7 @@
   },
   "order": [
     "bf_spotlight",
+    "bf_code_deals",
     "campaign_spotlight",
     "17767703530432b021",
     "blocks_M8bhb3",
