@@ -58,8 +58,10 @@
     <script src="{{ 'search-form.js' | asset_url }}" defer="defer"></script>
     {%- if template.name == 'index' -%}
       {%- comment -%}
-        Homepage product sections that change per visitor (snippets/alc-pz-pool, sections/alc-pz-cards).
+        The homepage product sections skip product-form.js and expect it from here (featured-collection, alc-featured-collection).
+        alc-pz-sections.js: those sections change per visitor (snippets/alc-pz-pool, sections/alc-pz-cards).
       {%- endcomment -%}
+      <script src="{{ 'product-form.js' | asset_url }}" defer="defer"></script>
       <script src="{{ 'alc-pz-sections.js' | asset_url }}" defer="defer"></script>
     {%- endif -%}
 
