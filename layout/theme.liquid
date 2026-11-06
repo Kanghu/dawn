@@ -56,6 +56,12 @@
     <script src="{{ 'details-disclosure.js' | asset_url }}" defer="defer"></script>
     <script src="{{ 'details-modal.js' | asset_url }}" defer="defer"></script>
     <script src="{{ 'search-form.js' | asset_url }}" defer="defer"></script>
+    {%- if template.name == 'index' -%}
+      {%- comment -%}
+        Homepage product sections that change per visitor (snippets/alc-pz-pool, sections/alc-pz-cards).
+      {%- endcomment -%}
+      <script src="{{ 'alc-pz-sections.js' | asset_url }}" defer="defer"></script>
+    {%- endif -%}
 
     {%- comment -%}
       Only the Bootstrap rules the theme matches (assets/bootstrap-compat.css, 25 KB instead of 233 KB from jsDelivr).
