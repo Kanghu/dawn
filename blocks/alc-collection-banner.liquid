@@ -10,12 +10,58 @@
   - The whole banner is clickable: the button's hit area is stretched over it.
   - Styles: assets/alc-collection-banner.css. Only the height and the text side change per banner,
     through modifier classes.
+  - No photo: three in-stock products of the collection fill the side opposite the text (product
+    9 onwards, so they do not repeat the first cards of a row of 8 below), then the collection's
+    own image. Collection images are square, which a 1300 × 300 frame crops badly. A product whose
+    main photo is a close-up (file named *_DETALIU*) is skipped: cropped into a tile it reads as an
+    abstract shape.
+  - Markets (snippets/alc-market-visibility): nothing renders in a market the banner is not for.
 {% endcomment %}
+{%- capture alc_hide -%}{%- render 'alc-market-visibility', visibility: block.settings.visibility -%}{%- endcapture -%}
+{%- if alc_hide == blank -%}
 {%- liquid
   assign collection = block.settings.collection
   assign link = block.settings.link | default: collection.url
-  assign image = block.settings.image | default: collection.featured_image
+  assign image = block.settings.image
   assign image_mobile = block.settings.image_mobile
+
+  assign tile_count = 0
+  if image == blank and collection != blank
+    for pass in (1..2)
+      assign pos = 0
+      for p in collection.products
+        if tile_count >= 3
+          break
+        endif
+        if p.available == false or p.featured_media == blank
+          continue
+        endif
+        assign pos = pos | plus: 1
+        if pass == 1 and pos <= 8
+          continue
+        endif
+        if pass == 2 and pos > 8
+          break
+        endif
+        assign tile_src = p.featured_media.preview_image.src | downcase
+        if tile_src contains '_detaliu'
+          continue
+        endif
+        assign tile_count = tile_count | plus: 1
+        case tile_count
+          when 1
+            assign tile_1 = p.featured_media
+          when 2
+            assign tile_2 = p.featured_media
+          else
+            assign tile_3 = p.featured_media
+        endcase
+      endfor
+    endfor
+    if tile_count == 0
+      assign image = collection.featured_image
+    endif
+  endif
 
   assign title = block.settings.title | default: collection.title
   assign subtitle = block.settings.subtitle
@@ -35,11 +81,36 @@
 {{ 'alc-collection-banner.css' | asset_url | stylesheet_tag }}
 
 <div
-  class="alc-cb alc-cb--{{ block.settings.text_position }} alc-cb--{{ block.settings.height }}"
+  class="alc-cb alc-cb--{{ block.settings.text_position }} alc-cb--{{ block.settings.height }}{% if tile_count > 0 %} alc-cb--tiles{% endif %}"
   {{ block.shopify_attributes }}
 >
   <div class="alc-cb__media">
-    {%- if image != blank -%}
+    {%- if tile_count > 0 -%}
+      {%- for i in (1..tile_count) -%}
+        {%- liquid
+          case i
+            when 1
+              assign tile = tile_1
+            when 2
+              assign tile = tile_2
+            else
+              assign tile = tile_3
+          endcase
+        -%}
+        <span class="alc-cb__tile">
+          {{
+            tile
+            | image_url: width: 600
+            | image_tag:
+              widths: '300, 450, 600, 900',
+              sizes: '(min-width: 1300px) 270px, (min-width: 990px) 21vw, (min-width: 750px) 34vw, 50vw',
+              loading: 'lazy',
+              class: 'alc-cb__img',
+              alt: ''
+          }}
+        </span>
+      {%- endfor -%}
+    {%- elsif image != blank -%}
       <picture>
         {%- if image_mobile != blank -%}
           <source
@@ -91,16 +162,28 @@
     </div>
   </div>
 </div>
+{%- endif -%}
 
 {% schema %}
 {
   "name": "Collection banner",
   "settings": [
     {
+      "type": "select",
+      "id": "visibility",
+      "label": "Markets",
+      "options": [
+        { "value": "all", "label": "All markets" },
+        { "value": "ro", "label": "Romania only (.ro)" },
+        { "value": "not_ro", "label": "All markets except Romania" }
+      ],
+      "default": "all"
+    },
+    {
       "type": "collection",
       "id": "collection",
       "label": "Collection",
-      "info": "The banner links to it. Empty title: the collection's own (translated) title. Empty photo: the collection's image."
+      "info": "The banner links to it. Empty title: the collection's own (translated) title. Empty photo: three in-stock products of the collection."
     },
     {
       "type": "image_picker",

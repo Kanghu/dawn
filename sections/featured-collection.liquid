@@ -1,3 +1,9 @@
+{%- comment -%}
+  Markets setting: "ro" shows the section only on the Romanian market, "not_ro" everywhere else
+  (snippets/alc-market-visibility). A hidden section prints nothing, its pool and styles included.
+{%- endcomment -%}
+{%- capture alc_hide -%}{%- render 'alc-market-visibility', visibility: section.settings.visibility -%}{%- endcapture -%}
+{%- if alc_hide == blank -%}
 {{ 'component-card.css' | asset_url | stylesheet_tag }}
 {{ 'component-price.css' | asset_url | stylesheet_tag }}
 
@@ -215,6 +221,7 @@
     {%- endif -%}
   </div>
 </div>
+{%- endif -%}
 
 {% schema %}
 {
@@ -225,6 +232,17 @@
     "groups": ["header", "footer"]
   },
   "settings": [
+    {
+      "type": "select",
+      "id": "visibility",
+      "label": "Markets",
+      "options": [
+        { "value": "all", "label": "All markets" },
+        { "value": "ro", "label": "Romania only (.ro)" },
+        { "value": "not_ro", "label": "All markets except Romania" }
+      ],
+      "default": "all"
+    },
     {
       "type": "inline_richtext",
       "id": "title",

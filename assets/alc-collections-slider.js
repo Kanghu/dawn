@@ -56,9 +56,11 @@ if (!customElements.get('alc-collections-slider')) {
         cancelAnimationFrame(this.measureFrame);
       }
 
-      // The cards, or the elements Shopify wraps each card block in on the storefront.
+      // The cards, or the elements Shopify wraps each card block in on the storefront. A card hidden
+      // in the current market (blocks/_alc-collection-card, Markets setting) has no box: skip it.
+      // Called only from measure(), the one place that reads layout.
       get cards() {
-        return this.track.children;
+        return Array.prototype.filter.call(this.track.children, (card) => card.offsetWidth > 0);
       }
 
       scheduleMeasure() {

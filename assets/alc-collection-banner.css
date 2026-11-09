@@ -141,6 +141,77 @@
   outline-offset: 3px;
 }
 
+/* No photo (alc-cb--tiles): three product photos fill the side opposite the text as full-height
+   tiles, and the plain ground carries the text, fading into the first tile. Below 990px the tiles
+   fill the whole banner and a darker gradient carries the text, as on the photo banners. */
+.alc-cb--tiles .alc-cb__media {
+  width: auto;
+  left: 38%;
+  display: grid;
+  grid-auto-flow: column;
+  grid-auto-columns: minmax(0, 1fr);
+  gap: 4px;
+}
+
+.alc-cb--tiles.alc-cb--right .alc-cb__media {
+  left: 0;
+  right: 38%;
+}
+
+.alc-cb--tiles.alc-cb--center .alc-cb__media {
+  left: 0;
+}
+
+.alc-cb__tile {
+  position: relative;
+  display: block;
+  min-width: 0;
+  overflow: hidden;
+  background: #2a2826;
+}
+
+.alc-cb--tiles .alc-cb__media::after {
+  background: linear-gradient(to right, #1c1b1a, rgba(28, 27, 26, 0) 12%);
+}
+
+.alc-cb--tiles.alc-cb--right .alc-cb__media::after {
+  background: linear-gradient(to left, #1c1b1a, rgba(28, 27, 26, 0) 12%);
+}
+
+.alc-cb--tiles.alc-cb--center .alc-cb__media::after {
+  background: rgba(0, 0, 0, 0.45);
+}
+
+.alc-cb--tiles .alc-cb__text {
+  max-width: min(410px, calc(38% - 24px));
+  text-wrap: balance;
+}
+
+.alc-cb--tiles.alc-cb--center .alc-cb__text {
+  max-width: 410px;
+}
+
+@media screen and (max-width: 989px) {
+  .alc-cb--tiles .alc-cb__media,
+  .alc-cb--tiles.alc-cb--right .alc-cb__media {
+    left: 0;
+    right: 0;
+    gap: 0;
+  }
+
+  .alc-cb--tiles .alc-cb__media::after {
+    background: linear-gradient(to right, rgba(21, 20, 18, 0.92), rgba(21, 20, 18, 0.74) 48%, rgba(21, 20, 18, 0.12));
+  }
+
+  .alc-cb--tiles.alc-cb--right .alc-cb__media::after {
+    background: linear-gradient(to left, rgba(21, 20, 18, 0.92), rgba(21, 20, 18, 0.74) 48%, rgba(21, 20, 18, 0.12));
+  }
+
+  .alc-cb--tiles .alc-cb__text {
+    max-width: 78%;
+  }
+}
+
 @media screen and (max-width: 749px) {
   .alc-cb {
     --alc-cb-height: 200px;
@@ -169,6 +240,15 @@
 
   .alc-cb__cta {
     font-size: 12px;
+  }
+
+  /* Two near-square tiles crop the product photos less than three narrow ones. */
+  .alc-cb__tile:nth-child(3) {
+    display: none;
+  }
+
+  .alc-cb--tiles .alc-cb__text {
+    max-width: 84%;
   }
 }
 

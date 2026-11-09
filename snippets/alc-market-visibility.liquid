@@ -1,0 +1,26 @@
+{% comment %}
+  Prints "hide" when a section, block or card must not render in the current market,
+  and nothing when it may render. Capture it and test for blank:
+
+    {%- capture alc_hide -%}{%- render 'alc-market-visibility', visibility: section.settings.visibility -%}{%- endcapture -%}
+    {%- if alc_hide == blank -%} ... {%- endif -%}
+
+  Accepts:
+  - visibility: {String} 'all' (or blank), 'ro' (Romania market only) or 'not_ro' (every market except Romania)
+
+  Romania is the store's primary market (handle 'ro', www.alessandrodesign.ro). The check is on the
+  market rather than the host, so the dev server, previews and every Romanian domain behave the same.
+  Some collections (artificial plants, bathroom furniture) are sold only in Romania.
+{% endcomment %}
+{%- liquid
+  assign alc_is_ro = false
+  if localization.market.handle == 'ro'
+    assign alc_is_ro = true
+  endif
+
+  if visibility == 'ro' and alc_is_ro == false
+    echo 'hide'
+  elsif visibility == 'not_ro' and alc_is_ro
+    echo 'hide'
+  endif
+-%}

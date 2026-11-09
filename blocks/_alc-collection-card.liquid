@@ -6,7 +6,14 @@
   - Empty title: the collection's own, translated, title. Empty photo: the collection's image.
   - Empty button text: the built-in translation (snippets/alc-blocks-i18n).
   - The optional line is shown as typed; it is translated in Translate & Adapt.
+  - Markets (snippets/alc-market-visibility): a card hidden in the current market renders only a
+    style rule that hides the element Shopify wraps it in, so it leaves no gap in the row;
+    assets/alc-collections-slider.js measures only the cards that are shown.
 {% endcomment %}
+{%- capture alc_hide -%}{%- render 'alc-market-visibility', visibility: block.settings.visibility -%}{%- endcapture -%}
+{%- if alc_hide != blank -%}
+  <style>#shopify-block-{{ block.id }}{display:none}</style>
+{%- else -%}
 {%- liquid
   assign collection = block.settings.collection
   assign image = block.settings.image | default: collection.featured_image
@@ -57,11 +64,23 @@
     </div>
   </{{ card_tag }}>
 </div>
+{%- endif -%}
 
 {% schema %}
 {
   "name": "Collection card",
   "settings": [
+    {
+      "type": "select",
+      "id": "visibility",
+      "label": "Markets",
+      "options": [
+        { "value": "all", "label": "All markets" },
+        { "value": "ro", "label": "Romania only (.ro)" },
+        { "value": "not_ro", "label": "All markets except Romania" }
+      ],
+      "default": "all"
+    },
     {
       "type": "collection",
       "id": "collection",
