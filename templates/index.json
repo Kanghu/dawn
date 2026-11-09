@@ -130,6 +130,7 @@
             "card_2": {
               "type": "_alc-collection-card",
               "settings": {
+                "visibility": "ro",
                 "collection": "mobilier-baie",
                 "image": "shopify://shop_images/3b2d1a41-f4e6-40a9-8a6b-cb74dd9a9763.png",
                 "title": "",
@@ -320,6 +321,7 @@
         "ai_gen_block_61ac348_ETyK6k": {
           "type": "alc-collection-banner",
           "settings": {
+            "visibility": "ro",
             "collection": "baie",
             "image": "shopify://shop_images/OV.png",
             "image_mobile": "shopify://shop_images/OV_M.png",
@@ -341,6 +343,7 @@
     "alc_featured_collection_eK7URW": {
       "type": "alc-featured-collection",
       "settings": {
+        "visibility": "ro",
         "title": "",
         "heading_size": "h1",
         "description": "",
@@ -369,6 +372,7 @@
     "featured_collection_mMLGif": {
       "type": "featured-collection",
       "settings": {
+        "visibility": "ro",
         "title": "",
         "heading_size": "h2",
         "description": "",
@@ -393,6 +397,61 @@
         "padding_top": 12,
         "padding_bottom": 12
       }
+    },
+    "blocks_market_aplice": {
+      "type": "_blocks",
+      "blocks": {
+        "alc_cb_market_aplice": {
+          "type": "alc-collection-banner",
+          "settings": {
+            "visibility": "not_ro",
+            "collection": "aplice-de-interior",
+            "image": "",
+            "image_mobile": "",
+            "title": "",
+            "subtitle": "",
+            "cta_text": "",
+            "link": "",
+            "text_position": "left",
+            "height": "compact"
+          }
+        }
+      },
+      "block_order": [
+        "alc_cb_market_aplice"
+      ],
+      "name": "Collection banner (abroad)",
+      "settings": {}
+    },
+    "alc_featured_collection_market_aplice": {
+      "type": "alc-featured-collection",
+      "settings": {
+        "visibility": "not_ro",
+        "title": "",
+        "heading_size": "h1",
+        "description": "",
+        "show_description": false,
+        "description_style": "body",
+        "collection": "aplice-de-interior",
+        "products_to_show": 8,
+        "columns_desktop": 4,
+        "full_width": false,
+        "show_view_all": true,
+        "view_all_style": "solid",
+        "enable_desktop_slider": false,
+        "color_scheme": "",
+        "image_ratio": "adapt",
+        "image_shape": "default",
+        "show_secondary_image": true,
+        "show_vendor": false,
+        "show_rating": true,
+        "quick_add": "standard",
+        "columns_mobile": "2",
+        "swipe_on_mobile": false,
+        "padding_top": 24,
+        "padding_bottom": 24
+      },
+      "name": "Aplice (abroad)"
     },
     "blocks_8HTAtC": {
       "type": "_blocks",
@@ -760,7 +819,20 @@
         "title_2": "Friday",
         "up_to": 80,
         "display_font": "montserrat_n9",
-        "products": ["oglinda-led-rectangulara-55x70cm-senzor-motionglow-marcello-sistem-dezaburire-ceas-termometru-dimabila", "baterie-bucatarie-alama-sanitara-alb-od-2072", "baterie-bucatarie-alama-sanitara-crom-wzx-2017", "baterie-bucatarie-alama-sanitara-negru-cf2045", "baterie-bucatarie-alama-sanitara-crom-cu-imitatie-jad-wzy-308", "baterie-bucatarie-cu-dus-extractabil-inox-sus304-crom-fj5543", "lustra-led-8057bn-41w-acril-maro-lumina-3000k-4000k-6000k", "baterie-lavoar-cu-dus-extractabil-alama-sanitara-alb-wzx-2021", "baterie-bucatarie-cu-dus-extractibil-inox-si-alama-crom-yd-301", "baterie-lavoar-monocomanda-cartus-ceramic-alama-sanitara-gri-satin-racorduri-si-kit-fixare-incluse-9707n", "baterie-lavoar-alama-sanitara-negru-9107h", "coloana-dus-alama-sanitara-satinat-9960n"],
+        "products": [
+          "oglinda-led-rectangulara-55x70cm-senzor-motionglow-marcello-sistem-dezaburire-ceas-termometru-dimabila",
+          "baterie-bucatarie-alama-sanitara-alb-od-2072",
+          "baterie-bucatarie-alama-sanitara-crom-wzx-2017",
+          "baterie-bucatarie-alama-sanitara-negru-cf2045",
+          "baterie-bucatarie-alama-sanitara-crom-cu-imitatie-jad-wzy-308",
+          "baterie-bucatarie-cu-dus-extractabil-inox-sus304-crom-fj5543",
+          "lustra-led-8057bn-41w-acril-maro-lumina-3000k-4000k-6000k",
+          "baterie-lavoar-cu-dus-extractabil-alama-sanitara-alb-wzx-2021",
+          "baterie-bucatarie-cu-dus-extractibil-inox-si-alama-crom-yd-301",
+          "baterie-lavoar-monocomanda-cartus-ceramic-alama-sanitara-gri-satin-racorduri-si-kit-fixare-incluse-9707n",
+          "baterie-lavoar-alama-sanitara-negru-9107h",
+          "coloana-dus-alama-sanitara-satinat-9960n"
+        ],
         "products_count": 9,
         "personalize": true,
         "personalize_share": 50,
@@ -782,6 +854,8 @@
     "blocks_d4EQfk",
     "alc_featured_collection_eK7URW",
     "featured_collection_mMLGif",
+    "blocks_market_aplice",
+    "alc_featured_collection_market_aplice",
     "blocks_8HTAtC",
     "featured_collection_PDnXwY",
     "alc_featured_collection_ERArtK",
