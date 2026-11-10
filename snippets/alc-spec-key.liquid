@@ -1,49 +1,17 @@
 {%- comment -%}
   Which custom.* key to read for a specification-group entry.
-  Groups list the canonical keys (metaobject lists `x_`, numbers `*_cm`, `putere_w`, `nr_becuri`, booleans).
-  Until the free-text twins are retired, a canonical key with no value falls back to its first filled
-  legacy twin; otherwise the canonical key is returned.
+  Groups list the canonical keys (metaobject lists `x_`, numbers `*_cm`, `putere_w`, `nr_becuri`, booleans)
+  and the key is read as listed. The one alternate: lifetime is a number (`autonomie_h`) on most products
+  and an option list (`autonomie_`) on the rest.
 
   Usage: capture this snippet's output (params: product, spec), then read product.metafields.custom[<output>].
 {%- endcomment -%}
 {%- liquid
   assign key_out = spec
-  if product.metafields.custom[spec].value == blank
-    assign fallbacks = ''
-    case spec
-      when 'nr_becuri'
-        assign fallbacks = 'nr_surse_iluminat'
-      when 'putere_w'
-        assign fallbacks = 'putere'
-      when 'autonomie_h'
-        assign fallbacks = 'autonomie_,autonomie'
-      when 'flux_de_lumina_lm_'
-        assign fallbacks = 'flux_de_lumina'
-      when 'diametru_cm', 'inaltime_cm', 'lungime_cm', 'latime_cm', 'adancime_cm'
-        assign fallbacks = spec | remove_last: '_cm'
-      else
-        assign spec_last = spec | slice: -1
-        if spec_last == '_'
-          assign fallbacks = spec | remove_last: '_'
-        endif
-    endcase
-    assign fallback_keys = fallbacks | split: ','
-    for fallback_key in fallback_keys
-      if fallback_key == 'tip_soclu'
-        comment
-          The free-text tip_soclu holds the bulb technology ("Banda LED", "LED integrat") on ~2,000 products;
-          only real sockets (E27, G9, GU10…) are worth a Tip soclu row.
-        endcomment
-        assign soclu_text = product.metafields.custom.tip_soclu.value | join: ','
-        if soclu_text contains 'LED'
-          continue
-        endif
-      endif
-      if product.metafields.custom[fallback_key].value != blank
-        assign key_out = fallback_key
-        break
-      endif
-    endfor
+  if spec == 'autonomie_h' and product.metafields.custom.autonomie_h.value == blank
+    if product.metafields.custom.autonomie_.value != blank
+      assign key_out = 'autonomie_'
+    endif
   endif
   echo key_out
 -%}

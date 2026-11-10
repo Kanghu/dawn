@@ -76,17 +76,8 @@
       for p in collection.products
         assign key = ''
         assign wv = p.metafields.custom.lungime_cm.value
-        if wv == blank
-          assign wv = p.metafields.custom.lungime.value | first
-        endif
         assign hv = p.metafields.custom.inaltime_cm.value
-        if hv == blank
-          assign hv = p.metafields.custom.inaltime.value | first
-        endif
         assign dv = p.metafields.custom.diametru_cm.value
-        if dv == blank
-          assign dv = p.metafields.custom.diametru.value | first
-        endif
         assign w = 0
         assign h = 0
         if wv != blank and hv != blank
