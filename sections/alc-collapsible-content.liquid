@@ -262,6 +262,8 @@
               {%- when 'putere' -%}{%- assign translated_spec = 'Мощност (W)' -%}
               {%- when 'diametru', 'diametru_cm' -%}{%- assign translated_spec = 'Диаметър' -%}
               {%- when 'inaltime', 'inaltime_cm' -%}{%- assign translated_spec = 'Височина' -%}
+              {%- when 'inaltime_min_cm' -%}{%- assign translated_spec = 'Минимална височина' -%}
+              {%- when 'dimensiune_cm' -%}{%- assign translated_spec = 'Размер' -%}
               {%- when 'lungime', 'lungime_cm' -%}{%- assign translated_spec = 'Дължина' -%}
               {%- when 'latime', 'latime_cm' -%}{%- assign translated_spec = 'Ширина' -%}
               {%- when 'tip_montaj' -%}{%- assign translated_spec = 'Тип монтаж' -%}
@@ -271,7 +273,7 @@
               {%- else -%}
                 {%- assign spec_t_key = 'products.metaobjects.specification_groups.' | append: spec -%}
                 {%- assign translated_spec = spec_t_key | t -%}
-                {%- if translated_spec contains 'translation missing' -%}{%- assign translated_spec = spec | replace: '_', ' ' | capitalize -%}{%- endif -%}
+                {%- if translated_spec contains 'ranslation missing' -%}{%- assign translated_spec = spec | replace: '_', ' ' | capitalize -%}{%- endif -%}
             {%- endcase -%}
           {%- elsif current_locale == 'hu' -%}
             {%- case spec_base -%}
@@ -306,6 +308,8 @@
               {%- when 'putere' -%}{%- assign translated_spec = 'Teljesítmény (W)' -%}
               {%- when 'diametru', 'diametru_cm' -%}{%- assign translated_spec = 'Átmérő' -%}
               {%- when 'inaltime', 'inaltime_cm' -%}{%- assign translated_spec = 'Magasság' -%}
+              {%- when 'inaltime_min_cm' -%}{%- assign translated_spec = 'Minimális magasság' -%}
+              {%- when 'dimensiune_cm' -%}{%- assign translated_spec = 'Méret' -%}
               {%- when 'lungime', 'lungime_cm' -%}{%- assign translated_spec = 'Hosszúság' -%}
               {%- when 'latime', 'latime_cm' -%}{%- assign translated_spec = 'Szélesség' -%}
               {%- when 'tip_montaj' -%}{%- assign translated_spec = 'Szerelés típusa' -%}
@@ -315,7 +319,7 @@
               {%- else -%}
                 {%- assign spec_t_key = 'products.metaobjects.specification_groups.' | append: spec -%}
                 {%- assign translated_spec = spec_t_key | t -%}
-                {%- if translated_spec contains 'translation missing' -%}{%- assign translated_spec = spec | replace: '_', ' ' | capitalize -%}{%- endif -%}
+                {%- if translated_spec contains 'ranslation missing' -%}{%- assign translated_spec = spec | replace: '_', ' ' | capitalize -%}{%- endif -%}
             {%- endcase -%}
           {%- elsif current_locale == 'pl' -%}
             {%- case spec_base -%}
@@ -350,6 +354,8 @@
               {%- when 'putere' -%}{%- assign translated_spec = 'Moc (W)' -%}
               {%- when 'diametru', 'diametru_cm' -%}{%- assign translated_spec = 'Średnica' -%}
               {%- when 'inaltime', 'inaltime_cm' -%}{%- assign translated_spec = 'Wysokość' -%}
+              {%- when 'inaltime_min_cm' -%}{%- assign translated_spec = 'Minimalna wysokość' -%}
+              {%- when 'dimensiune_cm' -%}{%- assign translated_spec = 'Wymiar' -%}
               {%- when 'lungime', 'lungime_cm' -%}{%- assign translated_spec = 'Długość' -%}
               {%- when 'latime', 'latime_cm' -%}{%- assign translated_spec = 'Szerokość' -%}
               {%- when 'tip_montaj' -%}{%- assign translated_spec = 'Typ montażu' -%}
@@ -359,7 +365,7 @@
               {%- else -%}
                 {%- assign spec_t_key = 'products.metaobjects.specification_groups.' | append: spec -%}
                 {%- assign translated_spec = spec_t_key | t -%}
-                {%- if translated_spec contains 'translation missing' -%}{%- assign translated_spec = spec | replace: '_', ' ' | capitalize -%}{%- endif -%}
+                {%- if translated_spec contains 'ranslation missing' -%}{%- assign translated_spec = spec | replace: '_', ' ' | capitalize -%}{%- endif -%}
             {%- endcase -%}
           {%- elsif current_locale == 'sk' -%}
             {%- case spec_base -%}
@@ -394,6 +400,8 @@
               {%- when 'putere' -%}{%- assign translated_spec = 'Výkon (W)' -%}
               {%- when 'diametru', 'diametru_cm' -%}{%- assign translated_spec = 'Priemer' -%}
               {%- when 'inaltime', 'inaltime_cm' -%}{%- assign translated_spec = 'Výška' -%}
+              {%- when 'inaltime_min_cm' -%}{%- assign translated_spec = 'Minimálna výška' -%}
+              {%- when 'dimensiune_cm' -%}{%- assign translated_spec = 'Rozmer' -%}
               {%- when 'lungime', 'lungime_cm' -%}{%- assign translated_spec = 'Dĺžka' -%}
               {%- when 'latime', 'latime_cm' -%}{%- assign translated_spec = 'Šírka' -%}
               {%- when 'tip_montaj' -%}{%- assign translated_spec = 'Typ montáže' -%}
@@ -403,7 +411,7 @@
               {%- else -%}
                 {%- assign spec_t_key = 'products.metaobjects.specification_groups.' | append: spec -%}
                 {%- assign translated_spec = spec_t_key | t -%}
-                {%- if translated_spec contains 'translation missing' -%}{%- assign translated_spec = spec | replace: '_', ' ' | capitalize -%}{%- endif -%}
+                {%- if translated_spec contains 'ranslation missing' -%}{%- assign translated_spec = spec | replace: '_', ' ' | capitalize -%}{%- endif -%}
             {%- endcase -%}
           {%- elsif current_locale == 'hr' -%}
             {%- case spec_base -%}
@@ -438,6 +446,8 @@
               {%- when 'putere' -%}{%- assign translated_spec = 'Snaga (W)' -%}
               {%- when 'diametru', 'diametru_cm' -%}{%- assign translated_spec = 'Promjer' -%}
               {%- when 'inaltime', 'inaltime_cm' -%}{%- assign translated_spec = 'Visina' -%}
+              {%- when 'inaltime_min_cm' -%}{%- assign translated_spec = 'Minimalna visina' -%}
+              {%- when 'dimensiune_cm' -%}{%- assign translated_spec = 'Dimenzija' -%}
               {%- when 'lungime', 'lungime_cm' -%}{%- assign translated_spec = 'Duljina' -%}
               {%- when 'latime', 'latime_cm' -%}{%- assign translated_spec = 'Širina' -%}
               {%- when 'tip_montaj' -%}{%- assign translated_spec = 'Vrsta montaže' -%}
@@ -447,13 +457,13 @@
               {%- else -%}
                 {%- assign spec_t_key = 'products.metaobjects.specification_groups.' | append: spec -%}
                 {%- assign translated_spec = spec_t_key | t -%}
-                {%- if translated_spec contains 'translation missing' -%}{%- assign translated_spec = spec | replace: '_', ' ' | capitalize -%}{%- endif -%}
+                {%- if translated_spec contains 'ranslation missing' -%}{%- assign translated_spec = spec | replace: '_', ' ' | capitalize -%}{%- endif -%}
             {%- endcase -%}
           {%- else -%}
             {%- comment -%} Fallback to Shopify translation system {%- endcomment -%}
             {%- assign spec_key = 'products.metaobjects.specification_groups.' | append: spec -%}
             {%- assign translated_spec = spec_key | t -%}
-            {%- if translated_spec contains 'translation missing' -%}
+            {%- if translated_spec contains 'ranslation missing' -%}
               {%- assign translated_spec = spec | replace: '_', ' ' | capitalize -%}
             {%- endif -%}
           {%- endif -%}
@@ -507,6 +517,8 @@
                         {%- unless forloop.last -%}, {% endunless -%}
                       {%- endfor -%}
                     {%- endif -%}
+                  {% elsif mf.type == 'number_decimal' and spec_base == 'putere_w' %}
+                    {{ mf.value | round: 1 | append: '' | replace: '.0', '' }} W
                   {% elsif mf.type == 'number_decimal' and spec contains '_cm' %}
                     {{ mf.value | round: 1 | append: '' | replace: '.0', '' }} cm
                   {% elsif mf.type == 'number_decimal' and spec == 'autonomie_h' %}

@@ -69,7 +69,7 @@
   endcomment
   assign ref = nil
   for p in collection.products
-    if p.metafields.custom.putere.value != blank
+    if p.metafields.custom.putere_w.value != blank or p.metafields.custom.putere.value != blank
       assign ref = p
       break
     endif
@@ -81,7 +81,12 @@
   assign depth = ''
   assign kelvin = ''
   if ref
-    assign power = ref.metafields.custom.putere.value | first | remove: 'W' | remove: 'w' | strip
+    assign power = ref.metafields.custom.putere_w.value
+    if power != blank
+      assign power = power | round: 1 | append: '' | replace: '.0', '' | replace: '.', dec
+    else
+      assign power = ref.metafields.custom.putere.value | first | remove: 'W' | remove: 'w' | strip
+    endif
     assign flux_n = ref.metafields.custom.flux_de_lumina_lm_.value | first
     if flux_n
       assign flux_s = flux_n | append: ''

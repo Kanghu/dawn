@@ -223,13 +223,28 @@
                 assign sp_h = card_product.metafields.custom.inaltime__.value | last
               endif
             endif
+            comment
+              Range height: when a minimum height is stored and differs, show "min–max".
+            endcomment
+            assign sp_hmin = card_product.metafields.custom.inaltime_min_cm.value
+            if sp_hmin != blank and sp_h != blank
+              assign sp_hmin = sp_hmin | round: 1 | append: '' | replace: '.0', ''
+              if sp_hmin != sp_h
+                assign sp_h = sp_hmin | append: '–' | append: sp_h
+              endif
+            endif
             assign sp_d = card_product.metafields.custom.diametru_cm.value
             if sp_d != blank
               assign sp_d = sp_d | round: 1 | append: '' | replace: '.0', ''
             else
               assign sp_d = card_product.metafields.custom.diametru.value | first
             endif
-            assign sp_p = card_product.metafields.custom.putere.value | first
+            assign sp_p = card_product.metafields.custom.putere_w.value
+            if sp_p != blank
+              assign sp_p = sp_p | round: 1 | append: '' | replace: '.0', '' | append: ' W'
+            else
+              assign sp_p = card_product.metafields.custom.putere.value | first
+            endif
             assign sp_l = sp_l | append: '' | remove: 'cm' | strip
             assign sp_w = sp_w | append: '' | remove: 'cm' | strip
             assign sp_h = sp_h | append: '' | remove: 'cm' | strip
