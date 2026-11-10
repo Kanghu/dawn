@@ -101,7 +101,12 @@
         assign life = th | append: thou | append: rest
       endif
     endif
-    assign depth = ref.metafields.custom.latime.value | first | remove: 'cm' | strip | replace: '.', dec
+    assign depth = ref.metafields.custom.latime_cm.value
+    if depth != blank
+      assign depth = depth | round: 1 | append: '' | replace: '.0', '' | replace: '.', dec
+    else
+      assign depth = ref.metafields.custom.latime.value | first | remove: 'cm' | strip | replace: '.', dec
+    endif
     assign k_mo = ref.metafields.custom.kelvin_.value | first
     if k_mo
       comment

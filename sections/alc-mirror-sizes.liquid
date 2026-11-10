@@ -12,8 +12,9 @@
   - Below, the models in that size, in-stock first (rendered from a JSON list, so a
     collection of 300+ mirrors does not ship hundreds of hidden cards).
 
-  Sizes come from custom.lungime (width) and custom.inaltime (height), or
-  custom.diametru for round mirrors; the shape from the title (Rotunda / Ovala /
+  Sizes come from custom.lungime_cm (width) and custom.inaltime_cm (height), or
+  custom.diametru_cm for round mirrors (numbers; the older text lists custom.lungime,
+  inaltime and diametru are the fallback); the shape from the title (Rotunda / Ovala /
   Poligon). "Ovala" mirrors are capsules, polygons are drawn as 12-sided.
 
   Shown on the first page of the collection only. UI text is in the per-language
@@ -74,9 +75,18 @@
       assign avail = ''
       for p in collection.products
         assign key = ''
-        assign wv = p.metafields.custom.lungime.value | first
-        assign hv = p.metafields.custom.inaltime.value | first
-        assign dv = p.metafields.custom.diametru.value | first
+        assign wv = p.metafields.custom.lungime_cm.value
+        if wv == blank
+          assign wv = p.metafields.custom.lungime.value | first
+        endif
+        assign hv = p.metafields.custom.inaltime_cm.value
+        if hv == blank
+          assign hv = p.metafields.custom.inaltime.value | first
+        endif
+        assign dv = p.metafields.custom.diametru_cm.value
+        if dv == blank
+          assign dv = p.metafields.custom.diametru.value | first
+        endif
         assign w = 0
         assign h = 0
         if wv != blank and hv != blank

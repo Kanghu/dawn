@@ -244,7 +244,7 @@
               {%- when 'tip_soclu' -%}{%- assign translated_spec = 'Тип цокъл' -%}
               {%- when 'recomandare' -%}{%- assign translated_spec = 'Препоръка' -%}
               {%- when 'pozitionare' -%}{%- assign translated_spec = 'Позициониране' -%}
-              {%- when 'autonomie' -%}{%- assign translated_spec = 'Автономия' -%}
+              {%- when 'autonomie', 'autonomie_h' -%}{%- assign translated_spec = 'Автономия' -%}
               {%- when 'putere_w' -%}{%- assign translated_spec = 'Мощност (W)' -%}
               {%- when 'tensiune_alimentare' -%}{%- assign translated_spec = 'Захранващо напрежение' -%}
               {%- when 'tip_lumina' -%}{%- assign translated_spec = 'Тип светлина' -%}
@@ -260,10 +260,10 @@
               {%- when 'diametru_cartus' -%}{%- assign translated_spec = 'Диаметър на патрона' -%}
               {%- when 'tip_rama' -%}{%- assign translated_spec = 'Тип рамка' -%}
               {%- when 'putere' -%}{%- assign translated_spec = 'Мощност (W)' -%}
-              {%- when 'diametru' -%}{%- assign translated_spec = 'Диаметър' -%}
-              {%- when 'inaltime' -%}{%- assign translated_spec = 'Височина' -%}
-              {%- when 'lungime' -%}{%- assign translated_spec = 'Дължина' -%}
-              {%- when 'latime' -%}{%- assign translated_spec = 'Ширина' -%}
+              {%- when 'diametru', 'diametru_cm' -%}{%- assign translated_spec = 'Диаметър' -%}
+              {%- when 'inaltime', 'inaltime_cm' -%}{%- assign translated_spec = 'Височина' -%}
+              {%- when 'lungime', 'lungime_cm' -%}{%- assign translated_spec = 'Дължина' -%}
+              {%- when 'latime', 'latime_cm' -%}{%- assign translated_spec = 'Ширина' -%}
               {%- when 'tip_montaj' -%}{%- assign translated_spec = 'Тип монтаж' -%}
               {%- when 'orificii_montare' -%}{%- assign translated_spec = 'Монтажни отвори' -%}
               {%- when 'tip_pipa' -%}{%- assign translated_spec = 'Тип чучур' -%}
@@ -288,7 +288,7 @@
               {%- when 'tip_soclu' -%}{%- assign translated_spec = 'Foglalat típusa' -%}
               {%- when 'recomandare' -%}{%- assign translated_spec = 'Ajánlás' -%}
               {%- when 'pozitionare' -%}{%- assign translated_spec = 'Elhelyezés' -%}
-              {%- when 'autonomie' -%}{%- assign translated_spec = 'Autonómia' -%}
+              {%- when 'autonomie', 'autonomie_h' -%}{%- assign translated_spec = 'Autonómia' -%}
               {%- when 'putere_w' -%}{%- assign translated_spec = 'Teljesítmény (W)' -%}
               {%- when 'tensiune_alimentare' -%}{%- assign translated_spec = 'Tápfeszültség' -%}
               {%- when 'tip_lumina' -%}{%- assign translated_spec = 'Fény típusa' -%}
@@ -304,10 +304,10 @@
               {%- when 'diametru_cartus' -%}{%- assign translated_spec = 'Patron átmérője' -%}
               {%- when 'tip_rama' -%}{%- assign translated_spec = 'Keret típusa' -%}
               {%- when 'putere' -%}{%- assign translated_spec = 'Teljesítmény (W)' -%}
-              {%- when 'diametru' -%}{%- assign translated_spec = 'Átmérő' -%}
-              {%- when 'inaltime' -%}{%- assign translated_spec = 'Magasság' -%}
-              {%- when 'lungime' -%}{%- assign translated_spec = 'Hosszúság' -%}
-              {%- when 'latime' -%}{%- assign translated_spec = 'Szélesség' -%}
+              {%- when 'diametru', 'diametru_cm' -%}{%- assign translated_spec = 'Átmérő' -%}
+              {%- when 'inaltime', 'inaltime_cm' -%}{%- assign translated_spec = 'Magasság' -%}
+              {%- when 'lungime', 'lungime_cm' -%}{%- assign translated_spec = 'Hosszúság' -%}
+              {%- when 'latime', 'latime_cm' -%}{%- assign translated_spec = 'Szélesség' -%}
               {%- when 'tip_montaj' -%}{%- assign translated_spec = 'Szerelés típusa' -%}
               {%- when 'orificii_montare' -%}{%- assign translated_spec = 'Szerelőfuratok' -%}
               {%- when 'tip_pipa' -%}{%- assign translated_spec = 'Kifolyó típusa' -%}
@@ -332,7 +332,7 @@
               {%- when 'tip_soclu' -%}{%- assign translated_spec = 'Typ gwintu' -%}
               {%- when 'recomandare' -%}{%- assign translated_spec = 'Zalecenie' -%}
               {%- when 'pozitionare' -%}{%- assign translated_spec = 'Pozycjonowanie' -%}
-              {%- when 'autonomie' -%}{%- assign translated_spec = 'Autonomia' -%}
+              {%- when 'autonomie', 'autonomie_h' -%}{%- assign translated_spec = 'Autonomia' -%}
               {%- when 'putere_w' -%}{%- assign translated_spec = 'Moc (W)' -%}
               {%- when 'tensiune_alimentare' -%}{%- assign translated_spec = 'Napięcie zasilania' -%}
               {%- when 'tip_lumina' -%}{%- assign translated_spec = 'Typ światła' -%}
@@ -348,10 +348,10 @@
               {%- when 'diametru_cartus' -%}{%- assign translated_spec = 'Średnica wkładu' -%}
               {%- when 'tip_rama' -%}{%- assign translated_spec = 'Typ ramy' -%}
               {%- when 'putere' -%}{%- assign translated_spec = 'Moc (W)' -%}
-              {%- when 'diametru' -%}{%- assign translated_spec = 'Średnica' -%}
-              {%- when 'inaltime' -%}{%- assign translated_spec = 'Wysokość' -%}
-              {%- when 'lungime' -%}{%- assign translated_spec = 'Długość' -%}
-              {%- when 'latime' -%}{%- assign translated_spec = 'Szerokość' -%}
+              {%- when 'diametru', 'diametru_cm' -%}{%- assign translated_spec = 'Średnica' -%}
+              {%- when 'inaltime', 'inaltime_cm' -%}{%- assign translated_spec = 'Wysokość' -%}
+              {%- when 'lungime', 'lungime_cm' -%}{%- assign translated_spec = 'Długość' -%}
+              {%- when 'latime', 'latime_cm' -%}{%- assign translated_spec = 'Szerokość' -%}
               {%- when 'tip_montaj' -%}{%- assign translated_spec = 'Typ montażu' -%}
               {%- when 'orificii_montare' -%}{%- assign translated_spec = 'Otwory montażowe' -%}
               {%- when 'tip_pipa' -%}{%- assign translated_spec = 'Typ wylewki' -%}
@@ -376,7 +376,7 @@
               {%- when 'tip_soclu' -%}{%- assign translated_spec = 'Typ pätice' -%}
               {%- when 'recomandare' -%}{%- assign translated_spec = 'Odporúčanie' -%}
               {%- when 'pozitionare' -%}{%- assign translated_spec = 'Umiestnenie' -%}
-              {%- when 'autonomie' -%}{%- assign translated_spec = 'Autonómia' -%}
+              {%- when 'autonomie', 'autonomie_h' -%}{%- assign translated_spec = 'Autonómia' -%}
               {%- when 'putere_w' -%}{%- assign translated_spec = 'Výkon (W)' -%}
               {%- when 'tensiune_alimentare' -%}{%- assign translated_spec = 'Napájacie napätie' -%}
               {%- when 'tip_lumina' -%}{%- assign translated_spec = 'Typ svetla' -%}
@@ -392,10 +392,10 @@
               {%- when 'diametru_cartus' -%}{%- assign translated_spec = 'Priemer patrony' -%}
               {%- when 'tip_rama' -%}{%- assign translated_spec = 'Typ rámu' -%}
               {%- when 'putere' -%}{%- assign translated_spec = 'Výkon (W)' -%}
-              {%- when 'diametru' -%}{%- assign translated_spec = 'Priemer' -%}
-              {%- when 'inaltime' -%}{%- assign translated_spec = 'Výška' -%}
-              {%- when 'lungime' -%}{%- assign translated_spec = 'Dĺžka' -%}
-              {%- when 'latime' -%}{%- assign translated_spec = 'Šírka' -%}
+              {%- when 'diametru', 'diametru_cm' -%}{%- assign translated_spec = 'Priemer' -%}
+              {%- when 'inaltime', 'inaltime_cm' -%}{%- assign translated_spec = 'Výška' -%}
+              {%- when 'lungime', 'lungime_cm' -%}{%- assign translated_spec = 'Dĺžka' -%}
+              {%- when 'latime', 'latime_cm' -%}{%- assign translated_spec = 'Šírka' -%}
               {%- when 'tip_montaj' -%}{%- assign translated_spec = 'Typ montáže' -%}
               {%- when 'orificii_montare' -%}{%- assign translated_spec = 'Montážne otvory' -%}
               {%- when 'tip_pipa' -%}{%- assign translated_spec = 'Typ výtoku' -%}
@@ -420,7 +420,7 @@
               {%- when 'tip_soclu' -%}{%- assign translated_spec = 'Tip grla' -%}
               {%- when 'recomandare' -%}{%- assign translated_spec = 'Preporuka' -%}
               {%- when 'pozitionare' -%}{%- assign translated_spec = 'Pozicioniranje' -%}
-              {%- when 'autonomie' -%}{%- assign translated_spec = 'Autonomija' -%}
+              {%- when 'autonomie', 'autonomie_h' -%}{%- assign translated_spec = 'Autonomija' -%}
               {%- when 'putere_w' -%}{%- assign translated_spec = 'Snaga (W)' -%}
               {%- when 'tensiune_alimentare' -%}{%- assign translated_spec = 'Napon napajanja' -%}
               {%- when 'tip_lumina' -%}{%- assign translated_spec = 'Tip svjetlosti' -%}
@@ -436,10 +436,10 @@
               {%- when 'diametru_cartus' -%}{%- assign translated_spec = 'Promjer uloška' -%}
               {%- when 'tip_rama' -%}{%- assign translated_spec = 'Tip okvira' -%}
               {%- when 'putere' -%}{%- assign translated_spec = 'Snaga (W)' -%}
-              {%- when 'diametru' -%}{%- assign translated_spec = 'Promjer' -%}
-              {%- when 'inaltime' -%}{%- assign translated_spec = 'Visina' -%}
-              {%- when 'lungime' -%}{%- assign translated_spec = 'Duljina' -%}
-              {%- when 'latime' -%}{%- assign translated_spec = 'Širina' -%}
+              {%- when 'diametru', 'diametru_cm' -%}{%- assign translated_spec = 'Promjer' -%}
+              {%- when 'inaltime', 'inaltime_cm' -%}{%- assign translated_spec = 'Visina' -%}
+              {%- when 'lungime', 'lungime_cm' -%}{%- assign translated_spec = 'Duljina' -%}
+              {%- when 'latime', 'latime_cm' -%}{%- assign translated_spec = 'Širina' -%}
               {%- when 'tip_montaj' -%}{%- assign translated_spec = 'Vrsta montaže' -%}
               {%- when 'orificii_montare' -%}{%- assign translated_spec = 'Montažni otvori' -%}
               {%- when 'tip_pipa' -%}{%- assign translated_spec = 'Vrsta izljeva' -%}
@@ -507,6 +507,10 @@
                         {%- unless forloop.last -%}, {% endunless -%}
                       {%- endfor -%}
                     {%- endif -%}
+                  {% elsif mf.type == 'number_decimal' and spec contains '_cm' %}
+                    {{ mf.value | round: 1 | append: '' | replace: '.0', '' }} cm
+                  {% elsif mf.type == 'number_decimal' and spec == 'autonomie_h' %}
+                    {{ mf.value | round: 1 | append: '' | replace: '.0', '' }} h
                   {% else %}
                     {{ mf.value | join: ', ' | replace: '[', '' | replace: ']', '' | replace: '"', '' }}
                   {% endif %}
