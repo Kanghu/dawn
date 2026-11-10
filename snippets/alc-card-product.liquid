@@ -192,19 +192,43 @@
               Dimensions and power from the spec metafields (text lists like ["60 cm"],
               or the numeric *__ variants). Icons instead of labels, so no translations.
             endcomment
-            assign sp_l = card_product.metafields.custom.lungime.value | first
-            if sp_l == blank
-              assign sp_l = card_product.metafields.custom.lungime__.value | first
+            comment
+              Canonical numbers first (custom.*_cm, number_decimal, from the SaleHero PIM);
+              the text lists remain the fallback until they are retired.
+            endcomment
+            assign sp_l = card_product.metafields.custom.lungime_cm.value
+            if sp_l != blank
+              assign sp_l = sp_l | round: 1 | append: '' | replace: '.0', ''
+            else
+              assign sp_l = card_product.metafields.custom.lungime.value | first
+              if sp_l == blank
+                assign sp_l = card_product.metafields.custom.lungime__.value | first
+              endif
             endif
-            assign sp_w = card_product.metafields.custom.latime.value | first
-            if sp_w == blank
-              assign sp_w = card_product.metafields.custom.latime__.value | first
+            assign sp_w = card_product.metafields.custom.latime_cm.value
+            if sp_w != blank
+              assign sp_w = sp_w | round: 1 | append: '' | replace: '.0', ''
+            else
+              assign sp_w = card_product.metafields.custom.latime.value | first
+              if sp_w == blank
+                assign sp_w = card_product.metafields.custom.latime__.value | first
+              endif
             endif
-            assign sp_h = card_product.metafields.custom.inaltime.value | last
-            if sp_h == blank
-              assign sp_h = card_product.metafields.custom.inaltime__.value | last
+            assign sp_h = card_product.metafields.custom.inaltime_cm.value
+            if sp_h != blank
+              assign sp_h = sp_h | round: 1 | append: '' | replace: '.0', ''
+            else
+              assign sp_h = card_product.metafields.custom.inaltime.value | last
+              if sp_h == blank
+                assign sp_h = card_product.metafields.custom.inaltime__.value | last
+              endif
             endif
-            assign sp_d = card_product.metafields.custom.diametru.value | first
+            assign sp_d = card_product.metafields.custom.diametru_cm.value
+            if sp_d != blank
+              assign sp_d = sp_d | round: 1 | append: '' | replace: '.0', ''
+            else
+              assign sp_d = card_product.metafields.custom.diametru.value | first
+            endif
             assign sp_p = card_product.metafields.custom.putere.value | first
             assign sp_l = sp_l | append: '' | remove: 'cm' | strip
             assign sp_w = sp_w | append: '' | remove: 'cm' | strip
