@@ -92,7 +92,7 @@
   {%- for p in collection.products -%}
     {%- liquid
       assign works = works | plus: 1
-      if p.metafields.custom.putere_w.value != blank or p.metafields.custom.putere.value != blank or p.type contains 'LED'
+      if p.metafields.custom.putere_w.value != blank or p.type contains 'LED'
         assign led = led | plus: 1
       endif
       if p.available
@@ -102,14 +102,30 @@
       endif
 
       assign key = ''
-      assign wl = p.metafields.custom.lungime.value
-      assign hl = p.metafields.custom.inaltime.value
-      if wl != blank and hl != blank and wl.size == hl.size
+      comment
+        Sizes in cm: a multi-panel set lists every panel (lungime_panouri_cm /
+        inaltime_panouri_cm, same order); a single piece has one width and height.
+      endcomment
+      assign wl = p.metafields.custom.lungime_panouri_cm.value | join: '|' | split: '|'
+      assign hl = p.metafields.custom.inaltime_panouri_cm.value | join: '|' | split: '|'
+      if wl.size < 2 or wl.size != hl.size
+        assign wl = p.metafields.custom.lungime_cm.value | append: '' | split: '|'
+        assign hl = p.metafields.custom.inaltime_cm.value | append: '' | split: '|'
+      endif
+      if wl.size > 0 and wl.size == hl.size
         assign pieces = ''
         assign area = 0
         for wv in wl
-          assign w = wv | remove: 'cm' | strip | replace: ',', '.' | plus: 0
-          assign h = hl[forloop.index0] | remove: 'cm' | strip | replace: ',', '.' | plus: 0
+          assign w = wv | plus: 0 | round: 1
+          assign h = hl[forloop.index0] | plus: 0 | round: 1
+          assign w_whole = w | round
+          assign h_whole = h | round
+          if w_whole == w
+            assign w = w_whole
+          endif
+          if h_whole == h
+            assign h = h_whole
+          endif
           assign area = w | times: h | plus: area
           if forloop.index > 1
             assign pieces = pieces | append: '-'
@@ -377,10 +393,7 @@
                         }}
                       {%- endif -%}
                       {%- if p.metafields.custom.putere_w.value != blank -%}
-                        <span class="alcwa__card-tag">LED {{ p.metafields.custom.putere_w.value | round: 1 | append: '' | replace: '.0', '' }} W</span>
-                      {%- elsif p.metafields.custom.putere.value != blank -%}
-                        <span class="alcwa__card-tag">LED {{ p.metafields.custom.putere.value | first }}</span>
-                      {%- endif -%}
+                        <span class="alcwa__card-tag">LED {{ p.metafields.custom.putere_w.value | round: 1 | append: '' | replace: '.0', '' }} W</span>                      {%- endif -%}
                     </span>
                     <span class="alcwa__card-name">{% render 'alc-wa-name', title: p.title %}</span>
                     <span class="alcwa__card-meta">
