@@ -1,0 +1,39 @@
+{%- comment -%}
+  Which custom.* key to read for a specification-group entry.
+  Groups list the canonical keys (metaobject lists `x_`, numbers `*_cm`, `putere_w`, `nr_becuri`, booleans).
+  Until the free-text twins are retired, a canonical key with no value falls back to its first filled
+  legacy twin; otherwise the canonical key is returned.
+
+  Usage: capture this snippet's output (params: product, spec), then read product.metafields.custom[<output>].
+{%- endcomment -%}
+{%- liquid
+  assign key_out = spec
+  if product.metafields.custom[spec].value == blank
+    assign fallbacks = ''
+    case spec
+      when 'nr_becuri'
+        assign fallbacks = 'nr_surse_iluminat'
+      when 'putere_w'
+        assign fallbacks = 'putere'
+      when 'autonomie_h'
+        assign fallbacks = 'autonomie_,autonomie'
+      when 'flux_de_lumina_lm_'
+        assign fallbacks = 'flux_de_lumina'
+      when 'diametru_cm', 'inaltime_cm', 'lungime_cm', 'latime_cm', 'adancime_cm'
+        assign fallbacks = spec | remove_last: '_cm'
+      else
+        assign spec_last = spec | slice: -1
+        if spec_last == '_'
+          assign fallbacks = spec | remove_last: '_'
+        endif
+    endcase
+    assign fallback_keys = fallbacks | split: ','
+    for fallback_key in fallback_keys
+      if product.metafields.custom[fallback_key].value != blank
+        assign key_out = fallback_key
+        break
+      endif
+    endfor
+  endif
+  echo key_out
+-%}
