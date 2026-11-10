@@ -92,7 +92,7 @@
   {%- for p in collection.products -%}
     {%- liquid
       assign works = works | plus: 1
-      if p.metafields.custom.putere.value != blank or p.type contains 'LED'
+      if p.metafields.custom.putere_w.value != blank or p.metafields.custom.putere.value != blank or p.type contains 'LED'
         assign led = led | plus: 1
       endif
       if p.available
@@ -376,7 +376,9 @@
                             alt: p.featured_media.alt
                         }}
                       {%- endif -%}
-                      {%- if p.metafields.custom.putere.value != blank -%}
+                      {%- if p.metafields.custom.putere_w.value != blank -%}
+                        <span class="alcwa__card-tag">LED {{ p.metafields.custom.putere_w.value | round: 1 | append: '' | replace: '.0', '' }} W</span>
+                      {%- elsif p.metafields.custom.putere.value != blank -%}
                         <span class="alcwa__card-tag">LED {{ p.metafields.custom.putere.value | first }}</span>
                       {%- endif -%}
                     </span>

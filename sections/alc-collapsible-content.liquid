@@ -170,7 +170,8 @@
                       {%- assign candidate_parts = candidate_spec | split: '.' -%}
                       {%- assign candidate_mf = product.metafields[candidate_parts[0]][candidate_parts[1]] -%}
                     {%- else -%}
-                      {%- assign candidate_mf = product.metafields.custom[candidate_spec] -%}
+                      {%- capture candidate_key -%}{%- render 'alc-spec-key', product: product, spec: candidate_spec -%}{%- endcapture -%}
+                      {%- assign candidate_mf = product.metafields.custom[candidate_key] -%}
                     {%- endif -%}
                     {%- if candidate_mf and candidate_mf.value != blank -%}
                       {%- assign candidate_rows = candidate_rows | plus: 1 -%}
@@ -197,8 +198,10 @@
                         {%- assign spec_namespace = spec_parts[0] -%}
                         {%- assign spec_key = spec_parts[1] -%}
                         {%- assign mf = product.metafields[spec_namespace][spec_key] -%}
+                        {%- assign mf_key = spec -%}
                       {%- else -%}
-                        {%- assign mf = product.metafields.custom[spec] -%}
+                        {%- capture mf_key -%}{%- render 'alc-spec-key', product: product, spec: spec -%}{%- endcapture -%}
+                        {%- assign mf = product.metafields.custom[mf_key] -%}
                       {%- endif -%}
                       {% if mf %}
                           {% assign is_even = counter | modulo: 2 %}
@@ -229,265 +232,37 @@
             {%- for tax_pair in tax_pairs -%}
               {%- if tax_pair contains tax_lookup -%}{%- assign translated_spec = tax_pair | remove_first: tax_lookup -%}{%- break -%}{%- endif -%}
             {%- endfor -%}
-          {%- elsif current_locale == 'bg' -%}
-            {%- case spec_base -%}
-              {%- when 'tip_produs' -%}{%- assign translated_spec = 'Тип продукт' -%}
-              {%- when 'material' -%}{%- assign translated_spec = 'Материал' -%}
-              {%- when 'culoare' -%}{%- assign translated_spec = 'Цвят' -%}
-              {%- when 'utilizare' -%}{%- assign translated_spec = 'Употреба' -%}
-              {%- when 'forma' -%}{%- assign translated_spec = 'Форма' -%}
-              {%- when 'nr_surse_iluminat' -%}{%- assign translated_spec = 'Брой източници на светлина' -%}
-              {%- when 'constructie' -%}{%- assign translated_spec = 'Конструкция' -%}
-              {%- when 'design' -%}{%- assign translated_spec = 'Дизайн' -%}
-              {%- when 'dimabil' -%}{%- assign translated_spec = 'С димер' -%}
-              {%- when 'tip_bec' -%}{%- assign translated_spec = 'Тип крушка' -%}
-              {%- when 'tip_soclu' -%}{%- assign translated_spec = 'Тип цокъл' -%}
-              {%- when 'recomandare' -%}{%- assign translated_spec = 'Препоръка' -%}
-              {%- when 'pozitionare' -%}{%- assign translated_spec = 'Позициониране' -%}
-              {%- when 'autonomie', 'autonomie_h' -%}{%- assign translated_spec = 'Автономия' -%}
-              {%- when 'putere_w' -%}{%- assign translated_spec = 'Мощност (W)' -%}
-              {%- when 'tensiune_alimentare' -%}{%- assign translated_spec = 'Захранващо напрежение' -%}
-              {%- when 'tip_lumina' -%}{%- assign translated_spec = 'Тип светлина' -%}
-              {%- when 'kelvin' -%}{%- assign translated_spec = 'Келвин' -%}
-              {%- when 'flux_de_lumina_lm' -%}{%- assign translated_spec = 'Светлинен поток (lm)' -%}
-              {%- when 'clasa_de_protectie' -%}{%- assign translated_spec = 'Клас на защита' -%}
-              {%- when 'tip_intrerupator' -%}{%- assign translated_spec = 'Тип превключвател' -%}
-              {%- when 'tip_alimentare' -%}{%- assign translated_spec = 'Тип захранване' -%}
-              {%- when 'tip_comanda' -%}{%- assign translated_spec = 'Тип управление' -%}
-              {%- when 'numar_functii' -%}{%- assign translated_spec = 'Брой функции' -%}
-              {%- when 'nr_functii' -%}{%- assign translated_spec = 'Брой функции' -%}
-              {%- when 'continut_pachet' -%}{%- assign translated_spec = 'Съдържание на пакета' -%}
-              {%- when 'diametru_cartus' -%}{%- assign translated_spec = 'Диаметър на патрона' -%}
-              {%- when 'tip_rama' -%}{%- assign translated_spec = 'Тип рамка' -%}
-              {%- when 'putere' -%}{%- assign translated_spec = 'Мощност (W)' -%}
-              {%- when 'diametru', 'diametru_cm' -%}{%- assign translated_spec = 'Диаметър' -%}
-              {%- when 'inaltime', 'inaltime_cm' -%}{%- assign translated_spec = 'Височина' -%}
-              {%- when 'inaltime_min_cm' -%}{%- assign translated_spec = 'Минимална височина' -%}
-              {%- when 'dimensiune_cm' -%}{%- assign translated_spec = 'Размер' -%}
-              {%- when 'lungime', 'lungime_cm' -%}{%- assign translated_spec = 'Дължина' -%}
-              {%- when 'latime', 'latime_cm' -%}{%- assign translated_spec = 'Ширина' -%}
-              {%- when 'tip_montaj' -%}{%- assign translated_spec = 'Тип монтаж' -%}
-              {%- when 'orificii_montare' -%}{%- assign translated_spec = 'Монтажни отвори' -%}
-              {%- when 'tip_pipa' -%}{%- assign translated_spec = 'Тип чучур' -%}
-              {%- when 'racordare_apa' -%}{%- assign translated_spec = 'Присъединяване към водата' -%}
-              {%- else -%}
-                {%- assign spec_t_key = 'products.metaobjects.specification_groups.' | append: spec -%}
-                {%- assign translated_spec = spec_t_key | t -%}
-                {%- if translated_spec contains 'ranslation missing' -%}{%- assign translated_spec = spec | replace: '_', ' ' | capitalize -%}{%- endif -%}
-            {%- endcase -%}
-          {%- elsif current_locale == 'hu' -%}
-            {%- case spec_base -%}
-              {%- when 'tip_produs' -%}{%- assign translated_spec = 'Termék típusa' -%}
-              {%- when 'material' -%}{%- assign translated_spec = 'Anyag' -%}
-              {%- when 'culoare' -%}{%- assign translated_spec = 'Szín' -%}
-              {%- when 'utilizare' -%}{%- assign translated_spec = 'Használat' -%}
-              {%- when 'forma' -%}{%- assign translated_spec = 'Forma' -%}
-              {%- when 'nr_surse_iluminat' -%}{%- assign translated_spec = 'Fényforrások száma' -%}
-              {%- when 'constructie' -%}{%- assign translated_spec = 'Konstrukció' -%}
-              {%- when 'design' -%}{%- assign translated_spec = 'Dizájn' -%}
-              {%- when 'dimabil' -%}{%- assign translated_spec = 'Dimmerelhető' -%}
-              {%- when 'tip_bec' -%}{%- assign translated_spec = 'Izzó típusa' -%}
-              {%- when 'tip_soclu' -%}{%- assign translated_spec = 'Foglalat típusa' -%}
-              {%- when 'recomandare' -%}{%- assign translated_spec = 'Ajánlás' -%}
-              {%- when 'pozitionare' -%}{%- assign translated_spec = 'Elhelyezés' -%}
-              {%- when 'autonomie', 'autonomie_h' -%}{%- assign translated_spec = 'Autonómia' -%}
-              {%- when 'putere_w' -%}{%- assign translated_spec = 'Teljesítmény (W)' -%}
-              {%- when 'tensiune_alimentare' -%}{%- assign translated_spec = 'Tápfeszültség' -%}
-              {%- when 'tip_lumina' -%}{%- assign translated_spec = 'Fény típusa' -%}
-              {%- when 'kelvin' -%}{%- assign translated_spec = 'Kelvin' -%}
-              {%- when 'flux_de_lumina_lm' -%}{%- assign translated_spec = 'Fényáram (lm)' -%}
-              {%- when 'clasa_de_protectie' -%}{%- assign translated_spec = 'Védelmi osztály' -%}
-              {%- when 'tip_intrerupator' -%}{%- assign translated_spec = 'Kapcsoló típusa' -%}
-              {%- when 'tip_alimentare' -%}{%- assign translated_spec = 'Táplálás típusa' -%}
-              {%- when 'tip_comanda' -%}{%- assign translated_spec = 'Vezérlés típusa' -%}
-              {%- when 'numar_functii' -%}{%- assign translated_spec = 'Funkciók száma' -%}
-              {%- when 'nr_functii' -%}{%- assign translated_spec = 'Funkciók száma' -%}
-              {%- when 'continut_pachet' -%}{%- assign translated_spec = 'Csomag tartalma' -%}
-              {%- when 'diametru_cartus' -%}{%- assign translated_spec = 'Patron átmérője' -%}
-              {%- when 'tip_rama' -%}{%- assign translated_spec = 'Keret típusa' -%}
-              {%- when 'putere' -%}{%- assign translated_spec = 'Teljesítmény (W)' -%}
-              {%- when 'diametru', 'diametru_cm' -%}{%- assign translated_spec = 'Átmérő' -%}
-              {%- when 'inaltime', 'inaltime_cm' -%}{%- assign translated_spec = 'Magasság' -%}
-              {%- when 'inaltime_min_cm' -%}{%- assign translated_spec = 'Minimális magasság' -%}
-              {%- when 'dimensiune_cm' -%}{%- assign translated_spec = 'Méret' -%}
-              {%- when 'lungime', 'lungime_cm' -%}{%- assign translated_spec = 'Hosszúság' -%}
-              {%- when 'latime', 'latime_cm' -%}{%- assign translated_spec = 'Szélesség' -%}
-              {%- when 'tip_montaj' -%}{%- assign translated_spec = 'Szerelés típusa' -%}
-              {%- when 'orificii_montare' -%}{%- assign translated_spec = 'Szerelőfuratok' -%}
-              {%- when 'tip_pipa' -%}{%- assign translated_spec = 'Kifolyó típusa' -%}
-              {%- when 'racordare_apa' -%}{%- assign translated_spec = 'Vízcsatlakozás' -%}
-              {%- else -%}
-                {%- assign spec_t_key = 'products.metaobjects.specification_groups.' | append: spec -%}
-                {%- assign translated_spec = spec_t_key | t -%}
-                {%- if translated_spec contains 'ranslation missing' -%}{%- assign translated_spec = spec | replace: '_', ' ' | capitalize -%}{%- endif -%}
-            {%- endcase -%}
-          {%- elsif current_locale == 'pl' -%}
-            {%- case spec_base -%}
-              {%- when 'tip_produs' -%}{%- assign translated_spec = 'Typ produktu' -%}
-              {%- when 'material' -%}{%- assign translated_spec = 'Materiał' -%}
-              {%- when 'culoare' -%}{%- assign translated_spec = 'Kolor' -%}
-              {%- when 'utilizare' -%}{%- assign translated_spec = 'Wykorzystanie' -%}
-              {%- when 'forma' -%}{%- assign translated_spec = 'Kształt' -%}
-              {%- when 'nr_surse_iluminat' -%}{%- assign translated_spec = 'Liczba źródeł światła' -%}
-              {%- when 'constructie' -%}{%- assign translated_spec = 'Konstrukcja' -%}
-              {%- when 'design' -%}{%- assign translated_spec = 'Wzór' -%}
-              {%- when 'dimabil' -%}{%- assign translated_spec = 'Możliwość ściemniania' -%}
-              {%- when 'tip_bec' -%}{%- assign translated_spec = 'Typ żarówki' -%}
-              {%- when 'tip_soclu' -%}{%- assign translated_spec = 'Typ gwintu' -%}
-              {%- when 'recomandare' -%}{%- assign translated_spec = 'Zalecenie' -%}
-              {%- when 'pozitionare' -%}{%- assign translated_spec = 'Pozycjonowanie' -%}
-              {%- when 'autonomie', 'autonomie_h' -%}{%- assign translated_spec = 'Autonomia' -%}
-              {%- when 'putere_w' -%}{%- assign translated_spec = 'Moc (W)' -%}
-              {%- when 'tensiune_alimentare' -%}{%- assign translated_spec = 'Napięcie zasilania' -%}
-              {%- when 'tip_lumina' -%}{%- assign translated_spec = 'Typ światła' -%}
-              {%- when 'kelvin' -%}{%- assign translated_spec = 'Kelvin' -%}
-              {%- when 'flux_de_lumina_lm' -%}{%- assign translated_spec = 'Strumień świetlny (lm)' -%}
-              {%- when 'clasa_de_protectie' -%}{%- assign translated_spec = 'Klasa ochrony' -%}
-              {%- when 'tip_intrerupator' -%}{%- assign translated_spec = 'Typ przełącznika' -%}
-              {%- when 'tip_alimentare' -%}{%- assign translated_spec = 'Typ zasilania' -%}
-              {%- when 'tip_comanda' -%}{%- assign translated_spec = 'Typ sterowania' -%}
-              {%- when 'numar_functii' -%}{%- assign translated_spec = 'Liczba funkcji' -%}
-              {%- when 'nr_functii' -%}{%- assign translated_spec = 'Liczba funkcji' -%}
-              {%- when 'continut_pachet' -%}{%- assign translated_spec = 'Zawartość pakietu' -%}
-              {%- when 'diametru_cartus' -%}{%- assign translated_spec = 'Średnica wkładu' -%}
-              {%- when 'tip_rama' -%}{%- assign translated_spec = 'Typ ramy' -%}
-              {%- when 'putere' -%}{%- assign translated_spec = 'Moc (W)' -%}
-              {%- when 'diametru', 'diametru_cm' -%}{%- assign translated_spec = 'Średnica' -%}
-              {%- when 'inaltime', 'inaltime_cm' -%}{%- assign translated_spec = 'Wysokość' -%}
-              {%- when 'inaltime_min_cm' -%}{%- assign translated_spec = 'Minimalna wysokość' -%}
-              {%- when 'dimensiune_cm' -%}{%- assign translated_spec = 'Wymiar' -%}
-              {%- when 'lungime', 'lungime_cm' -%}{%- assign translated_spec = 'Długość' -%}
-              {%- when 'latime', 'latime_cm' -%}{%- assign translated_spec = 'Szerokość' -%}
-              {%- when 'tip_montaj' -%}{%- assign translated_spec = 'Typ montażu' -%}
-              {%- when 'orificii_montare' -%}{%- assign translated_spec = 'Otwory montażowe' -%}
-              {%- when 'tip_pipa' -%}{%- assign translated_spec = 'Typ wylewki' -%}
-              {%- when 'racordare_apa' -%}{%- assign translated_spec = 'Przyłącze wody' -%}
-              {%- else -%}
-                {%- assign spec_t_key = 'products.metaobjects.specification_groups.' | append: spec -%}
-                {%- assign translated_spec = spec_t_key | t -%}
-                {%- if translated_spec contains 'ranslation missing' -%}{%- assign translated_spec = spec | replace: '_', ' ' | capitalize -%}{%- endif -%}
-            {%- endcase -%}
-          {%- elsif current_locale == 'sk' -%}
-            {%- case spec_base -%}
-              {%- when 'tip_produs' -%}{%- assign translated_spec = 'Typ produktu' -%}
-              {%- when 'material' -%}{%- assign translated_spec = 'Materiál' -%}
-              {%- when 'culoare' -%}{%- assign translated_spec = 'Farba' -%}
-              {%- when 'utilizare' -%}{%- assign translated_spec = 'Použitie' -%}
-              {%- when 'forma' -%}{%- assign translated_spec = 'Tvar' -%}
-              {%- when 'nr_surse_iluminat' -%}{%- assign translated_spec = 'Počet svetelných zdrojov' -%}
-              {%- when 'constructie' -%}{%- assign translated_spec = 'Konštrukcia' -%}
-              {%- when 'design' -%}{%- assign translated_spec = 'Dizajn' -%}
-              {%- when 'dimabil' -%}{%- assign translated_spec = 'Stmievateľné' -%}
-              {%- when 'tip_bec' -%}{%- assign translated_spec = 'Typ žiarovky' -%}
-              {%- when 'tip_soclu' -%}{%- assign translated_spec = 'Typ pätice' -%}
-              {%- when 'recomandare' -%}{%- assign translated_spec = 'Odporúčanie' -%}
-              {%- when 'pozitionare' -%}{%- assign translated_spec = 'Umiestnenie' -%}
-              {%- when 'autonomie', 'autonomie_h' -%}{%- assign translated_spec = 'Autonómia' -%}
-              {%- when 'putere_w' -%}{%- assign translated_spec = 'Výkon (W)' -%}
-              {%- when 'tensiune_alimentare' -%}{%- assign translated_spec = 'Napájacie napätie' -%}
-              {%- when 'tip_lumina' -%}{%- assign translated_spec = 'Typ svetla' -%}
-              {%- when 'kelvin' -%}{%- assign translated_spec = 'Kelvin' -%}
-              {%- when 'flux_de_lumina_lm' -%}{%- assign translated_spec = 'Svetelný tok (lm)' -%}
-              {%- when 'clasa_de_protectie' -%}{%- assign translated_spec = 'Trieda ochrany' -%}
-              {%- when 'tip_intrerupator' -%}{%- assign translated_spec = 'Typ spínača' -%}
-              {%- when 'tip_alimentare' -%}{%- assign translated_spec = 'Typ napájania' -%}
-              {%- when 'tip_comanda' -%}{%- assign translated_spec = 'Typ ovládania' -%}
-              {%- when 'numar_functii' -%}{%- assign translated_spec = 'Počet funkcií' -%}
-              {%- when 'nr_functii' -%}{%- assign translated_spec = 'Počet funkcií' -%}
-              {%- when 'continut_pachet' -%}{%- assign translated_spec = 'Obsah balenia' -%}
-              {%- when 'diametru_cartus' -%}{%- assign translated_spec = 'Priemer patrony' -%}
-              {%- when 'tip_rama' -%}{%- assign translated_spec = 'Typ rámu' -%}
-              {%- when 'putere' -%}{%- assign translated_spec = 'Výkon (W)' -%}
-              {%- when 'diametru', 'diametru_cm' -%}{%- assign translated_spec = 'Priemer' -%}
-              {%- when 'inaltime', 'inaltime_cm' -%}{%- assign translated_spec = 'Výška' -%}
-              {%- when 'inaltime_min_cm' -%}{%- assign translated_spec = 'Minimálna výška' -%}
-              {%- when 'dimensiune_cm' -%}{%- assign translated_spec = 'Rozmer' -%}
-              {%- when 'lungime', 'lungime_cm' -%}{%- assign translated_spec = 'Dĺžka' -%}
-              {%- when 'latime', 'latime_cm' -%}{%- assign translated_spec = 'Šírka' -%}
-              {%- when 'tip_montaj' -%}{%- assign translated_spec = 'Typ montáže' -%}
-              {%- when 'orificii_montare' -%}{%- assign translated_spec = 'Montážne otvory' -%}
-              {%- when 'tip_pipa' -%}{%- assign translated_spec = 'Typ výtoku' -%}
-              {%- when 'racordare_apa' -%}{%- assign translated_spec = 'Pripojenie vody' -%}
-              {%- else -%}
-                {%- assign spec_t_key = 'products.metaobjects.specification_groups.' | append: spec -%}
-                {%- assign translated_spec = spec_t_key | t -%}
-                {%- if translated_spec contains 'ranslation missing' -%}{%- assign translated_spec = spec | replace: '_', ' ' | capitalize -%}{%- endif -%}
-            {%- endcase -%}
-          {%- elsif current_locale == 'hr' -%}
-            {%- case spec_base -%}
-              {%- when 'tip_produs' -%}{%- assign translated_spec = 'Tip produkta' -%}
-              {%- when 'material' -%}{%- assign translated_spec = 'Materijal' -%}
-              {%- when 'culoare' -%}{%- assign translated_spec = 'Boja' -%}
-              {%- when 'utilizare' -%}{%- assign translated_spec = 'Upotreba' -%}
-              {%- when 'forma' -%}{%- assign translated_spec = 'Oblik' -%}
-              {%- when 'nr_surse_iluminat' -%}{%- assign translated_spec = 'Broj izvora svjetlosti' -%}
-              {%- when 'constructie' -%}{%- assign translated_spec = 'Konstrukcija' -%}
-              {%- when 'design' -%}{%- assign translated_spec = 'Dizajn' -%}
-              {%- when 'dimabil' -%}{%- assign translated_spec = 'Zatamnjivo' -%}
-              {%- when 'tip_bec' -%}{%- assign translated_spec = 'Tip žarulje' -%}
-              {%- when 'tip_soclu' -%}{%- assign translated_spec = 'Tip grla' -%}
-              {%- when 'recomandare' -%}{%- assign translated_spec = 'Preporuka' -%}
-              {%- when 'pozitionare' -%}{%- assign translated_spec = 'Pozicioniranje' -%}
-              {%- when 'autonomie', 'autonomie_h' -%}{%- assign translated_spec = 'Autonomija' -%}
-              {%- when 'putere_w' -%}{%- assign translated_spec = 'Snaga (W)' -%}
-              {%- when 'tensiune_alimentare' -%}{%- assign translated_spec = 'Napon napajanja' -%}
-              {%- when 'tip_lumina' -%}{%- assign translated_spec = 'Tip svjetlosti' -%}
-              {%- when 'kelvin' -%}{%- assign translated_spec = 'Kelvin' -%}
-              {%- when 'flux_de_lumina_lm' -%}{%- assign translated_spec = 'Svjetlosni tok (lm)' -%}
-              {%- when 'clasa_de_protectie' -%}{%- assign translated_spec = 'Klasa zaštite' -%}
-              {%- when 'tip_intrerupator' -%}{%- assign translated_spec = 'Tip prekidača' -%}
-              {%- when 'tip_alimentare' -%}{%- assign translated_spec = 'Tip napajanja' -%}
-              {%- when 'tip_comanda' -%}{%- assign translated_spec = 'Tip upravljanja' -%}
-              {%- when 'numar_functii' -%}{%- assign translated_spec = 'Broj funkcija' -%}
-              {%- when 'nr_functii' -%}{%- assign translated_spec = 'Broj funkcija' -%}
-              {%- when 'continut_pachet' -%}{%- assign translated_spec = 'Sadržaj paketa' -%}
-              {%- when 'diametru_cartus' -%}{%- assign translated_spec = 'Promjer uloška' -%}
-              {%- when 'tip_rama' -%}{%- assign translated_spec = 'Tip okvira' -%}
-              {%- when 'putere' -%}{%- assign translated_spec = 'Snaga (W)' -%}
-              {%- when 'diametru', 'diametru_cm' -%}{%- assign translated_spec = 'Promjer' -%}
-              {%- when 'inaltime', 'inaltime_cm' -%}{%- assign translated_spec = 'Visina' -%}
-              {%- when 'inaltime_min_cm' -%}{%- assign translated_spec = 'Minimalna visina' -%}
-              {%- when 'dimensiune_cm' -%}{%- assign translated_spec = 'Dimenzija' -%}
-              {%- when 'lungime', 'lungime_cm' -%}{%- assign translated_spec = 'Duljina' -%}
-              {%- when 'latime', 'latime_cm' -%}{%- assign translated_spec = 'Širina' -%}
-              {%- when 'tip_montaj' -%}{%- assign translated_spec = 'Vrsta montaže' -%}
-              {%- when 'orificii_montare' -%}{%- assign translated_spec = 'Montažni otvori' -%}
-              {%- when 'tip_pipa' -%}{%- assign translated_spec = 'Vrsta izljeva' -%}
-              {%- when 'racordare_apa' -%}{%- assign translated_spec = 'Priključak vode' -%}
-              {%- else -%}
-                {%- assign spec_t_key = 'products.metaobjects.specification_groups.' | append: spec -%}
-                {%- assign translated_spec = spec_t_key | t -%}
-                {%- if translated_spec contains 'ranslation missing' -%}{%- assign translated_spec = spec | replace: '_', ' ' | capitalize -%}{%- endif -%}
-            {%- endcase -%}
           {%- else -%}
-            {%- comment -%} Fallback to Shopify translation system {%- endcomment -%}
-            {%- assign spec_key = 'products.metaobjects.specification_groups.' | append: spec -%}
-            {%- assign translated_spec = spec_key | t -%}
+            {%- comment -%} Labels live in the locale files (products.metaobjects.specification_groups.<key>); `x_` keys fall back to the bare `x` label. {%- endcomment -%}
+            {%- assign spec_label_key = 'products.metaobjects.specification_groups.' | append: spec -%}
+            {%- assign translated_spec = spec_label_key | t -%}
             {%- if translated_spec contains 'ranslation missing' -%}
-              {%- assign translated_spec = spec | replace: '_', ' ' | capitalize -%}
+              {%- assign spec_label_key = 'products.metaobjects.specification_groups.' | append: spec_base -%}
+              {%- assign translated_spec = spec_label_key | t -%}
             {%- endif -%}
-          {%- endif -%}
-          
-          {%- if spec_base == 'functii_oglinda' -%}
-            {%- case current_locale -%}
-              {%- when 'ro' -%}{%- assign translated_spec = 'Funcții oglindă' -%}
-              {%- when 'bg' -%}{%- assign translated_spec = 'Функции на огледалото' -%}
-              {%- when 'hu' -%}{%- assign translated_spec = 'Tükör funkciói' -%}
-              {%- when 'pl' -%}{%- assign translated_spec = 'Funkcje lustra' -%}
-              {%- when 'cs' -%}{%- assign translated_spec = 'Funkce zrcadla' -%}
-              {%- when 'sk' -%}{%- assign translated_spec = 'Funkcie zrkadla' -%}
-              {%- when 'hr' -%}{%- assign translated_spec = 'Funkcije ogledala' -%}
-              {%- when 'el' -%}{%- assign translated_spec = 'Λειτουργίες καθρέφτη' -%}
-              {%- when 'it' -%}{%- assign translated_spec = 'Funzioni dello specchio' -%}
-              {%- when 'fr' -%}{%- assign translated_spec = 'Fonctions du miroir' -%}
-              {%- when 'de' -%}{%- assign translated_spec = 'Spiegelfunktionen' -%}
-              {%- else -%}{%- assign translated_spec = 'Mirror functions' -%}
-            {%- endcase -%}
+            {%- if translated_spec contains 'ranslation missing' -%}
+              {%- assign translated_spec = spec_base | replace: '_', ' ' | capitalize -%}
+            {%- endif -%}
           {%- endif -%}
           {{ translated_spec | strip | remove_last: ':' }}
         </span>
 
                 <span class="spec-value w-1/3 font-medium">
+                  {%- liquid
+                    comment
+                      Unit of the canonical key; printed after numbers, so the labels carry no unit.
+                    endcomment
+                    assign spec_unit = ''
+                    if spec == 'putere_w'
+                      assign spec_unit = 'W'
+                    elsif spec == 'autonomie_h'
+                      assign spec_unit = 'h'
+                    elsif spec == 'flux_de_lumina_lm_'
+                      assign spec_unit = 'lm'
+                    elsif spec contains '_cm'
+                      assign spec_unit = 'cm'
+                    endif
+                  -%}
                   {% if mf.type == 'list.metaobject_reference' %}
                     {%- if spec contains '.' -%}
                       {%- comment -%} Shopify standard metaobject references - use label field {%- endcomment -%}
@@ -497,34 +272,48 @@
                         {%- unless forloop.last -%}, {% endunless -%}
                       {%- endfor -%}
                     {%- else -%}
-                      {%- comment -%} Custom metaobject references - use existing logic {%- endcomment -%}
-                      {% assign spec_length = spec | size %}
-                      {% assign key_length = spec_length | minus: 1 %}
-                      {% assign key = spec | slice: 0, key_length %}
-
-                      {%- if spec == 'tip_produs_' -%}
-                        {% assign key = 'lustra_led' %}
+                      {%- comment -%}
+                        Custom option metaobjects: `display` is the translated storefront label. The older list field
+                        named after the type (tip_produs: lustra_led) is only a fallback for entries without one.
+                      {%- endcomment -%}
+                      {%- assign legacy_field = mf_key | remove_last: '_' -%}
+                      {%- if mf_key == 'tip_produs_' -%}
+                        {%- assign legacy_field = 'lustra_led' -%}
                       {%- endif -%}
 
                       {% assign parsed = mf.value | parse_json %}
                       {%- for entry in parsed -%}
-                        {{ entry[key]
-                        | join: ', '
-                        | replace: '[', ''
-                        | replace: ']', ''
-                        | replace: '"', ''
-                        }}
+                        {%- assign entry_label = entry.display | append: '' | strip -%}
+                        {%- if entry_label == blank -%}
+                          {%- assign entry_label = entry[legacy_field] | join: ', ' | replace: '[', '' | replace: ']', '' | replace: '"', '' -%}
+                        {%- endif -%}
+                        {{ entry_label }}
                         {%- unless forloop.last -%}, {% endunless -%}
                       {%- endfor -%}
                     {%- endif -%}
-                  {% elsif mf.type == 'number_decimal' and spec_base == 'putere_w' %}
-                    {{ mf.value | round: 1 | append: '' | replace: '.0', '' }} W
-                  {% elsif mf.type == 'number_decimal' and spec contains '_cm' %}
-                    {{ mf.value | round: 1 | append: '' | replace: '.0', '' }} cm
-                  {% elsif mf.type == 'number_decimal' and spec == 'autonomie_h' %}
-                    {{ mf.value | round: 1 | append: '' | replace: '.0', '' }} h
+                  {% elsif mf.type == 'boolean' %}
+                    {%- if mf.value == true -%}
+                      {{ 'products.metaobjects.specification_values.yes' | t }}
+                    {%- else -%}
+                      {{ 'products.metaobjects.specification_values.no' | t }}
+                    {%- endif -%}
+                  {% elsif mf.type == 'number_decimal' or mf.type == 'number_integer' %}
+                    {{ mf.value | round: 1 | append: '' | replace: '.0', '' }}{% if spec_unit != blank %} {{ spec_unit }}{% endif %}
                   {% else %}
-                    {{ mf.value | join: ', ' | replace: '[', '' | replace: ']', '' | replace: '"', '' }}
+                    {%- liquid
+                      assign spec_text = mf.value | join: ', ' | replace: '[', '' | replace: ']', '' | replace: '"', '' | strip
+                      comment
+                        Number lists (flux_de_lumina_lm_) and bare numbers in a free-text twin get the unit too.
+                      endcomment
+                      assign spec_number = spec_text | plus: 0 | append: ''
+                      assign show_unit = false
+                      if spec_unit != blank
+                        if mf.type contains 'number' or spec_number == spec_text
+                          assign show_unit = true
+                        endif
+                      endif
+                    -%}
+                    {{ spec_text }}{% if show_unit %} {{ spec_unit }}{% endif %}
                   {% endif %}
                 </span>
               </div>
