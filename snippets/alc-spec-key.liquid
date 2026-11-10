@@ -29,6 +29,16 @@
     endcase
     assign fallback_keys = fallbacks | split: ','
     for fallback_key in fallback_keys
+      if fallback_key == 'tip_soclu'
+        comment
+          The free-text tip_soclu holds the bulb technology ("Banda LED", "LED integrat") on ~2,000 products;
+          only real sockets (E27, G9, GU10…) are worth a Tip soclu row.
+        endcomment
+        assign soclu_text = product.metafields.custom.tip_soclu.value | join: ','
+        if soclu_text contains 'LED'
+          continue
+        endif
+      endif
       if product.metafields.custom[fallback_key].value != blank
         assign key_out = fallback_key
         break

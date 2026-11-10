@@ -282,14 +282,26 @@
                       {%- endif -%}
 
                       {% assign parsed = mf.value | parse_json %}
-                      {%- for entry in parsed -%}
-                        {%- assign entry_label = entry.display | append: '' | strip -%}
-                        {%- if entry_label == blank -%}
-                          {%- assign entry_label = entry[legacy_field] | join: ', ' | replace: '[', '' | replace: ']', '' | replace: '"', '' -%}
-                        {%- endif -%}
-                        {{ entry_label }}
-                        {%- unless forloop.last -%}, {% endunless -%}
-                      {%- endfor -%}
+                      {%- liquid
+                        comment
+                          Built as one string so no template whitespace lands before the commas.
+                        endcomment
+                        assign spec_list = ''
+                        for entry in parsed
+                          assign entry_label = entry.display | append: '' | strip
+                          if entry_label == blank
+                            assign entry_label = entry[legacy_field] | join: ', ' | replace: '[', '' | replace: ']', '' | replace: '"', '' | strip
+                          endif
+                          if entry_label == blank
+                            continue
+                          endif
+                          if spec_list != blank
+                            assign spec_list = spec_list | append: ', '
+                          endif
+                          assign spec_list = spec_list | append: entry_label
+                        endfor
+                        echo spec_list
+                      -%}
                     {%- endif -%}
                   {% elsif mf.type == 'boolean' %}
                     {%- if mf.value == true -%}
