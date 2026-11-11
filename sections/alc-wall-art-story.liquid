@@ -95,9 +95,9 @@
       endif
       assign flux = flux_s
     endif
-    assign life_mo = ref.metafields.custom.autonomie_.value | first
-    if life_mo
-      assign life_n = life_mo.autonomie.value | first | strip | split: ' ' | first | remove: '.' | remove: ',' | remove: 'h' | plus: 0
+    assign life_h = ref.metafields.custom.autonomie_h.value
+    if life_h != blank
+      assign life_n = life_h | round
       if life_n >= 1000
         assign th = life_n | divided_by: 1000
         assign rest = life_n | modulo: 1000 | prepend: '00' | slice: -3, 3
