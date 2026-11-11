@@ -1,17 +1,10 @@
 {%- comment -%}
   Which custom.* key to read for a specification-group entry.
-  Groups list the canonical keys (metaobject lists `x_`, numbers `*_cm`, `putere_w`, `nr_becuri`, booleans)
-  and the key is read as listed. The one alternate: lifetime is a number (`autonomie_h`) on most products
-  and an option list (`autonomie_`) on the rest.
+  Groups list the canonical keys (metaobject lists `x_`, numbers `*_cm`, `putere_w`, `nr_becuri`,
+  `autonomie_h`, booleans) and the key is read as listed; there are no alternates left.
 
   Usage: capture this snippet's output (params: product, spec), then read product.metafields.custom[<output>].
 {%- endcomment -%}
 {%- liquid
-  assign key_out = spec
-  if spec == 'autonomie_h' and product.metafields.custom.autonomie_h.value == blank
-    if product.metafields.custom.autonomie_.value != blank
-      assign key_out = 'autonomie_'
-    endif
-  endif
-  echo key_out
+  echo spec
 -%}
