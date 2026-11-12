@@ -19,7 +19,9 @@
   Shopify.currency.rate, rounding as the cart does.
 
   A product out of stock, or with the metafield custom.bf_code_exhausted set (Liquid can't read
-  a code's usage), goes to the end of the row, greyed out, without its code.
+  a code's usage), goes to the end of the row, greyed out, without its code. The job that sets
+  the metafield runs a few times a day, so the script also asks the shop on each visit and greys
+  out on the spot a card whose code no longer applies (assets/alc-bf-code-deals.js).
 {%- endcomment -%}
 {%- liquid
   assign lang = request.locale.iso_code | downcase | slice: 0, 2
@@ -201,6 +203,7 @@
                 data-variant-id="{{ variant.id }}"
                 data-refused="{{ refused_text | escape }}"
                 data-no-place="{{ t[12] | escape }}"
+                data-sold-text="{{ t[7] | escape }}"
               >
                 <article class="alc-bf__card" style="--alc-bf-i: {{ deal_position | modulo: 4 }};">
                   <a class="alc-bf__card-media" href="{{ product.url }}" tabindex="-1" aria-hidden="true">

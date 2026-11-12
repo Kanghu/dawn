@@ -8,6 +8,7 @@
  * - After the add it checks that the cart accepted the code, and says so on the card if not.
  * - Abroad it converts the reduction, set in lei, at the day's rate (Liquid has no rate), for
  *   the price, the seal and the saving, rounding to the nearest unit as the cart does.
+ * - It greys out a card whose code no longer applies (see deadCodes below).
  */
 (() => {
   if (customElements.get('alc-code-deal')) return;
@@ -42,6 +43,101 @@
       body: JSON.stringify({ discount: [...kept.map((discount) => discount.code), code].join(',') }),
     });
     return true;
+  };
+
+  /*
+   * Liquid greys out a card only once the job in alessandro-automations has set
+   * custom.bf_code_exhausted, and the job runs a few times a day. Meanwhile a code that ran out
+   * would still be on show. So the page asks the shop: throwaway carts, made without the
+   * visitor's cookies, each holding up to five deals' products and codes, say which codes no
+   * longer apply. Only a code whose product made it into the cart counts; stock is Liquid's job.
+   * One request per visit, kept five minutes. Without an answer the cards stay as drawn.
+   */
+  const STOREFRONT_API = '/api/2026-10/graphql.json';
+  const DEAD_KEY = 'alc-bfcd-dead';
+  const DEAD_TTL = 5 * 60 * 1000;
+  let deadAnswer = null;
+
+  const readDead = () => {
+    try {
+      const saved = JSON.parse(sessionStorage.getItem(DEAD_KEY));
+      if (saved && Array.isArray(saved.codes) && Date.now() - saved.at < DEAD_TTL) return saved.codes;
+    } catch (error) {}
+    return null;
+  };
+
+  const saveDead = (codes) => {
+    try {
+      sessionStorage.setItem(DEAD_KEY, JSON.stringify({ at: Date.now(), codes }));
+    } catch (error) {}
+  };
+
+  const askShop = async (deals) => {
+    const groups = [];
+    for (let i = 0; i < deals.length; i += MAX_CODES) groups.push(deals.slice(i, i + MAX_CODES));
+
+    const country = (window.Shopify && window.Shopify.country) || '';
+    const context = /^[A-Z]{2}$/.test(country) ? ` @inContext(country: ${country})` : '';
+    const variables = {};
+    const params = groups.map((group, i) => {
+      variables[`in${i}`] = {
+        lines: group.map((deal) => ({ merchandiseId: `gid://shopify/ProductVariant/${deal.dataset.variantId}`, quantity: 1 })),
+        discountCodes: group.map((deal) => deal.dataset.code),
+      };
+      return `$in${i}: CartInput!`;
+    });
+    const carts = groups.map(
+      (group, i) =>
+        `c${i}: cartCreate(input: $in${i}) { cart { discountCodes { code applicable } lines(first: ${MAX_CODES}) { nodes { merchandise { ... on ProductVariant { id } } } } } }`
+    );
+    const query = `mutation BfCodeCheck(${params.join(', ')})${context} { ${carts.join(' ')} }`;
+
+    const response = await fetch(STOREFRONT_API, {
+      method: 'POST',
+      credentials: 'omit',
+      headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+      body: JSON.stringify({ query, variables }),
+    });
+    if (!response.ok) throw new Error(`Storefront API ${response.status}`);
+    const { data } = await response.json();
+
+    const dead = [];
+    groups.forEach((group, i) => {
+      const cart = data && data[`c${i}`] && data[`c${i}`].cart;
+      if (!cart) return;
+      const inCart = cart.lines.nodes.map((line) => line.merchandise && line.merchandise.id);
+      group.forEach((deal) => {
+        const found = cart.discountCodes.find((discount) => sameCode(discount.code, deal.dataset.code));
+        const hasProduct = inCart.includes(`gid://shopify/ProductVariant/${deal.dataset.variantId}`);
+        if (found && !found.applicable && hasProduct) dead.push(deal.dataset.code);
+      });
+    });
+    return dead;
+  };
+
+  /* The codes that no longer apply, asked once for all the deals on the page. */
+  const deadCodes = () => {
+    if (deadAnswer) return deadAnswer;
+    const saved = readDead();
+    if (saved) {
+      deadAnswer = Promise.resolve(saved);
+      return deadAnswer;
+    }
+    const seen = new Set();
+    const deals = [...document.querySelectorAll('alc-code-deal:not(.is-out)')].filter((deal) => {
+      const key = String(deal.dataset.code).toLowerCase();
+      if (!deal.dataset.variantId || seen.has(key)) return false;
+      seen.add(key);
+      return true;
+    });
+    deadAnswer = deals.length
+      ? askShop(deals).then((codes) => {
+          saveDead(codes);
+          return codes;
+        })
+      : Promise.resolve([]);
+    deadAnswer = deadAnswer.catch(() => []);
+    return deadAnswer;
   };
 
   /* The shop's money format, read from a sample rendered by Liquid: 12345.00 in that format. */
@@ -82,7 +178,37 @@
       const copyButton = this.querySelector('[data-copy]');
       if (copyButton) copyButton.addEventListener('click', () => this.copyCode(copyButton));
 
-      if (!this.classList.contains('is-out')) this.convertPrice();
+      if (!this.classList.contains('is-out')) {
+        this.convertPrice();
+        deadCodes().then((codes) => {
+          if (codes.some((code) => sameCode(code, this.code))) this.markOut();
+        });
+      }
+    }
+
+    /* The sold-out card Liquid draws for an exhausted code, made from a live one. */
+    markOut() {
+      if (this.classList.contains('is-out')) return;
+      this.classList.add('is-out');
+      this.querySelectorAll('.alc-bf__seal, .alc-bf__now, .alc-bf__save, .alc-bfcd__coupon, .alc-bfcd__limit').forEach(
+        (element) => element.remove()
+      );
+
+      const button = this.querySelector('.alc-bf__buy');
+      if (button) {
+        button.disabled = true;
+        const label = button.querySelector(':scope > span');
+        if (label && this.dataset.soldText) label.textContent = this.dataset.soldText;
+        button.querySelectorAll(':scope > svg').forEach((icon) => icon.remove());
+      }
+
+      /* To the end of the row, as Liquid sorts it, unless the row is on screen: a card jumping
+         away under the visitor's eyes is worse than one greyed out in its place. */
+      const item = this.closest('li');
+      const track = item && item.parentElement;
+      if (!track) return;
+      const box = track.getBoundingClientRect();
+      if (box.top >= window.innerHeight || box.bottom <= 0) track.append(item);
     }
 
     onSubmit(event) {
