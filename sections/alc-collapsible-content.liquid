@@ -299,8 +299,15 @@
                       {%- liquid
                         comment
                           Built as one string so no template whitespace lands before the commas.
+                          Kelvin values print in numeric order and light types warm → neutral → cool, whatever
+                          order the product's list was saved in; other types keep their saved order.
                         endcomment
                         assign spec_list = ''
+                        assign sort_mode = ''
+                        if spec_base == 'kelvin' or spec_base == 'tip_lumina'
+                          assign sort_mode = spec_base
+                        endif
+                        assign keyed_list = ''
                         for entry in parsed
                           assign entry_label = entry.display | append: '' | strip
                           if entry_label == blank
@@ -309,11 +316,39 @@
                           if entry_label == blank
                             continue
                           endif
+                          if sort_mode != blank
+                            if sort_mode == 'kelvin'
+                              assign sort_key = entry_label | upcase | remove: 'K' | strip | plus: 0 | plus: 100000
+                            else
+                              assign light_rank = 4
+                              case entry.system.handle
+                                when 'calda'
+                                  assign light_rank = 1
+                                when 'neutra'
+                                  assign light_rank = 2
+                                when 'rece'
+                                  assign light_rank = 3
+                              endcase
+                              assign sort_key = light_rank | times: 1000 | plus: forloop.index | plus: 100000
+                            endif
+                            assign keyed_list = keyed_list | append: sort_key | append: '~' | append: entry_label | append: '^'
+                            continue
+                          endif
                           if spec_list != blank
                             assign spec_list = spec_list | append: ', '
                           endif
                           assign spec_list = spec_list | append: entry_label
                         endfor
+                        if keyed_list != blank
+                          assign sorted_entries = keyed_list | split: '^' | sort
+                          for sorted_entry in sorted_entries
+                            assign entry_label = sorted_entry | split: '~' | last
+                            if spec_list != blank
+                              assign spec_list = spec_list | append: ', '
+                            endif
+                            assign spec_list = spec_list | append: entry_label
+                          endfor
+                        endif
                         echo spec_list
                       -%}
                     {%- endif -%}
