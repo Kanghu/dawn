@@ -156,7 +156,8 @@
             {%- comment -%}
               A product sits in several collections that carry specification groups (incl. the catch-all
               'Toate produsele'). Use the one whose groups have the most filled specs for this product;
-              ties keep the first, as before, so no product shows fewer rows than it did.
+              ties go to the oldest collection (lowest id). product.collections is ordered differently per
+              locale, so "first" would give each storefront a different group order.
             {%- endcomment -%}
             {%- assign collection_with_specs = nil -%}
             {%- assign best_spec_rows = -1 -%}
@@ -178,7 +179,13 @@
                     {%- endif -%}
                   {%- endfor -%}
                 {%- endfor -%}
+                {%- assign take_candidate = false -%}
                 {%- if candidate_rows > best_spec_rows -%}
+                  {%- assign take_candidate = true -%}
+                {%- elsif candidate_rows == best_spec_rows and collection.id < collection_with_specs.id -%}
+                  {%- assign take_candidate = true -%}
+                {%- endif -%}
+                {%- if take_candidate -%}
                   {%- assign best_spec_rows = candidate_rows -%}
                   {%- assign collection_with_specs = collection -%}
                 {%- endif -%}
