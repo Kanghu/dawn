@@ -190,7 +190,14 @@
                 {% assign spec_group_metaobj = spec_group | metaobject %}
 
               <div class="mb-16 w-100 md:w-50">
-                  <div class="alc-h3 alc-spec__group">{{ spec_group_metaobj.name }}</div>
+                  {%- comment -%}
+                    Group titles live in the locale files, keyed by the group handle: the specification_group
+                    metaobject is not translatable, so no translation app can overwrite its key list.
+                  {%- endcomment -%}
+                  {%- assign group_t_key = 'products.metaobjects.specification_group_titles.' | append: spec_group_metaobj.system.handle | replace: '-', '_' -%}
+                  {%- assign group_title = group_t_key | t -%}
+                  {%- if group_title contains 'ranslation missing' -%}{%- assign group_title = spec_group_metaobj.name -%}{%- endif -%}
+                  <div class="alc-h3 alc-spec__group">{{ group_title }}</div>
                   {%- assign counter = 0 -%}
                   {%- for spec in spec_group_metaobj.specifications.value -%}
                       {%- if spec contains '.' -%}
