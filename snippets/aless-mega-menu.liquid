@@ -7,6 +7,8 @@
     menu's 2nd-level links (collections, with image). Right: the hovered item's
     3rd-level groups and their 4th-level links, or a feature card when it has none.
     A 2nd-level collection with custom.is_campaign shows as an image tile.
+    A menu with a single 2nd-level link (e.g. meniu-zilan) drops the left column and
+    shows that link's groups full width (.alc-mm__mega--single).
   - any other display_type: a compact 2-column dropdown with the 2nd-level links, each
     with an icon (snippets/alc-menu-icon.liquid) and an optional one-line description
     from the page metafield custom.menu_description (single line text, translatable).
@@ -91,7 +93,7 @@
               {%- if mega_menu.links.size > 0 -%}
                 {%- if is_mega -%}
                   <div class="alc-mm__panel alc-mm__panel--mega" id="{{ panel_id }}" data-alc-mm-panel hidden>
-                    <div class="page-width alc-mm__mega">
+                    <div class="page-width alc-mm__mega{% if mega_menu.links.size == 1 %} alc-mm__mega--single{% endif %}">
                       <ul class="alc-mm__cats" role="list">
                         {%- for childlink in mega_menu.links -%}
                           {%- liquid

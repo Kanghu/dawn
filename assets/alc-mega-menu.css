@@ -241,6 +241,16 @@ body {
   overflow-y: auto;
 }
 
+/* One 2nd-level link (Produse Zilan): no left column, its groups full width.
+   The hidden list still drives alc-mega-menu.js, which activates its only pane. */
+.alc-mm__mega.alc-mm__mega--single {
+  grid-template-columns: minmax(0, 1fr);
+}
+
+.alc-mm__mega--single .alc-mm__cats {
+  display: none;
+}
+
 /* Left: categories */
 .alc-mm__cats {
   display: flex;
