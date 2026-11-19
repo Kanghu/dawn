@@ -277,6 +277,27 @@
                     elsif spec contains '_cm'
                       assign spec_unit = 'cm'
                     endif
+                    comment
+                      Appliance specs (Zilan, specification group specificatii-zilan): language-neutral numbers in a fixed unit.
+                    endcomment
+                    case spec
+                      when 'greutate_kg'
+                        assign spec_unit = 'kg'
+                      when 'capacitate_l', 'rezervor_apa_l'
+                        assign spec_unit = 'L'
+                      when 'nivel_zgomot_db'
+                        assign spec_unit = 'dB'
+                      when 'lungime_cablu_m'
+                        assign spec_unit = 'm'
+                      when 'temperatura_max_c'
+                        assign spec_unit = '°C'
+                      when 'timer_min'
+                        assign spec_unit = 'min'
+                      when 'suprafata_recomandata_m2'
+                        assign spec_unit = 'm²'
+                      when 'debit_aer_m3h'
+                        assign spec_unit = 'm³/h'
+                    endcase
                   -%}
                   {% if mf.type == 'list.metaobject_reference' %}
                     {%- if spec contains '.' -%}
@@ -360,7 +381,22 @@
                       {{ 'products.metaobjects.specification_values.no' | t }}
                     {%- endif -%}
                   {% elsif mf.type == 'number_decimal' or mf.type == 'number_integer' %}
-                    {{ mf.value | round: 1 | append: '' | replace: '.0', '' }}{% if spec_unit != blank %} {{ spec_unit }}{% endif %}
+                    {%- liquid
+                      comment
+                        One decimal, two for kg and litres (0.74 kg, 0.09 L). Only a trailing ".0" is dropped:
+                        a plain replace of '.0' would turn 10.05 into 105.
+                      endcomment
+                      assign num_precision = 1
+                      if spec_unit == 'kg' or spec_unit == 'L'
+                        assign num_precision = 2
+                      endif
+                      assign num_text = mf.value | round: num_precision | append: ''
+                      assign num_tail = num_text | slice: -2, 2
+                      if num_tail == '.0'
+                        assign num_text = num_text | remove_last: '.0'
+                      endif
+                    -%}
+                    {{ num_text }}{% if spec_unit != blank %} {{ spec_unit }}{% endif %}
                   {% else %}
                     {%- liquid
                       assign spec_text = mf.value | join: ', ' | replace: '[', '' | replace: ']', '' | replace: '"', '' | strip
