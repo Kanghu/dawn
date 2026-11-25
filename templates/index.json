@@ -11,13 +11,6 @@
   "sections": {
     "bf_code_deals": {
       "type": "alc-bf-code-deals",
-      "settings": {
-        "units": 40,
-        "end_date": "",
-        "display_font": "montserrat_n9",
-        "padding_top": 0,
-        "padding_bottom": 32
-      },
       "blocks": {
         "deal_w10": {
           "type": "code_deal",
@@ -70,7 +63,7 @@
         "deal_jy105": {
           "type": "code_deal",
           "settings": {
-            "product": "decorațiune-alocasia-150-cm-verde",
+            "product": "planta-artificiala-alocasia-12-frunze-150-cm-verde",
             "code": "SUPPERBF7",
             "reduction": 31002
           }
@@ -84,7 +77,14 @@
         "deal_lc6002",
         "deal_cy6102",
         "deal_jy105"
-      ]
+      ],
+      "settings": {
+        "units": 40,
+        "end_date": "",
+        "display_font": "montserrat_n9",
+        "padding_top": 0,
+        "padding_bottom": 32
+      }
     },
     "campaign_spotlight": {
       "type": "alc-campaign-spotlight",
@@ -425,6 +425,7 @@
     },
     "alc_featured_collection_market_aplice": {
       "type": "alc-featured-collection",
+      "name": "Aplice (abroad)",
       "settings": {
         "visibility": "not_ro",
         "title": "",
@@ -450,8 +451,7 @@
         "swipe_on_mobile": false,
         "padding_top": 24,
         "padding_bottom": 24
-      },
-      "name": "Aplice (abroad)"
+      }
     },
     "blocks_8HTAtC": {
       "type": "_blocks",
