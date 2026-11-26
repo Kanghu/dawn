@@ -1,0 +1,337 @@
+{%- comment -%}
+  Brand campaign header for a brand collection (first use: /collections/produse-zilan, template
+  collection.zilan.json). Replaces the standard collection banner:
+
+  1. Dark hero: gold "new" eyebrow with a live dot, the collection title (h1) and description,
+     two pill buttons, and a mosaic of the first category images.
+  2. White stats card overlapping the hero foot: product count, category count, brand count —
+     all read live from the collection, never typed in.
+  3. Category grid: the section's "Categories" list, or (when empty) the collection metafield
+     custom.slider_subcollections, with image, short name and product count. Categories with no
+     products are skipped.
+
+  The product grid with filters stays the normal main-collection-product-grid section below.
+
+  Text: UI strings come from a per-language dictionary in this file (the house rule, see
+  alc-company.liquid), with Romanian as the fallback. Category names come from the translated
+  collection titles with the brand suffix removed ("Gătit Zilan" -> "Gătit", "Pets – Zilan" -> "Pets").
+  Counts use each language's plural forms.
+
+  Styles: assets/alc-brand-campaign.css.
+{%- endcomment -%}
+{{ 'alc-brand-campaign.css' | asset_url | stylesheet_tag }}
+
+{%- liquid
+  assign lang = request.locale.iso_code | split: '-' | first
+  assign brand = section.settings.brand_name | default: 'Zilan'
+  assign subcollections = section.settings.categories
+  if subcollections == blank
+    assign subcollections = collection.metafields.custom.slider_subcollections.value
+  endif
+
+  case lang
+    when 'en'
+      assign t = 'New at Alessandro Design|See all products|Categories|Choose a category|product|products|products|category|categories|categories|brand|brands|brands|All products'
+    when 'hu'
+      assign t = 'Új az Alessandro Designnál|Összes termék|Kategóriák|Válasszon kategóriát|termék|termék|termék|kategória|kategória|kategória|márka|márka|márka|Összes termék'
+    when 'pl'
+      assign t = 'Nowość w Alessandro Design|Zobacz wszystkie produkty|Kategorie|Wybierz kategorię|produkt|produkty|produktów|kategoria|kategorie|kategorii|marka|marki|marek|Wszystkie produkty'
+    when 'el'
+      assign t = 'Νέο στην Alessandro Design|Δείτε όλα τα προϊόντα|Κατηγορίες|Επιλέξτε κατηγορία|προϊόν|προϊόντα|προϊόντα|κατηγορία|κατηγορίες|κατηγορίες|μάρκα|μάρκες|μάρκες|Όλα τα προϊόντα'
+    when 'bg'
+      assign t = 'Ново в Alessandro Design|Вижте всички продукти|Категории|Изберете категория|продукт|продукта|продукта|категория|категории|категории|марка|марки|марки|Всички продукти'
+    when 'it'
+      assign t = 'Novità da Alessandro Design|Vedi tutti i prodotti|Categorie|Scegli la categoria|prodotto|prodotti|prodotti|categoria|categorie|categorie|marchio|marchi|marchi|Tutti i prodotti'
+    when 'fr'
+      assign t = 'Nouveau chez Alessandro Design|Voir tous les produits|Catégories|Choisir une catégorie|produit|produits|produits|catégorie|catégories|catégories|marque|marques|marques|Tous les produits'
+    when 'cs'
+      assign t = 'Novinka v Alessandro Design|Zobrazit všechny produkty|Kategorie|Vyberte kategorii|produkt|produkty|produktů|kategorie|kategorie|kategorií|značka|značky|značek|Všechny produkty'
+    when 'sk'
+      assign t = 'Novinka v Alessandro Design|Zobraziť všetky produkty|Kategórie|Vyberte kategóriu|produkt|produkty|produktov|kategória|kategórie|kategórií|značka|značky|značiek|Všetky produkty'
+    when 'hr'
+      assign t = 'Novo u Alessandro Designu|Pogledajte sve proizvode|Kategorije|Odaberite kategoriju|proizvod|proizvoda|proizvoda|kategorija|kategorije|kategorija|marka|marke|maraka|Svi proizvodi'
+    when 'de'
+      assign t = 'Neu bei Alessandro Design|Alle Produkte ansehen|Kategorien|Kategorie wählen|Produkt|Produkte|Produkte|Kategorie|Kategorien|Kategorien|Marke|Marken|Marken|Alle Produkte'
+    else
+      assign t = 'Nou la Alessandro Design|Vezi toate produsele|Categorii|Alege categoria|produs|produse|de produse|categorie|categorii|de categorii|brand|branduri|de branduri|Toate produsele'
+  endcase
+  assign t = t | split: '|'
+  assign eyebrow = section.settings.eyebrow | default: t[0]
+
+  comment
+    Live numbers. Categories = the ones with products (the same set the grid shows).
+  endcomment
+  assign cat_count = 0
+  for sub in subcollections
+    if sub.products_count > 0
+      assign cat_count = cat_count | plus: 1
+    endif
+  endfor
+  assign brand_count = section.settings.brand_count | default: 1
+  assign product_count = collection.all_products_count | default: collection.products_count
+-%}
+
+
+
+<section class="alc-bc page-width" aria-labelledby="AlcBcTitle-{{ section.id }}">
+  <div class="alc-bc__hero">
+    <div class="alc-bc__copy">
+      <div class="alc-bc__eyebrow">
+        <span class="alc-bc__dot" aria-hidden="true"></span>
+        <span>{{ eyebrow }}</span>
+      </div>
+      <h1 class="alc-bc__title" id="AlcBcTitle-{{ section.id }}">{{ collection.title | escape }}</h1>
+      {%- assign lead = collection.description | strip_html | strip -%}
+      {%- if lead != blank -%}
+        <p class="alc-bc__lead">{{ lead }}</p>
+      {%- endif -%}
+      <div class="alc-bc__actions">
+        <a href="#AlcBcProducts-{{ section.id }}" class="alc-bc__btn alc-bc__btn--light">
+          <span>{{ t[1] }}</span>
+          <svg aria-hidden="true" focusable="false" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+        </a>
+        {%- if cat_count > 0 -%}
+          <a href="#AlcBcCats-{{ section.id }}" class="alc-bc__btn alc-bc__btn--glass">{{ t[2] }}</a>
+        {%- endif -%}
+      </div>
+    </div>
+
+    {%- comment -%} Mosaic: the first four categories that have a picture. {%- endcomment -%}
+    <div class="alc-bc__mosaic" aria-hidden="true">
+      {%- assign shown = 0 -%}
+      {%- for sub in subcollections -%}
+        {%- if sub.products_count == 0 -%}{%- continue -%}{%- endif -%}
+        {%- assign sub_image = sub.image | default: sub.featured_image -%}
+        {%- if sub_image == blank -%}{%- continue -%}{%- endif -%}
+        <span class="alc-bc__tile alc-bc__tile--{{ shown | plus: 1 }}">
+          <img
+            src="{{ sub_image | image_url: width: 400 }}"
+            srcset="{{ sub_image | image_url: width: 240 }} 240w, {{ sub_image | image_url: width: 400 }} 400w, {{ sub_image | image_url: width: 600 }} 600w"
+            sizes="(min-width: 990px) 220px, 40vw"
+            width="400"
+            height="400"
+            alt=""
+            {% if shown == 0 %}fetchpriority="high"{% endif %}
+            decoding="async"
+          >
+        </span>
+        {%- assign shown = shown | plus: 1 -%}
+        {%- if shown == 4 -%}{%- break -%}{%- endif -%}
+      {%- endfor -%}
+    </div>
+  </div>
+
+  {%- comment -%} Stats card. Each value is followed by its noun in the right plural form. {%- endcomment -%}
+  {%- liquid
+    assign stat_values = product_count | append: '|' | append: cat_count | append: '|' | append: brand_count
+    assign stat_values = stat_values | split: '|'
+  -%}
+  <dl class="alc-bc__stats">
+    {%- for v in stat_values -%}
+      {%- liquid
+        assign n = v | plus: 0
+        if n == 0
+          continue
+        endif
+        assign base = forloop.index0 | times: 3 | plus: 4
+        assign mod10 = n | modulo: 10
+        assign mod100 = n | modulo: 100
+        assign form = 1
+        case lang
+          when 'pl'
+            if n == 1
+              assign form = 0
+            elsif mod10 >= 2 and mod10 <= 4
+              if mod100 < 12 or mod100 > 14
+                assign form = 1
+              else
+                assign form = 2
+              endif
+            else
+              assign form = 2
+            endif
+          when 'cs', 'sk'
+            if n == 1
+              assign form = 0
+            elsif n >= 2 and n <= 4
+              assign form = 1
+            else
+              assign form = 2
+            endif
+          when 'hr'
+            if mod10 == 1 and mod100 != 11
+              assign form = 0
+            elsif mod10 >= 2 and mod10 <= 4
+              if mod100 < 12 or mod100 > 14
+                assign form = 1
+              else
+                assign form = 2
+              endif
+            else
+              assign form = 2
+            endif
+          when 'en', 'hu', 'el', 'bg', 'it', 'fr', 'de'
+            if n == 1
+              assign form = 0
+            endif
+          else
+            if n == 1
+              assign form = 0
+            elsif mod100 == 0 or mod100 >= 20
+              assign form = 2
+            endif
+        endcase
+        assign idx = base | plus: form
+      -%}
+      <div class="alc-bc__stat">
+        <dt>{{ t[idx] }}{% if forloop.index == 3 and section.settings.brand_names != blank %}<span class="alc-bc__stat-note">{{ section.settings.brand_names }}</span>{% endif %}</dt>
+        <dd>{{ n }}</dd>
+      </div>
+    {%- endfor -%}
+  </dl>
+
+  {%- if cat_count > 0 -%}
+    <div class="alc-bc__cats" id="AlcBcCats-{{ section.id }}">
+      <div class="alc-bc__head">
+        <div class="alc-bc__head-eyebrow">{{ t[2] }}</div>
+        <h2 class="alc-bc__head-title">{{ t[3] }}</h2>
+      </div>
+      <ul class="alc-bc__grid" role="list">
+        {%- for sub in subcollections -%}
+          {%- if sub.products_count == 0 -%}{%- continue -%}{%- endif -%}
+          {%- liquid
+            assign sub_image = sub.image | default: sub.featured_image
+            assign suffix_dash = ' – ' | append: brand
+            assign suffix_plain = ' ' | append: brand
+            assign name = sub.title | remove: suffix_dash | remove: suffix_plain | strip
+            assign n = sub.products_count
+            assign mod10 = n | modulo: 10
+            assign mod100 = n | modulo: 100
+            assign form = 1
+            case lang
+              when 'pl'
+                if n == 1
+                  assign form = 0
+                elsif mod10 >= 2 and mod10 <= 4
+                  if mod100 < 12 or mod100 > 14
+                    assign form = 1
+                  else
+                    assign form = 2
+                  endif
+                else
+                  assign form = 2
+                endif
+              when 'cs', 'sk'
+                if n == 1
+                  assign form = 0
+                elsif n >= 2 and n <= 4
+                  assign form = 1
+                else
+                  assign form = 2
+                endif
+              when 'hr'
+                if mod10 == 1 and mod100 != 11
+                  assign form = 0
+                elsif mod10 >= 2 and mod10 <= 4
+                  if mod100 < 12 or mod100 > 14
+                    assign form = 1
+                  else
+                    assign form = 2
+                  endif
+                else
+                  assign form = 2
+                endif
+              when 'en', 'hu', 'el', 'bg', 'it', 'fr', 'de'
+                if n == 1
+                  assign form = 0
+                endif
+              else
+                if n == 1
+                  assign form = 0
+                elsif mod100 == 0 or mod100 >= 20
+                  assign form = 2
+                endif
+            endcase
+            assign idx = 4 | plus: form
+          -%}
+          <li>
+            <a href="{{ sub.url }}" class="alc-bc__cat">
+              <span class="alc-bc__cat-media">
+                {%- if sub_image -%}
+                  <img
+                    src="{{ sub_image | image_url: width: 160 }}"
+                    srcset="{{ sub_image | image_url: width: 120 }} 120w, {{ sub_image | image_url: width: 160 }} 160w, {{ sub_image | image_url: width: 240 }} 240w"
+                    sizes="72px"
+                    width="160"
+                    height="160"
+                    alt=""
+                    loading="lazy"
+                    decoding="async"
+                  >
+                {%- endif -%}
+              </span>
+              <span class="alc-bc__cat-text">
+                <span class="alc-bc__cat-name">{{ name | escape }}</span>
+                <span class="alc-bc__cat-count">{{ n }} {{ t[idx] }}</span>
+              </span>
+              <svg class="alc-bc__cat-arrow" aria-hidden="true" focusable="false" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="m9 6 6 6-6 6"/></svg>
+            </a>
+          </li>
+        {%- endfor -%}
+      </ul>
+    </div>
+  {%- endif -%}
+
+  {%- comment -%} Lead-in for the product grid section that follows; the hero button lands here. {%- endcomment -%}
+  <div class="alc-bc__head alc-bc__head--products" id="AlcBcProducts-{{ section.id }}">
+    <div class="alc-bc__head-eyebrow">{{ section.settings.brand_names | default: brand }}</div>
+    <h2 class="alc-bc__head-title">{{ t[13] }}</h2>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Brand campaign header",
+  "tag": "div",
+  "class": "section-alc-brand-campaign",
+  "settings": [
+    {
+      "type": "paragraph",
+      "content": "Categories: the list below, or (when empty) the collection metafield custom.slider_subcollections. Numbers are live."
+    },
+    {
+      "type": "collection_list",
+      "id": "categories",
+      "label": "Categories",
+      "limit": 24
+    },
+    {
+      "type": "text",
+      "id": "brand_name",
+      "label": "Brand name (removed from category titles)",
+      "default": "Zilan"
+    },
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "Eyebrow (blank = translated \"New at Alessandro Design\")"
+    },
+    {
+      "type": "range",
+      "id": "brand_count",
+      "label": "Number of brands",
+      "min": 1,
+      "max": 10,
+      "step": 1,
+      "default": 2
+    },
+    {
+      "type": "text",
+      "id": "brand_names",
+      "label": "Brand names (shown under the brand count)",
+      "default": "Zilan · Floria"
+    }
+  ],
+  "presets": [{ "name": "Brand campaign header" }]
+}
+{% endschema %}

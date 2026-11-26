@@ -1,0 +1,336 @@
+/* Brand campaign header (sections/alc-brand-campaign.liquid). Tokens follow alc-company.css. */
+.alc-bc {
+  --alc-bc-ink: #151515;
+  --alc-bc-muted: #6f6c67;
+  --alc-bc-line: rgba(21, 21, 21, 0.08);
+  --alc-bc-warm: #f5f3ef;
+  --alc-bc-gold: #c9a26a;
+  --alc-bc-radius: 20px;
+  color: var(--alc-bc-ink);
+  padding-top: 8px;
+  padding-bottom: 8px;
+}
+
+/* ---------- Hero ---------- */
+.alc-bc__hero {
+  position: relative;
+  display: grid;
+  grid-template-columns: minmax(0, 1.15fr) minmax(0, 1fr);
+  align-items: center;
+  gap: clamp(24px, 4vw, 56px);
+  padding: clamp(32px, 4.4vw, 64px) clamp(24px, 4.4vw, 64px) clamp(72px, 7vw, 104px);
+  border-radius: 28px;
+  background:
+    radial-gradient(120% 90% at 100% 0%, rgba(201, 162, 106, 0.16) 0%, rgba(201, 162, 106, 0) 55%),
+    #0e0e0e;
+  color: #fff;
+  overflow: hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.alc-bc__eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  margin: 0 0 18px;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--alc-bc-gold);
+}
+
+/* "Campaign is on": a small live dot with a soft ring, no glow. */
+.alc-bc__dot {
+  position: relative;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--alc-bc-gold);
+  flex: none;
+}
+
+.alc-bc__dot::after {
+  content: '';
+  position: absolute;
+  inset: -4px;
+  border-radius: 50%;
+  border: 1px solid rgba(201, 162, 106, 0.6);
+  animation: alc-bc-ring 2.2s cubic-bezier(0.2, 0.7, 0.2, 1) infinite;
+}
+
+@keyframes alc-bc-ring {
+  0% { transform: scale(0.6); opacity: 1; }
+  100% { transform: scale(1.8); opacity: 0; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .alc-bc__dot::after { animation: none; opacity: 0.6; }
+}
+
+.alc-bc__title {
+  margin: 0;
+  font-size: clamp(36px, 5.2vw, 68px);
+  font-weight: 600;
+  line-height: 1.02;
+  letter-spacing: -0.03em;
+  color: #fff;
+  text-wrap: balance;
+}
+
+.alc-bc__lead {
+  max-width: 38em;
+  margin: 18px 0 0;
+  font-size: clamp(15px, 1.3vw, 18px);
+  line-height: 1.55;
+  color: rgba(255, 255, 255, 0.72);
+  text-wrap: pretty;
+}
+
+.alc-bc__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 28px;
+}
+
+.alc-bc__btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  min-height: 50px;
+  padding: 0 24px;
+  border-radius: 999px;
+  border: 1px solid transparent;
+  font-size: 15px;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+  text-decoration: none;
+  transition: background-color 0.25s ease, color 0.25s ease, border-color 0.25s ease, transform 0.15s ease;
+}
+
+.alc-bc__btn svg { transition: transform 0.25s ease; }
+.alc-bc__btn:active { transform: scale(0.98); }
+
+.alc-bc__btn--light { background: #fff; color: var(--alc-bc-ink); }
+.alc-bc__btn--glass {
+  background: rgba(255, 255, 255, 0.08);
+  border-color: rgba(255, 255, 255, 0.22);
+  color: #fff;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .alc-bc__btn--light:hover { background: #ecebe8; }
+  .alc-bc__btn--light:hover svg { transform: translateX(3px); }
+  .alc-bc__btn--glass:hover { background: rgba(255, 255, 255, 0.16); }
+}
+
+.alc-bc__btn:focus-visible,
+.alc-bc__cat:focus-visible {
+  outline: 2px solid var(--alc-bc-gold);
+  outline-offset: 3px;
+}
+
+/* Mosaic: four white product tiles, the second and fourth set lower. */
+.alc-bc__mosaic {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: clamp(10px, 1.2vw, 16px);
+  max-width: 460px;
+  justify-self: end;
+  width: 100%;
+}
+
+.alc-bc__tile {
+  display: block;
+  aspect-ratio: 1;
+  border-radius: var(--alc-bc-radius);
+  background: #fff;
+  overflow: hidden;
+}
+
+.alc-bc__tile--2,
+.alc-bc__tile--4 { transform: translateY(18%); }
+
+.alc-bc__tile img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  padding: 10%;
+  box-sizing: border-box;
+}
+
+/* ---------- Stats card (overlaps the hero foot) ---------- */
+.alc-bc__stats {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  width: min(720px, calc(100% - 48px));
+  margin: -48px auto 0;
+  padding: 0;
+  border-radius: var(--alc-bc-radius);
+  background: #fff;
+  box-shadow: 0 24px 60px -30px rgba(0, 0, 0, 0.35), 0 0 0 1px var(--alc-bc-line);
+}
+
+.alc-bc__stat {
+  display: flex;
+  flex-direction: column-reverse;
+  justify-content: flex-end;
+  gap: 4px;
+  padding: 20px 24px;
+  text-align: center;
+}
+
+.alc-bc__stat + .alc-bc__stat { border-left: 1px solid var(--alc-bc-line); }
+
+.alc-bc__stat dd {
+  margin: 0;
+  font-size: clamp(28px, 3vw, 40px);
+  font-weight: 600;
+  line-height: 1;
+  letter-spacing: -0.025em;
+  font-variant-numeric: tabular-nums;
+}
+
+.alc-bc__stat dt {
+  margin: 0;
+  font-size: 14px;
+  line-height: 1.35;
+  color: var(--alc-bc-muted);
+}
+
+.alc-bc__stat-note {
+  display: block;
+  font-size: 12px;
+  color: var(--alc-bc-muted);
+  opacity: 0.85;
+}
+
+/* ---------- Categories ---------- */
+.alc-bc__cats { margin-top: clamp(40px, 5vw, 64px); scroll-margin-top: 120px; }
+
+.alc-bc__head { margin-bottom: 20px; }
+
+/* Lead-in for the product grid section below (the grid brings its own top padding). */
+.alc-bc__head--products {
+  margin: clamp(48px, 6vw, 72px) 0 0;
+  padding-top: clamp(28px, 3vw, 40px);
+  border-top: 1px solid var(--alc-bc-line);
+  scroll-margin-top: 120px;
+}
+
+.alc-bc__head-eyebrow {
+  margin: 0 0 8px;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--alc-bc-muted);
+}
+
+.alc-bc__head-title {
+  margin: 0;
+  font-size: clamp(24px, 2.6vw, 34px);
+  font-weight: 600;
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+  text-wrap: balance;
+}
+
+.alc-bc__grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 12px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.alc-bc__grid > li { display: flex; }
+
+.alc-bc__cat {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  width: 100%;
+  min-height: 92px;
+  padding: 10px 16px 10px 10px;
+  border-radius: 18px;
+  background: var(--alc-bc-warm);
+  color: var(--alc-bc-ink);
+  text-decoration: none;
+  transition: background-color 0.25s ease, box-shadow 0.25s ease;
+}
+
+.alc-bc__cat-media {
+  flex: none;
+  display: block;
+  width: 72px;
+  height: 72px;
+  border-radius: 14px;
+  background: #fff;
+  overflow: hidden;
+}
+
+.alc-bc__cat-media img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  padding: 8px;
+  box-sizing: border-box;
+  transition: transform 0.9s cubic-bezier(0.2, 0.7, 0.2, 1);
+}
+
+.alc-bc__cat-text { display: flex; flex-direction: column; gap: 3px; min-width: 0; flex: 1; }
+
+.alc-bc__cat-name {
+  font-size: 15px;
+  font-weight: 600;
+  line-height: 1.25;
+  letter-spacing: -0.01em;
+  text-wrap: balance;
+}
+
+.alc-bc__cat-count { font-size: 13px; color: var(--alc-bc-muted); }
+
+.alc-bc__cat-arrow { flex: none; color: var(--alc-bc-muted); transition: transform 0.25s ease, color 0.25s ease; }
+
+@media (hover: hover) and (pointer: fine) {
+  .alc-bc__cat:hover { background: #efece6; box-shadow: 0 0 0 1px var(--alc-bc-line); }
+  .alc-bc__cat:hover .alc-bc__cat-media img { transform: scale(1.04); }
+  .alc-bc__cat:hover .alc-bc__cat-arrow { transform: translateX(3px); color: var(--alc-bc-ink); }
+}
+
+/* ---------- Responsive ---------- */
+@media (max-width: 1199px) {
+  .alc-bc__grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+}
+
+@media (max-width: 989px) {
+  .alc-bc__hero { grid-template-columns: minmax(0, 1fr); }
+  .alc-bc__mosaic { justify-self: start; max-width: 520px; grid-template-columns: repeat(4, minmax(0, 1fr)); }
+  .alc-bc__tile--2,
+  .alc-bc__tile--4 { transform: none; }
+  .alc-bc__grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+
+@media (max-width: 749px) {
+  .alc-bc { padding-top: 4px; }
+  .alc-bc__hero { border-radius: 22px; padding: 28px 20px 76px; }
+  .alc-bc__btn { flex: 1 1 auto; }
+  .alc-bc__stats { width: calc(100% - 24px); margin-top: -44px; }
+  .alc-bc__stat { padding: 16px 8px; }
+  .alc-bc__stat dt { font-size: 13px; }
+  /* Compact two-column rows so 16 categories stay about one screen tall before the products. */
+  .alc-bc__grid { gap: 8px; }
+  .alc-bc__cat { gap: 10px; min-height: 68px; padding: 8px 10px 8px 8px; border-radius: 16px; }
+  .alc-bc__cat-media { width: 52px; height: 52px; border-radius: 12px; }
+  .alc-bc__cat-media img { padding: 5px; }
+  .alc-bc__cat-arrow { display: none; }
+  .alc-bc__cat-name { font-size: 13.5px; }
+  .alc-bc__cat-count { font-size: 12px; }
+}
