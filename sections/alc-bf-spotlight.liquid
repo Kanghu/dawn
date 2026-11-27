@@ -8,6 +8,10 @@
     start is ahead (assets/alc-black-friday.js), the button to the campaign collection (each
     market's own address) and the stock note. The ads' living room at the edges (desktop) or
     underneath (phones).
+  - The Black Friday days themselves (theme settings "Black Friday peak", snippets/alc-bf-peak):
+    a red glow, a gold seal with the day's date, "Today is / Last days of / Last chance:"
+    above the title (the last day's title from the settings), a countdown to the last day and
+    no "From 23 October". The gold band runs above the header (sections/alc-bf-band).
   - Deals: the editor's list (the page's "hottest deals"), else the collection's deepest
     in-stock deals of the collection and the menu's categories, biggest discount first,
     picked as on the page, as
@@ -107,6 +111,40 @@
     else
       assign kicker = t[2]
   endcase
+  assign kicker_off = kicker
+
+  comment
+    The Black Friday days, as on the page (snippets/alc-bf-peak).
+  endcomment
+  capture peak
+    render 'alc-bf-peak', get: 'phase'
+  endcapture
+  assign peak = peak | strip
+  capture peak_w
+    render 'alc-bf-peak', get: 'words'
+  endcapture
+  assign pw = peak_w | strip | split: '|'
+  assign peak_start = settings.bf_peak_start | strip
+  assign peak_end = settings.bf_peak_end | strip
+  assign peak_ahead = false
+  if peak_start != blank and peak_end != blank and today_str <= peak_end
+    assign peak_ahead = true
+  endif
+  assign title_1 = section.settings.title_1
+  assign title_2 = section.settings.title_2
+  assign last_words = settings.bf_peak_last_title | strip | split: ' '
+  assign last_1 = last_words.first | default: title_1
+  assign last_2 = last_words | slice: 1, 9 | join: ' ' | default: title_2
+  case peak
+    when 'day'
+      assign kicker = pw[0]
+    when 'mid'
+      assign kicker = pw[1]
+    when 'last'
+      assign kicker = pw[2]
+      assign title_1 = last_1
+      assign title_2 = last_2
+  endcase
 
   comment
     "From 23 October" in the page language (Hungarian: "október 23-tól").
@@ -141,13 +179,22 @@
   endif
 
   comment
-    Countdown to the start while it is ahead; the script hides it afterwards.
+    Countdown to the start while it is ahead, and to the last of the Black Friday days during
+    them; the script hides it otherwise.
   endcomment
   assign show_clock = false
-  if state == 'soon'
+  assign clock_end = ''
+  if peak != blank
+    assign clock_end = peak_end
+  endif
+  if state == 'soon' or peak != blank
     assign show_clock = true
     assign now_s = 'now' | date: '%s' | plus: 0
-    assign target_s = start_date | append: ' 00:00:00 +0300' | date: '%s' | plus: 0
+    if state == 'soon'
+      assign target_s = start_date | append: ' 00:00:00 +0300' | date: '%s' | plus: 0
+    else
+      assign target_s = peak_end | append: ' 23:59:59 +0200' | date: '%s' | plus: 0
+    endif
     assign left_s = target_s | minus: now_s | at_least: 0
     assign c_d = left_s | divided_by: 86400
     assign c_rest = left_s | modulo: 86400
@@ -373,21 +420,48 @@
 </style>
 
 <div class="alc-bfh-wrap alc-bfh-{{ section.id }}">
-  <div class="alc-of alc-bf alc-bfh" data-state="{{ state }}">
+  <div
+    class="alc-of alc-bf alc-bfh"
+    data-state="{{ state }}"
+    {%- if peak_ahead %} data-bf-peak data-peak-start="{{ peak_start }}" data-peak-end="{{ peak_end }}"{% endif -%}
+    {%- if peak != blank %} data-peak="{{ peak }}"{% endif -%}
+  >
+    {%- if peak_ahead -%}
+      <script src="{{ 'alc-bf-peak.js' | asset_url }}" defer="defer"></script>
+    {%- endif -%}
     <div class="alc-bfh__hero">
       <div class="alc-bfh__scene" aria-hidden="true">
         <span class="alc-bfh__room alc-bfh__room--l"></span>
         <span class="alc-bfh__room alc-bfh__room--r"></span>
         <span class="alc-bfh__room alc-bfh__room--m"></span>
         <span class="alc-bfh__lights"></span>
+        {%- if peak_ahead %}<span class="alc-bf__embers"></span>{% endif -%}
       </div>
 
       <div class="alc-bfh__copy">
         <p class="alc-bf__brand alc-bf__rise"><span>Alessandro Design</span></p>
         <h2 class="alc-bf__title">
-          <span class="alc-bf__kicker alc-bf__rise" data-kicker data-today="{{ t[1] | escape }}" data-live="{{ t[2] | escape }}">{{ kicker }}</span>
-          <span class="alc-bf__t1 alc-bf__rise">{{ section.settings.title_1 | escape }}</span>
-          <span class="alc-bf__t2 alc-bf__rise"><span class="alc-bf__t2-text">{{ section.settings.title_2 | escape }}</span></span>
+          {%- if peak_ahead -%}
+            {%- assign seal_title = title_1 | append: ' ' | append: title_2 -%}
+            {%- render 'alc-bf-peak', get: 'seal', title: seal_title, pct: max_pct -%}
+          {%- endif -%}
+          <span
+            class="alc-bf__kicker alc-bf__rise"
+            data-kicker
+            data-today="{{ t[1] | escape }}"
+            data-live="{{ t[2] | escape }}"
+            {%- if peak_ahead %}
+              data-peak-text-day="{{ pw[0] | escape }}" data-peak-text-mid="{{ pw[1] | escape }}" data-peak-text-last="{{ pw[2] | escape }}" data-peak-text-off="{{ kicker_off | escape }}"
+            {%- endif -%}
+          >{{ kicker }}</span>
+          <span
+            class="alc-bf__t1 alc-bf__rise"
+            {%- if peak_ahead %} data-peak-text-day="{{ section.settings.title_1 | escape }}" data-peak-text-mid="{{ section.settings.title_1 | escape }}" data-peak-text-last="{{ last_1 | escape }}" data-peak-text-off="{{ section.settings.title_1 | escape }}"{% endif -%}
+          >{{ title_1 | escape }}</span>
+          <span class="alc-bf__t2 alc-bf__rise"><span
+            class="alc-bf__t2-text"
+            {%- if peak_ahead %} data-peak-text-day="{{ section.settings.title_2 | escape }}" data-peak-text-mid="{{ section.settings.title_2 | escape }}" data-peak-text-last="{{ last_2 | escape }}" data-peak-text-off="{{ section.settings.title_2 | escape }}"{% endif -%}
+          >{{ title_2 | escape }}</span></span>
         </h2>
 
         {%- if max_pct > 0 -%}
@@ -405,14 +479,14 @@
           <alc-bf-countdown
             class="alc-bf__clock alc-bf__rise"
             data-start="{{ start_date | escape }}"
-            data-end=""
+            data-end="{{ clock_end }}"
             data-label-start="{{ t[12] | escape }}"
-            data-label-end=""
+            data-label-end="{{ pw[3] | escape }}"
             data-day="{{ t[13] | escape }}"
             data-days="{{ t[14] | escape }}"
             {% unless show_clock %}hidden{% endunless %}
           >
-            <span class="alc-bf__clock-label" data-label>{{ t[12] }}</span>
+            <span class="alc-bf__clock-label" data-label>{% if state == 'soon' %}{{ t[12] }}{% else %}{{ pw[3] }}{% endif %}</span>
             <span class="alc-bf__clock-units" role="timer" aria-live="off">
               <span class="alc-bf__unit" data-d-unit{% if c_d == 0 %} hidden{% endif %}><b data-d>{{ c_d | default: 0 }}</b><small data-d-label>{% if c_d == 1 %}{{ t[13] }}{% else %}{{ t[14] }}{% endif %}</small></span>
               <span class="alc-bf__unit"><b data-h>{{ c_h | default: '00' }}</b><small>{{ t[15] }}</small></span>

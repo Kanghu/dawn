@@ -131,8 +131,8 @@ body {
   display: none;
 }
 
-/* Gold: the Black Friday gold-leaf pill (the foil of assets/alc-black-friday.css; its texture,
-   alc-bf-foil.jpg, comes in as --alc-mm-foil from the snippet), with a light sweeping across. */
+/* Gold: the Black Friday gold pill (the satin gold of assets/alc-black-friday.css), with a
+   light sweeping across. */
 .alc-mm__item--gold {
   align-items: center;
 }
@@ -144,11 +144,7 @@ body {
   margin-left: 10px;
   padding: 0 16px 0 14px;
   border-radius: 999px;
-  background:
-    linear-gradient(168deg, rgba(255, 248, 222, 0.5) 0%, rgba(255, 248, 222, 0) 34%, rgba(150, 92, 24, 0) 52%, rgba(150, 92, 24, 0.55) 100%),
-    linear-gradient(rgba(226, 172, 84, 0.32), rgba(226, 172, 84, 0.32)),
-    var(--alc-mm-foil, none) 0 0 / 220px repeat,
-    #d6a650;
+  background: linear-gradient(170deg, #f6e1ab 0%, #e6c077 34%, #d4a352 62%, #b8873c 100%);
   color: #1c1206;
   font-size: 13px;
   font-weight: 800;

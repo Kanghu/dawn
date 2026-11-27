@@ -1619,5 +1619,54 @@
         "label": "Blog 3"
       }
     ]
+    },
+  {
+    "name": "Black Friday peak",
+    "settings": [
+      {
+        "type": "paragraph",
+        "content": "The Black Friday days themselves (snippets/alc-bf-peak). From the start to the end date, Bucharest time, the Black Friday page and the homepage banner turn up the heat (a red glow, a gold seal with the day's date, a countdown to the end, no \"From 23 October\"), and a gold band runs above the header on every page. Outside these dates nothing changes."
+      },
+      {
+        "type": "text",
+        "id": "bf_peak_start",
+        "label": "First day",
+        "default": "2026-11-27",
+        "info": "YYYY-MM-DD. The line above the title reads \"Today is\"."
+      },
+      {
+        "type": "text",
+        "id": "bf_peak_end",
+        "label": "Last day",
+        "default": "2026-11-30",
+        "info": "YYYY-MM-DD. The countdown runs to 23:59 that day. The days between read \"Last days of\", the last one \"Last chance:\"."
+      },
+      {
+        "type": "text",
+        "id": "bf_peak_last_title",
+        "label": "Title on the last day",
+        "default": "Cyber Monday",
+        "info": "Two words, ivory then gold, in place of \"Black Friday\". Empty: keep Black Friday."
+      },
+      {
+        "type": "number",
+        "id": "bf_peak_up_to",
+        "label": "Up to (%) in the band",
+        "default": 80
+      },
+      {
+        "type": "url",
+        "id": "bf_peak_url",
+        "label": "Band link",
+        "info": "Empty: the black-friday collection, at each market's own address."
+      },
+      {
+        "type": "checkbox",
+        "id": "bf_peak_band",
+        "label": "Show the band above the header",
+        "default": true,
+        "info": "Not on the Black Friday page, which has its own under the hero."
+      }
+    ]
   }
 ]
