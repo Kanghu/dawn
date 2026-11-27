@@ -8,7 +8,9 @@
   Accepts:
   - deals: {Array} blocks with the settings product, code and reduction
   - section_id: {String}
-  - units: {Number} how many units of each product the code gives, for the texts
+  - units: {Number} how many units of each product the code gives, for the texts. 0 means the
+    codes have no usage limit: no limited-stock texts, and the subtitle keeps only how the code
+    applies.
 
   A native code has one fixed value, so the card can't read its price from it: the block holds
   the same reduction as the code, in bani of the shop's currency (35000 = 350,00 lei), and the
@@ -61,7 +63,19 @@
   assign n_token = '{' | append: 'n' | append: '}'
   assign code_token = '{' | append: 'code' | append: '}'
   assign units_text = units | default: 20 | append: ''
-  assign sub_text = t[2] | replace: n_token, units_text
+  assign has_limit = true
+  if units == 0
+    assign has_limit = false
+  endif
+  comment
+    Without a limit the subtitle keeps its last sentence, how the code applies. In every language
+    above that sentence has no ". " inside it, while the first one may (buc., szt., бр.).
+  endcomment
+  if has_limit
+    assign sub_text = t[2] | replace: n_token, units_text
+  else
+    assign sub_text = t[2] | split: '. ' | last
+  endif
   assign limit_text = t[4] | replace: n_token, units_text
 
   comment
@@ -265,7 +279,9 @@
                         </button>
                         <span class="visually-hidden" role="status" data-copy-status></span>
                       </div>
-                      <p class="alc-bfcd__limit">{{ limit_text }}</p>
+                      {%- if has_limit -%}
+                        <p class="alc-bfcd__limit">{{ limit_text }}</p>
+                      {%- endif -%}
                     {%- endunless -%}
 
                     <product-form class="alc-bf__form" data-section-id="{{ section_id }}">
