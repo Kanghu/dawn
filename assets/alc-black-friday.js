@@ -53,7 +53,8 @@
     }
 
     syncState() {
-      if (!this.root || !this.kicker || !this.dataset.start) return;
+      // During the Black Friday days the line is assets/alc-bf-peak.js's.
+      if (!this.root || !this.kicker || !this.dataset.start || this.root.dataset.peak) return;
       const today = todayInBucharest();
       if (!today) return;
       let state = 'live';

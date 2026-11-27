@@ -1,0 +1,140 @@
+{% comment %}
+  The Black Friday days themselves (theme settings "Black Friday peak": first and last day,
+  Bucharest time), shared by the Black Friday page (sections/alc-black-friday), the homepage
+  banner (sections/alc-bf-spotlight) and the band above the header (sections/alc-bf-band).
+
+  get: 'phase'  prints day (the first day), mid (the days between), last (the last day) or
+                nothing outside the dates. Read it with capture.
+  get: 'words'  prints the texts for the page language, joined with "|": Today is, Last days
+                of, Last chance:, Ends in, Up to, Discover the deals. Read it with capture.
+  get: 'seal'   the gold seal with today's date, ringed by the title and "up to -X%".
+                Params: title, pct.
+  get: 'band'   the gold running band. Params: modifier ('header' or 'page').
+
+  The server's phase is only a first paint: assets/alc-bf-peak.js recomputes it from the
+  visitor's clock in Bucharest time, so a page served from cache switches at midnight.
+{% endcomment %}
+{%- liquid
+  assign peak_start = settings.bf_peak_start | strip
+  assign peak_end = settings.bf_peak_end | strip
+  assign peak_today = 'now' | date: '%Y-%m-%d'
+  assign peak_phase = ''
+  if peak_start != blank and peak_end != blank and peak_today >= peak_start and peak_today <= peak_end
+    if peak_today == peak_start
+      assign peak_phase = 'day'
+    elsif peak_today == peak_end
+      assign peak_phase = 'last'
+    else
+      assign peak_phase = 'mid'
+    endif
+  endif
+
+  assign peak_lang = request.locale.iso_code | downcase | slice: 0, 2
+  case peak_lang
+    when 'en'
+      assign peak_w = 'Today is|Last days of|Last chance:|Ends in|Up to|Discover the deals'
+    when 'hu'
+      assign peak_w = 'Ma van a|Utolsó napok:|Utolsó esély:|Az ajánlat vége:|Akár|Fedezze fel az ajánlatokat'
+    when 'pl'
+      assign peak_w = 'Dziś jest|Ostatnie dni|Ostatnia szansa:|Koniec za|Do|Odkryj oferty'
+    when 'el'
+      assign peak_w = 'Σήμερα είναι η|Τελευταίες μέρες της|Τελευταία ευκαιρία:|Λήγει σε|Έως|Δείτε τις προσφορές'
+    when 'bg'
+      assign peak_w = 'Днес е|Последни дни на|Последен шанс:|Изтича след|До|Разгледайте офертите'
+    when 'it'
+      assign peak_w = 'Oggi è il|Ultimi giorni del|Ultima occasione:|Termina tra|Fino al|Scopri le offerte'
+    when 'fr'
+      assign peak_w = 'Aujourd’hui, c’est le|Derniers jours du|Dernière chance :|Fin dans|Jusqu’à|Découvrir les offres'
+    when 'cs'
+      assign peak_w = 'Dnes je|Poslední dny|Poslední šance:|Končí za|Až|Objevte nabídky'
+    when 'sk'
+      assign peak_w = 'Dnes je|Posledné dni|Posledná šanca:|Končí o|Až|Objavte ponuky'
+    when 'hr'
+      assign peak_w = 'Danas je|Posljednji dani|Posljednja prilika:|Završava za|Do|Otkrijte ponude'
+    when 'de'
+      assign peak_w = 'Heute ist|Letzte Tage des|Letzte Chance:|Endet in|Bis zu|Angebote entdecken'
+    when 'nl'
+      assign peak_w = 'Vandaag is het|Laatste dagen van|Laatste kans:|Eindigt over|Tot|Ontdek de aanbiedingen'
+    else
+      assign peak_w = 'Azi e|Ultimele zile de|Ultima șansă:|Se încheie în|Până la|Descoperă ofertele'
+  endcase
+
+  assign pw = peak_w | split: '|'
+  assign peak_attrs = 'data-bf-peak data-peak-start="' | append: peak_start | append: '" data-peak-end="' | append: peak_end | append: '"'
+  if peak_phase != blank
+    assign peak_attrs = peak_attrs | append: ' data-peak="' | append: peak_phase | append: '"'
+  endif
+-%}
+
+{%- if get == 'phase' -%}
+  {{- peak_phase -}}
+{%- elsif get == 'words' -%}
+  {{- peak_w -}}
+{%- elsif get == 'seal' -%}
+  {%- liquid
+    assign ring_pct = pct | default: 0
+    if ring_pct == 0
+      assign ring_pct = settings.bf_peak_up_to
+    endif
+    assign ring = title | upcase | append: ' ★ ' | append: pw[4] | upcase | append: ' -' | append: ring_pct | append: '% ★ '
+    assign ring = ring | append: ring
+  -%}
+  <span class="alc-bf-seal" aria-hidden="true">
+    <svg class="alc-bf-seal__ring" viewBox="0 0 200 200" focusable="false">
+      <defs><path id="AlcBfSealPath-{{ section.id }}" d="M100,100 m-79,0 a79,79 0 1,1 158,0 a79,79 0 1,1 -158,0"/></defs>
+      <text><textPath href="#AlcBfSealPath-{{ section.id }}" textLength="490" lengthAdjust="spacingAndGlyphs">{{ ring | escape }}</textPath></text>
+    </svg>
+    <span class="alc-bf-seal__face">
+      <b data-peak-date>{{ 'now' | date: '%d.%m' }}</b>
+      <span class="alc-bf-seal__stars">★★★</span>
+    </span>
+  </span>
+{%- elsif get == 'band' and peak_phase != blank -%}
+  {%- liquid
+    assign band_url = settings.bf_peak_url
+    if band_url == blank
+      assign band_url = collections['black-friday'].url | default: routes.collections_url
+    endif
+    assign last_title = settings.bf_peak_last_title | strip
+    assign band_title = 'Black Friday'
+    assign band_title_last = last_title | default: band_title
+    case peak_phase
+      when 'day'
+        assign band_kicker = pw[0]
+      when 'mid'
+        assign band_kicker = pw[1]
+      else
+        assign band_kicker = pw[2]
+    endcase
+    if peak_phase == 'last'
+      assign band_now = band_title_last
+    else
+      assign band_now = band_title
+    endif
+    assign s_dm = peak_start | date: '%d.%m'
+    assign e_dm = peak_end | date: '%d.%m'
+  -%}
+  {{ 'alc-bf-peak.css' | asset_url | stylesheet_tag }}
+  <script src="{{ 'alc-bf-peak.js' | asset_url }}" defer="defer"></script>
+  <a class="alc-bf-band alc-bf-band--{{ modifier | default: 'page' }}" href="{{ band_url }}" {{ peak_attrs }}>
+    <span class="visually-hidden">{{ band_kicker }} {{ band_now }}, {{ pw[4] }} -{{ settings.bf_peak_up_to }}%. {{ pw[5] }}</span>
+    <span class="alc-bf-band__track" aria-hidden="true">
+      {%- for group in (1..2) -%}
+        <span class="alc-bf-band__group">
+          {%- for i in (1..3) -%}
+            <span class="alc-bf-band__item">
+              <span data-peak-text-day="{{ pw[0] | escape }} {{ band_title | escape }}" data-peak-text-mid="{{ pw[1] | escape }} {{ band_title | escape }}" data-peak-text-last="{{ pw[2] | escape }} {{ band_title_last | escape }}">{{ band_kicker }} {{ band_now }}</span>
+            </span>
+            <span class="alc-bf-band__star">★</span>
+            <span class="alc-bf-band__item">{{ pw[4] }} <b>-{{ settings.bf_peak_up_to }}%</b></span>
+            <span class="alc-bf-band__star">★</span>
+            <span class="alc-bf-band__item">{{ s_dm }} – {{ e_dm }}</span>
+            <span class="alc-bf-band__star">★</span>
+            <span class="alc-bf-band__item alc-bf-band__item--cta">{{ pw[5] }} →</span>
+            <span class="alc-bf-band__star">★</span>
+          {%- endfor -%}
+        </span>
+      {%- endfor -%}
+    </span>
+  </a>
+{%- endif -%}

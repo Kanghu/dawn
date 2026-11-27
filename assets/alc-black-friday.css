@@ -2,7 +2,7 @@
    black marble, ivory and gold-leaf display type (the section's font, Montserrat Black by
    default), gold pills and seals, red-struck old prices.
    The product cards keep the October Sale page's dark skin (assets/alc-offer-page.css),
-   re-coloured here through its --alc-of-* tokens. The textures (assets/alc-bf-foil.jpg, alc-bf-marble.jpg)
+   re-coloured here through its --alc-of-* tokens. The marble texture (assets/alc-bf-marble.jpg)
    and the ads' living-room crops come in as custom properties from the section. */
 .alc-of.alc-bf {
   --alc-bf-black: #0b0a09;
@@ -14,14 +14,11 @@
   --alc-bf-gold-line: rgba(232, 194, 122, 0.34);
   --alc-bf-on-gold: #1c1206;
   --alc-bf-red: #e5383b;
-  --alc-bf-max: 1320px;
+  /* Content width: Dawn's default page width, within the usual 1140–1280px for a shop. */
+  --alc-bf-max: 1200px;
   --alc-bf-gutter: clamp(16px, 3vw, 40px);
-  /* Gold leaf: the crinkled texture under a light-to-amber sheen, as one background. */
-  --alc-bf-foil:
-    linear-gradient(168deg, rgba(255, 248, 222, 0.5) 0%, rgba(255, 248, 222, 0) 34%, rgba(150, 92, 24, 0) 52%, rgba(150, 92, 24, 0.55) 100%),
-    linear-gradient(rgba(226, 172, 84, 0.32), rgba(226, 172, 84, 0.32)),
-    var(--alc-bf-foil-img) 0 0 / 220px repeat,
-    #d6a650;
+  /* Gold: a smooth satin sheen, pale at the top to amber at the foot, as one background. */
+  --alc-bf-foil: linear-gradient(170deg, #f6e1ab 0%, #e6c077 34%, #d4a352 62%, #b8873c 100%);
   --alc-bf-ivory-face: linear-gradient(180deg, #fffaf0 0%, #f4ecdd 55%, #ddd0ba 100%);
 
   /* The October Sale page's tokens, re-pointed. */
@@ -71,8 +68,8 @@
   isolation: isolate;
   display: grid;
   place-items: center;
-  min-height: clamp(600px, 48vw, 760px);
-  padding: clamp(40px, 4.4vw, 64px) var(--alc-bf-gutter) clamp(48px, 5vw, 72px);
+  min-height: clamp(440px, 34vw, 520px);
+  padding: clamp(28px, 3vw, 44px) var(--alc-bf-gutter) clamp(32px, 3.4vw, 48px);
   overflow: hidden;
   text-align: center;
 }
@@ -185,8 +182,8 @@
 }
 
 .alc-bf__kicker {
-  margin-bottom: clamp(6px, 0.8vw, 12px);
-  font-size: clamp(22px, 2.7vw, 38px);
+  margin-bottom: clamp(4px, 0.6vw, 8px);
+  font-size: clamp(18px, 2vw, 28px);
   font-weight: 800;
   line-height: 1.1;
   letter-spacing: 0.01em;
@@ -197,7 +194,7 @@
 .alc-bf__t1,
 .alc-bf__t2 {
   display: block;
-  font-size: clamp(64px, 9.6vw, 150px);
+  font-size: clamp(56px, 7vw, 108px);
   line-height: 0.86;
   letter-spacing: -0.012em;
   text-transform: uppercase;
@@ -246,8 +243,8 @@
   display: inline-flex;
   align-items: center;
   gap: 14px;
-  margin: clamp(22px, 2.2vw, 30px) 0 0;
-  padding: 4px 26px 6px;
+  margin: clamp(14px, 1.6vw, 20px) 0 0;
+  padding: 4px 22px 6px;
   border-radius: 16px;
   background: var(--alc-bf-foil);
   color: var(--alc-bf-on-gold);
@@ -267,13 +264,13 @@
 }
 
 .alc-bf__upto-pct {
-  font-size: clamp(54px, 6.4vw, 88px);
+  font-size: clamp(44px, 4.8vw, 66px);
   font-weight: 900;
   letter-spacing: -0.03em;
 }
 
 .alc-bf .alc-bf__since {
-  margin-top: clamp(22px, 2.2vw, 28px);
+  margin-top: clamp(14px, 1.6vw, 20px);
   font-weight: 700;
   font-size: 15px;
   letter-spacing: 0.2em;
@@ -289,7 +286,7 @@
   flex-direction: column;
   align-items: center;
   gap: 10px;
-  margin-top: 22px;
+  margin-top: 16px;
 }
 
 .alc-bf__clock[hidden] {
@@ -315,7 +312,7 @@
   align-items: center;
   justify-content: center;
   min-width: 62px;
-  height: 62px;
+  height: 54px;
   padding: 0 8px;
   border: 1px solid var(--alc-bf-gold-line);
   border-radius: 14px;
@@ -347,7 +344,7 @@
 }
 
 .alc-bf__actions {
-  margin-top: 26px;
+  margin-top: 18px;
 }
 
 /* "DESCOPERĂ OFERTELE ›": the gold pill of the ads. */
@@ -372,8 +369,8 @@
 }
 
 .alc-bf__cta {
-  min-height: 60px;
-  padding: 0 34px 0 38px;
+  min-height: 54px;
+  padding: 0 30px 0 34px;
   font-size: clamp(15px, 1.4vw, 18px);
   letter-spacing: 0.04em;
 }
@@ -1054,7 +1051,7 @@
 
   .alc-bf__hero {
     min-height: 0;
-    padding: 36px 16px calc(52vw + 8px);
+    padding: 24px 16px calc(36vw + 8px);
   }
 
   .alc-bf__room--l,
@@ -1068,7 +1065,7 @@
     left: 0;
     right: 0;
     width: auto;
-    height: 64vw;
+    height: 48vw;
     background-image: var(--alc-bf-room-m-sm);
     background-position: 50% 100%;
     -webkit-mask-image: linear-gradient(180deg, transparent 0%, rgba(0, 0, 0, 0.75) 34%, #000 60%);
@@ -1093,7 +1090,7 @@
 
   .alc-bf__t1,
   .alc-bf__t2 {
-    font-size: clamp(56px, 19vw, 96px);
+    font-size: clamp(50px, 15vw, 76px);
   }
 
   .alc-bf .alc-bf__upto {
@@ -1234,5 +1231,166 @@
   .alc-bf__buy,
   .alc-bf__niche-img {
     transition: none;
+  }
+}
+
+/* The Black Friday days (snippets/alc-bf-peak, data-peak on the page): a red glow under the
+   gold, the line above the title on a red pill, a gold seal with the day's date, a live dot
+   on the countdown, and no "From 23 October". Shared with the homepage banner. */
+.alc-bf__embers {
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(46% 42% at 12% 100%, rgba(229, 56, 59, 0.34) 0%, rgba(229, 56, 59, 0) 72%),
+    radial-gradient(46% 42% at 88% 100%, rgba(229, 56, 59, 0.34) 0%, rgba(229, 56, 59, 0) 72%),
+    radial-gradient(34% 30% at 50% 34%, rgba(255, 92, 44, 0.16) 0%, rgba(255, 92, 44, 0) 72%);
+  mix-blend-mode: screen;
+}
+
+.alc-bf:not([data-peak]) .alc-bf__embers,
+.alc-bf:not([data-peak]) .alc-bf-seal,
+.alc-bf[data-peak] .alc-bf__since {
+  display: none;
+}
+
+.alc-bf[data-bf-peak] .alc-bf__title {
+  position: relative;
+}
+
+.alc-bf.alc-bf[data-peak] .alc-bf__kicker {
+  align-self: center;
+  margin-bottom: clamp(10px, 1.1vw, 16px);
+  padding: 0.34em 0.9em 0.38em;
+  border-radius: 999px;
+  background: linear-gradient(180deg, #f04a4c 0%, #c4232a 100%);
+  color: #fff;
+  font-size: clamp(15px, 1.7vw, 24px);
+  letter-spacing: 0.08em;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.35), 0 0 0 1px rgba(255, 140, 120, 0.35), 0 10px 34px -6px rgba(229, 56, 59, 0.65);
+}
+
+.alc-bf-seal {
+  position: absolute;
+  z-index: 1;
+  top: -0.42em;
+  right: -1.5em;
+  display: grid;
+  place-items: center;
+  width: 1.62em;
+  height: 1.62em;
+  border-radius: 50%;
+  background: var(--alc-bf-foil);
+  color: var(--alc-bf-on-gold);
+  font-size: clamp(52px, 4.8vw, 74px);
+  transform: rotate(-12deg);
+  box-shadow: inset 0 0 0 3px rgba(255, 246, 214, 0.55), inset 0 0 0 5px rgba(110, 66, 14, 0.4), 0 16px 34px -10px rgba(0, 0, 0, 0.85);
+  pointer-events: none;
+}
+
+.alc-bf-seal__ring {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+}
+
+.alc-bf-seal__ring text {
+  fill: currentColor;
+  font-family: var(--alc-bf-display);
+  font-size: 15px;
+  font-weight: 800;
+  letter-spacing: 0.06em;
+}
+
+.alc-bf-seal__face {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-family: var(--alc-bf-display);
+  line-height: 1;
+}
+
+.alc-bf-seal__face b {
+  font-size: 0.3em;
+  font-weight: 900;
+  letter-spacing: -0.02em;
+}
+
+.alc-bf-seal__stars {
+  margin-top: 0.06em;
+  font-size: 0.1em;
+  letter-spacing: 0.2em;
+  color: #9c2a1d;
+}
+
+.alc-bf[data-peak] .alc-bf__clock-label {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--alc-bf-ivory);
+}
+
+.alc-bf[data-peak] .alc-bf__clock-label::before {
+  content: '';
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--alc-bf-red);
+  box-shadow: 0 0 10px 1px rgba(229, 56, 59, 0.8);
+}
+
+.alc-bf[data-peak] .alc-bf__unit {
+  border-color: rgba(229, 56, 59, 0.45);
+}
+
+@media screen and (max-width: 749px) {
+  .alc-bf-seal {
+    top: -0.62em;
+    right: -0.2em;
+    font-size: 42px;
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .alc-bf__embers {
+    animation: alc-bf-embers 3.4s ease-in-out infinite alternate;
+  }
+
+  .alc-bf-seal {
+    animation: alc-bf-stamp 0.7s cubic-bezier(0.3, 1.6, 0.5, 1) 0.55s both;
+  }
+
+  .alc-bf-seal__ring {
+    animation: alc-bf-spin 26s linear infinite;
+  }
+
+  .alc-bf[data-peak] .alc-bf__clock-label::before {
+    animation: alc-bf-pulse 1.4s ease-in-out infinite;
+  }
+
+  @keyframes alc-bf-embers {
+    from { opacity: 0.65; }
+    to { opacity: 1; }
+  }
+
+  @keyframes alc-bf-stamp {
+    from {
+      opacity: 0;
+      transform: rotate(-30deg) scale(1.8);
+    }
+    to {
+      opacity: 1;
+      transform: rotate(-12deg) scale(1);
+    }
+  }
+
+  @keyframes alc-bf-spin {
+    to { transform: rotate(360deg); }
+  }
+
+  @keyframes alc-bf-pulse {
+    50% { opacity: 0.35; }
   }
 }

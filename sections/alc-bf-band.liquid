@@ -1,0 +1,22 @@
+{% comment %}
+  The gold running band above the header during the Black Friday days (theme settings
+  "Black Friday peak"): "Today is Black Friday ★ Up to -80% ★ 27.11 – 30.11 ★ Discover the
+  deals", linking to the campaign. Not on the Black Friday page, which has its own under the
+  hero. Outside the dates it renders nothing. Markup: snippets/alc-bf-peak.
+{% endcomment %}
+{%- unless template.suffix == 'black-friday' or settings.bf_peak_band == false -%}
+  {%- render 'alc-bf-peak', get: 'band', modifier: 'header' -%}
+{%- endunless -%}
+
+{% schema %}
+{
+  "name": "Black Friday band",
+  "tag": "div",
+  "class": "section-alc-bf-band",
+  "settings": [
+    { "type": "paragraph", "content": "Shows only on the Black Friday days. Dates, texts and link: Theme settings > Black Friday peak." }
+  ],
+  "enabled_on": { "groups": ["header"] },
+  "presets": [{ "name": "Black Friday band" }]
+}
+{% endschema %}

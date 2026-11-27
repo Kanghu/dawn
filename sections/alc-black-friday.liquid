@@ -7,6 +7,10 @@
     start date: soon, today, running), "up to -X%" computed from the deals on the page,
     "From 23 October", an optional countdown (to the start, then to the end date) and the
     button. Desktop: the ads' living room at both edges; phones: under the copy.
+  - The Black Friday days themselves (theme settings "Black Friday peak", snippets/alc-bf-peak):
+    a red glow, a gold seal with the day's date, "Today is / Last days of / Last chance:"
+    above the title (the last day's title from the settings, Cyber Monday), the countdown to
+    the last day, no "From 23 October", and a gold running band under the hero.
   - "The hottest deals": poster cards like the ads (snippets/alc-bf-poster) for the products
     picked in the editor (the ads' products), else the deepest deals of the collection and
     the category rows, biggest discount first, in whole rows of three.
@@ -136,6 +140,44 @@
     else
       assign kicker = t[2]
   endcase
+  assign kicker_off = kicker
+
+  comment
+    The Black Friday days (snippets/alc-bf-peak): their own line above the title, the last
+    day's title, and the countdown to the last day when the section has no end date.
+  endcomment
+  capture peak
+    render 'alc-bf-peak', get: 'phase'
+  endcapture
+  assign peak = peak | strip
+  capture peak_w
+    render 'alc-bf-peak', get: 'words'
+  endcapture
+  assign pw = peak_w | strip | split: '|'
+  assign peak_start = settings.bf_peak_start | strip
+  assign peak_end = settings.bf_peak_end | strip
+  assign peak_ahead = false
+  if peak_start != blank and peak_end != blank and today_str <= peak_end
+    assign peak_ahead = true
+  endif
+  assign title_1 = section.settings.title_1
+  assign title_2 = section.settings.title_2
+  assign last_words = settings.bf_peak_last_title | strip | split: ' '
+  assign last_1 = last_words.first | default: title_1
+  assign last_2 = last_words | slice: 1, 9 | join: ' ' | default: title_2
+  case peak
+    when 'day'
+      assign kicker = pw[0]
+    when 'mid'
+      assign kicker = pw[1]
+    when 'last'
+      assign kicker = pw[2]
+      assign title_1 = last_1
+      assign title_2 = last_2
+  endcase
+  if peak != blank and end_date == blank
+    assign end_date = peak_end
+  endif
 
   comment
     "From 23 October" in the page language; Hungarian puts the suffix on the day number
@@ -415,7 +457,15 @@
   assign all_lead = t[16] | remove_last: all_last | strip
 -%}
 
-<div class="alc-of alc-bf" data-state="{{ state }}">
+<div
+  class="alc-of alc-bf"
+  data-state="{{ state }}"
+  {%- if peak_ahead %} data-bf-peak data-peak-start="{{ peak_start }}" data-peak-end="{{ peak_end }}"{% endif -%}
+  {%- if peak != blank %} data-peak="{{ peak }}"{% endif -%}
+>
+  {%- if peak_ahead -%}
+    <script src="{{ 'alc-bf-peak.js' | asset_url }}" defer="defer"></script>
+  {%- endif -%}
   {%- comment -%} Hero {%- endcomment -%}
   <section class="alc-bf__hero">
     <div class="alc-bf__scene" aria-hidden="true">
@@ -423,14 +473,33 @@
       <span class="alc-bf__room alc-bf__room--r"></span>
       <span class="alc-bf__room alc-bf__room--m"></span>
       <span class="alc-bf__lights"></span>
+      {%- if peak_ahead %}<span class="alc-bf__embers"></span>{% endif -%}
     </div>
 
     <div class="alc-bf__copy">
       <p class="alc-bf__brand alc-bf__rise"><span>Alessandro Design</span></p>
       <h1 class="alc-bf__title">
-        <span class="alc-bf__kicker alc-bf__rise" data-kicker data-today="{{ t[1] | escape }}" data-live="{{ t[2] | escape }}">{{ kicker }}</span>
-        <span class="alc-bf__t1 alc-bf__rise">{{ section.settings.title_1 | escape }}</span>
-        <span class="alc-bf__t2 alc-bf__rise"><span class="alc-bf__t2-text">{{ section.settings.title_2 | escape }}</span></span>
+        {%- if peak_ahead -%}
+          {%- assign seal_title = title_1 | append: ' ' | append: title_2 -%}
+          {%- render 'alc-bf-peak', get: 'seal', title: seal_title, pct: max_pct -%}
+        {%- endif -%}
+        <span
+          class="alc-bf__kicker alc-bf__rise"
+          data-kicker
+          data-today="{{ t[1] | escape }}"
+          data-live="{{ t[2] | escape }}"
+          {%- if peak_ahead %}
+            data-peak-text-day="{{ pw[0] | escape }}" data-peak-text-mid="{{ pw[1] | escape }}" data-peak-text-last="{{ pw[2] | escape }}" data-peak-text-off="{{ kicker_off | escape }}"
+          {%- endif -%}
+        >{{ kicker }}</span>
+        <span
+          class="alc-bf__t1 alc-bf__rise"
+          {%- if peak_ahead %} data-peak-text-day="{{ section.settings.title_1 | escape }}" data-peak-text-mid="{{ section.settings.title_1 | escape }}" data-peak-text-last="{{ last_1 | escape }}" data-peak-text-off="{{ section.settings.title_1 | escape }}"{% endif -%}
+        >{{ title_1 | escape }}</span>
+        <span class="alc-bf__t2 alc-bf__rise"><span
+          class="alc-bf__t2-text"
+          {%- if peak_ahead %} data-peak-text-day="{{ section.settings.title_2 | escape }}" data-peak-text-mid="{{ section.settings.title_2 | escape }}" data-peak-text-last="{{ last_2 | escape }}" data-peak-text-off="{{ section.settings.title_2 | escape }}"{% endif -%}
+        >{{ title_2 | escape }}</span></span>
       </h1>
 
       {%- if max_pct > 0 -%}
@@ -474,6 +543,8 @@
       <p class="alc-bf__fine alc-bf__rise">{{ t[6] }}</p>
     </div>
   </section>
+
+  {%- render 'alc-bf-peak', get: 'band', modifier: 'page' -%}
 
   {%- comment -%} The deals sold only with a code: snippets/alc-bf-code-deals {%- endcomment -%}
   {%- if show_code_deals -%}
@@ -604,7 +675,7 @@
   "settings": [
     { "type": "paragraph", "content": "Black Friday page in the look of the ads. Below the posters: one row per second-level collection of the menu, each with its in-stock products, biggest discount first." },
     { "type": "text", "id": "start_date", "label": "Start date", "default": "2026-10-23", "info": "YYYY-MM-DD. Sets \"From 23 October\" and the line above the title (soon / starts today / running). Before it, a countdown to the start." },
-    { "type": "text", "id": "end_date", "label": "End date", "info": "YYYY-MM-DD. Optional: a countdown to 23:59 Bucharest time on that day." },
+    { "type": "text", "id": "end_date", "label": "End date", "info": "YYYY-MM-DD. Optional: a countdown to 23:59 Bucharest time on that day. Empty: during the Black Friday days (theme settings), a countdown to their last day." },
     { "type": "text", "id": "title_1", "label": "Title, first line (ivory)", "default": "Black" },
     { "type": "text", "id": "title_2", "label": "Title, second line (gold)", "default": "Friday" },
     { "type": "number", "id": "up_to", "label": "Up to (%)", "info": "The campaign's deepest discount, e.g. 80. A product in stock must have it. Empty: the deepest discount among the posters." },

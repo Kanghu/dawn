@@ -11,6 +11,10 @@
   "name": "t:sections.header.name",
   "type": "header",
   "sections": {
+    "bf_band": {
+      "type": "alc-bf-band",
+      "settings": {}
+    },
     "announcement_bar_nHa8X9": {
       "type": "announcement-bar",
       "blocks": {
@@ -127,6 +131,7 @@
     }
   },
   "order": [
+    "bf_band",
     "announcement_bar_nHa8X9",
     "header"
   ]

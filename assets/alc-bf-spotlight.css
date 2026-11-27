@@ -24,7 +24,7 @@
   isolation: isolate;
   display: grid;
   place-items: center;
-  padding: 44px 24px 40px;
+  padding: 28px 24px 28px;
   overflow: hidden;
   text-align: center;
 }
@@ -90,32 +90,32 @@
 }
 
 .alc-bfh .alc-bf__title {
-  margin-top: 18px;
+  margin-top: 12px;
 }
 
 .alc-bfh .alc-bf__kicker {
-  font-size: clamp(22px, 2.3vw, 32px);
+  font-size: clamp(18px, 1.9vw, 26px);
 }
 
 .alc-bfh .alc-bf__t1,
 .alc-bfh .alc-bf__t2 {
-  font-size: clamp(64px, 8.6vw, 124px);
+  font-size: clamp(56px, 6.4vw, 92px);
 }
 
 .alc-bfh .alc-bf__upto {
-  margin-top: 24px;
+  margin-top: 16px;
 }
 
 .alc-bfh .alc-bf__upto-pct {
-  font-size: clamp(50px, 5.4vw, 74px);
+  font-size: clamp(42px, 4.2vw, 58px);
 }
 
 .alc-bfh .alc-bf__since {
-  margin-top: 22px;
+  margin-top: 14px;
 }
 
 .alc-bfh .alc-bf__actions {
-  margin-top: 22px;
+  margin-top: 16px;
 }
 
 .alc-bfh .alc-bf__fine {
@@ -285,7 +285,7 @@
 
   /* The copy, then the living room as a band under the button. */
   .alc-bfh__hero {
-    padding: 28px 16px 33vw;
+    padding: 20px 16px 26vw;
   }
 
   .alc-bfh__room--l,
@@ -299,7 +299,7 @@
     left: 0;
     right: 0;
     width: auto;
-    height: 46vw;
+    height: 38vw;
     background-image: var(--alc-bf-room-m);
     background-position: 50% 100%;
     -webkit-mask-image: linear-gradient(180deg, transparent 0%, transparent 14%, rgba(0, 0, 0, 0.8) 46%, #000 66%);
@@ -331,12 +331,12 @@
 
   .alc-bfh .alc-bf__t1,
   .alc-bfh .alc-bf__t2 {
-    font-size: clamp(54px, 17.5vw, 84px);
+    font-size: clamp(48px, 14vw, 68px);
   }
 
   .alc-bfh .alc-bf__upto {
     gap: 10px;
-    margin-top: 18px;
+    margin-top: 12px;
     padding: 2px 18px 4px;
     border-radius: 14px;
   }
@@ -346,7 +346,7 @@
   }
 
   .alc-bfh .alc-bf__upto-pct {
-    font-size: 46px;
+    font-size: 40px;
   }
 
   .alc-bfh .alc-bf__since {
